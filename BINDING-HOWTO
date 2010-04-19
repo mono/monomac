@@ -1,0 +1,58 @@
+This is a tutorial on how to get started binding an API.
+     Send feedback to miguel@gnome.org
+
+First, let us pick an API to bind, and to make things easy, we will
+pick something in AppKit as that is already integrated into the
+Makefile system.
+
+We will pick an existing type that has already been bound to explain
+how this works, for example consider NSButton.
+
+You will want to launch XCode as you can browse the documentation and
+find types and definitions quickly from the IDE.  Create an empty
+Cocoa project and from there, select "Frameworks", expand that and
+then expand "Other Frameworks", then "AppKit" and then expand
+"Headers".
+
+You should see that there is an NSButton.h file.  Click on it to look
+at it and get a feeling of what the API looks like.  Now, to get a
+headstart on the binding you will be using the Objective-C parser, so
+pres Command-I on the file, this will bring the info panel.  Select
+the Full path to the header file from it, Copy it with Command-C to
+get its full path, switch to a console window and run this command:
+
+       $ mono parse.exe PATH
+
+Where the PATH is the path to the NSButton file, this is what it
+should look like:
+
+       $ mono parse.exe /System/Library/Frameworks/AppKit.framework/Versions/C/Headers/NSButton.h
+
+When you run this, it will produce a file called "gen.cs" that will
+contain the first pass at the bound API.  This takes a first pass at
+binding the API, at this point you need to ensure that the exposed C#
+names follow the typical .NET patterns.  
+
+This then can be inserted into the appkit.cs file and you can re-run
+the make command to make sure it builds.
+
+Familiarize Yourself with the Contract Rules
+============================================
+
+The contract rules are detailed on our MonoTouch binding APIs
+document, so it is worth reading that because it explains how to bind
+things:
+
+http://monotouch.net/Documentation/Binding_New_Objective-C_Types
+
+Binding New Frameworks
+======================
+
+When you are binding a new framework you will need to create a new
+framework definition file.  This is just a C# file that contains the
+interfaces and delegates that you need, say "Dingus" is your framwork.
+
+You need to create a dingus.cs file that contains the contract, edit
+the Makefile to include "dingus.cs" into the APIS definition and build
+again.  If this works you are on the right track.
+
