@@ -1,0 +1,123 @@
+MonoMac - .NET/C# Bindings to the Cocoa API
+
+	MonoMac provides a new set of C# bindings to the Cocoa APIs on
+	OSX and can be used to create applications that use the native
+	OSX APIs using Mono and C#.
+
+	The code is licensed under the terms of the open source MIT
+	X11 license. 
+
+Building:
+
+	To build MonoMac, you need to get two packages:
+
+	   * maccore
+	   * monomac
+
+	The first contains the code that is shared between MonoMac and
+	MonoTouch.  MonoMac contains the actual bindings that are
+	OSX-specific.
+
+Pending Tasks
+
+	We are looking for contributors to these areas:
+
+	* API binding for the rest of the Frameworks
+
+	* We need samples to be written
+
+	* We need tutorials to be written (like the ones we did for
+          MonoTouch)
+
+	* We need to port existing Cocoa samples to C#:
+	  * To exercise the binding
+	  * To serve as reference for new developers
+	  * To identify missing frameworks
+	  * To prioritize bindings
+
+	* We need to alter MonoDevelop's plugin to produce OSX
+          Application bundles.
+
+Binding APIs
+
+	Information on how to bind new APIs can be found on the MonoTouch web site: 
+
+	http://monotouch.net/Documentation/Binding_New_Objective-C_Types
+
+Goals
+
+	  We had two main requirements: the binding should just work
+	  and the code should be MIT X11 licensed.  For the binding to
+	  just work, we turned to the .NET Framework Design Guidelines
+	  book as it captures years of design decisions, programming
+	  idioms and advise that would help C# and .NET developers.  By
+	  following the Design Guidelines we:
+
+		Avoid surprises
+		Blend with other C# and .NET libraries
+		Reduce the room for errors
+		Increase developer joy
+		Minimizes time for the developer to be productive
+		Every bit of existing .NET knowledge translates
+
+	Luckily for us, .NET was designed from the start to be an
+	interoperability framework.  A framework that supports the
+	most advanced requirements to make multiple runtimes and
+	frameworks to communicate seamlessly with each other.  We used
+	these features to create our bindings.
+
+	The above goals turned into the following technical
+	requirements:
+
+	  * Developers should be able to consume Cocoa APIs as C# APIs
+	  * Allow developers to subclass Objective-C classes
+	  	* Subclass should work with C# standard constructs
+	  	* Derive from an existing class
+	  	* Call base constructor
+	  	* Overriding methods should be done with C#'s override system
+	  	* Do not expose developers to Objective-C selectors
+	  * Provide a mechanism to call arbitrary Objective-C libraries
+	  * Make common Objective-C tasks easy, and hard Objective-C tasks possible
+	  * Expose Objective-C properties as C# properties
+	
+	  * Expose a strongly typed API, for example instead of
+	    exposing the generic-container NSArray or individual
+	    NSObjects.  This means that developers get a few benefits:
+
+	  	* MonoDevelop can flag errors as you write the code
+
+	  	* MonoDevelop can present documentation popups on
+	  	  types, methods, properties and parameters as you type them.
+
+	  	* Minimize runtime errors by catching invalid casts at
+	  	  compile time.
+	  	  
+
+	  	* Encourage in-IDE API exploration without rebuilding,
+	  	  and without having to look up the types in the
+	  	  documentation.
+
+	  * Turn int and uint parameters that should have been enums
+	    as C# enumerations and C# enumerations with [Flags] attributes
+	  
+	  * Expose the basic Foundation as C# native types:
+	  	* NSString becomes string
+	  	* NSArray becomes strongly-typed array
+	  * Events and notifications, give users a choice
+	    between:
+	  	* Support the Objective-C delegate pattern:
+	  		* Strongly typed version is the default
+	  		* Weakly typed version for advance
+	  		use cases
+	  	* C# event system
+	  * Class libraries should be MIT X11 licensed, like the rest
+	    of Mono's class libraries.
+
+	  * Expose C# delegates (lambdas, anonymous methods and
+	    System.Delegate) to Objective-C APIs as "blocks".
+
+	  * Curated APIs: there is no point in binding every UNIX or
+	    CoreFoundation C API available, as those are not very
+	    useful in practice.  Bind only those that are required to
+	    build applications or get access to mandatory
+	    functionality.
