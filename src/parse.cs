@@ -1,27 +1,4 @@
 //
-// Copyright 2010, Novell, Inc.
-//
-// Permission is hereby granted, free of charge, to any person obtaining
-// a copy of this software and associated documentation files (the
-// "Software"), to deal in the Software without restriction, including
-// without limitation the rights to use, copy, modify, merge, publish,
-// distribute, sublicense, and/or sell copies of the Software, and to
-// permit persons to whom the Software is furnished to do so, subject to
-// the following conditions:
-// 
-// The above copyright notice and this permission notice shall be
-// included in all copies or substantial portions of the Software.
-// 
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//
-
-//
 // NOT FOR USE IN PRODUCTION
 // 
 // THIS IS SAMPLE CODE, IT WILL HELP YOU GET STARTED, BUT NOT MUCH MORE THAN THAT
@@ -288,7 +265,7 @@ class TrivialParser {
 		}
 		gencs.WriteLine ("\t\t[Export (\"{0}\")]", selector);
 		gencs.WriteLine ("\t\t{0} {1} {{ {2} {3} }}",
-				 type, selector,
+				 RemapType (type.ToString ()), selector,
 				 getter != null ? "[Bind (\"" + getter + "\")] get;" : "get;",
 				 ro ? "" : "set; ");
 		gencs.WriteLine ();
@@ -473,6 +450,7 @@ class TrivialParser {
 	
 	void ProcessInterface (string iface)
 	{
+		bool need_close = iface.IndexOf ("{") != -1;
 		var cols = iface.Split ();
 		string line;
 
@@ -482,8 +460,10 @@ class TrivialParser {
 			gencs.WriteLine ("\n\t[BaseType (typeof ({0}))]", cols [3]);
 		gencs.WriteLine ("\tinterface {0} {{", cols [1]);
 		
-		while ((line = r.ReadLine ()) != null && !line.StartsWith ("}"))
-			;
+		while ((line = r.ReadLine ()) != null && (need_close && !line.StartsWith ("}"))){
+			if (line == "{")
+				need_close = true;
+		}
 			
 		var decl = new Declarations (gencs);
 		while ((line = r.ReadLine ()) != null && !line.StartsWith ("@end")){
@@ -544,6 +524,8 @@ class TrivialParser {
 				r = new StreamReader (new SourceStream (fs));
 				string line;
 				while ((line = r.ReadLine ()) != null){
+					line = line.Replace ("UIKIT_EXTERN_CLASS ","");
+					
 					if (line.StartsWith ("#"))
 						continue;
 					if (line.Length == 0)
