@@ -178,7 +178,7 @@ bmac.exe: $(APIS) core.dll $(GENERATOR_SOURCES)
 	gmcs -unsafe -out:bmac.exe -debug $(DEFINES) -define:GENERATOR,MONOMAC,MONOMAC_BOOTSTRAP $(GENERATOR_SOURCES) -r:core.dll
 
 generated_sources: bmac.exe $(APIS) $(SHARED_APIS)
-	mono --debug bmac.exe -d=MONOMAC,MONOMAC_BOOTSTRAP --core --sourceonly=generated_sources -v -tmpdir=. $(APIS) --baselib=core.dll --ns=MonoMac.ObjCRuntime -r=System.Drawing
+	mono --debug bmac.exe -a -d=MONOMAC,MONOMAC_BOOTSTRAP --core --sourceonly=generated_sources -v -tmpdir=. $(APIS) --baselib=core.dll --ns=MonoMac.ObjCRuntime -r=System.Drawing
 
 count: 
 	make pass | wc -l
