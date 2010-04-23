@@ -1,4 +1,4 @@
-//
+/
 // Copyright 2010, Novell, Inc.
 //
 // Permission is hereby granted, free of charge, to any person obtaining
@@ -34,6 +34,16 @@ using MonoMac.CoreAnimation;
 
 namespace MonoMac.AppKit {
 
+	[BaseType (typeof (NSObject))]
+	interface CIImage {
+		[Export ("drawInRect:fromRect:operation:fraction:")]
+		void Draw (RectangleF inRect, RectangleF fromRect, NSCompositingOperation operation, float fractionDelta);
+
+		[Export ("drawAtPoint:fromRect:operation:fraction:")]
+		void DrawAtPoint (PointF atPoint, RectangleF fromRect, NSCompositingOperation operation, float fractionDelta);
+
+	}
+	
 	[BaseType (typeof (NSCell))]
 	interface NSActionCell {
 		[Export ("initTextCell:")]
@@ -150,6 +160,24 @@ namespace MonoMac.AppKit {
 		void AnimationDidReachProgressMark (NSAnimation animation, float progress);
 	}
 
+	[BaseType (typeof (NSObject))]
+	interface NSAnimationContext {
+		[Export ("beginGrouping")]
+		void BeginGrouping ();
+
+		[Static]
+		[Export ("endGrouping")]
+		void EndGrouping ();
+
+		[Static]
+		[Export ("currentContext")]
+		NSAnimationContext CurrentContext { get; }
+
+		//Detected properties
+		[Export ("duration")]
+		double Duration { get; set; }
+	}
+	
 	[BaseType (typeof (NSObject), Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (NSAlertDelegate)})]
 	interface NSAlert {
 		[Static, Export ("alertWithError:")]
@@ -1512,6 +1540,22 @@ namespace MonoMac.AppKit {
 		NSSound Sound { get; set; }
 	}
 	
+	[BaseType (typeof (NSImageRep))]
+	interface NSCachedImageRep {
+		[Export ("initWithIdentifier:")]
+	   	IntPtr Constructor (NSWindow win, RectangleF rect);
+		
+		[Export ("initWithSize:depth:separate:alpha:")]
+		IntPtr Constructor (SizeF size, NSWindowDepth depth, bool separate, bool alpha);
+
+		[Export ("window")]
+		NSWindow Window { get; }
+
+		[Export ("rect")]
+		RectangleF Rectangle { get; }
+
+	}
+	
 	[BaseType (typeof (NSObject))]
 	interface NSCell {
 		[Static, Export ("prefersTrackingUntilMouseUp")]
@@ -1822,7 +1866,19 @@ namespace MonoMac.AppKit {
 	
 	}
 
+	[BaseType (typeof (NSImageRep))]
+	interface NSCIImageRep {
+		[Static]
+		[Export ("imageRepWithCIImage:")]
+		NSCIImageRep FromCIImage (CIImage image);
 
+		[Export ("initWithCIImage:")]
+		IntPtr Constructor (CIImage image);
+
+		[Export ("CIImage")]
+		CIImage CIImage { get; }
+	}
+	
 	[BaseType (typeof (NSObject))]
 	interface NSColor {
 		[Static]
@@ -2682,6 +2738,22 @@ namespace MonoMac.AppKit {
 		void MouseExited (NSEvent theEvent);
 	}
 
+	[BaseType (typeof (NSImageRep))]
+	interface NSCustomImageRep {
+		[Export ("initWithDrawSelector:delegate:")]
+		IntPtr Constructor (Selector drawSelectorMethod, NSObject delegateObject);
+
+		[Export ("drawSelector")]
+		Selector DrawSelector { get; }
+		
+		[Export ("delegate", ArgumentSemantic.Assign)][NullAllowed]  
+		NSObject WeakDelegate { get; set; }  
+		
+		[Wrap ("WeakDelegate")][NullAllowed]  
+		NSObject Delegate { get; set; }  
+
+	}	
+	
 	[BaseType (typeof (NSObject))]
 	interface NSDocument {
 		[Export ("initWithType:error:")]
@@ -3380,6 +3452,25 @@ namespace MonoMac.AppKit {
 		NSFontDescriptor FontDescriptorWithFamily (string newFamily);
 	}
 
+	[BaseType (typeof (NSImageRep))]
+	interface NSEPSImageRep {
+		[Static]
+		[Export ("imageRepWithData:")]
+		NSObject FromData (NSData epsData);
+
+		[Export ("initWithData:")]
+		IntPtr Constructor (NSData epsData);
+
+		[Export ("prepareGState")]
+		void PrepareGState ();
+
+		[Export ("EPSRepresentation")]
+		NSData EPSRepresentation { get; }
+
+		[Export ("boundingBox")]
+		RectangleF BoundingBox { get; }
+	}
+	
 	[BaseType (typeof (NSObject))]
 	interface NSEvent {
 		[Export ("type")]
@@ -4038,6 +4129,36 @@ namespace MonoMac.AppKit {
 		MonoMac.CoreImage.CIContext CIContext { get; } 
 	}
 
+	[BaseType (typeof (NSPanel))]
+	interface NSFontPanel {
+		[Static]
+		[Export ("sharedFontPanel")]
+		NSFontPanel SharedFontPanel { get; }
+
+		[Static]
+		[Export ("sharedFontPanelExists")]
+		bool SharedFontPanelExists { get; }
+
+		[Export ("setPanelFont:isMultiple:")]
+		void SetPanelFont (NSFont fontObj, bool isMultiple);
+
+		[Export ("panelConvertFont:")]
+		NSFont PanelConvertFont (NSFont fontObj);
+
+		[Export ("worksWhenModal")]
+		bool WorksWhenModal { get; }
+
+		[Export ("reloadDefaultFontFamilies")]
+		void ReloadDefaultFontFamilies ();
+
+		//Detected properties
+		[Export ("accessoryView")]
+		NSView AccessoryView { get; set; }
+
+		[Export ("enabled")]
+		bool Enabled { [Bind ("isEnabled")]get; set; }
+	}
+	
 	[BaseType (typeof (NSMatrix))]
 	interface NSForm  {
 		[Export ("initWithFrame:")]
@@ -4307,6 +4428,38 @@ namespace MonoMac.AppKit {
 
 		[Export ("template")]
 		bool Template { [Bind ("isTemplate")]get; set; }
+	}
+
+	[BaseType (typeof (NSObject))]
+	interface NSHelpManager {
+		[Export ("sharedHelpManager")]
+		NSHelpManager SharedHelpManager ();
+
+		[Export ("setContextHelp:forObject:")]
+		void SetContext (NSAttributedString attrString, NSObject theObject);
+
+		[Export ("removeContextHelpForObject:")]
+		void RemoveContext (NSObject theObject);
+
+		[Export ("contextHelpForObject:")]
+		NSAttributedString Context (NSObject theObject);
+
+		[Export ("showContextHelpForObject:locationHint:")]
+		bool ShowContext (NSObject theObject, PointF pt);
+
+		[Export ("openHelpAnchor:inBook:")]
+		void OpenHelpAnchor (string anchor, string book);
+
+		[Export ("findString:inBook:")]
+		void FindString (string query, string book);
+
+		[Export ("registerBooksInBundle:")]
+		bool RegisterBooks (NSBundle bundle );
+
+		//Detected properties
+		[Static]
+		[Export ("contextHelpModeActive")]
+		bool ContextHelpModeActive { [Bind ("isContextHelpModeActive")]get; set; }
 	}
 
 	[BaseType (typeof (NSObject))]
