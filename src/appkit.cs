@@ -1,4 +1,4 @@
-/
+//
 // Copyright 2010, Novell, Inc.
 //
 // Permission is hereby granted, free of charge, to any person obtaining
@@ -7916,7 +7916,7 @@ namespace MonoMac.AppKit {
 		void CleanUpAfterDragOperation ();
 
 		[Export ("setSelectedRanges:affinity:stillSelecting:")]
-		void SetSelectedRangesaffinitystillSelecting (NSRange [] ranges, NSSelectionAffinity affinity, bool stillSelectingFlag);
+		void SetSelectedRangesaffinitystillSelecting (NSArray /*NSRange []*/ ranges, NSSelectionAffinity affinity, bool stillSelectingFlag);
 
 		[Export ("setSelectedRange:affinity:stillSelecting:")]
 		void SetSelectedRangeaffinitystillSelecting (NSRange charRange, NSSelectionAffinity affinity, bool stillSelectingFlag);
@@ -7940,16 +7940,16 @@ namespace MonoMac.AppKit {
 		void SetSpellingStaterange (int value, NSRange charRange);
 
 		[Export ("shouldChangeTextInRanges:replacementStrings:")]
-		bool ShouldChangeTextInRangesreplacementStrings (NSRange [] affectedRanges, string [] replacementStrings);
+		bool ShouldChangeTextInRangesreplacementStrings (NSArray /* NSRange [] */ affectedRanges, string [] replacementStrings);
 
 		[Export ("rangesForUserTextChange")]
-		NSRange [] RangesForUserTextChange ();
+		NSArray /* NSRange [] */ RangesForUserTextChange ();
 
 		[Export ("rangesForUserCharacterAttributeChange")]
-		NSRange [] RangesForUserCharacterAttributeChange ();
+		NSArray /* NSRange [] */ RangesForUserCharacterAttributeChange ();
 
 		[Export ("rangesForUserParagraphAttributeChange")]
-		NSRange [] RangesForUserParagraphAttributeChange ();
+		NSArray /* NSRange [] */ RangesForUserParagraphAttributeChange ();
 
 		[Export ("shouldChangeTextInRange:replacementString:")]
 		bool ShouldChangeTextInRangereplacementString (NSRange affectedCharRange, string replacementString);
@@ -7977,7 +7977,7 @@ namespace MonoMac.AppKit {
 
 		//Detected properties
 		[Export ("selectedRanges")]
-		NSRange [] SelectedRanges { get; set; }
+		NSArray /* NSRange [] */ SelectedRanges { get; set; }
 
 		[Export ("selectionGranularity")]
 		NSSelectionGranularity SelectionGranularity { get; set; }
