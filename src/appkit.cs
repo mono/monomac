@@ -2939,7 +2939,7 @@ namespace MonoMac.AppKit {
 		void OpenDocument (NSObject sender);
 
 		[Export ("URLsFromRunningOpenPanel")]
-		NSArray UrlsFromRunningOpenPanel ();
+		NSUrl [] UrlsFromRunningOpenPanel ();
 
 		[Export ("runModalOpenPanel:forTypes:")]
 		int RunModalOpenPanelforTypes (NSOpenPanel openPanel, string [] types);
@@ -5101,7 +5101,7 @@ namespace MonoMac.AppKit {
 		string StringForKey (string key, string table);
 
 		[Export ("stringListForKey:inTable:")]
-		NSArray StringListForKey (string key, string table);
+		string [] StringListForKey (string key, string table);
 
 		[Export ("deviceDescription")]
 		NSDictionary DeviceDescription { get; }
@@ -6461,6 +6461,462 @@ namespace MonoMac.AppKit {
 		NSView View { get; set; }
 	}
 
+	[BaseType (typeof (NSObject))]
+	interface NSTableColumn {
+		[Export ("initWithIdentifier:")]
+		IntPtr Constructor (NSObject identifier);
+	
+		[Export ("dataCellForRow:")]
+		NSCell DataCellForRow (int row);
+		
+		[Export ("sizeToFit")]
+		void SizeToFit ();
+
+		//Detected properties
+		[Export ("identifier")]
+		NSObject Identifier { get; set; }
+		
+		[Export ("tableView")]
+		NSTableView TableView { get; set; }
+		
+		[Export ("width")]
+		float Width { get; set; }
+		
+		[Export ("minWidth")]
+		float MinWidth { get; set; }
+		
+		[Export ("maxWidth")]
+		float MaxWidth { get; set; }
+	
+		[Export ("headerCell")]
+		NSCell HeaderCell { get; set; }
+
+		[Export ("dataCell")]
+		NSCell DataCell { get; set; }
+	
+		[Export ("editable")]
+		bool Editable { [Bind ("isEditable")]get; set; }
+	
+		[Export ("sortDescriptorPrototype")]
+		NSSortDescriptor SortDescriptorPrototype { get; set; }
+	
+		[Export ("resizingMask")]
+		NSTableColumnResizingMask ResizingMask { get; set; }
+	
+		[Export ("headerToolTip")]
+		string HeaderToolTip { get; set; }
+	
+		[Export ("hidden")]
+		bool Hidden { [Bind ("isHidden")]get; set; }
+	}
+	
+	
+	[BaseType (typeof (NSControl))]
+	//, Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (NSTableViewDelegate)})]
+	interface NSTableView {
+		[Export ("noteHeightOfRowsWithIndexesChanged:")]
+		void NoteHeightOfRowsWithIndexesChanged (NSIndexSet indexSet );
+	
+		[Export ("tableColumns")]
+		NSTableColumn[] TableColumns ();
+	
+		[Export ("numberOfColumns")]
+		int ColumnCount { get; }
+	
+		[Export ("numberOfRows")]
+		int RowCount { get; }
+	
+		[Export ("addTableColumn:")]
+		void AddColumn (NSTableColumn tableColumn);
+	
+		[Export ("removeTableColumn:")]
+		void RemoveColumn (NSTableColumn tableColumn);
+	
+		[Export ("moveColumn:toColumn:")]
+		void MoveColumn (int oldIndex, int newIndex);
+	
+		[Export ("columnWithIdentifier:")]
+		int FindColumn (NSObject identifier);
+	
+		[Export ("tableColumnWithIdentifier:")]
+		NSTableColumn FindTableColumn (NSObject identifier);
+	
+		[Export ("tile")]
+		void Tile ();
+	
+		[Export ("sizeToFit")]
+		void SizeToFit ();
+	
+		[Export ("sizeLastColumnToFit")]
+		void SizeLastColumnToFit ();
+	
+		[Export ("scrollRowToVisible:")]
+		void ScrollRowToVisible (int row);
+	
+		[Export ("scrollColumnToVisible:")]
+		void ScrollColumnToVisible (int column);
+	
+		[Export ("reloadData")]
+		void ReloadData ();
+	
+		[Export ("noteNumberOfRowsChanged")]
+		void NoteNumberOfRowsChanged ();
+	
+		[Export ("reloadDataForRowIndexes:columnIndexes:")]
+		void ReloadData (NSIndexSet rowIndexes, NSIndexSet columnIndexes );
+	
+		[Export ("editedColumn")]
+		int EditedColumn { get; }
+	
+		[Export ("editedRow")]
+		int EditedRow { get; }
+	
+		[Export ("clickedColumn")]
+		int ClickedColumn { get; }
+	
+		[Export ("clickedRow")]
+		int ClickedRow { get; }
+	
+		[Export ("setIndicatorImage:inTableColumn:")]
+		void SetIndicatorImage (NSImage anImage, NSTableColumn tableColumn);
+	
+		[Export ("indicatorImageInTableColumn:")]
+		NSImage GetIndicatorImage (NSTableColumn tableColumn);
+	
+		[Export ("canDragRowsWithIndexes:atPoint:")]
+		bool CanDragRows (NSIndexSet rowIndexes, PointF mouseDownPoint );
+	
+		// FIXME: binding, NSPointPointer
+		//[Export ("dragImageForRowsWithIndexes:tableColumns:event:offset:")]
+		//NSImage DragImageForRowsWithIndexestableColumnseventoffset (NSIndexSet dragRows, NSArray tableColumns, NSEvent dragEvent, NSPointPointer dragImageOffset );
+	
+		[Export ("setDraggingSourceOperationMask:forLocal:")]
+		void SetDraggingSourceOperationMask (NSDragOperation mask, bool isLocal);
+	
+		[Export ("setDropRow:dropOperation:")]
+		void SetDropRowDropOperation (int row, NSTableViewDropOperation dropOperation);
+	
+		[Export ("selectAll:")]
+		void SelectAll (NSObject sender);
+	
+		[Export ("deselectAll:")]
+		void DeselectAll (NSObject sender);
+	
+		[Export ("selectColumnIndexes:byExtendingSelection:")]
+		void SelectColumns (NSIndexSet indexes, bool extend );
+	
+		[Export ("selectRowIndexes:byExtendingSelection:")]
+		void SelectRows (NSIndexSet indexes, bool extend );
+	
+		[Export ("selectedColumnIndexes")]
+		NSIndexSet SelectedColumns ();
+	
+		[Export ("selectedRowIndexes")]
+		NSIndexSet SelectedRows ();
+	
+		[Export ("deselectColumn:")]
+		void DeselectColumn (int column);
+	
+		[Export ("deselectRow:")]
+		void DeselectRow (int row);
+	
+		[Export ("selectedColumn")]
+		int SelectedColumn { get; }
+	
+		[Export ("selectedRow")]
+		int SelectedRow { get; }
+	
+		[Export ("isColumnSelected:")]
+		bool IsColumnSelected (int column);
+	
+		[Export ("isRowSelected:")]
+		bool IsRowSelected (int row);
+	
+		[Export ("numberOfSelectedColumns")]
+		int SelectedColumnsCount { get; }
+	
+		[Export ("numberOfSelectedRows")]
+		int SelectedRowCount { get; }
+	
+		[Export ("rectOfColumn:")]
+		RectangleF RectForColumn (int column);
+	
+		[Export ("rectOfRow:")]
+		RectangleF RectForRow (int row);
+	
+		[Export ("columnIndexesInRect:")]
+		NSIndexSet GetColumnIndexesInRect (RectangleF rect);
+	
+		[Export ("rowsInRect:")]
+		NSRange RowsInRect (RectangleF rect);
+	
+		[Export ("columnAtPoint:")]
+		int GetColumn (PointF point);
+	
+		[Export ("rowAtPoint:")]
+		int GetRow (PointF point);
+	
+		[Export ("frameOfCellAtColumn:row:")]
+		RectangleF GetCellFrame (int column, int row);
+	
+		[Export ("preparedCellAtColumn:row:")]
+		NSCell GetCell (int column, int row );
+	
+		[Export ("textShouldBeginEditing:")]
+		bool TextShouldBeginEditing (NSText textObject);
+	
+		[Export ("textShouldEndEditing:")]
+		bool TextShouldEndEditing (NSText textObject);
+	
+		[Export ("textDidBeginEditing:")]
+		void TextDidBeginEditing (NSNotification notification);
+	
+		[Export ("textDidEndEditing:")]
+		void TextDidEndEditing (NSNotification notification);
+	
+		[Export ("textDidChange:")]
+		void TextDidChange (NSNotification notification);
+	
+		[Export ("shouldFocusCell:atColumn:row:")]
+		bool ShouldFocusCell (NSCell cell, int column, int row );
+	
+		[Export ("performClickOnCellAtColumn:row:")]
+		void PerformClick (int column, int row );
+	
+		[Export ("editColumn:row:withEvent:select:")]
+		void EditColumn (int column, int row, NSEvent theEvent, bool select);
+	
+		[Export ("drawRow:clipRect:")]
+		void DrawRow (int row, RectangleF clipRect);
+	
+		[Export ("highlightSelectionInClipRect:")]
+		void HighlightSelection (RectangleF clipRect);
+	
+		[Export ("drawGridInClipRect:")]
+		void DrawGrid (RectangleF clipRect);
+	
+		[Export ("drawBackgroundInClipRect:")]
+		void DrawBackground (RectangleF clipRect );
+	
+		//Detected properties
+		[Export ("dataSource")][NullAllowed]
+		NSTableViewDataSource DataSource { get; set; }
+	
+		[Export ("delegate", ArgumentSemantic.Assign)][NullAllowed]
+		NSObject WeakDelegate { get; set; }
+	
+		[Wrap ("WeakDelegate")][NullAllowed]
+		NSTableViewDelegate Delegate { get; set; }
+	
+		[Export ("headerView")]
+		NSTableHeaderView HeaderView { get; set; }
+	
+		[Export ("cornerView")]
+		NSView CornerView { get; set; }
+	
+		[Export ("allowsColumnReordering")]
+		bool AllowsColumnReordering { get; set; }
+	
+		[Export ("allowsColumnResizing")]
+		bool AllowsColumnResizing { get; set; }
+	
+		[Export ("columnAutoresizingStyle")]
+		NSTableViewColumnAutoresizingStyle ColumnAutoresizingStyle { get; set; }
+	
+		[Export ("gridStyleMask")]
+		NSTableViewGridStyleMask GridStyleMask { get; set; }
+	
+		[Export ("intercellSpacing")]
+		SizeF IntercellSpacing { get; set; }
+	
+		[Export ("usesAlternatingRowBackgroundColors")]
+		bool UsesAlternatingRowBackgroundColors { get; set; }
+	
+		[Export ("backgroundColor")]
+		NSColor BackgroundColor { get; set; }
+	
+		[Export ("gridColor")]
+		NSColor GridColor { get; set; }
+	
+		[Export ("rowHeight")]
+		float RowHeight { get; set; }
+	
+		[Export ("doubleAction")]
+		Selector DoubleAction { get; set; }
+	
+		[Export ("sortDescriptors")]
+		NSSortDescriptor[] SortDescriptors { get; set; }
+	
+		[Export ("highlightedTableColumn")]
+		NSTableColumn HighlightedTableColumn { get; set; }
+	
+		[Export ("verticalMotionCanBeginDrag")]
+		bool VerticalMotionCanBeginDrag { get; set; }
+	
+		[Export ("allowsMultipleSelection")]
+		bool AllowsMultipleSelection { get; set; }
+	
+		[Export ("allowsEmptySelection")]
+		bool AllowsEmptySelection { get; set; }
+	
+		[Export ("allowsColumnSelection")]
+		bool AllowsColumnSelection { get; set; }
+	
+		[Export ("allowsTypeSelect")]
+		bool AllowsTypeSelect { get; set; }
+	
+		[Export ("selectionHighlightStyle")]
+		NSTableViewSelectionHighlightStyle SelectionHighlightStyle { get; set; }
+	
+		[Export ("draggingDestinationFeedbackStyle")]
+		NSTableViewDraggingDestinationFeedbackStyle DraggingDestinationFeedbackStyle { get; set; }
+	
+		[Export ("autosaveName")]
+		string AutosaveName { get; set; }
+	
+		[Export ("autosaveTableColumns")]
+		bool AutosaveTableColumns { get; set; }
+	
+		[Export ("focusedColumn")]
+		int FocusedColumn { get; set; }
+	} 
+	
+	[BaseType (typeof (NSObject))]
+	[Model]
+	interface NSTableViewDelegate {
+		[Export ("tableView:willDispayCell:forTableColumn:row:")]
+		void WillDisplayCell (NSTableView tableView, NSObject cell, NSTableColumn tableColumn, int row);
+	
+		[Export ("tableView:shouldEditTableColumn:row:")] [DefaultValue (false)]
+		bool ShouldEditTableColumn (NSTableView tableView, NSTableColumn tableColumn, int row);
+	
+		[Export ("selectionShouldChangeInTableView:")] [DefaultValue (false)]
+		bool SelectionShouldChange (NSTableView tableView);
+	
+		[Export ("tableView:shouldSelectRow:")] [DefaultValue (true)]
+		bool ShouldSelectRow (NSTableView tableView, int row);
+	
+		[Export ("tableView:selectionIndexesForProposedSelection:")]
+		NSIndexSet GetSelectionIndexes (NSTableView tableView, NSIndexSet proposedSelectionIndexes);
+	
+		[Export ("tableView:shouldSelectTableColumn:")] [DefaultValue (true)]
+		bool ShouldSelectTableColumn (NSTableView tableView, NSTableColumn tableColumn);
+	
+		[Export ("tableView:mouseDownInHeaderOfTableColumn:")]
+		void MouseDown (NSTableView tableView, NSTableColumn tableColumn);
+	
+		[Export ("tableView:didClickTableColumn:")]
+		void DidClickTableColumn (NSTableView tableView, NSTableColumn tableColumn);
+	
+		[Export ("tableView:didDragTableColumn:")]
+		void DidDragTableColumn (NSTableView tableView, NSTableColumn tableColumn);
+	
+		//FIXME: Binding NSRectPointer
+		//[Export ("tableView:toolTipForCell:rect:tableColumn:row:mouseLocation:")]
+		//string TableViewtoolTipForCellrecttableColumnrowmouseLocation (NSTableView tableView, NSCell cell, NSRectPointer rect, NSTableColumn tableColumn, int row, PointF mouseLocation);
+	
+		[Export ("tableView:heightOfRow:")]
+		float GetRowHeight (NSTableView tableView, int row );
+	
+		[Export ("tableView:typeSelectStringForTableColumn:row:")]
+		string GetSelectString (NSTableView tableView, NSTableColumn tableColumn, int row );
+	
+		[Export ("tableView:nextTypeSelectMatchFromRow:toRow:forString:")]
+		int GetNextTypeSelectMatch (NSTableView tableView, int startRow, int endRow, string searchString );
+	
+		[Export ("tableView:shouldTypeSelectForEvent:withCurrentSearchString:")]
+		bool ShouldTypeSelect (NSTableView tableView, NSEvent theEvent, string searchString );
+	
+		[Export ("tableView:shouldShowCellExpansionForTableColumn:row:")]
+		bool ShouldShowCellExpansion (NSTableView tableView, NSTableColumn tableColumn, int row );
+	
+		[Export ("tableView:shouldTrackCell:forTableColumn:row:")]
+		bool ShouldTrackCell (NSTableView tableView, NSCell cell, NSTableColumn tableColumn, int row );
+	
+		[Export ("tableView:dataCellForTableColumn:row:")]
+		NSCell GetCell (NSTableView tableView, NSTableColumn tableColumn, int row );
+	
+		[Export ("tableView:isGroupRow:")] [DefaultValue (false)]
+		bool IsGroupRow (NSTableView tableView, int row );
+	
+		[Export ("tableView:sizeToFitWidthOfColumn:")]
+		float GetSizeToFitColumnWidth (NSTableView tableView, int column );
+	
+		[Export ("tableView:shouldReorderColumn:toColumn:")]
+		bool ShouldReorder (NSTableView tableView, int columnIndex, int newColumnIndex );
+	
+		[Export ("tableViewSelectionDidChange:")]
+		void SelectionDidChange (NSNotification notification);
+	
+		[Export ("tableViewColumnDidMove:")]
+		void ColumnDidMove (NSNotification notification);
+	
+		[Export ("tableViewColumnDidResize:")]
+		void ColumnDidResize (NSNotification notification);
+	
+		[Export ("tableViewSelectionIsChanging:")]
+		void SelectionIsChanging (NSNotification notification);
+	}
+	
+	[BaseType (typeof (NSObject))]
+	[Model]
+	interface NSTableViewDataSource {
+		[Export ("numberOfRowsInTableView:")]
+		int GetRowCount (NSTableView tableView);
+	
+		[Export ("tableView:objectValueForTableColumn:row:")]
+		NSObject GetObjectValue (NSTableView tableView, NSTableColumn tableColumn, int row);
+	
+		[Export ("tableView:setObjectValue:forTableColumn:row:")]
+		void SetObjectValue (NSTableView tableView, NSObject theObject, NSTableColumn tableColumn, int row);
+	
+		[Export ("tableView:sortDescriptorsDidChange:")]
+		void SortDescriptorsChanged (NSTableView tableView, NSSortDescriptor [] oldDescriptors);
+	
+		[Export ("tableView:writeRowsWithIndexes:toPasteboard:")]
+		bool WriteRows (NSTableView tableView, NSIndexSet rowIndexes, NSPasteboard pboard );
+	
+		[Export ("tableView:validateDrop:proposedRow:proposedDropOperation:")]
+		NSDragOperation ValidateDrop (NSTableView tableView, NSDraggingInfo info, int row, NSTableViewDropOperation dropOperation);
+	
+		[Export ("tableView:acceptDrop:row:dropOperation:")]
+		bool AcceptDrop (NSTableView tableView, NSDraggingInfo info, int row, NSTableViewDropOperation dropOperation);
+	
+		[Export ("tableView:namesOfPromisedFilesDroppedAtDestination:forDraggedRowsWithIndexes:")]
+		string [] FilesDropped (NSTableView tableView, NSUrl dropDestination, NSIndexSet indexSet );
+	}
+	
+	[BaseType (typeof (NSTextFieldCell))]
+	interface NSTableHeaderCell {
+		[Export ("drawSortIndicatorWithFrame:inView:ascending:priority:")]
+		void DrawSortIndicator (RectangleF cellFrame, NSView controlView, bool ascending, int priority );
+	
+		[Export ("sortIndicatorRectForBounds:")]
+		RectangleF GetSortIndicatorRect (RectangleF theRect );
+	}
+	
+	[BaseType (typeof (NSView))]
+	interface NSTableHeaderView {
+		[Export ("draggedColumn")]
+		int DraggedColumn { get; }
+	
+		[Export ("draggedDistance")]
+		float DraggedDistance { get; }
+	
+		[Export ("resizedColumn")]
+		int ResizedColumn { get; }
+	
+		[Export ("headerRectOfColumn:")]
+		RectangleF GetHeaderRect (int column);
+	
+		[Export ("columnAtPoint:")]
+		int GetColumn (PointF point);
+	
+		//Detected properties
+		[Export ("tableView")]
+		NSTableView TableView { get; set; }
+	}
+		
 	[BaseType (typeof (NSView), Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (NSTextDelegate)})]
 	interface NSText {
 		[Export ("replaceCharactersInRange:withString:")]
@@ -6841,6 +7297,37 @@ namespace MonoMac.AppKit {
 		string [] FilterCompletions (NSControl control, NSTextView textView, string [] words, NSRange charRange, int index);
 	}
 	
+	[BaseType (typeof (NSActionCell))]
+	interface NSTextFieldCell {
+		[Export ("setUpFieldEditorAttributes:")]
+		NSText SetUpFieldEditorAttributes (NSText textObj);
+	
+		[Export ("setWantsNotificationForMarkedText:")]
+		void SetWantsNotificationForMarkedText (bool flag);
+	
+		//Detected properties
+		[Export ("backgroundColor")]
+		NSColor BackgroundColor { get; set; }
+	
+		[Export ("drawsBackground")]
+		bool DrawsBackground { get; set; }
+	
+		[Export ("textColor")]
+		NSColor TextColor { get; set; }
+	
+		[Export ("bezelStyle")]
+		NSTextFieldBezelStyle BezelStyle { get; set; }
+	
+		[Export ("placeholderString")]
+		string PlaceholderString { get; set; }
+	
+		[Export ("placeholderAttributedString")]
+		NSAttributedString PlaceholderAttributedString { get; set; }
+	
+		[Export ("allowedInputSourceLocales")]
+		string [] AllowedInputSourceLocales { get; set; }
+	}
+	
 	[BaseType (typeof (NSObject))]
 	interface NSTextInputContext {
 		[Export ("currentInputContext")]
@@ -7219,7 +7706,7 @@ namespace MonoMac.AppKit {
 		NSRange RangeForUserCompletion ();
 
 		[Export ("completionsForPartialWordRange:indexOfSelectedItem:")]
-		NSArray CompletionsForPartialWord (NSRange charRange, int index);
+		string [] CompletionsForPartialWord (NSRange charRange, int index);
 
 		[Export ("insertCompletion:forPartialWordRange:movement:isFinal:")]
 		void InsertCompletionforPartialWord (string word, NSRange charRange, int movement, bool flag);
@@ -7232,13 +7719,13 @@ namespace MonoMac.AppKit {
 		bool WriteSelectionToPasteboardtype (NSPasteboard pboard, string type);
 
 		[Export ("writeSelectionToPasteboard:types:")]
-		bool WriteSelectionToPasteboardtypes (NSPasteboard pboard, NSArray types);
+		bool WriteSelectionToPasteboardtypes (NSPasteboard pboard, string [] types);
 
 		[Export ("readablePasteboardTypes")]
 		string [] ReadablePasteboardTypes ();
 
 		[Export ("preferredPasteboardTypeFromArray:restrictedToTypesFromArray:")]
-		string PreferredPasteboardTypeFromArrayrestrictedToTypesFromArray (NSArray availableTypes, NSArray allowedTypes);
+		string PreferredPasteboardTypeFromArrayrestrictedToTypesFromArray (string [] availableTypes, string [] allowedTypes);
 
 		[Export ("readSelectionFromPasteboard:type:")]
 		bool ReadSelectionFromPasteboardtype (NSPasteboard pboard, string type);
@@ -7276,7 +7763,7 @@ namespace MonoMac.AppKit {
 		void CleanUpAfterDragOperation ();
 
 		[Export ("setSelectedRanges:affinity:stillSelecting:")]
-		void SetSelectedRangesaffinitystillSelecting (NSArray ranges, NSSelectionAffinity affinity, bool stillSelectingFlag);
+		void SetSelectedRangesaffinitystillSelecting (NSRange [] ranges, NSSelectionAffinity affinity, bool stillSelectingFlag);
 
 		[Export ("setSelectedRange:affinity:stillSelecting:")]
 		void SetSelectedRangeaffinitystillSelecting (NSRange charRange, NSSelectionAffinity affinity, bool stillSelectingFlag);
@@ -7300,16 +7787,16 @@ namespace MonoMac.AppKit {
 		void SetSpellingStaterange (int value, NSRange charRange);
 
 		[Export ("shouldChangeTextInRanges:replacementStrings:")]
-		bool ShouldChangeTextInRangesreplacementStrings (NSArray affectedRanges, NSArray replacementStrings);
+		bool ShouldChangeTextInRangesreplacementStrings (NSRange [] affectedRanges, string [] replacementStrings);
 
 		[Export ("rangesForUserTextChange")]
-		NSArray RangesForUserTextChange ();
+		NSRange [] RangesForUserTextChange ();
 
 		[Export ("rangesForUserCharacterAttributeChange")]
-		NSArray RangesForUserCharacterAttributeChange ();
+		NSRange [] RangesForUserCharacterAttributeChange ();
 
 		[Export ("rangesForUserParagraphAttributeChange")]
-		NSArray RangesForUserParagraphAttributeChange ();
+		NSRange [] RangesForUserParagraphAttributeChange ();
 
 		[Export ("shouldChangeTextInRange:replacementString:")]
 		bool ShouldChangeTextInRangereplacementString (NSRange affectedCharRange, string replacementString);
@@ -7337,7 +7824,7 @@ namespace MonoMac.AppKit {
 
 		//Detected properties
 		[Export ("selectedRanges")]
-		NSArray SelectedRanges { get; set; }
+		NSRange [] SelectedRanges { get; set; }
 
 		[Export ("selectionGranularity")]
 		NSSelectionGranularity SelectionGranularity { get; set; }
@@ -7418,7 +7905,7 @@ namespace MonoMac.AppKit {
 		bool UsesFontPanel { get; set; }
 
 		[Export ("allowedInputSourceLocales")]
-		NSArray AllowedInputSourceLocales { get; set; }
+		string [] AllowedInputSourceLocales { get; set; }
 
 		[Export ("setSelectedRange:affinity:stillSelecting:")]
 		void SetSelectedRange (NSRange charRange, NSSelectionAffinity affinity, bool stillSelectingFlag);
@@ -7541,7 +8028,7 @@ namespace MonoMac.AppKit {
 		void DraggedCell (NSTextView view, NSTextAttachmentCell cell, RectangleF rect, NSEvent theEvent, uint charIndex);
 
 		[Export ("textView:writablePasteboardTypesForCell:atIndex:")]
-		NSArray WritablePasteboardTypes (NSTextView view, NSTextAttachmentCell forCell, uint charIndex);
+		string [] WritablePasteboardTypes (NSTextView view, NSTextAttachmentCell forCell, uint charIndex);
 
 		[Export ("textView:writeCell:atIndex:toPasteboard:type:")]
 		bool WriteCell (NSTextView view, NSTextAttachmentCell cell, uint charIndex, NSPasteboard pboard, string type);
@@ -7570,7 +8057,7 @@ namespace MonoMac.AppKit {
 		string WillDisplayToolTip (NSTextView textView, string tooltip, uint characterIndex);
 
 		[Export ("textView:completions:forPartialWordRange:indexOfSelectedItem:")]
-		NSArray GetCompletions (NSTextView textView, string [] words, NSRange charRange, int index);
+		string [] GetCompletions (NSTextView textView, string [] words, NSRange charRange, int index);
 
 		[Export ("textView:shouldChangeTextInRange:replacementString:")]
 		bool ShouldChangeText (NSTextView textView, NSRange affectedCharRange, string replacementString);
@@ -7588,7 +8075,7 @@ namespace MonoMac.AppKit {
 		NSDictionary WillCheckText (NSTextView view, NSRange range, NSDictionary options, NSTextCheckingTypes checkingTypes);
 
 		[Export ("textView:didCheckTextInRange:types:options:results:orthography:wordCount:")]
-		NSArray DidCheckText (NSTextView view, NSRange range, NSTextCheckingTypes checkingTypes, NSDictionary options, NSArray results, NSOrthography orthography, int wordCount);
+		NSTextCheckingResult [] DidCheckText (NSTextView view, NSRange range, NSTextCheckingTypes checkingTypes, NSDictionary options, NSTextCheckingResult [] results, NSOrthography orthography, int wordCount);
 
 		[Export ("textView:clickedOnLink:")]
 		bool LinkClicked (NSTextView textView, NSObject link);

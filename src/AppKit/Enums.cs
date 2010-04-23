@@ -1041,5 +1041,44 @@ namespace MonoMac.AppKit {
 	public enum NSPanelButtonType {
 		Cancel, Ok
 	}
-	
+
+	public enum NSTableViewColumnAutoresizingStyle {
+		None = 0,
+		Uniform,
+		Sequential,
+		ReverseSequential,
+		LastColumnOnly,
+		FirstColumnOnly
+	}
+
+	public enum NSTableViewSelectionHighlightStyle {
+		None = -1,
+		Regular = 0,
+		SourceList = 1
+	}
+
+	public enum NSTableViewDraggingDestinationFeedbackStyle {
+		None = -1,
+		Regular = 0,
+		SourceList = 1
+	}
+
+	public enum NSTableViewDropOperation {
+		On,
+		Above
+	}
+
+	[Flags]
+	public enum NSTableColumnResizingMask{
+		None = -1,
+		Autoresizing = ( 1 << 0 ),
+		UserResizingMask = ( 1 << 1 )
+	} 
+
+	[Flags]
+	public enum NSTableViewGridStyleMask{
+		None = 0,
+		SolidVerticalLine   = 1 << 0,
+		SolidHorizontalLine = 1 << 1 
+	}
 }
