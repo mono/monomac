@@ -5320,6 +5320,106 @@ namespace MonoMac.AppKit {
 		NSObject InitWithPasteboardPropertyListofType (NSObject propertyList, string type);
 	}
 	
+	[BaseType (typeof (NSButton))]
+	interface NSPopUpButton {
+		[Export ("initWithFrame:pullsDown:")]
+		IntPtr Constructor (RectangleF buttonFrame, bool pullsDown);
+
+		[Export ("addItemWithTitle:")]
+		void AddItem (string title);
+
+		[Export ("addItemsWithTitles:")]
+		void AddItems (string [] itemTitles);
+
+		[Export ("insertItemWithTitle:atIndex:")]
+		void InsertItem (string title, int index);
+
+		[Export ("removeItemWithTitle:")]
+		void RemoveItem (string title);
+
+		[Export ("removeItemAtIndex:")]
+		void RemoveItem (int index);
+
+		[Export ("removeAllItems")]
+		void RemoveAllItems ();
+
+		[Export ("itemArray")]
+		NSMenuItem [] Items ();
+
+		[Export ("numberOfItems")]
+		int ItemCount { get; }
+
+		[Export ("indexOfItem:")]
+		int IndexOfItem (NSMenuItem item);
+
+		[Export ("indexOfItemWithTitle:")]
+		int IndexOfItem (string title);
+
+		[Export ("indexOfItemWithTag:")]
+		int IndexOfItem (int tag);
+
+		[Export ("indexOfItemWithRepresentedObject:")]
+		int IndexOfItem (NSObject obj);
+
+		[Export ("indexOfItemWithTarget:andAction:")]
+		int IndexOfItem (NSObject target, Selector actionSelector);
+
+		[Export ("itemAtIndex:")]
+		NSMenuItem ItemAtIndex (int index);
+
+		[Export ("itemWithTitle:")]
+		NSMenuItem ItemWithTitle (string title);
+
+		[Export ("lastItem")]
+		NSMenuItem LastItem { get; }
+
+		[Export ("selectItem:")]
+		void SelectItem (NSMenuItem item);
+
+		[Export ("selectItemAtIndex:")]
+		void SelectItem (int index);
+
+		[Export ("selectItemWithTitle:")]
+		void SelectItem (string title);
+
+		[Export ("selectItemWithTag:")]
+		bool SelectItemWithTag (int tag);
+
+		[Export ("setTitle:")]
+		void SetTitle (string aString);
+
+		[Export ("selectedItem")]
+		NSMenuItem SelectedItem { get; }
+
+		[Export ("indexOfSelectedItem")]
+		int IndexOfSelectedItem { get; }
+
+		[Export ("synchronizeTitleAndSelectedItem")]
+		void SynchronizeTitleAndSelectedItem ();
+
+		[Export ("itemTitleAtIndex:")]
+		string ItemTitle (int index);
+
+		[Export ("itemTitles")]
+		string [] ItemTitles ();
+
+		[Export ("titleOfSelectedItem")]
+		string TitleOfSelectedItem { get; }
+
+		//Detected properties
+		[Export ("menu")]
+		NSMenu Menu { get; set; }
+
+		[Export ("pullsDown")]
+		bool PullsDown { get; set; }
+
+		[Export ("autoenablesItems")]
+		bool AutoenablesItems { get; set; }
+
+		[Export ("preferredEdge")]
+		NSRectEdge PreferredEdge { get; set; }
+
+	}
 
 	[BaseType (typeof (NSObject))]
 	interface NSPrinter {
@@ -5947,6 +6047,463 @@ namespace MonoMac.AppKit {
 		bool ShowsHiddenFiles { get; set; }
 	}
 
+	[BaseType (typeof (NSObject))]
+	interface NSScreen {
+		[Static]
+		[Export ("screens")]
+		NSScreen [] Screens { get; }
+
+		[Static]
+		[Export ("mainScreen")]
+		NSScreen MainScreen { get; }
+
+		[Static]
+		[Export ("deepestScreen")]
+		NSScreen DeepestScreen { get; }
+
+		[Export ("depth")]
+		NSWindowDepth Depth { get; }
+
+		[Export ("frame")]
+		RectangleF Frame { get; }
+
+		[Export ("visibleFrame")]
+		RectangleF VisibleFrame { get; }
+
+		[Export ("deviceDescription")]
+		NSDictionary DeviceDescription { get; }
+
+		[Export ("colorSpace")]
+		NSColorSpace ColorSpace { get; }
+
+		[Export ("supportedWindowDepths")]
+		NSWindowDepth SupportedWindowDepths { get; }
+
+		[Export ("userSpaceScaleFactor")]
+		float UserSpaceScaleFactor { get; }
+	}
+
+	[BaseType (typeof (NSControl))]
+	interface NSScroller {
+		[Export ("initWithFrame:")]
+		IntPtr Constructor (RectangleF frameRect);
+
+		[Static]
+		[Export ("scrollerWidth")]
+		float ScrollerWidth { get; }
+
+		[Static]
+		[Export ("scrollerWidthForControlSize:")]
+		float ScrollerWidthForControlSize (NSControlSize controlSize);
+
+		[Export ("drawParts")]
+		void DrawParts ();
+
+		[Export ("rectForPart:")]
+		RectangleF RectForPart (NSScrollerPart partCode);
+
+		[Export ("checkSpaceForParts")]
+		void CheckSpaceForParts ();
+
+		[Export ("usableParts")]
+		NSUsableScrollerParts UsableParts { get; }
+
+		[Export ("drawArrow:highlight:")]
+		void DrawArrowhighlight (NSScrollerArrow whichArrow, bool highlight);
+
+		[Export ("drawKnob")]
+		void DrawKnob ();
+
+		[Export ("drawKnobSlotInRect:highlight:")]
+		void DrawKnobSlot (RectangleF slotRect, bool highlight);
+
+		[Export ("highlight:")]
+		void Highlight (bool flag);
+
+		[Export ("testPart:")]
+		NSScrollerPart TestPart (PointF thePoint);
+
+		[Export ("trackKnob:")]
+		void TrackKnob (NSEvent theEvent);
+
+		[Export ("trackScrollButtons:")]
+		void TrackScrollButtons (NSEvent theEvent);
+
+		[Export ("hitPart")]
+		NSScrollerPart HitPart { get; }
+
+		//Detected properties
+		[Export ("arrowsPosition")]
+		NSScrollArrowPosition ArrowsPosition { get; set; }
+
+		[Export ("controlTint")]
+		NSControlTint ControlTint { get; set; }
+
+		[Export ("controlSize")]
+		NSControlSize ControlSize { get; set; }
+
+		[Export ("knobProportion")]
+		float KnobProportion { get; set; }
+
+	}
+
+	[BaseType (typeof (NSView))]
+	interface NSScrollView {
+		[Static]
+		[Export ("frameSizeForContentSize:hasHorizontalScroller:hasVerticalScroller:borderType:")]
+		SizeF FrameSizeForContentSize (SizeF cSize, bool hFlag, bool vFlag, NSBorderType aType);
+
+		[Static]
+		[Export ("contentSizeForFrameSize:hasHorizontalScroller:hasVerticalScroller:borderType:")]
+		SizeF ContentSizeForFrame (SizeF fSize, bool hFlag, bool vFlag, NSBorderType aType);
+
+		[Export ("documentVisibleRect")]
+		RectangleF DocumentVisibleRect { get; }
+
+		[Export ("contentSize")]
+		SizeF ContentSize { get; }
+
+		[Export ("tile")]
+		void Tile ();
+
+		[Export ("reflectScrolledClipView:")]
+		void ReflectScrolledClipView (NSClipView cView);
+
+		[Export ("scrollWheel:")]
+		void ScrollWheel (NSEvent theEvent);
+
+		//Detected properties
+		[Export ("documentView")]
+		NSObject DocumentView { get; set; }
+
+		[Export ("contentView")]
+		NSClipView ContentView { get; set; }
+
+		[Export ("documentCursor")]
+		NSCursor DocumentCursor { get; set; }
+
+		[Export ("borderType")]
+		NSBorderType BorderType { get; set; }
+
+		[Export ("backgroundColor")]
+		NSColor BackgroundColor { get; set; }
+
+		[Export ("drawsBackground")]
+		bool DrawsBackground { get; set; }
+
+		[Export ("hasVerticalScroller")]
+		bool HasVerticalScroller { get; set; }
+
+		[Export ("hasHorizontalScroller")]
+		bool HasHorizontalScroller { get; set; }
+
+		[Export ("verticalScroller")]
+		NSScroller VerticalScroller { get; set; }
+
+		[Export ("horizontalScroller")]
+		NSScroller HorizontalScroller { get; set; }
+
+		[Export ("autohidesScrollers")]
+		bool AutohidesScrollers { get; set; }
+
+		[Export ("horizontalLineScroll")]
+		float HorizontalLineScroll { get; set; }
+
+		[Export ("verticalLineScroll")]
+		float VerticalLineScroll { get; set; }
+
+		[Export ("lineScroll")]
+		float LineScroll { get; set; }
+
+		[Export ("horizontalPageScroll")]
+		float HorizontalPageScroll { get; set; }
+
+		[Export ("verticalPageScroll")]
+		float VerticalPageScroll { get; set; }
+
+		[Export ("pageScroll")]
+		float PageScroll { get; set; }
+
+		[Export ("scrollsDynamically")]
+		bool ScrollsDynamically { get; set; }
+	}
+
+	[BaseType (typeof (NSControl))]
+	interface NSSegmentedControl {
+		[Export ("selectSegmentWithTag:")]
+		bool SelectSegment (int tag);
+
+		[Export ("setWidth:forSegment:")]
+		void SetWidth (float width, int segment);
+
+		[Export ("widthForSegment:")]
+		float GetWidth (int segment);
+
+		[Export ("setImage:forSegment:")]
+		void SetImage (NSImage image, int segment);
+
+		[Export ("imageForSegment:")]
+		NSImage GetImage (int segment);
+
+		[Export ("setImageScaling:forSegment:")]
+		void SetImageScaling (NSImageScaling scaling, int segment);
+
+		[Export ("imageScalingForSegment:")]
+		NSImageScaling GetImageScaling (int segment);
+
+		[Export ("setLabel:forSegment:")]
+		void SetLabel (string label, int segment);
+
+		[Export ("labelForSegment:")]
+		string GetLabel (int segment);
+
+		[Export ("setMenu:forSegment:")]
+		void SetMenu (NSMenu menu, int segment);
+
+		[Export ("menuForSegment:")]
+		NSMenu GetMenu (int segment);
+
+		[Export ("setSelected:forSegment:")]
+		void SetSelected (bool selected, int segment);
+
+		[Export ("isSelectedForSegment:")]
+		bool IsSelectedForSegment (int segment);
+
+		[Export ("setEnabled:forSegment:")]
+		void SetEnabled (bool enabled, int segment);
+
+		[Export ("isEnabledForSegment:")]
+		bool IsEnabled (int segment);
+
+		//Detected properties
+		[Export ("segmentCount")]
+		int SegmentCount { get; set; }
+
+		[Export ("selectedSegment")]
+		int SelectedSegment { get; set; }
+
+		[Export ("segmentStyle")]
+		NSSegmentStyle SegmentStyle { get; set; }
+
+	}
+	
+	[BaseType (typeof (NSActionCell))]
+	interface NSSegmentedCell {
+		[Export ("selectSegmentWithTag:")]
+		bool SelectSegment (int tag);
+
+		[Export ("makeNextSegmentKey")]
+		void InsertSegmentAfterSelection ();
+
+		[Export ("makePreviousSegmentKey")]
+		void InsertSegmentBeforeSelection ();
+
+		[Export ("setWidth:forSegment:")]
+		void SetWidth (float width, int forSegment);
+
+		[Export ("widthForSegment:")]
+		float GetWidth (int forSegment);
+
+		[Export ("setImage:forSegment:")]
+		void SetImage (NSImage image, int forSegment);
+
+		[Export ("imageForSegment:")]
+		NSImage GetImageForSegment (int forSegment);
+
+		[Export ("setImageScaling:forSegment:")]
+		void SetImageScaling (NSImageScaling scaling, int forSegment);
+
+		[Export ("imageScalingForSegment:")]
+		NSImageScaling GetImageScaling (int forSegment);
+
+		[Export ("setLabel:forSegment:")]
+		void SetLabel (string label, int forSegment);
+
+		[Export ("labelForSegment:")]
+		string GetLabel (int forSegment);
+
+		[Export ("setSelected:forSegment:")]
+		void SetSelected (bool selected, int forSegment);
+
+		[Export ("isSelectedForSegment:")]
+		bool IsSelected (int forSegment);
+
+		[Export ("setEnabled:forSegment:")]
+		void SetEnabled (bool enabled, int forSegment);
+
+		[Export ("isEnabledForSegment:")]
+		bool IsEnabled (int forSegment);
+
+		[Export ("setMenu:forSegment:")]
+		void SetMenu (NSMenu menu, int forSegment);
+
+		[Export ("menuForSegment:")]
+		NSMenu GetMenu (int forSegment);
+
+		[Export ("setToolTip:forSegment:")]
+		void SetToolTip (string toolTip, int forSegment);
+
+		[Export ("toolTipForSegment:")]
+		string GetToolTip (int forSegment);
+
+		[Export ("setTag:forSegment:")]
+		void SetTag (int tag, int forSegment);
+
+		[Export ("tagForSegment:")]
+		int GetTag (int forSegment);
+
+		[Export ("drawSegment:inFrame:withView:")]
+		void DrawSegment (int segment, RectangleF frame, NSView controlView);
+
+		//Detected properties
+		[Export ("segmentCount")]
+		int SegmentCount { get; set; }
+
+		[Export ("selectedSegment")]
+		int SelectedSegment { get; set; }
+
+		[Export ("trackingMode")]
+		NSSegmentSwitchTracking TrackingMode { get; set; }
+
+		[Export ("segmentStyle")]
+		NSSegmentStyle SegmentStyle { get; set; }
+
+	}
+
+	[BaseType (typeof (NSControl))]
+	interface NSSlider {
+		[Export ("setMinValue:")]
+		void SetMinValue (double aDouble);
+
+		[Export ("isVertical")]
+		int IsVertical { get; }
+
+		[Export ("acceptsFirstMouse:")]
+		bool AcceptsFirstMouse (NSEvent theEvent);
+
+		//Detected properties
+		[Export ("maxValue")]
+		double MaxValue { get; set; }
+
+		[Export ("altIncrementValue")]
+		double AltIncrementValue { get; set; }
+
+		[Export ("titleCell")]
+		NSObject TitleCell { get; set; }
+
+		[Export ("titleColor")]
+		NSColor TitleColor { get; set; }
+
+		[Export ("titleFont")]
+		NSFont TitleFont { get; set; }
+
+		[Export ("title")]
+		string Title { get; set; }
+
+		[Export ("knobThickness")]
+		float KnobThickness { get; set; }
+
+		[Export ("image")]
+		NSImage Image { get; set; }
+	
+		[Export ("tickMarkValueAtIndex:")]
+		double TickMarkValue (int index);
+
+		[Export ("rectOfTickMarkAtIndex:")]
+		RectangleF RectOfTick (int index);
+
+		[Export ("indexOfTickMarkAtPoint:")]
+		int IndexOfTickMark (PointF point);
+
+		[Export ("closestTickMarkValueToValue:")]
+		double ClosestTickMarkValue (double value);
+
+		//Detected properties
+		[Export ("numberOfTickMarks")]
+		int TickMarksCount { get; set; }
+
+		[Export ("tickMarkPosition")]
+		NSTickMarkPosition TickMarkPosition { get; set; }
+
+		[Export ("allowsTickMarkValuesOnly")]
+		bool AllowsTickMarkValuesOnly { get; set; }
+
+	}
+	
+	[BaseType (typeof (NSActionCell))]
+	interface NSSliderCell {
+		[Export ("prefersTrackingUntilMouseUp")]
+		bool PrefersTrackingUntilMouseUp ();
+
+		[Export ("isVertical")]
+		int IsVertical { get; }
+
+		[Export ("knobRectFlipped:")]
+		RectangleF KnobRectFlipped (bool flipped);
+
+		[Export ("drawKnob")]
+		void DrawKnob (RectangleF knobRect);
+
+		[Export ("drawKnob")]
+		void DrawKnob ();
+
+		[Export ("drawBarInside:flipped:")]
+		void DrawBar (RectangleF aRect, bool flipped);
+
+		[Export ("trackRect")]
+		RectangleF TrackRect{ get; }
+
+		//Detected properties
+		[Export ("minValue")]
+		double MinValue { get; set; }
+
+		[Export ("maxValue")]
+		double MaxValue { get; set; }
+
+		[Export ("altIncrementValue")]
+		double AltIncrementValue { get; set; }
+
+		[Export ("titleColor")]
+		NSColor TitleColor { get; set; }
+
+		[Export ("titleFont")]
+		NSFont TitleFont { get; set; }
+
+		[Export ("title")]
+		string Title { get; set; }
+
+		[Export ("titleCell")]
+		NSObject TitleCell { get; set; }
+
+		[Export ("knobThickness")]
+		float KnobThickness { get; set; }
+
+		[Export ("sliderType")]
+		NSSliderType SliderType { get; set; }
+	
+		[Export ("tickMarkValueAtIndex:")]
+		double TickMarkValue (int index);
+
+		[Export ("rectOfTickMarkAtIndex:")]
+		RectangleF RectOfTickMark (int index);
+
+		[Export ("indexOfTickMarkAtPoint:")]
+		int IndexOfTickMark (PointF point);
+
+		[Export ("closestTickMarkValueToValue:")]
+		double ClosestTickMarkValue (double value);
+
+		//Detected properties
+		[Export ("numberOfTickMarks")]
+		int NumberOfTickMarks { get; set; }
+
+		[Export ("tickMarkPosition")]
+		NSTickMarkPosition TickMarkPosition { get; set; }
+
+		[Export ("allowsTickMarkValuesOnly")]
+		bool AllowsTickMarkValuesOnly { get; set; }
+
+	}
 	
 	[BaseType (typeof (NSObject))]
 	interface NSSpeechRecognizer {
@@ -6263,186 +6820,87 @@ namespace MonoMac.AppKit {
 		void DidFinishPlaying (NSSound sound, bool finished);
 	}
 
+	[BaseType (typeof (NSView))]
+	interface NSSplitView {
+		[Export ("drawDividerInRect:")]
+		void DrawDivider (RectangleF rect);
+
+		[Export ("dividerColor")]
+		NSColor DividerColor { get; }
+
+		[Export ("dividerThickness")]
+		float DividerThickness { get; }
+
+		[Export ("adjustSubviews")]
+		void AdjustSubviews ();
+
+		[Export ("isSubviewCollapsed:")]
+		bool IsSubviewCollapsed (NSView subview);
+
+		[Export ("minPossiblePositionOfDividerAtIndex:")]
+		float MinPositionOfDivider (int dividerIndex);
+
+		[Export ("maxPossiblePositionOfDividerAtIndex:")]
+		float MaxPositionOfDivider (int dividerIndex);
+
+		[Export ("setPosition:ofDividerAtIndex:")]
+		void SetPositionofDivider (float position, int dividerIndex);
+
+		//Detected properties
+		[Export ("vertical")]
+		bool IsVertical { [Bind ("isVertical")]get; set; }
+
+		[Export ("dividerStyle")]
+		NSSplitViewDividerStyle DividerStyle { get; set; }
+
+		[Export ("autosaveName")]
+		string AutosaveName { get; set; }
+		
+		[Export ("delegate"), NullAllowed]
+		NSObject WeakDelegate { get; set; }
+
+		[Wrap ("WeakDelegate")]
+		NSSplitViewDelegate Delegate { get; set; }
+	}
 
 	[BaseType (typeof (NSObject))]
-	interface NSScreen {
-		[Static]
-		[Export ("screens")]
-		NSScreen [] Screens { get; }
+	[Model]
+	interface NSSplitViewDelegate {
+		[Export ("splitView:canCollapseSubview:") ] [DefaultValue (true)]
+		bool CanCollapse (NSSplitView splitView, NSView subview);
 
-		[Static]
-		[Export ("mainScreen")]
-		NSScreen MainScreen { get; }
+		[Export ("splitView:shouldCollapseSubview:forDoubleClickOnDividerAtIndex:")] [DefaultValue (true)]
+		bool ShouldCollapseForDoubleClick (NSSplitView splitView, NSView subview, int doubleClickAtDividerIndex);
 
-		[Static]
-		[Export ("deepestScreen")]
-		NSScreen DeepestScreen { get; }
+		[Export ("splitView:constrainMinCoordinate:ofSubviewAt:")]
+		float SetMinCoordinateofSubview (NSSplitView splitView, float proposedMinimumPosition, int subviewDividerIndex);
 
-		[Export ("depth")]
-		NSWindowDepth Depth { get; }
+		[Export ("splitView:constrainMaxCoordinate:ofSubviewAt:")]
+		float SetMaxCoordinateofSubview (NSSplitView splitView, float proposedMaximumPosition, int subviewDividerIndex);
 
-		[Export ("frame")]
-		RectangleF Frame { get; }
+		[Export ("splitView:constrainSplitPosition:ofSubviewAt:")]
+		float ConstrainSplitPosition (NSSplitView splitView, float proposedPosition, int subviewDividerIndex);
 
-		[Export ("visibleFrame")]
-		RectangleF VisibleFrame { get; }
+		[Export ("splitView:resizeSubviewsWithOldSize:")]
+		void Resize (NSSplitView splitView, SizeF oldSize);
 
-		[Export ("deviceDescription")]
-		NSDictionary DeviceDescription { get; }
+		[Export ("splitView:shouldAdjustSizeOfSubview:")][DefaultValue (true)]
+		bool ShouldAdjustSize (NSSplitView splitView, NSView view);
 
-		[Export ("colorSpace")]
-		NSColorSpace ColorSpace { get; }
+		[Export ("splitView:shouldHideDividerAtIndex:")] [DefaultValue (false)]
+		bool ShouldHideDivider (NSSplitView splitView, int dividerIndex);
 
-		[Export ("supportedWindowDepths")]
-		NSWindowDepth SupportedWindowDepths { get; }
+		[Export ("splitView:effectiveRect:forDrawnRect:ofDividerAtIndex:")]
+		RectangleF GetEffectiveRect (NSSplitView splitView, RectangleF proposedEffectiveRect, RectangleF drawnRect, int dividerIndex);
 
-		[Export ("userSpaceScaleFactor")]
-		float UserSpaceScaleFactor { get; }
-	}
+		[Export ("splitView:additionalEffectiveRectOfDividerAtIndex:")]
+		RectangleF GetAdditionalEffectiveRect (NSSplitView splitView, int dividerIndex);
 
-	[BaseType (typeof (NSControl))]
-	interface NSScroller {
-		[Export ("initWithFrame:")]
-		IntPtr Constructor (RectangleF frameRect);
+		[Export ("splitViewWillResizeSubviews:")]
+		void SplitViewWillResizeSubviews (NSNotification notification);
 
-		[Static]
-		[Export ("scrollerWidth")]
-		float ScrollerWidth { get; }
-
-		[Static]
-		[Export ("scrollerWidthForControlSize:")]
-		float ScrollerWidthForControlSize (NSControlSize controlSize);
-
-		[Export ("drawParts")]
-		void DrawParts ();
-
-		[Export ("rectForPart:")]
-		RectangleF RectForPart (NSScrollerPart partCode);
-
-		[Export ("checkSpaceForParts")]
-		void CheckSpaceForParts ();
-
-		[Export ("usableParts")]
-		NSUsableScrollerParts UsableParts { get; }
-
-		[Export ("drawArrow:highlight:")]
-		void DrawArrowhighlight (NSScrollerArrow whichArrow, bool highlight);
-
-		[Export ("drawKnob")]
-		void DrawKnob ();
-
-		[Export ("drawKnobSlotInRect:highlight:")]
-		void DrawKnobSlot (RectangleF slotRect, bool highlight);
-
-		[Export ("highlight:")]
-		void Highlight (bool flag);
-
-		[Export ("testPart:")]
-		NSScrollerPart TestPart (PointF thePoint);
-
-		[Export ("trackKnob:")]
-		void TrackKnob (NSEvent theEvent);
-
-		[Export ("trackScrollButtons:")]
-		void TrackScrollButtons (NSEvent theEvent);
-
-		[Export ("hitPart")]
-		NSScrollerPart HitPart { get; }
-
-		//Detected properties
-		[Export ("arrowsPosition")]
-		NSScrollArrowPosition ArrowsPosition { get; set; }
-
-		[Export ("controlTint")]
-		NSControlTint ControlTint { get; set; }
-
-		[Export ("controlSize")]
-		NSControlSize ControlSize { get; set; }
-
-		[Export ("knobProportion")]
-		float KnobProportion { get; set; }
-
-	}
-
-	[BaseType (typeof (NSView))]
-	interface NSScrollView {
-		[Static]
-		[Export ("frameSizeForContentSize:hasHorizontalScroller:hasVerticalScroller:borderType:")]
-		SizeF FrameSizeForContentSize (SizeF cSize, bool hFlag, bool vFlag, NSBorderType aType);
-
-		[Static]
-		[Export ("contentSizeForFrameSize:hasHorizontalScroller:hasVerticalScroller:borderType:")]
-		SizeF ContentSizeForFrame (SizeF fSize, bool hFlag, bool vFlag, NSBorderType aType);
-
-		[Export ("documentVisibleRect")]
-		RectangleF DocumentVisibleRect { get; }
-
-		[Export ("contentSize")]
-		SizeF ContentSize { get; }
-
-		[Export ("tile")]
-		void Tile ();
-
-		[Export ("reflectScrolledClipView:")]
-		void ReflectScrolledClipView (NSClipView cView);
-
-		[Export ("scrollWheel:")]
-		void ScrollWheel (NSEvent theEvent);
-
-		//Detected properties
-		[Export ("documentView")]
-		NSObject DocumentView { get; set; }
-
-		[Export ("contentView")]
-		NSClipView ContentView { get; set; }
-
-		[Export ("documentCursor")]
-		NSCursor DocumentCursor { get; set; }
-
-		[Export ("borderType")]
-		NSBorderType BorderType { get; set; }
-
-		[Export ("backgroundColor")]
-		NSColor BackgroundColor { get; set; }
-
-		[Export ("drawsBackground")]
-		bool DrawsBackground { get; set; }
-
-		[Export ("hasVerticalScroller")]
-		bool HasVerticalScroller { get; set; }
-
-		[Export ("hasHorizontalScroller")]
-		bool HasHorizontalScroller { get; set; }
-
-		[Export ("verticalScroller")]
-		NSScroller VerticalScroller { get; set; }
-
-		[Export ("horizontalScroller")]
-		NSScroller HorizontalScroller { get; set; }
-
-		[Export ("autohidesScrollers")]
-		bool AutohidesScrollers { get; set; }
-
-		[Export ("horizontalLineScroll")]
-		float HorizontalLineScroll { get; set; }
-
-		[Export ("verticalLineScroll")]
-		float VerticalLineScroll { get; set; }
-
-		[Export ("lineScroll")]
-		float LineScroll { get; set; }
-
-		[Export ("horizontalPageScroll")]
-		float HorizontalPageScroll { get; set; }
-
-		[Export ("verticalPageScroll")]
-		float VerticalPageScroll { get; set; }
-
-		[Export ("pageScroll")]
-		float PageScroll { get; set; }
-
-		[Export ("scrollsDynamically")]
-		bool ScrollsDynamically { get; set; }
+		[Export ("splitViewDidResizeSubviews:")]
+		void DidResizeSubviews (NSNotification notification);
 	}
 
 	[BaseType (typeof (NSObject))]
@@ -8582,6 +9040,85 @@ namespace MonoMac.AppKit {
 		NSUndoManager GetUndoManager (NSTextView view);
 	}
 	
+	
+	[BaseType (typeof (NSTextField))]
+	interface NSTokenField {
+		[Export ("setTokenStyle:style")]
+		void SetTokenStylestyle (NSTokenStyle style );
+
+		[Export ("tokenStyle")]
+		NSTokenStyle TokenStyle { get; }
+
+		[Export ("setCompletionDelay:delay")]
+		void SetCompletionDelaydelay (double delay );
+
+		[Export ("completionDelay")]
+		double CompletionDelay { get; }
+
+		[Static]
+		[Export ("defaultCompletionDelay")]
+		double DefaultCompletionDelay { get; }
+
+		[Static]
+		[Export ("defaultTokenizingCharacterSet")]
+		NSCharacterSet DefaultCharacterSet { get; }
+
+		//Detected properties
+		[Export ("delegate", ArgumentSemantic.Assign), NullAllowed]
+		NSObject WeakDelegate { get; set; }
+
+		[Wrap ("WeakDelegate")]
+		NSTokenFieldDelegate Delegate { get; set; }
+
+		[Export ("tokenizingCharacterSet")]
+		NSCharacterSet CharacterSet { get; set; }
+	}
+
+	[BaseType (typeof (NSObject))]
+	[Model]
+	interface NSTokenFieldDelegate {
+		[Abstract]
+		[Export ("tokenField:completionsForSubstring:indexOfToken:indexOfSelectedItem:")]
+		string [] GetCompletionStrings (NSTokenField tokenField, string substring, int tokenIndex, int selectedIndex);
+
+		[Abstract]
+		[Export ("tokenField:shouldAddObjects:atIndex:")]
+		NSTokenField [] ShouldAddObjects (NSTokenField tokenField, NSTokenField [] tokens, uint index);
+
+		[Abstract]
+		[Export ("tokenField:displayStringForRepresentedObject:")]
+		string GetDisplayString (NSTokenField tokenField, NSObject representedObject);
+
+		[Abstract]
+		[Export ("tokenField:editingStringForRepresentedObject:")]
+		string GetEditingString (NSTokenField tokenField, NSObject representedObject);
+
+		[Abstract]
+		[Export ("tokenField:representedObjectForEditingString:")]
+		NSObject GetRepresentedObject (NSTokenField tokenField, string editingString);
+
+		[Abstract]
+		[Export ("tokenField:writeRepresentedObjects:toPasteboard:")]
+		bool isWriteRepresented (NSTokenField tokenField, NSArray objects, NSPasteboard pboard);
+
+		[Abstract]
+		[Export ("tokenField:readFromPasteboard:")]
+		NSObject [] Read (NSTokenField tokenField, NSPasteboard pboard);
+
+		[Abstract]
+		[Export ("tokenField:menuForRepresentedObject:")]
+		NSMenu GetMenu (NSTokenField tokenField, NSObject representedObject);
+
+		[Abstract]
+		[Export ("tokenField:hasMenuForRepresentedObject:")]
+		bool HasMenu (NSTokenField tokenField, NSObject representedObject);
+
+		[Abstract]
+		[Export ("tokenField:styleForRepresentedObject:")]
+		NSTokenStyle GetStyle (NSTokenField tokenField, NSObject representedObject);
+
+	}
+
 	[BaseType (typeof (NSObject), Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (NSToolbarDelegate)})]
 	interface NSToolbar {
 		[Export ("initWithIdentifier:")]
