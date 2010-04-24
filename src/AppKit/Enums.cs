@@ -1081,4 +1081,83 @@ namespace MonoMac.AppKit {
 		SolidVerticalLine   = 1 << 0,
 		SolidHorizontalLine = 1 << 1 
 	}
-}
+
+	[Flags]
+	public enum NSGradientDrawingOptions {
+		BeforeStartingLocation =   (1 << 0),
+		AfterEndingLocation =    (1 << 1)
+	}
+	
+	public enum NSImageAlignment {
+		Center = 0,
+		Top,
+		TopLeft,
+		TopRight,
+		Left,
+		Bottom,
+		BottomLeft,
+		BottomRight,
+		Right
+	}
+	
+	public enum NSImageFrameStyle {
+		None = 0,
+		Photo,
+		GrayBezel,
+		Groove,
+		Button
+	}
+	
+	public enum NSSpeechBoundary {
+		Immediate =  0,
+		hWord,
+		Sentence
+	}
+
+	public enum NSSplitViewDividerStyle {
+		Thick = 1,
+		Thin = 2,
+		PaneSplitter = 3
+	}
+	
+	public enum NSImageScaling {
+		ProportionallyDown = 0,
+		AxesIndependently,
+		None,
+		ProportionallyUpOrDown
+	}
+	
+	public enum NSSegmentStyle {
+		Automatic = 0,
+		Rounded = 1,
+		TexturedRounded = 2,
+		RoundRect = 3,
+		TexturedSquare = 4,
+		Capsule = 5,
+		SmallSquare = 6
+	}
+	
+	public enum NSSegmentSwitchTracking {
+		SelectOne = 0,
+		SelectAny = 1,
+		Momentary = 2
+	}
+	
+	public enum NSTickMarkPosition {
+		Below,
+		Above,
+		Left,
+		Right
+	}
+	
+	public enum NSSliderType {
+		Linear   = 0,
+		Circular = 1
+	}
+	
+	public enum NSTokenStyle {
+		Default,
+		PlainText,
+		Rounded
+	}
+} 

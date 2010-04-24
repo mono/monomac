@@ -1879,6 +1879,48 @@ namespace MonoMac.AppKit {
 		CIImage CIImage { get; }
 	}
 	
+	[BaseType (typeof (NSView))]
+	interface NSClipView {
+		[Export ("backgroundColor")]
+		NSColor BackgroundColor { get; set; }
+	
+		[Export ("drawsBackground")]
+		bool DrawsBackground { get; set; }
+	
+		[Export ("documentView")]
+		NSView DocumentView { get; set; }
+	
+		[Export ("documentRect")]
+		RectangleF DocumentRect { get; }
+	
+		[Export ("documentCursor")]
+		NSCursor DocumentCursor { get; set; }
+	
+		[Export ("documentVisibleRect")]
+		RectangleF documentVisibleRect ();
+	
+		[Export ("viewFrameChanged:")]
+		void ViewFrameChanged (NSNotification  notification);
+	
+		[Export ("viewBoundsChanged:")]
+		void ViewBoundsChanged (NSNotification  notification);
+	
+		[Export ("copiesOnScroll")]
+		bool CopiesOnScroll { get; set; }
+	
+		[Export ("autoscroll:")]
+		bool Autoscroll (NSEvent  theEvent);
+	
+		[Export ("constrainScrollPoint:")]
+		PointF ConstrainScrollPoint (PointF newOrigin);
+	
+		[Export ("scrollToPoint:")]
+		void ScrollToPoint (PointF newOrigin);
+
+		[Export ("scrollClipView:toPoint:")]
+		void ScrollClipView (NSClipView  aClipView, PointF aPoint);
+	}
+
 	[BaseType (typeof (NSObject))]
 	interface NSColor {
 		[Static]
@@ -2755,6 +2797,40 @@ namespace MonoMac.AppKit {
 	}	
 	
 	[BaseType (typeof (NSObject))]
+	interface NSDockTile {
+		[Export ("size")]
+		SizeF Size { get; }
+
+		[Export ("display")]
+		void Display ();
+
+		[Export ("owner")]
+		NSObject Owner { get; }
+
+		//Detected properties
+		[Export ("contentView")]
+		NSView ContentView { get; set; }
+
+		[Export ("showsApplicationBadge")]
+		bool ShowsApplicationBadge { get; set; }
+
+		[Export ("badgeLabel")]
+		string BadgeLabel { get; set; }
+	}
+
+	[BaseType (typeof (NSObject))]
+	[Model]
+	interface NSDockTilePlugIn {
+		[Abstract]
+		[Export ("setDockTile:")]
+		void SetDockTile (NSDockTile dockTile);
+
+		[Abstract]
+		[Export ("dockMenu")]
+		NSMenu DockMenu ();
+	}
+	
+	[BaseType (typeof (NSObject))]
 	interface NSDocument {
 		[Export ("initWithType:error:")]
 		IntPtr Constructor (string typeName, NSError outError);
@@ -3392,7 +3468,6 @@ namespace MonoMac.AppKit {
 		NSFontRenderingMode RenderingMode { get; }
 	}
 
-
 	[BaseType (typeof (NSObject))]
 	interface NSFontDescriptor {
 		[Export ("postscriptName")]
@@ -3450,6 +3525,263 @@ namespace MonoMac.AppKit {
 
 		[Export ("fontDescriptorWithFamily:")]
 		NSFontDescriptor FontDescriptorWithFamily (string newFamily);
+	}
+
+	[BaseType (typeof (NSPanel))]
+	interface NSFontPanel {
+		[Static]
+		[Export ("sharedFontPanel")]
+		NSFontPanel SharedFontPanel { get; }
+
+		[Static]
+		[Export ("sharedFontPanelExists")]
+		bool SharedFontPanelExists { get; }
+
+		[Export ("setPanelFont:isMultiple:")]
+		void SetPanelFont (NSFont fontObj, bool isMultiple);
+
+		[Export ("panelConvertFont:")]
+		NSFont PanelConvertFont (NSFont fontObj);
+
+		[Export ("worksWhenModal")]
+		bool WorksWhenModal { get; }
+
+		[Export ("reloadDefaultFontFamilies")]
+		void ReloadDefaultFontFamilies ();
+
+		//Detected properties
+		[Export ("accessoryView")]
+		NSView AccessoryView { get; set; }
+
+		[Export ("enabled")]
+		bool Enabled { [Bind ("isEnabled")]get; set; }
+	}
+	
+	[BaseType (typeof (NSMatrix))]
+	interface NSForm  {
+		[Export ("initWithFrame:")]
+		IntPtr Constructor (RectangleF frameRect);
+
+		[Export ("initWithFrame:mode:prototype:numberOfRows:numberOfColumns:")]
+		IntPtr Constructor (RectangleF frameRect, NSMatrixMode aMode, NSCell aCell, int rowsHigh, int colsWide);
+
+		[Export ("initWithFrame:mode:cellClass:numberOfRows:numberOfColumns:")]
+		IntPtr Constructor (RectangleF frameRect, NSMatrixMode aMode, Class factoryId, int rowsHigh, int colsWide);
+
+		[Export ("indexOfSelectedItem")]
+		int SelectedItemIndex { get; }
+
+		[Export ("setEntryWidth:")]
+		void SetEntryWidth (float width);
+
+		[Export ("setInterlineSpacing:")]
+		void SetInterlineSpacing (float spacing);
+
+		[Export ("setBordered:")]
+		void SetBordered (bool flag);
+
+		[Export ("setBezeled:")]
+		void SetBezeled (bool flag);
+
+		[Export ("setTitleAlignment:")]
+		void SetTitleAlignment (NSTextAlignment mode);
+
+		[Export ("setTextAlignment:")]
+		void SetTextAlignment (NSTextAlignment mode);
+
+		[Export ("setTitleFont:")]
+		void SetTitleFont (NSFont fontObj);
+
+		[Export ("setTextFont:")]
+		void SetTextFont (NSFont fontObj);
+
+		[Export ("cellAtIndex:")]
+		NSObject CellAtIndex (int index);
+
+		[Export ("drawCellAtIndex:")]
+		void DrawCellAtIndex (int index);
+
+		[Export ("addEntry:")]
+		NSFormCell AddEntry (string title);
+
+		[Export ("insertEntry:atIndex:")]
+		NSFormCell InsertEntryatIndex (string title, int index);
+
+		[Export ("removeEntryAtIndex:")]
+		void RemoveEntryAtIndex (int index);
+
+		[Export ("indexOfCellWithTag:")]
+		int IndexOfCellWithTag (int aTag);
+
+		[Export ("selectTextAtIndex:")]
+		void SelectTextAtIndex (int index);
+
+		[Export ("setFrameSize:")]
+		void SetFrameSize (SizeF newSize);
+
+		[Export ("setTitleBaseWritingDirection:")]
+		void SetTitleBaseWritingDirection (NSWritingDirection writingDirection);
+
+		[Export ("setTextBaseWritingDirection:")]
+		void SetTextBaseWritingDirection (NSWritingDirection writingDirection);
+	}
+	
+	[BaseType (typeof (NSActionCell))]
+	interface NSFormCell {
+		[Export ("initTextCell:")]
+		IntPtr Constructor (string aString);
+	
+		[Export ("initImageCell:")]
+		IntPtr Constructor (NSImage  image);
+
+		[Export ("initTextCell:")]
+		IntPtr ConstrainScrollPoint (string aString);
+
+		[Export ("isOpaque")]
+		bool IsOpaque { get; }
+
+		//Detected properties
+		[Export ("titleWidth")]
+		float TitleWidth { get; set; }
+
+		[Export ("title")]
+		string Title { get; set; }
+
+		[Export ("titleFont")]
+		NSFont TitleFont { get; set; }
+
+		[Export ("titleAlignment")]
+		NSTextAlignment TitleAlignment { get; set; }
+
+		[Export ("placeholderString")]
+		string PlaceholderString { get; set; }
+
+		[Export ("placeholderAttributedString")]
+		NSAttributedString PlaceholderAttributedString { get; set; }
+
+		[Export ("titleBaseWritingDirection")]
+		NSWritingDirection TitleBaseWritingDirection { get; set; }
+
+		[Export ("setTitleWithMnemonic:")]
+		void SetTitleWithMnemonic (string  stringWithAmpersand);
+		
+		[Export ("attributedTitle")]
+		NSAttributedString AttributedTitle { get; set; }
+	}
+
+	[BaseType (typeof (NSObject))]
+	interface NSGradient {
+		[Export ("initWithStartingColor:endingColor:")]
+		IntPtr Constructor  (NSColor startingColor, NSColor endingColor);
+
+		[Export ("initWithColors:")]
+		IntPtr Constructor  (NSColor[] colorArray);
+
+		// Needs varargs
+		//[Export ("initWithColorsAndLocations:")]
+		//IntPtr Constructor (NSColor firstColor);
+
+		[Export ("initWithColors:atLocations:colorSpace:"), Internal]
+		IntPtr Constructor (NSColor[] colorArray, IntPtr floatLocations, NSColorSpace colorSpace);
+
+		[Export ("drawFromPoint:toPoint:options:")]
+		void DrawFromPoint (PointF startingPoint, PointF endingPoint, NSGradientDrawingOptions options);
+
+		[Export ("drawInRect:angle:")]
+		void DrawInRect (RectangleF rect, float angle);
+
+		[Export ("drawInBezierPath:angle:")]
+		void DrawInBezierPath (NSBezierPath path, float angle);
+
+		[Export ("drawFromCenter:radius:toCenter:radius:options:")]
+		void DrawFromCenterRadius (PointF startCenter, float startRadius, PointF endCenter, float endRadius, NSGradientDrawingOptions options);
+
+		[Export ("drawInRect:relativeCenterPosition:")]
+		void DrawInRect (RectangleF rect, PointF relativeCenterPosition);
+
+		[Export ("drawInBezierPath:relativeCenterPosition:")]
+		void DrawInBezierPath (NSBezierPath path, PointF relativeCenterPosition);
+
+		[Export ("colorSpace")]
+		NSColorSpace ColorSpace { get; }
+
+		[Export ("numberOfColorStops")]
+		int ColorStopsCount { get; }
+
+		[Export ("getColor:location:atIndex:")]
+		void GetColor (NSColor color, float location, int index);
+
+		[Export ("interpolatedColorAtLocation:")]
+		NSColor GetInterpolatedColor(float location);
+	}
+	
+	[BaseType (typeof (NSObject))]
+	interface NSGraphicsContext {
+		[Static, Export ("graphicsContextWithAttributes:")]
+		NSGraphicsContext FromAttributes (NSDictionary attributes);
+	
+		[Static, Export ("graphicsContextWithWindow:")]
+		NSGraphicsContext FromWindow (NSWindow window);
+	
+		[Static, Export ("graphicsContextWithBitmapImageRep:")]
+		NSGraphicsContext FromBitmap (NSBitmapImageRep bitmapRep);
+	
+		[Static, Export ("graphicsContextWithGraphicsPort:flipped:")]
+		NSGraphicsContext FromGraphicsPort (IntPtr graphicsPort, bool initialFlippedState);
+	
+		[Static, Export ("currentContext")]
+		NSGraphicsContext CurrentContext { get; set; }
+	
+		[Static, Export ("currentContextDrawingToScreen")]
+		bool IsCurrentContextDrawingToScreen { get; }
+	
+		[Static, Export ("saveGraphicsState")]
+		void GlobalSaveGraphicsState ();
+	
+		[Static, Export ("restoreGraphicsState")]
+		void GlobalRestoreGraphicsState ();
+	
+		[Static, Export ("setGraphicsState:")]
+		void SetGraphicsState (int gState);
+	
+		[Export ("attributes")]
+		NSDictionary Attributes { get; } 
+	
+		[Export ("isDrawingToScreen")]
+		bool IsDrawingToScreen { get; }
+	
+		[Export ("saveGraphicsState")]
+		void SaveGraphicsState ();
+	
+		[Export ("restoreGraphicsState")]
+		void RestoreGraphicsState ();
+	
+		[Export ("flushGraphics")]
+		void FlushGraphics ();
+	
+		[Export ("graphicsPort")]
+		IntPtr GraphicsPort {get; }
+	
+		[Export ("isFlipped")]
+		bool IsFlipped { get; }
+	
+		[Export ("shouldAntialias")]
+		bool ShouldAntialias { get; set; }
+	
+		[Export ("imageInterpolation")]
+		NSImageInterpolation ImageInterpolation { get; set; }
+	
+		[Export ("patternPhase")]
+		PointF PatternPhase { get; set; }
+	
+		[Export ("compositingOperation")]
+		NSComposite CompositingOperation { get; set; }
+	
+		[Export ("colorRenderingIntent")]
+		NSColorRenderingIntent ColorRenderingIntent { get; set; }
+
+		[Export ("CIContext")]
+		MonoMac.CoreImage.CIContext CIContext { get; } 
 	}
 
 	[BaseType (typeof (NSImageRep))]
@@ -3961,6 +4293,22 @@ namespace MonoMac.AppKit {
 		string ToolTip { get; set; }
 	}
 
+	[BaseType (typeof (NSObject))]
+	interface NSNib {
+		[Export ("initWithContentsOfURL:")]
+		IntPtr Constructor (NSUrl nibFileURL);
+
+		[Export ("initWithNibNamed:bundle:")]
+		IntPtr Constructor (string nibName, NSBundle bundle);
+
+		[Export ("instantiateNibWithExternalNameTable:")]
+		bool InstantiateNib (NSDictionary externalNameTable);
+
+		// This requires an "out NSArray"
+		//[Export ("instantiateNibWithOwner:topLevelObjects:")]
+		//bool InstantiateNib (NSObject owner, NSArray topLevelObjects);
+	}	
+
 	[BaseType (typeof (NSSavePanel), Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (NSOpenSavePanelDelegate)})]
 	interface NSOpenPanel {
 		[Static]
@@ -3984,291 +4332,59 @@ namespace MonoMac.AppKit {
 		bool CanChooseFiles { get; set; }
 	}
 
-	[BaseType (typeof (NSView))]
-	interface NSClipView {
-		[Export ("backgroundColor")]
-		NSColor BackgroundColor { get; set; }
-	
-		[Export ("drawsBackground")]
-		bool DrawsBackground { get; set; }
-	
-		[Export ("documentView")]
-		NSView DocumentView { get; set; }
-	
-		[Export ("documentRect")]
-		RectangleF DocumentRect { get; }
-	
-		[Export ("documentCursor")]
-		NSCursor DocumentCursor { get; set; }
-	
-		[Export ("documentVisibleRect")]
-		RectangleF documentVisibleRect ();
-	
-		[Export ("viewFrameChanged:")]
-		void ViewFrameChanged (NSNotification  notification);
-	
-		[Export ("viewBoundsChanged:")]
-		void ViewBoundsChanged (NSNotification  notification);
-	
-		[Export ("copiesOnScroll")]
-		bool CopiesOnScroll { get; set; }
-	
-		[Export ("autoscroll:")]
-		bool Autoscroll (NSEvent  theEvent);
-	
-		[Export ("constrainScrollPoint:")]
-		PointF ConstrainScrollPoint (PointF newOrigin);
-	
-		[Export ("scrollToPoint:")]
-		void ScrollToPoint (PointF newOrigin);
-
-		[Export ("scrollClipView:toPoint:")]
-		void ScrollClipView (NSClipView  aClipView, PointF aPoint);
-	}
-
-	[BaseType (typeof (NSObject))]
-	interface NSDockTile {
-		[Export ("size")]
-		SizeF Size { get; }
-
-		[Export ("display")]
-		void Display ();
-
-		[Export ("owner")]
-		NSObject Owner { get; }
-
-		//Detected properties
-		[Export ("contentView")]
-		NSView ContentView { get; set; }
-
-		[Export ("showsApplicationBadge")]
-		bool ShowsApplicationBadge { get; set; }
-
-		[Export ("badgeLabel")]
-		string BadgeLabel { get; set; }
-	}
-
 	[BaseType (typeof (NSObject))]
 	[Model]
-	interface NSDockTilePlugIn {
-		[Abstract]
-		[Export ("setDockTile:")]
-		void SetDockTile (NSDockTile dockTile);
+	interface NSOpenSavePanelDelegate {
+		[Export ("panel:shouldEnableURL:"), EventArgs ("NSOpenSavePanelUrl"), DefaultValue (true)]
+		bool ShouldEnableURL (NSObject sender, NSUrl url);
 
-		[Abstract]
-		[Export ("dockMenu")]
-		NSMenu DockMenu ();
+		// FIXME: binding
+		//[Export ("panel:validateURL:error:")]
+		//bool ValidateUrlerror (NSObject sender, NSUrl url, out NSError outError);
+
+		[Export ("panel:didChangeToDirectoryURL:"), EventArgs ("NSOpenSavePanelUrl")]
+		void DidChangeToDirectoryURL (NSObject sender, NSUrl url);
+
+		[Export ("panel:userEnteredFilename:confirmed:"), EventArgs ("NSOpenSaveFilename"), DefaultValueFromArgument ("filename")]
+		string UserEnteredFilename (NSObject sender, string filename, bool confirmed);
+
+		[Export ("panel:willExpand:"), EventArgs ("NSOpenSaveExpanding")]
+		void WillExpand (NSObject sender, bool expanding);
+
+		[Export ("panelSelectionDidChange:"), EventArgs ("NSOpenSaveSelectionChanged")]
+		void SelectionDidChange (NSObject sender);
 	}
-	
+
 	[BaseType (typeof (NSObject))]
-	interface NSGraphicsContext {
-		[Static, Export ("graphicsContextWithAttributes:")]
-		NSGraphicsContext FromAttributes (NSDictionary attributes);
-	
-		[Static, Export ("graphicsContextWithWindow:")]
-		NSGraphicsContext FromWindow (NSWindow window);
-	
-		[Static, Export ("graphicsContextWithBitmapImageRep:")]
-		NSGraphicsContext FromBitmap (NSBitmapImageRep bitmapRep);
-	
-		[Static, Export ("graphicsContextWithGraphicsPort:flipped:")]
-		NSGraphicsContext FromGraphicsPort (IntPtr graphicsPort, bool initialFlippedState);
-	
-		[Static, Export ("currentContext")]
-		NSGraphicsContext CurrentContext { get; set; }
-	
-		[Static, Export ("currentContextDrawingToScreen")]
-		bool IsCurrentContextDrawingToScreen { get; }
-	
-		[Static, Export ("saveGraphicsState")]
-		void GlobalSaveGraphicsState ();
-	
-		[Static, Export ("restoreGraphicsState")]
-		void GlobalRestoreGraphicsState ();
-	
-		[Static, Export ("setGraphicsState:")]
-		void SetGraphicsState (int gState);
-	
-		[Export ("attributes")]
-		NSDictionary Attributes { get; } 
-	
-		[Export ("isDrawingToScreen")]
-		bool IsDrawingToScreen { get; }
-	
-		[Export ("saveGraphicsState")]
-		void SaveGraphicsState ();
-	
-		[Export ("restoreGraphicsState")]
-		void RestoreGraphicsState ();
-	
-		[Export ("flushGraphics")]
-		void FlushGraphics ();
-	
-		[Export ("graphicsPort")]
-		IntPtr GraphicsPort {get; }
-	
-		[Export ("isFlipped")]
-		bool IsFlipped { get; }
-	
-		[Export ("shouldAntialias")]
-		bool ShouldAntialias { get; set; }
-	
-		[Export ("imageInterpolation")]
-		NSImageInterpolation ImageInterpolation { get; set; }
-	
-		[Export ("patternPhase")]
-		PointF PatternPhase { get; set; }
-	
-		[Export ("compositingOperation")]
-		NSComposite CompositingOperation { get; set; }
-	
-		[Export ("colorRenderingIntent")]
-		NSColorRenderingIntent ColorRenderingIntent { get; set; }
+	interface NSHelpManager {
+		[Export ("sharedHelpManager")]
+		NSHelpManager SharedHelpManager ();
 
-		[Export ("CIContext")]
-		MonoMac.CoreImage.CIContext CIContext { get; } 
-	}
+		[Export ("setContextHelp:forObject:")]
+		void SetContext (NSAttributedString attrString, NSObject theObject);
 
-	[BaseType (typeof (NSPanel))]
-	interface NSFontPanel {
-		[Static]
-		[Export ("sharedFontPanel")]
-		NSFontPanel SharedFontPanel { get; }
+		[Export ("removeContextHelpForObject:")]
+		void RemoveContext (NSObject theObject);
 
-		[Static]
-		[Export ("sharedFontPanelExists")]
-		bool SharedFontPanelExists { get; }
+		[Export ("contextHelpForObject:")]
+		NSAttributedString Context (NSObject theObject);
 
-		[Export ("setPanelFont:isMultiple:")]
-		void SetPanelFont (NSFont fontObj, bool isMultiple);
+		[Export ("showContextHelpForObject:locationHint:")]
+		bool ShowContext (NSObject theObject, PointF pt);
 
-		[Export ("panelConvertFont:")]
-		NSFont PanelConvertFont (NSFont fontObj);
+		[Export ("openHelpAnchor:inBook:")]
+		void OpenHelpAnchor (string anchor, string book);
 
-		[Export ("worksWhenModal")]
-		bool WorksWhenModal { get; }
+		[Export ("findString:inBook:")]
+		void FindString (string query, string book);
 
-		[Export ("reloadDefaultFontFamilies")]
-		void ReloadDefaultFontFamilies ();
+		[Export ("registerBooksInBundle:")]
+		bool RegisterBooks (NSBundle bundle );
 
 		//Detected properties
-		[Export ("accessoryView")]
-		NSView AccessoryView { get; set; }
-
-		[Export ("enabled")]
-		bool Enabled { [Bind ("isEnabled")]get; set; }
-	}
-	
-	[BaseType (typeof (NSMatrix))]
-	interface NSForm  {
-		[Export ("initWithFrame:")]
-		IntPtr Constructor (RectangleF frameRect);
-
-		[Export ("initWithFrame:mode:prototype:numberOfRows:numberOfColumns:")]
-		IntPtr Constructor (RectangleF frameRect, NSMatrixMode aMode, NSCell aCell, int rowsHigh, int colsWide);
-
-		[Export ("initWithFrame:mode:cellClass:numberOfRows:numberOfColumns:")]
-		IntPtr Constructor (RectangleF frameRect, NSMatrixMode aMode, Class factoryId, int rowsHigh, int colsWide);
-
-		[Export ("indexOfSelectedItem")]
-		int SelectedItemIndex { get; }
-
-		[Export ("setEntryWidth:")]
-		void SetEntryWidth (float width);
-
-		[Export ("setInterlineSpacing:")]
-		void SetInterlineSpacing (float spacing);
-
-		[Export ("setBordered:")]
-		void SetBordered (bool flag);
-
-		[Export ("setBezeled:")]
-		void SetBezeled (bool flag);
-
-		[Export ("setTitleAlignment:")]
-		void SetTitleAlignment (NSTextAlignment mode);
-
-		[Export ("setTextAlignment:")]
-		void SetTextAlignment (NSTextAlignment mode);
-
-		[Export ("setTitleFont:")]
-		void SetTitleFont (NSFont fontObj);
-
-		[Export ("setTextFont:")]
-		void SetTextFont (NSFont fontObj);
-
-		[Export ("cellAtIndex:")]
-		NSObject CellAtIndex (int index);
-
-		[Export ("drawCellAtIndex:")]
-		void DrawCellAtIndex (int index);
-
-		[Export ("addEntry:")]
-		NSFormCell AddEntry (string title);
-
-		[Export ("insertEntry:atIndex:")]
-		NSFormCell InsertEntryatIndex (string title, int index);
-
-		[Export ("removeEntryAtIndex:")]
-		void RemoveEntryAtIndex (int index);
-
-		[Export ("indexOfCellWithTag:")]
-		int IndexOfCellWithTag (int aTag);
-
-		[Export ("selectTextAtIndex:")]
-		void SelectTextAtIndex (int index);
-
-		[Export ("setFrameSize:")]
-		void SetFrameSize (SizeF newSize);
-
-		[Export ("setTitleBaseWritingDirection:")]
-		void SetTitleBaseWritingDirection (NSWritingDirection writingDirection);
-
-		[Export ("setTextBaseWritingDirection:")]
-		void SetTextBaseWritingDirection (NSWritingDirection writingDirection);
-	}
-	
-	[BaseType (typeof (NSActionCell))]
-	interface NSFormCell {
-		[Export ("initTextCell:")]
-		IntPtr Constructor (string aString);
-	
-		[Export ("initImageCell:")]
-		IntPtr Constructor (NSImage  image);
-
-		[Export ("initTextCell:")]
-		IntPtr ConstrainScrollPoint (string aString);
-
-		[Export ("isOpaque")]
-		bool IsOpaque { get; }
-
-		//Detected properties
-		[Export ("titleWidth")]
-		float TitleWidth { get; set; }
-
-		[Export ("title")]
-		string Title { get; set; }
-
-		[Export ("titleFont")]
-		NSFont TitleFont { get; set; }
-
-		[Export ("titleAlignment")]
-		NSTextAlignment TitleAlignment { get; set; }
-
-		[Export ("placeholderString")]
-		string PlaceholderString { get; set; }
-
-		[Export ("placeholderAttributedString")]
-		NSAttributedString PlaceholderAttributedString { get; set; }
-
-		[Export ("titleBaseWritingDirection")]
-		NSWritingDirection TitleBaseWritingDirection { get; set; }
-
-		[Export ("setTitleWithMnemonic:")]
-		void SetTitleWithMnemonic (string  stringWithAmpersand);
-		
-		[Export ("attributedTitle")]
-		NSAttributedString AttributedTitle { get; set; }
+		[Static]
+		[Export ("contextHelpModeActive")]
+		bool ContextHelpModeActive { [Bind ("isContextHelpModeActive")]get; set; }
 	}
 
 	[BaseType (typeof (NSObject), Delegates=new string [] { "WeakDelegate" }, Events=new Type [] { typeof (NSImageDelegate)})]
@@ -4431,38 +4547,6 @@ namespace MonoMac.AppKit {
 	}
 
 	[BaseType (typeof (NSObject))]
-	interface NSHelpManager {
-		[Export ("sharedHelpManager")]
-		NSHelpManager SharedHelpManager ();
-
-		[Export ("setContextHelp:forObject:")]
-		void SetContext (NSAttributedString attrString, NSObject theObject);
-
-		[Export ("removeContextHelpForObject:")]
-		void RemoveContext (NSObject theObject);
-
-		[Export ("contextHelpForObject:")]
-		NSAttributedString Context (NSObject theObject);
-
-		[Export ("showContextHelpForObject:locationHint:")]
-		bool ShowContext (NSObject theObject, PointF pt);
-
-		[Export ("openHelpAnchor:inBook:")]
-		void OpenHelpAnchor (string anchor, string book);
-
-		[Export ("findString:inBook:")]
-		void FindString (string query, string book);
-
-		[Export ("registerBooksInBundle:")]
-		bool RegisterBooks (NSBundle bundle );
-
-		//Detected properties
-		[Static]
-		[Export ("contextHelpModeActive")]
-		bool ContextHelpModeActive { [Bind ("isContextHelpModeActive")]get; set; }
-	}
-
-	[BaseType (typeof (NSObject))]
 	[Model]
 	interface NSImageDelegate {
 		[Export ("imageDidNotDraw:inRect:"), EventArgs ("NSImageRect"), DefaultValue (null)]
@@ -4479,6 +4563,19 @@ namespace MonoMac.AppKit {
 
 		[Export ("image:didLoadRepresentation:withStatus:"), EventArgs ("NSImageLoadRepresentation")]
 		void DidLoadRepresentation (NSImage image, NSImageRep rep, NSImageLoadStatus status);
+	}
+
+	[BaseType (typeof (NSCell))]
+	interface NSImageCell {
+		//Detected properties
+		[Export ("imageAlignment")]
+		NSImageAlignment ImageAlignment { get; set; }
+
+		[Export ("imageScaling")]
+		NSImageScale ImageScaling { get; set; }
+
+		[Export ("imageFrameStyle")]
+		NSImageFrameStyle ImageFrameStyle { get; set; }
 	}
 
 	[BaseType (typeof (NSObject))]
@@ -4601,6 +4698,31 @@ namespace MonoMac.AppKit {
 
 		[Export ("pixelsHigh")]
 		int PixelsHigh { get; set; }
+	}
+
+	[BaseType (typeof (NSControl))]
+	interface NSImageView {
+		//Detected properties
+		[Export ("image")]
+		NSImage Image { get; set; }
+
+		[Export ("imageAlignment")]
+		NSImageAlignment ImageAlignment { get; set; }
+
+		[Export ("imageScaling")]
+		NSImageScale ImageScaling { get; set; }
+
+		[Export ("imageFrameStyle")]
+		NSImageFrameStyle ImageFrameStyle { get; set; }
+
+		[Export ("editable")]
+		bool Editable { [Bind ("isEditable")]get; set; }
+
+		[Export ("animates")]
+		bool Animates { get; set; }
+
+		[Export ("allowsCutCopyPaste")]
+		bool AllowsCutCopyPaste { get; set; }
 	}
 
 	[BaseType (typeof (NSControl), Delegates=new string [] { "WeakDelegate" }, Events=new Type [] { typeof (NSMatrixDelegate)})]
@@ -5825,27 +5947,241 @@ namespace MonoMac.AppKit {
 		bool ShowsHiddenFiles { get; set; }
 	}
 
+	
+	[BaseType (typeof (NSObject))]
+	interface NSSpeechRecognizer {
+		[Export ("startListening")]
+		void StartListening ();
+
+		[Export ("stopListening")]
+		void StopListening ();
+
+		//Detected properties
+		[Export ("delegate"), NullAllowed]
+		NSObject WeakDelegate { get; set; }
+
+		[Wrap ("WeakDelegate")]
+		NSSpeechRecognizerDelegate Delegate { get; set; }
+
+		[Export ("commands")]
+		string [] Commands { get; set; }
+
+		[Export ("displayedCommandsTitle")]
+		string DisplayedCommandsTitle { get; set; }
+
+		[Export ("listensInForegroundOnly")]
+		bool ListensInForegroundOnly { get; set; }
+
+		[Export ("blocksOtherRecognizers")]
+		bool BlocksOtherRecognizers { get; set; }
+	}
+
 	[BaseType (typeof (NSObject))]
 	[Model]
-	interface NSOpenSavePanelDelegate {
-		[Export ("panel:shouldEnableURL:"), EventArgs ("NSOpenSavePanelUrl"), DefaultValue (true)]
-		bool ShouldEnableURL (NSObject sender, NSUrl url);
+	interface NSSpeechRecognizerDelegate {
+		[Export ("speechRecognizer:didRecognizeCommand:")]
+		void DidRecognizeCommand (NSSpeechRecognizer sender, string command);
+	}
 
-		// FIXME: binding
-		//[Export ("panel:validateURL:error:")]
-		//bool ValidateUrlerror (NSObject sender, NSUrl url, out NSError outError);
+	[BaseType (typeof (NSObject))]
+	interface NSSpeechSynthesizer {
+		[Export ("initWithVoice:")]
+		IntPtr Constructor (string voice);
 
-		[Export ("panel:didChangeToDirectoryURL:"), EventArgs ("NSOpenSavePanelUrl")]
-		void DidChangeToDirectoryURL (NSObject sender, NSUrl url);
+		[Export ("startSpeakingString:")]
+		bool StartSpeakingString (string theString);
 
-		[Export ("panel:userEnteredFilename:confirmed:"), EventArgs ("NSOpenSaveFilename"), DefaultValueFromArgument ("filename")]
-		string UserEnteredFilename (NSObject sender, string filename, bool confirmed);
+		[Export ("startSpeakingString:toURL:")]
+		bool StartSpeakingStringtoURL (string theString, NSUrl url);
 
-		[Export ("panel:willExpand:"), EventArgs ("NSOpenSaveExpanding")]
-		void WillExpand (NSObject sender, bool expanding);
+		[Export ("isSpeaking")]
+		bool IsSpeaking { get; }
 
-		[Export ("panelSelectionDidChange:"), EventArgs ("NSOpenSaveSelectionChanged")]
-		void SelectionDidChange (NSObject sender);
+		[Export ("stopSpeaking")]
+		void StopSpeaking ();
+
+		[Export ("stopSpeakingAtBoundary:")]
+		void StopSpeaking (NSSpeechBoundary boundary);
+
+		[Export ("pauseSpeakingAtBoundary:")]
+		void PauseSpeaking (NSSpeechBoundary boundary);
+
+		[Export ("continueSpeaking")]
+		void ContinueSpeaking ();
+
+		[Export ("addSpeechDictionary:")]
+		void AddSpeechDictionary (NSDictionary speechDictionary);
+
+		[Export ("phonemesFromText:")]
+		string PhonemesFromText (string text);
+
+		// Needs support for out NSError
+		//[Export ("objectForProperty:error:")]
+		//NSObject ObjectForProperty (string property, NSError outError);
+
+		// Needs support for out NSError
+		//[Export ("setObject:forProperty:error:")]
+		//bool SetObjectforProperty (NSObject theObject, string property, NSError outError);
+
+		[Export ("isAnyApplicationSpeaking")]
+		bool IsAnyApplicationSpeaking { get; }
+
+		[Static]
+		[Export ("defaultVoice")]
+		string DefaultVoice { get; }
+
+		[Static]
+		[Export ("availableVoices")]
+		string [] AvailableVoices { get; }
+
+		[Static]
+		[Export ("attributesForVoice:")]
+		NSDictionary AttributesForVoice (string voice);
+
+		//Detected properties
+		[Export ("delegate"), NullAllowed]
+		NSObject WeakDelegate { get; set; }
+
+		[Wrap ("WeakDelegate")]
+		NSSpeechSynthesizerDelegate Delegate { get; set; }
+
+		[Export ("voice")]
+		string Voice { get; set; }
+
+		[Export ("rate")]
+		float Rate { get; set; }
+
+		[Export ("volume")]
+		float Volume { get; set; }
+
+		[Export ("usesFeedbackWindow")]
+		bool UsesFeedbackWindow { get; set; }
+	}
+
+	[BaseType (typeof (NSObject))]
+	[Model]
+	interface NSSpeechSynthesizerDelegate {
+		[Export ("speechSynthesizer:didFinishSpeaking:")]
+		void DidFinishSpeaking (NSSpeechSynthesizer sender, bool finishedSpeaking);
+
+		[Export ("speechSynthesizer:willSpeakWord:ofString:")]
+		void WillSpeakWordofString (NSSpeechSynthesizer sender, NSRange characterRange, string theString);
+
+		[Export ("speechSynthesizer:willSpeakPhoneme:")]
+		void WillSpeakPhoneme (NSSpeechSynthesizer sender, short phonemeOpcode);
+
+		[Export ("speechSynthesizer:didEncounterErrorAtIndex:ofString:message:")]
+		void DidEncounterError (NSSpeechSynthesizer sender, uint characterIndex, string theString, string message);
+
+		[Export ("speechSynthesizer:didEncounterSyncMessage:")]
+		void DidEncounterSyncMessage (NSSpeechSynthesizer sender, string message);
+	}
+
+	[BaseType (typeof (NSObject))]
+	interface NSSpellChecker {
+		[Static]
+		[Export ("sharedSpellChecker")]
+		NSSpellChecker SharedSpellChecker { get; }
+
+		[Static]
+		[Export ("sharedSpellCheckerExists")]
+		bool SharedSpellCheckerExists { get; }
+
+		[Static]
+		[Export ("uniqueSpellDocumentTag")]
+		int UniqueSpellDocumentTag { get; }
+
+		[Export ("checkSpellingOfString:startingAt:language:wrap:inSpellDocumentWithTag:wordCount:")]
+		NSRange CheckSpelling (string stringToCheck, int startingOffset, string language, bool wrapFlag, int documentTag, int wordCount);
+
+		[Export ("checkSpellingOfString:startingAt:")]
+		NSRange CheckSpelling (string stringToCheck, int startingOffset);
+
+		[Export ("countWordsInString:language:")]
+		int CountWords (string stringToCount, string language);
+
+		[Export ("checkGrammarOfString:startingAt:language:wrap:inSpellDocumentWithTag:details:")]
+		NSRange CheckGrammar (string stringToCheck, int startingOffset, string language, bool wrapFlag, int documentTag, NSDictionary[] details );
+
+		[Export ("checkString:range:types:options:inSpellDocumentWithTag:orthography:wordCount:")]
+		NSTextCheckingResult [] CheckString (string stringToCheck, NSRange range, NSTextCheckingTypes checkingTypes, NSDictionary options, int documentTag, NSOrthography orthography, int wordCount);
+
+		//FIXME:
+		//[Export ("requestCheckingOfString:range:types:options:inSpellDocumentWithTag:completionHandler:NSIntegersequenceNumber,NSArray*results,NSOrthography*orthography,NSIntegerwordCount))completionHandler")]
+		//int RequestChecking (string stringToCheck, NSRange range, NSTextCheckingTypes checkingTypes, NSDictionary options, int tag, IntPtr completionHandler );
+
+		[Export ("menuForResult:string:options:atLocation:inView:")]
+		NSMenu MenuForResults (NSTextCheckingResult result, string checkedString, NSDictionary options, PointF location, NSView view);
+
+		[Export ("userQuotesArrayForLanguage:")]
+		string [] UserQuotesArrayForLanguage (string language);
+
+		[Export ("userReplacementsDictionary")]
+		NSDictionary UserReplacementsDictionary { get; }
+
+		[Export ("updateSpellingPanelWithMisspelledWord:")]
+		void UpdateSpellingPanelWithMisspelledWord (string word);
+
+		[Export ("updateSpellingPanelWithGrammarString:detail:")]
+		void UpdateSpellingPanelWithGrammarl (string theString, NSDictionary detail);
+
+		[Export ("spellingPanel")]
+		NSPanel SpellingPanel { get; }
+
+		[Export ("substitutionsPanel")]
+		NSPanel SubstitutionsPanel { get; }
+
+		[Export ("updatePanels")]
+		void UpdatePanels ();
+
+		[Export ("ignoreWord:inSpellDocumentWithTag:")]
+		void IgnoreWord (string wordToIgnore, int documentTag);
+
+		[Export ("ignoredWordsInSpellDocumentWithTag:")]
+		string [] IgnoredWords (int documentTag);
+
+		[Export ("setIgnoredWords:inSpellDocumentWithTag:")]
+		void SetIgnoredWords (string [] words, int documentTag);
+
+		[Export ("guessesForWordRange:inString:language:inSpellDocumentWithTag:")]
+		string [] GuessesForWordRange (NSRange range, string theString, string language, int documentTag);
+
+		[Export ("completionsForPartialWordRange:inString:language:inSpellDocumentWithTag:")]
+		string [] CompletionsForPartialWordRange (NSRange range, string theString, string language, int documentTag);
+
+		[Export ("closeSpellDocumentWithTag:")]
+		void CloseSpellDocument (int documentTag);
+
+		[Export ("availableLanguages")]
+		string [] AvailableLanguages { get; }
+
+		[Export ("userPreferredLanguages")]
+		string [] UserPreferredLanguages { get; }
+
+		[Export ("setWordFieldStringValue:")]
+		void SetWordFieldStringValue (string aString);
+
+		[Export ("learnWord:")]
+		void LearnWord (string word);
+
+		[Export ("hasLearnedWord:")]
+		bool HasLearnedWord (string word);
+
+		[Export ("unlearnWord:")]
+		void UnlearnWord (string word);
+
+		//Detected properties
+		[Export ("accessoryView")]
+		NSView AccessoryView { get; set; }
+
+		[Export ("substitutionsPanelAccessoryViewController")]
+		NSViewController SubstitutionsPanelAccessoryViewController { get; set; }
+
+		[Export ("automaticallyIdentifiesLanguages")]
+		bool AutomaticallyIdentifiesLanguages { get; set; }
+
+		[Export ("language")]
+		string Language { get; set; }
 	}
 
 	[BaseType (typeof (NSObject), Delegates=new string [] { "WeakDelegate" }, Events=new Type [] { typeof (NSSoundDelegate) })]
@@ -9165,4 +9501,5 @@ namespace MonoMac.AppKit {
 		[Export ("windowDidEndLiveResize:"), EventArgs ("NSNotification")]
 		void DidEndLiveResize (NSNotification  notification);
 	}
+	
 }
