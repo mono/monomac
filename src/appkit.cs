@@ -10038,5 +10038,233 @@ namespace MonoMac.AppKit {
 		[Export ("windowDidEndLiveResize:"), EventArgs ("NSNotification")]
 		void DidEndLiveResize (NSNotification  notification);
 	}
+
+	delegate void NSWorkspaceUrlHandler (NSDictionary newUrls, NSError error);
+	
+	[BaseType (typeof (NSObject))]
+	interface NSWorkspace {
+		[Static]
+		[Export ("sharedWorkspace")]
+		NSWorkspace SharedWorkspace { get; }
+		
+		[Export ("notificationCenter")]
+		NSNotificationCenter NotificationCenter { get; }
+		
+		[Export ("openFile:")]
+		bool OpenFile (string fullPath);
+		
+		[Export ("openFile:withApplication:")]
+		bool OpenFile (string fullPath, string appName);
+		
+		[Export ("openFile:withApplication:andDeactivate:")]
+		bool OpenFile (string fullPath, string appName, bool deactivate);
+		
+		[Export ("openFile:fromImage:at:inView:")]
+		bool OpenFile (string fullPath, NSImage anImage, PointF point, NSView aView);
+		
+		[Export ("openURL:")]
+		bool OpenURL (NSUrl url);
+		
+		[Export ("launchApplication:")]
+		bool LaunchApplication (string appName);
+		
+		[Export ("launchApplicationAtURL:options:configuration:error:")]
+		NSRunningApplication LaunchApplication (NSUrl url, NSWorkspaceLaunchOptions options, NSDictionary configuration, NSError error );
+		
+		[Export ("launchApplication:showIcon:autolaunch:")]
+		bool LaunchApplication (string appName, bool showIcon, bool autolaunch);
+		
+		[Export ("fullPathForApplication:")]
+		string FullPathForApplication (string appName);
+		
+		[Export ("selectFile:inFileViewerRootedAtPath:")]
+		bool SelectFile (string fullPath, string rootFullPath);
+		
+		[Export ("activateFileViewerSelectingURLs:")]
+		void ActivateFileViewer (NSUrl[] fileURLs);
+		
+		[Export ("showSearchResultsForQueryString:")]
+		bool ShowSearchResults (string queryString );
+		
+		[Export ("noteFileSystemChanged:")]
+		void NoteFileSystemChanged (string path);
+		
+		[Export ("getInfoForFile:application:type:")]
+		bool GetInfo (string fullPath, string appName, string type);
+		
+		[Export ("isFilePackageAtPath:")]
+		bool IsFilePackage (string fullPath);
+		
+		[Export ("iconForFile:")]
+		NSImage IconForFile (string fullPath);
+		
+		[Export ("iconForFiles:")]
+		NSImage IconForFiles (string[] fullPaths);
+		
+		[Export ("iconForFileType:")]
+		NSImage IconForFileType (string fileType);
+		
+		[Export ("setIcon:forFile:options:")]
+		bool SetIconforFile (NSImage image, string fullPath, NSWorkspaceIconCreationOptions options);
+		
+		[Export ("fileLabels")]
+		string[] FileLabels { get ; }
+		
+		[Export ("fileLabelColors")]
+		NSColor[] FileLabelColors { get; }
+		
+		[Export ("recycleURLs:completionHandler:")]
+		void RecycleUrls (NSDictionary urls, NSWorkspaceUrlHandler completionHandler);
+		
+		[Export ("duplicateURLs:completionHandler:")]
+		void DuplicateUrls (NSDictionary urls, NSWorkspaceUrlHandler completionHandler);
+		
+		[Export ("getFileSystemInfoForPath:isRemovable:isWritable:isUnmountable:description:type:")]
+		bool GetFileSystemInfo (string fullPath, bool removableFlag, bool writableFlag, bool unmountableFlag, string description, string fileSystemType);
+		
+		[Export ("performFileOperation:source:destination:files:tag:")]
+		bool PerformFileOperation (string operation, string source, string destination, string[] files, int tag);
+		
+		[Export ("unmountAndEjectDeviceAtPath:")]
+		bool UnmountAndEjectDevice(string path);
+
+		// FIXME: out NSError
+		//[Export ("unmountAndEjectDeviceAtURL:error:")]
+		//bool UnmountAndEjectDevice (NSUrl url, out NSError error );
+		
+		[Export ("extendPowerOffBy:")]
+		int ExtendPowerOffBy (int requested);
+		
+		[Export ("hideOtherApplications")]
+		void HideOtherApplications ();
+		
+		[Export ("mountedLocalVolumePaths")]
+		string[] MountedLocalVolumePaths { get; }
+		
+		[Export ("mountedRemovableMedia")]
+		string[] MountedRemovableMedia {  get; }
+		
+		[Export ("URLForApplicationWithBundleIdentifier:")]
+		NSUrl UrlForApplication (string bundleIdentifier );
+		
+		[Export ("URLForApplicationToOpenURL:")]
+		NSUrl UrlForApplication (NSUrl url );
+		
+		[Export ("absolutePathForAppBundleWithIdentifier:")]
+		string AbsolutePathForAppBundle (string bundleIdentifier);
+		
+		[Export ("launchAppWithBundleIdentifier:options:additionalEventParamDescriptor:launchIdentifier:")]
+		bool LaunchApp (string bundleIdentifier, NSWorkspaceLaunchOptions options, NSAppleEventDescriptor descriptor, NSNumber identifier);
+		
+		[Export ("openURLs:withAppBundleIdentifier:options:additionalEventParamDescriptor:launchIdentifiers:")]
+		bool OpenURLs (NSUrl[] urls, string bundleIdentifier, NSWorkspaceLaunchOptions options, NSAppleEventDescriptor descriptor, string[] identifiers);
+		
+		[Export ("launchedApplications")]
+		NSDictionary [] LaunchedApplications { get; }
+		
+		[Export ("activeApplication")]
+		NSDictionary ActiveApplication { get; }
+		
+		[Export ("typeOfFile:error:")]
+		string TypeOfFile (string absoluteFilePath, NSError outError);
+		
+		[Export ("localizedDescriptionForType:")]
+		string LocalizedDescription (string typeName);
+		
+		[Export ("preferredFilenameExtensionForType:")]
+		string PreferredFilenameExtension (string typeName);
+		
+		[Export ("filenameExtension:isValidForType:")]
+		bool IsFilenameExtensionValid (string filenameExtension, string typeName);
+		
+		[Export ("type:conformsToType:")]
+		bool TypeConformsTo (string firstTypeName, string secondTypeName);
+		
+		[Export ("setDesktopImageURL:forScreen:options:error:")]
+		bool SetDesktopImageUrl (NSUrl url, NSScreen screen, NSDictionary options, NSError error );
+		
+		[Export ("desktopImageURLForScreen:")]
+		NSUrl DesktopImageUrl (NSScreen screen );
+		
+		[Export ("desktopImageOptionsForScreen:")]
+		NSDictionary DesktopImageOptions (NSScreen screen);		
+		
+		[Export ("runningApplications")]
+		NSDictionary[] RunningApplications { get; }
+	
+	}
+	
+	
+	[BaseType (typeof (NSObject))]
+	interface NSRunningApplication {
+		[Export ("terminated")]
+		bool terminated { [Bind ("isTerminated")] get;  }
+		
+		[Export ("finishedLaunching")]
+		bool finishedLaunching { [Bind ("isFinishedLaunching")] get;  }
+		
+		[Export ("hidden")]
+		bool hidden { [Bind ("isHidden")] get;  }
+		
+		[Export ("active")]
+		bool active { [Bind ("isActive")] get;  }
+		
+		[Export ("activationPolicy")]
+		NSApplicationActivationPolicy activationPolicy { get;  }
+		
+		[Export ("localizedName")]
+		string localizedName { get;  }
+		
+		[Export ("bundleIdentifier")]
+		string bundleIdentifier { get;  }
+		
+		[Export ("bundleURL")]
+		NSUrl bundleURL { get;  }
+		
+		[Export ("executableURL")]
+		NSUrl executableURL { get;  }
+		
+		// changed pid_t to int
+		[Export ("processIdentifier")]
+		int processIdentifier { get;  }
+		
+		[Export ("launchDate")]
+		NSDate launchDate { get;  }
+		
+		[Export ("icon")]
+		NSImage icon { get;  }
+		
+		[Export ("executableArchitecture")]
+		int executableArchitecture { get;  }
+		
+		[Export ("hide")]
+		bool Hide { get; }
+		
+		[Export ("unhide")]
+		bool Unhide { get; }
+		
+		[Export ("activateWithOptions:")]
+		bool Activate (NSApplicationActivationOptions options);
+		
+		[Export ("terminate")]
+		bool Terminate ();
+		
+		[Export ("forceTerminate")]
+		bool ForceTerminate ();
+		
+		[Static]
+		[Export ("runningApplicationsWithBundleIdentifier:")]
+		NSRunningApplication[] GetRunningApplications (string bundleIdentifier);
+		
+		[Static]
+		[Export ("runningApplicationWithProcessIdentifier:")]
+		NSRunningApplication GetRunningApplication (int pid);
+		
+		[Static]
+		[Export ("currentApplication")]
+		NSRunningApplication CurrentApplication { get ; }
+	
+	}
+	
 	
 }

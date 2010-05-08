@@ -91,4 +91,10 @@ namespace MonoMac.Foundation {
 		NSRange Range { get;  }
 
 	}
+
+	[BaseType (typeof (NSObject))]
+	interface NSAppleEventDescriptor {
+		[Export ("nullDescriptor"), Static]
+		NSAppleEventDescriptor Null { get; }
+	}
 }

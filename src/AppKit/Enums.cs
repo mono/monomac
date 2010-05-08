@@ -1160,4 +1160,25 @@ namespace MonoMac.AppKit {
 		PlainText,
 		Rounded
 	}
+
+	[Flags]
+	public enum NSWorkspaceLaunchOptions {
+		Print = 2,
+		InhibitingBackgroundOnly = 0x80,
+		WithoutAddingToRecents = 0x100,
+		WithoutActivation = 0x200,
+		Async = 0x10000,
+		AllowingClassicStartup = 0x20000,
+		PreferringClassic = 0x40000,
+		NewInstance = 0x80000,
+		Hide = 0x100000,
+		HideOthers = 0x200000,
+		Default = Async | AllowingClassicStartup
+	}
+
+	[Flags]
+	public enum NSWorkspaceIconCreationOptions {
+		NSExcludeQuickDrawElements   = 1 << 1,
+		NSExclude10_4Elements       = 1 << 2
+	}
 } 
