@@ -101,13 +101,16 @@ namespace MonoMac.ObjCRuntime {
 			il.Emit (OpCodes.Call, minfo);
 
 #if !MONOMAC_BOOTSTRAP
-			// FIXME: Handle the case where a byref arg is still null
 			for (int i = 2, j = 0; i < ParameterTypes.Length; i++) {
 				if (ParameterTypes [i].IsByRef) {
-					il.Emit (OpCodes.Ldarg, i);
+					Label done = il.DefineLabel ();
+					il.Emit (OpCodes.Ldloc, j++);
+					il.Emit (OpCodes.Brfalse, done);
 					il.Emit (OpCodes.Ldloc, j++);
 					il.Emit (OpCodes.Call, gethandle);
+					il.Emit (OpCodes.Ldarg, i);
 					il.Emit (OpCodes.Stind_I);
+					il.MarkLabel (done);
 				}
 			}
 #endif
