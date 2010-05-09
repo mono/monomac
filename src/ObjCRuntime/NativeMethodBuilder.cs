@@ -33,6 +33,8 @@ namespace MonoMac.ObjCRuntime {
 		private static ConstructorInfo newnsstring = typeof (NSString).GetConstructor (new Type [] { typeof (string) });
 #if !MONOMAC_BOOTSTRAP
 		private static MethodInfo buildarray = typeof (NSArray).GetMethod ("FromNSObjects", BindingFlags.Static | BindingFlags.Public);
+		private static MethodInfo getobject = typeof (Runtime).GetMethod ("GetNSObject", BindingFlags.Static | BindingFlags.Public);
+		private static MethodInfo gethandle = typeof (NSObject).GetMethod ("get_Handle", BindingFlags.Static | BindingFlags.Public);
 #endif
 
 		private MethodInfo minfo;
@@ -55,7 +57,10 @@ namespace MonoMac.ObjCRuntime {
 			ParameterTypes [1] = typeof (Selector);
 
 			for (int i = 0; i < parms.Length; i++) {
-				ParameterTypes [i + 2] = parms [i].ParameterType;
+				if (parms [i].ParameterType.IsByRef && (parms[i].ParameterType.IsSubclassOf (typeof (NSObject)) || parms[i].ParameterType == typeof (NSObject)))
+					ParameterTypes [i + 2] = typeof (IntPtr).MakeByRefType ();
+				else
+					ParameterTypes [i + 2] = parms [i].ParameterType;
 				Signature += TypeConverter.ToNative (parms [i].ParameterType);
 			}
 			
@@ -68,15 +73,44 @@ namespace MonoMac.ObjCRuntime {
 			DynamicMethod method = new DynamicMethod (Guid.NewGuid ().ToString (), rettype, ParameterTypes, module, true);
 			ILGenerator il = method.GetILGenerator ();
 			
+			
+			for (int i = 2; i < ParameterTypes.Length; i++)
+				if (ParameterTypes [i].IsByRef)
+					il.DeclareLocal (ParameterTypes [i].GetElementType ());
+
+#if !MONOMAC_BOOTSTRAP
+			for (int i = 2, j = 0; i < ParameterTypes.Length; i++) {
+				if (ParameterTypes [i].IsByRef) {
+					il.Emit (OpCodes.Ldarg, i);
+					il.Emit (OpCodes.Ldind_I);
+					il.Emit (OpCodes.Call, getobject);
+					il.Emit (OpCodes.Stloc, j++);
+				}
+			}
+#endif
+
 			if (!minfo.IsStatic)
 				il.Emit (OpCodes.Ldarg_0);
 
-			for (int i = 2; i < ParameterTypes.Length; i++) {
+			for (int i = 2, j = 0; i < ParameterTypes.Length; i++) {
 				il.Emit (OpCodes.Ldarg, i);
+				if (ParameterTypes [i].IsByRef)
+					il.Emit (OpCodes.Ldloca_S, j++);
 			}
 	
 			il.Emit (OpCodes.Call, minfo);
 
+#if !MONOMAC_BOOTSTRAP
+			// FIXME: Handle the case where a byref arg is still null
+			for (int i = 2, j = 0; i < ParameterTypes.Length; i++) {
+				if (ParameterTypes [i].IsByRef) {
+					il.Emit (OpCodes.Ldarg, i);
+					il.Emit (OpCodes.Ldloc, j++);
+					il.Emit (OpCodes.Call, gethandle);
+					il.Emit (OpCodes.Stind_I);
+				}
+			}
+#endif
 			if (rettype == typeof (string)) {
 				il.Emit (OpCodes.Newobj, newnsstring);
 #if !MONOMAC_BOOTSTRAP
