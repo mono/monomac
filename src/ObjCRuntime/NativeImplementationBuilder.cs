@@ -92,7 +92,7 @@ namespace MonoMac.ObjCRuntime {
 		}
 
 		private bool NeedsCustomMarshaler (Type t) {
-			if (t == typeof (NSObject))
+			if (t == typeof (NSObject) || t.IsSubclassOf (typeof (NSObject)))
 				return true;
 			if (t == typeof (Selector))
 				return true;
