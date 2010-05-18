@@ -2647,6 +2647,28 @@ namespace MonoMac.AppKit {
 	}
 
 	[BaseType (typeof (NSObject))]
+	interface NSController {
+		[Export ("objectDidBeginEditing:")]
+		void ObjectDidBeginEditing (NSObject editor);
+
+		[Export ("objectDidEndEditing:")]
+		void ObjectDidEndEditing (NSObject editor);
+
+		[Export ("discardEditing")]
+		void DiscardEditing ();
+
+		[Export ("commitEditing")]
+		bool CommitEditing { get; }
+
+		[Export ("commitEditingWithDelegate:didCommitSelector:contextInfo:")]
+		void CommitEditingWithDelegate (NSObject delegate1, Selector didCommitSelector, IntPtr contextInfo);
+
+		[Export ("isEditing")]
+		bool IsEditing { get; }
+
+	}
+
+	[BaseType (typeof (NSObject))]
 	interface NSCursor {
 		[Static]
 		[Export ("currentCursor")]
@@ -3201,6 +3223,64 @@ namespace MonoMac.AppKit {
 		[Abstract]
 		[Export ("namesOfPromisedFilesDroppedAtDestination:")]
 		string [] romisedFilesDroppedAtDestination (NSUrl dropDestination);
+	}
+
+
+	[BaseType (typeof (NSResponder))]
+	interface NSDrawer {
+		[Export ("initWithContentSize:preferredEdge:")]
+		IntPtr Constructor (SizeF contentSize, NSRectEdge edge);
+
+		[Export ("parentWindow")]
+		NSWindow ParentWindow { get; set; }
+
+		[Export ("contentView")]
+		NSView ContentView { get; set; }
+
+		[Export ("preferredEdge")]
+		NSRectEdge PreferredEdge { get; set; }
+
+		[Export ("delegate")]
+		NSDrawer Delegate { get; set; }
+
+		//[Export ("open")]
+		//void Open ();
+
+		[Export ("openOnEdge:")]
+		void OpenOnEdge (NSRectEdge edge);
+
+		//[Export ("close")]
+		//void Close ();
+
+		[Export ("open:")]
+		void Open (NSObject sender);
+
+		[Export ("close:")]
+		void Close (NSObject sender);
+
+		[Export ("toggle:")]
+		void Toggle (NSObject sender);
+
+		[Export ("state")]
+		int State { get; }
+
+		[Export ("edge")]
+		NSRectEdge Edge { get; }
+
+		[Export ("contentSize")]
+		SizeF ContentSize { get; set; }
+
+		[Export ("minContentSize")]
+		SizeF MinContentSize { get; set; }
+
+		[Export ("maxContentSize")]
+		SizeF MaxContentSize { get; set; }
+
+		[Export ("leadingOffset")]
+		float LeadingOffset { get; set; }
+
+		[Export ("trailingOffset")]
+		float TrailingOffset { get; set; }
 	}
 
 	[BaseType (typeof (NSObject))]
