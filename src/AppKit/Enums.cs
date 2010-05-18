@@ -1181,4 +1181,10 @@ namespace MonoMac.AppKit {
 		NSExcludeQuickDrawElements   = 1 << 1,
 		NSExclude10_4Elements       = 1 << 2
 	}
+
+	public enum NSPathStyle {
+		NSPathStyleStandard,
+		NSPathStyleNavigationBar,
+		NSPathStylePopUp
+	}
 } 

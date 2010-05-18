@@ -5320,6 +5320,82 @@ namespace MonoMac.AppKit {
 		NSObject InitWithPasteboardPropertyListofType (NSObject propertyList, string type);
 	}
 	
+	[BaseType (typeof (NSActionCell), Events=new Type [] { typeof (NSPathCellDelegate) }, Delegates=new string [] { "WeakDelegate" })]
+	interface NSPathCell {
+		[Export ("pathStyle")]
+		NSPathStyle PathStyle { get; set; }
+
+		[Export ("URL")]
+		NSUrl Url { get; set; }
+
+		[Export ("setObjectValue:")]
+		void SetObjectValue (NSObject obj);
+
+		[Export ("allowedTypes")]
+		string [] AllowedTypes { get; set; }
+
+		[Export ("delegate"), NullAllowed]
+		NSObject WeakDelegate { get; set; }
+
+		[Wrap ("WeakDelegate")]
+		NSPathCellDelegate Delegate { get; set; }
+
+		[Static, Export ("pathComponentCellClass")]
+		Class PathComponentCellClass { get; }
+
+		[Export ("pathComponentCells")]
+		NSPathComponentCell [] PathComponentCells { get; set; }
+
+		[Export ("rectOfPathComponentCell:withFrame:inView:")]
+		RectangleF GetRect (NSPathComponentCell componentCell, RectangleF withFrame, NSView inView);
+
+		[Export ("pathComponentCellAtPoint:withFrame:inView:")]
+		NSPathComponentCell GetPathComponent (PointF point, RectangleF frame, NSView view);
+
+		[Export ("clickedPathComponentCell")]
+		NSPathComponentCell ClickedPathComponentCell { get; }
+
+		[Export ("mouseEntered:withFrame:inView:")]
+		void MouseEntered (NSEvent evt, RectangleF frame, NSView view);
+
+		[Export ("mouseExited:withFrame:inView:")]
+		void MouseExited (NSEvent evt, RectangleF frame, NSView view);
+
+		[Export ("doubleAction")]
+		Selector DoubleAction { get; set; }
+
+		[Export ("backgroundColor")]
+		NSColor BackgroundColor { get; set; }
+
+		[Export ("placeholderString")]
+		string PlaceholderString { get; set; }
+
+		[Export ("placeholderAttributedString")]
+		NSAttributedString PlaceholderAttributedString { get; set; }
+
+		[Export ("setControlSize:")]
+		void SetControlSize (NSControlSize size);
+	}
+
+	[BaseType (typeof (NSObject))]
+	[Model]
+	interface NSPathCellDelegate {
+		[Export ("pathCell:willDisplayOpenPanel:"), EventArgs ("NSPathCellDisplayPanel")]
+		void WillDisplayOpenPanel (NSPathCell pathCell, NSOpenPanel openPanel);
+
+		[Export ("pathCell:willPopUpMenu:"), EventArgs ("NSPathCellMenu")]
+		void WillPopupMenu (NSPathCell pathCell, NSMenu menu);
+	}
+
+	[BaseType (typeof (NSTextFieldCell))]
+	interface NSPathComponentCell {
+		[Export ("image")]
+		NSImage Image { get; set; }
+
+		[Export ("URL")]
+		NSUrl Url { get; set; }
+	}
+
 	[BaseType (typeof (NSButton))]
 	interface NSPopUpButton {
 		[Export ("initWithFrame:pullsDown:")]
