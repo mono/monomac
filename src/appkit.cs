@@ -2512,6 +2512,107 @@ namespace MonoMac.AppKit {
 
 	}
 
+
+	[BaseType (typeof (NSTextField))]
+	interface NSComboBox {
+		[Export ("hasVerticalScroller")]
+		bool HasVerticalScroller { get; set; }
+
+		[Export ("intercellSpacing")]
+		SizeF IntercellSpacing { get; set; }
+
+		[Export ("itemHeight")]
+		float ItemHeight { get; set; }
+
+		[Export ("numberOfVisibleItems")]
+		int VisibleItems { get; set; }
+
+		[Export ("buttonBordered:")]
+		bool ButtonBordered { [Bind ("isButtonBordered")] get; set; }
+
+		[Export ("reloadData")]
+		void ReloadData ();
+
+		[Export ("noteNumberOfItemsChanged")]
+		void NoteNumberOfItemsChanged ();
+
+		[Export ("usesDataSource")]
+		bool UsesDataSource { get; set; }
+
+		[Export ("scrollItemAtIndexToTop:")]
+		void ScrollItemAtIndexToTop (int scrollItemIndex);
+
+		[Export ("scrollItemAtIndexToVisible:")]
+		void ScrollItemAtIndexToVisible (int scrollItemIndex);
+
+		[Export ("selectItemAtIndex:")]
+		void SelectItem (int itemIndex);
+
+		[Export ("deselectItemAtIndex:")]
+		void DeselectItem (int itemIndex);
+
+		//- (NSInteger)indexOfSelectedItem;
+		[Export ("indexOfSelectedItem")]
+		int SelectedIndex { get; }
+
+		[Export ("numberOfItems")]
+		int Count { get; }
+
+		[Export ("completes")]
+		bool Completes { get; set; }
+
+		[Export ("dataSource")]
+		NSComboBoxDataSource DataSource { get; set; }
+
+		[Export ("addItemWithObjectValue:")]
+		void Add (NSObject object1);
+
+		[Export ("addItemsWithObjectValues:")]
+		void Add (NSObject [] items);
+
+		[Export ("insertItemWithObjectValue:atIndex:")]
+		void Insert (NSObject object1, int index);
+
+		[Export ("removeItemWithObjectValue:")]
+		void Remove (NSObject object1);
+
+		[Export ("removeItemAtIndex:")]
+		void RemoveAt (int index);
+
+		[Export ("removeAllItems")]
+		void RemoveAll ();
+
+		[Export ("selectItemWithObjectValue:")]
+		void Select (NSObject object1);
+
+		[Export ("itemObjectValueAtIndex:")]
+		NSComboBox GetItem (int index);
+
+		[Export ("objectValueOfSelectedItem")]
+		NSObject SelectedValue { get; }
+
+		[Export ("indexOfItemWithObjectValue:")]
+		int IndexOf (NSObject object1);
+
+		[Export ("objectValues")]
+		NSObject [] Values { get; }
+	}
+
+	[BaseType (typeof (NSObject))]
+	interface NSComboBoxDataSource {
+		[Export ("comboBox:objetValueForItemAtIndex:")]
+		NSObject ObjectValueForItem (NSComboBox comboBox, int index);
+		
+		[Export ("numberOfItemsInComboBox:")]
+		int ItemCount (NSComboBox comboBox);
+		
+		[Export ("comboBox:completedString:")]
+		string CompletedString (NSComboBox comboBox, string uncompletedString);
+		
+		[Export ("comboBox:indexOfItemWithStringValue:")]
+		int IndexOfItem (NSComboBox comboBox, string value);
+	}
+	
 	[BaseType (typeof (NSView))]
 	interface NSControl {
 		[Export ("initWithFrame:")]
@@ -6651,7 +6752,7 @@ namespace MonoMac.AppKit {
 
 		//Detected properties
 		[Export ("numberOfTickMarks")]
-		int NumberOfTickMarks { get; set; }
+		int TickMarks { get; set; }
 
 		[Export ("tickMarkPosition")]
 		NSTickMarkPosition TickMarkPosition { get; set; }
