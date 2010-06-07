@@ -1187,4 +1187,22 @@ namespace MonoMac.AppKit {
 		NSPathStyleNavigationBar,
 		NSPathStylePopUp
 	}
+
+	public enum NSTabViewType {
+		NSTopTabsBezelBorder,
+		NSLeftTabsBezelBorder,
+		NSBottomTabsBezelBorder,
+		NSRightTabsBezelBorder,
+		NSNoTabsBezelBorder,
+		NSNoTabsLineBorder,
+		NSNoTabsNoBorder,
+	}
+
+	public enum NSTabState {
+		Selected, Background, Pressed
+	}
+
+	public enum NSLevelIndicatorStyle {
+		Relevancy, ContinuousCapacity, DiscreteCapacity, RatingLevel
+	}
 } 

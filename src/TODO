@@ -7,9 +7,17 @@ Missing: @interface NSObject(NSDraggingSource)
 	Discussion: perhaps those should be turned into INSDraggingSource?
 	as they are real interfaces
 
+From Foundation:
+NSFetchRequest
+NSManagedObjectContext
+
 Figure out how to prototype things like:
 
        void Addaccessorycontroller (NSViewController<NSPrintPanelAccessorizing> foo)
+
+NSTreeNode
+	It exposes an MutableChildren method that allows the caller to add/remove
+	nodes, but it is not currently bound since we do not have NSMutableArray
 
 Right now we clear the type and just make it an NSViewController,
 without requiring that it implements those extra methods.
@@ -53,13 +61,9 @@ IsOpaque vs Opaque and other similar properties.
 #import <AppKit/NSInterfaceStyle.h>
 #import <AppKit/NSNibDeclarations.h>
 #import <AppKit/NSProgressIndicator.h>
-#import <AppKit/NSTabView.h>
-#import <AppKit/NSTabViewItem.h>
 #import <AppKit/NSMenuItemCell.h>
 #import <AppKit/NSPopUpButtonCell.h>
 #import <AppKit/NSPICTImageRep.h>
-#import <AppKit/NSStatusBar.h>
-#import <AppKit/NSStatusItem.h>
 #import <AppKit/NSMovie.h>
 #import <AppKit/NSMovieView.h>
 #import <AppKit/NSPDFImageRep.h>
@@ -77,19 +81,12 @@ IsOpaque vs Opaque and other similar properties.
 #import <AppKit/NSGlyphInfo.h>
 #import <AppKit/NSATSTypesetter.h>
 #import <AppKit/NSGlyphGenerator.h>
-#import <AppKit/NSSearchField.h>
-#import <AppKit/NSSearchFieldCell.h>
-#import <AppKit/NSObjectController.h>
 #import <AppKit/NSArrayController.h>
 #import <AppKit/NSDictionaryController.h>
-#import <AppKit/NSTreeNode.h>
-#import <AppKit/NSTreeController.h>
 #import <AppKit/NSUserDefaultsController.h>
 #import <AppKit/NSKeyValueBinding.h>
 #import <AppKit/NSDatePickerCell.h>
 #import <AppKit/NSDatePicker.h>
-#import <AppKit/NSLevelIndicatorCell.h>
-#import <AppKit/NSLevelIndicator.h>
 #import <AppKit/NSPersistentDocument.h>
 #import <AppKit/NSRuleEditor.h>
 #import <AppKit/NSPredicateEditor.h>

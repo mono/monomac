@@ -4490,6 +4490,82 @@ namespace MonoMac.AppKit {
 		//bool InstantiateNib (NSObject owner, NSArray topLevelObjects);
 	}	
 
+	[BaseType (typeof (NSController))]
+	interface NSObjectController {
+		[Export ("initWithContent:")]
+		IntPtr Constructor (NSObject content);
+
+		[Export ("content")]
+		NSObjectController Content { get; set; }
+
+		[Export ("selection")]
+		NSObjectController Selection { get; }
+
+		[Export ("selectedObjects")]
+		NSObject [] SelectedObjects { get; }
+
+		[Export ("automaticallyPreparesContent")]
+		bool AutomaticallyPreparesContent { get; set; }
+
+		[Export ("prepareContent")]
+		void PrepareContent ();
+
+		[Export ("objectClass")]
+		Class ObjectClass { get; set; }
+
+		// TODO: Geoff, can you review if we need to make this a [Factory]?
+		[Export ("newObject")]
+		NSObjectController NewObject { get; }
+
+		[Export ("addObject:")]
+		void AddObject (NSObject object1);
+
+		[Export ("removeObject:")]
+		void RemoveObject (NSObject object1);
+
+		[Export ("setEditable:")]
+		void SetEditable (bool flag);
+
+		[Export ("editable")]
+		bool Editable { [Bind ("isEditable")] get; set; }
+
+		[Export ("add:")]
+		void Add (NSObject sender);
+
+		[Export ("canAdd")]
+		bool CanAdd { get; }
+
+		[Export ("remove:")]
+		void Remove (NSObject sender);
+
+		[Export ("canRemove")]
+		bool CanRemove { get; }
+
+		[Export ("validateUserInterfaceItem:")]
+		bool ValidateUserInterfaceItem (NSObject item);
+
+		//[Export ("managedObjectContext")]
+		//NSManagedObjectContext ManagedObjectContext { get; set; }
+
+		[Export ("entityName")]
+		string EntityName { get; set; }
+
+		[Export ("fetchPredicate")]
+		NSPredicate FetchPredicate { get; set; }
+
+		//[Export ("fetchWithRequest:merge:error:")]
+		//bool FetchWithRequestMerge (NSFetchRequest fetchRequest, bool merge, NSError error);
+
+		[Export ("fetch:")]
+		void Fetch (NSObject sender);
+
+		[Export ("usesLazyFetching")]
+		bool UsesLazyFetching { get; set; }
+
+		//[Export ("defaultFetchRequest")]
+		//NSFetchRequest DefaultFetchRequest { get; }
+	}
+
 	[BaseType (typeof (NSSavePanel), Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (NSOpenSavePanelDelegate)})]
 	interface NSOpenPanel {
 		[Static]
@@ -5150,10 +5226,80 @@ namespace MonoMac.AppKit {
 		NSObject KeyCell { get; set; }
 	}
 
+	[BaseType (typeof (NSControl))]
+	interface NSLevelIndicator {
+		[Export ("minValue")]
+		double MinValue { get; set; }
+
+		[Export ("maxValue")]
+		double MaxValue { get; set; }
+
+		[Export ("warningValue")]
+		double WarningValue { get; set; }
+
+		[Export ("criticalValue")]
+		double CriticalValue { get; set; }
+
+		[Export ("tickMarkPosition")]
+		NSTickMarkPosition TickMarkPosition { get; set; }
+
+		[Export ("numberOfTickMarks")]
+		int TickMarkCount { get; set; }
+
+		[Export ("numberOfMajorTickMarks")]
+		int MajorTickMarkCount { get; set; }
+
+		[Export ("tickMarkValueAtIndex:")]
+		double TickMarkValueAt (int index);
+
+		[Export ("rectOfTickMarkAtIndex:")]
+		RectangleF RectOfTickMark (int index);
+	}
+
+	[BaseType (typeof (NSActionCell))]
+	interface NSLevelIndicatorCell {
+		[Export ("initWithLevelIndicatorStyle:")]
+		IntPtr Constructor (NSLevelIndicatorStyle levelIndicatorStyle);
+
+		[Export ("levelIndicatorStyle")]
+		NSLevelIndicatorStyle LevelIndicatorStyle { get; set; }
+
+		[Export ("minValue")]
+		double MinValue { get; set; }
+
+		[Export ("maxValue")]
+		double MaxValue { get; set; }
+
+		[Export ("warningValue")]
+		double WarningValue { get; set; }
+
+		[Export ("criticalValue")]
+		double CriticalValue { get; set; }
+
+		[Export ("tickMarkPosition")]
+		NSTickMarkPosition TickMarkPosition { get; set; }
+
+		[Export ("numberOfTickMarks")]
+		int TickMarkCount { get; set; }
+
+		[Export ("numberOfMajorTickMarks")]
+		int MajorTickMarkCount { get; set; }
+
+		[Export ("rectOfTickMarkAtIndex:")]
+		RectangleF RectOfTickMarkAt (int index);
+
+		[Export ("tickMarkValueAtIndex:")]
+		double TickMarkValueAt (int index);
+
+		[Export ("setImage:")]
+		void SetImage (NSImage image);
+	}
+
 	[BaseType (typeof (NSObject))]
 	interface NSLayoutManager {
 	}
 	
+
 	[Model]
 	[BaseType (typeof (NSObject))]
 	interface NSMatrixDelegate {
@@ -6485,6 +6631,57 @@ namespace MonoMac.AppKit {
 		bool ScrollsDynamically { get; set; }
 	}
 
+	[BaseType (typeof (NSTextField))]
+	interface NSSearchField {
+		[Export ("recentSearches")]
+		string [] RecentSearches { get; set; }
+
+		[Export ("recentsAutosaveName")]
+		string RecentsAutosaveName { get; set; }
+	}
+
+	[BaseType (typeof (NSTextFieldCell))]
+	interface NSSearchFieldCell {
+		[Export ("searchButtonCell")]
+		NSButtonCell SearchButtonCell { get; set; }
+
+		[Export ("cancelButtonCell")]
+		NSButtonCell CancelButtonCell { get; set; }
+
+		[Export ("resetSearchButtonCell")]
+		void ResetSearchButtonCell ();
+
+		[Export ("resetCancelButtonCell")]
+		void ResetCancelButtonCell ();
+
+		[Export ("searchTextRectForBounds:")]
+		RectangleF SearchTextRectForBounds (RectangleF rect);
+
+		[Export ("searchButtonRectForBounds:")]
+		RectangleF SearchButtonRectForBounds (RectangleF rect);
+
+		[Export ("cancelButtonRectForBounds:")]
+		RectangleF CancelButtonRectForBounds (RectangleF rect);
+
+		[Export ("searchMenuTemplate")]
+		NSMenu SearchMenuTemplate { get; set; }
+
+		[Export ("sendsWholeSearchString")]
+		bool SendsWholeSearchString { get; set; }
+
+		[Export ("maximumRecents")]
+		int MaximumRecents { get; set; }
+
+		[Export ("recentSearches")]
+		string [] RecentSearches { get; set; }
+
+		[Export ("recentsAutosaveName")]
+		string RecentsAutosaveName { get; set; }
+
+		[Export ("sendsSearchStringImmediately")]
+		bool SendsSearchStringImmediately { get; set; }
+	}
+	
 	[BaseType (typeof (NSControl))]
 	interface NSSegmentedControl {
 		[Export ("selectSegmentWithTag:")]
@@ -7158,6 +7355,80 @@ namespace MonoMac.AppKit {
 
 		[Export ("splitViewDidResizeSubviews:")]
 		void DidResizeSubviews (NSNotification notification);
+	}
+
+	[BaseType (typeof (NSObject))]
+	interface NSStatusBar {
+		[Static, Export ("systemStatusBar")]
+		NSStatusBar SystemStatusBar { get; }
+
+		[Export ("statusItemWithLength:")]
+		NSStatusItem CreateStatusItem (float length);
+
+		[Export ("removeStatusItem:")]
+		void RemoveStatusItem (NSStatusItem item);
+
+		[Export ("isVertical")]
+		bool IsVertical { get; }
+
+		[Export ("thickness")]
+		float Thickness { get; }
+	}
+
+	[BaseType (typeof (NSObject))]
+	interface NSStatusItem {
+		[Export ("statusBar")]
+		NSStatusBar StatusBar { get; }
+
+		[Export ("length")]
+		float Length { get; set; }
+
+		[Export ("action")]
+		Selector Action { get; set; }
+
+		[Export ("sendActionOn:")]
+		int SendActionOn (NSEventMask mask);
+
+		[Export ("popUpStatusItemMenu:")]
+		void PopUpStatusItemMenu (NSMenu menu);
+
+		[Export ("drawStatusBarBackgroundInRect:withHighlight:")]
+		void DrawStatusBarBackgroundInRectwithHighlight (RectangleF rect, bool highlight);
+
+		//Detected properties
+		[Export ("doubleAction")]
+		Selector DoubleAction { get; set; }
+
+		[Export ("target")]
+		NSObject Target { get; set; }
+
+		[Export ("title")]
+		string Title { get; set; }
+
+		[Export ("attributedTitle")]
+		NSAttributedString AttributedTitle { get; set; }
+
+		[Export ("image")]
+		NSImage Image { get; set; }
+
+		[Export ("alternateImage")]
+		NSImage AlternateImage { get; set; }
+
+		[Export ("menu")]
+		NSMenu Menu { get; set; }
+
+		[Export ("enabled")]
+		bool Enabled { [Bind ("isEnabled")]get; set; }
+
+		[Export ("toolTip")]
+		string ToolTip { get; set; }
+
+		[Export ("highlightMode")]
+		bool HighlightMode { get; set; }
+
+		[Export ("view")]
+		NSView View { get; set; }
+
 	}
 
 	[BaseType (typeof (NSObject))]
@@ -8121,6 +8392,139 @@ namespace MonoMac.AppKit {
 		NSTableView TableView { get; set; }
 	}
 		
+	[BaseType (typeof (NSView), Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (NSTabViewDelegate)})]
+	interface NSTabView {
+		[Export ("selectTabViewItem:")]
+		void Select (NSTabViewItem tabViewItem);
+
+		[Export ("selectTabViewItemAtIndex:")]
+		void SelectAt (int index);
+
+		[Export ("selectTabViewItemWithIdentifier:")]
+		void Select (NSObject identifier);
+
+		[Export ("takeSelectedTabViewItemFromSender:")]
+		void TakeSelectedTabViewItemFrom (NSObject sender);
+
+		[Export ("selectFirstTabViewItem:")]
+		void SelectFirst (NSObject sender);
+
+		[Export ("selectLastTabViewItem:")]
+		void SelectLast (NSObject sender);
+
+		[Export ("selectNextTabViewItem:")]
+		void SelectNext (NSObject sender);
+
+		[Export ("selectPreviousTabViewItem:")]
+		void SelectPrevious (NSObject sender);
+
+		[Export ("selectedTabViewItem")]
+		NSTabViewItem Selected { get; }
+
+		[Export ("font")]
+		NSFont Font { get; set; }
+
+		[Export ("tabViewType")]
+		NSTabViewType TabViewType { get; set; }
+
+		[Export ("tabViewItems")]
+		NSTabViewItem [] Items { get; }
+
+		[Export ("allowsTruncatedLabels")]
+		bool AllowsTruncatedLabels { get; set; }
+
+		[Export ("minimumSize")]
+		SizeF MinimumSize { get; }
+
+		[Export ("drawsBackground")]
+		bool DrawsBackground { get; set; }
+
+		[Export ("controlTint")]
+		NSControlTint ControlTint { get; set; }
+
+		[Export ("controlSize")]
+		NSControlSize ControlSize { get; set; }
+
+		[Export ("addTabViewItem:")]
+		void Add (NSTabViewItem tabViewItem);
+
+		[Export ("insertTabViewItem:atIndex:")]
+		void Insert (NSTabViewItem tabViewItem, int index);
+
+		[Export ("removeTabViewItem:")]
+		void Remove (NSTabViewItem tabViewItem);
+
+		[Export ("delegate"), NullAllowed]
+		NSTabViewDelegate Delegate { get; set; }
+
+		[Export ("tabViewItemAtPoint:")]
+		NSTabViewItem TabViewItemAtPoint (PointF point);
+
+		[Export ("contentRect")]
+		RectangleF ContentRect { get; }
+
+		[Export ("numberOfTabViewItems")]
+		int Count { get; }
+
+		[Export ("indexOfTabViewItem:")]
+		int IndexOf (NSTabViewItem tabViewItem);
+
+		[Export ("tabViewItemAtIndex:")]
+		NSTabViewItem Item (int index);
+
+		[Export ("indexOfTabViewItemWithIdentifier:")]
+		int IndexOf (NSObject identifier);
+	}
+
+	[BaseType (typeof (NSObject))]
+	[Model]
+	interface NSTabViewDelegate {
+		[Export ("tabView:shouldSelectTabViewItem:"), EventArgs ("NSTabViewPredicate"), DefaultValue (true)]
+		bool ShouldSelectTabViewItem (NSTabView tabView, NSTabViewItem item);
+		
+		[Export ("tabView:willSelectTabViewItem:"), EventArgs ("NSTabViewItem")]
+		void WillSelect (NSTabView tabView, NSTabViewItem item);
+
+		[Export ("tabView:didSelectTabViewItem:"), EventArgs ("NSTabViewItem")]
+		void DidSelect (NSTabView tabView, NSTabViewItem item);
+	 
+		[Export ("tabViewDidChangeNumberOfTabViewItems:")]
+		void NumberOfItemsChanged (NSTabView tabView);
+	}
+
+	[BaseType (typeof (NSObject))]
+	interface NSTabViewItem {
+		[Export ("initWithIdentifier:")]
+		IntPtr Constructor (NSObject identifier);
+
+		[Export ("identifier")]
+		NSObject Identifier { get; set; }
+
+		[Export ("view")]
+		NSTabViewItem View { get; set; }
+
+		[Export ("initialFirstResponder")]
+		NSObject InitialFirstResponder { get; set; }
+
+		[Export ("label")]
+		string Label { get; set; }
+
+		[Export ("color")]
+		NSColor Color { get; set; }
+
+		[Export ("tabState")]
+		NSTabState TabState { get; }
+
+		[Export ("tabView")]
+		NSTabView TabView { get; }
+
+		[Export ("drawLabel:inRect:")]
+		void DrawLabel (bool shouldTruncateLabel, RectangleF labelRect);
+
+		[Export ("sizeOfLabel:")]
+		SizeF SizeOfLabel (bool computeMin);
+	}
+	
 	[BaseType (typeof (NSView), Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (NSTextDelegate)})]
 	interface NSText {
 		[Export ("replaceCharactersInRange:withString:")]
@@ -9568,6 +9972,148 @@ namespace MonoMac.AppKit {
 
 		[Export ("userInfo")]
 		NSDictionary UserInfo { get; }
+	}
+	
+	[BaseType (typeof (NSObject))]
+	interface NSTreeNode {
+		[Static, Export ("treeNodeWithRepresentedObject:")]
+		NSTreeNode FromRepresentedObject (NSObject modelObject);
+
+		[Export ("initWithRepresentedObject:")]
+		IntPtr Constructor (NSObject modelObject);
+
+		[Export ("representedObject")]
+		NSTreeNode RepresentedObject { get; }
+
+		[Export ("indexPath")]
+		NSIndexPath IndexPath { get; }
+
+		[Export ("isLeaf")]
+		bool IsLeaf { get; }
+
+		[Export ("childNodes")]
+		NSTreeNode [] Children { get; }
+
+		//[Export ("mutableChildNodes")]
+		//NSMutableArray MutableChildren { get; }
+
+		[Export ("descendantNodeAtIndexPath:")]
+		NSTreeNode DescendantNode (NSIndexPath atIndexPath);
+
+		[Export ("parentNode")]
+		NSTreeNode ParentNode { get; }
+
+		[Export ("sortWithSortDescriptors:recursively:")]
+		void SortWithSortDescriptors (NSSortDescriptor [] sortDescriptors, bool recursively);
+
+	}
+
+	[BaseType (typeof (NSObjectController))]
+	interface NSTreeController {
+		[Export ("rearrangeObjects")]
+		void RearrangeObjects ();
+
+		[Export ("arrangedObjects")]
+		NSObject ArrangedObjects { get; }
+
+		[Export ("childrenKeyPath")]
+		string ChildrenKeyPath { get; set; }
+
+		[Export ("countKeyPath")]
+		string CountKeyPath { get; set; }
+
+		[Export ("leafKeyPath")]
+		string LeafKeyPath { get; set; }
+
+		[Export ("sortDescriptors")]
+		NSSortDescriptor [] SortDescriptors { get; set; }
+
+		[Export ("content")]
+		NSTreeController Content { get; set; }
+
+		[Export ("add:")]
+		void Add (NSObject sender);
+
+		[Export ("remove:")]
+		void Remove (NSObject sender);
+
+		[Export ("addChild:")]
+		void AddChild (NSObject sender);
+
+		[Export ("insert:")]
+		void Insert (NSObject sender);
+
+		[Export ("insertChild:")]
+		void InsertChild (NSObject sender);
+
+		[Export ("canInsert")]
+		bool CanInsert { get; }
+
+		[Export ("canInsertChild")]
+		bool CanInsertChild { get; }
+
+		[Export ("canAddChild")]
+		bool CanAddChild { get; }
+
+		[Export ("insertObject:atArrangedObjectIndexPath:")]
+		void InsertObject (NSObject object1, NSIndexPath indexPath);
+
+		[Export ("insertObjects:atArrangedObjectIndexPaths:")]
+		void InsertObjects (NSObject [] objects, NSArray indexPaths);
+
+		[Export ("removeObjectAtArrangedObjectIndexPath:")]
+		void RemoveObjectAtArrangedObjectIndexPath (NSIndexPath indexPath);
+
+		[Export ("removeObjectsAtArrangedObjectIndexPaths:")]
+		void RemoveObjectsAtArrangedObjectIndexPaths (NSIndexPath [] indexPaths);
+
+		[Export ("avoidsEmptySelection")]
+		bool AvoidsEmptySelection { get; set; }
+
+		[Export ("preservesSelection")]
+		bool PreservesSelection { get; set; }
+
+		[Export ("selectsInsertedObjects")]
+		bool SelectsInsertedObjects { get; set; }
+
+		[Export ("alwaysUsesMultipleValuesMarker")]
+		bool AlwaysUsesMultipleValuesMarker { get; set; }
+
+		[Export ("selectedObjects")]
+		NSObject [] SelectedObjects { get; }
+
+		[Export ("setSelectionIndexPaths:")]
+		bool SetSelectionIndexPaths (NSArray indexPaths);
+
+		[Export ("selectionIndexPaths")]
+		NSIndexPath [] SelectionIndexPaths { get; }
+
+		[Export ("selectionIndexPath")]
+		NSIndexPath SelectionIndexPath { get; set; }
+
+		[Export ("addSelectionIndexPaths:")]
+		bool AddSelectionIndexPaths (NSIndexPath [] indexPaths);
+
+		[Export ("removeSelectionIndexPaths:")]
+		bool RemoveSelectionIndexPaths (NSIndexPath [] indexPaths);
+
+		[Export ("selectedNodes")]
+		NSTreeNode [] SelectedNodes { get; }
+
+		[Export ("moveNode:toIndexPath:")]
+		void MoveNode (NSTreeNode node, NSIndexPath indexPath);
+
+		[Export ("moveNodes:toIndexPath:")]
+		void MoveNodes (NSTreeNode [] nodes, NSIndexPath startingIndexPath);
+
+		[Export ("childrenKeyPathForNode:")]
+		string ChildrenKeyPathForNode (NSTreeNode node);
+
+		[Export ("countKeyPathForNode:")]
+		string CountKeyPathForNode (NSTreeNode node);
+
+		[Export ("leafKeyPathForNode:")]
+		string LeafKeyPathForNode (NSTreeNode node);
 	}
 	
 	[BaseType (typeof (NSResponder), Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (NSWindowDelegate)})]

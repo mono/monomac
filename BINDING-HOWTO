@@ -56,3 +56,32 @@ You need to create a dingus.cs file that contains the contract, edit
 the Makefile to include "dingus.cs" into the APIS definition and build
 again.  If this works you are on the right track.
 
+Conventions
+===========
+
+"NumberOf"
+
+	Translate "NumberOfFoo" properties into Foo if possible, or
+	FooCount depending on the context.  Use Count if you are
+	dealing with collections or if there could be a naming
+	conflict.
+	
+	For example use "RowCount" if you might end up with another
+	property "Rows".
+
+Parameter Names
+
+	In Objective-C sometimes the meaning of a paramter is embodied
+	in the selector name like:
+
+	   Update:(foo) item backgroundColor:(color) aColor
+
+ 	In this case, you should turn the above into:
+
+	   void Update (foo item, Color backgroundColor)
+
+        To avoid dropping the meaning, this also supports C# 4.0's
+	style that would let users do:
+
+	      Update (item: x, backgroundColor: red)
+
