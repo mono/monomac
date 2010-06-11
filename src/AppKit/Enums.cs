@@ -678,6 +678,10 @@ namespace MonoMac.AppKit {
 		PlusLighter,
 	}
 
+	public enum NSAnimationEffect {
+		DissapearingItemDefault = 0,
+		EffectPoof = 10
+	}
 #endregion
 	
 #region NSMatrix

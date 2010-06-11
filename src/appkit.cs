@@ -2481,6 +2481,36 @@ namespace MonoMac.AppKit {
 		[Static]
 		[Export ("availableColorSpacesWithModel:")]
 		NSColorSpace [] AvailableColorSpacesWithModel (NSColorSpaceModel model);
+
+		[Field ("NSCalibratedWhiteColorSpace")]
+		NSString CalibratedWhite { get; }
+
+		[Field ("NSCalibratedBlackColorSpace")]
+		NSString CalibratedBlack { get; }
+		
+		[Field ("NSCalibratedRGBColorSpace")]
+		NSString CalibratedRGB { get; }
+
+		[Field ("NSDeviceWhiteColorSpace")]
+		NSString DeviceWhite { get; }
+
+		[Field ("NSDeviceBlackColorSpace")]
+		NSString DeviceBlack { get; }
+
+		[Field ("NSDeviceRGBColorSpace")]
+		NSString DeviceRGB { get; }
+
+		[Field ("NSDeviceCMYKColorSpace")]
+		NSString DeviceCMYK { get; }
+
+		[Field ("NSNamedColorSpace")]
+		NSString Named { get; }
+
+		[Field ("NSPatternColorSpace")]
+		NSString Pattern { get; }
+
+		[Field ("NSCustomColorSpace")]
+		NSString Custom { get; }
 	}
 
 	[BaseType (typeof (NSControl))]
@@ -3895,7 +3925,7 @@ namespace MonoMac.AppKit {
 		[Export ("interpolatedColorAtLocation:")]
 		NSColor GetInterpolatedColor(float location);
 	}
-	
+
 	[BaseType (typeof (NSObject))]
 	interface NSGraphicsContext {
 		[Static, Export ("graphicsContextWithAttributes:")]

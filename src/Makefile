@@ -26,6 +26,7 @@ MONOMAC_SOURCES = \
 	./AppKit/NSApplication.cs			\
 	./AppKit/NSApplicationDelegate.cs		\
 	./AppKit/NSBitmapImageRep.cs			\
+	./AppKit/NSGraphics.cs				\
 	./AppKit/NSMatrix.cs				\
 	./AppKit/NSWindow.cs
 
