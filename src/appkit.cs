@@ -3738,6 +3738,150 @@ namespace MonoMac.AppKit {
 		NSFontDescriptor FontDescriptorWithFamily (string newFamily);
 	}
 
+	[BaseType (typeof (NSObject))]
+	interface NSFontManager {
+		[Static, Export ("setFontPanelFactory:")]
+		void SetFontPanelFactory (Class factoryId);
+
+		[Static, Export ("setFontManagerFactory:")]
+		void SetFontManagerFactory (Class factoryId);
+
+		[Static, Export ("sharedFontManager")]
+		NSFontManager SharedFontManager { get; }
+
+		[Export ("isMultiple")]
+		bool IsMultiple { get; }
+
+		[Export ("selectedFont")]
+		NSFont SelectedFont { get; }
+
+		[Export ("setSelectedFont:isMultiple:")]
+		void SetSelectedFont (NSFont fontObj, bool isMultiple);
+
+		[Export ("setFontMenu:")]
+		void SetFontMenu (NSMenu newMenu);
+
+		[Export ("fontMenu:")]
+		NSMenu FontMenu (bool create);
+
+		[Export ("fontPanel:")]
+		NSFontPanel FontPanel (bool create);
+
+		[Export ("fontWithFamily:traits:weight:size:")]
+		NSFont FontWithFamily (string family, NSFontTraitMask traits, int weight, float size);
+
+		[Export ("traitsOfFont:")]
+		NSFontTraitMask TraitsOfFont (NSFont fontObj);
+
+		[Export ("weightOfFont:")]
+		int WeightOfFont (NSFont fontObj);
+
+		[Export ("availableFonts")]
+		string [] AvailableFonts { get; }
+
+		[Export ("availableFontFamilies")]
+		string [] AvailableFontFamilies { get; }
+
+		[Export ("availableMembersOfFontFamily:")]
+		NSArray [] AvailableMembersOfFontFamily (string fam);
+
+		[Export ("convertFont:")]
+		NSFont ConvertFont (NSFont fontObj);
+
+		[Export ("convertFont:toSize:")]
+		NSFont ConvertFont (NSFont fontObj, float size);
+
+		[Export ("convertFont:toFace:")]
+		NSFont ConvertFont (NSFont fontObj, string typeface);
+
+		[Export ("convertFont:toFamily:")]
+		NSFont ConvertFontToFamily (NSFont fontObj, string family);
+
+		[Export ("convertFont:toHaveTrait:")]
+		NSFont ConvertFont (NSFont fontObj, NSFontTraitMask trait);
+
+		[Export ("convertFont:toNotHaveTrait:")]
+		NSFont ConvertFontToNotHaveTrait (NSFont fontObj, NSFontTraitMask trait);
+
+		[Export ("convertWeight:ofFont:")]
+		NSFont ConvertWeight (bool increaseWeight, NSFont fontObj);
+
+		[Export ("enabled")]
+		bool Enabled { [Bind ("isEnabled")] get; set; }
+
+		[Export ("action")]
+		Selector Action { get; set; }
+
+		[Export ("sendAction")]
+		bool SendAction { get; }
+
+		[Export ("delegate")]
+		NSObject WeakDelegate { get; set; } 
+
+		[Export ("localizedNameForFamily:face:")]
+		string LocalizedNameForFamily (string family, string faceKey);
+
+		[Export ("setSelectedAttributes:isMultiple:")]
+		void SetSelectedAttributes (NSDictionary attributes, bool flag);
+
+		[Export ("convertAttributes:")]
+		NSDictionary ConvertAttributes (NSDictionary attributes);
+
+		[Export ("availableFontNamesMatchingFontDescriptor:")]
+		string [] AvailableFontNamesMatchingFontDescriptor (NSFontDescriptor descriptor);
+
+		[Export ("collectionNames")]
+		string [] CollectionNames { get; }
+
+		[Export ("fontDescriptorsInCollection:")]
+		NSArray FontDescriptorsInCollection (string collectionNames);
+
+		[Export ("addCollection:options:")]
+		bool AddCollection (string collectionName, NSFontCollectionOptions collectionOptions);
+
+		[Export ("removeCollection:")]
+		bool RemoveCollection (string collectionName);
+
+		[Export ("addFontDescriptors:toCollection:")]
+		void AddFontDescriptors (NSFontDescriptor [] descriptors, string collectionName);
+
+		[Export ("removeFontDescriptor:fromCollection:")]
+		void RemoveFontDescriptor (NSFontDescriptor descriptor, string collection);
+
+		[Export ("currentFontAction")]
+		int CurrentFontAction { get; }
+
+		[Export ("convertFontTraits:")]
+		NSFontTraitMask ConvertFontTraits (NSFontTraitMask traits);
+
+		[Export ("target")]
+		NSObject Target { get; set; }
+
+		[Export ("fontNamed:hasTraits:")]
+		bool FontNamedHasTraits (string fName, NSFontTraitMask someTraits);
+
+		[Export ("availableFontNamesWithTraits:")]
+		string [] AvailableFontNamesWithTraits (NSFontTraitMask someTraits);
+
+		[Export ("addFontTrait:")]
+		void AddFontTrait (NSObject sender);
+
+		[Export ("removeFontTrait:")]
+		void RemoveFontTrait (NSObject sender);
+
+		[Export ("modifyFontViaPanel:")]
+		void ModifyFontViaPanel (NSObject sender);
+
+		[Export ("modifyFont:")]
+		void ModifyFont (NSObject sender);
+
+		[Export ("orderFrontFontPanel:")]
+		void OrderFrontFontPanel (NSObject sender);
+
+		[Export ("orderFrontStylesPanel:")]
+		void OrderFrontStylesPanel (NSObject sender);
+	}
+
 	[BaseType (typeof (NSPanel))]
 	interface NSFontPanel {
 		[Static]

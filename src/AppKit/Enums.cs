@@ -1021,6 +1021,21 @@ namespace MonoMac.AppKit {
 		FamilyClassMask = (int) -268435456,
 	}
 
+	public enum NSFontTraitMask {
+		Italic = 1,
+		Bold = 2,
+		Unbold = 4,
+		NonStandardCharacterSet = 8,
+		Narrow = 0x10,
+		Expanded = 0x20,
+		Condensed = 0x40,
+		SmallCaps = 0x80,
+		Poster = 0x100,
+		Compressed = 0x200,
+		FixedPitch = 0x400,
+		Unitalic = 0x1000000
+	}
+	
 	[Flags]
 	public enum NSPasteboardWritingOptions	 {
 		WritingPromised = 1 << 9
@@ -1208,5 +1223,10 @@ namespace MonoMac.AppKit {
 
 	public enum NSLevelIndicatorStyle {
 		Relevancy, ContinuousCapacity, DiscreteCapacity, RatingLevel
+	}
+
+	[Flags]
+	public enum NSFontCollectionOptions {
+		ApplicationOnlyMask = 1
 	}
 } 
