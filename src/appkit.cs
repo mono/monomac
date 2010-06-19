@@ -4642,6 +4642,73 @@ namespace MonoMac.AppKit {
 		void SelectionDidChange (NSObject sender);
 	}
 
+
+	[BaseType (typeof (NSTableView))]
+	interface NSOutlineView {
+		[Export ("outlineTableColumn")]
+		NSTableColumn OutlineTableColumn { get; set; }
+
+		[Export ("isExpandable:")]
+		bool IsExpandable (NSObject item);
+
+		[Export ("expandItem:expandChildren:")]
+		void ExpandItem (NSObject item, bool expandChildren);
+
+		[Export ("expandItem:")]
+		void ExpandItem (NSObject item);
+
+		[Export ("collapseItem:collapseChildren:")]
+		void CollapseItem (NSObject item, bool collapseChildren);
+
+		[Export ("collapseItem:")]
+		void CollapseItem (NSObject item);
+
+		[Export ("reloadItem:reloadChildren:")]
+		void ReloadItem (NSObject item, bool reloadChildren);
+
+		[Export ("reloadItem:")]
+		void ReloadItem (NSObject item);
+
+		[Export ("parentForItem:")]
+		NSOutlineView GetParent (NSObject item);
+
+		[Export ("itemAtRow:")]
+		NSOutlineView ItemAtRow (int row);
+
+		[Export ("rowForItem:")]
+		int RowForItem (NSObject item);
+
+		[Export ("levelForItem:")]
+		int LevelForItem (NSObject item);
+
+		[Export ("levelForRow:")]
+		int LevelForRow (int row);
+
+		[Export ("isItemExpanded:")]
+		bool IsItemExpanded (NSObject item);
+
+		[Export ("indentationPerLevel")]
+		float IndentationPerLevel { get; set; }
+
+		[Export ("indentationMarkerFollowsCell")]
+		bool IndentationMarkerFollowsCell { get; set; }
+
+		[Export ("autoresizesOutlineColumn")]
+		bool AutoresizesOutlineColumn { get; set; }
+
+		[Export ("frameOfOutlineCellAtRow:")]
+		RectangleF FrameOfOutlineCellAtRow (int row);
+
+		[Export ("setDropItem:dropChildIndex:")]
+		void SetDropItem (NSObject item, int index);
+
+		[Export ("shouldCollapseAutoExpandedItemsForDeposited:")]
+		bool ShouldCollapseAutoExpandedItems (bool forDeposited);
+
+		[Export ("autosaveExpandedItems")]
+		bool AutosaveExpandedItems { get; set; }
+	}
+
 	[BaseType (typeof (NSObject))]
 	interface NSHelpManager {
 		[Export ("sharedHelpManager")]
