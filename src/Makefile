@@ -188,7 +188,7 @@ counts:
 	make pass | grep 'could not be' | sed 's/.*`//' | sed "s/'.*//" | sort | uniq -c | sort -n
 
 monomac.dll: $(SOURCES) generated_sources $(MONOMAC_SOURCES) $(SHARED_SOURCES)
-	gmcs -debug -unsafe $(SOURCES) @generated_sources $(MONOMAC_SOURCES) $(SHARED_SOURCES) -target:library -define:GENERATOR -define:MONOMAC -out:monomac.dll -r:System.Drawing
+	gmcs -nowarn:0414 -debug -unsafe $(SOURCES) @generated_sources $(MONOMAC_SOURCES) $(SHARED_SOURCES) -target:library -define:GENERATOR -define:MONOMAC -out:monomac.dll -r:System.Drawing
 
 clean:
 	rm -f $(TARGETS) core.dll
