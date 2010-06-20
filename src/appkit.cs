@@ -4851,7 +4851,158 @@ namespace MonoMac.AppKit {
 
 		[Export ("autosaveExpandedItems")]
 		bool AutosaveExpandedItems { get; set; }
+
+		[Export ("delegate")]
+		NSObject WeakDelegate  { get; set; }
+
+		[Wrap ("WeakDelegate")]
+		NSOutlineViewDelegate Delegate  { get; set; }
+
+		[Export ("dataSource")]
+		NSObject WeakDataSource  { get; set; }
+
+		[Wrap ("WeakDataSource")]
+		NSOutlineViewDataSource DataSource  { get; set; }
 	}
+
+	[BaseType (typeof (NSObject))]
+	[Model]
+	interface NSOutlineViewDelegate {
+		[Export ("outlineView:willDisplayCell:forTableColumn:item:")]
+		void WillDisplayCell (NSOutlineView outlineView, NSObject cell, NSTableColumn tableColumn, NSObject item);
+	
+		[Export ("outlineView:shouldEditTableColumn:item:")] [DefaultValue (false)]
+		bool ShouldEditTableColumn (NSOutlineView outlineView, NSTableColumn tableColumn, NSObject item);
+	
+		[Export ("selectionShouldChangeInOutlineView:")] [DefaultValue (false)]
+		bool SelectionShouldChange (NSOutlineView outlineView);
+	
+		[Export ("outlineView:shouldSelectItem:")] [DefaultValue (true)]
+		bool ShouldSelectItem (NSOutlineView outlineView, NSObject item);
+	
+		[Export ("outlineView:selectionIndexesForProposedSelection:")]
+		NSIndexSet GetSelectionIndexes (NSOutlineView outlineView, NSIndexSet proposedSelectionIndexes);
+	
+		[Export ("outlineView:shouldSelectTableColumn:")]
+		bool ShouldSelectTableColumn (NSOutlineView outlineView, NSTableColumn tableColumn);
+	
+		[Export ("outlineView:mouseDownInHeaderOfTableColumn:")]
+		void MouseDown (NSOutlineView outlineView, NSTableColumn tableColumn);
+	
+		[Export ("outlineView:didClickTableColumn:")]
+		void DidClickTableColumn (NSOutlineView outlineView, NSTableColumn tableColumn);
+	
+		[Export ("outlineView:didDragTableColumn:")]
+		void DidDragTableColumn (NSOutlineView outlineView, NSTableColumn tableColumn);
+		
+		//FIXME: Binding NSRectPointer	
+		//[Export ("outlineView:toolTipForCell:rect:tableColumn:item:mouseLocation:")]
+		//string ToolTipForCell (NSOutlineView outlineView, NSCell cell, NSRectPointer rect, NSTableColumn tableColumn, NSObject item, PointF mouseLocation);
+	
+		[Export ("outlineView:heightOfRowByItem:")]
+		float GetRowHeight (NSOutlineView outlineView, NSObject item);
+	
+		[Export ("outlineView:typeSelectStringForTableColumn:item:")]
+		string GetSelectString (NSOutlineView outlineView, NSTableColumn tableColumn, NSObject item);
+	
+		[Export ("outlineView:nextTypeSelectMatchFromItem:toItem:forString:")]
+		NSObject GetNextTypeSelectMatch (NSOutlineView outlineView, NSObject startItem, NSObject endItem, string searchString);
+	
+		[Export ("outlineView:shouldTypeSelectForEvent:withCurrentSearchString:")]
+		bool ShouldTypeSelect (NSOutlineView outlineView, NSEvent theEvent, string searchString);
+	
+		[Export ("outlineView:shouldShowCellExpansionForTableColumn:item:")]
+		bool ShouldShowCellExpansion (NSOutlineView outlineView, NSTableColumn tableColumn, NSObject item);
+	
+		[Export ("outlineView:shouldTrackCell:forTableColumn:item:")]
+		bool ShouldTrackCell (NSOutlineView outlineView, NSCell cell, NSTableColumn tableColumn, NSObject item);
+	
+		[Export ("outlineView:dataCellForTableColumn:item:")]
+		NSCell GetCell (NSOutlineView outlineView, NSTableColumn tableColumn, NSObject item);
+	
+		[Export ("outlineView:isGroupItem:")]
+		bool IsGroupItem (NSOutlineView outlineView, NSObject item);
+	
+		[Export ("outlineView:shouldExpandItem:")]
+		bool ShouldExpandItem (NSOutlineView outlineView, NSObject item);
+	
+		[Export ("outlineView:shouldCollapseItem:")]
+		bool ShouldCollapseItem (NSOutlineView outlineView, NSObject item);
+	
+		[Export ("outlineView:willDisplayOutlineCell:forTableColumn:item:")]
+		void WillDisplayOutlineCell (NSOutlineView outlineView, NSObject cell, NSTableColumn tableColumn, NSObject item);
+	
+		[Export ("outlineView:sizeToFitWidthOfColumn:")]
+		float GetSizeToFitColumnWidth (NSOutlineView outlineView, int column);
+	
+		[Export ("outlineView:shouldReorderColumn:toColumn:")]
+		bool ShouldReorder (NSOutlineView outlineView, int columnIndex, int newColumnIndex);
+	
+		[Export ("outlineView:shouldShowOutlineCellForItem:")]
+		bool ShouldShowOutlineCell (NSOutlineView outlineView, NSObject item);
+	
+		[Export ("outlineViewColumnDidMove:")]
+		void ColumnDidMove (NSNotification notification);
+	
+		[Export ("outlineViewColumnDidResize:")]
+		void ColumnDidResize (NSNotification notification);
+	
+		[Export ("outlineViewSelectionIsChanging:")]
+		void SelectionIsChanging (NSNotification notification);
+	
+		[Export ("outlineViewItemWillExpand:")]
+		void ItemWillExpand (NSNotification notification);
+	
+		[Export ("outlineViewItemDidExpand:")]
+		void ItemDidExpand (NSNotification notification);
+	
+		[Export ("outlineViewItemWillCollapse:")]
+		void ItemWillCollapse (NSNotification notification);
+	
+		[Export ("outlineViewItemDidCollapse:")]
+		void ItemDidCollapse (NSNotification notification);
+	}
+	
+	[BaseType (typeof (NSObject))]
+	[Model]
+	interface NSOutlineViewDataSource {
+		[Export ("outlineView:child:ofItem:")]
+		NSObject GetChild (NSOutlineView outlineView, int index, NSObject item);
+	
+		[Export ("outlineView:isItemExpandable:")]
+		bool ItemExpandable (NSOutlineView outlineView, NSObject item);
+	
+		[Export ("outlineView:numberOfChildrenOfItem:")]
+		int CountChildren (NSOutlineView outlineView, NSObject item);
+	
+		[Export ("outlineView:objectValueForTableColumn:byItem:")]
+		NSObject GetObjectValue (NSOutlineView outlineView, NSTableColumn tableColumn, NSObject item);
+	
+		[Export ("outlineView:setObjectValue:forTableColumn:byItem:")]
+		void SetObjectValue (NSOutlineView outlineView, NSObject theObject, NSTableColumn tableColumn, NSObject item);
+	
+		[Export ("outlineView:itemForPersistentObject:")]
+		NSObject ItemForPersistentObject (NSOutlineView outlineView, NSObject theObject);
+	
+		[Export ("outlineView:persistentObjectForItem:")]
+		NSObject PersistentObjectForItem (NSOutlineView outlineView, NSObject item);
+	
+		[Export ("outlineView:sortDescriptorsDidChange:")]
+		void SortDescriptorsChanged (NSOutlineView outlineView, NSSortDescriptor [] oldDescriptors);
+	
+		[Export ("outlineView:writeItems:toPasteboard:")]
+		bool OutlineViewwriteItemstoPasteboard (NSOutlineView outlineView, NSArray items, NSPasteboard pboard);
+	
+		[Export ("outlineView:validateDrop:proposedItem:proposedChildIndex:")]
+		NSDragOperation ValidateDrop (NSOutlineView outlineView, NSDraggingInfo info, NSObject item, int index);
+	
+		[Export ("outlineView:acceptDrop:item:childIndex:")]
+		bool AcceptDrop (NSOutlineView outlineView, NSDraggingInfo info, NSObject item, int index);
+	
+		[Export ("outlineView:namesOfPromisedFilesDroppedAtDestination:forDraggedItems:")]
+		string [] FilesDropped (NSOutlineView outlineView, NSUrl dropDestination, NSArray items);
+	}
+	
 
 	[BaseType (typeof (NSObject))]
 	interface NSHelpManager {
