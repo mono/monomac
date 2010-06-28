@@ -4961,6 +4961,9 @@ namespace MonoMac.AppKit {
 	
 		[Export ("outlineViewItemDidCollapse:")]
 		void ItemDidCollapse (NSNotification notification);
+
+		[Export ("outlineViewSelectionDidChange:")]
+		void SelectionDidChange (NSNotification notification);
 	}
 	
 	[BaseType (typeof (NSObject))]
