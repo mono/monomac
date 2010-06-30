@@ -115,6 +115,11 @@ namespace MonoMac.Foundation {
 			Runtime.RegisterNSObject (this, handle);
 			if (!alloced)
 				Messaging.void_objc_msgSend (handle, selRetain);
+
+#if !OBJECT_REF_TRACKING
+			GCHandle h = GCHandle.Alloc (this);
+			SetObjCIvar ("__monoObjectGCHandle", (IntPtr) h);
+#endif
 		}
 
 		protected virtual void Dispose (bool disposing) {
@@ -133,6 +138,7 @@ namespace MonoMac.Foundation {
 			}
 		}
 
+#if OBJECT_REF_TRACKING
 		[Export ("release")]
 		internal void Release () {
 			uint count = Messaging.uint_objc_msgSend (handle, selRetainCount);
@@ -169,6 +175,12 @@ namespace MonoMac.Foundation {
 
 			return handle;
 		}
+#else
+		internal void Release () {}
+		internal IntPtr Retain () {
+			return IntPtr.Zero;
+		}
+#endif
 
 		public IntPtr SuperHandle {
 			get {

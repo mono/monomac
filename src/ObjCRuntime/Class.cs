@@ -35,8 +35,10 @@ using MonoMac.Foundation;
 
 namespace MonoMac.ObjCRuntime {
 	 public class Class : INativeObject {
+#if OBJECT_REF_TRACKING
 		static NativeMethodBuilder release_builder = new NativeMethodBuilder (typeof (NSObject).GetMethod ("Release", BindingFlags.NonPublic | BindingFlags.Instance));
 		static NativeMethodBuilder retain_builder = new NativeMethodBuilder (typeof (NSObject).GetMethod ("Retain", BindingFlags.NonPublic | BindingFlags.Instance));
+#endif
 		static Dictionary <IntPtr, Type> type_map = new Dictionary <IntPtr, Type> ();
 		static List <Delegate> method_wrappers = new List <Delegate> ();
 
@@ -154,8 +156,10 @@ namespace MonoMac.ObjCRuntime {
 				}
 			}
 	
+#if OBJECT_REF_TRACKING
 			class_addMethod (handle, release_builder.Selector, release_builder.Delegate, release_builder.Signature);
 			class_addMethod (handle, retain_builder.Selector, retain_builder.Delegate, retain_builder.Signature);
+#endif
 
 			foreach (MethodInfo minfo in type.GetMethods (BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static)) {
 				ExportAttribute ea = (ExportAttribute) Attribute.GetCustomAttribute (minfo.GetBaseDefinition (), typeof (ExportAttribute));
