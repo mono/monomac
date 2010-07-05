@@ -26,10 +26,72 @@
 // Foundation APIs
 // 
 using System;
+using System.Drawing;
 using MonoMac.ObjCRuntime;
 using MonoMac.CoreFoundation;
 
 namespace MonoMac.Foundation {
+	
+	[BaseType (typeof (NSObject))]
+	interface NSAffineTransform {
+		[Static]
+		[Export ("transform")]
+		NSAffineTransform Transform ();
+
+		[Export ("initWithTransform:")]
+		IntPtr Constructor (NSAffineTransform transform);
+
+		[Export ("translateXBy:yBy:")]
+		void Translate (float deltaX, float deltaY);
+
+		[Export ("rotateByDegrees:")]
+		void RotateByDegrees (float angle);
+
+		[Export ("rotateByRadians:")]
+		void RotateByRadians (float angle);
+
+		[Export ("scaleBy:")]
+		void Scale (float scale);
+
+		[Export ("scaleXBy:yBy:")]
+		void Scale (float scaleX, float scaleY);
+
+		[Export ("invert")]
+		void Invert ();
+
+		[Export ("appendTransform:")]
+		void AppendTransform (NSAffineTransform transform);
+
+		[Export ("prependTransform:")]
+		void PrependTransform (NSAffineTransform transform);
+
+		[Export ("transformPoint:")]
+		PointF TransformPoint (PointF aPoint);
+
+		[Export ("transformSize:")]
+		SizeF TransformSize (SizeF aSize);
+		
+		// FAK Leave this off for now as it requiers a forward ref to AppKit
+		//[Export ("transformBezierPath:")]
+		//NSBezierPath TransformBezierPath (NSBezierPath path);
+
+		[Export ("set")]
+		void Set ();
+
+		[Export ("concat")]
+		void Concat ();
+
+		//Detected properties
+		// FAK Left off until I understand how to do structs
+		//[Export ("transformStruct")]
+		//NSAffineTransformStruct TransformStruct { get; set; }
+	}
+	
+	// FAK Left off until I understand how to do structs
+	//struct NSAffineTransformStruct {
+	//	public float M11, M12, M21, M22;
+	//	public float tX, tY;
+	//}
 
 	[BaseType (typeof (NSCharacterSet))]
 	interface NSMutableCharacterSet {

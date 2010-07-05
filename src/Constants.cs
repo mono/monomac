@@ -24,7 +24,7 @@ namespace MonoMac {
 	public static partial class Constants {
 		public const string AppKitLibrary = "/System/Library/Frameworks/AppKit.framework/AppKit";
 		public const string CoreFoundationLibrary = "/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation";
-		public const string CoreGraphicsLibrary = "/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics";
+		public const string CoreGraphicsLibrary = "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/CoreGraphics.framework/CoreGraphics";
 		public const string CoreTextLibrary = "/System/Library/Frameworks/ApplicationServices.framework/ApplicationServices";
 		public const string FoundationLibrary = "/System/Library/Frameworks/Foundation.framework/Foundation";
 		public const string ObjectiveCLibrary = "/usr/lib/libobjc.dylib";

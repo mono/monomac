@@ -1,3 +1,16 @@
+2010-07-05  Frank Krueger <fak@kruegersystems.com>
+
+	* I moved NSAffineTransform to Foundation and added the
+	important functions. Previously it was in AppKit and lacked
+	functions to actually manipulate the matrix.
+
+	* Changed the path to CoreGraphics lib. The previous path did not
+	work. New path suggested by Geoff Norton.
+
+	* Changed NSGraphicsContext.GraphicsPort to return CGContext
+	instead of IntPtr. This seems to be the correct way to get a
+	CGContext and it works well.
+
 2010-06-20  Koen Pijnenburg <kpijnenburg@supportware.nl>
 
 	* appkit.cs: Apply patches from Koen to add support for the

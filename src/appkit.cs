@@ -63,18 +63,6 @@ namespace MonoMac.AppKit {
 	
 	}
 
-	[BaseType (typeof (NSObject))]
-	interface NSAffineTransform {
-		[Export ("transformBezierPath:")]
-		NSBezierPath TransformBezierPath (NSBezierPath path);
-
-		[Export ("set")]
-		void Set ();
-
-		[Export ("concat")]
-		void Concat ();
-	}
-
 	[BaseType (typeof (NSObject), Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (NSAnimationDelegate)})]
 	interface NSAnimation {
 		// Constant: NSAnimationProgressMarkNotification
@@ -4115,7 +4103,7 @@ namespace MonoMac.AppKit {
 		void FlushGraphics ();
 	
 		[Export ("graphicsPort")]
-		IntPtr GraphicsPort {get; }
+		CGContext GraphicsPort {get; }
 	
 		[Export ("isFlipped")]
 		bool IsFlipped { get; }
