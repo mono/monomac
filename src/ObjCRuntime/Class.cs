@@ -130,15 +130,15 @@ namespace MonoMac.ObjCRuntime {
 			string parent_name = null;
 			while (Attribute.IsDefined (parent_type, typeof (ModelAttribute), false))
 				parent_type = parent_type.BaseType;
-			RegisterAttribute parent_attr = (RegisterAttribute) Attribute.GetCustomAttribute (parent_type, typeof (RegisterAttribute));
-			parent_name = parent_attr.Name ?? parent_type.FullName;
+			RegisterAttribute parent_attr = (RegisterAttribute) Attribute.GetCustomAttribute (parent_type, typeof (RegisterAttribute), false);
+			parent_name = parent_attr == null ? parent_type.FullName : parent_attr.Name ?? parent_type.FullName;
 			parent = objc_getClass (parent_name);
 			if (parent == IntPtr.Zero && parent_type.Assembly != NSObject.MonoMacAssembly) {
 				// Its possible as we scan that we might be derived from a type that isn't reigstered yet.
 				Class.Register (parent_type, parent_name);
 				parent = objc_getClass (parent_name);
 			}
-			if (parent == IntPtr.Zero) { 
+			if (parent == IntPtr.Zero) {
 				// This spams mtouch, we need a way to differentiate from mtouch's (ab)use
 				// Console.WriteLine ("CRITICAL WARNING: Falling back to NSObject for type {0} reported as {1}", type, parent_type);
 				parent = objc_getClass ("NSObject");
