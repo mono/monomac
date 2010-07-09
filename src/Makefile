@@ -43,6 +43,14 @@ DEFINES = -define:NET_2_0
 TARGETS = bmac.exe monomac.dll  parse.exe
 
 SHARED_SOURCE = \
+	./AudioToolbox/AudioFile.cs			\
+	./AudioToolbox/AudioFileStream.cs		\
+	./AudioToolbox/AudioQueue.cs			\
+	./AudioToolbox/AudioServices.cs			\
+	./AudioToolbox/AudioSession.cs			\
+	./AudioToolbox/AudioSessions.cs			\
+	./AudioToolbox/AudioType.cs			\
+	./AudioToolbox/SystemSound.cs			\
 	./CoreAnimation/CATransform3D.cs		\
 	./CoreFoundation/CFArray.cs                     \
 	./CoreFoundation/CFBoolean.cs                   \

@@ -30,5 +30,6 @@ namespace MonoMac {
 		public const string ObjectiveCLibrary = "/usr/lib/libobjc.dylib";
 		public const string SystemLibrary = "/usr/lib/libSystem.dylib";
 		public const string QuartzLibrary = "/System/Library/Frameworks/QuartzCore.framework/QuartzCore";
+		public const string AudioToolboxLibrary = "/System/Library/Frameworks/AudioToolbox.framework/AudioToolbox";
 	}
 }
