@@ -43,6 +43,7 @@ DEFINES = -define:NET_2_0
 TARGETS = bmac.exe monomac.dll  parse.exe
 
 SHARED_SOURCE = \
+	./CoreAnimation/CATransform3D.cs		\
 	./CoreFoundation/CFArray.cs                     \
 	./CoreFoundation/CFBoolean.cs                   \
 	./CoreFoundation/CFDictionary.cs                \
@@ -61,6 +62,7 @@ SHARED_SOURCE = \
 	./CoreGraphics/CGGeometry.cs			\
 	./CoreGraphics/CGGradient.cs			\
 	./CoreGraphics/CGImage.cs			\
+	./CoreGraphics/CGLayer.cs			\
 	./CoreGraphics/CGPDFDocument.cs			\
 	./CoreGraphics/CGPDFPage-2.cs			\
 	./CoreGraphics/CGPDFPage.cs			\
@@ -107,6 +109,7 @@ SHARED_SOURCE = \
 	./Foundation/RegisterAttribute.cs		\
 	./ObjCRuntime/ArgumentSemantic.cs		\
 	./ObjCRuntime/AlphaAttribute.cs			\
+	./ObjCRuntime/Blocks.cs				\
 	./ObjCRuntime/INativeObject.cs			\
 	./ObjCRuntime/Dlfcn.cs				\
 	./ObjCRuntime/SinceAttribute.cs			\
@@ -117,6 +120,7 @@ SHARED_SOURCE = \
 #	./CoreGraphics/CGShading.cs			\
 
 SHARED_CORE_SOURCE = \
+	./CoreAnimation/CATransform3D.cs		\
 	./CoreFoundation/CFString.cs                    \
 	./CoreFoundation/CFUrl.cs                       \
 	./CoreFoundation/CFRunLoop.cs                   \
@@ -131,11 +135,14 @@ SHARED_CORE_SOURCE = \
 	./CoreGraphics/CGGeometry.cs                    \
 	./CoreGraphics/CGGradient.cs                    \
 	./CoreGraphics/CGImage.cs                       \
+	./CoreGraphics/CGLayer.cs			\
 	./CoreGraphics/CGPDFDocument.cs                 \
 	./CoreGraphics/CGPDFPage-2.cs                   \
 	./CoreGraphics/CGPDFPage.cs                     \
 	./CoreGraphics/CGPath.cs                        \
 	./CoreGraphics/CGPattern.cs                     \
+	./CoreMedia/CMSampleBuffer.cs			\
+	./CoreMedia/CoreMedia.cs			\
 	./Foundation/ConnectAttribute.cs		\
 	./Foundation/Enum.cs 				\
 	./Foundation/ExportAttribute.cs			\
@@ -147,6 +154,7 @@ SHARED_CORE_SOURCE = \
 	./Foundation/PreserveAttribute.cs		\
         ./ObjCRuntime/ArgumentSemantic.cs               \
         ./ObjCRuntime/AlphaAttribute.cs                 \
+	./ObjCRuntime/Blocks.cs				\
         ./ObjCRuntime/INativeObject.cs                  \
         ./ObjCRuntime/SinceAttribute.cs                 \
         ./ObjCRuntime/TypeConverter.cs                  \

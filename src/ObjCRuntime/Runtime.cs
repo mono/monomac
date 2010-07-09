@@ -96,47 +96,4 @@ namespace MonoMac.ObjCRuntime {
 			}
 		}
 	}
-
-	[StructLayout (LayoutKind.Sequential)]
-	public struct BlockDescriptor {
-		public int reserved;
-		public int size;
-		public IntPtr copy_helper;
-		public IntPtr dispose;
-	}
-
-	[StructLayout (LayoutKind.Sequential)]
-	public struct BlockLiteral {
-		public IntPtr isa;
-		public int flags;
-		public int reserved;
-		public IntPtr invoke;
-		public IntPtr block_descriptor;
-		public IntPtr handle;
-
-		internal static IntPtr MonoTouchDescriptor;
-
-		//
-		// trampoline must be static, and someone else needs to keep a ref to it
-		//
-		public static unsafe IntPtr CreateBlock (Delegate trampoline, Delegate userDelegate)
-		{
-			if (MonoTouchDescriptor == IntPtr.Zero){
-				var desc = Marshal.AllocHGlobal (sizeof (BlockDescriptor));
-				Marshal.WriteInt32 (desc, 4, sizeof (BlockLiteral));
-				MonoTouchDescriptor = desc;
-			}
-			
-			var block = (BlockLiteral *) Marshal.AllocHGlobal (sizeof (BlockLiteral));
-			block->block_descriptor = MonoTouchDescriptor;
-			block->isa = Class.GetHandle ("__NSConcreteGlobalBlock");
-			block->invoke = Marshal.GetFunctionPointerForDelegate (trampoline);
-
-			// BLOCK_IS_GLOBAL, maybe add later BLOCK_HAS_COPY_DISPOSE (1 << 25)
-			block->flags = 1 << 28;
-			block->handle = (IntPtr) GCHandle.Alloc (userDelegate);
-			
-			return (IntPtr) block;
-		}
-	}
 }

@@ -29,5 +29,6 @@ namespace MonoMac {
 		public const string FoundationLibrary = "/System/Library/Frameworks/Foundation.framework/Foundation";
 		public const string ObjectiveCLibrary = "/usr/lib/libobjc.dylib";
 		public const string SystemLibrary = "/usr/lib/libSystem.dylib";
+		public const string QuartzLibrary = "/System/Library/Frameworks/QuartzCore.framework/QuartzCore";
 	}
 }
