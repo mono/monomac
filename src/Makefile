@@ -106,6 +106,7 @@ SHARED_SOURCE = \
 	./Foundation/NSDate.cs				\
 	./Foundation/NSDictionary.cs			\
 	./Foundation/NSError.cs				\
+	./Foundation/NSMutableDictionary.cs		\
 	./Foundation/NSNotificationCenter.cs		\
 	./Foundation/NSNumber.cs			\
 	./Foundation/NSRange.cs				\
