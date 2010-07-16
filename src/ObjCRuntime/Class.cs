@@ -148,7 +148,7 @@ namespace MonoMac.ObjCRuntime {
 
 			class_addIvar (handle, "__monoObjectGCHandle", (IntPtr) Marshal.SizeOf (typeof (Int32)), (ushort) 4, "i");
 
-			foreach (PropertyInfo prop in type.GetProperties (BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)) {
+			foreach (PropertyInfo prop in type.GetProperties (BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static)) {
 				ConnectAttribute cattr = (ConnectAttribute) Attribute.GetCustomAttribute (prop, typeof (ConnectAttribute));
 				if (cattr != null) {
 					string ivar_name = cattr.Name ?? prop.Name;
@@ -161,7 +161,7 @@ namespace MonoMac.ObjCRuntime {
 			class_addMethod (handle, retain_builder.Selector, retain_builder.Delegate, retain_builder.Signature);
 #endif
 
-			foreach (MethodInfo minfo in type.GetMethods (BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static)) {
+			foreach (MethodInfo minfo in type.GetMethods (BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static)) {
 				ExportAttribute ea = (ExportAttribute) Attribute.GetCustomAttribute (minfo.GetBaseDefinition (), typeof (ExportAttribute));
 				if (ea == null || (minfo.IsVirtual && minfo.DeclaringType != type && minfo.DeclaringType.Assembly == NSObject.MonoMacAssembly))
 					continue;
