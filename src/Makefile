@@ -113,6 +113,7 @@ SHARED_SOURCE = \
 	./Foundation/NSSet.cs				\
 	./Foundation/NSString.cs			\
 	./Foundation/NSString2.cs			\
+	./Foundation/NSUrlConnection.cs			\
 	./Foundation/NSValue.cs				\
 	./Foundation/PreserveAttribute.cs		\
 	./Foundation/RegisterAttribute.cs		\
