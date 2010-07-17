@@ -131,6 +131,7 @@ SHARED_SOURCE = \
 
 SHARED_CORE_SOURCE = \
 	./CoreAnimation/CATransform3D.cs		\
+	./CoreData/Enums.cs				\
 	./CoreFoundation/CFString.cs                    \
 	./CoreFoundation/CFUrl.cs                       \
 	./CoreFoundation/CFRunLoop.cs                   \
@@ -172,7 +173,8 @@ SHARED_CORE_SOURCE = \
 
 
 SHARED_API = \
-	./foundation.cs
+	./foundation.cs	\
+	./coredata.cs
 
 SHARED_SOURCES = $(patsubst %,../../maccore/src/%,$(SHARED_SOURCE))
 SHARED_CORE_SOURCES = $(patsubst %,../../maccore/src/%,$(SHARED_CORE_SOURCE))
