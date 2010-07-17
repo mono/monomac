@@ -52,9 +52,17 @@ namespace MonoMac.ObjCRuntime {
 
 		internal static List<Assembly> GetAssemblies () {
 			if (assemblies == null) {
+				var this_assembly = typeof (Runtime).Assembly.GetName ();
 				assemblies = new List <Assembly> ();
-				foreach (Assembly a in AppDomain.CurrentDomain.GetAssemblies ())
-					assemblies.Add (a);
+
+				foreach (Assembly a in AppDomain.CurrentDomain.GetAssemblies ()){
+
+					var refs = a.GetReferencedAssemblies ();
+					foreach (var aref in refs){
+						if (aref == this_assembly)
+							assemblies.Add (a);
+					}
+				}
 			}
 
 			return assemblies;
