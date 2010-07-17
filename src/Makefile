@@ -6,6 +6,7 @@
 CORE_SOURCES =					\
 	Constants.cs					\
 	./AppKit/Enums.cs				\
+	./CoreImage/Enums.cs				\
 	./Foundation/EnumDesktop.cs			\
 	./Foundation/NSObject.cs			\
 	./ObjCRuntime/Class.cs				\
@@ -18,7 +19,7 @@ CORE_SOURCES =					\
 	./ObjCRuntime/SelectorMarshaler.cs		\
 	./ObjCRuntime/Runtime.cs			\
 	./ObjCRuntime/Selector.cs			\
-	./CoreImage/Enums.cs
+	./WebKit/Enums.cs
 
 # Sources that are not part of CORE_SOURCES or the generated templates
 MONOMAC_SOURCES = \
@@ -52,6 +53,7 @@ SHARED_SOURCE = \
 	./AudioToolbox/AudioType.cs			\
 	./AudioToolbox/SystemSound.cs			\
 	./CoreAnimation/CATransform3D.cs		\
+	./CoreData/Enums.cs				\
 	./CoreFoundation/CFArray.cs                     \
 	./CoreFoundation/CFBoolean.cs                   \
 	./CoreFoundation/CFDictionary.cs                \
@@ -185,6 +187,7 @@ APIS = \
 	coreimage.cs		\
 	coreanimation.cs	\
 	foundation-desktop.cs 	\
+	webkit.cs		\
 	$(SHARED_APIS)
 
 all: $(TARGETS)
