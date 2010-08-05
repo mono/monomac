@@ -104,18 +104,36 @@ SHARED_SOURCE = \
 	./Foundation/NSAutoreleasePool.cs		\
 	./Foundation/NSAction.cs			\
 	./Foundation/NSArray.cs				\
+	./Foundation/NSBundle.cs			\
+	./Foundation/NSCoder.cs				\
 	./Foundation/NSData.cs				\
 	./Foundation/NSDate.cs				\
-	./Foundation/NSDictionary.cs			\
 	./Foundation/NSError.cs				\
+	./Foundation/NSHttpCookie.cs			\
+	./Foundation/NSHttpCookieStorage.cs		\
+	./Foundation/NSIndexPath.cs			\
+	./Foundation/NSInputStream.cs			\
+	./Foundation/NSKeyedArchiver.cs			\
+	./Foundation/NSKeyedUnarchiver.cs		\
+	./Foundation/NSMutableAttributedString.cs	\
+	./Foundation/NSMutableData.cs			\
+	./Foundation/NSDictionary.cs			\
+	./Foundation/NSMutableDictionary.cs		\
+	./Foundation/NSMutableUrlRequest.cs		\
 	./Foundation/NSMutableDictionary.cs		\
 	./Foundation/NSNotificationCenter.cs		\
 	./Foundation/NSNumber.cs			\
+	./Foundation/NSNumber2.cs			\
+	./Foundation/NSObject2.cs			\
+	./Foundation/NSOutputStream.cs			\
 	./Foundation/NSRange.cs				\
 	./Foundation/NSSet.cs				\
 	./Foundation/NSString.cs			\
 	./Foundation/NSString2.cs			\
+	./Foundation/NSTimer.cs				\
+	./Foundation/NSUrl.cs				\
 	./Foundation/NSUrlConnection.cs			\
+	./Foundation/NSUserDefaults.cs			\
 	./Foundation/NSValue.cs				\
 	./Foundation/PreserveAttribute.cs		\
 	./Foundation/RegisterAttribute.cs		\
