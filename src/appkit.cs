@@ -1909,6 +1909,96 @@ namespace MonoMac.AppKit {
 		void ScrollClipView (NSClipView  aClipView, PointF aPoint);
 	}
 
+	[BaseType (typeof (NSViewController))]
+	interface NSCollectionViewItem {
+		[Export ("collectionView")]
+		NSCollectionView CollectionView { get; }
+
+		[Export ("selected")]
+		bool Selected { [Bind ("isSelected")]get; set; }
+	}
+
+	[BaseType (typeof (NSView))]
+	interface NSCollectionView {
+		[Export ("isFirstResponder")]
+		bool IsFirstResponder { get; } 
+
+		[Export ("newItemForRepresentedObject:")]
+		NSCollectionViewItem NewItemForRepresentedObject (NSObject obj);
+
+		[Export ("itemAtIndex:")]
+		NSCollectionViewItem ItemAtIndex (int index);
+
+		[Export ("frameForItemAtIndex:")]
+		RectangleF FrameForItemAtIndex (int index);
+
+		[Export ("setDraggingSourceOperationMask:forLocal:")]
+		void SetDraggingSource (NSDragOperation dragOperationMask, bool localDestination);
+
+		//[Export ("draggingImageForItemsAtIndexes:withEvent:offset:")]
+		//NSImage DraggingImage (NSIndexSet itemIndexes, NSEvent evt, NSPointPointer dragImageOffset);
+
+		//Detected properties
+		[Export ("delegate"), NullAllowed]
+		NSObject WeakDelegate { get; set; }
+		
+		[Wrap ("WeakDelegate")]
+		NSCollectionViewDelegate Delegate { get; set; }
+
+		[Export ("content")]
+		NSObject [] Content { get; set; }
+
+		[Export ("selectable")]
+		bool Selectable { [Bind ("isSelectable")]get; set; }
+
+		[Export ("allowsMultipleSelection")]
+		bool AllowsMultipleSelection { get; set; }
+
+		[Export ("selectionIndexes")]
+		NSIndexSet SelectionIndexes { get; set; }
+
+		[Export ("itemPrototype")]
+		NSCollectionViewItem ItemPrototype { get; set; }
+
+		[Export ("maxNumberOfRows")]
+		int MaxNumberOfRows { get; set; }
+
+		[Export ("maxNumberOfColumns")]
+		int MaxNumberOfColumns { get; set; }
+
+		[Export ("minItemSize")]
+		SizeF MinItemSize { get; set; }
+
+		[Export ("maxItemSize")]
+		SizeF MaxItemSize { get; set; }
+
+		[Export ("backgroundColors"), NullAllowed]
+		NSColor [] BackgroundColors { get; set; }
+	}
+
+	[BaseType (typeof (NSObject))]
+	[Model]
+	interface NSCollectionViewDelegate {
+		[Export ("collectionView:canDragItemsAtIndexes:withEvent:")]
+		bool CanDragItems (NSCollectionView collectionView, NSIndexSet indexes, NSEvent evt);
+
+		[Export ("collectionView:writeItemsAtIndexes:toPasteboard:")]
+		bool WriteItems (NSCollectionView collectionView, NSIndexSet indexes, NSPasteboard toPasteboard);
+
+		[Export ("collectionView:namesOfPromisedFilesDroppedAtDestination:forDraggedItemsAtIndexes:")]
+		string [] NamesOfPromisedFilesDroppedAtDestination (NSCollectionView collectionView, NSUrl dropURL, NSIndexSet indexes);
+
+		//[Export ("collectionView:draggingImageForItemsAtIndexes:withEvent:offset:")]
+		//NSImage DraggingImageForItems (NSCollectionView collectionView, NSIndexSet indexes, NSEvent evg, NSPointPointer dragImageOffset);
+
+		[Export ("collectionView:validateDrop:proposedIndex:dropOperation:")]
+		NSDragOperation ValidateDrop (NSCollectionView collectionView, NSDraggingInfo draggingInfo, int proposedDropIndex, NSCollectionViewDropOperation proposedDropOperation);
+
+		[Export ("collectionView:acceptDrop:index:dropOperation:")]
+		bool AcceptDrop (NSCollectionView collectionView, NSDraggingInfo draggingInfo, int index, NSCollectionViewDropOperation dropOperation);
+
+	}
+	
 	[BaseType (typeof (NSObject))]
 	interface NSColor {
 		[Static]
@@ -6104,6 +6194,63 @@ namespace MonoMac.AppKit {
 
 		[Export ("URL")]
 		NSUrl Url { get; set; }
+	}
+
+
+	[BaseType (typeof (NSControl))]
+	interface NSPathControl {
+		[Export ("URL")]
+		NSUrl Url { get; set; }
+
+		[Export ("clickedPathComponentCell")]
+		NSPathComponentCell ClickedPathComponentCell { get; }
+
+		[Export ("setDraggingSourceOperationMask:forLocal:")]
+		void SetDraggingSource (NSDragOperation operationMask, bool isLocal);
+
+		[Export ("doubleAction")]
+		Selector DoubleAction { get; set; }
+
+		[Export ("pathStyle")]
+		NSPathStyle PathStyle { get; set; }
+
+		[Export ("pathComponentCells")]
+		NSPathComponentCell [] PathComponentCells { get; set; }
+
+		[Export ("backgroundColor"), NullAllowed]
+		NSColor BackgroundColor { get; set; }
+
+		[Export ("delegate"), NullAllowed]
+		NSObject WeakDelegate { get; set; }
+		[Wrap ("WeakDelegate")]
+		NSPathControlDelegate Delegate { get; set; }
+
+		[Export ("menu")]
+		NSMenu Menu { get; set; }
+	}
+
+	[BaseType (typeof (NSObject))]
+	[Model]
+	interface NSPathControlDelegate {
+		[Abstract]
+		[Export ("pathControl:shouldDragPathComponentCell:withPasteboard:")]
+		bool ShouldDragPathComponentCell (NSPathControl pathControl, NSPathComponentCell pathComponentCell, NSPasteboard pasteboard);
+
+		[Abstract]
+		[Export ("pathControl:validateDrop:")]
+		NSDragOperation ValidateDrop (NSPathControl pathControl, NSDraggingInfo info);
+
+		[Abstract]
+		[Export ("pathControl:acceptDrop:")]
+		bool AcceptDrop (NSPathControl pathControl, NSDraggingInfo info);
+
+		[Abstract]
+		[Export ("pathControl:willDisplayOpenPanel:")]
+		void WillDisplayOpenPanel (NSPathControl pathControl, NSOpenPanel openPanel);
+
+		[Abstract]
+		[Export ("pathControl:willPopUpMenu:")]
+		void WillPopUpMenu (NSPathControl pathControl, NSMenu menu);
 	}
 
 	[BaseType (typeof (NSButton))]

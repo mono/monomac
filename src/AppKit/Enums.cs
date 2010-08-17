@@ -1229,4 +1229,8 @@ namespace MonoMac.AppKit {
 	public enum NSFontCollectionOptions {
 		ApplicationOnlyMask = 1
 	}
+
+	public enum NSCollectionViewDropOperation {
+		On = 0, Before = 1
+	}
 } 
