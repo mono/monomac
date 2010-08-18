@@ -9458,7 +9458,7 @@ namespace MonoMac.AppKit {
 	[BaseType (typeof (NSResponder))]
 	interface NSViewController {
 		[Export ("initWithNibName:bundle:")]
-		IntPtr Constructor (string nibNameOrNil, NSBundle nibBundleOrNil);
+		IntPtr Constructor ([NullAllowed] string nibNameOrNil, [NullAllowed] NSBundle nibBundleOrNil);
 
 		[Export ("loadView")]
 		void LoadView ();
