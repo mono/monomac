@@ -5274,6 +5274,12 @@ namespace MonoMac.AppKit {
 
 		[Export ("template")]
 		bool Template { [Bind ("isTemplate")]get; set; }
+
+		[Bind ("sizeWithAttributes:")]
+		SizeF StringSize ([Target] string str, NSDictionary attributes);
+
+		[Bind ("drawInRect:withAttributes:")]
+		void DrawInRect ([Target] string str, RectangleF rect, NSDictionary attributes);
 	}
 
 	[BaseType (typeof (NSObject))]
