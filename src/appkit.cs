@@ -4825,7 +4825,7 @@ namespace MonoMac.AppKit {
 		NSOpenPanel OpenPanel { get; }
 
 		[Export ("URLs")]
-		string [] Urls { get; }
+		NSUrl [] Urls { get; }
 
 		//Detected properties
 		[Export ("resolvesAliases")]
