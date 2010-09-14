@@ -4235,7 +4235,10 @@ namespace MonoMac.AppKit {
 		[Export ("boundingBox")]
 		RectangleF BoundingBox { get; }
 	}
-	
+
+	delegate void GlobalEventHandler (NSEvent event);
+	delegate NSEvent LocalEventHandler (NSEvent event);
+
 	[BaseType (typeof (NSObject))]
 	interface NSEvent {
 		[Export ("type")]
@@ -4438,6 +4441,14 @@ namespace MonoMac.AppKit {
 		double KeyRepeatInterval { get; }
 
 		[Static]
+		[Export ("addGlobalMonitorForEventsMatchingMask:handler:")]
+		NSObject AddGlobalMonitorForEventsMatchingMask (NSEventMask mask, GlobalEventHandler handler);
+		
+		[Static]
+		[Export ("addLocalMonitorForEventsMatchingMask:handler:")]
+		NSObject AddLocalMonitorForEventsMatchingMask (NSEventMask mask, LocalEventHandler handler);
+		
+		[Static]
 		[Export ("removeMonitor:")]
 		void RemoveMonitor (NSObject eventMonitor);
 
@@ -4447,7 +4458,6 @@ namespace MonoMac.AppKit {
 		bool MouseCoalescingEnabled { [Bind ("isMouseCoalescingEnabled")]get; set; }
 
 	}
-
 
 	[BaseType (typeof (NSObject))]
 	interface NSMenu {
