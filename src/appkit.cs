@@ -4236,8 +4236,8 @@ namespace MonoMac.AppKit {
 		RectangleF BoundingBox { get; }
 	}
 
-	delegate void GlobalEventHandler (NSEvent event);
-	delegate NSEvent LocalEventHandler (NSEvent event);
+	delegate void GlobalEventHandler (NSEvent theEvent);
+	delegate NSEvent LocalEventHandler (NSEvent theEvent);
 
 	[BaseType (typeof (NSObject))]
 	interface NSEvent {
@@ -5222,14 +5222,16 @@ namespace MonoMac.AppKit {
 		[Static]
 		[Export ("imagePasteboardTypes")]
 		string [] ImagePasteboardTypes { get; }
-
+		
+		[Static]
 		[Export ("imageTypes")]
 		string [] ImageTypes { get; }
 
 		[Static]
 		[Export ("imageUnfilteredTypes")]
 		string [] ImageUnfilteredTypes { get; }
-
+		
+		[Static]
 		[Export ("canInitWithPasteboard:")]
 		bool CanInitWithPasteboard (NSPasteboard pasteboard);
 
@@ -8416,6 +8418,25 @@ namespace MonoMac.AppKit {
 
 		[Export ("toolTip")]
 		string ToolTip { get; set; }
+				
+		//NSDrag category
+		[Export ("dragImage:at:offset:event:pasteboard:source:slideBack:")]
+		void DragImage (NSImage anImage, PointF viewLocation, SizeF initialOffset, NSEvent theEvent, NSPasteboard pboard, NSObject sourceObj, bool slideFlag);
+		
+		[Export ("registeredDraggedTypes:")]
+		string[] RegisteredDraggedTypes { get; }
+		
+		[Export ("registerForDraggedTypes:")]
+		void RegisterForDraggedTypes (string [] newTypes);
+		
+		[Export ("unregisterDraggedTypes")]
+		void UnregisterDraggedTypes ();
+		
+		[Export ("dragFile:fromRect:slideBack:event:")]
+		bool DragFile (string filename, RectangleF aRect, bool slideBack, NSEvent theEvent);
+		
+		[Export ("dragPromisedFilesOfTypes:fromRect:source:slideBack:event:")]
+		bool DragPromisedFilesOfTypes (string[] typeArray, RectangleF aRect, NSObject sourceObject, bool slideBack, NSEvent theEvent);
 	}
 
 	[BaseType (typeof (NSAnimation))]
