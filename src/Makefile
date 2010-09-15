@@ -29,7 +29,11 @@ MONOMAC_SOURCES = \
 	./AppKit/NSBitmapImageRep.cs			\
 	./AppKit/NSGraphics.cs				\
 	./AppKit/NSMatrix.cs				\
-	./AppKit/NSWindow.cs
+	./AppKit/NSWindow.cs    \
+    ./AppKit/Functions.cs   \
+    ./AppKit/NSOpenGLPixelFormat.cs \
+    ./AppKit/NSOpenGLContext.cs \
+	./Growl/Constants.cs
 
 GENERATOR_SOURCES = \
 	../../maccore/src/generator.cs			\
@@ -50,9 +54,16 @@ SHARED_SOURCE = \
 	./AudioToolbox/AudioServices.cs			\
 	./AudioToolbox/AudioSession.cs			\
 	./AudioToolbox/AudioSessions.cs			\
-	./AudioToolbox/AudioType.cs			\
-	./AudioToolbox/SystemSound.cs			\
-	./CoreAnimation/CATransform3D.cs		\
+	./AudioToolbox/AudioType.cs		    \
+	./AudioToolbox/SystemSound.cs		\
+	./AudioToolbox/AUGraph.cs           \
+	./AudioUnit/AudioUnitProperties.cs      \
+	./AudioUnit/AUComponent.cs              \
+	./AudioUnit/AudioComponent.cs		    \
+	./AudioUnit/AudioUnitParameters.cs	\
+	./CoreAnimation/CATransform3D.cs	\
+	./CoreAudio/CoreAudioTypes.cs           \
+	./CoreAudio/AudioHardware.cs            \
 	./CoreData/Enums.cs				\
 	./CoreFoundation/CFArray.cs                     \
 	./CoreFoundation/CFBoolean.cs                   \
@@ -117,6 +128,7 @@ SHARED_SOURCE = \
 	./Foundation/NSKeyedUnarchiver.cs		\
 	./Foundation/NSMutableAttributedString.cs	\
 	./Foundation/NSMutableData.cs			\
+	./Foundation/NSMutableDictionary.cs		\
 	./Foundation/NSDictionary.cs			\
 	./Foundation/NSMutableDictionary.cs		\
 	./Foundation/NSMutableUrlRequest.cs		\
@@ -206,6 +218,7 @@ APIS = \
 	coreanimation.cs	\
 	foundation-desktop.cs 	\
 	webkit.cs		\
+	growl.cs    \
 	$(SHARED_APIS)
 
 all: $(TARGETS)
