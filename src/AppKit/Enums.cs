@@ -1233,4 +1233,61 @@ namespace MonoMac.AppKit {
 	public enum NSCollectionViewDropOperation {
 		On = 0, Before = 1
 	}
+	
+	public enum NSOpenGLContextParameter : int {
+	    SwapRectangle = 200,
+        SwapRectangleEnable = 201,
+        RasterizationEnable = 221,
+        SwapInterval = 222,
+        SurfaceOrder = 235,
+        SurfaceOpacity = 236,
+        StateValidation = 301,
+	}
+	
+	public enum NSOpenGLPixelFormatAttribute {
+        AllRenderers       =   1,
+        DoubleBuffer       =   5,
+        Stereo             =   6,
+        AuxBuffers         =   7,
+        ColorSize          =   8,
+        AlphaSize          =  11,
+        DepthSize          =  12,
+        StencilSize        =  13,
+        AccumSize          =  14,
+        MinimumPolicy      =  51,
+        MaximumPolicy      =  52,
+        OffScreen          =  53,
+        FullScreen         =  54,
+        SampleBuffers      =  55,
+        Samples            =  56,
+        AuxDepthStencil    =  57,
+        ColorFloat         =  58,
+        Multisample        =  59,
+        Supersample        =  60,
+        SampleAlpha        =  61,
+        RendererID         =  70,
+        SingleRenderer     =  71,
+        NoRecovery         =  72,
+        Accelerated        =  73,
+        ClosestPolicy      =  74,
+        Robust             =  75,
+        BackingStore       =  76,
+        MPSafe             =  78,
+        Window             =  80,
+        MultiScreen        =  81,
+        Compliant          =  83,
+        ScreenMask         =  84,
+        PixelBuffer        =  90,
+        RemotePixelBuffer  =  91,
+        AllowOfflineRenderers = 96,
+        AcceleratedCompute =  97,
+        VirtualScreenCount = 128,
+    }
+    
+    public enum NSAlertButtonReturn : int {
+        First = 1000,
+        Second = 1001,
+        Third = 1002,
+    }
+    
 } 
