@@ -875,6 +875,9 @@ namespace MonoMac.AppKit {
 
 		[Export ("bitmapImageRepByRetaggingWithColorSpace:")]
 		NSBitmapImageRep RetaggedWithColorSpace (NSColorSpace newSpace);
+		
+		[Export ("representationUsingType:properties:")]
+		NSData RepresentationUsingTypeProperties(NSBitmapImageFileType storageType, NSDictionary properties);
 	}
 
 	[BaseType (typeof (NSView))]
@@ -3394,42 +3397,39 @@ namespace MonoMac.AppKit {
 		double AutosavingDelay { get; set; }
 	}
 
+	/* Objects of NSObject class but adhering to this protocol do
+	 * get passed to drag destinations in the
+	 * NSDraggingDestination protocol, therefor to use these
+	 * methods I'm removing the model and abstract attributes so
+	 * an NSObject sent to draggingEntered: for instance can be
+	 * cat and called upon as a NSDraggingInfo type
+	 */
 	[BaseType (typeof (NSObject))]
-	[Model]
 	interface NSDraggingInfo {
-		[Abstract]
 		[Export ("draggingSourceOperationMask")]
 		NSDragOperation DraggingSourceOperationMask { get; }
 
-		[Abstract]
 		[Export ("draggingLocation")]
 		PointF DraggingLocation { get; }
 
-		[Abstract]
 		[Export ("draggedImageLocation")]
 		PointF DraggedImageLocation { get; }
 
-		[Abstract]
 		[Export ("draggedImage")]
 		NSImage DraggedImage { get; }
 
-		[Abstract]
 		[Export ("draggingPasteboard")]
 		NSPasteboard DraggingPasteboard { get; }
 
-		[Abstract]
 		[Export ("draggingSource")]
 		NSObject DraggingSource { get; }
 
-		[Abstract]
 		[Export ("draggingSequenceNumber")]
 		int DraggingSequenceNumber { get; }
 
-		[Abstract]
 		[Export ("slideDraggedImageTo:")]
 		void SlideDraggedImageTo (PointF screenPoint);
 
-		[Abstract]
 		[Export ("namesOfPromisedFilesDroppedAtDestination:")]
 		string [] romisedFilesDroppedAtDestination (NSUrl dropDestination);
 	}
@@ -4246,7 +4246,7 @@ namespace MonoMac.AppKit {
 
 		// TODO: TYPE FOR THIS?
 		[Export ("modifierFlags")]
-		int ModifierFlags { get; }
+		uint ModifierFlags { get; }
 
 		[Export ("timestamp")]
 		double Timestamp { get; }
@@ -4694,7 +4694,7 @@ namespace MonoMac.AppKit {
 		NSImage Image { get; set; }
 
 		[Export ("state")]
-		int State { get; set; }
+		NSCellStateValue State { get; set; }
 
 		[Export ("onStateImage")]
 		NSImage OnStateImage { get; set; }
@@ -6195,6 +6195,60 @@ namespace MonoMac.AppKit {
 
 		[Export ("stringForType:")]
 		string StringForType (string dataType);
+        
+		[Field ("NSStringPboardType")]
+		NSString NSStringPboardType { get; }
+		
+		[Field ("NSFilenamesPboardType")]
+		NSString NSFilenamesPboardType{ get; }
+		
+		[Field ("NSPostScriptPboardType")]
+		NSString NSPostScriptPboardType{ get; }
+        
+		[Field ("NSTIFFPboardType")]
+		NSString NSTIFFPboardType{ get; }
+		
+		[Field ("NSRTFPboardType")]
+		NSString NSRTFPboardType{ get; }
+		
+		[Field ("NSTabularTextPboardType")]
+		NSString NSTabularTextPboardType{ get; }
+		
+		[Field ("NSFontPboardType")]
+		NSString NSFontPboardType{ get; }
+		
+		[Field ("NSRulerPboardType")]
+		NSString NSRulerPboardType{ get; }
+		
+		[Field ("NSFileContentsPboardType")]
+		NSString NSFileContentsPboardType{ get; }
+		
+		[Field ("NSColorPboardType")]
+		NSString NSColorPboardType{ get; }
+		
+		[Field ("NSRTFDPboardType")]
+		NSString NSRTFDPboardType{ get; }
+		
+		[Field ("NSHTMLPboardType")]
+		NSString NSHTMLPboardType{ get; }
+		
+		[Field ("NSPICTPboardType")]
+		NSString NSPICTPboardType{ get; }
+		
+		[Field ("NSURLPboardType")]
+		NSString NSURLPboardType{ get; }
+		
+		[Field ("NSPDFPboardType")]
+		NSString NSPDFPboardType{ get; }
+		
+		[Field ("NSVCardPboardType")]
+		NSString NSVCardPboardType{ get; }
+		
+		[Field ("NSFilesPromisePboardType")]
+		NSString NSFilesPromisePboardType{ get; }
+		
+		[Field ("NSMultipleTextSelectionPboardType")]
+		NSString NSMultipleTextSelectionPboardType{ get; }
 	}
 	
 	[BaseType (typeof (NSObject))]
@@ -8237,16 +8291,16 @@ namespace MonoMac.AppKit {
 		bool IsOpaque { get; }
 
 		[Export ("convertPoint:fromView:")]
-		PointF ConvertPointfromView (PointF aPoint, NSView aView);
+		PointF ConvertPointfromView (PointF aPoint, [NullAllowed] NSView aView);
 
 		[Export ("convertPoint:toView:")]
-		PointF ConvertPointtoView (PointF aPoint, NSView aView);
+		PointF ConvertPointtoView (PointF aPoint, [NullAllowed] NSView aView);
 
 		[Export ("convertSize:fromView:")]
-		SizeF ConvertSizefromView (SizeF aSize, NSView aView);
+		SizeF ConvertSizefromView (SizeF aSize, [NullAllowed] NSView aView);
 
 		[Export ("convertSize:toView:")]
-		SizeF ConvertSizetoView (SizeF aSize, NSView aView);
+		SizeF ConvertSizetoView (SizeF aSize, [NullAllowed] NSView aView);
 
 		[Export ("convertRect:fromView:")]
 		RectangleF ConvertRectfromView (RectangleF aRect, NSView aView);
@@ -8549,24 +8603,47 @@ namespace MonoMac.AppKit {
 		[Export ("toolTip")]
 		string ToolTip { get; set; }
 				
-		//NSDrag category
-		[Export ("dragImage:at:offset:event:pasteboard:source:slideBack:")]
-		void DragImage (NSImage anImage, PointF viewLocation, SizeF initialOffset, NSEvent theEvent, NSPasteboard pboard, NSObject sourceObj, bool slideFlag);
-		
-		[Export ("registeredDraggedTypes:")]
-		string[] RegisteredDraggedTypes { get; }
-		
 		[Export ("registerForDraggedTypes:")]
 		void RegisterForDraggedTypes (string [] newTypes);
-		
+
 		[Export ("unregisterDraggedTypes")]
 		void UnregisterDraggedTypes ();
 		
+		[Export ("registeredDraggedTypes")]
+		string[] RegisteredDragTypes();
+        
+		[Export ("dragImage:at:offset:event:pasteboard:source:slideBack:")]
+		void DragImage (NSImage anImage, PointF viewLocation, SizeF initialOffset, NSEvent theEvent, NSPasteboard pboard, NSObject sourceObj, bool slideFlag);
+
 		[Export ("dragFile:fromRect:slideBack:event:")]
 		bool DragFile (string filename, RectangleF aRect, bool slideBack, NSEvent theEvent);
 		
 		[Export ("dragPromisedFilesOfTypes:fromRect:source:slideBack:event:")]
 		bool DragPromisedFilesOfTypes (string[] typeArray, RectangleF aRect, NSObject sourceObject, bool slideBack, NSEvent theEvent);
+		
+		[Export ("exitFullScreenModeWithOptions:")]
+		void ExitFullscreenModeWithOptions(NSDictionary options);
+		
+		[Export ("enterFullScreenMode:withOptions:")]
+		void EnterFullscreenModeWithOptions(NSScreen screen, NSDictionary options);
+		
+		[Export ("isInFullScreenMode")]
+		bool IsInFullscreenMode { get; }
+		
+		/* 10.6+ Only - How do you specify that? - jm
+		   [Field ("NSFullScreenModeApplicationPresentationOptions")]   
+		   NSString NSFullScreenModeApplicationPresentationOptions { get; }
+		*/
+		
+		// Fields
+		[Field ("NSFullScreenModeAllScreens")]   
+		NSString NSFullScreenModeAllScreens { get; }
+		
+		[Field ("NSFullScreenModeSetting")]   
+		NSString NSFullScreenModeSetting { get; }
+		
+		[Field ("NSFullScreenModeWindowLevel")]   
+		NSString NSFullScreenModeWindowLevel { get; }
 	}
 
 	[BaseType (typeof (NSAnimation))]
@@ -10862,8 +10939,11 @@ namespace MonoMac.AppKit {
 	
 		[Export ("contentView")]
 		NSView ContentView  { get; set; }
+
+		[Export ("delegate", ArgumentSemantic.Assign)][NullAllowed]
+		NSObject WeakDelegate { get; set; }
 	
-		[Export ("delegate")]
+		[Wrap ("WeakDelegate")][NullAllowed]
 		NSWindowDelegate Delegate { get; set; }
 	
 		[Export ("windowNumber")]
@@ -11035,7 +11115,7 @@ namespace MonoMac.AppKit {
 		void OrderFront (NSObject sender);
 		
 		[Export ("orderBack:")]
-		void orderBack (NSObject sender);
+		void OrderBack (NSObject sender);
 	
 		[Export ("orderOut:")]
 		void OrderOut (NSObject sender);
@@ -11764,7 +11844,5 @@ namespace MonoMac.AppKit {
 		[Export ("currentApplication")]
 		NSRunningApplication CurrentApplication { get ; }
 	
-	}
-	
-	
+	}	
 }
