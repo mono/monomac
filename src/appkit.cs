@@ -3397,39 +3397,42 @@ namespace MonoMac.AppKit {
 		double AutosavingDelay { get; set; }
 	}
 
-	/* Objects of NSObject class but adhering to this protocol do
-	 * get passed to drag destinations in the
-	 * NSDraggingDestination protocol, therefor to use these
-	 * methods I'm removing the model and abstract attributes so
-	 * an NSObject sent to draggingEntered: for instance can be
-	 * cat and called upon as a NSDraggingInfo type
-	 */
 	[BaseType (typeof (NSObject))]
+	[Model]
 	interface NSDraggingInfo {
+		[Abstract]
 		[Export ("draggingSourceOperationMask")]
 		NSDragOperation DraggingSourceOperationMask { get; }
 
+		[Abstract]
 		[Export ("draggingLocation")]
 		PointF DraggingLocation { get; }
 
+		[Abstract]
 		[Export ("draggedImageLocation")]
 		PointF DraggedImageLocation { get; }
 
+		[Abstract]
 		[Export ("draggedImage")]
 		NSImage DraggedImage { get; }
 
+		[Abstract]
 		[Export ("draggingPasteboard")]
 		NSPasteboard DraggingPasteboard { get; }
 
+		[Abstract]
 		[Export ("draggingSource")]
 		NSObject DraggingSource { get; }
 
+		[Abstract]
 		[Export ("draggingSequenceNumber")]
 		int DraggingSequenceNumber { get; }
 
+		[Abstract]
 		[Export ("slideDraggedImageTo:")]
 		void SlideDraggedImageTo (PointF screenPoint);
 
+		[Abstract]
 		[Export ("namesOfPromisedFilesDroppedAtDestination:")]
 		string [] romisedFilesDroppedAtDestination (NSUrl dropDestination);
 	}
