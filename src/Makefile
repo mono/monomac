@@ -32,7 +32,8 @@ MONOMAC_SOURCES = \
 	./AppKit/NSOpenGLPixelFormat.cs			\
 	./AppKit/NSGraphics.cs				\
 	./AppKit/NSMatrix.cs				\
-	./AppKit/NSWindow.cs
+	./AppKit/NSWindow.cs				\
+	./Growl/Constants.cs
 
 GENERATOR_SOURCES = \
 	../../maccore/src/generator.cs			\
@@ -122,9 +123,7 @@ SHARED_SOURCE = \
 	./Foundation/NSMutableData.cs			\
 	./Foundation/NSMutableDictionary.cs		\
 	./Foundation/NSDictionary.cs			\
-	./Foundation/NSMutableDictionary.cs		\
 	./Foundation/NSMutableUrlRequest.cs		\
-	./Foundation/NSMutableDictionary.cs		\
 	./Foundation/NSNotificationCenter.cs		\
 	./Foundation/NSNumber.cs			\
 	./Foundation/NSNumber2.cs			\
@@ -209,6 +208,7 @@ APIS = \
 	coreimage.cs		\
 	coreanimation.cs	\
 	foundation-desktop.cs 	\
+	growl.cs		\
 	webkit.cs		\
 	$(SHARED_APIS)
 

@@ -32,5 +32,17 @@ using MonoMac.CoreAnimation;
 
 namespace MonoMac.AppKit {
 	public partial class NSOpenGLContext {
+		[Export ("setValues:forParameter:")]
+		public void SetValues (int vals, NSOpenGLContextParameter parameter)
+		{
+			unsafe {
+				IntPtr v = (IntPtr) &vals;
+				if (IsDirectBinding) {
+					MonoMac.ObjCRuntime.Messaging.void_objc_msgSend_IntPtr_int (this.Handle, selSetValuesForParameter, v, (int)parameter);
+				} else {
+					MonoMac.ObjCRuntime.Messaging.void_objc_msgSendSuper_IntPtr_int (this.SuperHandle, selSetValuesForParameter, v, (int)parameter);
+				}
+			}
+		}
 	}
 }
