@@ -3434,7 +3434,7 @@ namespace MonoMac.AppKit {
 
 		[Abstract]
 		[Export ("namesOfPromisedFilesDroppedAtDestination:")]
-		string [] romisedFilesDroppedAtDestination (NSUrl dropDestination);
+		string [] PromisedFilesDroppedAtDestination (NSUrl dropDestination);
 	}
 
 
