@@ -120,6 +120,7 @@ SHARED_SOURCE = \
 	./Foundation/NSKeyedUnarchiver.cs		\
 	./Foundation/NSMutableAttributedString.cs	\
 	./Foundation/NSMutableData.cs			\
+	./Foundation/NSMutableDictionary.cs		\
 	./Foundation/NSDictionary.cs			\
 	./Foundation/NSMutableDictionary.cs		\
 	./Foundation/NSMutableUrlRequest.cs		\
