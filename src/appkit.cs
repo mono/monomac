@@ -4828,6 +4828,136 @@ namespace MonoMac.AppKit {
 		//NSFetchRequest DefaultFetchRequest { get; }
 	}
 
+	[BaseType (typeof (NSObject))]
+	interface NSOpenGLPixelFormat {
+		[Export ("initWithAttributes:")]
+		IntPtr Constructor (IntPtr attributes);
+
+		[Export ("initWithData:")]
+		IntPtr Constructor (NSData attribs);
+
+		// TODO: wrap the CLContext and take a CLContext here instead.
+		//[Export ("initWithCGLPixelFormatObj:")]
+		//IntPtr Constructor (IntPtr cglContextHandle);
+
+		[Export ("getValues:forAttribute:forVirtualScreen:")]
+		IntPtr GetValue (ref int vals, NSOpenGLPixelFormatAttribute attrib, int screen);
+
+		[Export ("numberOfVirtualScreens")]
+		int NumberOfVirtualScreens { get; }
+
+		[Export ("CGLPixelFormatObj")]
+		IntPtr CGLPixelFormatObj  { get; }
+	}
+
+	[BaseType (typeof (NSObject))]
+	interface NSOpenGLPixelBuffer {
+		// FIXME: introduce these constants here
+		// targetGLEnum is one of: GL_TEXTURE_2D, GL_TXTURE_CUBE_MAP, GL_TEXTURE_RECTANGLE_EXT
+		// format is one of: GK_RGB, GL_RGBA, GL_DEPTH_COMPONENT
+		[Export ("initWithTextureTarget:textureInternalFormat:textureMaxMipMapLevel:pixelsWide:pixelsHigh:")]
+		IntPtr Constructor (int targetGlEnum, int format, int maxLevel, int pixelsWide, int pixelsHigh);
+
+		[Export ("initWithCGLPBufferObj:")]
+		IntPtr Constructor (IntPtr pbuffer);
+
+		[Export ("CGLPBufferObj")]
+		IntPtr CGLPBufferObj { get; }
+
+		[Export ("pixelsWide")]
+		int PixelsWide { get; }
+
+		[Export ("pixelsHigh")]
+		int PixelsHigh { get; }
+
+		[Export ("textureTarget")]
+		int TextureTarget { get; }
+
+		[Export ("textureInternalFormat")]
+		int TextureInternalFormat { get; }
+
+		[Export ("textureMaxMipMapLevel")]
+		int TextureMaxMipMapLevel { get; }
+	}
+
+	[BaseType (typeof (NSObject))]
+	interface NSOpenGLContext {
+		[Export ("initWithFormat:shareContext:")]
+		IntPtr Constructor (NSOpenGLPixelFormat format, NSOpenGLContext shareContext);
+
+		[Export ("initWithCGLContextObj:")]
+		IntPtr Constructor (IntPtr cglContext);
+
+		[Export ("setFullScreen")]
+		void SetFullScreen ();
+
+		[Export ("setOffScreen:width:height:rowbytes:")]
+		void SetOffScreen (IntPtr baseaddr, int width, int height, int rowbytes);
+
+		[Export ("clearDrawable")]
+		void ClearDrawable ();
+
+		[Export ("update")]
+		void Update ();
+
+		[Export ("flushBuffer")]
+		void FlushBuffer ();
+
+		[Export ("makeCurrentContext")]
+		void MakeCurrentContext ();
+
+		[Static]
+		[Export ("clearCurrentContext")]
+		void ClearCurrentContext ();
+
+		[Static]
+		[Export ("currentContext")]
+		NSOpenGLContext CurrentContext ();
+
+		[Export ("copyAttributesFromContext:withMask:")]
+		void CopyAttributes (NSOpenGLContext context, uint mask);
+
+		[Export ("setValues:forParameter:")]
+		void SetValues (IntPtr vals, NSOpenGLContextParameter param);
+
+		[Export ("getValues:forParameter:")]
+		void GetValues (IntPtr vals, NSOpenGLContextParameter param);
+
+		[Export ("createTexture:fromView:internalFormat:")]
+		void CreateTexture (int targetIdentifier, NSView view, int format);
+
+		[Export ("CGLContextObj")]
+		IntPtr CGLContextObj { get; }
+
+		// TODO: use an enumeration
+		// values for face are:
+		// GL_TEXTURE_CUBE_MAP_{POSITIVE,NEGATIVE}_{X,Y,Z}
+		//
+		[Export ("setPixelBuffer:cubeMapFace:mipMapLevel:currentVirtualScreen:")]
+		void SetPixelBuffer (NSOpenGLPixelBuffer pixelBuffer, int face, int level, int screen);
+
+		[Export ("pixelBuffer")]
+		NSOpenGLPixelBuffer PixelBuffer { get; }
+
+		[Export ("pixelBufferCubeMapFace")]
+		int PixelBufferCubeMapFace { get; }
+
+		[Export ("pixelBufferMipMapLevel")]
+		int PixelBufferMipMapLevel { get; }
+
+		// TODO: fixme enumerations
+		// GL_FRONT, GL_BACK, GL_AUX0
+		[Export ("setTextureImageToPixelBuffer:colorBuffer:")]
+		void SetTextureImage (NSOpenGLPixelBuffer pixelBuffer, int source);
+
+		//Detected properties
+		[Export ("view")]
+		NSView View { get; set; }
+
+		[Export ("currentVirtualScreen")]
+		int CurrentVirtualScreen { get; set; }
+	}
+
 	[BaseType (typeof (NSSavePanel), Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (NSOpenSavePanelDelegate)})]
 	interface NSOpenPanel {
 		[Static]
