@@ -4235,7 +4235,10 @@ namespace MonoMac.AppKit {
 		[Export ("boundingBox")]
 		RectangleF BoundingBox { get; }
 	}
-	
+
+	delegate void GlobalEventHandler (NSEvent theEvent);
+	delegate NSEvent LocalEventHandler (NSEvent theEvent);
+
 	[BaseType (typeof (NSObject))]
 	interface NSEvent {
 		[Export ("type")]
@@ -4438,6 +4441,14 @@ namespace MonoMac.AppKit {
 		double KeyRepeatInterval { get; }
 
 		[Static]
+		[Export ("addGlobalMonitorForEventsMatchingMask:handler:")]
+		NSObject AddGlobalMonitorForEventsMatchingMask (NSEventMask mask, GlobalEventHandler handler);
+		
+		[Static]
+		[Export ("addLocalMonitorForEventsMatchingMask:handler:")]
+		NSObject AddLocalMonitorForEventsMatchingMask (NSEventMask mask, LocalEventHandler handler);
+		
+		[Static]
 		[Export ("removeMonitor:")]
 		void RemoveMonitor (NSObject eventMonitor);
 
@@ -4447,7 +4458,6 @@ namespace MonoMac.AppKit {
 		bool MouseCoalescingEnabled { [Bind ("isMouseCoalescingEnabled")]get; set; }
 
 	}
-
 
 	[BaseType (typeof (NSObject))]
 	interface NSMenu {
@@ -4825,7 +4835,7 @@ namespace MonoMac.AppKit {
 		NSOpenPanel OpenPanel { get; }
 
 		[Export ("URLs")]
-		string [] Urls { get; }
+		NSUrl [] Urls { get; }
 
 		//Detected properties
 		[Export ("resolvesAliases")]
@@ -5212,14 +5222,16 @@ namespace MonoMac.AppKit {
 		[Static]
 		[Export ("imagePasteboardTypes")]
 		string [] ImagePasteboardTypes { get; }
-
+		
+		[Static]
 		[Export ("imageTypes")]
 		string [] ImageTypes { get; }
 
 		[Static]
 		[Export ("imageUnfilteredTypes")]
 		string [] ImageUnfilteredTypes { get; }
-
+		
+		[Static]
 		[Export ("canInitWithPasteboard:")]
 		bool CanInitWithPasteboard (NSPasteboard pasteboard);
 
@@ -5274,6 +5286,12 @@ namespace MonoMac.AppKit {
 
 		[Export ("template")]
 		bool Template { [Bind ("isTemplate")]get; set; }
+
+		[Bind ("sizeWithAttributes:")]
+		SizeF StringSize ([Target] string str, NSDictionary attributes);
+
+		[Bind ("drawInRect:withAttributes:")]
+		void DrawInRect ([Target] string str, RectangleF rect, NSDictionary attributes);
 	}
 
 	[BaseType (typeof (NSObject))]
@@ -8400,6 +8418,25 @@ namespace MonoMac.AppKit {
 
 		[Export ("toolTip")]
 		string ToolTip { get; set; }
+				
+		//NSDrag category
+		[Export ("dragImage:at:offset:event:pasteboard:source:slideBack:")]
+		void DragImage (NSImage anImage, PointF viewLocation, SizeF initialOffset, NSEvent theEvent, NSPasteboard pboard, NSObject sourceObj, bool slideFlag);
+		
+		[Export ("registeredDraggedTypes:")]
+		string[] RegisteredDraggedTypes { get; }
+		
+		[Export ("registerForDraggedTypes:")]
+		void RegisterForDraggedTypes (string [] newTypes);
+		
+		[Export ("unregisterDraggedTypes")]
+		void UnregisterDraggedTypes ();
+		
+		[Export ("dragFile:fromRect:slideBack:event:")]
+		bool DragFile (string filename, RectangleF aRect, bool slideBack, NSEvent theEvent);
+		
+		[Export ("dragPromisedFilesOfTypes:fromRect:source:slideBack:event:")]
+		bool DragPromisedFilesOfTypes (string[] typeArray, RectangleF aRect, NSObject sourceObject, bool slideBack, NSEvent theEvent);
 	}
 
 	[BaseType (typeof (NSAnimation))]
