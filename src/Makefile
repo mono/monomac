@@ -56,6 +56,8 @@ SHARED_SOURCE = \
 	./AudioToolbox/AudioType.cs			\
 	./AudioToolbox/SystemSound.cs			\
 	./CoreAnimation/CATransform3D.cs		\
+	./CoreAnimation/CAEnums.cs			\
+	./CoreAnimation/CADefs.cs			\
 	./CoreData/Enums.cs				\
 	./CoreFoundation/CFArray.cs                     \
 	./CoreFoundation/CFBoolean.cs                   \
@@ -153,6 +155,7 @@ SHARED_SOURCE = \
 
 SHARED_CORE_SOURCE = \
 	./CoreAnimation/CATransform3D.cs		\
+	./CoreAnimation/CAEnums.cs			\
 	./CoreData/Enums.cs				\
 	./CoreFoundation/CFString.cs                    \
 	./CoreFoundation/CFUrl.cs                       \
@@ -195,7 +198,8 @@ SHARED_CORE_SOURCE = \
 
 
 SHARED_API = \
-	./foundation.cs	\
+	./foundation.cs		\
+	./coreanimation.cs	\
 	./coredata.cs
 
 SHARED_SOURCES = $(patsubst %,../../maccore/src/%,$(SHARED_SOURCE))
@@ -205,7 +209,6 @@ SHARED_APIS = $(patsubst %,../../maccore/src/%,$(SHARED_API))
 APIS = \
 	appkit.cs		\
 	coreimage.cs		\
-	coreanimation.cs	\
 	foundation-desktop.cs 	\
 	growl.cs		\
 	webkit.cs		\

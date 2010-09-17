@@ -34,5 +34,6 @@ namespace MonoMac {
 		public const string WebKitLibrary = "/System/Library/Frameworks/WebKit.framework/WebKit";
 		public const string AudioUnitLibrary = "/System/Library/Frameworks/AudioUnit.framework/AudioUnit";
 		public const string CoreAudioLibrary = "/System/Library/Frameworks/CoreAudio.framework/CoreAudio";
+		public const string CoreAnimationLibrary = "/System/Library/Frameworks/QuartzCore.framework/QuartzCore";
 	}
 }
