@@ -4833,9 +4833,6 @@ namespace MonoMac.AppKit {
 
 	[BaseType (typeof (NSObject))]
 	interface NSOpenGLPixelFormat {
-		[Export ("initWithAttributes:")]
-		IntPtr Constructor (IntPtr attributes);
-
 		[Export ("initWithData:")]
 		IntPtr Constructor (NSData attribs);
 
@@ -4861,8 +4858,9 @@ namespace MonoMac.AppKit {
 		[Export ("initWithTextureTarget:textureInternalFormat:textureMaxMipMapLevel:pixelsWide:pixelsHigh:")]
 		IntPtr Constructor (int targetGlEnum, int format, int maxLevel, int pixelsWide, int pixelsHigh);
 
-		[Export ("initWithCGLPBufferObj:")]
-		IntPtr Constructor (IntPtr pbuffer);
+		// FIXME: This conflicts with our internal ctor
+		// [Export ("initWithCGLPBufferObj:")]
+		// IntPtr Constructor (IntPtr pbuffer);
 
 		[Export ("CGLPBufferObj")]
 		IntPtr CGLPBufferObj { get; }
@@ -4888,8 +4886,9 @@ namespace MonoMac.AppKit {
 		[Export ("initWithFormat:shareContext:")]
 		IntPtr Constructor (NSOpenGLPixelFormat format, NSOpenGLContext shareContext);
 
-		[Export ("initWithCGLContextObj:")]
-		IntPtr Constructor (IntPtr cglContext);
+		// FIXME: This conflicts with our internal ctor
+		// [Export ("initWithCGLContextObj:")]
+		// IntPtr Constructor (IntPtr cglContext);
 
 		[Export ("setFullScreen")]
 		void SetFullScreen ();

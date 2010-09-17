@@ -28,7 +28,6 @@ MONOMAC_SOURCES = \
 	./AppKit/NSApplicationDelegate.cs		\
 	./AppKit/NSBitmapImageRep.cs			\
 	./AppKit/Functions.cs				\
-	./AppKit/NSOpenGLContext.cs			\
 	./AppKit/NSOpenGLPixelFormat.cs			\
 	./AppKit/NSGraphics.cs				\
 	./AppKit/NSMatrix.cs				\

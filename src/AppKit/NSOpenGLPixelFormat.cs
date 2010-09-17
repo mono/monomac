@@ -32,6 +32,8 @@ using MonoMac.CoreAnimation;
 
 namespace MonoMac.AppKit {
 	public partial class NSOpenGLPixelFormat {
+		static IntPtr selInitWithAttributes = Selector.GetHandle ("initWithAttributes:");
+
 		public NSOpenGLPixelFormat (NSOpenGLPixelFormatAttribute[] attribs) : base (NSObjectFlag.Empty)
 		{
 			if (attribs == null)
@@ -39,7 +41,7 @@ namespace MonoMac.AppKit {
 
 			unsafe {
 				NSOpenGLPixelFormatAttribute [] copy = new NSOpenGLPixelFormatAttribute [attribs.Length+1];
-				Marshal.Copy (attribs, copy, attribs.Length);
+				Array.Copy (attribs, 0, copy, 0, attribs.Length);
 
 				fixed (NSOpenGLPixelFormatAttribute* pArray = copy){
 					if (IsDirectBinding) {
