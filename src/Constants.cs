@@ -25,7 +25,7 @@ namespace MonoMac {
 		public const string AppKitLibrary = "/System/Library/Frameworks/AppKit.framework/AppKit";
 		public const string CoreFoundationLibrary = "/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation";
 		public const string CoreGraphicsLibrary = "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/CoreGraphics.framework/CoreGraphics";
-		public const string CoreTextLibrary = "/System/Library/Frameworks/ApplicationServices.framework/ApplicationServices";
+		public const string CoreTextLibrary = "/System/Library/Frameworks/ApplicationServices.framework/Frameworks/CoreText.framework/CoreText";
 		public const string FoundationLibrary = "/System/Library/Frameworks/Foundation.framework/Foundation";
 		public const string ObjectiveCLibrary = "/usr/lib/libobjc.dylib";
 		public const string SystemLibrary = "/usr/lib/libSystem.dylib";
@@ -35,5 +35,6 @@ namespace MonoMac {
 		public const string AudioUnitLibrary = "/System/Library/Frameworks/AudioUnit.framework/AudioUnit";
 		public const string CoreAudioLibrary = "/System/Library/Frameworks/CoreAudio.framework/CoreAudio";
 		public const string CoreAnimationLibrary = "/System/Library/Frameworks/QuartzCore.framework/QuartzCore";
+		public const string ImageIOLibrary = "/System/Library/Frameworks/ApplicationServices.framework/Frameworks/ImageIO.framework/ImageIO";
 	}
 }
