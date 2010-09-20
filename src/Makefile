@@ -67,6 +67,7 @@ SHARED_SOURCE = \
 	./CoreFoundation/CFRunLoop.cs                   \
 	./CoreFoundation/CFException.cs                 \
 	./CoreFoundation/Dispatch.cs                    \
+	./CoreFoundation/CFBundle.cs                    \
 	./CoreGraphics/CGAffineTransform.cs		\
 	./CoreGraphics/CGBitmapContext.cs		\
 	./CoreGraphics/CGColor.cs			\
