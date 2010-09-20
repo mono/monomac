@@ -84,6 +84,7 @@ SHARED_SOURCE = \
 	./CoreGraphics/CGPDFPage.cs			\
 	./CoreGraphics/CGPath.cs			\
 	./CoreGraphics/CGPattern.cs			\
+        ./ImageIO/CGImageSource.cs                      \
 	./CoreText/Adapter.cs				\
 	./CoreText/CTFont.Generator.cs			\
 	./CoreText/CTFont.cs				\
