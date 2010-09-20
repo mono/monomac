@@ -27,9 +27,12 @@ MONOMAC_SOURCES = \
 	./AppKit/NSApplication.cs			\
 	./AppKit/NSApplicationDelegate.cs		\
 	./AppKit/NSBitmapImageRep.cs			\
+	./AppKit/Functions.cs				\
+	./AppKit/NSOpenGLPixelFormat.cs			\
 	./AppKit/NSGraphics.cs				\
 	./AppKit/NSMatrix.cs				\
-	./AppKit/NSWindow.cs
+	./AppKit/NSWindow.cs				\
+	./Growl/Constants.cs
 
 GENERATOR_SOURCES = \
 	../../maccore/src/generator.cs			\
@@ -53,6 +56,8 @@ SHARED_SOURCE = \
 	./AudioToolbox/AudioType.cs			\
 	./AudioToolbox/SystemSound.cs			\
 	./CoreAnimation/CATransform3D.cs		\
+	./CoreAnimation/CAEnums.cs			\
+	./CoreAnimation/CADefs.cs			\
 	./CoreData/Enums.cs				\
 	./CoreFoundation/CFArray.cs                     \
 	./CoreFoundation/CFBoolean.cs                   \
@@ -117,10 +122,9 @@ SHARED_SOURCE = \
 	./Foundation/NSKeyedUnarchiver.cs		\
 	./Foundation/NSMutableAttributedString.cs	\
 	./Foundation/NSMutableData.cs			\
+	./Foundation/NSMutableDictionary.cs		\
 	./Foundation/NSDictionary.cs			\
-	./Foundation/NSMutableDictionary.cs		\
 	./Foundation/NSMutableUrlRequest.cs		\
-	./Foundation/NSMutableDictionary.cs		\
 	./Foundation/NSNotificationCenter.cs		\
 	./Foundation/NSNumber.cs			\
 	./Foundation/NSNumber2.cs			\
@@ -151,6 +155,7 @@ SHARED_SOURCE = \
 
 SHARED_CORE_SOURCE = \
 	./CoreAnimation/CATransform3D.cs		\
+	./CoreAnimation/CAEnums.cs			\
 	./CoreData/Enums.cs				\
 	./CoreFoundation/CFString.cs                    \
 	./CoreFoundation/CFUrl.cs                       \
@@ -193,7 +198,8 @@ SHARED_CORE_SOURCE = \
 
 
 SHARED_API = \
-	./foundation.cs	\
+	./foundation.cs		\
+	./coreanimation.cs	\
 	./coredata.cs
 
 SHARED_SOURCES = $(patsubst %,../../maccore/src/%,$(SHARED_SOURCE))
@@ -203,8 +209,8 @@ SHARED_APIS = $(patsubst %,../../maccore/src/%,$(SHARED_API))
 APIS = \
 	appkit.cs		\
 	coreimage.cs		\
-	coreanimation.cs	\
 	foundation-desktop.cs 	\
+	growl.cs		\
 	webkit.cs		\
 	$(SHARED_APIS)
 

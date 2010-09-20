@@ -20,11 +20,39 @@
 // OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
+
+using System;
+using System.Runtime.InteropServices;
+using System.Drawing;
 using MonoMac.Foundation;
+using MonoMac.ObjCRuntime;
+using MonoMac.CoreGraphics;
+using MonoMac.CoreImage;
+using MonoMac.CoreAnimation;
 
-namespace MonoMac.CoreAnimation {
+namespace MonoMac.AppKit {
+	public partial class NSOpenGLPixelFormat {
+		static IntPtr selInitWithAttributes = Selector.GetHandle ("initWithAttributes:");
 
-	[BaseType (typeof (NSObject))]
-	interface CALayer {
+		public NSOpenGLPixelFormat (NSOpenGLPixelFormatAttribute[] attribs) : base (NSObjectFlag.Empty)
+		{
+			if (attribs == null)
+				throw new ArgumentNullException ("attribs");
+
+			unsafe {
+				NSOpenGLPixelFormatAttribute [] copy = new NSOpenGLPixelFormatAttribute [attribs.Length+1];
+				Array.Copy (attribs, 0, copy, 0, attribs.Length);
+
+				fixed (NSOpenGLPixelFormatAttribute* pArray = copy){
+					if (IsDirectBinding) {
+						Handle = MonoMac.ObjCRuntime.Messaging.IntPtr_objc_msgSend_IntPtr (this.Handle, selInitWithAttributes, new IntPtr((void*)pArray ));
+					} else {
+						Handle = MonoMac.ObjCRuntime.Messaging.IntPtr_objc_msgSendSuper_IntPtr (this.SuperHandle, selInitWithAttributes, new IntPtr((void*)pArray));
+					}
+				}
+				
+			}
+		}
+		
 	}
 }

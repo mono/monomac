@@ -875,6 +875,9 @@ namespace MonoMac.AppKit {
 
 		[Export ("bitmapImageRepByRetaggingWithColorSpace:")]
 		NSBitmapImageRep RetaggedWithColorSpace (NSColorSpace newSpace);
+		
+		[Export ("representationUsingType:properties:")]
+		NSData RepresentationUsingTypeProperties(NSBitmapImageFileType storageType, NSDictionary properties);
 	}
 
 	[BaseType (typeof (NSView))]
@@ -3431,7 +3434,7 @@ namespace MonoMac.AppKit {
 
 		[Abstract]
 		[Export ("namesOfPromisedFilesDroppedAtDestination:")]
-		string [] romisedFilesDroppedAtDestination (NSUrl dropDestination);
+		string [] PromisedFilesDroppedAtDestination (NSUrl dropDestination);
 	}
 
 
@@ -4246,7 +4249,7 @@ namespace MonoMac.AppKit {
 
 		// TODO: TYPE FOR THIS?
 		[Export ("modifierFlags")]
-		int ModifierFlags { get; }
+		uint ModifierFlags { get; }
 
 		[Export ("timestamp")]
 		double Timestamp { get; }
@@ -4694,7 +4697,7 @@ namespace MonoMac.AppKit {
 		NSImage Image { get; set; }
 
 		[Export ("state")]
-		int State { get; set; }
+		NSCellStateValue State { get; set; }
 
 		[Export ("onStateImage")]
 		NSImage OnStateImage { get; set; }
@@ -4826,6 +4829,135 @@ namespace MonoMac.AppKit {
 
 		//[Export ("defaultFetchRequest")]
 		//NSFetchRequest DefaultFetchRequest { get; }
+	}
+
+	[BaseType (typeof (NSObject))]
+	interface NSOpenGLPixelFormat {
+		[Export ("initWithData:")]
+		IntPtr Constructor (NSData attribs);
+
+		// TODO: wrap the CLContext and take a CLContext here instead.
+		//[Export ("initWithCGLPixelFormatObj:")]
+		//IntPtr Constructor (IntPtr cglContextHandle);
+
+		[Export ("getValues:forAttribute:forVirtualScreen:")]
+		IntPtr GetValue (ref int vals, NSOpenGLPixelFormatAttribute attrib, int screen);
+
+		[Export ("numberOfVirtualScreens")]
+		int NumberOfVirtualScreens { get; }
+
+		[Export ("CGLPixelFormatObj")]
+		IntPtr CGLPixelFormatObj  { get; }
+	}
+
+	[BaseType (typeof (NSObject))]
+	interface NSOpenGLPixelBuffer {
+		// FIXME: introduce these constants here
+		// targetGLEnum is one of: GL_TEXTURE_2D, GL_TXTURE_CUBE_MAP, GL_TEXTURE_RECTANGLE_EXT
+		// format is one of: GK_RGB, GL_RGBA, GL_DEPTH_COMPONENT
+		[Export ("initWithTextureTarget:textureInternalFormat:textureMaxMipMapLevel:pixelsWide:pixelsHigh:")]
+		IntPtr Constructor (int targetGlEnum, int format, int maxLevel, int pixelsWide, int pixelsHigh);
+
+		// FIXME: This conflicts with our internal ctor
+		// [Export ("initWithCGLPBufferObj:")]
+		// IntPtr Constructor (IntPtr pbuffer);
+
+		[Export ("CGLPBufferObj")]
+		IntPtr CGLPBufferObj { get; }
+
+		[Export ("pixelsWide")]
+		int PixelsWide { get; }
+
+		[Export ("pixelsHigh")]
+		int PixelsHigh { get; }
+
+		[Export ("textureTarget")]
+		int TextureTarget { get; }
+
+		[Export ("textureInternalFormat")]
+		int TextureInternalFormat { get; }
+
+		[Export ("textureMaxMipMapLevel")]
+		int TextureMaxMipMapLevel { get; }
+	}
+
+	[BaseType (typeof (NSObject))]
+	interface NSOpenGLContext {
+		[Export ("initWithFormat:shareContext:")]
+		IntPtr Constructor (NSOpenGLPixelFormat format, NSOpenGLContext shareContext);
+
+		// FIXME: This conflicts with our internal ctor
+		// [Export ("initWithCGLContextObj:")]
+		// IntPtr Constructor (IntPtr cglContext);
+
+		[Export ("setFullScreen")]
+		void SetFullScreen ();
+
+		[Export ("setOffScreen:width:height:rowbytes:")]
+		void SetOffScreen (IntPtr baseaddr, int width, int height, int rowbytes);
+
+		[Export ("clearDrawable")]
+		void ClearDrawable ();
+
+		[Export ("update")]
+		void Update ();
+
+		[Export ("flushBuffer")]
+		void FlushBuffer ();
+
+		[Export ("makeCurrentContext")]
+		void MakeCurrentContext ();
+
+		[Static]
+		[Export ("clearCurrentContext")]
+		void ClearCurrentContext ();
+
+		[Static]
+		[Export ("currentContext")]
+		NSOpenGLContext CurrentContext ();
+
+		[Export ("copyAttributesFromContext:withMask:")]
+		void CopyAttributes (NSOpenGLContext context, uint mask);
+
+		[Export ("setValues:forParameter:")]
+		void SetValues (IntPtr vals, NSOpenGLContextParameter param);
+
+		[Export ("getValues:forParameter:")]
+		void GetValues (IntPtr vals, NSOpenGLContextParameter param);
+
+		[Export ("createTexture:fromView:internalFormat:")]
+		void CreateTexture (int targetIdentifier, NSView view, int format);
+
+		[Export ("CGLContextObj")]
+		IntPtr CGLContextObj { get; }
+
+		// TODO: use an enumeration
+		// values for face are:
+		// GL_TEXTURE_CUBE_MAP_{POSITIVE,NEGATIVE}_{X,Y,Z}
+		//
+		[Export ("setPixelBuffer:cubeMapFace:mipMapLevel:currentVirtualScreen:")]
+		void SetPixelBuffer (NSOpenGLPixelBuffer pixelBuffer, int face, int level, int screen);
+
+		[Export ("pixelBuffer")]
+		NSOpenGLPixelBuffer PixelBuffer { get; }
+
+		[Export ("pixelBufferCubeMapFace")]
+		int PixelBufferCubeMapFace { get; }
+
+		[Export ("pixelBufferMipMapLevel")]
+		int PixelBufferMipMapLevel { get; }
+
+		// TODO: fixme enumerations
+		// GL_FRONT, GL_BACK, GL_AUX0
+		[Export ("setTextureImageToPixelBuffer:colorBuffer:")]
+		void SetTextureImage (NSOpenGLPixelBuffer pixelBuffer, int source);
+
+		//Detected properties
+		[Export ("view")]
+		NSView View { get; set; }
+
+		[Export ("currentVirtualScreen")]
+		int CurrentVirtualScreen { get; set; }
 	}
 
 	[BaseType (typeof (NSSavePanel), Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (NSOpenSavePanelDelegate)})]
@@ -6066,10 +6198,63 @@ namespace MonoMac.AppKit {
 		[Export ("stringForType:")]
 		string StringForType (string dataType);
 		
-		//TODO: Add extension method to this
+		[Field ("NSStringPboardType")]
+		NSString NSStringPboardType { get; }
+		
+		[Field ("NSFilenamesPboardType")]
+		NSString NSFilenamesPboardType{ get; }
+		
+		[Field ("NSPostScriptPboardType")]
+		NSString NSPostScriptPboardType{ get; }
+        
+		[Field ("NSTIFFPboardType")]
+		NSString NSTIFFPboardType{ get; }
+		
+		[Field ("NSRTFPboardType")]
+		NSString NSRTFPboardType{ get; }
+		
+		[Field ("NSTabularTextPboardType")]
+		NSString NSTabularTextPboardType{ get; }
+		
+		[Field ("NSFontPboardType")]
+		NSString NSFontPboardType{ get; }
+		
+		[Field ("NSRulerPboardType")]
+		NSString NSRulerPboardType{ get; }
+		
+		[Field ("NSFileContentsPboardType")]
+		NSString NSFileContentsPboardType{ get; }
+		
+		[Field ("NSColorPboardType")]
+		NSString NSColorPboardType{ get; }
+		
+		[Field ("NSRTFDPboardType")]
+		NSString NSRTFDPboardType{ get; }
+		
+		[Field ("NSHTMLPboardType")]
+		NSString NSHTMLPboardType{ get; }
+		
+		[Field ("NSPICTPboardType")]
+		NSString NSPICTPboardType{ get; }
+		
+		[Field ("NSURLPboardType")]
+		NSString NSURLPboardType{ get; }
+		
+		[Field ("NSPDFPboardType")]
+		NSString NSPDFPboardType{ get; }
+		
+		[Field ("NSVCardPboardType")]
+		NSString NSVCardPboardType{ get; }
+		
+		[Field ("NSFilesPromisePboardType")]
+		NSString NSFilesPromisePboardType{ get; }
+		
+		[Field ("NSMultipleTextSelectionPboardType")]
+		NSString NSMultipleTextSelectionPboardType{ get; }
+
+		//TODO: Add these extension methods
 		//+ (NSURL *)URLFromPasteboard:(NSPasteboard *)pasteBoard;
 		//- (void)writeToPasteboard:(NSPasteboard *)pasteBoard;
-		
 	}
 	
 	[BaseType (typeof (NSObject))]
@@ -8112,16 +8297,16 @@ namespace MonoMac.AppKit {
 		bool IsOpaque { get; }
 
 		[Export ("convertPoint:fromView:")]
-		PointF ConvertPointfromView (PointF aPoint, NSView aView);
+		PointF ConvertPointfromView (PointF aPoint, [NullAllowed] NSView aView);
 
 		[Export ("convertPoint:toView:")]
-		PointF ConvertPointtoView (PointF aPoint, NSView aView);
+		PointF ConvertPointtoView (PointF aPoint, [NullAllowed] NSView aView);
 
 		[Export ("convertSize:fromView:")]
-		SizeF ConvertSizefromView (SizeF aSize, NSView aView);
+		SizeF ConvertSizefromView (SizeF aSize, [NullAllowed] NSView aView);
 
 		[Export ("convertSize:toView:")]
-		SizeF ConvertSizetoView (SizeF aSize, NSView aView);
+		SizeF ConvertSizetoView (SizeF aSize, [NullAllowed] NSView aView);
 
 		[Export ("convertRect:fromView:")]
 		RectangleF ConvertRectfromView (RectangleF aRect, NSView aView);
@@ -8424,24 +8609,47 @@ namespace MonoMac.AppKit {
 		[Export ("toolTip")]
 		string ToolTip { get; set; }
 				
-		//NSDrag category
-		[Export ("dragImage:at:offset:event:pasteboard:source:slideBack:")]
-		void DragImage (NSImage anImage, PointF viewLocation, SizeF initialOffset, NSEvent theEvent, NSPasteboard pboard, NSObject sourceObj, bool slideFlag);
-		
-		[Export ("registeredDraggedTypes:")]
-		string[] RegisteredDraggedTypes { get; }
-		
 		[Export ("registerForDraggedTypes:")]
 		void RegisterForDraggedTypes (string [] newTypes);
-		
+
 		[Export ("unregisterDraggedTypes")]
 		void UnregisterDraggedTypes ();
 		
+		[Export ("registeredDraggedTypes")]
+		string[] RegisteredDragTypes();
+        
+		[Export ("dragImage:at:offset:event:pasteboard:source:slideBack:")]
+		void DragImage (NSImage anImage, PointF viewLocation, SizeF initialOffset, NSEvent theEvent, NSPasteboard pboard, NSObject sourceObj, bool slideFlag);
+
 		[Export ("dragFile:fromRect:slideBack:event:")]
 		bool DragFile (string filename, RectangleF aRect, bool slideBack, NSEvent theEvent);
 		
 		[Export ("dragPromisedFilesOfTypes:fromRect:source:slideBack:event:")]
 		bool DragPromisedFilesOfTypes (string[] typeArray, RectangleF aRect, NSObject sourceObject, bool slideBack, NSEvent theEvent);
+		
+		[Export ("exitFullScreenModeWithOptions:")]
+		void ExitFullscreenModeWithOptions(NSDictionary options);
+		
+		[Export ("enterFullScreenMode:withOptions:")]
+		void EnterFullscreenModeWithOptions(NSScreen screen, NSDictionary options);
+		
+		[Export ("isInFullScreenMode")]
+		bool IsInFullscreenMode { get; }
+		
+		/* 10.6+ Only - How do you specify that? - jm
+		   [Field ("NSFullScreenModeApplicationPresentationOptions")]   
+		   NSString NSFullScreenModeApplicationPresentationOptions { get; }
+		*/
+		
+		// Fields
+		[Field ("NSFullScreenModeAllScreens")]   
+		NSString NSFullScreenModeAllScreens { get; }
+		
+		[Field ("NSFullScreenModeSetting")]   
+		NSString NSFullScreenModeSetting { get; }
+		
+		[Field ("NSFullScreenModeWindowLevel")]   
+		NSString NSFullScreenModeWindowLevel { get; }
 	}
 
 	[BaseType (typeof (NSAnimation))]
@@ -10737,8 +10945,11 @@ namespace MonoMac.AppKit {
 	
 		[Export ("contentView")]
 		NSView ContentView  { get; set; }
+
+		[Export ("delegate", ArgumentSemantic.Assign)][NullAllowed]
+		NSObject WeakDelegate { get; set; }
 	
-		[Export ("delegate")]
+		[Wrap ("WeakDelegate")][NullAllowed]
 		NSWindowDelegate Delegate { get; set; }
 	
 		[Export ("windowNumber")]
@@ -10910,7 +11121,7 @@ namespace MonoMac.AppKit {
 		void OrderFront (NSObject sender);
 		
 		[Export ("orderBack:")]
-		void orderBack (NSObject sender);
+		void OrderBack (NSObject sender);
 	
 		[Export ("orderOut:")]
 		void OrderOut (NSObject sender);
@@ -11639,7 +11850,5 @@ namespace MonoMac.AppKit {
 		[Export ("currentApplication")]
 		NSRunningApplication CurrentApplication { get ; }
 	
-	}
-	
-	
+	}	
 }
