@@ -6065,6 +6065,11 @@ namespace MonoMac.AppKit {
 
 		[Export ("stringForType:")]
 		string StringForType (string dataType);
+		
+		//TODO: Add extension method to this
+		//+ (NSURL *)URLFromPasteboard:(NSPasteboard *)pasteBoard;
+		//- (void)writeToPasteboard:(NSPasteboard *)pasteBoard;
+		
 	}
 	
 	[BaseType (typeof (NSObject))]
