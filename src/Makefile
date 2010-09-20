@@ -141,6 +141,7 @@ SHARED_SOURCE = \
 	./Foundation/NSValue.cs				\
 	./Foundation/PreserveAttribute.cs		\
 	./Foundation/RegisterAttribute.cs		\
+	./ImageIO/CGImageSource.cs			\
 	./ObjCRuntime/ArgumentSemantic.cs		\
 	./ObjCRuntime/AlphaAttribute.cs			\
 	./ObjCRuntime/Blocks.cs				\
