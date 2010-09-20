@@ -3398,6 +3398,36 @@ namespace MonoMac.AppKit {
 	}
 
 	[BaseType (typeof (NSObject))]
+	interface NSDragDestination {
+	    [Export ("draggingSourceOperationMask")]
+	    NSDragOperation DraggingSourceOperationMask { get; }
+	
+	    [Export ("draggingLocation")]
+	    PointF DraggingLocation { get; }
+	
+	    [Export ("draggedImageLocation")]
+	    PointF DraggedImageLocation { get; }
+	
+	    [Export ("draggedImage")]
+	    NSImage DraggedImage { get; }
+	
+	    [Export ("draggingPasteboard")]
+	    NSPasteboard DraggingPasteboard { get; }
+	
+	    [Export ("draggingSource")]
+	    NSObject DraggingSource { get; }
+	
+	    [Export ("draggingSequenceNumber")]
+	    int DraggingSequenceNumber { get; }
+	
+	    [Export ("slideDraggedImageTo:")]
+	    void SlideDraggedImageTo (PointF screenPoint);
+	
+	    [Export ("namesOfPromisedFilesDroppedAtDestination:")]
+	    string [] PromisedFilesDroppedAtDestination (NSUrl dropDestination);
+	}
+	
+	[BaseType (typeof (NSObject))]
 	[Model]
 	interface NSDraggingInfo {
 		[Abstract]
