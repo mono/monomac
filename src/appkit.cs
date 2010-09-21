@@ -3436,8 +3436,37 @@ namespace MonoMac.AppKit {
 		[Export ("namesOfPromisedFilesDroppedAtDestination:")]
 		string [] PromisedFilesDroppedAtDestination (NSUrl dropDestination);
 	}
-
-
+	
+	[BaseType (typeof (NSObject))]
+	interface NSDragDestination {
+	    [Export ("draggingSourceOperationMask")]
+	    NSDragOperation DraggingSourceOperationMask { get; }
+	
+	    [Export ("draggingLocation")]
+	    PointF DraggingLocation { get; }
+	
+	    [Export ("draggedImageLocation")]
+	    PointF DraggedImageLocation { get; }
+	
+	    [Export ("draggedImage")]
+	    NSImage DraggedImage { get; }
+	
+	    [Export ("draggingPasteboard")]
+	    NSPasteboard DraggingPasteboard { get; }
+	
+	    [Export ("draggingSource")]
+	    NSObject DraggingSource { get; }
+	
+	    [Export ("draggingSequenceNumber")]
+	    int DraggingSequenceNumber { get; }
+	
+	    [Export ("slideDraggedImageTo:")]
+	    void SlideDraggedImageTo (PointF screenPoint);
+	
+	    [Export ("namesOfPromisedFilesDroppedAtDestination:")]
+	    string [] PromisedFilesDroppedAtDestination (NSUrl dropDestination);
+	}
+	
 	[BaseType (typeof (NSResponder))]
 	interface NSDrawer {
 		[Export ("initWithContentSize:preferredEdge:")]
@@ -6251,10 +6280,19 @@ namespace MonoMac.AppKit {
 		
 		[Field ("NSMultipleTextSelectionPboardType")]
 		NSString NSMultipleTextSelectionPboardType{ get; }
+		
+		[Field ("NSDragPboard")]
+		NSString NSDragPboard { get; }
 
 		//TODO: Add these extension methods
-		//+ (NSURL *)URLFromPasteboard:(NSPasteboard *)pasteBoard;
+		//+ (NSURL *)URLFromPasteboard:(NSPasteboard *)pasteBoard;		
+		[Export ("URLFromPasteboard:")][Static]
+		NSUrl URLFromPasteboard ([Target] NSUrl url, NSPasteboard pasteBoard);
+		
+		
 		//- (void)writeToPasteboard:(NSPasteboard *)pasteBoard;
+		[Export ("writeToPasteboard:")]
+		void WriteToPasteboard ([Target] NSUrl url, NSPasteboard pasteBoard);
 	}
 	
 	[BaseType (typeof (NSObject))]
@@ -10894,6 +10932,119 @@ namespace MonoMac.AppKit {
 
 		[Export ("leafKeyPathForNode:")]
 		string LeafKeyPathForNode (NSTreeNode node);
+	}
+	
+	[BaseType (typeof (NSObjectController))]
+	interface NSArrayController {
+		[Export ("rearrangeObjects")]
+		void RearrangeObjects ();
+
+		[Export ("automaticRearrangementKeyPaths")]
+		NSArray AutomaticRearrangementKeyPaths ();
+
+		[Export ("didChangeArrangementCriteria")]
+		void DidChangeArrangementCriteria ();
+
+		[Export ("arrangeObjects:")]
+		NSArray ArrangeObjects (NSArray objects);
+
+		[Export ("arrangedObjects")]
+		NSObject ArrangedObjects ();
+
+		[Export ("addSelectionIndexes:")]
+		bool AddSelectionIndexes (NSIndexSet indexes);
+
+		[Export ("removeSelectionIndexes:")]
+		bool RemoveSelectionIndexes (NSIndexSet indexes);
+
+		[Export ("addSelectedObjects:")]
+		bool AddSelectedObjects (NSArray objects);
+
+		[Export ("removeSelectedObjects:")]
+		bool RemoveSelectedObjects (NSArray objects);
+
+		[Export ("add:")]
+		void Add (NSObject sender);
+
+		[Export ("remove:")]
+		void Remove (NSObject sender);
+
+		[Export ("insert:")]
+		void Insert (NSObject sender);
+
+		[Export ("canInsert")]
+		bool CanInsert ();
+
+		[Export ("selectNext:")]
+		void SelectNext (NSObject sender);
+
+		[Export ("selectPrevious:")]
+		void SelectPrevious (NSObject sender);
+
+		[Export ("canSelectNext")]
+		bool CanSelectNext ();
+
+		[Export ("canSelectPrevious")]
+		bool CanSelectPrevious ();
+
+		[Export ("addObject:")]
+		void AddObject (NSObject aObject);
+
+		[Export ("addObjects:")]
+		void AddObjects (NSArray objects);
+
+		[Export ("insertObject:atArrangedObjectIndex:")]
+		void InsertObjectatArrangedObjectIndex (NSObject aObject, uint index);
+
+		[Export ("insertObjects:atArrangedObjectIndexes:")]
+		void InsertObjectsatArrangedObjectIndexes (NSArray objects, NSIndexSet indexes);
+
+		[Export ("removeObjectAtArrangedObjectIndex:")]
+		void RemoveObjectAtArrangedObjectIndex (uint index);
+
+		[Export ("removeObjectsAtArrangedObjectIndexes:")]
+		void RemoveObjectsAtArrangedObjectIndexes (NSIndexSet indexes);
+
+		[Export ("removeObject:")]
+		void RemoveObject (NSObject aObject);
+
+		[Export ("removeObjects:")]
+		void RemoveObjects (NSArray objects);
+
+		//Detected properties
+		[Export ("automaticallyRearrangesObjects")]
+		bool AutomaticallyRearrangesObjects { get; set; }
+
+		[Export ("sortDescriptors")]
+		NSArray SortDescriptors { get; set; }
+
+		[Export ("filterPredicate")]
+		NSPredicate FilterPredicate { get; set; }
+
+		[Export ("clearsFilterPredicateOnInsertion")]
+		bool ClearsFilterPredicateOnInsertion { get; set; }
+
+		[Export ("avoidsEmptySelection")]
+		bool AvoidsEmptySelection { get; set; }
+
+		[Export ("preservesSelection")]
+		bool PreservesSelection { get; set; }
+
+		[Export ("selectsInsertedObjects")]
+		bool SelectsInsertedObjects { get; set; }
+
+		[Export ("alwaysUsesMultipleValuesMarker")]
+		bool AlwaysUsesMultipleValuesMarker { get; set; }
+
+		[Export ("selectionIndexes")]
+		NSIndexSet SelectionIndexes { get; set; }
+
+		[Export ("selectionIndex")]
+		uint SelectionIndex { get; set; }
+
+		[Export ("selectedObjects")]
+		NSArray SelectedObjects { get; set; }
+
 	}
 	
 	[BaseType (typeof (NSResponder), Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (NSWindowDelegate)})]
