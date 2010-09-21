@@ -9655,6 +9655,10 @@ namespace MonoMac.AppKit {
 		[Export ("importsGraphics")]
 		bool ImportsGraphics { get; set; }
 	}
+	
+    [BaseType (typeof (NSTextField))]
+    interface NSSecureTextField {
+    }
 
 	[BaseType (typeof (NSObject))]
 	[Model]
@@ -9711,6 +9715,12 @@ namespace MonoMac.AppKit {
 		[Export ("allowedInputSourceLocales")]
 		string [] AllowedInputSourceLocales { get; set; }
 	}
+	
+    [BaseType (typeof (NSTextFieldCell))]
+    interface NSSecureTextFieldCell {
+            [Export ("echosBullets")]
+            bool EchosBullets { get; set; }
+    }	
 	
 	[BaseType (typeof (NSObject))]
 	interface NSTextInputContext {
