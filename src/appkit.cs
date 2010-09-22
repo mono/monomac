@@ -3466,37 +3466,7 @@ namespace MonoMac.AppKit {
 		[Export ("namesOfPromisedFilesDroppedAtDestination:")]
 		string [] PromisedFilesDroppedAtDestination (NSUrl dropDestination);
 	}
-	
-	[BaseType (typeof (NSObject))]
-	interface NSDragDestination {
-	    [Export ("draggingSourceOperationMask")]
-	    NSDragOperation DraggingSourceOperationMask { get; }
-	
-	    [Export ("draggingLocation")]
-	    PointF DraggingLocation { get; }
-	
-	    [Export ("draggedImageLocation")]
-	    PointF DraggedImageLocation { get; }
-	
-	    [Export ("draggedImage")]
-	    NSImage DraggedImage { get; }
-	
-	    [Export ("draggingPasteboard")]
-	    NSPasteboard DraggingPasteboard { get; }
-	
-	    [Export ("draggingSource")]
-	    NSObject DraggingSource { get; }
-	
-	    [Export ("draggingSequenceNumber")]
-	    int DraggingSequenceNumber { get; }
-	
-	    [Export ("slideDraggedImageTo:")]
-	    void SlideDraggedImageTo (PointF screenPoint);
-	
-	    [Export ("namesOfPromisedFilesDroppedAtDestination:")]
-	    string [] PromisedFilesDroppedAtDestination (NSUrl dropDestination);
-	}
-	
+			
 	[BaseType (typeof (NSResponder))]
 	interface NSDrawer {
 		[Export ("initWithContentSize:preferredEdge:")]
@@ -6213,7 +6183,7 @@ namespace MonoMac.AppKit {
 		bool WriteObjects (NSPasteboardReading [] objects);
 
 		[Export ("readObjectsForClasses:options:")]
-		NSObject [] ReadObjectsForClassesoptions (NSPasteboardReading [] classArray, NSDictionary options);
+		NSObject [] ReadObjectsForClassesoptions (NSArray classArray, NSDictionary options);
 
 		[Export ("pasteboardItems")]
 		NSPasteboardItem [] PasteboardItems { get; }
@@ -6313,16 +6283,21 @@ namespace MonoMac.AppKit {
 		
 		[Field ("NSDragPboard")]
 		NSString NSDragPboard { get; }
-
-		//TODO: Add these extension methods
-		//+ (NSURL *)URLFromPasteboard:(NSPasteboard *)pasteBoard;		
-		[Export ("URLFromPasteboard:")][Static]
+		
+		[Field ("NSPasteboardURLReadingContentsConformToTypesKey")]
+		NSString NSPasteboardURLReadingContentsConformToTypesKey { get; }
+		
+		[Field ("NSPasteboardURLReadingFileURLsOnlyKey")]
+		NSString NSPasteboardURLReadingFileURLsOnlyKey { get; }
+		
+		/*
+		[Static]
+		[Export ("URLFromPasteboard:")]
 		NSUrl URLFromPasteboard ([Target] NSUrl url, NSPasteboard pasteBoard);
-		
-		
-		//- (void)writeToPasteboard:(NSPasteboard *)pasteBoard;
+				
 		[Export ("writeToPasteboard:")]
 		void WriteToPasteboard ([Target] NSUrl url, NSPasteboard pasteBoard);
+		*/
 	}
 	
 	[BaseType (typeof (NSObject))]
