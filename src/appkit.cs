@@ -6195,7 +6195,7 @@ namespace MonoMac.AppKit {
 		bool CanReadItemWithDataConformingToTypes (string [] utiTypes);
 
 		[Export ("canReadObjectForClasses:options:")]
-		bool CanReadObjectForClassesoptions (NSPasteboardReading [] classArray, NSDictionary options);
+		bool CanReadObjectForClassesoptions (NSArray classArray, NSDictionary options);
 
 		[Export ("declareTypes:owner:")]
 		int DeclareTypesowner (string [] newTypes, NSObject newOwner);
@@ -6289,15 +6289,6 @@ namespace MonoMac.AppKit {
 		
 		[Field ("NSPasteboardURLReadingFileURLsOnlyKey")]
 		NSString NSPasteboardURLReadingFileURLsOnlyKey { get; }
-		
-		/*
-		[Static]
-		[Export ("URLFromPasteboard:")]
-		NSUrl URLFromPasteboard ([Target] NSUrl url, NSPasteboard pasteBoard);
-				
-		[Export ("writeToPasteboard:")]
-		void WriteToPasteboard ([Target] NSUrl url, NSPasteboard pasteBoard);
-		*/
 	}
 	
 	[BaseType (typeof (NSObject))]
