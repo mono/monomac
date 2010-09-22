@@ -1,0 +1,1009 @@
+<Type Name="NSBrowserDelegate" FullName="MonoMac.AppKit.NSBrowserDelegate">
+  <TypeSignature Language="C#" Value="public class NSBrowserDelegate : MonoMac.Foundation.NSObject" />
+  <AssemblyInfo>
+    <AssemblyName>monomac</AssemblyName>
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>MonoMac.Foundation.NSObject</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Attributes>
+    <Attribute>
+      <AttributeName>MonoMac.Foundation.Model</AttributeName>
+    </Attribute>
+    <Attribute>
+      <AttributeName>MonoMac.Foundation.Register("NSBrowserDelegate")</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public NSBrowserDelegate ();" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("init")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public NSBrowserDelegate (MonoMac.Foundation.NSCoder coder);" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("initWithCoder:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <Parameters>
+        <Parameter Name="coder" Type="MonoMac.Foundation.NSCoder" />
+      </Parameters>
+      <Docs>
+        <param name="coder">The unarchiver object.</param>
+        <summary>A constructor that initializes the object from the data stored in the unarchiver object.</summary>
+        <remarks>This constructor is provided to allow the class to be initialized from an unarchiver (for example, during NIB deserialization).</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public NSBrowserDelegate (MonoMac.Foundation.NSObjectFlag t);" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="t" Type="MonoMac.Foundation.NSObjectFlag" />
+      </Parameters>
+      <Docs>
+        <param name="t">Unused sentinel value, pass NSObjectFlag.Empty.</param>
+        <summary>Constructor to call on derived classes when the derived class has an [Export] constructor.</summary>
+        <remarks>
+          <para>This constructor should be called by derived classes when they are initialized using an [Export] attribute. The argument value is ignore, typically the chaining would look like this:</para>
+          <example>
+            <code lang="C#">
+public class MyClass : BaseClass {
+    [Export ("initWithFoo:")]
+    public MyClass (string foo) : base (NSObjectFlag.Empty)
+    {
+        ...
+    }
+</code>
+          </example>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public NSBrowserDelegate (IntPtr handle);" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="handle" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="handle">Pointer (handle) to the unmanaged object.</param>
+        <summary>A constructor used when creating managed representations of unmanaged objects;  Called by the runtime.</summary>
+        <remarks>
+          <para>This constructor is invoked by the runtime infrastructure (<see cref="M:MonoMac.ObjCRuntime.GetNSObject (System.IntPtr)" />) to create a new managed representation for a pointer to an unmanaged Objective-C object.    You should not invoke this method directly, instead you should call the GetNSObject method as it will prevent two instances of a managed object to point to the same native object.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AcceptDrop">
+      <MemberSignature Language="C#" Value="public virtual bool AcceptDrop (MonoMac.AppKit.NSBrowser browser, MonoMac.AppKit.NSDraggingInfo info, int row, int column, MonoMac.AppKit.NSBrowserDropOperation dropOperation);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("browser:acceptDrop:atRow:column:dropOperation:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="browser" Type="MonoMac.AppKit.NSBrowser" />
+        <Parameter Name="info" Type="MonoMac.AppKit.NSDraggingInfo" />
+        <Parameter Name="row" Type="System.Int32" />
+        <Parameter Name="column" Type="System.Int32" />
+        <Parameter Name="dropOperation" Type="MonoMac.AppKit.NSBrowserDropOperation" />
+      </Parameters>
+      <Docs>
+        <param name="browser">To be added.</param>
+        <param name="info">To be added.</param>
+        <param name="row">To be added.</param>
+        <param name="column">To be added.</param>
+        <param name="dropOperation">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CanDragRowsWithIndexes">
+      <MemberSignature Language="C#" Value="public virtual bool CanDragRowsWithIndexes (MonoMac.AppKit.NSBrowser browser, MonoMac.Foundation.NSIndexSet rowIndexes, int column, MonoMac.AppKit.NSEvent theEvent);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("browser:canDragRowsWithIndexes:inColumn:withEvent:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="browser" Type="MonoMac.AppKit.NSBrowser" />
+        <Parameter Name="rowIndexes" Type="MonoMac.Foundation.NSIndexSet" />
+        <Parameter Name="column" Type="System.Int32" />
+        <Parameter Name="theEvent" Type="MonoMac.AppKit.NSEvent" />
+      </Parameters>
+      <Docs>
+        <param name="browser">To be added.</param>
+        <param name="rowIndexes">To be added.</param>
+        <param name="column">To be added.</param>
+        <param name="theEvent">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ColumnConfigurationDidChange">
+      <MemberSignature Language="C#" Value="public virtual void ColumnConfigurationDidChange (MonoMac.Foundation.NSNotification notification);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("browserColumnConfigurationDidChange:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="notification" Type="MonoMac.Foundation.NSNotification" />
+      </Parameters>
+      <Docs>
+        <param name="notification">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ColumnTitle">
+      <MemberSignature Language="C#" Value="public virtual string ColumnTitle (MonoMac.AppKit.NSBrowser sender, int column);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("browser:titleOfColumn:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="sender" Type="MonoMac.AppKit.NSBrowser" />
+        <Parameter Name="column" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="sender">To be added.</param>
+        <param name="column">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CountChildren">
+      <MemberSignature Language="C#" Value="public virtual int CountChildren (MonoMac.AppKit.NSBrowser browser, MonoMac.Foundation.NSObject item);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("browser:numberOfChildrenOfItem:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="browser" Type="MonoMac.AppKit.NSBrowser" />
+        <Parameter Name="item" Type="MonoMac.Foundation.NSObject" />
+      </Parameters>
+      <Docs>
+        <param name="browser">To be added.</param>
+        <param name="item">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateRowsForColumn">
+      <MemberSignature Language="C#" Value="public virtual void CreateRowsForColumn (MonoMac.AppKit.NSBrowser sender, int column, MonoMac.AppKit.NSMatrix matrix);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("browser:createRowsForColumn:inMatrix:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="sender" Type="MonoMac.AppKit.NSBrowser" />
+        <Parameter Name="column" Type="System.Int32" />
+        <Parameter Name="matrix" Type="MonoMac.AppKit.NSMatrix" />
+      </Parameters>
+      <Docs>
+        <param name="sender">To be added.</param>
+        <param name="column">To be added.</param>
+        <param name="matrix">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DidChangeLastColumntoColumn">
+      <MemberSignature Language="C#" Value="public virtual void DidChangeLastColumntoColumn (MonoMac.AppKit.NSBrowser browser, int oldLastColumn, int column);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("browser:didChangeLastColumn:toColumn:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="browser" Type="MonoMac.AppKit.NSBrowser" />
+        <Parameter Name="oldLastColumn" Type="System.Int32" />
+        <Parameter Name="column" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="browser">To be added.</param>
+        <param name="oldLastColumn">To be added.</param>
+        <param name="column">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DidScroll">
+      <MemberSignature Language="C#" Value="public virtual void DidScroll (MonoMac.AppKit.NSBrowser sender);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("browserDidScroll:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="sender" Type="MonoMac.AppKit.NSBrowser" />
+      </Parameters>
+      <Docs>
+        <param name="sender">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetChild">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject GetChild (MonoMac.AppKit.NSBrowser browser, int index, MonoMac.Foundation.NSObject item);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("browser:child:ofItem:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="browser" Type="MonoMac.AppKit.NSBrowser" />
+        <Parameter Name="index" Type="System.Int32" />
+        <Parameter Name="item" Type="MonoMac.Foundation.NSObject" />
+      </Parameters>
+      <Docs>
+        <param name="browser">To be added.</param>
+        <param name="index">To be added.</param>
+        <param name="item">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="HeaderViewControllerForItem">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSViewController HeaderViewControllerForItem (MonoMac.AppKit.NSBrowser browser, MonoMac.Foundation.NSObject item);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("browser:headerViewControllerForItem:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AppKit.NSViewController</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="browser" Type="MonoMac.AppKit.NSBrowser" />
+        <Parameter Name="item" Type="MonoMac.Foundation.NSObject" />
+      </Parameters>
+      <Docs>
+        <param name="browser">To be added.</param>
+        <param name="item">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsColumnValid">
+      <MemberSignature Language="C#" Value="public virtual bool IsColumnValid (MonoMac.AppKit.NSBrowser sender, int column);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("browser:isColumnValid:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="sender" Type="MonoMac.AppKit.NSBrowser" />
+        <Parameter Name="column" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="sender">To be added.</param>
+        <param name="column">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsLeafItem">
+      <MemberSignature Language="C#" Value="public virtual bool IsLeafItem (MonoMac.AppKit.NSBrowser browser, MonoMac.Foundation.NSObject item);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("browser:isLeafItem:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="browser" Type="MonoMac.AppKit.NSBrowser" />
+        <Parameter Name="item" Type="MonoMac.Foundation.NSObject" />
+      </Parameters>
+      <Docs>
+        <param name="browser">To be added.</param>
+        <param name="item">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NextTypeSelectMatch">
+      <MemberSignature Language="C#" Value="public virtual int NextTypeSelectMatch (MonoMac.AppKit.NSBrowser browser, int startRow, int endRow, int column, string searchString);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("browser:nextTypeSelectMatchFromRow:toRow:inColumn:forString:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="browser" Type="MonoMac.AppKit.NSBrowser" />
+        <Parameter Name="startRow" Type="System.Int32" />
+        <Parameter Name="endRow" Type="System.Int32" />
+        <Parameter Name="column" Type="System.Int32" />
+        <Parameter Name="searchString" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="browser">To be added.</param>
+        <param name="startRow">To be added.</param>
+        <param name="endRow">To be added.</param>
+        <param name="column">To be added.</param>
+        <param name="searchString">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ObjectValueForItem">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject ObjectValueForItem (MonoMac.AppKit.NSBrowser browser, MonoMac.Foundation.NSObject item);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("browser:objectValueForItem:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="browser" Type="MonoMac.AppKit.NSBrowser" />
+        <Parameter Name="item" Type="MonoMac.Foundation.NSObject" />
+      </Parameters>
+      <Docs>
+        <param name="browser">To be added.</param>
+        <param name="item">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PreviewViewControllerForLeafItem">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSViewController PreviewViewControllerForLeafItem (MonoMac.AppKit.NSBrowser browser, MonoMac.Foundation.NSObject item);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("browser:previewViewControllerForLeafItem:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AppKit.NSViewController</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="browser" Type="MonoMac.AppKit.NSBrowser" />
+        <Parameter Name="item" Type="MonoMac.Foundation.NSObject" />
+      </Parameters>
+      <Docs>
+        <param name="browser">To be added.</param>
+        <param name="item">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PromisedFilesDroppedAtDestination">
+      <MemberSignature Language="C#" Value="public virtual string[] PromisedFilesDroppedAtDestination (MonoMac.AppKit.NSBrowser browser, MonoMac.Foundation.NSUrl dropDestination, MonoMac.Foundation.NSIndexSet rowIndexes, int column);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("browser:namesOfPromisedFilesDroppedAtDestination:forDraggedRowsWithIndexes:inColumn:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="browser" Type="MonoMac.AppKit.NSBrowser" />
+        <Parameter Name="dropDestination" Type="MonoMac.Foundation.NSUrl" />
+        <Parameter Name="rowIndexes" Type="MonoMac.Foundation.NSIndexSet" />
+        <Parameter Name="column" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="browser">To be added.</param>
+        <param name="dropDestination">To be added.</param>
+        <param name="rowIndexes">To be added.</param>
+        <param name="column">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RootItemForBrowser">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject RootItemForBrowser (MonoMac.AppKit.NSBrowser browser);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("rootItemForBrowser:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="browser" Type="MonoMac.AppKit.NSBrowser" />
+      </Parameters>
+      <Docs>
+        <param name="browser">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RowHeight">
+      <MemberSignature Language="C#" Value="public virtual float RowHeight (MonoMac.AppKit.NSBrowser browser, int row, int columnIndex);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("browser:heightOfRow:inColumn:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="browser" Type="MonoMac.AppKit.NSBrowser" />
+        <Parameter Name="row" Type="System.Int32" />
+        <Parameter Name="columnIndex" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="browser">To be added.</param>
+        <param name="row">To be added.</param>
+        <param name="columnIndex">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RowsInColumn">
+      <MemberSignature Language="C#" Value="public virtual int RowsInColumn (MonoMac.AppKit.NSBrowser sender, int column);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("browser:numberOfRowsInColumn:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="sender" Type="MonoMac.AppKit.NSBrowser" />
+        <Parameter Name="column" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="sender">To be added.</param>
+        <param name="column">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SelectCellWithString">
+      <MemberSignature Language="C#" Value="public virtual bool SelectCellWithString (MonoMac.AppKit.NSBrowser sender, string title, int column);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("browser:selectCellWithString:inColumn:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="sender" Type="MonoMac.AppKit.NSBrowser" />
+        <Parameter Name="title" Type="System.String" />
+        <Parameter Name="column" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="sender">To be added.</param>
+        <param name="title">To be added.</param>
+        <param name="column">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SelectionIndexesForProposedSelection">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSIndexSet SelectionIndexesForProposedSelection (MonoMac.AppKit.NSBrowser browser, MonoMac.Foundation.NSIndexSet proposedSelectionIndexes, int inColumn);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("browser:selectionIndexesForProposedSelection:inColumn:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSIndexSet</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="browser" Type="MonoMac.AppKit.NSBrowser" />
+        <Parameter Name="proposedSelectionIndexes" Type="MonoMac.Foundation.NSIndexSet" />
+        <Parameter Name="inColumn" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="browser">To be added.</param>
+        <param name="proposedSelectionIndexes">To be added.</param>
+        <param name="inColumn">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SelectRowinColumn">
+      <MemberSignature Language="C#" Value="public virtual bool SelectRowinColumn (MonoMac.AppKit.NSBrowser sender, int row, int column);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("browser:selectRow:inColumn:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="sender" Type="MonoMac.AppKit.NSBrowser" />
+        <Parameter Name="row" Type="System.Int32" />
+        <Parameter Name="column" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="sender">To be added.</param>
+        <param name="row">To be added.</param>
+        <param name="column">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetObjectValue">
+      <MemberSignature Language="C#" Value="public virtual void SetObjectValue (MonoMac.AppKit.NSBrowser browser, MonoMac.Foundation.NSObject obj, MonoMac.Foundation.NSObject item);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("browser:setObjectValue:forItem:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="browser" Type="MonoMac.AppKit.NSBrowser" />
+        <Parameter Name="obj" Type="MonoMac.Foundation.NSObject" />
+        <Parameter Name="item" Type="MonoMac.Foundation.NSObject" />
+      </Parameters>
+      <Docs>
+        <param name="browser">To be added.</param>
+        <param name="obj">To be added.</param>
+        <param name="item">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ShouldEditItem">
+      <MemberSignature Language="C#" Value="public virtual bool ShouldEditItem (MonoMac.AppKit.NSBrowser browser, MonoMac.Foundation.NSObject item);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("browser:shouldEditItem:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="browser" Type="MonoMac.AppKit.NSBrowser" />
+        <Parameter Name="item" Type="MonoMac.Foundation.NSObject" />
+      </Parameters>
+      <Docs>
+        <param name="browser">To be added.</param>
+        <param name="item">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ShouldShowCellExpansion">
+      <MemberSignature Language="C#" Value="public virtual bool ShouldShowCellExpansion (MonoMac.AppKit.NSBrowser browser, int row, int column);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("browser:shouldShowCellExpansionForRow:column:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="browser" Type="MonoMac.AppKit.NSBrowser" />
+        <Parameter Name="row" Type="System.Int32" />
+        <Parameter Name="column" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="browser">To be added.</param>
+        <param name="row">To be added.</param>
+        <param name="column">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ShouldSizeColumn">
+      <MemberSignature Language="C#" Value="public virtual float ShouldSizeColumn (MonoMac.AppKit.NSBrowser browser, int columnIndex, bool userResize, float suggestedWidth);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("browser:shouldSizeColumn:forUserResize:toWidth:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="browser" Type="MonoMac.AppKit.NSBrowser" />
+        <Parameter Name="columnIndex" Type="System.Int32" />
+        <Parameter Name="userResize" Type="System.Boolean" />
+        <Parameter Name="suggestedWidth" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="browser">To be added.</param>
+        <param name="columnIndex">To be added.</param>
+        <param name="userResize">To be added.</param>
+        <param name="suggestedWidth">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ShouldTypeSelectForEvent">
+      <MemberSignature Language="C#" Value="public virtual bool ShouldTypeSelectForEvent (MonoMac.AppKit.NSBrowser browser, MonoMac.AppKit.NSEvent theEvent, string currentSearchString);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("browser:shouldTypeSelectForEvent:withCurrentSearchString:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="browser" Type="MonoMac.AppKit.NSBrowser" />
+        <Parameter Name="theEvent" Type="MonoMac.AppKit.NSEvent" />
+        <Parameter Name="currentSearchString" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="browser">To be added.</param>
+        <param name="theEvent">To be added.</param>
+        <param name="currentSearchString">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SizeToFitWidth">
+      <MemberSignature Language="C#" Value="public virtual float SizeToFitWidth (MonoMac.AppKit.NSBrowser browser, int columnIndex);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("browser:sizeToFitWidthOfColumn:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="browser" Type="MonoMac.AppKit.NSBrowser" />
+        <Parameter Name="columnIndex" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="browser">To be added.</param>
+        <param name="columnIndex">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TypeSelectString">
+      <MemberSignature Language="C#" Value="public virtual string TypeSelectString (MonoMac.AppKit.NSBrowser browser, int row, int column);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("browser:typeSelectStringForRow:inColumn:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="browser" Type="MonoMac.AppKit.NSBrowser" />
+        <Parameter Name="row" Type="System.Int32" />
+        <Parameter Name="column" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="browser">To be added.</param>
+        <param name="row">To be added.</param>
+        <param name="column">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ValidateDrop">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSDragOperation ValidateDrop (MonoMac.AppKit.NSBrowser browser, MonoMac.AppKit.NSDraggingInfo info, int proposedRow, int column, MonoMac.AppKit.NSBrowserDropOperation dropOperation);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("browser:validateDrop:proposedRow:column:dropOperation:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AppKit.NSDragOperation</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="browser" Type="MonoMac.AppKit.NSBrowser" />
+        <Parameter Name="info" Type="MonoMac.AppKit.NSDraggingInfo" />
+        <Parameter Name="proposedRow" Type="System.Int32" />
+        <Parameter Name="column" Type="System.Int32" />
+        <Parameter Name="dropOperation" Type="MonoMac.AppKit.NSBrowserDropOperation" />
+      </Parameters>
+      <Docs>
+        <param name="browser">To be added.</param>
+        <param name="info">To be added.</param>
+        <param name="proposedRow">To be added.</param>
+        <param name="column">To be added.</param>
+        <param name="dropOperation">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WillDisplayCell">
+      <MemberSignature Language="C#" Value="public virtual void WillDisplayCell (MonoMac.AppKit.NSBrowser sender, MonoMac.Foundation.NSObject cell, int row, int column);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("browser:willDisplayCell:atRow:column:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="sender" Type="MonoMac.AppKit.NSBrowser" />
+        <Parameter Name="cell" Type="MonoMac.Foundation.NSObject" />
+        <Parameter Name="row" Type="System.Int32" />
+        <Parameter Name="column" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="sender">To be added.</param>
+        <param name="cell">To be added.</param>
+        <param name="row">To be added.</param>
+        <param name="column">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WillScroll">
+      <MemberSignature Language="C#" Value="public virtual void WillScroll (MonoMac.AppKit.NSBrowser sender);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("browserWillScroll:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="sender" Type="MonoMac.AppKit.NSBrowser" />
+      </Parameters>
+      <Docs>
+        <param name="sender">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WriteRowsWithIndexesToPasteboard">
+      <MemberSignature Language="C#" Value="public virtual bool WriteRowsWithIndexesToPasteboard (MonoMac.AppKit.NSBrowser browser, MonoMac.Foundation.NSIndexSet rowIndexes, int column, MonoMac.AppKit.NSPasteboard pasteboard);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("browser:writeRowsWithIndexes:inColumn:toPasteboard:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="browser" Type="MonoMac.AppKit.NSBrowser" />
+        <Parameter Name="rowIndexes" Type="MonoMac.Foundation.NSIndexSet" />
+        <Parameter Name="column" Type="System.Int32" />
+        <Parameter Name="pasteboard" Type="MonoMac.AppKit.NSPasteboard" />
+      </Parameters>
+      <Docs>
+        <param name="browser">To be added.</param>
+        <param name="rowIndexes">To be added.</param>
+        <param name="column">To be added.</param>
+        <param name="pasteboard">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -1,0 +1,909 @@
+<Type Name="NSOutlineViewDelegate" FullName="MonoMac.AppKit.NSOutlineViewDelegate">
+  <TypeSignature Language="C#" Value="public class NSOutlineViewDelegate : MonoMac.Foundation.NSObject" />
+  <AssemblyInfo>
+    <AssemblyName>monomac</AssemblyName>
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>MonoMac.Foundation.NSObject</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Attributes>
+    <Attribute>
+      <AttributeName>MonoMac.Foundation.Model</AttributeName>
+    </Attribute>
+    <Attribute>
+      <AttributeName>MonoMac.Foundation.Register("NSOutlineViewDelegate")</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public NSOutlineViewDelegate ();" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("init")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public NSOutlineViewDelegate (MonoMac.Foundation.NSCoder coder);" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("initWithCoder:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <Parameters>
+        <Parameter Name="coder" Type="MonoMac.Foundation.NSCoder" />
+      </Parameters>
+      <Docs>
+        <param name="coder">The unarchiver object.</param>
+        <summary>A constructor that initializes the object from the data stored in the unarchiver object.</summary>
+        <remarks>This constructor is provided to allow the class to be initialized from an unarchiver (for example, during NIB deserialization).</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public NSOutlineViewDelegate (MonoMac.Foundation.NSObjectFlag t);" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="t" Type="MonoMac.Foundation.NSObjectFlag" />
+      </Parameters>
+      <Docs>
+        <param name="t">Unused sentinel value, pass NSObjectFlag.Empty.</param>
+        <summary>Constructor to call on derived classes when the derived class has an [Export] constructor.</summary>
+        <remarks>
+          <para>This constructor should be called by derived classes when they are initialized using an [Export] attribute. The argument value is ignore, typically the chaining would look like this:</para>
+          <example>
+            <code lang="C#">
+public class MyClass : BaseClass {
+    [Export ("initWithFoo:")]
+    public MyClass (string foo) : base (NSObjectFlag.Empty)
+    {
+        ...
+    }
+</code>
+          </example>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public NSOutlineViewDelegate (IntPtr handle);" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="handle" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="handle">Pointer (handle) to the unmanaged object.</param>
+        <summary>A constructor used when creating managed representations of unmanaged objects;  Called by the runtime.</summary>
+        <remarks>
+          <para>This constructor is invoked by the runtime infrastructure (<see cref="M:MonoMac.ObjCRuntime.GetNSObject (System.IntPtr)" />) to create a new managed representation for a pointer to an unmanaged Objective-C object.    You should not invoke this method directly, instead you should call the GetNSObject method as it will prevent two instances of a managed object to point to the same native object.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ColumnDidMove">
+      <MemberSignature Language="C#" Value="public virtual void ColumnDidMove (MonoMac.Foundation.NSNotification notification);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("outlineViewColumnDidMove:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="notification" Type="MonoMac.Foundation.NSNotification" />
+      </Parameters>
+      <Docs>
+        <param name="notification">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ColumnDidResize">
+      <MemberSignature Language="C#" Value="public virtual void ColumnDidResize (MonoMac.Foundation.NSNotification notification);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("outlineViewColumnDidResize:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="notification" Type="MonoMac.Foundation.NSNotification" />
+      </Parameters>
+      <Docs>
+        <param name="notification">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DidClickTableColumn">
+      <MemberSignature Language="C#" Value="public virtual void DidClickTableColumn (MonoMac.AppKit.NSOutlineView outlineView, MonoMac.AppKit.NSTableColumn tableColumn);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("outlineView:didClickTableColumn:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="outlineView" Type="MonoMac.AppKit.NSOutlineView" />
+        <Parameter Name="tableColumn" Type="MonoMac.AppKit.NSTableColumn" />
+      </Parameters>
+      <Docs>
+        <param name="outlineView">To be added.</param>
+        <param name="tableColumn">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DidDragTableColumn">
+      <MemberSignature Language="C#" Value="public virtual void DidDragTableColumn (MonoMac.AppKit.NSOutlineView outlineView, MonoMac.AppKit.NSTableColumn tableColumn);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("outlineView:didDragTableColumn:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="outlineView" Type="MonoMac.AppKit.NSOutlineView" />
+        <Parameter Name="tableColumn" Type="MonoMac.AppKit.NSTableColumn" />
+      </Parameters>
+      <Docs>
+        <param name="outlineView">To be added.</param>
+        <param name="tableColumn">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetCell">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSCell GetCell (MonoMac.AppKit.NSOutlineView outlineView, MonoMac.AppKit.NSTableColumn tableColumn, MonoMac.Foundation.NSObject item);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("outlineView:dataCellForTableColumn:item:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AppKit.NSCell</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="outlineView" Type="MonoMac.AppKit.NSOutlineView" />
+        <Parameter Name="tableColumn" Type="MonoMac.AppKit.NSTableColumn" />
+        <Parameter Name="item" Type="MonoMac.Foundation.NSObject" />
+      </Parameters>
+      <Docs>
+        <param name="outlineView">To be added.</param>
+        <param name="tableColumn">To be added.</param>
+        <param name="item">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetNextTypeSelectMatch">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject GetNextTypeSelectMatch (MonoMac.AppKit.NSOutlineView outlineView, MonoMac.Foundation.NSObject startItem, MonoMac.Foundation.NSObject endItem, string searchString);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("outlineView:nextTypeSelectMatchFromItem:toItem:forString:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="outlineView" Type="MonoMac.AppKit.NSOutlineView" />
+        <Parameter Name="startItem" Type="MonoMac.Foundation.NSObject" />
+        <Parameter Name="endItem" Type="MonoMac.Foundation.NSObject" />
+        <Parameter Name="searchString" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="outlineView">To be added.</param>
+        <param name="startItem">To be added.</param>
+        <param name="endItem">To be added.</param>
+        <param name="searchString">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetRowHeight">
+      <MemberSignature Language="C#" Value="public virtual float GetRowHeight (MonoMac.AppKit.NSOutlineView outlineView, MonoMac.Foundation.NSObject item);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("outlineView:heightOfRowByItem:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="outlineView" Type="MonoMac.AppKit.NSOutlineView" />
+        <Parameter Name="item" Type="MonoMac.Foundation.NSObject" />
+      </Parameters>
+      <Docs>
+        <param name="outlineView">To be added.</param>
+        <param name="item">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetSelectionIndexes">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSIndexSet GetSelectionIndexes (MonoMac.AppKit.NSOutlineView outlineView, MonoMac.Foundation.NSIndexSet proposedSelectionIndexes);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("outlineView:selectionIndexesForProposedSelection:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSIndexSet</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="outlineView" Type="MonoMac.AppKit.NSOutlineView" />
+        <Parameter Name="proposedSelectionIndexes" Type="MonoMac.Foundation.NSIndexSet" />
+      </Parameters>
+      <Docs>
+        <param name="outlineView">To be added.</param>
+        <param name="proposedSelectionIndexes">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetSelectString">
+      <MemberSignature Language="C#" Value="public virtual string GetSelectString (MonoMac.AppKit.NSOutlineView outlineView, MonoMac.AppKit.NSTableColumn tableColumn, MonoMac.Foundation.NSObject item);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("outlineView:typeSelectStringForTableColumn:item:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="outlineView" Type="MonoMac.AppKit.NSOutlineView" />
+        <Parameter Name="tableColumn" Type="MonoMac.AppKit.NSTableColumn" />
+        <Parameter Name="item" Type="MonoMac.Foundation.NSObject" />
+      </Parameters>
+      <Docs>
+        <param name="outlineView">To be added.</param>
+        <param name="tableColumn">To be added.</param>
+        <param name="item">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetSizeToFitColumnWidth">
+      <MemberSignature Language="C#" Value="public virtual float GetSizeToFitColumnWidth (MonoMac.AppKit.NSOutlineView outlineView, int column);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("outlineView:sizeToFitWidthOfColumn:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="outlineView" Type="MonoMac.AppKit.NSOutlineView" />
+        <Parameter Name="column" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="outlineView">To be added.</param>
+        <param name="column">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsGroupItem">
+      <MemberSignature Language="C#" Value="public virtual bool IsGroupItem (MonoMac.AppKit.NSOutlineView outlineView, MonoMac.Foundation.NSObject item);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("outlineView:isGroupItem:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="outlineView" Type="MonoMac.AppKit.NSOutlineView" />
+        <Parameter Name="item" Type="MonoMac.Foundation.NSObject" />
+      </Parameters>
+      <Docs>
+        <param name="outlineView">To be added.</param>
+        <param name="item">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ItemDidCollapse">
+      <MemberSignature Language="C#" Value="public virtual void ItemDidCollapse (MonoMac.Foundation.NSNotification notification);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("outlineViewItemDidCollapse:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="notification" Type="MonoMac.Foundation.NSNotification" />
+      </Parameters>
+      <Docs>
+        <param name="notification">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ItemDidExpand">
+      <MemberSignature Language="C#" Value="public virtual void ItemDidExpand (MonoMac.Foundation.NSNotification notification);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("outlineViewItemDidExpand:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="notification" Type="MonoMac.Foundation.NSNotification" />
+      </Parameters>
+      <Docs>
+        <param name="notification">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ItemWillCollapse">
+      <MemberSignature Language="C#" Value="public virtual void ItemWillCollapse (MonoMac.Foundation.NSNotification notification);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("outlineViewItemWillCollapse:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="notification" Type="MonoMac.Foundation.NSNotification" />
+      </Parameters>
+      <Docs>
+        <param name="notification">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ItemWillExpand">
+      <MemberSignature Language="C#" Value="public virtual void ItemWillExpand (MonoMac.Foundation.NSNotification notification);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("outlineViewItemWillExpand:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="notification" Type="MonoMac.Foundation.NSNotification" />
+      </Parameters>
+      <Docs>
+        <param name="notification">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MouseDown">
+      <MemberSignature Language="C#" Value="public virtual void MouseDown (MonoMac.AppKit.NSOutlineView outlineView, MonoMac.AppKit.NSTableColumn tableColumn);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("outlineView:mouseDownInHeaderOfTableColumn:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="outlineView" Type="MonoMac.AppKit.NSOutlineView" />
+        <Parameter Name="tableColumn" Type="MonoMac.AppKit.NSTableColumn" />
+      </Parameters>
+      <Docs>
+        <param name="outlineView">To be added.</param>
+        <param name="tableColumn">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SelectionDidChange">
+      <MemberSignature Language="C#" Value="public virtual void SelectionDidChange (MonoMac.Foundation.NSNotification notification);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("outlineViewSelectionDidChange:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="notification" Type="MonoMac.Foundation.NSNotification" />
+      </Parameters>
+      <Docs>
+        <param name="notification">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SelectionIsChanging">
+      <MemberSignature Language="C#" Value="public virtual void SelectionIsChanging (MonoMac.Foundation.NSNotification notification);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("outlineViewSelectionIsChanging:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="notification" Type="MonoMac.Foundation.NSNotification" />
+      </Parameters>
+      <Docs>
+        <param name="notification">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SelectionShouldChange">
+      <MemberSignature Language="C#" Value="public virtual bool SelectionShouldChange (MonoMac.AppKit.NSOutlineView outlineView);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("selectionShouldChangeInOutlineView:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="outlineView" Type="MonoMac.AppKit.NSOutlineView" />
+      </Parameters>
+      <Docs>
+        <param name="outlineView">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ShouldCollapseItem">
+      <MemberSignature Language="C#" Value="public virtual bool ShouldCollapseItem (MonoMac.AppKit.NSOutlineView outlineView, MonoMac.Foundation.NSObject item);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("outlineView:shouldCollapseItem:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="outlineView" Type="MonoMac.AppKit.NSOutlineView" />
+        <Parameter Name="item" Type="MonoMac.Foundation.NSObject" />
+      </Parameters>
+      <Docs>
+        <param name="outlineView">To be added.</param>
+        <param name="item">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ShouldEditTableColumn">
+      <MemberSignature Language="C#" Value="public virtual bool ShouldEditTableColumn (MonoMac.AppKit.NSOutlineView outlineView, MonoMac.AppKit.NSTableColumn tableColumn, MonoMac.Foundation.NSObject item);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("outlineView:shouldEditTableColumn:item:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="outlineView" Type="MonoMac.AppKit.NSOutlineView" />
+        <Parameter Name="tableColumn" Type="MonoMac.AppKit.NSTableColumn" />
+        <Parameter Name="item" Type="MonoMac.Foundation.NSObject" />
+      </Parameters>
+      <Docs>
+        <param name="outlineView">To be added.</param>
+        <param name="tableColumn">To be added.</param>
+        <param name="item">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ShouldExpandItem">
+      <MemberSignature Language="C#" Value="public virtual bool ShouldExpandItem (MonoMac.AppKit.NSOutlineView outlineView, MonoMac.Foundation.NSObject item);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("outlineView:shouldExpandItem:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="outlineView" Type="MonoMac.AppKit.NSOutlineView" />
+        <Parameter Name="item" Type="MonoMac.Foundation.NSObject" />
+      </Parameters>
+      <Docs>
+        <param name="outlineView">To be added.</param>
+        <param name="item">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ShouldReorder">
+      <MemberSignature Language="C#" Value="public virtual bool ShouldReorder (MonoMac.AppKit.NSOutlineView outlineView, int columnIndex, int newColumnIndex);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("outlineView:shouldReorderColumn:toColumn:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="outlineView" Type="MonoMac.AppKit.NSOutlineView" />
+        <Parameter Name="columnIndex" Type="System.Int32" />
+        <Parameter Name="newColumnIndex" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="outlineView">To be added.</param>
+        <param name="columnIndex">To be added.</param>
+        <param name="newColumnIndex">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ShouldSelectItem">
+      <MemberSignature Language="C#" Value="public virtual bool ShouldSelectItem (MonoMac.AppKit.NSOutlineView outlineView, MonoMac.Foundation.NSObject item);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("outlineView:shouldSelectItem:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="outlineView" Type="MonoMac.AppKit.NSOutlineView" />
+        <Parameter Name="item" Type="MonoMac.Foundation.NSObject" />
+      </Parameters>
+      <Docs>
+        <param name="outlineView">To be added.</param>
+        <param name="item">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ShouldSelectTableColumn">
+      <MemberSignature Language="C#" Value="public virtual bool ShouldSelectTableColumn (MonoMac.AppKit.NSOutlineView outlineView, MonoMac.AppKit.NSTableColumn tableColumn);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("outlineView:shouldSelectTableColumn:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="outlineView" Type="MonoMac.AppKit.NSOutlineView" />
+        <Parameter Name="tableColumn" Type="MonoMac.AppKit.NSTableColumn" />
+      </Parameters>
+      <Docs>
+        <param name="outlineView">To be added.</param>
+        <param name="tableColumn">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ShouldShowCellExpansion">
+      <MemberSignature Language="C#" Value="public virtual bool ShouldShowCellExpansion (MonoMac.AppKit.NSOutlineView outlineView, MonoMac.AppKit.NSTableColumn tableColumn, MonoMac.Foundation.NSObject item);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("outlineView:shouldShowCellExpansionForTableColumn:item:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="outlineView" Type="MonoMac.AppKit.NSOutlineView" />
+        <Parameter Name="tableColumn" Type="MonoMac.AppKit.NSTableColumn" />
+        <Parameter Name="item" Type="MonoMac.Foundation.NSObject" />
+      </Parameters>
+      <Docs>
+        <param name="outlineView">To be added.</param>
+        <param name="tableColumn">To be added.</param>
+        <param name="item">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ShouldShowOutlineCell">
+      <MemberSignature Language="C#" Value="public virtual bool ShouldShowOutlineCell (MonoMac.AppKit.NSOutlineView outlineView, MonoMac.Foundation.NSObject item);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("outlineView:shouldShowOutlineCellForItem:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="outlineView" Type="MonoMac.AppKit.NSOutlineView" />
+        <Parameter Name="item" Type="MonoMac.Foundation.NSObject" />
+      </Parameters>
+      <Docs>
+        <param name="outlineView">To be added.</param>
+        <param name="item">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ShouldTrackCell">
+      <MemberSignature Language="C#" Value="public virtual bool ShouldTrackCell (MonoMac.AppKit.NSOutlineView outlineView, MonoMac.AppKit.NSCell cell, MonoMac.AppKit.NSTableColumn tableColumn, MonoMac.Foundation.NSObject item);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("outlineView:shouldTrackCell:forTableColumn:item:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="outlineView" Type="MonoMac.AppKit.NSOutlineView" />
+        <Parameter Name="cell" Type="MonoMac.AppKit.NSCell" />
+        <Parameter Name="tableColumn" Type="MonoMac.AppKit.NSTableColumn" />
+        <Parameter Name="item" Type="MonoMac.Foundation.NSObject" />
+      </Parameters>
+      <Docs>
+        <param name="outlineView">To be added.</param>
+        <param name="cell">To be added.</param>
+        <param name="tableColumn">To be added.</param>
+        <param name="item">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ShouldTypeSelect">
+      <MemberSignature Language="C#" Value="public virtual bool ShouldTypeSelect (MonoMac.AppKit.NSOutlineView outlineView, MonoMac.AppKit.NSEvent theEvent, string searchString);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("outlineView:shouldTypeSelectForEvent:withCurrentSearchString:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="outlineView" Type="MonoMac.AppKit.NSOutlineView" />
+        <Parameter Name="theEvent" Type="MonoMac.AppKit.NSEvent" />
+        <Parameter Name="searchString" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="outlineView">To be added.</param>
+        <param name="theEvent">To be added.</param>
+        <param name="searchString">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WillDisplayCell">
+      <MemberSignature Language="C#" Value="public virtual void WillDisplayCell (MonoMac.AppKit.NSOutlineView outlineView, MonoMac.Foundation.NSObject cell, MonoMac.AppKit.NSTableColumn tableColumn, MonoMac.Foundation.NSObject item);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("outlineView:willDisplayCell:forTableColumn:item:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="outlineView" Type="MonoMac.AppKit.NSOutlineView" />
+        <Parameter Name="cell" Type="MonoMac.Foundation.NSObject" />
+        <Parameter Name="tableColumn" Type="MonoMac.AppKit.NSTableColumn" />
+        <Parameter Name="item" Type="MonoMac.Foundation.NSObject" />
+      </Parameters>
+      <Docs>
+        <param name="outlineView">To be added.</param>
+        <param name="cell">To be added.</param>
+        <param name="tableColumn">To be added.</param>
+        <param name="item">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WillDisplayOutlineCell">
+      <MemberSignature Language="C#" Value="public virtual void WillDisplayOutlineCell (MonoMac.AppKit.NSOutlineView outlineView, MonoMac.Foundation.NSObject cell, MonoMac.AppKit.NSTableColumn tableColumn, MonoMac.Foundation.NSObject item);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("outlineView:willDisplayOutlineCell:forTableColumn:item:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="outlineView" Type="MonoMac.AppKit.NSOutlineView" />
+        <Parameter Name="cell" Type="MonoMac.Foundation.NSObject" />
+        <Parameter Name="tableColumn" Type="MonoMac.AppKit.NSTableColumn" />
+        <Parameter Name="item" Type="MonoMac.Foundation.NSObject" />
+      </Parameters>
+      <Docs>
+        <param name="outlineView">To be added.</param>
+        <param name="cell">To be added.</param>
+        <param name="tableColumn">To be added.</param>
+        <param name="item">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>
