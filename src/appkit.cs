@@ -559,6 +559,119 @@ namespace MonoMac.AppKit {
 	}
 
 
+	
+	[BaseType (typeof (NSObjectController))]
+	interface NSArrayController {
+		[Export ("rearrangeObjects")]
+		void RearrangeObjects ();
+
+		[Export ("automaticRearrangementKeyPaths")]
+		NSObject [] AutomaticRearrangementKeyPaths ();
+
+		[Export ("didChangeArrangementCriteria")]
+		void DidChangeArrangementCriteria ();
+
+		[Export ("arrangeObjects:")]
+		NSObject [] ArrangeObjects (NSObject [] objects);
+
+		[Export ("arrangedObjects")]
+		NSObject [] ArrangedObjects ();
+
+		[Export ("addSelectionIndexes:")]
+		bool AddSelectionIndexes (NSIndexSet indexes);
+
+		[Export ("removeSelectionIndexes:")]
+		bool RemoveSelectionIndexes (NSIndexSet indexes);
+
+		[Export ("addSelectedObjects:")]
+		bool AddSelectedObjects (NSObject [] objects);
+
+		[Export ("removeSelectedObjects:")]
+		bool RemoveSelectedObjects (NSObject [] objects);
+
+		[Export ("add:")]
+		void Add (NSObject sender);
+
+		[Export ("remove:")]
+		void RemoveOp (NSObject sender);
+
+		[Export ("insert:")]
+		void Insert (NSObject sender);
+
+		[Export ("canInsert")]
+		bool CanInsert ();
+
+		[Export ("selectNext:")]
+		void SelectNext (NSObject sender);
+
+		[Export ("selectPrevious:")]
+		void SelectPrevious (NSObject sender);
+
+		[Export ("canSelectNext")]
+		bool CanSelectNext ();
+
+		[Export ("canSelectPrevious")]
+		bool CanSelectPrevious ();
+
+		[Export ("addObject:")]
+		void AddObject (NSObject aObject);
+
+		[Export ("addObjects:")]
+		void AddObjects (NSArray objects);
+
+		[Export ("insertObject:atArrangedObjectIndex:")]
+		void Insert (NSObject aObject, int index);
+
+		[Export ("insertObjects:atArrangedObjectIndexes:")]
+		void Insert (NSObject [] objects, NSIndexSet indexes);
+
+		[Export ("removeObjectAtArrangedObjectIndex:")]
+		void RemoveAt (int index);
+
+		[Export ("removeObjectsAtArrangedObjectIndexes:")]
+		void Remove (NSIndexSet indexes);
+
+		[Export ("removeObject:")]
+		void Remove (NSObject aObject);
+
+		[Export ("removeObjects:")]
+		void Remove (NSObject [] objects);
+
+		//Detected properties
+		[Export ("automaticallyRearrangesObjects")]
+		bool AutomaticallyRearrangesObjects { get; set; }
+
+		[Export ("sortDescriptors")]
+		NSObject [] SortDescriptors { get; set; }
+
+		[Export ("filterPredicate")]
+		NSPredicate FilterPredicate { get; set; }
+
+		[Export ("clearsFilterPredicateOnInsertion")]
+		bool ClearsFilterPredicateOnInsertion { get; set; }
+
+		[Export ("avoidsEmptySelection")]
+		bool AvoidsEmptySelection { get; set; }
+
+		[Export ("preservesSelection")]
+		bool PreservesSelection { get; set; }
+
+		[Export ("selectsInsertedObjects")]
+		bool SelectsInsertedObjects { get; set; }
+
+		[Export ("alwaysUsesMultipleValuesMarker")]
+		bool AlwaysUsesMultipleValuesMarker { get; set; }
+
+		[Export ("selectionIndexes")]
+		NSIndexSet SelectionIndexes { get; set; }
+
+		[Export ("selectionIndex")]
+		int SelectionIndex { get; set; }
+
+		[Export ("selectedObjects")]
+		NSObject [] SelectedObjects { get; set; }
+	}
+	
 	[BaseType (typeof (NSObject))]
 	interface NSBezierPath {
 		[Static]
@@ -6196,7 +6309,7 @@ namespace MonoMac.AppKit {
 		bool CanReadItemWithDataConformingToTypes (string [] utiTypes);
 
 		[Export ("canReadObjectForClasses:options:")]
-		bool CanReadObjectForClassesoptions (NSPasteboardReading [] classArray, NSDictionary options);
+		bool CanReadObjectForClasses (NSObject [] classArray, NSDictionary options);
 
 		[Export ("declareTypes:owner:")]
 		int DeclareTypesowner (string [] newTypes, NSObject newOwner);
@@ -6281,6 +6394,9 @@ namespace MonoMac.AppKit {
 		
 		[Field ("NSMultipleTextSelectionPboardType")]
 		NSString NSMultipleTextSelectionPboardType{ get; }
+
+		[Field ("NSDragPboard")]
+		NSString NSDragPboard { get; }
 	}
 	
 	[BaseType (typeof (NSObject))]
