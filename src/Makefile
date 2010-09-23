@@ -19,6 +19,8 @@ CORE_SOURCES =					\
 	./ObjCRuntime/SelectorMarshaler.cs		\
 	./ObjCRuntime/Runtime.cs			\
 	./ObjCRuntime/Selector.cs			\
+	./QTKit/Defs.cs					\
+	./QTKit/Enums.cs				\
 	./WebKit/Enums.cs
 
 # Sources that are not part of CORE_SOURCES or the generated templates
@@ -208,11 +210,13 @@ SHARED_CORE_SOURCE = \
         ./ObjCRuntime/TypeConverter.cs                  \
 	./MonoPInvokeCallbackAttribute.cs
 
+#	./quicklook.cs
+#	./avfoundation.cs	\
 
 SHARED_API = \
 	./foundation.cs		\
 	./coreanimation.cs	\
-	./coredata.cs
+	./coredata.cs		
 
 SHARED_SOURCES = $(patsubst %,../../maccore/src/%,$(SHARED_SOURCE))
 SHARED_CORE_SOURCES = $(patsubst %,../../maccore/src/%,$(SHARED_CORE_SOURCE))
@@ -223,6 +227,7 @@ APIS = \
 	coreimage.cs		\
 	foundation-desktop.cs 	\
 	growl.cs		\
+	qtkit.cs		\
 	webkit.cs		\
 	$(SHARED_APIS)
 
