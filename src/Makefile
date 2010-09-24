@@ -21,7 +21,8 @@ CORE_SOURCES =					\
 	./ObjCRuntime/Selector.cs			\
 	./QTKit/Defs.cs					\
 	./QTKit/Enums.cs				\
-	./WebKit/Enums.cs
+	./WebKit/Enums.cs				\
+	./Carbon/HIToolbox.cs
 
 # Sources that are not part of CORE_SOURCES or the generated templates
 MONOMAC_SOURCES = \
