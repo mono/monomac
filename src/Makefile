@@ -19,6 +19,8 @@ CORE_SOURCES =					\
 	./ObjCRuntime/SelectorMarshaler.cs		\
 	./ObjCRuntime/Runtime.cs			\
 	./ObjCRuntime/Selector.cs			\
+	./QTKit/Defs.cs					\
+	./QTKit/Enums.cs				\
 	./WebKit/Enums.cs
 
 # Sources that are not part of CORE_SOURCES or the generated templates
@@ -47,6 +49,7 @@ DEFINES = -define:NET_2_0
 TARGETS = bmac.exe monomac.dll  parse.exe
 
 SHARED_SOURCE = \
+	./AudioToolbox/AudioBufferList.cs		\
 	./AudioToolbox/AudioFile.cs			\
 	./AudioToolbox/AudioFileStream.cs		\
 	./AudioToolbox/AudioQueue.cs			\
@@ -55,6 +58,16 @@ SHARED_SOURCE = \
 	./AudioToolbox/AudioSessions.cs			\
 	./AudioToolbox/AudioType.cs			\
 	./AudioToolbox/SystemSound.cs			\
+	./AudioUnit/AUGraph.cs				\
+	./AudioUnit/AudioComponent.cs			\
+	./AudioUnit/AudioComponentDescription.cs	\
+	./AudioUnit/AudioGraphEventArgs.cs		\
+	./AudioUnit/AudioUnit.cs			\
+	./AudioUnit/AudioUnitEventArgs.cs		\
+	./AudioUnit/AudioUnitUtils.cs			\
+	./AudioUnit/ExtAudioFile.cs			\
+	./AudioUnit/_AudioConverter.cs			\
+	./AudioUnit/_AudioConverterEventArgs.cs		\
 	./CoreAnimation/CATransform3D.cs		\
 	./CoreAnimation/CAEnums.cs			\
 	./CoreAnimation/CADefs.cs			\
@@ -199,11 +212,13 @@ SHARED_CORE_SOURCE = \
         ./ObjCRuntime/TypeConverter.cs                  \
 	./MonoPInvokeCallbackAttribute.cs
 
+#	./quicklook.cs
+#	./avfoundation.cs	\
 
 SHARED_API = \
 	./foundation.cs		\
 	./coreanimation.cs	\
-	./coredata.cs
+	./coredata.cs		
 
 SHARED_SOURCES = $(patsubst %,../../maccore/src/%,$(SHARED_SOURCE))
 SHARED_CORE_SOURCES = $(patsubst %,../../maccore/src/%,$(SHARED_CORE_SOURCE))
@@ -214,6 +229,7 @@ APIS = \
 	coreimage.cs		\
 	foundation-desktop.cs 	\
 	growl.cs		\
+	qtkit.cs		\
 	webkit.cs		\
 	$(SHARED_APIS)
 
