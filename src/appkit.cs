@@ -9802,10 +9802,6 @@ namespace MonoMac.AppKit {
 		bool ImportsGraphics { get; set; }
 	}
 	
-    [BaseType (typeof (NSTextField))]
-    interface NSSecureTextField {
-    }
-
 	[BaseType (typeof (NSTextField))]
 	interface NSSecureTextField {
 	}
@@ -9865,7 +9861,6 @@ namespace MonoMac.AppKit {
 		[Export ("allowedInputSourceLocales")]
 		string [] AllowedInputSourceLocales { get; set; }
 	}
-<<<<<<< HEAD
 
 	[BaseType (typeof (NSTextFieldCell))]
 	interface NSSecureTextFieldCell {
@@ -9873,15 +9868,6 @@ namespace MonoMac.AppKit {
 		bool EchosBullets { get; set; }
 	}  
 
-=======
-	
-    [BaseType (typeof (NSTextFieldCell))]
-    interface NSSecureTextFieldCell {
-            [Export ("echosBullets")]
-            bool EchosBullets { get; set; }
-    }	
-	
->>>>>>> 1c8be31fbeb1771814e9dd082d906e327fafd34e
 	[BaseType (typeof (NSObject))]
 	interface NSTextInputContext {
 		[Export ("currentInputContext")]
