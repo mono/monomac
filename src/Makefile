@@ -19,9 +19,14 @@ CORE_SOURCES =					\
 	./ObjCRuntime/SelectorMarshaler.cs		\
 	./ObjCRuntime/Runtime.cs			\
 	./ObjCRuntime/Selector.cs			\
+<<<<<<< HEAD
 	./QTKit/Defs.cs					\
 	./QTKit/Enums.cs				\
 	./WebKit/Enums.cs
+=======
+	./WebKit/Enums.cs				\
+	./QTKit/Enums.cs
+>>>>>>> 1c8be31fbeb1771814e9dd082d906e327fafd34e
 
 # Sources that are not part of CORE_SOURCES or the generated templates
 MONOMAC_SOURCES = \
@@ -231,6 +236,7 @@ APIS = \
 	growl.cs		\
 	qtkit.cs		\
 	webkit.cs		\
+	qtkit.cs		\
 	$(SHARED_APIS)
 
 all: $(TARGETS)

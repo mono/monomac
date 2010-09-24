@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //
 // Copyright 2010, Novell, Inc.
 // Copyright 2010, Duane Wandless.
@@ -22,6 +23,8 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
+=======
+>>>>>>> 1c8be31fbeb1771814e9dd082d906e327fafd34e
 using System;
 using MonoMac.Foundation;
 using MonoMac.ObjCRuntime;
@@ -61,6 +64,7 @@ namespace MonoMac.QTKit
 		void SetShowsResizeIndicator (bool show);
 		
 		[Export ("play:")]
+<<<<<<< HEAD
 		void Play (NSObject sender);
 
 		[Export ("pause:")]
@@ -143,6 +147,109 @@ namespace MonoMac.QTKit
 		
 		[Wrap ("WeakDelegate")]
 		QTMovieViewDelegate Delegate { get; set; }
+=======
+		void Play (IntPtr sender);
+
+		[Export ("pause:")]
+		void Pause (IntPtr sender);
+
+		[Export ("gotoBeginning:")]
+		void GotoBeginning (IntPtr sender);
+
+		[Export ("gotoEnd:")]
+		void GotoEnd (IntPtr sender);
+
+		[Export ("gotoNextSelectionPoint:")]
+		void GotoNextSelectionPoint (IntPtr sender);
+
+		[Export ("gotoPreviousSelectionPoint:")]
+		void GotoPreviousSelectionPoint (IntPtr sender);
+
+		[Export ("gotoPosterFrame:")]
+		void GotoPosterFrame (IntPtr sender);
+
+		[Export ("stepForward:")]
+		void StepForward (IntPtr sender);
+
+		[Export ("stepBackward:")]
+		void StepBackward (IntPtr sender);
+
+		[Export ("cut:")]
+		void Cut (IntPtr sender);
+
+		[Export ("copy:")]
+		void Copy (IntPtr sender);
+
+		[Export ("paste:")]
+		void Paste (IntPtr sender);
+
+		[Export ("selectAll:")]
+		void SelectAll (IntPtr sender);
+
+		[Export ("selectNone:")]
+		void SelectNone (IntPtr sender);
+
+		[Export ("delete:")]
+		void Delete (IntPtr sender);
+
+		[Export ("add:")]
+		void Add (IntPtr sender);
+
+		[Export ("addScaled:")]
+		void AddScaled (IntPtr sender);
+
+		[Export ("replace:")]
+		void Replace (IntPtr sender);
+
+		[Export ("trim:")]
+		void Trim (IntPtr sender);
+		
+		[Export ("setBackButtonVisible:")]
+		void SetBackButtonVisible (bool state);
+
+		[Export ("setCustomButtonVisible:")]
+		void SetCustomButtonVisible (bool state);
+
+		[Export ("setHotSpotButtonVisible:")]
+		void SetHotSpotButtonVisible (bool state);
+
+		[Export ("setStepButtonsVisible:")]
+		void SetStepButtonsVisible (bool state);
+
+		[Export ("setTranslateButtonVisible:")]
+		void SetTranslateButtonVisible (bool state);
+
+		[Export ("setVolumeButtonVisible:")]
+		void SetVolumeButtonVisible (bool state);
+
+		[Export ("setZoomButtonsVisible:")]
+		void SetZoomButtonsVisible (bool state);
+
+		[Export ("isBackButtonVisible")]
+		bool IsBackButtonVisible { get; }
+
+		[Export ("isCustomButtonVisible")]
+		bool IsCustomButtonVisible { get; }
+
+		[Export ("isHotSpotButtonVisible")]
+		bool IsHotSpotButtonVisible { get; }
+
+		[Export ("areStepButtonsVisible")]
+		bool AreStepButtonsVisible { get; }
+
+		[Export ("isTranslateButtonVisible")]
+		bool IsTranslateButtonVisible { get; }
+
+		[Export ("isVolumeButtonVisible")]
+		bool IsVolumeButtonVisible { get; }
+
+		[Export ("areZoomButtonsVisible")]
+		bool AreZoomButtonsVisible { get; }
+
+		[Export ("delegate")]
+		QTMovieViewDelegate Delegate { get; set; }
+
+>>>>>>> 1c8be31fbeb1771814e9dd082d906e327fafd34e
 	}
 	
 	[BaseType (typeof (NSObject))]
@@ -150,12 +257,22 @@ namespace MonoMac.QTKit
 	interface QTMovieViewDelegate {
 		[Export ("view:willDisplayImage:")]
 		CIImage ViewWillDisplayImage (QTMovieView view, CIImage image);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1c8be31fbeb1771814e9dd082d906e327fafd34e
 	}
 	
 	[BaseType (typeof (NSObject))]
 	interface QTMovie {
+<<<<<<< HEAD
 		[Export ("duration")]
 		QTTime Duration { get; }
+=======
+
+//		[Export ("duration")]
+//		QTTime Duration { get; }
+>>>>>>> 1c8be31fbeb1771814e9dd082d906e327fafd34e
 
 		[Static, Export ("canInitWithPasteboard:")]
 		bool CanInitWithPasteboard (NSPasteboard pasteboard);
@@ -183,7 +300,11 @@ namespace MonoMac.QTKit
 		string[] MovieTypesWithOptions ([Target] QTMovie qTMovieInitialization, QTMovieFileTypeOptions types);
 
 		[Static, Export ("movie")]
+<<<<<<< HEAD
 		QTMovie Movie { get; }
+=======
+		QTMovie Movie ();
+>>>>>>> 1c8be31fbeb1771814e9dd082d906e327fafd34e
 
 		[Static, Export ("movieWithFile:error:")]
 		QTMovie MovieWithFileError (string fileName, out NSError errorPtr);
@@ -241,7 +362,11 @@ namespace MonoMac.QTKit
 //		[Export ("initWithAttributes:error:")]
 //		IntPtr Constructor (NSDictionary attributes, out NSError errorPtr);
 
+<<<<<<< HEAD
 //		[Static, Export ("movieWithTimeRange:error:")]
+=======
+//		[Export ("movieWithTimeRange:error:")]
+>>>>>>> 1c8be31fbeb1771814e9dd082d906e327fafd34e
 //		QTMovie MovieWithTimeRangeError (QTTimeRange range, out NSError errorPtr);
 
 		//- (id)initToWritableFile:(NSString *)filename error:(NSError **)errorPtr;
@@ -259,8 +384,13 @@ namespace MonoMac.QTKit
 		[Export ("invalidate")]
 		void Invalidate ();
 
+<<<<<<< HEAD
 		[Export ("currentTime")]
 		QTTime CurrentTime { get; }
+=======
+//		[Export ("currentTime")]
+//		QTTime CurrentTime { get; }
+>>>>>>> 1c8be31fbeb1771814e9dd082d906e327fafd34e
 
 		[Export ("rate")]
 		float Rate { get; }
@@ -275,10 +405,17 @@ namespace MonoMac.QTKit
 		NSDictionary MovieAttributes { get; }
 
 		[Export ("attributeForKey:")]
+<<<<<<< HEAD
 		NSObject AttributeForKey (string attributeKey);
 
 		[Export ("setAttribute:forKey:")]
 		void SetAttributeForKey (NSObject value, string attributeKey);
+=======
+		IntPtr AttributeForKey (string attributeKey);
+
+		[Export ("setAttribute:forKey:")]
+		void SetAttributeForKey (IntPtr value, string attributeKey);
+>>>>>>> 1c8be31fbeb1771814e9dd082d906e327fafd34e
 
 //		[Export ("tracks")]
 //		QTTrack[] Tracks { get; }
@@ -343,6 +480,7 @@ namespace MonoMac.QTKit
 		[Export ("stepBackward")]
 		void StepBackward ();
 
+<<<<<<< HEAD
 		[Export ("setSelection:")]
 		void SetSelection (QTTimeRange selection);
 
@@ -354,6 +492,19 @@ namespace MonoMac.QTKit
 
 		[Export ("selectionDuration")]
 		QTTime SelectionDuration ();
+=======
+//		[Export ("setSelection:")]
+//		void SetSelection (QTTimeRange selection);
+
+//		[Export ("selectionStart")]
+//		QTTime SelectionStart ();
+
+//		[Export ("selectionEnd")]
+//		QTTime SelectionEnd ();
+
+//		[Export ("selectionDuration")]
+//		QTTime SelectionDuration ();
+>>>>>>> 1c8be31fbeb1771814e9dd082d906e327fafd34e
 
 		[Export ("replaceSelectionWithSelectionFromMovie:")]
 		void ReplaceSelectionWithSelectionFromMovie (QTMovie movie);
@@ -361,6 +512,7 @@ namespace MonoMac.QTKit
 		[Export ("appendSelectionFromMovie:")]
 		void AppendSelectionFromMovie (QTMovie movie);
 
+<<<<<<< HEAD
 		[Export ("insertSegmentOfMovie:timeRange:atTime:")]
 		void InsertSegmentOfMovieTimeRange (QTMovie movie, QTTimeRange range, QTTime time);
 
@@ -393,6 +545,37 @@ namespace MonoMac.QTKit
 
 		//[Wrap ("WeakDelegate")]
 		//QTMovieDelegate Delegate { get; set; }
+=======
+//		[Export ("insertSegmentOfMovie:timeRange:atTime:")]
+//		void InsertSegmentOfMovieTimeRange (QTMovie movie, QTTimeRange range, QTTime time);
+
+//		[Export ("insertSegmentOfMovie:fromRange:scaledToRange:")]
+//		void InsertSegmentOfMovieFromRange (QTMovie movie, QTTimeRange srcRange, QTTimeRange dstRange);
+
+//		[Export ("insertEmptySegmentAt:")]
+//		void InsertEmptySegmentAt (QTTimeRange range);
+
+//		[Export ("deleteSegment:")]
+//		void DeleteSegment (QTTimeRange segment);
+
+//		[Export ("scaleSegment:newDuration:")]
+//		void ScaleSegmentNewDuration (QTTimeRange segment, QTTime newDuration);
+
+//		[Export ("addImage:forDuration:withAttributes:")]
+//		void AddImageForDuration (NSImage image, QTTime duration, NSDictionary attributes);
+
+//		[Export ("insertSegmentOfTrack:timeRange:atTime:")]
+//		QTTrack InsertSegmentOfTrackTimeRange (QTTrack track, QTTimeRange range, QTTime time);
+
+//		[Export ("insertSegmentOfTrack:fromRange:scaledToRange:")]
+//		QTTrack InsertSegmentOfTrackFromRange (QTTrack track, QTTimeRange srcRange, QTTimeRange dstRange);
+
+//		[Export ("removeTrack:")]
+//		void RemoveTrack (QTTrack track);
+
+//		[Export ("delegate")]
+//		QTMovieDelegate Delegate { get; set; }
+>>>>>>> 1c8be31fbeb1771814e9dd082d906e327fafd34e
 
 		//- (Movie)quickTimeMovie;
 //		[Export ("quickTimeMovie")]
@@ -447,6 +630,7 @@ namespace MonoMac.QTKit
 		[Export ("removeChapters")]
 		bool RemoveChapters ();
 
+<<<<<<< HEAD
 		[Export ("startTimeOfChapter:")]
 		QTTime StartTimeOfChapter (int chapterIndex);
 
@@ -459,3 +643,13 @@ namespace MonoMac.QTKit
 	interface QTTrack {
 	}
 }
+=======
+//		[Export ("startTimeOfChapter:")]
+//		QTTime StartTimeOfChapter (int chapterIndex);
+
+//		[Export ("chapterIndexForTime:")]
+//		int ChapterIndexForTime (QTTime time);
+
+	}
+}
+>>>>>>> 1c8be31fbeb1771814e9dd082d906e327fafd34e
