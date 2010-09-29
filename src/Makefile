@@ -72,6 +72,7 @@ SHARED_SOURCE = \
 	./CoreAnimation/CATransform3D.cs		\
 	./CoreAnimation/CAEnums.cs			\
 	./CoreAnimation/CADefs.cs			\
+	./CoreAnimation/CALayer.cs			\
 	./CoreData/Enums.cs				\
 	./CoreFoundation/CFArray.cs                     \
 	./CoreFoundation/CFBoolean.cs                   \
@@ -88,6 +89,7 @@ SHARED_SOURCE = \
 	./CoreGraphics/CGColorSpace.cs			\
 	./CoreGraphics/CGContext.cs			\
 	./CoreGraphics/CGDataProvider.cs		\
+	./CoreGraphics/CGDataProvider-2.cs		\
 	./CoreGraphics/CGFont.cs			\
 	./CoreGraphics/CGGeometry.cs			\
 	./CoreGraphics/CGGradient.cs			\
