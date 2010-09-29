@@ -89,6 +89,7 @@ SHARED_SOURCE = \
 	./CoreGraphics/CGDataProvider.cs		\
 	./CoreGraphics/CGDataProvider-2.cs		\
 	./CoreGraphics/CGFont.cs			\
+	./CoreGraphics/CGFunction.cs			\
 	./CoreGraphics/CGGeometry.cs			\
 	./CoreGraphics/CGGradient.cs			\
 	./CoreGraphics/CGImage.cs			\
@@ -98,11 +99,15 @@ SHARED_SOURCE = \
 	./CoreGraphics/CGPDFPage.cs			\
 	./CoreGraphics/CGPath.cs			\
 	./CoreGraphics/CGPattern.cs			\
+	./CoreGraphics/CGShading.cs			\
+	./CoreMedia/CMSampleBuffer.cs			\
+	./CoreMedia/CoreMedia.cs			\
 	./CoreText/Adapter.cs				\
 	./CoreText/CTFont.Generator.cs			\
 	./CoreText/CTFont.cs				\
 	./CoreText/CTFontCollection.cs			\
 	./CoreText/CTFontDescriptor.cs			\
+	./CoreText/CTFontManager.cs			\
 	./CoreText/CTFontNameKey.cs			\
 	./CoreText/CTFontTrait.cs			\
 	./CoreText/CTFrame.cs				\
@@ -128,6 +133,7 @@ SHARED_SOURCE = \
 	./Foundation/NSCoder.cs				\
 	./Foundation/NSData.cs				\
 	./Foundation/NSDate.cs				\
+	./Foundation/NSDictionary.cs			\
 	./Foundation/NSError.cs				\
 	./Foundation/NSHttpCookie.cs			\
 	./Foundation/NSHttpCookieStorage.cs		\
@@ -138,7 +144,6 @@ SHARED_SOURCE = \
 	./Foundation/NSMutableAttributedString.cs	\
 	./Foundation/NSMutableData.cs			\
 	./Foundation/NSMutableDictionary.cs		\
-	./Foundation/NSDictionary.cs			\
 	./Foundation/NSMutableUrlRequest.cs		\
 	./Foundation/NSNotificationCenter.cs		\
 	./Foundation/NSNumber.cs			\
