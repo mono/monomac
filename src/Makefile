@@ -48,6 +48,9 @@ DEFINES = -define:NET_2_0
 
 TARGETS = bmac.exe monomac.dll  parse.exe
 
+#
+# This source code comes from MacCore
+#
 SHARED_SOURCE = \
 	./AudioToolbox/AudioBufferList.cs		\
 	./AudioToolbox/AudioFile.cs			\
@@ -89,6 +92,7 @@ SHARED_SOURCE = \
 	./CoreGraphics/CGDataProvider.cs		\
 	./CoreGraphics/CGDataProvider-2.cs		\
 	./CoreGraphics/CGFont.cs			\
+	./CoreGraphics/CGFunction.cs			\
 	./CoreGraphics/CGGeometry.cs			\
 	./CoreGraphics/CGGradient.cs			\
 	./CoreGraphics/CGImage.cs			\
@@ -98,11 +102,15 @@ SHARED_SOURCE = \
 	./CoreGraphics/CGPDFPage.cs			\
 	./CoreGraphics/CGPath.cs			\
 	./CoreGraphics/CGPattern.cs			\
+	./CoreGraphics/CGShading.cs			\
+	./CoreMedia/CMSampleBuffer.cs			\
+	./CoreMedia/CoreMedia.cs			\
 	./CoreText/Adapter.cs				\
 	./CoreText/CTFont.Generator.cs			\
 	./CoreText/CTFont.cs				\
 	./CoreText/CTFontCollection.cs			\
 	./CoreText/CTFontDescriptor.cs			\
+	./CoreText/CTFontManager.cs			\
 	./CoreText/CTFontNameKey.cs			\
 	./CoreText/CTFontTrait.cs			\
 	./CoreText/CTFrame.cs				\
@@ -128,6 +136,7 @@ SHARED_SOURCE = \
 	./Foundation/NSCoder.cs				\
 	./Foundation/NSData.cs				\
 	./Foundation/NSDate.cs				\
+	./Foundation/NSDictionary.cs			\
 	./Foundation/NSError.cs				\
 	./Foundation/NSHttpCookie.cs			\
 	./Foundation/NSHttpCookieStorage.cs		\
@@ -138,7 +147,6 @@ SHARED_SOURCE = \
 	./Foundation/NSMutableAttributedString.cs	\
 	./Foundation/NSMutableData.cs			\
 	./Foundation/NSMutableDictionary.cs		\
-	./Foundation/NSDictionary.cs			\
 	./Foundation/NSMutableUrlRequest.cs		\
 	./Foundation/NSNotificationCenter.cs		\
 	./Foundation/NSNumber.cs			\
@@ -165,9 +173,6 @@ SHARED_SOURCE = \
 	./ObjCRuntime/SinceAttribute.cs			\
 	./ObjCRuntime/TypeConverter.cs			\
 	./MonoPInvokeCallbackAttribute.cs
-
-# Not working
-#	./CoreGraphics/CGShading.cs			\
 
 SHARED_CORE_SOURCE = \
 	./CoreAnimation/CATransform3D.cs		\
@@ -244,7 +249,7 @@ core.dll: $(CORE_SOURCES) $(SHARED_CORE_SOURCES) Makefile
 bmac.exe: $(APIS) core.dll $(GENERATOR_SOURCES)
 	gmcs -unsafe -out:bmac.exe -debug $(DEFINES) -define:GENERATOR,MONOMAC,MONOMAC_BOOTSTRAP $(GENERATOR_SOURCES) -r:core.dll
 
-generated_sources: bmac.exe $(APIS) $(SHARED_APIS)
+generated_sources: bmac.exe $(APIS) 
 	mono --debug bmac.exe -a -d=MONOMAC,MONOMAC_BOOTSTRAP --core --sourceonly=generated_sources -v -tmpdir=. $(APIS) --baselib=core.dll --ns=MonoMac.ObjCRuntime -r=System.Drawing
 
 count: 
