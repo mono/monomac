@@ -30,28 +30,28 @@ using MonoMac.CoreGraphics;
 
 namespace MonoMac.Carbon {
 	
-	public class HIToolbox
+	public enum SystemUIMode : uint
 	{
-		public enum SystemUIMode : uint
-		{
-			Normal                 = 0,
-			ContentSuppressed      = 1,
-			ContentHidden          = 2,
-			AllSuppressed          = 4,
-			AllHidden              = 3
-		}
-		
-		public enum SystemUIOptions : uint
-		{
-			AutoShowMenuBar      = 1 << 0,
-			DisableAppleMenu     = 1 << 2,
-			DisableProcessSwitch = 1 << 3,
-			DisableForceQuit     = 1 << 4,
-			DisableSessionTerminate = 1 << 5,
-			DisableHide          = 1 << 6,
-			DisableMenuBarTransparency = 1 << 7
-		}
-		
+		Normal                 = 0,
+		ContentSuppressed      = 1,
+		ContentHidden          = 2,
+		AllSuppressed          = 4,
+		AllHidden              = 3
+	}
+	
+	public enum SystemUIOptions : uint
+	{
+		AutoShowMenuBar      = 1 << 0,
+		DisableAppleMenu     = 1 << 2,
+		DisableProcessSwitch = 1 << 3,
+		DisableForceQuit     = 1 << 4,
+		DisableSessionTerminate = 1 << 5,
+		DisableHide          = 1 << 6,
+		DisableMenuBarTransparency = 1 << 7
+	}
+
+	public class HIToolbox
+	{		
 		[DllImport (Constants.HIToolboxLibrary)]
 		extern public static int SetSystemUIMode(SystemUIMode inMode, SystemUIOptions inOptions);
 		
