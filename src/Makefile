@@ -48,172 +48,7 @@ DEFINES = -define:NET_2_0
 
 TARGETS = bmac.exe monomac.dll  parse.exe
 
-SHARED_SOURCE = \
-	./AudioToolbox/AudioBufferList.cs		\
-	./AudioToolbox/AudioFile.cs			\
-	./AudioToolbox/AudioFileStream.cs		\
-	./AudioToolbox/AudioQueue.cs			\
-	./AudioToolbox/AudioServices.cs			\
-	./AudioToolbox/AudioSession.cs			\
-	./AudioToolbox/AudioSessions.cs			\
-	./AudioToolbox/AudioType.cs			\
-	./AudioToolbox/SystemSound.cs			\
-	./AudioUnit/AUGraph.cs				\
-	./AudioUnit/AudioComponent.cs			\
-	./AudioUnit/AudioComponentDescription.cs	\
-	./AudioUnit/AudioGraphEventArgs.cs		\
-	./AudioUnit/AudioUnit.cs			\
-	./AudioUnit/AudioUnitEventArgs.cs		\
-	./AudioUnit/AudioUnitUtils.cs			\
-	./AudioUnit/ExtAudioFile.cs			\
-	./AudioUnit/_AudioConverter.cs			\
-	./AudioUnit/_AudioConverterEventArgs.cs		\
-	./CoreAnimation/CATransform3D.cs		\
-	./CoreAnimation/CAEnums.cs			\
-	./CoreAnimation/CADefs.cs			\
-	./CoreAnimation/CALayer.cs			\
-	./CoreData/Enums.cs				\
-	./CoreFoundation/CFArray.cs                     \
-	./CoreFoundation/CFBoolean.cs                   \
-	./CoreFoundation/CFDictionary.cs                \
-	./CoreFoundation/CFString.cs                    \
-	./CoreFoundation/CFUrl.cs                       \
-	./CoreFoundation/CFRunLoop.cs                   \
-	./CoreFoundation/CFException.cs                 \
-	./CoreFoundation/Dispatch.cs                    \
-	./CoreGraphics/CGAffineTransform.cs		\
-	./CoreGraphics/CGBitmapContext.cs		\
-	./CoreGraphics/CGColor.cs			\
-	./CoreGraphics/CGColorSpace.cs			\
-	./CoreGraphics/CGContext.cs			\
-	./CoreGraphics/CGDataProvider.cs		\
-	./CoreGraphics/CGDataProvider-2.cs		\
-	./CoreGraphics/CGFont.cs			\
-	./CoreGraphics/CGGeometry.cs			\
-	./CoreGraphics/CGGradient.cs			\
-	./CoreGraphics/CGImage.cs			\
-	./CoreGraphics/CGLayer.cs			\
-	./CoreGraphics/CGPDFDocument.cs			\
-	./CoreGraphics/CGPDFPage-2.cs			\
-	./CoreGraphics/CGPDFPage.cs			\
-	./CoreGraphics/CGPath.cs			\
-	./CoreGraphics/CGPattern.cs			\
-	./CoreText/Adapter.cs				\
-	./CoreText/CTFont.Generator.cs			\
-	./CoreText/CTFont.cs				\
-	./CoreText/CTFontCollection.cs			\
-	./CoreText/CTFontDescriptor.cs			\
-	./CoreText/CTFontNameKey.cs			\
-	./CoreText/CTFontTrait.cs			\
-	./CoreText/CTFrame.cs				\
-	./CoreText/CTFramesetter.cs			\
-	./CoreText/CTGlyphInfo.cs			\
-	./CoreText/CTLine.cs				\
-	./CoreText/CTParagraphStyle.cs			\
-	./CoreText/CTRun.cs				\
-	./CoreText/CTRunDelegate.cs			\
-	./CoreText/CTStringAttributes.cs		\
-	./CoreText/CTTextTab.cs				\
-	./CoreText/CTTypesetter.cs			\
-	./CoreText/ConstructorError.cs			\
-	./Foundation/ConnectAttribute.cs		\
-	./Foundation/Enum.cs 				\
-	./Foundation/ExportAttribute.cs			\
-	./Foundation/ModelAttribute.cs			\
-	./Foundation/ModelNotImplementedException.cs	\
-	./Foundation/NSAutoreleasePool.cs		\
-	./Foundation/NSAction.cs			\
-	./Foundation/NSArray.cs				\
-	./Foundation/NSBundle.cs			\
-	./Foundation/NSCoder.cs				\
-	./Foundation/NSData.cs				\
-	./Foundation/NSDate.cs				\
-	./Foundation/NSError.cs				\
-	./Foundation/NSHttpCookie.cs			\
-	./Foundation/NSHttpCookieStorage.cs		\
-	./Foundation/NSIndexPath.cs			\
-	./Foundation/NSInputStream.cs			\
-	./Foundation/NSKeyedArchiver.cs			\
-	./Foundation/NSKeyedUnarchiver.cs		\
-	./Foundation/NSMutableAttributedString.cs	\
-	./Foundation/NSMutableData.cs			\
-	./Foundation/NSMutableDictionary.cs		\
-	./Foundation/NSDictionary.cs			\
-	./Foundation/NSMutableUrlRequest.cs		\
-	./Foundation/NSNotificationCenter.cs		\
-	./Foundation/NSNumber.cs			\
-	./Foundation/NSNumber2.cs			\
-	./Foundation/NSObject2.cs			\
-	./Foundation/NSOutputStream.cs			\
-	./Foundation/NSRange.cs				\
-	./Foundation/NSSet.cs				\
-	./Foundation/NSString.cs			\
-	./Foundation/NSString2.cs			\
-	./Foundation/NSTimer.cs				\
-	./Foundation/NSUrl.cs				\
-	./Foundation/NSUrlConnection.cs			\
-	./Foundation/NSUserDefaults.cs			\
-	./Foundation/NSValue.cs				\
-	./Foundation/PreserveAttribute.cs		\
-	./Foundation/RegisterAttribute.cs		\
-	./ImageIO/CGImageSource.cs			\
-	./ObjCRuntime/ArgumentSemantic.cs		\
-	./ObjCRuntime/AlphaAttribute.cs			\
-	./ObjCRuntime/Blocks.cs				\
-	./ObjCRuntime/INativeObject.cs			\
-	./ObjCRuntime/Dlfcn.cs				\
-	./ObjCRuntime/SinceAttribute.cs			\
-	./ObjCRuntime/TypeConverter.cs			\
-	./MonoPInvokeCallbackAttribute.cs
-
-# Not working
-#	./CoreGraphics/CGShading.cs			\
-
-SHARED_CORE_SOURCE = \
-	./CoreAnimation/CATransform3D.cs		\
-	./CoreAnimation/CAEnums.cs			\
-	./CoreData/Enums.cs				\
-	./CoreFoundation/CFString.cs                    \
-	./CoreFoundation/CFUrl.cs                       \
-	./CoreFoundation/CFRunLoop.cs                   \
-	./CoreFoundation/Dispatch.cs                    \
-	./CoreGraphics/CGAffineTransform.cs             \
-	./CoreGraphics/CGBitmapContext.cs               \
-	./CoreGraphics/CGColor.cs                       \
-	./CoreGraphics/CGColorSpace.cs                  \
-	./CoreGraphics/CGContext.cs                     \
-	./CoreGraphics/CGDataProvider.cs                \
-	./CoreGraphics/CGFont.cs                        \
-	./CoreGraphics/CGGeometry.cs                    \
-	./CoreGraphics/CGGradient.cs                    \
-	./CoreGraphics/CGImage.cs                       \
-	./CoreGraphics/CGLayer.cs			\
-	./CoreGraphics/CGPDFDocument.cs                 \
-	./CoreGraphics/CGPDFPage-2.cs                   \
-	./CoreGraphics/CGPDFPage.cs                     \
-	./CoreGraphics/CGPath.cs                        \
-	./CoreGraphics/CGPattern.cs                     \
-	./CoreMedia/CMSampleBuffer.cs			\
-	./CoreMedia/CoreMedia.cs			\
-	./Foundation/ConnectAttribute.cs		\
-	./Foundation/Enum.cs 				\
-	./Foundation/ExportAttribute.cs			\
-	./Foundation/ModelAttribute.cs			\
-	./Foundation/NSAction.cs			\
-	./Foundation/NSRange.cs				\
-	./Foundation/NSString.cs			\
-	./Foundation/RegisterAttribute.cs		\
-	./Foundation/PreserveAttribute.cs		\
-        ./ObjCRuntime/ArgumentSemantic.cs               \
-        ./ObjCRuntime/AlphaAttribute.cs                 \
-	./ObjCRuntime/Blocks.cs				\
-        ./ObjCRuntime/INativeObject.cs                  \
-        ./ObjCRuntime/SinceAttribute.cs                 \
-        ./ObjCRuntime/TypeConverter.cs                  \
-	./MonoPInvokeCallbackAttribute.cs
-
-#	./quicklook.cs
-#	./avfoundation.cs	\
+include Make.shared
 
 SHARED_API = \
 	./foundation.cs		\
@@ -244,7 +79,7 @@ core.dll: $(CORE_SOURCES) $(SHARED_CORE_SOURCES) Makefile
 bmac.exe: $(APIS) core.dll $(GENERATOR_SOURCES)
 	gmcs -unsafe -out:bmac.exe -debug $(DEFINES) -define:GENERATOR,MONOMAC,MONOMAC_BOOTSTRAP $(GENERATOR_SOURCES) -r:core.dll
 
-generated_sources: bmac.exe $(APIS) $(SHARED_APIS)
+generated_sources: bmac.exe $(APIS) 
 	mono --debug bmac.exe -a -d=MONOMAC,MONOMAC_BOOTSTRAP --core --sourceonly=generated_sources -v -tmpdir=. $(APIS) --baselib=core.dll --ns=MonoMac.ObjCRuntime -r=System.Drawing
 
 count: 
@@ -253,8 +88,8 @@ count:
 counts:
 	make pass | grep 'could not be' | sed 's/.*`//' | sed "s/'.*//" | sort | uniq -c | sort -n
 
-monomac.dll: $(SOURCES) generated_sources $(MONOMAC_SOURCES) $(SHARED_SOURCES)
-	gmcs -nowarn:0414 -debug -unsafe $(SOURCES) @generated_sources $(MONOMAC_SOURCES) $(SHARED_SOURCES) -target:library -define:GENERATOR -define:MONOMAC -out:monomac.dll -r:System.Drawing
+monomac.dll: $(SOURCES) generated_sources $(MONOMAC_SOURCES) $(SHARED_SOURCES) $(SHARED_CORE_SOURCES)
+	gmcs -nowarn:0414 -debug -unsafe $(SOURCES) @generated_sources $(MONOMAC_SOURCES) $(SHARED_SOURCES) $(SHARED_CORE_SOURCES) -target:library -define:GENERATOR -define:MONOMAC -out:monomac.dll -r:System.Drawing
 
 clean:
 	rm -f $(TARGETS) core.dll
