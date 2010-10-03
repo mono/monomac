@@ -21,7 +21,7 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
+    <summary>Base class for all bound objects that map to Objective-C objects.</summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -84,6 +84,25 @@ public class MyClass : BaseClass {
         <remarks>
           <para>This constructor is invoked by the runtime infrastructure (<see cref="M:MonoMac.ObjCRuntime.GetNSObject (System.IntPtr)" />) to create a new managed representation for a pointer to an unmanaged Objective-C object.    You should not invoke this method directly, instead you should call the GetNSObject method as it will prevent two instances of a managed object to point to the same native object.</para>
         </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Alloc">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSObject Alloc (MonoMac.ObjCRuntime.Class kls);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="kls" Type="MonoMac.ObjCRuntime.Class" />
+      </Parameters>
+      <Docs>
+        <param name="kls">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="AwakeFromNib">
@@ -298,6 +317,21 @@ public class MyClass : BaseClass {
         <remarks>This IntPtr is a handle to the underlying unmanaged representation for this object.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Init">
+      <MemberSignature Language="C#" Value="public void Init ();" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="InvokeOnMainThread">
       <MemberSignature Language="C#" Value="public void InvokeOnMainThread (MonoMac.Foundation.NSAction action);" />
       <MemberType>Method</MemberType>
@@ -370,11 +404,6 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>MonoMac.Foundation.Export("performSelector:withObject:afterDelay:")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -390,6 +419,11 @@ public class MyClass : BaseClass {
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("performSelector:withObject:afterDelay:")</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
     <Member MemberName="RespondsToSelector">
       <MemberSignature Language="C#" Value="public virtual bool RespondsToSelector (MonoMac.ObjCRuntime.Selector sel);" />

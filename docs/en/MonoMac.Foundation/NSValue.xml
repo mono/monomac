@@ -14,7 +14,7 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
+    <summary>Binding to the Objective-C way of boxing value types.</summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -105,11 +105,6 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("CATransform3DValue")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.CoreAnimation.CATransform3D</ReturnType>
       </ReturnValue>
@@ -118,6 +113,31 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("CATransform3DValue")</AttributeName>
+        </Attribute>
+      </Attributes>
+    </Member>
+    <Member MemberName="CGAffineTransformValue">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreGraphics.CGAffineTransform CGAffineTransformValue { get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreGraphics.CGAffineTransform</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("CGAffineTransformValue")</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
     <Member MemberName="ClassHandle">
       <MemberSignature Language="C#" Value="public override IntPtr ClassHandle { get; }" />
@@ -153,6 +173,30 @@ public class MyClass : BaseClass {
       </Parameters>
       <Docs>
         <param name="transform">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FromCGAffineTransform">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSValue FromCGAffineTransform (MonoMac.CoreGraphics.CGAffineTransform tran);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("valueWithCGAffineTransform:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSValue</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="tran" Type="MonoMac.CoreGraphics.CGAffineTransform" />
+      </Parameters>
+      <Docs>
+        <param name="tran">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -230,6 +274,30 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="FromUIEdgeInsets">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSValue FromUIEdgeInsets (MonoMac.UIKit.UIEdgeInsets insets);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("valueWithUIEdgeInsets:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSValue</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="insets" Type="MonoMac.UIKit.UIEdgeInsets" />
+      </Parameters>
+      <Docs>
+        <param name="insets">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="IsEqualTo">
       <MemberSignature Language="C#" Value="public virtual bool IsEqualTo (MonoMac.Foundation.NSValue value);" />
       <MemberType>Method</MemberType>
@@ -260,11 +328,6 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("nonretainedObjectValue")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
       </ReturnValue>
@@ -273,6 +336,11 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("nonretainedObjectValue")</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
     <Member MemberName="PointerValue">
       <MemberSignature Language="C#" Value="public virtual IntPtr PointerValue { get; }" />
@@ -280,11 +348,6 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("pointerValue")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.IntPtr</ReturnType>
       </ReturnValue>
@@ -293,6 +356,11 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("pointerValue")</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
     <Member MemberName="PointFValue">
       <MemberSignature Language="C#" Value="public virtual System.Drawing.PointF PointFValue { get; }" />
@@ -300,11 +368,6 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("CGPointValue")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Drawing.PointF</ReturnType>
       </ReturnValue>
@@ -313,6 +376,11 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("CGPointValue")</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
     <Member MemberName="RectangleFValue">
       <MemberSignature Language="C#" Value="public virtual System.Drawing.RectangleF RectangleFValue { get; }" />
@@ -320,11 +388,6 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("CGRectValue")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Drawing.RectangleF</ReturnType>
       </ReturnValue>
@@ -333,6 +396,11 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("CGRectValue")</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
     <Member MemberName="SizeFValue">
       <MemberSignature Language="C#" Value="public virtual System.Drawing.SizeF SizeFValue { get; }" />
@@ -340,11 +408,6 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("CGSizeValue")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Drawing.SizeF</ReturnType>
       </ReturnValue>
@@ -353,6 +416,11 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("CGSizeValue")</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
     <Member MemberName="StoreValueAtAddress">
       <MemberSignature Language="C#" Value="public virtual void StoreValueAtAddress (IntPtr value);" />
@@ -376,6 +444,26 @@ public class MyClass : BaseClass {
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="UIEdgeInsetsValue">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.UIKit.UIEdgeInsets UIEdgeInsetsValue { get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.UIKit.UIEdgeInsets</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("UIEdgeInsetsValue")</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
     <Member MemberName="ValueFromNonretainedObject">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSValue ValueFromNonretainedObject (MonoMac.Foundation.NSObject anObject);" />

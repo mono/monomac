@@ -14,7 +14,7 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
+    <summary>An animation that can animate object properties.</summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -105,14 +105,6 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("isAdditive")</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>set: MonoMac.Foundation.Export("setAdditive:")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -121,6 +113,14 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("isAdditive")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: MonoMac.Foundation.Export("setAdditive:")</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
     <Member MemberName="ClassHandle">
       <MemberSignature Language="C#" Value="public override IntPtr ClassHandle { get; }" />
@@ -143,14 +143,6 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("isCumulative")</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>set: MonoMac.Foundation.Export("setCumulative:")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -159,6 +151,14 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("isCumulative")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: MonoMac.Foundation.Export("setCumulative:")</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
     <Member MemberName="FromKeyPath">
       <MemberSignature Language="C#" Value="public static MonoMac.CoreAnimation.CAPropertyAnimation FromKeyPath (string path);" />
@@ -178,10 +178,121 @@ public class MyClass : BaseClass {
         <Parameter Name="path" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="path">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="path">A key path represening the property to animate.</param>
+        <summary>Creates a property animation from the specified keypath.</summary>
+        <returns>The new animation.</returns>
+        <remarks>
+          <para>The animation created will animate the property specified by the keypath.</para>
+          <list type="table">
+            <listheader>
+              <term>Property</term>
+              <description>Actio</description>
+            </listheader>
+            <item>
+              <term>anchorPoint</term>
+              <description>Animates for 0.25 seconds or the duration of the current transaction using a CABasiCanimation.</description>
+            </item>
+            <item>
+              <term>backgroundColor</term>
+              <description>Animates for 0.25 seconds or the duration of the current transaction using a CABasiCanimation.   Subproperties are animated with basic animations.</description>
+            </item>
+            <item>
+              <term>backgroundFilters</term>
+              <description>Animates using a CATransition for 0.25 seconds or the duration of the transaction.   The default animation type is CATransition.Fade and the range is from 0.0 to 1.0. The filter subproperties are animated with a CABasicAnimation.</description>
+            </item>
+            <item>
+              <term>borderColor</term>
+              <description>Animates for 0.25 seconds or the duration of the current transaction using a CABasiCanimation.</description>
+            </item>
+            <item>
+              <term>borderWidth</term>
+              <description>Animates for 0.25 seconds or the duration of the current transaction using a CABasiCanimation.</description>
+            </item>
+            <item>
+              <term>bounds</term>
+              <description>Animates for 0.25 seconds or the duration of the current transaction using a CABasiCanimation.</description>
+            </item>
+            <item>
+              <term>compositingFilter</term>
+              <description>Animates using a CATransition for 0.25 seconds or the duration of the transaction.   The default animation type is CATransition.Fade and the range is from 0.0 to 1.0. Subproperties are animated with basic animations.</description>
+            </item>
+            <item>
+              <term>contents</term>
+              <description>Animates for 0.25 seconds or the duration of the current transaction using a CABasiCanimation.</description>
+            </item>
+            <item>
+              <term>contentsRect</term>
+              <description>Animates for 0.25 seconds or the duration of the current transaction using a CABasiCanimation.</description>
+            </item>
+            <item>
+              <term>cornerRadius</term>
+              <description>Animates for 0.25 seconds or the duration of the current transaction using a CABasiCanimation.</description>
+            </item>
+            <item>
+              <term>doubleSided</term>
+              <description>No default implied animation is set.</description>
+            </item>
+            <item>
+              <term>filters</term>
+              <description>Animates for 0.25 seconds or the duration of the current transaction using a CABasiCanimation. Sub-properties of the filters are animated using the default implied CABasicAnimation described in Table 10.</description>
+            </item>
+            <item>
+              <term>frame</term>
+              <description>The frame property itself is not animatable. You can achieve the same results by modifying the bounds and position properties instead.</description>
+            </item>
+            <item>
+              <term>hidden</term>
+              <description>Animates for 0.25 seconds or the duration of the current transaction using a CABasiCanimation.</description>
+            </item>
+            <item>
+              <term>mask</term>
+              <description>Animates for 0.25 seconds or the duration of the current transaction using a CABasiCanimation. This property is available only on Mac OS X.</description>
+            </item>
+            <item>
+              <term>masksToBounds</term>
+              <description>Animates for 0.25 seconds or the duration of the current transaction using a CABasiCanimation.</description>
+            </item>
+            <item>
+              <term>opacity</term>
+              <description>Animates for 0.25 seconds or the duration of the current transaction using a CABasiCanimation.</description>
+            </item>
+            <item>
+              <term>position</term>
+              <description>Animates for 0.25 seconds or the duration of the current transaction using a CABasiCanimation.</description>
+            </item>
+            <item>
+              <term>shadowColor</term>
+              <description>Animates for 0.25 seconds or the duration of the current transaction using a CABasiCanimation. This property is available only on Mac OS X.</description>
+            </item>
+            <item>
+              <term>shadowOffset</term>
+Uses the  <description> default implied CABasicAnimation described in Table 10. This property is available only on Mac OS X.</description></item>
+            <item>
+              <term>shadowOpacity</term>
+              <description>Animates for 0.25 seconds or the duration of the current transaction using a CABasiCanimation. This property is available only on Mac OS X.</description>
+            </item>
+            <item>
+              <term>shadowRadius</term>
+              <description>Animates for 0.25 seconds or the duration of the current transaction using a CABasiCanimation. This property is available only on Mac OS X.</description>
+            </item>
+            <item>
+              <term>sublayers</term>
+              <description>Animates using a CATransition for 0.25 seconds or the duration of the transaction.   The default animation type is CATransition.Fade and the range is from 0.0 to 1.0..</description>
+            </item>
+            <item>
+              <term>sublayerTransform</term>
+              <description>Animates for 0.25 seconds or the duration of the current transaction using a CABasiCanimation.</description>
+            </item>
+            <item>
+              <term>transform</term>
+              <description>Animates for 0.25 seconds or the duration of the current transaction using a CABasiCanimation.</description>
+            </item>
+            <item>
+              <term>zPosition</term>
+              <description>Animates for 0.25 seconds or the duration of the current transaction using a CABasiCanimation.</description>
+            </item>
+          </list>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="KeyPath">
@@ -190,14 +301,6 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("keyPath", MonoMac.ObjCRuntime.ArgumentSemantic.Copy)</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>set: MonoMac.Foundation.Export("setKeyPath:", MonoMac.ObjCRuntime.ArgumentSemantic.Copy)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -206,6 +309,14 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("keyPath", MonoMac.ObjCRuntime.ArgumentSemantic.Copy)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: MonoMac.Foundation.Export("setKeyPath:", MonoMac.ObjCRuntime.ArgumentSemantic.Copy)</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
     <Member MemberName="ValueFunction">
       <MemberSignature Language="C#" Value="public virtual MonoMac.CoreAnimation.CAValueFunction ValueFunction { set; get; }" />
@@ -213,14 +324,6 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("valueFunction", MonoMac.ObjCRuntime.ArgumentSemantic.Retain)</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>set: MonoMac.Foundation.Export("setValueFunction:", MonoMac.ObjCRuntime.ArgumentSemantic.Retain)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.CoreAnimation.CAValueFunction</ReturnType>
       </ReturnValue>
@@ -229,6 +332,14 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("valueFunction", MonoMac.ObjCRuntime.ArgumentSemantic.Retain)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: MonoMac.Foundation.Export("setValueFunction:", MonoMac.ObjCRuntime.ArgumentSemantic.Retain)</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
   </Members>
 </Type>

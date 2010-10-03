@@ -9,8 +9,16 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>The output AudioQueue.</summary>
+    <remarks>
+      <para>Use this class to playback audio.</para>
+      <para>
+You will usually create an OutputAudioQueue instance and allocate a number of buffers that you will use to fill in with data.   Once a buffer is filled, the buffer is enqueued and when the OutputAudioQueue has finished playing it back, the OutputCompleted event will be raised.
+</para>
+      <para>
+See the StreamingAudio sample program in monotouch-samples for an example program.
+</para>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -23,9 +31,9 @@
         <Parameter Name="desc" Type="MonoMac.AudioToolbox.AudioStreamBasicDescription" />
       </Parameters>
       <Docs>
-        <param name="desc">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="desc">Stream description.</param>
+        <summary>Creates an OutputAudioQueue.</summary>
+        <remarks>Usually the stream description is fetched from an AudioFile or an AudioStreamFile</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -40,11 +48,11 @@
         <Parameter Name="runMode" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="desc">To be added.</param>
-        <param name="runLoop">To be added.</param>
-        <param name="runMode">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="desc">Stream description.</param>
+        <param name="runLoop">The run loop in which the OnOutputCompleted method and the OutputCompleted event are raised.</param>
+        <param name="runMode">The run mode for the run loop.</param>
+        <summary>Creates an OutputAudioQueue, specifying on which run loop events are delivered.</summary>
+        <remarks>Usually the stream description is fetched from an AudioFile or an AudioStreamFile.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnOutputCompleted">
@@ -60,9 +68,9 @@
         <Parameter Name="audioQueueBuffer" Type="System.IntPtr" />
       </Parameters>
       <Docs>
-        <param name="audioQueueBuffer">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="audioQueueBuffer">The specified audio buffer that has completed playback.</param>
+        <summary>This method is invoked when a buffer has finished playing.</summary>
+        <remarks>The implementation on OutputAudioQueue will raise the OutputCompleted event.    If you derive from this class, you do not need to invoke this base method, unless you want it to raise the OutputCompleted event.   The method is exposed as a protected method to allow developers to directly plug into the pipeline when no event dispatching is required.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OutputCompleted">
@@ -75,8 +83,8 @@
         <ReturnType>System.EventHandler&lt;MonoMac.AudioToolbox.OutputCompletedEventArgs&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Event raised when an audio buffer has completed playing.</summary>
+        <remarks />
       </Docs>
     </Member>
   </Members>

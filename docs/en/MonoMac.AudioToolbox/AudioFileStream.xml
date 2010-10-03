@@ -13,8 +13,15 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Process partial audio files.</summary>
+    <remarks>
+      <para>
+You use AudioFileStream when you want to decode audio content that does not live in an local file or if you want to decode it in chunks.   New data is fed into the AudioFileStream using one of the ParseBytes method and decoded audio is provided on the PacketDecoded event (or the OnPacketDecoded virtual method) and information about the stream is raised on the PropertyFound event (or the OnPropertyFound virtual method).
+</para>
+      <para>
+This can be used to parse audio files when you are streaming audio from the network for example.
+</para>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -27,9 +34,9 @@
         <Parameter Name="fileTypeHint" Type="MonoMac.AudioToolbox.AudioFileType" />
       </Parameters>
       <Docs>
-        <param name="fileTypeHint">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="fileTypeHint">Hint about the audio file type.</param>
+        <summary>Creates a new instance of this object.</summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="AverageBytesPerPacket">
@@ -77,12 +84,12 @@
         <Parameter Name="isEstimate" Type="System.Boolean&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="byteval">To be added.</param>
-        <param name="byteOffsetInPacket">To be added.</param>
-        <param name="isEstimate">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="byteval">The location in the file.</param>
+        <param name="byteOffsetInPacket">Return value, byte offset within the packet.</param>
+        <param name="isEstimate">Return value, whether the return is an estimate or not.</param>
+        <summary>Maps a position in the file to an audio packet.</summary>
+        <returns>The packet number that corresponds to this byte in the file.</returns>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ChannelLayout">
@@ -111,8 +118,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Closes (and disposes the audio stream).</summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="DataByteCount">
@@ -230,7 +237,8 @@
       <Parameters />
       <Docs>
         <summary>Finalizer for the AudioFileStream object</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="FrameToPacket">
@@ -343,11 +351,11 @@
         <Parameter Name="packetDescriptions" Type="MonoMac.AudioToolbox.AudioStreamPacketDescription[]" />
       </Parameters>
       <Docs>
-        <param name="numberOfBytes">To be added.</param>
-        <param name="inputData">To be added.</param>
-        <param name="packetDescriptions">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="numberOfBytes">The number of bytes available in the decoded packet.</param>
+        <param name="inputData">Pointer to the decoded data.</param>
+        <param name="packetDescriptions">A description of the packets decoded.</param>
+        <summary>Invoked when a packet has been decoded.</summary>
+        <remarks>The default implementation raises the PacketDecoded event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnPropertyFound">
@@ -364,10 +372,10 @@
         <Parameter Name="ioFlags" Type="MonoMac.AudioToolbox.AudioFileStreamPropertyFlag&amp;" RefType="ref" />
       </Parameters>
       <Docs>
-        <param name="propertyID">To be added.</param>
-        <param name="ioFlags">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="propertyID">The property that has been found.</param>
+        <param name="ioFlags" />
+        <summary>Invoked when a propety is found.</summary>
+        <remarks>The default implementation merely raises the PropetyFound event.</remarks>
       </Docs>
     </Member>
     <Member MemberName="PacketDecoded">
@@ -380,8 +388,8 @@
         <ReturnType>System.EventHandler&lt;MonoMac.AudioToolbox.PacketReceivedEventArgs&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>This event is raised when a packet has been decoded.</summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="PacketSizeUpperBound">
@@ -453,11 +461,11 @@
         <Parameter Name="discontinuity" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="bytes">To be added.</param>
-        <param name="discontinuity">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="bytes">The buffer that contains the audio data to decode.</param>
+        <param name="discontinuity">True if this invocation to ParseBytes is contiguous to the previous one, false otherwise.</param>
+        <summary>Parse and decode the array of bytes provided.</summary>
+        <returns>Parsing status.</returns>
+        <remarks>The OnPacketDecoded/OnProperty found methods are invoked as data is parsed.   If you have not subclassed this class, you can alternatively hook up to the PacketDecoded and PropertyFound events to receive parsing notifications.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ParseBytes">
@@ -475,12 +483,12 @@
         <Parameter Name="discontinuity" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="size">To be added.</param>
-        <param name="data">To be added.</param>
-        <param name="discontinuity">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="size">The number of bytes to parse from the provided block.</param>
+        <param name="data">A pointer to the audio data to decode.</param>
+        <param name="discontinuity">True if this invocation to ParseBytes is contiguous to the previous one, false otherwise.</param>
+        <summary>Parse and decode the block of data provided.</summary>
+        <returns>Parse status.</returns>
+        <remarks>The OnPacketDecoded/OnProperty found methods are invoked as data is parsed.   If you have not subclassed this class, you can alternatively hook up to the PacketDecoded and PropertyFound events to receive parsing notifications.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ParseBytes">
@@ -499,13 +507,13 @@
         <Parameter Name="discontinuity" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="bytes">To be added.</param>
-        <param name="offset">To be added.</param>
-        <param name="count">To be added.</param>
-        <param name="discontinuity">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="bytes">Buffer containing the data.</param>
+        <param name="offset">First byte withing the array that contains the data to decode.</param>
+        <param name="count">Number of bytes to parse.</param>
+        <param name="discontinuity">True if this invocation to ParseBytes is contiguous to the previous one, false otherwise.</param>
+        <summary>Parses and decode a portion of the array of bytes provided.</summary>
+        <returns>The status from parsing the buffer.</returns>
+        <remarks>The OnPacketDecoded/OnProperty found methods are invoked as data is parsed.   If you have not subclassed this class, you can alternatively hook up to the PacketDecoded and PropertyFound events to receive parsing notifications.</remarks>
       </Docs>
     </Member>
     <Member MemberName="PropertyFound">
@@ -518,8 +526,8 @@
         <ReturnType>System.EventHandler&lt;MonoMac.AudioToolbox.PropertyFoundEventArgs&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>This event is raised when a property has been found on the decoded data.</summary>
+        <remarks>The most interesting property that is raised is AudioFileStreamProperty.ReadyToProducePackets;   When this property is parsed there is enough information to create the output queue.   The MagicCookie and the StreamBasicDescription contain the information necessary to create a working instance of the OutputAudioQueue.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ReadyToProducePackets">
@@ -575,12 +583,12 @@
         <Parameter Name="propertyData" Type="System.IntPtr" />
       </Parameters>
       <Docs>
-        <param name="property">To be added.</param>
-        <param name="dataSize">To be added.</param>
-        <param name="propertyData">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="property">The property to set.</param>
+        <param name="dataSize">The size of the data to set.</param>
+        <param name="propertyData">Pointer to the property data.</param>
+        <summary>Low-level property setting API.   Use the exposed managed properties instead.</summary>
+        <returns>true if the operation successful.</returns>
+        <remarks>Most properties have been exposed with C# properties, there should be no need to call this directly, unless new properties are introduced that are not bound by Monotouch.</remarks>
       </Docs>
     </Member>
     <Member MemberName="StreamBasicDescription">

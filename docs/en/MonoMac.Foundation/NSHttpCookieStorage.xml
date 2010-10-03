@@ -15,7 +15,129 @@
   </Attributes>
   <Docs>
     <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <remarks>
+      <format type="text/html">
+        <h2 class="jump">Overview</h2>
+      </format>
+      <para>
+        <c>NSHTTPCookieStorage</c> implements a singleton object (shared instance) that manages the shared cookie storage. These cookies are shared among all applications and are kept in sync cross-process.</para>
+      <para>
+        <i>Note:</i> Changes made to the cookie accept policy will affect all currently running applications using the cookie storage.</para>
+      <format type="text/html">
+        <h2 class="jump">Tasks</h2>
+      </format>
+      <format type="text/html">
+        <h3 class="tasks">Getting the Shared Cookie Storage Object</h3>
+      </format>
+      <list type="bullet">
+        <item>
+          <term>
+            <c>
+              <format type="text/html">
+                <a href="Reference.html#//apple_ref/occ/clm/NSHTTPCookieStorage/sharedHTTPCookieStorage">+ sharedHTTPCookieStorage</a>
+              </format>
+            </c>
+            <format type="text/html">
+              <img data-abstract="Returns the shared cookie storage instance." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
+            </format>
+          </term>
+        </item>
+      </list>
+      <format type="text/html">
+        <h3 class="tasks">Getting and Setting the Cookie Accept Policy</h3>
+      </format>
+      <list type="bullet">
+        <item>
+          <term>
+            <c>
+              <format type="text/html">
+                <a href="Reference.html#//apple_ref/occ/instm/NSHTTPCookieStorage/cookieAcceptPolicy">- cookieAcceptPolicy</a>
+              </format>
+            </c>
+            <format type="text/html">
+              <img data-abstract="Returns the receiver’s cookie accept policy." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
+            </format>
+          </term>
+        </item>
+        <item>
+          <term>
+            <c>
+              <format type="text/html">
+                <a href="Reference.html#//apple_ref/occ/instm/NSHTTPCookieStorage/setCookieAcceptPolicy:">- setCookieAcceptPolicy:</a>
+              </format>
+            </c>
+            <format type="text/html">
+              <img data-abstract="Sets the cookie accept policy of the receiver " src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
+            </format>
+          </term>
+        </item>
+      </list>
+      <format type="text/html">
+        <h3 class="tasks">Adding and Removing Cookies</h3>
+      </format>
+      <list type="bullet">
+        <item>
+          <term>
+            <c>
+              <format type="text/html">
+                <a href="Reference.html#//apple_ref/occ/instm/NSHTTPCookieStorage/cookies">- cookies</a>
+              </format>
+            </c>
+            <format type="text/html">
+              <img data-abstract="Returns the receiver’s cookies." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
+            </format>
+          </term>
+        </item>
+        <item>
+          <term>
+            <c>
+              <format type="text/html">
+                <a href="Reference.html#//apple_ref/occ/instm/NSHTTPCookieStorage/cookiesForURL:">- cookiesForURL:</a>
+              </format>
+            </c>
+            <format type="text/html">
+              <img data-abstract="Returns all the receiver&amp;#8217;s cookies that will be sent to a specified URL." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
+            </format>
+          </term>
+        </item>
+        <item>
+          <term>
+            <c>
+              <format type="text/html">
+                <a href="Reference.html#//apple_ref/occ/instm/NSHTTPCookieStorage/deleteCookie:">- deleteCookie:</a>
+              </format>
+            </c>
+            <format type="text/html">
+              <img data-abstract="Deletes the specified cookie from the receiver." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
+            </format>
+          </term>
+        </item>
+        <item>
+          <term>
+            <c>
+              <format type="text/html">
+                <a href="Reference.html#//apple_ref/occ/instm/NSHTTPCookieStorage/setCookie:">- setCookie:</a>
+              </format>
+            </c>
+            <format type="text/html">
+              <img data-abstract="Stores a specified cookie in the receiver if the receiver&amp;#8217;s cookie accept policy permits." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
+            </format>
+          </term>
+        </item>
+        <item>
+          <term>
+            <c>
+              <format type="text/html">
+                <a href="Reference.html#//apple_ref/occ/instm/NSHTTPCookieStorage/setCookies:forURL:mainDocumentURL:">- setCookies:forURL:mainDocumentURL:</a>
+              </format>
+            </c>
+            <format type="text/html">
+              <img data-abstract="Adds an array of cookies to the receiver if the receiver’s cookie acceptance policy permits." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
+            </format>
+          </term>
+        </item>
+      </list>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -31,8 +153,292 @@
       </Attributes>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>
+          <para>Implemented by subclasses to initialize a new object (the receiver) immediately after memory for it has been allocated.</para>
+        </summary>
+        <remarks>
+          <para>An <c>init</c> message is generally coupled with an <c><format type="text/html"><a href="Reference.html#//apple_ref/occ/clm/NSObject/alloc">alloc</a></format></c> or <c><format type="text/html"><a href="Reference.html#//apple_ref/occ/clm/NSObject/allocWithZone:">allocWithZone:</a></format></c> message in the same line of code:</para>
+          <format type="text/html">
+            <table>
+              <tr>
+                <td scope="row">
+                  <pre>TheClass *newObject = [[TheClass alloc] init];</pre>
+                </td>
+              </tr>
+            </table>
+          </format>
+          <para>An object isn’t ready to be used until it has been initialized. The <c>init</c> method defined in the <c>NSObject</c> class does no initialization; it simply returns <c>self</c>.</para>
+          <para>Subclass implementations of this method should initialize and return the new object. If it can’t be initialized, they should release the object and return <c><!--a   -->nil<!--/a --></c>. In some cases, an <c>init</c> method might release the new object and return a substitute. Programs should therefore always use the object returned by <c>init</c>, and not necessarily the one returned by <c><format type="text/html"><a href="Reference.html#//apple_ref/occ/clm/NSObject/alloc">alloc</a></format></c> or <c><format type="text/html"><a href="Reference.html#//apple_ref/occ/clm/NSObject/allocWithZone:">allocWithZone:</a></format></c>, in subsequent code.</para>
+          <para>Every class must guarantee that the <c>init</c> method either returns a fully functional instance of the class or raises an exception. Subclasses should override the <c>init</c> method to add class-specific initialization code. Subclass versions of <c>init</c> need to incorporate the initialization code for the classes they inherit from, through a message to <c>super</c>:</para>
+          <format type="text/html">
+            <table>
+              <tr>
+                <td scope="row">
+                  <pre>- (id)init</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>{</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>    if ((self = [super init])) {</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>        /* class-specific initialization goes here */</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>    }</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>    return self;</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>}</pre>
+                </td>
+              </tr>
+            </table>
+          </format>
+          <para>Note that the message to <c>super</c> precedes the initialization code added in the method. This sequencing ensures that initialization proceeds in the order of inheritance.</para>
+          <para>Subclasses often define <c>init...</c> methods with additional arguments to allow specific values to be set. The more arguments a method has, the more freedom it gives you to determine the character of initialized objects. Classes often have a set of <c>init...</c> methods, each with a different number of arguments. For example:</para>
+          <format type="text/html">
+            <table>
+              <tr>
+                <td scope="row">
+                  <pre>- (id)init;</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>- (id)initWithTag:(int)tag;</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>- (id)initWithTag:(int)tag data:(struct info *)data;</pre>
+                </td>
+              </tr>
+            </table>
+          </format>
+          <para>The convention is that at least one of these methods, usually the one with the most arguments, includes a message to <c>super</c> to incorporate the initialization of classes higher up the hierarchy. This method is called the <i>designated initializer</i> for the class. The other <c>init...</c> methods defined in the class directly or indirectly invoke the designated initializer through messages to <c>self</c>. In this way, all <c>init...</c> methods are chained together. For example:</para>
+          <format type="text/html">
+            <table>
+              <tr>
+                <td scope="row">
+                  <pre>- (id)init</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>{</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>    return [self initWithTag:-1];</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>}</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre />
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>- (id)initWithTag:(int)tag</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>{</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>    return [self initWithTag:tag data:NULL];</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>}</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre />
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>- (id)initWithTag:(int)tag data:(struct info *)data</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>{</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>    if ((self = [super init. . .])) {</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>        /* class-specific initialization goes here */</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>    }</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>    return self;</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>}</pre>
+                </td>
+              </tr>
+            </table>
+          </format>
+          <para>In this example, the <c>initWithTag:data:</c> method is the designated initializer for the class.</para>
+          <para>If a subclass does any initialization of its own, it must define its own designated initializer. This method should begin by sending a message to <c>super</c> to invoke the designated initializer of its superclass. Suppose, for example, that the three methods illustrated above are defined in the B class. The C class, a subclass of B, might have this designated initializer:</para>
+          <format type="text/html">
+            <table>
+              <tr>
+                <td scope="row">
+                  <pre>- (id)initWithTag:(int)tag data:(struct info *)data object:anObject</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>{</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>    if ((self = [super initWithTag:tag data:data])) {</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>        /* class-specific initialization goes here */</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>    }</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>    return self;</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>}</pre>
+                </td>
+              </tr>
+            </table>
+          </format>
+          <para>If inherited <c>init...</c> methods are to successfully initialize instances of the subclass, they must all be made to (directly or indirectly) invoke the new designated initializer. To accomplish this, the subclass is obliged to cover (override) only the designated initializer of the superclass. For example, in addition to its designated initializer, the C class would also implement this method:</para>
+          <format type="text/html">
+            <table>
+              <tr>
+                <td scope="row">
+                  <pre>- (id)initWithTag:(int)tag data:(struct info *)data</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>{</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>    return [self initWithTag:tag data:data object:nil];</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>}</pre>
+                </td>
+              </tr>
+            </table>
+          </format>
+          <para>This code ensures that all three methods inherited from the B class also work for instances of the C class.</para>
+          <para>Often the designated initializer of the subclass overrides the designated initializer of the superclass. If so, the subclass need only implement the one <c>init...</c> method.</para>
+          <para>These conventions maintain a direct chain of <c>init...</c> links and ensure that the <c>new</c> method and all inherited <c>init...</c> methods return usable, initialized objects. They also prevent the possibility of an infinite loop wherein a subclass method sends a message (to <c>super</c>) to perform a superclass method, which in turn sends a message (to <c>self</c>) to perform the subclass method.</para>
+          <para>This <c>init</c> method is the designated initializer for the <c>NSObject</c> class. Subclasses that do their own initialization should override it, as described above.</para>
+          <format type="text/html">
+            <h5 class="tight">Availability</h5>
+          </format>
+          <list type="bullet">
+            <item>
+              <term>Available in iPhone OS 2.0 and later.</term>
+            </item>
+          </list>
+          <format type="text/html">
+            <h5 class="tight">Related Sample Code</h5>
+          </format>
+          <list type="bullet">
+            <item>
+              <term>
+                <format type="text/html">
+                  <a target="_top" href="../../../../../../../samplecode/CryptoExercise/index.html#//apple_ref/doc/uid/DTS40008019">CryptoExercise</a>
+                </format>
+              </term>
+            </item>
+            <item>
+              <term>
+                <format type="text/html">
+                  <a target="_top" href="../../../../../../../samplecode/GLES2Sample/index.html#//apple_ref/doc/uid/DTS40009188">GLES2Sample</a>
+                </format>
+              </term>
+            </item>
+            <item>
+              <term>
+                <format type="text/html">
+                  <a target="_top" href="../../../../../../../samplecode/GLTextureAtlas/index.html#//apple_ref/doc/uid/DTS40009014">GLTextureAtlas</a>
+                </format>
+              </term>
+            </item>
+            <item>
+              <term>
+                <format type="text/html">
+                  <a target="_top" href="../../../../../../../samplecode/TableViewSuite/index.html#//apple_ref/doc/uid/DTS40007318">TableViewSuite</a>
+                </format>
+              </term>
+            </item>
+            <item>
+              <term>
+                <format type="text/html">
+                  <a target="_top" href="../../../../../../../samplecode/TheElements/index.html#//apple_ref/doc/uid/DTS40007419">TheElements</a>
+                </format>
+              </term>
+            </item>
+          </list>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -105,6 +511,40 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSHttpCookieAcceptPolicy</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+          <para>Sets the cookie accept policy of the receiver </para>
+        </summary>
+        <value>To be added.</value>
+        <remarks>
+          <para>The default cookie accept policy is <c><format type="text/html"><a href="Reference.html#//apple_ref/doc/c_ref/NSHTTPCookieAcceptPolicyAlways">NSHTTPCookieAcceptPolicyAlways</a></format></c>. Changing the cookie policy will affect all currently running applications using the cookie storage.</para>
+          <format type="text/html">
+            <h5 class="tight">Availability</h5>
+          </format>
+          <list type="bullet">
+            <item>
+              <term>Available in iPhone OS 2.0 and later.</term>
+            </item>
+          </list>
+          <format type="text/html">
+            <h5 class="tight">See Also</h5>
+          </format>
+          <list type="bullet">
+            <item>
+              <term>
+                <c>
+                  <format type="text/html">
+                    <a href="Reference.html#//apple_ref/occ/instm/NSHTTPCookieStorage/cookieAcceptPolicy">- cookieAcceptPolicy</a>
+                  </format>
+                </c>
+              </term>
+            </item>
+          </list>
+        </remarks>
+      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("cookieAcceptPolicy")</AttributeName>
@@ -113,14 +553,6 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setCookieAcceptPolicy:")</AttributeName>
         </Attribute>
       </Attributes>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSHttpCookieAcceptPolicy</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
     </Member>
     <Member MemberName="AcceptPolicyChangedNotification">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString AcceptPolicyChangedNotification;" />
@@ -157,19 +589,22 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSHttpCookie[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+          <para>Returns the receiver’s cookies.</para>
+        </summary>
+        <value>To be added.</value>
+        <remarks>
+        </remarks>
+      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("cookies")</AttributeName>
         </Attribute>
       </Attributes>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSHttpCookie[]</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
     </Member>
     <Member MemberName="CookiesChangedNotification">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString CookiesChangedNotification;" />
@@ -204,9 +639,37 @@ public class MyClass : BaseClass {
       </Parameters>
       <Docs>
         <param name="url">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>
+          <para>Returns all the receiver's cookies that will be sent to a specified URL.</para>
+        </summary>
+        <returns>
+          <para>An array of cookies whose URL matches the provided URL.</para>
+        </returns>
+        <remarks>
+          <para>An application can use <c>NSHTTPCookie</c>’s <c><format type="text/html"><a target="_top" href="../../NSHTTPCookie_Class/Reference/Reference.html#//apple_ref/occ/clm/NSHTTPCookie/requestHeaderFieldsWithCookies:">requestHeaderFieldsWithCookies:</a></format></c> method to turn this array into a set of header fields to add to an <c>NSMutableURLRequest</c> object.</para>
+          <format type="text/html">
+            <h5 class="tight">Availability</h5>
+          </format>
+          <list type="bullet">
+            <item>
+              <term>Available in iPhone OS 2.0 and later.</term>
+            </item>
+          </list>
+          <format type="text/html">
+            <h5 class="tight">See Also</h5>
+          </format>
+          <list type="bullet">
+            <item>
+              <term>
+                <c>
+                  <format type="text/html">
+                    <a href="Reference.html#//apple_ref/occ/instm/NSHTTPCookieStorage/cookies">- cookies</a>
+                  </format>
+                </c>
+              </term>
+            </item>
+          </list>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="DeleteCookie">
@@ -228,8 +691,11 @@ public class MyClass : BaseClass {
       </Parameters>
       <Docs>
         <param name="cookie">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>
+          <para>Deletes the specified cookie from the receiver.</para>
+        </summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="SetCookie">
@@ -251,8 +717,20 @@ public class MyClass : BaseClass {
       </Parameters>
       <Docs>
         <param name="cookie">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>
+          <para>Stores a specified cookie in the receiver if the receiver's cookie accept policy permits.</para>
+        </summary>
+        <remarks>
+          <para>The cookie will replace an existing cookie with the same name, domain and path, if one exists in the cookie storage. This method will accept the cookie only if the receiver’s cookie accept policy is <c><format type="text/html"><a href="Reference.html#//apple_ref/doc/c_ref/NSHTTPCookieAcceptPolicyAlways">NSHTTPCookieAcceptPolicyAlways</a></format></c> or <c><format type="text/html"><a href="Reference.html#//apple_ref/doc/c_ref/NSHTTPCookieAcceptPolicyOnlyFromMainDocumentDomain">NSHTTPCookieAcceptPolicyOnlyFromMainDocumentDomain</a></format></c>. The cookie will be ignored if the receiver’s cookie accept policy is <c><format type="text/html"><a href="Reference.html#//apple_ref/doc/c_ref/NSHTTPCookieAcceptPolicyNever">NSHTTPCookieAcceptPolicyNever</a></format></c>.</para>
+          <format type="text/html">
+            <h5 class="tight">Availability</h5>
+          </format>
+          <list type="bullet">
+            <item>
+              <term>Available in iPhone OS 2.0 and later.</term>
+            </item>
+          </list>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="SetCookies">
@@ -278,8 +756,21 @@ public class MyClass : BaseClass {
         <param name="cookies">To be added.</param>
         <param name="forUrl">To be added.</param>
         <param name="mainDocumentUrl">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>
+          <para>Adds an array of cookies to the receiver if the receiver’s cookie acceptance policy permits.</para>
+        </summary>
+        <remarks>
+          <para>The cookies will replace existing cookies with the same name, domain, and path, if one exists in the cookie storage. The cookie will be ignored if the receiver's cookie accept policy is <c><format type="text/html"><a href="Reference.html#//apple_ref/doc/c_ref/NSHTTPCookieAcceptPolicyNever">NSHTTPCookieAcceptPolicyNever</a></format></c>. </para>
+          <para>To store cookies from a set of response headers, an application can use <c><format type="text/html"><a target="_top" href="../../NSHTTPCookie_Class/Reference/Reference.html#//apple_ref/occ/clm/NSHTTPCookie/cookiesWithResponseHeaderFields:forURL:">cookiesWithResponseHeaderFields:forURL:</a></format></c> passing a header field dictionary and then use this method to store the resulting cookies in accordance with the receiver’s cookie acceptance policy.</para>
+          <format type="text/html">
+            <h5 class="tight">Availability</h5>
+          </format>
+          <list type="bullet">
+            <item>
+              <term>Available in iPhone OS 2.0 and later.</term>
+            </item>
+          </list>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="SharedStorage">
@@ -288,19 +779,22 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSHttpCookieStorage</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+          <para>Returns the shared cookie storage instance.</para>
+        </summary>
+        <value>To be added.</value>
+        <remarks>
+        </remarks>
+      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("sharedHTTPCookieStorage")</AttributeName>
         </Attribute>
       </Attributes>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSHttpCookieStorage</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
     </Member>
   </Members>
 </Type>

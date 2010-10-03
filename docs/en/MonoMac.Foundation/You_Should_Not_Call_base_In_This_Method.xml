@@ -9,8 +9,11 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>This exception is thrown by models.</summary>
+    <remarks>
+      <para>This exception is thrown in case that your code calls base.XXX when you are reimplementing a MonoMac Model.</para>
+      <para>Unlike regular classes, Model classes (those that are flagged with the [<see cref="T:MonoMac.Foundation.ModelAttribute" />]) are merely a skeleton used to bring to C# the equivalent of "optional" methods in an Objective-C protocol.   The methods exposed by the class are not exposed to the Objective-C world, only methods that are explicitly overwritten are exposed.</para>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -21,8 +24,8 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Default constructor.</summary>
+        <remarks>See the class documentation for information about this exception.</remarks>
       </Docs>
     </Member>
   </Members>

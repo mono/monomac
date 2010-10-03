@@ -16,7 +16,7 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
+    <summary>Provides methods for producing simple sounds.</summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -30,9 +30,9 @@
         <Parameter Name="fileUrl" Type="MonoMac.Foundation.NSUrl" />
       </Parameters>
       <Docs>
-        <param name="fileUrl">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="fileUrl">The url to the local file.</param>
+        <summary>Create a system sound from a local file.</summary>
+        <remarks>The system sounds are limited to 30 seconds or less.   If there is an error, this constructor will throw an exception.   If you want to avoid exceptions, and instead get a null on error, call the FromFile methods.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Close">
@@ -46,8 +46,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Closes this system sound.</summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Dispose">
@@ -104,10 +104,10 @@
         <Parameter Name="fileUrl" Type="MonoMac.Foundation.NSUrl" />
       </Parameters>
       <Docs>
-        <param name="fileUrl">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="fileUrl">A SystemSound instance, or null on error.</param>
+        <summary>Creates a system sound from a file.</summary>
+        <returns>The system sound object, or null on error.</returns>
+        <remarks>SystemSounds are limited to 30 seconds or less.</remarks>
       </Docs>
     </Member>
     <Member MemberName="FromFile">
@@ -123,10 +123,10 @@
         <Parameter Name="filename" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="filename">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="filename">The file that contains the audio.</param>
+        <summary>An array of packet descriptions that describe the contents of the buffer.</summary>
+        <returns>A SystemSound instance or null on error.</returns>
+        <remarks>SystemSounds are limited to 30 seconds or less.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Handle">
@@ -155,8 +155,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Plays a sound or alert.</summary>
+        <remarks>The actual behavior of this method depends on the device (iPhone, iPod touch) and the vibrate settings.</remarks>
       </Docs>
     </Member>
     <Member MemberName="PlaySystemSound">
@@ -170,8 +170,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Plays the system sound.</summary>
+        <remarks>The system sound is played asynchronously, but it is also limited to 30 seconds or less.</remarks>
       </Docs>
     </Member>
     <Member MemberName="System.IDisposable.Dispose">
@@ -202,8 +202,8 @@
         <ReturnType>MonoMac.AudioToolbox.SystemSound</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>A special system sound that can be used to make the device vibrate.</summary>
+        <remarks>This system sound does nothing on iPod touches.</remarks>
       </Docs>
     </Member>
   </Members>

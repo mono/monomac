@@ -14,7 +14,7 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
+    <summary>Groups and orchestrates multiple animations.</summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -31,7 +31,7 @@
       </Attributes>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Use the CAAnimationGroup.CreateAnimation instead.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -105,6 +105,14 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreAnimation.CAAnimation[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>An array of the animations in this group.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("animations", MonoMac.ObjCRuntime.ArgumentSemantic.Copy)</AttributeName>
@@ -113,14 +121,6 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setAnimations:", MonoMac.ObjCRuntime.ArgumentSemantic.Copy)</AttributeName>
         </Attribute>
       </Attributes>
-      <ReturnValue>
-        <ReturnType>MonoMac.CoreAnimation.CAAnimation[]</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
     </Member>
     <Member MemberName="ClassHandle">
       <MemberSignature Language="C#" Value="public override IntPtr ClassHandle { get; }" />
@@ -153,7 +153,7 @@ public class MyClass : BaseClass {
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Factory method that creates a new CAAnimationGroup.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>

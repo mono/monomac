@@ -13,8 +13,8 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Managed representation for an Objective-C class.</summary>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -27,9 +27,9 @@
         <Parameter Name="handle" Type="System.IntPtr" />
       </Parameters>
       <Docs>
-        <param name="handle">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="handle">The pointer to the unmanaged Objective-C Class object.</param>
+        <summary>Creates an instance from an unmanaged handle.</summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -42,9 +42,9 @@
         <Parameter Name="name" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="name">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="name">The name of the Objective-C class.</param>
+        <summary>Creates a class from a name.</summary>
+        <remarks>MonoMac will look up the class in the Objective-C space and return the instance or throw an ArgumentException if the class does not exist, or the library was not linked in.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -57,9 +57,9 @@
         <Parameter Name="type" Type="System.Type" />
       </Parameters>
       <Docs>
-        <param name="type">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="type">A C# type.</param>
+        <summary>Creates a class from the specified Type.</summary>
+        <remarks>This will trigger the class regstration with the Monotouch runtime.</remarks>
       </Docs>
     </Member>
     <Member MemberName="GetHandle">
@@ -75,7 +75,26 @@
         <Parameter Name="name" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="name">To be added.</param>
+        <param name="name">The name of the class to lookup.</param>
+        <summary>Returns the unmanaged handle to the Objective-C Class.</summary>
+        <returns>The unmanaged handle for the specified Objective-C class.</returns>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="GetHandle">
+      <MemberSignature Language="C#" Value="public static IntPtr GetHandle (Type type);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.IntPtr</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="type" Type="System.Type" />
+      </Parameters>
+      <Docs>
+        <param name="type">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -106,9 +125,9 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>The Objective-C name for this class.</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SuperClass">
@@ -121,9 +140,9 @@
         <ReturnType>System.IntPtr</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>The Objective-C handle to the super class for this class.</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
   </Members>

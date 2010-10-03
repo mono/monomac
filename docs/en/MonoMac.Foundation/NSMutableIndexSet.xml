@@ -15,7 +15,116 @@
   </Attributes>
   <Docs>
     <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <remarks>
+      <format type="text/html">
+        <h2 class="jump">Overview</h2>
+      </format>
+      <para>The <c>NSMutableIndexSet</c> class represents a mutable collection of unique unsigned integers, known as <i>indexes</i> because of the way they are used. This collection is referred to as a <i>mutable index set</i>.</para>
+      <para>The values in a mutable index set are always sorted, so the order in which values are added is irrelevant.</para>
+      <para>You must not subclass the <c>NSMutableIndexSet</c> class.</para>
+      <format type="text/html">
+        <h2 class="jump">Tasks</h2>
+      </format>
+      <format type="text/html">
+        <h3 class="tasks">Adding Indexes</h3>
+      </format>
+      <list type="bullet">
+        <item>
+          <term>
+            <c>
+              <see cref="M:MonoMac.Foundation.NSMutableIndexSet.Add(System.UInt32)" />
+            </c>
+            <format type="text/html">
+              <img data-abstract="Adds an index  to the receiver." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
+            </format>
+          </term>
+        </item>
+        <item>
+          <term>
+            <c>
+              <see cref="M:MonoMac.Foundation.NSMutableIndexSet.Add(MonoMac.Foundation.NSIndexSet)" />
+            </c>
+            <format type="text/html">
+              <img data-abstract="Adds the indexes in an index set to the receiver." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
+            </format>
+          </term>
+        </item>
+        <item>
+          <term>
+            <c>
+              <format type="text/html">
+                <a href="Reference.html#//apple_ref/occ/instm/NSMutableIndexSet/addIndexesInRange:">- addIndexesInRange:</a>
+              </format>
+            </c>
+            <format type="text/html">
+              <img data-abstract="Adds the indexes in an index range to the receiver." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
+            </format>
+          </term>
+        </item>
+      </list>
+      <format type="text/html">
+        <h3 class="tasks">Removing Indexes</h3>
+      </format>
+      <list type="bullet">
+        <item>
+          <term>
+            <c>
+              <see cref="M:MonoMac.Foundation.NSMutableIndexSet.Remove(System.UInt32)" />
+            </c>
+            <format type="text/html">
+              <img data-abstract="Removes an index from the receiver." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
+            </format>
+          </term>
+        </item>
+        <item>
+          <term>
+            <c>
+              <see cref="M:MonoMac.Foundation.NSMutableIndexSet.Remove(MonoMac.Foundation.NSIndexSet)" />
+            </c>
+            <format type="text/html">
+              <img data-abstract="Removes the indexes in an index set from the receiver." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
+            </format>
+          </term>
+        </item>
+        <item>
+          <term>
+            <c>
+              <see cref="M:MonoMac.Foundation.NSMutableIndexSet.Clear" />
+            </c>
+            <format type="text/html">
+              <img data-abstract="Removes the receiver’s indexes." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
+            </format>
+          </term>
+        </item>
+        <item>
+          <term>
+            <c>
+              <format type="text/html">
+                <a href="Reference.html#//apple_ref/occ/instm/NSMutableIndexSet/removeIndexesInRange:">- removeIndexesInRange:</a>
+              </format>
+            </c>
+            <format type="text/html">
+              <img data-abstract="Removes the indexes in an index range from the receiver." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
+            </format>
+          </term>
+        </item>
+      </list>
+      <format type="text/html">
+        <h3 class="tasks">Shifting Index Groups</h3>
+      </format>
+      <list type="bullet">
+        <item>
+          <term>
+            <c>
+              <see cref="M:MonoMac.Foundation.NSMutableIndexSet.ShiftIndexes(System.UInt32,System.UInt32)" />
+            </c>
+            <format type="text/html">
+              <img data-abstract="Shifts a group of indexes to the left or the right within the receiver." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
+            </format>
+          </term>
+        </item>
+      </list>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -31,8 +140,11 @@
       </Attributes>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>
+          <para>Initializes an allocated <c><format type="text/html"><a href="Reference.html#//apple_ref/doc/uid/20002197-SW1">NSIndexSet</a></format></c> object.</para>
+        </summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -71,8 +183,20 @@
       </Parameters>
       <Docs>
         <param name="other">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>
+          <para>Initializes an allocated <c><format type="text/html"><a href="Reference.html#//apple_ref/doc/uid/20002197-SW1">NSIndexSet</a></format></c> object with an index set.</para>
+        </summary>
+        <remarks>
+          <para>This method is a designated initializer for <c><format type="text/html"><a href="Reference.html#//apple_ref/doc/uid/20002197-SW1">NSIndexSet</a></format></c>.</para>
+          <format type="text/html">
+            <h5 class="tight">Availability</h5>
+          </format>
+          <list type="bullet">
+            <item>
+              <term>Available in iPhone OS 2.0 and later.</term>
+            </item>
+          </list>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -135,8 +259,11 @@ public class MyClass : BaseClass {
       </Parameters>
       <Docs>
         <param name="index">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>
+          <para>Initializes an allocated <c><format type="text/html"><a href="Reference.html#//apple_ref/doc/uid/20002197-SW1">NSIndexSet</a></format></c> object with an index.</para>
+        </summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Add">
@@ -158,8 +285,11 @@ public class MyClass : BaseClass {
       </Parameters>
       <Docs>
         <param name="other">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>
+          <para>Adds the indexes in an index set to the receiver.</para>
+        </summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Add">
@@ -181,8 +311,11 @@ public class MyClass : BaseClass {
       </Parameters>
       <Docs>
         <param name="index">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>
+          <para>Adds an index  to the receiver.</para>
+        </summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ClassHandle">
@@ -216,8 +349,11 @@ public class MyClass : BaseClass {
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>
+          <para>Removes the receiver’s indexes.</para>
+        </summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Remove">
@@ -239,8 +375,11 @@ public class MyClass : BaseClass {
       </Parameters>
       <Docs>
         <param name="other">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>
+          <para>Removes the indexes in an index set from the receiver.</para>
+        </summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Remove">
@@ -262,8 +401,11 @@ public class MyClass : BaseClass {
       </Parameters>
       <Docs>
         <param name="index">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>
+          <para>Removes an index from the receiver.</para>
+        </summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ShiftIndexes">
@@ -287,8 +429,22 @@ public class MyClass : BaseClass {
       <Docs>
         <param name="startIndex">To be added.</param>
         <param name="delta">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>
+          <para>Shifts a group of indexes to the left or the right within the receiver.</para>
+        </summary>
+        <remarks>
+          <para>The group of indexes shifted is made up by <i>startIndex</i> and the indexes that follow it in the receiver.</para>
+          <para>A left shift deletes the indexes in the range <c>(</c><i>startIndex</i><c>-</c><i>delta</i><c>,</c><i>delta</i><c>)</c> from the receiver.</para>
+          <para>A right shift inserts empty space in the range <c>(</c><i>indexStart</i><c>,</c><i>delta</i><c>)</c> in the receiver.</para>
+          <format type="text/html">
+            <h5 class="tight">Availability</h5>
+          </format>
+          <list type="bullet">
+            <item>
+              <term>Available in iPhone OS 2.0 and later.</term>
+            </item>
+          </list>
+        </remarks>
       </Docs>
     </Member>
   </Members>
