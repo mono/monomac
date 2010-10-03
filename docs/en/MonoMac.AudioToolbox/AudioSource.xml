@@ -9,8 +9,18 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>A derived class from AudioFile that exposes virtual methods that can be hooked into (for reading and writing)</summary>
+    <remarks>
+      <para>
+AudioSource is an abstract class that derives from AudioFile that allows developers to hook up into the reading and writing stages of the AudioFile.   This can be used for example to read from an in-memory audio file, or to write to an in-memory buffer.
+</para>
+      <para>
+When you write data into the AudioSource using any of the methods from AudioFile, instead of writing the encoded data into a file, the data is sent to the Read abstract method.
+</para>
+      <para>
+To use this class, you must create a class that derives from AudioSource and override the Read, Write methods and the Size property.
+</para>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -43,6 +53,24 @@
         <param name="format">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public AudioSource (MonoMac.AudioToolbox.AudioFileType inFileType, MonoMac.AudioToolbox.AudioStreamBasicDescription format, uint flags);" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="inFileType" Type="MonoMac.AudioToolbox.AudioFileType" />
+        <Parameter Name="format" Type="MonoMac.AudioToolbox.AudioStreamBasicDescription" />
+        <Parameter Name="flags" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="inFileType">A hint specifying the format of the audio file.</param>
+        <param name="format">Stream description.</param>
+        <param name="flags">Set this flag to zero.</param>
+        <summary>Initializes an AudioSource for reading.</summary>
+        <remarks>Invoke this constructor from your derived class to initialize the AudioSource for reading.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Dispose">
@@ -86,13 +114,13 @@
         <Parameter Name="actualCount" Type="System.Int32&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="position">To be added.</param>
-        <param name="requestCount">To be added.</param>
-        <param name="buffer">To be added.</param>
-        <param name="actualCount">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="position">Position in the audio stream that the data should be read from.</param>
+        <param name="requestCount">Number of bytes to read.</param>
+        <param name="buffer">Pointer to the buffer where the data should be stored.</param>
+        <param name="actualCount">On return, set this value to the number of bytes actually read.</param>
+        <summary>Callback invoked to read encoded audio data.</summary>
+        <returns>true on success, false on failure.</returns>
+        <remarks>This method is called by the AudioSource when more data is requested.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Size">
@@ -105,9 +133,9 @@
         <ReturnType>System.Int64</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Used to set or get the size of the audio stream.</summary>
+        <value>The size of the file.</value>
+        <remarks>If the AudioSource is created in reading mode, this method should return the size of the audio data.   If the AudioSource is created to write data, this method is invoked to set the audio file size.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Write">
@@ -126,13 +154,13 @@
         <Parameter Name="actualCount" Type="System.Int32&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="position">To be added.</param>
-        <param name="requestCount">To be added.</param>
-        <param name="buffer">To be added.</param>
-        <param name="actualCount">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="position">Position where the data should be stored.</param>
+        <param name="requestCount">Number of bytes to write.</param>
+        <param name="buffer">Pointer to the buffer that contains the data to be written.</param>
+        <param name="actualCount">Set this value to indicate the number of bytes actually written.</param>
+        <summary>Callback used to write audio data into the audio stream.</summary>
+        <returns>True on success, false on failure.</returns>
+        <remarks>This method is called by the AudioSource when it has encoded the data and it need to write it out.</remarks>
       </Docs>
     </Member>
   </Members>

@@ -9,10 +9,24 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Provides information about the MonoMac Runtime.</summary>
+    <remarks />
   </Docs>
   <Members>
+    <Member MemberName="Arch">
+      <MemberSignature Language="C#" Value="public static MonoMac.ObjCRuntime.Arch Arch;" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.ObjCRuntime.Arch</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The architecture where the code is currently running.</summary>
+        <remarks>Use this to determine the architecture on which the program is currently running (device or simulator).</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="GetNSObject">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSObject GetNSObject (IntPtr ptr);" />
       <MemberType>Method</MemberType>
@@ -26,10 +40,10 @@
         <Parameter Name="ptr" Type="System.IntPtr" />
       </Parameters>
       <Docs>
-        <param name="ptr">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="ptr">A pointer to an unmanaged NSObject or any class that derives from the Objective-C NSObject class.</param>
+        <summary>Wraps an unmanaged IntPtr into a fully typed NSObject.</summary>
+        <returns>An instance of a class that derives from MonoMac.Foundation.NSObject.</returns>
+        <remarks>The runtime create an instance of the most derived class.</remarks>
       </Docs>
     </Member>
     <Member MemberName="RegisterAssembly">
@@ -45,7 +59,25 @@
         <Parameter Name="a" Type="System.Reflection.Assembly" />
       </Parameters>
       <Docs>
-        <param name="a">To be added.</param>
+        <param name="a">The assembly to process.</param>
+        <summary>Registers all of the classes in the specified assembly.</summary>
+        <remarks>This iterates over all the types that derive from NSObject in the specified assembly and registers them with the runtime.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StartWWAN">
+      <MemberSignature Language="C#" Value="public static void StartWWAN (Uri uri);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="uri" Type="System.Uri" />
+      </Parameters>
+      <Docs>
+        <param name="uri">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>

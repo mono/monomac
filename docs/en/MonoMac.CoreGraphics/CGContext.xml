@@ -16,7 +16,7 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
+    <summary>Graphics context and primitives to draw in them.</summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -38,14 +38,14 @@
         <Parameter Name="clockwise" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="x">To be added.</param>
-        <param name="y">To be added.</param>
-        <param name="radius">To be added.</param>
-        <param name="startAngle">To be added.</param>
-        <param name="endAngle">To be added.</param>
-        <param name="clockwise">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="x">X value for the center of the arc.</param>
+        <param name="y">Y value for the center of the arc.</param>
+        <param name="radius">The radius for the arc.</param>
+        <param name="startAngle">Starting angle (in radians) for the arc.</param>
+        <param name="endAngle">Ending angle (in radians) for the arc.</param>
+        <param name="clockwise">Whether the arc is added clockwise or counterclockwise.</param>
+        <summary>Adds an arc to the current path.</summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="AddArcToPoint">
@@ -65,12 +65,12 @@
         <Parameter Name="radius" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="x1">To be added.</param>
-        <param name="y1">To be added.</param>
-        <param name="x2">To be added.</param>
-        <param name="y2">To be added.</param>
-        <param name="radius">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="x1">X value for the end point of the first tangent line.</param>
+        <param name="y1">Y value for the end point of the first tangent line.</param>
+        <param name="x2">X value for the end point of the second tangent line.</param>
+        <param name="y2">Y value for the end point of the second tangent line.</param>
+        <param name="radius">The radius for the arc.</param>
+        <summary>Adds an arc to the current path.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -134,7 +134,7 @@
       </Parameters>
       <Docs>
         <param name="points">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>Adds the given lines to the current path.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -172,7 +172,7 @@
       </Parameters>
       <Docs>
         <param name="path">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>Adds the specified path to the current path.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -192,11 +192,11 @@
         <Parameter Name="y" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="cpx">To be added.</param>
-        <param name="cpy">To be added.</param>
-        <param name="x">To be added.</param>
-        <param name="y">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="cpx">X value for the control point.</param>
+        <param name="cpy">Y value for the control point.</param>
+        <param name="x">X value for the end of the curve.</param>
+        <param name="y">Y value for the end of the curve.</param>
+        <summary>Adds a quadratic bezier curve to the current path.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -213,8 +213,8 @@
         <Parameter Name="rect" Type="System.Drawing.RectangleF" />
       </Parameters>
       <Docs>
-        <param name="rect">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="rect">A rectangle.</param>
+        <summary>Adds a rectangular path to the current path.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -231,8 +231,8 @@
         <Parameter Name="rects" Type="System.Drawing.RectangleF[]" />
       </Parameters>
       <Docs>
-        <param name="rects">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="rects">An array of rectangles.</param>
+        <summary>Adds an array of rectangular paths to the current path.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -249,8 +249,8 @@
         <Parameter Name="rect" Type="System.Nullable&lt;System.Drawing.RectangleF&gt;" />
       </Parameters>
       <Docs>
-        <param name="rect">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="rect">A rectangle defining the bounds of the new page.  If you pass null the bounds of the media box for the current context will be used.</param>
+        <summary>Begins a new page in a page-based graphics context.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -265,8 +265,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Starts a new path in the graphics context.</summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ClearRect">
@@ -282,8 +282,8 @@
         <Parameter Name="rect" Type="System.Drawing.RectangleF" />
       </Parameters>
       <Docs>
-        <param name="rect">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="rect">A rectangle.</param>
+        <summary>Paints the rectangle tot transparent.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -298,7 +298,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Sets the current path of the graphics context to be the clipping path.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -335,8 +335,8 @@
         <Parameter Name="rect" Type="System.Drawing.RectangleF" />
       </Parameters>
       <Docs>
-        <param name="rect">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="rect">A rectangle.</param>
+        <summary>Modifies the clipping path to be the intersection of the current path and the supplied rectangle.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -353,8 +353,8 @@
         <Parameter Name="rects" Type="System.Drawing.RectangleF[]" />
       </Parameters>
       <Docs>
-        <param name="rects">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="rects">An array of rectangles.</param>
+        <summary>Modifies the current clipping path to be the insersection of the current clipping path and the region specified by the supplied rectangles.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -369,8 +369,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Closes and completes the current path.</summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ConcatCTM">
@@ -422,8 +422,8 @@
         <Parameter Name="point" Type="System.Drawing.PointF" />
       </Parameters>
       <Docs>
-        <param name="point">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="point">A point.</param>
+        <summary>Converts a point from device space coordinates to user space coordinates.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
@@ -441,8 +441,8 @@
         <Parameter Name="rect" Type="System.Drawing.RectangleF" />
       </Parameters>
       <Docs>
-        <param name="rect">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="rect">A rectangle.</param>
+        <summary>Converts a rectangle from user space coordinates to device space coordinates.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
@@ -460,8 +460,8 @@
         <Parameter Name="rect" Type="System.Drawing.RectangleF" />
       </Parameters>
       <Docs>
-        <param name="rect">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="rect">A rectangle</param>
+        <summary>Converts a rectangle from device space coordinates to user space coordinates.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
@@ -479,8 +479,8 @@
         <Parameter Name="size" Type="System.Drawing.SizeF" />
       </Parameters>
       <Docs>
-        <param name="size">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="size">A size.</param>
+        <summary>Converts a size from user space coordinates to device space coordinates.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
@@ -498,8 +498,8 @@
         <Parameter Name="size" Type="System.Drawing.SizeF" />
       </Parameters>
       <Docs>
-        <param name="size">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="size">A size.</param>
+        <summary>Converts a size from device space coordinates to user space coordinates.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
@@ -510,20 +510,20 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>MonoMac.ObjCRuntime.Since(4, 0)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.CoreGraphics.CGPath</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Returns a deep copy of the current path in the current context.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.ObjCRuntime.Since(4, 0)</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
     <Member MemberName="Dispose">
       <MemberSignature Language="C#" Value="public void Dispose ();" />
@@ -582,9 +582,9 @@
         <Parameter Name="image" Type="MonoMac.CoreGraphics.CGImage" />
       </Parameters>
       <Docs>
-        <param name="rect">To be added.</param>
-        <param name="image">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="rect">The bounding box in user space in which to draw the image.</param>
+        <param name="image">The image to draw.</param>
+        <summary>Draws an image into the graphics context bounded to the specified rectangle.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -602,9 +602,9 @@
         <Parameter Name="point" Type="System.Drawing.PointF" />
       </Parameters>
       <Docs>
-        <param name="layer">To be added.</param>
-        <param name="point">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="layer">The layer to draw.</param>
+        <param name="point">The point in user space where to draw the layer.</param>
+        <summary>Draws a layer into the graphics context at the specified point.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -622,9 +622,9 @@
         <Parameter Name="rect" Type="System.Drawing.RectangleF" />
       </Parameters>
       <Docs>
-        <param name="layer">To be added.</param>
-        <param name="rect">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="layer">The layer to draw.</param>
+        <param name="rect">The bounding box in user space in which to draw the layer.</param>
+        <summary>Draws a layer into the graphics context bounded by the specified rectangle.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1178,11 +1178,6 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>MonoMac.ObjCRuntime.Since(4, 0)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1194,6 +1189,11 @@
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.ObjCRuntime.Since(4, 0)</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
     <Member MemberName="SetAllowsFontSubpixelQuantization">
       <MemberSignature Language="C#" Value="public void SetAllowsFontSubpixelQuantization (bool allows);" />
@@ -1201,11 +1201,6 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>MonoMac.ObjCRuntime.Since(4, 0)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1217,6 +1212,11 @@
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.ObjCRuntime.Since(4, 0)</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
     <Member MemberName="SetAllowsSubpixelPositioning">
       <MemberSignature Language="C#" Value="public void SetAllowsSubpixelPositioning (bool allows);" />
@@ -1224,11 +1224,6 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>MonoMac.ObjCRuntime.Since(4, 0)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1240,6 +1235,11 @@
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.ObjCRuntime.Since(4, 0)</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
     <Member MemberName="SetAlpha">
       <MemberSignature Language="C#" Value="public void SetAlpha (float alpha);" />
@@ -1797,11 +1797,6 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>MonoMac.ObjCRuntime.Since(4, 0)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1813,6 +1808,11 @@
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.ObjCRuntime.Since(4, 0)</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
     <Member MemberName="SetStrokeColor">
       <MemberSignature Language="C#" Value="public void SetStrokeColor (float[] components);" />
@@ -1912,11 +1912,6 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>MonoMac.ObjCRuntime.Since(4, 0)</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1928,6 +1923,11 @@
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.ObjCRuntime.Since(4, 0)</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
     <Member MemberName="ShowGlyphs">
       <MemberSignature Language="C#" Value="public void ShowGlyphs (ushort[] glyphs);" />

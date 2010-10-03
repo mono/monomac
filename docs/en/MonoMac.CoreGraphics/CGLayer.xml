@@ -16,8 +16,13 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>A hardware accelerated context.</summary>
+    <remarks>
+      <para>CGLayers can be hardware accelerated and developers are encouraged to use this instead of CGBitmaps for off-screen rendering operations.</para>
+      <para>
+Once you create a CGLayer, you extract the CGContext instance by accessing the Context property.
+</para>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName="Context">
@@ -49,11 +54,11 @@
         <Parameter Name="size" Type="System.Drawing.SizeF" />
       </Parameters>
       <Docs>
-        <param name="context">To be added.</param>
-        <param name="size">To be added.</param>
+        <param name="context">The source context.</param>
+        <param name="size">The size for the CGLayer.</param>
         <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <returns />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Dispose">

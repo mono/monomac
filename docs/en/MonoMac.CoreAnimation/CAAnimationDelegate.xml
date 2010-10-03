@@ -17,7 +17,7 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
+    <summary>Delegate class for the CAAnimation class.</summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -121,7 +121,7 @@ public class MyClass : BaseClass {
       </Parameters>
       <Docs>
         <param name="anim">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>The animation has started.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -146,8 +146,22 @@ public class MyClass : BaseClass {
       <Docs>
         <param name="anim">To be added.</param>
         <param name="finished">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>The animation has stopped.  Use the bool value to determine if this is a temporary pause, or the end of the animation.</summary>
         <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ClassHandle">
+      <MemberSignature Language="C#" Value="public override IntPtr ClassHandle { get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.IntPtr</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The handle for this class.</summary>
+        <value>The pointer to the Objective-C class.</value>
+        <remarks>Each MonoMac class mirrors an unmanaged Objective-C class.   This value contains the pointer to the Objective-C class, it is similar to calling objc_getClass with the object name.</remarks>
       </Docs>
     </Member>
   </Members>

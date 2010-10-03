@@ -14,8 +14,18 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Prevents the MonoMac linker from linking the target.</summary>
+    <remarks>
+      <para>
+This attribute is used at link time by the MonoMac linker to skip certain classes, structures, enumerations or other objects from being linked.   
+</para>
+      <para>
+By applying this attribute all of the members of the target will be kept as if they had been referenced by the code.   
+</para>
+      <para>
+This attribute is useful for example when using classes that use reflection (for example web services) and that use this information for serialization and deserialization.
+</para>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -54,8 +64,15 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Flags the method as a method to preserve during linking if the container class is pulled in.</summary>
+        <remarks>
+          <para>
+	    If the Conditional value is set on a Preserve attribute on a method, then the method will be preserved if the containing NSObject is kept after the linker has done its job.
+	  </para>
+          <para>
+	    You would typically use this for callbacks that you know will be called in your code dynamically (for example with a selector invocation from Objective-C) since a static linker would not be able to infer that this particual method is required.
+	  </para>
+        </remarks>
       </Docs>
     </Member>
   </Members>

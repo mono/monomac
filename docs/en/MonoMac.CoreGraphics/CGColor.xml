@@ -16,8 +16,8 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Color structure.</summary>
+    <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -46,10 +46,10 @@
         <Parameter Name="alpha" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="source">To be added.</param>
-        <param name="alpha">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="source">Reference color to use.</param>
+        <param name="alpha">Alpha value from 0.0f to 1.0f.</param>
+        <summary>Creates a color from an existing color, using the specified alpha value.</summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -64,9 +64,10 @@
       </Parameters>
       <Docs>
         <param name="colorspace">To be added.</param>
-        <param name="components">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="components">Color intensities one per channel in the color space.  It should include the alpha channel.</param>
+        <param name="cs">Color space.</param>
+        <summary>Creates a color on a colorspace, with the specified components.</summary>
+        <remarks>If any of the values in the components is outside the range for the component, the value is clamped.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -80,10 +81,10 @@
         <Parameter Name="alpha" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="gray">To be added.</param>
-        <param name="alpha">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="gray">Grey value from 0.0f to 1.0f.</param>
+        <param name="alpha">Alpha value from 0.0f to 1.0f.</param>
+        <summary>Creates a color from a grey value and an alpha value.</summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -99,10 +100,11 @@
       </Parameters>
       <Docs>
         <param name="colorspace">To be added.</param>
-        <param name="pattern">To be added.</param>
-        <param name="components">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="pattern">Pattern to use.</param>
+        <param name="components">Color intensities one per channel in the color space. It should include the alpha channel.</param>
+        <param name="space">color space.</param>
+        <summary>Creates a color using the specified colorspace, pattern and components.</summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -117,11 +119,11 @@
         <Parameter Name="blue" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="red">To be added.</param>
-        <param name="green">To be added.</param>
-        <param name="blue">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="red">Red value 0.0f to 1.0f.</param>
+        <param name="green">Green value from 0.0f to 1.0f.</param>
+        <param name="blue">Blue value from 0.0f to 1.0f.</param>
+        <summary>Creates a color from red, green and blue components.</summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -137,12 +139,12 @@
         <Parameter Name="alpha" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="red">To be added.</param>
-        <param name="green">To be added.</param>
-        <param name="blue">To be added.</param>
-        <param name="alpha">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="red">Red value from 0.0f to 1.0f.</param>
+        <param name="green">Green value from 0.0f to 1.0f.</param>
+        <param name="blue">Blue value from 0.0f  to 1.0f.</param>
+        <param name="alpha">Alpha value from 0.0f to 1.0f.</param>
+        <summary>Creates a color from red, green, blue and alpha components.</summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Alpha">
@@ -155,9 +157,9 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>The alpha channel value.</summary>
+        <value>A value in the 0.0 to 1.0f range.</value>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ColorSpace">
@@ -170,9 +172,9 @@
         <ReturnType>MonoMac.CoreGraphics.CGColorSpace</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>The color's colorspace.</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Components">
@@ -185,9 +187,9 @@
         <ReturnType>System.Single[]</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>The components for this color.</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Dispose">
@@ -246,10 +248,11 @@
         <Parameter Name="o" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="o">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="o">The other object.</param>
+        <summary>Determines if the objects are equal.</summary>
+        <returns>
+          <see langword="true" /> if this color is equal to the specified object.</returns>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Finalize">
@@ -279,9 +282,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>Get the hashcode for this color.</summary>
+        <returns>The hashcode.</returns>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Handle">
@@ -309,9 +312,9 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>The number of components in this color.</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="op_Equality">
@@ -366,7 +369,7 @@
         <ReturnType>MonoMac.CoreGraphics.CGPattern</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>If present, the pattern for this color.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>

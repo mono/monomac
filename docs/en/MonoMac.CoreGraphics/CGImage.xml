@@ -16,8 +16,9 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Represents bitmap images and bitmap masks.</summary>
+    <remarks>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -40,19 +41,20 @@
         <Parameter Name="intent" Type="MonoMac.CoreGraphics.CGColorRenderingIntent" />
       </Parameters>
       <Docs>
-        <param name="width">To be added.</param>
-        <param name="height">To be added.</param>
-        <param name="bitsPerComponent">To be added.</param>
-        <param name="bitsPerPixel">To be added.</param>
-        <param name="bytesPerRow">To be added.</param>
-        <param name="colorSpace">To be added.</param>
-        <param name="bitmapFlags">To be added.</param>
-        <param name="provider">To be added.</param>
-        <param name="decode">To be added.</param>
-        <param name="shouldInterpolate">To be added.</param>
-        <param name="intent">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="width">Requested image width.</param>
+        <param name="height">Requested image height.</param>
+        <param name="bitsPerComponent">Number of bits used per components.</param>
+        <param name="bitsPerPixel">Number of bits per pixel.</param>
+        <param name="bytesPerRow">Number of bytes per row.</param>
+        <param name="colorSpace">The colorspace to use.</param>
+        <param name="bitmapFlags">Configurationf flags.</param>
+        <param name="provider">The data provider for this bitmap</param>
+        <param name="decode">If this value is non-null, the array should contain pairs of (low,high) values for each channel that will be used to interpolate each component in the image.   The interpolation is a simple linear interpolation from the source range to the low,high range.   An RGB buffer would have 6 elements (two for each channel).</param>
+        <param name="shouldInterpolate">Whether edges will be smoothed out</param>
+        <param name="intent">Determines how to handle colors that are outside of the requested colorspace.</param>
+        <summary>Creates an image.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -75,19 +77,20 @@
         <Parameter Name="intent" Type="MonoMac.CoreGraphics.CGColorRenderingIntent" />
       </Parameters>
       <Docs>
-        <param name="width">To be added.</param>
-        <param name="height">To be added.</param>
-        <param name="bitsPerComponent">To be added.</param>
-        <param name="bitsPerPixel">To be added.</param>
-        <param name="bytesPerRow">To be added.</param>
-        <param name="colorSpace">To be added.</param>
-        <param name="alphaInfo">To be added.</param>
-        <param name="provider">To be added.</param>
-        <param name="decode">To be added.</param>
-        <param name="shouldInterpolate">To be added.</param>
-        <param name="intent">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="width">Requested image width.</param>
+        <param name="height">Requested image height.</param>
+        <param name="bitsPerComponent">Number of bits used per components.</param>
+        <param name="bitsPerPixel">Number of bits per pixel.</param>
+        <param name="bytesPerRow">Number of bytes per row.</param>
+        <param name="colorSpace">The colorspace to use.</param>
+        <param name="alphaInfo">Configurationf flags, you can use this to configure the presence of an Alpha channel and the bitmap format.</param>
+        <param name="provider">The data provider for this bitmap</param>
+        <param name="decode">If this value is non-null, the array should contain pairs of (low,high) values for each channel that will be used to interpolate each component in the image.   The interpolation is a simple linear interpolation from the source range to the low,high range.   An RGB buffer would have 6 elements (two for each channel).</param>
+        <param name="shouldInterpolate">Whether edges will be smoothed out</param>
+        <param name="intent">Determines how to handle colors that are outside of the requested colorspace.</param>
+        <summary>Creates an image using a specified AlphaInfo</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="AlphaInfo">
@@ -100,9 +103,10 @@
         <ReturnType>MonoMac.CoreGraphics.CGImageAlphaInfo</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>The bitmap configuration.</summary>
+        <value>
+        </value>
+        <remarks>The configuration of the image</remarks>
       </Docs>
     </Member>
     <Member MemberName="BitmapInfo">
@@ -115,9 +119,10 @@
         <ReturnType>MonoMac.CoreGraphics.CGBitmapFlags</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>The bitmap configuration.</summary>
+        <value>
+        </value>
+        <remarks>The configuration of the image.</remarks>
       </Docs>
     </Member>
     <Member MemberName="BitsPerComponent">
@@ -130,9 +135,10 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Bits per component</summary>
+        <value>
+        </value>
+        <remarks>The number of bits used per component in the image.</remarks>
       </Docs>
     </Member>
     <Member MemberName="BitsPerPixel">
@@ -145,9 +151,10 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>The number of bits per pixel.</summary>
+        <value>
+        </value>
+        <remarks>The number of bits used per pixel.</remarks>
       </Docs>
     </Member>
     <Member MemberName="BytesPerRow">
@@ -160,9 +167,10 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>The number of bytes per row in the image.</summary>
+        <value>
+        </value>
+        <remarks>The number of bytes used per row.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Clone">
@@ -176,9 +184,10 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>Makes a copy of the image.</summary>
+        <returns>
+        </returns>
+        <remarks>Duplicates the image.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ColorSpace">
@@ -191,9 +200,11 @@
         <ReturnType>MonoMac.CoreGraphics.CGColorSpace</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>The image colorspace.</summary>
+        <value>
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CreateMask">
@@ -224,9 +235,22 @@
         <param name="provider">To be added.</param>
         <param name="decode">To be added.</param>
         <param name="shouldInterpolate">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>Creates an image mask.</summary>
+        <returns>
+        </returns>
+        <remarks>
+          <para>
+	    Image masks can be 1, 2, 4 or 8 bits per component.  1-bit
+	    masks are the simplest ones as they either allow painting
+	    (the mask is set to zero) or not (the mask bit is set to
+	    one).  For 2, 4 and 8 the values the values are
+	    interpolated between the possible range. 
+	  </para>
+          <para> Masks are used to filter how drawings are taking
+	    place.  Zero values in a mask allow painting to take
+	    place, a value of one would mask out the rendering.
+	  </para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="DataProvider">
@@ -334,13 +358,15 @@
         <Parameter Name="intent" Type="MonoMac.CoreGraphics.CGColorRenderingIntent" />
       </Parameters>
       <Docs>
-        <param name="provider">To be added.</param>
-        <param name="decode">To be added.</param>
-        <param name="shouldInterpolate">To be added.</param>
-        <param name="intent">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="provider">The data provider that contains a JPEG-encoded image.</param>
+        <param name="decode">If this value is non-null, the array should contain pairs of (low,high) values for each channel that will be used to interpolate each component in the image.   The interpolation is a simple linear interpolation from the source range to the low,high range.   An RGB buffer would have 6 elements (two for each channel).</param>
+        <param name="shouldInterpolate">Whether edges will be smoothed out</param>
+        <param name="intent">Determines how to handle colors that are outside of the requested colorspace.</param>
+        <summary>Creates a CGImage from a JPEG-encoded image.</summary>
+        <returns>
+        </returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="FromPNG">
@@ -359,13 +385,15 @@
         <Parameter Name="intent" Type="MonoMac.CoreGraphics.CGColorRenderingIntent" />
       </Parameters>
       <Docs>
-        <param name="provider">To be added.</param>
-        <param name="decode">To be added.</param>
-        <param name="shouldInterpolate">To be added.</param>
-        <param name="intent">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="provider">The data provider that contains a PNG-encoded image.</param>
+        <param name="decode">If this value is non-null, the array should contain pairs of (low,high) values for each channel that will be used to interpolate each component in the image.   The interpolation is a simple linear interpolation from the source range to the low,high range.   An RGB buffer would have 6 elements (two for each channel).</param>
+        <param name="shouldInterpolate">Whether edges will be smoothed out</param>
+        <param name="intent">Determines how to handle colors that are outside of the requested colorspace.</param>
+        <summary>Creates a CGImage from a PNG-encoded image.</summary>
+        <returns>
+        </returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Handle">
@@ -393,9 +421,11 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>The image height in pixels.</summary>
+        <value>
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="IsMask">
@@ -408,9 +438,11 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Whether this image is a mask or a bitmap.</summary>
+        <value>
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="RenderingIntent">
@@ -423,30 +455,25 @@
         <ReturnType>MonoMac.CoreGraphics.CGColorRenderingIntent</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>The rendering intent.</summary>
+        <value>
+        </value>
+        <remarks>The intent determines how to handle colors that are outside of the requested colorspace.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ScreenImage">
-      <MemberSignature Language="C#" Value="public static MonoMac.CoreGraphics.CGImage ScreenImage (int windownumber, System.Drawing.RectangleF bounds);" />
-      <MemberType>Method</MemberType>
+      <MemberSignature Language="C#" Value="public static MonoMac.CoreGraphics.CGImage ScreenImage { get; }" />
+      <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>MonoMac.CoreGraphics.CGImage</ReturnType>
       </ReturnValue>
-      <Parameters>
-        <Parameter Name="windownumber" Type="System.Int32" />
-        <Parameter Name="bounds" Type="System.Drawing.RectangleF" />
-      </Parameters>
       <Docs>
-        <param name="windownumber">To be added.</param>
-        <param name="bounds">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>Takes a screenshot.</summary>
+        <value>A CGImage</value>
+        <remarks>This property will return the current contents of the screen.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ShouldInterpolate">
@@ -459,9 +486,10 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Whether interpolation is enabled for this image.</summary>
+        <value>
+        </value>
+        <remarks>If the value is true, then Quartz will perform edge smoothing on the image.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Width">
@@ -474,9 +502,11 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>The image width in pixels.</summary>
+        <value>
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="WithColorSpace">
@@ -493,9 +523,10 @@
       </Parameters>
       <Docs>
         <param name="cs">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>Creates a copy of the image based on the specified colorspace.</summary>
+        <returns>
+        </returns>
+        <remarks>This method could return null if the image is a mask, or if there is a colorspace component mismatch between the images.</remarks>
       </Docs>
     </Member>
     <Member MemberName="WithImageInRect">
@@ -511,10 +542,12 @@
         <Parameter Name="rect" Type="System.Drawing.RectangleF" />
       </Parameters>
       <Docs>
-        <param name="rect">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="rect">Region to copy.</param>
+        <summary>Creates a new image with the dimensions specified in the rectangle</summary>
+        <returns>
+        </returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="WithMask">
@@ -530,10 +563,12 @@
         <Parameter Name="mask" Type="MonoMac.CoreGraphics.CGImage" />
       </Parameters>
       <Docs>
-        <param name="mask">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="mask">The mask.</param>
+        <summary>Creates a new image that has been masked with the specified mask.</summary>
+        <returns>
+        </returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="WithMaskingColors">
@@ -549,10 +584,11 @@
         <Parameter Name="components" Type="System.Single[]" />
       </Parameters>
       <Docs>
-        <param name="components">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="components">Array contains pairs of (min,max) floats for each component.</param>
+        <summary>Creats a new image by masking the values in the image with the specified components.</summary>
+        <returns>
+        </returns>
+        <remarks>If the image has three components (RGB for example) the components array should contains six values.</remarks>
       </Docs>
     </Member>
   </Members>

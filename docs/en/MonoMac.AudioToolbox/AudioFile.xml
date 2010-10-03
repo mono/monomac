@@ -13,8 +13,11 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Class used to create audio files or read audio files.</summary>
+    <remarks>
+      <para>Use the Create, Open and OpenRead factory methods to create instances of this class. </para>
+      <para>This class provides access to the encoder and decoder for compressed audio files.</para>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -27,9 +30,9 @@
         <Parameter Name="x" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="x">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="x" />
+        <summary>This is an internal constructor, do not use directly.</summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="BitRate">
@@ -42,7 +45,7 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Audio file bit rate.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -62,12 +65,12 @@
         <Parameter Name="isEstimate" Type="System.Boolean&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="byteval">To be added.</param>
-        <param name="byteOffsetInPacket">To be added.</param>
-        <param name="isEstimate">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="byteval">The byte position.</param>
+        <param name="byteOffsetInPacket">Offset within the packet.</param>
+        <param name="isEstimate">True if the return value is an estimate.</param>
+        <summary>Converts a position on a stream to its packet location.</summary>
+        <returns>The packet where the byte position would be, or -1 on error.</returns>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ChannelLayout">
@@ -150,6 +153,30 @@
         <param name="format">To be added.</param>
         <param name="inFlags">To be added.</param>
         <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Create">
+      <MemberSignature Language="C#" Value="public static MonoMac.AudioToolbox.AudioFile Create (string url, MonoMac.AudioToolbox.AudioFileType fileType, MonoMac.AudioToolbox.AudioStreamBasicDescription format, uint inFlags);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.AudioToolbox.AudioFile</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="url" Type="System.String" />
+        <Parameter Name="fileType" Type="MonoMac.AudioToolbox.AudioFileType" />
+        <Parameter Name="format" Type="MonoMac.AudioToolbox.AudioStreamBasicDescription" />
+        <Parameter Name="inFlags" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="url">Local file system url.</param>
+        <param name="fileType">The type of the file to create.</param>
+        <param name="format">The specifics of the audio file being created.</param>
+        <param name="inFlags">The audio file flags to use.</param>
+        <summary>Creates an audiofile on the specified location (which should be a local url).</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
@@ -267,7 +294,7 @@
         <ReturnType>MonoMac.AudioToolbox.AudioFileType</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Audio file type.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -302,11 +329,11 @@
         <Parameter Name="frameOffsetInPacket" Type="System.Int32&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="frame">To be added.</param>
-        <param name="frameOffsetInPacket">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="frame">The frame.</param>
+        <param name="frameOffsetInPacket">The offset inside the packet that the frame points to.</param>
+        <summary>Converts an audio frame into a packet offset.</summary>
+        <returns>-1 on failure, otherwise the packet that represents the specified frame.   Additionally, the offset within the packet is returned in the out parameter.</returns>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="GetProperty">
@@ -476,9 +503,9 @@
         <ReturnType>System.Int64</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Audio file size, in bytes.</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="MagicCookie">
@@ -491,9 +518,9 @@
         <ReturnType>System.Byte[]</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>The magic cookie for this file.</summary>
+        <value />
+        <remarks>Certain files require the magic cookie to be set before they can be written to.   Set this property before you write packets from your source (AudioQueue).</remarks>
       </Docs>
     </Member>
     <Member MemberName="MaximumPacketSize">
@@ -526,12 +553,12 @@
         <Parameter Name="fileTypeHint" Type="MonoMac.AudioToolbox.AudioFileType" />
       </Parameters>
       <Docs>
-        <param name="url">To be added.</param>
-        <param name="permissions">To be added.</param>
-        <param name="fileTypeHint">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="url">The url to a local file name.</param>
+        <param name="permissions">The permissions used for the file (reading, writing or both).</param>
+        <param name="fileTypeHint">A hint for the decoder.</param>
+        <summary>Opens an audio file for reading.</summary>
+        <returns>An instance of AudioFile on success, null on failure.</returns>
+        <remarks>The hint is necessary as sometimes it is not possible to determine the file type merely based on the contents of the file.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Open">
@@ -551,7 +578,7 @@
       <Docs>
         <param name="url">To be added.</param>
         <param name="permissions">To be added.</param>
-        <param name="fileTypeHint">To be added.</param>
+        <param name="fileTypeHint">A hint for the decoder.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -571,11 +598,11 @@
         <Parameter Name="fileTypeHint" Type="MonoMac.AudioToolbox.AudioFileType" />
       </Parameters>
       <Docs>
-        <param name="url">To be added.</param>
-        <param name="fileTypeHint">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="url">An url to a local file name.</param>
+        <param name="fileTypeHint">A hint for the decoder.</param>
+        <summary>Opens an audio file for reading.</summary>
+        <returns>An instance of AudioFile on success, or null on error.</returns>
+        <remarks>The hint is necessary as sometimes it is not possible to determine the file type merely based on the contents of the file.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Optimize">
@@ -859,9 +886,9 @@
         <ReturnType>MonoMac.AudioToolbox.AudioStreamBasicDescription</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>The audio basic description, as determined by decoding the file.</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Write">
@@ -881,14 +908,14 @@
         <Parameter Name="useCache" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="startingByte">To be added.</param>
-        <param name="buffer">To be added.</param>
-        <param name="offset">To be added.</param>
-        <param name="count">To be added.</param>
-        <param name="useCache">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="startingByte">The starting byte in the file where the data will be written.</param>
+        <param name="buffer">The buffer that holds the data.</param>
+        <param name="offset">The offset within the buffer where the data to be saved starts.</param>
+        <param name="count">The number of bytes to write to the file.</param>
+        <param name="useCache">Whether the data should be cached.</param>
+        <summary>Writes a block of data to the audio file.</summary>
+        <returns>The number of bytes written to the stream, or -1 on error.</returns>
+        <remarks>This API merely writes bytes to the file without any encoding.   Use WritePackets to write with encoding.</remarks>
       </Docs>
     </Member>
     <Member MemberName="WritePackets">
@@ -908,14 +935,14 @@
         <Parameter Name="count" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="useCache">To be added.</param>
-        <param name="inStartingPacket">To be added.</param>
-        <param name="inPacketDescriptions">To be added.</param>
-        <param name="buffer">To be added.</param>
-        <param name="count">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="useCache">Whether the data should be kept in the cache.</param>
+        <param name="inStartingPacket">The starting packet in the packetDescriptions that should be written.</param>
+        <param name="inPacketDescriptions">An array of packet descriptions that describe the contents of the buffer.</param>
+        <param name="buffer">The buffer containing the audio data.</param>
+        <param name="count">The number of bytes to write.</param>
+        <summary>Write audio packets to the audio file.</summary>
+        <returns>The number of packets written or -1 on error.</returns>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="WritePackets">
@@ -936,15 +963,15 @@
         <Parameter Name="count" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="useCache">To be added.</param>
-        <param name="startingPacket">To be added.</param>
-        <param name="packetDescriptions">To be added.</param>
-        <param name="buffer">To be added.</param>
-        <param name="offset">To be added.</param>
-        <param name="count">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="useCache">Whether the data should be kept in the cache.</param>
+        <param name="startingPacket">The starting packet in the packetDescriptions that should be written.</param>
+        <param name="packetDescriptions">An array of packet descriptions that describe the contents of the buffer.</param>
+        <param name="buffer">The buffer containing the audio data.</param>
+        <param name="offset">The first packet to write from the packetDescriptions.</param>
+        <param name="count">The number of bytes to write.</param>
+        <summary>Writes audio packets to the file.</summary>
+        <returns>The number of packets written or -1 on error.</returns>
+        <remarks />
       </Docs>
     </Member>
   </Members>

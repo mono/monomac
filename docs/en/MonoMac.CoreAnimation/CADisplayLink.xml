@@ -14,7 +14,7 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
+    <summary>Synchronization object between your animations and the display refresh.</summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -120,7 +120,7 @@ public class MyClass : BaseClass {
       <Docs>
         <param name="runloop">To be added.</param>
         <param name="mode">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>Adds the display link to a particular run loop and mode.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -137,6 +137,25 @@ public class MyClass : BaseClass {
         <summary>The handle for this class.</summary>
         <value>The pointer to the Objective-C class.</value>
         <remarks>Each MonoMac class mirrors an unmanaged Objective-C class.   This value contains the pointer to the Objective-C class, it is similar to calling objc_getClass with the object name.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Create">
+      <MemberSignature Language="C#" Value="public static MonoMac.CoreAnimation.CADisplayLink Create (MonoMac.Foundation.NSAction action);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreAnimation.CADisplayLink</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="action" Type="MonoMac.Foundation.NSAction" />
+      </Parameters>
+      <Docs>
+        <param name="action">To be added.</param>
+        <summary>Registers the delegate to be invoked every time the display is about to be updated.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Create">
@@ -160,7 +179,7 @@ public class MyClass : BaseClass {
       <Docs>
         <param name="target">To be added.</param>
         <param name="sel">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>Registers the delegate to be invoked every time the display is about to be updated.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
@@ -171,6 +190,14 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The number of times that the display output should be updated before your code is invoked. </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("frameInterval")</AttributeName>
@@ -179,14 +206,6 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setFrameInterval:")</AttributeName>
         </Attribute>
       </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
     </Member>
     <Member MemberName="Invalidate">
       <MemberSignature Language="C#" Value="public virtual void Invalidate ();" />
@@ -204,7 +223,7 @@ public class MyClass : BaseClass {
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Terminates the connection between CoreAnimation and your code.     This removes the CADisplayLink from all run loops.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -214,6 +233,14 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Whether the notifications between the animation loop and your code are suspended.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("isPaused")</AttributeName>
@@ -222,14 +249,6 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setPaused:")</AttributeName>
         </Attribute>
       </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
     </Member>
     <Member MemberName="RemoveFromRunLoop">
       <MemberSignature Language="C#" Value="public virtual void RemoveFromRunLoop (MonoMac.Foundation.NSRunLoop runloop, string mode);" />
@@ -252,7 +271,7 @@ public class MyClass : BaseClass {
       <Docs>
         <param name="runloop">To be added.</param>
         <param name="mode">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>Removes the display link connection between your code and a specific run loop and mode.   To remove all links use Invalidate() instead.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -262,19 +281,19 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Timestamp for the last frame displayed.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("timestamp")</AttributeName>
         </Attribute>
       </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Double</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
     </Member>
   </Members>
 </Type>

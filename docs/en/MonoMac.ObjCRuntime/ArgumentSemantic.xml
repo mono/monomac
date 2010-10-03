@@ -8,8 +8,8 @@
     <BaseTypeName>System.Enum</BaseTypeName>
   </Base>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Represents the assignment semantics for properties.</summary>
+    <remarks>This is used to flag the behavior of properties when objects are assigned, these are used by the MonoMac runtime to properly track used objects and to garbage collect them when they are no longer required.</remarks>
   </Docs>
   <Members>
     <Member MemberName="Assign">
@@ -22,7 +22,7 @@
         <ReturnType>MonoMac.ObjCRuntime.ArgumentSemantic</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Assigning is merely a pointer copy.</summary>
       </Docs>
     </Member>
     <Member MemberName="Copy">
@@ -35,7 +35,7 @@
         <ReturnType>MonoMac.ObjCRuntime.ArgumentSemantic</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>A copy of the object is made.</summary>
       </Docs>
     </Member>
     <Member MemberName="None">
@@ -61,7 +61,7 @@
         <ReturnType>MonoMac.ObjCRuntime.ArgumentSemantic</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The object increases the reference count of the passed object.</summary>
       </Docs>
     </Member>
   </Members>
