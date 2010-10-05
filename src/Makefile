@@ -1,4 +1,9 @@
 #
+# Figure out if I want to use [New] or remove from contract
+#
+WARNINGS_I_SHOULD_FIX=114,108
+
+#
 # CORE_SOURCES are source files that are written by hand
 # and are linked with the generator
 #
@@ -89,7 +94,7 @@ counts:
 	make pass | grep 'could not be' | sed 's/.*`//' | sed "s/'.*//" | sort | uniq -c | sort -n
 
 monomac.dll: $(SOURCES) generated_sources $(MONOMAC_SOURCES) $(SHARED_SOURCES) $(SHARED_CORE_SOURCES)
-	gmcs -nowarn:0414 -debug -unsafe $(SOURCES) @generated_sources $(MONOMAC_SOURCES) $(SHARED_SOURCES) $(SHARED_CORE_SOURCES) -target:library -define:GENERATOR -define:MONOMAC -out:monomac.dll -r:System.Drawing
+	gmcs -nowarn:0414,$(WARNINGS_I_SHOULD_FIX) -debug -unsafe $(SOURCES) @generated_sources $(MONOMAC_SOURCES) $(SHARED_SOURCES) $(SHARED_CORE_SOURCES) -target:library -define:GENERATOR -define:MONOMAC -out:monomac.dll -r:System.Drawing
 
 clean:
 	rm -f $(TARGETS) core.dll
