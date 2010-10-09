@@ -14,7 +14,7 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
+    <summary>Represents a URL.</summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -137,7 +137,7 @@ public class MyClass : BaseClass {
       <Docs>
         <param name="path">To be added.</param>
         <param name="isDir">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>The challenge that the server sends to the client.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -193,11 +193,6 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("absoluteString")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -206,6 +201,11 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("absoluteString")</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
     <Member MemberName="AbsoluteUrl">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSUrl AbsoluteUrl { get; }" />
@@ -213,11 +213,6 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("absoluteURL")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSUrl</ReturnType>
       </ReturnValue>
@@ -226,6 +221,11 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("absoluteURL")</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
     <Member MemberName="BaseUrl">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSUrl BaseUrl { get; }" />
@@ -233,11 +233,6 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("baseURL")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSUrl</ReturnType>
       </ReturnValue>
@@ -246,6 +241,11 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("baseURL")</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
     <Member MemberName="ClassHandle">
       <MemberSignature Language="C#" Value="public override IntPtr ClassHandle { get; }" />
@@ -276,7 +276,7 @@ public class MyClass : BaseClass {
       </Parameters>
       <Docs>
         <param name="t">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>Returns true if the two objects represent the same URL.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
@@ -287,11 +287,6 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("fragment")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -300,6 +295,11 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("fragment")</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
     <Member MemberName="FromFilename">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSUrl FromFilename (string url);" />
@@ -314,10 +314,10 @@ public class MyClass : BaseClass {
         <Parameter Name="url" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="url">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="url">The filename.</param>
+        <summary>Creates an NSUrl from a filename.</summary>
+        <returns>An NSUrl that points to the given filename.</returns>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="FromString">
@@ -339,7 +339,7 @@ public class MyClass : BaseClass {
       </Parameters>
       <Docs>
         <param name="s">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>Creates a Url from the given strings.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
@@ -366,11 +366,6 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("host")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -379,6 +374,11 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("host")</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
     <Member MemberName="IsEqual">
       <MemberSignature Language="C#" Value="public virtual bool IsEqual (MonoMac.Foundation.NSUrl other);" />
@@ -410,11 +410,6 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("isFileURL")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -423,6 +418,11 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("isFileURL")</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
     <Member MemberName="MakeRelative">
       <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSUrl MakeRelative (string url);" />
@@ -487,11 +487,6 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("parameterString")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -500,6 +495,11 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("parameterString")</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
     <Member MemberName="Password">
       <MemberSignature Language="C#" Value="public virtual string Password { get; }" />
@@ -507,11 +507,6 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("password")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -520,6 +515,11 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("password")</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
     <Member MemberName="Path">
       <MemberSignature Language="C#" Value="public virtual string Path { get; }" />
@@ -527,11 +527,6 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("path")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -540,6 +535,11 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("path")</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
     <Member MemberName="Query">
       <MemberSignature Language="C#" Value="public virtual string Query { get; }" />
@@ -547,11 +547,6 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("query")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -560,6 +555,11 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("query")</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
     <Member MemberName="RelativePath">
       <MemberSignature Language="C#" Value="public virtual string RelativePath { get; }" />
@@ -567,11 +567,6 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("relativePath")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -580,6 +575,11 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("relativePath")</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
     <Member MemberName="RelativeString">
       <MemberSignature Language="C#" Value="public virtual string RelativeString { get; }" />
@@ -587,11 +587,6 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("relativeString")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -600,6 +595,11 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("relativeString")</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
     <Member MemberName="ResourceSpecifier">
       <MemberSignature Language="C#" Value="public virtual string ResourceSpecifier { get; }" />
@@ -607,11 +607,6 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("resourceSpecifier")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -620,6 +615,11 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("resourceSpecifier")</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
     <Member MemberName="Scheme">
       <MemberSignature Language="C#" Value="public virtual string Scheme { get; }" />
@@ -627,11 +627,6 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("scheme")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -640,6 +635,11 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("scheme")</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
     <Member MemberName="StandardizedUrl">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSUrl StandardizedUrl { get; }" />
@@ -647,11 +647,6 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("standardizedURL")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSUrl</ReturnType>
       </ReturnValue>
@@ -660,6 +655,11 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("standardizedURL")</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
     <Member MemberName="ToString">
       <MemberSignature Language="C#" Value="public override string ToString ();" />
@@ -683,11 +683,6 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("user")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -696,6 +691,11 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("user")</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
   </Members>
 </Type>

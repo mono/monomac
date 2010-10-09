@@ -9,12 +9,15 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Global constants to system libraries.</summary>
+    <remarks>The constants on this namespace contain the full path
+    names to various CocoaToucha framework libraries.  The path names
+    are typically used in DllImport declarations when you need to
+    P/Invoke code yourself.</remarks>
   </Docs>
   <Members>
-    <Member MemberName="AppKitLibrary">
-      <MemberSignature Language="C#" Value="public const string AppKitLibrary;" />
+    <Member MemberName="AddressBookLibrary">
+      <MemberSignature Language="C#" Value="public const string AddressBookLibrary;" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -23,8 +26,8 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Path to the AddressBook shared library to use with DllImport attributes.</summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="AudioToolboxLibrary">
@@ -37,12 +40,13 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Path to the AudioToolbox shared library to use with DllImport attributes.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
-    <Member MemberName="AudioUnitLibrary">
-      <MemberSignature Language="C#" Value="public const string AudioUnitLibrary;" />
+    <Member MemberName="AVFoundationLibrary">
+      <MemberSignature Language="C#" Value="public const string AVFoundationLibrary;" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -51,8 +55,22 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Path to the AdressBook shared library to use with DllImport attributes.</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="CFNetworkLibrary">
+      <MemberSignature Language="C#" Value="public const string CFNetworkLibrary;" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Path to the CFNetwork shared library to use with DllImport attributes.</summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="CoreAnimationLibrary">
@@ -65,22 +83,8 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="CoreAudioLibrary">
-      <MemberSignature Language="C#" Value="public const string CoreAudioLibrary;" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Path to the CoreAnimation shared library to use with DllImport attributes.</summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="CoreFoundationLibrary">
@@ -93,8 +97,9 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>The full path to the CoreFoundation library.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CoreGraphicsLibrary">
@@ -107,8 +112,69 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>The full path to the CoreGraphics library.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CoreLocationLibrary">
+      <MemberSignature Language="C#" Value="public const string CoreLocationLibrary;" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Path to the CoreLocation shared library to use with DllImport attributes.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CoreMediaLibrary">
+      <MemberSignature Language="C#" Value="public const string CoreMediaLibrary;" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Path to CoreMedia shared library to use with DllImport attributes.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CoreServicesLibrary">
+      <MemberSignature Language="C#" Value="public const string CoreServicesLibrary;" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Path to the CoreServices shared library to use with DllImport attributes.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CoreTelephonyLibrary">
+      <MemberSignature Language="C#" Value="public const string CoreTelephonyLibrary;" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Path to the CoreTelephony shared library to use with DllImport attributes.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CoreTextLibrary">
@@ -121,8 +187,24 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Path to the CoreText shared library to use with DllImport attributes.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EventKitLibrary">
+      <MemberSignature Language="C#" Value="public const string EventKitLibrary;" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Path to the EventKit shared library to use with DllImport attributes.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="FoundationLibrary">
@@ -135,12 +217,13 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Path to the Foundation shared library to use with DllImport attributes.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
-    <Member MemberName="ImageIOLibrary">
-      <MemberSignature Language="C#" Value="public const string ImageIOLibrary;" />
+    <Member MemberName="iAdLibrary">
+      <MemberSignature Language="C#" Value="public const string iAdLibrary;" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -149,8 +232,39 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Path to the iAd shared library to use with DllImport attributes.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MapKitLibrary">
+      <MemberSignature Language="C#" Value="public const string MapKitLibrary;" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Path to the MapKit shared library to use with DllImport attributes.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MediaPlayerLibrary">
+      <MemberSignature Language="C#" Value="public const string MediaPlayerLibrary;" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Path to the MediaPlayer shared library to use with DllImport attributes.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ObjectiveCLibrary">
@@ -163,8 +277,24 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Path to the ObjectiveC shared library to use with DllImport attributes.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OpenGLESLibrary">
+      <MemberSignature Language="C#" Value="public const string OpenGLESLibrary;" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The full path to the OpenGLES library.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="QuartzLibrary">
@@ -177,8 +307,39 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>The full path to the OpenGLES library.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SecurityLibrary">
+      <MemberSignature Language="C#" Value="public const string SecurityLibrary;" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Path to the Security shared library to use with DllImport attributes.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SystemConfigurationLibrary">
+      <MemberSignature Language="C#" Value="public const string SystemConfigurationLibrary;" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Path to the SystemConfiguration shared library to use with DllImport attributes.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="SystemLibrary">
@@ -191,12 +352,13 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>The full path to the System library.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
-    <Member MemberName="WebKitLibrary">
-      <MemberSignature Language="C#" Value="public const string WebKitLibrary;" />
+    <Member MemberName="UIKitLibrary">
+      <MemberSignature Language="C#" Value="public const string UIKitLibrary;" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -205,8 +367,24 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>The full path to the UIKit library.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Version">
+      <MemberSignature Language="C#" Value="public const string Version;" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>MonoMac binding version.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
   </Members>

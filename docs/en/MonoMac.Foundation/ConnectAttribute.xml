@@ -14,8 +14,32 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Exposes a property as an Interface Builder Outlet.</summary>
+    <remarks>
+      <para>
+This property must be applied to properties that represent an Interface Builder Outlet on a XIB file to properly support loading XIB files.   The name of the property must match the name of the outlet declared in Interface Builder.
+</para>
+      <para>
+This attribute and the property that it is applied to are automatically added by MonoDevelop to any outlets in use that have been exposed in a class.
+</para>
+      <para>
+When using this manually, you would use it like this:
+</para>
+      <example>
+        <code lang="C#">
+[Connect]
+public UIImageView imageView {
+    get {
+        return (UIImageView) GetNativeField ("imageView");
+    }
+    set {
+	SetNativeField ("imageView", value);
+    }
+}
+
+  </code>
+      </example>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -26,8 +50,25 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Default constructor, uses the name of the property as the name of the outlet.</summary>
+        <remarks>
+          <para>
+The default usage.
+</para>
+          <example>
+            <code lang="C#">
+[Connect]
+public UIImageView imageView {
+    get {
+        return (UIImageView) GetNativeField ("imageView");
+    }
+    set {
+	SetNativeField ("imageView", value);
+    }
+}
+  </code>
+          </example>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -40,9 +81,23 @@
         <Parameter Name="name" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="name">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="name">The name on the Inteface Builder file.</param>
+        <summary>Use this constructor to specify the name of the underlying outlet to map to, instead of defaulting to the name of the property.</summary>
+        <remarks>
+          <example>
+   In this example the Interface Builder property "imageView" is actually exposed as "TheView" in C#.
+  <code lang="C#">
+[Connect ("imageView"]
+public UIImageView TheView {
+    get {
+        return (UIImageView) GetNativeField ("imageView");
+    }
+    set {
+	SetNativeField ("imageView", value);
+    }
+}
+  </code></example>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Name">
@@ -55,9 +110,9 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>The name of the outlet.</summary>
+        <value>The name of the outlet if specified, or null if it should default to the property name to which it is applied.</value>
+        <remarks />
       </Docs>
     </Member>
   </Members>

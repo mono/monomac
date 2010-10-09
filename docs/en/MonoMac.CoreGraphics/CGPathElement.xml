@@ -9,8 +9,36 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>An individual element on a CGPath.</summary>
+    <remarks>
+      <para>
+Depending on the value of Type, you will use the values in Point1, Point2 and Point3.
+</para>
+      <para>
+        <list type="table">
+          <listheader>
+            <term>CGPathElementType</term>
+            <description>Description</description>
+          </listheader>
+          <item>
+            <term>CloseSubpath</term>
+            <description>The end of a subpath.</description>
+          </item>
+          <item>
+            <term>MoveToPoint, AddLineToPoint</term>
+            <description>Use the Point1 value.</description>
+          </item>
+          <item>
+            <term>AddQuadCurveToPoint</term>
+            <description>Use the Point1 and Point2 values.</description>
+          </item>
+          <item>
+            <term>AddCurveToPoint</term>
+            <description>Use the Point1, Point2 and Point3 values.</description>
+          </item>
+        </list>
+      </para>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -38,8 +66,8 @@
         <ReturnType>System.Drawing.PointF</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>First point.</summary>
+        <remarks>Used by MoveToPoint, AddLineToPoint, AddQuadCurveToPoint, AddCurveToPoint.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Point2">
@@ -52,8 +80,8 @@
         <ReturnType>System.Drawing.PointF</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Second point.</summary>
+        <remarks>AddQuadCurveToPoint, AddCurveToPoint.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Point3">
@@ -66,8 +94,8 @@
         <ReturnType>System.Drawing.PointF</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Third point.</summary>
+        <remarks>Used by AddCurveToPoint.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Type">
@@ -80,8 +108,8 @@
         <ReturnType>MonoMac.CoreGraphics.CGPathElementType</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Determines the type of path element.</summary>
+        <remarks>Depending on the value, the values of Point1, Point2 and Point3 will be valid.</remarks>
       </Docs>
     </Member>
   </Members>

@@ -8,8 +8,18 @@
     <BaseTypeName>System.Enum</BaseTypeName>
   </Base>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Specifies the bitmap layout information.</summary>
+    <remarks>
+      <para>
+Quartz supports a number of color models: red, green and blue (RGB), cyan, magenta, yellow and key black (CMYK) and grayscale.    Additionally, it is possible to specify an alpha channel that determines the transparency of the color when compositing an image with another one.
+</para>
+      <para>
+This enumeration determines the in-memory organization of the data and includes the color model, whether there is an alpha channel present and whether the component values have been premultiplied.
+</para>
+      <para>
+Pre-multiplication means that the values for red, green and blue have already been multiplied by the alpha value.   This helps speed up rendering as it avoids three multiplications per pixel at render time.
+</para>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName="First">
@@ -22,7 +32,7 @@
         <ReturnType>MonoMac.CoreGraphics.CGImageAlphaInfo</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Alpha channel comes first using 32-bits per pixel and 8 bits per channel (ARGB).</summary>
       </Docs>
     </Member>
     <Member MemberName="Last">
@@ -35,7 +45,7 @@
         <ReturnType>MonoMac.CoreGraphics.CGImageAlphaInfo</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Alpha comes last, 32-bit per pixel, 8-bits per channel (RGBA).</summary>
       </Docs>
     </Member>
     <Member MemberName="None">
@@ -48,7 +58,7 @@
         <ReturnType>MonoMac.CoreGraphics.CGImageAlphaInfo</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Used for CMYK processing, 32-bits per pixel, 8-bits per channel (CMYK).</summary>
       </Docs>
     </Member>
     <Member MemberName="NoneSkipFirst">
@@ -61,7 +71,7 @@
         <ReturnType>MonoMac.CoreGraphics.CGImageAlphaInfo</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>There is no alpha channel, 32-bits per pixel, 8 bits per channel, with the topmost channel ignored (xRGB).</summary>
       </Docs>
     </Member>
     <Member MemberName="NoneSkipLast">
@@ -74,7 +84,7 @@
         <ReturnType>MonoMac.CoreGraphics.CGImageAlphaInfo</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>There is no alpha channel, 32-bits per pixel, 8 bits per channel, with the lower channel ignored (RGBx).</summary>
       </Docs>
     </Member>
     <Member MemberName="Only">
@@ -87,7 +97,7 @@
         <ReturnType>MonoMac.CoreGraphics.CGImageAlphaInfo</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>No color data, only alpha channel data.</summary>
       </Docs>
     </Member>
     <Member MemberName="PremultipliedFirst">
@@ -100,7 +110,7 @@
         <ReturnType>MonoMac.CoreGraphics.CGImageAlphaInfo</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Premultipled values for RGB, alpha channel comes first using 32-bits per pixel and 8 bits per channel (ARGB)</summary>
       </Docs>
     </Member>
     <Member MemberName="PremultipliedLast">
@@ -113,7 +123,7 @@
         <ReturnType>MonoMac.CoreGraphics.CGImageAlphaInfo</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Premultipled values for RGB, alpha comes last, 32-bit per pixel, 8-bits per channel (RGBA).</summary>
       </Docs>
     </Member>
   </Members>

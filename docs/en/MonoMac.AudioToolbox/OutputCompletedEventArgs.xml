@@ -9,8 +9,9 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Provides data for the <see cref="E:MonoMac.AudioToolbox.OutputCompletedEventArgs.OutputCompleted" /> event.</summary>
+    <remarks>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -23,9 +24,10 @@
         <Parameter Name="audioQueueBuffer" Type="System.IntPtr" />
       </Parameters>
       <Docs>
-        <param name="audioQueueBuffer">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="audioQueueBuffer">Pointer to the AudioQueueBuffer.</param>
+        <summary>Initializes a new instance of the OutputCompletedEventArgs class.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="IntPtrBuffer">
@@ -38,9 +40,9 @@
         <ReturnType>System.IntPtr</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Get the AudioQueueBuffer as an IntPtr.</summary>
+        <value />
+        <remarks>The AudioQueueBuffer that has just been played, it is ready for reuse.</remarks>
       </Docs>
     </Member>
     <Member MemberName="UnsafeBuffer">
@@ -53,9 +55,9 @@
         <ReturnType>MonoMac.AudioToolbox.AudioQueueBuffer*</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Gets the AudioQueueBuffer as an unsafe pointer.</summary>
+        <value>The AudioQueueBuffer as an unsafe pointer, it allows the user to poke at the various data fields without having to marshal values.</value>
+        <remarks>The AudioQueueBuffer that has just been played, it is ready for reuse. </remarks>
       </Docs>
     </Member>
   </Members>

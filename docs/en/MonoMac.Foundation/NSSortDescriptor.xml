@@ -15,7 +15,44 @@
   </Attributes>
   <Docs>
     <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <remarks>
+      <format type="text/html">
+        <h2 class="jump zClassDescription_Name">Overview</h2>
+      </format>
+      <para>An instance of <c>NSSortDescriptor</c> describes a basis for ordering objects by specifying the property to use to compare the objects, the method to use to compare the properties, and whether the comparison should be ascending or descending. Instances of <c>NSSortDescriptor</c> are immutable.</para>
+      <para>You construct an instance of <c>NSSortDescriptor</c> by specifying the key path of the property to be compared, the order of the sort (ascending or descending), and (optionally) a selector to use to perform the comparison. The three-argument constructor allows you to specify other comparison selectors such as <c>caseInsensitiveCompare:</c> and <c>localizedCompare:</c>. Sorting raises an exception if the objects to be sorted do not respond to the sort descriptor’s comparison selector.</para>
+      <para>
+        <i>Note:</i> Many of the descriptions of <c>NSSortDescriptor</c> methods refer to "property key". This, briefly, is a string (key) that identifies a property (an attribute or relationship) of an object. You can find a discussion of this terminology in "<!--a target="_top"  -->Object Modeling<!--/a -->" in <i><format type="text/html"><a target="_top" href="../../../../../Conceptual/CocoaFundamentals/Introduction/Introduction.html#//apple_ref/doc/uid/TP40002974">Cocoa Fundamentals Guide</a></format></i> and in <i><format type="text/html"><a target="_top" href="../../../../../Conceptual/KeyValueCoding/KeyValueCoding.html#//apple_ref/doc/uid/10000107i">Key-Value Coding Programming Guide</a></format></i>. </para>
+      <para />
+      <para>There are a number of situations in which you can use sort descriptors, for example:</para>
+      <list type="bullet">
+        <item>
+          <term>
+            <para>To sort an array (an instance of <c>NSArray</c> or <c>NSMutableArray</c>—see <c>sortedArrayUsingDescriptors:</c> and <c>sortUsingDescriptors:</c>)</para>
+          </term>
+        </item>
+        <item>
+          <term>
+            <para>To directly compare two objects (see <see cref="M:MonoMac.Foundation.NSSortDescriptor.Compare(MonoMac.Foundation.NSObject,MonoMac.Foundation.NSObject)" />)</para>
+          </term>
+        </item>
+        <item>
+          <term>
+            <para>To specify how the elements in a table view should be arranged (see <c>sortDescriptors</c>)</para>
+          </term>
+        </item>
+        <item>
+          <term>
+            <para>To specify how the elements managed by an array controller should be arranged (see <c>sortDescriptors</c>)</para>
+          </term>
+        </item>
+        <item>
+          <term>
+            <para>If you are using Core Data, to specify the ordering of objects returned from a fetch request (see <c>sortDescriptors</c>)</para>
+          </term>
+        </item>
+      </list>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -31,7 +68,9 @@
       </Attributes>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+          <para>Implemented by subclasses to initialize a new object (the receiver) immediately after memory for it has been allocated.</para>
+        </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -117,7 +156,9 @@ public class MyClass : BaseClass {
       <Docs>
         <param name="key">To be added.</param>
         <param name="ascending">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>
+          <para>Returns an <c>NSSortDescriptor</c> object initialized with a given property key path and sort order, and with the default comparison selector.</para>
+        </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -141,7 +182,9 @@ public class MyClass : BaseClass {
         <param name="key">To be added.</param>
         <param name="ascending">To be added.</param>
         <param name="selector">To be added.</param>
-        <summary>To be added.</summary>
+        <summary>
+          <para>Returns an <c>NSSortDescriptor</c> object initialized with a given property key path, sort order, and comparison selector.</para>
+        </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -151,11 +194,6 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("ascending")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -164,6 +202,11 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("ascending")</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
     <Member MemberName="ClassHandle">
       <MemberSignature Language="C#" Value="public override IntPtr ClassHandle { get; }" />
@@ -201,8 +244,17 @@ public class MyClass : BaseClass {
       <Docs>
         <param name="object1">To be added.</param>
         <param name="object2">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>
+          <para>Returns an <c>NSComparisonResult</c> value that indicates the ordering of two given objects.</para>
+        </summary>
+        <returns>
+          <para>
+            <c>
+              <format type="text/html">
+                <a target="_top" href="../../../Miscellaneous/Foundation_DataTypes/Reference/reference.html#//apple_ref/doc/c_ref/NSOrderedAscending">NSOrderedAscending</a>
+              </format>
+            </c> if <i>object1</i> is less than <i>object2</i>, <c><format type="text/html"><a target="_top" href="../../../Miscellaneous/Foundation_DataTypes/Reference/reference.html#//apple_ref/doc/c_ref/NSOrderedDescending">NSOrderedDescending</a></format></c> if <i>object1</i> is greater than <i>object2</i>, or <c><format type="text/html"><a target="_top" href="../../../Miscellaneous/Foundation_DataTypes/Reference/reference.html#//apple_ref/doc/c_ref/NSOrderedSame">NSOrderedSame</a></format></c> if <i>object1</i> is equal to <i>object2</i>.</para>
+        </returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -212,11 +264,6 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("key")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -225,6 +272,11 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("key")</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
     <Member MemberName="ReversedSortDescriptor">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject ReversedSortDescriptor { get; }" />
@@ -232,11 +284,6 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("reversedSortDescriptor")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
       </ReturnValue>
@@ -245,6 +292,11 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("reversedSortDescriptor")</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
     <Member MemberName="Selector">
       <MemberSignature Language="C#" Value="public virtual MonoMac.ObjCRuntime.Selector Selector { get; }" />
@@ -252,11 +304,6 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("selector")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.ObjCRuntime.Selector</ReturnType>
       </ReturnValue>
@@ -265,6 +312,11 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("selector")</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
   </Members>
 </Type>

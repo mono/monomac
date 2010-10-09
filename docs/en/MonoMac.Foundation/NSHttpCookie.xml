@@ -15,7 +15,266 @@
   </Attributes>
   <Docs>
     <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <remarks>
+      <format type="text/html">
+        <h2 class="jump">Overview</h2>
+      </format>
+      <para>An NSHTTPCookie object represents an HTTP cookie. It’s an immutable object initialized from a dictionary containing the cookie attributes.</para>
+      <para>Two versions of cookies are supported:</para>
+      <list type="bullet">
+        <item>
+          <term>
+            <para>Version 0: This version refers to “traditional” or “old-style” cookies, the original cookie format defined by Netscape. The majority of cookies encountered are in this format.</para>
+          </term>
+        </item>
+        <item>
+          <term>
+            <para>Version 1: This version refers to cookies as defined in RFC 2965, HTTP State Management Mechanism.</para>
+          </term>
+        </item>
+      </list>
+      <format type="text/html">
+        <h2 class="jump">Adopted Protocols</h2>
+      </format>
+      <format type="text/html">
+        <a target="_top" href="../../../Protocols/NSCopying_Protocol/Reference/Reference.html#//apple_ref/occ/intf/NSCopying">NSCopying</a>
+      </format>
+      <list type="bullet">
+        <item>
+          <term>
+            <para>
+              <c>
+                <format type="text/html">
+                  <a target="_top" href="../../../Protocols/NSCopying_Protocol/Reference/Reference.html#//apple_ref/occ/intfm/NSCopying/copyWithZone:">- copyWithZone:</a>
+                </format>
+              </c>
+            </para>
+          </term>
+        </item>
+      </list>
+      <format type="text/html">
+        <h2 class="jump">Tasks</h2>
+      </format>
+      <format type="text/html">
+        <h3 class="tasks">Create Cookie Instances</h3>
+      </format>
+      <list type="bullet">
+        <item>
+          <term>
+            <c>
+              <format type="text/html">
+                <a href="Reference.html#//apple_ref/occ/clm/NSHTTPCookie/cookiesWithResponseHeaderFields:forURL:">+ cookiesWithResponseHeaderFields:forURL:</a>
+              </format>
+            </c>
+            <format type="text/html">
+              <img data-abstract="Returns an array of NSHTTPCookie objects corresponding to the provided response header fields for the provided URL." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
+            </format>
+          </term>
+        </item>
+        <item>
+          <term>
+            <c>
+              <format type="text/html">
+                <a href="Reference.html#//apple_ref/occ/clm/NSHTTPCookie/cookieWithProperties:">+ cookieWithProperties:</a>
+              </format>
+            </c>
+            <format type="text/html">
+              <img data-abstract="Creates and initializes an NSHTTPCookie object using the provided properties." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
+            </format>
+          </term>
+        </item>
+        <item>
+          <term>
+            <c>
+              <format type="text/html">
+                <a href="Reference.html#//apple_ref/occ/instm/NSHTTPCookie/initWithProperties:">- initWithProperties:</a>
+              </format>
+            </c>
+            <format type="text/html">
+              <img data-abstract="Returns an initialized &lt;code&gt;NSHTTPCookie&lt;/code&gt; object using the provided properties." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
+            </format>
+          </term>
+        </item>
+      </list>
+      <format type="text/html">
+        <h3 class="tasks">Convert Cookies to Request Headers</h3>
+      </format>
+      <list type="bullet">
+        <item>
+          <term>
+            <c>
+              <format type="text/html">
+                <a href="Reference.html#//apple_ref/occ/clm/NSHTTPCookie/requestHeaderFieldsWithCookies:">+ requestHeaderFieldsWithCookies:</a>
+              </format>
+            </c>
+            <format type="text/html">
+              <img data-abstract="Returns a dictionary of header fields corresponding to a provided array of cookies." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
+            </format>
+          </term>
+        </item>
+      </list>
+      <format type="text/html">
+        <h3 class="tasks">Getting Cookie Properties</h3>
+      </format>
+      <list type="bullet">
+        <item>
+          <term>
+            <c>
+              <format type="text/html">
+                <a href="Reference.html#//apple_ref/occ/instm/NSHTTPCookie/comment">- comment</a>
+              </format>
+            </c>
+            <format type="text/html">
+              <img data-abstract="Returns the receiver&amp;#8217;s comment string." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
+            </format>
+          </term>
+        </item>
+        <item>
+          <term>
+            <c>
+              <format type="text/html">
+                <a href="Reference.html#//apple_ref/occ/instm/NSHTTPCookie/commentURL">- commentURL</a>
+              </format>
+            </c>
+            <format type="text/html">
+              <img data-abstract="Returns the receiver’s comment URL." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
+            </format>
+          </term>
+        </item>
+        <item>
+          <term>
+            <c>
+              <format type="text/html">
+                <a href="Reference.html#//apple_ref/occ/instm/NSHTTPCookie/domain">- domain</a>
+              </format>
+            </c>
+            <format type="text/html">
+              <img data-abstract="Returns the domain of the receiver’s cookie." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
+            </format>
+          </term>
+        </item>
+        <item>
+          <term>
+            <c>
+              <format type="text/html">
+                <a href="Reference.html#//apple_ref/occ/instm/NSHTTPCookie/expiresDate">- expiresDate</a>
+              </format>
+            </c>
+            <format type="text/html">
+              <img data-abstract="Returns the receiver’s expiration date." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
+            </format>
+          </term>
+        </item>
+        <item>
+          <term>
+            <c>
+              <format type="text/html">
+                <a href="Reference.html#//apple_ref/occ/instm/NSHTTPCookie/isHTTPOnly">- isHTTPOnly</a>
+              </format>
+            </c>
+            <format type="text/html">
+              <img data-abstract="Returns whether the receiver should only be sent to HTTP servers per RFC 2965." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
+            </format>
+          </term>
+        </item>
+        <item>
+          <term>
+            <c>
+              <format type="text/html">
+                <a href="Reference.html#//apple_ref/occ/instm/NSHTTPCookie/isSecure">- isSecure</a>
+              </format>
+            </c>
+            <format type="text/html">
+              <img data-abstract="Returns whether his cookie should only be sent over secure channels." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
+            </format>
+          </term>
+        </item>
+        <item>
+          <term>
+            <c>
+              <format type="text/html">
+                <a href="Reference.html#//apple_ref/occ/instm/NSHTTPCookie/isSessionOnly">- isSessionOnly</a>
+              </format>
+            </c>
+            <format type="text/html">
+              <img data-abstract="Returns whether the receiver should be discarded at the end of the session (regardless of expiration date)." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
+            </format>
+          </term>
+        </item>
+        <item>
+          <term>
+            <c>
+              <format type="text/html">
+                <a href="Reference.html#//apple_ref/occ/instm/NSHTTPCookie/name">- name</a>
+              </format>
+            </c>
+            <format type="text/html">
+              <img data-abstract="Returns the receiver’s name." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
+            </format>
+          </term>
+        </item>
+        <item>
+          <term>
+            <c>
+              <format type="text/html">
+                <a href="Reference.html#//apple_ref/occ/instm/NSHTTPCookie/path">- path</a>
+              </format>
+            </c>
+            <format type="text/html">
+              <img data-abstract="Returns the receiver’s path." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
+            </format>
+          </term>
+        </item>
+        <item>
+          <term>
+            <c>
+              <format type="text/html">
+                <a href="Reference.html#//apple_ref/occ/instm/NSHTTPCookie/portList">- portList</a>
+              </format>
+            </c>
+            <format type="text/html">
+              <img data-abstract="Returns the receiver&amp;#8217;s port list." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
+            </format>
+          </term>
+        </item>
+        <item>
+          <term>
+            <c>
+              <format type="text/html">
+                <a href="Reference.html#//apple_ref/occ/instm/NSHTTPCookie/properties">- properties</a>
+              </format>
+            </c>
+            <format type="text/html">
+              <img data-abstract="Returns the receiver’s cookie properties." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
+            </format>
+          </term>
+        </item>
+        <item>
+          <term>
+            <c>
+              <format type="text/html">
+                <a href="Reference.html#//apple_ref/occ/instm/NSHTTPCookie/value">- value</a>
+              </format>
+            </c>
+            <format type="text/html">
+              <img data-abstract="Returns the receiver’s value." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
+            </format>
+          </term>
+        </item>
+        <item>
+          <term>
+            <c>
+              <format type="text/html">
+                <a href="Reference.html#//apple_ref/occ/instm/NSHTTPCookie/version">- version</a>
+              </format>
+            </c>
+            <format type="text/html">
+              <img data-abstract="Returns the receiver’s version." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
+            </format>
+          </term>
+        </item>
+      </list>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -31,8 +290,292 @@
       </Attributes>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>
+          <para>Implemented by subclasses to initialize a new object (the receiver) immediately after memory for it has been allocated.</para>
+        </summary>
+        <remarks>
+          <para>An <c>init</c> message is generally coupled with an <c><format type="text/html"><a href="Reference.html#//apple_ref/occ/clm/NSObject/alloc">alloc</a></format></c> or <c><format type="text/html"><a href="Reference.html#//apple_ref/occ/clm/NSObject/allocWithZone:">allocWithZone:</a></format></c> message in the same line of code:</para>
+          <format type="text/html">
+            <table>
+              <tr>
+                <td scope="row">
+                  <pre>TheClass *newObject = [[TheClass alloc] init];</pre>
+                </td>
+              </tr>
+            </table>
+          </format>
+          <para>An object isn’t ready to be used until it has been initialized. The <c>init</c> method defined in the <c>NSObject</c> class does no initialization; it simply returns <c>self</c>.</para>
+          <para>Subclass implementations of this method should initialize and return the new object. If it can’t be initialized, they should release the object and return <c><!--a   -->nil<!--/a --></c>. In some cases, an <c>init</c> method might release the new object and return a substitute. Programs should therefore always use the object returned by <c>init</c>, and not necessarily the one returned by <c><format type="text/html"><a href="Reference.html#//apple_ref/occ/clm/NSObject/alloc">alloc</a></format></c> or <c><format type="text/html"><a href="Reference.html#//apple_ref/occ/clm/NSObject/allocWithZone:">allocWithZone:</a></format></c>, in subsequent code.</para>
+          <para>Every class must guarantee that the <c>init</c> method either returns a fully functional instance of the class or raises an exception. Subclasses should override the <c>init</c> method to add class-specific initialization code. Subclass versions of <c>init</c> need to incorporate the initialization code for the classes they inherit from, through a message to <c>super</c>:</para>
+          <format type="text/html">
+            <table>
+              <tr>
+                <td scope="row">
+                  <pre>- (id)init</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>{</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>    if ((self = [super init])) {</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>        /* class-specific initialization goes here */</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>    }</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>    return self;</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>}</pre>
+                </td>
+              </tr>
+            </table>
+          </format>
+          <para>Note that the message to <c>super</c> precedes the initialization code added in the method. This sequencing ensures that initialization proceeds in the order of inheritance.</para>
+          <para>Subclasses often define <c>init...</c> methods with additional arguments to allow specific values to be set. The more arguments a method has, the more freedom it gives you to determine the character of initialized objects. Classes often have a set of <c>init...</c> methods, each with a different number of arguments. For example:</para>
+          <format type="text/html">
+            <table>
+              <tr>
+                <td scope="row">
+                  <pre>- (id)init;</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>- (id)initWithTag:(int)tag;</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>- (id)initWithTag:(int)tag data:(struct info *)data;</pre>
+                </td>
+              </tr>
+            </table>
+          </format>
+          <para>The convention is that at least one of these methods, usually the one with the most arguments, includes a message to <c>super</c> to incorporate the initialization of classes higher up the hierarchy. This method is called the <i>designated initializer</i> for the class. The other <c>init...</c> methods defined in the class directly or indirectly invoke the designated initializer through messages to <c>self</c>. In this way, all <c>init...</c> methods are chained together. For example:</para>
+          <format type="text/html">
+            <table>
+              <tr>
+                <td scope="row">
+                  <pre>- (id)init</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>{</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>    return [self initWithTag:-1];</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>}</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre />
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>- (id)initWithTag:(int)tag</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>{</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>    return [self initWithTag:tag data:NULL];</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>}</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre />
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>- (id)initWithTag:(int)tag data:(struct info *)data</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>{</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>    if ((self = [super init. . .])) {</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>        /* class-specific initialization goes here */</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>    }</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>    return self;</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>}</pre>
+                </td>
+              </tr>
+            </table>
+          </format>
+          <para>In this example, the <c>initWithTag:data:</c> method is the designated initializer for the class.</para>
+          <para>If a subclass does any initialization of its own, it must define its own designated initializer. This method should begin by sending a message to <c>super</c> to invoke the designated initializer of its superclass. Suppose, for example, that the three methods illustrated above are defined in the B class. The C class, a subclass of B, might have this designated initializer:</para>
+          <format type="text/html">
+            <table>
+              <tr>
+                <td scope="row">
+                  <pre>- (id)initWithTag:(int)tag data:(struct info *)data object:anObject</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>{</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>    if ((self = [super initWithTag:tag data:data])) {</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>        /* class-specific initialization goes here */</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>    }</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>    return self;</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>}</pre>
+                </td>
+              </tr>
+            </table>
+          </format>
+          <para>If inherited <c>init...</c> methods are to successfully initialize instances of the subclass, they must all be made to (directly or indirectly) invoke the new designated initializer. To accomplish this, the subclass is obliged to cover (override) only the designated initializer of the superclass. For example, in addition to its designated initializer, the C class would also implement this method:</para>
+          <format type="text/html">
+            <table>
+              <tr>
+                <td scope="row">
+                  <pre>- (id)initWithTag:(int)tag data:(struct info *)data</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>{</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>    return [self initWithTag:tag data:data object:nil];</pre>
+                </td>
+              </tr>
+              <tr>
+                <td scope="row">
+                  <pre>}</pre>
+                </td>
+              </tr>
+            </table>
+          </format>
+          <para>This code ensures that all three methods inherited from the B class also work for instances of the C class.</para>
+          <para>Often the designated initializer of the subclass overrides the designated initializer of the superclass. If so, the subclass need only implement the one <c>init...</c> method.</para>
+          <para>These conventions maintain a direct chain of <c>init...</c> links and ensure that the <c>new</c> method and all inherited <c>init...</c> methods return usable, initialized objects. They also prevent the possibility of an infinite loop wherein a subclass method sends a message (to <c>super</c>) to perform a superclass method, which in turn sends a message (to <c>self</c>) to perform the subclass method.</para>
+          <para>This <c>init</c> method is the designated initializer for the <c>NSObject</c> class. Subclasses that do their own initialization should override it, as described above.</para>
+          <format type="text/html">
+            <h5 class="tight">Availability</h5>
+          </format>
+          <list type="bullet">
+            <item>
+              <term>Available in iPhone OS 2.0 and later.</term>
+            </item>
+          </list>
+          <format type="text/html">
+            <h5 class="tight">Related Sample Code</h5>
+          </format>
+          <list type="bullet">
+            <item>
+              <term>
+                <format type="text/html">
+                  <a target="_top" href="../../../../../../../samplecode/CryptoExercise/index.html#//apple_ref/doc/uid/DTS40008019">CryptoExercise</a>
+                </format>
+              </term>
+            </item>
+            <item>
+              <term>
+                <format type="text/html">
+                  <a target="_top" href="../../../../../../../samplecode/GLES2Sample/index.html#//apple_ref/doc/uid/DTS40009188">GLES2Sample</a>
+                </format>
+              </term>
+            </item>
+            <item>
+              <term>
+                <format type="text/html">
+                  <a target="_top" href="../../../../../../../samplecode/GLTextureAtlas/index.html#//apple_ref/doc/uid/DTS40009014">GLTextureAtlas</a>
+                </format>
+              </term>
+            </item>
+            <item>
+              <term>
+                <format type="text/html">
+                  <a target="_top" href="../../../../../../../samplecode/TableViewSuite/index.html#//apple_ref/doc/uid/DTS40007318">TableViewSuite</a>
+                </format>
+              </term>
+            </item>
+            <item>
+              <term>
+                <format type="text/html">
+                  <a target="_top" href="../../../../../../../samplecode/TheElements/index.html#//apple_ref/doc/uid/DTS40007419">TheElements</a>
+                </format>
+              </term>
+            </item>
+          </list>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -71,8 +614,34 @@
       </Parameters>
       <Docs>
         <param name="properties">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>
+          <para>Returns an initialized <c>NSHTTPCookie</c> object using the provided properties.</para>
+        </summary>
+        <remarks>
+          <para>See <format type="text/html"><a href="Reference.html#//apple_ref/doc/uid/20001702-425346">“Constants”</a></format> for more information on the available header field constants and the constraints imposed on the values in the dictionary.</para>
+          <format type="text/html">
+            <h5 class="tight">Availability</h5>
+          </format>
+          <list type="bullet">
+            <item>
+              <term>Available in iPhone OS 2.0 and later.</term>
+            </item>
+          </list>
+          <format type="text/html">
+            <h5 class="tight">See Also</h5>
+          </format>
+          <list type="bullet">
+            <item>
+              <term>
+                <c>
+                  <format type="text/html">
+                    <a href="Reference.html#//apple_ref/occ/clm/NSHTTPCookie/cookieWithProperties:">+ cookieWithProperties:</a>
+                  </format>
+                </c>
+              </term>
+            </item>
+          </list>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -140,19 +709,22 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+          <para>Returns the receiver's comment string.</para>
+        </summary>
+        <value>To be added.</value>
+        <remarks>
+        </remarks>
+      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("comment")</AttributeName>
         </Attribute>
       </Attributes>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
     </Member>
     <Member MemberName="CommentUrl">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSUrl CommentUrl { get; }" />
@@ -160,19 +732,22 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSUrl</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+          <para>Returns the receiver’s comment URL.</para>
+        </summary>
+        <value>To be added.</value>
+        <remarks>
+        </remarks>
+      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("commentURL")</AttributeName>
         </Attribute>
       </Attributes>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSUrl</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
     </Member>
     <Member MemberName="CookieFromProperties">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSHttpCookie CookieFromProperties (MonoMac.Foundation.NSDictionary properties);" />
@@ -193,9 +768,37 @@ public class MyClass : BaseClass {
       </Parameters>
       <Docs>
         <param name="properties">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>
+          <para>Creates and initializes an NSHTTPCookie object using the provided properties.</para>
+        </summary>
+        <returns>
+          <para>The newly created cookie object. Returns <c>nil</c> if the provided properties are invalid.</para>
+        </returns>
+        <remarks>
+          <para>See <format type="text/html"><a href="Reference.html#//apple_ref/doc/uid/20001702-425346">“Constants”</a></format> for more information on the available header field constants and the constraints imposed on the values in the dictionary.</para>
+          <format type="text/html">
+            <h5 class="tight">Availability</h5>
+          </format>
+          <list type="bullet">
+            <item>
+              <term>Available in iPhone OS 2.0 and later.</term>
+            </item>
+          </list>
+          <format type="text/html">
+            <h5 class="tight">See Also</h5>
+          </format>
+          <list type="bullet">
+            <item>
+              <term>
+                <c>
+                  <format type="text/html">
+                    <a href="Reference.html#//apple_ref/occ/instm/NSHTTPCookie/initWithProperties:">- initWithProperties:</a>
+                  </format>
+                </c>
+              </term>
+            </item>
+          </list>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CookiesWithResponseHeaderFields">
@@ -219,9 +822,23 @@ public class MyClass : BaseClass {
       <Docs>
         <param name="headerFields">To be added.</param>
         <param name="url">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>
+          <para>Returns an array of NSHTTPCookie objects corresponding to the provided response header fields for the provided URL.</para>
+        </summary>
+        <returns>
+          <para>The array of newly created cookies.</para>
+        </returns>
+        <remarks>
+          <para>This method will ignore irrelevant header fields in <i>headerFields</i>, allowing dictionaries to contain additional data.</para>
+          <format type="text/html">
+            <h5 class="tight">Availability</h5>
+          </format>
+          <list type="bullet">
+            <item>
+              <term>Available in iPhone OS 2.0 and later.</term>
+            </item>
+          </list>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Domain">
@@ -230,19 +847,31 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+          <para>Returns the domain of the receiver’s cookie.</para>
+        </summary>
+        <value>To be added.</value>
+        <remarks>
+          <para>If the domain does not start with a dot, then the cookie will only be sent to the exact host specified by the domain. If the domain does start with a dot, then the cookie will be sent to other hosts in that domain as well, subject to certain restrictions. See RFC 2965 for more detail.</para>
+          <format type="text/html">
+            <h5 class="tight">Availability</h5>
+          </format>
+          <list type="bullet">
+            <item>
+              <term>Available in iPhone OS 2.0 and later.</term>
+            </item>
+          </list>
+        </remarks>
+      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("domain")</AttributeName>
         </Attribute>
       </Attributes>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
     </Member>
     <Member MemberName="ExpiresDate">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSDate ExpiresDate { get; }" />
@@ -250,19 +879,22 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSDate</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+          <para>Returns the receiver’s expiration date.</para>
+        </summary>
+        <value>To be added.</value>
+        <remarks>
+        </remarks>
+      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("expiresDate")</AttributeName>
         </Attribute>
       </Attributes>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSDate</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
     </Member>
     <Member MemberName="IsHttpOnly">
       <MemberSignature Language="C#" Value="public virtual bool IsHttpOnly { get; }" />
@@ -270,19 +902,33 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+          <para>Returns whether the receiver should only be sent to HTTP servers per RFC 2965.</para>
+        </summary>
+        <value>To be added.</value>
+        <remarks>
+          <para>Cookies may be marked as HTTP only by a server (or by a javascript). Cookies marked as such must only be sent via HTTP Headers in HTTP requests for URL's that match both the path and domain of the respective cookies. </para>
+          <para>
+            <i>Important:</i> Cookies specified as HTTP only should not be delivered to any javascript applications to prevent cross-site scripting vulnerabilities.</para>
+          <format type="text/html">
+            <h5 class="tight">Availability</h5>
+          </format>
+          <list type="bullet">
+            <item>
+              <term>Available in iPhone OS 2.2 and later.</term>
+            </item>
+          </list>
+        </remarks>
+      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("isHTTPOnly")</AttributeName>
         </Attribute>
       </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
     </Member>
     <Member MemberName="IsSecure">
       <MemberSignature Language="C#" Value="public virtual bool IsSecure { get; }" />
@@ -290,19 +936,22 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+          <para>Returns whether his cookie should only be sent over secure channels.</para>
+        </summary>
+        <value>To be added.</value>
+        <remarks>
+        </remarks>
+      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("isSecure")</AttributeName>
         </Attribute>
       </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
     </Member>
     <Member MemberName="IsSessionOnly">
       <MemberSignature Language="C#" Value="public virtual bool IsSessionOnly { get; }" />
@@ -310,19 +959,22 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+          <para>Returns whether the receiver should be discarded at the end of the session (regardless of expiration date).</para>
+        </summary>
+        <value>To be added.</value>
+        <remarks>
+        </remarks>
+      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("isSessionOnly")</AttributeName>
         </Attribute>
       </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
     </Member>
     <Member MemberName="KeyComment">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString KeyComment;" />
@@ -512,11 +1164,6 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("name")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -525,6 +1172,11 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("name")</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
     <Member MemberName="Path">
       <MemberSignature Language="C#" Value="public virtual string Path { get; }" />
@@ -532,19 +1184,31 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+          <para>Returns the receiver’s path.</para>
+        </summary>
+        <value>To be added.</value>
+        <remarks>
+          <para>The cookie will be sent with requests for this path in the cookie's domain, and all paths that have this prefix. A path of “/” means the cookie will be sent for all URLs in the domain.</para>
+          <format type="text/html">
+            <h5 class="tight">Availability</h5>
+          </format>
+          <list type="bullet">
+            <item>
+              <term>Available in iPhone OS 2.0 and later.</term>
+            </item>
+          </list>
+        </remarks>
+      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("path")</AttributeName>
         </Attribute>
       </Attributes>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
     </Member>
     <Member MemberName="PortList">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSNumber[] PortList { get; }" />
@@ -552,19 +1216,22 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSNumber[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+          <para>Returns the receiver's port list.</para>
+        </summary>
+        <value>To be added.</value>
+        <remarks>
+        </remarks>
+      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("portList")</AttributeName>
         </Attribute>
       </Attributes>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSNumber[]</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
     </Member>
     <Member MemberName="Properties">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSDictionary Properties { get; }" />
@@ -572,19 +1239,32 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSDictionary</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+          <para>Returns the receiver’s cookie properties.</para>
+        </summary>
+        <value>To be added.</value>
+        <remarks>
+          <para>This dictionary can be used with <c><format type="text/html"><a href="Reference.html#//apple_ref/occ/instm/NSHTTPCookie/initWithProperties:">initWithProperties:</a></format></c> or <c><format type="text/html"><a href="Reference.html#//apple_ref/occ/clm/NSHTTPCookie/cookieWithProperties:">cookieWithProperties:</a></format></c> to create an equivalent <c>NSHTTPCookie</c> object.</para>
+          <para>See <c><format type="text/html"><a href="Reference.html#//apple_ref/occ/instm/NSHTTPCookie/initWithProperties:">initWithProperties:</a></format></c> for more information on the constraints imposed on the <i>properties</i> dictionary.</para>
+          <format type="text/html">
+            <h5 class="tight">Availability</h5>
+          </format>
+          <list type="bullet">
+            <item>
+              <term>Available in iPhone OS 2.0 and later.</term>
+            </item>
+          </list>
+        </remarks>
+      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("properties")</AttributeName>
         </Attribute>
       </Attributes>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSDictionary</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
     </Member>
     <Member MemberName="RequestHeaderFieldsWithCookies">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSDictionary RequestHeaderFieldsWithCookies (MonoMac.Foundation.NSHttpCookie[] cookies);" />
@@ -605,9 +1285,23 @@ public class MyClass : BaseClass {
       </Parameters>
       <Docs>
         <param name="cookies">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>
+          <para>Returns a dictionary of header fields corresponding to a provided array of cookies.</para>
+        </summary>
+        <returns>
+          <para>The dictionary of header fields created from the provided cookies. This dictionary can be used to add cookies to a request.</para>
+        </returns>
+        <remarks>
+          <para>See <format type="text/html"><a href="Reference.html#//apple_ref/doc/uid/20001702-425346">“Constants”</a></format> for details on the header field keys and values in the returned dictionary.</para>
+          <format type="text/html">
+            <h5 class="tight">Availability</h5>
+          </format>
+          <list type="bullet">
+            <item>
+              <term>Available in iPhone OS 2.0 and later.</term>
+            </item>
+          </list>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Value">
@@ -616,19 +1310,21 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+          <para>Returns the receiver’s value.</para>
+        </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("value")</AttributeName>
         </Attribute>
       </Attributes>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
     </Member>
     <Member MemberName="Version">
       <MemberSignature Language="C#" Value="public virtual uint Version { get; }" />
@@ -636,19 +1332,21 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+          <para>Returns the receiver’s version.</para>
+        </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("version")</AttributeName>
         </Attribute>
       </Attributes>
-      <ReturnValue>
-        <ReturnType>System.UInt32</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
     </Member>
   </Members>
 </Type>

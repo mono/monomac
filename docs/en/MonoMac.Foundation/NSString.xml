@@ -14,7 +14,7 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
+    <summary>The Foundation String class.</summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -109,33 +109,9 @@ public class MyClass : BaseClass {
         <Parameter Name="str" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="str">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="_characterAtIndex">
-      <MemberSignature Language="C#" Value="public virtual char _characterAtIndex (int index);" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>MonoMac.Foundation.Export("characterAtIndex:")</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Char</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="index" Type="System.Int32" />
-      </Parameters>
-      <Docs>
-        <param name="index">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="str">A string.</param>
+        <summary>Creates an NSString from a C# string.</summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ClassHandle">
@@ -159,11 +135,6 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Obsolete("Use Encode instead")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSData</ReturnType>
       </ReturnValue>
@@ -176,6 +147,11 @@ public class MyClass : BaseClass {
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use Encode instead")</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
     <Member MemberName="DataUsingEncoding">
       <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSData DataUsingEncoding (MonoMac.Foundation.NSStringEncoding enc, bool allowLossyConversion);" />
@@ -183,11 +159,6 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Obsolete("Use Encode instead")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSData</ReturnType>
       </ReturnValue>
@@ -202,6 +173,11 @@ public class MyClass : BaseClass {
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use Encode instead")</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
     <Member MemberName="Encode">
       <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSData Encode (MonoMac.Foundation.NSStringEncoding enc);" />
@@ -297,11 +273,11 @@ public class MyClass : BaseClass {
         <Parameter Name="encoding" Type="MonoMac.Foundation.NSStringEncoding" />
       </Parameters>
       <Docs>
-        <param name="data">To be added.</param>
-        <param name="encoding">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="data">The byte buffer.</param>
+        <param name="encoding">Use this encoding to intepret the byte buffer.</param>
+        <summary>Creates an NSString from an NSData source.</summary>
+        <returns>An NSString created by parsing the byte buffer using the specified encoding.</returns>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="FromHandle">
@@ -317,10 +293,10 @@ public class MyClass : BaseClass {
         <Parameter Name="usrhandle" Type="System.IntPtr" />
       </Parameters>
       <Docs>
-        <param name="usrhandle">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="usrhandle">Pointer to an Objective-C NSString object (not the managed NSString object).</param>
+        <summary>Utility method that returns a string from a pointer that points to an Objective-C NSString object.</summary>
+        <returns>The Objective-C string in the NSString as a C# string.</returns>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="GetHashCode">
@@ -336,45 +312,6 @@ public class MyClass : BaseClass {
       <Docs>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Item">
-      <MemberSignature Language="C#" Value="public char this[int idx] { get; }" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Char</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="idx" Type="System.Int32" />
-      </Parameters>
-      <Docs>
-        <param name="idx">To be added.</param>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Length">
-      <MemberSignature Language="C#" Value="public virtual int Length { get; }" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("length")</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -412,10 +349,10 @@ public class MyClass : BaseClass {
         <Parameter Name="str" Type="MonoMac.Foundation.NSString" />
       </Parameters>
       <Docs>
-        <param name="str">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="str">The NSString.</param>
+        <summary>Converts the NSString to a CIL/C# string.</summary>
+        <returns />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="op_Inequality">
@@ -434,6 +371,92 @@ public class MyClass : BaseClass {
       <Docs>
         <param name="a">To be added.</param>
         <param name="b">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StringSize">
+      <MemberSignature Language="C#" Value="public System.Drawing.SizeF StringSize (MonoMac.UIKit.UIFont font);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Drawing.SizeF</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="font" Type="MonoMac.UIKit.UIFont" />
+      </Parameters>
+      <Docs>
+        <param name="font">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StringSize">
+      <MemberSignature Language="C#" Value="public System.Drawing.SizeF StringSize (MonoMac.UIKit.UIFont font, System.Drawing.SizeF constrainedToSize);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Drawing.SizeF</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="font" Type="MonoMac.UIKit.UIFont" />
+        <Parameter Name="constrainedToSize" Type="System.Drawing.SizeF" />
+      </Parameters>
+      <Docs>
+        <param name="font">To be added.</param>
+        <param name="constrainedToSize">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StringSize">
+      <MemberSignature Language="C#" Value="public System.Drawing.SizeF StringSize (MonoMac.UIKit.UIFont font, System.Drawing.SizeF constrainedToSize, MonoMac.UIKit.UILineBreakMode lineBreakMode);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Drawing.SizeF</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="font" Type="MonoMac.UIKit.UIFont" />
+        <Parameter Name="constrainedToSize" Type="System.Drawing.SizeF" />
+        <Parameter Name="lineBreakMode" Type="MonoMac.UIKit.UILineBreakMode" />
+      </Parameters>
+      <Docs>
+        <param name="font">To be added.</param>
+        <param name="constrainedToSize">To be added.</param>
+        <param name="lineBreakMode">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StringSize">
+      <MemberSignature Language="C#" Value="public System.Drawing.SizeF StringSize (MonoMac.UIKit.UIFont font, float forWidth, MonoMac.UIKit.UILineBreakMode breakMode);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Drawing.SizeF</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="font" Type="MonoMac.UIKit.UIFont" />
+        <Parameter Name="forWidth" Type="System.Single" />
+        <Parameter Name="breakMode" Type="MonoMac.UIKit.UILineBreakMode" />
+      </Parameters>
+      <Docs>
+        <param name="font">To be added.</param>
+        <param name="forWidth">To be added.</param>
+        <param name="breakMode">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>

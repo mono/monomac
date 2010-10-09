@@ -34,7 +34,6 @@ namespace MonoMac.Foundation {
 		NSObjectFlag () {}
 	}
 
-	[Register ("NSObject")]
 	[StructLayout(LayoutKind.Sequential)]
 	public partial class NSObject : INativeObject, IDisposable {
 		public static Assembly MonoMacAssembly = typeof (NSObject).Assembly;
@@ -50,16 +49,16 @@ namespace MonoMac.Foundation {
 		static IntPtr selRetain = Selector.GetHandle ("retain");
 		static IntPtr selRetainCount = Selector.GetHandle ("retainCount");
 
-		static IntPtr class_ptr = Class.GetHandle ("NSObject");
-
 		static MonoMac_Disposer disposer = new MonoMac_Disposer ();
 			
 		private IntPtr handle;
 		private IntPtr super;
 		private IntPtr super_ptr;
 		
+#if COREBUILD
+		static IntPtr class_ptr = Class.GetHandle ("NSObject");
 		public virtual IntPtr ClassHandle  { get { return class_ptr; } }
-		
+#endif
 		protected bool IsDirectBinding;
 
 		[Export ("init")]

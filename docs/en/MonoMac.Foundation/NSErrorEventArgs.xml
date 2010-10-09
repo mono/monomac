@@ -9,8 +9,18 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Provides data for the <see cref="E:MonoMac.Foundation.NSErrorEventArgs.Failed" /> event.</summary>
+    <remarks>
+      <para>Use this class when you want to create event handlers that get an NSError.  </para>
+      <para>
+For example, you coudl use:
+
+<example><code lang="C#">
+public class Sample {
+    public event EventHandler&lt;NSErrorEventArgs&gt; Failed;
+}
+  </code></example></para>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -23,9 +33,9 @@
         <Parameter Name="error" Type="MonoMac.Foundation.NSError" />
       </Parameters>
       <Docs>
-        <param name="error">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="error">The underlying error.</param>
+        <summary>Initializes a new instance of the NSErrorEventArgs class.</summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Error">
@@ -38,9 +48,9 @@
         <ReturnType>MonoMac.Foundation.NSError</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Retrieves the NSError value.</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
   </Members>

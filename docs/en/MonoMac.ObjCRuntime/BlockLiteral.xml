@@ -9,8 +9,15 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Wraps a ECMA CLI delegate (C# lambdas, anonymous methods or delegates) as an Objective-C block.</summary>
+    <remarks>
+      <para>
+This is a low-level class that is automatically used by the MonoMac bindings when using Objective-C block APIs.
+</para>
+      <para>
+In the C#/ECMA CLI world delegates are automatically turned into blocks that can be consumed by Objective-C blocks-aware APIs.
+</para>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName="block_descriptor">
@@ -23,8 +30,15 @@
         <ReturnType>System.IntPtr</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Points to a BlockDescriptor structure.</summary>
+        <remarks>
+          <para>
+This field is initialized by SetupBlock.
+</para>
+          <para>
+MonoMac uses a single descriptor that maps Objective-C blocks to ECMA CLI delegates, allowing users to map Blocks to C# delegates, anonymous methods and lambdas.
+</para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CleanupBlock">
@@ -38,8 +52,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Releases the resources associated with this block.</summary>
+        <remarks>This releases the GCHandle that points to the user delegate.</remarks>
       </Docs>
     </Member>
     <Member MemberName="flags">
@@ -52,8 +66,12 @@
         <ReturnType>MonoMac.ObjCRuntime.BlockFlags</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>The flags for this Block.</summary>
+        <remarks>
+          <para>
+This field is initialized by SetupBlock.
+</para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="global_handle">
@@ -66,8 +84,12 @@
         <ReturnType>System.IntPtr</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Block global handle.</summary>
+        <remarks>
+          <para>
+This field is initialized by SetupBlock.
+</para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="invoke">
@@ -80,8 +102,15 @@
         <ReturnType>System.IntPtr</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>The method to invoke.</summary>
+        <remarks>
+          <para>
+This field is initialized by SetupBlock.
+</para>
+          <para>
+When used with MonoMac's SetupBlock this contains a GCHandle that points to the trampoline delegate.
+</para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="isa">
@@ -95,7 +124,11 @@
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <para>
+This field is initialized by SetupBlock.
+</para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="local_handle">
@@ -109,7 +142,14 @@
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <para>
+This field is initialized by SetupBlock.
+</para>
+          <para>
+When used with MonoMac's SetupBlock this contains a GCHandle that points to the user delegate.
+</para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="reserved">
@@ -122,8 +162,15 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Reserved field.</summary>
+        <remarks>
+          <para>
+This field is initialized by SetupBlock.
+</para>
+          <para>
+Should be zero.
+</para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="SetupBlock">
@@ -140,9 +187,9 @@
         <Parameter Name="userDelegate" Type="System.Delegate" />
       </Parameters>
       <Docs>
-        <param name="trampoline">To be added.</param>
-        <param name="userDelegate">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="trampoline">The trampoline must be a static delegate.   Your code needs to keep a reference to it somewhere.</param>
+        <param name="userDelegate">The user code to invoke.</param>
+        <summary>Sets up a block using a trampoline and a user delegate.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
