@@ -58,7 +58,8 @@ include Make.shared
 SHARED_API = \
 	./foundation.cs		\
 	./coreanimation.cs	\
-	./coredata.cs		
+	./coredata.cs		\
+	./corelocation.cs
 
 SHARED_SOURCES = $(patsubst %,../../maccore/src/%,$(SHARED_SOURCE))
 SHARED_CORE_SOURCES = $(patsubst %,../../maccore/src/%,$(SHARED_CORE_SOURCE))
