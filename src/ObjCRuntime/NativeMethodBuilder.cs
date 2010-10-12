@@ -57,7 +57,7 @@ namespace MonoMac.ObjCRuntime {
 			ParameterTypes [1] = typeof (Selector);
 
 			for (int i = 0; i < parms.Length; i++) {
-				if (parms [i].ParameterType.IsByRef && (parms[i].ParameterType.IsSubclassOf (typeof (NSObject)) || parms[i].ParameterType == typeof (NSObject)))
+				if (parms [i].ParameterType.IsByRef && false && (parms[i].ParameterType.IsSubclassOf (typeof (NSObject)) || parms[i].ParameterType == typeof (NSObject)))
 					ParameterTypes [i + 2] = typeof (IntPtr).MakeByRefType ();
 				else
 					ParameterTypes [i + 2] = parms [i].ParameterType;
@@ -75,12 +75,12 @@ namespace MonoMac.ObjCRuntime {
 			
 			
 			for (int i = 2; i < ParameterTypes.Length; i++)
-				if (ParameterTypes [i].IsByRef)
+				if (ParameterTypes [i].IsByRef && false)
 					il.DeclareLocal (ParameterTypes [i].GetElementType ());
 
 #if !MONOMAC_BOOTSTRAP
 			for (int i = 2, j = 0; i < ParameterTypes.Length; i++) {
-				if (ParameterTypes [i].IsByRef) {
+				if (ParameterTypes [i].IsByRef && false) {
 					il.Emit (OpCodes.Ldarg, i);
 					il.Emit (OpCodes.Ldind_I);
 					il.Emit (OpCodes.Call, getobject);
@@ -94,7 +94,7 @@ namespace MonoMac.ObjCRuntime {
 
 			for (int i = 2, j = 0; i < ParameterTypes.Length; i++) {
 				il.Emit (OpCodes.Ldarg, i);
-				if (ParameterTypes [i].IsByRef)
+				if (ParameterTypes [i].IsByRef && false)
 					il.Emit (OpCodes.Ldloca_S, j++);
 			}
 	
@@ -102,7 +102,7 @@ namespace MonoMac.ObjCRuntime {
 
 #if !MONOMAC_BOOTSTRAP
 			for (int i = 2, j = 0; i < ParameterTypes.Length; i++) {
-				if (ParameterTypes [i].IsByRef) {
+				if (ParameterTypes [i].IsByRef && false) {
 					Label done = il.DefineLabel ();
 					il.Emit (OpCodes.Ldloc, j++);
 					il.Emit (OpCodes.Brfalse, done);
