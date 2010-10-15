@@ -34,6 +34,10 @@ namespace MonoMac.AppKit {
 
 		public static void Init ()
 		{
+			// Ensure we register the native libraries we need prior to
+			// assembly registration
+			NSObject.Ping ();
+
 			foreach (var a in AppDomain.CurrentDomain.GetAssemblies ())
 				Runtime.RegisterAssembly (a);
 
