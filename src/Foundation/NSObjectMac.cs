@@ -34,7 +34,7 @@ namespace MonoMac.Foundation {
 		static IntPtr fl = Dlfcn.dlopen (Constants.FoundationLibrary, 1);
 		static IntPtr al = Dlfcn.dlopen (Constants.AppKitLibrary, 1);
 		static IntPtr wl = Dlfcn.dlopen (Constants.WebKitLibrary, 1);
-			
+		static IntPtr ql = Dlfcn.dlopen (Constants.QTKitLibrary, 1);
 	}
 }
 
