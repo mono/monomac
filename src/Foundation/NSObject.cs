@@ -134,6 +134,7 @@ namespace MonoMac.Foundation {
 			}
 			if (super != IntPtr.Zero) {
 				Marshal.FreeHGlobal (super);
+				super = IntPtr.Zero;
 			}
 		}
 
