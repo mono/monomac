@@ -35,10 +35,6 @@ namespace MonoMac.Foundation {
 		static IntPtr al = Dlfcn.dlopen (Constants.AppKitLibrary, 1);
 		static IntPtr wl = Dlfcn.dlopen (Constants.WebKitLibrary, 1);
 		static IntPtr ql = Dlfcn.dlopen (Constants.QTKitLibrary, 1);
-
-		internal static void Ping () {
-			// Force running the cctor so that we populate our address space prior to assembly registration
-		}
 	}
 }
 
