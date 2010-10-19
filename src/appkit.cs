@@ -5106,7 +5106,7 @@ namespace MonoMac.AppKit {
 		int CurrentVirtualScreen { get; set; }
 	}
 
-	[BaseType (typeof (NSSavePanel), Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (NSOpenSavePanelDelegate)})]
+	[BaseType (typeof (NSSavePanel))]
 	interface NSOpenPanel {
 		[Static]
 		[Export ("openPanel")]
@@ -5127,32 +5127,69 @@ namespace MonoMac.AppKit {
 
 		[Export ("canChooseFiles")]
 		bool CanChooseFiles { get; set; }
+
+		// Deprecated methods, but needed to run on pre 10.6 systems
+		[Obsolete ("On 10.6 and newer, use Uris")]
+		[Export ("filenames")]
+		string [] Filenames { get; set; }
+
+		//runModalForWindows:Completeion
+		[Obsolete ("On 10.6 and newer use runModalForWindow:")]
+		[Export ("beginSheetForDirectory:file:types:modalForWindow:modalDelegate:didEndSelector:contextInfo:")]
+		void BeginSheet (string directory, string fileName, string [] fileTypes, NSWindow modalForWindow, NSObject modalDelegate, Selector didEndSelector, IntPtr contextInfo);
+
+		[Obsolete ("On 10.6 and newer use runWithCompletionHandler:")]
+		[Export ("beginForDirectory:file:types:modelessDelegate:didEndSelector:contextInfo:")]
+		void Begin (string directory, string fileName, string [] fileTypes, NSObject modelessDelegate, Selector didEndSelector, IntPtr contextInfo);
+		
+		[Obsolete ("On 10.6 and newer use runModal:")]
+		[Export ("runModalForDirectory:file:types:")]
+		int RunModal (string directory, string fileName, string [] types);
+
+		[Obsolete ("On 10.6 and newer use runModal:")]
+		[Export ("runModalForTypes:")]
+		int RunModal (string [] types);
 	}
 
 	[BaseType (typeof (NSObject))]
 	[Model]
 	interface NSOpenSavePanelDelegate {
 		[Export ("panel:shouldEnableURL:"), EventArgs ("NSOpenSavePanelUrl"), DefaultValue (true)]
-		bool ShouldEnableURL (NSObject sender, NSUrl url);
+		bool ShouldEnableUrl (NSSavePanel panel, NSUrl url);
 
-		// FIXME: binding
-		//[Export ("panel:validateURL:error:")]
-		//bool ValidateUrlerror (NSObject sender, NSUrl url, out NSError outError);
+		[Export ("panel:validateURL:error:"), EventArgs ("NSOpenSavePanelValidate"), DefaultValue (true)]
+		bool ValidateUrl (NSSavePanel panel, NSUrl url, out NSError outError);
 
 		[Export ("panel:didChangeToDirectoryURL:"), EventArgs ("NSOpenSavePanelUrl")]
-		void DidChangeToDirectoryURL (NSObject sender, NSUrl url);
+		void DidChangeToDirectory (NSSavePanel panel, NSUrl newDirectoryUrl);
 
-		[Export ("panel:userEnteredFilename:confirmed:"), EventArgs ("NSOpenSaveFilename"), DefaultValueFromArgument ("filename")]
-		string UserEnteredFilename (NSObject sender, string filename, bool confirmed);
+		[Export ("panel:userEnteredFilename:confirmed:"), EventArgs ("NSOpenSaveFilenameConfirmation"), DefaultValueFromArgument ("filename")]
+		string UserEnteredFilename (NSSavePanel panel, string filename, bool confirmed);
 
 		[Export ("panel:willExpand:"), EventArgs ("NSOpenSaveExpanding")]
-		void WillExpand (NSObject sender, bool expanding);
+		void WillExpand (NSSavePanel panel, bool expanding);
 
 		[Export ("panelSelectionDidChange:"), EventArgs ("NSOpenSaveSelectionChanged")]
-		void SelectionDidChange (NSObject sender);
+		void SelectionDidChange (NSSavePanel panel);
+
+		[Obsolete ("On 10.6 and newer use ValidateUrlError")]
+		[Export ("panel:isValidFilename:"), EventArgs ("NSOpenSaveFilename"), DefaultValue (true)]
+		bool IsValidFilename (NSSavePanel panel, string fileName);
+
+		[Obsolete ("On 10.6 and newer Use DidChangeToDirectoryUrl instead")]
+		[Export ("panel:directoryDidChange:"), EventArgs ("NSOpenSaveFilename")]
+		void DirectoryDidChange (NSSavePanel panel, string path);
+
+		[Obsolete ("After 10.6, this method is obsolete and does not control sorting order")]
+		[Export ("panel:compareFilename:with:caseSensitive"), EventArgs ("NSOpenSaveCompare"), DefaultValue (NSComparisonResult.Same)]
+		NSComparisonResult CompareFilenames (NSSavePanel panel, string name1, string name2, bool caseSensitive);
+
+		[Obsolete ("After 10.6 use ShouldEnableUrl")]
+		[Export ("panel:shouldShowFilename:"), EventArgs ("NSOpenSaveFilename"), DefaultValue (true)]
+		bool ShouldShowFilename (NSSavePanel panel, string filename);
 	}
 
-
+	
 	[BaseType (typeof (NSTableView))]
 	interface NSOutlineView {
 		[Export ("outlineTableColumn")]
@@ -7251,6 +7288,8 @@ namespace MonoMac.AppKit {
 		NSView AccessoryView { get; set; }
 	}
 
+	delegate void NSSavePanelComplete (int result);
+	
 	[BaseType (typeof (NSPanel), Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (NSOpenSavePanelDelegate)})]
 	interface NSSavePanel {
 		[Static]
@@ -7258,7 +7297,7 @@ namespace MonoMac.AppKit {
 		NSSavePanel SavePanel { get; }
 
 		[Export ("URL")]
-		NSUrl URL { get; }
+		NSUrl Url { get; }
 
 		[Export ("isExpanded")]
 		bool IsExpanded { get; }
@@ -7272,13 +7311,11 @@ namespace MonoMac.AppKit {
 		[Export ("cancel:")]
 		void Cancel (NSObject sender);
 
-		// FIXME: uses blocks
-		//[Export ("beginSheetModalForWindow:completionHandler:NSIntegerresult))handler")]
-		//void BeginSheetModal (NSWindow window, void (^ (NSInteger, );
+		[Export ("beginSheetModalForWindow:completionHandler:")]
+		void BeginSheet (NSWindow window, NSSavePanelComplete onComplete);
 
-		// FIXME: uses blocks
-		//[Export ("beginWithCompletionHandler:NSIntegerresult))handler")]
-		//void BeginWithCompletionHandlerNSIntegerresult))handler (void (^ (NSInteger, );
+		[Export ("beginWithCompletionHandler:")]
+		void Begin (NSSavePanelComplete onComplete);
 
 		[Export ("runModal")]
 		int RunModal ();
@@ -7331,6 +7368,26 @@ namespace MonoMac.AppKit {
 
 		[Export ("showsHiddenFiles")]
 		bool ShowsHiddenFiles { get; set; }
+
+		[Obsolete ("On 10.6 and newer use Url instead")]
+		[Export ("filename")]
+		string Filename { get; }
+
+		[Obsolete ("On 10.6 and newer use DirectoryUrl instead")]
+		[Export ("directory")]
+		string Directory { get; set; }
+
+		[Obsolete ("On 10.6 and newer use AllowedFileTypes instead")]
+		[Export ("requiredFileType")]
+		string RequiredFileType { get; set; }
+
+		[Obsolete ("On 10.6 and newer use Begin with the callback")]
+		[Export ("beginSheetForDirectory:file:modalForWindow:modalDelegate:didEndSelector:contextInfo:")]
+		void Begin (string directory, string filename, NSWindow docWindow, NSObject modalDelegate, Selector selector, IntPtr context);
+
+		[Obsolete ("On 10.6 and newer use RunModal instead")]
+		[Export ("runModalForDirectory:file:")]
+		int RunModal (string directory, string filename);
 	}
 
 	[BaseType (typeof (NSObject))]
