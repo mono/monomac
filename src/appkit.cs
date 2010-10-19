@@ -10907,10 +10907,10 @@ namespace MonoMac.AppKit {
 		[Export ("tag")]
 		int Tag { get; set; }
 
-		[Export ("target")]
+		[Export ("target"), NullAllowed]
 		NSObject Target { get; set; }
 
-		[Export ("action")]
+		[Export ("action"), NullAllowed]
 		Selector Action { get; set; }
 
 		[Export ("enabled")]
