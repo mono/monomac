@@ -34,7 +34,7 @@ namespace MonoMac.ObjCRuntime {
 #if !MONOMAC_BOOTSTRAP
 		private static MethodInfo buildarray = typeof (NSArray).GetMethod ("FromNSObjects", BindingFlags.Static | BindingFlags.Public);
 		private static MethodInfo getobject = typeof (Runtime).GetMethod ("GetNSObject", BindingFlags.Static | BindingFlags.Public);
-		private static MethodInfo gethandle = typeof (NSObject).GetMethod ("get_Handle", BindingFlags.Static | BindingFlags.Public);
+		private static MethodInfo gethandle = typeof (NSObject).GetMethod ("get_Handle", BindingFlags.Instance | BindingFlags.Public);
 #endif
 
 		private MethodInfo minfo;
@@ -93,9 +93,10 @@ namespace MonoMac.ObjCRuntime {
 				il.Emit (OpCodes.Ldarg_0);
 
 			for (int i = 2, j = 0; i < ParameterTypes.Length; i++) {
-				il.Emit (OpCodes.Ldarg, i);
 				if (ParameterTypes [i].IsByRef)
 					il.Emit (OpCodes.Ldloca_S, j++);
+				else
+					il.Emit (OpCodes.Ldarg, i);
 			}
 	
 			il.Emit (OpCodes.Call, minfo);
@@ -104,7 +105,7 @@ namespace MonoMac.ObjCRuntime {
 			for (int i = 2, j = 0; i < ParameterTypes.Length; i++) {
 				if (ParameterTypes [i].IsByRef) {
 					Label done = il.DefineLabel ();
-					il.Emit (OpCodes.Ldloc, j++);
+					il.Emit (OpCodes.Ldloc, j);
 					il.Emit (OpCodes.Brfalse, done);
 					il.Emit (OpCodes.Ldloc, j++);
 					il.Emit (OpCodes.Call, gethandle);

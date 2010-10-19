@@ -30,6 +30,7 @@ using MonoMac.Foundation;
 
 namespace MonoMac.ObjCRuntime {
 	internal class NativeConstructorBuilder : NativeImplementationBuilder {
+		static MethodInfo trygetnsobject;
 		static MethodInfo newobject;
 		static MethodInfo gettype;
 		static FieldInfo handlefld;
@@ -39,6 +40,7 @@ namespace MonoMac.ObjCRuntime {
 		private ConstructorInfo cinfo;
 				
 		static NativeConstructorBuilder () {
+			trygetnsobject = typeof (Runtime).GetMethod ("TryGetNSObject", BindingFlags.Public | BindingFlags.Static);
 			newobject = typeof (System.Runtime.Serialization.FormatterServices).GetMethod ("GetUninitializedObject", BindingFlags.Public | BindingFlags.Static);
 			gettype = typeof (System.Type).GetMethod ("GetTypeFromHandle", BindingFlags.Public | BindingFlags.Static);
 			handlefld = typeof (NSObject).GetField ("handle", BindingFlags.NonPublic | BindingFlags.Instance);
@@ -76,8 +78,13 @@ namespace MonoMac.ObjCRuntime {
 		internal override Delegate CreateDelegate () {
 			DynamicMethod method = new DynamicMethod (Guid.NewGuid ().ToString (), typeof (IntPtr), ParameterTypes, module, true);
 			ILGenerator il = method.GetILGenerator ();
+			Label done = il.DefineLabel ();
 			
 			il.DeclareLocal (typeof (object));
+
+			il.Emit (OpCodes.Ldarg_0);
+			il.Emit (OpCodes.Call, trygetnsobject);
+			il.Emit (OpCodes.Brtrue, done);
 
 			il.Emit (OpCodes.Ldtoken, cinfo.DeclaringType);
 			il.Emit (OpCodes.Call, gettype);
@@ -93,6 +100,7 @@ namespace MonoMac.ObjCRuntime {
 			}
 			il.Emit (OpCodes.Call, cinfo);
 
+			il.MarkLabel (done);
 			il.Emit (OpCodes.Ldarg_0);
 			il.Emit (OpCodes.Ret);
 
