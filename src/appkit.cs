@@ -2739,6 +2739,9 @@ namespace MonoMac.AppKit {
 
 	[BaseType (typeof (NSTextField))]
 	interface NSComboBox {
+		[Export ("initWithFrame:")]
+		IntPtr Constructor (RectangleF frameRect);
+		
 		[Export ("hasVerticalScroller")]
 		bool HasVerticalScroller { get; set; }
 
@@ -7513,6 +7516,9 @@ namespace MonoMac.AppKit {
 
 	[BaseType (typeof (NSTextField))]
 	interface NSSearchField {
+		[Export ("initWithFrame:")]
+		IntPtr Constructor (RectangleF frameRect);
+
 		[Export ("recentSearches")]
 		string [] RecentSearches { get; set; }
 
@@ -9804,6 +9810,8 @@ namespace MonoMac.AppKit {
 
 	[BaseType (typeof (NSTextField))]
 	interface NSSecureTextField {
+		[Export ("initWithFrame:")]
+		IntPtr Constructor (RectangleF frameRect);
 	}
 	
 	[BaseType (typeof (NSObject))]
@@ -10636,6 +10644,9 @@ namespace MonoMac.AppKit {
 	
 	[BaseType (typeof (NSTextField))]
 	interface NSTokenField {
+		[Export ("initWithFrame:")]
+		IntPtr Constructor (RectangleF frameRect);
+
 		[Export ("setTokenStyle:style")]
 		void SetTokenStylestyle (NSTokenStyle style );
 
