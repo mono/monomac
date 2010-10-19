@@ -1629,7 +1629,7 @@ namespace MonoMac.AppKit {
 		NSAttributedString AttributedAlternateTitle  { get; set; }
 
 		[Export ("bezelStyle")]
-		NSBezelStyle bezelStyle ();
+		NSBezelStyle BezelStyle { get; }
 
 		[Export ("allowsMixedState")]
 		bool AllowsMixedState { get; }
