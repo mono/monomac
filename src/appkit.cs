@@ -7400,6 +7400,55 @@ namespace MonoMac.AppKit {
 		string JobStyleHint { get; set; }
 	}
 
+	[BaseType (typeof (NSView))]
+	interface NSProgressIndicator {
+		[Export ("initWithFrame:")]
+		IntPtr Constructor (RectangleF frameRect);
+
+		[Export ("incrementBy:")]
+		void IncrementBy (double delta);
+
+		[Export ("startAnimation:")]
+		void StartAnimation (NSObject sender);
+
+		[Export ("stopAnimation:")]
+		void StopAnimation (NSObject sender);
+
+		[Export ("style")]
+		NSProgressIndicatorStyle Style { get; set; }
+
+		[Export ("sizeToFit")]
+		void SizeToFit ();
+
+		[Export ("displayedWhenStopped")]
+		bool IsDisplayedWhenStopped { [Bind ("isDisplayedWhenStopped")] get; set }
+
+		//Detected properties
+		[Export ("indeterminate")]
+		bool Indeterminate { [Bind ("isIndeterminate")]get; set; }
+
+		[Export ("bezeled")]
+		bool Bezeled { [Bind ("isBezeled")]get; set; }
+
+		[Export ("controlTint")]
+		NSControlTint ControlTint { get; set; }
+
+		[Export ("controlSize")]
+		NSControlSize ControlSize { get; set; }
+
+		[Export ("doubleValue")]
+		double DoubleValue { get; set; }
+
+		[Export ("minValue")]
+		double MinValue { get; set; }
+
+		[Export ("maxValue")]
+		double MaxValue { get; set; }
+
+		[Export ("usesThreadedAnimation")]
+		bool UsesThreadedAnimation { get; set; }
+	}
+
 	[BaseType (typeof (NSObject))]
 	interface NSResponder {
 		[Export ("tryToPerform:with:")]

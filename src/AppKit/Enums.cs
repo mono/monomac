@@ -1345,4 +1345,15 @@ namespace MonoMac.AppKit {
 		Back = 0x0405,
 		Aux0 = 0x0409
 	}
+
+	public enum NSProgressIndicatorThickness {
+		Small = 10,
+		Regular = 14,
+		Aqua = 12,
+		Large = 18
+	}
+
+	public enum NSProgressIndicatorStyle {
+		Bar, Spinning
+	}
 } 
