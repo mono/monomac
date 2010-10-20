@@ -7421,7 +7421,7 @@ namespace MonoMac.AppKit {
 		void SizeToFit ();
 
 		[Export ("displayedWhenStopped")]
-		bool IsDisplayedWhenStopped { [Bind ("isDisplayedWhenStopped")] get; set }
+		bool IsDisplayedWhenStopped { [Bind ("isDisplayedWhenStopped")] get; set; }
 
 		//Detected properties
 		[Export ("indeterminate")]
