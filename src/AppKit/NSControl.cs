@@ -1,4 +1,9 @@
 //
+// NSControl.cs: Support for the NSControl class
+//
+// Author:
+//   Miguel de Icaza (miguel@gnome.org)
+//
 // Copyright 2010, Novell, Inc.
 //
 // Permission is hereby granted, free of charge, to any person obtaining
@@ -20,21 +25,48 @@
 // OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-
-//
-// Used to preload the Foundation and AppKit libraries as our runtime
-// requires this.   This will be replaced later with a dynamic system
-//
 using System;
 using MonoMac.ObjCRuntime;
+using MonoMac.Foundation;
 
-namespace MonoMac.Foundation {
-	public partial class NSObject {
-		// Used to force the loading of AppKit and Foundation
-		static IntPtr fl = Dlfcn.dlopen (Constants.FoundationLibrary, 1);
-		static IntPtr al = Dlfcn.dlopen (Constants.AppKitLibrary, 1);
-		static IntPtr wl = Dlfcn.dlopen (Constants.WebKitLibrary, 1);
-		static IntPtr ql = Dlfcn.dlopen (Constants.QTKitLibrary, 1);
+namespace MonoMac.AppKit {
+
+	public partial class NSControl {
+		const string skey = "__monomac_nscontrol_activated";
+		static Selector myTarget = new Selector (skey);
+
+		internal class MonoMacControlDispatcher : NSObject {
+			internal NSControl Host;
+			internal EventHandler activated;
+			
+			[Export (skey)]
+			public void ControlActivated ()
+			{
+				if (activated != null)
+					activated (Host, EventArgs.Empty);
+			}
+		}
+		
+		public event EventHandler Activated {
+			add {
+				var ctarget = Target as MonoMacControlDispatcher;
+				if (ctarget == null){
+					Target = ctarget = new MonoMacControlDispatcher ();
+					ctarget.Host = this;
+				}
+				Action = myTarget;
+				ctarget.activated += value;
+			}
+
+			remove {
+				var ctarget = Target as MonoMacControlDispatcher;
+				if (ctarget != null){
+					ctarget.activated -= value;
+					if (ctarget == null)
+						Action = null;
+				}
+			}
+		}
+
 	}
 }
-

@@ -1317,4 +1317,43 @@ namespace MonoMac.AppKit {
 		RetainRenderers  = 503,
 		ResetLibrary     = 504
 	}
+
+	public enum NSGLTextureTarget {
+		T2D = 0x0de1,
+		CubeMap = 0x8513,
+		RectangleExt = 0x84F5,
+	}
+
+	public enum NSGLFormat {
+		RGB = 0x1907,
+		RGBA = 0x1908,
+		DepthComponent = 0x1902,
+	}
+	
+	public enum NSGLTextureCubeMap {
+		None = 0,
+		PositiveX = 0x8515,
+		PositiveY = 0x8517,
+		PositiveZ = 0x8519,
+		NegativeX = 0x8516,
+		NegativeY = 0x8517,
+		NegativeZ = 0x851A
+	}
+
+	public enum NSGLColorBuffer {
+		Front = 0x0404,
+		Back = 0x0405,
+		Aux0 = 0x0409
+	}
+
+	public enum NSProgressIndicatorThickness {
+		Small = 10,
+		Regular = 14,
+		Aqua = 12,
+		Large = 18
+	}
+
+	public enum NSProgressIndicatorStyle {
+		Bar, Spinning
+	}
 } 

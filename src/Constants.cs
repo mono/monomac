@@ -39,6 +39,5 @@ namespace MonoMac {
 		public const string QTKitLibrary = "/System/Library/Frameworks/QTKit.framework/QTKit";
 		public const string CarbonLibrary = "/System/Library/Frameworks/Carbon.framework/Carbon";
 		public const string HIToolboxLibrary = "/System/Library/Frameworks/Carbon.framework/Frameworks/HIToolbox.framework/HIToolbox";
-		public const string CoreLocationLibrary = "/System/Library/Frameworks/CoreLocation.framework/CoreLocation";
 	}
 }
