@@ -5780,7 +5780,7 @@ namespace MonoMac.AppKit {
 
 	[BaseType (typeof (NSObject), Delegates=new string [] { "WeakDelegate" }, Events=new Type [] { typeof (NSImageDelegate)})]
 	interface NSImage {
-		[Export ("imageNamed:")]
+		[Static, Export ("imageNamed:")]
 		NSImage ImageNamed (string name);
 
 		[Export ("initWithSize:")]
