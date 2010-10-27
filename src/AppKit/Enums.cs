@@ -628,7 +628,7 @@ namespace MonoMac.AppKit {
 	}
 	
 	public enum NSBezelStyle {
-		Rounded,
+		Rounded = 1,
 		RegularSquare,
 		ThickSquare,
 		ThickerSquare,
@@ -641,7 +641,7 @@ namespace MonoMac.AppKit {
 		TexturedRounded,
 		RoundRect,
 		Recessed,
-	    RoundedDisclosure
+		RoundedDisclosure
 	}
 
 	public enum NSGradientType {
