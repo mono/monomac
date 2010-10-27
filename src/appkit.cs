@@ -1638,7 +1638,7 @@ namespace MonoMac.AppKit {
 		NSAttributedString AttributedAlternateTitle  { get; set; }
 
 		[Export ("bezelStyle")]
-		NSBezelStyle BezelStyle { get; }
+		NSBezelStyle BezelStyle { get; set; }
 
 		[Export ("allowsMixedState")]
 		bool AllowsMixedState { get; }
@@ -4866,7 +4866,7 @@ namespace MonoMac.AppKit {
 		NSMenu Supermenu { get; set; }
 
 		[Export ("autoenablesItems")]
-		bool AutoenablesItems { get; set; }
+		bool AutoEnablesItems { get; set; }
 
 		[Export ("delegate")]
 		NSObject WeakDelegate { get; set; }
@@ -7100,7 +7100,7 @@ namespace MonoMac.AppKit {
 		bool PullsDown { get; set; }
 
 		[Export ("autoenablesItems")]
-		bool AutoenablesItems { get; set; }
+		bool AutoEnablesItems { get; set; }
 
 		[Export ("preferredEdge")]
 		NSRectEdge PreferredEdge { get; set; }
