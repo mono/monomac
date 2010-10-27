@@ -31,10 +31,13 @@ CORE_SOURCES =					\
 # Sources that are not part of CORE_SOURCES or the generated templates
 MONOMAC_SOURCES = \
 	./Foundation/NSObjectMac.cs			\
+	./AppKit/ActionDispatcher.cs			\
 	./AppKit/NSApplication.cs			\
 	./AppKit/NSApplicationDelegate.cs		\
 	./AppKit/NSBitmapImageRep.cs			\
 	./AppKit/NSControl.cs				\
+	./AppKit/NSMenuItem.cs				\
+	./AppKit/NSActionCell.cs			\
 	./AppKit/Functions.cs				\
 	./AppKit/NSOpenGLPixelFormat.cs			\
 	./AppKit/NSGraphics.cs				\

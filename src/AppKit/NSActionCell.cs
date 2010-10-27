@@ -1,8 +1,8 @@
 //
-// NSControl.cs: Support for the NSControl class
+// NSActionCell.cs: Support for the NSActionCell class
 //
 // Author:
-//   Miguel de Icaza (miguel@gnome.org)
+//   Michael Hutchinson (mhutchinson@novell.com)
 //
 // Copyright 2010, Novell, Inc.
 //
@@ -31,8 +31,8 @@ using MonoMac.Foundation;
 
 namespace MonoMac.AppKit {
 
-	public partial class NSControl {
-		
+	public partial class NSActionCell {
+
 		public event EventHandler Activated {
 			add {
 				var ctarget = Target as ActionDispatcher;

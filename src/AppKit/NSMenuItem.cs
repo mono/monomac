@@ -1,7 +1,8 @@
 //
-// NSControl.cs: Support for the NSControl class
+// NSMenuItem.cs: Support for the NSMenuItem class
 //
 // Author:
+//   Michael Hutchinson (mhutchinson@novell.com)
 //   Miguel de Icaza (miguel@gnome.org)
 //
 // Copyright 2010, Novell, Inc.
@@ -31,8 +32,8 @@ using MonoMac.Foundation;
 
 namespace MonoMac.AppKit {
 
-	public partial class NSControl {
-		
+	public partial class NSMenuItem {
+
 		public event EventHandler Activated {
 			add {
 				var ctarget = Target as ActionDispatcher;

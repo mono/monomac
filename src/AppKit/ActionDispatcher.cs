@@ -1,8 +1,8 @@
 //
-// NSControl.cs: Support for the NSControl class
+// ActionDispatcher.cs: Helper to map Target-Action to event
 //
 // Author:
-//   Miguel de Icaza (miguel@gnome.org)
+//   Michael Hutchinson <mhutchinson@novell.com>
 //
 // Copyright 2010, Novell, Inc.
 //
@@ -29,31 +29,21 @@ using System;
 using MonoMac.ObjCRuntime;
 using MonoMac.Foundation;
 
-namespace MonoMac.AppKit {
+namespace MonoMac.AppKit
+{
+	[Register ("__monomac_internal_ActionDispatcher")]
+	internal class ActionDispatcher : NSObject
+	{
+		const string skey = "__monomac_internal_ActionDispatcher_activated:";
+		public static Selector Action = new Selector (skey);
 
-	public partial class NSControl {
-		
-		public event EventHandler Activated {
-			add {
-				var ctarget = Target as ActionDispatcher;
-				if (ctarget == null) {
-					Target = ctarget = new ActionDispatcher ();
-					Action = ActionDispatcher.Action;
-				}
-				ctarget.Activated += value;
-			}
+		public EventHandler Activated;
 
-			remove {
-				var ctarget = Target as ActionDispatcher;
-				if (ctarget != null){
-					ctarget.Activated -= value;
-					if (ctarget == null) {
-						Action = null;
-						Target = null;
-					}
-				}
-			}
+		[Export (skey)]
+		public void OnActivated (NSObject sender)
+		{
+			if (Activated != null)
+				Activated (sender, EventArgs.Empty);
 		}
-
 	}
 }
