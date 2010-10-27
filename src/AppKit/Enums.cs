@@ -1362,4 +1362,5 @@ namespace MonoMac.AppKit {
 		Center,
 		Bottom
 	}
+	}
 } 

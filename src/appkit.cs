@@ -5786,7 +5786,8 @@ namespace MonoMac.AppKit {
 
 	[BaseType (typeof (NSObject), Delegates=new string [] { "WeakDelegate" }, Events=new Type [] { typeof (NSImageDelegate)})]
 	interface NSImage {
-		[Static, Export ("imageNamed:")]
+		[Static]
+		[Export ("imageNamed:")]
 		NSImage ImageNamed (string name);
 
 		[Export ("initWithSize:")]
@@ -12657,4 +12658,145 @@ namespace MonoMac.AppKit {
 		NSRunningApplication CurrentApplication { get ; }
 	
 	}	
+
+[BaseType (typeof (NSMenuItemCell))]
+	interface NSPopUpButtonCell {
+		[Export ("initTextCell:pullsDown:")]
+		NSObject InitTextCellpullsDown (string stringValue, bool pullDown);
+
+		[Export ("addItemWithTitle:")]
+		void AddItemWithTitle (string title);
+
+		[Export ("addItemsWithTitles:")]
+		void AddItemsWithTitles (NSArray itemTitles);
+
+		[Export ("insertItemWithTitle:atIndex:")]
+		void InsertItemWithTitleatIndex (string title, int index);
+
+		[Export ("removeItemWithTitle:")]
+		void RemoveItemWithTitle (string title);
+
+		[Export ("removeItemAtIndex:")]
+		void RemoveItemAtIndex (int index);
+
+		[Export ("removeAllItems")]
+		void RemoveAllItems ();
+
+		[Export ("itemArray")]
+		NSArray ItemArray ();
+
+		[Export ("numberOfItems")]
+		int NumberOfItems ();
+
+		[Export ("indexOfItem:")]
+		int IndexOfItem (NSMenuItem item);
+
+		[Export ("indexOfItemWithTitle:")]
+		int IndexOfItemWithTitle (string title);
+
+		[Export ("indexOfItemWithTag:")]
+		int IndexOfItemWithTag (int tag);
+
+		[Export ("indexOfItemWithRepresentedObject:")]
+		int IndexOfItemWithRepresentedObject (NSObject obj);
+
+		[Export ("indexOfItemWithTarget:andAction:")]
+		int IndexOfItemWithTargetandAction (NSObject target, Selector actionSelector);
+
+		[Export ("itemAtIndex:")]
+		NSMenuItem ItemAtIndex (int index);
+
+		[Export ("itemWithTitle:")]
+		NSMenuItem ItemWithTitle (string title);
+
+		[Export ("lastItem")]
+		NSMenuItem LastItem ();
+
+		[Export ("selectItem:")]
+		void SelectItem (NSMenuItem item);
+
+		[Export ("selectItemAtIndex:")]
+		void SelectItemAtIndex (int index);
+
+		[Export ("selectItemWithTitle:")]
+		void SelectItemWithTitle (string title);
+
+		[Export ("selectItemWithTag:")]
+		bool SelectItemWithTag (int tag);
+
+		[Export ("setTitle:")]
+		void SetTitle (string aString);
+
+		[Export ("selectedItem")]
+		NSMenuItem SelectedItem ();
+
+		[Export ("indexOfSelectedItem")]
+		int IndexOfSelectedItem ();
+
+		[Export ("synchronizeTitleAndSelectedItem")]
+		void SynchronizeTitleAndSelectedItem ();
+
+		[Export ("itemTitleAtIndex:")]
+		string ItemTitleAtIndex (int index);
+
+		[Export ("itemTitles")]
+		NSArray ItemTitles ();
+
+		[Export ("titleOfSelectedItem")]
+		string TitleOfSelectedItem ();
+
+		[Export ("attachPopUpWithFrame:inView:")]
+		void AttachPopUpWithFrameinView (RectangleF cellFrame, NSView controlView);
+
+		[Export ("dismissPopUp")]
+		void DismissPopUp ();
+
+		[Export ("performClickWithFrame:inView:")]
+		void PerformClickWithFrameinView (RectangleF frame, NSView controlView);
+
+		//Detected properties
+		[Export ("menu")]
+		NSMenu Menu { get; set; }
+
+		[Export ("pullsDown")]
+		bool PullsDown { get; set; }
+
+		[Export ("autoenablesItems")]
+		bool AutoenablesItems { get; set; }
+
+		[Export ("preferredEdge")]
+		NSRectEdge PreferredEdge { get; set; }
+
+		[Export ("usesItemFromMenu")]
+		bool UsesItemFromMenu { get; set; }
+
+		[Export ("altersStateOfSelectedItem")]
+		bool AltersStateOfSelectedItem { get; set; }
+
+		[Export ("arrowPosition")]
+		NSPopUpArrowPosition ArrowPosition { get; set; }
+
+		[Export ("objectValue")]
+		NSObject ObjectValue { get; set; }
+	}
+
+	[BaseType (typeof (NSControl))]
+	interface NSStepper {
+		//Detected properties
+		[Export ("minValue")]
+		double MinValue { get; set; }
+
+		[Export ("maxValue")]
+		double MaxValue { get; set; }
+
+		[Export ("increment")]
+		double Increment { get; set; }
+
+		[Export ("valueWraps")]
+		bool ValueWraps { get; set; }
+
+		[Export ("autorepeat")]
+		bool Autorepeat { get; set; }
+
+	}
 }
