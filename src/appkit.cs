@@ -9126,7 +9126,7 @@ namespace MonoMac.AppKit {
 		[Export ("lockFocusIfCanDrawInContext:")]
 		bool LockFocusIfCanDrawInContext (NSGraphicsContext context);
 
-		[Export ("focusView")]
+		[Export ("focusView")][Static]
 		NSView FocusView ();
 
 		[Export ("visibleRect")]
