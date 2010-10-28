@@ -57,7 +57,7 @@ SOURCES = \
 
 DEFINES = -define:NET_2_0
 
-TARGETS = bmac.exe MonoMac.dll  parse.exe
+TARGETS = bmac.exe monomac.dll  parse.exe
 
 include Make.shared
 
@@ -100,10 +100,10 @@ count:
 counts:
 	make pass | grep 'could not be' | sed 's/.*`//' | sed "s/'.*//" | sort | uniq -c | sort -n
 
-MonoMac.dll: $(SOURCES) generated_sources $(MONOMAC_SOURCES) $(SHARED_SOURCES) $(SHARED_CORE_SOURCES)
-	gmcs -nowarn:0414,$(WARNINGS_I_SHOULD_FIX) -debug -unsafe $(SOURCES) @generated_sources $(MONOMAC_SOURCES) $(SHARED_SOURCES) $(SHARED_CORE_SOURCES) -target:library -define:GENERATOR -define:MONOMAC -out:MonoMac.dll -r:System.Drawing
+monomac.dll: $(SOURCES) generated_sources $(MONOMAC_SOURCES) $(SHARED_SOURCES) $(SHARED_CORE_SOURCES)
+	gmcs -nowarn:0414,$(WARNINGS_I_SHOULD_FIX) -debug -unsafe $(SOURCES) @generated_sources $(MONOMAC_SOURCES) $(SHARED_SOURCES) $(SHARED_CORE_SOURCES) -target:library -define:GENERATOR -define:MONOMAC -out:monomac.dll -r:System.Drawing
 
 clean:
 	rm -f $(TARGETS) core.dll
 
-all: MonoMac.dll
+all: monomac.dll
