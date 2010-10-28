@@ -9739,7 +9739,7 @@ namespace MonoMac.AppKit {
 		[Wrap ("WeakDelegate")][NullAllowed]
 		NSTableViewDelegate Delegate { get; set; }
 	
-		[Export ("headerView")]
+		[Export ("headerView"), NullAllowed]
 		NSTableHeaderView HeaderView { get; set; }
 	
 		[Export ("cornerView")]
