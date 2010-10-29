@@ -63,7 +63,7 @@ namespace MonoMac.ObjCRuntime {
 					ParameterTypes [i + 2] = typeof (IntPtr).MakeByRefType ();
 				else
 					ParameterTypes [i + 2] = parms [i].ParameterType;
-				Signature += TypeConverter.ToNative (parms [i].ParameterType);
+				Signature += TypeConverter.ToNative (ParameterTypes [i + 2]);
 			}
 			
 			DelegateType = CreateDelegateType (rettype, ParameterTypes);
