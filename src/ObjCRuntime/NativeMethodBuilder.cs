@@ -63,6 +63,9 @@ namespace MonoMac.ObjCRuntime {
 					ParameterTypes [i + 2] = typeof (IntPtr).MakeByRefType ();
 				else
 					ParameterTypes [i + 2] = parms [i].ParameterType;
+				// The TypeConverter will emit a ^@ for a byref type that is a NSObject or NSObject subclass in this case
+				// If we passed the ParameterTypes [i+2] as would be more logical we would emit a ^^v for that case, which
+				// while currently acceptible isn't representative of what obj-c wants.
 				Signature += TypeConverter.ToNative (parms [i].ParameterType);
 			}
 			
