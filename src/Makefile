@@ -40,6 +40,7 @@ MONOMAC_SOURCES = \
 	./AppKit/NSActionCell.cs			\
 	./AppKit/NSButton.cs				\
 	./AppKit/NSPopUpButton.cs			\
+	./AppKit/NSPopUpButtonCell.cs			\
 	./AppKit/Functions.cs				\
 	./AppKit/NSOpenGLPixelFormat.cs			\
 	./AppKit/NSGraphics.cs				\
