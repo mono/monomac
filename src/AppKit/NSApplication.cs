@@ -21,10 +21,12 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 using System;
-using MonoMac.ObjCRuntime;
+using System.Reflection;
 using System.Runtime.InteropServices;
-using MonoMac.Foundation;
+
 using MonoMac;
+using MonoMac.Foundation;
+using MonoMac.ObjCRuntime;
 
 namespace MonoMac.AppKit {
 	public partial class NSApplication : NSResponder {
@@ -44,6 +46,15 @@ namespace MonoMac.AppKit {
 			// TODO:
 			//   Install hook to register dynamically loaded assemblies
 			//   Only do the type scan for assembleis that reference MonoMac.dll
+		}
+
+		public static void InitDrawingBridge ()
+		{
+			FieldInfo UseCocoaDrawableField = Type.GetType ("System.Drawing.GDIPlus, System.Drawing").GetField ("UseCocoaDrawable", BindingFlags.Static | BindingFlags.Public);
+			FieldInfo UseCarbonDrawableField = Type.GetType ("System.Drawing.GDIPlus, System.Drawing").GetField ("UseCarbonDrawable", BindingFlags.Static | BindingFlags.Public);
+
+			UseCocoaDrawableField.SetValue (null, true);
+			UseCarbonDrawableField.SetValue (null, false);
 		}
 
 		public static void Main (string [] args)
