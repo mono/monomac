@@ -142,7 +142,7 @@ namespace MonoMac.Foundation {
 		[Export ("release")]
 		internal void Release () {
 			uint count = Messaging.uint_objc_msgSend (handle, selRetainCount);
-			Messaging.void_objc_msgSendSuper (new IntPtr [] {handle, class_ptr}, selRelease);
+			Messaging.void_objc_msgSendSuper (SuperHandle, selRelease);
 
 			if (count == 2) {
 				IntPtr hptr = GetObjCIvar ("__monoObjectGCHandle");
@@ -160,7 +160,7 @@ namespace MonoMac.Foundation {
 		[Export ("retain")]
 		internal IntPtr Retain () {
 			uint count = Messaging.uint_objc_msgSend (handle, selRetainCount);
-			Messaging.void_objc_msgSendSuper (new IntPtr [] {handle, class_ptr}, selRetain);
+			Messaging.void_objc_msgSendSuper (SuperHandle, selRetain);
 
 			if (count == 1) {
 				IntPtr hptr = GetObjCIvar ("__monoObjectGCHandle");
