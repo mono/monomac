@@ -47,6 +47,9 @@ namespace MonoMac.ObjCRuntime {
 			if (ea == null)
 				throw new ArgumentException ("MethodInfo does not have a export attribute");
 
+			if (minfo.DeclaringType.IsGenericType)
+				throw new ArgumentException ("MethodInfo cannot be in a generic type");
+
 			parms = minfo.GetParameters ();
 
 			rettype = ConvertReturnType (minfo.ReturnType);
@@ -96,8 +99,10 @@ namespace MonoMac.ObjCRuntime {
 			}
 #endif
 
-			if (!minfo.IsStatic)
+			if (!minfo.IsStatic) {
 				il.Emit (OpCodes.Ldarg_0);
+				il.Emit (OpCodes.Castclass, minfo.DeclaringType);
+			}
 
 			for (int i = 2, j = 0; i < ParameterTypes.Length; i++) {
 				if (parms [i-2].ParameterType.IsByRef && (parms[i-2].ParameterType.GetElementType ().IsSubclassOf (typeof (NSObject)) || parms[i-2].ParameterType.GetElementType () == typeof (NSObject)))
@@ -106,7 +111,10 @@ namespace MonoMac.ObjCRuntime {
 					il.Emit (OpCodes.Ldarg, i);
 			}
 	
-			il.Emit (OpCodes.Call, minfo);
+			if (minfo.IsVirtual)
+				il.Emit (OpCodes.Callvirt, minfo);
+			else
+				il.Emit (OpCodes.Call, minfo);
 
 #if !MONOMAC_BOOTSTRAP
 			for (int i = 2, j = 0; i < ParameterTypes.Length; i++) {
