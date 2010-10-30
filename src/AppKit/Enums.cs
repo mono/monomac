@@ -1362,4 +1362,10 @@ namespace MonoMac.AppKit {
 		Center,
 		Bottom
 	}
+
+	public static class NSFileTypeForHFSTypeCode {
+		public static string ComputerIcon = "root";
+		public static string DesktopIcon = "desk";
+		public static string FinderIcon = "FNDR";
+	}
 } 
