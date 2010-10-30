@@ -32,6 +32,7 @@ CORE_SOURCES =					\
 MONOMAC_SOURCES = \
 	./Foundation/NSObjectMac.cs			\
 	./AppKit/ActionDispatcher.cs			\
+	./AppKit/Functions.cs				\
 	./AppKit/NSApplication.cs			\
 	./AppKit/NSApplicationDelegate.cs		\
 	./AppKit/NSBitmapImageRep.cs			\
@@ -39,9 +40,10 @@ MONOMAC_SOURCES = \
 	./AppKit/NSMenuItem.cs				\
 	./AppKit/NSActionCell.cs			\
 	./AppKit/NSButton.cs				\
+	./AppKit/NSLevelIndicator.cs			\
 	./AppKit/NSPopUpButton.cs			\
 	./AppKit/NSPopUpButtonCell.cs			\
-	./AppKit/Functions.cs				\
+	./AppKit/NSSegmentedControl.cs			\
 	./AppKit/NSOpenGLPixelFormat.cs			\
 	./AppKit/NSGraphics.cs				\
 	./AppKit/NSMatrix.cs				\
