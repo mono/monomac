@@ -95,9 +95,9 @@ namespace MonoMac.Foundation {
 		[Export ("respondsToSelector:")]
 		public virtual bool RespondsToSelector (Selector sel) {
 			if (IsDirectBinding) {
-				return Messaging.bool_objc_msgSend_intptr (this.Handle, selRespondsToSelector, sel.Handle);
+				return Messaging.bool_objc_msgSend_intptr (Handle, selRespondsToSelector, sel.Handle);
 			} else {
-				return Messaging.bool_objc_msgSendSuper_intptr (this.Handle, selRespondsToSelector, sel.Handle);
+				return Messaging.bool_objc_msgSendSuper_intptr (SuperHandle, selRespondsToSelector, sel.Handle);
 			}
 		}
 
