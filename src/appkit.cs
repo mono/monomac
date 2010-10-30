@@ -1704,32 +1704,32 @@ namespace MonoMac.AppKit {
 		[Export ("isOpaque")]
 		bool IsOpaque { get; } 
 	
-		[Export ("isEnabled")]
-		bool Enabled { get; set; }
+		[Export ("enabled")]
+		bool Enabled { [Bind ("isEnabled")] get; set; }
 	
 		[Export ("sendActionOn:")]
 		int SendActionOn (int mask);
 	
-		[Export ("isContinuous")]
-		bool IsContinuous { get; set; }
+		[Export ("continuous")]
+		bool IsContinuous { [Bind ("isContinuous")] get; set; }
 	
-		[Export ("isEditable")]
-		bool Editable { get; set; }
+		[Export ("editable")]
+		bool Editable { [Bind ("isEditable")] get; set; }
 	
-		[Export ("isSelectable")]
-		bool Selectable { get; set; }
+		[Export ("selectable")]
+		bool Selectable { [Bind ("isSelectable")] get; set; }
 	
-		[Export ("isBordered")]
-		bool Bordered { get; set; }
+		[Export ("bordered")]
+		bool Bordered { [Bind ("isBordered")] get; set; }
 	
-		[Export ("isBezeled")]
-		bool Bezeled { get; set; }
+		[Export ("bezeled")]
+		bool Bezeled { [Bind ("isBezeled")] get; set; }
 	
-		[Export ("isScrollable")]
-		bool Scrollable { get; set; }
+		[Export ("scrollable")]
+		bool Scrollable { [Bind ("isScrollable")] get; set; }
 	
-		[Export ("isHighlighted")]
-		bool Highlighted { get; set; }
+		[Export ("highlighted")]
+		bool Highlighted { [Bind ("isHighlighted")] get; set; }
 	
 		[Export ("alignment")]
 		NSTextAlignment Alignment { get; set; }
