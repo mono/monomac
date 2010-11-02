@@ -937,7 +937,7 @@ namespace MonoMac.AppKit {
 		NSData TiffRepresentation { get; }
 
 		[Export ("TIFFRepresentationUsingCompression:factor:")]
-		NSData TiffRepresentationUsingCompressionfactor (NSTiffCompression comp, float factor);
+		NSData TiffRepresentationUsingCompressionFactor (NSTiffCompression comp, float factor);
 
 		[Static]
 		[Export ("TIFFRepresentationOfImageRepsInArray:")]
@@ -2117,7 +2117,7 @@ namespace MonoMac.AppKit {
 		bool WriteItems (NSCollectionView collectionView, NSIndexSet indexes, NSPasteboard toPasteboard);
 
 		[Export ("collectionView:namesOfPromisedFilesDroppedAtDestination:forDraggedItemsAtIndexes:")]
-		string [] NamesOfPromisedFilesDroppedAtDestination (NSCollectionView collectionView, NSUrl dropURL, NSIndexSet indexes);
+		string [] NamesOfPromisedFilesDroppedAtDestination (NSCollectionView collectionView, NSUrl dropUrl, NSIndexSet indexes);
 
 		//[Export ("collectionView:draggingImageForItemsAtIndexes:withEvent:offset:")]
 		//NSImage DraggingImageForItems (NSCollectionView collectionView, NSIndexSet indexes, NSEvent evg, NSPointPointer dragImageOffset);
@@ -3326,7 +3326,7 @@ namespace MonoMac.AppKit {
 
 		// Binding out error
 		//[Export ("initWithContentsOfURL:ofType:error:")]
-		//IntPtr Constructor (NSUrl absoluteURL, string typeName, NSError outError);
+		//IntPtr Constructor (NSUrl absoluteUrl, string typeName, NSError outError);
 		//
 		//[Export ("initForURL:withContentsOfURL:ofType:error:")]
 		//IntPtr Constructor (NSUrl absoluteDocumentUrl, NSUrl absoluteDocumentContentsUrl, string typeName, NSError outError);
@@ -3335,10 +3335,10 @@ namespace MonoMac.AppKit {
 		// void RevertDocumentToSaved (NSObject sender);
 		// 
 		// [Export ("revertToContentsOfURL:ofType:error:")]
-		// bool RevertToContentsOfUrl (NSUrl absoluteURL, string typeName, NSError outError);
+		// bool RevertToContentsOfUrl (NSUrl absoluteUrl, string typeName, NSError outError);
 		// 
 		// [Export ("readFromURL:ofType:error:")]
-		// bool ReadFromUrl (NSUrl absoluteURL, string typeName, NSError outError);
+		// bool ReadFromUrl (NSUrl absoluteUrl, string typeName, NSError outError);
 		// 
 		// [Export ("readFromFileWrapper:ofType:error:")]
 		// bool ReadFromFileWrapper (NSFileWrapper fileWrapper, string typeName, NSError outError);
@@ -3347,7 +3347,7 @@ namespace MonoMac.AppKit {
 		// bool ReadFromData (NSData data, string typeName, NSError outError);
 
 		//[Export ("writeToURL:ofType:error:")]
-		//bool WriteToUrl (NSUrl absoluteURL, string typeName, NSError outError);
+		//bool WriteToUrl (NSUrl absoluteUrl, string typeName, NSError outError);
 
 		// BINDING out error
 		//[Export ("fileWrapperOfType:error:")]
@@ -3357,13 +3357,13 @@ namespace MonoMac.AppKit {
 		//NSData DataOfType (string typeName, NSError outError);
 		//
 		//[Export ("writeSafelyToURL:ofType:forSaveOperation:error:")]
-		//bool WriteSafelyToUrl (NSUrl absoluteURL, string typeName, NSSaveOperationType saveOperation, NSError outError);
+		//bool WriteSafelyToUrl (NSUrl absoluteUrl, string typeName, NSSaveOperationType saveOperation, NSError outError);
 		//
 		//[Export ("writeToURL:ofType:forSaveOperation:originalContentsURL:error:")]
-		//bool WriteToUrl (NSUrl absoluteURL, string typeName, NSSaveOperationType saveOperation, NSUrl absoluteOriginalContentsURL, NSError outError);
+		//bool WriteToUrl (NSUrl absoluteUrl, string typeName, NSSaveOperationType saveOperation, NSUrl absoluteOriginalContentsUrl, NSError outError);
 		//
 		//[Export ("fileAttributesToWriteToURL:ofType:forSaveOperation:originalContentsURL:error:")]
-		//NSDictionary FileAttributes (NSUrl absoluteURL, string typeName, NSSaveOperationType saveOperation, NSUrl absoluteOriginalContentsURL, NSError outError);
+		//NSDictionary FileAttributes (NSUrl absoluteUrl, string typeName, NSSaveOperationType saveOperation, NSUrl absoluteOriginalContentsUrl, NSError outError);
 
 		[Export ("keepBackupFile")]
 		bool KeepBackupFile ();
@@ -3396,10 +3396,10 @@ namespace MonoMac.AppKit {
 		string FileTypeFromLastRunSavePanel { get; }
 
 		[Export ("saveToURL:ofType:forSaveOperation:delegate:didSaveSelector:contextInfo:")]
-		void SaveToUrl (NSUrl absoluteURL, string typeName, NSSaveOperationType saveOperation, NSObject delegateObject, Selector didSaveSelector, IntPtr contextInfo);
+		void SaveToUrl (NSUrl absoluteUrl, string typeName, NSSaveOperationType saveOperation, NSObject delegateObject, Selector didSaveSelector, IntPtr contextInfo);
 
 		[Export ("saveToURL:ofType:forSaveOperation:error:")]
-		bool SaveToUrl (NSUrl absoluteURL, string typeName, NSSaveOperationType saveOperation, NSError outError);
+		bool SaveToUrl (NSUrl absoluteUrl, string typeName, NSSaveOperationType saveOperation, NSError outError);
 
 		[Export ("hasUnautosavedChanges")]
 		bool HasUnautosavedChanges { get; }
@@ -3522,7 +3522,7 @@ namespace MonoMac.AppKit {
 		NSDate FileModificationDate { get; set; }
 
 		[Export ("autosavedContentsFileURL")]
-		NSUrl AutosavedContentsFileURL { get; set; }
+		NSUrl AutosavedContentsFileUrl { get; set; }
 
 		[Export ("printInfo")]
 		NSPrintInfo PrintInfo { get; set; }
@@ -3549,7 +3549,7 @@ namespace MonoMac.AppKit {
 		string CurrentDirectory { get; }
 
 		[Export ("documentForURL:")]
-		NSDocument DocumentForUrl (NSUrl absoluteURL);
+		NSDocument DocumentForUrl (NSUrl absoluteUrl);
 
 		[Export ("documentForWindow:")]
 		NSDocument DocumentForWindow (NSWindow window);
@@ -3579,16 +3579,16 @@ namespace MonoMac.AppKit {
 		int RunModalOpenPanelforTypes (NSOpenPanel openPanel, string [] types);
 
 		[Export ("openDocumentWithContentsOfURL:display:error:")]
-		NSObject OpenDocument (NSUrl absoluteURL, bool displayDocument, NSError outError);
+		NSObject OpenDocument (NSUrl absoluteUrl, bool displayDocument, NSError outError);
 
 		[Export ("makeDocumentWithContentsOfURL:ofType:error:")]
-		NSObject MakeDocument (NSUrl absoluteURL, string typeName, NSError outError);
+		NSObject MakeDocument (NSUrl absoluteUrl, string typeName, NSError outError);
 
 		[Export ("reopenDocumentForURL:withContentsOfURL:error:")]
-		bool ReopenDocument (NSUrl absoluteDocumentURL, NSUrl absoluteDocumentContentsURL, NSError outError);
+		bool ReopenDocument (NSUrl absoluteDocumentUrl, NSUrl absoluteDocumentContentsUrl, NSError outError);
 
 		[Export ("makeDocumentForURL:withContentsOfURL:ofType:error:")]
-		NSObject MakeDocument (NSUrl absoluteDocumentURL, NSUrl absoluteDocumentContentsURL, string typeName, NSError outError);
+		NSObject MakeDocument (NSUrl absoluteDocumentUrl, NSUrl absoluteDocumentContentsUrl, string typeName, NSError outError);
 
 		[Export ("saveAllDocuments:")]
 		void SaveAllDocuments (NSObject sender);
@@ -3621,10 +3621,10 @@ namespace MonoMac.AppKit {
 		void NoteNewRecentDocument (NSDocument document);
 
 		[Export ("noteNewRecentDocumentURL:")]
-		void NoteNewRecentDocumentURL (NSUrl absoluteURL);
+		void NoteNewRecentDocumentURL (NSUrl absoluteUrl);
 
 		[Export ("recentDocumentURLs")]
-		NSUrl [] RecentDocumentURLs { get; }
+		NSUrl [] RecentDocumentUrls { get; }
 
 		[Export ("defaultType")]
 		string DefaultType { get; }
@@ -3805,7 +3805,7 @@ namespace MonoMac.AppKit {
 		bool IsSymbolicLink { get; }
 
 		[Export ("matchesContentsOfURL:")]
-		bool MatchesContentsOfURL (NSUrl url);
+		bool MatchesContentsOfUrl (NSUrl url);
 
 		// FIXME: bind out
 		//[Export ("readFromURL:options:error:")]
@@ -5205,7 +5205,7 @@ namespace MonoMac.AppKit {
 	[BaseType (typeof (NSObject))]
 	interface NSNib {
 		[Export ("initWithContentsOfURL:")]
-		IntPtr Constructor (NSUrl nibFileURL);
+		IntPtr Constructor (NSUrl nibFileUrl);
 
 		[Export ("initWithNibNamed:bundle:")]
 		IntPtr Constructor (string nibName, NSBundle bundle);
@@ -6746,10 +6746,10 @@ namespace MonoMac.AppKit {
 		NSString NSPostScriptPboardType{ get; }
         
 		[Field ("NSTIFFPboardType")]
-		NSString NSTIFFPboardType{ get; }
+		NSString NSTiffPboardType{ get; }
 		
 		[Field ("NSRTFPboardType")]
-		NSString NSRTFPboardType{ get; }
+		NSString NSRtfPboardType{ get; }
 		
 		[Field ("NSTabularTextPboardType")]
 		NSString NSTabularTextPboardType{ get; }
@@ -6767,19 +6767,19 @@ namespace MonoMac.AppKit {
 		NSString NSColorPboardType{ get; }
 		
 		[Field ("NSRTFDPboardType")]
-		NSString NSRTFDPboardType{ get; }
+		NSString NSRtfdPboardType{ get; }
 		
 		[Field ("NSHTMLPboardType")]
-		NSString NSHTMLPboardType{ get; }
+		NSString NSHtmlPboardType{ get; }
 		
 		[Field ("NSPICTPboardType")]
-		NSString NSPICTPboardType{ get; }
+		NSString NSPictPboardType{ get; }
 		
 		[Field ("NSURLPboardType")]
-		NSString NSURLPboardType{ get; }
+		NSString NSUrlPboardType{ get; }
 		
 		[Field ("NSPDFPboardType")]
-		NSString NSPDFPboardType{ get; }
+		NSString NSPdfPboardType{ get; }
 		
 		[Field ("NSVCardPboardType")]
 		NSString NSVCardPboardType{ get; }
@@ -11736,7 +11736,7 @@ namespace MonoMac.AppKit {
 		string Title  { get; set; }
 	
 		[Export ("representedURL")]
-		NSUrl RepresentedURL { get; set; }
+		NSUrl RepresentedUrl { get; set; }
 	
 		[Export ("representedFilename")]
 		string RepresentedFilename  { get; set; }
@@ -12015,10 +12015,10 @@ namespace MonoMac.AppKit {
 		bool IsOneShot { get; }
 	
 		[Export ("dataWithEPSInsideRect:")]
-		NSData DataWithEPSInsideRect (RectangleF rect);
+		NSData DataWithEpsInsideRect (RectangleF rect);
 	
 		[Export ("dataWithPDFInsideRect:")]
-		NSData DataWithPDFInsideRect (RectangleF rect);
+		NSData DataWithPdfInsideRect (RectangleF rect);
 	
 		[Export ("print:")]
 		void Print (NSObject sender);
@@ -12456,7 +12456,7 @@ namespace MonoMac.AppKit {
 		bool OpenFile (string fullPath, NSImage anImage, PointF point, NSView aView);
 		
 		[Export ("openURL:")]
-		bool OpenURL (NSUrl url);
+		bool OpenUrl (NSUrl url);
 		
 		[Export ("launchApplication:")]
 		bool LaunchApplication (string appName);
@@ -12474,7 +12474,7 @@ namespace MonoMac.AppKit {
 		bool SelectFile (string fullPath, string rootFullPath);
 		
 		[Export ("activateFileViewerSelectingURLs:")]
-		void ActivateFileViewer (NSUrl[] fileURLs);
+		void ActivateFileViewer (NSUrl[] fileUrls);
 		
 		[Export ("showSearchResultsForQueryString:")]
 		bool ShowSearchResults (string queryString );
@@ -12550,7 +12550,7 @@ namespace MonoMac.AppKit {
 		bool LaunchApp (string bundleIdentifier, NSWorkspaceLaunchOptions options, NSAppleEventDescriptor descriptor, NSNumber identifier);
 		
 		[Export ("openURLs:withAppBundleIdentifier:options:additionalEventParamDescriptor:launchIdentifiers:")]
-		bool OpenURLs (NSUrl[] urls, string bundleIdentifier, NSWorkspaceLaunchOptions options, NSAppleEventDescriptor descriptor, string[] identifiers);
+		bool OpenUrls (NSUrl[] urls, string bundleIdentifier, NSWorkspaceLaunchOptions options, NSAppleEventDescriptor descriptor, string[] identifiers);
 		
 		[Export ("launchedApplications")]
 		NSDictionary [] LaunchedApplications { get; }
@@ -12591,44 +12591,44 @@ namespace MonoMac.AppKit {
 	[BaseType (typeof (NSObject))]
 	interface NSRunningApplication {
 		[Export ("terminated")]
-		bool terminated { [Bind ("isTerminated")] get;  }
+		bool Terminated { [Bind ("isTerminated")] get;  }
 		
 		[Export ("finishedLaunching")]
-		bool finishedLaunching { [Bind ("isFinishedLaunching")] get;  }
+		bool FinishedLaunching { [Bind ("isFinishedLaunching")] get;  }
 		
 		[Export ("hidden")]
-		bool hidden { [Bind ("isHidden")] get;  }
+		bool Hidden { [Bind ("isHidden")] get;  }
 		
 		[Export ("active")]
-		bool active { [Bind ("isActive")] get;  }
+		bool Active { [Bind ("isActive")] get;  }
 		
 		[Export ("activationPolicy")]
-		NSApplicationActivationPolicy activationPolicy { get;  }
+		NSApplicationActivationPolicy ActivationPolicy { get;  }
 		
 		[Export ("localizedName")]
-		string localizedName { get;  }
+		string LocalizedName { get;  }
 		
 		[Export ("bundleIdentifier")]
-		string bundleIdentifier { get;  }
+		string BundleIdentifier { get;  }
 		
 		[Export ("bundleURL")]
-		NSUrl bundleURL { get;  }
+		NSUrl BundleUrl { get;  }
 		
 		[Export ("executableURL")]
-		NSUrl executableURL { get;  }
+		NSUrl ExecutableUrl { get;  }
 		
 		// changed pid_t to int
 		[Export ("processIdentifier")]
-		int processIdentifier { get;  }
+		int ProcessIdentifier { get;  }
 		
 		[Export ("launchDate")]
-		NSDate launchDate { get;  }
+		NSDate LaunchDate { get;  }
 		
 		[Export ("icon")]
-		NSImage icon { get;  }
+		NSImage Icon { get;  }
 		
 		[Export ("executableArchitecture")]
-		int executableArchitecture { get;  }
+		int ExecutableArchitecture { get;  }
 		
 		[Export ("hide")]
 		bool Hide { get; }
