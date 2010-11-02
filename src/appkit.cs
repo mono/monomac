@@ -5818,16 +5818,16 @@ namespace MonoMac.AppKit {
 		//IntPtr Constructor (NSData data);
 
 		[Export ("drawAtPoint:fromRect:operation:fraction:")]
-		void DrawAtPointfromRectoperationfraction (PointF point, RectangleF fromRect, NSCompositingOperation op, float delta);
+		void Draw (PointF point, RectangleF fromRect, NSCompositingOperation op, float delta);
 
 		[Export ("drawInRect:fromRect:operation:fraction:")]
-		void DrawInRectfromRectoperationfraction (RectangleF rect, RectangleF fromRect, NSCompositingOperation op, float delta);
+		void Draw (RectangleF rect, RectangleF fromRect, NSCompositingOperation op, float delta);
 
 		[Export ("drawInRect:fromRect:operation:fraction:respectFlipped:hints:")]
-		void DrawInRectfromRectoperationfractionrespectFlippedhints (RectangleF dstSpacePortionRect, RectangleF srcSpacePortionRect, NSCompositingOperation op, float requestedAlpha, bool respectContextIsFlipped, NSDictionary hints);
+		void Draw (RectangleF dstSpacePortionRect, RectangleF srcSpacePortionRect, NSCompositingOperation op, float requestedAlpha, bool respectContextIsFlipped, NSDictionary hints);
 
 		[Export ("drawRepresentation:inRect:")]
-		bool DrawRepresentationinRect (NSImageRep imageRep, RectangleF rect);
+		bool Draw (NSImageRep imageRep, RectangleF rect);
 
 		[Export ("recache")]
 		void Recache ();
@@ -5906,10 +5906,10 @@ namespace MonoMac.AppKit {
 		CGImage CGImageForProposedRect (RectangleF proposedDestRect, NSGraphicsContext referenceContext, NSDictionary hints);
 
 		[Export ("bestRepresentationForRect:context:hints:")]
-		NSImageRep BestRepresentationForRect (RectangleF rect, NSGraphicsContext referenceContext, NSDictionary hints);
+		NSImageRep BestRepresentation (RectangleF rect, [NullAllowed] NSGraphicsContext referenceContext, [NullAllowed] NSDictionary hints);
 
 		[Export ("hitTestRect:withImageDestinationRect:context:hints:flipped:")]
-		bool HitTestRectwithImageDestinationRect (RectangleF testRectDestSpace, RectangleF imageRectDestSpace, NSGraphicsContext context, NSDictionary hints, bool flipped);
+		bool HitTestRect (RectangleF testRectDestSpace, RectangleF imageRectDestSpace, NSGraphicsContext context, NSDictionary hints, bool flipped);
 
 		//Detected properties
 		[Export ("size")]
