@@ -125,16 +125,13 @@ namespace MonoMac.Foundation {
 			if (handle != IntPtr.Zero) {
 				Runtime.UnregisterNSObject (handle);
 				if (disposing) {
-					Messaging.void_objc_msgSend (handle, selRelease);
+					Release ();
+					Marshal.FreeHGlobal (super);
 				} else {
 					if (disposer.Add (handle))
-						Messaging.void_objc_msgSend_intptr_intptr_bool (disposer.Handle, selPerformSelectorOnMainThreadWithObjectWaitUntilDone, selDrain, IntPtr.Zero, false);
+						Messaging.void_objc_msgSend_intptr_intptr_bool (super, selPerformSelectorOnMainThreadWithObjectWaitUntilDone, selDrain, IntPtr.Zero, false);
 				}
 				handle = IntPtr.Zero;
-			}
-			if (super != IntPtr.Zero) {
-				Marshal.FreeHGlobal (super);
-				super = IntPtr.Zero;
 			}
 		}
 
@@ -335,8 +332,10 @@ namespace MonoMac.Foundation {
 			[Export ("drain:")]
 			internal void Drain (NSObject ctx) {
 				lock (lock_obj) {
-					foreach (IntPtr x in handles)
-						Messaging.void_objc_msgSend (x, selRelease);
+					foreach (IntPtr x in handles) {
+						Messaging.void_objc_msgSendSuper (x, selRelease);
+						Marshal.FreeHGlobal (x);
+					}
 					handles.Clear ();
 				}
 			}
