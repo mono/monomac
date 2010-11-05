@@ -126,21 +126,31 @@ namespace MonoMac.Foundation {
 				Runtime.UnregisterNSObject (handle);
 				if (disposing) {
 					Release ();
-					Marshal.FreeHGlobal (super);
+					Marshal.FreeHGlobal (SuperHandle);
 				} else {
 					if (disposer.Add (handle))
-						Messaging.void_objc_msgSend_intptr_intptr_bool (super, selPerformSelectorOnMainThreadWithObjectWaitUntilDone, selDrain, IntPtr.Zero, false);
+						Messaging.void_objc_msgSend_intptr_intptr_bool (SuperHandle, selPerformSelectorOnMainThreadWithObjectWaitUntilDone, selDrain, IntPtr.Zero, false);
 				}
 				handle = IntPtr.Zero;
+				super = IntPtr.Zero;
 			}
 		}
 
 #if OBJECT_REF_TRACKING
-		[Export ("release")]
 		internal void Release () {
+			Messaging.void_objc_msgSend (handle, selRelease);
+		}
+
+		internal void Retain () {
+			Messaging.void_objc_msgSend (handle, selRetain);
+		}
+
+		[Export ("release")]
+		internal void NativeRelease () {
 			uint count = Messaging.uint_objc_msgSend (handle, selRetainCount);
 			Messaging.void_objc_msgSendSuper (SuperHandle, selRelease);
 
+			Console.WriteLine ("Releasing a {0}:{1}", this.GetType (), count);
 			if (count == 2) {
 				IntPtr hptr = GetObjCIvar ("__monoObjectGCHandle");
 
@@ -149,13 +159,13 @@ namespace MonoMac.Foundation {
 					h.Free ();
 					SetObjCIvar ("__monoObjectGCHandle", IntPtr.Zero);
 				} else {
-					Console.WriteLine ("WARNING: How did this happen: ReleaseImpl");
+					Console.WriteLine ("WARNING: How did this happen: NativeRelease");
 				}
 			}
 		}
 
 		[Export ("retain")]
-		internal IntPtr Retain () {
+		internal IntPtr NativeRetain () {
 			uint count = Messaging.uint_objc_msgSend (handle, selRetainCount);
 			Messaging.void_objc_msgSendSuper (SuperHandle, selRetain);
 
@@ -166,7 +176,7 @@ namespace MonoMac.Foundation {
 					GCHandle h = GCHandle.Alloc (this);
 					SetObjCIvar ("__monoObjectGCHandle", (IntPtr) h);
 				} else {
-					Console.WriteLine ("WARNING: How did this happen: RetainImpl");
+					Console.WriteLine ("WARNING: How did this happen: NativeRetain");
 				}
 			}
 
