@@ -150,7 +150,6 @@ namespace MonoMac.Foundation {
 			uint count = Messaging.uint_objc_msgSend (handle, selRetainCount);
 			Messaging.void_objc_msgSendSuper (SuperHandle, selRelease);
 
-			Console.WriteLine ("Releasing a {0}:{1}", this.GetType (), count);
 			if (count == 2) {
 				IntPtr hptr = GetObjCIvar ("__monoObjectGCHandle");
 
