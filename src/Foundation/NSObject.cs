@@ -128,8 +128,8 @@ namespace MonoMac.Foundation {
 					Release ();
 					Marshal.FreeHGlobal (SuperHandle);
 				} else {
-					if (disposer.Add (handle))
-						Messaging.void_objc_msgSend_intptr_intptr_bool (SuperHandle, selPerformSelectorOnMainThreadWithObjectWaitUntilDone, selDrain, IntPtr.Zero, false);
+					if (disposer.Add (SuperHandle))
+						Messaging.void_objc_msgSend_intptr_intptr_bool (disposer.Handle, selPerformSelectorOnMainThreadWithObjectWaitUntilDone, selDrain, IntPtr.Zero, false);
 				}
 				handle = IntPtr.Zero;
 				super = IntPtr.Zero;
