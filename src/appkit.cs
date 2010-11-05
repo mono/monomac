@@ -5486,7 +5486,7 @@ namespace MonoMac.AppKit {
 		
 		[Obsolete ("On 10.6 and newer use runModal:")]
 		[Export ("runModalForDirectory:file:types:")]
-		int RunModal (string directory, string fileName, string [] types);
+		int RunModal ([NullAllowed] string directory, [NullAllowed] string fileName, [NullAllowed] string [] types);
 
 		[Obsolete ("On 10.6 and newer use runModal:")]
 		[Export ("runModalForTypes:")]
@@ -7932,7 +7932,7 @@ namespace MonoMac.AppKit {
 
 		[Obsolete ("On 10.6 and newer use RunModal instead")]
 		[Export ("runModalForDirectory:file:")]
-		int RunModal (string directory, string filename);
+		int RunModal ([NullAllowed] string directory, [NullAllowed]  string filename);
 	}
 
 	[BaseType (typeof (NSObject))]
