@@ -1368,4 +1368,12 @@ namespace MonoMac.AppKit {
 		public static string DesktopIcon = "desk";
 		public static string FinderIcon = "FNDR";
 	}
+	
+	// These constants specify the possible states of a drawer.
+	public enum NSDrawerState {
+		Closed = 0,
+		Opening = 1,
+		Open = 2,
+		Closing = 3
+	}
 } 
