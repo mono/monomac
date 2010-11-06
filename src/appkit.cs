@@ -3720,9 +3720,10 @@ namespace MonoMac.AppKit {
 	}
 
 
-	[BaseType (typeof (NSResponder))]
+
+	[BaseType (typeof (NSResponder), Delegates=new string [] { "WeakDelegate" }, Events=new Type [] { typeof (NSDrawerDelegate)})]
 	interface NSDrawer {
-		[Export ("initWithContentSize:preferredEdge:")]
+			[Export ("initWithContentSize:preferredEdge:")]
 		IntPtr Constructor (SizeF contentSize, NSRectEdge edge);
 
 		[Export ("parentWindow")]
@@ -3733,10 +3734,13 @@ namespace MonoMac.AppKit {
 
 		[Export ("preferredEdge")]
 		NSRectEdge PreferredEdge { get; set; }
+		
+		[Export ("delegate", ArgumentSemantic.Assign), NullAllowed]
+		NSObject WeakDelegate { get; set; }
 
-		[Export ("delegate")]
-		NSDrawer Delegate { get; set; }
-
+		[Wrap ("WeakDelegate")]
+		NSDrawerDelegate Delegate { get; set; }
+		
 		//[Export ("open")]
 		//void Open ();
 
@@ -3756,7 +3760,7 @@ namespace MonoMac.AppKit {
 		void Toggle (NSObject sender);
 
 		[Export ("state")]
-		int State { get; }
+		NSDrawerState State { get; }
 
 		[Export ("edge")]
 		NSRectEdge Edge { get; }
@@ -3776,7 +3780,32 @@ namespace MonoMac.AppKit {
 		[Export ("trailingOffset")]
 		float TrailingOffset { get; set; }
 	}
+	
+	[BaseType (typeof (NSObject))]
+	[Model]
+	interface NSDrawerDelegate {
+		[Export ("drawerDidClose:"), EventArgs ("NSNotification"), DefaultValue (null)]
+		void DrawerDidClose (NSNotification notification);
+		
+		[Export ("drawerDidOpen:"), EventArgs ("NSNotification")]
+		void DrawerDidOpen (NSNotification notification);
 
+		[Export ("drawerShouldClose:"), EventArgs ("DrawerShouldCloseDelegate"), DefaultValue (true)]
+		bool DrawerShouldClose (NSDrawer sender);
+
+		[Export ("drawerShouldOpen:"), EventArgs ("DrawerShouldOpenDelegate"), DefaultValue (true)]
+		bool DrawerShouldOpen (NSDrawer sender);
+	
+		[Export ("drawerWillClose:"), EventArgs ("NSNotification"), DefaultValue (null)]
+		void DrawerWillClose (NSNotification notification);
+	
+		[Export ("drawerWillOpen:"), EventArgs ("NSNotification"), DefaultValue (null)]
+		void DrawerWillOpen (NSNotification notification);
+
+		[Export ("drawerWillResizeContents:toSize:"), EventArgs ("DrawerWillResizeContentsDelegate"), DefaultValue (null)]
+		SizeF DrawerWillResizeContents (NSDrawer sender, SizeF size);
+	}
+	
 	[BaseType (typeof (NSObject))]
 	interface NSFileWrapper {
 		// FIXME: Binding out error
