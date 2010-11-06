@@ -1602,7 +1602,7 @@ namespace MonoMac.AppKit {
 		void SetButtonType (NSButtonType aType);
 	
 		[Export ("state")]
-		int State { get; set; }
+		NSCellStateValue State { get; set; }
 	
 		[Export ("bordered")]
 		bool Bordered  { [Bind ("isBordered")] get; set; }
@@ -1687,7 +1687,7 @@ namespace MonoMac.AppKit {
 		NSCellType CellType { get; set; }
 	
 		[Export ("state")]
-		int State { get; set; }
+		NSCellStateValue State { get; set; }
 	
 		[Export ("target")]
 		NSObject Target { get; set; }
