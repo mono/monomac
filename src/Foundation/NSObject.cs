@@ -125,22 +125,28 @@ namespace MonoMac.Foundation {
 			if (handle != IntPtr.Zero) {
 				Runtime.UnregisterNSObject (handle);
 				if (disposing) {
-					Messaging.void_objc_msgSend (handle, selRelease);
+					Release ();
+					Marshal.FreeHGlobal (SuperHandle);
 				} else {
-					if (disposer.Add (handle))
+					if (disposer.Add (SuperHandle))
 						Messaging.void_objc_msgSend_intptr_intptr_bool (disposer.Handle, selPerformSelectorOnMainThreadWithObjectWaitUntilDone, selDrain, IntPtr.Zero, false);
 				}
 				handle = IntPtr.Zero;
-			}
-			if (super != IntPtr.Zero) {
-				Marshal.FreeHGlobal (super);
 				super = IntPtr.Zero;
 			}
 		}
 
 #if OBJECT_REF_TRACKING
-		[Export ("release")]
 		internal void Release () {
+			Messaging.void_objc_msgSend (handle, selRelease);
+		}
+
+		internal void Retain () {
+			Messaging.void_objc_msgSend (handle, selRetain);
+		}
+
+		[Export ("release")]
+		internal void NativeRelease () {
 			uint count = Messaging.uint_objc_msgSend (handle, selRetainCount);
 			Messaging.void_objc_msgSendSuper (SuperHandle, selRelease);
 
@@ -152,13 +158,13 @@ namespace MonoMac.Foundation {
 					h.Free ();
 					SetObjCIvar ("__monoObjectGCHandle", IntPtr.Zero);
 				} else {
-					Console.WriteLine ("WARNING: How did this happen: ReleaseImpl");
+					Console.WriteLine ("WARNING: How did this happen: NativeRelease");
 				}
 			}
 		}
 
 		[Export ("retain")]
-		internal IntPtr Retain () {
+		internal IntPtr NativeRetain () {
 			uint count = Messaging.uint_objc_msgSend (handle, selRetainCount);
 			Messaging.void_objc_msgSendSuper (SuperHandle, selRetain);
 
@@ -169,7 +175,7 @@ namespace MonoMac.Foundation {
 					GCHandle h = GCHandle.Alloc (this);
 					SetObjCIvar ("__monoObjectGCHandle", (IntPtr) h);
 				} else {
-					Console.WriteLine ("WARNING: How did this happen: RetainImpl");
+					Console.WriteLine ("WARNING: How did this happen: NativeRetain");
 				}
 			}
 
@@ -335,8 +341,10 @@ namespace MonoMac.Foundation {
 			[Export ("drain:")]
 			internal void Drain (NSObject ctx) {
 				lock (lock_obj) {
-					foreach (IntPtr x in handles)
-						Messaging.void_objc_msgSend (x, selRelease);
+					foreach (IntPtr x in handles) {
+						Messaging.void_objc_msgSendSuper (x, selRelease);
+						Marshal.FreeHGlobal (x);
+					}
 					handles.Clear ();
 				}
 			}
