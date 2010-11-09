@@ -32,6 +32,7 @@ namespace MonoMac.ObjCRuntime {
 	internal class NativeMethodBuilder : NativeImplementationBuilder {
 		private static ConstructorInfo newnsstring = typeof (NSString).GetConstructor (new Type [] { typeof (string) });
 #if !MONOMAC_BOOTSTRAP
+		private static MethodInfo convertarray = typeof (NSArray).GetMethod ("ArrayFromHandle", new Type [] { typeof (IntPtr) });
 		private static MethodInfo buildarray = typeof (NSArray).GetMethod ("FromNSObjects", BindingFlags.Static | BindingFlags.Public);
 		private static MethodInfo getobject = typeof (Runtime).GetMethod ("GetNSObject", BindingFlags.Static | BindingFlags.Public);
 		private static MethodInfo gethandle = typeof (NSObject).GetMethod ("get_Handle", BindingFlags.Instance | BindingFlags.Public);
@@ -64,6 +65,8 @@ namespace MonoMac.ObjCRuntime {
 			for (int i = 0; i < parms.Length; i++) {
 				if (parms [i].ParameterType.IsByRef && (parms[i].ParameterType.GetElementType ().IsSubclassOf (typeof (NSObject)) || parms[i].ParameterType.GetElementType () == typeof (NSObject)))
 					ParameterTypes [i + 2] = typeof (IntPtr).MakeByRefType ();
+				else if (parms [i].ParameterType.IsArray && (parms [i].ParameterType.GetElementType () == typeof (NSObject) || parms [i].ParameterType.GetElementType ().IsSubclassOf (typeof (NSObject))))
+					ParameterTypes [i + 2] = typeof (IntPtr);
 				else
 					ParameterTypes [i + 2] = parms [i].ParameterType;
 				// The TypeConverter will emit a ^@ for a byref type that is a NSObject or NSObject subclass in this case
@@ -95,6 +98,9 @@ namespace MonoMac.ObjCRuntime {
 					il.Emit (OpCodes.Ldind_I);
 					il.Emit (OpCodes.Call, getobject);
 					il.Emit (OpCodes.Stloc, j++);
+				} else if (parms [i-2].ParameterType.IsArray && (parms [i-2].ParameterType.GetElementType () == typeof (NSObject) || parms [i-2].ParameterType.GetElementType ().IsSubclassOf (typeof (NSObject)))) {
+					il.Emit (OpCodes.Ldarg, i);
+					il.Emit (OpCodes.Call, convertarray.MakeGenericMethod (parms [i-2].ParameterType.GetElementType ()));
 				}
 			}
 #endif
