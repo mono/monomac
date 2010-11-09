@@ -48,7 +48,9 @@ MONOMAC_SOURCES = \
 	./AppKit/NSGraphics.cs				\
 	./AppKit/NSMatrix.cs				\
 	./AppKit/NSWindow.cs				\
-	./Growl/Constants.cs
+	./Growl/Constants.cs				\
+	./WebKit/DomNodeList.cs				\
+	./WebKit/Indexers.cs
 
 GENERATOR_SOURCES = \
 	../../maccore/src/generator.cs			\
