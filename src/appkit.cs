@@ -171,7 +171,7 @@ namespace MonoMac.AppKit {
 		[Static, Export ("alertWithError:")]
 		NSAlert WithError (NSError  error);
 	
-		[Static, Export ("alertWithMessageText:defaultButton:alternateButton:otherButton:informativeTextWithFormat:"), Internal]
+		[Static, Export ("alertWithMessageText:defaultButton:alternateButton:otherButton:informativeTextWithFormat:")]
 		NSAlert WithMessage (string  message, string  defaultButton, string  alternateButton, string  otherButton, string full);
 	
 		[Export ("messageText")]
