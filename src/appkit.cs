@@ -3737,9 +3737,6 @@ namespace MonoMac.AppKit {
 		[Export ("delegate", ArgumentSemantic.Assign), NullAllowed]
 		NSObject WeakDelegate { get; set; }
 
-		[Export ("delegate", ArgumentSemantic.Assign), NullAllowed]
-		NSDrawerDelegate WeakDelegate { get; set; }
-
 		[Wrap ("WeakDelegate")]
 		NSDrawerDelegate Delegate { get; set; }
 
@@ -3782,32 +3779,7 @@ namespace MonoMac.AppKit {
 		[Export ("trailingOffset")]
 		float TrailingOffset { get; set; }
 	}
-	
-	[BaseType (typeof (NSObject))]
-	[Model]
-	interface NSDrawerDelegate {
-		[Export ("drawerDidClose:"), EventArgs ("NSNotification"), DefaultValue (null)]
-		void DrawerDidClose (NSNotification notification);
-		
-		[Export ("drawerDidOpen:"), EventArgs ("NSNotification")]
-		void DrawerDidOpen (NSNotification notification);
 
-		[Export ("drawerShouldClose:"), EventArgs ("DrawerShouldCloseDelegate"), DefaultValue (true)]
-		bool DrawerShouldClose (NSDrawer sender);
-
-		[Export ("drawerShouldOpen:"), EventArgs ("DrawerShouldOpenDelegate"), DefaultValue (true)]
-		bool DrawerShouldOpen (NSDrawer sender);
-	
-		[Export ("drawerWillClose:"), EventArgs ("NSNotification"), DefaultValue (null)]
-		void DrawerWillClose (NSNotification notification);
-	
-		[Export ("drawerWillOpen:"), EventArgs ("NSNotification"), DefaultValue (null)]
-		void DrawerWillOpen (NSNotification notification);
-
-		[Export ("drawerWillResizeContents:toSize:"), EventArgs ("DrawerWillResizeContentsDelegate"), DefaultValue (null)]
-		SizeF DrawerWillResizeContents (NSDrawer sender, SizeF size);
-	}
-	
 	[BaseType (typeof (NSObject))]
 	[Model]
 	interface NSDrawerDelegate {
