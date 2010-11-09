@@ -33,7 +33,7 @@ using MonoMac.CoreImage;
 using MonoMac.CoreAnimation;
 
 namespace MonoMac.AppKit {
-
+		
 	[BaseType (typeof (NSObject))]
 	interface CIImage {
 		[Export ("drawInRect:fromRect:operation:fraction:")]
@@ -65,10 +65,6 @@ namespace MonoMac.AppKit {
 
 	[BaseType (typeof (NSObject), Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (NSAnimationDelegate)})]
 	interface NSAnimation {
-		// Constant: NSAnimationProgressMarkNotification
-		// Constant: NSAnimationProgressMark
-		// Constant: NSAnimationTriggerOrderIn
-		// Constant: NSAnimationTriggerOrderOut
 		[Export ("initWithDuration:animationCurve:")]
 		IntPtr Constant (double duration, NSAnimationCurve animationCurve);
 	
@@ -126,7 +122,18 @@ namespace MonoMac.AppKit {
 		// TODO
 		//[Export ("runLoopModesForAnimating")]
 		//NSArray* runLoopModesForAnimating ();
-	
+
+		[Field ("NSAnimationProgressMarkNotification")]
+		NSString ProgressMarkNotification { get; }
+
+		[Field ("NSAnimationProgressMark")]
+		NSString ProgressMark { get; }
+
+		[Field ("NSAnimationTriggerOrderIn")]
+		NSString TriggerOrderIn { get; }
+
+		[Field ("NSAnimationTriggerOrderOut")]
+		NSString TriggerOrderOut { get; }
 	}
 	
 	[BaseType (typeof (NSObject))]
@@ -9453,16 +9460,24 @@ namespace MonoMac.AppKit {
 		
 		[Field ("NSFullScreenModeWindowLevel")]   
 		NSString NSFullScreenModeWindowLevel { get; }
+
+#region From NSAnimatablePropertyContainer
+		[Export ("animator")]
+		NSObject Animator { get; }
+	
+		[Export ("animations")]
+		NSDictionary Animations { get; set; }
+	
+		[Export ("animationForKey:")]
+		NSObject AnimationFor (NSString key);
+	
+		[Static, Export ("defaultAnimationForKey:")]
+		NSObject DefaultAnimationFor (NSString key);
+#endregion
 	}
 
 	[BaseType (typeof (NSAnimation))]
 	interface NSViewAnimation { 
-		// Constant: NSString* NSViewAnimationTargetKey
-		// Constant: NSString* NSViewAnimationStartFrameKey
-		// Constant: NSString* NSViewAnimationEndFrameKey
-		// Constant: NSString* NSViewAnimationEffectKey 
-		// Constant: NSString* NSViewAnimationFadeInEffect
-		// Constant: NSString* NSViewAnimationFadeOutEffect
 		[Export ("initWithViewAnimations:")]
 		IntPtr Constructor (NSDictionary [] viewAnimations);
 	
@@ -9482,6 +9497,23 @@ namespace MonoMac.AppKit {
 		[Export ("defaultAnimationForKey:")]
 		NSObject DefaultAnimationForKey (string  key);
 	
+		[Field ("NSViewAnimationTargetKey")]
+		NSString TargetKey { get; }
+		
+		[Field ("NSViewAnimationStartFrameKey")]
+		NSString StartFrameKey { get; }
+		
+		[Field ("NSViewAnimationEndFrameKey")]
+		NSString EndFrameKey { get; }
+		
+		[Field ("NSViewAnimationEffectKey ")]
+		NSString EffectKey { get; }
+		
+		[Field ("NSViewAnimationFadeInEffect")]
+		NSString FadeInEffect { get; }
+		
+		[Field ("NSViewAnimationFadeOutEffect")]
+		NSString FadeOutEffect { get; }
 	}
 	
 
@@ -12308,6 +12340,19 @@ namespace MonoMac.AppKit {
 		[Export ("windowRef")]
 		IntPtr WindowRef { get; }
 	
+#region From NSAnimatablePropertyContainer
+		[Export ("animator")]
+		NSObject Animator { get; }
+	
+		[Export ("animations")]
+		NSDictionary Animations { get; set; }
+	
+		[Export ("animationForKey:")]
+		NSObject AnimationFor (NSString key);
+	
+		[Static, Export ("defaultAnimationForKey:")]
+		NSObject DefaultAnimationFor (NSString key);
+#endregion
 	}
 	
 	[BaseType (typeof (NSResponder))]
