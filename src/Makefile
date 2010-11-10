@@ -49,7 +49,7 @@ MONOMAC_SOURCES = \
 	./AppKit/NSMatrix.cs				\
 	./AppKit/NSWindow.cs				\
 	./Growl/Constants.cs				\
-	./WebKit/DomNodeList.cs				\
+	./WebKit/Enumerators.cs				\
 	./WebKit/Indexers.cs
 
 GENERATOR_SOURCES = \

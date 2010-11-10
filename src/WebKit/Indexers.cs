@@ -38,6 +38,12 @@ namespace MonoMac.WebKit {
 				return GetItem (index);
 			}
 		}
+
+		public DomNode this [string name] {
+			get {
+				return GetNamedItem (name);
+			}
+		}
 	}
 	
 	public partial class DomNodeList {
