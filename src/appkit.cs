@@ -4965,7 +4965,7 @@ namespace MonoMac.AppKit {
 		NSMenuItem SeparatorItem { get; }
 
 		[Export ("initWithTitle:action:keyEquivalent:")]
-		IntPtr Constructor (string aString, Selector aSelector, string charCode);
+		IntPtr Constructor (string title, [NullAllowed] Selector selectorAction, string charCode);
 
 		[Export ("hasSubmenu")]
 		bool HasSubmenu { get; }

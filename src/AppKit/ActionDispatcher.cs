@@ -45,5 +45,14 @@ namespace MonoMac.AppKit
 			if (Activated != null)
 				Activated (sender, EventArgs.Empty);
 		}
+
+		public ActionDispatcher (EventHandler handler)
+		{
+			Activated = handler;
+		}
+
+		public ActionDispatcher ()
+		{
+		}
 	}
 }
