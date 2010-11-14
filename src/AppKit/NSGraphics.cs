@@ -113,6 +113,15 @@ namespace MonoMac.AppKit {
 			}
 		}
 
+		[DllImport (Constants.AppKitLibrary, EntryPoint="NSRectClip")]
+		public extern static void RectClip (RectangleF rect);
+		
+		[DllImport (Constants.AppKitLibrary, EntryPoint="NSFrameRect")]
+		public extern static void FrameRect (RectangleF rect);		
+
+		[DllImport (Constants.AppKitLibrary, EntryPoint="NSFrameRectWithWidth")]
+		public extern static void FrameRectWithWidth (RectangleF rect, float frameWidth);		
+		
 #if false
 		[DllImport (Constants.AppKitLibrary)]
 		public extern static ;

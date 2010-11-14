@@ -2174,7 +2174,8 @@ namespace MonoMac.AppKit {
 		// FIXME: binding components pointer
 		//[Export ("colorWithColorSpace:components:count:")]
 		//NSColor ColorWithColorSpace (NSColorSpace space, const CGFloat components, int numberOfComponents);
-
+		
+		[Static]
 		[Export ("blackColor")]
 		NSColor Black { get; }
 
@@ -7862,7 +7863,7 @@ namespace MonoMac.AppKit {
 		[Export ("clientView")]
 		NSView ClientView { get; set; }
 
-		[Export ("markers")]
+		[Export ("markers"), NullAllowed]
 		NSRulerMarker [] Markers { get; set; }
 
 		[Export ("accessoryView")]
@@ -8123,7 +8124,7 @@ namespace MonoMac.AppKit {
 
 		[Export ("hasHorizontalScroller")]
 		bool HasHorizontalScroller { get; set; }
-
+		
 		[Export ("verticalScroller")]
 		NSScroller VerticalScroller { get; set; }
 
@@ -8153,6 +8154,21 @@ namespace MonoMac.AppKit {
 
 		[Export ("scrollsDynamically")]
 		bool ScrollsDynamically { get; set; }
+		
+		[Export ("hasVerticalRuler")]
+		bool HasVerticalRuler { get; set; }
+
+		[Export ("hasHorizontalRuler")]
+		bool HasHorizontalRuler { get; set; }
+		
+		[Export ("rulersVisible")]
+        bool RulersVisible { get; set; }
+       
+        [Export ("horizontalRulerView")]
+        NSRulerView HorizontalRulerView { get; set; }
+   
+        [Export ("verticalRulerView")]
+        NSRulerView VerticalRulerView { get; set; }    
 	}
 
 	[BaseType (typeof (NSTextField))]
