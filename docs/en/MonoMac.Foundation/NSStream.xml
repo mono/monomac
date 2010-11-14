@@ -1,7 +1,7 @@
 <Type Name="NSStream" FullName="MonoMac.Foundation.NSStream">
   <TypeSignature Language="C#" Value="public class NSStream : MonoMac.Foundation.NSObject" />
   <AssemblyInfo>
-    <AssemblyName>monomac</AssemblyName>
+    <AssemblyName>MonoMac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -135,13 +135,13 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Delegate">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject Delegate { set; get; }" />
+      <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSStreamDelegate Delegate { set; get; }" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
+        <ReturnType>MonoMac.Foundation.NSStreamDelegate</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>An instance of the MonoMac.Foundation.NSObject model class which acts as the class delegate.</summary>
@@ -152,14 +152,6 @@ public class MyClass : BaseClass {
           <para>This is the strongly typed version of the object, use the WeakDelegate property instead if you want to merely assign a class derived from NSObject that has been decorated with [Export] attributes.</para>
         </remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("delegate")</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>set: MonoMac.Foundation.Export("setDelegate:")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="Error">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSError Error { get; }" />
@@ -180,6 +172,40 @@ public class MyClass : BaseClass {
           <AttributeName>get: MonoMac.Foundation.Export("streamError")</AttributeName>
         </Attribute>
       </Attributes>
+    </Member>
+    <Member MemberName="OnEvent">
+      <MemberSignature Language="C#" Value="public event EventHandler&lt;MonoMac.Foundation.NSStreamEventArgs&gt; OnEvent;" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.EventHandler&lt;MonoMac.Foundation.NSStreamEventArgs&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Open">
+      <MemberSignature Language="C#" Value="public virtual void Open ();" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("open")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="PropertyForKey">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject PropertyForKey (string key);" />
@@ -298,6 +324,29 @@ public class MyClass : BaseClass {
         <param name="aRunLoop">To be added.</param>
         <param name="mode">To be added.</param>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WeakDelegate">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject WeakDelegate { set; get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("delegate", MonoMac.ObjCRuntime.ArgumentSemantic.Assign)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: MonoMac.Foundation.Export("setDelegate:", MonoMac.ObjCRuntime.ArgumentSemantic.Assign)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

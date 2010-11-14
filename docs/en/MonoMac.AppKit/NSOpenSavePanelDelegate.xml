@@ -1,7 +1,7 @@
 <Type Name="NSOpenSavePanelDelegate" FullName="MonoMac.AppKit.NSOpenSavePanelDelegate">
   <TypeSignature Language="C#" Value="public class NSOpenSavePanelDelegate : MonoMac.Foundation.NSObject" />
   <AssemblyInfo>
-    <AssemblyName>monomac</AssemblyName>
+    <AssemblyName>MonoMac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -102,8 +102,41 @@ public class MyClass : BaseClass {
         </remarks>
       </Docs>
     </Member>
-    <Member MemberName="DidChangeToDirectoryURL">
-      <MemberSignature Language="C#" Value="public virtual void DidChangeToDirectoryURL (MonoMac.Foundation.NSObject sender, MonoMac.Foundation.NSUrl url);" />
+    <Member MemberName="CompareFilenames">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSComparisonResult CompareFilenames (MonoMac.AppKit.NSSavePanel panel, string name1, string name2, bool caseSensitive);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("panel:compareFilename:with:caseSensitive")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Obsolete("After 10.6, this method is obsolete and does not control sorting order", false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSComparisonResult</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="panel" Type="MonoMac.AppKit.NSSavePanel" />
+        <Parameter Name="name1" Type="System.String" />
+        <Parameter Name="name2" Type="System.String" />
+        <Parameter Name="caseSensitive" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="panel">To be added.</param>
+        <param name="name1">To be added.</param>
+        <param name="name2">To be added.</param>
+        <param name="caseSensitive">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DidChangeToDirectory">
+      <MemberSignature Language="C#" Value="public virtual void DidChangeToDirectory (MonoMac.AppKit.NSSavePanel panel, MonoMac.Foundation.NSUrl newDirectoryUrl);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -117,18 +150,75 @@ public class MyClass : BaseClass {
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="sender" Type="MonoMac.Foundation.NSObject" />
-        <Parameter Name="url" Type="MonoMac.Foundation.NSUrl" />
+        <Parameter Name="panel" Type="MonoMac.AppKit.NSSavePanel" />
+        <Parameter Name="newDirectoryUrl" Type="MonoMac.Foundation.NSUrl" />
       </Parameters>
       <Docs>
-        <param name="sender">To be added.</param>
-        <param name="url">To be added.</param>
+        <param name="panel">To be added.</param>
+        <param name="newDirectoryUrl">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="DirectoryDidChange">
+      <MemberSignature Language="C#" Value="public virtual void DirectoryDidChange (MonoMac.AppKit.NSSavePanel panel, string path);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("panel:directoryDidChange:")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Obsolete("On 10.6 and newer Use DidChangeToDirectoryUrl instead", false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="panel" Type="MonoMac.AppKit.NSSavePanel" />
+        <Parameter Name="path" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="panel">To be added.</param>
+        <param name="path">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsValidFilename">
+      <MemberSignature Language="C#" Value="public virtual bool IsValidFilename (MonoMac.AppKit.NSSavePanel panel, string fileName);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("panel:isValidFilename:")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Obsolete("On 10.6 and newer use ValidateUrlError", false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="panel" Type="MonoMac.AppKit.NSSavePanel" />
+        <Parameter Name="fileName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="panel">To be added.</param>
+        <param name="fileName">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="SelectionDidChange">
-      <MemberSignature Language="C#" Value="public virtual void SelectionDidChange (MonoMac.Foundation.NSObject sender);" />
+      <MemberSignature Language="C#" Value="public virtual void SelectionDidChange (MonoMac.AppKit.NSSavePanel panel);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -142,16 +232,16 @@ public class MyClass : BaseClass {
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="sender" Type="MonoMac.Foundation.NSObject" />
+        <Parameter Name="panel" Type="MonoMac.AppKit.NSSavePanel" />
       </Parameters>
       <Docs>
-        <param name="sender">To be added.</param>
+        <param name="panel">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="ShouldEnableURL">
-      <MemberSignature Language="C#" Value="public virtual bool ShouldEnableURL (MonoMac.Foundation.NSObject sender, MonoMac.Foundation.NSUrl url);" />
+    <Member MemberName="ShouldEnableUrl">
+      <MemberSignature Language="C#" Value="public virtual bool ShouldEnableUrl (MonoMac.AppKit.NSSavePanel panel, MonoMac.Foundation.NSUrl url);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -165,19 +255,48 @@ public class MyClass : BaseClass {
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="sender" Type="MonoMac.Foundation.NSObject" />
+        <Parameter Name="panel" Type="MonoMac.AppKit.NSSavePanel" />
         <Parameter Name="url" Type="MonoMac.Foundation.NSUrl" />
       </Parameters>
       <Docs>
-        <param name="sender">To be added.</param>
+        <param name="panel">To be added.</param>
         <param name="url">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="ShouldShowFilename">
+      <MemberSignature Language="C#" Value="public virtual bool ShouldShowFilename (MonoMac.AppKit.NSSavePanel panel, string filename);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("panel:shouldShowFilename:")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Obsolete("After 10.6 use ShouldEnableUrl", false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="panel" Type="MonoMac.AppKit.NSSavePanel" />
+        <Parameter Name="filename" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="panel">To be added.</param>
+        <param name="filename">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="UserEnteredFilename">
-      <MemberSignature Language="C#" Value="public virtual string UserEnteredFilename (MonoMac.Foundation.NSObject sender, string filename, bool confirmed);" />
+      <MemberSignature Language="C#" Value="public virtual string UserEnteredFilename (MonoMac.AppKit.NSSavePanel panel, string filename, bool confirmed);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -191,12 +310,12 @@ public class MyClass : BaseClass {
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="sender" Type="MonoMac.Foundation.NSObject" />
+        <Parameter Name="panel" Type="MonoMac.AppKit.NSSavePanel" />
         <Parameter Name="filename" Type="System.String" />
         <Parameter Name="confirmed" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="sender">To be added.</param>
+        <param name="panel">To be added.</param>
         <param name="filename">To be added.</param>
         <param name="confirmed">To be added.</param>
         <summary>To be added.</summary>
@@ -204,8 +323,36 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="ValidateUrl">
+      <MemberSignature Language="C#" Value="public virtual bool ValidateUrl (MonoMac.AppKit.NSSavePanel panel, MonoMac.Foundation.NSUrl url, out MonoMac.Foundation.NSError outError);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("panel:validateURL:error:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="panel" Type="MonoMac.AppKit.NSSavePanel" />
+        <Parameter Name="url" Type="MonoMac.Foundation.NSUrl" />
+        <Parameter Name="outError" Type="MonoMac.Foundation.NSError&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="panel">To be added.</param>
+        <param name="url">To be added.</param>
+        <param name="outError">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="WillExpand">
-      <MemberSignature Language="C#" Value="public virtual void WillExpand (MonoMac.Foundation.NSObject sender, bool expanding);" />
+      <MemberSignature Language="C#" Value="public virtual void WillExpand (MonoMac.AppKit.NSSavePanel panel, bool expanding);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -219,11 +366,11 @@ public class MyClass : BaseClass {
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="sender" Type="MonoMac.Foundation.NSObject" />
+        <Parameter Name="panel" Type="MonoMac.AppKit.NSSavePanel" />
         <Parameter Name="expanding" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="sender">To be added.</param>
+        <param name="panel">To be added.</param>
         <param name="expanding">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>

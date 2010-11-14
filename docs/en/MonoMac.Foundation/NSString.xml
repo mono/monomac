@@ -1,7 +1,7 @@
 <Type Name="NSString" FullName="MonoMac.Foundation.NSString">
   <TypeSignature Language="C#" Value="public class NSString : MonoMac.Foundation.NSObject" />
   <AssemblyInfo>
-    <AssemblyName>monomac</AssemblyName>
+    <AssemblyName>MonoMac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -112,6 +112,30 @@ public class MyClass : BaseClass {
         <param name="str">A string.</param>
         <summary>Creates an NSString from a C# string.</summary>
         <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="_characterAtIndex">
+      <MemberSignature Language="C#" Value="public virtual char _characterAtIndex (int index);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("characterAtIndex:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Char</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="index" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="index">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ClassHandle">
@@ -315,6 +339,45 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Item">
+      <MemberSignature Language="C#" Value="public char this[int idx] { get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Char</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="idx" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="idx">To be added.</param>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Length">
+      <MemberSignature Language="C#" Value="public virtual int Length { get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("length")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="op_Equality">
       <MemberSignature Language="C#" Value="public static bool op_Equality (MonoMac.Foundation.NSString a, MonoMac.Foundation.NSString b);" />
       <MemberType>Method</MemberType>
@@ -331,6 +394,25 @@ public class MyClass : BaseClass {
       <Docs>
         <param name="a">To be added.</param>
         <param name="b">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Explicit">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString op_Explicit (string str);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="str" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="str">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -377,7 +459,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="StringSize">
-      <MemberSignature Language="C#" Value="public System.Drawing.SizeF StringSize (MonoMac.UIKit.UIFont font);" />
+      <MemberSignature Language="C#" Value="public System.Drawing.SizeF StringSize (MonoMac.Foundation.NSDictionary attributedStringAttributes);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -386,77 +468,10 @@ public class MyClass : BaseClass {
         <ReturnType>System.Drawing.SizeF</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="font" Type="MonoMac.UIKit.UIFont" />
+        <Parameter Name="attributedStringAttributes" Type="MonoMac.Foundation.NSDictionary" />
       </Parameters>
       <Docs>
-        <param name="font">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="StringSize">
-      <MemberSignature Language="C#" Value="public System.Drawing.SizeF StringSize (MonoMac.UIKit.UIFont font, System.Drawing.SizeF constrainedToSize);" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Drawing.SizeF</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="font" Type="MonoMac.UIKit.UIFont" />
-        <Parameter Name="constrainedToSize" Type="System.Drawing.SizeF" />
-      </Parameters>
-      <Docs>
-        <param name="font">To be added.</param>
-        <param name="constrainedToSize">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="StringSize">
-      <MemberSignature Language="C#" Value="public System.Drawing.SizeF StringSize (MonoMac.UIKit.UIFont font, System.Drawing.SizeF constrainedToSize, MonoMac.UIKit.UILineBreakMode lineBreakMode);" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Drawing.SizeF</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="font" Type="MonoMac.UIKit.UIFont" />
-        <Parameter Name="constrainedToSize" Type="System.Drawing.SizeF" />
-        <Parameter Name="lineBreakMode" Type="MonoMac.UIKit.UILineBreakMode" />
-      </Parameters>
-      <Docs>
-        <param name="font">To be added.</param>
-        <param name="constrainedToSize">To be added.</param>
-        <param name="lineBreakMode">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="StringSize">
-      <MemberSignature Language="C#" Value="public System.Drawing.SizeF StringSize (MonoMac.UIKit.UIFont font, float forWidth, MonoMac.UIKit.UILineBreakMode breakMode);" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Drawing.SizeF</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="font" Type="MonoMac.UIKit.UIFont" />
-        <Parameter Name="forWidth" Type="System.Single" />
-        <Parameter Name="breakMode" Type="MonoMac.UIKit.UILineBreakMode" />
-      </Parameters>
-      <Docs>
-        <param name="font">To be added.</param>
-        <param name="forWidth">To be added.</param>
-        <param name="breakMode">To be added.</param>
+        <param name="attributedStringAttributes">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>

@@ -1,7 +1,7 @@
 <Type Name="NSOpenGLPixelBuffer" FullName="MonoMac.AppKit.NSOpenGLPixelBuffer">
   <TypeSignature Language="C#" Value="public class NSOpenGLPixelBuffer : MonoMac.Foundation.NSObject" />
   <AssemblyInfo>
-    <AssemblyName>monomac</AssemblyName>
+    <AssemblyName>MonoMac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -100,7 +100,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public NSOpenGLPixelBuffer (int targetGlEnum, int format, int maxLevel, int pixelsWide, int pixelsHigh);" />
+      <MemberSignature Language="C#" Value="public NSOpenGLPixelBuffer (MonoMac.AppKit.NSGLTextureTarget targetGlEnum, MonoMac.AppKit.NSGLFormat format, int maxLevel, int pixelsWide, int pixelsHigh);" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -111,8 +111,8 @@ public class MyClass : BaseClass {
         </Attribute>
       </Attributes>
       <Parameters>
-        <Parameter Name="targetGlEnum" Type="System.Int32" />
-        <Parameter Name="format" Type="System.Int32" />
+        <Parameter Name="targetGlEnum" Type="MonoMac.AppKit.NSGLTextureTarget" />
+        <Parameter Name="format" Type="MonoMac.AppKit.NSGLFormat" />
         <Parameter Name="maxLevel" Type="System.Int32" />
         <Parameter Name="pixelsWide" Type="System.Int32" />
         <Parameter Name="pixelsHigh" Type="System.Int32" />
@@ -203,7 +203,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="TextureInternalFormat">
-      <MemberSignature Language="C#" Value="public virtual int TextureInternalFormat { get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSGLFormat TextureInternalFormat { get; }" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -214,7 +214,7 @@ public class MyClass : BaseClass {
         </Attribute>
       </Attributes>
       <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
+        <ReturnType>MonoMac.AppKit.NSGLFormat</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -243,7 +243,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="TextureTarget">
-      <MemberSignature Language="C#" Value="public virtual int TextureTarget { get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSGLTextureTarget TextureTarget { get; }" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -254,7 +254,7 @@ public class MyClass : BaseClass {
         </Attribute>
       </Attributes>
       <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
+        <ReturnType>MonoMac.AppKit.NSGLTextureTarget</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

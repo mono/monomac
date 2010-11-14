@@ -1,7 +1,7 @@
 <Type Name="NSButton" FullName="MonoMac.AppKit.NSButton">
   <TypeSignature Language="C#" Value="public class NSButton : MonoMac.AppKit.NSControl" />
   <AssemblyInfo>
-    <AssemblyName>monomac</AssemblyName>
+    <AssemblyName>MonoMac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -231,24 +231,26 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="bezelStyle">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSBezelStyle bezelStyle ();" />
-      <MemberType>Method</MemberType>
+    <Member MemberName="BezelStyle">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSBezelStyle BezelStyle { set; get; }" />
+      <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>MonoMac.Foundation.Export("bezelStyle")</AttributeName>
+          <AttributeName>get: MonoMac.Foundation.Export("bezelStyle")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: MonoMac.Foundation.Export("setBezelStyle:")</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.AppKit.NSBezelStyle</ReturnType>
       </ReturnValue>
-      <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -268,6 +270,21 @@ public class MyClass : BaseClass {
       </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Cell">
+      <MemberSignature Language="C#" Value="public MonoMac.AppKit.NSButtonCell Cell { set; get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.AppKit.NSButtonCell</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -590,7 +607,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="State">
-      <MemberSignature Language="C#" Value="public virtual int State { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSCellStateValue State { set; get; }" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -604,7 +621,7 @@ public class MyClass : BaseClass {
         </Attribute>
       </Attributes>
       <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
+        <ReturnType>MonoMac.AppKit.NSCellStateValue</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

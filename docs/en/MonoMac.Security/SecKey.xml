@@ -1,0 +1,276 @@
+<Type Name="SecKey" FullName="MonoMac.Security.SecKey">
+  <TypeSignature Language="C#" Value="public class SecKey : IDisposable, MonoMac.ObjCRuntime.INativeObject" />
+  <AssemblyInfo>
+    <AssemblyName>MonoMac</AssemblyName>
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>MonoMac.ObjCRuntime.INativeObject</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>System.IDisposable</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Decrypt">
+      <MemberSignature Language="C#" Value="public MonoMac.Security.SecStatusCode Decrypt (MonoMac.Security.SecPadding padding, byte[] cipherText, byte[] plainText);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Security.SecStatusCode</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="padding" Type="MonoMac.Security.SecPadding" />
+        <Parameter Name="cipherText" Type="System.Byte[]" />
+        <Parameter Name="plainText" Type="System.Byte[]" />
+      </Parameters>
+      <Docs>
+        <param name="padding">To be added.</param>
+        <param name="cipherText">To be added.</param>
+        <param name="plainText">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Decrypt">
+      <MemberSignature Language="C#" Value="public MonoMac.Security.SecStatusCode Decrypt (MonoMac.Security.SecPadding padding, IntPtr cipherText, int cipherLen, IntPtr plainText, int playLen);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Security.SecStatusCode</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="padding" Type="MonoMac.Security.SecPadding" />
+        <Parameter Name="cipherText" Type="System.IntPtr" />
+        <Parameter Name="cipherLen" Type="System.Int32" />
+        <Parameter Name="plainText" Type="System.IntPtr" />
+        <Parameter Name="playLen" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="padding">To be added.</param>
+        <param name="cipherText">To be added.</param>
+        <param name="cipherLen">To be added.</param>
+        <param name="plainText">To be added.</param>
+        <param name="playLen">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Dispose">
+      <MemberSignature Language="C#" Value="public void Dispose ();" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Dispose">
+      <MemberSignature Language="C#" Value="public virtual void Dispose (bool disposing);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="disposing" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="disposing">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Encrypt">
+      <MemberSignature Language="C#" Value="public MonoMac.Security.SecStatusCode Encrypt (MonoMac.Security.SecPadding padding, byte[] plainText, byte[] cipherText);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Security.SecStatusCode</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="padding" Type="MonoMac.Security.SecPadding" />
+        <Parameter Name="plainText" Type="System.Byte[]" />
+        <Parameter Name="cipherText" Type="System.Byte[]" />
+      </Parameters>
+      <Docs>
+        <param name="padding">To be added.</param>
+        <param name="plainText">To be added.</param>
+        <param name="cipherText">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Encrypt">
+      <MemberSignature Language="C#" Value="public MonoMac.Security.SecStatusCode Encrypt (MonoMac.Security.SecPadding padding, IntPtr plainText, int playLen, IntPtr cipherText, int cipherLen);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Security.SecStatusCode</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="padding" Type="MonoMac.Security.SecPadding" />
+        <Parameter Name="plainText" Type="System.IntPtr" />
+        <Parameter Name="playLen" Type="System.Int32" />
+        <Parameter Name="cipherText" Type="System.IntPtr" />
+        <Parameter Name="cipherLen" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="padding">To be added.</param>
+        <param name="plainText">To be added.</param>
+        <param name="playLen">To be added.</param>
+        <param name="cipherText">To be added.</param>
+        <param name="cipherLen">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Finalize">
+      <MemberSignature Language="C#" Value="~SecKey ();" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GenerateKeyPair">
+      <MemberSignature Language="C#" Value="public static MonoMac.Security.SecStatusCode GenerateKeyPair (MonoMac.Foundation.NSDictionary parameters, out MonoMac.Security.SecKey publicKey, out MonoMac.Security.SecKey privateKey);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Security.SecStatusCode</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="parameters" Type="MonoMac.Foundation.NSDictionary" />
+        <Parameter Name="publicKey" Type="MonoMac.Security.SecKey&amp;" RefType="out" />
+        <Parameter Name="privateKey" Type="MonoMac.Security.SecKey&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="parameters">To be added.</param>
+        <param name="publicKey">To be added.</param>
+        <param name="privateKey">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetTypeID">
+      <MemberSignature Language="C#" Value="public static int GetTypeID ();" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Handle">
+      <MemberSignature Language="C#" Value="public IntPtr Handle { get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.IntPtr</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RawVerify">
+      <MemberSignature Language="C#" Value="public MonoMac.Security.SecStatusCode RawVerify (MonoMac.Security.SecPadding padding, byte[] signedData, byte[] signature);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Security.SecStatusCode</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="padding" Type="MonoMac.Security.SecPadding" />
+        <Parameter Name="signedData" Type="System.Byte[]" />
+        <Parameter Name="signature" Type="System.Byte[]" />
+      </Parameters>
+      <Docs>
+        <param name="padding">To be added.</param>
+        <param name="signedData">To be added.</param>
+        <param name="signature">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RawVerify">
+      <MemberSignature Language="C#" Value="public MonoMac.Security.SecStatusCode RawVerify (MonoMac.Security.SecPadding padding, IntPtr signedData, int signedDataLen, IntPtr signature, int signatureLen);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Security.SecStatusCode</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="padding" Type="MonoMac.Security.SecPadding" />
+        <Parameter Name="signedData" Type="System.IntPtr" />
+        <Parameter Name="signedDataLen" Type="System.Int32" />
+        <Parameter Name="signature" Type="System.IntPtr" />
+        <Parameter Name="signatureLen" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="padding">To be added.</param>
+        <param name="signedData">To be added.</param>
+        <param name="signedDataLen">To be added.</param>
+        <param name="signature">To be added.</param>
+        <param name="signatureLen">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

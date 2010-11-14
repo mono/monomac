@@ -1,7 +1,7 @@
 <Type Name="CTFont" FullName="MonoMac.CoreText.CTFont">
   <TypeSignature Language="C#" Value="public class CTFont : IDisposable, MonoMac.ObjCRuntime.INativeObject" />
   <AssemblyInfo>
-    <AssemblyName>monomac</AssemblyName>
+    <AssemblyName>MonoMac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -55,6 +55,44 @@
       <Docs>
         <param name="name">To be added.</param>
         <param name="size">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CTFont (MonoMac.CoreGraphics.CGFont font, float size, MonoMac.CoreGraphics.CGAffineTransform transform);" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="font" Type="MonoMac.CoreGraphics.CGFont" />
+        <Parameter Name="size" Type="System.Single" />
+        <Parameter Name="transform" Type="MonoMac.CoreGraphics.CGAffineTransform" />
+      </Parameters>
+      <Docs>
+        <param name="font">To be added.</param>
+        <param name="size">To be added.</param>
+        <param name="transform">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CTFont (MonoMac.CoreGraphics.CGFont font, float size, MonoMac.CoreText.CTFontDescriptor descriptor);" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="font" Type="MonoMac.CoreGraphics.CGFont" />
+        <Parameter Name="size" Type="System.Single" />
+        <Parameter Name="descriptor" Type="MonoMac.CoreText.CTFontDescriptor" />
+      </Parameters>
+      <Docs>
+        <param name="font">To be added.</param>
+        <param name="size">To be added.</param>
+        <param name="descriptor">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -150,6 +188,27 @@
         <param name="name">To be added.</param>
         <param name="size">To be added.</param>
         <param name="options">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CTFont (MonoMac.CoreGraphics.CGFont font, float size, MonoMac.CoreGraphics.CGAffineTransform transform, MonoMac.CoreText.CTFontDescriptor descriptor);" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="font" Type="MonoMac.CoreGraphics.CGFont" />
+        <Parameter Name="size" Type="System.Single" />
+        <Parameter Name="transform" Type="MonoMac.CoreGraphics.CGAffineTransform" />
+        <Parameter Name="descriptor" Type="MonoMac.CoreText.CTFontDescriptor" />
+      </Parameters>
+      <Docs>
+        <param name="font">To be added.</param>
+        <param name="size">To be added.</param>
+        <param name="transform">To be added.</param>
+        <param name="descriptor">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -327,6 +386,33 @@
           <para>Calling the Dispose method when you are finished using the CTFont ensures that all external resources used by this managed object are released as soon as possible.  Once you have invoked the Dispose method, the object is no longer useful and you should no longer make any calls to it.</para>
           <para>  For more information on how to override this method and on the Dispose/IDisposable pattern, read the ``Implementing a Dispose Method'' document at http://msdn.microsoft.com/en-us/library/fs2xkftw.aspx</para>
         </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DrawGlyphs">
+      <MemberSignature Language="C#" Value="public void DrawGlyphs (MonoMac.CoreGraphics.CGContext context, ushort[] glyphs, System.Drawing.PointF[] positions);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.ObjCRuntime.Since(4, 2)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="context" Type="MonoMac.CoreGraphics.CGContext" />
+        <Parameter Name="glyphs" Type="System.UInt16[]" />
+        <Parameter Name="positions" Type="System.Drawing.PointF[]" />
+      </Parameters>
+      <Docs>
+        <param name="context">To be added.</param>
+        <param name="glyphs">To be added.</param>
+        <param name="positions">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="FamilyName">
@@ -653,6 +739,32 @@
       </Parameters>
       <Docs>
         <param name="glyphName">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetLigatureCaretPositions">
+      <MemberSignature Language="C#" Value="public int GetLigatureCaretPositions (ushort glyph, float[] positions);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.ObjCRuntime.Since(4, 2)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="glyph" Type="System.UInt16" />
+        <Parameter Name="positions" Type="System.Single[]" />
+      </Parameters>
+      <Docs>
+        <param name="glyph">To be added.</param>
+        <param name="positions">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>

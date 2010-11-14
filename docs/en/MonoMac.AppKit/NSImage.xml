@@ -1,7 +1,7 @@
 <Type Name="NSImage" FullName="MonoMac.AppKit.NSImage">
   <TypeSignature Language="C#" Value="public class NSImage : MonoMac.Foundation.NSObject" />
   <AssemblyInfo>
-    <AssemblyName>monomac</AssemblyName>
+    <AssemblyName>MonoMac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -383,32 +383,8 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="BestRepresentationForDevice">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSImageRep BestRepresentationForDevice (MonoMac.Foundation.NSDictionary deviceDescription);" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>MonoMac.Foundation.Export("bestRepresentationForDevice:")</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>MonoMac.AppKit.NSImageRep</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="deviceDescription" Type="MonoMac.Foundation.NSDictionary" />
-      </Parameters>
-      <Docs>
-        <param name="deviceDescription">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="BestRepresentationForRect">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSImageRep BestRepresentationForRect (System.Drawing.RectangleF rect, MonoMac.AppKit.NSGraphicsContext referenceContext, MonoMac.Foundation.NSDictionary hints);" />
+    <Member MemberName="BestRepresentation">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSImageRep BestRepresentation (System.Drawing.RectangleF rect, MonoMac.AppKit.NSGraphicsContext referenceContext, MonoMac.Foundation.NSDictionary hints);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -430,6 +406,30 @@ public class MyClass : BaseClass {
         <param name="rect">To be added.</param>
         <param name="referenceContext">To be added.</param>
         <param name="hints">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BestRepresentationForDevice">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSImageRep BestRepresentationForDevice (MonoMac.Foundation.NSDictionary deviceDescription);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("bestRepresentationForDevice:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AppKit.NSImageRep</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="deviceDescription" Type="MonoMac.Foundation.NSDictionary" />
+      </Parameters>
+      <Docs>
+        <param name="deviceDescription">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -606,8 +606,34 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="DrawAtPointfromRectoperationfraction">
-      <MemberSignature Language="C#" Value="public virtual void DrawAtPointfromRectoperationfraction (System.Drawing.PointF point, System.Drawing.RectangleF fromRect, MonoMac.AppKit.NSCompositingOperation op, float delta);" />
+    <Member MemberName="Draw">
+      <MemberSignature Language="C#" Value="public virtual bool Draw (MonoMac.AppKit.NSImageRep imageRep, System.Drawing.RectangleF rect);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("drawRepresentation:inRect:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="imageRep" Type="MonoMac.AppKit.NSImageRep" />
+        <Parameter Name="rect" Type="System.Drawing.RectangleF" />
+      </Parameters>
+      <Docs>
+        <param name="imageRep">To be added.</param>
+        <param name="rect">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Draw">
+      <MemberSignature Language="C#" Value="public virtual void Draw (System.Drawing.PointF point, System.Drawing.RectangleF fromRect, MonoMac.AppKit.NSCompositingOperation op, float delta);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -635,30 +661,8 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="DrawInRect">
-      <MemberSignature Language="C#" Value="public void DrawInRect (string str, System.Drawing.RectangleF rect, MonoMac.Foundation.NSDictionary attributes);" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="str" Type="System.String" />
-        <Parameter Name="rect" Type="System.Drawing.RectangleF" />
-        <Parameter Name="attributes" Type="MonoMac.Foundation.NSDictionary" />
-      </Parameters>
-      <Docs>
-        <param name="str">To be added.</param>
-        <param name="rect">To be added.</param>
-        <param name="attributes">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="DrawInRectfromRectoperationfraction">
-      <MemberSignature Language="C#" Value="public virtual void DrawInRectfromRectoperationfraction (System.Drawing.RectangleF rect, System.Drawing.RectangleF fromRect, MonoMac.AppKit.NSCompositingOperation op, float delta);" />
+    <Member MemberName="Draw">
+      <MemberSignature Language="C#" Value="public virtual void Draw (System.Drawing.RectangleF rect, System.Drawing.RectangleF fromRect, MonoMac.AppKit.NSCompositingOperation op, float delta);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -686,8 +690,8 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="DrawInRectfromRectoperationfractionrespectFlippedhints">
-      <MemberSignature Language="C#" Value="public virtual void DrawInRectfromRectoperationfractionrespectFlippedhints (System.Drawing.RectangleF dstSpacePortionRect, System.Drawing.RectangleF srcSpacePortionRect, MonoMac.AppKit.NSCompositingOperation op, float requestedAlpha, bool respectContextIsFlipped, MonoMac.Foundation.NSDictionary hints);" />
+    <Member MemberName="Draw">
+      <MemberSignature Language="C#" Value="public virtual void Draw (System.Drawing.RectangleF dstSpacePortionRect, System.Drawing.RectangleF srcSpacePortionRect, MonoMac.AppKit.NSCompositingOperation op, float requestedAlpha, bool respectContextIsFlipped, MonoMac.Foundation.NSDictionary hints);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -719,34 +723,30 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="DrawRepresentationinRect">
-      <MemberSignature Language="C#" Value="public virtual bool DrawRepresentationinRect (MonoMac.AppKit.NSImageRep imageRep, System.Drawing.RectangleF rect);" />
+    <Member MemberName="DrawInRect">
+      <MemberSignature Language="C#" Value="public void DrawInRect (string str, System.Drawing.RectangleF rect, MonoMac.Foundation.NSDictionary attributes);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>MonoMac.Foundation.Export("drawRepresentation:inRect:")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
+        <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="imageRep" Type="MonoMac.AppKit.NSImageRep" />
+        <Parameter Name="str" Type="System.String" />
         <Parameter Name="rect" Type="System.Drawing.RectangleF" />
+        <Parameter Name="attributes" Type="MonoMac.Foundation.NSDictionary" />
       </Parameters>
       <Docs>
-        <param name="imageRep">To be added.</param>
+        <param name="str">To be added.</param>
         <param name="rect">To be added.</param>
+        <param name="attributes">To be added.</param>
         <summary>To be added.</summary>
-        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="HitTestRectwithImageDestinationRect">
-      <MemberSignature Language="C#" Value="public virtual bool HitTestRectwithImageDestinationRect (System.Drawing.RectangleF testRectDestSpace, System.Drawing.RectangleF imageRectDestSpace, MonoMac.AppKit.NSGraphicsContext context, MonoMac.Foundation.NSDictionary hints, bool flipped);" />
+    <Member MemberName="HitTestRect">
+      <MemberSignature Language="C#" Value="public virtual bool HitTestRect (System.Drawing.RectangleF testRectDestSpace, System.Drawing.RectangleF imageRectDestSpace, MonoMac.AppKit.NSGraphicsContext context, MonoMac.Foundation.NSDictionary hints, bool flipped);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -813,7 +813,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="ImageNamed">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSImage ImageNamed (string name);" />
+      <MemberSignature Language="C#" Value="public static MonoMac.AppKit.NSImage ImageNamed (string name);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
