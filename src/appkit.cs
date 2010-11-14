@@ -8924,6 +8924,7 @@ namespace MonoMac.AppKit {
 	}
 
 	[BaseType (typeof (NSObject))]
+	[PrivateDefaultCtor]
 	interface NSStatusItem {
 		[Export ("statusBar")]
 		NSStatusBar StatusBar { get; }
