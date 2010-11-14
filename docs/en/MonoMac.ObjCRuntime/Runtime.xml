@@ -1,7 +1,7 @@
 <Type Name="Runtime" FullName="MonoMac.ObjCRuntime.Runtime">
   <TypeSignature Language="C#" Value="public static class Runtime" />
   <AssemblyInfo>
-    <AssemblyName>monomac</AssemblyName>
+    <AssemblyName>MonoMac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -17,7 +17,6 @@
       <MemberSignature Language="C#" Value="public static MonoMac.ObjCRuntime.Arch Arch;" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>MonoMac.ObjCRuntime.Arch</ReturnType>
@@ -64,21 +63,22 @@
         <remarks>This iterates over all the types that derive from NSObject in the specified assembly and registers them with the runtime.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="StartWWAN">
-      <MemberSignature Language="C#" Value="public static void StartWWAN (Uri uri);" />
+    <Member MemberName="TryGetNSObject">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSObject TryGetNSObject (IntPtr ptr);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
+        <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="uri" Type="System.Uri" />
+        <Parameter Name="ptr" Type="System.IntPtr" />
       </Parameters>
       <Docs>
-        <param name="uri">To be added.</param>
+        <param name="ptr">To be added.</param>
         <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
