@@ -37,6 +37,7 @@ MONOMAC_SOURCES = \
 	./AppKit/NSApplicationDelegate.cs		\
 	./AppKit/NSBitmapImageRep.cs			\
 	./AppKit/NSControl.cs				\
+	./AppKit/NSMenu.cs				\
 	./AppKit/NSMenuItem.cs				\
 	./AppKit/NSActionCell.cs			\
 	./AppKit/NSButton.cs				\

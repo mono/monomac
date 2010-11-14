@@ -4802,10 +4802,10 @@ namespace MonoMac.AppKit {
 		void AddItem (NSMenuItem newItem);
 
 		[Export ("insertItemWithTitle:action:keyEquivalent:atIndex:")]
-		NSMenuItem InsertItem (string title, Selector action, string charCode, int index);
+		NSMenuItem InsertItem (string title, [NullAllowed] Selector action, string charCode, int index);
 
 		[Export ("addItemWithTitle:action:keyEquivalent:")]
-		NSMenuItem AddItem (string title, Selector action, string charCode);
+		NSMenuItem AddItem (string title, [NullAllowed] Selector action, string charCode);
 
 		[Export ("removeItemAtIndex:")]
 		void RemoveItemAt (int index);
@@ -4814,7 +4814,7 @@ namespace MonoMac.AppKit {
 		void RemoveItem (NSMenuItem item);
 
 		[Export ("setSubmenu:forItem:")]
-		void SetSubmenuforItem (NSMenu aMenu, NSMenuItem anItem);
+		void SetSubmenu (NSMenu aMenu, NSMenuItem anItem);
 
 		[Export ("removeAllItems")]
 		void RemoveAllItems ();
