@@ -1649,7 +1649,10 @@ namespace MonoMac.AppKit {
 
 		[Export ("allowsMixedState")]
 		bool AllowsMixedState { get; }
-
+	
+		[Export ("setAllowsMixedState:")]
+		void SetAllowsMixedState (bool allowsMixedState);
+		
 		[Export ("setNextState")]
 		void SetNextState ();
 
@@ -2850,7 +2853,7 @@ namespace MonoMac.AppKit {
 
 	[BaseType (typeof (NSObject))]
 	interface NSComboBoxDataSource {
-		[Export ("comboBox:objetValueForItemAtIndex:")]
+		[Export ("comboBox:objectValueForItemAtIndex:")]
 		NSObject ObjectValueForItem (NSComboBox comboBox, int index);
 		
 		[Export ("numberOfItemsInComboBox:")]
