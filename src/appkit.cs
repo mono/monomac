@@ -4568,7 +4568,7 @@ namespace MonoMac.AppKit {
 
 		// TODO: TYPE FOR THIS?
 		[Export ("modifierFlags")]
-		uint ModifierFlags { get; }
+		NSEventModifierMask ModifierFlags { get; }
 
 		[Export ("timestamp")]
 		double Timestamp { get; }
@@ -4744,7 +4744,7 @@ namespace MonoMac.AppKit {
 
 		[Static]
 		[Export ("modifierFlags")]
-		uint CurrentModifierFlags { get; }
+		NSEventModifierMask CurrentModifierFlags { get; }
 
 		[Static]
 		[Export ("pressedMouseButtons")]

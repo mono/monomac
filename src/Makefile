@@ -113,3 +113,6 @@ clean:
 	rm -f $(TARGETS) core.dll
 
 all: MonoMac.dll
+
+update: MonoMac.dll
+	cp monomac.dll ~/.config/MonoDevelop/addins/MonoDevelop.MonoMac.2.4.0.7/MonoMac.dll
