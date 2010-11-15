@@ -1648,10 +1648,7 @@ namespace MonoMac.AppKit {
 		NSBezelStyle BezelStyle { get; set; }
 
 		[Export ("allowsMixedState")]
-		bool AllowsMixedState { get; }
-	
-		[Export ("setAllowsMixedState:")]
-		void SetAllowsMixedState (bool allowsMixedState);
+		bool AllowsMixedState { get; set;}
 		
 		[Export ("setNextState")]
 		void SetNextState ();
