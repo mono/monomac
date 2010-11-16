@@ -2849,6 +2849,7 @@ namespace MonoMac.AppKit {
 	}
 
 	[BaseType (typeof (NSObject))]
+	[Model]
 	interface NSComboBoxDataSource {
 		[Export ("comboBox:objectValueForItemAtIndex:")]
 		NSObject ObjectValueForItem (NSComboBox comboBox, int index);
