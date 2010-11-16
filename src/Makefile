@@ -32,6 +32,7 @@ CORE_SOURCES =					\
 MONOMAC_SOURCES = \
 	./Foundation/NSObjectMac.cs			\
 	./AppKit/ActionDispatcher.cs			\
+	./AppKit/BeginSheet.cs				\
 	./AppKit/Functions.cs				\
 	./AppKit/NSApplication.cs			\
 	./AppKit/NSApplicationDelegate.cs		\

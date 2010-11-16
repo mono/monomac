@@ -224,7 +224,7 @@ namespace MonoMac.AppKit {
 		int RunModal ();
 	
 		[Export ("beginSheetModalForWindow:modalDelegate:didEndSelector:contextInfo:")]
-		void BeginSheet (NSWindow  window, NSObject modalDelegate, Selector didEndSelector, IntPtr contextInfo);
+		void BeginSheet (NSWindow  window, [NullAllowed] NSObject modalDelegate, [NullAllowed] Selector didEndSelector, IntPtr contextInfo);
 	
 		[Export ("window")]
 		NSObject Window  { get; }
@@ -334,7 +334,7 @@ namespace MonoMac.AppKit {
 		void CancelUserAttentionRequest (int request);
 	
 		[Export ("beginSheet:modalForWindow:modalDelegate:didEndSelector:contextInfo:")]
-		void BeginSheet (NSWindow sheet, NSWindow docWindow, NSObject modalDelegate, Selector didEndSelector, IntPtr contextInfo);
+		void BeginSheet (NSWindow sheet, NSWindow docWindow, [NullAllowed] NSObject modalDelegate, [NullAllowed] Selector didEndSelector, IntPtr contextInfo);
 	
 		[Export ("endSheet:")]
 		void EndSheet (NSWindow sheet);
@@ -5515,7 +5515,7 @@ namespace MonoMac.AppKit {
 		//runModalForWindows:Completeion
 		[Obsolete ("On 10.6 and newer use runModalForWindow:")]
 		[Export ("beginSheetForDirectory:file:types:modalForWindow:modalDelegate:didEndSelector:contextInfo:")]
-		void BeginSheet (string directory, string fileName, string [] fileTypes, NSWindow modalForWindow, NSObject modalDelegate, Selector didEndSelector, IntPtr contextInfo);
+		void BeginSheet (string directory, string fileName, string [] fileTypes, NSWindow modalForWindow, [NullAllowed] NSObject modalDelegate, [NullAllowed] Selector didEndSelector, IntPtr contextInfo);
 
 		[Obsolete ("On 10.6 and newer use runWithCompletionHandler:")]
 		[Export ("beginForDirectory:file:types:modelessDelegate:didEndSelector:contextInfo:")]
@@ -6539,7 +6539,7 @@ namespace MonoMac.AppKit {
 		NSViewController [] AccessoryControllers ();
 
 		[Export ("beginSheetWithPrintInfo:modalForWindow:delegate:didEndSelector:contextInfo:")]
-		void BeginSheet (NSPrintInfo printInfo, NSWindow docWindow, NSObject del, Selector didEndSelector, IntPtr contextInfo);
+		void BeginSheet (NSPrintInfo printInfo, NSWindow docWindow, [NullAllowed] NSObject del, [NullAllowed] Selector didEndSelector, IntPtr contextInfo);
 
 		[Export ("runModalWithPrintInfo:")]
 		int RunModalWithPrintInfo (NSPrintInfo printInfo);
@@ -7548,7 +7548,7 @@ namespace MonoMac.AppKit {
 		NSViewController [] AccessoryControllers ();
 
 		[Export ("beginSheetWithPrintInfo:modalForWindow:delegate:didEndSelector:contextInfo:")]
-		void BeginSheet (NSPrintInfo printInfo, NSWindow docWindow, NSObject del, Selector didEndSelector, IntPtr contextInfo);
+		void BeginSheet (NSPrintInfo printInfo, NSWindow docWindow, [NullAllowed] NSObject del, [NullAllowed] Selector didEndSelector, IntPtr contextInfo);
 
 		[Export ("runModalWithPrintInfo:")]
 		int RunModalWithPrintInfo (NSPrintInfo printInfo);
