@@ -1,7 +1,7 @@
 <Type Name="NSWindow" FullName="MonoMac.AppKit.NSWindow">
   <TypeSignature Language="C#" Value="public class NSWindow : MonoMac.AppKit.NSResponder" />
   <AssemblyInfo>
-    <AssemblyName>monomac</AssemblyName>
+    <AssemblyName>MonoMac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -304,6 +304,30 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="AnimationFor">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject AnimationFor (MonoMac.Foundation.NSString key);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("animationForKey:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="key" Type="MonoMac.Foundation.NSString" />
+      </Parameters>
+      <Docs>
+        <param name="key">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="AnimationResizeTime">
       <MemberSignature Language="C#" Value="public virtual double AnimationResizeTime (System.Drawing.RectangleF newFrame);" />
       <MemberType>Method</MemberType>
@@ -325,6 +349,49 @@ public class MyClass : BaseClass {
         <param name="newFrame">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Animations">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSDictionary Animations { set; get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("animations")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: MonoMac.Foundation.Export("setAnimations:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSDictionary</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Animator">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject Animator { get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("animator")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1125,8 +1192,8 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="DataWithEPSInsideRect">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSData DataWithEPSInsideRect (System.Drawing.RectangleF rect);" />
+    <Member MemberName="DataWithEpsInsideRect">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSData DataWithEpsInsideRect (System.Drawing.RectangleF rect);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -1149,8 +1216,8 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="DataWithPDFInsideRect">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSData DataWithPDFInsideRect (System.Drawing.RectangleF rect);" />
+    <Member MemberName="DataWithPdfInsideRect">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSData DataWithPdfInsideRect (System.Drawing.RectangleF rect);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -1190,6 +1257,30 @@ public class MyClass : BaseClass {
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DefaultAnimationFor">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSObject DefaultAnimationFor (MonoMac.Foundation.NSString key);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("defaultAnimationForKey:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="key" Type="MonoMac.Foundation.NSString" />
+      </Parameters>
+      <Docs>
+        <param name="key">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -3393,8 +3484,8 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="RepresentedURL">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSUrl RepresentedURL { set; get; }" />
+    <Member MemberName="RepresentedUrl">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSUrl RepresentedUrl { set; get; }" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>

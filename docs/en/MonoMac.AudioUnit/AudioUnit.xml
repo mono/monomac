@@ -1,0 +1,311 @@
+<Type Name="AudioUnit" FullName="MonoMac.AudioUnit.AudioUnit">
+  <TypeSignature Language="C#" Value="public class AudioUnit : IDisposable, MonoMac.ObjCRuntime.INativeObject" />
+  <AssemblyInfo>
+    <AssemblyName>MonoMac</AssemblyName>
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>MonoMac.ObjCRuntime.INativeObject</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>System.IDisposable</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public AudioUnit (MonoMac.AudioUnit.AudioComponent component);" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="component" Type="MonoMac.AudioUnit.AudioComponent" />
+      </Parameters>
+      <Docs>
+        <param name="component">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Component">
+      <MemberSignature Language="C#" Value="public MonoMac.AudioUnit.AudioComponent Component { get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.AudioUnit.AudioComponent</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Dispose">
+      <MemberSignature Language="C#" Value="public void Dispose ();" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Dispose">
+      <MemberSignature Language="C#" Value="public void Dispose (bool disposing);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="disposing" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="disposing">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetAudioFormat">
+      <MemberSignature Language="C#" Value="public MonoMac.AudioToolbox.AudioStreamBasicDescription GetAudioFormat (MonoMac.AudioUnit.AudioUnitScopeType scope, uint audioUnitElement);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.AudioToolbox.AudioStreamBasicDescription</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="scope" Type="MonoMac.AudioUnit.AudioUnitScopeType" />
+        <Parameter Name="audioUnitElement" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="scope">To be added.</param>
+        <param name="audioUnitElement">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Handle">
+      <MemberSignature Language="C#" Value="public IntPtr Handle { get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.IntPtr</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Initialize">
+      <MemberSignature Language="C#" Value="public int Initialize ();" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsPlaying">
+      <MemberSignature Language="C#" Value="public bool IsPlaying { get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Render">
+      <MemberSignature Language="C#" Value="public void Render (MonoMac.AudioUnit.AudioUnitRenderActionFlags flags, MonoMac.AudioToolbox.AudioTimeStamp timeStamp, int outputBusnumber, int numberFrames, MonoMac.AudioToolbox.AudioBufferList data);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="flags" Type="MonoMac.AudioUnit.AudioUnitRenderActionFlags" />
+        <Parameter Name="timeStamp" Type="MonoMac.AudioToolbox.AudioTimeStamp" />
+        <Parameter Name="outputBusnumber" Type="System.Int32" />
+        <Parameter Name="numberFrames" Type="System.Int32" />
+        <Parameter Name="data" Type="MonoMac.AudioToolbox.AudioBufferList" />
+      </Parameters>
+      <Docs>
+        <param name="flags">To be added.</param>
+        <param name="timeStamp">To be added.</param>
+        <param name="outputBusnumber">To be added.</param>
+        <param name="numberFrames">To be added.</param>
+        <param name="data">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RenderCallback">
+      <MemberSignature Language="C#" Value="public event EventHandler&lt;MonoMac.AudioUnit.AudioUnitEventArgs&gt; RenderCallback;" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.EventHandler&lt;MonoMac.AudioUnit.AudioUnitEventArgs&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetAudioFormat">
+      <MemberSignature Language="C#" Value="public void SetAudioFormat (MonoMac.AudioToolbox.AudioStreamBasicDescription audioFormat, MonoMac.AudioUnit.AudioUnitScopeType scope, uint audioUnitElement);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="audioFormat" Type="MonoMac.AudioToolbox.AudioStreamBasicDescription" />
+        <Parameter Name="scope" Type="MonoMac.AudioUnit.AudioUnitScopeType" />
+        <Parameter Name="audioUnitElement" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="audioFormat">To be added.</param>
+        <param name="scope">To be added.</param>
+        <param name="audioUnitElement">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetEnableIO">
+      <MemberSignature Language="C#" Value="public void SetEnableIO (bool enableIO, MonoMac.AudioUnit.AudioUnitScopeType scope, uint audioUnitElement);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="enableIO" Type="System.Boolean" />
+        <Parameter Name="scope" Type="MonoMac.AudioUnit.AudioUnitScopeType" />
+        <Parameter Name="audioUnitElement" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="enableIO">To be added.</param>
+        <param name="scope">To be added.</param>
+        <param name="audioUnitElement">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Start">
+      <MemberSignature Language="C#" Value="public void Start ();" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Stop">
+      <MemberSignature Language="C#" Value="public void Stop ();" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TryRender">
+      <MemberSignature Language="C#" Value="public MonoMac.AudioUnit.AudioUnitStatus TryRender (MonoMac.AudioUnit.AudioUnitRenderActionFlags flags, MonoMac.AudioToolbox.AudioTimeStamp timeStamp, int outputBusnumber, int numberFrames, MonoMac.AudioToolbox.AudioBufferList data);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.AudioUnit.AudioUnitStatus</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="flags" Type="MonoMac.AudioUnit.AudioUnitRenderActionFlags" />
+        <Parameter Name="timeStamp" Type="MonoMac.AudioToolbox.AudioTimeStamp" />
+        <Parameter Name="outputBusnumber" Type="System.Int32" />
+        <Parameter Name="numberFrames" Type="System.Int32" />
+        <Parameter Name="data" Type="MonoMac.AudioToolbox.AudioBufferList" />
+      </Parameters>
+      <Docs>
+        <param name="flags">To be added.</param>
+        <param name="timeStamp">To be added.</param>
+        <param name="outputBusnumber">To be added.</param>
+        <param name="numberFrames">To be added.</param>
+        <param name="data">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Uninitialize">
+      <MemberSignature Language="C#" Value="public int Uninitialize ();" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

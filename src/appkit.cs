@@ -224,7 +224,7 @@ namespace MonoMac.AppKit {
 		int RunModal ();
 	
 		[Export ("beginSheetModalForWindow:modalDelegate:didEndSelector:contextInfo:")]
-		void BeginSheet (NSWindow  window, NSObject modalDelegate, Selector didEndSelector, IntPtr contextInfo);
+		void BeginSheet (NSWindow  window, [NullAllowed] NSObject modalDelegate, [NullAllowed] Selector didEndSelector, IntPtr contextInfo);
 	
 		[Export ("window")]
 		NSObject Window  { get; }
@@ -334,7 +334,7 @@ namespace MonoMac.AppKit {
 		void CancelUserAttentionRequest (int request);
 	
 		[Export ("beginSheet:modalForWindow:modalDelegate:didEndSelector:contextInfo:")]
-		void BeginSheet (NSWindow sheet, NSWindow docWindow, NSObject modalDelegate, Selector didEndSelector, IntPtr contextInfo);
+		void BeginSheet (NSWindow sheet, NSWindow docWindow, [NullAllowed] NSObject modalDelegate, [NullAllowed] Selector didEndSelector, IntPtr contextInfo);
 	
 		[Export ("endSheet:")]
 		void EndSheet (NSWindow sheet);
@@ -2174,7 +2174,8 @@ namespace MonoMac.AppKit {
 		// FIXME: binding components pointer
 		//[Export ("colorWithColorSpace:components:count:")]
 		//NSColor ColorWithColorSpace (NSColorSpace space, const CGFloat components, int numberOfComponents);
-
+		
+		[Static]
 		[Export ("blackColor")]
 		NSColor Black { get; }
 
@@ -2848,6 +2849,7 @@ namespace MonoMac.AppKit {
 	}
 
 	[BaseType (typeof (NSObject))]
+	[Model]
 	interface NSComboBoxDataSource {
 		[Export ("comboBox:objectValueForItemAtIndex:")]
 		NSObject ObjectValueForItem (NSComboBox comboBox, int index);
@@ -4567,7 +4569,7 @@ namespace MonoMac.AppKit {
 
 		// TODO: TYPE FOR THIS?
 		[Export ("modifierFlags")]
-		uint ModifierFlags { get; }
+		NSEventModifierMask ModifierFlags { get; }
 
 		[Export ("timestamp")]
 		double Timestamp { get; }
@@ -4743,7 +4745,7 @@ namespace MonoMac.AppKit {
 
 		[Static]
 		[Export ("modifierFlags")]
-		uint CurrentModifierFlags { get; }
+		NSEventModifierMask CurrentModifierFlags { get; }
 
 		[Static]
 		[Export ("pressedMouseButtons")]
@@ -4802,10 +4804,10 @@ namespace MonoMac.AppKit {
 		void AddItem (NSMenuItem newItem);
 
 		[Export ("insertItemWithTitle:action:keyEquivalent:atIndex:")]
-		NSMenuItem InsertItem (string title, Selector action, string charCode, int index);
+		NSMenuItem InsertItem (string title, [NullAllowed] Selector action, string charCode, int index);
 
 		[Export ("addItemWithTitle:action:keyEquivalent:")]
-		NSMenuItem AddItem (string title, Selector action, string charCode);
+		NSMenuItem AddItem (string title, [NullAllowed] Selector action, string charCode);
 
 		[Export ("removeItemAtIndex:")]
 		void RemoveItemAt (int index);
@@ -4814,7 +4816,7 @@ namespace MonoMac.AppKit {
 		void RemoveItem (NSMenuItem item);
 
 		[Export ("setSubmenu:forItem:")]
-		void SetSubmenuforItem (NSMenu aMenu, NSMenuItem anItem);
+		void SetSubmenu (NSMenu aMenu, NSMenuItem anItem);
 
 		[Export ("removeAllItems")]
 		void RemoveAllItems ();
@@ -5514,7 +5516,7 @@ namespace MonoMac.AppKit {
 		//runModalForWindows:Completeion
 		[Obsolete ("On 10.6 and newer use runModalForWindow:")]
 		[Export ("beginSheetForDirectory:file:types:modalForWindow:modalDelegate:didEndSelector:contextInfo:")]
-		void BeginSheet (string directory, string fileName, string [] fileTypes, NSWindow modalForWindow, NSObject modalDelegate, Selector didEndSelector, IntPtr contextInfo);
+		void BeginSheet (string directory, string fileName, string [] fileTypes, NSWindow modalForWindow, [NullAllowed] NSObject modalDelegate, [NullAllowed] Selector didEndSelector, IntPtr contextInfo);
 
 		[Obsolete ("On 10.6 and newer use runWithCompletionHandler:")]
 		[Export ("beginForDirectory:file:types:modelessDelegate:didEndSelector:contextInfo:")]
@@ -6538,7 +6540,7 @@ namespace MonoMac.AppKit {
 		NSViewController [] AccessoryControllers ();
 
 		[Export ("beginSheetWithPrintInfo:modalForWindow:delegate:didEndSelector:contextInfo:")]
-		void BeginSheet (NSPrintInfo printInfo, NSWindow docWindow, NSObject del, Selector didEndSelector, IntPtr contextInfo);
+		void BeginSheet (NSPrintInfo printInfo, NSWindow docWindow, [NullAllowed] NSObject del, [NullAllowed] Selector didEndSelector, IntPtr contextInfo);
 
 		[Export ("runModalWithPrintInfo:")]
 		int RunModalWithPrintInfo (NSPrintInfo printInfo);
@@ -7547,7 +7549,7 @@ namespace MonoMac.AppKit {
 		NSViewController [] AccessoryControllers ();
 
 		[Export ("beginSheetWithPrintInfo:modalForWindow:delegate:didEndSelector:contextInfo:")]
-		void BeginSheet (NSPrintInfo printInfo, NSWindow docWindow, NSObject del, Selector didEndSelector, IntPtr contextInfo);
+		void BeginSheet (NSPrintInfo printInfo, NSWindow docWindow, [NullAllowed] NSObject del, [NullAllowed] Selector didEndSelector, IntPtr contextInfo);
 
 		[Export ("runModalWithPrintInfo:")]
 		int RunModalWithPrintInfo (NSPrintInfo printInfo);
@@ -7862,7 +7864,7 @@ namespace MonoMac.AppKit {
 		[Export ("clientView")]
 		NSView ClientView { get; set; }
 
-		[Export ("markers")]
+		[Export ("markers"), NullAllowed]
 		NSRulerMarker [] Markers { get; set; }
 
 		[Export ("accessoryView")]
@@ -8123,7 +8125,7 @@ namespace MonoMac.AppKit {
 
 		[Export ("hasHorizontalScroller")]
 		bool HasHorizontalScroller { get; set; }
-
+		
 		[Export ("verticalScroller")]
 		NSScroller VerticalScroller { get; set; }
 
@@ -8153,6 +8155,21 @@ namespace MonoMac.AppKit {
 
 		[Export ("scrollsDynamically")]
 		bool ScrollsDynamically { get; set; }
+		
+		[Export ("hasVerticalRuler")]
+		bool HasVerticalRuler { get; set; }
+
+		[Export ("hasHorizontalRuler")]
+		bool HasHorizontalRuler { get; set; }
+		
+		[Export ("rulersVisible")]
+        bool RulersVisible { get; set; }
+       
+        [Export ("horizontalRulerView")]
+        NSRulerView HorizontalRulerView { get; set; }
+   
+        [Export ("verticalRulerView")]
+        NSRulerView VerticalRulerView { get; set; }    
 	}
 
 	[BaseType (typeof (NSTextField))]
@@ -8924,6 +8941,7 @@ namespace MonoMac.AppKit {
 	}
 
 	[BaseType (typeof (NSObject))]
+	[PrivateDefaultCtor]
 	interface NSStatusItem {
 		[Export ("statusBar")]
 		NSStatusBar StatusBar { get; }

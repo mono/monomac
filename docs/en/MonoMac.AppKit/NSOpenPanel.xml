@@ -1,7 +1,7 @@
 <Type Name="NSOpenPanel" FullName="MonoMac.AppKit.NSOpenPanel">
   <TypeSignature Language="C#" Value="public class NSOpenPanel : MonoMac.AppKit.NSSavePanel" />
   <AssemblyInfo>
-    <AssemblyName>monomac</AssemblyName>
+    <AssemblyName>MonoMac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -122,6 +122,80 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Begin">
+      <MemberSignature Language="C#" Value="public virtual void Begin (string directory, string fileName, string[] fileTypes, MonoMac.Foundation.NSObject modelessDelegate, MonoMac.ObjCRuntime.Selector didEndSelector, IntPtr contextInfo);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("beginForDirectory:file:types:modelessDelegate:didEndSelector:contextInfo:")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Obsolete("On 10.6 and newer use runWithCompletionHandler:", false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="directory" Type="System.String" />
+        <Parameter Name="fileName" Type="System.String" />
+        <Parameter Name="fileTypes" Type="System.String[]" />
+        <Parameter Name="modelessDelegate" Type="MonoMac.Foundation.NSObject" />
+        <Parameter Name="didEndSelector" Type="MonoMac.ObjCRuntime.Selector" />
+        <Parameter Name="contextInfo" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="directory">To be added.</param>
+        <param name="fileName">To be added.</param>
+        <param name="fileTypes">To be added.</param>
+        <param name="modelessDelegate">To be added.</param>
+        <param name="didEndSelector">To be added.</param>
+        <param name="contextInfo">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BeginSheet">
+      <MemberSignature Language="C#" Value="public virtual void BeginSheet (string directory, string fileName, string[] fileTypes, MonoMac.AppKit.NSWindow modalForWindow, MonoMac.Foundation.NSObject modalDelegate, MonoMac.ObjCRuntime.Selector didEndSelector, IntPtr contextInfo);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("beginSheetForDirectory:file:types:modalForWindow:modalDelegate:didEndSelector:contextInfo:")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Obsolete("On 10.6 and newer use runModalForWindow:", false)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="directory" Type="System.String" />
+        <Parameter Name="fileName" Type="System.String" />
+        <Parameter Name="fileTypes" Type="System.String[]" />
+        <Parameter Name="modalForWindow" Type="MonoMac.AppKit.NSWindow" />
+        <Parameter Name="modalDelegate" Type="MonoMac.Foundation.NSObject" />
+        <Parameter Name="didEndSelector" Type="MonoMac.ObjCRuntime.Selector" />
+        <Parameter Name="contextInfo" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="directory">To be added.</param>
+        <param name="fileName">To be added.</param>
+        <param name="fileTypes">To be added.</param>
+        <param name="modalForWindow">To be added.</param>
+        <param name="modalDelegate">To be added.</param>
+        <param name="didEndSelector">To be added.</param>
+        <param name="contextInfo">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="CanChooseDirectories">
       <MemberSignature Language="C#" Value="public virtual bool CanChooseDirectories { set; get; }" />
       <MemberType>Property</MemberType>
@@ -183,17 +257,29 @@ public class MyClass : BaseClass {
         <remarks>Each MonoMac class mirrors an unmanaged Objective-C class.   This value contains the pointer to the Objective-C class, it is similar to calling objc_getClass with the object name.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="DidChangeToDirectoryURL">
-      <MemberSignature Language="C#" Value="public event EventHandler&lt;MonoMac.AppKit.NSOpenSavePanelUrlEventArgs&gt; DidChangeToDirectoryURL;" />
-      <MemberType>Event</MemberType>
+    <Member MemberName="Filenames">
+      <MemberSignature Language="C#" Value="public virtual string[] Filenames { set; get; }" />
+      <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("On 10.6 and newer, use Uris", false)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("filenames")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: MonoMac.Foundation.Export("setFilenames:")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
-        <ReturnType>System.EventHandler&lt;MonoMac.AppKit.NSOpenSavePanelUrlEventArgs&gt;</ReturnType>
+        <ReturnType>System.String[]</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -240,32 +326,61 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="SelectionDidChange">
-      <MemberSignature Language="C#" Value="public event EventHandler SelectionDidChange;" />
-      <MemberType>Event</MemberType>
+    <Member MemberName="RunModal">
+      <MemberSignature Language="C#" Value="public virtual int RunModal (string[] types);" />
+      <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("runModalForTypes:")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Obsolete("On 10.6 and newer use runModal:", false)</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
-        <ReturnType>System.EventHandler</ReturnType>
+        <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
+      <Parameters>
+        <Parameter Name="types" Type="System.String[]" />
+      </Parameters>
       <Docs>
+        <param name="types">To be added.</param>
         <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="ShouldEnableURL">
-      <MemberSignature Language="C#" Value="public MonoMac.AppKit.NSOpenSavePanelUrl ShouldEnableURL { set; get; }" />
-      <MemberType>Property</MemberType>
+    <Member MemberName="RunModal">
+      <MemberSignature Language="C#" Value="public virtual int RunModal (string directory, string fileName, string[] types);" />
+      <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("runModalForDirectory:file:types:")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Obsolete("On 10.6 and newer use runModal:", false)</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
-        <ReturnType>MonoMac.AppKit.NSOpenSavePanelUrl</ReturnType>
+        <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
+      <Parameters>
+        <Parameter Name="directory" Type="System.String" />
+        <Parameter Name="fileName" Type="System.String" />
+        <Parameter Name="types" Type="System.String[]" />
+      </Parameters>
       <Docs>
+        <param name="directory">To be added.</param>
+        <param name="fileName">To be added.</param>
+        <param name="types">To be added.</param>
         <summary>To be added.</summary>
-        <value>To be added.</value>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -286,35 +401,6 @@ public class MyClass : BaseClass {
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="UserEnteredFilename">
-      <MemberSignature Language="C#" Value="public MonoMac.AppKit.NSOpenSaveFilename UserEnteredFilename { set; get; }" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.AppKit.NSOpenSaveFilename</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="WillExpand">
-      <MemberSignature Language="C#" Value="public event EventHandler&lt;MonoMac.AppKit.NSOpenSaveExpandingEventArgs&gt; WillExpand;" />
-      <MemberType>Event</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.EventHandler&lt;MonoMac.AppKit.NSOpenSaveExpandingEventArgs&gt;</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

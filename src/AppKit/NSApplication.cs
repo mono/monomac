@@ -40,12 +40,24 @@ namespace MonoMac.AppKit {
 
 		public static void Init ()
 		{
-			foreach (var a in AppDomain.CurrentDomain.GetAssemblies ())
-				Runtime.RegisterAssembly (a);
+			var monomac = Assembly.GetExecutingAssembly ();
+			Runtime.RegisterAssembly (monomac);
+
+			var name = monomac.GetName ().ToString ();
+
+			foreach (var a in AppDomain.CurrentDomain.GetAssemblies ()) {
+				foreach (var r in a.GetReferencedAssemblies ()) {
+					//FIXME: Mono's ReferenceMatchesDefinition isn't implemented, so check string values instead
+					//if (AssemblyName.ReferenceMatchesDefinition (r, name)) {
+					if (name == r.ToString ()) {
+						Runtime.RegisterAssembly (a);
+						break;
+					}
+				}
+			}
 
 			// TODO:
 			//   Install hook to register dynamically loaded assemblies
-			//   Only do the type scan for assembleis that reference MonoMac.dll
 		}
 
 		public static void InitDrawingBridge ()

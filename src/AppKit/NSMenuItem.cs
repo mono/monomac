@@ -37,6 +37,10 @@ namespace MonoMac.AppKit {
 		{
 			Activated += handler;
 		}
+
+		public NSMenuItem (string title, string charCode) : this (title, null, charCode)
+		{
+		}
 		
 		public event EventHandler Activated {
 			add {

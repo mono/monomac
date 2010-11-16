@@ -1,7 +1,7 @@
 <Type Name="NSOpenGLContext" FullName="MonoMac.AppKit.NSOpenGLContext">
   <TypeSignature Language="C#" Value="public class NSOpenGLContext : MonoMac.Foundation.NSObject" />
   <AssemblyInfo>
-    <AssemblyName>monomac</AssemblyName>
+    <AssemblyName>MonoMac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -467,7 +467,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="SetPixelBuffer">
-      <MemberSignature Language="C#" Value="public virtual void SetPixelBuffer (MonoMac.AppKit.NSOpenGLPixelBuffer pixelBuffer, int face, int level, int screen);" />
+      <MemberSignature Language="C#" Value="public virtual void SetPixelBuffer (MonoMac.AppKit.NSOpenGLPixelBuffer pixelBuffer, MonoMac.AppKit.NSGLTextureCubeMap face, int level, int screen);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -482,7 +482,7 @@ public class MyClass : BaseClass {
       </ReturnValue>
       <Parameters>
         <Parameter Name="pixelBuffer" Type="MonoMac.AppKit.NSOpenGLPixelBuffer" />
-        <Parameter Name="face" Type="System.Int32" />
+        <Parameter Name="face" Type="MonoMac.AppKit.NSGLTextureCubeMap" />
         <Parameter Name="level" Type="System.Int32" />
         <Parameter Name="screen" Type="System.Int32" />
       </Parameters>
@@ -496,7 +496,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="SetTextureImage">
-      <MemberSignature Language="C#" Value="public virtual void SetTextureImage (MonoMac.AppKit.NSOpenGLPixelBuffer pixelBuffer, int source);" />
+      <MemberSignature Language="C#" Value="public virtual void SetTextureImage (MonoMac.AppKit.NSOpenGLPixelBuffer pixelBuffer, MonoMac.AppKit.NSGLColorBuffer source);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -511,7 +511,7 @@ public class MyClass : BaseClass {
       </ReturnValue>
       <Parameters>
         <Parameter Name="pixelBuffer" Type="MonoMac.AppKit.NSOpenGLPixelBuffer" />
-        <Parameter Name="source" Type="System.Int32" />
+        <Parameter Name="source" Type="MonoMac.AppKit.NSGLColorBuffer" />
       </Parameters>
       <Docs>
         <param name="pixelBuffer">To be added.</param>

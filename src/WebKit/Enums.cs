@@ -57,4 +57,8 @@ namespace MonoMac.WebKit {
 	public enum WebCacheModel {
 		DocumentViewer, DocumentBrowser, PrimaryWebBrowser
 	}
+
+	public enum DomEventPhase {
+		Capturing = 1, AtTarget, Bubbling
+	}
 }

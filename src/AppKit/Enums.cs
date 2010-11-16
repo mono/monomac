@@ -1458,4 +1458,5 @@ namespace MonoMac.AppKit {
 		Open = 2,
 		Closing = 3
 	}
+
 } 

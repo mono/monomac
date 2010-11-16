@@ -1,3 +1,26 @@
+//
+// Copyright 2010, Novell, Inc.
+//
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to
+// permit persons to whom the Software is furnished to do so, subject to
+// the following conditions:
+// 
+// The above copyright notice and this permission notice shall be
+// included in all copies or substantial portions of the Software.
+// 
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+// EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+// NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+// LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+// WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+
 using System;
 using System.Drawing;
 using MonoMac.Foundation;
@@ -290,6 +313,18 @@ namespace MonoMac.WebKit {
 
 		[Export ("compareDocumentPosition")]
 		DomDocumentPosition CompareDocumentPosition (DomNode other);
+
+		//
+		// These come from the adopted protocol DOMEventTarget
+		//
+		[Export ("addEventListener:listener:useCapture:")]
+		void AddEventListener (string type, DomEventListener listener, bool useCapture);
+
+		[Export ("removeEventListener:listener:useCapture:")]
+		void RemoveEventListener (string type, DomEventListener listener, bool useCapture);
+
+		[Export ("dispatchEvent:")]
+		bool DispatchEvent (DomEvent evt);
 	}
 
 	[BaseType (typeof (DomObject), Name="DOMNodeList")]
@@ -846,6 +881,56 @@ namespace MonoMac.WebKit {
 	interface DomEntityReference {
 	}
 
+	[BaseType (typeof (DomObject), Name="DOMEvent")]
+	interface DomEvent {
+		[Export ("type")]
+		string Type { get; }
+
+		[Export ("target")]
+		NSObject Target { get;  }
+
+		[Export ("currentTarget")]
+		NSObject CurrentTarget { get;  }
+
+		[Export ("eventPhase")]
+		DomEventPhase EventPhase { get;  }
+
+		[Export ("bubbles")]
+		bool Bubbles { get;  }
+
+		[Export ("cancelable")]
+		bool Cancelable { get;  }
+
+		[Export ("timeStamp")]
+		UInt64 TimeStamp { get;  }
+
+		[Export ("srcElement")]
+		NSObject SourceElement { get;  }
+
+		[Export ("returnValue")]
+		bool ReturnValue { get; set;  }
+
+		[Export ("cancelBubble")]
+		bool CancelBubble { get; set;  }
+
+		[Export ("stopPropagation")]
+		void StopPropagation ();
+
+		[Export ("preventDefault")]
+		void PreventDefault ();
+
+		[Export ("initEvent:canBubbleArg:cancelableArg:")]
+		void InitEvent (string eventTypeArg, bool canBubbleArg, bool cancelableArg);
+	}
+
+	[BaseType (typeof (NSObject), Name="DOMEventListener")]
+	[Model]
+	interface DomEventListener {
+		[Abstract]
+		[Export ("handleEvent:")]
+		void HandleEvent (DomEvent evt);
+	}
+	
 	[BaseType (typeof (DomNode), Name="DOMProcessingInstruction")]
 	interface DomProcessingInstruction {
 		[Export ("target")]

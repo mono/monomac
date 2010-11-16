@@ -32,11 +32,13 @@ CORE_SOURCES =					\
 MONOMAC_SOURCES = \
 	./Foundation/NSObjectMac.cs			\
 	./AppKit/ActionDispatcher.cs			\
+	./AppKit/BeginSheet.cs				\
 	./AppKit/Functions.cs				\
 	./AppKit/NSApplication.cs			\
 	./AppKit/NSApplicationDelegate.cs		\
 	./AppKit/NSBitmapImageRep.cs			\
 	./AppKit/NSControl.cs				\
+	./AppKit/NSMenu.cs				\
 	./AppKit/NSMenuItem.cs				\
 	./AppKit/NSActionCell.cs			\
 	./AppKit/NSButton.cs				\
@@ -49,6 +51,7 @@ MONOMAC_SOURCES = \
 	./AppKit/NSMatrix.cs				\
 	./AppKit/NSWindow.cs				\
 	./Growl/Constants.cs				\
+	./WebKit/DomNode.cs				\
 	./WebKit/Enumerators.cs				\
 	./WebKit/Indexers.cs
 
@@ -112,3 +115,6 @@ clean:
 	rm -f $(TARGETS) core.dll
 
 all: MonoMac.dll
+
+update: MonoMac.dll
+	cp monomac.dll ~/.config/MonoDevelop/addins/MonoDevelop.MonoMac.2.4.0.7/MonoMac.dll
