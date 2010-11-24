@@ -39,4 +39,32 @@ namespace MonoMac.QTKit {
 		CommonTypes = 0,
 		AllTypes = 0xffff
 	}
+
+	public enum QTCaptureDeviceAVCTransportControls {
+		NotPlaying,
+		Playing
+	}
+
+	public enum QTCaptureDeviceAVCTransportControlsSpeed {
+		FastestReverse = -19000,	
+		VeryFastReverse = -16000,
+		FastReverse = -13000,
+		NormalReverse = -10000,
+		SlowReverse = -7000,
+		VerySlowReverse = -4000,
+		SlowestReverse = -1000,
+		Stopped = 0,	
+		SlowestForward = 1000,
+		VerySlowForward = 4000,
+		SlowForward = 7000,
+		NormalForward = 10000,
+		FastForward = 13000,
+		VeryFastForward = 16000,
+		FastestForward = 19000,		
+	}
+
+	public enum QTCaptureDestination {
+		NewFile = 1,
+		OldFile = 2
+	}
 } 

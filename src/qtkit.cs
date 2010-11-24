@@ -22,6 +22,29 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
+// TODO:
+//   API: QTCaptureDevice - hide the NSDictionary with attribtues, and instead
+//        expose a C# type, hide all fields
+//   API: QTSampleBuffer.h expose a couple of AudioBufferList methods 
+//   API: QTMovie expose a bunch of commented out methods
+//
+//   QTCaptureAudioPreviewOutput.h
+//   QTCaptureDecompressedAudioOutput.h
+//   QTCaptureDecompressedVideoOutput.h
+//   QTCaptureLayer.h
+//   QTCaptureMovieFileOutput.h
+//   QTCaptureVideoPreviewOutput.h
+//   QTDataReference.h
+//   QTError.h
+//   QTKit.h
+//   QTKitDefines.h
+//   QTMedia.h
+//   QTMovieLayer.h
+//   QTTime.h
+//   QTTimeRange.h
+//   QTTrack.h
+//   QTUtilities.h
+
 using System;
 using MonoMac.Foundation;
 using MonoMac.ObjCRuntime;
@@ -30,6 +53,402 @@ using System.Drawing;
 
 namespace MonoMac.QTKit
 {
+	[BaseType (typeof (NSObject))]
+	interface QTCaptureConnection {
+		[Export ("owner")]
+		NSObject Owner { get; }
+
+		[Export ("mediaType")]
+		string MediaType { get; }
+
+		[Export ("formatDescription")]
+		QTFormatDescription FormatDescription { get; }
+
+		[Export ("attributeIsReadOnly:")]
+		bool IsAttributeReadOnly (string attributeKey);
+
+		[Export ("attributeForKey:")]
+		NSObject GetAttribute (string attributeKey);
+
+		[Export ("setAttribute:forKey:")]
+		void SetAttribute (NSObject attribute, string key);
+
+		//Detected properties
+		[Export ("enabled")]
+		bool Enabled { [Bind ("isEnabled")]get; set; }
+
+		[Export ("connectionAttributes")]
+		NSDictionary ConnectionAttributes { get; set; }
+
+		[Field ("QTCaptureConnectionFormatDescriptionWillChangeNotification")]
+		NSString FormatDescriptionWillChangeNotification { get; }
+
+		[Field ("QTCaptureConnectionFormatDescriptionDidChangeNotification")]
+		NSString FormatDescriptionDidChangeNotification { get; }
+
+		[Field ("QTCaptureConnectionAttributeWillChangeNotification")]
+		NSString AttributeWillChangeNotification { get; }
+
+		[Field ("QTCaptureConnectionAttributeDidChangeNotification")]
+		NSString AttributeDidChangeNotification { get; }
+
+		[Field ("QTCaptureConnectionChangedAttributeKey")]
+		NSString ChangedAttributeKey { get; }
+
+		[Field ("QTCaptureConnectionAudioAveragePowerLevelsAttribute")]
+		NSString AudioAveragePowerLevelsAttribute { get; }
+
+		[Field ("QTCaptureConnectionAudioPeakHoldLevelsAttribute")]
+		NSString AudioPeakHoldLevelsAttribute { get; }
+
+		[Field ("QTCaptureConnectionAudioMasterVolumeAttribute")]
+		NSString AudioMasterVolumeAttribute { get; }
+
+		[Field ("QTCaptureConnectionAudioVolumesAttribute")]
+		NSString AudioVolumesAttribute { get; }
+
+		[Field ("QTCaptureConnectionEnabledAudioChannelsAttribute")]
+		NSString EnabledAudioChannelsAttribute { get; }
+	}
+
+	[BaseType (typeof (NSObject))]
+	interface QTCaptureDevice {
+		[Static]
+		[Export ("inputDevices")]
+		QTCaptureDevice [] InputDevices { get; }
+
+		[Static]
+		[Export ("inputDevicesWithMediaType:")]
+		QTCaptureDevice [] GetInputDevices (string forMediaType);
+
+		[Static]
+		[Export ("defaultInputDeviceWithMediaType:")]
+		QTCaptureDevice GetDefaultInputDevice (string forMediaType);
+
+		[Static]
+		[Export ("deviceWithUniqueID:")]
+		QTCaptureDevice FromUniqueID (string deviceUniqueID);
+
+		[Export ("uniqueID")]
+		string UniqueID { get; }
+
+		[Export ("modelUniqueID")]
+		string ModelUniqueID { get; }
+
+		[Export ("localizedDisplayName")]
+		string LocalizedDisplayName { get; }
+
+		[Export ("formatDescriptions")]
+		QTFormatDescription [] FormatDescriptions { get; }
+
+		[Export ("hasMediaType:")]
+		bool HasMediaType (string mediaType);
+
+		[Export ("attributeIsReadOnly:")]
+		bool IsAttributeReadOnly (string attributeKey);
+
+		[Export ("attributeForKey:")]
+		NSObject GetAttribute (string attributeKey);
+
+		[Export ("setAttribute:forKey:")]
+		void SetAttribute (NSObject attribute, string attributeKey);
+
+		[Export ("isConnected")]
+		bool IsConnected { get; }
+
+		[Export ("isInUseByAnotherApplication")]
+		bool IsInUseByAnotherApplication { get; }
+
+		[Export ("isOpen")]
+		bool IsOpen { get; }
+
+		[Export ("open:")]
+		bool Open (out NSError error);
+
+		[Export ("close")]
+		void Close ();
+
+		//Detected properties
+		[Export ("deviceAttributes")]
+		NSDictionary DeviceAttributes { get; set; }
+
+		[Field ("QTCaptureDeviceWasConnectedNotification")]
+		NSString WasConnectedNotification { get; }
+		
+		[Field ("QTCaptureDeviceWasDisconnectedNotification")]
+		NSString WasDisconnectedNotification { get; }
+
+		[Field ("QTCaptureDeviceFormatDescriptionsWillChangeNotification")]
+		NSString FormatDescriptionsWillChangeNotification { get; }
+		
+		[Field ("QTCaptureDeviceFormatDescriptionsDidChangeNotification")]
+		NSString FormatDescriptionsDidChangeNotification { get; }
+			
+		[Field ("QTCaptureDeviceAttributeWillChangeNotification")]
+		NSString AttributeWillChangeNotification { get; }
+		
+		[Field ("QTCaptureDeviceAttributeDidChangeNotification")]
+		NSString AttributeDidChangeNotification { get; }
+
+		[Field ("QTCaptureDeviceChangedAttributeKey")]
+		NSString ChangedAttributeKey { get; }
+
+		[Field ("QTCaptureDeviceSuspendedAttribute")]
+		NSString SuspendedAttribute { get; }
+		
+		[Field ("QTCaptureDeviceLinkedDevicesAttribute")]
+		NSString LinkedDevicesAttribute { get; }
+		
+		[Field ("QTCaptureDeviceAvailableInputSourcesAttribute")]
+		NSString AvailableInputSourcesAttribute { get; }
+		
+		[Field ("QTCaptureDeviceInputSourceIdentifierAttribute")]
+		NSString InputSourceIdentifierAttribute { get; }
+		
+		[Field ("QTCaptureDeviceInputSourceIdentifierKey")]
+		NSString InputSourceIdentifierKey { get; }
+		
+		[Field ("QTCaptureDeviceInputSourceLocalizedDisplayNameKey")]
+		NSString InputSourceLocalizedDisplayNameKey { get; }
+		
+		[Field ("QTCaptureDeviceLegacySequenceGrabberAttribute")]
+		NSString LegacySequenceGrabberAttribute { get; }
+		
+		[Field ("QTCaptureDeviceAVCTransportControlsAttribute")]
+		NSString AVCTransportControlsAttribute { get; }
+		
+		[Field ("QTCaptureDeviceAVCTransportControlsPlaybackModeKey")]
+		NSString AVCTransportControlsPlaybackModeKey { get; }
+		
+		[Field ("QTCaptureDeviceAVCTransportControlsSpeedKey")]
+		NSString AVCTransportControlsSpeedKey { get; }
+		
+	}
+
+	[BaseType (typeof (QTCaptureInput))]
+	interface QTCaptureDeviceInput {
+		[Export ("deviceInputWithDevice:")]
+		QTCaptureDeviceInput FromDevice (QTCaptureDevice device);
+
+		[Export ("initWithDevice")]
+		IntPtr Constructor (QTCaptureDevice device);
+		
+		[Export ("device")]
+		QTCaptureDevice Device { get; }
+	}
+
+	[BaseType (typeof (QTCaptureOutput), Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (QTCaptureFileOutputDelegate)})]
+	interface QTCaptureFileOutput {
+		[Export ("outputFileURL")]
+		NSUrl OutputFileUrl { get; }
+
+		[Export ("recordToOutputFileURL:")]
+		void RecordToOutputFile (NSUrl url);
+
+		[Export ("recordToOutputFileURL:bufferDestination:")]
+		void RecordToOutputFile (NSUrl url, QTCaptureDestination bufferDestination);
+
+		[Export ("isRecordingPaused")]
+		bool IsRecordingPaused { get; }
+
+		[Export ("pauseRecording")]
+		void PauseRecording ();
+
+		[Export ("resumeRecording")]
+		void ResumeRecording ();
+
+		[Export ("compressionOptionsForConnection:")]
+		QTCompressionOptions GetCompressionOptions (QTCaptureConnection forConnection);
+
+		[Export ("setCompressionOptions:forConnection:")]
+		void SetCompressionOptions (QTCompressionOptions compressionOptions, QTCaptureConnection forConnection);
+
+		[Export ("recordedDuration")]
+		QTTime RecordedDuration { get; }
+
+		[Export ("recordedFileSize")]
+		UInt64 RecordedFileSize { get; }
+
+		//Detected properties
+		[Export ("maximumVideoSize")]
+		SizeF MaximumVideoSize { get; set; }
+
+		[Export ("minimumVideoFrameInterval")]
+		double MinimumVideoFrameInterval { get; set; }
+
+		[Export ("maximumRecordedDuration")]
+		QTTime MaximumRecordedDuration { get; set; }
+
+		[Export ("maximumRecordedFileSize")]
+		UInt64 MaximumRecordedFileSize { get; set; }
+
+		[Export ("delegate"), NullAllowed]
+		NSObject WeakDelegate { get; set; }
+
+		[Wrap ("WeakDelegate")]
+		QTCaptureFileOutputDelegate Delegate { get; set; }
+
+	}
+
+	[BaseType (typeof (NSObject), Name="QTCaptureFileOutput_Delegate")]
+	interface QTCaptureFileOutputDelegate {
+		[Export ("captureOutput:didOutputSampleBuffer:fromConnection:"), EventArgs ("QTCaptureFileSample")]
+		void DidOutputSampleBuffer (QTCaptureFileOutput captureOutput, QTSampleBuffer sampleBuffer, QTCaptureConnection connection);
+
+		[Export ("captureOutput:willStartRecordingToOutputFileAtURL:forConnections:"), EventArgs ("QTCaptureFileUrl")]
+		void WillStartRecording (QTCaptureFileOutput captureOutput, NSUrl fileUrl, QTCaptureConnection [] connections);
+
+		[Export ("captureOutput:didStartRecordingToOutputFileAtURL:forConnections:"), EventArgs ("QTCaptureFileUrl")]
+		void DidStartRecording (QTCaptureFileOutput captureOutput, NSUrl fileUrl, QTCaptureConnection [] connections);
+
+		[Export ("captureOutput:shouldChangeOutputFileAtURL:forConnections:dueToError:"), EventArgs ("QTCaptureFileError"), DefaultValue (true)]
+		bool ShouldChangeOutputFile (QTCaptureFileOutput captureOutput, NSUrl outputFileURL, QTCaptureConnection [] connections, NSError reason);
+
+		[Export ("captureOutput:mustChangeOutputFileAtURL:forConnections:dueToError:"), EventArgs ("QTCaptureFileError")]
+		void MustChangeOutputFile (QTCaptureFileOutput captureOutput, NSUrl outputFileURL, QTCaptureConnection [] connections, NSError reason);
+
+		[Export ("captureOutput:willFinishRecordingToOutputFileAtURL:forConnections:dueToError:"), EventArgs ("QTCaptureFileError")]
+		void WillFinishRecording (QTCaptureFileOutput captureOutput, NSUrl outputFileURL, QTCaptureConnection [] connections, NSError reason);
+
+		[Export ("captureOutput:didFinishRecordingToOutputFileAtURL:forConnections:dueToError:"), EventArgs ("QTCaptureFileError")]
+		void DidFinishRecording (QTCaptureFileOutput captureOutput, NSUrl outputFileURL, QTCaptureConnection [] connections, NSError reason);
+
+		[Export ("captureOutput:didPauseRecordingToOutputFileAtURL:forConnections:"), EventArgs ("QTCaptureFileUrl")]
+		void DidPauseRecording (QTCaptureFileOutput captureOutput, NSUrl fileUrl, QTCaptureConnection [] connections);
+
+		[Export ("captureOutput:didResumeRecordingToOutputFileAtURL:forConnections:"), EventArgs ("QTCaptureFileUrl")]
+		void DidResumeRecording (QTCaptureFileOutput captureOutput, NSUrl fileUrl, QTCaptureConnection [] connections);
+	}
+
+	[BaseType (typeof (NSObject))]
+	interface QTCaptureInput {
+		[Export ("connections")]
+		QTCaptureConnection [] Connections { get; }
+	}
+
+	[BaseType (typeof (NSObject))]
+	interface QTCaptureOutput {
+		[Export ("connections")]
+		QTCaptureConnection [] Connections { get; }
+	}
+	
+	[BaseType (typeof (NSObject))]
+	interface QTCaptureSession {
+		[Export ("inputs")]
+		QTCaptureInput [] Inputs { get; }
+
+		[Export ("addInput:error:")]
+		bool AddInput (QTCaptureInput input, out NSError errorPtr);
+
+		[Export ("removeInput:")]
+		void RemoveInput (QTCaptureInput input);
+
+		[Export ("outputs")]
+		QTCaptureOutput [] Outputs { get; }
+
+		[Export ("addOutput:error:")]
+		bool AddOutput (QTCaptureOutput output, out NSError errorPtr);
+
+		[Export ("removeOutput:")]
+		void RemoveOutput (QTCaptureOutput output);
+
+		[Export ("isRunning")]
+		bool IsRunning { get; }
+
+		[Export ("startRunning")]
+		void StartRunning ();
+
+		[Export ("stopRunning")]
+		void StopRunning ();
+
+		[Field ("QTCaptureSessionRuntimeErrorNotification")]
+		NSString RuntimeErrorNotification { get; }
+
+		[Field ("QTCaptureSessionErrorKey")]
+		NSString ErrorKey { get; }
+	}
+
+	[BaseType (typeof (NSView), Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (QTCaptureViewDelegate)})]
+	interface QTCaptureView {
+		[Export ("availableVideoPreviewConnections")]
+		QTCaptureConnection [] AvailableVideoPreviewConnections { get; }
+
+		[Export ("previewBounds")]
+		RectangleF PreviewBounds { get; }
+
+		//Detected properties
+		[Export ("captureSession")]
+		QTCaptureSession CaptureSession { get; set; }
+
+		[Export ("videoPreviewConnection")]
+		QTCaptureConnection VideoPreviewConnection { get; set; }
+
+		[Export ("fillColor")]
+		NSColor FillColor { get; set; }
+
+		[Export ("preservesAspectRatio")]
+		bool PreservesAspectRatio { get; set; }
+
+		[Export ("delegate"), NullAllowed]
+		NSObject WeakDelegate { get; set; }
+
+		[Wrap ("WeakDelegate")]
+		QTCaptureViewDelegate Delegate { get; set; }
+	}
+
+	[BaseType (typeof (NSObject), Name="QTCaptureView_Delegate")]
+	interface QTCaptureViewDelegate {
+		[Export ("view:willDisplayImage:"), EventArgs ("QTCaptureImageEvent"), DefaultValueFromArgument ("image")]
+		CIImage WillDisplayImage (QTCaptureView view, CIImage image);
+	}
+
+	[BaseType (typeof (NSObject))]
+	interface QTCompressionOptions {
+		[Export ("compressionOptionsIdentifiersForMediaType:")]
+		string [] GetCompressionOptionsIdentifiers (string forMediaType);
+
+		[Static]
+		[Export ("compressionOptionsWithIdentifier:")]
+		NSObject FromIdentifier (string identifier);
+
+		[Export ("mediaType")]
+		string MediaType { get; }
+
+		[Export ("localizedDisplayName")]
+		string LocalizedDisplayName { get; }
+
+		[Export ("localizedCompressionOptionsSummary")]
+		string LocalizedCompressionOptionsSummary { get; }
+
+		[Export ("isEqualToCompressionOptions:")]
+		bool IsEqualToCompressionOptions (QTCompressionOptions compressionOptions);
+	}
+
+	[BaseType (typeof (NSObject))]
+	interface QTFormatDescription {
+		[Export ("mediaType")]
+		string MediaType { get; }
+
+		[Export ("formatType")]
+		UInt32 FormatType { get; }
+
+		[Export ("localizedFormatSummary")]
+		string LocalizedFormatSummary { get; }
+
+		[Export ("quickTimeSampleDescription")]
+		NSData QuickTimeSampleDescription { get; }
+
+		[Export ("formatDescriptionAttributes")]
+		NSDictionary FormatDescriptionAttributes { get; }
+
+		[Export ("attributeForKey:")]
+		NSObject AttributeForKey (string key);
+
+		[Export ("isEqualToFormatDescription:")]
+		bool IsEqualToFormatDescription (QTFormatDescription formatDescription);
+
+	}
+
 	[BaseType (typeof (NSView))]
 	interface QTMovieView {
 
@@ -275,10 +694,10 @@ namespace MonoMac.QTKit
 		NSDictionary MovieAttributes { get; }
 
 		[Export ("attributeForKey:")]
-		NSObject AttributeForKey (string attributeKey);
+		NSObject GetAttribute (string attributeKey);
 
 		[Export ("setAttribute:forKey:")]
-		void SetAttributeForKey (NSObject value, string attributeKey);
+		void SetAttribute (NSObject value, string attributeKey);
 
 //		[Export ("tracks")]
 //		QTTrack[] Tracks { get; }
@@ -455,6 +874,51 @@ namespace MonoMac.QTKit
 	}
 
 	
+	[BaseType (typeof (NSObject))]
+	interface QTSampleBuffer {
+		[Export ("bytesForAllSamples")]
+		IntPtr BytesForAllSamples { get; }
+
+		[Export ("lengthForAllSamples")]
+		uint LengthForAllSamples { get; }
+
+		[Export ("formatDescription")]
+		QTFormatDescription FormatDescription { get; }
+
+		[Export ("duration")]
+		QTTime Duration { get; }
+
+		[Export ("decodeTime")]
+		QTTime DecodeTime { get; }
+
+		[Export ("presentationTime")]
+		QTTime PresentationTime { get; }
+
+		[Export ("numberOfSamples")]
+		int SampleCount { get; }
+
+		[Export ("sampleBufferAttributes")]
+		NSDictionary SampleBufferAttributes { get; }
+
+		[Export ("attributeForKey:")]
+		NSObject GetAttribute (string key);
+
+		[Export ("sampleUseCount")]
+		int SampleUseCount { get; }
+		
+		[Export ("incrementSampleUseCount")]
+		void IncrementSampleUseCount ();
+
+		[Export ("decrementSampleUseCount")]
+		void DecrementSampleUseCount ();
+
+		//[Export ("audioBufferListWithOptions:")]
+		//AudioBufferList AudioBufferListWithOptions (QTSampleBufferAudioBufferListOptions options);
+
+		//[Export ("getAudioStreamPacketDescriptions:inRange:")]
+		//bool GetAudioStreamPacketDescriptionsinRange (AudioStreamPacketDescription audioStreamPacketDescriptions, NSRange range);
+	}
+
 	[BaseType (typeof (NSObject))]
 	interface QTTrack {
 	}
