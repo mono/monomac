@@ -1240,34 +1240,39 @@ namespace MonoMac.WebKit {
 		[Export ("title")]
 		string Title { get; }
 	}
+
+	//
+	// This is a protocol that is adopted, in some internal classes
+	// this is a problem, so I am hiding it for now
+	//
 	
-	[BaseType (typeof (NSObject))]
-	[Model]
-	interface WebDocumentView {
-		[Abstract]
-		[Export ("setDataSource:")]
-		void SetDataSource (WebDataSource dataSource);
-
-		[Abstract]
-		[Export ("dataSourceUpdated:")]
-		void DataSourceUpdated (WebDataSource dataSource);
-
-		[Abstract]
-		[Export ("setNeedsLayout:")]
-		void SetNeedsLayout (bool flag);
-
-		[Abstract]
-		[Export ("layout")]
-		void Layout ();
-
-		[Abstract]
-		[Export ("viewWillMoveToHostWindow:")]
-		void ViewWillMoveToHostWindow (NSWindow hostWindow);
-
-		[Abstract]
-		[Export ("viewDidMoveToHostWindow")]
-		void ViewDidMoveToHostWindow ();
-	}
+//	[BaseType (typeof (NSObject))]
+//	[Model]
+//	interface WebDocumentView {
+//		[Abstract]
+//		[Export ("setDataSource:")]
+//		void SetDataSource (WebDataSource dataSource);
+//
+//		[Abstract]
+//		[Export ("dataSourceUpdated:")]
+//		void DataSourceUpdated (WebDataSource dataSource);
+//
+//		[Abstract]
+//		[Export ("setNeedsLayout:")]
+//		void SetNeedsLayout (bool flag);
+//
+//		[Abstract]
+//		[Export ("layout")]
+//		void Layout ();
+//
+//		[Abstract]
+//		[Export ("viewWillMoveToHostWindow:")]
+//		void ViewWillMoveToHostWindow (NSWindow hostWindow);
+//
+//		[Abstract]
+//		[Export ("viewDidMoveToHostWindow")]
+//		void ViewDidMoveToHostWindow ();
+//	}
 
 	[BaseType (typeof (NSObject))]
 	interface WebFrame {
@@ -1341,8 +1346,9 @@ namespace MonoMac.WebKit {
 		[Export ("webFrame")]
 		WebFrame WebFrame { get; }
 
+		// This is an NSVIew<WebDocumentView>, so we need to figure what to do about that
 		[Export ("documentView")]
-		WebDocumentView DocumentView { get; }
+		NSView DocumentView { get; }
 
 		[Export ("canPrintHeadersAndFooters")]
 		bool CanPrintHeadersAndFooters { get; }

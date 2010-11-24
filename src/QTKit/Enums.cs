@@ -39,4 +39,53 @@ namespace MonoMac.QTKit {
 		CommonTypes = 0,
 		AllTypes = 0xffff
 	}
+
+	public enum QTCaptureDeviceAVCTransportControls {
+		NotPlaying,
+		Playing
+	}
+
+	public enum QTCaptureDeviceAVCTransportControlsSpeed {
+		FastestReverse = -19000,	
+		VeryFastReverse = -16000,
+		FastReverse = -13000,
+		NormalReverse = -10000,
+		SlowReverse = -7000,
+		VerySlowReverse = -4000,
+		SlowestReverse = -1000,
+		Stopped = 0,	
+		SlowestForward = 1000,
+		VerySlowForward = 4000,
+		SlowForward = 7000,
+		NormalForward = 10000,
+		FastForward = 13000,
+		VeryFastForward = 16000,
+		FastestForward = 19000,		
+	}
+
+	public enum QTCaptureDestination {
+		NewFile = 1,
+		OldFile = 2
+	}
+
+	public enum QTError {
+		Unknown = -1,
+		None,
+		IncompatibleInput = 1002,
+		IncompatibleOutput = 1003,
+		InvalidInputsOrOutputs = 1100,
+		DeviceAlreadyUsedbyAnotherSession = 1101,
+		NoDataCaptured = 1200,
+		SessionConfigurationChanged = 1201,
+		DiskFull = 1202,
+		DeviceWasDisconnected = 1203,
+		MediaChanged = 1204,
+		MaximumDurationReached = 1205,
+		MaximumFileSizeReached = 1206,
+		MediaDiscontinuity = 1207,
+		MaximumNumberOfSamplesForFileFormatReached = 1208,
+		DeviceNotConnected = 1300,
+		DeviceInUseByAnotherApplication = 1301,
+		DeviceExcludedByAnotherDevice = 1302,
+	}
 } 
