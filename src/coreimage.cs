@@ -30,6 +30,7 @@ using MonoMac.Foundation;
 using MonoMac.ObjCRuntime;
 using MonoMac.CoreGraphics;
 using MonoMac.CoreImage;
+using MonoMac.CoreVideo;
 
 namespace MonoMac.CoreImage {
 
@@ -124,13 +125,14 @@ namespace MonoMac.CoreImage {
 		CIImage FromData (NSData data, NSDictionary d);
 
 		// FIXME: todo binding for CVImageBuffer
-		//[Static]
-		//[Export ("imageWithCVImageBuffer:")]
-		//CIImage FromCGImageBuffer (CVImageBuffer imageBuffer);
+		[Static]
+		[Export ("imageWithCVImageBuffer:")]
+		CIImage FromImageBuffer (CVImageBuffer imageBuffer);
+
 		//
 		//[Static]
 		//[Export ("imageWithCVImageBuffer:options:")]
-		//CIImage ImageWithCVImageBufferoptions (CVImageBufferRef imageBuffer, NSDictionary dict);
+		//CIImage ImageWithCVImageBufferoptions (CVImageBuffer imageBuffer, NSDictionary dict);
 		//
 		//[Export ("imageWithIOSurface:")]
 		//CIImage ImageWithIOSurface (IOSurfaceRef surface, );
@@ -153,11 +155,11 @@ namespace MonoMac.CoreImage {
 		IntPtr Constructor (CGImage image, NSDictionary d);
 
 		// FIXME: bindingneeded
-		//[Export ("initWithCGLayer:")]
-		//IntPtr Constructor (CGLayerRef layer);
-		//
-		//[Export ("initWithCGLayer:options:")]
-		//NSObject IntPtr (CGLayerRef layer, NSDictionary d);
+		[Export ("initWithCGLayer:")]
+		IntPtr Constructor (CGLayer layer);
+		
+		[Export ("initWithCGLayer:options:")]
+		NSObject IntPtr (CGLayer layer, NSDictionary d);
 
 		[Export ("initWithData:")]
 		IntPtr Constructor (NSData data);
@@ -184,11 +186,11 @@ namespace MonoMac.CoreImage {
 		//[Export ("initWithIOSurface:options:")]
 		//NSObject InitWithIOSurfaceoptions (IOSurfaceRef surface, NSDictionary d, );
 		//
-		//[Export ("initWithCVImageBuffer:")]
-		//NSObject InitWithCVImageBuffer (CVImageBufferRef imageBuffer);
-		//
-		//[Export ("initWithCVImageBuffer:options:")]
-		//NSObject InitWithCVImageBufferoptions (CVImageBufferRef imageBuffer, NSDictionary dict);
+		[Export ("initWithCVImageBuffer:")]
+		IntPtr Constructor (CVImageBuffer imageBuffer);
+
+		[Export ("initWithCVImageBuffer:options:")]
+		IntPtr Constructor (CVImageBuffer imageBuffer, NSDictionary dict);
 
 		[Export ("initWithColor:")]
 		IntPtr Constructor (CIColor color);

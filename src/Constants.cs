@@ -39,5 +39,6 @@ namespace MonoMac {
 		public const string QTKitLibrary = "/System/Library/Frameworks/QTKit.framework/QTKit";
 		public const string CoreLocationLibrary = "/System/Library/Frameworks/CoreLocation.framework/CoreLocation";
 		public const string SecurityLibrary = "/System/Library/Frameworks/Security.framework/Security";
+		public const string CoreVideoLibrary = "/System/Library/Frameworks/CoreVideo.framework/CoreVideo";
 	}
 }

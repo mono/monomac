@@ -31,7 +31,6 @@
 //   API: some stuff missing for QTTime.h and QTTimeRange
 //  
 //   QTCaptureDecompressedAudioOutput.h
-//   QTCaptureDecompressedVideoOutput.h
 //   QTCaptureVideoPreviewOutput.h
 //   QTError.h -- Missing the NSString keys
 
@@ -41,6 +40,7 @@ using MonoMac.ObjCRuntime;
 using MonoMac.AppKit;
 using System.Drawing;
 using MonoMac.CoreAnimation;
+using MonoMac.CoreVideo;
 
 namespace MonoMac.QTKit
 {
@@ -111,6 +111,37 @@ namespace MonoMac.QTKit
 		NSString EnabledAudioChannelsAttribute { get; }
 	}
 
+	[BaseType (typeof (QTCaptureOutput), Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (QTCaptureDecompressedVideoOutputDelegate)})]
+	interface QTCaptureDecompressedVideoOutput {
+		[Export ("outputVideoFrame:withSampleBuffer:fromConnection:")]
+		void OutputVideoFrame (CVImageBuffer videoFrame, QTSampleBuffer sampleBuffer, QTCaptureConnection connection);
+
+		//Detected properties
+		[Export ("pixelBufferAttributes")]
+		NSDictionary PixelBufferAttributes { get; set; }
+
+		[Export ("minimumVideoFrameInterval")]
+		double MinimumVideoFrameInterval { get; set; }
+
+		[Export ("automaticallyDropsLateVideoFrames")]
+		bool AutomaticallyDropsLateVideoFrames { get; set; }
+
+		[Export ("delegate"), NullAllowed]
+		NSObject WeakDelegate { get; set; }
+
+		[Wrap ("WeakDelegate")]
+		QTCaptureDecompressedVideoOutputDelegate Delegate { get; set; }
+	}
+
+	[BaseType (typeof (NSObject), Name="QTCaptureDecompressedVideoOutput_Delegate")]
+	interface QTCaptureDecompressedVideoOutputDelegate {
+		[Export ("captureOutput:didOutputVideoFrame:withSampleBuffer:fromConnection:"), EventArgs ("QTCaptureVideoFrame")]
+		void DidOutputVideoFrame (QTCaptureOutput captureOutput, CVImageBuffer videoFrame, QTSampleBuffer sampleBuffer, QTCaptureConnection connection);
+
+		[Export ("captureOutput:didDropVideoFrameWithSampleBuffer:fromConnection:"), EventArgs ("QTCaptureVideoDropped")]
+		void DidDropVideoFrame (QTCaptureOutput captureOutput, QTSampleBuffer sampleBuffer, QTCaptureConnection connection);
+	}
+
 	[BaseType (typeof (NSObject))]
 	interface QTCaptureDevice {
 		[Static]
@@ -118,12 +149,12 @@ namespace MonoMac.QTKit
 		QTCaptureDevice [] InputDevices { get; }
 
 		[Static]
-		[Export ("inputDevicesWithMediaType:")]
-		QTCaptureDevice [] GetInputDevices (string forMediaType);
+		[Internal, Export ("inputDevicesWithMediaType:")]
+		QTCaptureDevice [] _GetInputDevices (NSString forMediaType);
 
 		[Static]
-		[Export ("defaultInputDeviceWithMediaType:")]
-		QTCaptureDevice GetDefaultInputDevice (string forMediaType);
+		[Internal,Export ("defaultInputDeviceWithMediaType:")]
+		QTCaptureDevice _GetDefaultInputDevice (NSString forMediaType);
 
 		[Static]
 		[Export ("deviceWithUniqueID:")]
@@ -541,6 +572,112 @@ namespace MonoMac.QTKit
 		//Detected properties
 		[Export ("mediaAttributes")]
 		NSDictionary MediaAttributes { get; set; }
+
+		// Constants
+		[Internal, Field ("QTMediaTypeVideo")]
+		NSString TypeVideo { get; }
+
+		[Internal, Field ("QTMediaTypeSound")]
+		NSString TypeSound { get; }
+
+		[Internal, Field ("QTMediaTypeText")]
+		NSString TypeText { get; }
+
+		[Internal, Field ("QTMediaTypeBase")]
+		NSString TypeBase { get; }
+
+		[Internal, Field ("QTMediaTypeMPEG")]
+		NSString TypeMpeg { get; }
+
+		[Internal, Field ("QTMediaTypeMusic")]
+		NSString TypeMusic { get; }
+
+		[Internal, Field ("QTMediaTypeTimeCode")]
+		NSString TypeTimeCode { get; }
+
+		[Internal, Field ("QTMediaTypeSprite")]
+		NSString TypeSprite { get; }
+
+		[Internal, Field ("QTMediaTypeFlash")]
+		NSString TypeFlash { get; }
+
+		[Internal, Field ("QTMediaTypeMovie")]
+		NSString TypeMovie { get; }
+
+		[Internal, Field ("QTMediaTypeTween")]
+		NSString TypeTween { get; }
+
+		[Internal, Field ("QTMediaType3D")]
+		NSString Type3D { get; }
+
+		[Internal, Field ("QTMediaTypeSkin")]
+		NSString TypeSkin { get; }
+
+		[Internal, Field ("QTMediaTypeQTVR")]
+		NSString TypeQTVR { get; }
+
+		[Internal, Field ("QTMediaTypeHint")]
+		NSString TypeHint { get; }
+
+		[Internal, Field ("QTMediaTypeStream")]
+		NSString TypeStream { get; }
+
+		[Internal, Field ("QTMediaTypeMuxed")]
+		NSString TypeMuxed { get; }
+
+		[Internal, Field ("QTMediaTypeQuartzComposer")]
+		NSString TypeQuartzComposer { get; }
+
+		[Field ("QTMediaCharacteristicVisual")]
+		NSString CharacteristicVisual { get; }
+
+		[Field ("QTMediaCharacteristicAudio")]
+		NSString CharacteristicAudio { get; }
+
+		[Field ("QTMediaCharacteristicCanSendVideo")]
+		NSString CharacteristicCanSendVideo { get; }
+
+		[Field ("QTMediaCharacteristicProvidesActions")]
+		NSString CharacteristicProvidesActions { get; }
+
+		[Field ("QTMediaCharacteristicNonLinear")]
+		NSString CharacteristicNonLinear { get; }
+
+		[Field ("QTMediaCharacteristicCanStep")]
+		NSString CharacteristicCanStep { get; }
+
+		[Field ("QTMediaCharacteristicHasNoDuration")]
+		NSString CharacteristicHasNoDuration { get; }
+
+		[Field ("QTMediaCharacteristicHasSkinData")]
+		NSString CharacteristicHasSkinData { get; }
+
+		[Field ("QTMediaCharacteristicProvidesKeyFocus")]
+		NSString CharacteristicProvidesKeyFocus { get; }
+
+		[Field ("QTMediaCharacteristicHasVideoFrameRate")]
+		NSString CharacteristicHasVideoFrameRate { get; }
+
+		[Field ("QTMediaCreationTimeAttribute")]
+		NSString CreationTimeAttribute { get; }
+
+		[Field ("QTMediaDurationAttribute")]
+		NSString DurationAttribute { get; }
+
+		[Field ("QTMediaModificationTimeAttribute")]
+		NSString ModificationTimeAttribute { get; }
+
+		[Field ("QTMediaSampleCountAttribute")]
+		NSString SampleCountAttribute { get; }
+
+		[Field ("QTMediaQualityAttribute")]
+		NSString QualityAttribute { get; }
+
+		[Field ("QTMediaTimeScaleAttribute")]
+		NSString TimeScaleAttribute { get; }
+
+		[Field ("QTMediaTypeAttribute")]
+		NSString TypeAttribute { get; }
 	}
 
 	[BaseType (typeof (CALayer))]
