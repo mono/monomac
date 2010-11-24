@@ -88,6 +88,8 @@ namespace MonoMac.ObjCRuntime {
 			for (int i = 0; i < parms.Length; i++) {
 				if (parms [i].ParameterType.IsByRef && (parms[i].ParameterType.GetElementType ().IsSubclassOf (typeof (NSObject)) || parms[i].ParameterType.GetElementType () == typeof (NSObject))) {
 					il.DeclareLocal (parms [i].ParameterType.GetElementType ());
+				} else if (parms [i].ParameterType.IsArray && (parms [i].ParameterType.GetElementType () == typeof (NSObject) || parms [i].ParameterType.GetElementType ().IsSubclassOf (typeof (NSObject)))) {
+					il.DeclareLocal (parms [i].ParameterType);
 				}
 			}
 
@@ -101,6 +103,7 @@ namespace MonoMac.ObjCRuntime {
 				} else if (parms [i-2].ParameterType.IsArray && (parms [i-2].ParameterType.GetElementType () == typeof (NSObject) || parms [i-2].ParameterType.GetElementType ().IsSubclassOf (typeof (NSObject)))) {
 					il.Emit (OpCodes.Ldarg, i);
 					il.Emit (OpCodes.Call, convertarray.MakeGenericMethod (parms [i-2].ParameterType.GetElementType ()));
+					il.Emit (OpCodes.Stloc, j++);
 				}
 			}
 #endif
@@ -113,6 +116,8 @@ namespace MonoMac.ObjCRuntime {
 			for (int i = 2, j = 0; i < ParameterTypes.Length; i++) {
 				if (parms [i-2].ParameterType.IsByRef && (parms[i-2].ParameterType.GetElementType ().IsSubclassOf (typeof (NSObject)) || parms[i-2].ParameterType.GetElementType () == typeof (NSObject)))
 					il.Emit (OpCodes.Ldloca_S, j++);
+				else if (parms [i-2].ParameterType.IsArray && (parms [i-2].ParameterType.GetElementType () == typeof (NSObject) || parms [i-2].ParameterType.GetElementType ().IsSubclassOf (typeof (NSObject))))
+					il.Emit (OpCodes.Ldloc, j++);
 				else
 					il.Emit (OpCodes.Ldarg, i);
 			}
