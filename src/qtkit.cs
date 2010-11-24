@@ -27,32 +27,32 @@
 //        expose a C# type, hide all fields
 //   API: QTSampleBuffer.h expose a couple of AudioBufferList methods 
 //   API: QTMovie expose a bunch of commented out methods
-//
-//   QTCaptureAudioPreviewOutput.h
+//   API: "Media" from QuickTime is not bound, so we expose as IntPtr in QTMedia
+//   API: some stuff missing for QTTime.h and QTTimeRange
+//  
 //   QTCaptureDecompressedAudioOutput.h
 //   QTCaptureDecompressedVideoOutput.h
-//   QTCaptureLayer.h
-//   QTCaptureMovieFileOutput.h
 //   QTCaptureVideoPreviewOutput.h
-//   QTDataReference.h
-//   QTError.h
-//   QTKit.h
-//   QTKitDefines.h
-//   QTMedia.h
-//   QTMovieLayer.h
-//   QTTime.h
-//   QTTimeRange.h
-//   QTTrack.h
-//   QTUtilities.h
+//   QTError.h -- Missing the NSString keys
 
 using System;
 using MonoMac.Foundation;
 using MonoMac.ObjCRuntime;
 using MonoMac.AppKit;
 using System.Drawing;
+using MonoMac.CoreAnimation;
 
 namespace MonoMac.QTKit
 {
+	[BaseType (typeof (QTCaptureOutput))]
+	interface QTCaptureAudioPreviewOutput {
+		[Export ("outputDeviceUniqueID")]
+		string OutputDeviceUniqueID { get; set; }
+
+		[Export ("volume")]
+		float Volume { get; set; }
+	}
+
 	[BaseType (typeof (NSObject))]
 	interface QTCaptureConnection {
 		[Export ("owner")]
@@ -326,6 +326,24 @@ namespace MonoMac.QTKit
 		QTCaptureConnection [] Connections { get; }
 	}
 
+	[BaseType (typeof (CALayer))]
+	interface QTCaptureLayer {
+		[Static, Export ("layerWithSession:")]
+		NSObject FromSession (QTCaptureSession session);
+
+		[Export ("initWithSession:")]
+		IntPtr Constructor (QTCaptureSession session);
+
+		//Detected properties
+		[Export ("session")]
+		QTCaptureSession Session { get; set; }
+	}
+
+	[BaseType (typeof (QTCaptureFileOutput))]
+	interface QTCaptureMovieFileOutput {
+		// Empty
+	}
+
 	[BaseType (typeof (NSObject))]
 	interface QTCaptureOutput {
 		[Export ("connections")]
@@ -425,6 +443,54 @@ namespace MonoMac.QTKit
 	}
 
 	[BaseType (typeof (NSObject))]
+	interface QTDataReference {
+		[Static]
+		[Export ("dataReferenceWithDataRefData:type:")]
+		NSObject FromDataRefData (NSData dataRefData, string type);
+
+		[Static]
+		[Export ("dataReferenceWithReferenceToFile:")]
+		NSObject FromReference (string fileName);
+
+		[Static]
+		[Export ("dataReferenceWithReferenceToURL:")]
+		NSObject FromReference (NSUrl url);
+
+		[Static]
+		[Export ("dataReferenceWithReferenceToData:")]
+		NSObject FromDataReference (NSData data);
+
+		[Static]
+		[Export ("dataReferenceWithReferenceToData:name:MIMEType:")]
+		NSObject FromReference (NSData data, string name, string mimeType);
+
+		[Export ("dataRefData")]
+		NSData DataRefData { get; }
+
+		[Export ("referenceFile")]
+		string ReferenceFile { get; }
+
+		[Export ("referenceURL")]
+		NSUrl ReferenceUrl { get; }
+
+		[Export ("referenceData")]
+		NSData ReferenceData { get; }
+
+		[Export ("name")]
+		string Name { get; }
+
+		[Export ("MIMEType")]
+		string MimeType { get; }
+
+		//Detected properties
+		//[Export ("dataRef")]
+		//IntPtr DataRef { get; set; }
+
+		[Export ("dataRefType")]
+		string DataRefType { get; set; }
+	}
+	
+	[BaseType (typeof (NSObject))]
 	interface QTFormatDescription {
 		[Export ("mediaType")]
 		string MediaType { get; }
@@ -447,6 +513,47 @@ namespace MonoMac.QTKit
 		[Export ("isEqualToFormatDescription:")]
 		bool IsEqualToFormatDescription (QTFormatDescription formatDescription);
 
+	}
+
+	[BaseType (typeof (NSObject))]
+	interface QTMedia {
+		[Static, Export ("mediaWithQuickTimeMedia:error:")]
+		NSObject FromQuickTimeMedia (IntPtr quicktimeMedia, out NSError errorPtr);
+
+		[Export ("initWithQuickTimeMedia:error:")]
+		IntPtr Conditions (IntPtr quicktimeMedia, out NSError errorPtr);
+
+		[Export ("track")]
+		QTTrack Track { get; }
+
+		[Export ("attributeForKey:")]
+		NSObject GetAttribute (string attributeKey);
+
+		[Export ("setAttribute:forKey:")]
+		void SetAttribute (NSObject value, string attributeKey);
+
+		[Export ("hasCharacteristic:")]
+		bool HasCharacteristic (string characteristic);
+
+		[Export ("quickTimeMedia")]
+		IntPtr QuickTimeMedia { get; }
+
+		//Detected properties
+		[Export ("mediaAttributes")]
+		NSDictionary MediaAttributes { get; set; }
+	}
+
+	[BaseType (typeof (CALayer))]
+	interface QTMovieLayer {
+		[Static, Export ("layerWithMovie:")]
+		QTMovieLayer FromMovie (QTMovie movie);
+
+		[Export ("initWithMovie:")]
+		IntPtr Constructor (QTMovie movie);
+
+		//Detected properties
+		[Export ("movie")]
+		QTMovie Movie { get; set; }
 	}
 
 	[BaseType (typeof (NSView))]
@@ -921,5 +1028,119 @@ namespace MonoMac.QTKit
 
 	[BaseType (typeof (NSObject))]
 	interface QTTrack {
+		[Static, Export ("trackWithQuickTimeTrack:error:")]
+		NSObject FromQuickTimeTrack (IntPtr quicktimeTrack, out NSError errorPtr);
+
+		[Export ("initWithQuickTimeTrack:error:")]
+		IntPtr Constructor (IntPtr quicktimeTrack, out NSError errorPtr);
+
+		[Export ("movie")]
+		QTMovie Movie { get; }
+
+		[Export ("media")]
+		QTMedia Media { get; }
+
+		[Export ("attributeForKey:")]
+		NSObject GetAttribute (string attributeKey);
+
+		[Export ("setAttribute:forKey:")]
+		void SetAttribute (NSObject value, string attributeKey);
+
+		[Export ("quickTimeTrack")]
+		IntPtr QuickTimeTrack { get; }
+
+		[Export ("insertSegmentOfTrack:timeRange:atTime:")]
+		void InsertSegmentOfTrack (QTTrack track, QTTimeRange timeRange, QTTime atTime);
+
+		[Export ("insertSegmentOfTrack:fromRange:scaledToRange:")]
+		void InsertSegmentOfTrack (QTTrack track, QTTimeRange fromRange, QTTimeRange scaledToRange);
+
+		[Export ("insertEmptySegmentAt:")]
+		void InsertEmptySegment (QTTimeRange range);
+
+		[Export ("deleteSegment:")]
+		void DeleteSegment (QTTimeRange segment);
+
+		[Export ("scaleSegment:newDuration:")]
+		void ScaleSegmentnewDuration (QTTimeRange segment, QTTime newDuration);
+
+		[Export ("addImage:forDuration:withAttributes:")]
+		void AddImage (NSImage image, QTTime forDuration, NSDictionary attributes);
+
+		//Detected properties
+		[Export ("enabled")]
+		bool Enabled { [Bind ("isEnabled")]get; set; }
+
+		[Export ("volume")]
+		float Volume { get; set; }
+
+		[Export ("trackAttributes")]
+		NSDictionary TrackAttributes { get; set; }
+
+		[Export ("apertureModeDimensionsForMode:")]
+		SizeF ApertureModeDimensionsForMode (string mode);
+
+		[Export ("setApertureModeDimensions:forMode:")]
+		void SetApertureModeDimensionsforMode (SizeF dimensions, string mode);
+
+		[Export ("generateApertureModeDimensions")]
+		void GenerateApertureModeDimensions ();
+
+		[Export ("removeApertureModeDimensions")]
+		void RemoveApertureModeDimensions ();
+
+		[Export ("QTTrackBoundsAttribute")]
+		NSString BoundsAttribute { get; }
+
+		[Export ("QTTrackCreationTimeAttribute")]
+		NSString CreationTimeAttribute { get; }
+
+		[Export ("QTTrackDimensionsAttribute")]
+		NSString DimensionsAttribute { get; }
+
+		[Export ("QTTrackDisplayNameAttribute")]
+		NSString DisplayNameAttribute { get; }
+
+		[Export ("QTTrackEnabledAttribute")]
+		NSString EnabledAttribute { get; }
+
+		[Export ("QTTrackFormatSummaryAttribute")]
+		NSString FormatSummaryAttribute { get; }
+
+		[Export ("QTTrackIsChapterTrackAttribute")]
+		NSString IsChapterTrackAttribute { get; }
+
+		[Export ("QTTrackHasApertureModeDimensionsAttribute")]
+		NSString HasApertureModeDimensionsAttribute { get; }
+
+		[Export ("QTTrackIDAttribute")]
+		NSString IDAttribute { get; }
+
+		[Export ("QTTrackLayerAttribute")]
+		NSString LayerAttribute { get; }
+
+		[Export ("QTTrackMediaTypeAttribute")]
+		NSString MediaTypeAttribute { get; }
+
+		[Export ("QTTrackModificationTimeAttribute")]
+		NSString ModificationTimeAttribute { get; }
+
+		[Export ("QTTrackRangeAttribute")]
+		NSString RangeAttribute { get; }
+
+		[Export ("QTTrackTimeScaleAttribute")]
+		NSString TimeScaleAttribute { get; }
+
+		[Export ("QTTrackUsageInMovieAttribute")]
+		NSString UsageInMovieAttribute { get; }
+
+		[Export ("QTTrackUsageInPosterAttribute")]
+		NSString UsageInPosterAttribute { get; }
+
+		[Export ("QTTrackUsageInPreviewAttribute")]
+		NSString UsageInPreviewAttribute { get; }
+
+		[Export ("QTTrackVolumeAttribute")]
+		NSString VolumeAttribute { get; }
 	}
 }
