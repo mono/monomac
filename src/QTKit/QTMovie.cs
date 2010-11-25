@@ -58,12 +58,21 @@ namespace MonoMac.QTKit {
 		}
 	}
 	
+	public partial class QTTrack {
+		public void AddImage (NSImage image, QTTime forDuration, QTImageAttributes attributes)
+		{
+			if (attributes == null)
+				throw new ArgumentNullException ("attributes");
+			AddImage (image, forDuration, attributes.ToDictionary ());
+		}
+	}
+	
 	public partial class QTMovie {
 		public void AddImage (NSImage image, QTTime forDuration, QTImageAttributes attributes)
 		{
 			if (attributes == null)
 				throw new ArgumentNullException ("attributes");
-			AddImageForDuration (image, forDuration, attributes.ToDictionary ());
+			AddImage (image, forDuration, attributes.ToDictionary ());
 		}
 	}
 }
