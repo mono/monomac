@@ -25,7 +25,6 @@
 // TODO:
 //   API: QTMovie WriteToFile parameters should become a class/struct
 //        QTMovie
-//   API: AddImageForDuration make this take a class with options, and map that to the dictionary.
 //   API: QTCaptureDevice - hide the NSDictionary with attribtues, and instead
 //        expose a C# type, hide all fields
 //   API: QTSampleBuffer.h expose a couple of AudioBufferList methods 
@@ -1035,7 +1034,7 @@ namespace MonoMac.QTKit
 		void ScaleSegmentNewDuration (QTTimeRange segment, QTTime newDuration);
 
 		[Export ("addImage:forDuration:withAttributes:")]
-		void AddImageForDuration (NSImage image, QTTime duration, NSDictionary attributes);
+		void AddImage (NSImage image, QTTime duration, NSDictionary attributes);
 
 		[Export ("insertSegmentOfTrack:timeRange:atTime:")]
 		QTTrack InsertSegmentOfTrackTimeRange (QTTrack track, QTTimeRange range, QTTime time);
@@ -1189,9 +1188,9 @@ namespace MonoMac.QTKit
 		//
 		// Add Image
 		//
-		[Field ("QTAddImageCodecType")]		 // nsstring
+		[Internal, Field ("QTAddImageCodecType")]		 // nsstring
 		NSString ImageCodecType { get; }
-		[Field ("QTAddImageCodecQuality")]	// nsnumber
+		[Internal, Field ("QTAddImageCodecQuality")]	// nsnumber
 		NSString ImageCodecQuality { get; }
 
 		// data locators for FromAttributes
@@ -1457,58 +1456,58 @@ namespace MonoMac.QTKit
 		[Export ("removeApertureModeDimensions")]
 		void RemoveApertureModeDimensions ();
 
-		[Export ("QTTrackBoundsAttribute")]
+		[Field ("QTTrackBoundsAttribute")]
 		NSString BoundsAttribute { get; }
 
-		[Export ("QTTrackCreationTimeAttribute")]
+		[Field ("QTTrackCreationTimeAttribute")]
 		NSString CreationTimeAttribute { get; }
 
-		[Export ("QTTrackDimensionsAttribute")]
+		[Field ("QTTrackDimensionsAttribute")]
 		NSString DimensionsAttribute { get; }
 
-		[Export ("QTTrackDisplayNameAttribute")]
+		[Field ("QTTrackDisplayNameAttribute")]
 		NSString DisplayNameAttribute { get; }
 
-		[Export ("QTTrackEnabledAttribute")]
+		[Field ("QTTrackEnabledAttribute")]
 		NSString EnabledAttribute { get; }
 
-		[Export ("QTTrackFormatSummaryAttribute")]
+		[Field ("QTTrackFormatSummaryAttribute")]
 		NSString FormatSummaryAttribute { get; }
 
-		[Export ("QTTrackIsChapterTrackAttribute")]
+		[Field ("QTTrackIsChapterTrackAttribute")]
 		NSString IsChapterTrackAttribute { get; }
 
-		[Export ("QTTrackHasApertureModeDimensionsAttribute")]
+		[Field ("QTTrackHasApertureModeDimensionsAttribute")]
 		NSString HasApertureModeDimensionsAttribute { get; }
 
-		[Export ("QTTrackIDAttribute")]
+		[Field ("QTTrackIDAttribute")]
 		NSString IDAttribute { get; }
 
-		[Export ("QTTrackLayerAttribute")]
+		[Field ("QTTrackLayerAttribute")]
 		NSString LayerAttribute { get; }
 
-		[Export ("QTTrackMediaTypeAttribute")]
+		[Field ("QTTrackMediaTypeAttribute")]
 		NSString MediaTypeAttribute { get; }
 
-		[Export ("QTTrackModificationTimeAttribute")]
+		[Field ("QTTrackModificationTimeAttribute")]
 		NSString ModificationTimeAttribute { get; }
 
-		[Export ("QTTrackRangeAttribute")]
+		[Field ("QTTrackRangeAttribute")]
 		NSString RangeAttribute { get; }
 
-		[Export ("QTTrackTimeScaleAttribute")]
+		[Field ("QTTrackTimeScaleAttribute")]
 		NSString TimeScaleAttribute { get; }
 
-		[Export ("QTTrackUsageInMovieAttribute")]
+		[Field ("QTTrackUsageInMovieAttribute")]
 		NSString UsageInMovieAttribute { get; }
 
-		[Export ("QTTrackUsageInPosterAttribute")]
+		[Field ("QTTrackUsageInPosterAttribute")]
 		NSString UsageInPosterAttribute { get; }
 
-		[Export ("QTTrackUsageInPreviewAttribute")]
+		[Field ("QTTrackUsageInPreviewAttribute")]
 		NSString UsageInPreviewAttribute { get; }
 
-		[Export ("QTTrackVolumeAttribute")]
+		[Field ("QTTrackVolumeAttribute")]
 		NSString VolumeAttribute { get; }
 	}
 }

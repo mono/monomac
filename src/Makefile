@@ -52,6 +52,7 @@ MONOMAC_SOURCES = \
 	./AppKit/NSWindow.cs				\
 	./Growl/Constants.cs				\
 	./QTKit/QTCaptureDevice.cs			\
+	./QTKit/QTMovie.cs				\
 	./WebKit/DomNode.cs				\
 	./WebKit/Enumerators.cs				\
 	./WebKit/Indexers.cs
