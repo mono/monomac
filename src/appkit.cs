@@ -34,15 +34,14 @@ using MonoMac.CoreAnimation;
 
 namespace MonoMac.AppKit {
 		
-	[BaseType (typeof (NSObject))]
-	interface CIImage {
-		[Export ("drawInRect:fromRect:operation:fraction:")]
-		void Draw (RectangleF inRect, RectangleF fromRect, NSCompositingOperation operation, float fractionDelta);
-
-		[Export ("drawAtPoint:fromRect:operation:fraction:")]
-		void DrawAtPoint (PointF atPoint, RectangleF fromRect, NSCompositingOperation operation, float fractionDelta);
-
-	}
+	//[BaseType (typeof (NSObject))]
+	//interface CIImage {
+	//	[Export ("drawInRect:fromRect:operation:fraction:")]
+	//	void Draw (RectangleF inRect, RectangleF fromRect, NSCompositingOperation operation, float fractionDelta);
+	//
+	//	[Export ("drawAtPoint:fromRect:operation:fraction:")]
+	//	void DrawAtPoint (PointF atPoint, RectangleF fromRect, NSCompositingOperation operation, float fractionDelta);
+	//}
 	
 	[BaseType (typeof (NSCell))]
 	interface NSActionCell {
@@ -9169,6 +9168,9 @@ namespace MonoMac.AppKit {
 		[Export ("setNeedsDisplayInRect:")]
 		void SetNeedsDisplayInRect (RectangleF invalidRect);
 
+		//[Export ("setNeedsDisplay:")]
+		//void SetNeedsDisplay (bool flag);
+		
 		[Export ("lockFocus")]
 		void LockFocus ();
 

@@ -91,18 +91,17 @@ namespace MonoMac.CoreImage {
 		[Export ("imageWithCGImage:options:")]
 		CIImage FromCGImage (CGImage image, NSDictionary d);
 
-		// Fixme: need CGLayerRef first
-		//[Static]
-		//[Export ("imageWithCGLayer:")]
-		//CIImage FromLayer (CGLayerRef layer);
-		//
-		//[Static]
-		//[Export ("imageWithCGLayer:options:")]
-		//CIImage ImageWithCGLayeroptions (CGLayerRef layer, NSDictionary d);
+		[Static]
+		[Export ("imageWithCGLayer:")]
+		CIImage FromLayer (CGLayer layer);
+
+		[Static]
+		[Export ("imageWithCGLayer:options:")]
+		CIImage FromLayer (CGLayer layer, NSDictionary options);
 
 		[Static]
 		[Export ("imageWithBitmapData:bytesPerRow:size:format:colorSpace:")]
-		CIImage FromData (NSData d, int bpr, SizeF size, CIFormat format, CGColorSpace cs);
+		CIImage FromData (NSData bitmapData, int bpr, SizeF size, CIFormat format, CGColorSpace colorspace);
 
 		[Static]
 		[Export ("imageWithTexture:size:flipped:colorSpace:")]
@@ -130,10 +129,10 @@ namespace MonoMac.CoreImage {
 		CIImage FromImageBuffer (CVImageBuffer imageBuffer);
 
 		//
-		//[Static]
-		//[Export ("imageWithCVImageBuffer:options:")]
-		//CIImage ImageWithCVImageBufferoptions (CVImageBuffer imageBuffer, NSDictionary dict);
-		//
+		[Static]
+		[Export ("imageWithCVImageBuffer:options:")]
+		CIImage FromImageBuffer (CVImageBuffer imageBuffer, NSDictionary dict);
+
 		//[Export ("imageWithIOSurface:")]
 		//CIImage ImageWithIOSurface (IOSurfaceRef surface, );
 		//

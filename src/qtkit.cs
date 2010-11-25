@@ -23,6 +23,9 @@
 //
 
 // TODO:
+//   API: QTMovie WriteToFile parameters should become a class/struct
+//        QTMovie
+//   API: AddImageForDuration make this take a class with options, and map that to the dictionary.
 //   API: QTCaptureDevice - hide the NSDictionary with attribtues, and instead
 //        expose a C# type, hide all fields
 //   API: QTSampleBuffer.h expose a couple of AudioBufferList methods 
@@ -41,6 +44,7 @@ using MonoMac.AppKit;
 using System.Drawing;
 using MonoMac.CoreAnimation;
 using MonoMac.CoreVideo;
+using MonoMac.CoreImage;
 
 namespace MonoMac.QTKit
 {
@@ -849,28 +853,28 @@ namespace MonoMac.QTKit
 		QTMovie Movie { get; }
 
 		[Static, Export ("movieWithFile:error:")]
-		QTMovie MovieWithFileError (string fileName, out NSError errorPtr);
+		QTMovie FromFile (string fileName, out NSError errorPtr);
 
 		[Static, Export ("movieWithURL:error:")]
-		QTMovie MovieWithURLError (NSUrl url, out NSError errorPtr);
+		QTMovie FromUrl (NSUrl url, out NSError errorPtr);
 
 		//[Static, Export ("movieWithDataReference:error:")]
 		//QTMovie MovieWithDataReferenceError (QTDataReference dataReference, out NSError errorPtr);
 
 		[Static, Export ("movieWithPasteboard:error:")]
-		QTMovie MovieWithPasteboardError (NSPasteboard pasteboard, out NSError errorPtr);
+		QTMovie FromPasteboard (NSPasteboard pasteboard, out NSError errorPtr);
 
 		[Static, Export ("movieWithData:error:")]
-		QTMovie MovieWithDataError (NSData data, out NSError errorPtr);
+		QTMovie FromData (NSData data, out NSError errorPtr);
 
 //		[Static, Export ("movieWithQuickTimeMovie:disposeWhenDone:error:")]
 //		QTMovie MovieWithQuickTimeMovieDisposeWhenDone (Movie movie, bool dispose, out NSError errorPtr);
 
 		[Static, Export ("movieWithAttributes:error:")]
-		QTMovie MovieWithAttributesError (NSDictionary attributes, out NSError errorPtr);
+		QTMovie FromAttributes (NSDictionary attributes, out NSError errorPtr);
 
 		[Static, Export ("movieNamed:error:")]
-		QTMovie MovieNamedError (string name, out NSError errorPtr);
+		QTMovie FromMovieNamed (string name, out NSError errorPtr);
 
 		[Export ("initWithFile:error:")]
 		IntPtr Constructor (string fileName, out NSError errorPtr);
@@ -898,7 +902,7 @@ namespace MonoMac.QTKit
 		IntPtr Constructor (NSDictionary attributes, out NSError errorPtr);
 
 		[Static, Export ("movieWithTimeRange:error:")]
-		QTMovie MovieWithTimeRangeError (QTTimeRange range, out NSError errorPtr);
+		QTMovie FromTimeRange (QTTimeRange range, out NSError errorPtr);
 
 //		[Export ("initToWritableFile:error:")]
 //		IntPtr Constructor (string filename, out NSError errorPtr);
@@ -914,7 +918,7 @@ namespace MonoMac.QTKit
 		void Invalidate ();
 
 		[Export ("currentTime")]
-		QTTime CurrentTime { get; }
+		QTTime CurrentTime { get; set; }
 
 		[Export ("rate")]
 		float Rate { get; }
@@ -1106,6 +1110,242 @@ namespace MonoMac.QTKit
 
 		[Export ("chapterIndexForTime:")]
 		int ChapterIndexForTime (QTTime time);
+
+		//
+		// Pasteboard type
+		//
+		[Field ("QTMoviePasteboardType")]
+		NSString PasteboardType { get; }
+
+		//
+		// Notifications
+		//
+		[Field ("QTMovieEditabilityDidChangeNotification")]
+		NSString EditabilityDidChangeNotification { get; }
+		[Field ("QTMovieEditedNotification")]
+		NSString EditedNotification { get; }
+		[Field ("QTMovieLoadStateDidChangeNotification")]
+		NSString LoadStateDidChangeNotification { get; }
+		[Field ("QTMovieLoopModeDidChangeNotification")]
+		NSString LoopModeDidChangeNotification { get; }
+		[Field ("QTMovieMessageStringPostedNotification")]
+		NSString MessageStringPostedNotification { get; }
+		[Field ("QTMovieRateDidChangeNotification")]
+		NSString RateDidChangeNotification { get; }
+		[Field ("QTMovieSelectionDidChangeNotification")]
+		NSString SelectionDidChangeNotification { get; }
+		[Field ("QTMovieSizeDidChangeNotification")]
+		NSString SizeDidChangeNotification { get; }
+		[Field ("QTMovieStatusStringPostedNotification")]
+		NSString StatusStringPostedNotification { get; }
+		[Field ("QTMovieTimeDidChangeNotification")]
+		NSString TimeDidChangeNotification { get; }
+		[Field ("QTMovieVolumeDidChangeNotification")]
+		NSString VolumeDidChangeNotification { get; }
+		[Field ("QTMovieDidEndNotification")]
+		NSString DidEndNotification { get; }
+		[Field ("QTMovieChapterDidChangeNotification")]
+		NSString ChapterDidChangeNotification { get; }
+		[Field ("QTMovieChapterListDidChangeNotification")]
+		NSString ChapterListDidChangeNotification { get; }
+		[Field ("QTMovieEnterFullScreenRequestNotification")]
+		NSString EnterFullScreenRequestNotification { get; }
+		[Field ("QTMovieExitFullScreenRequestNotification")]
+		NSString ExitFullScreenRequestNotification { get; }
+		[Field ("QTMovieCloseWindowRequestNotification")]
+		NSString CloseWindowRequestNotification { get; }
+		[Field ("QTMovieApertureModeDidChangeNotification")]
+		NSString ApertureModeDidChangeNotification { get; }
+
+		// Notification parameters
+		[Field ("QTMovieMessageNotificationParameter")]
+		NSString MessageNotificationParameter { get; }
+		[Field ("QTMovieRateDidChangeNotificationParameter")]
+		NSString RateDidChangeNotificationParameter { get; }
+		[Field ("QTMovieStatusFlagsNotificationParameter")]
+		NSString StatusFlagsNotificationParameter { get; }
+		[Field ("QTMovieStatusCodeNotificationParameter")]
+		NSString StatusCodeNotificationParameter { get; }
+		[Field ("QTMovieStatusStringNotificationParameter")]
+		NSString StatusStringNotificationParameter { get; }
+
+		[Field ("QTMovieTargetIDNotificationParameter")]
+		NSString TargetIDNotificationParameter { get; }
+		[Field ("QTMovieTargetNameNotificationParameter")]
+		NSString TargetNameNotificationParameter { get; }
+
+		// WriteToFile parameters
+		[Internal, Field ("QTMovieExport")]      		// NSNumber Bool
+		NSString Export { get; }
+		[Internal, Field ("QTMovieExportType")]			// NSNumber long
+		NSString ExportType { get; }
+		[Internal, Field ("QTMovieFlatten")]			// NSNumber bool
+		NSString Flatten { get; }
+		[Internal, Field ("QTMovieExportSettings")]		// NSData (QTAtomContainer)
+		NSString ExportSettings { get; }
+		[Internal, Field ("QTMovieExportManufacturer")]		// NSNumber (long)
+		NSString ExportManufacturer { get; }
+
+		//
+		// Add Image
+		//
+		[Field ("QTAddImageCodecType")]		 // nsstring
+		NSString ImageCodecType { get; }
+		[Field ("QTAddImageCodecQuality")]	// nsnumber
+		NSString ImageCodecQuality { get; }
+
+		// data locators for FromAttributes
+		[Field ("QTMovieDataReferenceAttribute")]
+		NSString DataReferenceAttribute { get; }
+		[Field ("QTMoviePasteboardAttribute")]
+		NSString PasteboardAttribute { get; }
+		[Field ("QTMovieDataAttribute")]
+		NSString DataAttribute { get; }
+
+		// Instantiation options
+		[Field ("QTMovieFileOffsetAttribute")]
+		NSString FileOffsetAttribute { get; }
+		[Field ("QTMovieResolveDataRefsAttribute")]
+		NSString ResolveDataRefsAttribute { get; }
+		[Field ("QTMovieAskUnresolvedDataRefsAttribute")]
+		NSString AskUnresolvedDataRefsAttribute { get; }
+		[Field ("QTMovieOpenAsyncOKAttribute")]
+		NSString OpenAsyncOKAttribute { get; }
+
+		// movie attributes
+		[Field ("QTMovieApertureModeAttribute")]
+		NSString ApertureModeAttribute { get; }
+		[Field ("QTMovieActiveSegmentAttribute")]
+		NSString ActiveSegmentAttribute { get; }
+		[Field ("QTMovieAutoAlternatesAttribute")]
+		NSString AutoAlternatesAttribute { get; }
+		[Field ("QTMovieCopyrightAttribute")]
+		NSString CopyrightAttribute { get; }
+		[Field ("QTMovieCreationTimeAttribute")]
+		NSString CreationTimeAttribute { get; }
+		[Field ("QTMovieCurrentSizeAttribute")]
+		NSString CurrentSizeAttribute { get; }
+		[Field ("QTMovieCurrentTimeAttribute")]
+		NSString CurrentTimeAttribute { get; }
+		[Field ("QTMovieDataSizeAttribute")]
+		NSString DataSizeAttribute { get; }
+		[Field ("QTMovieDelegateAttribute")]
+		NSString DelegateAttribute { get; }
+		[Field ("QTMovieDisplayNameAttribute")]
+		NSString DisplayNameAttribute { get; }
+		[Field ("QTMovieDontInteractWithUserAttribute")]
+		NSString DontInteractWithUserAttribute { get; }
+		[Field ("QTMovieDurationAttribute")]
+		NSString DurationAttribute { get; }
+		[Field ("QTMovieEditableAttribute")]
+		NSString EditableAttribute { get; }
+		[Field ("QTMovieFileNameAttribute")]
+		NSString FileNameAttribute { get; }
+		[Field ("QTMovieHasApertureModeDimensionsAttribute")]
+		NSString HasApertureModeDimensionsAttribute { get; }
+		[Field ("QTMovieHasAudioAttribute")]
+		NSString HasAudioAttribute { get; }
+		[Field ("QTMovieHasDurationAttribute")]
+		NSString HasDurationAttribute { get; }
+		[Field ("QTMovieHasVideoAttribute")]
+		NSString HasVideoAttribute { get; }
+		[Field ("QTMovieIsActiveAttribute")]
+		NSString IsActiveAttribute { get; }
+		[Field ("QTMovieIsInteractiveAttribute")]
+		NSString IsInteractiveAttribute { get; }
+		[Field ("QTMovieIsLinearAttribute")]
+		NSString IsLinearAttribute { get; }
+		[Field ("QTMovieIsSteppableAttribute")]
+		NSString IsSteppableAttribute { get; }
+		[Field ("QTMovieLoadStateAttribute")]
+		NSString LoadStateAttribute { get; }
+		[Field ("QTMovieLoopsAttribute")]
+		NSString LoopsAttribute { get; }
+		[Field ("QTMovieLoopsBackAndForthAttribute")]
+		NSString LoopsBackAndForthAttribute { get; }
+		[Field ("QTMovieModificationTimeAttribute")]
+		NSString ModificationTimeAttribute { get; }
+		[Field ("QTMovieMutedAttribute")]
+		NSString MutedAttribute { get; }
+		[Field ("QTMovieNaturalSizeAttribute")]
+		NSString NaturalSizeAttribute { get; }
+		[Field ("QTMoviePlaysAllFramesAttribute")]
+		NSString PlaysAllFramesAttribute { get; }
+		[Field ("QTMoviePlaysSelectionOnlyAttribute")]
+		NSString PlaysSelectionOnlyAttribute { get; }
+		[Field ("QTMoviePosterTimeAttribute")]
+		NSString PosterTimeAttribute { get; }
+		[Field ("QTMoviePreferredMutedAttribute")]
+		NSString PreferredMutedAttribute { get; }
+		[Field ("QTMoviePreferredRateAttribute")]
+		NSString PreferredRateAttribute { get; }
+		[Field ("QTMoviePreferredVolumeAttribute")]
+		NSString PreferredVolumeAttribute { get; }
+		[Field ("QTMoviePreviewModeAttribute")]
+		NSString PreviewModeAttribute { get; }
+		[Field ("QTMoviePreviewRangeAttribute")]
+		NSString PreviewRangeAttribute { get; }
+		[Field ("QTMovieRateAttribute")]
+		NSString RateAttribute { get; }
+		[Field ("QTMovieSelectionAttribute")]
+		NSString SelectionAttribute { get; }
+		[Field ("QTMovieTimeScaleAttribute")]
+		NSString TimeScaleAttribute { get; }
+		[Field ("QTMovieURLAttribute")]
+		NSString URLAttribute { get; }
+		[Field ("QTMovieVolumeAttribute")]
+		NSString VolumeAttribute { get; }
+		[Field ("QTMovieRateChangesPreservePitchAttribute")]
+		NSString RateChangesPreservePitchAttribute { get; }
+
+
+		[Field ("QTMovieApertureModeClassic")]
+		NSString ApertureModeClassic { get; }
+		[Field ("QTMovieApertureModeClean")]
+		NSString ApertureModeClean { get; }
+		[Field ("QTMovieApertureModeProduction")]
+		NSString ApertureModeProduction { get; }
+		[Field ("QTMovieApertureModeEncodedPixels")]
+		NSString ApertureModeEncodedPixels { get; }
+
+		[Field ("QTMovieFrameImageSize")]
+		NSString FrameImageSize { get; }
+		[Field ("QTMovieFrameImageType")]
+		NSString FrameImageType { get; }
+		[Field ("QTMovieFrameImageTypeNSImage")]
+		NSString FrameImageTypeNSImage { get; }
+		[Field ("QTMovieFrameImageTypeCGImageRef")]
+		NSString FrameImageTypeCGImageRef { get; }
+		[Field ("QTMovieFrameImageTypeCIImage")]
+		NSString FrameImageTypeCIImage { get; }
+		[Field ("QTMovieFrameImageTypeCVPixelBufferRef")]
+		NSString FrameImageTypeCVPixelBufferRef { get; }
+		[Field ("QTMovieFrameImageTypeCVOpenGLTextureRef")]
+		NSString FrameImageTypeCVOpenGLTextureRef { get; }
+		[Field ("QTMovieFrameImageOpenGLContext")]
+		NSString FrameImageOpenGLContext { get; }
+		[Field ("QTMovieFrameImagePixelFormat")]
+		NSString FrameImagePixelFormat { get; }
+		[Field ("QTMovieFrameImageRepresentationsType")]
+		NSString FrameImageRepresentationsType { get; }
+		[Field ("QTMovieFrameImageDeinterlaceFields")]
+		NSString FrameImageDeinterlaceFields { get; }
+		[Field ("QTMovieFrameImageHighQuality")]
+		NSString FrameImageHighQuality { get; }
+		[Field ("QTMovieFrameImageSingleField")]
+		NSString FrameImageSingleField { get; }
+
+
+		[Field ("QTMovieUneditableException")]
+		NSString UneditableException { get; }
+
+		[Field ("QTMovieChapterName")]
+		NSString ChapterName { get; }
+		[Field ("QTMovieChapterStartTime")]
+		NSString ChapterStartTime { get; }
+
+		[Field ("QTMovieChapterTargetTrackAttribute")]
+		NSString ChapterTargetTrackAttribute { get; }
 	}
 
 	
