@@ -92,4 +92,45 @@ namespace MonoMac.QTKit {
 	public enum QTMediaType {
 		Video, Sound, Text, Base, Mpeg, Music, TimeCode, Sprite, Flash, Movie, Tween, Type3D, Skin, Qtvr, Hint, Stream, Muxed, QuartzComposer
 	}
+
+	public enum QTFileType {
+		AIFF = 0x41494646, 		// 'AIFF'
+		AIFC = 0x41494643, 		// 'AIFC'
+		DVC = 0x64766321, 		// 'dvc!'
+		MIDI = 0x4d696469, 		// 'Midi'
+		Picture = 0x50494354, 		// 'PICT'
+		Movie = 0x4d6f6f56, 		// 'MooV'
+		Text = 0x54455854, 		// 'TEXT'
+		Wave = 0x57415645, 		// 'WAVE'
+		SystemSevenSound = 0x7366696c, 	// 'sfil'
+		MuLaw = 0x554c4157, 		// 'ULAW'
+		AVI = 0x56665720, 		// 'VfW '
+		SoundDesignerII = 0x53643266, 	// 'Sd2f'
+		AudioCDTrack = 0x7472616b, 	// 'trak'
+		PICS = 0x50494353, 		// 'PICS'
+		GIF = 0x47494666, 		// 'GIFf'
+		PNG = 0x504e4766, 		// 'PNGf'
+		TIFF = 0x54494646, 		// 'TIFF'
+		PhotoShop = 0x38425053, 	// '8BPS'
+		SGIImage = 0x2e534749, 		// '.SGI'
+		BMP = 0x424d5066, 		// 'BMPf'
+		JPEG = 0x4a504547, 		// 'JPEG'
+		JFIF = 0x4a504547, 		// 'JPEG'
+		MacPaint = 0x504e5447, 		// 'PNTG'
+		TargaImage = 0x54504943, 	// 'TPIC'
+		QuickDrawGXPicture = 0x71646778,// 'qdgx'
+		QuickTimeImage = 0x71746966, 	// 'qtif'
+		T3DMF = 0x33444d46, 		// '3DMF'
+		FLC = 0x464c4320, 		// 'FLC '
+		Flash = 0x5357464c, 		// 'SWFL'
+		FlashPix = 0x46506978, 		// 'FPix'
+		MP4 = 0x6d706734, 		// 'mpg4'
+		PDF = 0x50444620, 		// 'PDF '
+		T3GPP = 0x33677070, 		// '3gpp'
+		AMR = 0x616d7220, 		// 'amr '
+		SDV = 0x73647620, 		// 'sdv '
+		T3GP2 = 0x33677032, 		// '3gp2'
+		AMC = 0x616d6320, 		// 'amc '
+		JPEG2000 = 0x6a703220, 		// 'jp2 
+	}
 } 

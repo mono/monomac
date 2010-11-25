@@ -57,6 +57,34 @@ namespace MonoMac.QTKit {
 			return dict;
 		}
 	}
+
+	public class QTMovieSaveOptions {
+		public QTMovieSaveOptions ()
+		{
+		}
+
+		public bool Flatten { get; set; }
+		public QTFileType? ExportType { get; set; }
+		public NSData ExportSettings { get; set; }
+		public int? ManufacturerCode { get; set; }
+
+		public NSDictionary ToDictionary ()
+		{
+			var dict = new NSMutableDictionary ();
+			if (Flatten)
+				dict.SetObject (NSNumber.FromInt32 (1), QTMovie.KeyFlatten);
+			if (ExportType.HasValue){
+				dict.SetObject (NSNumber.FromInt32 (1), QTMovie.KeyExport);
+				dict.SetObject (NSNumber.FromInt32 ((int) ExportType.Value), QTMovie.KeyExportType);
+			}
+			if (ExportSettings != null)
+				dict.SetObject (ExportSettings, QTMovie.KeyExportSettings);
+			if (ManufacturerCode.HasValue)
+				dict.SetObject (NSNumber.FromInt32 ((int) ManufacturerCode.Value), QTMovie.KeyExportManufacturer);
+
+			return dict;
+		}
+	}
 	
 	public partial class QTTrack {
 		public void AddImage (NSImage image, QTTime forDuration, QTImageAttributes attributes)
@@ -68,6 +96,16 @@ namespace MonoMac.QTKit {
 	}
 	
 	public partial class QTMovie {
+		public bool SaveTo (string fileName, QTMovieSaveOptions options, out NSError error)
+		{
+			return SaveTo (fileName, options == null ? null : options.ToDictionary (), out error);
+		}
+
+		public bool SaveTo (string fileName, QTMovieSaveOptions options)
+		{
+			return SaveTo (fileName, options == null ? null : options.ToDictionary ());
+		}
+		
 		public void AddImage (NSImage image, QTTime forDuration, QTImageAttributes attributes)
 		{
 			if (attributes == null)

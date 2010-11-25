@@ -23,12 +23,11 @@
 //
 
 // TODO:
-//   API: QTMovie WriteToFile parameters should become a class/struct
-//        QTMovie
 //   API: QTCaptureDevice - hide the NSDictionary with attribtues, and instead
 //        expose a C# type, hide all fields
 //   API: QTSampleBuffer.h expose a couple of AudioBufferList methods 
-//   API: QTMovie expose a bunch of commented out methods
+//   API: QTMovie needs low-level access to some methods
+//   API: Expose the individual QTMovie*Attribute as C# properties
 //   API: "Media" from QuickTime is not bound, so we expose as IntPtr in QTMedia
 //   API: some stuff missing for QTTime.h and QTTimeRange
 //  
@@ -390,7 +389,7 @@ namespace MonoMac.QTKit
 		QTCaptureInput [] Inputs { get; }
 
 		[Export ("addInput:error:")]
-		bool AddInput (QTCaptureInput input, out NSError errorPtr);
+		bool AddInput (QTCaptureInput input, out NSError error);
 
 		[Export ("removeInput:")]
 		void RemoveInput (QTCaptureInput input);
@@ -399,7 +398,7 @@ namespace MonoMac.QTKit
 		QTCaptureOutput [] Outputs { get; }
 
 		[Export ("addOutput:error:")]
-		bool AddOutput (QTCaptureOutput output, out NSError errorPtr);
+		bool AddOutput (QTCaptureOutput output, out NSError error);
 
 		[Export ("removeOutput:")]
 		void RemoveOutput (QTCaptureOutput output);
@@ -552,10 +551,10 @@ namespace MonoMac.QTKit
 	[BaseType (typeof (NSObject))]
 	interface QTMedia {
 		[Static, Export ("mediaWithQuickTimeMedia:error:")]
-		NSObject FromQuickTimeMedia (IntPtr quicktimeMedia, out NSError errorPtr);
+		NSObject FromQuickTimeMedia (IntPtr quicktimeMedia, out NSError error);
 
 		[Export ("initWithQuickTimeMedia:error:")]
-		IntPtr Conditions (IntPtr quicktimeMedia, out NSError errorPtr);
+		IntPtr Conditions (IntPtr quicktimeMedia, out NSError error);
 
 		[Export ("track")]
 		QTTrack Track { get; }
@@ -852,66 +851,66 @@ namespace MonoMac.QTKit
 		QTMovie Movie { get; }
 
 		[Static, Export ("movieWithFile:error:")]
-		QTMovie FromFile (string fileName, out NSError errorPtr);
+		QTMovie FromFile (string fileName, out NSError error);
 
 		[Static, Export ("movieWithURL:error:")]
-		QTMovie FromUrl (NSUrl url, out NSError errorPtr);
+		QTMovie FromUrl (NSUrl url, out NSError error);
 
 		//[Static, Export ("movieWithDataReference:error:")]
-		//QTMovie MovieWithDataReferenceError (QTDataReference dataReference, out NSError errorPtr);
+		//QTMovie MovieWithDataReferenceError (QTDataReference dataReference, out NSError error);
 
 		[Static, Export ("movieWithPasteboard:error:")]
-		QTMovie FromPasteboard (NSPasteboard pasteboard, out NSError errorPtr);
+		QTMovie FromPasteboard (NSPasteboard pasteboard, out NSError error);
 
 		[Static, Export ("movieWithData:error:")]
-		QTMovie FromData (NSData data, out NSError errorPtr);
+		QTMovie FromData (NSData data, out NSError error);
 
 //		[Static, Export ("movieWithQuickTimeMovie:disposeWhenDone:error:")]
-//		QTMovie MovieWithQuickTimeMovieDisposeWhenDone (Movie movie, bool dispose, out NSError errorPtr);
+//		QTMovie MovieWithQuickTimeMovieDisposeWhenDone (Movie movie, bool dispose, out NSError error);
 
 		[Static, Export ("movieWithAttributes:error:")]
-		QTMovie FromAttributes (NSDictionary attributes, out NSError errorPtr);
+		QTMovie FromAttributes (NSDictionary attributes, out NSError error);
 
 		[Static, Export ("movieNamed:error:")]
-		QTMovie FromMovieNamed (string name, out NSError errorPtr);
+		QTMovie FromMovieNamed (string name, out NSError error);
 
 		[Export ("initWithFile:error:")]
-		IntPtr Constructor (string fileName, out NSError errorPtr);
+		IntPtr Constructor (string fileName, out NSError error);
 
 		[Export ("initWithURL:error:")]
-		IntPtr Constructor (NSUrl url, out NSError errorPtr);
+		IntPtr Constructor (NSUrl url, out NSError error);
 
 		[Export ("initWithDataReference:error:")]
-		IntPtr Constructor (QTDataReference dataReference, out NSError errorPtr);
+		IntPtr Constructor (QTDataReference dataReference, out NSError error);
 
 		[Export ("initWithPasteboard:error:")]
-		IntPtr Constructor (NSPasteboard pasteboard, out NSError errorPtr);
+		IntPtr Constructor (NSPasteboard pasteboard, out NSError error);
 
 		[Export ("initWithData:error:")]
-		IntPtr Constructor (NSData data, out NSError errorPtr);
+		IntPtr Constructor (NSData data, out NSError error);
 
 		[Export ("initWithMovie:timeRange:error:")]
-		IntPtr Constructor (QTMovie movie, QTTimeRange range, out NSError errorPtr);
+		IntPtr Constructor (QTMovie movie, QTTimeRange range, out NSError error);
 
 		//- (id)initWithQuickTimeMovie:(Movie)movie disposeWhenDone:(BOOL)dispose error:(NSError **)errorPtr;
 //		[Export ("initWithQuickTimeMovie:disposeWhenDone:error:")]
-//		IntPtr Constructor ([Movie movie, bool dispose, out NSError errorPtr);
+//		IntPtr Constructor ([Movie movie, bool dispose, out NSError error);
 
 		[Export ("initWithAttributes:error:")]
-		IntPtr Constructor (NSDictionary attributes, out NSError errorPtr);
+		IntPtr Constructor (NSDictionary attributes, out NSError error);
 
 		[Static, Export ("movieWithTimeRange:error:")]
-		QTMovie FromTimeRange (QTTimeRange range, out NSError errorPtr);
+		QTMovie FromTimeRange (QTTimeRange range, out NSError error);
 
 //		[Export ("initToWritableFile:error:")]
-//		IntPtr Constructor (string filename, out NSError errorPtr);
+//		IntPtr Constructor (string filename, out NSError error);
 
 		[Export ("initToWritableData:error:")]
-		IntPtr Constructor (NSMutableData data, out NSError errorPtr);
+		IntPtr Constructor (NSMutableData data, out NSError error);
 
 		//- (id)initToWritableDataReference:(QTDataReference *)dataReference error:(NSError **)errorPtr;
 //		[Export ("initToWritableDataReference:error:")]
-//		IntPtr Constructor (QTDataReference dataReference, out NSError errorPtr);
+//		IntPtr Constructor (QTDataReference dataReference, out NSError error);
 
 		[Export ("invalidate")]
 		void Invalidate ();
@@ -953,16 +952,16 @@ namespace MonoMac.QTKit
 		NSImage FrameImageAtTime (QTTime time);
 
 		[Export ("frameImageAtTime:withAttributes:error:")]
-		IntPtr FrameImageAtTime (QTTime time, NSDictionary attributes, out NSError errorPtr);
+		IntPtr FrameImageAtTime (QTTime time, NSDictionary attributes, out NSError error);
 
 		[Export ("movieFormatRepresentation")]
 		NSData MovieFormatRepresentation ();
 
 		[Export ("writeToFile:withAttributes:")]
-		bool WriteToFile (string fileName, NSDictionary attributes);
-
+		bool SaveTo (string fileName, NSDictionary attributes);
+		
 		[Export ("writeToFile:withAttributes:error:")]
-		bool WriteToFile (string fileName, NSDictionary attributes, out NSError errorPtr);
+		bool SaveTo (string fileName, NSDictionary attributes, out NSError error);
 
 		[Export ("canUpdateMovieFile")]
 		bool CanUpdateMovieFile { get; }
@@ -1099,7 +1098,7 @@ namespace MonoMac.QTKit
 		NSDictionary[] Chapters ();
 
 //		[Export ("addChapters:withAttributes:error:")]
-//		void AddChaptersWithAttributes (NSArray chapters, NSDictionary attributes, out NSError errorPtr);
+//		void AddChaptersWithAttributes (NSArray chapters, NSDictionary attributes, out NSError error);
 
 		[Export ("removeChapters")]
 		bool RemoveChapters ();
@@ -1175,15 +1174,15 @@ namespace MonoMac.QTKit
 
 		// WriteToFile parameters
 		[Internal, Field ("QTMovieExport")]      		// NSNumber Bool
-		NSString Export { get; }
+		NSString KeyExport { get; }
 		[Internal, Field ("QTMovieExportType")]			// NSNumber long
-		NSString ExportType { get; }
+		NSString KeyExportType { get; }
 		[Internal, Field ("QTMovieFlatten")]			// NSNumber bool
-		NSString Flatten { get; }
+		NSString KeyFlatten { get; }
 		[Internal, Field ("QTMovieExportSettings")]		// NSData (QTAtomContainer)
-		NSString ExportSettings { get; }
+		NSString KeyExportSettings { get; }
 		[Internal, Field ("QTMovieExportManufacturer")]		// NSNumber (long)
-		NSString ExportManufacturer { get; }
+		NSString KeyExportManufacturer { get; }
 
 		//
 		// Add Image
@@ -1396,10 +1395,10 @@ namespace MonoMac.QTKit
 	[BaseType (typeof (NSObject))]
 	interface QTTrack {
 		[Static, Export ("trackWithQuickTimeTrack:error:")]
-		NSObject FromQuickTimeTrack (IntPtr quicktimeTrack, out NSError errorPtr);
+		NSObject FromQuickTimeTrack (IntPtr quicktimeTrack, out NSError error);
 
 		[Export ("initWithQuickTimeTrack:error:")]
-		IntPtr Constructor (IntPtr quicktimeTrack, out NSError errorPtr);
+		IntPtr Constructor (IntPtr quicktimeTrack, out NSError error);
 
 		[Export ("movie")]
 		QTMovie Movie { get; }
