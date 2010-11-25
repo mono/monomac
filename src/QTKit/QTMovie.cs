@@ -63,7 +63,7 @@ namespace MonoMac.QTKit {
 		{
 			if (attributes == null)
 				throw new ArgumentNullException ("attributes");
-			AddImage (image, forDuration, attributes.ToDictionary ());
+			AddImageForDuration (image, forDuration, attributes.ToDictionary ());
 		}
 	}
 }
