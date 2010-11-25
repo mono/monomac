@@ -3333,45 +3333,44 @@ namespace MonoMac.AppKit {
 		bool CanConcurrentlyReadDocumentsOfType (string typeName);
 
 		// Binding out error
-		//[Export ("initWithContentsOfURL:ofType:error:")]
-		//IntPtr Constructor (NSUrl absoluteUrl, string typeName, NSError outError);
-		//
-		//[Export ("initForURL:withContentsOfURL:ofType:error:")]
-		//IntPtr Constructor (NSUrl absoluteDocumentUrl, NSUrl absoluteDocumentContentsUrl, string typeName, NSError outError);
+		[Export ("initWithContentsOfURL:ofType:error:")]
+		IntPtr Constructor (NSUrl absoluteUrl, string typeName, out NSError outError);
 
-		// [Export ("revertDocumentToSaved:")]
-		// void RevertDocumentToSaved (NSObject sender);
-		// 
-		// [Export ("revertToContentsOfURL:ofType:error:")]
-		// bool RevertToContentsOfUrl (NSUrl absoluteUrl, string typeName, NSError outError);
-		// 
-		// [Export ("readFromURL:ofType:error:")]
-		// bool ReadFromUrl (NSUrl absoluteUrl, string typeName, NSError outError);
-		// 
-		// [Export ("readFromFileWrapper:ofType:error:")]
-		// bool ReadFromFileWrapper (NSFileWrapper fileWrapper, string typeName, NSError outError);
-		// 
-		// [Export ("readFromData:ofType:error:")]
-		// bool ReadFromData (NSData data, string typeName, NSError outError);
+		[Export ("initForURL:withContentsOfURL:ofType:error:")]
+		IntPtr Constructor (NSUrl absoluteDocumentUrl, NSUrl absoluteDocumentContentsUrl, string typeName, out NSError outError);
 
-		//[Export ("writeToURL:ofType:error:")]
-		//bool WriteToUrl (NSUrl absoluteUrl, string typeName, NSError outError);
+		 [Export ("revertDocumentToSaved:")]
+		 void RevertDocumentToSaved (NSObject sender);
 
-		// BINDING out error
-		//[Export ("fileWrapperOfType:error:")]
-		//NSFileWrapper FileWrapper (string typeName, NSError outError);
+		 [Export ("revertToContentsOfURL:ofType:error:")]
+		 bool RevertToContentsOfUrl (NSUrl absoluteUrl, string typeName, out NSError outError);
 
-		//[Export ("dataOfType:error:")]
-		//NSData DataOfType (string typeName, NSError outError);
-		//
-		//[Export ("writeSafelyToURL:ofType:forSaveOperation:error:")]
-		//bool WriteSafelyToUrl (NSUrl absoluteUrl, string typeName, NSSaveOperationType saveOperation, NSError outError);
-		//
-		//[Export ("writeToURL:ofType:forSaveOperation:originalContentsURL:error:")]
-		//bool WriteToUrl (NSUrl absoluteUrl, string typeName, NSSaveOperationType saveOperation, NSUrl absoluteOriginalContentsUrl, NSError outError);
-		//
-		//[Export ("fileAttributesToWriteToURL:ofType:forSaveOperation:originalContentsURL:error:")]
-		//NSDictionary FileAttributes (NSUrl absoluteUrl, string typeName, NSSaveOperationType saveOperation, NSUrl absoluteOriginalContentsUrl, NSError outError);
+		[Export ("readFromURL:ofType:error:")]
+		bool ReadFromUrl (NSUrl absoluteUrl, string typeName, out NSError outError);
+
+		[Export ("readFromFileWrapper:ofType:error:")]
+		bool ReadFromFileWrapper (NSFileWrapper fileWrapper, string typeName, out NSError outError);
+
+		[Export ("readFromData:ofType:error:")]
+		bool ReadFromData (NSData data, string typeName, out NSError outError);
+
+		[Export ("writeToURL:ofType:error:")]
+		bool WriteToUrl (NSUrl absoluteUrl, string typeName, out NSError outError);
+
+		[Export ("fileWrapperOfType:error:")]
+		NSFileWrapper FileWrapper (string typeName, out NSError outError);
+
+		[Export ("dataOfType:error:")]
+		NSData DataOfType (string typeName, out NSError outError);
+
+		[Export ("writeSafelyToURL:ofType:forSaveOperation:error:")]
+		bool WriteSafelyToUrl (NSUrl absoluteUrl, string typeName, NSSaveOperationType saveOperation, out NSError outError);
+
+		[Export ("writeToURL:ofType:forSaveOperation:originalContentsURL:error:")]
+		bool WriteToUrl (NSUrl absoluteUrl, string typeName, NSSaveOperationType saveOperation, NSUrl absoluteOriginalContentsUrl, out NSError outError);
+
+		[Export ("fileAttributesToWriteToURL:ofType:forSaveOperation:originalContentsURL:error:")]
+		NSDictionary FileAttributesToWrite (NSUrl toUrl, string typeName, NSSaveOperationType saveOperation, NSUrl absoluteOriginalContentsUrl, out NSError outError);
 
 		[Export ("keepBackupFile")]
 		bool KeepBackupFile ();
@@ -3571,11 +3570,11 @@ namespace MonoMac.AppKit {
 		[Export ("newDocument:")]
 		void NewDocument (NSObject sender);
 
-		//[Export ("openUntitledDocumentAndDisplay:error:"), Internal]
-		//NSObject OpenUntitledDocument (bool displayDocument, IntPtr outError);
+		[Export ("openUntitledDocumentAndDisplay:error:")]
+		NSObject OpenUntitledDocument (bool displayDocument, out NSError outError);
 
-		//[Export ("makeUntitledDocumentOfType:error:"), Internal]
-		//NSObject MakeUntitledDocument (string typeName, IntPtr outError);
+		[Export ("makeUntitledDocumentOfType:error:")]
+		NSObject MakeUntitledDocument (string typeName, out NSError error);
 
 		[Export ("openDocument:")]
 		void OpenDocument (NSObject sender);
@@ -3816,9 +3815,8 @@ namespace MonoMac.AppKit {
 	
 	[BaseType (typeof (NSObject))]
 	interface NSFileWrapper {
-		// FIXME: Binding out error
-		//[Export ("initWithURL:options:error:")]
-		//IntPtr Constructor (NSUrl url, NSFileWrapperReadingOptions options, out NSError outError);
+		[Export ("initWithURL:options:error:")]
+		IntPtr Constructor (NSUrl url, NSFileWrapperReadingOptions options, out NSError outError);
 
 		[Export ("initDirectoryWithFileWrappers:")]
 		IntPtr Constructor (NSDictionary childrenByPreferredName);
@@ -3844,13 +3842,11 @@ namespace MonoMac.AppKit {
 		[Export ("matchesContentsOfURL:")]
 		bool MatchesContentsOfUrl (NSUrl url);
 
-		// FIXME: bind out
-		//[Export ("readFromURL:options:error:")]
-		//bool ReadFrom (NSUrl url, NSFileWrapperReadingOptions options, out NSError outError);
+		[Export ("readFromURL:options:error:")]
+		bool ReadFrom (NSUrl url, NSFileWrapperReadingOptions options, out NSError outError);
 
-		// FIXME: bind out
 		//[Export ("writeToURL:options:originalContentsURL:error:")]
-		//bool WriteTo (NSUrl url, NSFileWrapperWritingOptions options, NSUrl originalContentsURL, out NSError outError, );
+		//bool WriteTo (NSUrl url, NSFileWrapperWritingOptions options, NSUrl originalContentsURL, out NSError outError);
 
 		[Export ("serializedRepresentation")]
 		NSData SerializedRepresentation { get; }
@@ -8587,13 +8583,11 @@ namespace MonoMac.AppKit {
 		[Export ("phonemesFromText:")]
 		string PhonemesFromText (string text);
 
-		// Needs support for out NSError
-		//[Export ("objectForProperty:error:")]
-		//NSObject ObjectForProperty (string property, NSError outError);
+		[Export ("objectForProperty:error:")]
+		NSObject ObjectForProperty (string property, out NSError outError);
 
-		// Needs support for out NSError
-		//[Export ("setObject:forProperty:error:")]
-		//bool SetObjectforProperty (NSObject theObject, string property, NSError outError);
+		[Export ("setObject:forProperty:error:")]
+		bool SetObjectforProperty (NSObject theObject, string property, out NSError outError);
 
 		[Export ("isAnyApplicationSpeaking")]
 		bool IsAnyApplicationSpeaking { get; }
@@ -12615,9 +12609,8 @@ namespace MonoMac.AppKit {
 		[Export ("unmountAndEjectDeviceAtPath:")]
 		bool UnmountAndEjectDevice(string path);
 
-		// FIXME: out NSError
-		//[Export ("unmountAndEjectDeviceAtURL:error:")]
-		//bool UnmountAndEjectDevice (NSUrl url, out NSError error );
+		[Export ("unmountAndEjectDeviceAtURL:error:")]
+		bool UnmountAndEjectDevice (NSUrl url, out NSError error);
 		
 		[Export ("extendPowerOffBy:")]
 		int ExtendPowerOffBy (int requested);
