@@ -270,7 +270,7 @@ namespace MonoMac.WebKit {
 		bool IsContentEditable { get;  }
 
 		[Export ("insertBefore:refChild:")]
-		DomNode InsertBefore (DomNode newChild, DomNode refChild);
+		DomNode InsertBefore (DomNode newChild, [NullAllowed] DomNode refChild);
 
 		[Export ("replaceChild:oldChild:")]
 		DomNode ReplaceChild (DomNode newChild, DomNode oldChild);
@@ -297,10 +297,10 @@ namespace MonoMac.WebKit {
 		bool HasAttributes ();
 
 		[Export ("isSameNode:")]
-		bool IsSameNode (DomNode other);
+		bool IsSameNode ([NullAllowed] DomNode other);
 
 		[Export ("isEqualNode:")]
-		bool IsEqualNode (DomNode other);
+		bool IsEqualNode ([NullAllowed] DomNode other);
 
 		[Export ("lookupPrefix:")]
 		string LookupPrefix (string namespaceURI);
