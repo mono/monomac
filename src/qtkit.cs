@@ -261,7 +261,7 @@ namespace MonoMac.QTKit
 		[Export ("deviceInputWithDevice:")]
 		QTCaptureDeviceInput FromDevice (QTCaptureDevice device);
 
-		[Export ("initWithDevice")]
+		[Export ("initWithDevice:")]
 		IntPtr Constructor (QTCaptureDevice device);
 		
 		[Export ("device")]
