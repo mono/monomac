@@ -3327,7 +3327,7 @@ namespace MonoMac.AppKit {
 	[BaseType (typeof (NSObject))]
 	interface NSDocument {
 		[Export ("initWithType:error:")]
-		IntPtr Constructor (string typeName, NSError outError);
+		IntPtr Constructor (string typeName, out NSError outError);
 
 		[Export ("canConcurrentlyReadDocumentsOfType:")]
 		bool CanConcurrentlyReadDocumentsOfType (string typeName);
