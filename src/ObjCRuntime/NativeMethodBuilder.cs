@@ -81,7 +81,7 @@ namespace MonoMac.ObjCRuntime {
 		}
 
 		internal override Delegate CreateDelegate () {
-			DynamicMethod method = new DynamicMethod (Guid.NewGuid ().ToString (), rettype, ParameterTypes, module, true);
+			DynamicMethod method = new DynamicMethod (string.Format ("[{0}:{1}]", minfo.DeclaringType, minfo), rettype, ParameterTypes, module, true);
 			ILGenerator il = method.GetILGenerator ();
 			
 			
@@ -141,7 +141,7 @@ namespace MonoMac.ObjCRuntime {
 				}
 			}
 #endif
-			if (rettype == typeof (string)) {
+			if (minfo.ReturnType == typeof (string)) {
 				il.Emit (OpCodes.Newobj, newnsstring);
 #if !MONOMAC_BOOTSTRAP
 			} else if (rettype.IsArray && (rettype.GetElementType () == typeof (NSObject) || rettype.GetElementType ().IsSubclassOf (typeof (NSObject)))) {
