@@ -3358,10 +3358,10 @@ namespace MonoMac.AppKit {
 		bool WriteToUrl (NSUrl absoluteUrl, string typeName, out NSError outError);
 
 		[Export ("fileWrapperOfType:error:")]
-		NSFileWrapper FileWrapper (string typeName, out NSError outError);
+		NSFileWrapper GetAsFileWrapper (string typeName, out NSError outError);
 
 		[Export ("dataOfType:error:")]
-		NSData DataOfType (string typeName, out NSError outError);
+		NSData GetAsData (string typeName, out NSError outError);
 
 		[Export ("writeSafelyToURL:ofType:forSaveOperation:error:")]
 		bool WriteSafelyToUrl (NSUrl absoluteUrl, string typeName, NSSaveOperationType saveOperation, out NSError outError);
