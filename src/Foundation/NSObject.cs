@@ -128,7 +128,14 @@ namespace MonoMac.Foundation {
 					Release ();
 					Marshal.FreeHGlobal (SuperHandle);
 				} else {
-					if (disposer.Add (SuperHandle))
+					bool calldrain = false;
+
+					if (IsDirectBinding)
+						calldrain = disposer.AddDirect (handle);
+					else
+						calldrain = disposer.AddSuper (SuperHandle);
+
+					if (calldrain)
 						Messaging.void_objc_msgSend_intptr_intptr_bool (disposer.Handle, selPerformSelectorOnMainThreadWithObjectWaitUntilDone, selDrain, IntPtr.Zero, false);
 				}
 				handle = IntPtr.Zero;
@@ -319,33 +326,49 @@ namespace MonoMac.Foundation {
 
 		[Register ("__MonoMac_Disposer")][Preserve (AllMembers=true)]
 		internal class MonoMac_Disposer : NSObject {
-			List <IntPtr> handles;
+			List <IntPtr> direct_handles;
+			List <IntPtr> super_handles;
 			object lock_obj;
 	
 
 			internal MonoMac_Disposer () {
-				handles = new List <IntPtr> ();
+				super_handles = new List <IntPtr> ();
+				direct_handles = new List <IntPtr> ();
 				lock_obj = new object ();
 			}
 	
-			internal bool Add (IntPtr handle) {
+			internal bool AddDirect (IntPtr handle) {
 				if (this.handle == handle)
 					return false;
 
 				lock (lock_obj) {
-					handles.Add (handle);
-					return handles.Count == 1;
+					direct_handles.Add (handle);
+					return direct_handles.Count == 1;
+				}
+			}
+
+			internal bool AddSuper (IntPtr handle) {
+				if (this.handle == handle)
+					return false;
+
+				lock (lock_obj) {
+					super_handles.Add (handle);
+					return super_handles.Count == 1;
 				}
 			}
 	
 			[Export ("drain:")]
 			internal void Drain (NSObject ctx) {
 				lock (lock_obj) {
-					foreach (IntPtr x in handles) {
+					foreach (IntPtr x in super_handles) {
 						Messaging.void_objc_msgSendSuper (x, selRelease);
 						Marshal.FreeHGlobal (x);
 					}
-					handles.Clear ();
+					super_handles.Clear ();
+					foreach (IntPtr x in direct_handles) {
+						Messaging.void_objc_msgSend (x, selRelease);
+					}
+					direct_handles.Clear ();
 				}
 			}
 		}
