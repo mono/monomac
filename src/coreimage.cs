@@ -123,7 +123,6 @@ namespace MonoMac.CoreImage {
 		[Export ("imageWithData:options:")]
 		CIImage FromData (NSData data, NSDictionary d);
 
-		// FIXME: todo binding for CVImageBuffer
 		[Static]
 		[Export ("imageWithCVImageBuffer:")]
 		CIImage FromImageBuffer (CVImageBuffer imageBuffer);
