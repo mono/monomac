@@ -112,7 +112,7 @@ namespace MonoMac.ObjCRuntime {
 
 			if (!minfo.IsStatic) {
 				il.Emit (OpCodes.Ldarg_0);
-				il.Emit (OpCodes.Castclass, minfo.DeclaringType);
+//				il.Emit (OpCodes.Castclass, minfo.DeclaringType);
 			}
 
 			for (int i = 2, j = 0; i < ParameterTypes.Length; i++) {
