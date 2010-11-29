@@ -67,7 +67,7 @@ namespace MonoMac.ObjCRuntime {
 					ParameterTypes [i + 2] = typeof (IntPtr).MakeByRefType ();
 				else if (parms [i].ParameterType.IsArray && (parms [i].ParameterType.GetElementType () == typeof (NSObject) || parms [i].ParameterType.GetElementType ().IsSubclassOf (typeof (NSObject))))
 					ParameterTypes [i + 2] = typeof (IntPtr);
-				else if (typeof (INativeObject).IsAssignableFrom (parms [i].ParameterType) && !parms[i].ParameterType.GetElementType ().IsSubclassOf (typeof (NSObject)) && parms[i].ParameterType.GetElementType () != typeof (NSObject))
+				else if (typeof (INativeObject).IsAssignableFrom (parms [i].ParameterType) && !parms[i].ParameterType.IsSubclassOf (typeof (NSObject)) && parms[i].ParameterType. != typeof (NSObject))
 					ParameterTypes [i + 2] = typeof (IntPtr);
 				else
 					ParameterTypes [i + 2] = parms [i].ParameterType;
@@ -120,7 +120,7 @@ namespace MonoMac.ObjCRuntime {
 					il.Emit (OpCodes.Ldloca_S, j++);
 				else if (parms [i-2].ParameterType.IsArray && (parms [i-2].ParameterType.GetElementType () == typeof (NSObject) || parms [i-2].ParameterType.GetElementType ().IsSubclassOf (typeof (NSObject))))
 					il.Emit (OpCodes.Ldloc, j++);
-				else if (typeof (INativeObject).IsAssignableFrom (parms [i-2].ParameterType) && parms [i-2].ParameterType.GetElementType () != typeof (NSObject) && !parms [i-2].ParameterType.GetElementType ().IsSubclassOf (typeof (NSObject))) {
+				else if (typeof (INativeObject).IsAssignableFrom (parms [i-2].ParameterType) && parms [i-2].ParameterType != typeof (NSObject) && !parms [i-2].ParameterType.IsSubclassOf (typeof (NSObject))) {
 					il.Emit (OpCodes.Ldarg, i);
 					il.Emit (OpCodes.Newobj, parms [i-2].ParameterType.GetConstructor (BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance, null, new Type [] { typeof (IntPtr) }, null));
 				} else
@@ -152,7 +152,7 @@ namespace MonoMac.ObjCRuntime {
 			} else if (rettype.IsArray && (rettype.GetElementType () == typeof (NSObject) || rettype.GetElementType ().IsSubclassOf (typeof (NSObject)))) {
 				il.Emit (OpCodes.Call, buildarray);
 #endif
-			} else if (typeof (INativeObject).IsAssignableFrom (rettype) && rettype.GetElementType () != typeof (NSObject) && !rettype.GetElementType ().IsSubclassOf (typeof (NSObject))) {
+			} else if (typeof (INativeObject).IsAssignableFrom (rettype) && rettype != typeof (NSObject) && !rettype.IsSubclassOf (typeof (NSObject))) {
 				il.Emit (OpCodes.Call, rettype.GetProperty ("Handle").GetGetMethod ());
 			}
 			il.Emit (OpCodes.Ret);
@@ -167,7 +167,7 @@ namespace MonoMac.ObjCRuntime {
 			if (type.IsArray && (type.GetElementType () == typeof (NSObject) || type.GetElementType ().IsSubclassOf (typeof (NSObject))))
 				return typeof (NSArray);
 #endif
-			if (typeof (INativeObject).IsAssignableFrom (type) && type.GetElementType () != typeof (NSObject) && !type.GetElementType ().IsSubclassOf (typeof (NSObject)))
+			if (typeof (INativeObject).IsAssignableFrom (type) && type != typeof (NSObject) && !type..IsSubclassOf (typeof (NSObject)))
 				return typeof (IntPtr);
 
 			return type;
