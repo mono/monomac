@@ -67,7 +67,7 @@ namespace MonoMac.ObjCRuntime {
 					ParameterTypes [i + 2] = typeof (IntPtr).MakeByRefType ();
 				else if (parms [i].ParameterType.IsArray && (parms [i].ParameterType.GetElementType () == typeof (NSObject) || parms [i].ParameterType.GetElementType ().IsSubclassOf (typeof (NSObject))))
 					ParameterTypes [i + 2] = typeof (IntPtr);
-				else if (typeof (INativeObject).IsAssignableFrom (parms [i].ParameterType) && !parms[i].ParameterType.IsSubclassOf (typeof (NSObject)) && parms[i].ParameterType. != typeof (NSObject))
+				else if (typeof (INativeObject).IsAssignableFrom (parms [i].ParameterType) && !parms[i].ParameterType.IsSubclassOf (typeof (NSObject)) && parms[i].ParameterType != typeof (NSObject))
 					ParameterTypes [i + 2] = typeof (IntPtr);
 				else
 					ParameterTypes [i + 2] = parms [i].ParameterType;
@@ -167,7 +167,7 @@ namespace MonoMac.ObjCRuntime {
 			if (type.IsArray && (type.GetElementType () == typeof (NSObject) || type.GetElementType ().IsSubclassOf (typeof (NSObject))))
 				return typeof (NSArray);
 #endif
-			if (typeof (INativeObject).IsAssignableFrom (type) && type != typeof (NSObject) && !type..IsSubclassOf (typeof (NSObject)))
+			if (typeof (INativeObject).IsAssignableFrom (type) && type != typeof (NSObject) && !type.IsSubclassOf (typeof (NSObject)))
 				return typeof (IntPtr);
 
 			return type;
