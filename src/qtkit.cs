@@ -276,10 +276,10 @@ namespace MonoMac.QTKit
 		NSUrl OutputFileUrl { get; }
 
 		[Export ("recordToOutputFileURL:")]
-		void RecordToOutputFile (NSUrl url);
+		void RecordToOutputFile ([NullAllowed] NSUrl url);
 
 		[Export ("recordToOutputFileURL:bufferDestination:")]
-		void RecordToOutputFile (NSUrl url, QTCaptureDestination bufferDestination);
+		void RecordToOutputFile ([NullAllowed] NSUrl url, QTCaptureDestination bufferDestination);
 
 		[Export ("isRecordingPaused")]
 		bool IsRecordingPaused { get; }
