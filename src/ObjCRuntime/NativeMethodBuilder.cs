@@ -42,9 +42,9 @@ namespace MonoMac.ObjCRuntime {
 		private Type rettype;
 		private ParameterInfo [] parms;
 				
-		internal NativeMethodBuilder (MethodInfo minfo) {
-			ExportAttribute ea = (ExportAttribute) Attribute.GetCustomAttribute (minfo.GetBaseDefinition (), typeof (ExportAttribute));
+		internal NativeMethodBuilder (MethodInfo minfo) : this (minfo, (ExportAttribute) Attribute.GetCustomAttribute (minfo.GetBaseDefinition (), typeof (ExportAttribute))) {}
 
+		internal NativeMethodBuilder (MethodInfo minfo, ExportAttribute ea) {
 			if (ea == null)
 				throw new ArgumentException ("MethodInfo does not have a export attribute");
 

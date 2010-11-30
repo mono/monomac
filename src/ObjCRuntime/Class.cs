@@ -46,7 +46,7 @@ namespace MonoMac.ObjCRuntime {
 
 		public Class (string name) {
 			this.handle = objc_getClass (name);
-			
+
 			if (this.handle == IntPtr.Zero)
 				throw new ArgumentException ("name is an unknown class", name);
 		}
@@ -154,6 +154,8 @@ namespace MonoMac.ObjCRuntime {
 					string ivar_name = cattr.Name ?? prop.Name;
 					class_addIvar (handle, ivar_name, (IntPtr) Marshal.SizeOf (typeof (IntPtr)), (ushort) Math.Log (Marshal.SizeOf (typeof (IntPtr)), 2), "@");
 				}
+
+				RegisterProperty (prop, type, k, handle);
 			}
 	
 #if OBJECT_REF_TRACKING
@@ -161,20 +163,9 @@ namespace MonoMac.ObjCRuntime {
 			class_addMethod (handle, retain_builder.Selector, retain_builder.Delegate, retain_builder.Signature);
 #endif
 
-			foreach (MethodInfo minfo in type.GetMethods (BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static)) {
-				ExportAttribute ea = (ExportAttribute) Attribute.GetCustomAttribute (minfo.GetBaseDefinition (), typeof (ExportAttribute));
-				if (ea == null || (minfo.IsVirtual && minfo.DeclaringType != type && minfo.DeclaringType.Assembly == NSObject.MonoMacAssembly))
-					continue;
-				
-				NativeMethodBuilder builder = new NativeMethodBuilder (minfo);
-				
-				class_addMethod (minfo.IsStatic ? k->isa : handle, builder.Selector, builder.Delegate, builder.Signature);
-				method_wrappers.Add (builder.Delegate);
-#if DEBUG
-				Console.WriteLine ("[METHOD] Registering {0}[0x{1:x}|{2}] on {3} -> ({4})", ea.Selector, (int) builder.Selector, builder.Signature, type, minfo);
-#endif
-			}
-			
+			foreach (MethodInfo minfo in type.GetMethods (BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static))
+				RegisterMethod (minfo, type, k, handle);
+
 			ConstructorInfo default_ctor = type.GetConstructor (Type.EmptyTypes);
 			if (default_ctor != null) {
 				NativeConstructorBuilder builder = new NativeConstructorBuilder (default_ctor);
@@ -199,11 +190,39 @@ namespace MonoMac.ObjCRuntime {
 #endif
 			}
 
-			objc_registerClassPair (handle);			
+			objc_registerClassPair (handle);
 
 			type_map [handle] = type;
 
 			return handle;
+		}
+
+		// FIXME: This doesn't properly handle virtual properties yet
+		private unsafe static void RegisterProperty (PropertyInfo prop, Type type, objc_class *k, IntPtr handle) {
+			ExportAttribute ea = (ExportAttribute) Attribute.GetCustomAttribute (prop, typeof (ExportAttribute));
+			if (ea == null)
+				return;
+
+			RegisterMethod (prop.GetGetMethod (), ea.ToGetter (prop), type, k, handle);
+			RegisterMethod (prop.GetSetMethod (), ea.ToSetter (prop), type, k, handle);
+		}
+
+		private unsafe static void RegisterMethod (MethodInfo minfo, Type type, objc_class *k, IntPtr handle) {
+			ExportAttribute ea = (ExportAttribute) Attribute.GetCustomAttribute (minfo.GetBaseDefinition (), typeof (ExportAttribute));
+			if (ea == null || (minfo.IsVirtual && minfo.DeclaringType != type && minfo.DeclaringType.Assembly == NSObject.MonoMacAssembly))
+				return;
+
+			RegisterMethod (minfo, ea, type, k, handle);
+		}
+
+		private unsafe static void RegisterMethod (MethodInfo minfo, ExportAttribute ea, Type type, objc_class *k, IntPtr handle) {
+			NativeMethodBuilder builder = new NativeMethodBuilder (minfo, ea);
+
+			class_addMethod (minfo.IsStatic ? k->isa : handle, builder.Selector, builder.Delegate, builder.Signature);
+			method_wrappers.Add (builder.Delegate);
+#if DEBUG
+			Console.WriteLine ("[METHOD] Registering {0}[0x{1:x}|{2}] on {3} -> ({4})", ea.Selector, (int) builder.Selector, builder.Signature, type, minfo);
+#endif
 		}
 
 		[DllImport ("/usr/lib/libobjc.dylib")]
