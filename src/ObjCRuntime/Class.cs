@@ -202,9 +202,13 @@ namespace MonoMac.ObjCRuntime {
 			ExportAttribute ea = (ExportAttribute) Attribute.GetCustomAttribute (prop, typeof (ExportAttribute));
 			if (ea == null)
 				return;
-
-			RegisterMethod (prop.GetGetMethod (), ea.ToGetter (prop), type, k, handle);
-			RegisterMethod (prop.GetSetMethod (), ea.ToSetter (prop), type, k, handle);
+			
+			var m = prop.GetGetMethod ();
+			if (m != null)
+				RegisterMethod (m, ea.ToGetter (prop), type, k, handle);
+			m = prop.GetSetMethod ();
+			if (m != null)
+				RegisterMethod (m, ea.ToSetter (prop), type, k, handle);
 		}
 
 		private unsafe static void RegisterMethod (MethodInfo minfo, Type type, objc_class *k, IntPtr handle) {
