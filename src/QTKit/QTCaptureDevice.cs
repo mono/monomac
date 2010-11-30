@@ -86,5 +86,11 @@ namespace MonoMac.QTKit {
 				return null;
 			return _GetDefaultInputDevice (t);
 		}
+
+		public bool HasMediaType (QTMediaType mediaType)
+		{
+			return _HasMediaType (FromMediaType (mediaType));
+		}
+
 	}
 }

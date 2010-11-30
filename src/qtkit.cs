@@ -174,8 +174,8 @@ namespace MonoMac.QTKit
 		[Export ("formatDescriptions")]
 		QTFormatDescription [] FormatDescriptions { get; }
 
-		[Export ("hasMediaType:")]
-		bool HasMediaType (string mediaType);
+		[Export ("hasMediaType:"), Internal]
+		bool _HasMediaType (string mediaType);
 
 		[Export ("attributeIsReadOnly:")]
 		bool IsAttributeReadOnly (string attributeKey);
