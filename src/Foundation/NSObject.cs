@@ -165,7 +165,7 @@ namespace MonoMac.Foundation {
 					h.Free ();
 					SetObjCIvar ("__monoObjectGCHandle", IntPtr.Zero);
 				} else {
-					Console.WriteLine ("WARNING: How did this happen: NativeRelease");
+					Console.WriteLine ("[NativeRelease ERROR]: type: {0} handle: {1} count: {2} gchandle: {3}", this.GetType (), (int) handle, count, hptr);
 				}
 			}
 		}
@@ -182,7 +182,7 @@ namespace MonoMac.Foundation {
 					GCHandle h = GCHandle.Alloc (this);
 					SetObjCIvar ("__monoObjectGCHandle", (IntPtr) h);
 				} else {
-					Console.WriteLine ("WARNING: How did this happen: NativeRetain");
+					Console.WriteLine ("[NativeRetain ERROR]: type: {0} handle: {1} count: {2} gchandle: {3}", this.GetType (), (int) handle, count, hptr);
 				}
 			}
 
