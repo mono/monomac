@@ -50,7 +50,7 @@ namespace MonoMac.Foundation {
 		static IntPtr selRetainCount = Selector.GetHandle ("retainCount");
 
 		static MonoMac_Disposer disposer = new MonoMac_Disposer ();
-			
+
 		private IntPtr handle;
 		private IntPtr super;
 		private IntPtr super_ptr;
@@ -154,35 +154,39 @@ namespace MonoMac.Foundation {
 
 		[Export ("release")]
 		internal void NativeRelease () {
-			uint count = Messaging.uint_objc_msgSend (handle, selRetainCount);
-			Messaging.void_objc_msgSendSuper (SuperHandle, selRelease);
+			lock (this) {
+				uint count = Messaging.uint_objc_msgSend (handle, selRetainCount);
+				Messaging.void_objc_msgSendSuper (SuperHandle, selRelease);
 
-			if (count == 2) {
-				IntPtr hptr = GetObjCIvar ("__monoObjectGCHandle");
+				if (count == 2) {
+					IntPtr hptr = GetObjCIvar ("__monoObjectGCHandle");
 
-				if (hptr != IntPtr.Zero) {
-					GCHandle h = (GCHandle) hptr;
-					h.Free ();
-					SetObjCIvar ("__monoObjectGCHandle", IntPtr.Zero);
-				} else {
-					Console.WriteLine ("[NativeRelease ERROR]: type: {0} handle: {1} count: {2} gchandle: {3}", this.GetType (), (int) handle, count, hptr);
+					if (hptr != IntPtr.Zero) {
+						GCHandle h = (GCHandle) hptr;
+						h.Free ();
+						SetObjCIvar ("__monoObjectGCHandle", IntPtr.Zero);
+					} else {
+						Console.WriteLine ("[NativeRelease ERROR]: type: {0} handle: {1} count: {2} gchandle: {3}", this.GetType (), (int) handle, count, hptr);
+					}
 				}
 			}
 		}
 
 		[Export ("retain")]
 		internal IntPtr NativeRetain () {
-			uint count = Messaging.uint_objc_msgSend (handle, selRetainCount);
-			Messaging.void_objc_msgSendSuper (SuperHandle, selRetain);
+			lock (this) {
+				uint count = Messaging.uint_objc_msgSend (handle, selRetainCount);
+				Messaging.void_objc_msgSendSuper (SuperHandle, selRetain);
 
-			if (count == 1) {
-				IntPtr hptr = GetObjCIvar ("__monoObjectGCHandle");
+				if (count == 1) {
+					IntPtr hptr = GetObjCIvar ("__monoObjectGCHandle");
 
-				if (hptr == IntPtr.Zero) {
-					GCHandle h = GCHandle.Alloc (this);
-					SetObjCIvar ("__monoObjectGCHandle", (IntPtr) h);
-				} else {
-					Console.WriteLine ("[NativeRetain ERROR]: type: {0} handle: {1} count: {2} gchandle: {3}", this.GetType (), (int) handle, count, hptr);
+					if (hptr == IntPtr.Zero) {
+						GCHandle h = GCHandle.Alloc (this);
+						SetObjCIvar ("__monoObjectGCHandle", (IntPtr) h);
+					} else {
+						Console.WriteLine ("[NativeRetain ERROR]: type: {0} handle: {1} count: {2} gchandle: {3}", this.GetType (), (int) handle, count, hptr);
+					}
 				}
 			}
 
