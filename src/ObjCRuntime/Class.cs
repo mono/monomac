@@ -220,7 +220,7 @@ namespace MonoMac.ObjCRuntime {
 		}
 
 		private unsafe static void RegisterMethod (MethodInfo minfo, ExportAttribute ea, Type type, objc_class *k, IntPtr handle) {
-			NativeMethodBuilder builder = new NativeMethodBuilder (minfo, ea);
+			NativeMethodBuilder builder = new NativeMethodBuilder (minfo, type, ea);
 
 			class_addMethod (minfo.IsStatic ? k->isa : handle, builder.Selector, builder.Delegate, builder.Signature);
 			method_wrappers.Add (builder.Delegate);

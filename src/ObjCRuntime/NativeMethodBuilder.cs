@@ -40,14 +40,15 @@ namespace MonoMac.ObjCRuntime {
 #endif
 
 		private MethodInfo minfo;
+		private Type type;
 		private Type rettype;
 		private ParameterInfo [] parms;
 		private bool isstret;
 		private int argoffset;
 				
-		internal NativeMethodBuilder (MethodInfo minfo) : this (minfo, (ExportAttribute) Attribute.GetCustomAttribute (minfo.GetBaseDefinition (), typeof (ExportAttribute))) {}
+		internal NativeMethodBuilder (MethodInfo minfo) : this (minfo, minfo.DeclaringType, (ExportAttribute) Attribute.GetCustomAttribute (minfo.GetBaseDefinition (), typeof (ExportAttribute))) {}
 
-		internal NativeMethodBuilder (MethodInfo minfo, ExportAttribute ea) {
+		internal NativeMethodBuilder (MethodInfo minfo, Type type, ExportAttribute ea) {
 			if (ea == null)
 				throw new ArgumentException ("MethodInfo does not have a export attribute");
 
@@ -93,6 +94,7 @@ namespace MonoMac.ObjCRuntime {
 			DelegateType = CreateDelegateType (rettype, ParameterTypes);
 
 			this.minfo = minfo;
+			this.type = type;
 		}
 
 		internal override Delegate CreateDelegate () {
@@ -122,9 +124,14 @@ namespace MonoMac.ObjCRuntime {
 			}
 #endif
 
+#if DUMP_CALLS
+			il.Emit (OpCodes.Ldstr, string.Format ("Invoking {0} on a {1}", minfo.ToString (), type.ToString ()));
+			il.Emit (OpCodes.Call, typeof (Console).GetMethod ("WriteLine", new Type [] { typeof (string) }));
+#endif
+
 			if (!minfo.IsStatic) {
 				il.Emit (OpCodes.Ldarg, (isstret ? 1 : 0));
-//				il.Emit (OpCodes.Castclass, minfo.DeclaringType);
+				il.Emit (OpCodes.Castclass, type);
 			}
 
 			for (int i = argoffset, j = 0; i < ParameterTypes.Length; i++) {
@@ -138,7 +145,7 @@ namespace MonoMac.ObjCRuntime {
 				} else
 					il.Emit (OpCodes.Ldarg, i);
 			}
-	
+
 			if (minfo.IsVirtual)
 				il.Emit (OpCodes.Callvirt, minfo);
 			else
