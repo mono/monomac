@@ -117,6 +117,9 @@ namespace MonoMac.ObjCRuntime {
 			IntPtr handle = IntPtr.Zero;
 			objc_class *k;
 
+			if (objc_getProtocol (name) != IntPtr.Zero)
+				throw new ArgumentException ("Attempting to register a class named: " + name + " which is a valid protocol");
+
 			handle = objc_getClass (name);
 
 			if (handle != IntPtr.Zero) {
@@ -233,6 +236,8 @@ namespace MonoMac.ObjCRuntime {
 		extern static IntPtr objc_allocateClassPair (IntPtr superclass, string name, IntPtr extraBytes);
 		[DllImport ("/usr/lib/libobjc.dylib")]
 		extern static IntPtr objc_getClass (string name);
+		[DllImport ("/usr/lib/libobjc.dylib")]
+		extern static IntPtr objc_getProtocol (string name);
 		[DllImport ("/usr/lib/libobjc.dylib")]
 		extern static void objc_registerClassPair (IntPtr cls);
 		[DllImport ("/usr/lib/libobjc.dylib")]
