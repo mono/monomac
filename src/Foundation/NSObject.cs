@@ -54,6 +54,7 @@ namespace MonoMac.Foundation {
 		private IntPtr handle;
 		private IntPtr super;
 		private IntPtr super_ptr;
+		private object lock_obj = new object ();
 		
 #if COREBUILD
 		static IntPtr class_ptr = Class.GetHandle ("NSObject");
@@ -154,7 +155,7 @@ namespace MonoMac.Foundation {
 
 		[Export ("release")]
 		internal void NativeRelease () {
-			lock (this) {
+			lock (lock_obj) {
 				uint count = Messaging.uint_objc_msgSend (handle, selRetainCount);
 				Messaging.void_objc_msgSendSuper (SuperHandle, selRelease);
 
@@ -174,7 +175,7 @@ namespace MonoMac.Foundation {
 
 		[Export ("retain")]
 		internal IntPtr NativeRetain () {
-			lock (this) {
+			lock (lock_obj) {
 				uint count = Messaging.uint_objc_msgSend (handle, selRetainCount);
 				Messaging.void_objc_msgSendSuper (SuperHandle, selRetain);
 
