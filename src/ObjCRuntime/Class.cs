@@ -117,9 +117,6 @@ namespace MonoMac.ObjCRuntime {
 			IntPtr handle = IntPtr.Zero;
 			objc_class *k;
 
-			if (objc_getProtocol (name) != IntPtr.Zero)
-				throw new ArgumentException ("Attempting to register a class named: " + name + " which is a valid protocol");
-
 			handle = objc_getClass (name);
 
 			if (handle != IntPtr.Zero) {
@@ -128,6 +125,9 @@ namespace MonoMac.ObjCRuntime {
 				}
 				return handle;
 			}
+
+			if (objc_getProtocol (name) != IntPtr.Zero)
+				throw new ArgumentException ("Attempting to register a class named: " + name + " which is a valid protocol");
 
 			Type parent_type = type.BaseType;
 			string parent_name = null;
