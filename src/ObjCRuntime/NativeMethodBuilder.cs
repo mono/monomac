@@ -149,7 +149,7 @@ namespace MonoMac.ObjCRuntime {
 			if (minfo.ReturnType == typeof (string)) {
 				il.Emit (OpCodes.Newobj, newnsstring);
 #if !MONOMAC_BOOTSTRAP
-			} else if (rettype.IsArray && (rettype.GetElementType () == typeof (NSObject) || rettype.GetElementType ().IsSubclassOf (typeof (NSObject)))) {
+			} else if (minfo.ReturnType.IsArray && (minfo.ReturnType.GetElementType () == typeof (NSObject) || minfo.ReturnType.GetElementType ().IsSubclassOf (typeof (NSObject)))) {
 				il.Emit (OpCodes.Call, buildarray);
 #endif
 			} else if (typeof (INativeObject).IsAssignableFrom (rettype) && rettype != typeof (NSObject) && !rettype.IsSubclassOf (typeof (NSObject))) {
