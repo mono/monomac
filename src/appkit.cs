@@ -8178,8 +8178,8 @@ namespace MonoMac.AppKit {
 		[Export ("recentsAutosaveName")]
 		string RecentsAutosaveName { get; set; }
 
-		[Export ("cell")]
-		NSSearchFieldCell SearchFieldCell { get; }
+		[New, Export ("cell")]
+		NSSearchFieldCell Cell { get; set; }
 	}
 
 	[BaseType (typeof (NSTextFieldCell))]
@@ -8380,9 +8380,6 @@ namespace MonoMac.AppKit {
 		[Export ("initWithFrame:")]
 		IntPtr Constructor (RectangleF frameRect);
 
-		[Export ("setMinValue:")]
-		void SetMinValue (double aDouble);
-
 		[Export ("isVertical")]
 		int IsVertical { get; }
 
@@ -8390,6 +8387,9 @@ namespace MonoMac.AppKit {
 		bool AcceptsFirstMouse (NSEvent theEvent);
 
 		//Detected properties
+		[Export ("minValue")]
+		double MinValue { get; set; }
+
 		[Export ("maxValue")]
 		double MaxValue { get; set; }
 
