@@ -8177,6 +8177,9 @@ namespace MonoMac.AppKit {
 
 		[Export ("recentsAutosaveName")]
 		string RecentsAutosaveName { get; set; }
+
+		[Export ("cell")]
+		NSSearchFieldCell SearchFieldCell { get; }
 	}
 
 	[BaseType (typeof (NSTextFieldCell))]
