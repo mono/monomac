@@ -324,6 +324,7 @@ namespace MonoMac.QTKit
 	}
 
 	[BaseType (typeof (NSObject), Name="QTCaptureFileOutput_Delegate")]
+	[Model]
 	interface QTCaptureFileOutputDelegate {
 		[Export ("captureOutput:didOutputSampleBuffer:fromConnection:"), EventArgs ("QTCaptureFileSample")]
 		void DidOutputSampleBuffer (QTCaptureFileOutput captureOutput, QTSampleBuffer sampleBuffer, QTCaptureConnection connection);
@@ -448,6 +449,7 @@ namespace MonoMac.QTKit
 	}
 
 	[BaseType (typeof (NSObject), Name="QTCaptureView_Delegate")]
+	[Model]
 	interface QTCaptureViewDelegate {
 		[Export ("view:willDisplayImage:"), EventArgs ("QTCaptureImageEvent"), DefaultValueFromArgument ("image")]
 		CIImage WillDisplayImage (QTCaptureView view, CIImage image);
