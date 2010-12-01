@@ -40,12 +40,12 @@ namespace MonoMac.QTKit {
 		AllTypes = 0xffff
 	}
 
-	public enum QTCaptureDeviceAVCTransportControls {
+	public enum QTCaptureDevicePlaybackMode {
 		NotPlaying,
 		Playing
 	}
 
-	public enum QTCaptureDeviceAVCTransportControlsSpeed {
+	public enum QTCaptureDeviceControlsSpeed {
 		FastestReverse = -19000,	
 		VeryFastReverse = -16000,
 		FastReverse = -13000,

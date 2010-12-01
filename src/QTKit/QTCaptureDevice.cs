@@ -92,5 +92,50 @@ namespace MonoMac.QTKit {
 			return _HasMediaType (FromMediaType (mediaType));
 		}
 
+		public bool AvcTransportControlReadOnly {
+			get {
+				return IsAttributeReadOnly (AVCTransportControlsAttribute);
+			}
+		}
+		
+		public  QTCaptureDeviceTransportControl AvcTransportControl {
+			get {
+				var dict = (NSDictionary) GetAttribute (AVCTransportControlsAttribute);
+				if (dict == null)
+					return null;
+				return new QTCaptureDeviceTransportControl (dict);
+			}
+			set {
+				var dict = new NSMutableDictionary ();
+				if (value.Speed.HasValue)
+					dict [QTCaptureDevice.AVCTransportControlsSpeedKey] = NSNumber.FromInt32 ((int) value.Speed.Value);
+				if (value.PlaybackMode.HasValue)
+					dict [QTCaptureDevice.AVCTransportControlsSpeedKey] = NSNumber.FromInt32 ((int) value.PlaybackMode.Value);
+				SetAttribute (dict, AVCTransportControlsAttribute);
+			}
+		}
+
+		public bool IsSuspended {
+			get {
+				var val = (NSNumber) GetAttribute (SuspendedAttribute);
+				return (val != null && val.BoolValue);
+			}
+		}
+	}
+
+	public class QTCaptureDeviceTransportControl {
+		public QTCaptureDeviceTransportControl () {}
+		internal QTCaptureDeviceTransportControl (NSDictionary dict)
+		{
+			var number = (NSNumber) dict [QTCaptureDevice.AVCTransportControlsSpeedKey];
+			if (number != null)
+				Speed = (QTCaptureDeviceControlsSpeed) number.Int32Value;
+			number = (NSNumber) dict [QTCaptureDevice.AVCTransportControlsPlaybackModeKey];
+			if (number != null)
+				PlaybackMode = (QTCaptureDevicePlaybackMode) number.Int32Value;
+		}
+		
+		public QTCaptureDeviceControlsSpeed? Speed { get; set; }
+		public QTCaptureDevicePlaybackMode? PlaybackMode { get; set; }
 	}
 }

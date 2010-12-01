@@ -23,8 +23,6 @@
 //
 
 // TODO:
-//   API: QTCaptureDevice - hide the NSDictionary with attribtues, and instead
-//        expose a C# type, hide all fields
 //   API: QTSampleBuffer.h expose a couple of AudioBufferList methods 
 //   API: QTMovie needs low-level access to some methods
 //   API: Expose the individual QTMovie*Attribute as C# properties
@@ -34,6 +32,12 @@
 //   QTCaptureDecompressedAudioOutput.h
 //   QTCaptureVideoPreviewOutput.h
 //   QTError.h -- Missing the NSString keys
+//
+// Need to strongly type/provide accessors in QTCaptureDevice for
+//		[Field ("QTCaptureDeviceLinkedDevicesAttribute")]
+//		[Field ("QTCaptureDeviceAvailableInputSourcesAttribute")]
+//		[Field ("QTCaptureDeviceInputSourceIdentifierAttribute")]
+//		[Field ("QTCaptureDeviceLegacySequenceGrabberAttribute")]
 
 using System;
 using MonoMac.Foundation;
@@ -226,9 +230,6 @@ namespace MonoMac.QTKit
 		[Field ("QTCaptureDeviceChangedAttributeKey")]
 		NSString ChangedAttributeKey { get; }
 
-		[Field ("QTCaptureDeviceSuspendedAttribute")]
-		NSString SuspendedAttribute { get; }
-		
 		[Field ("QTCaptureDeviceLinkedDevicesAttribute")]
 		NSString LinkedDevicesAttribute { get; }
 		
@@ -246,16 +247,18 @@ namespace MonoMac.QTKit
 		
 		[Field ("QTCaptureDeviceLegacySequenceGrabberAttribute")]
 		NSString LegacySequenceGrabberAttribute { get; }
-		
-		[Field ("QTCaptureDeviceAVCTransportControlsAttribute")]
+
+		[Internal, Field ("QTCaptureDeviceAVCTransportControlsAttribute")]
 		NSString AVCTransportControlsAttribute { get; }
 		
-		[Field ("QTCaptureDeviceAVCTransportControlsPlaybackModeKey")]
+		[Internal, Field ("QTCaptureDeviceAVCTransportControlsPlaybackModeKey")]
 		NSString AVCTransportControlsPlaybackModeKey { get; }
 		
-		[Field ("QTCaptureDeviceAVCTransportControlsSpeedKey")]
+		[Internal, Field ("QTCaptureDeviceAVCTransportControlsSpeedKey")]
 		NSString AVCTransportControlsSpeedKey { get; }
-		
+
+		[Internal,Field ("QTCaptureDeviceSuspendedAttribute")]
+		NSString SuspendedAttribute { get; }
 	}
 
 	[BaseType (typeof (QTCaptureInput))]
