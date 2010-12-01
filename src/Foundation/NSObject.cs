@@ -131,10 +131,10 @@ namespace MonoMac.Foundation {
 				} else {
 					bool calldrain = false;
 
-					if (IsDirectBinding)
-						calldrain = disposer.AddDirect (handle);
-					else
+					if (Class.IsCustomType (this.GetType ()))
 						calldrain = disposer.AddSuper (SuperHandle);
+					else
+						calldrain = disposer.AddDirect (handle);
 
 					if (calldrain)
 						Messaging.void_objc_msgSend_intptr_intptr_bool (disposer.Handle, selPerformSelectorOnMainThreadWithObjectWaitUntilDone, selDrain, IntPtr.Zero, false);
