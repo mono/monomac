@@ -92,7 +92,7 @@ namespace MonoMac.QTKit {
 			return _HasMediaType (FromMediaType (mediaType));
 		}
 
-		public bool AvcTransportControlReadOnly {
+		public bool IsAvcTransportControlReadOnly {
 			get {
 				return IsAttributeReadOnly (AVCTransportControlsAttribute);
 			}
