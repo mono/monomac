@@ -197,6 +197,107 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Bind">
+      <MemberSignature Language="C#" Value="public virtual void Bind (string binding, MonoMac.Foundation.NSObject observable, string keyPath, MonoMac.Foundation.NSDictionary options);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("bind:toObject:withKeyPath:options:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="binding" Type="System.String" />
+        <Parameter Name="observable" Type="MonoMac.Foundation.NSObject" />
+        <Parameter Name="keyPath" Type="System.String" />
+        <Parameter Name="options" Type="MonoMac.Foundation.NSDictionary" />
+      </Parameters>
+      <Docs>
+        <param name="binding">To be added.</param>
+        <param name="observable">To be added.</param>
+        <param name="keyPath">To be added.</param>
+        <param name="options">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BindingInfo">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSDictionary BindingInfo (string binding);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("infoForBinding:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSDictionary</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="binding" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="binding">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BindingOptionDescriptions">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject[] BindingOptionDescriptions (string aBinding);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("optionDescriptionsForBinding:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSObject[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="aBinding" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="aBinding">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BindingValueClass">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.ObjCRuntime.Class BindingValueClass (string binding);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("valueClassForBinding:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.ObjCRuntime.Class</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="binding" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="binding">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="ChangeIndexesKey">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString ChangeIndexesKey { get; }" />
       <MemberType>Property</MemberType>
@@ -285,6 +386,54 @@ public class MyClass : BaseClass {
         <summary>The handle for this class.</summary>
         <value>The pointer to the Objective-C class.</value>
         <remarks>Each MonoMac class mirrors an unmanaged Objective-C class.   This value contains the pointer to the Objective-C class, it is similar to calling objc_getClass with the object name.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CommitEditing">
+      <MemberSignature Language="C#" Value="public virtual bool CommitEditing ();" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("commitEditing")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CommitEditing">
+      <MemberSignature Language="C#" Value="public virtual void CommitEditing (MonoMac.Foundation.NSObject objDelegate, MonoMac.ObjCRuntime.Selector didCommitSelector, IntPtr contextInfo);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("commitEditingWithDelegate:didCommitSelector:contextInfo:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="objDelegate" Type="MonoMac.Foundation.NSObject" />
+        <Parameter Name="didCommitSelector" Type="MonoMac.ObjCRuntime.Selector" />
+        <Parameter Name="contextInfo" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="objDelegate">To be added.</param>
+        <param name="didCommitSelector">To be added.</param>
+        <param name="contextInfo">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="DidChange">
@@ -453,6 +602,27 @@ public class MyClass : BaseClass {
         <remarks>This constructor is provided to allow the class to be initialized from an unarchiver (for example, during NIB deserialization).</remarks>
       </Docs>
     </Member>
+    <Member MemberName="ExposedBindings">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSString[] ExposedBindings ();" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("exposedBindings")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString[]</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Finalize">
       <MemberSignature Language="C#" Value="~NSObject ();" />
       <MemberType>Method</MemberType>
@@ -467,6 +637,32 @@ public class MyClass : BaseClass {
         <summary>Finalizer for the NSObject object</summary>
         <remarks>
         </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetDefaultPlaceholder">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSObject GetDefaultPlaceholder (MonoMac.Foundation.NSObject marker, string binding);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("defaultPlaceholderForMarker:withBinding:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="marker" Type="MonoMac.Foundation.NSObject" />
+        <Parameter Name="binding" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="marker">To be added.</param>
+        <param name="binding">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="GetDictionaryOfValuesFromKeys">
@@ -613,6 +809,29 @@ public class MyClass : BaseClass {
         <ReturnType>System.Reflection.Assembly</ReturnType>
       </ReturnValue>
       <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ObjectDidEndEditing">
+      <MemberSignature Language="C#" Value="public virtual void ObjectDidEndEditing (MonoMac.Foundation.NSObject editor);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("objectDidEndEditing:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="editor" Type="MonoMac.Foundation.NSObject" />
+      </Parameters>
+      <Docs>
+        <param name="editor">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -875,6 +1094,29 @@ public class MyClass : BaseClass {
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Unbind">
+      <MemberSignature Language="C#" Value="public virtual void Unbind (string binding);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("unbind:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="binding" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="binding">To be added.</param>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

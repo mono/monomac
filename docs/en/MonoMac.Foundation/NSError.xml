@@ -99,6 +99,47 @@ public class MyClass : BaseClass {
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public NSError (MonoMac.Foundation.NSString domain, int code);" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="domain" Type="MonoMac.Foundation.NSString" />
+        <Parameter Name="code" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="domain">To be added.</param>
+        <param name="code">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public NSError (MonoMac.Foundation.NSString domain, int code, MonoMac.Foundation.NSDictionary userInfo);" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("initWithDomain:code:userInfo:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <Parameters>
+        <Parameter Name="domain" Type="MonoMac.Foundation.NSString" />
+        <Parameter Name="code" Type="System.Int32" />
+        <Parameter Name="userInfo" Type="MonoMac.Foundation.NSDictionary" />
+      </Parameters>
+      <Docs>
+        <param name="domain">To be added.</param>
+        <param name="code">To be added.</param>
+        <param name="userInfo">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="ClassHandle">
       <MemberSignature Language="C#" Value="public override IntPtr ClassHandle { get; }" />
       <MemberType>Property</MemberType>
@@ -112,6 +153,21 @@ public class MyClass : BaseClass {
         <summary>The handle for this class.</summary>
         <value>The pointer to the Objective-C class.</value>
         <remarks>Each MonoMac class mirrors an unmanaged Objective-C class.   This value contains the pointer to the Objective-C class, it is similar to calling objc_getClass with the object name.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CocoaErrorDomain">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString CocoaErrorDomain { get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Code">
@@ -154,6 +210,85 @@ public class MyClass : BaseClass {
         </Attribute>
       </Attributes>
     </Member>
+    <Member MemberName="FilePathErrorKey">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString FilePathErrorKey { get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FromDomain">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSError FromDomain (MonoMac.Foundation.NSString domain, int code);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSError</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="domain" Type="MonoMac.Foundation.NSString" />
+        <Parameter Name="code" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="domain">To be added.</param>
+        <param name="code">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FromDomain">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSError FromDomain (MonoMac.Foundation.NSString domain, int code, MonoMac.Foundation.NSDictionary userInfo);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("errorWithDomain:code:userInfo:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSError</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="domain" Type="MonoMac.Foundation.NSString" />
+        <Parameter Name="code" Type="System.Int32" />
+        <Parameter Name="userInfo" Type="MonoMac.Foundation.NSDictionary" />
+      </Parameters>
+      <Docs>
+        <param name="domain">To be added.</param>
+        <param name="code">To be added.</param>
+        <param name="userInfo">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="HelpAnchorErrorKey">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString HelpAnchorErrorKey { get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="LocalizedDescription">
       <MemberSignature Language="C#" Value="public virtual string LocalizedDescription { get; }" />
       <MemberType>Property</MemberType>
@@ -174,6 +309,141 @@ public class MyClass : BaseClass {
         </Attribute>
       </Attributes>
     </Member>
+    <Member MemberName="LocalizedDescriptionKey">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString LocalizedDescriptionKey { get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LocalizedFailureReasonErrorKey">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString LocalizedFailureReasonErrorKey { get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LocalizedRecoveryOptionsErrorKey">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString LocalizedRecoveryOptionsErrorKey { get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LocalizedRecoverySuggestionErrorKey">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString LocalizedRecoverySuggestionErrorKey { get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MachErrorDomain">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString MachErrorDomain { get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OsStatusErrorDomain">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString OsStatusErrorDomain { get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PosixErrorDomain">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString PosixErrorDomain { get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RecoveryAttempterErrorKey">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString RecoveryAttempterErrorKey { get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StringEncodingErrorKey">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString StringEncodingErrorKey { get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="ToString">
       <MemberSignature Language="C#" Value="public override string ToString ();" />
       <MemberType>Method</MemberType>
@@ -187,6 +457,36 @@ public class MyClass : BaseClass {
       <Docs>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UnderlyingErrorKey">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString UnderlyingErrorKey { get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UrlErrorKey">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString UrlErrorKey { get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

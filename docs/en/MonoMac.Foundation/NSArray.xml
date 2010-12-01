@@ -217,6 +217,30 @@ public class MyClass : BaseClass {
         </Attribute>
       </Attributes>
     </Member>
+    <Member MemberName="FromFile">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSArray FromFile (string path);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("arrayWithContentsOfFile:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSArray</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="path" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="path">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="FromIntPtrs">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSArray FromIntPtrs (IntPtr[] vals);" />
       <MemberType>Method</MemberType>
@@ -375,6 +399,32 @@ public class MyClass : BaseClass {
       </Parameters>
       <Docs>
         <param name="key">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WriteToFile">
+      <MemberSignature Language="C#" Value="public virtual bool WriteToFile (string path, bool useAuxiliaryFile);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("writeToFile:atomically:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="path" Type="System.String" />
+        <Parameter Name="useAuxiliaryFile" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="path">To be added.</param>
+        <param name="useAuxiliaryFile">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>

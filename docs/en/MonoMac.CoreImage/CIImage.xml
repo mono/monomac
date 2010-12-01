@@ -56,6 +56,26 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CIImage (MonoMac.CoreGraphics.CGLayer layer);" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("initWithCGLayer:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <Parameters>
+        <Parameter Name="layer" Type="MonoMac.CoreGraphics.CGLayer" />
+      </Parameters>
+      <Docs>
+        <param name="layer">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public CIImage (MonoMac.CoreImage.CIColor color);" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
@@ -71,6 +91,26 @@
       </Parameters>
       <Docs>
         <param name="color">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CIImage (MonoMac.CoreVideo.CVImageBuffer imageBuffer);" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("initWithCVImageBuffer:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <Parameters>
+        <Parameter Name="imageBuffer" Type="MonoMac.CoreVideo.CVImageBuffer" />
+      </Parameters>
+      <Docs>
+        <param name="imageBuffer">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -197,6 +237,28 @@ public class MyClass : BaseClass {
       <Docs>
         <param name="image">To be added.</param>
         <param name="d">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CIImage (MonoMac.CoreVideo.CVImageBuffer imageBuffer, MonoMac.Foundation.NSDictionary dict);" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("initWithCVImageBuffer:options:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <Parameters>
+        <Parameter Name="imageBuffer" Type="MonoMac.CoreVideo.CVImageBuffer" />
+        <Parameter Name="dict" Type="MonoMac.Foundation.NSDictionary" />
+      </Parameters>
+      <Docs>
+        <param name="imageBuffer">To be added.</param>
+        <param name="dict">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -475,7 +537,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="FromData">
-      <MemberSignature Language="C#" Value="public static MonoMac.CoreImage.CIImage FromData (MonoMac.Foundation.NSData d, int bpr, System.Drawing.SizeF size, MonoMac.CoreImage.CIFormat format, MonoMac.CoreGraphics.CGColorSpace cs);" />
+      <MemberSignature Language="C#" Value="public static MonoMac.CoreImage.CIImage FromData (MonoMac.Foundation.NSData bitmapData, int bpr, System.Drawing.SizeF size, MonoMac.CoreImage.CIFormat format, MonoMac.CoreGraphics.CGColorSpace colorspace);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -489,18 +551,118 @@ public class MyClass : BaseClass {
         <ReturnType>MonoMac.CoreImage.CIImage</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="d" Type="MonoMac.Foundation.NSData" />
+        <Parameter Name="bitmapData" Type="MonoMac.Foundation.NSData" />
         <Parameter Name="bpr" Type="System.Int32" />
         <Parameter Name="size" Type="System.Drawing.SizeF" />
         <Parameter Name="format" Type="MonoMac.CoreImage.CIFormat" />
-        <Parameter Name="cs" Type="MonoMac.CoreGraphics.CGColorSpace" />
+        <Parameter Name="colorspace" Type="MonoMac.CoreGraphics.CGColorSpace" />
       </Parameters>
       <Docs>
-        <param name="d">To be added.</param>
+        <param name="bitmapData">To be added.</param>
         <param name="bpr">To be added.</param>
         <param name="size">To be added.</param>
         <param name="format">To be added.</param>
-        <param name="cs">To be added.</param>
+        <param name="colorspace">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FromImageBuffer">
+      <MemberSignature Language="C#" Value="public static MonoMac.CoreImage.CIImage FromImageBuffer (MonoMac.CoreVideo.CVImageBuffer imageBuffer);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("imageWithCVImageBuffer:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreImage.CIImage</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="imageBuffer" Type="MonoMac.CoreVideo.CVImageBuffer" />
+      </Parameters>
+      <Docs>
+        <param name="imageBuffer">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FromImageBuffer">
+      <MemberSignature Language="C#" Value="public static MonoMac.CoreImage.CIImage FromImageBuffer (MonoMac.CoreVideo.CVImageBuffer imageBuffer, MonoMac.Foundation.NSDictionary dict);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("imageWithCVImageBuffer:options:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreImage.CIImage</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="imageBuffer" Type="MonoMac.CoreVideo.CVImageBuffer" />
+        <Parameter Name="dict" Type="MonoMac.Foundation.NSDictionary" />
+      </Parameters>
+      <Docs>
+        <param name="imageBuffer">To be added.</param>
+        <param name="dict">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FromLayer">
+      <MemberSignature Language="C#" Value="public static MonoMac.CoreImage.CIImage FromLayer (MonoMac.CoreGraphics.CGLayer layer);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("imageWithCGLayer:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreImage.CIImage</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="layer" Type="MonoMac.CoreGraphics.CGLayer" />
+      </Parameters>
+      <Docs>
+        <param name="layer">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FromLayer">
+      <MemberSignature Language="C#" Value="public static MonoMac.CoreImage.CIImage FromLayer (MonoMac.CoreGraphics.CGLayer layer, MonoMac.Foundation.NSDictionary options);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("imageWithCGLayer:options:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreImage.CIImage</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="layer" Type="MonoMac.CoreGraphics.CGLayer" />
+        <Parameter Name="options" Type="MonoMac.Foundation.NSDictionary" />
+      </Parameters>
+      <Docs>
+        <param name="layer">To be added.</param>
+        <param name="options">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -653,6 +815,32 @@ public class MyClass : BaseClass {
         <param name="size">To be added.</param>
         <param name="flag">To be added.</param>
         <param name="colorspace">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IntPtr">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject IntPtr (MonoMac.CoreGraphics.CGLayer layer, MonoMac.Foundation.NSDictionary d);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("initWithCGLayer:options:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="layer" Type="MonoMac.CoreGraphics.CGLayer" />
+        <Parameter Name="d" Type="MonoMac.Foundation.NSDictionary" />
+      </Parameters>
+      <Docs>
+        <param name="layer">To be added.</param>
+        <param name="d">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>

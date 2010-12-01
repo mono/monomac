@@ -100,6 +100,27 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="AddObserver">
+      <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSObject AddObserver (MonoMac.Foundation.NSString aName, Action&lt;MonoMac.Foundation.NSNotification&gt; notify);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="aName" Type="MonoMac.Foundation.NSString" />
+        <Parameter Name="notify" Type="System.Action&lt;MonoMac.Foundation.NSNotification&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="aName">To be added.</param>
+        <param name="notify">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddObserver">
       <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSObject AddObserver (string aName, Action&lt;MonoMac.Foundation.NSNotification&gt; notify);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
@@ -115,6 +136,34 @@ public class MyClass : BaseClass {
       <Docs>
         <param name="aName">To be added.</param>
         <param name="notify">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use AddObserver(NSSstring, Action&lt;NSNotification&gt;) instead")</AttributeName>
+        </Attribute>
+      </Attributes>
+    </Member>
+    <Member MemberName="AddObserver">
+      <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSObject AddObserver (MonoMac.Foundation.NSString aName, Action&lt;MonoMac.Foundation.NSNotification&gt; notify, MonoMac.Foundation.NSObject fromObject);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="aName" Type="MonoMac.Foundation.NSString" />
+        <Parameter Name="notify" Type="System.Action&lt;MonoMac.Foundation.NSNotification&gt;" />
+        <Parameter Name="fromObject" Type="MonoMac.Foundation.NSObject" />
+      </Parameters>
+      <Docs>
+        <param name="aName">To be added.</param>
+        <param name="notify">To be added.</param>
+        <param name="fromObject">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -142,9 +191,14 @@ public class MyClass : BaseClass {
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use AddObserver(NSSstring, Action&lt;NSNotification&gt;, NSObject)")</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
     <Member MemberName="AddObserver">
-      <MemberSignature Language="C#" Value="public virtual void AddObserver (MonoMac.Foundation.NSObject observer, MonoMac.ObjCRuntime.Selector aSelector, string aName, MonoMac.Foundation.NSObject anObject);" />
+      <MemberSignature Language="C#" Value="public virtual void AddObserver (MonoMac.Foundation.NSObject observer, MonoMac.ObjCRuntime.Selector aSelector, MonoMac.Foundation.NSString aName, MonoMac.Foundation.NSObject anObject);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -160,13 +214,42 @@ public class MyClass : BaseClass {
       <Parameters>
         <Parameter Name="observer" Type="MonoMac.Foundation.NSObject" />
         <Parameter Name="aSelector" Type="MonoMac.ObjCRuntime.Selector" />
-        <Parameter Name="aName" Type="System.String" />
+        <Parameter Name="aName" Type="MonoMac.Foundation.NSString" />
         <Parameter Name="anObject" Type="MonoMac.Foundation.NSObject" />
       </Parameters>
       <Docs>
         <param name="observer">To be added.</param>
         <param name="aSelector">To be added.</param>
         <param name="aName">To be added.</param>
+        <param name="anObject">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddObserver">
+      <MemberSignature Language="C#" Value="public void AddObserver (MonoMac.Foundation.NSObject observer, MonoMac.ObjCRuntime.Selector aSelector, string aname, MonoMac.Foundation.NSObject anObject);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use AddObserver(NSObject, Selector, NSString, NSObject) instead")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="observer" Type="MonoMac.Foundation.NSObject" />
+        <Parameter Name="aSelector" Type="MonoMac.ObjCRuntime.Selector" />
+        <Parameter Name="aname" Type="System.String" />
+        <Parameter Name="anObject" Type="MonoMac.Foundation.NSObject" />
+      </Parameters>
+      <Docs>
+        <param name="observer">To be added.</param>
+        <param name="aSelector">To be added.</param>
+        <param name="aname">To be added.</param>
         <param name="anObject">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
@@ -357,6 +440,24 @@ public class MyClass : BaseClass {
         <param name="observer">To be added.</param>
         <param name="aName">To be added.</param>
         <param name="anObject">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RemoveObservers">
+      <MemberSignature Language="C#" Value="public void RemoveObservers (System.Collections.Generic.IEnumerable&lt;MonoMac.Foundation.NSObject&gt; keys);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="keys" Type="System.Collections.Generic.IEnumerable&lt;MonoMac.Foundation.NSObject&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="keys">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>

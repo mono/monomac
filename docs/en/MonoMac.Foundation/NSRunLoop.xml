@@ -100,7 +100,27 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="AcceptInputForMode">
-      <MemberSignature Language="C#" Value="public virtual void AcceptInputForMode (string mode, MonoMac.Foundation.NSDate limitDate);" />
+      <MemberSignature Language="C#" Value="public void AcceptInputForMode (MonoMac.Foundation.NSRunLoopMode mode, MonoMac.Foundation.NSDate limitDate);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="mode" Type="MonoMac.Foundation.NSRunLoopMode" />
+        <Parameter Name="limitDate" Type="MonoMac.Foundation.NSDate" />
+      </Parameters>
+      <Docs>
+        <param name="mode">To be added.</param>
+        <param name="limitDate">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AcceptInputForMode">
+      <MemberSignature Language="C#" Value="public virtual void AcceptInputForMode (MonoMac.Foundation.NSString mode, MonoMac.Foundation.NSDate limitDate);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -108,6 +128,31 @@ public class MyClass : BaseClass {
       <Attributes>
         <Attribute>
           <AttributeName>MonoMac.Foundation.Export("acceptInputForMode:beforeDate:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="mode" Type="MonoMac.Foundation.NSString" />
+        <Parameter Name="limitDate" Type="MonoMac.Foundation.NSDate" />
+      </Parameters>
+      <Docs>
+        <param name="mode">To be added.</param>
+        <param name="limitDate">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AcceptInputForMode">
+      <MemberSignature Language="C#" Value="public void AcceptInputForMode (string mode, MonoMac.Foundation.NSDate limitDate);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use AcceptInputForMode (NSString, NSDate)")</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
@@ -125,7 +170,27 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="AddTimer">
-      <MemberSignature Language="C#" Value="public virtual void AddTimer (MonoMac.Foundation.NSTimer timer, string forMode);" />
+      <MemberSignature Language="C#" Value="public void AddTimer (MonoMac.Foundation.NSTimer timer, MonoMac.Foundation.NSRunLoopMode forMode);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="timer" Type="MonoMac.Foundation.NSTimer" />
+        <Parameter Name="forMode" Type="MonoMac.Foundation.NSRunLoopMode" />
+      </Parameters>
+      <Docs>
+        <param name="timer">To be added.</param>
+        <param name="forMode">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddTimer">
+      <MemberSignature Language="C#" Value="public virtual void AddTimer (MonoMac.Foundation.NSTimer timer, MonoMac.Foundation.NSString forMode);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -133,6 +198,31 @@ public class MyClass : BaseClass {
       <Attributes>
         <Attribute>
           <AttributeName>MonoMac.Foundation.Export("addTimer:forMode:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="timer" Type="MonoMac.Foundation.NSTimer" />
+        <Parameter Name="forMode" Type="MonoMac.Foundation.NSString" />
+      </Parameters>
+      <Docs>
+        <param name="timer">To be added.</param>
+        <param name="forMode">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddTimer">
+      <MemberSignature Language="C#" Value="public void AddTimer (MonoMac.Foundation.NSTimer timer, string forMode);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use AddTimer (NSTimer, NSString)")</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
@@ -185,13 +275,13 @@ public class MyClass : BaseClass {
       </Attributes>
     </Member>
     <Member MemberName="CurrentMode">
-      <MemberSignature Language="C#" Value="public virtual string CurrentMode { get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSString CurrentMode { get; }" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.String</ReturnType>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -226,7 +316,26 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="LimitDateForMode">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSDate LimitDateForMode (string mode);" />
+      <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSDate LimitDateForMode (MonoMac.Foundation.NSRunLoopMode mode);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSDate</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="mode" Type="MonoMac.Foundation.NSRunLoopMode" />
+      </Parameters>
+      <Docs>
+        <param name="mode">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LimitDateForMode">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSDate LimitDateForMode (MonoMac.Foundation.NSString mode);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -234,6 +343,30 @@ public class MyClass : BaseClass {
       <Attributes>
         <Attribute>
           <AttributeName>MonoMac.Foundation.Export("limitDateForMode:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSDate</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="mode" Type="MonoMac.Foundation.NSString" />
+      </Parameters>
+      <Docs>
+        <param name="mode">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LimitDateForMode">
+      <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSDate LimitDateForMode (string mode);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use LimitDateForMode (NSString) instead")</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
@@ -286,6 +419,51 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="NSRunLoopCommonModes">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSRunLoopCommonModes { get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NSRunLoopConnectionReplyMode">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSRunLoopConnectionReplyMode { get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NSRunLoopEventTracking">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSRunLoopEventTracking { get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NSRunLoopModalPanelMode">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSRunLoopModalPanelMode { get; }" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>

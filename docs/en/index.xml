@@ -17,7 +17,6 @@
     </Namespace>
     <Namespace Name="MonoMac.AppKit">
       <Type Name="AppKitFramework" Kind="Class" />
-      <Type Name="CIImage" Kind="Class" />
       <Type Name="DrawerShouldCloseDelegate" Kind="Delegate" />
       <Type Name="DrawerShouldOpenDelegate" Kind="Delegate" />
       <Type Name="DrawerWillResizeContentsDelegate" Kind="Delegate" />
@@ -514,8 +513,6 @@
       <Type Name="CAAnimationStateEventArgs" Kind="Class" />
       <Type Name="CAAutoresizingMask" Kind="Enumeration" />
       <Type Name="CABasicAnimation" Kind="Class" />
-      <Type Name="CADisplayLink" Kind="Class" />
-      <Type Name="CAEAGLLayer" Kind="Class" />
       <Type Name="CAEdgeAntialiasingMask" Kind="Enumeration" />
       <Type Name="CAFillMode" Kind="Class" />
       <Type Name="CAGradientLayer" Kind="Class" />
@@ -587,6 +584,7 @@
       <Type Name="CGColorSpace" Kind="Class" />
       <Type Name="CGColorSpaceModel" Kind="Enumeration" />
       <Type Name="CGContext" Kind="Class" />
+      <Type Name="CGContextPDF" Kind="Class" />
       <Type Name="CGDataProvider" Kind="Class" />
       <Type Name="CGFont" Kind="Class" />
       <Type Name="CGFunction" Kind="Class" />
@@ -611,7 +609,9 @@
       <Type Name="CGPDFBox" Kind="Enumeration" />
       <Type Name="CGPDFDictionary" Kind="Class" />
       <Type Name="CGPDFDocument" Kind="Class" />
+      <Type Name="CGPDFInfo" Kind="Class" />
       <Type Name="CGPDFPage" Kind="Class" />
+      <Type Name="CGPDFPageInfo" Kind="Class" />
       <Type Name="CGPDFStream" Kind="Class" />
       <Type Name="CGRectEdge" Kind="Enumeration" />
       <Type Name="CGShading" Kind="Class" />
@@ -632,17 +632,12 @@
       <Type Name="CLAuthroziationChangedEventArgs" Kind="Class" />
       <Type Name="CLDeviceOrientation" Kind="Enumeration" />
       <Type Name="CLError" Kind="Enumeration" />
-      <Type Name="CLHeading" Kind="Class" />
-      <Type Name="CLHeadingUpdatedEventArgs" Kind="Class" />
       <Type Name="CLLocation" Kind="Class" />
       <Type Name="CLLocationCoordinate2D" Kind="Structure" />
       <Type Name="CLLocationManager" Kind="Class" />
       <Type Name="CLLocationManagerDelegate" Kind="Class" />
       <Type Name="CLLocationManagerEventArgs" Kind="Delegate" />
       <Type Name="CLLocationUpdatedEventArgs" Kind="Class" />
-      <Type Name="CLRegion" Kind="Class" />
-      <Type Name="CLRegionErrorEventArgs" Kind="Class" />
-      <Type Name="CLRegionEventArgs" Kind="Class" />
       <Type Name="NSErrorEventArgs" Kind="Class" />
     </Namespace>
     <Namespace Name="MonoMac.CoreMedia">
@@ -715,6 +710,18 @@
       <Type Name="CTUnderlineStyleModifiers" Kind="Enumeration" />
       <Type Name="CTWritingDirection" Kind="Enumeration" />
     </Namespace>
+    <Namespace Name="MonoMac.CoreVideo">
+      <Type Name="CVAttachmentMode" Kind="Enumeration" />
+      <Type Name="CVBuffer" Kind="Class" />
+      <Type Name="CVImageBuffer" Kind="Class" />
+      <Type Name="CVOptionFlags" Kind="Enumeration" />
+      <Type Name="CVPixelBufferLock" Kind="Enumeration" />
+      <Type Name="CVPixelFormatType" Kind="Enumeration" />
+      <Type Name="CVPlanarComponentInfo" Kind="Structure" />
+      <Type Name="CVPlanarPixelBufferInfo" Kind="Structure" />
+      <Type Name="CVPlanarPixelBufferInfo_YCbCrPlanar" Kind="Structure" />
+      <Type Name="CVReturn" Kind="Enumeration" />
+    </Namespace>
     <Namespace Name="MonoMac.Foundation">
       <Type Name="ConnectAttribute" Kind="Class" />
       <Type Name="ExportAttribute" Kind="Class" />
@@ -737,7 +744,12 @@
       <Type Name="NSCalendarUnit" Kind="Enumeration" />
       <Type Name="NSCharacterSet" Kind="Class" />
       <Type Name="NSCoder" Kind="Class" />
+      <Type Name="NSComparisonPredicate" Kind="Class" />
+      <Type Name="NSComparisonPredicateModifier" Kind="Enumeration" />
+      <Type Name="NSComparisonPredicateOptions" Kind="Enumeration" />
       <Type Name="NSComparisonResult" Kind="Enumeration" />
+      <Type Name="NSCompoundPredicate" Kind="Class" />
+      <Type Name="NSCompoundPredicateType" Kind="Enumeration" />
       <Type Name="NSData" Kind="Class" />
       <Type Name="NSDataSearchOptions" Kind="Enumeration" />
       <Type Name="NSDataWritingOptions" Kind="Enumeration" />
@@ -779,6 +791,13 @@
       <Type Name="NSKeyValueObservingOptions" Kind="Enumeration" />
       <Type Name="NSKeyValueSetMutationKind" Kind="Enumeration" />
       <Type Name="NSLocale" Kind="Class" />
+      <Type Name="NSMetadataItem" Kind="Class" />
+      <Type Name="NSMetadataQuery" Kind="Class" />
+      <Type Name="NSMetadataQueryAttributeValueTuple" Kind="Class" />
+      <Type Name="NSMetadataQueryDelegate" Kind="Class" />
+      <Type Name="NSMetadataQueryObject" Kind="Delegate" />
+      <Type Name="NSMetadataQueryResultGroup" Kind="Class" />
+      <Type Name="NSMetadataQueryValue" Kind="Delegate" />
       <Type Name="NSMutableAttributedString" Kind="Class" />
       <Type Name="NSMutableCharacterSet" Kind="Class" />
       <Type Name="NSMutableData" Kind="Class" />
@@ -815,11 +834,14 @@
       <Type Name="NSOutputStream" Kind="Class" />
       <Type Name="NSPostingStyle" Kind="Enumeration" />
       <Type Name="NSPredicate" Kind="Class" />
+      <Type Name="NSPredicateEvaluator" Kind="Delegate" />
+      <Type Name="NSPredicateOperatorType" Kind="Enumeration" />
       <Type Name="NSProcessInfo" Kind="Class" />
       <Type Name="NSPropertyListFormat" Kind="Enumeration" />
       <Type Name="NSPurgeableData" Kind="Class" />
       <Type Name="NSRange" Kind="Structure" />
       <Type Name="NSRunLoop" Kind="Class" />
+      <Type Name="NSRunLoopMode" Kind="Enumeration" />
       <Type Name="NSSet" Kind="Class" />
       <Type Name="NSSetEnumerator" Kind="Delegate" />
       <Type Name="NSSortDescriptor" Kind="Class" />
@@ -892,10 +914,47 @@
       <Type Name="TypeConverter" Kind="Class" />
     </Namespace>
     <Namespace Name="MonoMac.QTKit">
+      <Type Name="QTCaptureAudioPreviewOutput" Kind="Class" />
+      <Type Name="QTCaptureConnection" Kind="Class" />
+      <Type Name="QTCaptureDecompressedVideoOutput" Kind="Class" />
+      <Type Name="QTCaptureDecompressedVideoOutputDelegate" Kind="Class" />
+      <Type Name="QTCaptureDestination" Kind="Enumeration" />
+      <Type Name="QTCaptureDevice" Kind="Class" />
+      <Type Name="QTCaptureDeviceAVCTransportControls" Kind="Enumeration" />
+      <Type Name="QTCaptureDeviceAVCTransportControlsSpeed" Kind="Enumeration" />
+      <Type Name="QTCaptureDeviceInput" Kind="Class" />
+      <Type Name="QTCaptureFileError" Kind="Delegate" />
+      <Type Name="QTCaptureFileErrorEventArgs" Kind="Class" />
+      <Type Name="QTCaptureFileOutput" Kind="Class" />
+      <Type Name="QTCaptureFileOutputDelegate" Kind="Class" />
+      <Type Name="QTCaptureFileSampleEventArgs" Kind="Class" />
+      <Type Name="QTCaptureFileUrlEventArgs" Kind="Class" />
+      <Type Name="QTCaptureImageEvent" Kind="Delegate" />
+      <Type Name="QTCaptureInput" Kind="Class" />
+      <Type Name="QTCaptureLayer" Kind="Class" />
+      <Type Name="QTCaptureMovieFileOutput" Kind="Class" />
+      <Type Name="QTCaptureOutput" Kind="Class" />
+      <Type Name="QTCaptureSession" Kind="Class" />
+      <Type Name="QTCaptureVideoDroppedEventArgs" Kind="Class" />
+      <Type Name="QTCaptureVideoFrameEventArgs" Kind="Class" />
+      <Type Name="QTCaptureView" Kind="Class" />
+      <Type Name="QTCaptureViewDelegate" Kind="Class" />
+      <Type Name="QTCodecQuality" Kind="Enumeration" />
+      <Type Name="QTCompressionOptions" Kind="Class" />
+      <Type Name="QTDataReference" Kind="Class" />
+      <Type Name="QTError" Kind="Enumeration" />
+      <Type Name="QTFileType" Kind="Enumeration" />
+      <Type Name="QTFormatDescription" Kind="Class" />
+      <Type Name="QTImageAttributes" Kind="Class" />
+      <Type Name="QTMedia" Kind="Class" />
+      <Type Name="QTMediaType" Kind="Enumeration" />
       <Type Name="QTMovie" Kind="Class" />
       <Type Name="QTMovieFileTypeOptions" Kind="Enumeration" />
+      <Type Name="QTMovieLayer" Kind="Class" />
+      <Type Name="QTMovieSaveOptions" Kind="Class" />
       <Type Name="QTMovieView" Kind="Class" />
       <Type Name="QTMovieViewDelegate" Kind="Class" />
+      <Type Name="QTSampleBuffer" Kind="Class" />
       <Type Name="QTTime" Kind="Structure" />
       <Type Name="QTTimeRange" Kind="Structure" />
       <Type Name="QTTrack" Kind="Class" />
@@ -939,6 +998,11 @@
       <Type Name="DomDocumentType" Kind="Class" />
       <Type Name="DomElement" Kind="Class" />
       <Type Name="DomEntityReference" Kind="Class" />
+      <Type Name="DomEvent" Kind="Class" />
+      <Type Name="DomEventArgs" Kind="Class" />
+      <Type Name="DomEventListener" Kind="Class" />
+      <Type Name="DomEventListenerHandler" Kind="Delegate" />
+      <Type Name="DomEventPhase" Kind="Enumeration" />
       <Type Name="DomHtmlCollection" Kind="Class" />
       <Type Name="DomHtmlDocument" Kind="Class" />
       <Type Name="DomHtmlElement" Kind="Class" />
@@ -961,7 +1025,6 @@
       <Type Name="WebCacheModel" Kind="Enumeration" />
       <Type Name="WebDataSource" Kind="Class" />
       <Type Name="WebDocumentRepresentation" Kind="Class" />
-      <Type Name="WebDocumentView" Kind="Class" />
       <Type Name="WebFrame" Kind="Class" />
       <Type Name="WebFrameView" Kind="Class" />
       <Type Name="WebHistoryItem" Kind="Class" />
@@ -971,8 +1034,6 @@
       <Type Name="WebView" Kind="Class" />
     </Namespace>
     <Namespace Name="System.Drawing">
-      <Type Name="RectangleFExt" Kind="Class" />
-      <Type Name="RectangleFExt+Edge" Kind="Enumeration" />
     </Namespace>
   </Types>
   <Title>monomac</Title>
@@ -1249,78 +1310,6 @@
           <summary>To be added.</summary>
         </Docs>
         <Link Type="MonoMac.CoreGraphics.RectangleFExtensions" Member="M:MonoMac.CoreGraphics.RectangleFExtensions.UnionWith(System.Drawing.RectangleF,System.Drawing.RectangleF)" />
-      </Member>
-    </ExtensionMethod>
-    <ExtensionMethod>
-      <Targets>
-        <Target Type="T:System.Drawing.RectangleF" />
-      </Targets>
-      <Member MemberName="DivideRect">
-        <MemberSignature Language="C#" Value="public static void DivideRect (this System.Drawing.RectangleF rect, out System.Drawing.RectangleF slice, out System.Drawing.RectangleF rem, float amount, System.Drawing.RectangleFExt.Edge edge);" />
-        <MemberType>ExtensionMethod</MemberType>
-        <ReturnValue>
-          <ReturnType>System.Void</ReturnType>
-        </ReturnValue>
-        <Parameters>
-          <Parameter Name="rect" Type="System.Drawing.RectangleF" RefType="this" />
-          <Parameter Name="slice" Type="System.Drawing.RectangleF&amp;" RefType="out" />
-          <Parameter Name="rem" Type="System.Drawing.RectangleF&amp;" RefType="out" />
-          <Parameter Name="amount" Type="System.Single" />
-          <Parameter Name="edge" Type="System.Drawing.RectangleFExt+Edge" />
-        </Parameters>
-        <Docs>
-          <param name="rect">To be added.</param>
-          <param name="slice">To be added.</param>
-          <param name="rem">To be added.</param>
-          <param name="amount">To be added.</param>
-          <param name="edge">To be added.</param>
-          <summary>To be added.</summary>
-        </Docs>
-        <Link Type="System.Drawing.RectangleFExt" Member="M:System.Drawing.RectangleFExt.DivideRect(System.Drawing.RectangleF,System.Drawing.RectangleF@,System.Drawing.RectangleF@,System.Single,System.Drawing.RectangleFExt.Edge)" />
-      </Member>
-    </ExtensionMethod>
-    <ExtensionMethod>
-      <Targets>
-        <Target Type="T:System.Drawing.RectangleF" />
-      </Targets>
-      <Member MemberName="Inset">
-        <MemberSignature Language="C#" Value="public static System.Drawing.RectangleF Inset (this System.Drawing.RectangleF rect, float dx, float dy);" />
-        <MemberType>ExtensionMethod</MemberType>
-        <ReturnValue>
-          <ReturnType>System.Drawing.RectangleF</ReturnType>
-        </ReturnValue>
-        <Parameters>
-          <Parameter Name="rect" Type="System.Drawing.RectangleF" RefType="this" />
-          <Parameter Name="dx" Type="System.Single" />
-          <Parameter Name="dy" Type="System.Single" />
-        </Parameters>
-        <Docs>
-          <param name="rect">To be added.</param>
-          <param name="dx">To be added.</param>
-          <param name="dy">To be added.</param>
-          <summary>To be added.</summary>
-        </Docs>
-        <Link Type="System.Drawing.RectangleFExt" Member="M:System.Drawing.RectangleFExt.Inset(System.Drawing.RectangleF,System.Single,System.Single)" />
-      </Member>
-    </ExtensionMethod>
-    <ExtensionMethod>
-      <Targets>
-        <Target Type="T:System.Drawing.RectangleF" />
-      </Targets>
-      <Member MemberName="IntegralRect">
-        <MemberSignature Language="C#" Value="public static System.Drawing.RectangleF IntegralRect (this System.Drawing.RectangleF rect);" />
-        <MemberType>ExtensionMethod</MemberType>
-        <ReturnValue>
-          <ReturnType>System.Drawing.RectangleF</ReturnType>
-        </ReturnValue>
-        <Parameters>
-          <Parameter Name="rect" Type="System.Drawing.RectangleF" RefType="this" />
-        </Parameters>
-        <Docs>
-          <param name="rect">To be added.</param>
-          <summary>To be added.</summary>
-        </Docs>
-        <Link Type="System.Drawing.RectangleFExt" Member="M:System.Drawing.RectangleFExt.IntegralRect(System.Drawing.RectangleF)" />
       </Member>
     </ExtensionMethod>
   </ExtensionMethods>
