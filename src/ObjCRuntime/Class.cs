@@ -212,10 +212,10 @@ namespace MonoMac.ObjCRuntime {
 			if (ea == null)
 				return;
 			
-			var m = prop.GetGetMethod ();
+			var m = prop.GetGetMethod (true);
 			if (m != null)
 				RegisterMethod (m, ea.ToGetter (prop), type, k, handle);
-			m = prop.GetSetMethod ();
+			m = prop.GetSetMethod (true);
 			if (m != null)
 				RegisterMethod (m, ea.ToSetter (prop), type, k, handle);
 		}
