@@ -126,7 +126,11 @@ namespace MonoMac.Foundation {
 			if (handle != IntPtr.Zero) {
 				Runtime.UnregisterNSObject (handle);
 				if (disposing) {
-					Release ();
+					if (Class.IsCustomType (this.GetType ()))
+						Messaging.void_objc_msgSendSuper (SuperHandle, selRelease);
+					else
+						Messaging.void_objc_msgSend (handle, selRelease);
+
 					Marshal.FreeHGlobal (SuperHandle);
 				} else {
 					bool calldrain = false;
@@ -204,15 +208,10 @@ namespace MonoMac.Foundation {
 			get {
 				if (super == IntPtr.Zero) {
 					super = Marshal.AllocHGlobal (Marshal.SizeOf (typeof (objc_super)));
-#if AOT_COMPILER_STRUCTS_FIXED
 					objc_super sup = new objc_super ();
 					sup.receiver = handle;
 					sup.super = super_ptr;
 					Marshal.StructureToPtr (sup, super, false);
-#else
-					Marshal.WriteIntPtr (super, handle);
-					Marshal.WriteIntPtr (super, 4, super_ptr);
-#endif
 				}
 				return super;
 			}
