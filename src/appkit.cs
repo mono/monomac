@@ -4780,7 +4780,7 @@ namespace MonoMac.AppKit {
 	[BaseType (typeof (NSObject))]
 	interface NSMenu {
 		[Export ("initWithTitle:")]
-		IntPtr NSObject (string aTitle);
+		IntPtr Constructor (string aTitle);
 
 		[Export ("popUpContextMenu:withEvent:forView:")]
 		void PopUpContextMenu (NSMenu menu, NSEvent theEvent, NSView view);
@@ -10553,6 +10553,12 @@ namespace MonoMac.AppKit {
 
 		[Export ("control:textView:completions:forPartialWordRange:indexOfSelectedItem:"), EventArgs ("NSControlTextFilter"), DefaultValue (null)]
 		string [] FilterCompletions (NSControl control, NSTextView textView, string [] words, NSRange charRange, int index);
+
+		[Export ("controlTextDidEndEditing:"), EventArgs ("NSNotification")]
+		void EditingEnded (NSNotification notification);
+
+		[Export ("controlTextDidChange"), EventArgs ("NSNotification")]
+		void Changed (NSNotification notification);
 	}
 	
 	[BaseType (typeof (NSActionCell))]
@@ -10970,7 +10976,7 @@ namespace MonoMac.AppKit {
 		// Completion support
 		//
 		[Export ("complete:")]
-		void Complete (NSObject sender);
+		void Complete ([NullAllowed] NSObject sender);
 
 		[Export ("rangeForUserCompletion")]
 		NSRange RangeForUserCompletion ();
