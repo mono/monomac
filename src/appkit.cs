@@ -3286,7 +3286,7 @@ namespace MonoMac.AppKit {
 	[BaseType (typeof (NSObject))]
 	[Model]
 	interface NSDatePickerCellDelegate {
-		[Export ("datePickerCell:validateProposedDateValue:timeInterval:"), EventArgs ("NSDatePickerValidatorEventArgs")]
+		[Export ("datePickerCell:validateProposedDateValue:timeInterval:"), EventArgs ("NSDatePickerValidator")]
 		void ValidateProposedDateValue (NSDatePickerCell aDatePickerCell, NSDate proposedDateValue, double proposedTimeInterval);
 	}
 
@@ -6515,8 +6515,8 @@ namespace MonoMac.AppKit {
 		[Export ("control:textView:doCommandBySelector:"), EventArgs ("NSControlCommand"), DefaultValue (false)]
 		bool DoCommandBySelector (NSControl control, NSTextView textView, Selector commandSelector);
 
-		[Export ("control:textView:completions:forPartialWordRange:indexOfSelectedItem:"), EventArgs ("NSControlTextFilter"), DefaultValue (null)]
-		string [] FilterCompletions (NSControl control, NSTextView textView, string [] words, NSRange charRange, int index);
+		[Export ("control:textView:completions:forPartialWordRange:indexOfSelectedItem:"), EventArgs ("NSControlTextCompletion"), DefaultValue (null)]
+		string [] GetCompletions (NSControl control, NSTextView textView, string [] words, NSRange charRange, int index);
 	}
 
 	[BaseType (typeof (NSObject))]
@@ -10529,7 +10529,7 @@ namespace MonoMac.AppKit {
 		[Export ("initWithFrame:")]
 		IntPtr Constructor (RectangleF frameRect);
 	}
-	
+
 	[BaseType (typeof (NSObject))]
 	[Model]
 	interface NSTextFieldDelegate {
@@ -10552,7 +10552,7 @@ namespace MonoMac.AppKit {
 		bool DoCommandBySelector (NSControl control, NSTextView textView, Selector commandSelector);
 
 		[Export ("control:textView:completions:forPartialWordRange:indexOfSelectedItem:"), EventArgs ("NSControlTextFilter"), DefaultValue (null)]
-		string [] FilterCompletions (NSControl control, NSTextView textView, string [] words, NSRange charRange, int index);
+		string [] GetCompletions (NSControl control, NSTextView textView, string [] words, NSRange charRange, int index);
 
 		[Export ("controlTextDidEndEditing:"), EventArgs ("NSNotification")]
 		void EditingEnded (NSNotification notification);
@@ -10807,7 +10807,7 @@ namespace MonoMac.AppKit {
 		NSTextTabType TabStopType { get; }
 	}
 
-	[BaseType (typeof (NSText))]
+	[BaseType (typeof (NSText), Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (NSTextViewDelegate)})]
 	interface NSTextView {
 		[Export ("initWithFrame:textContainer:")]
 		IntPtr Constructor (RectangleF frameRect, NSTextContainer container);
@@ -11291,25 +11291,23 @@ namespace MonoMac.AppKit {
 	[BaseType (typeof (NSObject))]
 	[Model]
 	interface NSTextViewDelegate {
-		[Export ("textView:clickedOnLink:atIndex:")]
+		[Export ("textView:clickedOnLink:atIndex:"), EventArgs ("NSTextViewLink"), DefaultValue (false)]
 		bool LinkClicked (NSTextView textView, NSObject link, uint charIndex);
 
-		[Export ("textView:clickedOnCell:inRect:atIndex:")]
+		[Export ("textView:clickedOnCell:inRect:atIndex:"), EventArgs ("NSTextViewClicked")]
 		void CellClicked (NSTextView textView, NSTextAttachmentCell cell, RectangleF cellFrame, uint charIndex);
 
-		[Export ("textView:doubleClickedOnCell:inRect:atIndex:")]
+		[Export ("textView:doubleClickedOnCell:inRect:atIndex:"), EventArgs ("NSTextViewDoubleClick")]
 		void CellDoubleClicked (NSTextView textView, NSTextAttachmentCell cell, RectangleF cellFrame, uint charIndex);
 
-		[Export ("textView:draggedCell:inRect:event:atIndex:")]
-		void DraggedCell (NSTextView view, NSTextAttachmentCell cell, RectangleF rect, NSEvent theEvent, uint charIndex);
+		// 
+		[Export ("textView:writablePasteboardTypesForCell:atIndex:"), EventArgs ("NSTextViewCellPosition"),DefaultValue (null)]
+		string [] GetWritablePasteboardTypes (NSTextView view, NSTextAttachmentCell forCell, uint charIndex);
 
-		[Export ("textView:writablePasteboardTypesForCell:atIndex:")]
-		string [] WritablePasteboardTypes (NSTextView view, NSTextAttachmentCell forCell, uint charIndex);
-
-		[Export ("textView:writeCell:atIndex:toPasteboard:type:")]
+		[Export ("textView:writeCell:atIndex:toPasteboard:type:"), EventArgs ("NSTextViewCellPasteboard"), DefaultValue (true)]
 		bool WriteCell (NSTextView view, NSTextAttachmentCell cell, uint charIndex, NSPasteboard pboard, string type);
 
-		[Export ("textView:willChangeSelectionFromCharacterRange:toCharacterRange:")]
+		[Export ("textView:willChangeSelectionFromCharacterRange:toCharacterRange:"), EventArgs ("NSTextViewSelectionChange"), DefaultValueFromArgument ("newSelectedCharRange")]
 		NSRange WillChangeSelection (NSTextView textView, NSRange oldSelectedCharRange, NSRange newSelectedCharRange);
 
 		// FIXME: binding for NSArray, what is the type?
@@ -11320,52 +11318,43 @@ namespace MonoMac.AppKit {
 		//[Export ("textView:shouldChangeTextInRanges:replacementStrings:")]
 		//bool ShouldChangeText (NSTextView textView, NSArray affectedRanges, NSArray replacementStrings);
 
-		[Export ("textView:shouldChangeTypingAttributes:toAttributes:")]
+		[Export ("textView:shouldChangeTypingAttributes:toAttributes:"), EventArgs ("NSTextViewTypeAttribute"), DefaultValueFromArgument ("newTypingAttributes")]
 		NSDictionary ShouldChangeTypingAttributes (NSTextView textView, NSDictionary oldTypingAttributes, NSDictionary newTypingAttributes);
 
-		[Export ("textViewDidChangeSelection:")]
+		[Export ("textViewDidChangeSelection:"), EventArgs ("NSTextViewNotification")]
 		void DidChangeSelection (NSNotification notification);
 
-		[Export ("textViewDidChangeTypingAttributes:")]
+		[Export ("textViewDidChangeTypingAttributes:"), EventArgs ("NSTextViewNotification")]
 		void DidChangeTypingAttributes (NSNotification notification);
 
-		[Export ("textView:willDisplayToolTip:forCharacterAtIndex:")]
+		[Export ("textView:willDisplayToolTip:forCharacterAtIndex:"), EventArgs ("NSTextViewTooltip"), DefaultValueFromArgument ("tooltip")]
 		string WillDisplayToolTip (NSTextView textView, string tooltip, uint characterIndex);
 
-		[Export ("textView:completions:forPartialWordRange:indexOfSelectedItem:")]
+		[Export ("textView:completions:forPartialWordRange:indexOfSelectedItem:"), EventArgs ("NSTextViewCompletion"), DefaultValue (null)]
 		string [] GetCompletions (NSTextView textView, string [] words, NSRange charRange, int index);
 
-		[Export ("textView:shouldChangeTextInRange:replacementString:")]
-		bool ShouldChangeText (NSTextView textView, NSRange affectedCharRange, string replacementString);
+		[Export ("textView:shouldChangeTextInRange:replacementString:"), EventArgs ("NSTextViewChangeText"), DefaultValue (true)]
+		bool ShouldChangeTextInRange (NSTextView textView, NSRange affectedCharRange, string replacementString);
 
-		[Export ("textView:doCommandBySelector:")]
+		[Export ("textView:doCommandBySelector:"), EventArgs ("NSTextViewSelectorCommand"), DefaultValue (false)]
 		bool DoCommandBySelector (NSTextView textView, Selector commandSelector);
 
-		[Export ("textView:shouldSetSpellingState:range:")]
+		[Export ("textView:shouldSetSpellingState:range:"), EventArgs ("NSTextViewSpellingQuery"), DefaultValue (0)]
 		int ShouldSetSpellingState (NSTextView textView, int value, NSRange affectedCharRange);
 
-		[Export ("textView:menu:forEvent:atIndex:")]
+		[Export ("textView:menu:forEvent:atIndex:"), EventArgs ("NSTextViewEventMenu"), DefaultValueFromArgument ("menu")]
 		NSMenu MenuForEvent (NSTextView view, NSMenu menu, NSEvent theEvent, uint charIndex);
 
-		[Export ("textView:willCheckTextInRange:options:types:")]
+		[Export ("textView:willCheckTextInRange:options:types:"), EventArgs ("NSTextViewOnTextCheck"), DefaultValueFromArgument ("options")]
 		NSDictionary WillCheckText (NSTextView view, NSRange range, NSDictionary options, NSTextCheckingTypes checkingTypes);
 
-		[Export ("textView:didCheckTextInRange:types:options:results:orthography:wordCount:")]
+		[Export ("textView:didCheckTextInRange:types:options:results:orthography:wordCount:"), EventArgs ("NSTextViewTextChecked"), DefaultValueFromArgument ("results")]
 		NSTextCheckingResult [] DidCheckText (NSTextView view, NSRange range, NSTextCheckingTypes checkingTypes, NSDictionary options, NSTextCheckingResult [] results, NSOrthography orthography, int wordCount);
 
-		[Export ("textView:clickedOnLink:")]
-		bool LinkClicked (NSTextView textView, NSObject link);
-
-		[Export ("textView:clickedOnCell:inRect:")]
-		void CellClicked (NSTextView textView, NSTextAttachmentCell cell, RectangleF cellFrame);
-
-		[Export ("textView:doubleClickedOnCell:inRect:")]
-		void CellDoubleClicked (NSTextView textView, NSTextAttachmentCell cell, RectangleF cellFrame);
-
-		[Export ("textView:draggedCell:inRect:event:")]
+		[Export ("textView:draggedCell:inRect:event:"), EventArgs ("NSTextViewDraggedCell")]
 		void DraggedCell (NSTextView view, NSTextAttachmentCell cell, RectangleF rect, NSEvent theevent);
 
-		[Export ("undoManagerForTextView:")]
+		[Export ("undoManagerForTextView:"), EventArgs ("NSTextViewGetUndoManager"), DefaultValue (null)]
 		NSUndoManager GetUndoManager (NSTextView view);
 	}
 	
