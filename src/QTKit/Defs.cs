@@ -49,7 +49,10 @@ namespace MonoMac.QTKit {
 
 		public override string ToString ()
 		{
-			return String.Format ("[TimeValue={0} scale={2} Flags={3}]", TimeValue, TimeScale, Flags);
+			if (Flags == 0)
+				return String.Format ("[TimeValue={0} scale={1}]", TimeValue, TimeScale);
+			else 
+				return String.Format ("[TimeValue={0} scale={1} Flags={2}]", TimeValue, TimeScale, Flags);
 		}
 	}
 
