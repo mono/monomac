@@ -6334,7 +6334,7 @@ namespace MonoMac.AppKit {
 		void DidEndEditing (NSNotification notification);
 
 		[Export ("textDidChange:")]
-		void DidChange (NSNotification notification);
+		void Changed (NSNotification notification);
 
 		[Export ("selectText:")]
 		void SelectText (NSObject sender);
