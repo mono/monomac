@@ -121,7 +121,7 @@ namespace MonoMac.ObjCRuntime {
 				} else if (parms [i-argoffset].ParameterType.IsArray && IsWrappedType (parms [i-argoffset].ParameterType.GetElementType ())) {
 					il.Emit (OpCodes.Ldarg, i);
 					if (parms [i-argoffset].ParameterType.GetElementType () == typeof (string))
-						il.Emit (OpCodes.Call, convertsarray.MakeGenericMethod (parms [i-argoffset].ParameterType.GetElementType ()));
+						il.Emit (OpCodes.Call, convertsarray);
 					else
 						il.Emit (OpCodes.Call, convertarray.MakeGenericMethod (parms [i-argoffset].ParameterType.GetElementType ()));
 					il.Emit (OpCodes.Stloc, j++);
