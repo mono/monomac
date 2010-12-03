@@ -10559,6 +10559,9 @@ namespace MonoMac.AppKit {
 
 		[Export ("controlTextDidChange:"), EventArgs ("NSNotification")]
 		void Changed (NSNotification notification);
+
+		[Export ("controlTextDidBeginEditing:"), EventArgs ("NSNotification")]
+		void EditingBegan (NSNotification notification);	
 	}
 	
 	[BaseType (typeof (NSActionCell))]
