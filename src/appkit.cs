@@ -10557,7 +10557,7 @@ namespace MonoMac.AppKit {
 		[Export ("controlTextDidEndEditing:"), EventArgs ("NSNotification")]
 		void EditingEnded (NSNotification notification);
 
-		[Export ("controlTextDidChange"), EventArgs ("NSNotification")]
+		[Export ("controlTextDidChange:"), EventArgs ("NSNotification")]
 		void Changed (NSNotification notification);
 	}
 	
