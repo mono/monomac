@@ -214,5 +214,14 @@ namespace MonoMac.CoreImage {
 
         [BaseType (typeof (NSObject))]
 	interface CIContext {
+		[Field ("kCIContextOutputColorSpace", "Quartz")]
+		NSString OutputColorSpace { get; }
+
+		[Field ("kCIContextWorkingColorSpace", "Quartz")]
+		NSString WorkingColorSpace { get; }
+		
+		[Field ("kCIContextUseSoftwareRenderer", "Quartz")]
+		NSString UseSoftwareRenderer { get; }
+
 	}
 }
