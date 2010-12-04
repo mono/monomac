@@ -25,15 +25,9 @@
 // coreimage.cs: Definitions for CoreImage
 //
 // TODO:
-// CIFilterGenerator
-// CIFilterShape
-// CIImageAccumulator
-// CIImageProvider
-// CIKernel
-// CIPlugin
-// CIPluginInterface
-// CIRAWFilter
-// CISampler
+// CIImageProvider     - informal protocol, 
+// CIPluginInterface   - informal protocol
+// CIRAWFilter         - informal protocol
 // CIVector
 //
 // TODO: CIFilter, eliminate the use of the NSDictionary and use
@@ -94,137 +88,6 @@ namespace MonoMac.CoreImage {
 
 		[Export ("stringRepresentation")]
 		string StringRepresentation ();
-	}
-
-	[BaseType (typeof (NSObject))]
-	interface CIImage {
-		[Static]
-		[Export ("imageWithCGImage:")]
-		CIImage FromCGImage (CGImage image);
-
-		[Static]
-		[Export ("imageWithCGImage:options:")]
-		CIImage FromCGImage (CGImage image, NSDictionary d);
-
-		[Static]
-		[Export ("imageWithCGLayer:")]
-		CIImage FromLayer (CGLayer layer);
-
-		[Static]
-		[Export ("imageWithCGLayer:options:")]
-		CIImage FromLayer (CGLayer layer, NSDictionary options);
-
-		[Static]
-		[Export ("imageWithBitmapData:bytesPerRow:size:format:colorSpace:")]
-		CIImage FromData (NSData bitmapData, int bpr, SizeF size, CIFormat format, CGColorSpace colorspace);
-
-		[Static]
-		[Export ("imageWithTexture:size:flipped:colorSpace:")]
-		CIImage ImageWithTexturesizeflippedcolorSpace (int glTextureName, SizeF size, bool flag, CGColorSpace colorspace);
-
-		[Static]
-		[Export ("imageWithContentsOfURL:")]
-		CIImage FromUrl (NSUrl url);
-
-		[Static]
-		[Export ("imageWithContentsOfURL:options:")]
-		CIImage FromUrl (NSUrl url, NSDictionary d);
-
-		[Static]
-		[Export ("imageWithData:")]
-		CIImage FromData (NSData data);
-
-		[Static]
-		[Export ("imageWithData:options:")]
-		CIImage FromData (NSData data, NSDictionary d);
-
-		[Static]
-		[Export ("imageWithCVImageBuffer:")]
-		CIImage FromImageBuffer (CVImageBuffer imageBuffer);
-
-		//
-		[Static]
-		[Export ("imageWithCVImageBuffer:options:")]
-		CIImage FromImageBuffer (CVImageBuffer imageBuffer, NSDictionary dict);
-
-		//[Export ("imageWithIOSurface:")]
-		//CIImage ImageWithIOSurface (IOSurfaceRef surface, );
-		//
-		//[Static]
-		//[Export ("imageWithIOSurface:options:")]
-		//CIImage ImageWithIOSurfaceoptions (IOSurfaceRef surface, NSDictionary d, );
-
-		[Export ("imageWithColor:")]
-		CIImage ImageWithColor (CIColor color);
-
-		[Static]
-		[Export ("emptyImage")]
-		CIImage EmptyImage { get; }
-
-		[Export ("initWithCGImage:")]
-		IntPtr Constructor (CGImage image);
-
-		[Export ("initWithCGImage:options:")]
-		IntPtr Constructor (CGImage image, NSDictionary d);
-
-		// FIXME: bindingneeded
-		[Export ("initWithCGLayer:")]
-		IntPtr Constructor (CGLayer layer);
-		
-		[Export ("initWithCGLayer:options:")]
-		NSObject IntPtr (CGLayer layer, NSDictionary d);
-
-		[Export ("initWithData:")]
-		IntPtr Constructor (NSData data);
-
-		[Export ("initWithData:options:")]
-		IntPtr Constructor (NSData data, NSDictionary d);
-
-		[Export ("initWithBitmapData:bytesPerRow:size:format:colorSpace:")]
-		IntPtr Constructor (NSData d, int bpr, SizeF size, CIFormat f, CGColorSpace c);
-
-		[Export ("initWithTexture:size:flipped:colorSpace:")]
-		IntPtr Constructor (int glTextureName, SizeF size, bool flag, CGColorSpace cs);
-
-		[Export ("initWithContentsOfURL:")]
-		IntPtr Constructor (NSUrl url);
-
-		[Export ("initWithContentsOfURL:options:")]
-		IntPtr Constructor (NSUrl url, NSDictionary d);
-
-		// FIXME: bindings
-		//[Export ("initWithIOSurface:")]
-		//NSObject InitWithIOSurface (IOSurfaceRef surface, );
-		//
-		//[Export ("initWithIOSurface:options:")]
-		//NSObject InitWithIOSurfaceoptions (IOSurfaceRef surface, NSDictionary d, );
-		//
-		[Export ("initWithCVImageBuffer:")]
-		IntPtr Constructor (CVImageBuffer imageBuffer);
-
-		[Export ("initWithCVImageBuffer:options:")]
-		IntPtr Constructor (CVImageBuffer imageBuffer, NSDictionary dict);
-
-		[Export ("initWithColor:")]
-		IntPtr Constructor (CIColor color);
-
-		[Export ("imageByApplyingTransform:")]
-		CIImage ImageByApplyingTransform (CGAffineTransform matrix);
-
-		[Export ("imageByCroppingToRect:")]
-		CIImage ImageByCroppingToRect (RectangleF r);
-
-		[Export ("extent")]
-		RectangleF Extent { get; }
-
-		//[Export ("definition")]
-		//CIFilterShape Definition ();
-
-		[Export ("url")]
-		NSUrl Url { get; }
-
-		[Export ("colorSpace")]
-		CGColorSpace ColorSpace { get; }
 	}
 
         [BaseType (typeof (NSObject))]
@@ -568,7 +431,305 @@ namespace MonoMac.CoreImage {
 	}
 
 	[BaseType (typeof (NSObject))]
-	interface CIKernel {
+	interface CIFilterGenerator {
+		[Static, Export ("filterGenerator")]
+		CIFilterGenerator Create ();
+
+		[Static]
+		[Export ("filterGeneratorWithContentsOfURL:")]
+		CIFilterGenerator FromUrl (NSUrl aURL);
+
+		[Export ("initWithContentsOfURL:")]
+		IntPtr Constructor (NSUrl aURL);
+
+		[Export ("connectObject:withKey:toObject:withKey:")]
+		void ConnectObject (NSObject sourceObject, string withSourceKey, NSObject targetObject, string targetKey);
+
+		[Export ("disconnectObject:withKey:toObject:withKey:")]
+		void DisconnectObject (NSObject sourceObject, string sourceKey, NSObject targetObject, string targetKey);
+
+		[Export ("exportKey:fromObject:withName:")]
+		void ExportKey (string key, NSObject targetObject, string exportedKeyName);
+
+		[Export ("removeExportedKey:")]
+		void RemoveExportedKey (string exportedKeyName);
+
+		[Export ("exportedKeys")]
+		NSDictionary ExportedKeys { get; }
+
+		[Export ("setAttributes:forExportedKey:")]
+		void SetAttributesforExportedKey (NSDictionary attributes, NSString exportedKey);
+
+		[Export ("filter")]
+		CIFilter CreateFilter ();
+
+		[Export ("registerFilterName:")]
+		void RegisterFilterName (string name);
+
+		[Export ("writeToURL:atomically:")]
+		bool Save (NSUrl toUrl, bool atomically);
+
+		//Detected properties
+		[Export ("classAttributes")]
+		NSDictionary ClassAttributes { get; set; }
+
+		[Field ("kCIFilterGeneratorExportedKey", "Quartz")]
+		NSString ExportedKey { get; }
+
+		[Field ("kCIFilterGeneratorExportedKeyTargetObject", "Quartz")]
+		NSString ExportedKeyTargetObject { get; }
+
+		[Field ("kCIFilterGeneratorExportedKeyName", "Quartz")]
+		NSString ExportedKeyName { get; }
 	}
-	
+
+	[BaseType (typeof (NSObject))]
+	interface CIFilterShape {
+		[Export ("shapeWithRect:")]
+		CIFilterShape FromRect (RectangleF rect);
+
+		[Export ("initWithRect:")]
+		IntPtr Constructor (RectangleF rect);
+
+		[Export ("transformBy:interior:")]
+		CIFilterShape Transform (CGAffineTransform transformation, bool interiorFlag);
+
+		[Export ("insetByX:Y:")]
+		CIFilterShape Inset (int dx, int dy);
+
+		[Export ("unionWith:")]
+		CIFilterShape Union (CIFilterShape other);
+
+		[Export ("unionWithRect:")]
+		CIFilterShape Union (RectangleF rectangle);
+
+		[Export ("intersectWith:")]
+		CIFilterShape Intersect (CIFilterShape other);
+
+		[Export ("intersectWithRect:")]
+		CIFilterShape IntersectWithRect (Rectangle rectangle);
+	}
+
+	[BaseType (typeof (NSObject))]
+	interface CIImage {
+		[Static]
+		[Export ("imageWithCGImage:")]
+		CIImage FromCGImage (CGImage image);
+
+		[Static]
+		[Export ("imageWithCGImage:options:")]
+		CIImage FromCGImage (CGImage image, NSDictionary d);
+
+		[Static]
+		[Export ("imageWithCGLayer:")]
+		CIImage FromLayer (CGLayer layer);
+
+		[Static]
+		[Export ("imageWithCGLayer:options:")]
+		CIImage FromLayer (CGLayer layer, NSDictionary options);
+
+		[Static]
+		[Export ("imageWithBitmapData:bytesPerRow:size:format:colorSpace:")]
+		CIImage FromData (NSData bitmapData, int bpr, SizeF size, CIFormat format, CGColorSpace colorspace);
+
+		[Static]
+		[Export ("imageWithTexture:size:flipped:colorSpace:")]
+		CIImage ImageWithTexturesizeflippedcolorSpace (int glTextureName, SizeF size, bool flag, CGColorSpace colorspace);
+
+		[Static]
+		[Export ("imageWithContentsOfURL:")]
+		CIImage FromUrl (NSUrl url);
+
+		[Static]
+		[Export ("imageWithContentsOfURL:options:")]
+		CIImage FromUrl (NSUrl url, NSDictionary d);
+
+		[Static]
+		[Export ("imageWithData:")]
+		CIImage FromData (NSData data);
+
+		[Static]
+		[Export ("imageWithData:options:")]
+		CIImage FromData (NSData data, NSDictionary d);
+
+		[Static]
+		[Export ("imageWithCVImageBuffer:")]
+		CIImage FromImageBuffer (CVImageBuffer imageBuffer);
+
+		//
+		[Static]
+		[Export ("imageWithCVImageBuffer:options:")]
+		CIImage FromImageBuffer (CVImageBuffer imageBuffer, NSDictionary dict);
+
+		//[Export ("imageWithIOSurface:")]
+		//CIImage ImageWithIOSurface (IOSurfaceRef surface, );
+		//
+		//[Static]
+		//[Export ("imageWithIOSurface:options:")]
+		//CIImage ImageWithIOSurfaceoptions (IOSurfaceRef surface, NSDictionary d, );
+
+		[Export ("imageWithColor:")]
+		CIImage ImageWithColor (CIColor color);
+
+		[Static]
+		[Export ("emptyImage")]
+		CIImage EmptyImage { get; }
+
+		[Export ("initWithCGImage:")]
+		IntPtr Constructor (CGImage image);
+
+		[Export ("initWithCGImage:options:")]
+		IntPtr Constructor (CGImage image, NSDictionary d);
+
+		// FIXME: bindingneeded
+		[Export ("initWithCGLayer:")]
+		IntPtr Constructor (CGLayer layer);
+		
+		[Export ("initWithCGLayer:options:")]
+		NSObject IntPtr (CGLayer layer, NSDictionary d);
+
+		[Export ("initWithData:")]
+		IntPtr Constructor (NSData data);
+
+		[Export ("initWithData:options:")]
+		IntPtr Constructor (NSData data, NSDictionary d);
+
+		[Export ("initWithBitmapData:bytesPerRow:size:format:colorSpace:")]
+		IntPtr Constructor (NSData d, int bpr, SizeF size, CIFormat f, CGColorSpace c);
+
+		[Export ("initWithTexture:size:flipped:colorSpace:")]
+		IntPtr Constructor (int glTextureName, SizeF size, bool flag, CGColorSpace cs);
+
+		[Export ("initWithContentsOfURL:")]
+		IntPtr Constructor (NSUrl url);
+
+		[Export ("initWithContentsOfURL:options:")]
+		IntPtr Constructor (NSUrl url, NSDictionary d);
+
+		// FIXME: bindings
+		//[Export ("initWithIOSurface:")]
+		//NSObject InitWithIOSurface (IOSurfaceRef surface, );
+		//
+		//[Export ("initWithIOSurface:options:")]
+		//NSObject InitWithIOSurfaceoptions (IOSurfaceRef surface, NSDictionary d, );
+		//
+		[Export ("initWithCVImageBuffer:")]
+		IntPtr Constructor (CVImageBuffer imageBuffer);
+
+		[Export ("initWithCVImageBuffer:options:")]
+		IntPtr Constructor (CVImageBuffer imageBuffer, NSDictionary dict);
+
+		[Export ("initWithColor:")]
+		IntPtr Constructor (CIColor color);
+
+		[Export ("imageByApplyingTransform:")]
+		CIImage ImageByApplyingTransform (CGAffineTransform matrix);
+
+		[Export ("imageByCroppingToRect:")]
+		CIImage ImageByCroppingToRect (RectangleF r);
+
+		[Export ("extent")]
+		RectangleF Extent { get; }
+
+		//[Export ("definition")]
+		//CIFilterShape Definition ();
+
+		[Export ("url")]
+		NSUrl Url { get; }
+
+		[Export ("colorSpace")]
+		CGColorSpace ColorSpace { get; }
+	}
+
+	[BaseType (typeof (NSObject))]
+	interface CIImageAccumulator {
+		[Export ("imageAccumulatorWithExtent:format:")]
+		CIImageAccumulator FromRectangle (RectangleF rect, CIFormat format);
+
+		[Export ("initWithExtent:format:")]
+		IntPtr Constructor (RectangleF rectangle, CIFormat format);
+
+		[Export ("extent")]
+		RectangleF Extent { get; }
+
+		[Export ("format")]
+		CIFormat Format { get; }
+
+		[Export ("setImage:dirtyRect:")]
+		void SetImageDirty (CIImage image, RectangleF dirtyRect);
+
+		[Export ("clear")]
+		void Clear ();
+
+		//Detected properties
+		[Export ("image")]
+		CIImage Image { get; set; }
+	}
+
+	[BaseType (typeof (NSObject))]
+	interface CIKernel {
+		[Static, Export ("kernelsWithString:")]
+		CIKernel [] FromProgram (string coreImageShaderProgram);
+
+		[Export ("name")]
+		string Name { get; }
+
+		[Export ("setROISelector:")]
+		void SetRegionOfInterestSelector (Selector aMethod);
+	}
+
+	[BaseType (typeof (NSObject))]
+	interface CIPlugIn {
+		[Static]
+		[Export ("loadAllPlugIns")]
+		void LoadAllPlugIns ();
+
+		[Static]
+		[Export ("loadNonExecutablePlugIns")]
+		void LoadNonExecutablePlugIns ();
+
+		[Static]
+		[Export ("loadPlugIn:allowNonExecutable:")]
+		void LoadPlugInallowNonExecutable (NSUrl pluginUrl, bool allowNonExecutable);
+	}
+
+	[BaseType (typeof (NSObject))]
+	interface CISampler {
+		[Static, Export ("samplerWithImage:")]
+		CISampler FromImage (CIImage sourceImage);
+
+		[Internal, Static]
+		[Export ("samplerWithImage:options:")]
+		CISampler FromImage (CIImage sourceImag, NSDictionary options);
+
+		[Export ("initWithImage:")]
+		IntPtr Constructor (CIImage sourceImage);
+
+		[Internal, Export ("initWithImage:options:")]
+		NSObject Constructor (CIImage image, NSDictionary options);
+
+		[Export ("definition")]
+		CIFilterShape Definition { get; }
+
+		[Export ("extent")]
+		RectangleF Extent { get; }
+
+		[Field ("kCISamplerAffineMatrix", "Quartz"), Internal]
+		NSString AffineMatrix { get; }
+		[Field ("kCISamplerWrapMode", "Quartz"), Internal]
+		NSString WrapMode { get; }
+		[Field ("kCISamplerFilterMode", "Quartz"), Internal]
+		NSString FilterMode { get; }
+
+		[Field ("kCISamplerWrapBlack", "Quartz"), Internal]
+		NSString WrapBlack { get; }
+		[Field ("kCISamplerWrapClamp", "Quartz"), Internal]
+		NSString WrapClamp { get; }
+		
+		[Field ("kCISamplerFilterNearest", "Quartz"), Internal]
+		NSString FilterNearest { get; }
+
+		[Field ("kCISamplerFilterLinear", "Quartz"), Internal]
+		NSString FilterLinear { get; }
+	}
 }
