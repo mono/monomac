@@ -24,6 +24,21 @@
 //
 // coreimage.cs: Definitions for CoreImage
 //
+// TODO:
+// CIFilterGenerator
+// CIFilterShape
+// CIImageAccumulator
+// CIImageProvider
+// CIKernel
+// CIPlugin
+// CIPluginInterface
+// CIRAWFilter
+// CISampler
+// CIVector
+//
+// TODO: CIFilter, eliminate the use of the NSDictionary and use
+// strongly typed accessors.
+//
 using System;
 using System.Drawing;
 using MonoMac.Foundation;
@@ -214,14 +229,346 @@ namespace MonoMac.CoreImage {
 
         [BaseType (typeof (NSObject))]
 	interface CIContext {
-		[Field ("kCIContextOutputColorSpace", "Quartz")]
+		// When we bind OpenGL add these:
+		//[Export ("contextWithCGLContext:pixelFormat:colorSpace:options:")]
+		//CIContext ContextWithCGLContextpixelFormatcolorSpaceoptions (CGLContextObj ctx, CGLPixelFormatObj pf, CGColorSpaceRef cs, NSDictionary dict, );
+
+		[Internal, Static]
+		[Export ("contextWithCGContext:options:")]
+		CIContext FromContext (CGContext ctx, [NullAllowed] NSDictionary options);
+
+		[Export ("drawImage:atPoint:fromRect:")]
+		void DrawImage (CIImage image, PointF atPoint, RectangleF fromRect);
+
+		[Export ("drawImage:inRect:fromRect:")]
+		void DrawImage (CIImage image, RectangleF inRectangle, RectangleF fromRectangle);
+
+		[Export ("createCGImage:fromRect:")]
+		CGImage CreateCGImage (CIImage image, RectangleF fromRectangle);
+
+		[Export ("createCGImage:fromRect:format:colorSpace:")]
+		CGImage CreateCGImage (CIImage image, RectangleF fromRect, CIFormat format, CGColorSpace colorSpace);
+
+		[Internal, Export ("createCGLayerWithSize:info:")]
+		CGLayer CreateCGLayer (SizeF size, [NullAllowed] NSDictionary info);
+
+		[Export ("render:toBitmap:rowBytes:bounds:format:colorSpace:")]
+		void RenderToBitmap (CIImage image, IntPtr bitmapPtr, int bytesPerRow, RectangleF bounds, CIFormat bitmapFormat, CGColorSpace colorSpace);
+
+		//[Export ("render:toIOSurface:bounds:colorSpace:")]
+		//void RendertoIOSurfaceboundscolorSpace (CIImage im, IOSurfaceRef surface, RectangleF r, CGColorSpaceRef cs, );
+
+		[Export ("reclaimResources")]
+		void ReclaimResources ();
+
+		[Export ("clearCaches")]
+		void ClearCaches ();
+
+		[Internal, Field ("kCIContextOutputColorSpace", "Quartz")]
 		NSString OutputColorSpace { get; }
 
-		[Field ("kCIContextWorkingColorSpace", "Quartz")]
+		[Internal, Field ("kCIContextWorkingColorSpace", "Quartz")]
 		NSString WorkingColorSpace { get; }
 		
-		[Field ("kCIContextUseSoftwareRenderer", "Quartz")]
+		[Internal, Field ("kCIContextUseSoftwareRenderer", "Quartz")]
 		NSString UseSoftwareRenderer { get; }
-
 	}
+
+	[BaseType (typeof (NSObject))]
+	interface CIFilter {
+		[Export ("inputKeys")]
+		string [] InputKeys { get; }
+
+		[Export ("outputKeys")]
+		string [] OutputKeys { get; }
+
+		[Export ("setDefaults")]
+		void SetDefaults ();
+
+		[Export ("attributes")]
+		NSDictionary Attributes { get; }
+
+		[Export ("apply:arguments:options:")]
+		CIImage Applyargumentsoptions (CIKernel k, NSArray args, NSDictionary options);
+
+		[Static]
+		[Export ("filterWithName:")]
+		CIFilter FromName (string name);
+
+		[Static]
+		[Export ("filterNamesInCategory:")]
+		string [] FilterNamesInCategory (string category);
+
+		[Static]
+		[Export ("filterNamesInCategories:")]
+		string [] FilterNamesInCategories (string [] categories);
+
+		[Static]
+		[Export ("registerFilterName:constructor:classAttributes:")]
+		void RegisterFilterName (string name, NSObject constructorObject, NSDictionary classAttributes);
+
+		[Static]
+		[Export ("localizedNameForFilterName:")]
+		string FilterLocalizedName (string filterName);
+
+		[Static]
+		[Export ("localizedNameForCategory:")]
+		string CategoryLocalizedName (string category);
+
+		[Static]
+		[Export ("localizedDescriptionForFilterName:")]
+		string FilterLocalizedDescription (string filterName);
+
+		[Static]
+		[Export ("localizedReferenceDocumentationForFilterName:")]
+		NSUrl FilterLocalizedReferenceDocumentation (string filterName);
+
+		[Field ("kCIAttributeFilterName", "Quartz")]
+		NSString AttributeFilterName  { get; }
+
+		[Field ("kCIAttributeFilterDisplayName", "Quartz")]
+		NSString AttributeFilterDisplayName  { get; }
+
+		[Field ("kCIAttributeDescription", "Quartz")]
+		NSString AttributeDescription  { get; }
+
+		[Field ("kCIAttributeReferenceDocumentation", "Quartz")]
+		NSString AttributeReferenceDocumentation  { get; }
+
+		[Field ("kCIAttributeFilterCategories", "Quartz")]
+		NSString AttributeFilterCategories  { get; }
+
+		[Field ("kCIAttributeClass", "Quartz")]
+		NSString AttributeClass  { get; }
+
+		[Field ("kCIAttributeType", "Quartz")]
+		NSString AttributeType  { get; }
+
+		[Field ("kCIAttributeMin", "Quartz")]
+		NSString AttributeMin  { get; }
+
+		[Field ("kCIAttributeMax", "Quartz")]
+		NSString AttributeMax  { get; }
+
+		[Field ("kCIAttributeSliderMin", "Quartz")]
+		NSString AttributeSliderMin  { get; }
+
+		[Field ("kCIAttributeSliderMax", "Quartz")]
+		NSString AttributeSliderMax  { get; }
+
+		[Field ("kCIAttributeDefault", "Quartz")]
+		NSString AttributeDefault  { get; }
+
+		[Field ("kCIAttributeIdentity", "Quartz")]
+		NSString AttributeIdentity  { get; }
+
+		[Field ("kCIAttributeName", "Quartz")]
+		NSString AttributeName  { get; }
+
+		[Field ("kCIAttributeDisplayName", "Quartz")]
+		NSString AttributeDisplayName  { get; }
+
+		[Field ("kCIUIParameterSet", "Quartz")]
+		NSString UIParameterSet  { get; }
+
+		[Field ("kCIUISetBasic", "Quartz")]
+		NSString UISetBasic  { get; }
+
+		[Field ("kCIUISetIntermediate", "Quartz")]
+		NSString UISetIntermediate  { get; }
+
+		[Field ("kCIUISetAdvanced", "Quartz")]
+		NSString UISetAdvanced  { get; }
+
+		[Field ("kCIUISetDevelopment", "Quartz")]
+		NSString UISetDevelopment  { get; }
+
+		[Field ("kCIAttributeTypeTime", "Quartz")]
+		NSString AttributeTypeTime  { get; }
+
+		[Field ("kCIAttributeTypeScalar", "Quartz")]
+		NSString AttributeTypeScalar  { get; }
+
+		[Field ("kCIAttributeTypeDistance", "Quartz")]
+		NSString AttributeTypeDistance  { get; }
+
+		[Field ("kCIAttributeTypeAngle", "Quartz")]
+		NSString AttributeTypeAngle  { get; }
+
+		[Field ("kCIAttributeTypeBoolean", "Quartz")]
+		NSString AttributeTypeBoolean  { get; }
+
+		[Field ("kCIAttributeTypeInteger", "Quartz")]
+		NSString AttributeTypeInteger  { get; }
+
+		[Field ("kCIAttributeTypeCount", "Quartz")]
+		NSString AttributeTypeCount  { get; }
+
+		[Field ("kCIAttributeTypePosition", "Quartz")]
+		NSString AttributeTypePosition  { get; }
+
+		[Field ("kCIAttributeTypeOffset", "Quartz")]
+		NSString AttributeTypeOffset  { get; }
+
+		[Field ("kCIAttributeTypePosition3", "Quartz")]
+		NSString AttributeTypePosition3  { get; }
+
+		[Field ("kCIAttributeTypeRectangle", "Quartz")]
+		NSString AttributeTypeRectangle  { get; }
+
+		[Field ("kCIAttributeTypeOpaqueColor", "Quartz")]
+		NSString AttributeTypeOpaqueColor  { get; }
+
+		[Field ("kCIAttributeTypeGradient", "Quartz")]
+		NSString AttributeTypeGradient  { get; }
+
+		[Field ("kCICategoryDistortionEffect", "Quartz")]
+		NSString CategoryDistortionEffect  { get; }
+
+		[Field ("kCICategoryGeometryAdjustment", "Quartz")]
+		NSString CategoryGeometryAdjustment  { get; }
+
+		[Field ("kCICategoryCompositeOperation", "Quartz")]
+		NSString CategoryCompositeOperation  { get; }
+
+		[Field ("kCICategoryHalftoneEffect", "Quartz")]
+		NSString CategoryHalftoneEffect  { get; }
+
+		[Field ("kCICategoryColorAdjustment", "Quartz")]
+		NSString CategoryColorAdjustment  { get; }
+
+		[Field ("kCICategoryColorEffect", "Quartz")]
+		NSString CategoryColorEffect  { get; }
+
+		[Field ("kCICategoryTransition", "Quartz")]
+		NSString CategoryTransition  { get; }
+
+		[Field ("kCICategoryTileEffect", "Quartz")]
+		NSString CategoryTileEffect  { get; }
+
+		[Field ("kCICategoryGenerator", "Quartz")]
+		NSString CategoryGenerator  { get; }
+
+		[Field ("kCICategoryReduction", "Quartz")]
+		NSString CategoryReduction  { get; }
+
+		[Field ("kCICategoryGradient", "Quartz")]
+		NSString CategoryGradient  { get; }
+
+		[Field ("kCICategoryStylize", "Quartz")]
+		NSString CategoryStylize  { get; }
+
+		[Field ("kCICategorySharpen", "Quartz")]
+		NSString CategorySharpen  { get; }
+
+		[Field ("kCICategoryBlur", "Quartz")]
+		NSString CategoryBlur  { get; }
+
+		[Field ("kCICategoryVideo", "Quartz")]
+		NSString CategoryVideo  { get; }
+
+		[Field ("kCICategoryStillImage", "Quartz")]
+		NSString CategoryStillImage  { get; }
+
+		[Field ("kCICategoryInterlaced", "Quartz")]
+		NSString CategoryInterlaced  { get; }
+
+		[Field ("kCICategoryNonSquarePixels", "Quartz")]
+		NSString CategoryNonSquarePixels  { get; }
+
+		[Field ("kCICategoryHighDynamicRange", "Quartz")]
+		NSString CategoryHighDynamicRange  { get; }
+
+		[Field ("kCICategoryBuiltIn", "Quartz")]
+		NSString CategoryBuiltIn  { get; }
+
+		[Field ("kCICategoryFilterGenerator", "Quartz")]
+		NSString CategoryFilterGenerator  { get; }
+
+		[Field ("kCIApplyOptionExtent", "Quartz")]
+		NSString ApplyOptionExtent  { get; }
+
+		[Field ("kCIApplyOptionDefinition", "Quartz")]
+		NSString ApplyOptionDefinition  { get; }
+
+		[Field ("kCIApplyOptionUserInfo", "Quartz")]
+		NSString ApplyOptionUserInfo  { get; }
+
+		[Field ("kCIOutputImageKey", "Quartz")]
+		NSString OutputImageKey  { get; }
+
+		[Field ("kCIInputBackgroundImageKey", "Quartz")]
+		NSString InputBackgroundImageKey  { get; }
+
+		[Field ("kCIInputImageKey", "Quartz")]
+		NSString InputImageKey  { get; }
+
+		[Field ("kCIInputTimeKey", "Quartz")]
+		NSString InputTimeKey  { get; }
+
+		[Field ("kCIInputTransformKey", "Quartz")]
+		NSString InputTransformKey  { get; }
+
+		[Field ("kCIInputScaleKey", "Quartz")]
+		NSString InputScaleKey  { get; }
+
+		[Field ("kCIInputAspectRatioKey", "Quartz")]
+		NSString InputAspectRatioKey  { get; }
+
+		[Field ("kCIInputCenterKey", "Quartz")]
+		NSString InputCenterKey  { get; }
+
+		[Field ("kCIInputRadiusKey", "Quartz")]
+		NSString InputRadiusKey  { get; }
+
+		[Field ("kCIInputAngleKey", "Quartz")]
+		NSString InputAngleKey  { get; }
+
+		[Field ("kCIInputRefractionKey", "Quartz")]
+		NSString InputRefractionKey  { get; }
+
+		[Field ("kCIInputWidthKey", "Quartz")]
+		NSString InputWidthKey  { get; }
+
+		[Field ("kCIInputSharpnessKey", "Quartz")]
+		NSString InputSharpnessKey  { get; }
+
+		[Field ("kCIInputIntensityKey", "Quartz")]
+		NSString InputIntensityKey  { get; }
+
+		[Field ("kCIInputEVKey", "Quartz")]
+		NSString InputEVKey  { get; }
+
+		[Field ("kCIInputSaturationKey", "Quartz")]
+		NSString InputSaturationKey  { get; }
+
+		[Field ("kCIInputColorKey", "Quartz")]
+		NSString InputColorKey  { get; }
+
+		[Field ("kCIInputBrightnessKey", "Quartz")]
+		NSString InputBrightnessKey  { get; }
+
+		[Field ("kCIInputContrastKey", "Quartz")]
+		NSString InputContrastKey  { get; }
+
+		[Field ("kCIInputGradientImageKey", "Quartz")]
+		NSString InputGradientImageKey  { get; }
+
+		[Field ("kCIInputMaskImageKey", "Quartz")]
+		NSString InputMaskImageKey  { get; }
+
+		[Field ("kCIInputShadingImageKey", "Quartz")]
+		NSString InputShadingImageKey  { get; }
+
+		[Field ("kCIInputTargetImageKey", "Quartz")]
+		NSString InputTargetImageKey  { get; }
+
+		[Field ("kCIInputExtentKey", "Quartz")]
+		NSString InputExtentKey  { get; }
+	}
+
+	[BaseType (typeof (NSObject))]
+	interface CIKernel {
+	}
+	
 }

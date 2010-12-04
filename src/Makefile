@@ -50,6 +50,7 @@ MONOMAC_SOURCES = \
 	./AppKit/NSGraphics.cs				\
 	./AppKit/NSMatrix.cs				\
 	./AppKit/NSWindow.cs				\
+	./CoreImage/CIContext.cs			\
 	./Growl/Constants.cs				\
 	./QTKit/QTCaptureDevice.cs			\
 	./QTKit/QTMovie.cs				\
