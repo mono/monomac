@@ -1031,7 +1031,7 @@ namespace MonoMac.WebKit {
 		[Export ("clear")]
 		void Clear ();
 
-		[Export ("captureEvents")]
+		[Export ("captureEvent")]
 		void CaptureEvents ();
 
 		[Export ("releaseEvents")]
@@ -1274,6 +1274,18 @@ namespace MonoMac.WebKit {
 //		void ViewDidMoveToHostWindow ();
 //	}
 
+	
+	[BaseType (typeof (NSUrlDownload))]
+	interface WebDownload {
+	}
+
+	[BaseType (typeof (NSObject))]
+	[Model]
+	interface WebDownloadDelegate {
+		[Export ("downloadWindowForAuthenticationSheet:"), EventArgs ("WebDownloadRequestEventArgs"), DefaultValue (null)]
+		NSWindow DownloadWindowForSheet (WebDownload download);
+	}
+	
 	[BaseType (typeof (NSObject))]
 	interface WebFrame {
 		[Export ("initWithName:webFrameView:webView:")]
@@ -1339,6 +1351,52 @@ namespace MonoMac.WebKit {
 		[Export ("globalContext")]
 		/* JSGlobalContextRef */ IntPtr GlobalContext { get; }
 
+	}
+
+	[Model]
+	[BaseType (typeof (NSObject))]
+	interface WebFrameLoadDelegate {
+		[Export ("webView:didStartProvisionalLoadForFrame:"), EventArgs ("WebFrame")]
+		void StartedProvisionalLoad (WebView sender, WebFrame forFrame);
+
+		[Export ("webView:didReceiveServerRedirectForProvisionalLoadForFrame:"), EventArgs ("WebFrame")]
+		void ReceivedServerRedirectForProvisionalLoad (WebView sender, WebFrame forFrame);
+
+		[Export ("webView:didFailProvisionalLoadWithError:forFrame:"), EventArgs ("WebFrameErrorEventArgs")]
+		void FailedProvisionalLoad (WebView sender, NSError error, WebFrame forFrame);
+
+		[Export ("webView:didCommitLoadForFrame:"), EventArgs ("WebFrameEventArgs")]
+		void CommitedLoad (WebView sender, WebFrame forFrame);
+
+		[Export ("webView:didReceiveTitle:forFrame:"), EventArgs ("WebFrameTitle")]
+		void ReceivedTitle (WebView sender, string title, WebFrame forFrame);
+
+		[Export ("webView:didReceiveIcon:forFrame:"), EventArgs ("WebFrameImage")]
+		void ReceivedIcon (WebView sender, NSImage image, WebFrame forFrame);
+
+		[Export ("webView:didFinishLoadForFrame:"), EventArgs ("WebFrame")]
+		void FinishedLoad (WebView sender, WebFrame forFrame);
+
+		[Export ("webView:didFailLoadWithError:forFrame:"), EventArgs ("WebFrameError")]
+		void FailedLoadWithError (WebView sender, NSError error, WebFrame forFrame);
+
+		[Export ("webView:didChangeLocationWithinPageForFrame:"), EventArgs ("WebFrame")]
+		void ChangedLocationWithinPage (WebView sender, WebFrame forFrame);
+
+		[Export ("webView:willPerformClientRedirectToURL:delay:fireDate:forFrame:"), EventArgs ("WebFrameClientRedirect")]
+		void WillPerformClientRedirectToUrl (WebView sender, NSUrl toUrl, double secondsDelay, NSDate fireDate, WebFrame forFrame);
+
+		[Export ("webView:didCancelClientRedirectForFrame:"), EventArgs ("WebFrame")]
+		void CanceledClientRedirect (WebView sender, WebFrame forFrame);
+
+		[Export ("webView:willCloseFrame:"), EventArgs ("WebFrame")]
+		void WillCloseFrame (WebView sender, WebFrame forFrame);
+
+		[Export ("webView:didClearWindowObject:forFrame:"), EventArgs ("WebFrameScriptFrame")]
+		void ClearedWindowObject (WebView webView, WebScriptObject windowObject, WebFrame forFrame);
+
+		[Export ("webView:windowScriptObjectAvailable:"), EventArgs ("WebFrameScriptObject")]
+		void WindowScriptObjectAvailable (WebView webView, WebScriptObject windowScriptObject);
 	}
 
 	[BaseType (typeof (NSView))]
@@ -1506,6 +1564,37 @@ namespace MonoMac.WebKit {
 	}
 
 	[BaseType (typeof (NSObject))]
+	[Model]
+	interface WebResourceLoadDelegate {
+		[Export ("webView:identifierForInitialRequest:fromDataSource:"), EventArgs ("WebResourceIdentifierRequest"), DefaultValue (null)]
+		NSObject IdentifierForInitialRequest (WebView sender, NSUrlRequest request, WebDataSource dataSource);
+
+		[Export ("webView:resource:willSendRequest:redirectResponse:fromDataSource:"), EventArgs ("WebResourceOnRequestSend"), DefaultValueFromArgument ("request")]
+		NSUrlRequest OnSendRequest (WebView sender, NSObject identifier, NSUrlRequest request, NSUrlResponse redirectResponse, WebDataSource dataSource);
+
+		[Export ("webView:resource:didReceiveAuthenticationChallenge:fromDataSource:"), EventArgs ("WebResourceAuthenticationChallenge")]
+		void ReceivedAuthenticationChallenge (WebView sender, NSObject identifier, NSUrlAuthenticationChallenge challenge, WebDataSource dataSource);
+
+		[Export ("webView:resource:didCancelAuthenticationChallenge:fromDataSource:"), EventArgs ("WebResourceCancelledChallenge")]
+		void CancelledAuthenticationChallenge (WebView sender, NSObject identifier, NSUrlAuthenticationChallenge challenge, WebDataSource dataSource);
+
+		[Export ("webView:resource:didReceiveResponse:fromDataSource:"), EventArgs ("WebResourceReceivedResponse")]
+		void ReceivedResponse (WebView sender, NSObject identifier, NSUrlResponse responseReceived, WebDataSource dataSource);
+
+		[Export ("webView:resource:didReceiveContentLength:fromDataSource:"), EventArgs ("WebResourceReceivedContentLength")]
+		void ReceivedContentLength (WebView sender, NSObject identifier, int length, WebDataSource dataSource);
+
+		[Export ("webView:resource:didFinishLoadingFromDataSource:"), EventArgs ("WebResourceCompleted")]
+		void FinishedLoading (WebView sender, NSObject identifier, WebDataSource dataSource);
+
+		[Export ("webView:resource:didFailLoadingWithError:fromDataSource:"), EventArgs ("WebResourceError")]
+		void FailedLoading (WebView sender, NSObject identifier, NSError withError, WebDataSource dataSource);
+
+		[Export ("webView:plugInFailedWithError:dataSource:"), EventArgs ("WebResourcePluginError")]
+		void PlugInFailed (WebView sender, NSError error, WebDataSource dataSource);
+	}
+
+	[BaseType (typeof (NSObject))]
 	interface WebScriptObject {
 		[Static, Export ("throwException:")]
 		bool ThrowException (string exceptionMessage);
@@ -1535,7 +1624,9 @@ namespace MonoMac.WebKit {
 		void SetException (string description);
 	}
 
-	[BaseType (typeof (NSView))]
+	[BaseType (typeof (NSView),
+		   Events=new Type [] {typeof (WebFrameLoadDelegate), typeof (WebDownloadDelegate), typeof (WebResourceLoadDelegate) },
+		   Delegates=new string [] { "WeakFrameLoadDelegate", "WeakDownloadDelegate", "WeakResourceLoadDelegate"})]
 	interface WebView {
 		[Export ("canShowMIMEType:")]
 		bool CanShowMimeType (string MimeType);
@@ -1649,14 +1740,23 @@ namespace MonoMac.WebKit {
 		[Export ("shouldCloseWithWindow")]
 		bool ShouldCloseWithWindow { get; set; }
 
-		[Export ("resourceLoadDelegate")]
-		NSObject ResourceLoadDelegate { get; set; }
+		[Export ("resourceLoadDelegate"), NullAllowed]
+		NSObject WeakResourceLoadDelegate { get; set; }
 
-		[Export ("downloadDelegate")]
-		NSObject DownloadDelegate { get; set; }
+		[Wrap ("WeakResourceLoadDelegate")]
+		WebResourceLoadDelegate ResourceLoadDelegate { get; set; }
 
-		[Export ("frameLoadDelegate")]
-		NSObject FrameLoadDelegate { get; set; }
+		[Export ("downloadDelegate"), NullAllowed]
+		NSObject WeakDownloadDelegate { get; set; }
+
+		[Wrap ("WeakDownloadDelegate")]
+		WebDownloadDelegate DownloadDelegate { get; set; }
+
+		[Export ("frameLoadDelegate"), NullAllowed]
+		NSObject WeakFrameLoadDelegate { get; set; }
+
+		[Wrap ("WeakFrameLoadDelegate")]
+		WebFrameLoadDelegate FrameLoadDelegate { get; set; }
 
 		[Export ("policyDelegate")]
 		NSObject PolicyDelegate { get; set; }
