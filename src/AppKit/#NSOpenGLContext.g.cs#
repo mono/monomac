@@ -1,0 +1,339 @@
+//
+// Auto-generated from generator.cs, do not edit
+//
+// We keep references to objects, so warning 414 is expected
+
+#pragma warning disable 414
+
+using System;
+
+using System.Drawing;
+
+using System.Runtime.InteropServices;
+
+using MonoMac.CoreFoundation;
+
+using MonoMac.Foundation;
+
+using MonoMac.ObjCRuntime;
+
+using MonoMac.CoreGraphics;
+
+using MonoMac.CoreAnimation;
+
+using MonoMac.CoreLocation;
+
+using MonoMac.QTKit;
+
+namespace MonoMac.AppKit {
+	[Register("NSOpenGLContext")]
+	public partial class NSOpenGLContext : NSObject {
+		static IntPtr selCGLContextObj = Selector.GetHandle ("CGLContextObj");
+
+		static IntPtr selPixelBuffer = Selector.GetHandle ("pixelBuffer");
+		static IntPtr selPixelBufferCubeMapFace = Selector.GetHandle ("pixelBufferCubeMapFace");
+		static IntPtr selPixelBufferMipMapLevel = Selector.GetHandle ("pixelBufferMipMapLevel");
+		static IntPtr selView = Selector.GetHandle ("view");
+		static IntPtr selSetView = Selector.GetHandle ("setView:");
+		static IntPtr selCurrentVirtualScreen = Selector.GetHandle ("currentVirtualScreen");
+		static IntPtr selSetCurrentVirtualScreen = Selector.GetHandle ("setCurrentVirtualScreen:");
+		static IntPtr selInitWithFormatShareContext = Selector.GetHandle ("initWithFormat:shareContext:");
+		static IntPtr selSetFullScreen = Selector.GetHandle ("setFullScreen");
+		static IntPtr selSetOffScreenWidthHeightRowbytes = Selector.GetHandle ("setOffScreen:width:height:rowbytes:");
+		static IntPtr selClearDrawable = Selector.GetHandle ("clearDrawable");
+		static IntPtr selUpdate = Selector.GetHandle ("update");
+		static IntPtr selFlushBuffer = Selector.GetHandle ("flushBuffer");
+		static IntPtr selMakeCurrentContext = Selector.GetHandle ("makeCurrentContext");
+		static IntPtr selClearCurrentContext = Selector.GetHandle ("clearCurrentContext");
+		static IntPtr selCurrentContext = Selector.GetHandle ("currentContext");
+		static IntPtr selCopyAttributesFromContextWithMask = Selector.GetHandle ("copyAttributesFromContext:withMask:");
+		static IntPtr selSetValuesForParameter = Selector.GetHandle ("setValues:forParameter:");
+		static IntPtr selGetValuesForParameter = Selector.GetHandle ("getValues:forParameter:");
+		static IntPtr selCreateTextureFromViewInternalFormat = Selector.GetHandle ("createTexture:fromView:internalFormat:");
+		static IntPtr selSetPixelBufferCubeMapFaceMipMapLevelCurrentVirtualScreen = Selector.GetHandle ("setPixelBuffer:cubeMapFace:mipMapLevel:currentVirtualScreen:");
+		static IntPtr selSetTextureImageToPixelBufferColorBuffer = Selector.GetHandle ("setTextureImageToPixelBuffer:colorBuffer:");
+
+		static IntPtr class_ptr = Class.GetHandle ("NSOpenGLContext");
+
+		public override IntPtr ClassHandle { get { return class_ptr; } }
+
+		[Export ("init")]
+		public  NSOpenGLContext () : base (NSObjectFlag.Empty)
+		{
+			if (IsDirectBinding) {
+				Handle = MonoMac.ObjCRuntime.Messaging.IntPtr_objc_msgSend (this.Handle, Selector.Init);
+			} else {
+				Handle = MonoMac.ObjCRuntime.Messaging.IntPtr_objc_msgSendSuper (this.SuperHandle, Selector.Init);
+			}
+		}
+
+		[Export ("initWithCoder:")]
+		public NSOpenGLContext (NSCoder coder) : base (NSObjectFlag.Empty)
+		{
+			if (IsDirectBinding) {
+				Handle = MonoMac.ObjCRuntime.Messaging.IntPtr_objc_msgSend_IntPtr (this.Handle, Selector.InitWithCoder, coder.Handle);
+			} else {
+				Handle = MonoMac.ObjCRuntime.Messaging.IntPtr_objc_msgSendSuper_IntPtr (this.SuperHandle, Selector.InitWithCoder, coder.Handle);
+			}
+		}
+
+		public NSOpenGLContext (NSObjectFlag t) : base (t) {}
+
+		public NSOpenGLContext (IntPtr handle) : base (handle) {}
+
+		[Export ("initWithFormat:shareContext:")]
+		public NSOpenGLContext (NSOpenGLPixelFormat format, NSOpenGLContext shareContext) : base (NSObjectFlag.Empty)
+		{
+			if (format == null)
+				throw new ArgumentNullException ("format");
+			if (shareContext == null)
+				throw new ArgumentNullException ("shareContext");
+			if (IsDirectBinding) {
+				Handle = MonoMac.ObjCRuntime.Messaging.IntPtr_objc_msgSend_IntPtr_IntPtr (this.Handle, selInitWithFormatShareContext, format.Handle, shareContext.Handle);
+			} else {
+				Handle = MonoMac.ObjCRuntime.Messaging.IntPtr_objc_msgSendSuper_IntPtr_IntPtr (this.SuperHandle, selInitWithFormatShareContext, format.Handle, shareContext.Handle);
+			}
+		}
+
+		[Export ("setFullScreen")]
+		public virtual void SetFullScreen ()
+		{
+			if (IsDirectBinding) {
+				MonoMac.ObjCRuntime.Messaging.void_objc_msgSend (this.Handle, selSetFullScreen);
+			} else {
+				MonoMac.ObjCRuntime.Messaging.void_objc_msgSendSuper (this.SuperHandle, selSetFullScreen);
+			}
+		}
+
+		[Export ("setOffScreen:width:height:rowbytes:")]
+		public virtual void SetOffScreen (System.IntPtr baseaddr, int width, int height, int rowbytes)
+		{
+			if (IsDirectBinding) {
+				MonoMac.ObjCRuntime.Messaging.void_objc_msgSend_IntPtr_int_int_int (this.Handle, selSetOffScreenWidthHeightRowbytes, baseaddr, width, height, rowbytes);
+			} else {
+				MonoMac.ObjCRuntime.Messaging.void_objc_msgSendSuper_IntPtr_int_int_int (this.SuperHandle, selSetOffScreenWidthHeightRowbytes, baseaddr, width, height, rowbytes);
+			}
+		}
+
+		[Export ("clearDrawable")]
+		public virtual void ClearDrawable ()
+		{
+			if (IsDirectBinding) {
+				MonoMac.ObjCRuntime.Messaging.void_objc_msgSend (this.Handle, selClearDrawable);
+			} else {
+				MonoMac.ObjCRuntime.Messaging.void_objc_msgSendSuper (this.SuperHandle, selClearDrawable);
+			}
+		}
+
+		[Export ("update")]
+		public virtual void Update ()
+		{
+			if (IsDirectBinding) {
+				MonoMac.ObjCRuntime.Messaging.void_objc_msgSend (this.Handle, selUpdate);
+			} else {
+				MonoMac.ObjCRuntime.Messaging.void_objc_msgSendSuper (this.SuperHandle, selUpdate);
+			}
+		}
+
+		[Export ("flushBuffer")]
+		public virtual void FlushBuffer ()
+		{
+			if (IsDirectBinding) {
+				MonoMac.ObjCRuntime.Messaging.void_objc_msgSend (this.Handle, selFlushBuffer);
+			} else {
+				MonoMac.ObjCRuntime.Messaging.void_objc_msgSendSuper (this.SuperHandle, selFlushBuffer);
+			}
+		}
+
+		[Export ("makeCurrentContext")]
+		public virtual void MakeCurrentContext ()
+		{
+			if (IsDirectBinding) {
+				MonoMac.ObjCRuntime.Messaging.void_objc_msgSend (this.Handle, selMakeCurrentContext);
+			} else {
+				MonoMac.ObjCRuntime.Messaging.void_objc_msgSendSuper (this.SuperHandle, selMakeCurrentContext);
+			}
+		}
+
+		[Export ("clearCurrentContext")]
+		public static void ClearCurrentContext ()
+		{
+			MonoMac.ObjCRuntime.Messaging.void_objc_msgSend (class_ptr, selClearCurrentContext);
+		}
+
+		[Export ("currentContext")]
+		public static NSOpenGLContext CurrentContext ()
+		{
+			return (NSOpenGLContext) Runtime.GetNSObject (MonoMac.ObjCRuntime.Messaging.IntPtr_objc_msgSend (class_ptr, selCurrentContext));
+		}
+
+		[Export ("copyAttributesFromContext:withMask:")]
+		public virtual void CopyAttributes (NSOpenGLContext context, System.UInt32 mask)
+		{
+			if (context == null)
+				throw new ArgumentNullException ("context");
+			if (IsDirectBinding) {
+				MonoMac.ObjCRuntime.Messaging.void_objc_msgSend_IntPtr_UInt32 (this.Handle, selCopyAttributesFromContextWithMask, context.Handle, mask);
+			} else {
+				MonoMac.ObjCRuntime.Messaging.void_objc_msgSendSuper_IntPtr_UInt32 (this.SuperHandle, selCopyAttributesFromContextWithMask, context.Handle, mask);
+			}
+		}
+
+		[Export ("setValues:forParameter:")]
+		public virtual void SetValues (System.IntPtr vals, NSOpenGLContextParameter param)
+		{
+			if (IsDirectBinding) {
+				MonoMac.ObjCRuntime.Messaging.void_objc_msgSend_IntPtr_int (this.Handle, selSetValuesForParameter, vals, (int)param);
+			} else {
+				MonoMac.ObjCRuntime.Messaging.void_objc_msgSendSuper_IntPtr_int (this.SuperHandle, selSetValuesForParameter, vals, (int)param);
+			}
+		}
+
+		[Export ("getValues:forParameter:")]
+		public virtual void GetValues (System.IntPtr vals, NSOpenGLContextParameter param)
+		{
+			if (IsDirectBinding) {
+				MonoMac.ObjCRuntime.Messaging.void_objc_msgSend_IntPtr_int (this.Handle, selGetValuesForParameter, vals, (int)param);
+			} else {
+				MonoMac.ObjCRuntime.Messaging.void_objc_msgSendSuper_IntPtr_int (this.SuperHandle, selGetValuesForParameter, vals, (int)param);
+			}
+		}
+
+		[Export ("createTexture:fromView:internalFormat:")]
+		public virtual void CreateTexture (int targetIdentifier, NSView view, int format)
+		{
+			if (view == null)
+				throw new ArgumentNullException ("view");
+			if (IsDirectBinding) {
+				MonoMac.ObjCRuntime.Messaging.void_objc_msgSend_int_IntPtr_int (this.Handle, selCreateTextureFromViewInternalFormat, targetIdentifier, view.Handle, format);
+			} else {
+				MonoMac.ObjCRuntime.Messaging.void_objc_msgSendSuper_int_IntPtr_int (this.SuperHandle, selCreateTextureFromViewInternalFormat, targetIdentifier, view.Handle, format);
+			}
+		}
+
+		[Export ("setPixelBuffer:cubeMapFace:mipMapLevel:currentVirtualScreen:")]
+		public virtual void SetPixelBuffer (NSOpenGLPixelBuffer pixelBuffer, NSGLTextureCubeMap face, int level, int screen)
+		{
+			if (pixelBuffer == null)
+				throw new ArgumentNullException ("pixelBuffer");
+			if (IsDirectBinding) {
+				MonoMac.ObjCRuntime.Messaging.void_objc_msgSend_IntPtr_int_int_int (this.Handle, selSetPixelBufferCubeMapFaceMipMapLevelCurrentVirtualScreen, pixelBuffer.Handle, (int)face, level, screen);
+			} else {
+				MonoMac.ObjCRuntime.Messaging.void_objc_msgSendSuper_IntPtr_int_int_int (this.SuperHandle, selSetPixelBufferCubeMapFaceMipMapLevelCurrentVirtualScreen, pixelBuffer.Handle, (int)face, level, screen);
+			}
+		}
+
+		[Export ("setTextureImageToPixelBuffer:colorBuffer:")]
+		public virtual void SetTextureImage (NSOpenGLPixelBuffer pixelBuffer, NSGLColorBuffer source)
+		{
+			if (pixelBuffer == null)
+				throw new ArgumentNullException ("pixelBuffer");
+			if (IsDirectBinding) {
+				MonoMac.ObjCRuntime.Messaging.void_objc_msgSend_IntPtr_int (this.Handle, selSetTextureImageToPixelBufferColorBuffer, pixelBuffer.Handle, (int)source);
+			} else {
+				MonoMac.ObjCRuntime.Messaging.void_objc_msgSendSuper_IntPtr_int (this.SuperHandle, selSetTextureImageToPixelBufferColorBuffer, pixelBuffer.Handle, (int)source);
+			}
+		}
+
+		public virtual System.IntPtr CGLContextObj {
+			[Export ("CGLContextObj")]
+			get {
+				if (IsDirectBinding) {
+					return MonoMac.ObjCRuntime.Messaging.IntPtr_objc_msgSend (this.Handle, selCGLContextObj);
+				} else {
+					return MonoMac.ObjCRuntime.Messaging.IntPtr_objc_msgSendSuper (this.SuperHandle, selCGLContextObj);
+				}
+			}
+
+		}
+
+		MonoMac.AppKit.NSOpenGLPixelBuffer __mt_PixelBuffer_var;
+		public virtual NSOpenGLPixelBuffer PixelBuffer {
+			[Export ("pixelBuffer")]
+			get {
+				NSOpenGLPixelBuffer ret;
+				if (IsDirectBinding) {
+					ret = (NSOpenGLPixelBuffer) Runtime.GetNSObject (MonoMac.ObjCRuntime.Messaging.IntPtr_objc_msgSend (this.Handle, selPixelBuffer));
+				} else {
+					ret = (NSOpenGLPixelBuffer) Runtime.GetNSObject (MonoMac.ObjCRuntime.Messaging.IntPtr_objc_msgSendSuper (this.SuperHandle, selPixelBuffer));
+				}
+				__mt_PixelBuffer_var = ret;
+				return ret;
+			}
+
+		}
+
+		public virtual int PixelBufferCubeMapFace {
+			[Export ("pixelBufferCubeMapFace")]
+			get {
+				if (IsDirectBinding) {
+					return MonoMac.ObjCRuntime.Messaging.int_objc_msgSend (this.Handle, selPixelBufferCubeMapFace);
+				} else {
+					return MonoMac.ObjCRuntime.Messaging.int_objc_msgSendSuper (this.SuperHandle, selPixelBufferCubeMapFace);
+				}
+			}
+
+		}
+
+		public virtual int PixelBufferMipMapLevel {
+			[Export ("pixelBufferMipMapLevel")]
+			get {
+				if (IsDirectBinding) {
+					return MonoMac.ObjCRuntime.Messaging.int_objc_msgSend (this.Handle, selPixelBufferMipMapLevel);
+				} else {
+					return MonoMac.ObjCRuntime.Messaging.int_objc_msgSendSuper (this.SuperHandle, selPixelBufferMipMapLevel);
+				}
+			}
+
+		}
+
+		MonoMac.AppKit.NSView __mt_View_var;
+		public virtual NSView View {
+			[Export ("view")]
+			get {
+				NSView ret;
+				if (IsDirectBinding) {
+					ret = (NSView) Runtime.GetNSObject (MonoMac.ObjCRuntime.Messaging.IntPtr_objc_msgSend (this.Handle, selView));
+				} else {
+					ret = (NSView) Runtime.GetNSObject (MonoMac.ObjCRuntime.Messaging.IntPtr_objc_msgSendSuper (this.SuperHandle, selView));
+				}
+				__mt_View_var = ret;
+				return ret;
+			}
+
+			[Export ("setView:")]
+			set {
+				if (value == null)
+					throw new ArgumentNullException ("value");
+				if (IsDirectBinding) {
+					MonoMac.ObjCRuntime.Messaging.void_objc_msgSend_IntPtr (this.Handle, selSetView, value.Handle);
+				} else {
+					MonoMac.ObjCRuntime.Messaging.void_objc_msgSendSuper_IntPtr (this.SuperHandle, selSetView, value.Handle);
+				}
+				__mt_View_var = value;
+			}
+		}
+
+		public virtual int CurrentVirtualScreen {
+			[Export ("currentVirtualScreen")]
+			get {
+				if (IsDirectBinding) {
+					return MonoMac.ObjCRuntime.Messaging.int_objc_msgSend (this.Handle, selCurrentVirtualScreen);
+				} else {
+					return MonoMac.ObjCRuntime.Messaging.int_objc_msgSendSuper (this.SuperHandle, selCurrentVirtualScreen);
+				}
+			}
+
+			[Export ("setCurrentVirtualScreen:")]
+			set {
+				if (IsDirectBinding) {
+					MonoMac.ObjCRuntime.Messaging.void_objc_msgSend_int (this.Handle, selSetCurrentVirtualScreen, value);
+				} else {
+					MonoMac.ObjCRuntime.Messaging.void_objc_msgSendSuper_int (this.SuperHandle, selSetCurrentVirtualScreen, value);
+				}
+			}
+		}
+
+	
+	} /* class NSOpenGLContext */
+}

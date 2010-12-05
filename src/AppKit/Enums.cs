@@ -1459,4 +1459,17 @@ namespace MonoMac.AppKit {
 		Closing = 3
 	}
 
+	public enum NSWindowLevel {
+		Normal = 0,
+		Dock = 20,
+		Floating = 3,
+		MainMenu = 24, 
+		ModalPanel = 8,
+		PopUpMenu = 101,
+		ScreenSaver = 1000,
+		Status = 25,
+		Submenu = 3,
+		TornOffMenu = 3
+	}
+
 } 

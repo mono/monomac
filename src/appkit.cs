@@ -12124,7 +12124,7 @@ namespace MonoMac.AppKit {
 		NSBackingStore BackingType  { get; set; }
 	
 		[Export ("level")]
-		int Level  { get; set; }
+		NSWindowLevel Level  { get; set; }
 	
 		[Export ("depthLimit")]
 		NSWindowDepth DepthLimit  { get; set; }
