@@ -1,4 +1,6 @@
 //
+// coreimage.cs: Definitions for CoreImage
+//
 // Copyright 2010, Novell, Inc.
 //
 // Permission is hereby granted, free of charge, to any person obtaining
@@ -22,16 +24,15 @@
 //
 
 //
-// coreimage.cs: Definitions for CoreImage
+//
+// TODO: CIFilter, eliminate the use of the NSDictionary and use
+// strongly typed accessors.
 //
 // TODO:
 // CIImageProvider     - informal protocol, 
 // CIPluginInterface   - informal protocol
 // CIRAWFilter         - informal protocol
 // CIVector
-//
-// TODO: CIFilter, eliminate the use of the NSDictionary and use
-// strongly typed accessors.
 //
 using System;
 using System.Drawing;
