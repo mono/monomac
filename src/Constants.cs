@@ -22,6 +22,7 @@
 //
 namespace MonoMac {
 	public static partial class Constants {
+		public const string AddressBookLibrary = "/System/Library/Frameworks/AddressBook.framework/AddressBook";
 		public const string AppKitLibrary = "/System/Library/Frameworks/AppKit.framework/AppKit";
 		public const string CoreFoundationLibrary = "/System/Library/Frameworks/CoreFoundation.framework/CoreFoundation";
 		public const string CoreGraphicsLibrary = "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/CoreGraphics.framework/CoreGraphics";

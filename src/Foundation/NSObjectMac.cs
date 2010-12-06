@@ -33,6 +33,7 @@ namespace MonoMac.Foundation {
 		// Used to force the loading of AppKit and Foundation
 		static IntPtr fl = Dlfcn.dlopen (Constants.FoundationLibrary, 1);
 		static IntPtr al = Dlfcn.dlopen (Constants.AppKitLibrary, 1);
+		static IntPtr ab = Dlfcn.dlopen (Constants.AddressBookLibrary, 1);
 		static IntPtr wl = Dlfcn.dlopen (Constants.WebKitLibrary, 1);
 		static IntPtr zl = Dlfcn.dlopen (Constants.QuartzLibrary, 1);
 		static IntPtr ql = Dlfcn.dlopen (Constants.QTKitLibrary, 1);
