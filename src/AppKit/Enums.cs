@@ -1471,5 +1471,16 @@ namespace MonoMac.AppKit {
 		Submenu = 3,
 		TornOffMenu = 3
 	}
-
+	
+    public enum NSRuleEditorRowType{
+		Simple = 0,
+		Compound
+    };
+   
+    public enum NSRuleEditorNestingMode {
+		Single,
+		List,
+		Compound,
+		Simple
+    };	
 } 
