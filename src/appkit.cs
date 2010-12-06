@@ -1,5 +1,8 @@
 //
 // Copyright 2010, Novell, Inc.
+// Copyright 2010, Kenneth Pouncey
+// Coprightt 2010, James Clancey
+// 
 //
 // Permission is hereby granted, free of charge, to any person obtaining
 // a copy of this software and associated documentation files (the
