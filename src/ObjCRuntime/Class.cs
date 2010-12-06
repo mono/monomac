@@ -154,8 +154,6 @@ namespace MonoMac.ObjCRuntime {
 			handle = objc_allocateClassPair (parent, name, IntPtr.Zero);
 			k = (objc_class *) handle;
 
-			class_addIvar (handle, "__monoObjectGCHandle", (IntPtr) Marshal.SizeOf (typeof (Int32)), (ushort) 4, "i");
-
 			foreach (PropertyInfo prop in type.GetProperties (BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)) {
 				ConnectAttribute cattr = (ConnectAttribute) Attribute.GetCustomAttribute (prop, typeof (ConnectAttribute));
 				if (cattr != null) {
