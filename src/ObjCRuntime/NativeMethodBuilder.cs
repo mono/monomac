@@ -178,8 +178,8 @@ namespace MonoMac.ObjCRuntime {
 					il.Emit (OpCodes.Call, buildsarray);
 				else
 					il.Emit (OpCodes.Call, buildarray);
-			} else if (typeof (INativeObject).IsAssignableFrom (rettype) && !IsWrappedType (rettype)) {
-				il.Emit (OpCodes.Call, rettype.GetProperty ("Handle").GetGetMethod ());
+			} else if (typeof (INativeObject).IsAssignableFrom (minfo.ReturnType) && !IsWrappedType (minfo.ReturnType)) {
+				il.Emit (OpCodes.Call, minfo.ReturnType.GetProperty ("Handle").GetGetMethod ());
 			} else if (isstret) {
 				il.Emit (OpCodes.Box, minfo.ReturnType);
 				il.Emit (OpCodes.Ldarg, 0);
