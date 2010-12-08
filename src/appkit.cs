@@ -6744,10 +6744,10 @@ namespace MonoMac.AppKit {
 		bool CanReadObjectForClasses (NSObject [] classArray, NSDictionary options);
 
 		[Export ("declareTypes:owner:")]
-		int DeclareTypesowner (string [] newTypes, NSObject newOwner);
+		int DeclareTypes (string [] newTypes, [NullAllowed] NSObject newOwner);
 
 		[Export ("addTypes:owner:")]
-		int AddTypes (string [] newTypes, NSObject newOwner);
+		int AddTypes (string [] newTypes, [NullAllowed] NSObject newOwner);
 
 		[Export ("types")]
 		string [] Types { get; }
