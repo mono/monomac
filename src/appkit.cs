@@ -5596,10 +5596,10 @@ namespace MonoMac.AppKit {
 		void ReloadItem (NSObject item);
 
 		[Export ("parentForItem:")]
-		NSOutlineView GetParent (NSObject item);
+		NSObject GetParent (NSObject item);
 
 		[Export ("itemAtRow:")]
-		NSOutlineView ItemAtRow (int row);
+		NSObject ItemAtRow (int row);
 
 		[Export ("rowForItem:")]
 		int RowForItem (NSObject item);
