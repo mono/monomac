@@ -1,5 +1,6 @@
 <Type Name="NSHttpCookieStorage" FullName="MonoMac.Foundation.NSHttpCookieStorage">
   <TypeSignature Language="C#" Value="public class NSHttpCookieStorage : MonoMac.Foundation.NSObject" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi NSHttpCookieStorage extends MonoMac.Foundation.NSObject" />
   <AssemblyInfo>
     <AssemblyName>MonoMac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -142,6 +143,7 @@
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSHttpCookieStorage ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -443,6 +445,7 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSHttpCookieStorage (MonoMac.Foundation.NSCoder coder);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSCoder coder) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -463,6 +466,7 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSHttpCookieStorage (MonoMac.Foundation.NSObjectFlag t);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSObjectFlag t) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -490,6 +494,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSHttpCookieStorage (IntPtr handle);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int handle) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -507,10 +512,19 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="AcceptPolicy">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSHttpCookieAcceptPolicy AcceptPolicy { set; get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.Foundation.NSHttpCookieAcceptPolicy AcceptPolicy" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("cookieAcceptPolicy")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: MonoMac.Foundation.Export("setCookieAcceptPolicy:")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSHttpCookieAcceptPolicy</ReturnType>
       </ReturnValue>
@@ -545,17 +559,10 @@ public class MyClass : BaseClass {
           </list>
         </remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("cookieAcceptPolicy")</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>set: MonoMac.Foundation.Export("setCookieAcceptPolicy:")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="AcceptPolicyChangedNotification">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString AcceptPolicyChangedNotification;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class MonoMac.Foundation.NSString AcceptPolicyChangedNotification" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -570,6 +577,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="ClassHandle">
       <MemberSignature Language="C#" Value="public override IntPtr ClassHandle { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance native int ClassHandle" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -585,10 +593,16 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="Cookies">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSHttpCookie[] Cookies { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSHttpCookie[] Cookies" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("cookies")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSHttpCookie[]</ReturnType>
       </ReturnValue>
@@ -600,14 +614,10 @@ public class MyClass : BaseClass {
         <remarks>
         </remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("cookies")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="CookiesChangedNotification">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString CookiesChangedNotification;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class MonoMac.Foundation.NSString CookiesChangedNotification" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -622,6 +632,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="CookiesForUrl">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSHttpCookie[] CookiesForUrl (MonoMac.Foundation.NSUrl url);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class MonoMac.Foundation.NSHttpCookie[] CookiesForUrl(class MonoMac.Foundation.NSUrl url) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -674,6 +685,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="DeleteCookie">
       <MemberSignature Language="C#" Value="public virtual void DeleteCookie (MonoMac.Foundation.NSHttpCookie cookie);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void DeleteCookie(class MonoMac.Foundation.NSHttpCookie cookie) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -700,6 +712,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="SetCookie">
       <MemberSignature Language="C#" Value="public virtual void SetCookie (MonoMac.Foundation.NSHttpCookie cookie);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetCookie(class MonoMac.Foundation.NSHttpCookie cookie) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -735,6 +748,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="SetCookies">
       <MemberSignature Language="C#" Value="public virtual void SetCookies (MonoMac.Foundation.NSHttpCookie[] cookies, MonoMac.Foundation.NSUrl forUrl, MonoMac.Foundation.NSUrl mainDocumentUrl);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetCookies(class MonoMac.Foundation.NSHttpCookie[] cookies, class MonoMac.Foundation.NSUrl forUrl, class MonoMac.Foundation.NSUrl mainDocumentUrl) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -775,10 +789,16 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="SharedStorage">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSHttpCookieStorage SharedStorage { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSHttpCookieStorage SharedStorage" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("sharedHTTPCookieStorage")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSHttpCookieStorage</ReturnType>
       </ReturnValue>
@@ -790,11 +810,6 @@ public class MyClass : BaseClass {
         <remarks>
         </remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("sharedHTTPCookieStorage")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
   </Members>
 </Type>

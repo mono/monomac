@@ -1,5 +1,6 @@
 <Type Name="CIContext" FullName="MonoMac.CoreImage.CIContext">
   <TypeSignature Language="C#" Value="public class CIContext : MonoMac.Foundation.NSObject" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CIContext extends MonoMac.Foundation.NSObject" />
   <AssemblyInfo>
     <AssemblyName>MonoMac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -20,6 +21,7 @@
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public CIContext ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -37,6 +39,7 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public CIContext (MonoMac.Foundation.NSCoder coder);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSCoder coder) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -57,6 +60,7 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public CIContext (MonoMac.Foundation.NSObjectFlag t);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSObjectFlag t) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -84,6 +88,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public CIContext (IntPtr handle);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int handle) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -101,6 +106,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="ClassHandle">
       <MemberSignature Language="C#" Value="public override IntPtr ClassHandle { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance native int ClassHandle" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -112,6 +118,196 @@ public class MyClass : BaseClass {
         <summary>The handle for this class.</summary>
         <value>The pointer to the Objective-C class.</value>
         <remarks>Each MonoMac class mirrors an unmanaged Objective-C class.   This value contains the pointer to the Objective-C class, it is similar to calling objc_getClass with the object name.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ClearCaches">
+      <MemberSignature Language="C#" Value="public virtual void ClearCaches ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void ClearCaches() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("clearCaches")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateCGImage">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreGraphics.CGImage CreateCGImage (MonoMac.CoreImage.CIImage image, System.Drawing.RectangleF fromRectangle);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class MonoMac.CoreGraphics.CGImage CreateCGImage(class MonoMac.CoreImage.CIImage image, valuetype System.Drawing.RectangleF fromRectangle) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("createCGImage:fromRect:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreGraphics.CGImage</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="image" Type="MonoMac.CoreImage.CIImage" />
+        <Parameter Name="fromRectangle" Type="System.Drawing.RectangleF" />
+      </Parameters>
+      <Docs>
+        <param name="image">To be added.</param>
+        <param name="fromRectangle">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateCGImage">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreGraphics.CGImage CreateCGImage (MonoMac.CoreImage.CIImage image, System.Drawing.RectangleF fromRect, MonoMac.CoreImage.CIFormat format, MonoMac.CoreGraphics.CGColorSpace colorSpace);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class MonoMac.CoreGraphics.CGImage CreateCGImage(class MonoMac.CoreImage.CIImage image, valuetype System.Drawing.RectangleF fromRect, valuetype MonoMac.CoreImage.CIFormat format, class MonoMac.CoreGraphics.CGColorSpace colorSpace) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("createCGImage:fromRect:format:colorSpace:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreGraphics.CGImage</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="image" Type="MonoMac.CoreImage.CIImage" />
+        <Parameter Name="fromRect" Type="System.Drawing.RectangleF" />
+        <Parameter Name="format" Type="MonoMac.CoreImage.CIFormat" />
+        <Parameter Name="colorSpace" Type="MonoMac.CoreGraphics.CGColorSpace" />
+      </Parameters>
+      <Docs>
+        <param name="image">To be added.</param>
+        <param name="fromRect">To be added.</param>
+        <param name="format">To be added.</param>
+        <param name="colorSpace">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DrawImage">
+      <MemberSignature Language="C#" Value="public virtual void DrawImage (MonoMac.CoreImage.CIImage image, System.Drawing.PointF atPoint, System.Drawing.RectangleF fromRect);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void DrawImage(class MonoMac.CoreImage.CIImage image, valuetype System.Drawing.PointF atPoint, valuetype System.Drawing.RectangleF fromRect) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("drawImage:atPoint:fromRect:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="image" Type="MonoMac.CoreImage.CIImage" />
+        <Parameter Name="atPoint" Type="System.Drawing.PointF" />
+        <Parameter Name="fromRect" Type="System.Drawing.RectangleF" />
+      </Parameters>
+      <Docs>
+        <param name="image">To be added.</param>
+        <param name="atPoint">To be added.</param>
+        <param name="fromRect">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DrawImage">
+      <MemberSignature Language="C#" Value="public virtual void DrawImage (MonoMac.CoreImage.CIImage image, System.Drawing.RectangleF inRectangle, System.Drawing.RectangleF fromRectangle);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void DrawImage(class MonoMac.CoreImage.CIImage image, valuetype System.Drawing.RectangleF inRectangle, valuetype System.Drawing.RectangleF fromRectangle) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("drawImage:inRect:fromRect:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="image" Type="MonoMac.CoreImage.CIImage" />
+        <Parameter Name="inRectangle" Type="System.Drawing.RectangleF" />
+        <Parameter Name="fromRectangle" Type="System.Drawing.RectangleF" />
+      </Parameters>
+      <Docs>
+        <param name="image">To be added.</param>
+        <param name="inRectangle">To be added.</param>
+        <param name="fromRectangle">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ReclaimResources">
+      <MemberSignature Language="C#" Value="public virtual void ReclaimResources ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void ReclaimResources() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("reclaimResources")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RenderToBitmap">
+      <MemberSignature Language="C#" Value="public virtual void RenderToBitmap (MonoMac.CoreImage.CIImage image, IntPtr bitmapPtr, int bytesPerRow, System.Drawing.RectangleF bounds, MonoMac.CoreImage.CIFormat bitmapFormat, MonoMac.CoreGraphics.CGColorSpace colorSpace);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void RenderToBitmap(class MonoMac.CoreImage.CIImage image, native int bitmapPtr, int32 bytesPerRow, valuetype System.Drawing.RectangleF bounds, valuetype MonoMac.CoreImage.CIFormat bitmapFormat, class MonoMac.CoreGraphics.CGColorSpace colorSpace) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("render:toBitmap:rowBytes:bounds:format:colorSpace:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="image" Type="MonoMac.CoreImage.CIImage" />
+        <Parameter Name="bitmapPtr" Type="System.IntPtr" />
+        <Parameter Name="bytesPerRow" Type="System.Int32" />
+        <Parameter Name="bounds" Type="System.Drawing.RectangleF" />
+        <Parameter Name="bitmapFormat" Type="MonoMac.CoreImage.CIFormat" />
+        <Parameter Name="colorSpace" Type="MonoMac.CoreGraphics.CGColorSpace" />
+      </Parameters>
+      <Docs>
+        <param name="image">To be added.</param>
+        <param name="bitmapPtr">To be added.</param>
+        <param name="bytesPerRow">To be added.</param>
+        <param name="bounds">To be added.</param>
+        <param name="bitmapFormat">To be added.</param>
+        <param name="colorSpace">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>

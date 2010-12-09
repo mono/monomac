@@ -1,5 +1,6 @@
 <Type Name="MonoPInvokeCallbackAttribute" FullName="MonoMac.MonoPInvokeCallbackAttribute">
   <TypeSignature Language="C#" Value="public sealed class MonoPInvokeCallbackAttribute : Attribute" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit MonoPInvokeCallbackAttribute extends System.Attribute" />
   <AssemblyInfo>
     <AssemblyName>MonoMac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -8,6 +9,11 @@
     <BaseTypeName>System.Attribute</BaseTypeName>
   </Base>
   <Interfaces />
+  <Attributes>
+    <Attribute>
+      <AttributeName>System.AttributeUsage(System.AttributeTargets.Method)</AttributeName>
+    </Attribute>
+  </Attributes>
   <Docs>
     <summary>Attribute used to annotate functions that will be called back from the unmanaged world.</summary>
     <remarks>
@@ -57,6 +63,7 @@
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public MonoPInvokeCallbackAttribute (Type t);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.Type t) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -94,9 +101,4 @@
       </Docs>
     </Member>
   </Members>
-  <Attributes>
-    <Attribute>
-      <AttributeName>System.AttributeUsage(System.AttributeTargets.Method)</AttributeName>
-    </Attribute>
-  </Attributes>
 </Type>

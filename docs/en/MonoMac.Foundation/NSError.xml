@@ -1,5 +1,6 @@
 <Type Name="NSError" FullName="MonoMac.Foundation.NSError">
   <TypeSignature Language="C#" Value="public class NSError : MonoMac.Foundation.NSObject" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit NSError extends MonoMac.Foundation.NSObject" />
   <AssemblyInfo>
     <AssemblyName>MonoMac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -20,6 +21,7 @@
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSError ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -37,6 +39,7 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSError (MonoMac.Foundation.NSCoder coder);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSCoder coder) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -57,6 +60,7 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSError (MonoMac.Foundation.NSObjectFlag t);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSObjectFlag t) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -84,6 +88,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSError (IntPtr handle);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int handle) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -101,6 +106,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSError (MonoMac.Foundation.NSString domain, int code);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSString domain, int32 code) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -118,6 +124,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSError (MonoMac.Foundation.NSString domain, int code, MonoMac.Foundation.NSDictionary userInfo);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSString domain, int32 code, class MonoMac.Foundation.NSDictionary userInfo) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -142,6 +149,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="ClassHandle">
       <MemberSignature Language="C#" Value="public override IntPtr ClassHandle { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance native int ClassHandle" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -157,6 +165,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="CocoaErrorDomain">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString CocoaErrorDomain { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString CocoaErrorDomain" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -172,10 +181,16 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="Code">
       <MemberSignature Language="C#" Value="public virtual int Code { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 Code" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("code")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -184,18 +199,19 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("code")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="Domain">
       <MemberSignature Language="C#" Value="public virtual string Domain { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Domain" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("domain")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -204,14 +220,10 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("domain")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="FilePathErrorKey">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString FilePathErrorKey { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString FilePathErrorKey" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -227,6 +239,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="FromDomain">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSError FromDomain (MonoMac.Foundation.NSString domain, int code);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSError FromDomain(class MonoMac.Foundation.NSString domain, int32 code) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -248,6 +261,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="FromDomain">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSError FromDomain (MonoMac.Foundation.NSString domain, int code, MonoMac.Foundation.NSDictionary userInfo);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSError FromDomain(class MonoMac.Foundation.NSString domain, int32 code, class MonoMac.Foundation.NSDictionary userInfo) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -276,6 +290,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="HelpAnchorErrorKey">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString HelpAnchorErrorKey { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString HelpAnchorErrorKey" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -291,10 +306,16 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="LocalizedDescription">
       <MemberSignature Language="C#" Value="public virtual string LocalizedDescription { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string LocalizedDescription" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("localizedDescription")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -303,14 +324,10 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("localizedDescription")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="LocalizedDescriptionKey">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString LocalizedDescriptionKey { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString LocalizedDescriptionKey" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -326,6 +343,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="LocalizedFailureReasonErrorKey">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString LocalizedFailureReasonErrorKey { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString LocalizedFailureReasonErrorKey" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -341,6 +359,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="LocalizedRecoveryOptionsErrorKey">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString LocalizedRecoveryOptionsErrorKey { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString LocalizedRecoveryOptionsErrorKey" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -356,6 +375,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="LocalizedRecoverySuggestionErrorKey">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString LocalizedRecoverySuggestionErrorKey { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString LocalizedRecoverySuggestionErrorKey" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -371,6 +391,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="MachErrorDomain">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString MachErrorDomain { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString MachErrorDomain" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -386,6 +407,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="OsStatusErrorDomain">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString OsStatusErrorDomain { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString OsStatusErrorDomain" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -401,6 +423,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="PosixErrorDomain">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString PosixErrorDomain { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString PosixErrorDomain" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -416,6 +439,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="RecoveryAttempterErrorKey">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString RecoveryAttempterErrorKey { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString RecoveryAttempterErrorKey" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -431,6 +455,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="StringEncodingErrorKey">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString StringEncodingErrorKey { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString StringEncodingErrorKey" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -446,6 +471,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="ToString">
       <MemberSignature Language="C#" Value="public override string ToString ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance string ToString() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -462,6 +488,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="UnderlyingErrorKey">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString UnderlyingErrorKey { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString UnderlyingErrorKey" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -477,6 +504,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="UrlErrorKey">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString UrlErrorKey { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString UrlErrorKey" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -492,10 +520,16 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="UserInfo">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSDictionary UserInfo { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSDictionary UserInfo" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("userInfo")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSDictionary</ReturnType>
       </ReturnValue>
@@ -504,11 +538,6 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("userInfo")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
   </Members>
 </Type>

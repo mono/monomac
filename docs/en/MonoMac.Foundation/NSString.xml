@@ -1,5 +1,6 @@
 <Type Name="NSString" FullName="MonoMac.Foundation.NSString">
   <TypeSignature Language="C#" Value="public class NSString : MonoMac.Foundation.NSObject" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit NSString extends MonoMac.Foundation.NSObject" />
   <AssemblyInfo>
     <AssemblyName>MonoMac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -20,6 +21,7 @@
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSString ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -37,6 +39,7 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSString (MonoMac.Foundation.NSCoder coder);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSCoder coder) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -57,6 +60,7 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSString (MonoMac.Foundation.NSObjectFlag t);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSObjectFlag t) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -84,6 +88,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSString (IntPtr handle);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int handle) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -101,6 +106,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSString (string str);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string str) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -116,6 +122,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="_characterAtIndex">
       <MemberSignature Language="C#" Value="public virtual char _characterAtIndex (int index);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance char _characterAtIndex(int32 index) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -140,6 +147,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="ClassHandle">
       <MemberSignature Language="C#" Value="public override IntPtr ClassHandle { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance native int ClassHandle" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -155,10 +163,16 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="DataUsingEncoding">
       <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSData DataUsingEncoding (MonoMac.Foundation.NSStringEncoding enc);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.Foundation.NSData DataUsingEncoding(valuetype MonoMac.Foundation.NSStringEncoding enc) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use Encode instead")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSData</ReturnType>
       </ReturnValue>
@@ -171,18 +185,19 @@ public class MyClass : BaseClass {
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="DataUsingEncoding">
+      <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSData DataUsingEncoding (MonoMac.Foundation.NSStringEncoding enc, bool allowLossyConversion);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.Foundation.NSData DataUsingEncoding(valuetype MonoMac.Foundation.NSStringEncoding enc, bool allowLossyConversion) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>System.Obsolete("Use Encode instead")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="DataUsingEncoding">
-      <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSData DataUsingEncoding (MonoMac.Foundation.NSStringEncoding enc, bool allowLossyConversion);" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSData</ReturnType>
       </ReturnValue>
@@ -197,14 +212,10 @@ public class MyClass : BaseClass {
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Obsolete("Use Encode instead")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="Encode">
       <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSData Encode (MonoMac.Foundation.NSStringEncoding enc);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.Foundation.NSData Encode(valuetype MonoMac.Foundation.NSStringEncoding enc) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -224,6 +235,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="Encode">
       <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSData Encode (MonoMac.Foundation.NSStringEncoding enc, bool allowLossyConversion);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.Foundation.NSData Encode(valuetype MonoMac.Foundation.NSStringEncoding enc, bool allowLossyConversion) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -245,6 +257,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="Equals">
       <MemberSignature Language="C#" Value="public override bool Equals (object obj);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool Equals(object obj) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -264,6 +277,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="Equals">
       <MemberSignature Language="C#" Value="public static bool Equals (MonoMac.Foundation.NSString a, MonoMac.Foundation.NSString b);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool Equals(class MonoMac.Foundation.NSString a, class MonoMac.Foundation.NSString b) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -285,6 +299,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="FromData">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString FromData (MonoMac.Foundation.NSData data, MonoMac.Foundation.NSStringEncoding encoding);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSString FromData(class MonoMac.Foundation.NSData data, valuetype MonoMac.Foundation.NSStringEncoding encoding) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -306,6 +321,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="FromHandle">
       <MemberSignature Language="C#" Value="public static string FromHandle (IntPtr usrhandle);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig string FromHandle(native int usrhandle) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -325,6 +341,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="GetHashCode">
       <MemberSignature Language="C#" Value="public override int GetHashCode ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance int32 GetHashCode() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -341,6 +358,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="Item">
       <MemberSignature Language="C#" Value="public char this[int idx] { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance char Item(int32)" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -360,6 +378,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="Length">
       <MemberSignature Language="C#" Value="public virtual int Length { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 Length" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -380,6 +399,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="op_Equality">
       <MemberSignature Language="C#" Value="public static bool op_Equality (MonoMac.Foundation.NSString a, MonoMac.Foundation.NSString b);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname bool op_Equality(class MonoMac.Foundation.NSString a, class MonoMac.Foundation.NSString b) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -401,6 +421,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="op_Explicit">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString op_Explicit (string str);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname class MonoMac.Foundation.NSString op_Explicit(string str) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -420,6 +441,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="op_Implicit">
       <MemberSignature Language="C#" Value="public static string op_Implicit (MonoMac.Foundation.NSString str);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname string op_Implicit(class MonoMac.Foundation.NSString str) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -439,6 +461,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="op_Inequality">
       <MemberSignature Language="C#" Value="public static bool op_Inequality (MonoMac.Foundation.NSString a, MonoMac.Foundation.NSString b);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname bool op_Inequality(class MonoMac.Foundation.NSString a, class MonoMac.Foundation.NSString b) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -460,6 +483,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="StringSize">
       <MemberSignature Language="C#" Value="public System.Drawing.SizeF StringSize (MonoMac.Foundation.NSDictionary attributedStringAttributes);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype System.Drawing.SizeF StringSize(class MonoMac.Foundation.NSDictionary attributedStringAttributes) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -479,6 +503,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="ToString">
       <MemberSignature Language="C#" Value="public override string ToString ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance string ToString() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>

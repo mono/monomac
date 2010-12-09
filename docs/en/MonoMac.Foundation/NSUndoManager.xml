@@ -1,5 +1,6 @@
 <Type Name="NSUndoManager" FullName="MonoMac.Foundation.NSUndoManager">
   <TypeSignature Language="C#" Value="public class NSUndoManager : MonoMac.Foundation.NSObject" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit NSUndoManager extends MonoMac.Foundation.NSObject" />
   <AssemblyInfo>
     <AssemblyName>MonoMac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -20,6 +21,7 @@
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSUndoManager ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -37,6 +39,7 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSUndoManager (MonoMac.Foundation.NSCoder coder);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSCoder coder) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -57,6 +60,7 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSUndoManager (MonoMac.Foundation.NSObjectFlag t);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSObjectFlag t) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -84,6 +88,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSUndoManager (IntPtr handle);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int handle) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -101,6 +106,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="BeginUndoGrouping">
       <MemberSignature Language="C#" Value="public virtual void BeginUndoGrouping ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void BeginUndoGrouping() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -121,30 +127,16 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="CanRedo">
       <MemberSignature Language="C#" Value="public virtual bool CanRedo { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool CanRedo" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("canRedo")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="CanUndo">
-      <MemberSignature Language="C#" Value="public virtual bool CanUndo { get; }" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -153,14 +145,47 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="CanUndo">
+      <MemberSignature Language="C#" Value="public virtual bool CanUndo { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool CanUndo" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("canUndo")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CheckpointNotification">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString CheckpointNotification { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString CheckpointNotification" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="ClassHandle">
       <MemberSignature Language="C#" Value="public override IntPtr ClassHandle { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance native int ClassHandle" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -174,8 +199,57 @@ public class MyClass : BaseClass {
         <remarks>Each MonoMac class mirrors an unmanaged Objective-C class.   This value contains the pointer to the Objective-C class, it is similar to calling objc_getClass with the object name.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="DidOpenUndoGroupNotification">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString DidOpenUndoGroupNotification { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString DidOpenUndoGroupNotification" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DidRedoChangeNotification">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString DidRedoChangeNotification { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString DidRedoChangeNotification" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DidUndoChangeNotification">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString DidUndoChangeNotification { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString DidUndoChangeNotification" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="DisableUndoRegistration">
       <MemberSignature Language="C#" Value="public virtual void DisableUndoRegistration ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void DisableUndoRegistration() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -196,6 +270,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="EnableUndoRegistration">
       <MemberSignature Language="C#" Value="public virtual void EnableUndoRegistration ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void EnableUndoRegistration() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -216,6 +291,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="EndUndoGrouping">
       <MemberSignature Language="C#" Value="public virtual void EndUndoGrouping ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void EndUndoGrouping() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -236,10 +312,16 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="GroupingLevel">
       <MemberSignature Language="C#" Value="public virtual int GroupingLevel { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 GroupingLevel" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("groupingLevel")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -248,26 +330,14 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("groupingLevel")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="GroupsByEvent">
       <MemberSignature Language="C#" Value="public virtual bool GroupsByEvent { set; get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool GroupsByEvent" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("groupsByEvent")</AttributeName>
@@ -276,13 +346,6 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setGroupsByEvent:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="IsRedoing">
-      <MemberSignature Language="C#" Value="public virtual bool IsRedoing { get; }" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -291,18 +354,19 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="IsRedoing">
+      <MemberSignature Language="C#" Value="public virtual bool IsRedoing { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsRedoing" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("isRedoing")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="IsUndoing">
-      <MemberSignature Language="C#" Value="public virtual bool IsUndoing { get; }" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -311,18 +375,19 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="IsUndoing">
+      <MemberSignature Language="C#" Value="public virtual bool IsUndoing { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsUndoing" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("isUndoing")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="IsUndoRegistrationEnabled">
-      <MemberSignature Language="C#" Value="public virtual bool IsUndoRegistrationEnabled { get; }" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -331,26 +396,35 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="IsUndoRegistrationEnabled">
+      <MemberSignature Language="C#" Value="public virtual bool IsUndoRegistrationEnabled { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsUndoRegistrationEnabled" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("isUndoRegistrationEnabled")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="LevelsOfUndo">
-      <MemberSignature Language="C#" Value="public virtual int LevelsOfUndo { set; get; }" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
+        <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="LevelsOfUndo">
+      <MemberSignature Language="C#" Value="public virtual int LevelsOfUndo { set; get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 LevelsOfUndo" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("levelsOfUndo")</AttributeName>
@@ -359,9 +433,18 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setLevelsOfUndo:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="PrepareWithInvocationTarget">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject PrepareWithInvocationTarget (MonoMac.Foundation.NSObject target);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class MonoMac.Foundation.NSObject PrepareWithInvocationTarget(class MonoMac.Foundation.NSObject target) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -386,6 +469,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="Redo">
       <MemberSignature Language="C#" Value="public virtual void Redo ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Redo() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -406,30 +490,16 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="RedoActionName">
       <MemberSignature Language="C#" Value="public virtual string RedoActionName { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string RedoActionName" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("redoActionName")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="RedoMenuItemTitle">
-      <MemberSignature Language="C#" Value="public virtual string RedoMenuItemTitle { get; }" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -438,14 +508,31 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="RedoMenuItemTitle">
+      <MemberSignature Language="C#" Value="public virtual string RedoMenuItemTitle { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string RedoMenuItemTitle" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("redoMenuItemTitle")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="RedoMenuTitleForUndoActionName">
       <MemberSignature Language="C#" Value="public virtual string RedoMenuTitleForUndoActionName (string name);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string RedoMenuTitleForUndoActionName(string name) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -470,6 +557,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="RegisterUndoWithTarget">
       <MemberSignature Language="C#" Value="public virtual void RegisterUndoWithTarget (MonoMac.Foundation.NSObject target, MonoMac.ObjCRuntime.Selector selector, MonoMac.Foundation.NSObject anObject);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void RegisterUndoWithTarget(class MonoMac.Foundation.NSObject target, class MonoMac.ObjCRuntime.Selector selector, class MonoMac.Foundation.NSObject anObject) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -497,6 +585,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="RemoveAllActions">
       <MemberSignature Language="C#" Value="public virtual void RemoveAllActions ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void RemoveAllActions() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -517,6 +606,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="RemoveAllActions">
       <MemberSignature Language="C#" Value="public virtual void RemoveAllActions (MonoMac.Foundation.NSObject target);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void RemoveAllActions(class MonoMac.Foundation.NSObject target) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -540,18 +630,11 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="RunLoopModes">
       <MemberSignature Language="C#" Value="public virtual string[] RunLoopModes { set; get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string[] RunLoopModes" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String[]</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("runLoopModes")</AttributeName>
@@ -560,9 +643,18 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setRunLoopModes:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="SetActionname">
       <MemberSignature Language="C#" Value="public virtual void SetActionname (string actionName);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetActionname(string actionName) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -586,6 +678,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="Undo">
       <MemberSignature Language="C#" Value="public virtual void Undo ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Undo() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -606,30 +699,16 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="UndoActionName">
       <MemberSignature Language="C#" Value="public virtual string UndoActionName { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string UndoActionName" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("undoActionName")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="UndoMenuItemTitle">
-      <MemberSignature Language="C#" Value="public virtual string UndoMenuItemTitle { get; }" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -638,14 +717,31 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="UndoMenuItemTitle">
+      <MemberSignature Language="C#" Value="public virtual string UndoMenuItemTitle { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string UndoMenuItemTitle" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("undoMenuItemTitle")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="UndoMenuTitleForUndoActionName">
       <MemberSignature Language="C#" Value="public virtual string UndoMenuTitleForUndoActionName (string name);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string UndoMenuTitleForUndoActionName(string name) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -670,6 +766,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="UndoNestedGroup">
       <MemberSignature Language="C#" Value="public virtual void UndoNestedGroup ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void UndoNestedGroup() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -685,6 +782,54 @@ public class MyClass : BaseClass {
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WillCloseUndoGroupNotification">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString WillCloseUndoGroupNotification { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString WillCloseUndoGroupNotification" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WillRedoChangeNotification">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString WillRedoChangeNotification { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString WillRedoChangeNotification" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WillUndoChangeNotification">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString WillUndoChangeNotification { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString WillUndoChangeNotification" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

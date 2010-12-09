@@ -1,5 +1,6 @@
 <Type Name="NSHttpCookie" FullName="MonoMac.Foundation.NSHttpCookie">
   <TypeSignature Language="C#" Value="public class NSHttpCookie : MonoMac.Foundation.NSObject" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi NSHttpCookie extends MonoMac.Foundation.NSObject" />
   <AssemblyInfo>
     <AssemblyName>MonoMac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -279,6 +280,7 @@
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSHttpCookie ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -580,6 +582,7 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSHttpCookie (MonoMac.Foundation.NSCoder coder);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSCoder coder) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -600,6 +603,7 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSHttpCookie (MonoMac.Foundation.NSDictionary properties);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSDictionary properties) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -646,6 +650,7 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSHttpCookie (MonoMac.Foundation.NSObjectFlag t);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSObjectFlag t) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -673,6 +678,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSHttpCookie (IntPtr handle);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int handle) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -690,6 +696,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="ClassHandle">
       <MemberSignature Language="C#" Value="public override IntPtr ClassHandle { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance native int ClassHandle" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -705,10 +712,16 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="Comment">
       <MemberSignature Language="C#" Value="public virtual string Comment { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Comment" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("comment")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -720,18 +733,19 @@ public class MyClass : BaseClass {
         <remarks>
         </remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("comment")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="CommentUrl">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSUrl CommentUrl { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSUrl CommentUrl" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("commentURL")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSUrl</ReturnType>
       </ReturnValue>
@@ -743,14 +757,10 @@ public class MyClass : BaseClass {
         <remarks>
         </remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("commentURL")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="CookieFromProperties">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSHttpCookie CookieFromProperties (MonoMac.Foundation.NSDictionary properties);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSHttpCookie CookieFromProperties(class MonoMac.Foundation.NSDictionary properties) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -803,6 +813,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="CookiesWithResponseHeaderFields">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSHttpCookie[] CookiesWithResponseHeaderFields (MonoMac.Foundation.NSDictionary headerFields, MonoMac.Foundation.NSUrl url);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSHttpCookie[] CookiesWithResponseHeaderFields(class MonoMac.Foundation.NSDictionary headerFields, class MonoMac.Foundation.NSUrl url) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -843,10 +854,16 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="Domain">
       <MemberSignature Language="C#" Value="public virtual string Domain { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Domain" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("domain")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -867,18 +884,19 @@ public class MyClass : BaseClass {
           </list>
         </remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("domain")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="ExpiresDate">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSDate ExpiresDate { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSDate ExpiresDate" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("expiresDate")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSDate</ReturnType>
       </ReturnValue>
@@ -890,18 +908,19 @@ public class MyClass : BaseClass {
         <remarks>
         </remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("expiresDate")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="IsHttpOnly">
       <MemberSignature Language="C#" Value="public virtual bool IsHttpOnly { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsHttpOnly" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("isHTTPOnly")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -924,18 +943,19 @@ public class MyClass : BaseClass {
           </list>
         </remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("isHTTPOnly")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="IsSecure">
       <MemberSignature Language="C#" Value="public virtual bool IsSecure { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsSecure" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("isSecure")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -947,18 +967,19 @@ public class MyClass : BaseClass {
         <remarks>
         </remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("isSecure")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="IsSessionOnly">
       <MemberSignature Language="C#" Value="public virtual bool IsSessionOnly { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsSessionOnly" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("isSessionOnly")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -970,14 +991,10 @@ public class MyClass : BaseClass {
         <remarks>
         </remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("isSessionOnly")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="KeyComment">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString KeyComment;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class MonoMac.Foundation.NSString KeyComment" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -992,6 +1009,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="KeyCommentURL">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString KeyCommentURL;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class MonoMac.Foundation.NSString KeyCommentURL" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -1006,6 +1024,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="KeyDiscard">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString KeyDiscard;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class MonoMac.Foundation.NSString KeyDiscard" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -1020,6 +1039,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="KeyDomain">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString KeyDomain;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class MonoMac.Foundation.NSString KeyDomain" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -1034,6 +1054,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="KeyExpires">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString KeyExpires;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class MonoMac.Foundation.NSString KeyExpires" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -1048,6 +1069,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="KeyMaximumAge">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString KeyMaximumAge;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class MonoMac.Foundation.NSString KeyMaximumAge" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -1062,6 +1084,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="KeyName">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString KeyName;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class MonoMac.Foundation.NSString KeyName" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -1076,6 +1099,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="KeyOriginURL">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString KeyOriginURL;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class MonoMac.Foundation.NSString KeyOriginURL" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -1090,6 +1114,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="KeyPath">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString KeyPath;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class MonoMac.Foundation.NSString KeyPath" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -1104,6 +1129,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="KeyPort">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString KeyPort;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class MonoMac.Foundation.NSString KeyPort" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -1118,6 +1144,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="KeySecure">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString KeySecure;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class MonoMac.Foundation.NSString KeySecure" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -1132,6 +1159,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="KeyValue">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString KeyValue;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class MonoMac.Foundation.NSString KeyValue" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -1146,6 +1174,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="KeyVersion">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString KeyVersion;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class MonoMac.Foundation.NSString KeyVersion" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -1160,10 +1189,16 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="Name">
       <MemberSignature Language="C#" Value="public virtual string Name { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Name" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("name")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -1172,18 +1207,19 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("name")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="Path">
       <MemberSignature Language="C#" Value="public virtual string Path { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Path" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("path")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -1204,18 +1240,19 @@ public class MyClass : BaseClass {
           </list>
         </remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("path")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="PortList">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSNumber[] PortList { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSNumber[] PortList" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("portList")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSNumber[]</ReturnType>
       </ReturnValue>
@@ -1227,18 +1264,19 @@ public class MyClass : BaseClass {
         <remarks>
         </remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("portList")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="Properties">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSDictionary Properties { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSDictionary Properties" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("properties")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSDictionary</ReturnType>
       </ReturnValue>
@@ -1260,14 +1298,10 @@ public class MyClass : BaseClass {
           </list>
         </remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("properties")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="RequestHeaderFieldsWithCookies">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSDictionary RequestHeaderFieldsWithCookies (MonoMac.Foundation.NSHttpCookie[] cookies);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSDictionary RequestHeaderFieldsWithCookies(class MonoMac.Foundation.NSHttpCookie[] cookies) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -1306,10 +1340,16 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="Value">
       <MemberSignature Language="C#" Value="public virtual string Value { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Value" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("value")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -1320,18 +1360,19 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("value")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="Version">
       <MemberSignature Language="C#" Value="public virtual uint Version { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 Version" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("version")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
@@ -1342,11 +1383,6 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("version")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
   </Members>
 </Type>

@@ -1,5 +1,6 @@
 <Type Name="AudioSource" FullName="MonoMac.AudioToolbox.AudioSource">
   <TypeSignature Language="C#" Value="public abstract class AudioSource : MonoMac.AudioToolbox.AudioFile" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract AudioSource extends MonoMac.AudioToolbox.AudioFile" />
   <AssemblyInfo>
     <AssemblyName>MonoMac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -25,6 +26,7 @@ To use this class, you must create a class that derives from AudioSource and ove
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public AudioSource (MonoMac.AudioToolbox.AudioFileType fileTypeHint);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype MonoMac.AudioToolbox.AudioFileType fileTypeHint) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -40,6 +42,7 @@ To use this class, you must create a class that derives from AudioSource and ove
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public AudioSource (MonoMac.AudioToolbox.AudioFileType inFileType, MonoMac.AudioToolbox.AudioStreamBasicDescription format);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype MonoMac.AudioToolbox.AudioFileType inFileType, valuetype MonoMac.AudioToolbox.AudioStreamBasicDescription format) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -75,6 +78,7 @@ To use this class, you must create a class that derives from AudioSource and ove
     </Member>
     <Member MemberName="Dispose">
       <MemberSignature Language="C#" Value="protected override void Dispose (bool disposing);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Dispose(bool disposing) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -100,6 +104,7 @@ To use this class, you must create a class that derives from AudioSource and ove
     </Member>
     <Member MemberName="Read">
       <MemberSignature Language="C#" Value="public abstract bool Read (long position, int requestCount, IntPtr buffer, out int actualCount);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool Read(int64 position, int32 requestCount, native int buffer, int32 actualCount) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -125,6 +130,7 @@ To use this class, you must create a class that derives from AudioSource and ove
     </Member>
     <Member MemberName="Size">
       <MemberSignature Language="C#" Value="public abstract long Size { set; get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int64 Size" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -140,6 +146,7 @@ To use this class, you must create a class that derives from AudioSource and ove
     </Member>
     <Member MemberName="Write">
       <MemberSignature Language="C#" Value="public abstract bool Write (long position, int requestCount, IntPtr buffer, out int actualCount);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool Write(int64 position, int32 requestCount, native int buffer, int32 actualCount) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
