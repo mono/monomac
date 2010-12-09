@@ -35,9 +35,11 @@ namespace MonoMac.AppKit
 	internal class ActionDispatcher : NSObject
 	{
 		const string skey = "__monomac_internal_ActionDispatcher_activated:";
+		const string dkey = "__monomac_internal_ActionDispatcher_doubleActivated:";
 		public static Selector Action = new Selector (skey);
-
+		public static Selector DoubleAction = new Selector (dkey);
 		public EventHandler Activated;
+		public EventHandler DoubleActivated;
 
 		[Export (skey)]
 		public void OnActivated (NSObject sender)
@@ -46,6 +48,13 @@ namespace MonoMac.AppKit
 				Activated (sender, EventArgs.Empty);
 		}
 
+		[Export (dkey)]
+		public void OnActivated2 (NSObject sender)
+		{
+			if (DoubleActivated != null)
+				DoubleActivated (sender, EventArgs.Empty);
+		}
+		
 		public ActionDispatcher (EventHandler handler)
 		{
 			Activated = handler;
@@ -53,6 +62,42 @@ namespace MonoMac.AppKit
 
 		public ActionDispatcher ()
 		{
+		}
+
+		public static NSObject SetupAction (NSObject target, EventHandler handler)
+		{
+			ActionDispatcher ctarget = target as ActionDispatcher;
+			if (ctarget == null){
+				ctarget = new ActionDispatcher ();
+				ctarget.Activated += handler;
+			}
+			return ctarget;
+		}
+
+		public static void RemoveAction (NSObject target, EventHandler handler)
+		{
+			ActionDispatcher ctarget = target as ActionDispatcher;
+			if (ctarget == null)
+				return;
+			ctarget.Activated -= handler;
+		}
+		
+		public static NSObject SetupDoubleAction (NSObject target, EventHandler doubleHandler)
+		{
+			ActionDispatcher ctarget = target as ActionDispatcher;
+			if (ctarget == null){
+				ctarget = new ActionDispatcher ();
+				ctarget.DoubleActivated += doubleHandler;
+			}
+			return ctarget;
+		}
+
+		public static void RemoveDoubleAction (NSObject target, EventHandler doubleHandler)
+		{
+			ActionDispatcher ctarget = target as ActionDispatcher;
+			if (ctarget == null)
+				return;
+			ctarget.DoubleActivated -= doubleHandler;
 		}
 	}
 }

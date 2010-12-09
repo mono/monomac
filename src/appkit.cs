@@ -6707,11 +6707,11 @@ namespace MonoMac.AppKit {
 
 		[Static]
 		[Export ("pasteboardWithName:")]
-		NSPasteboard PasteboardWithName (string name);
+		NSPasteboard FromName (string name);
 
 		[Static]
 		[Export ("pasteboardWithUniqueName")]
-		NSPasteboard PasteboardWithUniqueName { get; }
+		NSPasteboard CreateWithUniqueName ();
 
 		[Export ("name")]
 		string Name { get; }

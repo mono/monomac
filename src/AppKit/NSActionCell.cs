@@ -35,23 +35,12 @@ namespace MonoMac.AppKit {
 
 		public event EventHandler Activated {
 			add {
-				var ctarget = Target as ActionDispatcher;
-				if (ctarget == null) {
-					Target = ctarget = new ActionDispatcher ();
-					Action = ActionDispatcher.Action;
-				}
-				ctarget.Activated += value;
+				Target = ActionDispatcher.SetupAction (Target, value);
+				Action = ActionDispatcher.Action;
 			}
 
 			remove {
-				var ctarget = Target as ActionDispatcher;
-				if (ctarget != null){
-					ctarget.Activated -= value;
-					if (ctarget == null) {
-						Action = null;
-						Target = null;
-					}
-				}
+				ActionDispatcher.RemoveAction (Target, value);
 			}
 		}
 

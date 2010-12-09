@@ -33,6 +33,7 @@ MONOMAC_SOURCES = \
 	./Foundation/NSObjectMac.cs			\
 	./AppKit/ActionDispatcher.cs			\
 	./AppKit/BeginSheet.cs				\
+	./AppKit/DoubleWrapper.cs			\
 	./AppKit/Functions.cs				\
 	./AppKit/NSApplication.cs			\
 	./AppKit/NSApplicationDelegate.cs		\
