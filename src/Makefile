@@ -43,13 +43,14 @@ MONOMAC_SOURCES = \
 	./AppKit/NSMenuItem.cs				\
 	./AppKit/NSActionCell.cs			\
 	./AppKit/NSButton.cs				\
+	./AppKit/NSGraphics.cs				\
 	./AppKit/NSLevelIndicator.cs			\
+	./AppKit/NSOpenGLPixelFormat.cs			\
 	./AppKit/NSPopUpButton.cs			\
 	./AppKit/NSPopUpButtonCell.cs			\
 	./AppKit/NSSegmentedControl.cs			\
-	./AppKit/NSOpenGLPixelFormat.cs			\
-	./AppKit/NSGraphics.cs				\
 	./AppKit/NSMatrix.cs				\
+	./AppKit/NSTableView.cs				\
 	./AppKit/NSWindow.cs				\
 	./CoreImage/CIContext.cs			\
 	./CoreImage/CISampler.cs			\

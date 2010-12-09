@@ -9814,6 +9814,9 @@ namespace MonoMac.AppKit {
 	
 		//Detected properties
 		[Export ("dataSource")][NullAllowed]
+		NSObject WeakDataSource { get; set; }
+
+		[Wrap ("WeakDataSource")]
 		NSTableViewDataSource DataSource { get; set; }
 	
 		[Export ("delegate", ArgumentSemantic.Assign)][NullAllowed]
@@ -9998,6 +10001,115 @@ namespace MonoMac.AppKit {
 	
 		[Export ("tableView:namesOfPromisedFilesDroppedAtDestination:forDraggedRowsWithIndexes:")]
 		string [] FilesDropped (NSTableView tableView, NSUrl dropDestination, NSIndexSet indexSet );
+	}
+
+	//
+	// This is the mixed NSTableViewDataSource and NSTableViewDelegate
+	//
+	[Model]
+	[BaseType (typeof (NSObject))]
+	interface NSTableViewSource {
+		//
+		// These come form NSTableViewDataSource
+		//
+		[Export ("tableView:willDispayCell:forTableColumn:row:")]
+		void WillDisplayCell (NSTableView tableView, NSObject cell, NSTableColumn tableColumn, int row);
+	
+		[Export ("tableView:shouldEditTableColumn:row:")] [DefaultValue (false)]
+		bool ShouldEditTableColumn (NSTableView tableView, NSTableColumn tableColumn, int row);
+	
+		[Export ("selectionShouldChangeInTableView:")] [DefaultValue (false)]
+		bool SelectionShouldChange (NSTableView tableView);
+	
+		[Export ("tableView:shouldSelectRow:")] [DefaultValue (true)]
+		bool ShouldSelectRow (NSTableView tableView, int row);
+	
+		[Export ("tableView:selectionIndexesForProposedSelection:")]
+		NSIndexSet GetSelectionIndexes (NSTableView tableView, NSIndexSet proposedSelectionIndexes);
+	
+		[Export ("tableView:shouldSelectTableColumn:")] [DefaultValue (true)]
+		bool ShouldSelectTableColumn (NSTableView tableView, NSTableColumn tableColumn);
+	
+		[Export ("tableView:mouseDownInHeaderOfTableColumn:")]
+		void MouseDown (NSTableView tableView, NSTableColumn tableColumn);
+	
+		[Export ("tableView:didClickTableColumn:")]
+		void DidClickTableColumn (NSTableView tableView, NSTableColumn tableColumn);
+	
+		[Export ("tableView:didDragTableColumn:")]
+		void DidDragTableColumn (NSTableView tableView, NSTableColumn tableColumn);
+	
+		//FIXME: Binding NSRectPointer
+		//[Export ("tableView:toolTipForCell:rect:tableColumn:row:mouseLocation:")]
+		//string TableViewtoolTipForCellrecttableColumnrowmouseLocation (NSTableView tableView, NSCell cell, NSRectPointer rect, NSTableColumn tableColumn, int row, PointF mouseLocation);
+	
+		[Export ("tableView:heightOfRow:")]
+		float GetRowHeight (NSTableView tableView, int row );
+	
+		[Export ("tableView:typeSelectStringForTableColumn:row:")]
+		string GetSelectString (NSTableView tableView, NSTableColumn tableColumn, int row );
+	
+		[Export ("tableView:nextTypeSelectMatchFromRow:toRow:forString:")]
+		int GetNextTypeSelectMatch (NSTableView tableView, int startRow, int endRow, string searchString );
+	
+		[Export ("tableView:shouldTypeSelectForEvent:withCurrentSearchString:")]
+		bool ShouldTypeSelect (NSTableView tableView, NSEvent theEvent, string searchString );
+	
+		[Export ("tableView:shouldShowCellExpansionForTableColumn:row:")]
+		bool ShouldShowCellExpansion (NSTableView tableView, NSTableColumn tableColumn, int row );
+	
+		[Export ("tableView:shouldTrackCell:forTableColumn:row:")]
+		bool ShouldTrackCell (NSTableView tableView, NSCell cell, NSTableColumn tableColumn, int row );
+	
+		[Export ("tableView:dataCellForTableColumn:row:")]
+		NSCell GetCell (NSTableView tableView, NSTableColumn tableColumn, int row );
+	
+		[Export ("tableView:isGroupRow:")] [DefaultValue (false)]
+		bool IsGroupRow (NSTableView tableView, int row );
+	
+		[Export ("tableView:sizeToFitWidthOfColumn:")]
+		float GetSizeToFitColumnWidth (NSTableView tableView, int column );
+	
+		[Export ("tableView:shouldReorderColumn:toColumn:")]
+		bool ShouldReorder (NSTableView tableView, int columnIndex, int newColumnIndex );
+	
+		[Export ("tableViewSelectionDidChange:")]
+		void SelectionDidChange (NSNotification notification);
+	
+		[Export ("tableViewColumnDidMove:")]
+		void ColumnDidMove (NSNotification notification);
+	
+		[Export ("tableViewColumnDidResize:")]
+		void ColumnDidResize (NSNotification notification);
+	
+		[Export ("tableViewSelectionIsChanging:")]
+		void SelectionIsChanging (NSNotification notification);
+
+		// NSTableViewDataSource
+		[Export ("numberOfRowsInTableView:")]
+		int GetRowCount (NSTableView tableView);
+	
+		[Export ("tableView:objectValueForTableColumn:row:")]
+		NSObject GetObjectValue (NSTableView tableView, NSTableColumn tableColumn, int row);
+	
+		[Export ("tableView:setObjectValue:forTableColumn:row:")]
+		void SetObjectValue (NSTableView tableView, NSObject theObject, NSTableColumn tableColumn, int row);
+	
+		[Export ("tableView:sortDescriptorsDidChange:")]
+		void SortDescriptorsChanged (NSTableView tableView, NSSortDescriptor [] oldDescriptors);
+	
+		[Export ("tableView:writeRowsWithIndexes:toPasteboard:")]
+		bool WriteRows (NSTableView tableView, NSIndexSet rowIndexes, NSPasteboard pboard );
+	
+		[Export ("tableView:validateDrop:proposedRow:proposedDropOperation:")]
+		NSDragOperation ValidateDrop (NSTableView tableView, NSDraggingInfo info, int row, NSTableViewDropOperation dropOperation);
+	
+		[Export ("tableView:acceptDrop:row:dropOperation:")]
+		bool AcceptDrop (NSTableView tableView, NSDraggingInfo info, int row, NSTableViewDropOperation dropOperation);
+	
+		[Export ("tableView:namesOfPromisedFilesDroppedAtDestination:forDraggedRowsWithIndexes:")]
+		string [] FilesDropped (NSTableView tableView, NSUrl dropDestination, NSIndexSet indexSet );
+		
 	}
 	
 	[BaseType (typeof (NSTextFieldCell))]
