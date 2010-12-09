@@ -33,6 +33,13 @@ namespace MonoMac.ObjCRuntime {
 		internal static AssemblyBuilder builder;
 		internal static ModuleBuilder module;
 
+#if !MONOMAC_BOOTSTRAP
+		private static MethodInfo convertarray = typeof (NSArray).GetMethod ("ArrayFromHandle", new Type [] { typeof (IntPtr) });
+		private static MethodInfo convertsarray = typeof (NSArray).GetMethod ("StringArrayFromHandle", new Type [] { typeof (IntPtr) });
+		private static MethodInfo getobject = typeof (Runtime).GetMethod ("GetNSObject", BindingFlags.Static | BindingFlags.Public);
+		private static MethodInfo gethandle = typeof (NSObject).GetMethod ("get_Handle", BindingFlags.Instance | BindingFlags.Public);
+#endif
+
 		private Delegate del;
 				
 		static NativeImplementationBuilder () {
@@ -42,11 +49,19 @@ namespace MonoMac.ObjCRuntime {
 
 		internal abstract Delegate CreateDelegate ();
 
+		internal int ArgumentOffset {
+			get; set;
+		}
+
 		internal IntPtr Selector {
 			get; set;
 		}
 
 		internal Type [] ParameterTypes {
+			get; set;
+		}
+
+		internal ParameterInfo [] Parameters {
 			get; set;
 		}
 
@@ -116,6 +131,111 @@ namespace MonoMac.ObjCRuntime {
 			CustomAttributeBuilder cabuilder = new CustomAttributeBuilder (cinfo, new object [] { UnmanagedType.CustomMarshaler }, new FieldInfo [] { mtrfld }, new object [] { MarshalerForType (t) });
 
 			pb.SetCustomAttribute (cabuilder);
+		}
+
+		protected bool IsWrappedType (Type type) {
+			if (type == typeof (NSObject) || type.IsSubclassOf (typeof (NSObject)) || type == typeof (string))
+				return true;
+
+			return false;
+		}
+
+		protected void ConvertParameters (ParameterInfo [] parms, bool isstatic, bool isstret) {
+			if (isstret) {
+				ArgumentOffset = 3;
+				ParameterTypes = new Type [ArgumentOffset + parms.Length];
+				ParameterTypes [0] = typeof (IntPtr);
+				ParameterTypes [1] = isstatic ? typeof (IntPtr) : typeof (NSObject);
+				ParameterTypes [2] = typeof (Selector);
+			} else {
+				ArgumentOffset = 2;
+				ParameterTypes = new Type [ArgumentOffset + parms.Length];
+				ParameterTypes [0] = isstatic ? typeof (IntPtr) : typeof (NSObject);
+				ParameterTypes [1] = typeof (Selector);
+			}
+
+			for (int i = 0; i < Parameters.Length; i++) {
+				if (Parameters [i].ParameterType.IsByRef && IsWrappedType (Parameters [i].ParameterType.GetElementType ()))
+					ParameterTypes [i + ArgumentOffset] = typeof (IntPtr).MakeByRefType ();
+				else if (Parameters [i].ParameterType.IsArray && IsWrappedType (Parameters [i].ParameterType.GetElementType ()))
+					ParameterTypes [i + ArgumentOffset] = typeof (IntPtr);
+				else if (typeof (INativeObject).IsAssignableFrom (Parameters [i].ParameterType) && !IsWrappedType (Parameters [i].ParameterType))
+					ParameterTypes [i + ArgumentOffset] = typeof (IntPtr);
+				else
+					ParameterTypes [i + ArgumentOffset] = Parameters [i].ParameterType;
+				// The TypeConverter will emit a ^@ for a byref type that is a NSObject or NSObject subclass in this case
+				// If we passed the ParameterTypes [i+ArgumentOffset] as would be more logical we would emit a ^^v for that case, which
+				// while currently acceptible isn't representative of what obj-c wants.
+				Signature += TypeConverter.ToNative (Parameters [i].ParameterType);
+			}
+		}
+
+		protected void DeclareLocals (ILGenerator il) {
+			for (int i = 0; i < Parameters.Length; i++) {
+				if (Parameters [i].ParameterType.IsByRef && IsWrappedType (Parameters [i].ParameterType.GetElementType ())) {
+					il.DeclareLocal (Parameters [i].ParameterType.GetElementType ());
+				} else if (Parameters [i].ParameterType.IsArray && IsWrappedType (Parameters [i].ParameterType.GetElementType ())) {
+					il.DeclareLocal (Parameters [i].ParameterType);
+				}
+			}
+		}
+
+
+		protected void ConvertArguments (ILGenerator il, int locoffset) {
+#if !MONOMAC_BOOTSTRAP
+			for (int i = ArgumentOffset, j = 0; i < ParameterTypes.Length; i++) {
+				if (Parameters [i-ArgumentOffset].ParameterType.IsByRef && IsWrappedType (Parameters[i-ArgumentOffset].ParameterType.GetElementType ())) {
+					il.Emit (OpCodes.Ldarg, i);
+					il.Emit (OpCodes.Ldind_I);
+					il.Emit (OpCodes.Call, getobject);
+					il.Emit (OpCodes.Stloc, j+locoffset);
+					j++;
+				} else if (Parameters [i-ArgumentOffset].ParameterType.IsArray && IsWrappedType (Parameters [i-ArgumentOffset].ParameterType.GetElementType ())) {
+					il.Emit (OpCodes.Ldarg, i);
+					if (Parameters [i-ArgumentOffset].ParameterType.GetElementType () == typeof (string))
+						il.Emit (OpCodes.Call, convertsarray);
+					else
+						il.Emit (OpCodes.Call, convertarray.MakeGenericMethod (Parameters [i-ArgumentOffset].ParameterType.GetElementType ()));
+					il.Emit (OpCodes.Stloc, j+locoffset);
+					j++;
+				}
+			}
+#endif
+		}
+
+		protected void LoadArguments (ILGenerator il, int locoffset) {
+			for (int i = ArgumentOffset, j = 0; i < ParameterTypes.Length; i++) {
+				if (Parameters [i-ArgumentOffset].ParameterType.IsByRef && IsWrappedType (Parameters[i-ArgumentOffset].ParameterType.GetElementType ())) {
+					il.Emit (OpCodes.Ldloca_S, j+locoffset);
+					j++;
+				} else if (Parameters [i-ArgumentOffset].ParameterType.IsArray && IsWrappedType (Parameters [i-ArgumentOffset].ParameterType.GetElementType ())) {
+					il.Emit (OpCodes.Ldloc, j+locoffset);
+					j++;
+				} else if (typeof (INativeObject).IsAssignableFrom (Parameters [i-ArgumentOffset].ParameterType) && !IsWrappedType (Parameters [i-ArgumentOffset].ParameterType)) {
+					il.Emit (OpCodes.Ldarg, i);
+					il.Emit (OpCodes.Newobj, Parameters [i-ArgumentOffset].ParameterType.GetConstructor (BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance, null, new Type [] { typeof (IntPtr) }, null));
+				} else {
+					il.Emit (OpCodes.Ldarg, i);
+				}
+			}
+		}
+
+		protected void UpdateByRefArguments (ILGenerator il, int locoffset) {
+#if !MONOMAC_BOOTSTRAP
+			for (int i = ArgumentOffset, j = 0; i < ParameterTypes.Length; i++) {
+				if (Parameters [i-ArgumentOffset].ParameterType.IsByRef && IsWrappedType (Parameters[i-ArgumentOffset].ParameterType.GetElementType ())) {
+					Label done = il.DefineLabel ();
+					il.Emit (OpCodes.Ldloc, j+locoffset);
+					il.Emit (OpCodes.Brfalse, done);
+					il.Emit (OpCodes.Ldloc, j+locoffset);
+					il.Emit (OpCodes.Call, gethandle);
+					il.Emit (OpCodes.Ldarg, i);
+					il.Emit (OpCodes.Stind_I);
+					il.MarkLabel (done);
+					j++;
+				}
+			}
+#endif
 		}
 	}
 }

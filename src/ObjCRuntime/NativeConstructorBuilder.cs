@@ -30,38 +30,21 @@ using MonoMac.Foundation;
 
 namespace MonoMac.ObjCRuntime {
 	internal class NativeConstructorBuilder : NativeImplementationBuilder {
-		static MethodInfo trygetnsobject;
-		static MethodInfo newobject;
-		static MethodInfo gettype;
-#if !MONOMAC_BOOTSTRAP
-		static MethodInfo getobject;
-		static MethodInfo convertarray;
-#endif
-		static FieldInfo handlefld;
-		static FieldInfo valuefld;
+		private static MethodInfo trygetnsobject = typeof (Runtime).GetMethod ("TryGetNSObject", BindingFlags.Public | BindingFlags.Static);
+		private static MethodInfo newobject = typeof (System.Runtime.Serialization.FormatterServices).GetMethod ("GetUninitializedObject", BindingFlags.Public | BindingFlags.Static);
+		private static MethodInfo gettype = typeof (System.Type).GetMethod ("GetTypeFromHandle", BindingFlags.Public | BindingFlags.Static);
+		private static FieldInfo handlefld = typeof (NSObject).GetField ("handle", BindingFlags.NonPublic | BindingFlags.Instance);
+		private static FieldInfo valuefld = typeof (RuntimeTypeHandle).GetField ("value", BindingFlags.NonPublic | BindingFlags.Instance);
 		static IntPtr selInit = MonoMac.ObjCRuntime.Selector.GetHandle ("init");
-		private ParameterInfo [] parms;
 
 		private ConstructorInfo cinfo;
 				
-		static NativeConstructorBuilder () {
-			trygetnsobject = typeof (Runtime).GetMethod ("TryGetNSObject", BindingFlags.Public | BindingFlags.Static);
-			newobject = typeof (System.Runtime.Serialization.FormatterServices).GetMethod ("GetUninitializedObject", BindingFlags.Public | BindingFlags.Static);
-			gettype = typeof (System.Type).GetMethod ("GetTypeFromHandle", BindingFlags.Public | BindingFlags.Static);
-			handlefld = typeof (NSObject).GetField ("handle", BindingFlags.NonPublic | BindingFlags.Instance);
-			valuefld = typeof (RuntimeTypeHandle).GetField ("value", BindingFlags.NonPublic | BindingFlags.Instance);
-#if !MONOMAC_BOOTSTRAP
-			getobject = typeof (Runtime).GetMethod ("GetNSObject", BindingFlags.Static | BindingFlags.Public);
-			convertarray = typeof (NSArray).GetMethod ("ArrayFromHandle", new Type [] { typeof (IntPtr) });
-#endif
-		}
-
 		internal NativeConstructorBuilder (ConstructorInfo cinfo) {
 			ExportAttribute ea = (ExportAttribute) Attribute.GetCustomAttribute (cinfo, typeof (ExportAttribute));
 
-			parms = cinfo.GetParameters ();
+			Parameters = cinfo.GetParameters ();
 
-			if (ea == null && parms.Length > 0)
+			if (ea == null && Parameters.Length > 0)
 				throw new ArgumentException ("ConstructorInfo does not have a export attribute");
 
 			if (ea == null)
@@ -70,21 +53,7 @@ namespace MonoMac.ObjCRuntime {
 				Selector = new Selector (ea.Selector, true).Handle;
 
 			Signature = "@@:";
-			ParameterTypes = new Type [2 + parms.Length];
-
-			ParameterTypes [0] = typeof (IntPtr);
-			ParameterTypes [1] = typeof (Selector);
-
-			for (int i = 0; i < parms.Length; i++) {
-				if (parms [i].ParameterType.IsByRef && (parms[i].ParameterType.GetElementType ().IsSubclassOf (typeof (NSObject)) || parms[i].ParameterType.GetElementType () == typeof (NSObject)))
-					ParameterTypes [i + 2] = typeof (IntPtr).MakeByRefType ();
-				else if (parms [i].ParameterType.IsArray && (parms [i].ParameterType.GetElementType () == typeof (NSObject) || parms [i].ParameterType.GetElementType ().IsSubclassOf (typeof (NSObject))))
-					ParameterTypes [i + 2] = typeof (IntPtr);
-				else
-					ParameterTypes [i + 2] = parms [i].ParameterType;
-				Signature += TypeConverter.ToNative (parms [i].ParameterType);
-			}
-			
+			ConvertParameters (Parameters, true, false);
 			DelegateType = CreateDelegateType (typeof (IntPtr), ParameterTypes);
 
 			this.cinfo = cinfo;
@@ -96,10 +65,11 @@ namespace MonoMac.ObjCRuntime {
 			Label done = il.DefineLabel ();
 			
 			il.DeclareLocal (typeof (object));
+			DeclareLocals (il);
 
-			for (int i = 0; i < parms.Length; i++) {
-				if (parms [i].ParameterType.IsByRef && (parms[i].ParameterType.GetElementType ().IsSubclassOf (typeof (NSObject)) || parms[i].ParameterType.GetElementType () == typeof (NSObject))) {
-					il.DeclareLocal (parms [i].ParameterType.GetElementType ());
+			for (int i = 0; i < Parameters.Length; i++) {
+				if (Parameters [i].ParameterType.IsByRef && (Parameters[i].ParameterType.GetElementType ().IsSubclassOf (typeof (NSObject)) || Parameters[i].ParameterType.GetElementType () == typeof (NSObject))) {
+					il.DeclareLocal (Parameters [i].ParameterType.GetElementType ());
 				}
 			}
 
@@ -115,33 +85,16 @@ namespace MonoMac.ObjCRuntime {
 			il.Emit (OpCodes.Ldarg_0);
 			il.Emit (OpCodes.Stfld, handlefld);
 
-#if !MONOMAC_BOOTSTRAP
-			for (int i = 2, j = 0; i < ParameterTypes.Length; i++) {
-				if (parms [i-2].ParameterType.IsByRef && (parms[i-2].ParameterType.GetElementType ().IsSubclassOf (typeof (NSObject)) || parms[i-2].ParameterType.GetElementType () == typeof (NSObject))) {
-					il.Emit (OpCodes.Ldarg, i);
-					il.Emit (OpCodes.Ldind_I);
-					il.Emit (OpCodes.Call, getobject);
-					il.Emit (OpCodes.Stloc, j+1);
-					j++;
-				} else if (parms [i-2].ParameterType.IsArray && (parms [i-2].ParameterType.GetElementType () == typeof (NSObject) || parms [i-2].ParameterType.GetElementType ().IsSubclassOf (typeof (NSObject)))) {
-					il.Emit (OpCodes.Ldarg, i);
-					il.Emit (OpCodes.Call, convertarray.MakeGenericMethod (parms [i-2].ParameterType.GetElementType ()));
-				}
-			}
-#endif
+			ConvertArguments (il, 1);
+
 			il.Emit (OpCodes.Ldloc_0);
 			il.Emit (OpCodes.Castclass, cinfo.DeclaringType);
 
-			for (int i = 2, j = 0; i < ParameterTypes.Length; i++) {
-				if (parms [i-2].ParameterType.IsByRef && (parms[i-2].ParameterType.GetElementType ().IsSubclassOf (typeof (NSObject)) || parms[i-2].ParameterType.GetElementType () == typeof (NSObject))) {
-					il.Emit (OpCodes.Ldloca_S, j+1);
-					j++;
-				} else {
-					il.Emit (OpCodes.Ldarg, i);
-				}
-			}
+			LoadArguments (il, 1);
 
 			il.Emit (OpCodes.Call, cinfo);
+
+			UpdateByRefArguments (il, 1);
 
 			il.MarkLabel (done);
 			il.Emit (OpCodes.Ldarg_0);
