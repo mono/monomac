@@ -35,21 +35,21 @@ MONOMAC_SOURCES = \
 	./AppKit/BeginSheet.cs				\
 	./AppKit/DoubleWrapper.cs			\
 	./AppKit/Functions.cs				\
+	./AppKit/NSActionCell.cs			\
 	./AppKit/NSApplication.cs			\
 	./AppKit/NSApplicationDelegate.cs		\
 	./AppKit/NSBitmapImageRep.cs			\
-	./AppKit/NSControl.cs				\
-	./AppKit/NSMenu.cs				\
-	./AppKit/NSMenuItem.cs				\
-	./AppKit/NSActionCell.cs			\
 	./AppKit/NSButton.cs				\
+	./AppKit/NSControl.cs				\
 	./AppKit/NSGraphics.cs				\
 	./AppKit/NSLevelIndicator.cs			\
+	./AppKit/NSMatrix.cs				\
+	./AppKit/NSMenu.cs				\
+	./AppKit/NSMenuItem.cs				\
 	./AppKit/NSOpenGLPixelFormat.cs			\
 	./AppKit/NSPopUpButton.cs			\
 	./AppKit/NSPopUpButtonCell.cs			\
 	./AppKit/NSSegmentedControl.cs			\
-	./AppKit/NSMatrix.cs				\
 	./AppKit/NSTableView.cs				\
 	./AppKit/NSWindow.cs				\
 	./CoreImage/CIContext.cs			\
