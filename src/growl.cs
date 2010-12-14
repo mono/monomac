@@ -42,22 +42,22 @@ namespace MonoMac.Growl {
 
 		[Static]
 		[Export ("notifyWithTitle:description:notificationName:iconData:priority:isSticky:clickContext:")]
-		void NotifyWithTitledescriptionnotificationNameiconDatapriorityisStickyclickContext (string title, string description, string notifName, NSData iconData, int priority, bool isSticky, NSObject clickContext);
+		void Notify (string title, string description, string notifName, NSData iconData, int priority, bool isSticky, NSObject clickContext);
 
 		[Static]
 		[Export ("notifyWithTitle:description:notificationName:iconData:priority:isSticky:clickContext:identifier:")]
-		void NotifyWithTitledescriptionnotificationNameiconDatapriorityisStickyclickContextidentifier (string title, string description, string notifName, NSData iconData, int priority, bool isSticky, NSObject clickContext, string identifier);
+		void Notify (string title, string description, string notifName, NSData iconData, int priority, bool isSticky, NSObject clickContext, string identifier);
 
 		[Static]
 		[Export ("notifyWithDictionary:")]
-		void NotifyWithDictionary (NSDictionary userInfo);
+		void Notify (NSDictionary userInfo);
 
 		[Export ("registerWithDictionary:")]
-		bool RegisterWithDictionary (NSDictionary regDict);
+		bool Register (NSDictionary regDict);
 
 		[Static]
 		[Export ("reregisterGrowlNotifications")]
-		void ReregisterGrowlNotifications ();
+		void ReRegister ();
 
 		[Export ("registrationDictionaryFromDelegate")]
 		NSDictionary RegistrationDictionaryFromDelegate ();
@@ -72,19 +72,19 @@ namespace MonoMac.Growl {
 
 		[Static]
 		[Export ("registrationDictionaryByFillingInDictionary:")]
-		NSDictionary RegistrationDictionaryByFillingInDictionary (NSDictionary regDict);
+		NSDictionary FromDictionary (NSDictionary regDict);
 
 		[Static]
 		[Export ("registrationDictionaryByFillingInDictionary:restrictToKeys:")]
-		NSDictionary RegistrationDictionaryByFillingInDictionaryrestrictToKeys (NSDictionary regDict, NSSet keys);
+		NSDictionary FromDictionary (NSDictionary regDict, NSSet restrictToKeys);
 
 		[Static]
 		[Export ("notificationDictionaryByFillingInDictionary:")]
-		NSDictionary NotificationDictionaryByFillingInDictionary (NSDictionary regDict);
+		NSDictionary NotificationDictionary (NSDictionary regDict);
 
 		[Static]
 		[Export ("frameworkInfoDictionary")]
-		NSDictionary FrameworkInfoDictionary ();
+		NSDictionary FrameworkInfoDictionary { get; }
 
 		//Detected properties
 		//[Export ("growlDelegate")]
