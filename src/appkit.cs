@@ -5940,7 +5940,7 @@ namespace MonoMac.AppKit {
 		IntPtr Constructor (CGImage cgImage, SizeF size);
 
 		[Export ("CGImageForProposedRect:context:hints:")]
-		CGImage CGImageForProposedRect (RectangleF proposedDestRect, NSGraphicsContext referenceContext, NSDictionary hints);
+		CGImage AsCGImage (RectangleF proposedDestRect, [NullAllowed] NSGraphicsContext referenceContext, [NullAllowed] NSDictionary hints);
 
 		[Export ("bestRepresentationForRect:context:hints:")]
 		NSImageRep BestRepresentation (RectangleF rect, [NullAllowed] NSGraphicsContext referenceContext, [NullAllowed] NSDictionary hints);
@@ -6121,7 +6121,7 @@ namespace MonoMac.AppKit {
 		NSImageRep ImageRepFromPasteboard (NSPasteboard pasteboard);
 
 		[Export ("CGImageForProposedRect:context:hints:")]
-		CGImage CGImageForProposedRect (RectangleF proposedDestRect, NSGraphicsContext context, NSDictionary hints);
+		CGImage AsCGImage (RectangleF proposedDestRect, [NullAllowed] NSGraphicsContext context, [NullAllowed] NSDictionary hints);
 
 		//Detected properties
 		[Export ("size")]
