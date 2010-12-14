@@ -163,22 +163,70 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="FrameworkInfoDictionary">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSDictionary FrameworkInfoDictionary ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSDictionary FrameworkInfoDictionary() cil managed" />
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSDictionary FrameworkInfoDictionary { get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("frameworkInfoDictionary")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSDictionary</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FromDictionary">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSDictionary FromDictionary (MonoMac.Foundation.NSDictionary regDict);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>MonoMac.Foundation.Export("frameworkInfoDictionary")</AttributeName>
+          <AttributeName>MonoMac.Foundation.Export("registrationDictionaryByFillingInDictionary:")</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSDictionary</ReturnType>
       </ReturnValue>
-      <Parameters />
+      <Parameters>
+        <Parameter Name="regDict" Type="MonoMac.Foundation.NSDictionary" />
+      </Parameters>
       <Docs>
+        <param name="regDict">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FromDictionary">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSDictionary FromDictionary (MonoMac.Foundation.NSDictionary regDict, MonoMac.Foundation.NSSet restrictToKeys);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("registrationDictionaryByFillingInDictionary:restrictToKeys:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSDictionary</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="regDict" Type="MonoMac.Foundation.NSDictionary" />
+        <Parameter Name="restrictToKeys" Type="MonoMac.Foundation.NSSet" />
+      </Parameters>
+      <Docs>
+        <param name="regDict">To be added.</param>
+        <param name="restrictToKeys">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -228,9 +276,8 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="NotificationDictionaryByFillingInDictionary">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSDictionary NotificationDictionaryByFillingInDictionary (MonoMac.Foundation.NSDictionary regDict);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSDictionary NotificationDictionaryByFillingInDictionary(class MonoMac.Foundation.NSDictionary regDict) cil managed" />
+    <Member MemberName="NotificationDictionary">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSDictionary NotificationDictionary (MonoMac.Foundation.NSDictionary regDict);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -253,9 +300,8 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="NotifyWithDictionary">
-      <MemberSignature Language="C#" Value="public static void NotifyWithDictionary (MonoMac.Foundation.NSDictionary userInfo);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void NotifyWithDictionary(class MonoMac.Foundation.NSDictionary userInfo) cil managed" />
+    <Member MemberName="Notify">
+      <MemberSignature Language="C#" Value="public static void Notify (MonoMac.Foundation.NSDictionary userInfo);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -277,9 +323,8 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="NotifyWithTitledescriptionnotificationNameiconDatapriorityisStickyclickContext">
-      <MemberSignature Language="C#" Value="public static void NotifyWithTitledescriptionnotificationNameiconDatapriorityisStickyclickContext (string title, string description, string notifName, MonoMac.Foundation.NSData iconData, int priority, bool isSticky, MonoMac.Foundation.NSObject clickContext);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void NotifyWithTitledescriptionnotificationNameiconDatapriorityisStickyclickContext(string title, string description, string notifName, class MonoMac.Foundation.NSData iconData, int32 priority, bool isSticky, class MonoMac.Foundation.NSObject clickContext) cil managed" />
+    <Member MemberName="Notify">
+      <MemberSignature Language="C#" Value="public static void Notify (string title, string description, string notifName, MonoMac.Foundation.NSData iconData, int priority, bool isSticky, MonoMac.Foundation.NSObject clickContext);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -313,9 +358,8 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="NotifyWithTitledescriptionnotificationNameiconDatapriorityisStickyclickContextidentifier">
-      <MemberSignature Language="C#" Value="public static void NotifyWithTitledescriptionnotificationNameiconDatapriorityisStickyclickContextidentifier (string title, string description, string notifName, MonoMac.Foundation.NSData iconData, int priority, bool isSticky, MonoMac.Foundation.NSObject clickContext, string identifier);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void NotifyWithTitledescriptionnotificationNameiconDatapriorityisStickyclickContextidentifier(string title, string description, string notifName, class MonoMac.Foundation.NSData iconData, int32 priority, bool isSticky, class MonoMac.Foundation.NSObject clickContext, string identifier) cil managed" />
+    <Member MemberName="Notify">
+      <MemberSignature Language="C#" Value="public static void Notify (string title, string description, string notifName, MonoMac.Foundation.NSData iconData, int priority, bool isSticky, MonoMac.Foundation.NSObject clickContext, string identifier);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -351,9 +395,8 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="RegisterWithDictionary">
-      <MemberSignature Language="C#" Value="public virtual bool RegisterWithDictionary (MonoMac.Foundation.NSDictionary regDict);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool RegisterWithDictionary(class MonoMac.Foundation.NSDictionary regDict) cil managed" />
+    <Member MemberName="Register">
+      <MemberSignature Language="C#" Value="public virtual bool Register (MonoMac.Foundation.NSDictionary regDict);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -371,58 +414,6 @@ public class MyClass : BaseClass {
       </Parameters>
       <Docs>
         <param name="regDict">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="RegistrationDictionaryByFillingInDictionary">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSDictionary RegistrationDictionaryByFillingInDictionary (MonoMac.Foundation.NSDictionary regDict);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSDictionary RegistrationDictionaryByFillingInDictionary(class MonoMac.Foundation.NSDictionary regDict) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>MonoMac.Foundation.Export("registrationDictionaryByFillingInDictionary:")</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSDictionary</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="regDict" Type="MonoMac.Foundation.NSDictionary" />
-      </Parameters>
-      <Docs>
-        <param name="regDict">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="RegistrationDictionaryByFillingInDictionaryrestrictToKeys">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSDictionary RegistrationDictionaryByFillingInDictionaryrestrictToKeys (MonoMac.Foundation.NSDictionary regDict, MonoMac.Foundation.NSSet keys);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSDictionary RegistrationDictionaryByFillingInDictionaryrestrictToKeys(class MonoMac.Foundation.NSDictionary regDict, class MonoMac.Foundation.NSSet keys) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>MonoMac.Foundation.Export("registrationDictionaryByFillingInDictionary:restrictToKeys:")</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSDictionary</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="regDict" Type="MonoMac.Foundation.NSDictionary" />
-        <Parameter Name="keys" Type="MonoMac.Foundation.NSSet" />
-      </Parameters>
-      <Docs>
-        <param name="regDict">To be added.</param>
-        <param name="keys">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -475,9 +466,8 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="ReregisterGrowlNotifications">
-      <MemberSignature Language="C#" Value="public static void ReregisterGrowlNotifications ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void ReregisterGrowlNotifications() cil managed" />
+    <Member MemberName="ReRegister">
+      <MemberSignature Language="C#" Value="public static void ReRegister ();" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
