@@ -385,7 +385,7 @@ namespace MonoMac.AppKit {
 		NSMenu HelpMenu { get; set; }
 	
 		[Export ("applicationIconImage")]
-		NSImage applicationIconImage { get; set; }
+		NSImage ApplicationIconImage { get; set; }
 	
 		[Export ("activationPolicy")]
 		NSApplicationActivationPolicy ActivationPolicy { get; set; }
