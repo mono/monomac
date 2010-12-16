@@ -1,3 +1,5 @@
+MACCORE=../../maccore/tools/docfixer
+
 .PHONY: assemble docs update-docs clean-docs install-docs
 
 DOCS_LIB = monomac-lib.tree monomac-lib.zip
@@ -46,3 +48,12 @@ populate: populate.exe
 
 populate.exe: populate.cs
 	gmcs populate.cs -r:../src/MonoMac.dll -r:System.Xml.Linq
+
+docfixer.exe: $(MACCORE)/docfixer.cs $(MACCORE)/docfixer.mm.cs AgilityPack.dll
+	gmcs -out:$@ -debug+ $(MACCORE)/docfixer.cs $(MACCORE)/docfixer.mm.cs -r:AgilityPack.dll -r:../src/MonoMac.dll -r:System.Xml.Linq -r:System.Xml
+
+run: docfixer.exe
+	MONO_PATH=../src mono docfixer.exe .
+
+AgilityPack.dll: $(MACCORE)/AgilityPack.dll
+	cp $< $@
