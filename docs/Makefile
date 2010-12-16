@@ -40,3 +40,9 @@ monomac-lib.zip : Makefile
 
 fetch-shared-docs:
 	for i in en/*/*.xml; do d=`echo $$i | sed -e 's,MonoMac,MonoTouch,' -e s,^,../../iphone/docs/,`; echo $$d; if test -f $$d; then sed -e 's/MonoTouch/MonoMac/g' -e 's/<AssemblyName>monotouch/<AssemblyName>monomac/' < $$d > $$i; fi; done
+
+populate: populate.exe
+	MONO_PATH=../src mono --debug populate.exe .
+
+populate.exe: populate.cs
+	gmcs populate.cs -r:../src/MonoMac.dll -r:System.Xml.Linq
