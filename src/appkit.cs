@@ -552,7 +552,7 @@ namespace MonoMac.AppKit {
 		[Export ("applicationDidChangeScreenParameters:"), EventArgs ("NSNotification")]
 		void ScreenParametersChanged (NSNotification notification);
 
-		[Export ("registerServicesMenuSendTypes:Returntypes:"), EventArgs ("NSApplicationRegister")]
+		[Export ("registerServicesMenuSendTypes:returnTypes:"), EventArgs ("NSApplicationRegister")]
 		void RegisterServicesMenu (string [] sendTypes, string [] returnTypes);
 	
 		[Export ("writeSelectionToPasteboard:types:"), EventArgs ("NSApplicationSelection"), DefaultValue (false)]
@@ -1087,7 +1087,7 @@ namespace MonoMac.AppKit {
 		[Export ("indexPathForColumn:")]
 		NSIndexPath IndexPathForColumn (int column);
 
-		[Export ("isLeafItem")]
+		[Export ("isLeafItem:")]
 		bool IsLeafItem (NSObject item);
 
 		[Export ("reloadDataForRowIndexes:inColumn:")]
