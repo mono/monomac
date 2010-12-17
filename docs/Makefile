@@ -53,7 +53,12 @@ docfixer.exe: $(MACCORE)/docfixer.cs $(MACCORE)/docfixer.mm.cs AgilityPack.dll
 	gmcs -out:$@ -debug+ $(MACCORE)/docfixer.cs $(MACCORE)/docfixer.mm.cs -r:AgilityPack.dll -r:../src/MonoMac.dll -r:System.Xml.Linq -r:System.Xml
 
 run: docfixer.exe
-	MONO_PATH=../src mono docfixer.exe .
+	-mkdir deploy
+	rsync -a en deploy
+	chmod -R +rw deploy
+	MONO_PATH=../src mono docfixer.exe deploy
 
+push:
+	rsync -a deploy/en/ root@mono.ximian.com:/srv/www/mono-website/monomac-docs/Docs/monomac.dll
 AgilityPack.dll: $(MACCORE)/AgilityPack.dll
 	cp $< $@
