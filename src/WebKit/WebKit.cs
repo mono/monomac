@@ -1,3 +1,5 @@
+using MonoMac.Foundation;
+
 namespace MonoMac.WebKit {
 	
 	public partial class WebFrame {
