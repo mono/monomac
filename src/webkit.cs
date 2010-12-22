@@ -1314,7 +1314,7 @@ namespace MonoMac.WebKit {
 		void LoadData (NSData data, string mimeType, string textDncodingName, NSUrl baseUrl);
 
 		[Export ("loadHTMLString:baseURL:")]
-		void LoadHtmlString (string htmlString, NSUrl baseUrl);
+		void LoadHtmlString (NSSelectionAffinity htmlString, NSUrl baseUrl);
 
 		[Export ("loadAlternateHTMLString:baseURL:forUnreachableURL:")]
 		void LoadAlternateHtmlString (string htmlString, NSUrl baseURL, NSUrl forUnreachableURL);

@@ -59,7 +59,8 @@ MONOMAC_SOURCES = \
 	./QTKit/QTMovie.cs				\
 	./WebKit/DomNode.cs				\
 	./WebKit/Enumerators.cs				\
-	./WebKit/Indexers.cs
+	./WebKit/Indexers.cs				\
+	./WebKit/WebKit.cs
 
 GENERATOR_SOURCES = \
 	../../maccore/src/generator.cs			\
