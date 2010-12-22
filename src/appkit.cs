@@ -5761,7 +5761,7 @@ namespace MonoMac.AppKit {
 		int GetChildrenCount (NSOutlineView outlineView, NSObject item);
 	
 		[Export ("outlineView:objectValueForTableColumn:byItem:")]
-		NSObject GetObjectValue (NSOutlineView outlineView, NSTableColumn tableColumn, NSObject item);
+		NSObject GetObjectValue (NSOutlineView outlineView, NSTableColumn forTableColumn, NSObject byItem);
 	
 		[Export ("outlineView:setObjectValue:forTableColumn:byItem:")]
 		void SetObjectValue (NSOutlineView outlineView, NSObject theObject, NSTableColumn tableColumn, NSObject item);
@@ -9723,10 +9723,10 @@ namespace MonoMac.AppKit {
 		void SelectRows (NSIndexSet indexes, bool extend );
 	
 		[Export ("selectedColumnIndexes")]
-		NSIndexSet SelectedColumns ();
+		NSIndexSet SelectedColumns { get; }
 	
 		[Export ("selectedRowIndexes")]
-		NSIndexSet SelectedRows ();
+		NSIndexSet SelectedRows { get; }
 	
 		[Export ("deselectColumn:")]
 		void DeselectColumn (int column);
