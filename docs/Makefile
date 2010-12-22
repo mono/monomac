@@ -56,7 +56,8 @@ run: docfixer.exe
 	-mkdir deploy
 	rsync -a en deploy
 	chmod -R +rw deploy
-	MONO_PATH=../src mono docfixer.exe deploy
+	MONO_PATH=../src mono --debug docfixer.exe --summary deploy
+	#MONO_PATH=../src mono --debug docfixer.exe deploy
 
 push:
 	rsync -a deploy/en/ root@mono.ximian.com:/srv/www/mono-website/monomac-docs/Docs/monomac.dll

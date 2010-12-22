@@ -5752,13 +5752,13 @@ namespace MonoMac.AppKit {
 	[Model]
 	interface NSOutlineViewDataSource {
 		[Export ("outlineView:child:ofItem:")]
-		NSObject GetChild (NSOutlineView outlineView, int index, NSObject item);
+		NSObject GetChild (NSOutlineView outlineView, int childIndex, NSObject ofItem);
 	
 		[Export ("outlineView:isItemExpandable:")]
 		bool ItemExpandable (NSOutlineView outlineView, NSObject item);
 	
 		[Export ("outlineView:numberOfChildrenOfItem:")]
-		int CountChildren (NSOutlineView outlineView, NSObject item);
+		int GetChildrenCount (NSOutlineView outlineView, NSObject item);
 	
 		[Export ("outlineView:objectValueForTableColumn:byItem:")]
 		NSObject GetObjectValue (NSOutlineView outlineView, NSTableColumn tableColumn, NSObject item);
