@@ -61,4 +61,25 @@ namespace MonoMac.WebKit {
 	public enum DomEventPhase {
 		Capturing = 1, AtTarget, Bubbling
 	}
+
+	[Flags]
+	public enum WebDragSourceAction : uint {
+		None = 0,
+		DHTML = 1,
+		Image = 2, 
+		Link = 4,
+		Selection = 8,
+		Any = UInt32.MaxValue
+	}
+
+	[Flags]
+	public enum WebDragDestinationAction : uint {
+		None = 0,
+		DHTML = 1,
+		Image = 2, 
+		Link = 4,
+		Selection = 8,
+		Any = UInt32.MaxValue
+	}
+	
 }

@@ -1284,7 +1284,7 @@ namespace MonoMac.WebKit {
 	[Model]
 	interface WebDownloadDelegate {
 		[Export ("downloadWindowForAuthenticationSheet:"), EventArgs ("WebDownloadRequestEventArgs"), DefaultValue (null)]
-		NSWindow DownloadWindowForSheet (WebDownload download);
+		NSWindow OnDownloadWindowForSheet (WebDownload download);
 	}
 	
 	[BaseType (typeof (NSObject))]
@@ -1385,7 +1385,7 @@ namespace MonoMac.WebKit {
 		void ChangedLocationWithinPage (WebView sender, WebFrame forFrame);
 
 		[Export ("webView:willPerformClientRedirectToURL:delay:fireDate:forFrame:"), EventArgs ("WebFrameClientRedirect")]
-		void WillPerformClientRedirectToUrl (WebView sender, NSUrl toUrl, double secondsDelay, NSDate fireDate, WebFrame forFrame);
+		void WillPerformClientRedirect (WebView sender, NSUrl toUrl, double secondsDelay, NSDate fireDate, WebFrame forFrame);
 
 		[Export ("webView:didCancelClientRedirectForFrame:"), EventArgs ("WebFrame")]
 		void CanceledClientRedirect (WebView sender, WebFrame forFrame);
@@ -1451,7 +1451,19 @@ namespace MonoMac.WebKit {
 		string AlternateTitle { get; set; }
 	}
 
+	[BaseType (typeof (NSObject))]
+	[Model]
+	interface WebOpenPanelResultListener {
+		[Export ("chooseFilename:")]
+		void ChooseFilename (string filename);
 
+		[Export ("chooseFilenames:")]
+		void ChooseFilenames (string [] filenames);
+
+		[Export ("cancel")]
+		void Cancel ();
+	}
+	
 	[BaseType (typeof (NSObject))]
 	interface WebPreferences {
 		[Export ("standardPreferences")]
@@ -1568,31 +1580,161 @@ namespace MonoMac.WebKit {
 	[Model]
 	interface WebResourceLoadDelegate {
 		[Export ("webView:identifierForInitialRequest:fromDataSource:"), EventArgs ("WebResourceIdentifierRequest"), DefaultValue (null)]
-		NSObject IdentifierForInitialRequest (WebView sender, NSUrlRequest request, WebDataSource dataSource);
+		NSObject OnIdentifierForInitialRequest (WebView sender, NSUrlRequest request, WebDataSource dataSource);
 
 		[Export ("webView:resource:willSendRequest:redirectResponse:fromDataSource:"), EventArgs ("WebResourceOnRequestSend"), DefaultValueFromArgument ("request")]
 		NSUrlRequest OnSendRequest (WebView sender, NSObject identifier, NSUrlRequest request, NSUrlResponse redirectResponse, WebDataSource dataSource);
 
 		[Export ("webView:resource:didReceiveAuthenticationChallenge:fromDataSource:"), EventArgs ("WebResourceAuthenticationChallenge")]
-		void ReceivedAuthenticationChallenge (WebView sender, NSObject identifier, NSUrlAuthenticationChallenge challenge, WebDataSource dataSource);
+		void OnReceivedAuthenticationChallenge (WebView sender, NSObject identifier, NSUrlAuthenticationChallenge challenge, WebDataSource dataSource);
 
 		[Export ("webView:resource:didCancelAuthenticationChallenge:fromDataSource:"), EventArgs ("WebResourceCancelledChallenge")]
-		void CancelledAuthenticationChallenge (WebView sender, NSObject identifier, NSUrlAuthenticationChallenge challenge, WebDataSource dataSource);
+		void OnCancelledAuthenticationChallenge (WebView sender, NSObject identifier, NSUrlAuthenticationChallenge challenge, WebDataSource dataSource);
 
 		[Export ("webView:resource:didReceiveResponse:fromDataSource:"), EventArgs ("WebResourceReceivedResponse")]
-		void ReceivedResponse (WebView sender, NSObject identifier, NSUrlResponse responseReceived, WebDataSource dataSource);
+		void OnReceivedResponse (WebView sender, NSObject identifier, NSUrlResponse responseReceived, WebDataSource dataSource);
 
 		[Export ("webView:resource:didReceiveContentLength:fromDataSource:"), EventArgs ("WebResourceReceivedContentLength")]
-		void ReceivedContentLength (WebView sender, NSObject identifier, int length, WebDataSource dataSource);
+		void OnReceivedContentLength (WebView sender, NSObject identifier, int length, WebDataSource dataSource);
 
 		[Export ("webView:resource:didFinishLoadingFromDataSource:"), EventArgs ("WebResourceCompleted")]
-		void FinishedLoading (WebView sender, NSObject identifier, WebDataSource dataSource);
+		void OnFinishedLoading (WebView sender, NSObject identifier, WebDataSource dataSource);
 
 		[Export ("webView:resource:didFailLoadingWithError:fromDataSource:"), EventArgs ("WebResourceError")]
-		void FailedLoading (WebView sender, NSObject identifier, NSError withError, WebDataSource dataSource);
+		void OnFailedLoading (WebView sender, NSObject identifier, NSError withError, WebDataSource dataSource);
 
 		[Export ("webView:plugInFailedWithError:dataSource:"), EventArgs ("WebResourcePluginError")]
-		void PlugInFailed (WebView sender, NSError error, WebDataSource dataSource);
+		void OnPlugInFailed (WebView sender, NSError error, WebDataSource dataSource);
+	}
+
+	[BaseType (typeof (NSObject))]
+	[Model]
+	interface WebUIDelegate {
+		[Export ("webView:createWebViewWithRequest:"), EventArgs("WebViewCreateRequest"), DefaultValue (null)]
+		WebView UICreateWebView (WebView sender, NSUrlRequest request);
+
+		[Export ("webViewShow:")]
+		void UIShow (WebView sender);
+
+		[Export ("webView:createWebViewModalDialogWithRequest:"), EventArgs("WebViewCreateRequest"), DefaultValue (null)]
+		WebView UICreateModalDialog (WebView sender, NSUrlRequest request);
+
+		[Export ("webViewRunModal:")]
+		void UIRunModal (WebView sender);
+
+		[Export ("webViewClose:")]
+		void UIClose (WebView sender);
+
+		[Export ("webViewFocus:")]
+		void UIFocus (WebView sender);
+
+		[Export ("webViewUnfocus:")]
+		void UIUnfocus (WebView sender);
+ 
+		[Export ("webViewFirstResponder:"), EventArgs("WebViewFirstResponder"), DefaultValue (null)]
+		NSResponder UIGetFirstResponder (WebView sender);
+
+		[Export ("webView:makeFirstResponder:"), EventArgs("WebViewFirstResponder")]
+		void UIMakeFirstResponder (WebView sender, NSResponder newResponder);
+
+		[Export ("webView:setStatusText:"), EventArgs("WebViewStatusText")]
+		void UISetStatusText (WebView sender, string text);
+ 
+		[Export ("webViewStatusText:"), EventArgs("WebViewStatusText"), DefaultValue (null)]
+		string UIGetStatusText (WebView sender);
+
+		[Export ("webViewAreToolbarsVisible:"), EventArgs("WebViewToolBars"), DefaultValue (null)]
+		bool UIAreToolbarsVisible (WebView sender);
+
+		[Export ("webView:setToolbarsVisible:"), EventArgs("WebViewToolBars")]
+		void UISetToolbarsVisible (WebView sender, bool visible);
+
+		[Export ("webViewIsStatusBarVisible:"), EventArgs("WebViewStatusBar"), DefaultValue (null)]
+		bool UIIsStatusBarVisible (WebView sender);
+
+		[Export ("webView:setStatusBarVisible:"), EventArgs("WebViewStatusBar")]
+		void UISetStatusBarVisible (WebView sender, bool visible);
+
+		[Export ("webViewIsResizable:"), EventArgs("WebViewResizable"), DefaultValue (null)]
+		bool UIIsResizable (WebView sender);
+
+		[Export ("webView:setResizable:"), EventArgs("WebViewResizable")]
+		void UISetResizable (WebView sender, bool resizable);
+
+		[Export ("webView:setFrame:"), EventArgs("WebViewFrame")]
+		void UISetFrame (WebView sender, RectangleF newFrame);
+
+		[Export ("webViewFrame:"), EventArgs("WebViewFrame"), DefaultValue (null)]
+		RectangleF UIGetFrame (WebView sender);
+
+		[Export ("webView:runJavaScriptAlertPanelWithMessage:initiatedByFrame:"), EventArgs("WebViewJavaScriptFrame")]
+		void UIRunJavaScriptAlertPanelMessage (WebView sender, string withMessage, WebFrame initiatedByFrame);
+
+		[Export ("webView:runJavaScriptConfirmPanelWithMessage:initiatedByFrame:"), EventArgs("WebViewJavaScriptFrame"), DefaultValue (null)]
+		bool UIRunJavaScriptConfirmationPanel (WebView sender, string withMessage, WebFrame initiatedByFrame);
+
+		[Export ("webView:runJavaScriptTextInputPanelWithPrompt:defaultText:initiatedByFrame:"), EventArgs ("WebViewJavaScriptInputFrame"), DefaultValue (null)]
+		string UIRunJavaScriptTextInputPanelWithFrame (WebView sender, string prompt, string defaultText, WebFrame initiatedByFrame);
+
+		[Export ("webView:runBeforeUnloadConfirmPanelWithMessage:initiatedByFrame:"), EventArgs("WebViewJavaScriptFrame"), DefaultValue (null)]
+		bool UIRunBeforeUnload (WebView sender, string message, WebFrame initiatedByFrame);
+
+		[Export ("webView:runOpenPanelForFileButtonWithResultListener:"), EventArgs ("WebViewRunOpenPanel")]
+		void UIRunOpenPanelForFileButton (WebView sender, WebOpenPanelResultListener resultListener);
+
+		[Export ("webView:mouseDidMoveOverElement:modifierFlags:"), EventArgs ("WebViewMouseMoved")]
+		void UIMouseDidMoveOverElement (WebView sender, NSDictionary elementInformation, NSEventModifierMask modifierFlags);
+
+		[Export ("webView:contextMenuItemsForElement:defaultMenuItems:"), EventArgs("WebViewContextMenu"), DefaultValue (null)]
+		NSMenuItem [] UIGetContextMenuItems (WebView sender, NSDictionary forElement, NSMenuItem [] defaultMenuItems);
+		
+		[Export ("webView:validateUserInterfaceItem:defaultValidation:"), EventArgs ("WebViewValidatation"), DefaultValueFromArgument ("defaultValidation")]
+		bool UIValidateUserInterfaceItem (WebView webView, NSObject validatedUserInterfaceItem, bool defaultValidation);
+
+		[Export ("webView:shouldPerformAction:fromSender:"), EventArgs("WebViewPerformAction"), DefaultValue (null)]
+		bool UIShouldPerformActionfromSender (WebView webView, Selector action, NSObject sender);
+
+		[Export ("webView:dragDestinationActionMaskForDraggingInfo:"), EventArgs ("WebViewDragingInfo"), DefaultValue (0)]
+		NSEventModifierMask UIGetDragDestinationActionMask (WebView webView, NSDraggingInfo draggingInfo);
+
+		[Export ("webView:willPerformDragDestinationAction:forDraggingInfo:"), EventArgs ("WebViewDrag")]
+		void UIWillPerformDragDestination (WebView webView, WebDragDestinationAction action, NSDraggingInfo draggingInfo);
+
+		[Export ("webView:dragSourceActionMaskForPoint:"), EventArgs ("WebViewDragAction"), DefaultValue (0)]
+		NSEventModifierMask UIDragSourceActionMask (WebView webView, PointF point);
+
+		[Export ("webView:willPerformDragSourceAction:fromPoint:withPasteboard:"), EventArgs ("WebViewPerformDrag")]
+		void UIWillPerformDragSource (WebView webView, WebDragSourceAction action, PointF sourcePoint, NSPasteboard pasteboard);
+
+		[Export ("webView:printFrameView:"), EventArgs("WebViewPrint")]
+		void UIPrintFrameView (WebView sender, WebFrameView frameView);
+
+		[Export ("webViewHeaderHeight:"), EventArgs("WebViewViewHeader"), DefaultValue (null)]
+		float UIGetHeaderHeight (WebView sender);
+
+		[Export ("webViewFooterHeight:"), EventArgs("WebViewFooter"), DefaultValue (null)]
+		float UIGetFooterHeight (WebView sender);
+
+		[Export ("webView:drawHeaderInRect:"), EventArgs ("WebViewHeader")]
+		void UIDrawHeaderInRect (WebView sender, RectangleF rect);
+
+		[Export ("webView:drawFooterInRect:"), EventArgs ("WebViewFooter")]
+		void UIDrawFooterInRect (WebView sender, RectangleF rect);
+
+		[Export ("webView:runJavaScriptAlertPanelWithMessage:"), EventArgs("WebViewJavaScript")]
+		void UIRunJavaScriptAlertPanel (WebView sender, string message);
+
+		[Export ("webView:runJavaScriptConfirmPanelWithMessage:"), EventArgs("WebViewJavaScript"), DefaultValue (null)]
+		bool UIRunJavaScriptConfirmPanel (WebView sender, string message);
+
+		[Export ("webView:runJavaScriptTextInputPanelWithPrompt:defaultText:"), EventArgs("WebViewJavaScriptInput"), DefaultValue (null)]
+		string UIRunJavaScriptTextInputPanel (WebView sender, string prompt, string defaultText);
+
+		[Export ("webView:setContentRect:"), EventArgs("WebViewContent")]
+		void UISetContentRect (WebView sender, RectangleF frame);
+
+		[Export ("webViewContentRect:"), EventArgs("WebViewContent"), DefaultValue (null)]
+		RectangleF UIGetContentRect (WebView sender);
 	}
 
 	[BaseType (typeof (NSObject))]
@@ -1626,8 +1768,8 @@ namespace MonoMac.WebKit {
 	}
 
 	[BaseType (typeof (NSView),
-		   Events=new Type [] {typeof (WebFrameLoadDelegate), typeof (WebDownloadDelegate), typeof (WebResourceLoadDelegate) },
-		   Delegates=new string [] { "WeakFrameLoadDelegate", "WeakDownloadDelegate", "WeakResourceLoadDelegate"})]
+		   Events=new Type [] {typeof (WebFrameLoadDelegate), typeof (WebDownloadDelegate), typeof (WebResourceLoadDelegate), typeof (WebUIDelegate) },
+		   Delegates=new string [] { "WeakFrameLoadDelegate", "WeakDownloadDelegate", "WeakResourceLoadDelegate", "WeakUIDelegate"})]
 	interface WebView {
 		[Export ("canShowMIMEType:")]
 		bool CanShowMimeType (string MimeType);
@@ -1657,9 +1799,6 @@ namespace MonoMac.WebKit {
 
 		[Export ("close")]
 		void Close ();
-
-		[Export ("UIDelegate")]
-		NSObject UIDelegate { get; set; }
 
 		[Export ("mainFrame")]
 		WebFrame MainFrame { get; }
@@ -1758,6 +1897,12 @@ namespace MonoMac.WebKit {
 
 		[Wrap ("WeakFrameLoadDelegate")]
 		WebFrameLoadDelegate FrameLoadDelegate { get; set; }
+
+		[Export ("UIDelegate"), NullAllowed]
+		NSObject WeakUIDelegate { get; set; }
+
+		[Wrap ("WeakUIDelegate")]
+		WebUIDelegate UIDelegate { get; set; }
 
 		[Export ("policyDelegate")]
 		NSObject PolicyDelegate { get; set; }
