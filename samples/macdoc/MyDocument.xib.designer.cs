@@ -17,6 +17,8 @@ namespace macdoc {
 		
 		private global::MonoMac.AppKit.NSOutlineView __mt_outlineView;
 		
+		private global::MonoMac.AppKit.NSOutlineView __mt_searchResults;
+		
 		private global::MonoMac.WebKit.WebView __mt_webView;
 		
 		#pragma warning disable 0169
@@ -29,6 +31,18 @@ namespace macdoc {
 			set {
 				this.__mt_outlineView = value;
 				this.SetNativeField("outlineView", value);
+			}
+		}
+		
+		[MonoMac.Foundation.Connect("searchResults")]
+		private global::MonoMac.AppKit.NSOutlineView searchResults {
+			get {
+				this.__mt_searchResults = ((global::MonoMac.AppKit.NSOutlineView)(this.GetNativeField("searchResults")));
+				return this.__mt_searchResults;
+			}
+			set {
+				this.__mt_searchResults = value;
+				this.SetNativeField("searchResults", value);
 			}
 		}
 		

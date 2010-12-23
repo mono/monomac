@@ -58,10 +58,9 @@ namespace macdoc
 			get { return "MyDocument"; }
 		}
 		
-		public void LoadHtml (string html, string url)
+		public void LoadHtml (string html)
 		{
-			
-			webView.MainFrame.LoadHtmlString (html, new NSUrl ("file:///tmp/foo"));
+			webView.MainFrame.LoadHtmlString (html, new NSUrl ("file:///"));
 		}
 		
 		public class OutlineDelegate : NSOutlineViewDelegate {
@@ -79,35 +78,22 @@ namespace macdoc
 					return;
 				
 				var node = WrapNode.FromObject (parent.outlineView.ItemAtRow ((int) indexes.FirstIndex));
-				string html = GetHtml (node.PublicUrl, node.tree.HelpSource);
-				if (html != null){
-					parent.LoadHtml (html, node.PublicUrl);
-				}
-			}
-			
-			public static string GetHtml (string url, HelpSource helpSource)
-			{
-				string htmlContent = null;
-				Node match;
+				string html = DocTools.GetHtml (node.PublicUrl, node.tree.HelpSource);
+				if (html != null)
+					parent.LoadHtml (html);
 				
-				if (helpSource != null)
-					htmlContent = helpSource.GetText (url, out match);
-				if (htmlContent == null){
-					htmlContent = AppDelegate.Root.RenderUrl (url, out match);
-					if (htmlContent != null && match != null && match.tree != null){
-						helpSource = match.tree.HelpSource;
-					}
-				}
-				if (htmlContent == null)
-					return null;
-				
-				// TODO: Add javascript and CSS here
-				return htmlContent;
-			}
+				parent.LoadHtml ("<html><body>Do we really need to handle ECMA urls on SelectionDidChange?");
+			}			
+
 		}
 		
 	}
 	
+	// 
+	// The OutlineView works by passing NSObject tokens around for its data.
+	// We conveniently have a Node structure from MonoDoc that we can use
+	// so we just wrap that in this WrapNode class
+	//
 	public class WrapNode : NSObject {
 		public WrapNode (Node n) { Node = n; }
 		public Node Node { get; set; }
@@ -120,6 +106,7 @@ namespace macdoc
 	public class DocTreeDataSource : NSOutlineViewDataSource {
 		RootTree Root = AppDelegate.Root;
 			
+		// We need to keep all objects that we have ever handed out to the Outline View around
 		Dictionary<Node,WrapNode> nodeToWrapper = new Dictionary<Node, WrapNode> ();
 		
 		static Node GetNode (NSObject obj)

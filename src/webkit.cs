@@ -1610,13 +1610,13 @@ namespace MonoMac.WebKit {
 	[BaseType (typeof (NSObject))]
 	[Model]
 	interface WebUIDelegate {
-		[Export ("webView:createWebViewWithRequest:"), EventArgs("WebViewCreateRequest"), DefaultValue (null)]
+		[Export ("webView:createWebViewWithRequest:"), DelegateName("CreateWebViewFromRequest"), DefaultValue (null)]
 		WebView UICreateWebView (WebView sender, NSUrlRequest request);
 
 		[Export ("webViewShow:")]
 		void UIShow (WebView sender);
 
-		[Export ("webView:createWebViewModalDialogWithRequest:"), EventArgs("WebViewCreateRequest"), DefaultValue (null)]
+		[Export ("webView:createWebViewModalDialogWithRequest:"), DelegateName ("WebViewCreate"), DefaultValue (null)]
 		WebView UICreateModalDialog (WebView sender, NSUrlRequest request);
 
 		[Export ("webViewRunModal:")]
@@ -1631,31 +1631,31 @@ namespace MonoMac.WebKit {
 		[Export ("webViewUnfocus:")]
 		void UIUnfocus (WebView sender);
  
-		[Export ("webViewFirstResponder:"), EventArgs("WebViewFirstResponder"), DefaultValue (null)]
+		[Export ("webViewFirstResponder:"), DelegateName ("WebViewGetResponder"), DefaultValue (null)]
 		NSResponder UIGetFirstResponder (WebView sender);
 
-		[Export ("webView:makeFirstResponder:"), EventArgs("WebViewFirstResponder")]
+		[Export ("webView:makeFirstResponder:"), EventArgs("WebViewResponder")]
 		void UIMakeFirstResponder (WebView sender, NSResponder newResponder);
 
 		[Export ("webView:setStatusText:"), EventArgs("WebViewStatusText")]
 		void UISetStatusText (WebView sender, string text);
  
-		[Export ("webViewStatusText:"), EventArgs("WebViewStatusText"), DefaultValue (null)]
+		[Export ("webViewStatusText:"), DelegateName ("WebViewGetString"), DefaultValue (null)]
 		string UIGetStatusText (WebView sender);
 
-		[Export ("webViewAreToolbarsVisible:"), EventArgs("WebViewToolBars"), DefaultValue (null)]
+		[Export ("webViewAreToolbarsVisible:"), DelegateName ("WebViewGetBool"), DefaultValue (null)]
 		bool UIAreToolbarsVisible (WebView sender);
 
 		[Export ("webView:setToolbarsVisible:"), EventArgs("WebViewToolBars")]
 		void UISetToolbarsVisible (WebView sender, bool visible);
 
-		[Export ("webViewIsStatusBarVisible:"), EventArgs("WebViewStatusBar"), DefaultValue (null)]
+		[Export ("webViewIsStatusBarVisible:"), EventArgs ("WebViewGetBool"), DefaultValue (false)]
 		bool UIIsStatusBarVisible (WebView sender);
 
 		[Export ("webView:setStatusBarVisible:"), EventArgs("WebViewStatusBar")]
 		void UISetStatusBarVisible (WebView sender, bool visible);
 
-		[Export ("webViewIsResizable:"), EventArgs("WebViewResizable"), DefaultValue (null)]
+		[Export ("webViewIsResizable:"), DelegateName("WebViewGetBool"), DefaultValue (null)]
 		bool UIIsResizable (WebView sender);
 
 		[Export ("webView:setResizable:"), EventArgs("WebViewResizable")]
@@ -1664,16 +1664,16 @@ namespace MonoMac.WebKit {
 		[Export ("webView:setFrame:"), EventArgs("WebViewFrame")]
 		void UISetFrame (WebView sender, RectangleF newFrame);
 
-		[Export ("webViewFrame:"), EventArgs("WebViewFrame"), DefaultValue (null)]
+		[Export ("webViewFrame:"), DelegateName("WebViewGetRectangle"), DefaultValue (null)]
 		RectangleF UIGetFrame (WebView sender);
 
 		[Export ("webView:runJavaScriptAlertPanelWithMessage:initiatedByFrame:"), EventArgs("WebViewJavaScriptFrame")]
 		void UIRunJavaScriptAlertPanelMessage (WebView sender, string withMessage, WebFrame initiatedByFrame);
 
-		[Export ("webView:runJavaScriptConfirmPanelWithMessage:initiatedByFrame:"), EventArgs("WebViewJavaScriptFrame"), DefaultValue (null)]
+		[Export ("webView:runJavaScriptConfirmPanelWithMessage:initiatedByFrame:"), DelegateName("WebViewConfirmationPanel"), DefaultValue (null)]
 		bool UIRunJavaScriptConfirmationPanel (WebView sender, string withMessage, WebFrame initiatedByFrame);
 
-		[Export ("webView:runJavaScriptTextInputPanelWithPrompt:defaultText:initiatedByFrame:"), EventArgs ("WebViewJavaScriptInputFrame"), DefaultValue (null)]
+		[Export ("webView:runJavaScriptTextInputPanelWithPrompt:defaultText:initiatedByFrame:"), DelegateName ("WebViewPromptPanel"), DefaultValue (null)]
 		string UIRunJavaScriptTextInputPanelWithFrame (WebView sender, string prompt, string defaultText, WebFrame initiatedByFrame);
 
 		[Export ("webView:runBeforeUnloadConfirmPanelWithMessage:initiatedByFrame:"), EventArgs("WebViewJavaScriptFrame"), DefaultValue (null)]
@@ -1685,22 +1685,22 @@ namespace MonoMac.WebKit {
 		[Export ("webView:mouseDidMoveOverElement:modifierFlags:"), EventArgs ("WebViewMouseMoved")]
 		void UIMouseDidMoveOverElement (WebView sender, NSDictionary elementInformation, NSEventModifierMask modifierFlags);
 
-		[Export ("webView:contextMenuItemsForElement:defaultMenuItems:"), EventArgs("WebViewContextMenu"), DefaultValue (null)]
+		[Export ("webView:contextMenuItemsForElement:defaultMenuItems:"), DelegateName("WebViewGetContextMenuItems"), DefaultValue (null)]
 		NSMenuItem [] UIGetContextMenuItems (WebView sender, NSDictionary forElement, NSMenuItem [] defaultMenuItems);
 		
-		[Export ("webView:validateUserInterfaceItem:defaultValidation:"), EventArgs ("WebViewValidatation"), DefaultValueFromArgument ("defaultValidation")]
+		[Export ("webView:validateUserInterfaceItem:defaultValidation:"), DelegateName ("WebViewValidateUserInterface"), DefaultValueFromArgument ("defaultValidation")]
 		bool UIValidateUserInterfaceItem (WebView webView, NSObject validatedUserInterfaceItem, bool defaultValidation);
 
-		[Export ("webView:shouldPerformAction:fromSender:"), EventArgs("WebViewPerformAction"), DefaultValue (null)]
+		[Export ("webView:shouldPerformAction:fromSender:"), DelegateName("WebViewPerformAction"), DefaultValue (null)]
 		bool UIShouldPerformActionfromSender (WebView webView, Selector action, NSObject sender);
 
-		[Export ("webView:dragDestinationActionMaskForDraggingInfo:"), EventArgs ("WebViewDragingInfo"), DefaultValue (0)]
+		[Export ("webView:dragDestinationActionMaskForDraggingInfo:"), DelegateName ("DragDestinationGetActionMask"), DefaultValue (0)]
 		NSEventModifierMask UIGetDragDestinationActionMask (WebView webView, NSDraggingInfo draggingInfo);
 
 		[Export ("webView:willPerformDragDestinationAction:forDraggingInfo:"), EventArgs ("WebViewDrag")]
 		void UIWillPerformDragDestination (WebView webView, WebDragDestinationAction action, NSDraggingInfo draggingInfo);
 
-		[Export ("webView:dragSourceActionMaskForPoint:"), EventArgs ("WebViewDragAction"), DefaultValue (0)]
+		[Export ("webView:dragSourceActionMaskForPoint:"), DelegateName ("DragSourceGetActionMask"), DefaultValue (0)]
 		NSEventModifierMask UIDragSourceActionMask (WebView webView, PointF point);
 
 		[Export ("webView:willPerformDragSourceAction:fromPoint:withPasteboard:"), EventArgs ("WebViewPerformDrag")]
@@ -1709,10 +1709,10 @@ namespace MonoMac.WebKit {
 		[Export ("webView:printFrameView:"), EventArgs("WebViewPrint")]
 		void UIPrintFrameView (WebView sender, WebFrameView frameView);
 
-		[Export ("webViewHeaderHeight:"), EventArgs("WebViewViewHeader"), DefaultValue (null)]
+		[Export ("webViewHeaderHeight:"), DelegateName("WebViewGetFloat"), DefaultValue (null)]
 		float UIGetHeaderHeight (WebView sender);
 
-		[Export ("webViewFooterHeight:"), EventArgs("WebViewFooter"), DefaultValue (null)]
+		[Export ("webViewFooterHeight:"), DelegateName("WebViewGetFloat"), DefaultValue (null)]
 		float UIGetFooterHeight (WebView sender);
 
 		[Export ("webView:drawHeaderInRect:"), EventArgs ("WebViewHeader")]
@@ -1724,16 +1724,16 @@ namespace MonoMac.WebKit {
 		[Export ("webView:runJavaScriptAlertPanelWithMessage:"), EventArgs("WebViewJavaScript")]
 		void UIRunJavaScriptAlertPanel (WebView sender, string message);
 
-		[Export ("webView:runJavaScriptConfirmPanelWithMessage:"), EventArgs("WebViewJavaScript"), DefaultValue (null)]
+		[Export ("webView:runJavaScriptConfirmPanelWithMessage:"), DelegateName("WebViewPrompt"), DefaultValue (null)]
 		bool UIRunJavaScriptConfirmPanel (WebView sender, string message);
 
-		[Export ("webView:runJavaScriptTextInputPanelWithPrompt:defaultText:"), EventArgs("WebViewJavaScriptInput"), DefaultValue (null)]
+		[Export ("webView:runJavaScriptTextInputPanelWithPrompt:defaultText:"), DelegateName("WebViewJavaScriptInput"), DefaultValue (null)]
 		string UIRunJavaScriptTextInputPanel (WebView sender, string prompt, string defaultText);
 
 		[Export ("webView:setContentRect:"), EventArgs("WebViewContent")]
 		void UISetContentRect (WebView sender, RectangleF frame);
 
-		[Export ("webViewContentRect:"), EventArgs("WebViewContent"), DefaultValue (null)]
+		[Export ("webViewContentRect:"), DelegateName("WebViewGetRectangle"), DefaultValue (null)]
 		RectangleF UIGetContentRect (WebView sender);
 	}
 
