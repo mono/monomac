@@ -88,8 +88,44 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="DecideDownload">
+      <MemberSignature Language="C#" Value="public static void DecideDownload (MonoMac.Foundation.NSObject webPolicyDecisionListener);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="webPolicyDecisionListener" Type="MonoMac.Foundation.NSObject" />
+      </Parameters>
+      <Docs>
+        <param name="webPolicyDecisionListener">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DecideIgnore">
+      <MemberSignature Language="C#" Value="public static void DecideIgnore (MonoMac.Foundation.NSObject webPolicyDecisionListener);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="webPolicyDecisionListener" Type="MonoMac.Foundation.NSObject" />
+      </Parameters>
+      <Docs>
+        <param name="webPolicyDecisionListener">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="DecidePolicyForMimeType">
-      <MemberSignature Language="C#" Value="public virtual void DecidePolicyForMimeType (MonoMac.WebKit.WebView webView, string mimeType, MonoMac.Foundation.NSUrlRequest request, MonoMac.WebKit.WebFrame frame, MonoMac.WebKit.WebPolicyDecisionListener webPolicyDecisionListener);" />
+      <MemberSignature Language="C#" Value="public virtual void DecidePolicyForMimeType (MonoMac.WebKit.WebView webView, string mimeType, MonoMac.Foundation.NSUrlRequest request, MonoMac.WebKit.WebFrame frame, MonoMac.Foundation.NSObject webPolicyDecisionListener);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -107,7 +143,7 @@
         <Parameter Name="mimeType" Type="System.String" />
         <Parameter Name="request" Type="MonoMac.Foundation.NSUrlRequest" />
         <Parameter Name="frame" Type="MonoMac.WebKit.WebFrame" />
-        <Parameter Name="webPolicyDecisionListener" Type="MonoMac.WebKit.WebPolicyDecisionListener" />
+        <Parameter Name="webPolicyDecisionListener" Type="MonoMac.Foundation.NSObject" />
       </Parameters>
       <Docs>
         <param name="webView">To be added.</param>
@@ -120,7 +156,7 @@
       </Docs>
     </Member>
     <Member MemberName="DecidePolicyForNavigation">
-      <MemberSignature Language="C#" Value="public virtual void DecidePolicyForNavigation (MonoMac.WebKit.WebView webView, MonoMac.Foundation.NSDictionary actionInformation, MonoMac.Foundation.NSUrlRequest request, MonoMac.WebKit.WebFrame frame, MonoMac.WebKit.WebPolicyDecisionListener decisionListener);" />
+      <MemberSignature Language="C#" Value="public virtual void DecidePolicyForNavigation (MonoMac.WebKit.WebView webView, MonoMac.Foundation.NSDictionary actionInformation, MonoMac.Foundation.NSUrlRequest request, MonoMac.WebKit.WebFrame frame, MonoMac.Foundation.NSObject webPolicyDecisionListener);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -138,20 +174,20 @@
         <Parameter Name="actionInformation" Type="MonoMac.Foundation.NSDictionary" />
         <Parameter Name="request" Type="MonoMac.Foundation.NSUrlRequest" />
         <Parameter Name="frame" Type="MonoMac.WebKit.WebFrame" />
-        <Parameter Name="decisionListener" Type="MonoMac.WebKit.WebPolicyDecisionListener" />
+        <Parameter Name="webPolicyDecisionListener" Type="MonoMac.Foundation.NSObject" />
       </Parameters>
       <Docs>
         <param name="webView">To be added.</param>
         <param name="actionInformation">To be added.</param>
         <param name="request">To be added.</param>
         <param name="frame">To be added.</param>
-        <param name="decisionListener">To be added.</param>
+        <param name="webPolicyDecisionListener">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="DecidePolicyForNewWindow">
-      <MemberSignature Language="C#" Value="public virtual void DecidePolicyForNewWindow (MonoMac.WebKit.WebView webView, MonoMac.Foundation.NSDictionary actionInformation, MonoMac.Foundation.NSUrlRequest request, string newFrameName, MonoMac.WebKit.WebPolicyDecisionListener webPolicyDecisionListener);" />
+      <MemberSignature Language="C#" Value="public virtual void DecidePolicyForNewWindow (MonoMac.WebKit.WebView webView, MonoMac.Foundation.NSDictionary actionInformation, MonoMac.Foundation.NSUrlRequest request, string newFrameName, MonoMac.Foundation.NSObject webPolicyDecisionListener);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -169,13 +205,31 @@
         <Parameter Name="actionInformation" Type="MonoMac.Foundation.NSDictionary" />
         <Parameter Name="request" Type="MonoMac.Foundation.NSUrlRequest" />
         <Parameter Name="newFrameName" Type="System.String" />
-        <Parameter Name="webPolicyDecisionListener" Type="MonoMac.WebKit.WebPolicyDecisionListener" />
+        <Parameter Name="webPolicyDecisionListener" Type="MonoMac.Foundation.NSObject" />
       </Parameters>
       <Docs>
         <param name="webView">To be added.</param>
         <param name="actionInformation">To be added.</param>
         <param name="request">To be added.</param>
         <param name="newFrameName">To be added.</param>
+        <param name="webPolicyDecisionListener">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DecisionUse">
+      <MemberSignature Language="C#" Value="public static void DecisionUse (MonoMac.Foundation.NSObject webPolicyDecisionListener);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="webPolicyDecisionListener" Type="MonoMac.Foundation.NSObject" />
+      </Parameters>
+      <Docs>
         <param name="webPolicyDecisionListener">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>

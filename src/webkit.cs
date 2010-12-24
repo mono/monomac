@@ -1468,13 +1468,13 @@ namespace MonoMac.WebKit {
 	[Model]
 	interface WebPolicyDelegate  {
 		[Export ("webView:decidePolicyForNavigationAction:request:frame:decisionListener:")]
-		void DecidePolicyForNavigation (WebView webView, NSDictionary actionInformation, NSUrlRequest request, WebFrame frame, WebPolicyDecisionListener decisionListener);
+		void DecidePolicyForNavigation (WebView webView, NSDictionary actionInformation, NSUrlRequest request, WebFrame frame, NSObject webPolicyDecisionListener);
 
 		[Export ("webView:decidePolicyForNewWindowAction:request:newFrameName:decisionListener:")]
-		void DecidePolicyForNewWindow (WebView webView, NSDictionary actionInformation, NSUrlRequest request, string newFrameName, WebPolicyDecisionListener webPolicyDecisionListener);
+		void DecidePolicyForNewWindow (WebView webView, NSDictionary actionInformation, NSUrlRequest request, string newFrameName, NSObject webPolicyDecisionListener);
 
 		[Export ("webView:decidePolicyForMIMEType:request:frame:")]
-		void DecidePolicyForMimeType (WebView webView, string mimeType, NSUrlRequest request, WebFrame frame, WebPolicyDecisionListener webPolicyDecisionListener);
+		void DecidePolicyForMimeType (WebView webView, string mimeType, NSUrlRequest request, WebFrame frame, NSObject webPolicyDecisionListener);
 
 		[Export ("webView:unableToImplementPolicyWithError:frame::")]
 		void UnableToImplementPolicy (WebView webView, NSError error, WebFrame frame);

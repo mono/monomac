@@ -60,7 +60,8 @@ MONOMAC_SOURCES = \
 	./WebKit/DomNode.cs				\
 	./WebKit/Enumerators.cs				\
 	./WebKit/Indexers.cs				\
-	./WebKit/WebKit.cs
+	./WebKit/WebKit.cs				\
+	./WebKit/WebPolicyDelegate.cs
 
 GENERATOR_SOURCES = \
 	../../maccore/src/generator.cs			\
