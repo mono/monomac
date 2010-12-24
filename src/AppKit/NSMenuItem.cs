@@ -33,12 +33,20 @@ using MonoMac.Foundation;
 namespace MonoMac.AppKit {
 
 	public partial class NSMenuItem {
+		public NSMenuItem (string title, EventHandler handler) : this (title, "", handler)
+		{
+		}
+		
 		public NSMenuItem (string title, string charCode, EventHandler handler) : this (title, null, charCode)
 		{
 			Activated += handler;
 		}
 
 		public NSMenuItem (string title, string charCode) : this (title, null, charCode)
+		{
+		}
+
+		public NSMenuItem (string title) : this (title, null, "")
 		{
 		}
 		
