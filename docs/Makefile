@@ -9,7 +9,7 @@ docs: $(DOCS_MAN) $(DOCS_LIB)
 
 
 update-docs:
-	mdoc update $(MDOC_UPDATE_OPTIONS) -o en $(DOCS_ASSEMBLIES)
+	mdoc update --delete $(MDOC_UPDATE_OPTIONS) -o en $(DOCS_ASSEMBLIES)
 
 update-docs-svn:
 	`grep -v '.xml.s'` is to skip vim temporary files, e.g. '.foo.xml.swp'

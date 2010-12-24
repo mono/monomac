@@ -1,5 +1,5 @@
 <Type Name="NSIndexSet" FullName="MonoMac.Foundation.NSIndexSet">
-  <TypeSignature Language="C#" Value="public class NSIndexSet : MonoMac.Foundation.NSObject" />
+  <TypeSignature Language="C#" Value="public class NSIndexSet : MonoMac.Foundation.NSObject, System.Collections.Generic.IEnumerable&lt;uint&gt;" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit NSIndexSet extends MonoMac.Foundation.NSObject" />
   <AssemblyInfo>
     <AssemblyName>MonoMac</AssemblyName>
@@ -8,7 +8,11 @@
   <Base>
     <BaseTypeName>MonoMac.Foundation.NSObject</BaseTypeName>
   </Base>
-  <Interfaces />
+  <Interfaces>
+    <Interface>
+      <InterfaceName>System.Collections.Generic.IEnumerable&lt;System.UInt32&gt;</InterfaceName>
+    </Interface>
+  </Interfaces>
   <Attributes>
     <Attribute>
       <AttributeName>MonoMac.Foundation.Register("NSIndexSet")</AttributeName>
@@ -698,6 +702,22 @@ public class MyClass : BaseClass {
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName="GetEnumerator">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.IEnumerator&lt;uint&gt; GetEnumerator ();" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.IEnumerator&lt;System.UInt32&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="IndexGreaterThan">
       <MemberSignature Language="C#" Value="public virtual uint IndexGreaterThan (uint index);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance unsigned int32 IndexGreaterThan(unsigned int32 index) cil managed" />
@@ -868,6 +888,22 @@ public class MyClass : BaseClass {
           <para>Returns either the last index in the receiver or the not-found indicator.</para>
         </summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="System.Collections.IEnumerable.GetEnumerator">
+      <MemberSignature Language="C#" Value="System.Collections.IEnumerator IEnumerable.GetEnumerator ();" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.IEnumerator</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

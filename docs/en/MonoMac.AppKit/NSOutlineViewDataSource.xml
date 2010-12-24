@@ -138,33 +138,6 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="CountChildren">
-      <MemberSignature Language="C#" Value="public virtual int CountChildren (MonoMac.AppKit.NSOutlineView outlineView, MonoMac.Foundation.NSObject item);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance int32 CountChildren(class MonoMac.AppKit.NSOutlineView outlineView, class MonoMac.Foundation.NSObject item) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>MonoMac.Foundation.Export("outlineView:numberOfChildrenOfItem:")</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="outlineView" Type="MonoMac.AppKit.NSOutlineView" />
-        <Parameter Name="item" Type="MonoMac.Foundation.NSObject" />
-      </Parameters>
-      <Docs>
-        <param name="outlineView">To be added.</param>
-        <param name="item">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="FilesDropped">
       <MemberSignature Language="C#" Value="public virtual string[] FilesDropped (MonoMac.AppKit.NSOutlineView outlineView, MonoMac.Foundation.NSUrl dropDestination, MonoMac.Foundation.NSArray items);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string[] FilesDropped(class MonoMac.AppKit.NSOutlineView outlineView, class MonoMac.Foundation.NSUrl dropDestination, class MonoMac.Foundation.NSArray items) cil managed" />
@@ -195,7 +168,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="GetChild">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject GetChild (MonoMac.AppKit.NSOutlineView outlineView, int index, MonoMac.Foundation.NSObject item);" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject GetChild (MonoMac.AppKit.NSOutlineView outlineView, int childIndex, MonoMac.Foundation.NSObject ofItem);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class MonoMac.Foundation.NSObject GetChild(class MonoMac.AppKit.NSOutlineView outlineView, int32 index, class MonoMac.Foundation.NSObject item) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
@@ -211,12 +184,38 @@ public class MyClass : BaseClass {
       </ReturnValue>
       <Parameters>
         <Parameter Name="outlineView" Type="MonoMac.AppKit.NSOutlineView" />
-        <Parameter Name="index" Type="System.Int32" />
+        <Parameter Name="childIndex" Type="System.Int32" />
+        <Parameter Name="ofItem" Type="MonoMac.Foundation.NSObject" />
+      </Parameters>
+      <Docs>
+        <param name="outlineView">To be added.</param>
+        <param name="childIndex">To be added.</param>
+        <param name="ofItem">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetChildrenCount">
+      <MemberSignature Language="C#" Value="public virtual int GetChildrenCount (MonoMac.AppKit.NSOutlineView outlineView, MonoMac.Foundation.NSObject item);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("outlineView:numberOfChildrenOfItem:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="outlineView" Type="MonoMac.AppKit.NSOutlineView" />
         <Parameter Name="item" Type="MonoMac.Foundation.NSObject" />
       </Parameters>
       <Docs>
         <param name="outlineView">To be added.</param>
-        <param name="index">To be added.</param>
         <param name="item">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
@@ -224,7 +223,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="GetObjectValue">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject GetObjectValue (MonoMac.AppKit.NSOutlineView outlineView, MonoMac.AppKit.NSTableColumn tableColumn, MonoMac.Foundation.NSObject item);" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject GetObjectValue (MonoMac.AppKit.NSOutlineView outlineView, MonoMac.AppKit.NSTableColumn forTableColumn, MonoMac.Foundation.NSObject byItem);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class MonoMac.Foundation.NSObject GetObjectValue(class MonoMac.AppKit.NSOutlineView outlineView, class MonoMac.AppKit.NSTableColumn tableColumn, class MonoMac.Foundation.NSObject item) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
@@ -240,13 +239,13 @@ public class MyClass : BaseClass {
       </ReturnValue>
       <Parameters>
         <Parameter Name="outlineView" Type="MonoMac.AppKit.NSOutlineView" />
-        <Parameter Name="tableColumn" Type="MonoMac.AppKit.NSTableColumn" />
-        <Parameter Name="item" Type="MonoMac.Foundation.NSObject" />
+        <Parameter Name="forTableColumn" Type="MonoMac.AppKit.NSTableColumn" />
+        <Parameter Name="byItem" Type="MonoMac.Foundation.NSObject" />
       </Parameters>
       <Docs>
         <param name="outlineView">To be added.</param>
-        <param name="tableColumn">To be added.</param>
-        <param name="item">To be added.</param>
+        <param name="forTableColumn">To be added.</param>
+        <param name="byItem">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
