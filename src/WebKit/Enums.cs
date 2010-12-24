@@ -81,5 +81,8 @@ namespace MonoMac.WebKit {
 		Selection = 8,
 		Any = UInt32.MaxValue
 	}
-	
+
+	public enum WebNavigationType {
+		LinkClicked, FormSubmitted, BackForward, Reload, FormResubmitted, Other
+	}
 }

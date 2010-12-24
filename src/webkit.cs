@@ -1463,6 +1463,35 @@ namespace MonoMac.WebKit {
 		[Export ("cancel")]
 		void Cancel ();
 	}
+
+	[BaseType (typeof (NSObject))]
+	[Model]
+	interface WebPolicyDelegate  {
+		[Export ("webView:decidePolicyForNavigationAction:request:frame:decisionListener:")]
+		void DecidePolicyForNavigation (WebView webView, NSDictionary actionInformation, NSUrlRequest request, WebFrame frame, WebPolicyDecisionListener decisionListener);
+
+		[Export ("webView:decidePolicyForNewWindowAction:request:newFrameName:decisionListener:")]
+		void DecidePolicyForNewWindow (WebView webView, NSDictionary actionInformation, NSUrlRequest request, string newFrameName, WebPolicyDecisionListener webPolicyDecisionListener);
+
+		[Export ("webView:decidePolicyForMIMEType:request:frame:")]
+		void DecidePolicyForMimeType (WebView webView, string mimeType, NSUrlRequest request, WebFrame frame, WebPolicyDecisionListener webPolicyDecisionListener);
+
+		[Export ("webView:unableToImplementPolicyWithError:frame::")]
+		void UnableToImplementPolicy (WebView webView, NSError error, WebFrame frame);
+	}
+
+	[BaseType (typeof (NSObject))]
+	[Model]
+	interface WebPolicyDecisionListener {
+		[Export ("use")]
+		void Use ();
+
+		[Export ("download")]
+		void Download ();
+
+		[Export ("ignore")]
+		void Ignore ();
+	}
 	
 	[BaseType (typeof (NSObject))]
 	interface WebPreferences {
@@ -1904,9 +1933,12 @@ namespace MonoMac.WebKit {
 		[Wrap ("WeakUIDelegate")]
 		WebUIDelegate UIDelegate { get; set; }
 
-		[Export ("policyDelegate")]
-		NSObject PolicyDelegate { get; set; }
+		[Export ("policyDelegate"), NullAllowed]
+		NSObject WeakPolicyDelegate { get; set; }
 
+		[Wrap ("WeakPolicyDelegate")]
+		WebPolicyDelegate PolicyDelegate { get; set; }
+		
 		[Export ("textSizeMultiplier")]
 		float TextSizeMultiplier { get; set; }
 

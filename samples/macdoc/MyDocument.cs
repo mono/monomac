@@ -27,8 +27,12 @@ namespace macdoc
 
 			outlineView.DataSource = new DocTreeDataSource ();
 			outlineView.Delegate = new OutlineDelegate (this);
+			webView.UICreateWebView = (sender, request) => {
+				Console.WriteLine (request.Url);
+				return sender;
+			};
 		}
-
+		
 		// 
 		// Save support:
 		//    Override one of GetAsData, GetAsFileWrapper, or WriteToUrl.
@@ -79,10 +83,12 @@ namespace macdoc
 				
 				var node = WrapNode.FromObject (parent.outlineView.ItemAtRow ((int) indexes.FirstIndex));
 				string html = DocTools.GetHtml (node.PublicUrl, node.tree.HelpSource);
-				if (html != null)
+				if (html != null){
 					parent.LoadHtml (html);
+					return;
+				}
 				
-				parent.LoadHtml ("<html><body>Do we really need to handle ECMA urls on SelectionDidChange?");
+				parent.LoadHtml ("<html><body>do we really need anything else: " + node.PublicUrl);
 			}			
 
 		}
@@ -103,6 +109,9 @@ namespace macdoc
 		}
 	}
 	
+	//
+	// Data source for rendering the tree 
+	//
 	public class DocTreeDataSource : NSOutlineViewDataSource {
 		RootTree Root = AppDelegate.Root;
 			

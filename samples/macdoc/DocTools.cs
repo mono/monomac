@@ -22,8 +22,9 @@ namespace macdoc
 					helpSource = match.tree.HelpSource;
 				}
 			}
-			if (htmlContent == null)
-				return null;
+			if (htmlContent == null){
+				
+			}
 
 			var html = new StringWriter ();
    			html.Write ("<html>\n<head><title>{0}</title>", url);
