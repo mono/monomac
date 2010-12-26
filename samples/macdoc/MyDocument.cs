@@ -11,6 +11,8 @@ namespace macdoc
 {
 	public partial class MyDocument : MonoMac.AppKit.NSDocument
 	{
+		internal Dictionary<Node,WrapNode> nodeToWrapper = new Dictionary<Node, WrapNode> ();
+		
 		// Called when created from unmanaged code
 		public MyDocument (IntPtr handle) : base(handle)
 		{
@@ -25,59 +27,62 @@ namespace macdoc
 		public override void WindowControllerDidLoadNib (NSWindowController windowController)
 		{
 			base.WindowControllerDidLoadNib (windowController);
-
-			outlineView.DataSource = new DocTreeDataSource ();
+			
+			outlineView.DataSource = new DocTreeDataSource (this);
 			outlineView.Delegate = new OutlineDelegate (this);
-			webView.DecidePolicyForNavigation += delegate(object sender, MonoMac.WebKit.WebNavigatioPolicyEventArgs e) {
-				var mainUrl = e.Frame.WebView.MainFrameUrl;
-				var abs = e.Request.Url.AbsoluteString;
-				
-				// Let WebKit take care of the anchors.
-				if (abs.StartsWith (mainUrl) && abs.Length > mainUrl.Length && abs [mainUrl.Length] == '#'){
-					WebView.DecisionUse (e.DecisionToken);
-					return;
-				}
-				
-				Node match;
-				WebView.DecideIgnore (e.DecisionToken);
-				var res = DocTools.GetHtml (abs, null, out match);
-				LoadHtml (res);
-				
-			};
+			webView.DecidePolicyForNavigation += HandleWebViewDecidePolicyForNavigation; 
+		}
+
+		void HandleWebViewDecidePolicyForNavigation (object sender, WebNavigatioPolicyEventArgs e)
+		{
+			if (LoadingFromString){
+				WebView.DecideUse (e.DecisionToken);
+				return;
+			}
+			
+			var mainUrl = e.Frame.WebView.MainFrameUrl;
+			var abs = e.Request.Url.AbsoluteString;
+			
+			// Let WebKit take care of the anchors.
+			if (mainUrl != null && abs.StartsWith (mainUrl) && abs.Length > mainUrl.Length && abs [mainUrl.Length] == '#'){
+				WebView.DecideUse (e.DecisionToken);
+				return;
+			}
+			
+			Node match;
+			WebView.DecideIgnore (e.DecisionToken);
+			var res = DocTools.GetHtml (abs, null, out match);
+			if (res == null)
+				return;
+			
+			LoadHtml (res);	
+			ShowNode (match);
 		}
 		
-		// 
-		// Save support:
-		//    Override one of GetAsData, GetAsFileWrapper, or WriteToUrl.
-		//
-
-		// This method should store the contents of the document using the given typeName
-		// on the return NSData value.
-		public override NSData GetAsData (string documentType, out NSError outError)
-		{
-			outError = NSError.FromDomain (NSError.OsStatusErrorDomain, -4);
-			return null;
-		}
-
-		// 
-		// Load support:
-		//    Override one of ReadFromData, ReadFromFileWrapper or ReadFromUrl
-		//
-		public override bool ReadFromData (NSData data, string typeName, out NSError outError)
-		{
-			outError = NSError.FromDomain (NSError.OsStatusErrorDomain, -4);
-			return false;
-		}
-
 		// If this returns the name of a NIB file instead of null, a NSDocumentController 
 		// is automatically created for you.
 		public override string WindowNibName {
 			get { return "MyDocument"; }
 		}
 		
+		bool LoadingFromString;
 		public void LoadHtml (string html)
 		{
+			LoadingFromString = true;
 			webView.MainFrame.LoadHtmlString (html, new NSUrl ("file:///"));
+			LoadingFromString = false;
+		}
+		
+		void ShowNode (Node n)
+		{
+			if (!nodeToWrapper.ContainsKey (n))
+				ShowNode (n.Parent);
+			
+			var item = nodeToWrapper [n];
+			outlineView.ExpandItem (item);
+			var row = outlineView.RowForItem (item);
+			outlineView.ScrollRowToVisible (row);
+			outlineView.SelectRows (new NSIndexSet (row), false);
 		}
 		
 		public class OutlineDelegate : NSOutlineViewDelegate {
@@ -129,15 +134,16 @@ namespace macdoc
 		RootTree Root = AppDelegate.Root;
 			
 		// We need to keep all objects that we have ever handed out to the Outline View around
-		Dictionary<Node,WrapNode> nodeToWrapper = new Dictionary<Node, WrapNode> ();
+		Dictionary<Node,WrapNode> nodeToWrapper;
 		
 		static Node GetNode (NSObject obj)
 		{
 			return WrapNode.FromObject (obj);
 		}
 		
-		public DocTreeDataSource ()
+		public DocTreeDataSource (MyDocument parent)
 		{
+			nodeToWrapper = parent.nodeToWrapper;
 		}
 		
 		public override NSObject GetChild (NSOutlineView outlineView, int index, NSObject item)
