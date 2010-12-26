@@ -11,8 +11,14 @@ namespace macdoc
 	public class DocTools {
 		public static string GetHtml (string url, HelpSource helpSource)
 		{
+			Node _;
+			return GetHtml (url, helpSource, out _);
+		}
+		
+		public static string GetHtml (string url, HelpSource helpSource, out Node match)
+		{
 			string htmlContent = null;
-			Node match;
+			match = null;
 			
 			if (helpSource != null)
 				htmlContent = helpSource.GetText (url, out match);
@@ -22,10 +28,9 @@ namespace macdoc
 					helpSource = match.tree.HelpSource;
 				}
 			}
-			if (htmlContent == null){
-				
-			}
-
+			if (htmlContent == null)
+				return null;
+			
 			var html = new StringWriter ();
    			html.Write ("<html>\n<head><title>{0}</title>", url);
 			

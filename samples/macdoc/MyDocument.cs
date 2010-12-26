@@ -2,9 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using MonoMac.Foundation;
-using MonoMac.AppKit;
 using Monodoc;
+using MonoMac.AppKit;
+using MonoMac.Foundation;
+using MonoMac.WebKit;
 
 namespace macdoc
 {
@@ -28,8 +29,20 @@ namespace macdoc
 			outlineView.DataSource = new DocTreeDataSource ();
 			outlineView.Delegate = new OutlineDelegate (this);
 			webView.DecidePolicyForNavigation += delegate(object sender, MonoMac.WebKit.WebNavigatioPolicyEventArgs e) {
-				Console.WriteLine (e.Request);
-				WebPolicyDelegate.DecisionUse (e.WebPolicyDecisionListener);
+				var mainUrl = e.Frame.WebView.MainFrameUrl;
+				var abs = e.Request.Url.AbsoluteString;
+				
+				// Let WebKit take care of the anchors.
+				if (abs.StartsWith (mainUrl) && abs.Length > mainUrl.Length && abs [mainUrl.Length] == '#'){
+					WebView.DecisionUse (e.DecisionToken);
+					return;
+				}
+				
+				Node match;
+				WebView.DecideIgnore (e.DecisionToken);
+				var res = DocTools.GetHtml (abs, null, out match);
+				LoadHtml (res);
+				
 			};
 		}
 		

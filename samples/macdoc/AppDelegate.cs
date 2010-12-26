@@ -13,6 +13,7 @@ namespace macdoc
 		public AppDelegate ()
 		{
 			Root = RootTree.LoadTree (null);
+			SettingsHandler.Settings.EnableEditing = false;
 		}
 
 		public override void FinishedLaunching (NSObject notification)
