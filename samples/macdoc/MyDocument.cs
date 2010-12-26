@@ -80,9 +80,20 @@ namespace macdoc
 			
 			var item = nodeToWrapper [n];
 			outlineView.ExpandItem (item);
+			
+			// Focus the last child, then this child to ensure we show as much as possible
+			if (n.Nodes.Count > 0)
+				ScrollToVisible ((Node) n.Nodes [n.Nodes.Count-1]);
+			var row = ScrollToVisible (n);
+			outlineView.SelectRows (new NSIndexSet (row), false);
+		}
+		
+		int ScrollToVisible (Node n)
+		{
+			var item = nodeToWrapper [n];
 			var row = outlineView.RowForItem (item);
 			outlineView.ScrollRowToVisible (row);
-			outlineView.SelectRows (new NSIndexSet (row), false);
+			return row;
 		}
 		
 		public class OutlineDelegate : NSOutlineViewDelegate {
