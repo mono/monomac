@@ -1467,16 +1467,16 @@ namespace MonoMac.WebKit {
 	[BaseType (typeof (NSObject))]
 	[Model]
 	interface WebPolicyDelegate  {
-		[Export ("webView:decidePolicyForNavigationAction:request:frame:decisionListener:")]
+		[Export ("webView:decidePolicyForNavigationAction:request:frame:decisionListener:"), EventArgs ("WebNavigatioPolicy")]
 		void DecidePolicyForNavigation (WebView webView, NSDictionary actionInformation, NSUrlRequest request, WebFrame frame, NSObject webPolicyDecisionListener);
 
-		[Export ("webView:decidePolicyForNewWindowAction:request:newFrameName:decisionListener:")]
+		[Export ("webView:decidePolicyForNewWindowAction:request:newFrameName:decisionListener:"), EventArgs ("WebNewWindowPolicy")]
 		void DecidePolicyForNewWindow (WebView webView, NSDictionary actionInformation, NSUrlRequest request, string newFrameName, NSObject webPolicyDecisionListener);
 
-		[Export ("webView:decidePolicyForMIMEType:request:frame:")]
+		[Export ("webView:decidePolicyForMIMEType:request:frame:"), EventArgs ("WebMimeTypePolicy")]
 		void DecidePolicyForMimeType (WebView webView, string mimeType, NSUrlRequest request, WebFrame frame, NSObject webPolicyDecisionListener);
 
-		[Export ("webView:unableToImplementPolicyWithError:frame::")]
+		[Export ("webView:unableToImplementPolicyWithError:frame::"), EventArgs ("WebFailureToImplementPolicy")]
 		void UnableToImplementPolicy (WebView webView, NSError error, WebFrame frame);
 	}
 
@@ -1797,8 +1797,19 @@ namespace MonoMac.WebKit {
 	}
 
 	[BaseType (typeof (NSView),
-		   Events=new Type [] {typeof (WebFrameLoadDelegate), typeof (WebDownloadDelegate), typeof (WebResourceLoadDelegate), typeof (WebUIDelegate) },
-		   Delegates=new string [] { "WeakFrameLoadDelegate", "WeakDownloadDelegate", "WeakResourceLoadDelegate", "WeakUIDelegate"})]
+		   Events=new Type [] {
+			   typeof (WebFrameLoadDelegate),
+			   typeof (WebDownloadDelegate),
+			   typeof (WebResourceLoadDelegate),
+			   typeof (WebUIDelegate),
+			   typeof (WebPolicyDelegate) },
+		   Delegates=new string [] {
+			   "WeakFrameLoadDelegate",
+			   "WeakDownloadDelegate",
+			   "WeakResourceLoadDelegate",
+			   "WeakUIDelegate",
+			   "WeakPolicyDelegate" }
+		   )]
 	interface WebView {
 		[Export ("canShowMIMEType:")]
 		bool CanShowMimeType (string MimeType);
