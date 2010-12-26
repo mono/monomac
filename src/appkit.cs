@@ -9717,10 +9717,10 @@ namespace MonoMac.AppKit {
 		void DeselectAll (NSObject sender);
 	
 		[Export ("selectColumnIndexes:byExtendingSelection:")]
-		void SelectColumns (NSIndexSet indexes, bool extend );
+		void SelectColumns (NSIndexSet indexes, bool byExtendingSelection);
 	
 		[Export ("selectRowIndexes:byExtendingSelection:")]
-		void SelectRows (NSIndexSet indexes, bool extend );
+		void SelectRows (NSIndexSet indexes, bool byExtendingSelection);
 	
 		[Export ("selectedColumnIndexes")]
 		NSIndexSet SelectedColumns { get; }
