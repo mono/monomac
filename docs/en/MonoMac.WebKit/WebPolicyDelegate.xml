@@ -88,44 +88,8 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="DecideDownload">
-      <MemberSignature Language="C#" Value="public static void DecideDownload (MonoMac.Foundation.NSObject webPolicyDecisionListener);" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="webPolicyDecisionListener" Type="MonoMac.Foundation.NSObject" />
-      </Parameters>
-      <Docs>
-        <param name="webPolicyDecisionListener">Token parameter received by the policy method.</param>
-        <summary>Use to notify WebKit that the policy decision is to download the file.</summary>
-        <remarks><para>You call this method to notify WebKit that your policy code has determined that the file has to be downloaded.   The webPolicyDecisionListener object is the parameter that your policy method received.</para></remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="DecideIgnore">
-      <MemberSignature Language="C#" Value="public static void DecideIgnore (MonoMac.Foundation.NSObject webPolicyDecisionListener);" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="webPolicyDecisionListener" Type="MonoMac.Foundation.NSObject" />
-      </Parameters>
-      <Docs>
-        <param name="webPolicyDecisionListener">Token parameter received by the policy method.</param>
-        <summary>Use to notify WebKit that the policy decision is to ignore the request.</summary>
-        <remarks><para>You call this method to notify WebKit that your policy code has determined that the request should be ignored.   The webPolicyDecisionListener object is the parameter that your policy method received.</para></remarks>
-      </Docs>
-    </Member>
     <Member MemberName="DecidePolicyForMimeType">
-      <MemberSignature Language="C#" Value="public virtual void DecidePolicyForMimeType (MonoMac.WebKit.WebView webView, string mimeType, MonoMac.Foundation.NSUrlRequest request, MonoMac.WebKit.WebFrame frame, MonoMac.Foundation.NSObject webPolicyDecisionListener);" />
+      <MemberSignature Language="C#" Value="public virtual void DecidePolicyForMimeType (MonoMac.WebKit.WebView webView, string mimeType, MonoMac.Foundation.NSUrlRequest request, MonoMac.WebKit.WebFrame frame, MonoMac.Foundation.NSObject decisionToken);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -143,20 +107,20 @@
         <Parameter Name="mimeType" Type="System.String" />
         <Parameter Name="request" Type="MonoMac.Foundation.NSUrlRequest" />
         <Parameter Name="frame" Type="MonoMac.WebKit.WebFrame" />
-        <Parameter Name="webPolicyDecisionListener" Type="MonoMac.Foundation.NSObject" />
+        <Parameter Name="decisionToken" Type="MonoMac.Foundation.NSObject" />
       </Parameters>
       <Docs>
         <param name="webView">To be added.</param>
         <param name="mimeType">To be added.</param>
         <param name="request">To be added.</param>
         <param name="frame">To be added.</param>
-        <param name="webPolicyDecisionListener">Token parameter received by the policy method.</param>
+        <param name="decisionToken">To be added.</param>
         <summary>To be added.</summary>
-        <remarks>To notify WebKit of the policy decision, invoke one of <see cref="M:MonoMac.WebKit.WebPolicyDelegate.DecideDownload"/>, <see cref="M:MonoMac.WebKit.WebPolicyDelegate.DecideIgnore"/> or  <see cref="M:MonoMac.WebKit.WebPolicyDelegate.DecideUse"/> and pass the <paramref name="webPolicyDecisionListener"/> argument.</remarks>
+        <remarks>To notify WebKit of the policy decision, invoke one of <see cref="M:MonoMac.WebKit.WebView.DecideDownload" />, <see cref="M:MonoMac.WebKit.WebView.DecideIgnore" /> or  <see cref="M:MonoMac.WebKit.WebVide.DecideUse" /> and pass the <paramref name="webPolicyDecisionListener" /> argument.</remarks>
       </Docs>
     </Member>
     <Member MemberName="DecidePolicyForNavigation">
-      <MemberSignature Language="C#" Value="public virtual void DecidePolicyForNavigation (MonoMac.WebKit.WebView webView, MonoMac.Foundation.NSDictionary actionInformation, MonoMac.Foundation.NSUrlRequest request, MonoMac.WebKit.WebFrame frame, MonoMac.Foundation.NSObject webPolicyDecisionListener);" />
+      <MemberSignature Language="C#" Value="public virtual void DecidePolicyForNavigation (MonoMac.WebKit.WebView webView, MonoMac.Foundation.NSDictionary actionInformation, MonoMac.Foundation.NSUrlRequest request, MonoMac.WebKit.WebFrame frame, MonoMac.Foundation.NSObject decisionToken);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -174,20 +138,20 @@
         <Parameter Name="actionInformation" Type="MonoMac.Foundation.NSDictionary" />
         <Parameter Name="request" Type="MonoMac.Foundation.NSUrlRequest" />
         <Parameter Name="frame" Type="MonoMac.WebKit.WebFrame" />
-        <Parameter Name="webPolicyDecisionListener" Type="MonoMac.Foundation.NSObject" />
+        <Parameter Name="decisionToken" Type="MonoMac.Foundation.NSObject" />
       </Parameters>
       <Docs>
         <param name="webView">To be added.</param>
         <param name="actionInformation">To be added.</param>
         <param name="request">To be added.</param>
         <param name="frame">To be added.</param>
-        <param name="webPolicyDecisionListener">Token parameter received by the policy method.</param>
+        <param name="decisionToken">To be added.</param>
         <summary>To be added.</summary>
-        <remarks>To notify WebKit of the policy decision, invoke one of <see cref="M:MonoMac.WebKit.WebPolicyDelegate.DecideDownload"/>, <see cref="M:MonoMac.WebKit.WebPolicyDelegate.DecideIgnore"/> or  <see cref="M:MonoMac.WebKit.WebPolicyDelegate.DecideUse"/> and pass the <paramref name="webPolicyDecisionListener"/> argument.</remarks>
+        <remarks>To notify WebKit of the policy decision, invoke one of <see cref="M:MonoMac.WebKit.WebView.DecideDownload" />, <see cref="M:MonoMac.WebKit.WebView.DecideIgnore" /> or  <see cref="M:MonoMac.WebKit.WebView.DecideUse" /> and pass the <paramref name="webPolicyDecisionListener" /> argument.</remarks>
       </Docs>
     </Member>
     <Member MemberName="DecidePolicyForNewWindow">
-      <MemberSignature Language="C#" Value="public virtual void DecidePolicyForNewWindow (MonoMac.WebKit.WebView webView, MonoMac.Foundation.NSDictionary actionInformation, MonoMac.Foundation.NSUrlRequest request, string newFrameName, MonoMac.Foundation.NSObject webPolicyDecisionListener);" />
+      <MemberSignature Language="C#" Value="public virtual void DecidePolicyForNewWindow (MonoMac.WebKit.WebView webView, MonoMac.Foundation.NSDictionary actionInformation, MonoMac.Foundation.NSUrlRequest request, string newFrameName, MonoMac.Foundation.NSObject decisionToken);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -205,34 +169,16 @@
         <Parameter Name="actionInformation" Type="MonoMac.Foundation.NSDictionary" />
         <Parameter Name="request" Type="MonoMac.Foundation.NSUrlRequest" />
         <Parameter Name="newFrameName" Type="System.String" />
-        <Parameter Name="webPolicyDecisionListener" Type="MonoMac.Foundation.NSObject" />
+        <Parameter Name="decisionToken" Type="MonoMac.Foundation.NSObject" />
       </Parameters>
       <Docs>
         <param name="webView">To be added.</param>
         <param name="actionInformation">To be added.</param>
         <param name="request">To be added.</param>
         <param name="newFrameName">To be added.</param>
-        <param name="webPolicyDecisionListener">Token parameter received by the policy method.</param>
+        <param name="decisionToken">To be added.</param>
         <summary>To be added.</summary>
-        <remarks>To notify WebKit of the policy decision, invoke one of <see cref="M:MonoMac.WebKit.WebPolicyDelegate.DecideDownload"/>, <see cref="M:MonoMac.WebKit.WebPolicyDelegate.DecideIgnore"/> or  <see cref="M:MonoMac.WebKit.WebPolicyDelegate.DecideUse"/> and pass the <paramref name="webPolicyDecisionListener"/> argument.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="DecisionUse">
-      <MemberSignature Language="C#" Value="public static void DecisionUse (MonoMac.Foundation.NSObject webPolicyDecisionListener);" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="webPolicyDecisionListener" Type="MonoMac.Foundation.NSObject" />
-      </Parameters>
-      <Docs>
-        <param name="webPolicyDecisionListener">Token parameter received by the policy method.</param>
-        <summary>Use to notify WebKit that the policy decision is to use the resource.</summary>
-        <remarks><para>You call this method to notify WebKit that your policy code has determined that the file has to be downloaded.   The webPolicyDecisionListener object is the parameter that your policy method received.</para></remarks>
+        <remarks>To notify WebKit of the policy decision, invoke one of <see cref="M:MonoMac.WebKit.WebView.DecideDownload" />, <see cref="M:MonoMac.WebKit.WebView.DecideIgnore" /> or  <see cref="M:MonoMac.WebKit.WebView.DecideUse" /> and pass the <paramref name="webPolicyDecisionListener" /> argument.</remarks>
       </Docs>
     </Member>
     <Member MemberName="UnableToImplementPolicy">

@@ -791,6 +791,102 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="DecideDownload">
+      <MemberSignature Language="C#" Value="public static void DecideDownload (MonoMac.Foundation.NSObject decisionToken);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="decisionToken" Type="MonoMac.Foundation.NSObject" />
+      </Parameters>
+      <Docs>
+        <param name="decisionToken">Token parameter received by the policy method.</param>
+        <summary>Use to notify the WebView that the policy decision is to download the file.</summary>
+        <remarks><para>You call this method from one the policy events (<see cref="E:MonoMac.WebView.DecidePolicyForMimeType"/>, <see cref="E:MonoMac.WebView.DecidePolicyForNavigation"/> or <see cref="E:MonoMac.WebView.DecidePolicyForNewWindow"/>) or from the methods in your <see cref="T:MonoMac.WebKit.WebPolicyDelegate"/> subclass to notify WebKit that your policy code has determined that the file has to be downloaded.   The webPolicyDecisionListener object is the parameter that your policy method received.</para></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DecideIgnore">
+      <MemberSignature Language="C#" Value="public static void DecideIgnore (MonoMac.Foundation.NSObject decisionToken);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="decisionToken" Type="MonoMac.Foundation.NSObject" />
+      </Parameters>
+      <Docs>
+        <param name="decisionToken">Token parameter received by the policy method.</param>
+        <summary>Use to notify the WebView that the policy decision is to ignore the request.</summary>
+        <remarks><para>You call this method from one the policy events (<see cref="E:MonoMac.WebView.DecidePolicyForMimeType"/>, <see cref="E:MonoMac.WebView.DecidePolicyForNavigation"/> or <see cref="E:MonoMac.WebView.DecidePolicyForNewWindow"/>) or from the methods in your <see cref="T:MonoMac.WebKit.WebPolicyDelegate"/> subclass to notify WebKit that your policy code has determined that the request should be ignored.   The webPolicyDecisionListener object is the parameter that your policy method received.</para></remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DecidePolicyForMimeType">
+      <MemberSignature Language="C#" Value="public event EventHandler&lt;MonoMac.WebKit.WebMimeTypePolicyEventArgs&gt; DecidePolicyForMimeType;" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.EventHandler&lt;MonoMac.WebKit.WebMimeTypePolicyEventArgs&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DecidePolicyForNavigation">
+      <MemberSignature Language="C#" Value="public event EventHandler&lt;MonoMac.WebKit.WebNavigatioPolicyEventArgs&gt; DecidePolicyForNavigation;" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.EventHandler&lt;MonoMac.WebKit.WebNavigatioPolicyEventArgs&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DecidePolicyForNewWindow">
+      <MemberSignature Language="C#" Value="public event EventHandler&lt;MonoMac.WebKit.WebNewWindowPolicyEventArgs&gt; DecidePolicyForNewWindow;" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.EventHandler&lt;MonoMac.WebKit.WebNewWindowPolicyEventArgs&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DecisionUse">
+      <MemberSignature Language="C#" Value="public static void DecisionUse (MonoMac.Foundation.NSObject decisionToken);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="decisionToken" Type="MonoMac.Foundation.NSObject" />
+      </Parameters>
+      <Docs>
+        <param name="decisionToken">Token parameter received by the policy method.</param>
+        <summary>Use to notify the WebView that the policy decision is to use the resource.</summary>
+        <remarks><para>You call this method from one the policy events (<see cref="E:MonoMac.WebView.DecidePolicyForMimeType"/>, <see cref="E:MonoMac.WebView.DecidePolicyForNavigation"/> or <see cref="E:MonoMac.WebView.DecidePolicyForNewWindow"/>) or from the methods in your <see cref="T:MonoMac.WebKit.WebPolicyDelegate"/> subclass to notify WebKit that your policy code has determined that the file has to be downloaded.   The webPolicyDecisionListener object is the parameter that your policy method received.</para></remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Delete">
       <MemberSignature Language="C#" Value="public virtual void Delete (MonoMac.Foundation.NSObject sender);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Delete(class MonoMac.Foundation.NSObject sender) cil managed" />
@@ -3226,6 +3322,20 @@ public class MyClass : BaseClass {
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.EventHandler&lt;MonoMac.WebKit.WebViewPerformDragEventArgs&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UnableToImplementPolicy">
+      <MemberSignature Language="C#" Value="public event EventHandler&lt;MonoMac.WebKit.WebFailureToImplementPolicyEventArgs&gt; UnableToImplementPolicy;" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.EventHandler&lt;MonoMac.WebKit.WebFailureToImplementPolicyEventArgs&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

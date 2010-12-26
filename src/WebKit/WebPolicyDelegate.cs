@@ -31,28 +31,28 @@ namespace MonoMac.WebKit {
 		static IntPtr selDownload = Selector.GetHandle ("download");
 		static IntPtr selIgnore = Selector.GetHandle ("ignore");
 		
-		public static void DecisionUse (NSObject webPolicyDecisionListener)
+		public static void DecisionUse (NSObject decisionToken)
 		{
-			if (webPolicyDecisionListener == null)
+			if (decisionToken == null)
 				throw new ArgumentNullException ("token");
 			
-			MonoMac.ObjCRuntime.Messaging.void_objc_msgSend (webPolicyDecisionListener.Handle, selUse);
+			MonoMac.ObjCRuntime.Messaging.void_objc_msgSend (decisionToken.Handle, selUse);
 		}
 		
-		public static void DecideDownload (NSObject webPolicyDecisionListener)
+		public static void DecideDownload (NSObject decisionToken)
 		{
-			if (webPolicyDecisionListener == null)
-				throw new ArgumentNullException ("webPolicyDecisionListener");
+			if (decisionToken == null)
+				throw new ArgumentNullException ("decisionToken");
 			
-			MonoMac.ObjCRuntime.Messaging.void_objc_msgSend (webPolicyDecisionListener.Handle, selDownload);
+			MonoMac.ObjCRuntime.Messaging.void_objc_msgSend (decisionToken.Handle, selDownload);
 		}
 		
-		public static void DecideIgnore (NSObject webPolicyDecisionListener)
+		public static void DecideIgnore (NSObject decisionToken)
 		{
-			if (webPolicyDecisionListener == null)
-				throw new ArgumentNullException ("webPolicyDecisionListener");
+			if (decisionToken == null)
+				throw new ArgumentNullException ("decisionToken");
 			
-			MonoMac.ObjCRuntime.Messaging.void_objc_msgSend (webPolicyDecisionListener.Handle, selIgnore);
+			MonoMac.ObjCRuntime.Messaging.void_objc_msgSend (decisionToken.Handle, selIgnore);
 		}
 		
 	}

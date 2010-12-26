@@ -27,9 +27,9 @@ namespace macdoc
 
 			outlineView.DataSource = new DocTreeDataSource ();
 			outlineView.Delegate = new OutlineDelegate (this);
-			webView.UICreateWebView = (sender, request) => {
-				Console.WriteLine (request.Url);
-				return sender;
+			webView.DecidePolicyForNavigation += delegate(object sender, MonoMac.WebKit.WebNavigatioPolicyEventArgs e) {
+				Console.WriteLine (e.Request);
+				WebPolicyDelegate.DecisionUse (e.WebPolicyDecisionListener);
 			};
 		}
 		
