@@ -142,7 +142,7 @@ namespace MonoMac.AppKit {
 	[BaseType (typeof (NSObject))]
 	[Model]
 	interface NSAnimationDelegate {
-		[Export ("animationShouldStart:"), EventArgs ("NSAnimationPredicate"), DefaultValue (true)]
+		[Export ("animationShouldStart:"), DelegateName ("NSAnimationPredicate"), DefaultValue (true)]
 		bool AnimationShouldStart (NSAnimation animation);
 	
 		[Export ("animationDidStop:"), EventArgs ("NSAnimation")]
@@ -151,7 +151,7 @@ namespace MonoMac.AppKit {
 		[Export ("animationDidEnd:"), EventArgs ("NSAnimation")]
 		void AnimationDidEnd (NSAnimation animation);
 	
-		[Export ("animation:valueForProgress:"), EventArgs ("NSAnimationProgress"), DefaultValue (0.0)]
+		[Export ("animation:valueForProgress:"), DelegateName ("NSAnimationProgress"), DefaultValue (0.0)]
 		float AnimationProgress (NSAnimation animation, float progress);
 	
 		[Export ("animation:didReachProgressMark:"), EventArgs ("NSAnimation")]
@@ -237,7 +237,7 @@ namespace MonoMac.AppKit {
 	[BaseType (typeof (NSObject))]
 	[Model]
 	interface NSAlertDelegate {
-		[Export ("alertShowHelp:"), EventArgs ("NSAlertPredicate"), DefaultValue (false)]
+		[Export ("alertShowHelp:"), DelegateName ("NSAlertPredicate"), DefaultValue (false)]
 		bool ShowHelp (NSAlert  alert);
 	}
 
@@ -471,43 +471,43 @@ namespace MonoMac.AppKit {
 	[BaseType (typeof (NSObject))]
 	[Model]
 	interface NSApplicationDelegate {
-		[Export ("applicationShouldTerminate:"), EventArgs ("NSApplicationTermination"), DefaultValue (NSApplicationTerminateReply.Now)]
+		[Export ("applicationShouldTerminate:"), DelegateName ("NSApplicationTermination"), DefaultValue (NSApplicationTerminateReply.Now)]
 		NSApplicationTerminateReply ApplicationShouldTerminate (NSApplication  sender);
 	
-		[Export ("application:openFile:"), EventArgs ("NSApplicationFile"), DefaultValue (false)]
+		[Export ("application:openFile:"), DelegateName ("NSApplicationFile"), DefaultValue (false)]
 		bool OpenFile (NSApplication sender, string  filename);
 	
 		[Export ("application:openFiles:"), EventArgs ("NSApplicationFiles")]
 		void OpenFiles (NSApplication sender, string [] filenames);
 	
-		[Export ("application:openTempFile:"), EventArgs ("NSApplicationFile"), DefaultValue (false)]
+		[Export ("application:openTempFile:"), DelegateName ("NSApplicationFile"), DefaultValue (false)]
 		bool OpenTempFile (NSApplication sender, string  filename);
 	
-		[Export ("applicationShouldOpenUntitledFile:"), EventArgs ("NSApplicationPredicate"), DefaultValue (false)]
+		[Export ("applicationShouldOpenUntitledFile:"), DelegateName ("NSApplicationPredicate"), DefaultValue (false)]
 		bool ApplicationShouldOpenUntitledFile (NSApplication  sender);
 	
-		[Export ("applicationOpenUntitledFile:"), EventArgs ("NSApplicationPredicate"), DefaultValue (false)]
+		[Export ("applicationOpenUntitledFile:"), DelegateName ("NSApplicationPredicate"), DefaultValue (false)]
 		bool ApplicationOpenUntitledFile (NSApplication sender);
 	
-		[Export ("application:openFileWithoutUI:"), EventArgs ("NSApplicationFileCommand"), DefaultValue (false)]
+		[Export ("application:openFileWithoutUI:"), DelegateName ("NSApplicationFileCommand"), DefaultValue (false)]
 		bool OpenFileWithoutUI (NSObject sender, string filename);
 	
-		[Export ("application:printFile:"), EventArgs ("NSApplicationFile"), DefaultValue (false)]
+		[Export ("application:printFile:"), DelegateName ("NSApplicationFile"), DefaultValue (false)]
 		bool PrintFile (NSApplication sender, string filename);
 	
-		[Export ("application:printFiles:withSettings:showPrintPanels:"), EventArgs ("NSApplicationPrint"), DefaultValue (NSApplicationPrintReply.Failure)]
+		[Export ("application:printFiles:withSettings:showPrintPanels:"), DelegateName ("NSApplicationPrint"), DefaultValue (NSApplicationPrintReply.Failure)]
 		NSApplicationPrintReply PrintFiles (NSApplication application, string [] fileNames, NSDictionary printSettings, bool showPrintPanels);
 	
-		[Export ("applicationShouldTerminateAfterLastWindowClosed:"), EventArgs ("NSApplicationPredicate"), DefaultValue (false)]
+		[Export ("applicationShouldTerminateAfterLastWindowClosed:"), DelegateName ("NSApplicationPredicate"), DefaultValue (false)]
 		bool ApplicationShouldTerminateAfterLastWindowClosed (NSApplication sender);
 	
-		[Export ("applicationShouldHandleReopen:hasVisibleWindows:"), EventArgs ("NSApplicationReopen"), DefaultValue (false)]
+		[Export ("applicationShouldHandleReopen:hasVisibleWindows:"), DelegateName ("NSApplicationReopen"), DefaultValue (false)]
 		bool ApplicationShouldHandleReopen (NSApplication sender, bool hasVisibleWindows);
 	
-		[Export ("applicationDockMenu:"), EventArgs ("NSApplicationMenu"), DefaultValue (null)]
+		[Export ("applicationDockMenu:"), DelegateName ("NSApplicationMenu"), DefaultValue (null)]
 		NSMenu ApplicationDockMenu (NSApplication sender);
 	
-		[Export ("application:willPresentError:"), EventArgs ("NSApplicationError"), DefaultValue (null)]
+		[Export ("application:willPresentError:"), DelegateName ("NSApplicationError"), DefaultValue (null)]
 		NSError WillPresentError (NSApplication application, NSError error);
 	
 		[Export ("applicationWillFinishLaunching:"), EventArgs ("NSNotification")]
@@ -555,10 +555,10 @@ namespace MonoMac.AppKit {
 		[Export ("registerServicesMenuSendTypes:returnTypes:"), EventArgs ("NSApplicationRegister")]
 		void RegisterServicesMenu (string [] sendTypes, string [] returnTypes);
 	
-		[Export ("writeSelectionToPasteboard:types:"), EventArgs ("NSApplicationSelection"), DefaultValue (false)]
+		[Export ("writeSelectionToPasteboard:types:"), DelegateName ("NSApplicationSelection"), DefaultValue (false)]
 		bool WriteSelectionToPasteboard (NSPasteboard board, string [] types);
 	
-		[Export ("readSelectionFromPasteboard:"), EventArgs ("NSPasteboardPredicate"), DefaultValue (false)]
+		[Export ("readSelectionFromPasteboard:"), DelegateName ("NSPasteboardPredicate"), DefaultValue (false)]
 		bool ReadSelectionFromPasteboard (NSPasteboard pboard);
 	
 		[Export ("orderFrontStandardAboutPanel:"), EventArgs ("NSObject")]
@@ -3794,25 +3794,25 @@ namespace MonoMac.AppKit {
 	[BaseType (typeof (NSObject))]
 	[Model]
 	interface NSDrawerDelegate {
-		[Export ("drawerDidClose:"), EventArgs ("NSNotification"), DefaultValue (null)]
+		[Export ("drawerDidClose:"), EventArgs ("NSNotification")]
 		void DrawerDidClose (NSNotification notification);
 		
 		[Export ("drawerDidOpen:"), EventArgs ("NSNotification")]
 		void DrawerDidOpen (NSNotification notification);
 
-		[Export ("drawerShouldClose:"), EventArgs ("DrawerShouldCloseDelegate"), DefaultValue (true)]
+		[Export ("drawerShouldClose:"), DelegateName ("DrawerShouldCloseDelegate"), DefaultValue (true)]
 		bool DrawerShouldClose (NSDrawer sender);
 
-		[Export ("drawerShouldOpen:"), EventArgs ("DrawerShouldOpenDelegate"), DefaultValue (true)]
+		[Export ("drawerShouldOpen:"), DelegateName ("DrawerShouldOpenDelegate"), DefaultValue (true)]
 		bool DrawerShouldOpen (NSDrawer sender);
 	
-		[Export ("drawerWillClose:"), EventArgs ("NSNotification"), DefaultValue (null)]
+		[Export ("drawerWillClose:"), EventArgs ("NSNotification")]
 		void DrawerWillClose (NSNotification notification);
 	
-		[Export ("drawerWillOpen:"), EventArgs ("NSNotification"), DefaultValue (null)]
+		[Export ("drawerWillOpen:"), EventArgs ("NSNotification")]
 		void DrawerWillOpen (NSNotification notification);
 
-		[Export ("drawerWillResizeContents:toSize:"), EventArgs ("DrawerWillResizeContentsDelegate"), DefaultValue (null)]
+		[Export ("drawerWillResizeContents:toSize:"), DelegateName ("DrawerWillResizeContentsDelegate"), DefaultValue (null)]
 		SizeF DrawerWillResizeContents (NSDrawer sender, SizeF toSize);
 
 	}
@@ -5533,16 +5533,16 @@ namespace MonoMac.AppKit {
 	[BaseType (typeof (NSObject))]
 	[Model]
 	interface NSOpenSavePanelDelegate {
-		[Export ("panel:shouldEnableURL:"), EventArgs ("NSOpenSavePanelUrl"), DefaultValue (true)]
+		[Export ("panel:shouldEnableURL:"), DelegateName ("NSOpenSavePanelUrl"), DefaultValue (true)]
 		bool ShouldEnableUrl (NSSavePanel panel, NSUrl url);
 
-		[Export ("panel:validateURL:error:"), EventArgs ("NSOpenSavePanelValidate"), DefaultValue (true)]
+		[Export ("panel:validateURL:error:"), DelegateName ("NSOpenSavePanelValidate"), DefaultValue (true)]
 		bool ValidateUrl (NSSavePanel panel, NSUrl url, out NSError outError);
 
 		[Export ("panel:didChangeToDirectoryURL:"), EventArgs ("NSOpenSavePanelUrl")]
 		void DidChangeToDirectory (NSSavePanel panel, NSUrl newDirectoryUrl);
 
-		[Export ("panel:userEnteredFilename:confirmed:"), EventArgs ("NSOpenSaveFilenameConfirmation"), DefaultValueFromArgument ("filename")]
+		[Export ("panel:userEnteredFilename:confirmed:"), DelegateName ("NSOpenSaveFilenameConfirmation"), DefaultValueFromArgument ("filename")]
 		string UserEnteredFilename (NSSavePanel panel, string filename, bool confirmed);
 
 		[Export ("panel:willExpand:"), EventArgs ("NSOpenSaveExpanding")]
@@ -5552,7 +5552,7 @@ namespace MonoMac.AppKit {
 		void SelectionDidChange (NSSavePanel panel);
 
 		[Obsolete ("On 10.6 and newer use ValidateUrlError")]
-		[Export ("panel:isValidFilename:"), EventArgs ("NSOpenSaveFilename"), DefaultValue (true)]
+		[Export ("panel:isValidFilename:"), DelegateName ("NSOpenSaveFilename"), DefaultValue (true)]
 		bool IsValidFilename (NSSavePanel panel, string fileName);
 
 		[Obsolete ("On 10.6 and newer Use DidChangeToDirectoryUrl instead")]
@@ -5560,11 +5560,11 @@ namespace MonoMac.AppKit {
 		void DirectoryDidChange (NSSavePanel panel, string path);
 
 		[Obsolete ("After 10.6, this method is obsolete and does not control sorting order")]
-		[Export ("panel:compareFilename:with:caseSensitive"), EventArgs ("NSOpenSaveCompare"), DefaultValue (NSComparisonResult.Same)]
+		[Export ("panel:compareFilename:with:caseSensitive"), DelegateName ("NSOpenSaveCompare"), DefaultValue (NSComparisonResult.Same)]
 		NSComparisonResult CompareFilenames (NSSavePanel panel, string name1, string name2, bool caseSensitive);
 
 		[Obsolete ("After 10.6 use ShouldEnableUrl")]
-		[Export ("panel:shouldShowFilename:"), EventArgs ("NSOpenSaveFilename"), DefaultValue (true)]
+		[Export ("panel:shouldShowFilename:"), DelegateName ("NSOpenSaveFilename"), DefaultValue (true)]
 		bool ShouldShowFilename (NSSavePanel panel, string filename);
 	}
 
