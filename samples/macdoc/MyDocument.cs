@@ -69,7 +69,13 @@ namespace macdoc
 		public void LoadHtml (string html)
 		{
 			LoadingFromString = true;
-			webView.MainFrame.LoadHtmlString (html, new NSUrl ("file:///"));
+			webView.MainFrame.LoadHtmlString (html, AppDelegate.MonodocBaseUrl);
+			
+#if debug_html
+			using (var x = System.IO.File.CreateText (AppDelegate.MonodocDir + "/foo.html")){
+				x.Write (html);
+			}
+#endif
 			LoadingFromString = false;
 		}
 		
