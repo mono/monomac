@@ -338,7 +338,7 @@ namespace MonoMac.QTKit
 		[Export ("captureOutput:didStartRecordingToOutputFileAtURL:forConnections:"), EventArgs ("QTCaptureFileUrl")]
 		void DidStartRecording (QTCaptureFileOutput captureOutput, NSUrl fileUrl, QTCaptureConnection [] connections);
 
-		[Export ("captureOutput:shouldChangeOutputFileAtURL:forConnections:dueToError:"), EventArgs ("QTCaptureFileError"), DefaultValue (true)]
+		[Export ("captureOutput:shouldChangeOutputFileAtURL:forConnections:dueToError:"), DelegateName ("QTCaptureFileError"), DefaultValue (true)]
 		bool ShouldChangeOutputFile (QTCaptureFileOutput captureOutput, NSUrl outputFileURL, QTCaptureConnection [] connections, NSError reason);
 
 		[Export ("captureOutput:mustChangeOutputFileAtURL:forConnections:dueToError:"), EventArgs ("QTCaptureFileError")]
@@ -454,7 +454,7 @@ namespace MonoMac.QTKit
 	[BaseType (typeof (NSObject), Name="QTCaptureView_Delegate")]
 	[Model]
 	interface QTCaptureViewDelegate {
-		[Export ("view:willDisplayImage:"), EventArgs ("QTCaptureImageEvent"), DefaultValueFromArgument ("image")]
+		[Export ("view:willDisplayImage:"), DelegateName ("QTCaptureImageEvent"), DefaultValueFromArgument ("image")]
 		CIImage WillDisplayImage (QTCaptureView view, CIImage image);
 	}
 

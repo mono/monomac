@@ -14,6 +14,7 @@ namespace macdoc
 		{
 			Root = RootTree.LoadTree (null);
 			SettingsHandler.Settings.EnableEditing = false;
+			HelpSource.use_css = true;
 		}
 
 		public override void FinishedLaunching (NSObject notification)

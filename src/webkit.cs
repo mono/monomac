@@ -1283,7 +1283,7 @@ namespace MonoMac.WebKit {
 	[BaseType (typeof (NSObject))]
 	[Model]
 	interface WebDownloadDelegate {
-		[Export ("downloadWindowForAuthenticationSheet:"), EventArgs ("WebDownloadRequestEventArgs"), DefaultValue (null)]
+		[Export ("downloadWindowForAuthenticationSheet:"), DelegateName ("WebDownloadRequest"), DefaultValue (null)]
 		NSWindow OnDownloadWindowForSheet (WebDownload download);
 	}
 	
@@ -1608,10 +1608,10 @@ namespace MonoMac.WebKit {
 	[BaseType (typeof (NSObject))]
 	[Model]
 	interface WebResourceLoadDelegate {
-		[Export ("webView:identifierForInitialRequest:fromDataSource:"), EventArgs ("WebResourceIdentifierRequest"), DefaultValue (null)]
+		[Export ("webView:identifierForInitialRequest:fromDataSource:"), DelegateName ("WebResourceIdentifierRequest"), DefaultValue (null)]
 		NSObject OnIdentifierForInitialRequest (WebView sender, NSUrlRequest request, WebDataSource dataSource);
 
-		[Export ("webView:resource:willSendRequest:redirectResponse:fromDataSource:"), EventArgs ("WebResourceOnRequestSend"), DefaultValueFromArgument ("request")]
+		[Export ("webView:resource:willSendRequest:redirectResponse:fromDataSource:"), DelegateName ("WebResourceOnRequestSend"), DefaultValueFromArgument ("request")]
 		NSUrlRequest OnSendRequest (WebView sender, NSObject identifier, NSUrlRequest request, NSUrlResponse redirectResponse, WebDataSource dataSource);
 
 		[Export ("webView:resource:didReceiveAuthenticationChallenge:fromDataSource:"), EventArgs ("WebResourceAuthenticationChallenge")]
@@ -1678,7 +1678,7 @@ namespace MonoMac.WebKit {
 		[Export ("webView:setToolbarsVisible:"), EventArgs("WebViewToolBars")]
 		void UISetToolbarsVisible (WebView sender, bool visible);
 
-		[Export ("webViewIsStatusBarVisible:"), EventArgs ("WebViewGetBool"), DefaultValue (false)]
+		[Export ("webViewIsStatusBarVisible:"), DelegateName ("WebViewGetBool"), DefaultValue (false)]
 		bool UIIsStatusBarVisible (WebView sender);
 
 		[Export ("webView:setStatusBarVisible:"), EventArgs("WebViewStatusBar")]
@@ -1705,7 +1705,7 @@ namespace MonoMac.WebKit {
 		[Export ("webView:runJavaScriptTextInputPanelWithPrompt:defaultText:initiatedByFrame:"), DelegateName ("WebViewPromptPanel"), DefaultValue (null)]
 		string UIRunJavaScriptTextInputPanelWithFrame (WebView sender, string prompt, string defaultText, WebFrame initiatedByFrame);
 
-		[Export ("webView:runBeforeUnloadConfirmPanelWithMessage:initiatedByFrame:"), EventArgs("WebViewJavaScriptFrame"), DefaultValue (null)]
+		[Export ("webView:runBeforeUnloadConfirmPanelWithMessage:initiatedByFrame:"), DelegateName("WebViewJavaScriptFrame"), DefaultValue (null)]
 		bool UIRunBeforeUnload (WebView sender, string message, WebFrame initiatedByFrame);
 
 		[Export ("webView:runOpenPanelForFileButtonWithResultListener:"), EventArgs ("WebViewRunOpenPanel")]

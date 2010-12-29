@@ -5992,7 +5992,7 @@ namespace MonoMac.AppKit {
 	[BaseType (typeof (NSObject))]
 	[Model]
 	interface NSImageDelegate {
-		[Export ("imageDidNotDraw:inRect:"), EventArgs ("NSImageRect"), DefaultValue (null)]
+		[Export ("imageDidNotDraw:inRect:"), DelegateName ("NSImageRect"), DefaultValue (null)]
 		NSImage ImageDidNotDraw (NSObject sender, RectangleF aRect);
 
 		[Export ("image:willLoadRepresentation:"), EventArgs ("NSImageLoad")]
@@ -6501,25 +6501,25 @@ namespace MonoMac.AppKit {
 	[Model]
 	[BaseType (typeof (NSObject))]
 	interface NSMatrixDelegate {
-		[Export ("control:textShouldBeginEditing:"), EventArgs ("NSControlText"), DefaultValue (true)]
+		[Export ("control:textShouldBeginEditing:"), DelegateName ("NSControlText"), DefaultValue (true)]
 		bool TextShouldBeginEditing (NSControl control, NSText fieldEditor);
 
-		[Export ("control:textShouldEndEditing:"), EventArgs ("NSControlText"), DefaultValue (true)]
+		[Export ("control:textShouldEndEditing:"), DelegateName ("NSControlText"), DefaultValue (true)]
 		bool TextShouldEndEditing (NSControl control, NSText fieldEditor);
 
-		[Export ("control:didFailToFormatString:errorDescription:"), EventArgs ("NSControlTextError"), DefaultValue (true)]
+		[Export ("control:didFailToFormatString:errorDescription:"), DelegateName ("NSControlTextError"), DefaultValue (true)]
 		bool DidFailToFormatString (NSControl control, string str, string error);
 		
 		[Export ("control:didFailToValidatePartialString:errorDescription:"), EventArgs ("NSControlTextError")]
 		void DidFailToValidatePartialString (NSControl control, string str, string error);
 		
-		[Export ("control:isValidObject:"), EventArgs ("NSControlTextValidation"), DefaultValue (true)]
+		[Export ("control:isValidObject:"), DelegateName ("NSControlTextValidation"), DefaultValue (true)]
 		bool IsValidObject (NSControl control, NSObject objectToValidate);
 
-		[Export ("control:textView:doCommandBySelector:"), EventArgs ("NSControlCommand"), DefaultValue (false)]
+		[Export ("control:textView:doCommandBySelector:"), DelegateName ("NSControlCommand"), DefaultValue (false)]
 		bool DoCommandBySelector (NSControl control, NSTextView textView, Selector commandSelector);
 
-		[Export ("control:textView:completions:forPartialWordRange:indexOfSelectedItem:"), EventArgs ("NSControlTextCompletion"), DefaultValue (null)]
+		[Export ("control:textView:completions:forPartialWordRange:indexOfSelectedItem:"), DelegateName ("NSControlTextCompletion"), DefaultValue (null)]
 		string [] GetCompletions (NSControl control, NSTextView textView, string [] words, NSRange charRange, int index);
 	}
 
@@ -10236,7 +10236,7 @@ namespace MonoMac.AppKit {
 	[BaseType (typeof (NSObject))]
 	[Model]
 	interface NSTabViewDelegate {
-		[Export ("tabView:shouldSelectTabViewItem:"), EventArgs ("NSTabViewPredicate"), DefaultValue (true)]
+		[Export ("tabView:shouldSelectTabViewItem:"), DelegateName ("NSTabViewPredicate"), DefaultValue (true)]
 		bool ShouldSelectTabViewItem (NSTabView tabView, NSTabViewItem item);
 		
 		[Export ("tabView:willSelectTabViewItem:"), EventArgs ("NSTabViewItem")]
@@ -10448,10 +10448,10 @@ namespace MonoMac.AppKit {
 	[BaseType (typeof (NSObject))]
 	[Model]
 	interface NSTextDelegate {
-		[Export ("textShouldBeginEditing:"), EventArgs ("NSTextPredicate"), DefaultValue (true)]
+		[Export ("textShouldBeginEditing:"), DelegateName ("NSTextPredicate"), DefaultValue (true)]
 		bool TextShouldBeginEditing (NSText textObject);
 
-		[Export ("textShouldEndEditing:"), EventArgs ("NSTextPredicate"), DefaultValue (true)]
+		[Export ("textShouldEndEditing:"), DelegateName ("NSTextPredicate"), DefaultValue (true)]
 		bool TextShouldEndEditing (NSText textObject);
 
 		[Export ("textDidBeginEditing:"), EventArgs ("NSNotification")]
@@ -10649,25 +10649,25 @@ namespace MonoMac.AppKit {
 	[BaseType (typeof (NSObject))]
 	[Model]
 	interface NSTextFieldDelegate {
-		[Export ("control:textShouldBeginEditing:"), EventArgs ("NSControlText"), DefaultValue (true)]
+		[Export ("control:textShouldBeginEditing:"), DelegateName ("NSControlText"), DefaultValue (true)]
 		bool TextShouldBeginEditing (NSControl control, NSText fieldEditor);
 
-		[Export ("control:textShouldEndEditing:"), EventArgs ("NSControlText"), DefaultValue (true)]
+		[Export ("control:textShouldEndEditing:"), DelegateName ("NSControlText"), DefaultValue (true)]
 		bool TextShouldEndEditing (NSControl control, NSText fieldEditor);
 
-		[Export ("control:didFailToFormatString:errorDescription:"), EventArgs ("NSControlTextError"), DefaultValue (true)]
+		[Export ("control:didFailToFormatString:errorDescription:"), DelegateName ("NSControlTextError"), DefaultValue (true)]
 		bool DidFailToFormatString (NSControl control, string str, string error);
 		
 		[Export ("control:didFailToValidatePartialString:errorDescription:"), EventArgs ("NSControlTextError")]
 		void DidFailToValidatePartialString (NSControl control, string str, string error);
 		
-		[Export ("control:isValidObject:"), EventArgs ("NSControlTextValidation"), DefaultValue (true)]
+		[Export ("control:isValidObject:"), DelegateName ("NSControlTextValidation"), DefaultValue (true)]
 		bool IsValidObject (NSControl control, NSObject objectToValidate);
 
-		[Export ("control:textView:doCommandBySelector:"), EventArgs ("NSControlCommand"), DefaultValue (false)]
+		[Export ("control:textView:doCommandBySelector:"), DelegateName ("NSControlCommand"), DefaultValue (false)]
 		bool DoCommandBySelector (NSControl control, NSTextView textView, Selector commandSelector);
 
-		[Export ("control:textView:completions:forPartialWordRange:indexOfSelectedItem:"), EventArgs ("NSControlTextFilter"), DefaultValue (null)]
+		[Export ("control:textView:completions:forPartialWordRange:indexOfSelectedItem:"), DelegateName ("NSControlTextFilter"), DefaultValue (null)]
 		string [] GetCompletions (NSControl control, NSTextView textView, string [] words, NSRange charRange, int index);
 
 		[Export ("controlTextDidEndEditing:"), EventArgs ("NSNotification")]
@@ -11410,7 +11410,7 @@ namespace MonoMac.AppKit {
 	[BaseType (typeof (NSObject))]
 	[Model]
 	interface NSTextViewDelegate {
-		[Export ("textView:clickedOnLink:atIndex:"), EventArgs ("NSTextViewLink"), DefaultValue (false)]
+		[Export ("textView:clickedOnLink:atIndex:"), DelegateName ("NSTextViewLink"), DefaultValue (false)]
 		bool LinkClicked (NSTextView textView, NSObject link, uint charIndex);
 
 		[Export ("textView:clickedOnCell:inRect:atIndex:"), EventArgs ("NSTextViewClicked")]
@@ -11420,13 +11420,13 @@ namespace MonoMac.AppKit {
 		void CellDoubleClicked (NSTextView textView, NSTextAttachmentCell cell, RectangleF cellFrame, uint charIndex);
 
 		// 
-		[Export ("textView:writablePasteboardTypesForCell:atIndex:"), EventArgs ("NSTextViewCellPosition"),DefaultValue (null)]
+		[Export ("textView:writablePasteboardTypesForCell:atIndex:"), DelegateName ("NSTextViewCellPosition"),DefaultValue (null)]
 		string [] GetWritablePasteboardTypes (NSTextView view, NSTextAttachmentCell forCell, uint charIndex);
 
-		[Export ("textView:writeCell:atIndex:toPasteboard:type:"), EventArgs ("NSTextViewCellPasteboard"), DefaultValue (true)]
+		[Export ("textView:writeCell:atIndex:toPasteboard:type:"), DelegateName ("NSTextViewCellPasteboard"), DefaultValue (true)]
 		bool WriteCell (NSTextView view, NSTextAttachmentCell cell, uint charIndex, NSPasteboard pboard, string type);
 
-		[Export ("textView:willChangeSelectionFromCharacterRange:toCharacterRange:"), EventArgs ("NSTextViewSelectionChange"), DefaultValueFromArgument ("newSelectedCharRange")]
+		[Export ("textView:willChangeSelectionFromCharacterRange:toCharacterRange:"), DelegateName ("NSTextViewSelectionChange"), DefaultValueFromArgument ("newSelectedCharRange")]
 		NSRange WillChangeSelection (NSTextView textView, NSRange oldSelectedCharRange, NSRange newSelectedCharRange);
 
 		// FIXME: binding for NSArray, what is the type?
@@ -11437,7 +11437,7 @@ namespace MonoMac.AppKit {
 		//[Export ("textView:shouldChangeTextInRanges:replacementStrings:")]
 		//bool ShouldChangeText (NSTextView textView, NSArray affectedRanges, NSArray replacementStrings);
 
-		[Export ("textView:shouldChangeTypingAttributes:toAttributes:"), EventArgs ("NSTextViewTypeAttribute"), DefaultValueFromArgument ("newTypingAttributes")]
+		[Export ("textView:shouldChangeTypingAttributes:toAttributes:"), DelegateName ("NSTextViewTypeAttribute"), DefaultValueFromArgument ("newTypingAttributes")]
 		NSDictionary ShouldChangeTypingAttributes (NSTextView textView, NSDictionary oldTypingAttributes, NSDictionary newTypingAttributes);
 
 		[Export ("textViewDidChangeSelection:"), EventArgs ("NSTextViewNotification")]
@@ -11446,34 +11446,34 @@ namespace MonoMac.AppKit {
 		[Export ("textViewDidChangeTypingAttributes:"), EventArgs ("NSTextViewNotification")]
 		void DidChangeTypingAttributes (NSNotification notification);
 
-		[Export ("textView:willDisplayToolTip:forCharacterAtIndex:"), EventArgs ("NSTextViewTooltip"), DefaultValueFromArgument ("tooltip")]
+		[Export ("textView:willDisplayToolTip:forCharacterAtIndex:"), DelegateName ("NSTextViewTooltip"), DefaultValueFromArgument ("tooltip")]
 		string WillDisplayToolTip (NSTextView textView, string tooltip, uint characterIndex);
 
-		[Export ("textView:completions:forPartialWordRange:indexOfSelectedItem:"), EventArgs ("NSTextViewCompletion"), DefaultValue (null)]
+		[Export ("textView:completions:forPartialWordRange:indexOfSelectedItem:"), DelegateName ("NSTextViewCompletion"), DefaultValue (null)]
 		string [] GetCompletions (NSTextView textView, string [] words, NSRange charRange, int index);
 
-		[Export ("textView:shouldChangeTextInRange:replacementString:"), EventArgs ("NSTextViewChangeText"), DefaultValue (true)]
+		[Export ("textView:shouldChangeTextInRange:replacementString:"), DelegateName ("NSTextViewChangeText"), DefaultValue (true)]
 		bool ShouldChangeTextInRange (NSTextView textView, NSRange affectedCharRange, string replacementString);
 
-		[Export ("textView:doCommandBySelector:"), EventArgs ("NSTextViewSelectorCommand"), DefaultValue (false)]
+		[Export ("textView:doCommandBySelector:"), DelegateName ("NSTextViewSelectorCommand"), DefaultValue (false)]
 		bool DoCommandBySelector (NSTextView textView, Selector commandSelector);
 
-		[Export ("textView:shouldSetSpellingState:range:"), EventArgs ("NSTextViewSpellingQuery"), DefaultValue (0)]
+		[Export ("textView:shouldSetSpellingState:range:"), DelegateName ("NSTextViewSpellingQuery"), DefaultValue (0)]
 		int ShouldSetSpellingState (NSTextView textView, int value, NSRange affectedCharRange);
 
-		[Export ("textView:menu:forEvent:atIndex:"), EventArgs ("NSTextViewEventMenu"), DefaultValueFromArgument ("menu")]
+		[Export ("textView:menu:forEvent:atIndex:"), DelegateName ("NSTextViewEventMenu"), DefaultValueFromArgument ("menu")]
 		NSMenu MenuForEvent (NSTextView view, NSMenu menu, NSEvent theEvent, uint charIndex);
 
-		[Export ("textView:willCheckTextInRange:options:types:"), EventArgs ("NSTextViewOnTextCheck"), DefaultValueFromArgument ("options")]
+		[Export ("textView:willCheckTextInRange:options:types:"), DelegateName ("NSTextViewOnTextCheck"), DefaultValueFromArgument ("options")]
 		NSDictionary WillCheckText (NSTextView view, NSRange range, NSDictionary options, NSTextCheckingTypes checkingTypes);
 
-		[Export ("textView:didCheckTextInRange:types:options:results:orthography:wordCount:"), EventArgs ("NSTextViewTextChecked"), DefaultValueFromArgument ("results")]
+		[Export ("textView:didCheckTextInRange:types:options:results:orthography:wordCount:"), DelegateName ("NSTextViewTextChecked"), DefaultValueFromArgument ("results")]
 		NSTextCheckingResult [] DidCheckText (NSTextView view, NSRange range, NSTextCheckingTypes checkingTypes, NSDictionary options, NSTextCheckingResult [] results, NSOrthography orthography, int wordCount);
 
 		[Export ("textView:draggedCell:inRect:event:"), EventArgs ("NSTextViewDraggedCell")]
 		void DraggedCell (NSTextView view, NSTextAttachmentCell cell, RectangleF rect, NSEvent theevent);
 
-		[Export ("undoManagerForTextView:"), EventArgs ("NSTextViewGetUndoManager"), DefaultValue (null)]
+		[Export ("undoManagerForTextView:"), DelegateName ("NSTextViewGetUndoManager"), DefaultValue (null)]
 		NSUndoManager GetUndoManager (NSTextView view);
 	}
 	
@@ -11628,19 +11628,19 @@ namespace MonoMac.AppKit {
 	[Model]
 	interface NSToolbarDelegate {
 		[Abstract]
-		[Export ("toolbar:itemForItemIdentifier:willBeInsertedIntoToolbar:"), EventArgs ("NSToolbarWillInsert"), DefaultValue (null)]
+		[Export ("toolbar:itemForItemIdentifier:willBeInsertedIntoToolbar:"), DelegateName ("NSToolbarWillInsert"), DefaultValue (null)]
 		NSToolbarItem WillInsertItem (NSToolbar toolbar, string itemIdentifier, bool willBeInserted);
 
 		[Abstract]
-		[Export ("toolbarDefaultItemIdentifiers:"), EventArgs ("NSToolbarIdentifiers"), DefaultValue (null)]
+		[Export ("toolbarDefaultItemIdentifiers:"), DelegateName ("NSToolbarIdentifiers"), DefaultValue (null)]
 		string [] DefaultItemIdentifiers (NSToolbar toolbar);
 
 		[Abstract]
-		[Export ("toolbarAllowedItemIdentifiers:"), EventArgs ("NSToolbarIdentifiers"), DefaultValue (null)]
+		[Export ("toolbarAllowedItemIdentifiers:"), DelegateName ("NSToolbarIdentifiers"), DefaultValue (null)]
 		string [] AllowedItemIdentifiers (NSToolbar toolbar);
 
 		[Abstract]
-		[Export ("toolbarSelectableItemIdentifiers:"), EventArgs ("NSToolbarIdentifiers"), DefaultValue (null)]
+		[Export ("toolbarSelectableItemIdentifiers:"), DelegateName ("NSToolbarIdentifiers"), DefaultValue (null)]
 		string [] SelectableItemIdentifiers (NSToolbar toolbar);
 
 		[Abstract]
@@ -12552,31 +12552,31 @@ namespace MonoMac.AppKit {
 	[BaseType (typeof (NSObject))]
 	[Model]
 	interface NSWindowDelegate {
-		[Export ("windowShouldClose:"), EventArgs ("NSObjectPredicate"), DefaultValue (true)]
+		[Export ("windowShouldClose:"), DelegateName ("NSObjectPredicate"), DefaultValue (true)]
 		bool WindowShouldClose (NSObject sender);
 	
-		[Export ("windowWillReturnFieldEditor:toObject:"), EventArgs ("NSWindowClient"), DefaultValue (null)]
+		[Export ("windowWillReturnFieldEditor:toObject:"), DelegateName ("NSWindowClient"), DefaultValue (null)]
 		NSObject WillReturnFieldEditor (NSWindow  sender, NSObject client);
 	
-		[Export ("windowWillResize:toSize:"), EventArgs ("NSWindowResize"), DefaultValueFromArgument ("toFrameSize")]
+		[Export ("windowWillResize:toSize:"), DelegateName ("NSWindowResize"), DefaultValueFromArgument ("toFrameSize")]
 		SizeF WillResize (NSWindow sender, SizeF toFrameSize);
 	
-		[Export ("windowWillUseStandardFrame:defaultFrame:"), EventArgs ("NSWindowFrame"), DefaultValueFromArgument ("newFrame")]
+		[Export ("windowWillUseStandardFrame:defaultFrame:"), DelegateName ("NSWindowFrame"), DefaultValueFromArgument ("newFrame")]
 		RectangleF WillUseStandardFrame (NSWindow window, RectangleF newFrame);
 	
-		[Export ("windowShouldZoom:toFrame:"), EventArgs ("NSWindowFramePredicate"), DefaultValue (true)]
+		[Export ("windowShouldZoom:toFrame:"), DelegateName ("NSWindowFramePredicate"), DefaultValue (true)]
 		bool ShouldZoom (NSWindow  window, RectangleF newFrame);
 	
-		[Export ("windowWillReturnUndoManager:"), EventArgs ("NSWindowUndoManager"), DefaultValue (null)]
+		[Export ("windowWillReturnUndoManager:"), DelegateName ("NSWindowUndoManager"), DefaultValue (null)]
 		NSUndoManager WillReturnUndoManager (NSWindow  window);
 	
-		[Export ("window:willPositionSheet:usingRect:"), EventArgs ("NSWindowSheetRect"), DefaultValueFromArgument ("usingRect")]
+		[Export ("window:willPositionSheet:usingRect:"), DelegateName ("NSWindowSheetRect"), DefaultValueFromArgument ("usingRect")]
 		RectangleF WillPositionSheet (NSWindow  window, NSWindow  sheet, RectangleF usingRect);
 	
-		[Export ("window:shouldPopUpDocumentPathMenu:"), EventArgs ("NSWindowMenu"), DefaultValue (true)]
+		[Export ("window:shouldPopUpDocumentPathMenu:"), DelegateName ("NSWindowMenu"), DefaultValue (true)]
 		bool ShouldPopUpDocumentPathMenu (NSWindow  window, NSMenu  menu);
 	
-		[Export ("window:shouldDragDocumentWithEvent:from:withPasteboard:"), EventArgs ("NSWindowDocumentDrag"), DefaultValue (true)]
+		[Export ("window:shouldDragDocumentWithEvent:from:withPasteboard:"), DelegateName ("NSWindowDocumentDrag"), DefaultValue (true)]
 		bool ShouldDragDocumentWithEvent (NSWindow  window, NSEvent theEvent, PointF dragImageLocation, NSPasteboard  withPasteboard);
 	
 		[Export ("windowDidResize:"), EventArgs ("NSNotification")]
@@ -13046,19 +13046,19 @@ namespace MonoMac.AppKit {
     [Model]
     interface NSRuleEditorDelegate {
         [Abstract]
-        [Export ("ruleEditor:numberOfChildrenForCriterion:withRowType:"), EventArgs ("NSRuleEditorNumberOfChildren"), DefaultValue(0)]
+        [Export ("ruleEditor:numberOfChildrenForCriterion:withRowType:"), DelegateName ("NSRuleEditorNumberOfChildren"), DefaultValue(0)]
         int NumberOfChildren (NSRuleEditor editor, NSObject criterion, NSRuleEditorRowType rowType);
 
         [Abstract]
-        [Export ("ruleEditor:child:forCriterion:withRowType:"), EventArgs ("NSRulerEditorChildCriterion"), DefaultValue(null)]
+        [Export ("ruleEditor:child:forCriterion:withRowType:"), DelegateName ("NSRulerEditorChildCriterion"), DefaultValue(null)]
         NSObject ChildForCriterion (NSRuleEditor editor, int index, NSObject criterion, NSRuleEditorRowType rowType);
 
         [Abstract]
-        [Export ("ruleEditor:displayValueForCriterion:inRow:"), EventArgs ("NSRulerEditorDisplayValue"), DefaultValue(null)]
+        [Export ("ruleEditor:displayValueForCriterion:inRow:"), DelegateName ("NSRulerEditorDisplayValue"), DefaultValue(null)]
         NSObject DisplayValue (NSRuleEditor editor, NSObject criterion, int row);
 
         [Abstract]
-        [Export ("ruleEditor:predicatePartsForCriterion:withDisplayValue:inRow:"), EventArgs ("NSRulerEditorPredicateParts"), DefaultValue(null)]
+        [Export ("ruleEditor:predicatePartsForCriterion:withDisplayValue:inRow:"), DelegateName ("NSRulerEditorPredicateParts"), DefaultValue(null)]
         NSDictionary PredicateParts (NSRuleEditor editor, NSObject criterion, NSObject value, int row);
 
         [Abstract]
