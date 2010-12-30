@@ -59,12 +59,6 @@ namespace macdoc
 			ShowNode (match);
 		}
 		
-		// If this returns the name of a NIB file instead of null, a NSDocumentController 
-		// is automatically created for you.
-		public override string WindowNibName {
-			get { return "MyDocument"; }
-		}
-		
 		bool LoadingFromString;
 		public void LoadHtml (string html)
 		{
@@ -127,7 +121,12 @@ namespace macdoc
 			}			
 
 		}
-		
+
+		// If this returns the name of a NIB file instead of null, a NSDocumentController 
+		// is automatically created for you.
+		public override string WindowNibName {
+			get { return "MyDocument"; }
+		}
 	}
 	
 	// 

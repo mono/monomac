@@ -13,20 +13,7 @@ namespace macdoc
 		static public string MonodocDir;
 		static public NSUrl MonodocBaseUrl;
 		
-		static void ExtractImages ()
-		{
-			var mdocAssembly = typeof (Node).Assembly;
-			
-			foreach (var res in mdocAssembly.GetManifestResourceNames ()){
-				if (!res.EndsWith (".png") || res.EndsWith (".jpg"))
-					continue;
-				
-				using (var output = File.Create (Path.Combine (MonodocDir, "mdocimages", res)))
-					mdocAssembly.GetManifestResourceStream (res).CopyTo (output);
-			}
-		}
-		
-		public AppDelegate ()
+		static void PrepareCache ()
 		{
 			MonodocDir = Path.Combine (Environment.GetFolderPath (Environment.SpecialFolder.Personal), "Library/Caches/MacDoc/");
 			var mdocimages = Path.Combine (MonodocDir, "mdocimages");
@@ -36,10 +23,34 @@ namespace macdoc
 					Directory.CreateDirectory (mdocimages);
 				} catch {}
 			}
+		}
+		
+		static void ExtractImages ()
+		{
+			var mdocAssembly = typeof (Node).Assembly;
+			
+			foreach (var res in mdocAssembly.GetManifestResourceNames ()){
+				if (!res.EndsWith (".png") || res.EndsWith (".jpg"))
+					continue;
 				
+				var image = Path.Combine (MonodocDir, "mdocimages", res);
+				if (File.Exists (image))
+					continue;
+				
+				using (var output = File.Create (image))
+					mdocAssembly.GetManifestResourceStream (res).CopyTo (output);
+			}
+		}
+		
+		public AppDelegate ()
+		{
+			PrepareCache ();
 			ExtractImages ();
 			
+			// Load documentation
 			Root = RootTree.LoadTree (null);
+			
+			// Configure the documentation rendering.
 			SettingsHandler.Settings.EnableEditing = false;
 			SettingsHandler.Settings.preferred_font_size = 200;
 			HelpSource.use_css = true;

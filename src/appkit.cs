@@ -4566,7 +4566,6 @@ namespace MonoMac.AppKit {
 		[Export ("type")]
 		NSEventType Type { get; }
 
-		// TODO: TYPE FOR THIS?
 		[Export ("modifierFlags")]
 		NSEventModifierMask ModifierFlags { get; }
 
