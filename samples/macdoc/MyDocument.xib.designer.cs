@@ -15,6 +15,8 @@ namespace macdoc {
 	[MonoMac.Foundation.Register("MyDocument")]
 	public partial class MyDocument {
 		
+		private global::MonoMac.AppKit.NSSegmentedCell __mt_navigationCells;
+		
 		private global::MonoMac.AppKit.NSOutlineView __mt_outlineView;
 		
 		private global::MonoMac.AppKit.NSOutlineView __mt_searchResults;
@@ -22,6 +24,18 @@ namespace macdoc {
 		private global::MonoMac.WebKit.WebView __mt_webView;
 		
 		#pragma warning disable 0169
+		[MonoMac.Foundation.Connect("navigationCells")]
+		private global::MonoMac.AppKit.NSSegmentedCell navigationCells {
+			get {
+				this.__mt_navigationCells = ((global::MonoMac.AppKit.NSSegmentedCell)(this.GetNativeField("navigationCells")));
+				return this.__mt_navigationCells;
+			}
+			set {
+				this.__mt_navigationCells = value;
+				this.SetNativeField("navigationCells", value);
+			}
+		}
+		
 		[MonoMac.Foundation.Connect("outlineView")]
 		private global::MonoMac.AppKit.NSOutlineView outlineView {
 			get {

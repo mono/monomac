@@ -6,12 +6,16 @@ using Monodoc;
 using MonoMac.AppKit;
 using MonoMac.Foundation;
 using MonoMac.WebKit;
+using System.IO;
 
 namespace macdoc
 {
 	public partial class MyDocument : MonoMac.AppKit.NSDocument
 	{
 		internal Dictionary<Node,WrapNode> nodeToWrapper = new Dictionary<Node, WrapNode> ();
+		string resourcesPath = NSBundle.MainBundle.ResourceUrl.Path;
+		History history;
+		bool ignoreSelect;
 		
 		// Called when created from unmanaged code
 		public MyDocument (IntPtr handle) : base(handle)
@@ -23,11 +27,19 @@ namespace macdoc
 		public MyDocument (NSCoder coder) : base(coder)
 		{
 		}
-
+		
+		void LoadImages ()
+		{
+			navigationCells.SetImage (new NSImage (Path.Combine (resourcesPath, "Images", "back.png")), 0);
+			navigationCells.SetImage (new NSImage (Path.Combine (resourcesPath, "Images", "forward.png")), 1);
+		}
+		
 		public override void WindowControllerDidLoadNib (NSWindowController windowController)
 		{
 			base.WindowControllerDidLoadNib (windowController);
 			
+			LoadImages ();
+			history = new History (navigationCells);
 			outlineView.DataSource = new DocTreeDataSource (this);
 			outlineView.Delegate = new OutlineDelegate (this);
 			webView.DecidePolicyForNavigation += HandleWebViewDecidePolicyForNavigation; 
@@ -41,20 +53,21 @@ namespace macdoc
 			}
 			
 			var mainUrl = e.Frame.WebView.MainFrameUrl;
-			var abs = e.Request.Url.AbsoluteString;
+			var url = e.Request.Url.AbsoluteString;
 			
 			// Let WebKit take care of the anchors.
-			if (mainUrl != null && abs.StartsWith (mainUrl) && abs.Length > mainUrl.Length && abs [mainUrl.Length] == '#'){
+			if (mainUrl != null && url.StartsWith (mainUrl) && url.Length > mainUrl.Length && url [mainUrl.Length] == '#'){
 				WebView.DecideUse (e.DecisionToken);
 				return;
 			}
 			
 			Node match;
 			WebView.DecideIgnore (e.DecisionToken);
-			var res = DocTools.GetHtml (abs, null, out match);
+			var res = DocTools.GetHtml (url, null, out match);
 			if (res == null)
 				return;
 			
+			history.AppendHistory (new LinkPageVisit (this, url));
 			LoadHtml (res);	
 			ShowNode (match);
 		}
@@ -73,8 +86,11 @@ namespace macdoc
 			LoadingFromString = false;
 		}
 		
-		void ShowNode (Node n)
+		internal void ShowNode (Node n)
 		{
+			if (n == null)
+				return;
+			
 			if (!nodeToWrapper.ContainsKey (n))
 				ShowNode (n.Parent);
 			
@@ -85,7 +101,9 @@ namespace macdoc
 			if (n.Nodes.Count > 0)
 				ScrollToVisible ((Node) n.Nodes [n.Nodes.Count-1]);
 			var row = ScrollToVisible (n);
+			ignoreSelect = true;
 			outlineView.SelectRows (new NSIndexSet (row), false);
+			ignoreSelect = false;
 		}
 		
 		int ScrollToVisible (Node n)
@@ -106,6 +124,9 @@ namespace macdoc
 			
 			public override void SelectionDidChange (NSNotification notification)
 			{
+				if (parent.ignoreSelect)
+					return;
+				
 				var indexes = parent.outlineView.SelectedRows;
 				if (indexes.Count == 0)
 					return;
@@ -113,6 +134,7 @@ namespace macdoc
 				var node = WrapNode.FromObject (parent.outlineView.ItemAtRow ((int) indexes.FirstIndex));
 				string html = DocTools.GetHtml (node.PublicUrl, node.tree.HelpSource);
 				if (html != null){
+					parent.history.AppendHistory (new LinkPageVisit (parent, node.PublicUrl));
 					parent.LoadHtml (html);
 					return;
 				}
@@ -121,11 +143,30 @@ namespace macdoc
 			}			
 
 		}
-
+				
 		// If this returns the name of a NIB file instead of null, a NSDocumentController 
 		// is automatically created for you.
 		public override string WindowNibName {
 			get { return "MyDocument"; }
+		}
+	}
+
+	class LinkPageVisit : PageVisit {
+		MyDocument document;
+		string url;
+		
+		public LinkPageVisit (MyDocument document, string url)
+		{
+			this.document = document;
+			this.url = url;
+		}
+		
+		public override void Go ()
+		{
+			Node match;
+			string res =  DocTools.GetHtml (url, null, out match);
+			document.LoadHtml (res);
+			document.ShowNode (match);
 		}
 	}
 	
@@ -192,7 +233,7 @@ namespace macdoc
 		{
 			if (item == null)
 				return new NSString ("Root");
-			Node n;
+			
 			return new NSString (GetNode (item).Caption);
 		}
 	}
