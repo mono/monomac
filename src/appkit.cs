@@ -3173,7 +3173,7 @@ namespace MonoMac.AppKit {
 		NSObject Delegate { get; set; }  
 
 	}	
-	
+
 	[BaseType (typeof (NSControl), Delegates=new string [] {"WeakDelegate"}, Events=new Type [] {typeof (NSDatePickerCellDelegate)})]
 	interface NSDatePicker {
 		[Export ("initWithFrame:")]
@@ -3196,7 +3196,7 @@ namespace MonoMac.AppKit {
 		NSColor BackgroundColor { get; set; }
 
 		[Export ("cell")]
-		NSDatePickerCell DatePickerCell { get; }
+		NSDatePickerCell Cell { get; }
 
 		[Export ("textColor")]
 		NSColor TextColor { get; set; }
@@ -3295,7 +3295,7 @@ namespace MonoMac.AppKit {
 	[Model]
 	interface NSDatePickerCellDelegate {
 		[Export ("datePickerCell:validateProposedDateValue:timeInterval:"), EventArgs ("NSDatePickerValidator")]
-		void ValidateProposedDateValue (NSDatePickerCell aDatePickerCell, NSDate proposedDateValue, double proposedTimeInterval);
+		void ValidateProposedDateValue (NSDatePickerCell aDatePickerCell, ref NSDate proposedDateValue, double proposedTimeInterval);
 	}
 
 	[BaseType (typeof (NSObject))]
