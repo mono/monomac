@@ -9621,8 +9621,7 @@ namespace MonoMac.AppKit {
 	}
 	
 	
-	[BaseType (typeof (NSControl))]
-	//, Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (NSTableViewDelegate)})]
+	[BaseType (typeof (NSControl), Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (NSTableViewDelegate)})]
 	interface NSTableView {
 		[Export ("initWithFrame:")]
 		IntPtr Constructor (RectangleF frameRect);
@@ -9710,10 +9709,10 @@ namespace MonoMac.AppKit {
 		void SetDropRowDropOperation (int row, NSTableViewDropOperation dropOperation);
 	
 		[Export ("selectAll:")]
-		void SelectAll (NSObject sender);
+		void SelectAll ([NullAllowed] NSObject sender);
 	
 		[Export ("deselectAll:")]
-		void DeselectAll (NSObject sender);
+		void DeselectAll ([NullAllowed] NSObject sender);
 	
 		[Export ("selectColumnIndexes:byExtendingSelection:")]
 		void SelectColumns (NSIndexSet indexes, bool byExtendingSelection);
@@ -9900,77 +9899,77 @@ namespace MonoMac.AppKit {
 	[BaseType (typeof (NSObject))]
 	[Model]
 	interface NSTableViewDelegate {
-		[Export ("tableView:willDispayCell:forTableColumn:row:")]
+		[Export ("tableView:willDispayCell:forTableColumn:row:"), EventArgs ("NSTableViewCell")]
 		void WillDisplayCell (NSTableView tableView, NSObject cell, NSTableColumn tableColumn, int row);
 	
-		[Export ("tableView:shouldEditTableColumn:row:")] [DefaultValue (false)]
+		[Export ("tableView:shouldEditTableColumn:row:"), DelegateName ("NSTableViewColumnRowPredicate"), DefaultValue (false)]
 		bool ShouldEditTableColumn (NSTableView tableView, NSTableColumn tableColumn, int row);
 	
-		[Export ("selectionShouldChangeInTableView:")] [DefaultValue (false)]
+		[Export ("selectionShouldChangeInTableView:"), DelegateName ("NSTableViewPredicate"), DefaultValue (false)]
 		bool SelectionShouldChange (NSTableView tableView);
 	
-		[Export ("tableView:shouldSelectRow:")] [DefaultValue (true)]
+		[Export ("tableView:shouldSelectRow:"), DelegateName ("NSTableViewRowPredicate")] [DefaultValue (true)]
 		bool ShouldSelectRow (NSTableView tableView, int row);
 	
-		[Export ("tableView:selectionIndexesForProposedSelection:")]
+		[Export ("tableView:selectionIndexesForProposedSelection:"), DelegateName ("NSTableViewIndexFilter"), DefaultValueFromArgument ("proposedSelectionIndexes")]
 		NSIndexSet GetSelectionIndexes (NSTableView tableView, NSIndexSet proposedSelectionIndexes);
 	
-		[Export ("tableView:shouldSelectTableColumn:")] [DefaultValue (true)]
+		[Export ("tableView:shouldSelectTableColumn:"), DelegateName ("NSTableViewColumnPredicate"), DefaultValue (true)]
 		bool ShouldSelectTableColumn (NSTableView tableView, NSTableColumn tableColumn);
 	
-		[Export ("tableView:mouseDownInHeaderOfTableColumn:")]
+		[Export ("tableView:mouseDownInHeaderOfTableColumn:"), EventArgs ("NSTableViewTable")]
 		void MouseDown (NSTableView tableView, NSTableColumn tableColumn);
 	
-		[Export ("tableView:didClickTableColumn:")]
+		[Export ("tableView:didClickTableColumn:"), EventArgs ("NSTableViewTable")]
 		void DidClickTableColumn (NSTableView tableView, NSTableColumn tableColumn);
 	
-		[Export ("tableView:didDragTableColumn:")]
+		[Export ("tableView:didDragTableColumn:"), EventArgs ("NSTableViewTable")]
 		void DidDragTableColumn (NSTableView tableView, NSTableColumn tableColumn);
 	
 		//FIXME: Binding NSRectPointer
 		//[Export ("tableView:toolTipForCell:rect:tableColumn:row:mouseLocation:")]
 		//string TableViewtoolTipForCellrecttableColumnrowmouseLocation (NSTableView tableView, NSCell cell, NSRectPointer rect, NSTableColumn tableColumn, int row, PointF mouseLocation);
 	
-		[Export ("tableView:heightOfRow:")]
+		[Export ("tableView:heightOfRow:"), DelegateName ("NSTableViewRowHeight"), DefaultValue (16f)]
 		float GetRowHeight (NSTableView tableView, int row );
 	
-		[Export ("tableView:typeSelectStringForTableColumn:row:")]
+		[Export ("tableView:typeSelectStringForTableColumn:row:"), DelegateName ("NSTableViewColumnRowString"), DefaultValue ("String.Empty")]
 		string GetSelectString (NSTableView tableView, NSTableColumn tableColumn, int row );
 	
-		[Export ("tableView:nextTypeSelectMatchFromRow:toRow:forString:")]
-		int GetNextTypeSelectMatch (NSTableView tableView, int startRow, int endRow, string searchString );
+		[Export ("tableView:nextTypeSelectMatchFromRow:toRow:forString:"), DelegateName ("NSTableViewSearchString"), DefaultValue (-1)]
+		int GetNextTypeSelectMatch (NSTableView tableView, int startRow, int endRow, string searchString);
 	
-		[Export ("tableView:shouldTypeSelectForEvent:withCurrentSearchString:")]
+		[Export ("tableView:shouldTypeSelectForEvent:withCurrentSearchString:"), DelegateName ("NSTableViewEventString"), DefaultValue (false)]
 		bool ShouldTypeSelect (NSTableView tableView, NSEvent theEvent, string searchString );
 	
-		[Export ("tableView:shouldShowCellExpansionForTableColumn:row:")]
+		[Export ("tableView:shouldShowCellExpansionForTableColumn:row:"), DelegateName ("NSTableViewColumnRowPredicate"), DefaultValue (false)]
 		bool ShouldShowCellExpansion (NSTableView tableView, NSTableColumn tableColumn, int row );
 	
-		[Export ("tableView:shouldTrackCell:forTableColumn:row:")]
+		[Export ("tableView:shouldTrackCell:forTableColumn:row:"), DelegateName ("NSTableViewCell"), DefaultValue (false)]
 		bool ShouldTrackCell (NSTableView tableView, NSCell cell, NSTableColumn tableColumn, int row );
 	
-		[Export ("tableView:dataCellForTableColumn:row:")]
-		NSCell GetCell (NSTableView tableView, NSTableColumn tableColumn, int row );
+		[Export ("tableView:dataCellForTableColumn:row:"), DelegateName ("NSTableViewCellGetter"), DefaultValue (null)]
+		NSCell GetDataCell (NSTableView tableView, NSTableColumn tableColumn, int row );
 	
-		[Export ("tableView:isGroupRow:")] [DefaultValue (false)]
+		[Export ("tableView:isGroupRow:"), DelegateName ("NSTableViewRowPredicate"), DefaultValue (false)]
 		bool IsGroupRow (NSTableView tableView, int row );
 	
-		[Export ("tableView:sizeToFitWidthOfColumn:")]
+		[Export ("tableView:sizeToFitWidthOfColumn:"), DelegateName ("NSTableViewColumnWidth"), DefaultValue (80)]
 		float GetSizeToFitColumnWidth (NSTableView tableView, int column );
 	
-		[Export ("tableView:shouldReorderColumn:toColumn:")]
+		[Export ("tableView:shouldReorderColumn:toColumn:"), DelegateName ("NSTableReorder"), DefaultValue (false)]
 		bool ShouldReorder (NSTableView tableView, int columnIndex, int newColumnIndex );
 	
-		[Export ("tableViewSelectionDidChange:")]
+		[Export ("tableViewSelectionDidChange:"), EventArgs ("NSNotification")]
 		void SelectionDidChange (NSNotification notification);
 	
-		[Export ("tableViewColumnDidMove:")]
+		[Export ("tableViewColumnDidMove:"), EventArgs ("NSNotification")]
 		void ColumnDidMove (NSNotification notification);
 	
-		[Export ("tableViewColumnDidResize:")]
+		[Export ("tableViewColumnDidResize:"), EventArgs ("NSNotification")]
 		void ColumnDidResize (NSNotification notification);
 	
-		[Export ("tableViewSelectionIsChanging:")]
+		[Export ("tableViewSelectionIsChanging:"), EventArgs ("NSNotification")]
 		void SelectionIsChanging (NSNotification notification);
 	}
 	
@@ -10063,7 +10062,7 @@ namespace MonoMac.AppKit {
 		[Export ("tableView:dataCellForTableColumn:row:")]
 		NSCell GetCell (NSTableView tableView, NSTableColumn tableColumn, int row );
 	
-		[Export ("tableView:isGroupRow:")] [DefaultValue (false)]
+		[Export ("tableView:isGroupRow:"), DefaultValue (false)]
 		bool IsGroupRow (NSTableView tableView, int row );
 	
 		[Export ("tableView:sizeToFitWidthOfColumn:")]
@@ -11960,7 +11959,7 @@ namespace MonoMac.AppKit {
 		NSText FieldEditor (bool createFlag, NSObject forObject);
 	
 		[Export ("endEditingFor:")]
-		void EndEditingFor (NSObject anObject);
+		void EndEditingFor ([NullAllowed] NSObject anObject);
 	
 		[Export ("constrainFrameRect:toScreen:")]
 		RectangleF ConstrainFrameRect (RectangleF frameRect, NSScreen screen);
@@ -12995,7 +12994,7 @@ namespace MonoMac.AppKit {
         NSIndexSet SelectedRows { get; }
 
         [Export ("selectRowIndexes:byExtendingSelection:")]
-        void SelectRowIndexes (NSIndexSet indexes, bool extend);
+        void SelectRows (NSIndexSet indexes, bool extend);
 
         //Detected properties
         //[Export ("delegate")]
