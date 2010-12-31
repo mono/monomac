@@ -3194,6 +3194,9 @@ namespace MonoMac.AppKit {
 		[Export ("backgroundColor")]
 		NSColor BackgroundColor { get; set; }
 
+		[Export ("cell")]
+		NSDatePickerCell DatePickerCell { get; }
+
 		[Export ("textColor")]
 		NSColor TextColor { get; set; }
 
