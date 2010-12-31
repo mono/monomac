@@ -40,6 +40,7 @@ MONOMAC_SOURCES = \
 	./AppKit/NSApplicationDelegate.cs		\
 	./AppKit/NSBitmapImageRep.cs			\
 	./AppKit/NSButton.cs				\
+	./AppKit/NSColor.cs				\
 	./AppKit/NSControl.cs				\
 	./AppKit/NSGraphics.cs				\
 	./AppKit/NSLevelIndicator.cs			\
