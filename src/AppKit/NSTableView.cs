@@ -23,6 +23,7 @@
 // OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
+using MonoMac.Foundation;
 
 namespace MonoMac.AppKit {
 
@@ -39,6 +40,16 @@ namespace MonoMac.AppKit {
                                 WeakDelegate = value;
                                 WeakDataSource = value;
 			}
+		}
+
+		public void SelectRow (int row, bool byExtendingSelection)
+		{
+			SelectRows (NSIndexSet.FromIndex (row), byExtendingSelection);
+		}
+
+		public void SelectColumn (int column, bool byExtendingSelection)
+		{
+			SelectColumns (NSIndexSet.FromIndex (column), byExtendingSelection);
 		}
 	}
 }
