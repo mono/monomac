@@ -2160,23 +2160,23 @@ namespace MonoMac.AppKit {
 
 		[Static]
 		[Export ("colorWithDeviceHue:saturation:brightness:alpha:")]
-		NSColor ColorWithDeviceHSBA (float hue, float saturation, float brightness, float alpha);
+		NSColor FromDeviceHSBA (float hue, float saturation, float brightness, float alpha);
 
 		[Static]
 		[Export ("colorWithDeviceRed:green:blue:alpha:")]
-		NSColor ColorWithDeviceRGBA (float red, float green, float blue, float alpha);
+		NSColor FromDeviceRGBA (float red, float green, float blue, float alpha);
 
 		[Static]
 		[Export ("colorWithDeviceCyan:magenta:yellow:black:alpha:")]
-		NSColor ColorWithDeviceCYMKA (float cyan, float magenta, float yellow, float black, float alpha);
+		NSColor FromDeviceCYMKA (float cyan, float magenta, float yellow, float black, float alpha);
 
 		[Static]
 		[Export ("colorWithCatalogName:colorName:")]
 		NSColor FromCatalogName (string listName, string colorName);
 
-		// FIXME: binding components pointer
-		//[Export ("colorWithColorSpace:components:count:")]
-		//NSColor ColorWithColorSpace (NSColorSpace space, const CGFloat components, int numberOfComponents);
+		[Static]
+		[Export ("colorWithColorSpace:components:count:"), Internal]
+		NSColor _FromColorSpace (NSColorSpace space, IntPtr components, int numberOfComponents);
 		
 		[Static]
 		[Export ("blackColor")]
@@ -2354,6 +2354,7 @@ namespace MonoMac.AppKit {
 		[Export ("headerTextColor")]
 		NSColor HeaderText { get; }
 
+		[Static]
 		[Export ("alternateSelectedControlColor")]
 		NSColor AlternateSelectedControl { get; }
 
@@ -2361,19 +2362,21 @@ namespace MonoMac.AppKit {
 		[Export ("alternateSelectedControlTextColor")]
 		NSColor AlternateSelectedControlText { get; }
 
+		[Static]
 		[Export ("controlAlternatingRowBackgroundColors")]
 		NSColor [] ControlAlternatingRowBackgroundColors ();
 
 		[Export ("highlightWithLevel:")]
-		NSColor HighlightWithLevel (float val);
+		NSColor HighlightWithLevel (float highlightLevel);
 
 		[Export ("shadowWithLevel:")]
-		NSColor ShadowWithLevel (float val);
+		NSColor ShadowWithLevel (float shadowLevel);
 
 		[Static]
 		[Export ("colorForControlTint:")]
-		NSColor ColorForControlTint (NSControlTint controlTint);
+		NSColor FromControlTint (NSControlTint controlTint);
 
+		[Static]
 		[Export ("currentControlTint")]
 		NSControlTint CurrentControlTint { get; }
 
@@ -2390,13 +2393,13 @@ namespace MonoMac.AppKit {
 		string ColorSpaceName { get; }
 
 		[Export ("colorUsingColorSpaceName:")]
-		NSColor ColorUsingColorSpaceName (string colorSpace);
+		NSColor UsingColorSpace (string colorSpaceName);
 
 		[Export ("colorUsingColorSpaceName:device:")]
-		NSColor CreateFromColorSpaceName (string colorSpace, NSDictionary deviceDescription);
+		NSColor UsingColorSpace (string colorSpaceName, NSDictionary deviceDescription);
 
 		[Export ("colorUsingColorSpace:")]
-		NSColor CreateUsingColorSpace (NSColorSpace space);
+		NSColor UsingColorSpace (NSColorSpace colorSpace);
 
 		[Export ("blendedColorWithFraction:ofColor:")]
 		NSColor BlendedColor (float fraction, NSColor color);
@@ -2423,11 +2426,10 @@ namespace MonoMac.AppKit {
 		float GreenComponent { get; }
 
 		[Export ("blueComponent")]
-		float BlueComponent ();
+		float BlueComponent { get; }
 
-		// FIXME: binding, need out values here
-		//[Export ("getRed:green:blue:alpha:")]
-		//void GetRedgreenbluealpha (out float red, out float green, out float blue, outfloat alpha);
+		[Export ("getRed:green:blue:alpha:")]
+		void GetRGBA (out float red, out float green, out float blue, out float alpha);
 
 		[Export ("hueComponent")]
 		float HueComponent { get; }
@@ -2438,16 +2440,14 @@ namespace MonoMac.AppKit {
 		[Export ("brightnessComponent")]
 		float BrightnessComponent { get; }
 
-		// FIXME: binding need out alues hre
-		// [Export ("getHue:saturation:brightness:alpha:")]
-		//void GetHuesaturationbrightnessalpha (out float hue, out float saturation, out float brightness, out float alpha);
+		[Export ("getHue:saturation:brightness:alpha:")]
+		void GetHSBA (out float hue, out float saturation, out float brightness, out float alpha);
 
 		[Export ("whiteComponent")]
 		float WhiteComponent { get; }
 
-		// FIXME: binding need out values here
-		//[Export ("getWhite:alpha:")]
-		//void GetWhitealpha (out float white, out float alpha);
+		[Export ("getWhite:alpha:")]
+		void GetWhiteAlpha (out float white, out float alpha);
 
 		[Export ("cyanComponent")]
 		float CyanComponent { get; }
@@ -2461,19 +2461,17 @@ namespace MonoMac.AppKit {
 		[Export ("blackComponent")]
 		float BlackComponent { get; }
 
-		// FIXME: binding need out values here
-		//[Export ("getCyan:magenta:yellow:black:alpha:")]
-		//void GetCyanmagentayellowblackalpha (out float cyan, out float magenta, out float yellow, out float black, out float alpha);
+		[Export ("getCyan:magenta:yellow:black:alpha:")]
+		void GetCMYKA (out float cyan, out float magenta, out float yellow, out float black, out float alpha);
 
 		[Export ("colorSpace")]
 		NSColorSpace ColorSpace { get; }
 
 		[Export ("numberOfComponents")]
-		int Components { get; }
+		int NumberOfComponents { get; }
 
-		// FIXME: binding, returns array
-		//[Export ("getComponents:")]
-		//void GetComponents (float components);
+		[Export ("getComponents:"), Internal]
+		void _GetComponents (IntPtr components);
 
 		[Export ("alphaComponent")]
 		float AlphaComponent { get; }
@@ -2495,10 +2493,13 @@ namespace MonoMac.AppKit {
 		[Export ("drawSwatchInRect:")]
 		void DrawSwatchInRect (RectangleF rect);
 
-		//Detected properties
 		[Static]
 		[Export ("ignoresAlpha")]
 		bool IgnoresAlpha { get; set; }
+
+		[Static]
+		[Export ("colorWithCIColor:")]
+		NSColor FromCIColor (CIColor color);
 	}
 
 	[BaseType (typeof (NSObject))]
