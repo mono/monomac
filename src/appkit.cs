@@ -4436,12 +4436,9 @@ namespace MonoMac.AppKit {
 		[Export ("initWithColors:")]
 		IntPtr Constructor  (NSColor[] colorArray);
 
-		// Needs varargs
+		// See AppKit/NSGradiant.cs
 		//[Export ("initWithColorsAndLocations:")]
-		//IntPtr Constructor (NSColor firstColor);
-
-		[Export ("initWithColors:atLocations:colorSpace:"), Internal]
-		IntPtr Constructor (NSColor[] colorArray, IntPtr floatLocations, NSColorSpace colorSpace);
+		//[Export ("initWithColors:atLocations:colorSpace:")]
 
 		[Export ("drawFromPoint:toPoint:options:")]
 		void DrawFromPoint (PointF startingPoint, PointF endingPoint, NSGradientDrawingOptions options);
@@ -4468,7 +4465,7 @@ namespace MonoMac.AppKit {
 		int ColorStopsCount { get; }
 
 		[Export ("getColor:location:atIndex:")]
-		void GetColor (NSColor color, float location, int index);
+		void GetColor (out NSColor color, out float location, int index);
 
 		[Export ("interpolatedColorAtLocation:")]
 		NSColor GetInterpolatedColor(float location);
