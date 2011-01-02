@@ -2148,11 +2148,11 @@ namespace MonoMac.AppKit {
 
 		[Static]
 		[Export ("colorWithCalibratedHue:saturation:brightness:alpha:")]
-		NSColor FromCalibratedHSBA (float hue, float saturation, float brightness, float alpha);
+		NSColor FromCalibratedHsba (float hue, float saturation, float brightness, float alpha);
 
 		[Static]
 		[Export ("colorWithCalibratedRed:green:blue:alpha:")]
-		NSColor FromCalibratedRGBA (float red, float green, float blue, float alpha);
+		NSColor FromCalibratedRgba (float red, float green, float blue, float alpha);
 
 		[Static]
 		[Export ("colorWithDeviceWhite:alpha:")]
@@ -2160,15 +2160,15 @@ namespace MonoMac.AppKit {
 
 		[Static]
 		[Export ("colorWithDeviceHue:saturation:brightness:alpha:")]
-		NSColor FromDeviceHSBA (float hue, float saturation, float brightness, float alpha);
+		NSColor FromDeviceHsba (float hue, float saturation, float brightness, float alpha);
 
 		[Static]
 		[Export ("colorWithDeviceRed:green:blue:alpha:")]
-		NSColor FromDeviceRGBA (float red, float green, float blue, float alpha);
+		NSColor FromDeviceRgba (float red, float green, float blue, float alpha);
 
 		[Static]
 		[Export ("colorWithDeviceCyan:magenta:yellow:black:alpha:")]
-		NSColor FromDeviceCYMKA (float cyan, float magenta, float yellow, float black, float alpha);
+		NSColor FromDeviceCymka (float cyan, float magenta, float yellow, float black, float alpha);
 
 		[Static]
 		[Export ("colorWithCatalogName:colorName:")]
@@ -2429,7 +2429,7 @@ namespace MonoMac.AppKit {
 		float BlueComponent { get; }
 
 		[Export ("getRed:green:blue:alpha:")]
-		void GetRGBA (out float red, out float green, out float blue, out float alpha);
+		void GetRgba (out float red, out float green, out float blue, out float alpha);
 
 		[Export ("hueComponent")]
 		float HueComponent { get; }
@@ -2441,7 +2441,7 @@ namespace MonoMac.AppKit {
 		float BrightnessComponent { get; }
 
 		[Export ("getHue:saturation:brightness:alpha:")]
-		void GetHSBA (out float hue, out float saturation, out float brightness, out float alpha);
+		void GetHsba (out float hue, out float saturation, out float brightness, out float alpha);
 
 		[Export ("whiteComponent")]
 		float WhiteComponent { get; }
@@ -2462,13 +2462,13 @@ namespace MonoMac.AppKit {
 		float BlackComponent { get; }
 
 		[Export ("getCyan:magenta:yellow:black:alpha:")]
-		void GetCMYKA (out float cyan, out float magenta, out float yellow, out float black, out float alpha);
+		void GetCmyka (out float cyan, out float magenta, out float yellow, out float black, out float alpha);
 
 		[Export ("colorSpace")]
 		NSColorSpace ColorSpace { get; }
 
 		[Export ("numberOfComponents")]
-		int NumberOfComponents { get; }
+		int ComponentCount { get; }
 
 		[Export ("getComponents:"), Internal]
 		void _GetComponents (IntPtr components);

@@ -24,7 +24,7 @@ namespace MonoMac.AppKit {
 		
 		public void GetComponents(out float[] components)
 		{
-			int count = this.NumberOfComponents;
+			int count = this.ComponentCount;
 			float[] managedFloatArray = new float[count];
 			int size = Marshal.SizeOf(managedFloatArray[0]) * count;
 			IntPtr pNativeFloatArray = Marshal.AllocHGlobal(size);
