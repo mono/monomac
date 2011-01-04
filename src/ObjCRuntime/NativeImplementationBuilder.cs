@@ -36,6 +36,7 @@ namespace MonoMac.ObjCRuntime {
 #if !MONOMAC_BOOTSTRAP
 		private static MethodInfo convertarray = typeof (NSArray).GetMethod ("ArrayFromHandle", new Type [] { typeof (IntPtr) });
 		private static MethodInfo convertsarray = typeof (NSArray).GetMethod ("StringArrayFromHandle", new Type [] { typeof (IntPtr) });
+		private static MethodInfo convertstring = typeof (NSString).GetMethod ("ToString", new Type [] {});
 		private static MethodInfo getobject = typeof (Runtime).GetMethod ("GetNSObject", BindingFlags.Static | BindingFlags.Public);
 		private static MethodInfo gethandle = typeof (NSObject).GetMethod ("get_Handle", BindingFlags.Instance | BindingFlags.Public);
 #endif
@@ -161,6 +162,8 @@ namespace MonoMac.ObjCRuntime {
 					ParameterTypes [i + ArgumentOffset] = typeof (IntPtr);
 				else if (typeof (INativeObject).IsAssignableFrom (Parameters [i].ParameterType) && !IsWrappedType (Parameters [i].ParameterType))
 					ParameterTypes [i + ArgumentOffset] = typeof (IntPtr);
+				else if (Parameters [i].ParameterType == typeof (string))
+					ParameterTypes [i + ArgumentOffset] = typeof (NSString);
 				else
 					ParameterTypes [i + ArgumentOffset] = Parameters [i].ParameterType;
 				// The TypeConverter will emit a ^@ for a byref type that is a NSObject or NSObject subclass in this case
@@ -176,6 +179,8 @@ namespace MonoMac.ObjCRuntime {
 					il.DeclareLocal (Parameters [i].ParameterType.GetElementType ());
 				} else if (Parameters [i].ParameterType.IsArray && IsWrappedType (Parameters [i].ParameterType.GetElementType ())) {
 					il.DeclareLocal (Parameters [i].ParameterType);
+				} else if (Parameters [i].ParameterType == typeof (string)) {
+					il.DeclareLocal (typeof (string));
 				}
 			}
 		}
@@ -198,6 +203,11 @@ namespace MonoMac.ObjCRuntime {
 						il.Emit (OpCodes.Call, convertarray.MakeGenericMethod (Parameters [i-ArgumentOffset].ParameterType.GetElementType ()));
 					il.Emit (OpCodes.Stloc, j+locoffset);
 					j++;
+				} else if (Parameters [i-ArgumentOffset].ParameterType == typeof (string)) {
+					il.Emit (OpCodes.Ldarg, i);
+					il.Emit (OpCodes.Call, convertstring);
+					il.Emit (OpCodes.Stloc, j+locoffset);
+					j++;
 				}
 			}
 #endif
@@ -214,6 +224,9 @@ namespace MonoMac.ObjCRuntime {
 				} else if (typeof (INativeObject).IsAssignableFrom (Parameters [i-ArgumentOffset].ParameterType) && !IsWrappedType (Parameters [i-ArgumentOffset].ParameterType)) {
 					il.Emit (OpCodes.Ldarg, i);
 					il.Emit (OpCodes.Newobj, Parameters [i-ArgumentOffset].ParameterType.GetConstructor (BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance, null, new Type [] { typeof (IntPtr) }, null));
+				} else if (Parameters [i-ArgumentOffset].ParameterType == typeof (string)) {
+					il.Emit (OpCodes.Ldloc, j+locoffset);
+					j++;
 				} else {
 					il.Emit (OpCodes.Ldarg, i);
 				}
