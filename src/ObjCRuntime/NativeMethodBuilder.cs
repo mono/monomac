@@ -90,6 +90,8 @@ namespace MonoMac.ObjCRuntime {
 			else
 				il.Emit (OpCodes.Call, minfo);
 
+			UpdateByRefArguments (il, 0);
+
 			if (minfo.ReturnType == typeof (string)) {
 				il.Emit (OpCodes.Newobj, newnsstring);
 #if !MONOMAC_BOOTSTRAP

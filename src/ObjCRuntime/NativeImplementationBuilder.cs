@@ -39,6 +39,7 @@ namespace MonoMac.ObjCRuntime {
 		private static MethodInfo convertstring = typeof (NSString).GetMethod ("ToString", new Type [] {});
 		private static MethodInfo getobject = typeof (Runtime).GetMethod ("GetNSObject", BindingFlags.Static | BindingFlags.Public);
 		private static MethodInfo gethandle = typeof (NSObject).GetMethod ("get_Handle", BindingFlags.Instance | BindingFlags.Public);
+		private static FieldInfo intptrzero = typeof (IntPtr).GetField ("Zero", BindingFlags.Static | BindingFlags.Public);
 #endif
 
 		private Delegate del;
@@ -237,12 +238,18 @@ namespace MonoMac.ObjCRuntime {
 #if !MONOMAC_BOOTSTRAP
 			for (int i = ArgumentOffset, j = 0; i < ParameterTypes.Length; i++) {
 				if (Parameters [i-ArgumentOffset].ParameterType.IsByRef && IsWrappedType (Parameters[i-ArgumentOffset].ParameterType.GetElementType ())) {
+					Label nullout = il.DefineLabel ();
 					Label done = il.DefineLabel ();
 					il.Emit (OpCodes.Ldloc, j+locoffset);
-					il.Emit (OpCodes.Brfalse, done);
+					il.Emit (OpCodes.Brfalse, nullout);
+					il.Emit (OpCodes.Ldarg, i);
 					il.Emit (OpCodes.Ldloc, j+locoffset);
 					il.Emit (OpCodes.Call, gethandle);
+					il.Emit (OpCodes.Stind_I);
+					il.Emit (OpCodes.Br, done);
+					il.MarkLabel (nullout);
 					il.Emit (OpCodes.Ldarg, i);
+					il.Emit (OpCodes.Ldsfld, intptrzero);
 					il.Emit (OpCodes.Stind_I);
 					il.MarkLabel (done);
 					j++;
