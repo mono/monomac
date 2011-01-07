@@ -377,11 +377,11 @@ class TrivialParser {
 		case "NSString":
 		case "NSString *":
 			return "string";
-		case "NSSize":
+		case "NSSize": case "CGSize":
 			return "SizeF";
-		case "NSRect":
+		case "NSRect": case "CGRect":
 			return "RectangleF";
-		case "NSPoint":
+		case "NSPoint": case "CGPoint":
 			return "PointF";
 		case "NSGlyph":
 			return "uint";
