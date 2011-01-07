@@ -131,3 +131,6 @@ all: MonoMac.dll
 
 update: MonoMac.dll
 	cp monomac.dll ~/.config/MonoDevelop/addins/MonoDevelop.MonoMac.2.4.0.*/MonoMac.dll
+
+push-to-monodevelop:
+	cp MonoMac.dll* /cvs/monodevelop/extras/MonoDevelop.MonoMac/MonoDevelop.MonoMac
