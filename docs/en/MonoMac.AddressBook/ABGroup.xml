@@ -1,8 +1,7 @@
 <Type Name="ABGroup" FullName="MonoMac.AddressBook.ABGroup">
   <TypeSignature Language="C#" Value="public class ABGroup : MonoMac.AddressBook.ABRecord, System.Collections.Generic.IEnumerable&lt;MonoMac.AddressBook.ABRecord&gt;" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit ABGroup extends MonoMac.AddressBook.ABRecord implements class System.Collections.Generic.IEnumerable`1&lt;class MonoMac.AddressBook.ABRecord&gt;, class System.Collections.IEnumerable" />
   <AssemblyInfo>
-    <AssemblyName>MonoMac</AssemblyName>
+    <AssemblyName>monomac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -14,26 +13,52 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>
+      A grouping of <see cref="T:MonoMac.AddressBook.ABPerson" /> and
+      other <see cref="T:MonoMac.AddressBook.ABGroup" /> records.
+    </summary>
+    <remarks>
+      <para>
+        <c>ABGroup</c> supports:
+      </para>
+      <list type="bullet">
+        <iterm>
+          <term>
+            Creating groups:
+            <see cref="C:MonoMac.AddressBook.ABGroup" />.
+          </term>
+        </iterm>
+        <iterm>
+          <term>
+            Managing group members:
+            <see cref="M:MonoMac.AddressBook.ABGroup.Add(MonoMac.AddressBook.ABRecord)" />,
+            <see cref="M:MonoMac.AddressBook.ABGroup.Remove(MonoMac.AddressBook.ABRecord)" />,
+            <see cref="M:MonoMac.AddressBook.ABGroup.GetEnumerator" />,
+            <see cref="M:MonoMac.AddressBook.ABGroup.GetMembers(MonoMac.AddressBook.ABPersonSortBy)" />.
+          </term>
+        </iterm>
+      </list>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public ABGroup ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>
+          Constructs and initializes a
+          <see cref="T:MonoMac.AddressBook.ABGroup" /> instance.
+        </summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Add">
       <MemberSignature Language="C#" Value="public void Add (MonoMac.AddressBook.ABRecord person);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Add(class MonoMac.AddressBook.ABRecord person) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -45,14 +70,21 @@
         <Parameter Name="person" Type="MonoMac.AddressBook.ABRecord" />
       </Parameters>
       <Docs>
-        <param name="person">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="person">
+          The <see cref="T:MonoMac.AddressBook.ABRecord" /> to add to the group.
+        </param>
+        <summary>
+          Adds a <see cref="T:MonoMac.AddressBook.ABRecord" /> to the group.
+        </summary>
+        <remarks>
+        </remarks>
+        <exception cref="T:MonoMac.CoreFoundation.CFException">
+          The record couldn't be added to group.
+        </exception>
       </Docs>
     </Member>
     <Member MemberName="GetEnumerator">
       <MemberSignature Language="C#" Value="public System.Collections.Generic.IEnumerator&lt;MonoMac.AddressBook.ABRecord&gt; GetEnumerator ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Collections.Generic.IEnumerator`1&lt;class MonoMac.AddressBook.ABRecord&gt; GetEnumerator() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -62,14 +94,20 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>
+          Returns an enumerator that iterates through all members in the group.
+        </summary>
+        <returns>
+          An
+          <see cref="T:System.Collections.Generic.IEnumerator{MonoMac.AddressBook.ABRecord}" />
+          which will return all members in the group.
+        </returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="GetMembers">
       <MemberSignature Language="C#" Value="public MonoMac.AddressBook.ABRecord[] GetMembers (MonoMac.AddressBook.ABPersonSortBy sortOrdering);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.AddressBook.ABRecord[] GetMembers(valuetype MonoMac.AddressBook.ABPersonSortBy sortOrdering) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -81,15 +119,25 @@
         <Parameter Name="sortOrdering" Type="MonoMac.AddressBook.ABPersonSortBy" />
       </Parameters>
       <Docs>
-        <param name="sortOrdering">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="sortOrdering">
+          A <see cref="T:MonoMac.AddressBook.ABPersonSortBy" /> which
+          specifies the odering of members in the returned array.
+        </param>
+        <summary>
+          Returns the group members sorted by the specified
+          <paramref name="sortOrdering" />.
+        </summary>
+        <returns>
+          A <see cref="T:MonoMac.AddressBook.ABRecord" /> array
+          containing the members of the group sorted by the
+          specified <paramref name="sortOrdering" />.
+        </returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Name">
       <MemberSignature Language="C#" Value="public string Name { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance string Name" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -98,14 +146,18 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>
+          The name of the group.
+        </summary>
+        <value>
+          A <see cref="T:System.String" /> containing the name of the group.
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Remove">
       <MemberSignature Language="C#" Value="public void Remove (MonoMac.AddressBook.ABRecord member);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Remove(class MonoMac.AddressBook.ABRecord member) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -117,14 +169,22 @@
         <Parameter Name="member" Type="MonoMac.AddressBook.ABRecord" />
       </Parameters>
       <Docs>
-        <param name="member">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="member">
+          A <see cref="T:MonoMac.AddressBook.ABRecord" /> containing
+          the record to remove from the group.
+        </param>
+        <summary>
+          Removes <paramref name="member" /> from the group.
+        </summary>
+        <remarks>
+        </remarks>
+        <exception cref="T:MonoMac.CoreFoundation.CFException">
+          The record couldn't be remove from the group.
+        </exception>
       </Docs>
     </Member>
     <Member MemberName="System.Collections.IEnumerable.GetEnumerator">
       <MemberSignature Language="C#" Value="System.Collections.IEnumerator IEnumerable.GetEnumerator ();" />
-      <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance class System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -134,9 +194,15 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>
+          Returns an enumerator that iterates through all members in the group.
+        </summary>
+        <returns>
+          An <see cref="T:System.Collections.IEnumerator" />
+          which will return all members in the group.
+        </returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
   </Members>

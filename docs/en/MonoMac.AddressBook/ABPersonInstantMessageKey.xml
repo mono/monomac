@@ -1,8 +1,7 @@
 <Type Name="ABPersonInstantMessageKey" FullName="MonoMac.AddressBook.ABPersonInstantMessageKey">
   <TypeSignature Language="C#" Value="public static class ABPersonInstantMessageKey" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed ABPersonInstantMessageKey extends System.Object" />
   <AssemblyInfo>
-    <AssemblyName>MonoMac</AssemblyName>
+    <AssemblyName>monomac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -10,13 +9,40 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>
+      <see cref="T:MonoMac.Foundation.NSDictionary" /> keys for use
+      with <see cref="T:MonoMac.AddressBook.ABPerson" /> instant message
+      services.
+    </summary>
+    <remarks>
+      <para>
+        A single <see cref="T:MonoMac.Foundation.NSDictionary" /> instance
+        stores information regarding a single instant message service,
+        with the dictionary keys and values holding information about different
+        parts of the instant message service.
+      </para>
+      <code lang="C#">NSDictionary instantMessage = NSDictionary.FromObjectsAndKeys(
+    new NSObject[]{
+        ABPersonInstantMessageService.Jabber,
+        new NSString ("user@example.org"),
+    },
+    new NSObject[]{
+        ABPersonInstantMessageKey.Service,
+        ABPersonInstantMessageKey.Username,
+    }
+);
+ABMutableDictionaryMultiValue instantMessages = new ABMutableDictionaryMultiValue() {
+    { address, ABLabel.Home },
+};
+ABPerson person = GetMeSomePerson();
+person.SetInstantMessages(addresses);</code>
+    </remarks>
+    <altmember cref="M:MonoMac.AddressBook.ABPerson.GetInstantMessages" />
+    <altmember cref="M:MonoMac.AddressBook.ABPerson.SetInstantMessages(MonoMac.AddressBook.ABMultiValue{MonoMac.Foundation.NSDictionary})" />
   </Docs>
   <Members>
     <Member MemberName="Service">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString Service { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString Service" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -25,14 +51,19 @@
         <ReturnType>MonoMac.Foundation.NSString</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>
+          Service portion of the instant message information..
+        </summary>
+        <value>
+          A <see cref="T:MonoMac.Foundation.NSString" /> containing the
+          key to use for the Service portion of the instant message information.
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Username">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString Username { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString Username" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -41,9 +72,15 @@
         <ReturnType>MonoMac.Foundation.NSString</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>
+          Username portion of the instant message information..
+        </summary>
+        <value>
+          A <see cref="T:MonoMac.Foundation.NSString" /> containing the
+          key to use for the Username portion of the instant message information.
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
   </Members>

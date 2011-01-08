@@ -1,8 +1,7 @@
 <Type Name="ExternalChangeEventArgs" FullName="MonoMac.AddressBook.ExternalChangeEventArgs">
   <TypeSignature Language="C#" Value="public class ExternalChangeEventArgs : EventArgs" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit ExternalChangeEventArgs extends System.EventArgs" />
   <AssemblyInfo>
-    <AssemblyName>MonoMac</AssemblyName>
+    <AssemblyName>monomac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -10,13 +9,13 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Provides data for the <see cref="E:MonoMac.AddressBook.ExternalChangeEventArgs.ExternalChange" /> event.</summary>
+    <remarks>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public ExternalChangeEventArgs (MonoMac.AddressBook.ABAddressBook addressBook, MonoMac.Foundation.NSDictionary info);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.AddressBook.ABAddressBook addressBook, class MonoMac.Foundation.NSDictionary info) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -26,15 +25,29 @@
         <Parameter Name="info" Type="MonoMac.Foundation.NSDictionary" />
       </Parameters>
       <Docs>
-        <param name="addressBook">To be added.</param>
-        <param name="info">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="addressBook">
+          The <see cref="T:MonoMac.AddressBook.ABAddressBook" />
+          instance raising the
+          <see cref="E:MonoMac.AddressBook.ABAddressBook.ExternalChange" />
+          event.
+        </param>
+        <param name="info">
+          A <see cref="T:MonoMac.Foundation.NSDictionary" /> containing
+          additional information about the event.
+        </param>
+        <summary>Initializes a new instance of the ExternalChangeEventArgs class.</summary>
+        <remarks>
+          This constructor initializes the
+          <see cref="P:MonoMac.AddressBook.ExternalChangeEventArgs.AddressBook" />
+          property of the new instance using with <paramref name="addressBook" />,
+          and initializes the
+          <see cref="P:MonoMac.AddressBook.ExternalChangeEventArgs.Info" />
+          property of the new instance using <paramref name="info" />.
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="AddressBook">
       <MemberSignature Language="C#" Value="public MonoMac.AddressBook.ABAddressBook AddressBook { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AddressBook.ABAddressBook AddressBook" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -43,14 +56,23 @@
         <ReturnType>MonoMac.AddressBook.ABAddressBook</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>
+          The <see cref="T:MonoMac.AddressBook.ABAddressBook" />
+          which raised the
+          <see cref="E:MonoMac.AddressBook.ABAddressBook.ExternalChange" />
+          event.
+        </summary>
+        <value>
+          A <see cref="T:MonoMac.AddressBook.ABAddressBook" /> which raised the
+          <see cref="E:MonoMac.AddressBook.ABAddressBook.ExternalChange" />
+          event.
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Info">
       <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSDictionary Info { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSDictionary Info" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -59,9 +81,19 @@
         <ReturnType>MonoMac.Foundation.NSDictionary</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>
+          Additional informationa about the
+          <see cref="E:MonoMac.AddressBook.ABAddressBook.ExternalChange" />
+          event.
+        </summary>
+        <value>
+          A <see cref="T:MonoMac.Foundation.NSDictionary" /> containing
+          additional information about the
+          <see cref="E:MonoMac.AddressBook.ABAddressBook.ExternalChange" />
+          event.  This may be <see langword="null" />.
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
   </Members>

@@ -1,8 +1,7 @@
 <Type Name="ABPerson" FullName="MonoMac.AddressBook.ABPerson">
   <TypeSignature Language="C#" Value="public class ABPerson : MonoMac.AddressBook.ABRecord, IComparable, IComparable&lt;MonoMac.AddressBook.ABPerson&gt;" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit ABPerson extends MonoMac.AddressBook.ABRecord implements class System.IComparable, class System.IComparable`1&lt;class MonoMac.AddressBook.ABPerson&gt;" />
   <AssemblyInfo>
-    <AssemblyName>MonoMac</AssemblyName>
+    <AssemblyName>monomac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -17,26 +16,103 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>
+      Information about a person.
+    </summary>
+    <remarks>
+      <para>
+        Supported operations:
+      </para>
+      <list type="bullet">
+        <item>
+          <term>
+            Creating Persons:
+            <see cref="C:MonoMac.AddressBook.ABPerson" />.
+          </term>
+        </item>
+        <item>
+          <term>
+            Sorting Persons:
+            <see cref="M:MonoMac.AddressBook.ABPerson.CompareTo(MonoMac.AddressBook.ABPerson)" />,
+            <see cref="M:MonoMac.AddressBook.ABPerson.CompareTo(MonoMac.AddressBook.ABPerson,MonoMac.AddressBook.ABPersonSortBy)" />.
+          </term>
+        </item>
+        <item>
+          <term>
+            Getting Person Property Information:
+            <see cref="M:MonoMac.AddressBook.ABPerson.GetAddresses" />,
+            <see cref="M:MonoMac.AddressBook.ABPerson.GetDates" />,
+            <see cref="M:MonoMac.AddressBook.ABPerson.GetEmails" />,
+            <see cref="M:MonoMac.AddressBook.ABPerson.GetInstantMessages" />,
+            <see cref="M:MonoMac.AddressBook.ABPerson.GetPhones" />,
+            <see cref="M:MonoMac.AddressBook.ABPerson.GetProperty(MonoMac.AddressBook.ABPersonProperty)" />,
+            <see cref="M:MonoMac.AddressBook.ABPerson.GetPropertyType(MonoMac.AddressBook.ABPersonProperty)" />,
+            <see cref="M:MonoMac.AddressBook.ABPerson.GetRelatedNames" />,
+            <see cref="M:MonoMac.AddressBook.ABPerson.GetUrls" />,
+            <see cref="M:MonoMac.AddressBook.ABPerson.LocalizedPropertyName(MonoMac.AddressBook.ABPersonProperty)" />,
+            <see cref="M:MonoMac.AddressBook.ABPerson.SetAddresses(MonoMac.Foundation.ABMultiValue{MonoMac.Foundation.NSDictionary})" />,
+            <see cref="M:MonoMac.AddressBook.ABPerson.SetDates(MonoMac.Foundation.ABMultiValue{MonoMac.Foundation.NSDate})" />,
+            <see cref="M:MonoMac.AddressBook.ABPerson.SetEmails(MonoMac.Foundation.ABMultiValue{System.String})" />,
+            <see cref="M:MonoMac.AddressBook.ABPerson.SetInstantMessages(MonoMac.Foundation.ABMultiValue{MonoMac.Foundation.NSDictionary})" />,
+            <see cref="M:MonoMac.AddressBook.ABPerson.SetPhones(MonoMac.Foundation.ABMultiValue{System.String})" />,
+            <see cref="M:MonoMac.AddressBook.ABPerson.SetRelatedNames(MonoMac.Foundation.ABMultiValue{System.String})" />,
+            <see cref="M:MonoMac.AddressBook.ABPerson.SetUrls(MonoMac.Foundation.ABMultiValue{System.String})" />,
+            <see cref="P:MonoMac.AddressBook.ABPerson.Birthday" />,
+            <see cref="P:MonoMac.AddressBook.ABPerson.CreationDate" />,
+            <see cref="P:MonoMac.AddressBook.ABPerson.Department" />,
+            <see cref="P:MonoMac.AddressBook.ABPerson.FirstName" />,
+            <see cref="P:MonoMac.AddressBook.ABPerson.FirstNamePhonetic" />,
+            <see cref="P:MonoMac.AddressBook.ABPerson.JobTitle" />,
+            <see cref="P:MonoMac.AddressBook.ABPerson.LastName" />,
+            <see cref="P:MonoMac.AddressBook.ABPerson.LastNamePhonetic" />,
+            <see cref="P:MonoMac.AddressBook.ABPerson.MiddleName" />,
+            <see cref="P:MonoMac.AddressBook.ABPerson.MiddleNamePhonetic" />,
+            <see cref="P:MonoMac.AddressBook.ABPerson.ModificationDate" />,
+            <see cref="P:MonoMac.AddressBook.ABPerson.Nickname" />,
+            <see cref="P:MonoMac.AddressBook.ABPerson.Note" />,
+            <see cref="P:MonoMac.AddressBook.ABPerson.Organization" />,
+            <see cref="P:MonoMac.AddressBook.ABPerson.PersonKind" />,
+            <see cref="P:MonoMac.AddressBook.ABPerson.Prefix" />,
+            <see cref="P:MonoMac.AddressBook.ABPerson.Suffix" />,
+          </term>
+        </item>
+        <item>
+          <term>
+            Managing Pictures:
+            <see cref="P:MonoMac.AddressBook.ABPerson.Image" />,
+            <see cref="P:MonoMac.AddressBook.ABPerson.HasImage" />,
+            <see cref="M:MonoMac.AddressBook.ABPerson.RemoveImage" />.
+          </term>
+        </item>
+        <item>
+          <term>
+            Getting Name Format And Sort Preferences:
+            <see cref="P:MonoMac.AddressBook.ABPerson.CompositeNameFormat" />,
+            <see cref="P:MonoMac.AddressBook.ABPerson.SortOrdering" />.
+          </term>
+        </item>
+      </list>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public ABPerson ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>
+          Constructs and initializes a
+          <see cref="T:MonoMac.AddressBook.ABPerson" /> instance.
+        </summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Birthday">
       <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSDate Birthday { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSDate Birthday" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -45,14 +121,19 @@
         <ReturnType>MonoMac.Foundation.NSDate</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>
+          Gets or sets the <see cref="T:MonoMac.AddressBook.ABPerson" />'s birthday.
+        </summary>
+        <value>
+          A <see cref="T:MonoMac.Foundation.NSDate" /> containing
+          the person's birthday.
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CompareTo">
       <MemberSignature Language="C#" Value="public int CompareTo (MonoMac.AddressBook.ABPerson other);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance int32 CompareTo(class MonoMac.AddressBook.ABPerson other) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -64,15 +145,56 @@
         <Parameter Name="other" Type="MonoMac.AddressBook.ABPerson" />
       </Parameters>
       <Docs>
-        <param name="other">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="other">
+          The <see cref="T:MonoMac.AddressBook.ABPerson" /> to compare
+          to this instance.
+        </param>
+        <summary>
+          Compares this instance with the specified
+          <see cref="T:MonoMac.AddressBook.ABPerson" /> and returns an
+          integer that indicates whether this instance precedes, follows,
+          or appears in the same position in the sort order as
+          <paramref name="other" />.
+        </summary>
+        <returns>
+          <para>
+            A <see cref="T:System.Int32" /> that indicates
+            whether this instance precedes, follows,
+            or appears in the same position in the sort order as
+            <paramref name="other" />.
+          </para>
+          <list type="table">
+            <listheader>
+              <term>Value</term>
+              <description>Condition</description>
+            </listheader>
+            <item>
+              <term>Less than zero</term>
+              <description>
+                This instance precedes <paramref name="other" />.
+              </description>
+            </item>
+            <item>
+              <term>Zero</term>
+              <description>
+                This instance has the same position in the sort order as
+                <paramref name="other" />.
+              </description>
+            </item>
+            <item>
+              <term>Greater than zero</term>
+              <description>
+                This instance follows <paramref name="other" />.
+              </description>
+            </item>
+          </list>
+        </returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CompareTo">
       <MemberSignature Language="C#" Value="public int CompareTo (MonoMac.AddressBook.ABPerson other, MonoMac.AddressBook.ABPersonSortBy ordering);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 CompareTo(class MonoMac.AddressBook.ABPerson other, valuetype MonoMac.AddressBook.ABPersonSortBy ordering) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -85,16 +207,63 @@
         <Parameter Name="ordering" Type="MonoMac.AddressBook.ABPersonSortBy" />
       </Parameters>
       <Docs>
-        <param name="other">To be added.</param>
-        <param name="ordering">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="other">
+          The <see cref="T:MonoMac.AddressBook.ABPerson" /> to compare
+          to this instance.
+        </param>
+        <param name="ordering">
+          A <see cref="T:MonoMac.AddressBook.ABPersonSortBy" /> which
+          is used to specify whether ordering should be done by
+          <see cref="F:MonoMac.AddressBook.ABPersonSortBy.FirstName" />
+          or
+          <see cref="F:MonoMac.AddressBook.ABPersonSortBy.LastName" />.
+        </param>
+        <summary>
+          Compares this instance with the specified
+          <see cref="T:MonoMac.AddressBook.ABPerson" /> and returns an
+          integer that indicates whether this instance precedes, follows,
+          or appears in the same position in the sort order as
+          <paramref name="other" /> (as controlled by <paramref name="ordering" />).
+        </summary>
+        <returns>
+          <para>
+            A <see cref="T:System.Int32" /> that indicates
+            whether this instance precedes, follows,
+            or appears in the same position in the sort order as
+            <paramref name="other" />.
+          </para>
+          <list type="table">
+            <listheader>
+              <term>Value</term>
+              <description>Condition</description>
+            </listheader>
+            <item>
+              <term>Less than zero</term>
+              <description>
+                This instance precedes <paramref name="other" />.
+              </description>
+            </item>
+            <item>
+              <term>Zero</term>
+              <description>
+                This instance has the same position in the sort order as
+                <paramref name="other" />.
+              </description>
+            </item>
+            <item>
+              <term>Greater than zero</term>
+              <description>
+                This instance follows <paramref name="other" />.
+              </description>
+            </item>
+          </list>
+        </returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CompositeNameFormat">
       <MemberSignature Language="C#" Value="public static MonoMac.AddressBook.ABPersonCompositeNameFormat CompositeNameFormat { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property valuetype MonoMac.AddressBook.ABPersonCompositeNameFormat CompositeNameFormat" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -103,14 +272,19 @@
         <ReturnType>MonoMac.AddressBook.ABPersonCompositeNameFormat</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>
+          Gets the person-name display format.
+        </summary>
+        <value>
+          A <see cref="T:MonoMac.AddressBook.ABPersonCompositeNameFormat" />
+          which controls the format used for the person's composite name.
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CreationDate">
       <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSDate CreationDate { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSDate CreationDate" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -119,14 +293,19 @@
         <ReturnType>MonoMac.Foundation.NSDate</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>
+          Gets or sets the record's creation date.
+        </summary>
+        <value>
+          A <see cref="T:MonoMac.Foundation.NSDate" /> containing
+          the record's creation date.
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Department">
       <MemberSignature Language="C#" Value="public string Department { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance string Department" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -135,14 +314,19 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>
+          Gets or sets the <see cref="T:MonoMac.AddressBook.ABPerson" />'s department.
+        </summary>
+        <value>
+          A <see cref="T:System.String" /> containing
+          the <see cref="T:MonoMac.AddressBook.ABPerson" />'s department.
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="FirstName">
       <MemberSignature Language="C#" Value="public string FirstName { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance string FirstName" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -151,14 +335,19 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>
+          Gets or sets the <see cref="T:MonoMac.AddressBook.ABPerson" />'s first name.
+        </summary>
+        <value>
+          A <see cref="T:System.String" /> containing
+          the <see cref="T:MonoMac.AddressBook.ABPerson" />'s first name.
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="FirstNamePhonetic">
       <MemberSignature Language="C#" Value="public string FirstNamePhonetic { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance string FirstNamePhonetic" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -167,14 +356,21 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>
+          Gets or sets <see cref="T:MonoMac.AddressBook.ABPerson" />'s first name
+          phonetic pronounciation.
+        </summary>
+        <value>
+          A <see cref="T:System.String" /> containing
+          the <see cref="T:MonoMac.AddressBook.ABPerson" />'s first name
+          phonetic pronounciation.
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="GetAddresses">
       <MemberSignature Language="C#" Value="public MonoMac.AddressBook.ABMultiValue&lt;MonoMac.Foundation.NSDictionary&gt; GetAddresses ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.AddressBook.ABMultiValue`1&lt;class MonoMac.Foundation.NSDictionary&gt; GetAddresses() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -184,14 +380,21 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>
+          Gets the <see cref="T:MonoMac.AddressBook.ABPerson" />'s addresses.
+        </summary>
+        <returns>
+          A <see cref="T:MonoMac.AddressBook.ABMultiValue{MonoMac.Foundation.NSDictionary}" />
+          containing the <see cref="T:MonoMac.AddressBook.ABPerson" />'s addresses.
+        </returns>
+        <remarks>
+        </remarks>
+        <altmember cref="T:MonoMac.AddressBook.ABPersonAddressKey" />
+        <altmember cref="M:MonoMac.AddressBook.ABPerson.SetAddresses(MonoMac.AddressBook.ABMultiValue{MonoMac.Foundation.NSDictionary})" />
       </Docs>
     </Member>
     <Member MemberName="GetDates">
       <MemberSignature Language="C#" Value="public MonoMac.AddressBook.ABMultiValue&lt;MonoMac.Foundation.NSDate&gt; GetDates ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.AddressBook.ABMultiValue`1&lt;class MonoMac.Foundation.NSDate&gt; GetDates() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -201,14 +404,21 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>
+          Gets the <see cref="T:MonoMac.AddressBook.ABPerson" />'s dates.
+        </summary>
+        <returns>
+          A <see cref="T:MonoMac.AddressBook.ABMultiValue{MonoMac.Foundation.NSDate}" />
+          containing the <see cref="T:MonoMac.AddressBook.ABPerson" />'s dates.
+        </returns>
+        <remarks>
+        </remarks>
+        <altmember cref="T:MonoMac.AddressBook.ABPersonDateLabel" />
+        <altmember cref="M:MonoMac.AddressBook.ABPerson.SetDates(MonoMac.AddressBook.ABMultiValue{MonoMac.Foundation.NSDate})" />
       </Docs>
     </Member>
     <Member MemberName="GetEmails">
       <MemberSignature Language="C#" Value="public MonoMac.AddressBook.ABMultiValue&lt;string&gt; GetEmails ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.AddressBook.ABMultiValue`1&lt;string&gt; GetEmails() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -218,14 +428,20 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>
+          Gets the <see cref="T:MonoMac.AddressBook.ABPerson" />'s email addresses.
+        </summary>
+        <returns>
+          A <see cref="T:MonoMac.AddressBook.ABMultiValue{System.String}" />
+          containing the <see cref="T:MonoMac.AddressBook.ABPerson" />'s email addresses.
+        </returns>
+        <remarks>
+        </remarks>
+        <altmember cref="M:MonoMac.AddressBook.ABPerson.SetEmails(MonoMac.AddressBook.ABMultiValue{System.String})" />
       </Docs>
     </Member>
     <Member MemberName="GetInstantMessages">
       <MemberSignature Language="C#" Value="public MonoMac.AddressBook.ABMultiValue&lt;MonoMac.Foundation.NSDictionary&gt; GetInstantMessages ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.AddressBook.ABMultiValue`1&lt;class MonoMac.Foundation.NSDictionary&gt; GetInstantMessages() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -235,14 +451,21 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>
+          Gets the <see cref="T:MonoMac.AddressBook.ABPerson" />'s instant message services.
+        </summary>
+        <returns>
+          A <see cref="T:MonoMac.AddressBook.ABMultiValue{MonoMac.Foundation.NSDictionary}" />
+          containing the <see cref="T:MonoMac.AddressBook.ABPerson" />'s instant message services.
+        </returns>
+        <remarks>
+        </remarks>
+        <altmember cref="T:MonoMac.AddressBook.ABPersonInstantMessageKey" />
+        <altmember cref="M:MonoMac.AddressBook.ABPerson.SetInstantMessages(MonoMac.AddressBook.ABMultiValue{MonoMac.Foundation.NSDictionary})" />
       </Docs>
     </Member>
     <Member MemberName="GetPhones">
       <MemberSignature Language="C#" Value="public MonoMac.AddressBook.ABMultiValue&lt;string&gt; GetPhones ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.AddressBook.ABMultiValue`1&lt;string&gt; GetPhones() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -252,14 +475,20 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>
+          Gets the <see cref="T:MonoMac.AddressBook.ABPerson" />'s phone numbers.
+        </summary>
+        <returns>
+          A <see cref="T:MonoMac.AddressBook.ABMultiValue{System.String}" />
+          containing the <see cref="T:MonoMac.AddressBook.ABPerson" />'s phone numbers.
+        </returns>
+        <remarks>
+        </remarks>
+        <altmember cref="M:MonoMac.AddressBook.ABPerson.SetPhones(MonoMac.AddressBook.ABMultiValue{System.String})" />
       </Docs>
     </Member>
     <Member MemberName="GetProperty">
       <MemberSignature Language="C#" Value="public object GetProperty (MonoMac.AddressBook.ABPersonProperty property);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance object GetProperty(valuetype MonoMac.AddressBook.ABPersonProperty property) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -271,15 +500,22 @@
         <Parameter Name="property" Type="MonoMac.AddressBook.ABPersonProperty" />
       </Parameters>
       <Docs>
-        <param name="property">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="property">
+          A <see cref="T:MonoMac.AddressBook.ABPersonProperty" />
+          specifying which property to return.
+        </param>
+        <summary>
+          Gets the specified property.
+        </summary>
+        <returns>
+          A <see cref="T:System.Object" /> containing the value of the specified property.
+        </returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="GetPropertyType">
       <MemberSignature Language="C#" Value="public static MonoMac.AddressBook.ABPropertyType GetPropertyType (MonoMac.AddressBook.ABPersonProperty property);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype MonoMac.AddressBook.ABPropertyType GetPropertyType(valuetype MonoMac.AddressBook.ABPersonProperty property) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -291,15 +527,23 @@
         <Parameter Name="property" Type="MonoMac.AddressBook.ABPersonProperty" />
       </Parameters>
       <Docs>
-        <param name="property">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="property">
+          A <see cref="T:MonoMac.AddressBook.ABPersonProperty" />
+          specifying which property to query.
+        </param>
+        <summary>
+          Gets the type of the property <paramref name="property" />.
+        </summary>
+        <returns>
+          A <see cref="T:MonoMac.ABPropertyType" /> value containing
+          the type of the property <paramref name="property" />.
+        </returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="GetRelatedNames">
       <MemberSignature Language="C#" Value="public MonoMac.AddressBook.ABMultiValue&lt;string&gt; GetRelatedNames ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.AddressBook.ABMultiValue`1&lt;string&gt; GetRelatedNames() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -309,14 +553,20 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>
+          Gets the <see cref="T:MonoMac.AddressBook.ABPerson" />'s related names.
+        </summary>
+        <returns>
+          A <see cref="T:MonoMac.AddressBook.ABMultiValue{System.String}" />
+          containing the <see cref="T:MonoMac.AddressBook.ABPerson" />'s related names.
+        </returns>
+        <remarks>
+        </remarks>
+        <altmember cref="M:MonoMac.AddressBook.ABPerson.SetRelatedNames(MonoMac.AddressBook.ABMultiValue{System.String})" />
       </Docs>
     </Member>
     <Member MemberName="GetUrls">
       <MemberSignature Language="C#" Value="public MonoMac.AddressBook.ABMultiValue&lt;string&gt; GetUrls ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.AddressBook.ABMultiValue`1&lt;string&gt; GetUrls() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -326,14 +576,20 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>
+          Gets the <see cref="T:MonoMac.AddressBook.ABPerson" />'s URLs.
+        </summary>
+        <returns>
+          A <see cref="T:MonoMac.AddressBook.ABMultiValue{System.String}" />
+          containing the <see cref="T:MonoMac.AddressBook.ABPerson" />'s URLs.
+        </returns>
+        <remarks>
+        </remarks>
+        <altmember cref="M:MonoMac.AddressBook.ABPerson.SetUrls(MonoMac.AddressBook.ABMultiValue{System.String})" />
       </Docs>
     </Member>
     <Member MemberName="HasImage">
       <MemberSignature Language="C#" Value="public bool HasImage { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool HasImage" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -342,14 +598,21 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>
+          Gets a value indicating whether the
+          <see cref="T:MonoMac.AddressBook.ABPerson" /> has a picture.
+        </summary>
+        <value>
+          <see langword="true" /> if the
+          <see cref="T:MonoMac.AddressBook.ABPerson" /> has a picture;
+          otherwise, <see langword="false" />.
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Image">
       <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSData Image { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSData Image" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -358,14 +621,25 @@
         <ReturnType>MonoMac.Foundation.NSData</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>
+          Gets or sets the
+          <see cref="T:MonoMac.AddressBook.ABPerson" />'s picture.
+        </summary>
+        <value>
+          A <see cref="T:MonoMac.Foundation.NSData" /> containing
+          the picture data.
+        </value>
+        <remarks>
+        </remarks>
+        <exception cref="T:MonoMac.CoreFoundation.CFException">
+          The reason the picture couldn't be set.
+        </exception>
+        <altmember cref="P:MonoMac.AddressBook.ABPerson.HasImage" />
+        <altmember cref="P:MonoMac.AddressBook.ABPerson.RemoveImage" />
       </Docs>
     </Member>
     <Member MemberName="JobTitle">
       <MemberSignature Language="C#" Value="public string JobTitle { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance string JobTitle" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -374,14 +648,19 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>
+          Gets or sets the <see cref="T:MonoMac.AddressBook.ABPerson" />'s job title.
+        </summary>
+        <value>
+          A <see cref="T:System.String" /> containing
+          the <see cref="T:MonoMac.AddressBook.ABPerson" />'s job title.
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="LastName">
       <MemberSignature Language="C#" Value="public string LastName { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance string LastName" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -390,14 +669,19 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>
+          Gets or sets the <see cref="T:MonoMac.AddressBook.ABPerson" />'s last name.
+        </summary>
+        <value>
+          A <see cref="T:System.String" /> containing
+          the <see cref="T:MonoMac.AddressBook.ABPerson" />'s last name.
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="LastNamePhonetic">
       <MemberSignature Language="C#" Value="public string LastNamePhonetic { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance string LastNamePhonetic" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -406,14 +690,20 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>
+          Gets or sets the <see cref="T:MonoMac.AddressBook.ABPerson" />'s last name
+          phonetic pronounciation.
+        </summary>
+        <value>
+          A <see cref="T:System.String" /> containing
+          the <see cref="T:MonoMac.AddressBook.ABPerson" />'s last name phonetic pronounciation.
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="LocalizedPropertyName">
       <MemberSignature Language="C#" Value="public static string LocalizedPropertyName (MonoMac.AddressBook.ABPersonProperty property);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig string LocalizedPropertyName(valuetype MonoMac.AddressBook.ABPersonProperty property) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -425,15 +715,23 @@
         <Parameter Name="property" Type="MonoMac.AddressBook.ABPersonProperty" />
       </Parameters>
       <Docs>
-        <param name="property">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="property">
+          A <see cref="T:MonoMac.AddressBook.ABPersonProperty" />
+          containing the property to get the localized name of.
+        </param>
+        <summary>
+          Gets the localized name of a <paramref name="property" />.
+        </summary>
+        <returns>
+          A <see cref="T:System.String" /> containing the localized
+          name of a <paramref name="property" />.
+        </returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="MiddleName">
       <MemberSignature Language="C#" Value="public string MiddleName { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance string MiddleName" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -442,14 +740,19 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>
+          Gets or sets the <see cref="T:MonoMac.AddressBook.ABPerson" />'s middle name.
+        </summary>
+        <value>
+          A <see cref="T:System.String" /> containing
+          the <see cref="T:MonoMac.AddressBook.ABPerson" />'s middle name.
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="MiddleNamePhonetic">
       <MemberSignature Language="C#" Value="public string MiddleNamePhonetic { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance string MiddleNamePhonetic" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -458,14 +761,20 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>
+          Gets or sets the <see cref="T:MonoMac.AddressBook.ABPerson" />'s middle name
+          phonetic pronounciation.
+        </summary>
+        <value>
+          A <see cref="T:System.String" /> containing
+          the <see cref="T:MonoMac.AddressBook.ABPerson" />'s middle name phonetic pronounciation.
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ModificationDate">
       <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSDate ModificationDate { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSDate ModificationDate" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -474,14 +783,19 @@
         <ReturnType>MonoMac.Foundation.NSDate</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>
+          Gets or sets the <see cref="T:MonoMac.AddressBook.ABPerson" />'s modification date.
+        </summary>
+        <value>
+          A <see cref="T:MonoMac.Foundation.NSDate" /> containing
+          the <see cref="T:MonoMac.AddressBook.ABPerson" />'s modification date.
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Nickname">
       <MemberSignature Language="C#" Value="public string Nickname { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance string Nickname" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -490,14 +804,19 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>
+          Gets or sets the <see cref="T:MonoMac.AddressBook.ABPerson" />'s nickname.
+        </summary>
+        <value>
+          A <see cref="T:System.String" /> containing
+          the <see cref="T:MonoMac.AddressBook.ABPerson" />'s nickname.
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Note">
       <MemberSignature Language="C#" Value="public string Note { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance string Note" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -506,14 +825,19 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>
+          Gets or sets the <see cref="T:MonoMac.AddressBook.ABPerson" />'s note.
+        </summary>
+        <value>
+          A <see cref="T:System.String" /> containing
+          the <see cref="T:MonoMac.AddressBook.ABPerson" />'s note.
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Organization">
       <MemberSignature Language="C#" Value="public string Organization { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance string Organization" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -522,14 +846,19 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>
+          Gets or sets the <see cref="T:MonoMac.AddressBook.ABPerson" />'s organization.
+        </summary>
+        <value>
+          A <see cref="T:System.String" /> containing
+          the <see cref="T:MonoMac.AddressBook.ABPerson" />'s organization.
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="PersonKind">
       <MemberSignature Language="C#" Value="public MonoMac.AddressBook.ABPersonKind PersonKind { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.AddressBook.ABPersonKind PersonKind" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -538,14 +867,24 @@
         <ReturnType>MonoMac.AddressBook.ABPersonKind</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>
+          Gets or sets the <see cref="T:MonoMac.AddressBook.ABPerson" />'s
+          <see cref="T:MonoMac.AddressBook.ABPersonKind" />.
+        </summary>
+        <value>
+          A <see cref="T:MonoMac.AddressBook.ABPersonKind" /> containing
+          the <see cref="T:MonoMac.AddressBook.ABPerson" />'s kind.
+        </value>
+        <remarks>
+          <para>
+            The <see cref="T:MonoMac.AddressBook.ABPersonKind" />
+            controls whether the instance is a person or an organization.
+          </para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Prefix">
       <MemberSignature Language="C#" Value="public string Prefix { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance string Prefix" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -554,14 +893,19 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>
+          Gets or sets the <see cref="T:MonoMac.AddressBook.ABPerson" />'s prefix.
+        </summary>
+        <value>
+          A <see cref="T:System.String" /> containing
+          the <see cref="T:MonoMac.AddressBook.ABPerson" />'s prefix.
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="RemoveImage">
       <MemberSignature Language="C#" Value="public void RemoveImage ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveImage() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -571,13 +915,19 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>
+          Removes a <see cref="T:MonoMac.AddressBook.ABPerson" />'s picture.
+        </summary>
+        <remarks>
+        </remarks>
+        <exception cref="T:MonoMac.CoreFoundation.CFException">
+          The reason the picture couldn't be removed.
+        </exception>
+        <altmember cref="P:MonoMac.AddressBook.ABPerson.Image" />
       </Docs>
     </Member>
     <Member MemberName="SetAddresses">
       <MemberSignature Language="C#" Value="public void SetAddresses (MonoMac.AddressBook.ABMultiValue&lt;MonoMac.Foundation.NSDictionary&gt; value);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetAddresses(class MonoMac.AddressBook.ABMultiValue`1&lt;class MonoMac.Foundation.NSDictionary&gt; value) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -589,14 +939,21 @@
         <Parameter Name="value" Type="MonoMac.AddressBook.ABMultiValue&lt;MonoMac.Foundation.NSDictionary&gt;" />
       </Parameters>
       <Docs>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="value">
+          A <see cref="T:MonoMac.AddressBook.ABMultiValue{MonoMac.Foundation.NSDictionary}" />
+          containing the <see cref="T:MonoMac.AddressBook.ABPerson" />'s new addresses.
+        </param>
+        <summary>
+          Sets the <see cref="T:MonoMac.AddressBook.ABPerson" />'s new addresses.
+        </summary>
+        <remarks>
+        </remarks>
+        <altmember cref="T:MonoMac.AddressBook.ABPersonAddressKey" />
+        <altmember cref="T:MonoMac.AddressBook.ABPerson.GetAddresses" />
       </Docs>
     </Member>
     <Member MemberName="SetDates">
       <MemberSignature Language="C#" Value="public void SetDates (MonoMac.AddressBook.ABMultiValue&lt;MonoMac.Foundation.NSDate&gt; value);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetDates(class MonoMac.AddressBook.ABMultiValue`1&lt;class MonoMac.Foundation.NSDate&gt; value) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -608,14 +965,21 @@
         <Parameter Name="value" Type="MonoMac.AddressBook.ABMultiValue&lt;MonoMac.Foundation.NSDate&gt;" />
       </Parameters>
       <Docs>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="value">
+          A <see cref="T:MonoMac.AddressBook.ABMultiValue{MonoMac.Foundation.NSDate}" />
+          containing the <see cref="T:MonoMac.AddressBook.ABPerson" />'s new dates.
+        </param>
+        <summary>
+          Sets the <see cref="T:MonoMac.AddressBook.ABPerson" />'s new dates.
+        </summary>
+        <remarks>
+        </remarks>
+        <altmember cref="T:MonoMac.AddressBook.ABPersonDateLabel" />
+        <altmember cref="T:MonoMac.AddressBook.ABPerson.GetDates" />
       </Docs>
     </Member>
     <Member MemberName="SetEmails">
       <MemberSignature Language="C#" Value="public void SetEmails (MonoMac.AddressBook.ABMultiValue&lt;string&gt; value);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetEmails(class MonoMac.AddressBook.ABMultiValue`1&lt;string&gt; value) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -627,14 +991,20 @@
         <Parameter Name="value" Type="MonoMac.AddressBook.ABMultiValue&lt;System.String&gt;" />
       </Parameters>
       <Docs>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="value">
+          A <see cref="T:MonoMac.AddressBook.ABMultiValue{System.String}" />
+          containing the <see cref="T:MonoMac.AddressBook.ABPerson}" />'s new email addresses
+        </param>
+        <summary>
+          Sets the <see cref="T:MonoMac.AddressBook.ABPerson" />'s new email addresses.
+        </summary>
+        <remarks>
+        </remarks>
+        <altmember cref="T:MonoMac.AddressBook.ABPerson.GetEmails" />
       </Docs>
     </Member>
     <Member MemberName="SetInstantMessages">
       <MemberSignature Language="C#" Value="public void SetInstantMessages (MonoMac.AddressBook.ABMultiValue&lt;MonoMac.Foundation.NSDictionary&gt; value);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetInstantMessages(class MonoMac.AddressBook.ABMultiValue`1&lt;class MonoMac.Foundation.NSDictionary&gt; value) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -646,14 +1016,20 @@
         <Parameter Name="value" Type="MonoMac.AddressBook.ABMultiValue&lt;MonoMac.Foundation.NSDictionary&gt;" />
       </Parameters>
       <Docs>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="value">
+          A <see cref="T:MonoMac.AddressBook.ABMultiValue{MonoMac.Foundation.NSDictionary}" />
+          containing the <see cref="T:MonoMac.AddressBook.ABPerson" />'s new instant messaging services.
+        </param>
+        <summary>
+          Sets the <see cref="T:MonoMac.AddressBook.ABPerson" />'s new instant messaging services.
+        </summary>
+        <remarks>
+        </remarks>
+        <altmember cref="T:MonoMac.AddressBook.ABPerson.GetInstantMessages" />
       </Docs>
     </Member>
     <Member MemberName="SetPhones">
       <MemberSignature Language="C#" Value="public void SetPhones (MonoMac.AddressBook.ABMultiValue&lt;string&gt; value);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetPhones(class MonoMac.AddressBook.ABMultiValue`1&lt;string&gt; value) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -665,14 +1041,20 @@
         <Parameter Name="value" Type="MonoMac.AddressBook.ABMultiValue&lt;System.String&gt;" />
       </Parameters>
       <Docs>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="value">
+          A <see cref="T:MonoMac.AddressBook.ABMultiValue{System.String}" />
+          containing the <see cref="T:MonoMac.AddressBook.ABPerson}" />'s new phone numbers.
+        </param>
+        <summary>
+          Sets the <see cref="T:MonoMac.AddressBook.ABPerson" />'s new phone numbers.
+        </summary>
+        <remarks>
+        </remarks>
+        <altmember cref="T:MonoMac.AddressBook.ABPerson.GetPhones" />
       </Docs>
     </Member>
     <Member MemberName="SetRelatedNames">
       <MemberSignature Language="C#" Value="public void SetRelatedNames (MonoMac.AddressBook.ABMultiValue&lt;string&gt; value);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetRelatedNames(class MonoMac.AddressBook.ABMultiValue`1&lt;string&gt; value) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -684,14 +1066,20 @@
         <Parameter Name="value" Type="MonoMac.AddressBook.ABMultiValue&lt;System.String&gt;" />
       </Parameters>
       <Docs>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="value">
+          A <see cref="T:MonoMac.AddressBook.ABMultiValue{System.String}" />
+          containing the <see cref="T:MonoMac.AddressBook.ABPerson}" />'s new related names.
+        </param>
+        <summary>
+          Sets the <see cref="T:MonoMac.AddressBook.ABPerson" />'s new related names.
+        </summary>
+        <remarks>
+        </remarks>
+        <altmember cref="T:MonoMac.AddressBook.ABPerson.GetRelatedNames" />
       </Docs>
     </Member>
     <Member MemberName="SetUrls">
       <MemberSignature Language="C#" Value="public void SetUrls (MonoMac.AddressBook.ABMultiValue&lt;string&gt; value);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetUrls(class MonoMac.AddressBook.ABMultiValue`1&lt;string&gt; value) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -703,14 +1091,20 @@
         <Parameter Name="value" Type="MonoMac.AddressBook.ABMultiValue&lt;System.String&gt;" />
       </Parameters>
       <Docs>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="value">
+          A <see cref="T:MonoMac.AddressBook.ABMultiValue{System.String}" />
+          containing the <see cref="T:MonoMac.AddressBook.ABPerson}" />'s new URLs.
+        </param>
+        <summary>
+          Sets the <see cref="T:MonoMac.AddressBook.ABPerson" />'s new URLs.
+        </summary>
+        <remarks>
+        </remarks>
+        <altmember cref="T:MonoMac.AddressBook.ABPerson.GetUrls" />
       </Docs>
     </Member>
     <Member MemberName="SortOrdering">
       <MemberSignature Language="C#" Value="public static MonoMac.AddressBook.ABPersonSortBy SortOrdering { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property valuetype MonoMac.AddressBook.ABPersonSortBy SortOrdering" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -719,14 +1113,19 @@
         <ReturnType>MonoMac.AddressBook.ABPersonSortBy</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>
+          Gets the user's sort ordering preference for lists of persons.
+        </summary>
+        <value>
+          A <see cref="T:MonoMac.AddressBook.ABPersonSortBy" /> which
+          is the user's sort ordering preference for lists of persons.
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Suffix">
       <MemberSignature Language="C#" Value="public string Suffix { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance string Suffix" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -735,14 +1134,19 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>
+          Gets or sets the <see cref="T:MonoMac.AddressBook.ABPerson" />'s suffix.
+        </summary>
+        <value>
+          A <see cref="T:System.String" /> containing
+          the <see cref="T:MonoMac.AddressBook.ABPerson" />'s suffix.
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="System.IComparable.CompareTo">
       <MemberSignature Language="C#" Value="int IComparable.CompareTo (object o);" />
-      <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance int32 System.IComparable.CompareTo(object o) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -754,10 +1158,52 @@
         <Parameter Name="o" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="o">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="o">
+          The <see cref="T:System.Object" /> to compare
+          to this instance.
+        </param>
+        <summary>
+          Compares this instance with the specified
+          <see cref="T:MonoMac.AddressBook.ABPerson" /> and returns an
+          integer that indicates whether this instance precedes, follows,
+          or appears in the same position in the sort order as
+          <paramref name="o" />.
+        </summary>
+        <returns>
+          <para>
+            A <see cref="T:System.Int32" /> that indicates
+            whether this instance precedes, follows,
+            or appears in the same position in the sort order as
+            <paramref name="o" />.
+          </para>
+          <list type="table">
+            <listheader>
+              <term>Value</term>
+              <description>Condition</description>
+            </listheader>
+            <item>
+              <term>Less than zero</term>
+              <description>
+                This instance precedes <paramref name="o" />.
+              </description>
+            </item>
+            <item>
+              <term>Zero</term>
+              <description>
+                This instance has the same position in the sort order as
+                <paramref name="o" />.
+              </description>
+            </item>
+            <item>
+              <term>Greater than zero</term>
+              <description>
+                This instance follows <paramref name="o" />.
+              </description>
+            </item>
+          </list>
+        </returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
   </Members>

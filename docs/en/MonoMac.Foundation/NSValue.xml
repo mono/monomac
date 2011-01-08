@@ -1,8 +1,7 @@
 <Type Name="NSValue" FullName="MonoMac.Foundation.NSValue">
   <TypeSignature Language="C#" Value="public class NSValue : MonoMac.Foundation.NSObject" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit NSValue extends MonoMac.Foundation.NSObject" />
   <AssemblyInfo>
-    <AssemblyName>MonoMac</AssemblyName>
+    <AssemblyName>monomac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -21,7 +20,6 @@
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSValue ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -39,7 +37,6 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSValue (MonoMac.Foundation.NSCoder coder);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSCoder coder) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -60,7 +57,6 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSValue (MonoMac.Foundation.NSObjectFlag t);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSObjectFlag t) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -88,7 +84,6 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSValue (IntPtr handle);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int handle) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -104,9 +99,48 @@ public class MyClass : BaseClass {
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName="CATransform3DValue">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreAnimation.CATransform3D CATransform3DValue { get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreAnimation.CATransform3D</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("CATransform3DValue")</AttributeName>
+        </Attribute>
+      </Attributes>
+    </Member>
+    <Member MemberName="CGAffineTransformValue">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreGraphics.CGAffineTransform CGAffineTransformValue { get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreGraphics.CGAffineTransform</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("CGAffineTransformValue")</AttributeName>
+        </Attribute>
+      </Attributes>
+    </Member>
     <Member MemberName="ClassHandle">
       <MemberSignature Language="C#" Value="public override IntPtr ClassHandle { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance native int ClassHandle" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -120,16 +154,63 @@ public class MyClass : BaseClass {
         <remarks>Each MonoMac class mirrors an unmanaged Objective-C class.   This value contains the pointer to the Objective-C class, it is similar to calling objc_getClass with the object name.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="FromPointF">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSValue FromPointF (System.Drawing.PointF point);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSValue FromPointF(valuetype System.Drawing.PointF point) cil managed" />
+    <Member MemberName="FromCATransform3D">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSValue FromCATransform3D (MonoMac.CoreAnimation.CATransform3D transform);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>MonoMac.Foundation.Export("valueWithPoint:")</AttributeName>
+          <AttributeName>MonoMac.Foundation.Export("valueWithCATransform3D:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSValue</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="transform" Type="MonoMac.CoreAnimation.CATransform3D" />
+      </Parameters>
+      <Docs>
+        <param name="transform">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FromCGAffineTransform">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSValue FromCGAffineTransform (MonoMac.CoreGraphics.CGAffineTransform tran);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("valueWithCGAffineTransform:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSValue</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="tran" Type="MonoMac.CoreGraphics.CGAffineTransform" />
+      </Parameters>
+      <Docs>
+        <param name="tran">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FromPointF">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSValue FromPointF (System.Drawing.PointF point);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("valueWithCGPoint:")</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
@@ -147,14 +228,13 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="FromRectangleF">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSValue FromRectangleF (System.Drawing.RectangleF rect);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSValue FromRectangleF(valuetype System.Drawing.RectangleF rect) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>MonoMac.Foundation.Export("valueWithRect:")</AttributeName>
+          <AttributeName>MonoMac.Foundation.Export("valueWithCGRect:")</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
@@ -172,14 +252,13 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="FromSizeF">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSValue FromSizeF (System.Drawing.SizeF size);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSValue FromSizeF(valuetype System.Drawing.SizeF size) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>MonoMac.Foundation.Export("valueWithSize:")</AttributeName>
+          <AttributeName>MonoMac.Foundation.Export("valueWithCGSize:")</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
@@ -195,9 +274,32 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="FromUIEdgeInsets">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSValue FromUIEdgeInsets (MonoMac.UIKit.UIEdgeInsets insets);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("valueWithUIEdgeInsets:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSValue</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="insets" Type="MonoMac.UIKit.UIEdgeInsets" />
+      </Parameters>
+      <Docs>
+        <param name="insets">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="IsEqualTo">
       <MemberSignature Language="C#" Value="public virtual bool IsEqualTo (MonoMac.Foundation.NSValue value);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool IsEqualTo(class MonoMac.Foundation.NSValue value) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -222,16 +324,10 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="NonretainedObjectValue">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject NonretainedObjectValue { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSObject NonretainedObjectValue" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("nonretainedObjectValue")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
       </ReturnValue>
@@ -240,19 +336,18 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("nonretainedObjectValue")</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
     <Member MemberName="PointerValue">
       <MemberSignature Language="C#" Value="public virtual IntPtr PointerValue { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance native int PointerValue" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("pointerValue")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.IntPtr</ReturnType>
       </ReturnValue>
@@ -261,19 +356,18 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("pointerValue")</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
     <Member MemberName="PointFValue">
       <MemberSignature Language="C#" Value="public virtual System.Drawing.PointF PointFValue { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Drawing.PointF PointFValue" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("pointValue")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Drawing.PointF</ReturnType>
       </ReturnValue>
@@ -282,19 +376,18 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("CGPointValue")</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
     <Member MemberName="RectangleFValue">
       <MemberSignature Language="C#" Value="public virtual System.Drawing.RectangleF RectangleFValue { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Drawing.RectangleF RectangleFValue" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("rectValue")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Drawing.RectangleF</ReturnType>
       </ReturnValue>
@@ -303,19 +396,18 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("CGRectValue")</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
     <Member MemberName="SizeFValue">
       <MemberSignature Language="C#" Value="public virtual System.Drawing.SizeF SizeFValue { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Drawing.SizeF SizeFValue" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("sizeValue")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Drawing.SizeF</ReturnType>
       </ReturnValue>
@@ -324,10 +416,14 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("CGSizeValue")</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
     <Member MemberName="StoreValueAtAddress">
       <MemberSignature Language="C#" Value="public virtual void StoreValueAtAddress (IntPtr value);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void StoreValueAtAddress(native int value) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -349,9 +445,28 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="UIEdgeInsetsValue">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.UIKit.UIEdgeInsets UIEdgeInsetsValue { get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.UIKit.UIEdgeInsets</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("UIEdgeInsetsValue")</AttributeName>
+        </Attribute>
+      </Attributes>
+    </Member>
     <Member MemberName="ValueFromNonretainedObject">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSValue ValueFromNonretainedObject (MonoMac.Foundation.NSObject anObject);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSValue ValueFromNonretainedObject(class MonoMac.Foundation.NSObject anObject) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -376,7 +491,6 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="ValueFromPointer">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSValue ValueFromPointer (IntPtr pointer);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSValue ValueFromPointer(native int pointer) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>

@@ -1,8 +1,7 @@
 <Type Name="CAAnimationDelegate" FullName="MonoMac.CoreAnimation.CAAnimationDelegate">
   <TypeSignature Language="C#" Value="public class CAAnimationDelegate : MonoMac.Foundation.NSObject" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CAAnimationDelegate extends MonoMac.Foundation.NSObject" />
   <AssemblyInfo>
-    <AssemblyName>MonoMac</AssemblyName>
+    <AssemblyName>monomac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -24,7 +23,6 @@
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public CAAnimationDelegate ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -42,7 +40,6 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public CAAnimationDelegate (MonoMac.Foundation.NSCoder coder);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSCoder coder) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -63,7 +60,6 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public CAAnimationDelegate (MonoMac.Foundation.NSObjectFlag t);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSObjectFlag t) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -91,7 +87,6 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public CAAnimationDelegate (IntPtr handle);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int handle) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -109,7 +104,6 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="AnimationStarted">
       <MemberSignature Language="C#" Value="public virtual void AnimationStarted (MonoMac.CoreAnimation.CAAnimation anim);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void AnimationStarted(class MonoMac.CoreAnimation.CAAnimation anim) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -133,7 +127,6 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="AnimationStopped">
       <MemberSignature Language="C#" Value="public virtual void AnimationStopped (MonoMac.CoreAnimation.CAAnimation anim, bool finished);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void AnimationStopped(class MonoMac.CoreAnimation.CAAnimation anim, bool finished) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -155,6 +148,20 @@ public class MyClass : BaseClass {
         <param name="finished">To be added.</param>
         <summary>The animation has stopped.  Use the bool value to determine if this is a temporary pause, or the end of the animation.</summary>
         <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ClassHandle">
+      <MemberSignature Language="C#" Value="public override IntPtr ClassHandle { get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.IntPtr</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The handle for this class.</summary>
+        <value>The pointer to the Objective-C class.</value>
+        <remarks>Each MonoMac class mirrors an unmanaged Objective-C class.   This value contains the pointer to the Objective-C class, it is similar to calling objc_getClass with the object name.</remarks>
       </Docs>
     </Member>
   </Members>

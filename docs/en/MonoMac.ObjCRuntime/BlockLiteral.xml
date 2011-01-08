@@ -1,8 +1,7 @@
 <Type Name="BlockLiteral" FullName="MonoMac.ObjCRuntime.BlockLiteral">
   <TypeSignature Language="C#" Value="public struct BlockLiteral" />
-  <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed BlockLiteral extends System.ValueType" />
   <AssemblyInfo>
-    <AssemblyName>MonoMac</AssemblyName>
+    <AssemblyName>monomac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -23,7 +22,6 @@ In the C#/ECMA CLI world delegates are automatically turned into blocks that can
   <Members>
     <Member MemberName="block_descriptor">
       <MemberSignature Language="C#" Value="public IntPtr block_descriptor;" />
-      <MemberSignature Language="ILAsm" Value=".field public native int block_descriptor" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -45,7 +43,6 @@ MonoMac uses a single descriptor that maps Objective-C blocks to ECMA CLI delega
     </Member>
     <Member MemberName="CleanupBlock">
       <MemberSignature Language="C#" Value="public void CleanupBlock ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CleanupBlock() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -61,7 +58,6 @@ MonoMac uses a single descriptor that maps Objective-C blocks to ECMA CLI delega
     </Member>
     <Member MemberName="flags">
       <MemberSignature Language="C#" Value="public MonoMac.ObjCRuntime.BlockFlags flags;" />
-      <MemberSignature Language="ILAsm" Value=".field public valuetype MonoMac.ObjCRuntime.BlockFlags flags" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -80,7 +76,6 @@ This field is initialized by SetupBlock.
     </Member>
     <Member MemberName="global_handle">
       <MemberSignature Language="C#" Value="public IntPtr global_handle;" />
-      <MemberSignature Language="ILAsm" Value=".field public native int global_handle" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -99,7 +94,6 @@ This field is initialized by SetupBlock.
     </Member>
     <Member MemberName="invoke">
       <MemberSignature Language="C#" Value="public IntPtr invoke;" />
-      <MemberSignature Language="ILAsm" Value=".field public native int invoke" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -121,7 +115,6 @@ When used with MonoMac's SetupBlock this contains a GCHandle that points to the 
     </Member>
     <Member MemberName="isa">
       <MemberSignature Language="C#" Value="public IntPtr isa;" />
-      <MemberSignature Language="ILAsm" Value=".field public native int isa" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -140,7 +133,6 @@ This field is initialized by SetupBlock.
     </Member>
     <Member MemberName="local_handle">
       <MemberSignature Language="C#" Value="public IntPtr local_handle;" />
-      <MemberSignature Language="ILAsm" Value=".field public native int local_handle" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -162,7 +154,6 @@ When used with MonoMac's SetupBlock this contains a GCHandle that points to the 
     </Member>
     <Member MemberName="reserved">
       <MemberSignature Language="C#" Value="public int reserved;" />
-      <MemberSignature Language="ILAsm" Value=".field public int32 reserved" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -184,7 +175,6 @@ Should be zero.
     </Member>
     <Member MemberName="SetupBlock">
       <MemberSignature Language="C#" Value="public void SetupBlock (Delegate trampoline, Delegate userDelegate);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetupBlock(class System.Delegate trampoline, class System.Delegate userDelegate) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>

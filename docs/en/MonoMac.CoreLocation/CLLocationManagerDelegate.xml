@@ -1,8 +1,7 @@
 <Type Name="CLLocationManagerDelegate" FullName="MonoMac.CoreLocation.CLLocationManagerDelegate">
   <TypeSignature Language="C#" Value="public class CLLocationManagerDelegate : MonoMac.Foundation.NSObject" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CLLocationManagerDelegate extends MonoMac.Foundation.NSObject" />
   <AssemblyInfo>
-    <AssemblyName>MonoMac</AssemblyName>
+    <AssemblyName>monomac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -18,13 +17,12 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
+    <summary>Virtual methods on this class receive notifications from the CLLocationManager.</summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public CLLocationManagerDelegate ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -42,7 +40,6 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public CLLocationManagerDelegate (MonoMac.Foundation.NSCoder coder);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSCoder coder) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -63,7 +60,6 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public CLLocationManagerDelegate (MonoMac.Foundation.NSObjectFlag t);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSObjectFlag t) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -91,7 +87,6 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public CLLocationManagerDelegate (IntPtr handle);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int handle) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -109,7 +104,6 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="AuthorizationChanged">
       <MemberSignature Language="C#" Value="public virtual void AuthorizationChanged (MonoMac.CoreLocation.CLLocationManager manager, MonoMac.CoreLocation.CLAuthorizationStatus status);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void AuthorizationChanged(class MonoMac.CoreLocation.CLLocationManager manager, valuetype MonoMac.CoreLocation.CLAuthorizationStatus status) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -135,7 +129,6 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="Failed">
       <MemberSignature Language="C#" Value="public virtual void Failed (MonoMac.CoreLocation.CLLocationManager manager, MonoMac.Foundation.NSError error);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Failed(class MonoMac.CoreLocation.CLLocationManager manager, class MonoMac.Foundation.NSError error) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -159,9 +152,85 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="MonitoringFailed">
+      <MemberSignature Language="C#" Value="public virtual void MonitoringFailed (MonoMac.CoreLocation.CLLocationManager manager, MonoMac.CoreLocation.CLRegion region, MonoMac.Foundation.NSError error);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("locationManager:monitoringDidFailForRegion:withError:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="manager" Type="MonoMac.CoreLocation.CLLocationManager" />
+        <Parameter Name="region" Type="MonoMac.CoreLocation.CLRegion" />
+        <Parameter Name="error" Type="MonoMac.Foundation.NSError" />
+      </Parameters>
+      <Docs>
+        <param name="manager">To be added.</param>
+        <param name="region">To be added.</param>
+        <param name="error">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RegionEntered">
+      <MemberSignature Language="C#" Value="public virtual void RegionEntered (MonoMac.CoreLocation.CLLocationManager manager, MonoMac.CoreLocation.CLRegion region);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("locationManager:didEnterRegion:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="manager" Type="MonoMac.CoreLocation.CLLocationManager" />
+        <Parameter Name="region" Type="MonoMac.CoreLocation.CLRegion" />
+      </Parameters>
+      <Docs>
+        <param name="manager">To be added.</param>
+        <param name="region">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RegionLeft">
+      <MemberSignature Language="C#" Value="public virtual void RegionLeft (MonoMac.CoreLocation.CLLocationManager manager, MonoMac.CoreLocation.CLRegion region);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("locationManager:didExitRegion:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="manager" Type="MonoMac.CoreLocation.CLLocationManager" />
+        <Parameter Name="region" Type="MonoMac.CoreLocation.CLRegion" />
+      </Parameters>
+      <Docs>
+        <param name="manager">To be added.</param>
+        <param name="region">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="ShouldDisplayHeadingCalibration">
       <MemberSignature Language="C#" Value="public virtual bool ShouldDisplayHeadingCalibration (MonoMac.CoreLocation.CLLocationManager manager);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool ShouldDisplayHeadingCalibration(class MonoMac.CoreLocation.CLLocationManager manager) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -184,9 +253,33 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="UpdatedHeading">
+      <MemberSignature Language="C#" Value="public virtual void UpdatedHeading (MonoMac.CoreLocation.CLLocationManager manager, MonoMac.CoreLocation.CLHeading newHeading);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("locationManager:didUpdateHeading:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="manager" Type="MonoMac.CoreLocation.CLLocationManager" />
+        <Parameter Name="newHeading" Type="MonoMac.CoreLocation.CLHeading" />
+      </Parameters>
+      <Docs>
+        <param name="manager">To be added.</param>
+        <param name="newHeading">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="UpdatedLocation">
       <MemberSignature Language="C#" Value="public virtual void UpdatedLocation (MonoMac.CoreLocation.CLLocationManager manager, MonoMac.CoreLocation.CLLocation newLocation, MonoMac.CoreLocation.CLLocation oldLocation);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void UpdatedLocation(class MonoMac.CoreLocation.CLLocationManager manager, class MonoMac.CoreLocation.CLLocation newLocation, class MonoMac.CoreLocation.CLLocation oldLocation) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>

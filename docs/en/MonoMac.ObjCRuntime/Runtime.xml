@@ -1,8 +1,7 @@
 <Type Name="Runtime" FullName="MonoMac.ObjCRuntime.Runtime">
   <TypeSignature Language="C#" Value="public static class Runtime" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit Runtime extends System.Object" />
   <AssemblyInfo>
-    <AssemblyName>MonoMac</AssemblyName>
+    <AssemblyName>monomac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -14,9 +13,22 @@
     <remarks />
   </Docs>
   <Members>
+    <Member MemberName="Arch">
+      <MemberSignature Language="C#" Value="public static MonoMac.ObjCRuntime.Arch Arch;" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.ObjCRuntime.Arch</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The architecture where the code is currently running.</summary>
+        <remarks>Use this to determine the architecture on which the program is currently running (device or simulator).</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="GetNSObject">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSObject GetNSObject (IntPtr ptr);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSObject GetNSObject(native int ptr) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -36,7 +48,6 @@
     </Member>
     <Member MemberName="RegisterAssembly">
       <MemberSignature Language="C#" Value="public static void RegisterAssembly (System.Reflection.Assembly a);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void RegisterAssembly(class System.Reflection.Assembly a) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -53,23 +64,21 @@
         <remarks>This iterates over all the types that derive from NSObject in the specified assembly and registers them with the runtime.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="TryGetNSObject">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSObject TryGetNSObject (IntPtr ptr);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSObject TryGetNSObject(native int ptr) cil managed" />
+    <Member MemberName="StartWWAN">
+      <MemberSignature Language="C#" Value="public static void StartWWAN (Uri uri);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
+        <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="ptr" Type="System.IntPtr" />
+        <Parameter Name="uri" Type="System.Uri" />
       </Parameters>
       <Docs>
-        <param name="ptr">To be added.</param>
+        <param name="uri">To be added.</param>
         <summary>To be added.</summary>
-        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

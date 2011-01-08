@@ -1,8 +1,7 @@
 <Type Name="ABPersonDateLabel" FullName="MonoMac.AddressBook.ABPersonDateLabel">
   <TypeSignature Language="C#" Value="public static class ABPersonDateLabel" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed ABPersonDateLabel extends System.Object" />
   <AssemblyInfo>
-    <AssemblyName>MonoMac</AssemblyName>
+    <AssemblyName>monomac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -10,13 +9,24 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>
+      Date property labels.
+    </summary>
+    <remarks>
+      <para>
+        Labels are used with
+        <see cref="M:MonoMac.AddressBook.ABAddressBook.LocalizedLabel(MonoMac.Foundation.NSString)" />,
+        <see cref="P:MonoMac.AddressBook.ABMultiValueEntry{T}.Label" />,
+        <see cref="M:MonoMac.AddressBook.ABMultiValue{T}.Add(`0,MonoMac.Foundation.NSString)" />, and
+        <see cref="M:MonoMac.AddressBook.ABMultiValue{T}.Insert(System.Int32,`0,MonoMac.Foundation.NSString)" />.
+      </para>
+    </remarks>
+    <altmember cref="M:MonoMac.AddressBook.ABPerson.GetDates" />
+    <altmember cref="M:MonoMac.AddressBook.ABPerson.SetDates(MonoMac.AddressBook.ABMultiValue{MonoMac.Foundation.NSDate})" />
   </Docs>
   <Members>
     <Member MemberName="Anniversary">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString Anniversary { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString Anniversary" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -25,9 +35,13 @@
         <ReturnType>MonoMac.Foundation.NSString</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Birthdate.</summary>
+        <value>
+          A <see cref="T:MonoMac.Foundation.NSString" /> containing
+          the "Birthdate" label.
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
   </Members>

@@ -1,8 +1,7 @@
 <Type Name="PreserveAttribute" FullName="MonoMac.Foundation.PreserveAttribute">
   <TypeSignature Language="C#" Value="public sealed class PreserveAttribute : Attribute" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit PreserveAttribute extends System.Attribute" />
   <AssemblyInfo>
-    <AssemblyName>MonoMac</AssemblyName>
+    <AssemblyName>monomac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -31,7 +30,6 @@ This attribute is useful for example when using classes that use reflection (for
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public PreserveAttribute ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -44,7 +42,6 @@ This attribute is useful for example when using classes that use reflection (for
     </Member>
     <Member MemberName="AllMembers">
       <MemberSignature Language="C#" Value="public bool AllMembers;" />
-      <MemberSignature Language="ILAsm" Value=".field public bool AllMembers" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -53,13 +50,12 @@ This attribute is useful for example when using classes that use reflection (for
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Ensures that all members of this type are preserved.</summary>
+        <remarks>All members of this type, including fields, properties, methods, subclasses are preserved during linking.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Conditional">
       <MemberSignature Language="C#" Value="public bool Conditional;" />
-      <MemberSignature Language="ILAsm" Value=".field public bool Conditional" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>

@@ -1,8 +1,7 @@
 <Type Name="ABPersonAddressKey" FullName="MonoMac.AddressBook.ABPersonAddressKey">
   <TypeSignature Language="C#" Value="public static class ABPersonAddressKey" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed ABPersonAddressKey extends System.Object" />
   <AssemblyInfo>
-    <AssemblyName>MonoMac</AssemblyName>
+    <AssemblyName>monomac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -10,13 +9,47 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>
+      <see cref="T:MonoMac.Foundation.NSDictionary" /> keys for use
+      with <see cref="T:MonoMac.AddressBook.ABPerson" /> addresses.
+    </summary>
+    <remarks>
+      <para>
+        A single <see cref="T:MonoMac.Foundation.NSDictionary" /> instance
+        stores a single address, with the dictionary keys and values holding
+        different parts of the address:
+      </para>
+      <code lang="C#">// Address from: http://en.wikipedia.org/wiki/Address_(geography)#United_States
+NSDictionary address = NSDictionary.FromObjectsAndKeys(
+    new NSObject[]{
+        new NSString("455 Larkspur Dr."),
+        new NSString("California Springs"),
+        new NSString("CA"),
+        new NSString("92926"),
+        new NSString("USA"),
+        new NSString("us"),
+    },
+    new NSObject[]{
+        ABPersonAddressKey.Street,
+        ABPersonAddressKey.City,
+        ABPersonAddressKey.State,
+        ABPersonAddressKey.Zip,
+        ABPersonAddressKey.Country,
+        ABPersonAddressKey.CountryCode,
+    }
+);
+ABMutableDictionaryMultiValue addresses = new ABMutableDictionaryMultiValue() {
+  { address, ABLabel.Home },
+};
+ABPerson person = GetMeSomePerson();
+person.SetAddresses(addresses);</code>
+    </remarks>
+    <altmember cref="M:MonoMac.AddressBook.ABPerson.GetAddresses" />
+    <altmember cref="M:MonoMac.AddressBook.ABPerson.SetAddresses(MonoMac.AddressBook.ABMultiValue{MonoMac.Foundation.NSDictionary})" />
   </Docs>
   <Members>
     <Member MemberName="City">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString City { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString City" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -25,14 +58,19 @@
         <ReturnType>MonoMac.Foundation.NSString</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>
+          City portion of the address.
+        </summary>
+        <value>
+          A <see cref="T:MonoMac.Foundation.NSString" /> containing the
+          key to use for the City portion of the address.
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Country">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString Country { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString Country" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -41,14 +79,19 @@
         <ReturnType>MonoMac.Foundation.NSString</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>
+          Country portion of the address.
+        </summary>
+        <value>
+          A <see cref="T:MonoMac.Foundation.NSString" /> containing the
+          key to use for the Country portion of the address.
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CountryCode">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString CountryCode { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString CountryCode" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -57,14 +100,25 @@
         <ReturnType>MonoMac.Foundation.NSString</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>
+          CountryCode portion of the address.
+        </summary>
+        <value>
+          A <see cref="T:MonoMac.Foundation.NSString" /> containing the
+          key to use for the CountryCode portion of the address.
+        </value>
+        <remarks>
+          <para>
+            <format type="text/html">
+              See <a href="http://developer.apple.com/iphone/library/documentation/AddressBook/Reference/ABPersonRef_iPhoneOS/Reference/reference.html#//apple_ref/doc/uid/TP40007210-CH991-SW33">kABPersonAddresCountryCodeKey</a> documentation for a list of
+              supported values.
+            </format>
+          </para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="State">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString State { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString State" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -73,14 +127,19 @@
         <ReturnType>MonoMac.Foundation.NSString</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>
+          State portion of the address.
+        </summary>
+        <value>
+          A <see cref="T:MonoMac.Foundation.NSString" /> containing the
+          key to use for the State portion of the address.
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Street">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString Street { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString Street" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -89,14 +148,19 @@
         <ReturnType>MonoMac.Foundation.NSString</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>
+          Street portion of the address.
+        </summary>
+        <value>
+          A <see cref="T:MonoMac.Foundation.NSString" /> containing the
+          key to use for the Street portion of the address.
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Zip">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString Zip { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString Zip" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -105,9 +169,15 @@
         <ReturnType>MonoMac.Foundation.NSString</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>
+          Zip portion of the address.
+        </summary>
+        <value>
+          A <see cref="T:MonoMac.Foundation.NSString" /> containing the
+          key to use for the Zip portion of the address.
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
   </Members>

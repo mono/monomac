@@ -1,8 +1,7 @@
 <Type Name="Class" FullName="MonoMac.ObjCRuntime.Class">
   <TypeSignature Language="C#" Value="public class Class : MonoMac.ObjCRuntime.INativeObject" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit Class extends System.Object implements class MonoMac.ObjCRuntime.INativeObject" />
   <AssemblyInfo>
-    <AssemblyName>MonoMac</AssemblyName>
+    <AssemblyName>monomac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -20,7 +19,6 @@
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public Class (IntPtr handle);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int handle) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -36,7 +34,6 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public Class (string name);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string name) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -52,7 +49,6 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public Class (Type type);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.Type type) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -68,7 +64,6 @@
     </Member>
     <Member MemberName="GetHandle">
       <MemberSignature Language="C#" Value="public static IntPtr GetHandle (string name);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig native int GetHandle(string name) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -86,9 +81,27 @@
         <remarks />
       </Docs>
     </Member>
+    <Member MemberName="GetHandle">
+      <MemberSignature Language="C#" Value="public static IntPtr GetHandle (Type type);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.IntPtr</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="type" Type="System.Type" />
+      </Parameters>
+      <Docs>
+        <param name="type">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Handle">
       <MemberSignature Language="C#" Value="public IntPtr Handle { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance native int Handle" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -102,29 +115,8 @@
         <remarks>This IntPtr is a handle to the underlying unmanaged representation for this object.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="IsCustomType">
-      <MemberSignature Language="C#" Value="public static bool IsCustomType (Type type);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool IsCustomType(class System.Type type) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="type" Type="System.Type" />
-      </Parameters>
-      <Docs>
-        <param name="type">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Name">
       <MemberSignature Language="C#" Value="public string Name { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance string Name" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -138,9 +130,28 @@
         <remarks />
       </Docs>
     </Member>
+    <Member MemberName="RegisterMethods">
+      <MemberSignature Language="C#" Value="public static void RegisterMethods (Type type, System.Collections.Generic.Dictionary&lt;IntPtr,MonoMac.ObjCRuntime.MethodDescription&gt; methods);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="type" Type="System.Type" />
+        <Parameter Name="methods" Type="System.Collections.Generic.Dictionary&lt;System.IntPtr,MonoMac.ObjCRuntime.MethodDescription&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="type">To be added.</param>
+        <param name="methods">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="SuperClass">
       <MemberSignature Language="C#" Value="public IntPtr SuperClass { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance native int SuperClass" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>

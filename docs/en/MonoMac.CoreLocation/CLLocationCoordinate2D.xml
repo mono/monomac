@@ -1,8 +1,7 @@
 <Type Name="CLLocationCoordinate2D" FullName="MonoMac.CoreLocation.CLLocationCoordinate2D">
   <TypeSignature Language="C#" Value="public struct CLLocationCoordinate2D" />
-  <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit CLLocationCoordinate2D extends System.ValueType" />
   <AssemblyInfo>
-    <AssemblyName>MonoMac</AssemblyName>
+    <AssemblyName>monomac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -10,13 +9,12 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Geographical coordinates.</summary>
+    <remarks>The geographical coordinates use the WGS 84 reference frame.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public CLLocationCoordinate2D (double latitude, double longitude);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float64 latitude, float64 longitude) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -34,7 +32,6 @@
     </Member>
     <Member MemberName="IsValid">
       <MemberSignature Language="C#" Value="public bool IsValid ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool IsValid() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -51,7 +48,6 @@
     </Member>
     <Member MemberName="Latitude">
       <MemberSignature Language="C#" Value="public double Latitude;" />
-      <MemberSignature Language="ILAsm" Value=".field public float64 Latitude" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -60,13 +56,12 @@
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Latitude in degrees.   Positive values are north of the equator, negative values are south of the equator.</summary>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Longitude">
       <MemberSignature Language="C#" Value="public double Longitude;" />
-      <MemberSignature Language="ILAsm" Value=".field public float64 Longitude" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -75,8 +70,8 @@
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Longitude in degrees.</summary>
+        <remarks>The value is relative to the zero meridian;  Positive values point east, negative values point west.</remarks>
       </Docs>
     </Member>
   </Members>

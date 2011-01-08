@@ -1,8 +1,7 @@
 <Type Name="ABMutableMultiValue&lt;T&gt;" FullName="MonoMac.AddressBook.ABMutableMultiValue&lt;T&gt;">
   <TypeSignature Language="C#" Value="public class ABMutableMultiValue&lt;T&gt; : MonoMac.AddressBook.ABMultiValue&lt;T&gt;" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit ABMutableMultiValue`1&lt;T&gt; extends MonoMac.AddressBook.ABMultiValue`1&lt;!T&gt;" />
   <AssemblyInfo>
-    <AssemblyName>MonoMac</AssemblyName>
+    <AssemblyName>monomac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <TypeParameters>
@@ -16,14 +15,51 @@
   </Base>
   <Interfaces />
   <Docs>
-    <typeparam name="T">To be added.</typeparam>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <typeparam name="T">
+      The type of the value to store.
+    </typeparam>
+    <summary>
+      A <see cref="T:MonoMac.AddressBook.ABMultiValue{T}" /> that supports editing.
+    </summary>
+    <remarks>
+      <para>
+        "Editing" includes adding and removing
+        <see cref="T:MonoMac.AddressBook.ABMultiValueEntry{T}" /> entries
+        and changing the
+        <see cref="P:MonoMac.AddressBook.ABMultiValueEntry{T}.Value" /> and
+        <see cref="P:MonoMac.AddressBook.ABMultiValueEntry{T}.Label" />
+        properties on those entries.
+      </para>
+      <para>
+        Supported operations include:
+      </para>
+      <list type="bullet">
+        <item>
+          <term>
+            Creating properties:
+            <see cref="C:MonoMac.AddressBook.ABMutableDateMultiValue" />,
+            <see cref="C:MonoMac.AddressBook.ABMutableDictionaryMultiValue" />,
+            <see cref="C:MonoMac.AddressBook.ABMutableStringMultiValue" />.
+          </term>
+        </item>
+        <item>
+          <term>
+            Creating properties:
+            <see cref="C:MonoMac.AddressBook.ABMutableDateMultiValue" />,
+            <see cref="C:MonoMac.AddressBook.ABMutableDictionaryMultiValue" />,
+            <see cref="C:MonoMac.AddressBook.ABMutableStringMultiValue" />.
+          </term>
+        </item>
+      </list>
+    </remarks>
+    <altmember cref="M:MonoMac.AddressBook.ABMultiValue{T}.ToMutableMultiValue" />
+    <altmember cref="T:MonoMac.AddressBook.ABMutableDateMultiValue" />
+    <altmember cref="T:MonoMac.AddressBook.ABMutableDictionaryMultiValue" />
+    <altmember cref="T:MonoMac.AddressBook.ABMutableStringMultiValue" />
   </Docs>
   <Members>
     <Member MemberName="Add">
       <MemberSignature Language="C#" Value="public bool Add (T value, MonoMac.Foundation.NSString label);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Add(!T value, class MonoMac.Foundation.NSString label) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -36,16 +72,28 @@
         <Parameter Name="label" Type="MonoMac.Foundation.NSString" />
       </Parameters>
       <Docs>
-        <param name="value">To be added.</param>
-        <param name="label">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="value">
+          A <typeparamref name="T" /> to add to the
+          <see cref="T:MonoMac.AddressBook.ABMutableMultiValue{T}" />.
+        </param>
+        <param name="label">
+          A <see cref="T:MonoMac.Foundation.NSString" /> to use
+          as the label for <paramref name="value" />.
+        </param>
+        <summary>
+          Add <paramref name="value" /> with the label <paramref name="label" />
+          to a multivalue property.
+        </summary>
+        <returns>
+          <see langword="true" /> if the value was added;
+          otherwise, <see langword="false" />.
+        </returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Insert">
       <MemberSignature Language="C#" Value="public bool Insert (int index, T value, MonoMac.Foundation.NSString label);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Insert(int32 index, !T value, class MonoMac.Foundation.NSString label) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -59,17 +107,34 @@
         <Parameter Name="label" Type="MonoMac.Foundation.NSString" />
       </Parameters>
       <Docs>
-        <param name="index">To be added.</param>
-        <param name="value">To be added.</param>
-        <param name="label">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="index">
+          A <see cref="T:System.Int32" /> containing the index to insert
+          <paramref name="value" /> with the label <paramref name="label" />
+          into.
+        </param>
+        <param name="value">
+          A <typeparamref name="T" /> to add to the
+          <see cref="T:MonoMac.AddressBook.ABMutableMultiValue{T}" />.
+        </param>
+        <param name="label">
+          A <see cref="T:MonoMac.Foundation.NSString" /> to use
+          as the label for <paramref name="value" />.
+        </param>
+        <summary>
+          Insert <paramref name="value" /> with the label
+          <paramref name="label" /> into a multivalue property at
+          position <paramref name="index" />.
+        </summary>
+        <returns>
+          <see langword="true" /> if the value was added;
+          otherwise, <see langword="false" />.
+        </returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="IsReadOnly">
       <MemberSignature Language="C#" Value="public override bool IsReadOnly { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool IsReadOnly" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -78,14 +143,20 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>
+          Gets a value indicating whether the
+          <see cref="T:MonoMac.AddressBook.ABMutableMultiValue{T}" />
+          is read-only.
+        </summary>
+        <value>
+          Always returns <see langword="true" />.
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="RemoveAt">
       <MemberSignature Language="C#" Value="public bool RemoveAt (int index);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool RemoveAt(int32 index) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -97,10 +168,25 @@
         <Parameter Name="index" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="index">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="index">
+          A <see cref="T:System.Int32" /> containing the
+          index of the value to remove.
+        </param>
+        <summary>
+          Removes a value from a multivalue property.
+        </summary>
+        <returns>
+          <see langword="true" /> if the
+          <see cref="T:MonoMac.AddressBook.ABMultiValueEntry{T}" />
+          at index <paramref name="index" /> was removed;
+          otherwise, <see langword="false" />.
+        </returns>
+        <remarks>
+          <para>
+            An exception is raised if <paramref name="index" />
+            is out of bounds.
+          </para>
+        </remarks>
       </Docs>
     </Member>
   </Members>

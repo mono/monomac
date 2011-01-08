@@ -1,8 +1,7 @@
 <Type Name="NSDateComponents" FullName="MonoMac.Foundation.NSDateComponents">
   <TypeSignature Language="C#" Value="public class NSDateComponents : MonoMac.Foundation.NSObject" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit NSDateComponents extends MonoMac.Foundation.NSObject" />
   <AssemblyInfo>
-    <AssemblyName>MonoMac</AssemblyName>
+    <AssemblyName>monomac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -21,7 +20,6 @@
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSDateComponents ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -39,7 +37,6 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSDateComponents (MonoMac.Foundation.NSCoder coder);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSCoder coder) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -60,7 +57,6 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSDateComponents (MonoMac.Foundation.NSObjectFlag t);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSObjectFlag t) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -88,7 +84,6 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSDateComponents (IntPtr handle);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int handle) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -106,19 +101,10 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="Calendar">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSCalendar Calendar { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSCalendar Calendar" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("calendar")</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>set: MonoMac.Foundation.Export("setCalendar:")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSCalendar</ReturnType>
       </ReturnValue>
@@ -127,10 +113,17 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("calendar")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: MonoMac.Foundation.Export("setCalendar:")</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
     <Member MemberName="ClassHandle">
       <MemberSignature Language="C#" Value="public override IntPtr ClassHandle { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance native int ClassHandle" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -146,16 +139,10 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="Date">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSDate Date { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSDate Date" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("date")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSDate</ReturnType>
       </ReturnValue>
@@ -164,14 +151,26 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("date")</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
     <Member MemberName="Day">
       <MemberSignature Language="C#" Value="public virtual int Day { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance int32 Day" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("day")</AttributeName>
@@ -180,6 +179,13 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setDay:")</AttributeName>
         </Attribute>
       </Attributes>
+    </Member>
+    <Member MemberName="Era">
+      <MemberSignature Language="C#" Value="public virtual int Era { set; get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -188,14 +194,6 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-    </Member>
-    <Member MemberName="Era">
-      <MemberSignature Language="C#" Value="public virtual int Era { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance int32 Era" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("era")</AttributeName>
@@ -204,6 +202,13 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setEra:")</AttributeName>
         </Attribute>
       </Attributes>
+    </Member>
+    <Member MemberName="Hour">
+      <MemberSignature Language="C#" Value="public virtual int Hour { set; get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -212,14 +217,6 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-    </Member>
-    <Member MemberName="Hour">
-      <MemberSignature Language="C#" Value="public virtual int Hour { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance int32 Hour" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("hour")</AttributeName>
@@ -228,6 +225,13 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setHour:")</AttributeName>
         </Attribute>
       </Attributes>
+    </Member>
+    <Member MemberName="Minute">
+      <MemberSignature Language="C#" Value="public virtual int Minute { set; get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -236,14 +240,6 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-    </Member>
-    <Member MemberName="Minute">
-      <MemberSignature Language="C#" Value="public virtual int Minute { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance int32 Minute" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("minute")</AttributeName>
@@ -252,6 +248,13 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setMinute:")</AttributeName>
         </Attribute>
       </Attributes>
+    </Member>
+    <Member MemberName="Month">
+      <MemberSignature Language="C#" Value="public virtual int Month { set; get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -260,14 +263,6 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-    </Member>
-    <Member MemberName="Month">
-      <MemberSignature Language="C#" Value="public virtual int Month { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance int32 Month" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("month")</AttributeName>
@@ -276,6 +271,13 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setMonth:")</AttributeName>
         </Attribute>
       </Attributes>
+    </Member>
+    <Member MemberName="Quarter">
+      <MemberSignature Language="C#" Value="public virtual int Quarter { set; get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -284,14 +286,6 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-    </Member>
-    <Member MemberName="Quarter">
-      <MemberSignature Language="C#" Value="public virtual int Quarter { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance int32 Quarter" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("quarter")</AttributeName>
@@ -300,6 +294,13 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setQuarter:")</AttributeName>
         </Attribute>
       </Attributes>
+    </Member>
+    <Member MemberName="Second">
+      <MemberSignature Language="C#" Value="public virtual int Second { set; get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -308,14 +309,6 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-    </Member>
-    <Member MemberName="Second">
-      <MemberSignature Language="C#" Value="public virtual int Second { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance int32 Second" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("second")</AttributeName>
@@ -324,30 +317,13 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setSecond:")</AttributeName>
         </Attribute>
       </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
     </Member>
     <Member MemberName="TimeZone">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSTimeZone TimeZone { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSTimeZone TimeZone" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("timeZone")</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>set: MonoMac.Foundation.Export("setTimeZone:")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSTimeZone</ReturnType>
       </ReturnValue>
@@ -356,14 +332,29 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("timeZone")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: MonoMac.Foundation.Export("setTimeZone:")</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
     <Member MemberName="Week">
       <MemberSignature Language="C#" Value="public virtual int Week { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance int32 Week" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("week")</AttributeName>
@@ -372,6 +363,13 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setWeek:")</AttributeName>
         </Attribute>
       </Attributes>
+    </Member>
+    <Member MemberName="Weekday">
+      <MemberSignature Language="C#" Value="public virtual int Weekday { set; get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -380,14 +378,6 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-    </Member>
-    <Member MemberName="Weekday">
-      <MemberSignature Language="C#" Value="public virtual int Weekday { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance int32 Weekday" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("weekday")</AttributeName>
@@ -396,6 +386,13 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setWeekday:")</AttributeName>
         </Attribute>
       </Attributes>
+    </Member>
+    <Member MemberName="WeekdayOrdinal">
+      <MemberSignature Language="C#" Value="public virtual int WeekdayOrdinal { set; get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -404,14 +401,6 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-    </Member>
-    <Member MemberName="WeekdayOrdinal">
-      <MemberSignature Language="C#" Value="public virtual int WeekdayOrdinal { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance int32 WeekdayOrdinal" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("weekdayOrdinal")</AttributeName>
@@ -420,6 +409,13 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setWeekdayOrdinal:")</AttributeName>
         </Attribute>
       </Attributes>
+    </Member>
+    <Member MemberName="Year">
+      <MemberSignature Language="C#" Value="public virtual int Year { set; get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -428,14 +424,6 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-    </Member>
-    <Member MemberName="Year">
-      <MemberSignature Language="C#" Value="public virtual int Year { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance int32 Year" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("year")</AttributeName>
@@ -444,14 +432,6 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setYear:")</AttributeName>
         </Attribute>
       </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
     </Member>
   </Members>
 </Type>

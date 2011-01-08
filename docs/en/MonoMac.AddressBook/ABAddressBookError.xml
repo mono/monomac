@@ -1,21 +1,26 @@
 <Type Name="ABAddressBookError" FullName="MonoMac.AddressBook.ABAddressBookError">
   <TypeSignature Language="C#" Value="public enum ABAddressBookError" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed ABAddressBookError extends System.Enum" />
   <AssemblyInfo>
-    <AssemblyName>MonoMac</AssemblyName>
+    <AssemblyName>monomac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Enum</BaseTypeName>
   </Base>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Possible <see cref="T:MonoMac.AddressBook.ABAddressBook" /> errors.</summary>
+    <remarks>
+      When the <see cref="P:MonoMac.CoreFoundation.CFException.Domain" />
+      property is set to
+      <see cref="F:MonoMac.AddressBook.ABAddressBook.ErrorDomain" />,
+      then <see cref="P:MonoMac.CoreFoundation.CFException.Code" />
+      will be one of the
+      <see cref="T:MonoMac.AddressBook.ABAddressBookError" /> values.
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName="OperationNotPermittedByStore">
       <MemberSignature Language="C#" Value="OperationNotPermittedByStore" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype MonoMac.AddressBook.ABAddressBookError OperationNotPermittedByStore = int32(0)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -24,7 +29,7 @@
         <ReturnType>MonoMac.AddressBook.ABAddressBookError</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The operation is not permitted.</summary>
       </Docs>
     </Member>
   </Members>
