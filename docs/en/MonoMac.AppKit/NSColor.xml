@@ -126,7 +126,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="AlternateSelectedControl">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSColor AlternateSelectedControl { get; }" />
+      <MemberSignature Language="C#" Value="public static MonoMac.AppKit.NSColor AlternateSelectedControl { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AppKit.NSColor AlternateSelectedControl" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -258,24 +258,22 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="BlueComponent">
-      <MemberSignature Language="C#" Value="public virtual float BlueComponent ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance float32 BlueComponent() cil managed" />
-      <MemberType>Method</MemberType>
+      <MemberSignature Language="C#" Value="public virtual float BlueComponent { get; }" />
+      <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>MonoMac.Foundation.Export("blueComponent")</AttributeName>
+          <AttributeName>get: MonoMac.Foundation.Export("blueComponent")</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
-      <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -379,31 +377,6 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="ColorForControlTint">
-      <MemberSignature Language="C#" Value="public static MonoMac.AppKit.NSColor ColorForControlTint (MonoMac.AppKit.NSControlTint controlTint);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.AppKit.NSColor ColorForControlTint(valuetype MonoMac.AppKit.NSControlTint controlTint) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>MonoMac.Foundation.Export("colorForControlTint:")</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>MonoMac.AppKit.NSColor</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="controlTint" Type="MonoMac.AppKit.NSControlTint" />
-      </Parameters>
-      <Docs>
-        <param name="controlTint">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="ColorNameComponent">
       <MemberSignature Language="C#" Value="public virtual string ColorNameComponent { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string ColorNameComponent" />
@@ -467,31 +440,6 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="ColorUsingColorSpaceName">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSColor ColorUsingColorSpaceName (string colorSpace);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class MonoMac.AppKit.NSColor ColorUsingColorSpaceName(string colorSpace) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>MonoMac.Foundation.Export("colorUsingColorSpaceName:")</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>MonoMac.AppKit.NSColor</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="colorSpace" Type="System.String" />
-      </Parameters>
-      <Docs>
-        <param name="colorSpace">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="ColorWithAlphaComponent">
       <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSColor ColorWithAlphaComponent (float alpha);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class MonoMac.AppKit.NSColor ColorWithAlphaComponent(float32 alpha) cil managed" />
@@ -517,104 +465,8 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="ColorWithDeviceCYMKA">
-      <MemberSignature Language="C#" Value="public static MonoMac.AppKit.NSColor ColorWithDeviceCYMKA (float cyan, float magenta, float yellow, float black, float alpha);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.AppKit.NSColor ColorWithDeviceCYMKA(float32 cyan, float32 magenta, float32 yellow, float32 black, float32 alpha) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>MonoMac.Foundation.Export("colorWithDeviceCyan:magenta:yellow:black:alpha:")</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>MonoMac.AppKit.NSColor</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="cyan" Type="System.Single" />
-        <Parameter Name="magenta" Type="System.Single" />
-        <Parameter Name="yellow" Type="System.Single" />
-        <Parameter Name="black" Type="System.Single" />
-        <Parameter Name="alpha" Type="System.Single" />
-      </Parameters>
-      <Docs>
-        <param name="cyan">To be added.</param>
-        <param name="magenta">To be added.</param>
-        <param name="yellow">To be added.</param>
-        <param name="black">To be added.</param>
-        <param name="alpha">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ColorWithDeviceHSBA">
-      <MemberSignature Language="C#" Value="public static MonoMac.AppKit.NSColor ColorWithDeviceHSBA (float hue, float saturation, float brightness, float alpha);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.AppKit.NSColor ColorWithDeviceHSBA(float32 hue, float32 saturation, float32 brightness, float32 alpha) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>MonoMac.Foundation.Export("colorWithDeviceHue:saturation:brightness:alpha:")</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>MonoMac.AppKit.NSColor</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="hue" Type="System.Single" />
-        <Parameter Name="saturation" Type="System.Single" />
-        <Parameter Name="brightness" Type="System.Single" />
-        <Parameter Name="alpha" Type="System.Single" />
-      </Parameters>
-      <Docs>
-        <param name="hue">To be added.</param>
-        <param name="saturation">To be added.</param>
-        <param name="brightness">To be added.</param>
-        <param name="alpha">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ColorWithDeviceRGBA">
-      <MemberSignature Language="C#" Value="public static MonoMac.AppKit.NSColor ColorWithDeviceRGBA (float red, float green, float blue, float alpha);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.AppKit.NSColor ColorWithDeviceRGBA(float32 red, float32 green, float32 blue, float32 alpha) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>MonoMac.Foundation.Export("colorWithDeviceRed:green:blue:alpha:")</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>MonoMac.AppKit.NSColor</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="red" Type="System.Single" />
-        <Parameter Name="green" Type="System.Single" />
-        <Parameter Name="blue" Type="System.Single" />
-        <Parameter Name="alpha" Type="System.Single" />
-      </Parameters>
-      <Docs>
-        <param name="red">To be added.</param>
-        <param name="green">To be added.</param>
-        <param name="blue">To be added.</param>
-        <param name="alpha">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Components">
-      <MemberSignature Language="C#" Value="public virtual int Components { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance int32 Components" />
+    <Member MemberName="ComponentCount">
+      <MemberSignature Language="C#" Value="public virtual int ComponentCount { get; }" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -655,7 +507,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="ControlAlternatingRowBackgroundColors">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSColor[] ControlAlternatingRowBackgroundColors ();" />
+      <MemberSignature Language="C#" Value="public static MonoMac.AppKit.NSColor[] ControlAlternatingRowBackgroundColors ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class MonoMac.AppKit.NSColor[] ControlAlternatingRowBackgroundColors() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
@@ -802,60 +654,8 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="CreateFromColorSpaceName">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSColor CreateFromColorSpaceName (string colorSpace, MonoMac.Foundation.NSDictionary deviceDescription);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class MonoMac.AppKit.NSColor CreateFromColorSpaceName(string colorSpace, class MonoMac.Foundation.NSDictionary deviceDescription) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>MonoMac.Foundation.Export("colorUsingColorSpaceName:device:")</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>MonoMac.AppKit.NSColor</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="colorSpace" Type="System.String" />
-        <Parameter Name="deviceDescription" Type="MonoMac.Foundation.NSDictionary" />
-      </Parameters>
-      <Docs>
-        <param name="colorSpace">To be added.</param>
-        <param name="deviceDescription">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="CreateUsingColorSpace">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSColor CreateUsingColorSpace (MonoMac.AppKit.NSColorSpace space);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class MonoMac.AppKit.NSColor CreateUsingColorSpace(class MonoMac.AppKit.NSColorSpace space) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>MonoMac.Foundation.Export("colorUsingColorSpace:")</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>MonoMac.AppKit.NSColor</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="space" Type="MonoMac.AppKit.NSColorSpace" />
-      </Parameters>
-      <Docs>
-        <param name="space">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="CurrentControlTint">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSControlTint CurrentControlTint { get; }" />
+      <MemberSignature Language="C#" Value="public static MonoMac.AppKit.NSControlTint CurrentControlTint { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.AppKit.NSControlTint CurrentControlTint" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -983,9 +783,8 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="FromCalibratedHSBA">
-      <MemberSignature Language="C#" Value="public static MonoMac.AppKit.NSColor FromCalibratedHSBA (float hue, float saturation, float brightness, float alpha);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.AppKit.NSColor FromCalibratedHSBA(float32 hue, float32 saturation, float32 brightness, float32 alpha) cil managed" />
+    <Member MemberName="FromCalibratedHsba">
+      <MemberSignature Language="C#" Value="public static MonoMac.AppKit.NSColor FromCalibratedHsba (float hue, float saturation, float brightness, float alpha);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -1014,9 +813,8 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="FromCalibratedRGBA">
-      <MemberSignature Language="C#" Value="public static MonoMac.AppKit.NSColor FromCalibratedRGBA (float red, float green, float blue, float alpha);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.AppKit.NSColor FromCalibratedRGBA(float32 red, float32 green, float32 blue, float32 alpha) cil managed" />
+    <Member MemberName="FromCalibratedRgba">
+      <MemberSignature Language="C#" Value="public static MonoMac.AppKit.NSColor FromCalibratedRgba (float red, float green, float blue, float alpha);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -1099,6 +897,167 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="FromCIColor">
+      <MemberSignature Language="C#" Value="public static MonoMac.AppKit.NSColor FromCIColor (MonoMac.CoreImage.CIColor color);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("colorWithCIColor:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AppKit.NSColor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="color" Type="MonoMac.CoreImage.CIColor" />
+      </Parameters>
+      <Docs>
+        <param name="color">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FromColorSpace">
+      <MemberSignature Language="C#" Value="public static MonoMac.AppKit.NSColor FromColorSpace (MonoMac.AppKit.NSColorSpace space, float[] components);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.AppKit.NSColor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="space" Type="MonoMac.AppKit.NSColorSpace" />
+        <Parameter Name="components" Type="System.Single[]" />
+      </Parameters>
+      <Docs>
+        <param name="space">To be added.</param>
+        <param name="components">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FromControlTint">
+      <MemberSignature Language="C#" Value="public static MonoMac.AppKit.NSColor FromControlTint (MonoMac.AppKit.NSControlTint controlTint);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("colorForControlTint:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AppKit.NSColor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="controlTint" Type="MonoMac.AppKit.NSControlTint" />
+      </Parameters>
+      <Docs>
+        <param name="controlTint">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FromDeviceCymka">
+      <MemberSignature Language="C#" Value="public static MonoMac.AppKit.NSColor FromDeviceCymka (float cyan, float magenta, float yellow, float black, float alpha);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("colorWithDeviceCyan:magenta:yellow:black:alpha:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AppKit.NSColor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="cyan" Type="System.Single" />
+        <Parameter Name="magenta" Type="System.Single" />
+        <Parameter Name="yellow" Type="System.Single" />
+        <Parameter Name="black" Type="System.Single" />
+        <Parameter Name="alpha" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="cyan">To be added.</param>
+        <param name="magenta">To be added.</param>
+        <param name="yellow">To be added.</param>
+        <param name="black">To be added.</param>
+        <param name="alpha">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FromDeviceHsba">
+      <MemberSignature Language="C#" Value="public static MonoMac.AppKit.NSColor FromDeviceHsba (float hue, float saturation, float brightness, float alpha);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("colorWithDeviceHue:saturation:brightness:alpha:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AppKit.NSColor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="hue" Type="System.Single" />
+        <Parameter Name="saturation" Type="System.Single" />
+        <Parameter Name="brightness" Type="System.Single" />
+        <Parameter Name="alpha" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="hue">To be added.</param>
+        <param name="saturation">To be added.</param>
+        <param name="brightness">To be added.</param>
+        <param name="alpha">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FromDeviceRgba">
+      <MemberSignature Language="C#" Value="public static MonoMac.AppKit.NSColor FromDeviceRgba (float red, float green, float blue, float alpha);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("colorWithDeviceRed:green:blue:alpha:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AppKit.NSColor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="red" Type="System.Single" />
+        <Parameter Name="green" Type="System.Single" />
+        <Parameter Name="blue" Type="System.Single" />
+        <Parameter Name="alpha" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="red">To be added.</param>
+        <param name="green">To be added.</param>
+        <param name="blue">To be added.</param>
+        <param name="alpha">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="FromDeviceWhite">
       <MemberSignature Language="C#" Value="public static MonoMac.AppKit.NSColor FromDeviceWhite (float white, float alpha);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.AppKit.NSColor FromDeviceWhite(float32 white, float32 alpha) cil managed" />
@@ -1173,6 +1132,138 @@ public class MyClass : BaseClass {
         <param name="image">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetCmyka">
+      <MemberSignature Language="C#" Value="public virtual void GetCmyka (out float cyan, out float magenta, out float yellow, out float black, out float alpha);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("getCyan:magenta:yellow:black:alpha:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="cyan" Type="System.Single&amp;" RefType="out" />
+        <Parameter Name="magenta" Type="System.Single&amp;" RefType="out" />
+        <Parameter Name="yellow" Type="System.Single&amp;" RefType="out" />
+        <Parameter Name="black" Type="System.Single&amp;" RefType="out" />
+        <Parameter Name="alpha" Type="System.Single&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="cyan">To be added.</param>
+        <param name="magenta">To be added.</param>
+        <param name="yellow">To be added.</param>
+        <param name="black">To be added.</param>
+        <param name="alpha">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetComponents">
+      <MemberSignature Language="C#" Value="public void GetComponents (out float[] components);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="components" Type="System.Single[]&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="components">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetHsba">
+      <MemberSignature Language="C#" Value="public virtual void GetHsba (out float hue, out float saturation, out float brightness, out float alpha);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("getHue:saturation:brightness:alpha:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="hue" Type="System.Single&amp;" RefType="out" />
+        <Parameter Name="saturation" Type="System.Single&amp;" RefType="out" />
+        <Parameter Name="brightness" Type="System.Single&amp;" RefType="out" />
+        <Parameter Name="alpha" Type="System.Single&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="hue">To be added.</param>
+        <param name="saturation">To be added.</param>
+        <param name="brightness">To be added.</param>
+        <param name="alpha">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetRgba">
+      <MemberSignature Language="C#" Value="public virtual void GetRgba (out float red, out float green, out float blue, out float alpha);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("getRed:green:blue:alpha:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="red" Type="System.Single&amp;" RefType="out" />
+        <Parameter Name="green" Type="System.Single&amp;" RefType="out" />
+        <Parameter Name="blue" Type="System.Single&amp;" RefType="out" />
+        <Parameter Name="alpha" Type="System.Single&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="red">To be added.</param>
+        <param name="green">To be added.</param>
+        <param name="blue">To be added.</param>
+        <param name="alpha">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetWhiteAlpha">
+      <MemberSignature Language="C#" Value="public virtual void GetWhiteAlpha (out float white, out float alpha);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("getWhite:alpha:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="white" Type="System.Single&amp;" RefType="out" />
+        <Parameter Name="alpha" Type="System.Single&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="white">To be added.</param>
+        <param name="alpha">To be added.</param>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1324,7 +1415,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="HighlightWithLevel">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSColor HighlightWithLevel (float val);" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSColor HighlightWithLevel (float highlightLevel);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class MonoMac.AppKit.NSColor HighlightWithLevel(float32 val) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
@@ -1339,10 +1430,10 @@ public class MyClass : BaseClass {
         <ReturnType>MonoMac.AppKit.NSColor</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="val" Type="System.Single" />
+        <Parameter Name="highlightLevel" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="val">To be added.</param>
+        <param name="highlightLevel">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -1940,7 +2031,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="ShadowWithLevel">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSColor ShadowWithLevel (float val);" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSColor ShadowWithLevel (float shadowLevel);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class MonoMac.AppKit.NSColor ShadowWithLevel(float32 val) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
@@ -1955,10 +2046,10 @@ public class MyClass : BaseClass {
         <ReturnType>MonoMac.AppKit.NSColor</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="val" Type="System.Single" />
+        <Parameter Name="shadowLevel" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="val">To be added.</param>
+        <param name="shadowLevel">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -2003,6 +2094,80 @@ public class MyClass : BaseClass {
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UsingColorSpace">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSColor UsingColorSpace (MonoMac.AppKit.NSColorSpace colorSpace);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("colorUsingColorSpace:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AppKit.NSColor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="colorSpace" Type="MonoMac.AppKit.NSColorSpace" />
+      </Parameters>
+      <Docs>
+        <param name="colorSpace">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UsingColorSpace">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSColor UsingColorSpace (string colorSpaceName);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("colorUsingColorSpaceName:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AppKit.NSColor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="colorSpaceName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="colorSpaceName">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UsingColorSpace">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSColor UsingColorSpace (string colorSpaceName, MonoMac.Foundation.NSDictionary deviceDescription);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("colorUsingColorSpaceName:device:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AppKit.NSColor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="colorSpaceName" Type="System.String" />
+        <Parameter Name="deviceDescription" Type="MonoMac.Foundation.NSDictionary" />
+      </Parameters>
+      <Docs>
+        <param name="colorSpaceName">To be added.</param>
+        <param name="deviceDescription">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

@@ -148,6 +148,52 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public NSGradient (MonoMac.AppKit.NSColor[] colors, float[] locations);" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("initWithColorsAndLocations:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <Parameters>
+        <Parameter Name="colors" Type="MonoMac.AppKit.NSColor[]" />
+        <Parameter Name="locations" Type="System.Single[]" />
+      </Parameters>
+      <Docs>
+        <param name="colors">To be added.</param>
+        <param name="locations">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public NSGradient (MonoMac.AppKit.NSColor[] colors, float[] locations, MonoMac.AppKit.NSColorSpace colorSpace);" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("initWithColors:atLocations:colorSpace:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <Parameters>
+        <Parameter Name="colors" Type="MonoMac.AppKit.NSColor[]" />
+        <Parameter Name="locations" Type="System.Single[]" />
+        <Parameter Name="colorSpace" Type="MonoMac.AppKit.NSColorSpace" />
+      </Parameters>
+      <Docs>
+        <param name="colors">To be added.</param>
+        <param name="locations">To be added.</param>
+        <param name="colorSpace">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="ClassHandle">
       <MemberSignature Language="C#" Value="public override IntPtr ClassHandle { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance native int ClassHandle" />
@@ -371,8 +417,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="GetColor">
-      <MemberSignature Language="C#" Value="public virtual void GetColor (MonoMac.AppKit.NSColor color, float location, int index);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void GetColor(class MonoMac.AppKit.NSColor color, float32 location, int32 index) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual void GetColor (out MonoMac.AppKit.NSColor color, out float location, int index);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -386,8 +431,8 @@ public class MyClass : BaseClass {
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="color" Type="MonoMac.AppKit.NSColor" />
-        <Parameter Name="location" Type="System.Single" />
+        <Parameter Name="color" Type="MonoMac.AppKit.NSColor&amp;" RefType="out" />
+        <Parameter Name="location" Type="System.Single&amp;" RefType="out" />
         <Parameter Name="index" Type="System.Int32" />
       </Parameters>
       <Docs>
