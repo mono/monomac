@@ -47,7 +47,7 @@ populate: populate.exe
 	MONO_PATH=../src mono --debug populate.exe .
 
 populate.exe: populate.cs
-	gmcs populate.cs -r:../src/MonoMac.dll -r:System.Xml.Linq
+	dmcs populate.cs -r:../src/MonoMac.dll -r:System.Xml.Linq
 
 docfixer.exe: $(MACCORE)/docfixer.cs $(MACCORE)/docfixer.mm.cs AgilityPack.dll
 	gmcs -out:$@ -debug+ $(MACCORE)/docfixer.cs $(MACCORE)/docfixer.mm.cs -r:AgilityPack.dll -r:../src/MonoMac.dll -r:System.Xml.Linq -r:System.Xml
