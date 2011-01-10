@@ -52,6 +52,14 @@ populate.exe: populate.cs
 docfixer.exe: $(MACCORE)/docfixer.cs $(MACCORE)/docfixer.mm.cs AgilityPack.dll
 	gmcs -out:$@ -debug+ $(MACCORE)/docfixer.cs $(MACCORE)/docfixer.mm.cs -r:AgilityPack.dll -r:../src/MonoMac.dll -r:System.Xml.Linq -r:System.Xml
 
+dgc: document-generated-code
+
+document-generated-code: document-generated-code.exe
+	MONO_PATH=../src mono --debug document-generated-code.exe ../src/temp.dll .
+
+document-generated-code.exe: $(MACCORE)/document-generated-code.cs AgilityPack.dll $(MACCORE)/docfixer.cs $(MACCORE)/docfixer.mm.cs
+	dmcs -debug -main:DocumentGeneratedCode -out:document-generated-code.exe $(MACCORE)/document-generated-code.cs $(MACCORE)/docfixer.cs $(MACCORE)/docfixer.mm.cs -r:System.Xml.Linq -r:../src/_bmac.exe -r:../src/core.dll -define:MONOMAC -r:AgilityPack.dll
+
 run: docfixer.exe
 	-mkdir deploy
 	rsync -a en deploy
