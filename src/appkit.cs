@@ -2557,7 +2557,7 @@ namespace MonoMac.AppKit {
 
 		[Static]
 		[Export ("dragColor:withEvent:fromView:")]
-		bool DragColorwithEventfromView (NSColor color, NSEvent theEvent, NSView sourceView);
+		bool DragColorwithEventFromView (NSColor color, NSEvent theEvent, NSView sourceView);
 
 		[Static]
 		[Export ("setPickerMask:")]
@@ -9125,22 +9125,22 @@ namespace MonoMac.AppKit {
 		bool IsOpaque { get; }
 
 		[Export ("convertPoint:fromView:")]
-		PointF ConvertPointfromView (PointF aPoint, [NullAllowed] NSView aView);
+		PointF ConvertPointFromView (PointF aPoint, [NullAllowed] NSView aView);
 
 		[Export ("convertPoint:toView:")]
-		PointF ConvertPointtoView (PointF aPoint, [NullAllowed] NSView aView);
+		PointF ConvertPointToView (PointF aPoint, [NullAllowed] NSView aView);
 
 		[Export ("convertSize:fromView:")]
-		SizeF ConvertSizefromView (SizeF aSize, [NullAllowed] NSView aView);
+		SizeF ConvertSizeFromView (SizeF aSize, [NullAllowed] NSView aView);
 
 		[Export ("convertSize:toView:")]
-		SizeF ConvertSizetoView (SizeF aSize, [NullAllowed] NSView aView);
+		SizeF ConvertSizeToView (SizeF aSize, [NullAllowed] NSView aView);
 
 		[Export ("convertRect:fromView:")]
-		RectangleF ConvertRectfromView (RectangleF aRect, NSView aView);
+		RectangleF ConvertRectFromView (RectangleF aRect, NSView aView);
 
 		[Export ("convertRect:toView:")]
-		RectangleF ConvertRecttoView (RectangleF aRect, NSView aView);
+		RectangleF ConvertRectToView (RectangleF aRect, NSView aView);
 
 		[Export ("centerScanRect:")]
 		RectangleF CenterScanRect (RectangleF aRect);
