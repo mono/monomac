@@ -3946,10 +3946,12 @@ namespace MonoMac.AppKit {
 		[Export ("menuFontOfSize:")]
 		NSFont MenuFontOfSize (float fontSize);
 
-		[Export ("menuBarFontOfSize:")]
+		[Static]
+		[Export("menuBarFontOfSize:")]
 		NSFont MenuBarFontOfSize (float fontSize);
 
-		[Export ("messageFontOfSize:")]
+		[Static]
+		[Export("messageFontOfSize:")]
 		NSFont MessageFontOfSize (float fontSize);
 
 		[Static]
