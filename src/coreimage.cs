@@ -45,7 +45,7 @@ using MonoMac.CoreVideo;
 namespace MonoMac.CoreImage {
 
 	[BaseType (typeof (NSObject))]
-	interface CIColor {
+	public interface CIColor {
 		[Static]
 		[Export ("colorWithCGColor:")]
 		CIColor FromCGColor (CGColor c);
@@ -92,7 +92,7 @@ namespace MonoMac.CoreImage {
 	}
 
         [BaseType (typeof (NSObject))]
-	interface CIContext {
+	public interface CIContext {
 		// When we bind OpenGL add these:
 		//[Export ("contextWithCGLContext:pixelFormat:colorSpace:options:")]
 		//CIContext ContextWithCGLContextpixelFormatcolorSpaceoptions (CGLContextObj ctx, CGLPixelFormatObj pf, CGColorSpaceRef cs, NSDictionary dict, );
@@ -139,7 +139,7 @@ namespace MonoMac.CoreImage {
 	}
 
 	[BaseType (typeof (NSObject))]
-	interface CIFilter {
+	public interface CIFilter {
 		[Export ("inputKeys")]
 		string [] InputKeys { get; }
 
@@ -432,7 +432,7 @@ namespace MonoMac.CoreImage {
 	}
 
 	[BaseType (typeof (NSObject))]
-	interface CIFilterGenerator {
+	public interface CIFilterGenerator {
 		[Static, Export ("filterGenerator")]
 		CIFilterGenerator Create ();
 
@@ -485,7 +485,7 @@ namespace MonoMac.CoreImage {
 	}
 
 	[BaseType (typeof (NSObject))]
-	interface CIFilterShape {
+	public interface CIFilterShape {
 		[Export ("shapeWithRect:")]
 		CIFilterShape FromRect (RectangleF rect);
 
@@ -512,7 +512,7 @@ namespace MonoMac.CoreImage {
 	}
 
 	[BaseType (typeof (NSObject))]
-	interface CIImage {
+	public interface CIImage {
 		[Static]
 		[Export ("imageWithCGImage:")]
 		CIImage FromCGImage (CGImage image);
@@ -643,7 +643,7 @@ namespace MonoMac.CoreImage {
 	}
 
 	[BaseType (typeof (NSObject))]
-	interface CIImageAccumulator {
+	public interface CIImageAccumulator {
 		[Export ("imageAccumulatorWithExtent:format:")]
 		CIImageAccumulator FromRectangle (RectangleF rect, CIFormat format);
 
@@ -668,7 +668,7 @@ namespace MonoMac.CoreImage {
 	}
 
 	[BaseType (typeof (NSObject))]
-	interface CIKernel {
+	public interface CIKernel {
 		[Static, Export ("kernelsWithString:")]
 		CIKernel [] FromProgram (string coreImageShaderProgram);
 
@@ -680,7 +680,7 @@ namespace MonoMac.CoreImage {
 	}
 
 	[BaseType (typeof (NSObject))]
-	interface CIPlugIn {
+	public interface CIPlugIn {
 		[Static]
 		[Export ("loadAllPlugIns")]
 		void LoadAllPlugIns ();
@@ -695,7 +695,7 @@ namespace MonoMac.CoreImage {
 	}
 
 	[BaseType (typeof (NSObject))]
-	interface CISampler {
+	public interface CISampler {
 		[Static, Export ("samplerWithImage:")]
 		CISampler FromImage (CIImage sourceImage);
 

@@ -33,7 +33,7 @@ using MonoMac.CoreFoundation;
 namespace MonoMac.Foundation {
 	
 	[BaseType (typeof (NSObject))]
-	interface NSAffineTransform {
+	public interface NSAffineTransform {
 		[Static]
 		[Export ("transform")]
 		NSAffineTransform Transform ();
@@ -94,7 +94,7 @@ namespace MonoMac.Foundation {
 	//}
 
 	[BaseType (typeof (NSCharacterSet))]
-	interface NSMutableCharacterSet {
+	public interface NSMutableCharacterSet {
 		[Export ("removeCharactersInRange:")]
 		void RemoveCharacters (NSRange aRange);
 
@@ -117,7 +117,7 @@ namespace MonoMac.Foundation {
 
 
 	[BaseType (typeof (NSObject))]
-	interface NSOrthography {
+	public interface NSOrthography {
 		[Export ("dominantScript")]
 		NSString DominantScript { get;  }
 
@@ -145,7 +145,7 @@ namespace MonoMac.Foundation {
 	}
 
 	[BaseType (typeof (NSObject))]
-	interface NSTextCheckingResult {
+	public interface NSTextCheckingResult {
 		[Export ("resultType")]
 		NSTextCheckingType ResultType { get;  }
 
@@ -155,7 +155,7 @@ namespace MonoMac.Foundation {
 	}
 
 	[BaseType (typeof (NSObject))]
-	interface NSAppleEventDescriptor {
+	public interface NSAppleEventDescriptor {
 		[Export ("nullDescriptor"), Static]
 		NSAppleEventDescriptor Null { get; }
 	}
