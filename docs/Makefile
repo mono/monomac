@@ -70,7 +70,7 @@ run: docfixer.exe
 # this second stage documents other bits, using the metadata from the API definition file, not the resulting assembly
 #
 run2: document-generated-code.exe
-	MONO_PATH=../src mono --debug document-generated-code.exe --appledocs ../src/temp.dll .
+	MONO_PATH=../src mono --debug document-generated-code.exe --appledocs ../src/temp.dll deploy
 
 push:
 	rsync -a deploy/en/ root@mono.ximian.com:/srv/www/mono-website/monomac-docs/Docs/monomac.dll
