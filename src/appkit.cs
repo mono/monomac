@@ -182,7 +182,7 @@ namespace MonoMac.AppKit {
 		NSAlert WithError (NSError  error);
 	
 		[Static, Export ("alertWithMessageText:defaultButton:alternateButton:otherButton:informativeTextWithFormat:")]
-		NSAlert WithMessage (string  message, string  defaultButton, string  alternateButton, string  otherButton, string full);
+		NSAlert WithMessage([NullAllowed] string message, [NullAllowed] string defaultButton, [NullAllowed] string alternateButton, [NullAllowed]  string otherButton, string full);
 	
 		[Export ("messageText")]
 		string MessageText { get; set; }
@@ -3946,10 +3946,12 @@ namespace MonoMac.AppKit {
 		[Export ("menuFontOfSize:")]
 		NSFont MenuFontOfSize (float fontSize);
 
-		[Export ("menuBarFontOfSize:")]
+		[Static]
+		[Export("menuBarFontOfSize:")]
 		NSFont MenuBarFontOfSize (float fontSize);
 
-		[Export ("messageFontOfSize:")]
+		[Static]
+		[Export("messageFontOfSize:")]
 		NSFont MessageFontOfSize (float fontSize);
 
 		[Static]
