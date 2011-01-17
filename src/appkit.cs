@@ -3576,7 +3576,7 @@ namespace MonoMac.AppKit {
 		void RemoveDocument (NSDocument document);
 
 		[Export ("newDocument:")]
-		void NewDocument (NSObject sender);
+		void NewDocument ([NullAllowed] NSObject sender);
 
 		[Export ("openUntitledDocumentAndDisplay:error:")]
 		NSObject OpenUntitledDocument (bool displayDocument, out NSError outError);
@@ -3585,7 +3585,7 @@ namespace MonoMac.AppKit {
 		NSObject MakeUntitledDocument (string typeName, out NSError error);
 
 		[Export ("openDocument:")]
-		void OpenDocument (NSObject sender);
+		void OpenDocument ([NullAllowed] NSObject sender);
 
 		[Export ("URLsFromRunningOpenPanel")]
 		NSUrl [] UrlsFromRunningOpenPanel ();
@@ -3606,7 +3606,7 @@ namespace MonoMac.AppKit {
 		NSObject MakeDocument (NSUrl absoluteDocumentUrl, NSUrl absoluteDocumentContentsUrl, string typeName, NSError outError);
 
 		[Export ("saveAllDocuments:")]
-		void SaveAllDocuments (NSObject sender);
+		void SaveAllDocuments ([NullAllowed] NSObject sender);
 
 		[Export ("hasEditedDocuments")]
 		bool HasEditedDocuments { get; }
@@ -3630,7 +3630,7 @@ namespace MonoMac.AppKit {
 		int MaximumRecentDocumentCount { get; }
 
 		[Export ("clearRecentDocuments:")]
-		void ClearRecentDocuments (NSObject sender);
+		void ClearRecentDocuments ([NullAllowed] NSObject sender);
 
 		[Export ("noteNewRecentDocument:")]
 		void NoteNewRecentDocument (NSDocument document);
