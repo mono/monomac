@@ -2393,10 +2393,10 @@ namespace MonoMac.AppKit {
 		string ColorSpaceName { get; }
 
 		[Export ("colorUsingColorSpaceName:")]
-		NSColor UsingColorSpace (string colorSpaceName);
+		NSColor UsingColorSpace ([NullAllowed] string colorSpaceName);
 
 		[Export ("colorUsingColorSpaceName:device:")]
-		NSColor UsingColorSpace (string colorSpaceName, NSDictionary deviceDescription);
+		NSColor UsingColorSpace ([NullAllowed] string colorSpaceName, [NullAllowed] NSDictionary deviceDescription);
 
 		[Export ("colorUsingColorSpace:")]
 		NSColor UsingColorSpace (NSColorSpace colorSpace);
@@ -2516,7 +2516,7 @@ namespace MonoMac.AppKit {
 		IntPtr Constructor (string name);
 
 		[Export ("initWithName:fromFile:")]
-		IntPtr Constructor (string name, string path);
+		IntPtr Constructor (string name, [NullAllowed] string path);
 
 		[Export ("name")]
 		string Name { get; }
@@ -2540,7 +2540,7 @@ namespace MonoMac.AppKit {
 		bool IsEditable { get; }
 
 		[Export ("writeToFile:")]
-		bool WriteToFile (string path);
+		bool WriteToFile ([NullAllowed] string path);
 
 		[Export ("removeFile")]
 		void RemoveFile ();
@@ -2557,7 +2557,7 @@ namespace MonoMac.AppKit {
 
 		[Static]
 		[Export ("dragColor:withEvent:fromView:")]
-		bool DragColorwithEventFromView (NSColor color, NSEvent theEvent, NSView sourceView);
+		bool DragColor (NSColor color, NSEvent theEvent, NSView sourceView);
 
 		[Static]
 		[Export ("setPickerMask:")]
@@ -2571,10 +2571,10 @@ namespace MonoMac.AppKit {
 		float Alpha { get; }
 
 		[Export ("setAction:")]
-		void SetAction (Selector aSelector);
+		void SetAction ([NullAllowed] Selector aSelector);
 
 		[Export ("setTarget:")]
-		void SetTarget (NSObject anObject);
+		void SetTarget ([NullAllowed] NSObject anObject);
 
 		[Export ("attachColorList:")]
 		void AttachColorList (NSColorList colorList);

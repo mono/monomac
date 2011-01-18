@@ -805,7 +805,7 @@ namespace MonoMac.AppKit {
 	    ColorList	= 0x00000020,
 	    Wheel	= 0x00000040,
 	    Crayon	= 0x00000080,
-	    AllModesMask    = 0x0000ffff
+	    All		= 0x0000ffff
 	}
 #endregion
 #region NSDocument
@@ -1185,6 +1185,7 @@ namespace MonoMac.AppKit {
 
 	[Flags]
 	public enum NSGradientDrawingOptions {
+		None = 0,
 		BeforeStartingLocation =   (1 << 0),
 		AfterEndingLocation =    (1 << 1)
 	}

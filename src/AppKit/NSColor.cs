@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 using MonoMac.Foundation;
 using MonoMac.ObjCRuntime;
 using System.Runtime.InteropServices;
@@ -34,6 +35,31 @@ namespace MonoMac.AppKit {
 			Marshal.FreeHGlobal(pNativeFloatArray);
 
 			components = managedFloatArray;
+		}
+
+		public override string ToString ()
+		{
+			try {
+				string name = this.ColorSpaceName;
+				if (name == "NSNamedColorSpace")
+					return this.LocalizedCatalogNameComponent +"/" + this.LocalizedColorNameComponent;
+				if (name == "NSPatternColorSpace")
+					return "Pattern Color: " + this.PatternImage.Name;
+				
+				StringBuilder sb = new StringBuilder (this.ColorSpace.LocalizedName);
+				float[] components;
+				this.GetComponents (out components);
+				if (components.Length > 0)
+					sb.Append ("(" + components [0]);
+				for (int i = 1; i < components.Length; i++)
+					sb.Append ("," + components [i]);
+				sb.Append (")");
+				
+				return sb.ToString ();
+			} catch {
+				//fallback to base method if we have an unexpected condition.
+				return base.ToString ();
+			}
 		}
 	}
 }
