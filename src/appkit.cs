@@ -2,7 +2,6 @@
 // Copyright 2010, Novell, Inc.
 // Copyright 2010, Kenneth Pouncey
 // Coprightt 2010, James Clancey
-// 
 //
 // Permission is hereby granted, free of charge, to any person obtaining
 // a copy of this software and associated documentation files (the
@@ -684,9 +683,6 @@ namespace MonoMac.AppKit {
 	
 	[BaseType (typeof (NSObject))]
 	public interface NSBezierPath {
-		[Static]
-		[Export ("bezierPath")]
-		NSBezierPath CreateBezierPath ();
 
 		[Static]
 		[Export ("bezierPathWithRect:")]
@@ -698,7 +694,7 @@ namespace MonoMac.AppKit {
 
 		[Static]
 		[Export ("bezierPathWithRoundedRect:xRadius:yRadius:")]
-		NSBezierPath BezierPathWithRoundedRect (RectangleF rect, float xRadius, float yRadius);
+		NSBezierPath FromRoundedRect (RectangleF rect, float xRadius, float yRadius);
 
 		[Static]
 		[Export ("fillRect:")]
@@ -716,9 +712,10 @@ namespace MonoMac.AppKit {
 		[Export ("strokeLineFromPoint:toPoint:")]
 		void StrokeLine (PointF point1, PointF point2);
 
-		//[Static]
-		//[Export ("drawPackedGlyphs:atPoint:")]
-		//void DrawPackedGlyphsatPoint (IntPtr *packedGlyphs, PointF point);
+		//IntPtr is exposed because the packedGlyphs should be treated as a "black box"
+		[Static]
+		[Export ("drawPackedGlyphs:atPoint:")]
+		void DrawPackedGlyphsAtPoint (IntPtr packedGlyphs, PointF point);
 
 		[Export ("moveToPoint:")]
 		void MoveTo (PointF point);
@@ -744,11 +741,11 @@ namespace MonoMac.AppKit {
 		[Export ("relativeCurveToPoint:controlPoint1:controlPoint2:")]
 		void RelativeCurveTo (PointF endPoint, PointF controlPoint1, PointF controlPoint2);
 
-		//[Export ("getLineDash:count:phase:")]
-		//void GetLineDashcountphase (float pattern, 
+		[Export ("getLineDash:count:phase:"), Internal]
+		void _GetLineDash (IntPtr pattern, out int count, out float phase);
 
-		//[Export ("setLineDash:count:phase:")]
-		//void SetLineDashcountphase (float *pattern, int count, float phase);
+		[Export ("setLineDash:count:phase:"), Internal]
+		void _SetLineDash (IntPtr pattern, int count, float phase);
 
 		[Export ("stroke")]
 		void Stroke ();
@@ -786,16 +783,14 @@ namespace MonoMac.AppKit {
 		[Export ("elementCount")]
 		int ElementCount { get; }
 
-		// FIXME: marshal NSPoint as a NSPoint *, instead of an NSArray
-		//[Export ("elementAtIndex:associatedPoints:")]
-		//NSBezierPathElement ElementAt (int index, NSPoint [] points);
+		[Export ("elementAtIndex:associatedPoints:"), Internal]
+		NSBezierPathElement _ElementAt (int index, IntPtr points);
 
 		[Export ("elementAtIndex:")]
 		NSBezierPathElement ElementAt (int index);
 
-		// FIXME: marshal
-		//[Export ("setAssociatedPoints:atIndex:")]
-		//void SetAssociatedPointsatIndex (NSPointArray points, int index);
+		[Export ("setAssociatedPoints:atIndex:"), Internal]
+		void _SetAssociatedPointsAtIndex (IntPtr points, int index);
 
 		[Export ("appendBezierPath:")]
 		void AppendPath (NSBezierPath path);
@@ -803,9 +798,8 @@ namespace MonoMac.AppKit {
 		[Export ("appendBezierPathWithRect:")]
 		void AppendPathWithRect (RectangleF rect);
 
-		// FIXME: marshal
-		//[Export ("appendBezierPathWithPoints:count:")]
-		//void AppendPathWithPoints (NSPointArray points, int count);
+		[Export ("appendBezierPathWithPoints:count:"), Internal]
+		void _AppendPathWithPoints (IntPtr points, int count);
 
 		[Export ("appendBezierPathWithOvalInRect:")]
 		void AppendPathWithOvalInRect (RectangleF rect);
@@ -822,13 +816,12 @@ namespace MonoMac.AppKit {
 		[Export ("appendBezierPathWithGlyph:inFont:")]
 		void AppendPathWithGlyph (uint glyph, NSFont font);
 
-		// FIXME: Marshal NSGlypy *
-		//[Export ("appendBezierPathWithGlyphs:count:inFont:")]
-		//void AppendPathWithGlyphs (uint *glyphs, int count, NSFont font);
+		[Export ("appendBezierPathWithGlyphs:count:inFont:"), Internal]
+		void _AppendPathWithGlyphs (IntPtr glyphs, int count, NSFont font);
 
-		// FIXME: Marshal NSGlyph
-		//[Export ("appendBezierPathWithPackedGlyphs:")]
-		//void AppendPathWithPackedGlyphs (const char packedGlyphs);
+		//IntPtr is exposed because the packedGlyphs should be treated as a "black box"
+		[Export ("appendBezierPathWithPackedGlyphs:")]
+		void AppendPathWithPackedGlyphs (IntPtr packedGlyphs);
 
 		[Export ("appendBezierPathWithRoundedRect:xRadius:yRadius:")]
 		void AppendPathWithRoundedRect (RectangleF rect, float xRadius, float yRadius);
