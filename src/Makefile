@@ -57,6 +57,7 @@ MONOMAC_SOURCES = \
 	./AppKit/NSWindow.cs				\
 	./CoreImage/CIContext.cs			\
 	./CoreImage/CISampler.cs			\
+	./CoreImage/CIVector.cs				\
 	./Growl/Constants.cs				\
 	./QTKit/QTCaptureDevice.cs			\
 	./QTKit/QTMovie.cs				\
@@ -97,6 +98,7 @@ APIS = \
 	growl.cs		\
 	qtkit.cs		\
 	webkit.cs		\
+	composer.cs		\
 	$(SHARED_APIS)
 
 all: $(TARGETS)

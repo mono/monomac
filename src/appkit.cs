@@ -159,6 +159,7 @@ namespace MonoMac.AppKit {
 
 	[BaseType (typeof (NSObject))]
 	public interface NSAnimationContext {
+		[Static]
 		[Export ("beginGrouping")]
 		void BeginGrouping ();
 
@@ -9075,7 +9076,7 @@ namespace MonoMac.AppKit {
 		void RemoveFromSuperview ();
 
 		[Export ("replaceSubview:with:")]
-		void ReplaceSubviewwith (NSView oldView, NSView newView);
+		void ReplaceSubviewWith (NSView oldView, NSView newView);
 
 		[Export ("removeFromSuperviewWithoutNeedingDisplay")]
 		void RemoveFromSuperviewWithoutNeedingDisplay ();
@@ -9415,16 +9416,14 @@ namespace MonoMac.AppKit {
 		[Export ("alphaValue")]
 		float AlphaValue { get; set; }
 
-		// FIXME: CIFilter
-		
-		//[Export ("backgroundFilters")]
-		//CIFilter [] BackgroundFilters { get; set; }
+		[Export ("backgroundFilters"), NullAllowed]
+		CIFilter [] BackgroundFilters { get; set; }
 
-		//[Export ("compositingFilter")]
-		//CIFilter CompositingFilter { get; set; }
+		[Export ("compositingFilter"), NullAllowed]
+		CIFilter CompositingFilter { get; set; }
 
-		//[Export ("contentFilters")]
-		//CIFilter [] ContentFilters { get; set; }
+		[Export ("contentFilters"), NullAllowed]
+		CIFilter [] ContentFilters { get; set; }
 
 		[Export ("shadow")]
 		NSShadow Shadow { get; set; }

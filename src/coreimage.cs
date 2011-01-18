@@ -152,6 +152,9 @@ namespace MonoMac.CoreImage {
 		[Export ("attributes")]
 		NSDictionary Attributes { get; }
 
+		[Export ("name")]
+		string Name { get; set;}
+
 		[Export ("apply:arguments:options:")]
 		CIImage Applyargumentsoptions (CIKernel k, NSArray args, NSDictionary options);
 
@@ -733,4 +736,71 @@ namespace MonoMac.CoreImage {
 		[Field ("kCISamplerFilterLinear", "Quartz"), Internal]
 		NSString FilterLinear { get; }
 	}
+	
+	[BaseType (typeof (NSObject))]
+	interface CIVector {
+		[Static, Internal, Export ("vectorWithValues:count:")]
+		CIVector _FromValues (IntPtr values, int count);
+
+		[Static]
+		[Export ("vectorWithX:")]
+		CIVector Create (float x);
+
+		[Static]
+		[Export ("vectorWithX:Y:")]
+		CIVector Create (float x, float y);
+
+		[Static]
+		[Export ("vectorWithX:Y:Z:")]
+		CIVector Create (float x, float y, float z);
+
+		[Static]
+		[Export ("vectorWithX:Y:Z:W:")]
+		CIVector Create (float x, float y, float z, float w);
+
+		[Static]
+		[Export ("vectorWithString:")]
+		CIVector FromString (string representation);
+
+		[Internal, Export ("initWithValues:count:")]
+		IntPtr Constructor (IntPtr values, int count);
+
+		[Export ("initWithX:")]
+		IntPtr Constructor(float x);
+
+		[Export ("initWithX:Y:")]
+		IntPtr Constructor (float x, float y);
+
+		[Export ("initWithX:Y:Z:")]
+		IntPtr Constructor (float x, float y, float z);
+
+		[Export ("initWithX:Y:Z:W:")]
+		IntPtr Constructor (float x, float y, float z, float w);
+
+		[Export ("initWithString:")]
+		IntPtr Constructor (string representation);
+
+		[Export ("valueAtIndex:"), Internal]
+		float ValueAtIndex (int index);
+
+		[Export ("count")]
+		int Count { get; }
+
+		[Export ("X")]
+		float X { get; }
+
+		[Export ("Y")]
+		float Y { get; }
+
+		[Export ("Z")]
+		float Z { get; }
+
+		[Export ("W")]
+		float W { get; }
+
+		[Export ("stringRepresentation"), Internal]
+		string StringRepresentation ();
+
+	}
+	
 }

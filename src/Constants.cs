@@ -41,5 +41,7 @@ namespace MonoMac {
 		public const string CoreLocationLibrary = "/System/Library/Frameworks/CoreLocation.framework/CoreLocation";
 		public const string SecurityLibrary = "/System/Library/Frameworks/Security.framework/Security";
 		public const string CoreVideoLibrary = "/System/Library/Frameworks/CoreVideo.framework/CoreVideo";
+		public const string QuartzComposerLibrary = "/System/Library/Frameworks/Quartz.framework/Frameworks/QuartzComposer.framework/QuartzComposer";
+		
 	}
 }
