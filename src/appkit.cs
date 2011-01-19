@@ -5257,7 +5257,7 @@ namespace MonoMac.AppKit {
 		IntPtr Constructor (NSObject content);
 
 		[Export ("content")]
-		NSObjectController Content { get; set; }
+		NSObject Content { get; set; }
 
 		[Export ("selection")]
 		NSObjectController Selection { get; }
@@ -7578,10 +7578,10 @@ namespace MonoMac.AppKit {
 		void IncrementBy (double delta);
 
 		[Export ("startAnimation:")]
-		void StartAnimation (NSObject sender);
+		void StartAnimation ([NullAllowed] NSObject sender);
 
 		[Export ("stopAnimation:")]
-		void StopAnimation (NSObject sender);
+		void StopAnimation ([NullAllowed] NSObject sender);
 
 		[Export ("style")]
 		NSProgressIndicatorStyle Style { get; set; }
