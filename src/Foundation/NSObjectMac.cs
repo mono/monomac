@@ -40,6 +40,7 @@ namespace MonoMac.Foundation {
 		static IntPtr cl = Dlfcn.dlopen (Constants.CoreLocationLibrary, 1);
 		static IntPtr ll = Dlfcn.dlopen (Constants.SecurityLibrary, 1);
 		static IntPtr zc = Dlfcn.dlopen (Constants.QuartzComposerLibrary, 1);
+		static IntPtr cw = Dlfcn.dlopen (Constants.CoreWlanLibrary, 1);
 	}
 }
 
