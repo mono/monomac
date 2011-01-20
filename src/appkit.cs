@@ -1936,7 +1936,7 @@ namespace MonoMac.AppKit {
 		void PerformClick (NSObject sender);
 	
 		[Export ("focusRingType")]
-		NSFocusRingType focusRingType { get; set; }
+		NSFocusRingType FocusRingType { get; set; }
 	
 		[Static, Export ("defaultFocusRingType")]
 		NSFocusRingType DefaultFocusRingType { get; }
@@ -2017,7 +2017,7 @@ namespace MonoMac.AppKit {
 		NSCursor DocumentCursor { get; set; }
 	
 		[Export ("documentVisibleRect")]
-		RectangleF documentVisibleRect ();
+		RectangleF DocumentVisibleRect ();
 	
 		[Export ("viewFrameChanged:")]
 		void ViewFrameChanged (NSNotification  notification);
@@ -11548,7 +11548,7 @@ namespace MonoMac.AppKit {
 
 		[Abstract]
 		[Export ("tokenField:writeRepresentedObjects:toPasteboard:")]
-		bool isWriteRepresented (NSTokenField tokenField, NSArray objects, NSPasteboard pboard);
+		bool WriteRepresented (NSTokenField tokenField, NSArray objects, NSPasteboard pboard);
 
 		[Abstract]
 		[Export ("tokenField:readFromPasteboard:")]
@@ -12114,7 +12114,7 @@ namespace MonoMac.AppKit {
 		bool MovableByWindowBackground  { [Bind ("isMovableByWindowBackground")] get; set; }
 	
 		[Export ("hidesOnDeactivate")]
-		bool hidesOnDeactivate  { get; set; }
+		bool HidesOnDeactivate  { get; set; }
 	
 		[Export ("canHide")]
 		bool CanHide  { get; set; }
@@ -12141,10 +12141,10 @@ namespace MonoMac.AppKit {
 		void OrderFrontRegardless ();
 	
 		[Export ("miniwindowImage")]
-		NSImage MiniwindowImage { get; set; }
+		NSImage MiniWindowImage { get; set; }
 	
 		[Export ("miniwindowTitle")]
-		string miniwindowTitle  { get; set; }
+		string MiniWindowTitle  { get; set; }
 	
 		[Export ("dockTile")]
 		NSDockTile DockTile { get; } 
@@ -12255,7 +12255,7 @@ namespace MonoMac.AppKit {
 		NSWindowDepth DepthLimit  { get; set; }
 	
 		[Export ("dynamicDepthLimit")]
-		bool hasDynamicDepthLimit { [Bind ("hasDynamicDepthLimit")] get; set; }
+		bool HasDynamicDepthLimit { [Bind ("hasDynamicDepthLimit")] get; set; }
 	
 		[Export ("screen")]
 		NSScreen Screen { get; }
@@ -12516,7 +12516,7 @@ namespace MonoMac.AppKit {
 		NSObject Owner { get; }
 	
 		[Export ("windowFrameAutosaveName")]
-		string windowFrameAutosaveName { get; set; }
+		string WindowFrameAutosaveName { get; set; }
 	
 		[Export ("shouldCascadeWindows")]
 		bool ShouldCascadeWindows  { get; set; }
