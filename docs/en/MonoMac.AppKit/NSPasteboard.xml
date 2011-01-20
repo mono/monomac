@@ -131,31 +131,6 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="AvailableTypeFromArray">
-      <MemberSignature Language="C#" Value="public virtual string AvailableTypeFromArray (string[] types);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string AvailableTypeFromArray(string[] types) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>MonoMac.Foundation.Export("availableTypeFromArray:")</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="types" Type="System.String[]" />
-      </Parameters>
-      <Docs>
-        <param name="types">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="CanReadItemWithDataConformingToTypes">
       <MemberSignature Language="C#" Value="public virtual bool CanReadItemWithDataConformingToTypes (string[] utiTypes);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool CanReadItemWithDataConformingToTypes(string[] utiTypes) cil managed" />
@@ -215,11 +190,6 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("changeCount")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -228,6 +198,11 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("changeCount")</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
     <Member MemberName="ClassHandle">
       <MemberSignature Language="C#" Value="public override IntPtr ClassHandle { get; }" />
@@ -283,31 +258,6 @@ public class MyClass : BaseClass {
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="DataForType">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSData DataForType (string dataType);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class MonoMac.Foundation.NSData DataForType(string dataType) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>MonoMac.Foundation.Export("dataForType:")</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSData</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="dataType" Type="System.String" />
-      </Parameters>
-      <Docs>
-        <param name="dataType">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -371,17 +321,113 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("generalPasteboard")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.AppKit.NSPasteboard</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("generalPasteboard")</AttributeName>
+        </Attribute>
+      </Attributes>
+    </Member>
+    <Member MemberName="GetAvailableTypeFromArray">
+      <MemberSignature Language="C#" Value="public virtual string GetAvailableTypeFromArray (string[] types);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("availableTypeFromArray:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="types" Type="System.String[]" />
+      </Parameters>
+      <Docs>
+        <param name="types">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetDataForType">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSData GetDataForType (string dataType);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("dataForType:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSData</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="dataType" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="dataType">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetPropertyListForType">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject GetPropertyListForType (string dataType);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("propertyListForType:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="dataType" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="dataType">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetStringForType">
+      <MemberSignature Language="C#" Value="public virtual string GetStringForType (string dataType);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("stringForType:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="dataType" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="dataType">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -417,11 +463,6 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("name")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -430,10 +471,14 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("name")</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
-    <Member MemberName="NSColorPboardType">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSColorPboardType { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString NSColorPboardType" />
+    <Member MemberName="NSColorType">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSColorType { get; }" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -447,9 +492,8 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="NSDragPboard">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSDragPboard { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString NSDragPboard" />
+    <Member MemberName="NSDragPasteboardName">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSDragPasteboardName { get; }" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -463,9 +507,8 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="NSFileContentsPboardType">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSFileContentsPboardType { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString NSFileContentsPboardType" />
+    <Member MemberName="NSFileContentsType">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSFileContentsType { get; }" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -479,9 +522,8 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="NSFilenamesPboardType">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSFilenamesPboardType { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString NSFilenamesPboardType" />
+    <Member MemberName="NSFilenamesType">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSFilenamesType { get; }" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -495,9 +537,8 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="NSFilesPromisePboardType">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSFilesPromisePboardType { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString NSFilesPromisePboardType" />
+    <Member MemberName="NSFilesPromiseType">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSFilesPromiseType { get; }" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -511,9 +552,8 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="NSFontPboardType">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSFontPboardType { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString NSFontPboardType" />
+    <Member MemberName="NSFindPasteboardName">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSFindPasteboardName { get; }" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -527,9 +567,8 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="NSHtmlPboardType">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSHtmlPboardType { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString NSHtmlPboardType" />
+    <Member MemberName="NSFontPasteboardName">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSFontPasteboardName { get; }" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -543,9 +582,8 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="NSMultipleTextSelectionPboardType">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSMultipleTextSelectionPboardType { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString NSMultipleTextSelectionPboardType" />
+    <Member MemberName="NSFontType">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSFontType { get; }" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -559,9 +597,8 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="NSPdfPboardType">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSPdfPboardType { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString NSPdfPboardType" />
+    <Member MemberName="NSGeneralPasteboardName">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSGeneralPasteboardName { get; }" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -575,9 +612,8 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="NSPictPboardType">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSPictPboardType { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString NSPictPboardType" />
+    <Member MemberName="NSHtmlType">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSHtmlType { get; }" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -591,9 +627,8 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="NSPostScriptPboardType">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSPostScriptPboardType { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString NSPostScriptPboardType" />
+    <Member MemberName="NSMultipleTextSelectionType">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSMultipleTextSelectionType { get; }" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -607,9 +642,8 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="NSRtfdPboardType">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSRtfdPboardType { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString NSRtfdPboardType" />
+    <Member MemberName="NSPdfType">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSPdfType { get; }" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -623,9 +657,8 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="NSRtfPboardType">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSRtfPboardType { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString NSRtfPboardType" />
+    <Member MemberName="NSPictType">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSPictType { get; }" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -639,9 +672,8 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="NSRulerPboardType">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSRulerPboardType { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString NSRulerPboardType" />
+    <Member MemberName="NSPostScriptType">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSPostScriptType { get; }" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -655,9 +687,8 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="NSStringPboardType">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSStringPboardType { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString NSStringPboardType" />
+    <Member MemberName="NSRtfdType">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSRtfdType { get; }" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -671,9 +702,8 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="NSTabularTextPboardType">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSTabularTextPboardType { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString NSTabularTextPboardType" />
+    <Member MemberName="NSRtfType">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSRtfType { get; }" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -687,9 +717,8 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="NSTiffPboardType">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSTiffPboardType { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString NSTiffPboardType" />
+    <Member MemberName="NSRulerPasteboardName">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSRulerPasteboardName { get; }" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -703,9 +732,8 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="NSUrlPboardType">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSUrlPboardType { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString NSUrlPboardType" />
+    <Member MemberName="NSRulerType">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSRulerType { get; }" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -719,9 +747,68 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="NSVCardPboardType">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSVCardPboardType { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString NSVCardPboardType" />
+    <Member MemberName="NSStringType">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSStringType { get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NSTabularTextType">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSTabularTextType { get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NSTiffType">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSTiffType { get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NSUrlType">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSUrlType { get; }" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NSVCardType">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSVCardType { get; }" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -742,11 +829,6 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("pasteboardItems")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.AppKit.NSPasteboardItem[]</ReturnType>
       </ReturnValue>
@@ -755,35 +837,14 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-    </Member>
-    <Member MemberName="PropertyListForType">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject PropertyListForType (string dataType);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class MonoMac.Foundation.NSObject PropertyListForType(string dataType) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>MonoMac.Foundation.Export("propertyListForType:")</AttributeName>
+          <AttributeName>get: MonoMac.Foundation.Export("pasteboardItems")</AttributeName>
         </Attribute>
       </Attributes>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="dataType" Type="System.String" />
-      </Parameters>
-      <Docs>
-        <param name="dataType">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
     </Member>
-    <Member MemberName="ReadObjectsForClassesoptions">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject[] ReadObjectsForClassesoptions (MonoMac.AppKit.NSPasteboardReading[] classArray, MonoMac.Foundation.NSDictionary options);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class MonoMac.Foundation.NSObject[] ReadObjectsForClassesoptions(class MonoMac.AppKit.NSPasteboardReading[] classArray, class MonoMac.Foundation.NSDictionary options) cil managed" />
+    <Member MemberName="ReadObjectsForClasses">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject[] ReadObjectsForClasses (MonoMac.AppKit.NSPasteboardReading[] classArray, MonoMac.Foundation.NSDictionary options);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -829,9 +890,8 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="SetDataforType">
-      <MemberSignature Language="C#" Value="public virtual bool SetDataforType (MonoMac.Foundation.NSData data, string dataType);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool SetDataforType(class MonoMac.Foundation.NSData data, string dataType) cil managed" />
+    <Member MemberName="SetDataForType">
+      <MemberSignature Language="C#" Value="public virtual bool SetDataForType (MonoMac.Foundation.NSData data, string dataType);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -856,9 +916,8 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="SetPropertyListforType">
-      <MemberSignature Language="C#" Value="public virtual bool SetPropertyListforType (MonoMac.Foundation.NSObject plist, string dataType);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool SetPropertyListforType(class MonoMac.Foundation.NSObject plist, string dataType) cil managed" />
+    <Member MemberName="SetPropertyListForType">
+      <MemberSignature Language="C#" Value="public virtual bool SetPropertyListForType (MonoMac.Foundation.NSObject plist, string dataType);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -883,9 +942,8 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="SetStringforType">
-      <MemberSignature Language="C#" Value="public virtual bool SetStringforType (string str, string dataType);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool SetStringforType(string str, string dataType) cil managed" />
+    <Member MemberName="SetStringForType">
+      <MemberSignature Language="C#" Value="public virtual bool SetStringForType (string str, string dataType);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -910,31 +968,6 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="StringForType">
-      <MemberSignature Language="C#" Value="public virtual string StringForType (string dataType);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string StringForType(string dataType) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>MonoMac.Foundation.Export("stringForType:")</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="dataType" Type="System.String" />
-      </Parameters>
-      <Docs>
-        <param name="dataType">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Types">
       <MemberSignature Language="C#" Value="public virtual string[] Types { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string[] Types" />
@@ -942,11 +975,6 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("types")</AttributeName>
-        </Attribute>
-      </Attributes>
       <ReturnValue>
         <ReturnType>System.String[]</ReturnType>
       </ReturnValue>
@@ -955,6 +983,11 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("types")</AttributeName>
+        </Attribute>
+      </Attributes>
     </Member>
     <Member MemberName="WriteObjects">
       <MemberSignature Language="C#" Value="public virtual bool WriteObjects (MonoMac.AppKit.NSPasteboardReading[] objects);" />

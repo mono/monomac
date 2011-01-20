@@ -1,7 +1,7 @@
 <Type Name="NSUrl" FullName="MonoMac.Foundation.NSUrl">
   <TypeSignature Language="C#" Value="public class NSUrl : MonoMac.Foundation.NSObject" />
   <AssemblyInfo>
-    <AssemblyName>monomac</AssemblyName>
+    <AssemblyName>MonoMac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -318,6 +318,30 @@ public class MyClass : BaseClass {
         <summary>Creates an NSUrl from a filename.</summary>
         <returns>An NSUrl that points to the given filename.</returns>
         <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="FromPasteboard">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSUrl FromPasteboard (MonoMac.AppKit.NSPasteboard pasteboard);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("URLFromPasteboard:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSUrl</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pasteboard" Type="MonoMac.AppKit.NSPasteboard" />
+      </Parameters>
+      <Docs>
+        <param name="pasteboard">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="FromString">
@@ -696,6 +720,29 @@ public class MyClass : BaseClass {
           <AttributeName>get: MonoMac.Foundation.Export("user")</AttributeName>
         </Attribute>
       </Attributes>
+    </Member>
+    <Member MemberName="WriteToPasteboard">
+      <MemberSignature Language="C#" Value="public virtual void WriteToPasteboard (MonoMac.AppKit.NSPasteboard pasteboard);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("writeToPasteboard:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pasteboard" Type="MonoMac.AppKit.NSPasteboard" />
+      </Parameters>
+      <Docs>
+        <param name="pasteboard">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
   </Members>
 </Type>

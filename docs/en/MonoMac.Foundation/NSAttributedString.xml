@@ -1,7 +1,7 @@
 <Type Name="NSAttributedString" FullName="MonoMac.Foundation.NSAttributedString">
   <TypeSignature Language="C#" Value="public class NSAttributedString : MonoMac.Foundation.NSObject" />
   <AssemblyInfo>
-    <AssemblyName>monomac</AssemblyName>
+    <AssemblyName>MonoMac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -140,18 +140,23 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public NSAttributedString (string str, MonoMac.CoreText.CTStringAttributes attributes);" />
+      <MemberSignature Language="C#" Value="public NSAttributedString (MonoMac.Foundation.NSData wordDocFormat, out MonoMac.Foundation.NSDictionary docAttributes);" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("initWithDocFormat:documentAttributes:")</AttributeName>
+        </Attribute>
+      </Attributes>
       <Parameters>
-        <Parameter Name="str" Type="System.String" />
-        <Parameter Name="attributes" Type="MonoMac.CoreText.CTStringAttributes" />
+        <Parameter Name="wordDocFormat" Type="MonoMac.Foundation.NSData" />
+        <Parameter Name="docAttributes" Type="MonoMac.Foundation.NSDictionary&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="str">To be added.</param>
-        <param name="attributes">To be added.</param>
+        <param name="wordDocFormat">To be added.</param>
+        <param name="docAttributes">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -174,6 +179,56 @@ public class MyClass : BaseClass {
       <Docs>
         <param name="str">To be added.</param>
         <param name="attributes">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public NSAttributedString (MonoMac.Foundation.NSData htmlData, MonoMac.Foundation.NSUrl baseUrl, out MonoMac.Foundation.NSDictionary docAttributes);" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("initWithHTML:baseURL:documentAttributes:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <Parameters>
+        <Parameter Name="htmlData" Type="MonoMac.Foundation.NSData" />
+        <Parameter Name="baseUrl" Type="MonoMac.Foundation.NSUrl" />
+        <Parameter Name="docAttributes" Type="MonoMac.Foundation.NSDictionary&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="htmlData">To be added.</param>
+        <param name="baseUrl">To be added.</param>
+        <param name="docAttributes">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public NSAttributedString (MonoMac.Foundation.NSData data, MonoMac.Foundation.NSDictionary options, out MonoMac.Foundation.NSDictionary docAttributes, out MonoMac.Foundation.NSError error);" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("initWithData:options:documentAttributes:error:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <Parameters>
+        <Parameter Name="data" Type="MonoMac.Foundation.NSData" />
+        <Parameter Name="options" Type="MonoMac.Foundation.NSDictionary" />
+        <Parameter Name="docAttributes" Type="MonoMac.Foundation.NSDictionary&amp;" RefType="out" />
+        <Parameter Name="error" Type="MonoMac.Foundation.NSError&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="data">To be added.</param>
+        <param name="options">To be added.</param>
+        <param name="docAttributes">To be added.</param>
+        <param name="error">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -394,24 +449,23 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Substring">
-      <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSAttributedString Substring (int start, int len);" />
-      <MemberType>Method</MemberType>
+    <Member MemberName="Size">
+      <MemberSignature Language="C#" Value="public virtual System.Drawing.SizeF Size { get; }" />
+      <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("size")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSAttributedString</ReturnType>
+        <ReturnType>System.Drawing.SizeF</ReturnType>
       </ReturnValue>
-      <Parameters>
-        <Parameter Name="start" Type="System.Int32" />
-        <Parameter Name="len" Type="System.Int32" />
-      </Parameters>
       <Docs>
-        <param name="start">To be added.</param>
-        <param name="len">To be added.</param>
         <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

@@ -107,36 +107,8 @@ public class MyClass : BaseClass {
         </remarks>
       </Docs>
     </Member>
-    <Member MemberName="InitWithPasteboardPropertyListofType">
-      <MemberSignature Language="C#" Value="public abstract MonoMac.Foundation.NSObject InitWithPasteboardPropertyListofType (MonoMac.Foundation.NSObject propertyList, string type);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class MonoMac.Foundation.NSObject InitWithPasteboardPropertyListofType(class MonoMac.Foundation.NSObject propertyList, string type) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>MonoMac.Foundation.Export("initWithPasteboardPropertyList:ofType:")</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="propertyList" Type="MonoMac.Foundation.NSObject" />
-        <Parameter Name="type" Type="System.String" />
-      </Parameters>
-      <Docs>
-        <param name="propertyList">To be added.</param>
-        <param name="type">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ReadableTypesForPasteboard">
-      <MemberSignature Language="C#" Value="public abstract string[] ReadableTypesForPasteboard (MonoMac.AppKit.NSPasteboard pasteboard);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string[] ReadableTypesForPasteboard(class MonoMac.AppKit.NSPasteboard pasteboard) cil managed" />
+    <Member MemberName="GetReadableTypesForPasteboard">
+      <MemberSignature Language="C#" Value="public abstract string[] GetReadableTypesForPasteboard (MonoMac.AppKit.NSPasteboard pasteboard);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -159,9 +131,8 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="ReadingOptionsForTypepasteboard">
-      <MemberSignature Language="C#" Value="public abstract MonoMac.AppKit.NSPasteboardReadingOptions ReadingOptionsForTypepasteboard (string type, MonoMac.AppKit.NSPasteboard pasteboard);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype MonoMac.AppKit.NSPasteboardReadingOptions ReadingOptionsForTypepasteboard(string type, class MonoMac.AppKit.NSPasteboard pasteboard) cil managed" />
+    <Member MemberName="GetReadingOptionsForType">
+      <MemberSignature Language="C#" Value="public abstract MonoMac.AppKit.NSPasteboardReadingOptions GetReadingOptionsForType (string type, MonoMac.AppKit.NSPasteboard pasteboard);" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -181,6 +152,32 @@ public class MyClass : BaseClass {
       <Docs>
         <param name="type">To be added.</param>
         <param name="pasteboard">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitWithPasteboardPropertyList">
+      <MemberSignature Language="C#" Value="public abstract MonoMac.Foundation.NSObject InitWithPasteboardPropertyList (MonoMac.Foundation.NSObject propertyList, string type);" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("initWithPasteboardPropertyList:ofType:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="propertyList" Type="MonoMac.Foundation.NSObject" />
+        <Parameter Name="type" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="propertyList">To be added.</param>
+        <param name="type">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>

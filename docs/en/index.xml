@@ -597,6 +597,7 @@
       <Type Name="CALayer" Kind="Class" />
       <Type Name="CALayerDelegate" Kind="Class" />
       <Type Name="CAMediaTimingFunction" Kind="Class" />
+      <Type Name="CAOpenGLLayer" Kind="Class" />
       <Type Name="CAPropertyAnimation" Kind="Class" />
       <Type Name="CAReplicatorLayer" Kind="Class" />
       <Type Name="CAScrollLayer" Kind="Class" />
@@ -713,6 +714,7 @@
       <Type Name="CIPlugIn" Kind="Class" />
       <Type Name="CISampler" Kind="Class" />
       <Type Name="CISamplerOptions" Kind="Class" />
+      <Type Name="CIVector" Kind="Class" />
       <Type Name="CIWrapMode" Kind="Enumeration" />
     </Namespace>
     <Namespace Name="MonoMac.CoreLocation">
@@ -809,6 +811,14 @@
       <Type Name="CVPlanarPixelBufferInfo" Kind="Structure" />
       <Type Name="CVPlanarPixelBufferInfo_YCbCrPlanar" Kind="Structure" />
       <Type Name="CVReturn" Kind="Enumeration" />
+      <Type Name="CVTimeStamp" Kind="Structure" />
+    </Namespace>
+    <Namespace Name="MonoMac.CoreWlan">
+      <Type Name="CW8021XProfile" Kind="Class" />
+      <Type Name="CWConfiguration" Kind="Class" />
+      <Type Name="CWInterface" Kind="Class" />
+      <Type Name="CWNetwork" Kind="Class" />
+      <Type Name="CWWirelessProfile" Kind="Class" />
     </Namespace>
     <Namespace Name="MonoMac.Foundation">
       <Type Name="ConnectAttribute" Kind="Class" />
@@ -1050,6 +1060,11 @@
       <Type Name="QTTrack" Kind="Class" />
       <Type Name="TimeFlags" Kind="Enumeration" />
     </Namespace>
+    <Namespace Name="MonoMac.QuartzComposer">
+      <Type Name="QCComposition" Kind="Class" />
+      <Type Name="QCCompositionLayer" Kind="Class" />
+      <Type Name="QCCompositionRepository" Kind="Class" />
+    </Namespace>
     <Namespace Name="MonoMac.Security">
       <Type Name="SecAccessible" Kind="Enumeration" />
       <Type Name="SecAuthenticationType" Kind="Enumeration" />
@@ -1201,7 +1216,6 @@
       </Targets>
       <Member MemberName="Divide">
         <MemberSignature Language="C#" Value="public static void Divide (this System.Drawing.RectangleF self, float amount, MonoMac.CoreGraphics.CGRectEdge edge, out System.Drawing.RectangleF slice, out System.Drawing.RectangleF remainder);" />
-        <MemberSignature Language="ILAsm" Value=".method public static hidebysig void Divide(valuetype System.Drawing.RectangleF self, float32 amount, valuetype MonoMac.CoreGraphics.CGRectEdge edge, valuetype System.Drawing.RectangleF slice, valuetype System.Drawing.RectangleF remainder) cil managed" />
         <MemberType>ExtensionMethod</MemberType>
         <ReturnValue>
           <ReturnType>System.Void</ReturnType>
@@ -1230,7 +1244,6 @@
       </Targets>
       <Member MemberName="GetMaxX">
         <MemberSignature Language="C#" Value="public static float GetMaxX (this System.Drawing.RectangleF self);" />
-        <MemberSignature Language="ILAsm" Value=".method public static hidebysig float32 GetMaxX(valuetype System.Drawing.RectangleF self) cil managed" />
         <MemberType>ExtensionMethod</MemberType>
         <ReturnValue>
           <ReturnType>System.Single</ReturnType>
@@ -1251,7 +1264,6 @@
       </Targets>
       <Member MemberName="GetMaxY">
         <MemberSignature Language="C#" Value="public static float GetMaxY (this System.Drawing.RectangleF self);" />
-        <MemberSignature Language="ILAsm" Value=".method public static hidebysig float32 GetMaxY(valuetype System.Drawing.RectangleF self) cil managed" />
         <MemberType>ExtensionMethod</MemberType>
         <ReturnValue>
           <ReturnType>System.Single</ReturnType>
@@ -1272,7 +1284,6 @@
       </Targets>
       <Member MemberName="GetMidX">
         <MemberSignature Language="C#" Value="public static float GetMidX (this System.Drawing.RectangleF self);" />
-        <MemberSignature Language="ILAsm" Value=".method public static hidebysig float32 GetMidX(valuetype System.Drawing.RectangleF self) cil managed" />
         <MemberType>ExtensionMethod</MemberType>
         <ReturnValue>
           <ReturnType>System.Single</ReturnType>
@@ -1293,7 +1304,6 @@
       </Targets>
       <Member MemberName="GetMidY">
         <MemberSignature Language="C#" Value="public static float GetMidY (this System.Drawing.RectangleF self);" />
-        <MemberSignature Language="ILAsm" Value=".method public static hidebysig float32 GetMidY(valuetype System.Drawing.RectangleF self) cil managed" />
         <MemberType>ExtensionMethod</MemberType>
         <ReturnValue>
           <ReturnType>System.Single</ReturnType>
@@ -1314,7 +1324,6 @@
       </Targets>
       <Member MemberName="GetMinX">
         <MemberSignature Language="C#" Value="public static float GetMinX (this System.Drawing.RectangleF self);" />
-        <MemberSignature Language="ILAsm" Value=".method public static hidebysig float32 GetMinX(valuetype System.Drawing.RectangleF self) cil managed" />
         <MemberType>ExtensionMethod</MemberType>
         <ReturnValue>
           <ReturnType>System.Single</ReturnType>
@@ -1335,7 +1344,6 @@
       </Targets>
       <Member MemberName="GetMinY">
         <MemberSignature Language="C#" Value="public static float GetMinY (this System.Drawing.RectangleF self);" />
-        <MemberSignature Language="ILAsm" Value=".method public static hidebysig float32 GetMinY(valuetype System.Drawing.RectangleF self) cil managed" />
         <MemberType>ExtensionMethod</MemberType>
         <ReturnValue>
           <ReturnType>System.Single</ReturnType>
@@ -1356,7 +1364,6 @@
       </Targets>
       <Member MemberName="Inset">
         <MemberSignature Language="C#" Value="public static System.Drawing.RectangleF Inset (this System.Drawing.RectangleF self, float dx, float dy);" />
-        <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype System.Drawing.RectangleF Inset(valuetype System.Drawing.RectangleF self, float32 dx, float32 dy) cil managed" />
         <MemberType>ExtensionMethod</MemberType>
         <ReturnValue>
           <ReturnType>System.Drawing.RectangleF</ReturnType>
@@ -1381,7 +1388,6 @@
       </Targets>
       <Member MemberName="Integral">
         <MemberSignature Language="C#" Value="public static System.Drawing.RectangleF Integral (this System.Drawing.RectangleF self);" />
-        <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype System.Drawing.RectangleF Integral(valuetype System.Drawing.RectangleF self) cil managed" />
         <MemberType>ExtensionMethod</MemberType>
         <ReturnValue>
           <ReturnType>System.Drawing.RectangleF</ReturnType>
@@ -1402,7 +1408,6 @@
       </Targets>
       <Member MemberName="IsInfinite">
         <MemberSignature Language="C#" Value="public static bool IsInfinite (this System.Drawing.RectangleF self);" />
-        <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool IsInfinite(valuetype System.Drawing.RectangleF self) cil managed" />
         <MemberType>ExtensionMethod</MemberType>
         <ReturnValue>
           <ReturnType>System.Boolean</ReturnType>
@@ -1423,7 +1428,6 @@
       </Targets>
       <Member MemberName="IsNull">
         <MemberSignature Language="C#" Value="public static bool IsNull (this System.Drawing.RectangleF self);" />
-        <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool IsNull(valuetype System.Drawing.RectangleF self) cil managed" />
         <MemberType>ExtensionMethod</MemberType>
         <ReturnValue>
           <ReturnType>System.Boolean</ReturnType>
@@ -1444,7 +1448,6 @@
       </Targets>
       <Member MemberName="Standardize">
         <MemberSignature Language="C#" Value="public static System.Drawing.RectangleF Standardize (this System.Drawing.RectangleF self);" />
-        <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype System.Drawing.RectangleF Standardize(valuetype System.Drawing.RectangleF self) cil managed" />
         <MemberType>ExtensionMethod</MemberType>
         <ReturnValue>
           <ReturnType>System.Drawing.RectangleF</ReturnType>
@@ -1465,7 +1468,6 @@
       </Targets>
       <Member MemberName="UnionWith">
         <MemberSignature Language="C#" Value="public static System.Drawing.RectangleF UnionWith (this System.Drawing.RectangleF self, System.Drawing.RectangleF other);" />
-        <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype System.Drawing.RectangleF UnionWith(valuetype System.Drawing.RectangleF self, valuetype System.Drawing.RectangleF other) cil managed" />
         <MemberType>ExtensionMethod</MemberType>
         <ReturnValue>
           <ReturnType>System.Drawing.RectangleF</ReturnType>
