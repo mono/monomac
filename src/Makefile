@@ -94,6 +94,7 @@ SHARED_APIS = $(patsubst %,../../maccore/src/%,$(SHARED_API))
 APIS = \
 	appkit.cs		\
 	coreimage.cs		\
+	corewlan.cs		\
 	foundation-desktop.cs 	\
 	growl.cs		\
 	qtkit.cs		\
