@@ -15,8 +15,9 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>NSAffineTransform provides methods for manipulating and applying affine transforms</summary>
+    <remarks>A transform provides instructions for transforming points from one coordinate
+    system to another.  An affine transformation preserves parallel lines.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -33,8 +34,8 @@
       </Attributes>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Creates a new identity transformation.</summary>
+        <remarks>An identity transformation converts any point to the same point.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -53,8 +54,8 @@
         <Parameter Name="transform" Type="MonoMac.Foundation.NSAffineTransform" />
       </Parameters>
       <Docs>
-        <param name="transform">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="transform">The transformation to copy.</param>
+        <summary>Creates a new transformation matching the input value.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -144,9 +145,10 @@ public class MyClass : BaseClass {
         <Parameter Name="transform" Type="MonoMac.Foundation.NSAffineTransform" />
       </Parameters>
       <Docs>
-        <param name="transform">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="transform">A transformation to concatenate with the caller</param>
+        <summary>Caller's transformation is replaced with caller's transformation multiplied by the supplied transformation</summary>
+        <remarks>This is equivalent to applying the caller's transformation, then applying the provided transformation.
+        Compare with PrependTransform.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ClassHandle">
@@ -182,8 +184,9 @@ public class MyClass : BaseClass {
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Appends the caller's transformation to the current graphics context.</summary>
+        <remarks>The current graphics context typically has a transformation reflecting the needs of the screen,
+        window and superviews.  This method adds additional transformation.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Invert">
@@ -203,8 +206,9 @@ public class MyClass : BaseClass {
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Replaces the transformation in the caller with the inverse of its current transformation.</summary>
+        <remarks>Applying an inverse transformations, will revert coordinates to thier previous values.
+        This is handy when used with the concat method to undo changes to the current graphics context</remarks>
       </Docs>
     </Member>
     <Member MemberName="PrependTransform">
@@ -226,9 +230,10 @@ public class MyClass : BaseClass {
         <Parameter Name="transform" Type="MonoMac.Foundation.NSAffineTransform" />
       </Parameters>
       <Docs>
-        <param name="transform">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="transform">A transformation to concatenate with this transformation</param>
+        <summary>This transformation is replaced by the supplied transformation multiplied by the this transformation</summary>
+        <remarks>This is equivalent to applying the provided transformation then applying the caller's transformation.
+        Compare with AppendTransform.</remarks>
       </Docs>
     </Member>
     <Member MemberName="RotateByDegrees">
@@ -250,8 +255,8 @@ public class MyClass : BaseClass {
         <Parameter Name="angle" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="angle">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="angle">The rotation angle (in degrees).</param>
+        <summary>Appends a rotation factor to this transformation.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -274,8 +279,8 @@ public class MyClass : BaseClass {
         <Parameter Name="angle" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="angle">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="angle">The rotation angle (in radians).</param>
+        <summary>Appends a rotation factor to this transformation.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -298,8 +303,8 @@ public class MyClass : BaseClass {
         <Parameter Name="scale" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="scale">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="scale">The scale factor for the X and Y directions.</param>
+        <summary>Appends the scale factor to both axis in this transformation.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -323,10 +328,10 @@ public class MyClass : BaseClass {
         <Parameter Name="scaleY" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="scaleX">To be added.</param>
-        <param name="scaleY">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="scaleX">The scale factor for the X direction.</param>
+        <param name="scaleY">The scale factor for the Y direction.</param>
+        <summary>Appends the scale factors to this transformation.</summary>
+        <remarks>A value of 1.0 does not change the scale in that direction.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Set">
@@ -346,8 +351,10 @@ public class MyClass : BaseClass {
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Sets the transformation used by the current graphics context to this transformation.</summary>
+        <remarks>The concat method should generally be prefered to this method.
+        The current graphics context contains transformations for the screen, window and superviews that are
+        lost when this method is used.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Transform">
@@ -367,7 +374,7 @@ public class MyClass : BaseClass {
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Remove this static method. Equivalent to default constructor.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
@@ -391,9 +398,9 @@ public class MyClass : BaseClass {
         <Parameter Name="aPoint" Type="System.Drawing.PointF" />
       </Parameters>
       <Docs>
-        <param name="aPoint">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="aPoint">A point in the un-transformed coordinate system.</param>
+        <summary>Gets the transformed coordinates of a point.</summary>
+        <returns>An equivalent point in the transformed coordinate system.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -416,10 +423,10 @@ public class MyClass : BaseClass {
         <Parameter Name="aSize" Type="System.Drawing.SizeF" />
       </Parameters>
       <Docs>
-        <param name="aSize">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="aSize">A width and height from (0,0).</param>
+        <summary>Applies this transformation to size and returns the result.</summary>
+        <returns>A new size resulting from transforming the input size.</returns>
+        <remarks>Size represents a vector from (0,0), and is immune to translation effects of the transformation.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Translate">
@@ -442,9 +449,9 @@ public class MyClass : BaseClass {
         <Parameter Name="deltaY" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="deltaX">To be added.</param>
-        <param name="deltaY">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="deltaX">Distance to move in the X direction.</param>
+        <param name="deltaY">Distance to move in the Y direction.</param>
+        <summary>Applies the given translation distances to this transformation</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

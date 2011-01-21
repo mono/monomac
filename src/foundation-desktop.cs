@@ -29,15 +29,13 @@ using System;
 using System.Drawing;
 using MonoMac.ObjCRuntime;
 using MonoMac.CoreFoundation;
+using MonoMac.CoreGraphics;
+using MonoMac.AppKit;
 
 namespace MonoMac.Foundation {
 	
 	[BaseType (typeof (NSObject))]
 	public interface NSAffineTransform {
-		[Static]
-		[Export ("transform")]
-		NSAffineTransform Transform ();
-
 		[Export ("initWithTransform:")]
 		IntPtr Constructor (NSAffineTransform transform);
 
@@ -71,9 +69,8 @@ namespace MonoMac.Foundation {
 		[Export ("transformSize:")]
 		SizeF TransformSize (SizeF aSize);
 		
-		// FAK Leave this off for now as it requiers a forward ref to AppKit
-		//[Export ("transformBezierPath:")]
-		//NSBezierPath TransformBezierPath (NSBezierPath path);
+		[Export ("transformBezierPath:")]
+		NSBezierPath TransformBezierPath (NSBezierPath path);
 
 		[Export ("set")]
 		void Set ();
@@ -81,10 +78,8 @@ namespace MonoMac.Foundation {
 		[Export ("concat")]
 		void Concat ();
 
-		//Detected properties
-		// FAK Left off until I understand how to do structs
-		//[Export ("transformStruct")]
-		//NSAffineTransformStruct TransformStruct { get; set; }
+		[Export ("transformStruct")]
+		CGAffineTransform TransformStruct { get; set; }
 	}
 	
 	// FAK Left off until I understand how to do structs
