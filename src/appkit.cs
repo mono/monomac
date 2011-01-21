@@ -150,7 +150,7 @@ namespace MonoMac.AppKit {
 		[Export ("animationDidEnd:"), EventArgs ("NSAnimation")]
 		void AnimationDidEnd (NSAnimation animation);
 	
-		[Export ("animation:valueForProgress:"), DelegateName ("NSAnimationProgress"), DefaulValueFromArgument ("progress")]
+		[Export ("animation:valueForProgress:"), DelegateName ("NSAnimationProgress"), DefaultValueFromArgumentAttribute ("progress")]
 		float ComputeAnimationCurve (NSAnimation animation, float progress);
 	
 		[Export ("animation:didReachProgressMark:"), EventArgs ("NSAnimation")]
