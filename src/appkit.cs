@@ -9537,7 +9537,7 @@ namespace MonoMac.AppKit {
 		[Field ("NSViewAnimationEndFrameKey")]
 		NSString EndFrameKey { get; }
 		
-		[Field ("NSViewAnimationEffectKey ")]
+		[Field ("NSViewAnimationEffectKey")]
 		NSString EffectKey { get; }
 		
 		[Field ("NSViewAnimationFadeInEffect")]
