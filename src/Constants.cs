@@ -43,6 +43,6 @@ namespace MonoMac {
 		public const string CoreVideoLibrary = "/System/Library/Frameworks/CoreVideo.framework/CoreVideo";
 		public const string QuartzComposerLibrary = "/System/Library/Frameworks/Quartz.framework/Frameworks/QuartzComposer.framework/QuartzComposer";
 		public const string CoreWlanLibrary = "/System/Library/Frameworks/CoreWLAN.framework/CoreWLAN";
-		
+		public const string PdfKitLibrary = "/System/Library/Frameworks/Quartz.framework/Frameworks/PDFKit.framework/PDFKit";
 	}
 }

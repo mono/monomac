@@ -24,6 +24,7 @@ CORE_SOURCES =					\
 	./ObjCRuntime/SelectorMarshaler.cs		\
 	./ObjCRuntime/Runtime.cs			\
 	./ObjCRuntime/Selector.cs			\
+	./PdfKit/Enums.cs				\
 	./QTKit/Defs.cs					\
 	./QTKit/Enums.cs				\
 	./WebKit/Enums.cs
@@ -98,6 +99,7 @@ APIS = \
 	foundation-desktop.cs 	\
 	growl.cs		\
 	qtkit.cs		\
+	pdfkit.cs		\
 	webkit.cs		\
 	composer.cs		\
 	$(SHARED_APIS)
