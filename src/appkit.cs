@@ -10267,7 +10267,7 @@ namespace MonoMac.AppKit {
 		NSObject Identifier { get; set; }
 
 		[Export ("view")]
-		NSTabViewItem View { get; set; }
+		NSView View { get; set; }
 
 		[Export ("initialFirstResponder")]
 		NSObject InitialFirstResponder { get; set; }
