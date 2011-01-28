@@ -1,5 +1,6 @@
 <Type Name="NSData" FullName="MonoMac.Foundation.NSData">
   <TypeSignature Language="C#" Value="public class NSData : MonoMac.Foundation.NSObject, System.Collections.Generic.IEnumerable&lt;byte&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit NSData extends MonoMac.Foundation.NSObject implements class System.Collections.Generic.IEnumerable`1&lt;unsigned int8&gt;, class System.Collections.IEnumerable" />
   <AssemblyInfo>
     <AssemblyName>MonoMac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -24,6 +25,7 @@
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSData ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -41,6 +43,7 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSData (MonoMac.Foundation.NSCoder coder);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSCoder coder) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -61,6 +64,7 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSData (MonoMac.Foundation.NSObjectFlag t);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSObjectFlag t) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -88,6 +92,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSData (IntPtr handle);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int handle) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -105,6 +110,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="_Save">
       <MemberSignature Language="C#" Value="public virtual bool _Save (MonoMac.Foundation.NSUrl url, int options, IntPtr addr);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool _Save(class MonoMac.Foundation.NSUrl url, int32 options, native int addr) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -133,6 +139,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="_Save">
       <MemberSignature Language="C#" Value="public virtual bool _Save (string file, int options, IntPtr addr);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool _Save(string file, int32 options, native int addr) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -161,6 +168,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="AsStream">
       <MemberSignature Language="C#" Value="public virtual System.IO.Stream AsStream ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.IO.Stream AsStream() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -177,10 +185,16 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="Bytes">
       <MemberSignature Language="C#" Value="public virtual IntPtr Bytes { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance native int Bytes" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("bytes")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.IntPtr</ReturnType>
       </ReturnValue>
@@ -189,14 +203,10 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("bytes")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="ClassHandle">
       <MemberSignature Language="C#" Value="public override IntPtr ClassHandle { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance native int ClassHandle" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -212,6 +222,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="Find">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSRange Find (MonoMac.Foundation.NSData dataToFind, MonoMac.Foundation.NSDataSearchOptions searchOptions, MonoMac.Foundation.NSRange searchRange);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype MonoMac.Foundation.NSRange Find(class MonoMac.Foundation.NSData dataToFind, valuetype MonoMac.Foundation.NSDataSearchOptions searchOptions, valuetype MonoMac.Foundation.NSRange searchRange) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -240,6 +251,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="FromArray">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSData FromArray (byte[] buffer);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSData FromArray(unsigned int8[] buffer) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -259,6 +271,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="FromBytes">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSData FromBytes (IntPtr bytes, uint size);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSData FromBytes(native int bytes, unsigned int32 size) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -285,6 +298,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="FromFile">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSData FromFile (string path);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSData FromFile(string path) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -309,6 +323,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="FromStream">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSData FromStream (System.IO.Stream stream);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSData FromStream(class System.IO.Stream stream) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -328,6 +343,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="FromString">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSData FromString (string s);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSData FromString(string s) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -347,6 +363,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="FromString">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSData FromString (string s, MonoMac.Foundation.NSStringEncoding encoding);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSData FromString(string s, valuetype MonoMac.Foundation.NSStringEncoding encoding) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -368,6 +385,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="FromUrl">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSData FromUrl (MonoMac.Foundation.NSUrl url);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSData FromUrl(class MonoMac.Foundation.NSUrl url) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -391,7 +409,8 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Item">
-      <MemberSignature Language="C#" Value="public virtual byte this[int idx] { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual byte this[int idx] { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int8 Item(int32)" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -411,10 +430,16 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="Length">
       <MemberSignature Language="C#" Value="public virtual uint Length { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 Length" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("length")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
@@ -423,14 +448,10 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("length")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="op_Implicit">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSData op_Implicit (string s);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname class MonoMac.Foundation.NSData op_Implicit(string s) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -450,6 +471,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="Save">
       <MemberSignature Language="C#" Value="public bool Save (MonoMac.Foundation.NSUrl url, bool auxiliaryFile, out MonoMac.Foundation.NSError error);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Save(class MonoMac.Foundation.NSUrl url, bool auxiliaryFile, class MonoMac.Foundation.NSError error) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -473,6 +495,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="Save">
       <MemberSignature Language="C#" Value="public bool Save (string file, MonoMac.Foundation.NSDataWritingOptions options, out MonoMac.Foundation.NSError error);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Save(string file, valuetype MonoMac.Foundation.NSDataWritingOptions options, class MonoMac.Foundation.NSError error) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -496,6 +519,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="Save">
       <MemberSignature Language="C#" Value="public bool Save (string file, bool auxiliaryFile, out MonoMac.Foundation.NSError error);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Save(string file, bool auxiliaryFile, class MonoMac.Foundation.NSError error) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -519,6 +543,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="System.Collections.Generic.IEnumerable&lt;System.Byte&gt;.GetEnumerator">
       <MemberSignature Language="C#" Value="System.Collections.Generic.IEnumerator&lt;byte&gt; IEnumerable&lt;byte&gt;.GetEnumerator ();" />
+      <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance class System.Collections.Generic.IEnumerator`1&lt;unsigned int8&gt; System.Collections.Generic.IEnumerable&lt;byte&gt;.GetEnumerator() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -535,6 +560,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="System.Collections.IEnumerable.GetEnumerator">
       <MemberSignature Language="C#" Value="System.Collections.IEnumerator IEnumerable.GetEnumerator ();" />
+      <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance class System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -551,6 +577,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="ToString">
       <MemberSignature Language="C#" Value="public override string ToString ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance string ToString() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -567,6 +594,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="ToString">
       <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSString ToString (MonoMac.Foundation.NSStringEncoding encoding);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.Foundation.NSString ToString(valuetype MonoMac.Foundation.NSStringEncoding encoding) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>

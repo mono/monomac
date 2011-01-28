@@ -1,5 +1,6 @@
 <Type Name="NSNetService" FullName="MonoMac.Foundation.NSNetService">
   <TypeSignature Language="C#" Value="public class NSNetService : MonoMac.Foundation.NSObject" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit NSNetService extends MonoMac.Foundation.NSObject" />
   <AssemblyInfo>
     <AssemblyName>MonoMac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -20,6 +21,7 @@
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSNetService ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -37,6 +39,7 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSNetService (MonoMac.Foundation.NSCoder coder);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSCoder coder) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -57,6 +60,7 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSNetService (MonoMac.Foundation.NSObjectFlag t);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSObjectFlag t) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -84,6 +88,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSNetService (IntPtr handle);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int handle) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -101,6 +106,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSNetService (string domain, string type, string name);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string domain, string type, string name) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -125,6 +131,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSNetService (string domain, string type, string name, int port);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string domain, string type, string name, int32 port) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -151,10 +158,16 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="Addresses">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSData[] Addresses { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSData[] Addresses" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("addresses")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSData[]</ReturnType>
       </ReturnValue>
@@ -163,14 +176,10 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("addresses")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="AddressResolved">
       <MemberSignature Language="C#" Value="public event EventHandler AddressResolved;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler AddressResolved" />
       <MemberType>Event</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -185,6 +194,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="ClassHandle">
       <MemberSignature Language="C#" Value="public override IntPtr ClassHandle { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance native int ClassHandle" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -200,6 +210,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="DataFromTxtRecord">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSData DataFromTxtRecord (MonoMac.Foundation.NSDictionary dictionary);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSData DataFromTxtRecord(class MonoMac.Foundation.NSDictionary dictionary) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -223,7 +234,8 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Delegate">
-      <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSNetServiceDelegate Delegate { set; get; }" />
+      <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSNetServiceDelegate Delegate { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSNetServiceDelegate Delegate" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -243,6 +255,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="DictionaryFromTxtRecord">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSDictionary DictionaryFromTxtRecord (MonoMac.Foundation.NSData data);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSDictionary DictionaryFromTxtRecord(class MonoMac.Foundation.NSData data) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -267,30 +280,16 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="Domain">
       <MemberSignature Language="C#" Value="public virtual string Domain { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Domain" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("domain")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="HostName">
-      <MemberSignature Language="C#" Value="public virtual string HostName { get; }" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -299,18 +298,19 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="HostName">
+      <MemberSignature Language="C#" Value="public virtual string HostName { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string HostName" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("hostName")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="Name">
-      <MemberSignature Language="C#" Value="public virtual string Name { get; }" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -319,18 +319,40 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="Name">
+      <MemberSignature Language="C#" Value="public virtual string Name { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Name" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("name")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="Port">
       <MemberSignature Language="C#" Value="public virtual int Port { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 Port" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("port")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -339,14 +361,10 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("port")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="Publish">
       <MemberSignature Language="C#" Value="public virtual void Publish ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Publish() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -367,6 +385,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="Publish">
       <MemberSignature Language="C#" Value="public virtual void Publish (MonoMac.Foundation.NSNetServiceOptions options);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Publish(valuetype MonoMac.Foundation.NSNetServiceOptions options) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -390,6 +409,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="Published">
       <MemberSignature Language="C#" Value="public event EventHandler Published;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler Published" />
       <MemberType>Event</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -404,6 +424,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="PublishFailure">
       <MemberSignature Language="C#" Value="public event EventHandler&lt;MonoMac.Foundation.NSNetServiceErrorEventArgs&gt; PublishFailure;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler`1&lt;class MonoMac.Foundation.NSNetServiceErrorEventArgs&gt; PublishFailure" />
       <MemberType>Event</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -418,6 +439,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="Resolve">
       <MemberSignature Language="C#" Value="public virtual void Resolve ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Resolve() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -438,6 +460,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="Resolve">
       <MemberSignature Language="C#" Value="public virtual void Resolve (double timeOut);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Resolve(float64 timeOut) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -461,6 +484,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="ResolveFailure">
       <MemberSignature Language="C#" Value="public event EventHandler&lt;MonoMac.Foundation.NSNetServiceErrorEventArgs&gt; ResolveFailure;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler`1&lt;class MonoMac.Foundation.NSNetServiceErrorEventArgs&gt; ResolveFailure" />
       <MemberType>Event</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -475,6 +499,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="Schedule">
       <MemberSignature Language="C#" Value="public virtual void Schedule (MonoMac.Foundation.NSRunLoop aRunLoop, string forMode);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Schedule(class MonoMac.Foundation.NSRunLoop aRunLoop, string forMode) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -500,6 +525,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="StartMonitoring">
       <MemberSignature Language="C#" Value="public virtual void StartMonitoring ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void StartMonitoring() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -520,6 +546,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="Stop">
       <MemberSignature Language="C#" Value="public virtual void Stop ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Stop() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -540,6 +567,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="StopMonitoring">
       <MemberSignature Language="C#" Value="public virtual void StopMonitoring ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void StopMonitoring() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -560,6 +588,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="Stopped">
       <MemberSignature Language="C#" Value="public event EventHandler Stopped;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler Stopped" />
       <MemberType>Event</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -573,19 +602,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="TxtRecordData">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSData TxtRecordData { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSData TxtRecordData { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSData TxtRecordData" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSData</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("TXTRecordData")</AttributeName>
@@ -594,13 +616,27 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setTXTRecordData:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSData</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="Type">
       <MemberSignature Language="C#" Value="public virtual string Type { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Type" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("type")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -609,14 +645,10 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("type")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="Unschedule">
       <MemberSignature Language="C#" Value="public virtual void Unschedule (MonoMac.Foundation.NSRunLoop aRunLoop, string forMode);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Unschedule(class MonoMac.Foundation.NSRunLoop aRunLoop, string forMode) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -642,6 +674,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="UpdatedTxtRecordData">
       <MemberSignature Language="C#" Value="public event EventHandler&lt;MonoMac.Foundation.NSNetServiceDataEventArgs&gt; UpdatedTxtRecordData;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler`1&lt;class MonoMac.Foundation.NSNetServiceDataEventArgs&gt; UpdatedTxtRecordData" />
       <MemberType>Event</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -655,11 +688,20 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="WeakDelegate">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject WeakDelegate { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject WeakDelegate { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSObject WeakDelegate" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("delegate", MonoMac.ObjCRuntime.ArgumentSemantic.Assign)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: MonoMac.Foundation.Export("setDelegate:", MonoMac.ObjCRuntime.ArgumentSemantic.Assign)</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
       </ReturnValue>
@@ -672,17 +714,10 @@ public class MyClass : BaseClass {
           <para>   Methods must be decorated with the [Export ("selectorName")] attribute to respond to each method from the protocol.   Alternatively use the Delegate method which is strongly typed and does not require the [Export] attributes on methods.</para>
         </remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("delegate", MonoMac.ObjCRuntime.ArgumentSemantic.Assign)</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>set: MonoMac.Foundation.Export("setDelegate:", MonoMac.ObjCRuntime.ArgumentSemantic.Assign)</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="WillPublish">
       <MemberSignature Language="C#" Value="public event EventHandler WillPublish;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler WillPublish" />
       <MemberType>Event</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -697,6 +732,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="WillResolve">
       <MemberSignature Language="C#" Value="public event EventHandler WillResolve;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler WillResolve" />
       <MemberType>Event</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>

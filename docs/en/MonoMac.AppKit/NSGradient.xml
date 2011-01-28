@@ -150,6 +150,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSGradient (MonoMac.AppKit.NSColor[] colors, float[] locations);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.AppKit.NSColor[] colors, float32[] locations) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -172,6 +173,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSGradient (MonoMac.AppKit.NSColor[] colors, float[] locations, MonoMac.AppKit.NSColorSpace colorSpace);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.AppKit.NSColor[] colors, float32[] locations, class MonoMac.AppKit.NSColorSpace colorSpace) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -217,6 +219,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("colorSpace")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.AppKit.NSColorSpace</ReturnType>
       </ReturnValue>
@@ -225,11 +232,6 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("colorSpace")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="ColorStopsCount">
       <MemberSignature Language="C#" Value="public virtual int ColorStopsCount { get; }" />
@@ -238,6 +240,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("numberOfColorStops")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -246,11 +253,6 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("numberOfColorStops")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="DrawFromCenterRadius">
       <MemberSignature Language="C#" Value="public virtual void DrawFromCenterRadius (System.Drawing.PointF startCenter, float startRadius, System.Drawing.PointF endCenter, float endRadius, MonoMac.AppKit.NSGradientDrawingOptions options);" />
@@ -418,6 +420,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="GetColor">
       <MemberSignature Language="C#" Value="public virtual void GetColor (out MonoMac.AppKit.NSColor color, out float location, int index);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void GetColor(class MonoMac.AppKit.NSColor color, float32 location, int32 index) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>

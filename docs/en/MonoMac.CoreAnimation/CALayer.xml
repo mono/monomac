@@ -151,20 +151,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Actions">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreAnimation.CAAction[] Actions { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreAnimation.CAAction[] Actions { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.CoreAnimation.CAAction[] Actions" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.CoreAnimation.CAAction[]</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("actions", MonoMac.ObjCRuntime.ArgumentSemantic.Copy)</AttributeName>
@@ -173,6 +165,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setActions:", MonoMac.ObjCRuntime.ArgumentSemantic.Copy)</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreAnimation.CAAction[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="AddAnimation">
       <MemberSignature Language="C#" Value="public virtual void AddAnimation (MonoMac.CoreAnimation.CAAnimation animation, string key);" />
@@ -202,6 +202,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="AddConstraint">
       <MemberSignature Language="C#" Value="public virtual void AddConstraint (MonoMac.CoreAnimation.CAConstraint c);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void AddConstraint(class MonoMac.CoreAnimation.CAConstraint c) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -248,20 +249,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="AffineTransform">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreGraphics.CGAffineTransform AffineTransform { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreGraphics.CGAffineTransform AffineTransform { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.CoreGraphics.CGAffineTransform AffineTransform" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.CoreGraphics.CGAffineTransform</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("affineTransform")</AttributeName>
@@ -270,22 +263,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setAffineTransform:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="AnchorPoint">
-      <MemberSignature Language="C#" Value="public virtual System.Drawing.PointF AnchorPoint { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Drawing.PointF AnchorPoint" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Drawing.PointF</ReturnType>
+        <ReturnType>MonoMac.CoreGraphics.CGAffineTransform</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="AnchorPoint">
+      <MemberSignature Language="C#" Value="public virtual System.Drawing.PointF AnchorPoint { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Drawing.PointF AnchorPoint" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("anchorPoint")</AttributeName>
@@ -294,22 +287,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setAnchorPoint:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="AnchorPointZ">
-      <MemberSignature Language="C#" Value="public virtual float AnchorPointZ { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance float32 AnchorPointZ" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
+        <ReturnType>System.Drawing.PointF</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="AnchorPointZ">
+      <MemberSignature Language="C#" Value="public virtual float AnchorPointZ { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 AnchorPointZ" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("anchorPointZ")</AttributeName>
@@ -318,6 +311,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setAnchorPointZ:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="AnimationForKey">
       <MemberSignature Language="C#" Value="public virtual MonoMac.CoreAnimation.CAAnimation AnimationForKey (string key);" />
@@ -351,6 +352,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("animationKeys")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.String[]</ReturnType>
       </ReturnValue>
@@ -359,27 +365,14 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("animationKeys")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="AutoresizinMask">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreAnimation.CAAutoresizingMask AutoresizinMask { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreAnimation.CAAutoresizingMask AutoresizinMask { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.CoreAnimation.CAAutoresizingMask AutoresizinMask" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.CoreAnimation.CAAutoresizingMask</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("autoresizingMask")</AttributeName>
@@ -388,22 +381,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setAutoresizingMask:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="AutoReverses">
-      <MemberSignature Language="C#" Value="public virtual bool AutoReverses { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool AutoReverses" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
+        <ReturnType>MonoMac.CoreAnimation.CAAutoresizingMask</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="AutoReverses">
+      <MemberSignature Language="C#" Value="public virtual bool AutoReverses { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool AutoReverses" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("autoreverses")</AttributeName>
@@ -412,22 +405,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setAutoreverses:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="BackgroundColor">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreGraphics.CGColor BackgroundColor { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.CoreGraphics.CGColor BackgroundColor" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>MonoMac.CoreGraphics.CGColor</ReturnType>
+        <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="BackgroundColor">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreGraphics.CGColor BackgroundColor { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.CoreGraphics.CGColor BackgroundColor" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("backgroundColor")</AttributeName>
@@ -436,38 +429,6 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setBackgroundColor:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="BeginTime">
-      <MemberSignature Language="C#" Value="public virtual double BeginTime { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance float64 BeginTime" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Double</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("beginTime")</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>set: MonoMac.Foundation.Export("setBeginTime:")</AttributeName>
-        </Attribute>
-      </Attributes>
-    </Member>
-    <Member MemberName="BorderColor">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreGraphics.CGColor BorderColor { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.CoreGraphics.CGColor BorderColor" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>MonoMac.CoreGraphics.CGColor</ReturnType>
       </ReturnValue>
@@ -476,6 +437,38 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="BeginTime">
+      <MemberSignature Language="C#" Value="public virtual double BeginTime { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64 BeginTime" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("beginTime")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: MonoMac.Foundation.Export("setBeginTime:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BorderColor">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreGraphics.CGColor BorderColor { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.CoreGraphics.CGColor BorderColor" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("borderColor")</AttributeName>
@@ -484,22 +477,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setBorderColor:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="BorderWidth">
-      <MemberSignature Language="C#" Value="public virtual float BorderWidth { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance float32 BorderWidth" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
+        <ReturnType>MonoMac.CoreGraphics.CGColor</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="BorderWidth">
+      <MemberSignature Language="C#" Value="public virtual float BorderWidth { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 BorderWidth" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("borderWidth")</AttributeName>
@@ -508,22 +501,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setBorderWidth:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="Bounds">
-      <MemberSignature Language="C#" Value="public virtual System.Drawing.RectangleF Bounds { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Drawing.RectangleF Bounds" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Drawing.RectangleF</ReturnType>
+        <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="Bounds">
+      <MemberSignature Language="C#" Value="public virtual System.Drawing.RectangleF Bounds { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Drawing.RectangleF Bounds" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("bounds")</AttributeName>
@@ -532,9 +525,17 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setBounds:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Drawing.RectangleF</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="CFTimeInterval">
-      <MemberSignature Language="C#" Value="public double CFTimeInterval { set; get; }" />
+      <MemberSignature Language="C#" Value="public double CFTimeInterval { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float64 CFTimeInterval" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -590,19 +591,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Constraints">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreAnimation.CAConstraint[] Constraints { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreAnimation.CAConstraint[] Constraints { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.CoreAnimation.CAConstraint[] Constraints" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.CoreAnimation.CAConstraint[]</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("constraints")</AttributeName>
@@ -611,6 +605,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setConstraints:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreAnimation.CAConstraint[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="Contains">
       <MemberSignature Language="C#" Value="public virtual bool Contains (System.Drawing.PointF p);" />
@@ -638,20 +640,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Contents">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreGraphics.CGImage Contents { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreGraphics.CGImage Contents { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.CoreGraphics.CGImage Contents" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.CoreGraphics.CGImage</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("contents", MonoMac.ObjCRuntime.ArgumentSemantic.Retain)</AttributeName>
@@ -660,6 +654,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setContents:", MonoMac.ObjCRuntime.ArgumentSemantic.Retain)</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreGraphics.CGImage</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="ContentsAreFlipped">
       <MemberSignature Language="C#" Value="public virtual bool ContentsAreFlipped { get; }" />
@@ -668,6 +670,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("contentsAreFlipped")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -676,27 +683,14 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("contentsAreFlipped")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="ContentsCenter">
-      <MemberSignature Language="C#" Value="public virtual System.Drawing.RectangleF ContentsCenter { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual System.Drawing.RectangleF ContentsCenter { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Drawing.RectangleF ContentsCenter" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Drawing.RectangleF</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("contentsCenter")</AttributeName>
@@ -705,38 +699,6 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setContentsCenter:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="ContentsGravity">
-      <MemberSignature Language="C#" Value="public virtual string ContentsGravity { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance string ContentsGravity" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("contentsGravity", MonoMac.ObjCRuntime.ArgumentSemantic.Copy)</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>set: MonoMac.Foundation.Export("setContentsGravity:", MonoMac.ObjCRuntime.ArgumentSemantic.Copy)</AttributeName>
-        </Attribute>
-      </Attributes>
-    </Member>
-    <Member MemberName="ContentsRect">
-      <MemberSignature Language="C#" Value="public virtual System.Drawing.RectangleF ContentsRect { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Drawing.RectangleF ContentsRect" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Drawing.RectangleF</ReturnType>
       </ReturnValue>
@@ -745,6 +707,38 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="ContentsGravity">
+      <MemberSignature Language="C#" Value="public virtual string ContentsGravity { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string ContentsGravity" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("contentsGravity", MonoMac.ObjCRuntime.ArgumentSemantic.Copy)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: MonoMac.Foundation.Export("setContentsGravity:", MonoMac.ObjCRuntime.ArgumentSemantic.Copy)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ContentsRect">
+      <MemberSignature Language="C#" Value="public virtual System.Drawing.RectangleF ContentsRect { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Drawing.RectangleF ContentsRect" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("contentsRect")</AttributeName>
@@ -753,6 +747,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setContentsRect:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Drawing.RectangleF</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="ConvertPointFromLayer">
       <MemberSignature Language="C#" Value="public virtual System.Drawing.PointF ConvertPointFromLayer (System.Drawing.PointF point, MonoMac.CoreAnimation.CALayer layer);" />
@@ -917,20 +919,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="CornerRadius">
-      <MemberSignature Language="C#" Value="public virtual float CornerRadius { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual float CornerRadius { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 CornerRadius" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("cornerRadius")</AttributeName>
@@ -939,6 +933,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setCornerRadius:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="Create">
       <MemberSignature Language="C#" Value="public static MonoMac.CoreAnimation.CALayer Create ();" />
@@ -1013,7 +1015,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Delegate">
-      <MemberSignature Language="C#" Value="public MonoMac.CoreAnimation.CALayerDelegate Delegate { set; get; }" />
+      <MemberSignature Language="C#" Value="public MonoMac.CoreAnimation.CALayerDelegate Delegate { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.CoreAnimation.CALayerDelegate Delegate" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -1075,20 +1077,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="DoubleSided">
-      <MemberSignature Language="C#" Value="public virtual bool DoubleSided { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual bool DoubleSided { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool DoubleSided" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("isDoubleSided")</AttributeName>
@@ -1097,6 +1091,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setDoubleSided:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="DrawInContext">
       <MemberSignature Language="C#" Value="public virtual void DrawInContext (MonoMac.CoreGraphics.CGContext ctx);" />
@@ -1123,20 +1125,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Duration">
-      <MemberSignature Language="C#" Value="public virtual double Duration { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual double Duration { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float64 Duration" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Double</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("duration")</AttributeName>
@@ -1145,22 +1139,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setDuration:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="EdgeAntialiasingMask">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreAnimation.CAEdgeAntialiasingMask EdgeAntialiasingMask { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.CoreAnimation.CAEdgeAntialiasingMask EdgeAntialiasingMask" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>MonoMac.CoreAnimation.CAEdgeAntialiasingMask</ReturnType>
+        <ReturnType>System.Double</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="EdgeAntialiasingMask">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreAnimation.CAEdgeAntialiasingMask EdgeAntialiasingMask { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.CoreAnimation.CAEdgeAntialiasingMask EdgeAntialiasingMask" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("edgeAntialiasingMask")</AttributeName>
@@ -1169,22 +1163,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setEdgeAntialiasingMask:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="FillMode">
-      <MemberSignature Language="C#" Value="public virtual string FillMode { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance string FillMode" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.String</ReturnType>
+        <ReturnType>MonoMac.CoreAnimation.CAEdgeAntialiasingMask</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="FillMode">
+      <MemberSignature Language="C#" Value="public virtual string FillMode { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string FillMode" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("fillMode")</AttributeName>
@@ -1193,6 +1187,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setFillMode:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="FilterLinear">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString FilterLinear { get; }" />
@@ -1226,6 +1228,30 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Filters">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreImage.CIFilter[] Filters { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.CoreImage.CIFilter[] Filters" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("filter")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: MonoMac.Foundation.Export("setFilter:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreImage.CIFilter[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="FilterTrilinear">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString FilterTrilinear { get; }" />
       <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString FilterTrilinear" />
@@ -1243,20 +1269,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Frame">
-      <MemberSignature Language="C#" Value="public virtual System.Drawing.RectangleF Frame { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual System.Drawing.RectangleF Frame { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Drawing.RectangleF Frame" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Drawing.RectangleF</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("frame")</AttributeName>
@@ -1265,22 +1283,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setFrame:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="GeometryFlipped">
-      <MemberSignature Language="C#" Value="public virtual bool GeometryFlipped { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool GeometryFlipped" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
+        <ReturnType>System.Drawing.RectangleF</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="GeometryFlipped">
+      <MemberSignature Language="C#" Value="public virtual bool GeometryFlipped { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool GeometryFlipped" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("isGeometryFlipped")</AttributeName>
@@ -1289,6 +1307,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setGeometryFlipped:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="GravityBottom">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString GravityBottom { get; }" />
@@ -1483,20 +1509,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Hidden">
-      <MemberSignature Language="C#" Value="public virtual bool Hidden { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual bool Hidden { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool Hidden" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("isHidden")</AttributeName>
@@ -1505,6 +1523,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setHidden:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="HitTest">
       <MemberSignature Language="C#" Value="public virtual MonoMac.CoreAnimation.CALayer HitTest (System.Drawing.PointF p);" />
@@ -1631,19 +1657,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="LayoutManager">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject LayoutManager { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject LayoutManager { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSObject LayoutManager" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("layoutManager")</AttributeName>
@@ -1652,6 +1671,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setLayoutManager:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="LayoutSublayers">
       <MemberSignature Language="C#" Value="public virtual void LayoutSublayers ();" />
@@ -1675,20 +1702,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="MagnificationFilter">
-      <MemberSignature Language="C#" Value="public virtual string MagnificationFilter { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual string MagnificationFilter { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string MagnificationFilter" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("magnificationFilter", MonoMac.ObjCRuntime.ArgumentSemantic.Copy)</AttributeName>
@@ -1697,22 +1716,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setMagnificationFilter:", MonoMac.ObjCRuntime.ArgumentSemantic.Copy)</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="Mask">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreAnimation.CALayer Mask { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.CoreAnimation.CALayer Mask" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>MonoMac.CoreAnimation.CALayer</ReturnType>
+        <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="Mask">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreAnimation.CALayer Mask { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.CoreAnimation.CALayer Mask" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("mask", MonoMac.ObjCRuntime.ArgumentSemantic.Retain)</AttributeName>
@@ -1721,62 +1740,6 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setMask:", MonoMac.ObjCRuntime.ArgumentSemantic.Retain)</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="MasksToBounds">
-      <MemberSignature Language="C#" Value="public virtual bool MasksToBounds { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool MasksToBounds" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("masksToBounds")</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>set: MonoMac.Foundation.Export("setMasksToBounds:")</AttributeName>
-        </Attribute>
-      </Attributes>
-    </Member>
-    <Member MemberName="MinificationFilter">
-      <MemberSignature Language="C#" Value="public virtual string MinificationFilter { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance string MinificationFilter" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("minificationFilter", MonoMac.ObjCRuntime.ArgumentSemantic.Copy)</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>set: MonoMac.Foundation.Export("setMinificationFilter:", MonoMac.ObjCRuntime.ArgumentSemantic.Copy)</AttributeName>
-        </Attribute>
-      </Attributes>
-    </Member>
-    <Member MemberName="ModelLayer">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreAnimation.CALayer ModelLayer { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.CoreAnimation.CALayer ModelLayer" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>MonoMac.CoreAnimation.CALayer</ReturnType>
       </ReturnValue>
@@ -1785,43 +1748,22 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("modelLayer")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
-    <Member MemberName="Name">
-      <MemberSignature Language="C#" Value="public virtual string Name { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance string Name" />
+    <Member MemberName="MasksToBounds">
+      <MemberSignature Language="C#" Value="public virtual bool MasksToBounds { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool MasksToBounds" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("name", MonoMac.ObjCRuntime.ArgumentSemantic.Copy)</AttributeName>
+          <AttributeName>get: MonoMac.Foundation.Export("masksToBounds")</AttributeName>
         </Attribute>
         <Attribute>
-          <AttributeName>set: MonoMac.Foundation.Export("setName:", MonoMac.ObjCRuntime.ArgumentSemantic.Copy)</AttributeName>
+          <AttributeName>set: MonoMac.Foundation.Export("setMasksToBounds:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="NeedsDisplay">
-      <MemberSignature Language="C#" Value="public virtual bool NeedsDisplay { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool NeedsDisplay" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -1830,11 +1772,96 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="MinificationFilter">
+      <MemberSignature Language="C#" Value="public virtual string MinificationFilter { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string MinificationFilter" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("minificationFilter", MonoMac.ObjCRuntime.ArgumentSemantic.Copy)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: MonoMac.Foundation.Export("setMinificationFilter:", MonoMac.ObjCRuntime.ArgumentSemantic.Copy)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ModelLayer">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreAnimation.CALayer ModelLayer { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.CoreAnimation.CALayer ModelLayer" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("modelLayer")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreAnimation.CALayer</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Name">
+      <MemberSignature Language="C#" Value="public virtual string Name { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Name" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("name", MonoMac.ObjCRuntime.ArgumentSemantic.Copy)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: MonoMac.Foundation.Export("setName:", MonoMac.ObjCRuntime.ArgumentSemantic.Copy)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NeedsDisplay">
+      <MemberSignature Language="C#" Value="public virtual bool NeedsDisplay { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool NeedsDisplay" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("needsDisplay")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="NeedsDisplayForKey">
       <MemberSignature Language="C#" Value="public static bool NeedsDisplayForKey (string key);" />
@@ -1862,20 +1889,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="NeedsDisplayOnBoundsChange">
-      <MemberSignature Language="C#" Value="public virtual bool NeedsDisplayOnBoundsChange { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual bool NeedsDisplayOnBoundsChange { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool NeedsDisplayOnBoundsChange" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("needsDisplayOnBoundsChange")</AttributeName>
@@ -1884,6 +1903,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setNeedsDisplayOnBoundsChange:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="NeedsLayout">
       <MemberSignature Language="C#" Value="public virtual bool NeedsLayout ();" />
@@ -1940,20 +1967,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Opacity">
-      <MemberSignature Language="C#" Value="public virtual float Opacity { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual float Opacity { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 Opacity" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("opacity")</AttributeName>
@@ -1962,22 +1981,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setOpacity:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="Opaque">
-      <MemberSignature Language="C#" Value="public virtual bool Opaque { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool Opaque" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
+        <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="Opaque">
+      <MemberSignature Language="C#" Value="public virtual bool Opaque { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Opaque" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("isOpaque")</AttributeName>
@@ -1986,22 +2005,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setOpaque:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="Position">
-      <MemberSignature Language="C#" Value="public virtual System.Drawing.PointF Position { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Drawing.PointF Position" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Drawing.PointF</ReturnType>
+        <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="Position">
+      <MemberSignature Language="C#" Value="public virtual System.Drawing.PointF Position { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Drawing.PointF Position" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("position")</AttributeName>
@@ -2010,6 +2029,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setPosition:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Drawing.PointF</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="PreferredFrameSize">
       <MemberSignature Language="C#" Value="public virtual System.Drawing.SizeF PreferredFrameSize ();" />
@@ -2040,6 +2067,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("presentationLayer")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.CoreAnimation.CALayer</ReturnType>
       </ReturnValue>
@@ -2048,11 +2080,6 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("presentationLayer")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="RemoveAllAnimations">
       <MemberSignature Language="C#" Value="public virtual void RemoveAllAnimations ();" />
@@ -2145,20 +2172,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="RepeatCount">
-      <MemberSignature Language="C#" Value="public virtual float RepeatCount { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual float RepeatCount { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 RepeatCount" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("repeatCount")</AttributeName>
@@ -2167,22 +2186,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setRepeatCount:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="RepeatDuration">
-      <MemberSignature Language="C#" Value="public virtual double RepeatDuration { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance float64 RepeatDuration" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Double</ReturnType>
+        <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="RepeatDuration">
+      <MemberSignature Language="C#" Value="public virtual double RepeatDuration { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64 RepeatDuration" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("repeatDuration")</AttributeName>
@@ -2191,6 +2210,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setRepeatDuration:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="ReplaceSublayer">
       <MemberSignature Language="C#" Value="public virtual void ReplaceSublayer (MonoMac.CoreAnimation.CALayer layer, MonoMac.CoreAnimation.CALayer with);" />
@@ -2381,20 +2408,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="ShadowColor">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreGraphics.CGColor ShadowColor { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreGraphics.CGColor ShadowColor { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.CoreGraphics.CGColor ShadowColor" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.CoreGraphics.CGColor</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("shadowColor")</AttributeName>
@@ -2403,22 +2422,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setShadowColor:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="ShadowOffset">
-      <MemberSignature Language="C#" Value="public virtual System.Drawing.SizeF ShadowOffset { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Drawing.SizeF ShadowOffset" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Drawing.SizeF</ReturnType>
+        <ReturnType>MonoMac.CoreGraphics.CGColor</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="ShadowOffset">
+      <MemberSignature Language="C#" Value="public virtual System.Drawing.SizeF ShadowOffset { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Drawing.SizeF ShadowOffset" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("shadowOffset")</AttributeName>
@@ -2427,22 +2446,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setShadowOffset:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="ShadowOpacity">
-      <MemberSignature Language="C#" Value="public virtual float ShadowOpacity { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance float32 ShadowOpacity" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
+        <ReturnType>System.Drawing.SizeF</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="ShadowOpacity">
+      <MemberSignature Language="C#" Value="public virtual float ShadowOpacity { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 ShadowOpacity" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("shadowOpacity")</AttributeName>
@@ -2451,14 +2470,6 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setShadowOpacity:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="ShadowRadius">
-      <MemberSignature Language="C#" Value="public virtual float ShadowRadius { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance float32 ShadowRadius" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -2467,6 +2478,14 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="ShadowRadius">
+      <MemberSignature Language="C#" Value="public virtual float ShadowRadius { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 ShadowRadius" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("shadowRadius")</AttributeName>
@@ -2475,14 +2494,6 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setShadowRadius:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="Speed">
-      <MemberSignature Language="C#" Value="public virtual float Speed { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance float32 Speed" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -2491,6 +2502,14 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="Speed">
+      <MemberSignature Language="C#" Value="public virtual float Speed { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 Speed" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("speed")</AttributeName>
@@ -2499,22 +2518,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setSpeed:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="Sublayers">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreAnimation.CALayer[] Sublayers { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.CoreAnimation.CALayer[] Sublayers" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>MonoMac.CoreAnimation.CALayer[]</ReturnType>
+        <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="Sublayers">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreAnimation.CALayer[] Sublayers { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.CoreAnimation.CALayer[] Sublayers" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("sublayers", MonoMac.ObjCRuntime.ArgumentSemantic.Copy)</AttributeName>
@@ -2523,22 +2542,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setSublayers:", MonoMac.ObjCRuntime.ArgumentSemantic.Copy)</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="SublayerTransform">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreAnimation.CATransform3D SublayerTransform { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.CoreAnimation.CATransform3D SublayerTransform" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>MonoMac.CoreAnimation.CATransform3D</ReturnType>
+        <ReturnType>MonoMac.CoreAnimation.CALayer[]</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="SublayerTransform">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreAnimation.CATransform3D SublayerTransform { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.CoreAnimation.CATransform3D SublayerTransform" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("sublayerTransform")</AttributeName>
@@ -2547,59 +2566,6 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setSublayerTransform:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="SuperLayer">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreAnimation.CALayer SuperLayer { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.CoreAnimation.CALayer SuperLayer" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.CoreAnimation.CALayer</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("superlayer")</AttributeName>
-        </Attribute>
-      </Attributes>
-    </Member>
-    <Member MemberName="TimeOffset">
-      <MemberSignature Language="C#" Value="public virtual double TimeOffset { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance float64 TimeOffset" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Double</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("timeOffset")</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>set: MonoMac.Foundation.Export("setTimeOffset:")</AttributeName>
-        </Attribute>
-      </Attributes>
-    </Member>
-    <Member MemberName="Transform">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreAnimation.CATransform3D Transform { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.CoreAnimation.CATransform3D Transform" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>MonoMac.CoreAnimation.CATransform3D</ReturnType>
       </ReturnValue>
@@ -2608,6 +2574,59 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="SuperLayer">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreAnimation.CALayer SuperLayer { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.CoreAnimation.CALayer SuperLayer" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("superlayer")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreAnimation.CALayer</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TimeOffset">
+      <MemberSignature Language="C#" Value="public virtual double TimeOffset { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64 TimeOffset" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("timeOffset")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: MonoMac.Foundation.Export("setTimeOffset:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Transform">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreAnimation.CATransform3D Transform { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.CoreAnimation.CATransform3D Transform" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("transform")</AttributeName>
@@ -2616,6 +2635,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setTransform:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreAnimation.CATransform3D</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="Transition">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString Transition { get; }" />
@@ -2640,6 +2667,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("visibleRect")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Drawing.RectangleF</ReturnType>
       </ReturnValue>
@@ -2648,19 +2680,22 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("visibleRect")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="WeakDelegate">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject WeakDelegate { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject WeakDelegate { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSObject WeakDelegate" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("delegate", MonoMac.ObjCRuntime.ArgumentSemantic.Assign)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: MonoMac.Foundation.Export("setDelegate:", MonoMac.ObjCRuntime.ArgumentSemantic.Assign)</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
       </ReturnValue>
@@ -2673,30 +2708,14 @@ public class MyClass : BaseClass {
           <para>   Methods must be decorated with the [Export ("selectorName")] attribute to respond to each method from the protocol.   Alternatively use the Delegate method which is strongly typed and does not require the [Export] attributes on methods.</para>
         </remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("delegate", MonoMac.ObjCRuntime.ArgumentSemantic.Assign)</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>set: MonoMac.Foundation.Export("setDelegate:", MonoMac.ObjCRuntime.ArgumentSemantic.Assign)</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="ZPosition">
-      <MemberSignature Language="C#" Value="public virtual float ZPosition { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual float ZPosition { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 ZPosition" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("zPosition")</AttributeName>
@@ -2705,6 +2724,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setZPosition:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
   </Members>
 </Type>

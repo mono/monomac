@@ -126,20 +126,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="ArrowsPosition">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSScrollArrowPosition ArrowsPosition { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSScrollArrowPosition ArrowsPosition { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.AppKit.NSScrollArrowPosition ArrowsPosition" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.AppKit.NSScrollArrowPosition</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("arrowsPosition")</AttributeName>
@@ -148,6 +140,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setArrowsPosition:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AppKit.NSScrollArrowPosition</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="CheckSpaceForParts">
       <MemberSignature Language="C#" Value="public virtual void CheckSpaceForParts ();" />
@@ -187,20 +187,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="ControlSize">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSControlSize ControlSize { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSControlSize ControlSize { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.AppKit.NSControlSize ControlSize" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.AppKit.NSControlSize</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("controlSize")</AttributeName>
@@ -209,22 +201,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setControlSize:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="ControlTint">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSControlTint ControlTint { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.AppKit.NSControlTint ControlTint" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>MonoMac.AppKit.NSControlTint</ReturnType>
+        <ReturnType>MonoMac.AppKit.NSControlSize</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="ControlTint">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSControlTint ControlTint { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.AppKit.NSControlTint ControlTint" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("controlTint")</AttributeName>
@@ -233,6 +225,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setControlTint:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AppKit.NSControlTint</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="DrawArrowhighlight">
       <MemberSignature Language="C#" Value="public virtual void DrawArrowhighlight (MonoMac.AppKit.NSScrollerArrow whichArrow, bool highlight);" />
@@ -359,6 +359,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("hitPart")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.AppKit.NSScrollerPart</ReturnType>
       </ReturnValue>
@@ -367,27 +372,14 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("hitPart")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="KnobProportion">
-      <MemberSignature Language="C#" Value="public virtual float KnobProportion { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual float KnobProportion { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 KnobProportion" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("knobProportion")</AttributeName>
@@ -396,6 +388,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setKnobProportion:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="RectForPart">
       <MemberSignature Language="C#" Value="public virtual System.Drawing.RectangleF RectForPart (MonoMac.AppKit.NSScrollerPart partCode);" />
@@ -429,6 +429,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("scrollerWidth")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -437,11 +442,6 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("scrollerWidth")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="ScrollerWidthForControlSize">
       <MemberSignature Language="C#" Value="public static float ScrollerWidthForControlSize (MonoMac.AppKit.NSControlSize controlSize);" />
@@ -548,6 +548,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("usableParts")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.AppKit.NSUsableScrollerParts</ReturnType>
       </ReturnValue>
@@ -556,11 +561,6 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("usableParts")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
   </Members>
 </Type>

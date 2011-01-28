@@ -1,5 +1,6 @@
 <Type Name="NSDate" FullName="MonoMac.Foundation.NSDate">
   <TypeSignature Language="C#" Value="public class NSDate : MonoMac.Foundation.NSObject" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit NSDate extends MonoMac.Foundation.NSObject" />
   <AssemblyInfo>
     <AssemblyName>MonoMac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -20,6 +21,7 @@
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSDate ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -37,6 +39,7 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSDate (MonoMac.Foundation.NSCoder coder);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSCoder coder) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -57,6 +60,7 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSDate (MonoMac.Foundation.NSObjectFlag t);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSObjectFlag t) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -84,6 +88,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSDate (IntPtr handle);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int handle) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -101,6 +106,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="AddSeconds">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSDate AddSeconds (double seconds);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class MonoMac.Foundation.NSDate AddSeconds(float64 seconds) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -125,6 +131,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="ClassHandle">
       <MemberSignature Language="C#" Value="public override IntPtr ClassHandle { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance native int ClassHandle" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -140,10 +147,16 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="Description">
       <MemberSignature Language="C#" Value="public virtual string Description { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Description" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("description")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -152,38 +165,19 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("description")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="DistantFuture">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSDate DistantFuture { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSDate DistantFuture" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSDate</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("distantFuture")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="DistantPast">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSDate DistantPast { get; }" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSDate</ReturnType>
       </ReturnValue>
@@ -192,14 +186,31 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="DistantPast">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSDate DistantPast { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSDate DistantPast" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("distantPast")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSDate</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="FromTimeIntervalSinceNow">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSDate FromTimeIntervalSinceNow (double secs);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSDate FromTimeIntervalSinceNow(float64 secs) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -224,6 +235,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="FromTimeIntervalSinceReferenceDate">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSDate FromTimeIntervalSinceReferenceDate (double secs);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSDate FromTimeIntervalSinceReferenceDate(float64 secs) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -248,10 +260,16 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="Now">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSDate Now { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSDate Now" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("date")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSDate</ReturnType>
       </ReturnValue>
@@ -260,14 +278,10 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("date")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="op_Implicit">
       <MemberSignature Language="C#" Value="public static DateTime op_Implicit (MonoMac.Foundation.NSDate d);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype System.DateTime op_Implicit(class MonoMac.Foundation.NSDate d) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -287,6 +301,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="op_Implicit">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSDate op_Implicit (DateTime dt);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname class MonoMac.Foundation.NSDate op_Implicit(valuetype System.DateTime dt) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -306,10 +321,16 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="SecondsSinceReferenceDate">
       <MemberSignature Language="C#" Value="public virtual double SecondsSinceReferenceDate { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64 SecondsSinceReferenceDate" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("timeIntervalSinceReferenceDate")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
@@ -318,14 +339,10 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("timeIntervalSinceReferenceDate")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="ToString">
       <MemberSignature Language="C#" Value="public override string ToString ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance string ToString() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>

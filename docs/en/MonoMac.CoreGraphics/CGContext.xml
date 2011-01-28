@@ -23,6 +23,7 @@
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public CGContext (IntPtr handle);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int handle) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -295,6 +296,81 @@
       <Docs>
         <summary>Starts a new path in the graphics context.</summary>
         <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="BeginTransparencyLayer">
+      <MemberSignature Language="C#" Value="public void BeginTransparencyLayer ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void BeginTransparencyLayer() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BeginTransparencyLayer">
+      <MemberSignature Language="C#" Value="public void BeginTransparencyLayer (MonoMac.Foundation.NSDictionary auxiliaryInfo);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void BeginTransparencyLayer(class MonoMac.Foundation.NSDictionary auxiliaryInfo) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="auxiliaryInfo" Type="MonoMac.Foundation.NSDictionary" />
+      </Parameters>
+      <Docs>
+        <param name="auxiliaryInfo">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BeginTransparencyLayer">
+      <MemberSignature Language="C#" Value="public void BeginTransparencyLayer (System.Drawing.RectangleF rectangle);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void BeginTransparencyLayer(valuetype System.Drawing.RectangleF rectangle) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="rectangle" Type="System.Drawing.RectangleF" />
+      </Parameters>
+      <Docs>
+        <param name="rectangle">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BeginTransparencyLayer">
+      <MemberSignature Language="C#" Value="public void BeginTransparencyLayer (System.Drawing.RectangleF rectangle, MonoMac.Foundation.NSDictionary auxiliaryInfo);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void BeginTransparencyLayer(valuetype System.Drawing.RectangleF rectangle, class MonoMac.Foundation.NSDictionary auxiliaryInfo) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="rectangle" Type="System.Drawing.RectangleF" />
+        <Parameter Name="auxiliaryInfo" Type="MonoMac.Foundation.NSDictionary" />
+      </Parameters>
+      <Docs>
+        <param name="rectangle">To be added.</param>
+        <param name="auxiliaryInfo">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ClearRect">
@@ -804,6 +880,22 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="EndTransparencyLayer">
+      <MemberSignature Language="C#" Value="public void EndTransparencyLayer ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void EndTransparencyLayer() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="EOClip">
       <MemberSignature Language="C#" Value="public void EOClip ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void EOClip() cil managed" />
@@ -1025,7 +1117,7 @@
       </Docs>
     </Member>
     <Member MemberName="InterpolationQuality">
-      <MemberSignature Language="C#" Value="public MonoMac.CoreGraphics.CGInterpolationQuality InterpolationQuality { set; get; }" />
+      <MemberSignature Language="C#" Value="public MonoMac.CoreGraphics.CGInterpolationQuality InterpolationQuality { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.CoreGraphics.CGInterpolationQuality InterpolationQuality" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -2378,7 +2470,7 @@
       </Docs>
     </Member>
     <Member MemberName="TextMatrix">
-      <MemberSignature Language="C#" Value="public MonoMac.CoreGraphics.CGAffineTransform TextMatrix { set; get; }" />
+      <MemberSignature Language="C#" Value="public MonoMac.CoreGraphics.CGAffineTransform TextMatrix { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.CoreGraphics.CGAffineTransform TextMatrix" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -2394,7 +2486,7 @@
       </Docs>
     </Member>
     <Member MemberName="TextPosition">
-      <MemberSignature Language="C#" Value="public System.Drawing.PointF TextPosition { set; get; }" />
+      <MemberSignature Language="C#" Value="public System.Drawing.PointF TextPosition { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Drawing.PointF TextPosition" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>

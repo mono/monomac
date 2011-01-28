@@ -105,20 +105,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="AccessoryView">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSView AccessoryView { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSView AccessoryView { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AppKit.NSView AccessoryView" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.AppKit.NSView</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("accessoryView")</AttributeName>
@@ -127,6 +119,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setAccessoryView:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AppKit.NSView</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="AddButton">
       <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSButton AddButton (string title);" />
@@ -154,20 +154,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="AlertStyle">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSAlertStyle AlertStyle { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSAlertStyle AlertStyle { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.AppKit.NSAlertStyle AlertStyle" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.AppKit.NSAlertStyle</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("alertStyle")</AttributeName>
@@ -176,6 +168,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setAlertStyle:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AppKit.NSAlertStyle</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="BeginSheet">
       <MemberSignature Language="C#" Value="public void BeginSheet (MonoMac.AppKit.NSWindow window);" />
@@ -254,6 +254,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("buttons")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.AppKit.NSButton[]</ReturnType>
       </ReturnValue>
@@ -262,11 +267,6 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("buttons")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="ClassHandle">
       <MemberSignature Language="C#" Value="public override IntPtr ClassHandle { get; }" />
@@ -285,12 +285,20 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Delegate">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSAlertDelegate Delegate { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSAlertDelegate Delegate { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AppKit.NSAlertDelegate Delegate" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("delegate")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: MonoMac.Foundation.Export("setDelegate:")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.AppKit.NSAlertDelegate</ReturnType>
       </ReturnValue>
@@ -303,30 +311,14 @@ public class MyClass : BaseClass {
           <para>This is the strongly typed version of the object, use the WeakDelegate property instead if you want to merely assign a class derived from NSObject that has been decorated with [Export] attributes.</para>
         </remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("delegate")</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>set: MonoMac.Foundation.Export("setDelegate:")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="HelpAnchor">
-      <MemberSignature Language="C#" Value="public virtual string HelpAnchor { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual string HelpAnchor { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string HelpAnchor" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("helpAnchor")</AttributeName>
@@ -335,38 +327,6 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setHelpAnchor:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="Icon">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSImage Icon { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AppKit.NSImage Icon" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.AppKit.NSImage</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("icon")</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>set: MonoMac.Foundation.Export("setIcon:")</AttributeName>
-        </Attribute>
-      </Attributes>
-    </Member>
-    <Member MemberName="InformativeText">
-      <MemberSignature Language="C#" Value="public virtual string InformativeText { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance string InformativeText" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -375,6 +335,38 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="Icon">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSImage Icon { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AppKit.NSImage Icon" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("icon")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: MonoMac.Foundation.Export("setIcon:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AppKit.NSImage</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InformativeText">
+      <MemberSignature Language="C#" Value="public virtual string InformativeText { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string InformativeText" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("informativeText")</AttributeName>
@@ -383,6 +375,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setInformativeText:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="Layout">
       <MemberSignature Language="C#" Value="public virtual void Layout ();" />
@@ -406,20 +406,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="MessageText">
-      <MemberSignature Language="C#" Value="public virtual string MessageText { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual string MessageText { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string MessageText" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("messageText")</AttributeName>
@@ -428,6 +420,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setMessageText:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="RunModal">
       <MemberSignature Language="C#" Value="public virtual int RunModal ();" />
@@ -452,7 +452,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="ShowHelp">
-      <MemberSignature Language="C#" Value="public MonoMac.AppKit.NSAlertPredicate ShowHelp { set; get; }" />
+      <MemberSignature Language="C#" Value="public MonoMac.AppKit.NSAlertPredicate ShowHelp { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AppKit.NSAlertPredicate ShowHelp" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -468,20 +468,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="ShowsHelp">
-      <MemberSignature Language="C#" Value="public virtual bool ShowsHelp { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual bool ShowsHelp { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool ShowsHelp" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("showsHelp")</AttributeName>
@@ -490,14 +482,6 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setShowsHelp:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="ShowsSuppressionButton">
-      <MemberSignature Language="C#" Value="public virtual bool ShowsSuppressionButton { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool ShowsSuppressionButton" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -506,6 +490,14 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="ShowsSuppressionButton">
+      <MemberSignature Language="C#" Value="public virtual bool ShowsSuppressionButton { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool ShowsSuppressionButton" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("showsSuppressionButton")</AttributeName>
@@ -514,6 +506,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setShowsSuppressionButton:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="SuppressionButton">
       <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSButton SuppressionButton { get; }" />
@@ -522,6 +522,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("suppressionButton")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.AppKit.NSButton</ReturnType>
       </ReturnValue>
@@ -530,11 +535,6 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("suppressionButton")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="Window">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject Window { get; }" />
@@ -543,6 +543,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("window")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
       </ReturnValue>
@@ -551,11 +556,6 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("window")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="WithError">
       <MemberSignature Language="C#" Value="public static MonoMac.AppKit.NSAlert WithError (MonoMac.Foundation.NSError error);" />

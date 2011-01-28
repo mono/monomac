@@ -1,5 +1,6 @@
 <Type Name="NSPersistentStore" FullName="MonoMac.CoreData.NSPersistentStore">
   <TypeSignature Language="C#" Value="public class NSPersistentStore : MonoMac.Foundation.NSObject" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit NSPersistentStore extends MonoMac.Foundation.NSObject" />
   <AssemblyInfo>
     <AssemblyName>MonoMac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -20,6 +21,7 @@
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSPersistentStore ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -37,6 +39,7 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSPersistentStore (MonoMac.Foundation.NSCoder coder);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSCoder coder) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -57,6 +60,7 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSPersistentStore (MonoMac.Foundation.NSObjectFlag t);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSObjectFlag t) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -84,6 +88,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSPersistentStore (IntPtr handle);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int handle) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -101,6 +106,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSPersistentStore (MonoMac.CoreData.NSPersistentStoreCoordinator root, string name, MonoMac.Foundation.NSUrl url, MonoMac.Foundation.NSDictionary options);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.CoreData.NSPersistentStoreCoordinator root, string name, class MonoMac.Foundation.NSUrl url, class MonoMac.Foundation.NSDictionary options) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -127,6 +133,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="ClassHandle">
       <MemberSignature Language="C#" Value="public override IntPtr ClassHandle { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance native int ClassHandle" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -142,10 +149,16 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="ConfigurationName">
       <MemberSignature Language="C#" Value="public virtual string ConfigurationName { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string ConfigurationName" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("configurationName")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -154,14 +167,10 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("configurationName")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="DidAddToPersistentStoreCoordinator">
       <MemberSignature Language="C#" Value="public virtual void DidAddToPersistentStoreCoordinator (MonoMac.CoreData.NSPersistentStoreCoordinator coordinator);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void DidAddToPersistentStoreCoordinator(class MonoMac.CoreData.NSPersistentStoreCoordinator coordinator) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -184,19 +193,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Identifier">
-      <MemberSignature Language="C#" Value="public virtual string Identifier { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual string Identifier { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Identifier" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("identifier")</AttributeName>
@@ -205,21 +207,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setIdentifier:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="Metadata">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSDictionary Metadata { set; get; }" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSDictionary</ReturnType>
+        <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="Metadata">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSDictionary Metadata { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSDictionary Metadata" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("metadata")</AttributeName>
@@ -228,9 +231,18 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setMetadata:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSDictionary</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="MetadataForPersistentStoreWithUrl">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSDictionary MetadataForPersistentStoreWithUrl (MonoMac.Foundation.NSUrl url, out MonoMac.Foundation.NSError error);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSDictionary MetadataForPersistentStoreWithUrl(class MonoMac.Foundation.NSUrl url, class MonoMac.Foundation.NSError error) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -257,10 +269,16 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="Options">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSDictionary Options { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSDictionary Options" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("options")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSDictionary</ReturnType>
       </ReturnValue>
@@ -269,18 +287,19 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("options")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="PersistentStoreCoordinator">
       <MemberSignature Language="C#" Value="public virtual MonoMac.CoreData.NSPersistentStoreCoordinator PersistentStoreCoordinator { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.CoreData.NSPersistentStoreCoordinator PersistentStoreCoordinator" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("persistentStoreCoordinator")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.CoreData.NSPersistentStoreCoordinator</ReturnType>
       </ReturnValue>
@@ -289,26 +308,14 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("persistentStoreCoordinator")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="ReadOnly">
-      <MemberSignature Language="C#" Value="public virtual bool ReadOnly { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual bool ReadOnly { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool ReadOnly" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("isReadOnly")</AttributeName>
@@ -317,9 +324,18 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setReadOnly:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="SetMetadata">
       <MemberSignature Language="C#" Value="public static bool SetMetadata (MonoMac.Foundation.NSDictionary metadata, MonoMac.Foundation.NSUrl url, out MonoMac.Foundation.NSError error);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool SetMetadata(class MonoMac.Foundation.NSDictionary metadata, class MonoMac.Foundation.NSUrl url, class MonoMac.Foundation.NSError error) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -348,10 +364,16 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="Type">
       <MemberSignature Language="C#" Value="public virtual string Type { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Type" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("type")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -360,26 +382,14 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("type")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="Url">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSUrl Url { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSUrl Url { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSUrl Url" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSUrl</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("URL")</AttributeName>
@@ -388,9 +398,18 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setURL:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSUrl</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="WillRemoveFromPersistentStoreCoordinator">
       <MemberSignature Language="C#" Value="public virtual void WillRemoveFromPersistentStoreCoordinator (MonoMac.CoreData.NSPersistentStoreCoordinator coordinator);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void WillRemoveFromPersistentStoreCoordinator(class MonoMac.CoreData.NSPersistentStoreCoordinator coordinator) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>

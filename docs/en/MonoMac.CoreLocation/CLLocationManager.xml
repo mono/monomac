@@ -1,5 +1,6 @@
 <Type Name="CLLocationManager" FullName="MonoMac.CoreLocation.CLLocationManager">
   <TypeSignature Language="C#" Value="public class CLLocationManager : MonoMac.Foundation.NSObject" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CLLocationManager extends MonoMac.Foundation.NSObject" />
   <AssemblyInfo>
     <AssemblyName>MonoMac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -20,6 +21,7 @@
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public CLLocationManager ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -37,6 +39,7 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public CLLocationManager (MonoMac.Foundation.NSCoder coder);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSCoder coder) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -57,6 +60,7 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public CLLocationManager (MonoMac.Foundation.NSObjectFlag t);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSObjectFlag t) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -84,6 +88,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public CLLocationManager (IntPtr handle);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int handle) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -101,6 +106,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="AuthorizationChanged">
       <MemberSignature Language="C#" Value="public event EventHandler&lt;MonoMac.CoreLocation.CLAuthroziationChangedEventArgs&gt; AuthorizationChanged;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler`1&lt;class MonoMac.CoreLocation.CLAuthroziationChangedEventArgs&gt; AuthorizationChanged" />
       <MemberType>Event</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -115,6 +121,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="ClassHandle">
       <MemberSignature Language="C#" Value="public override IntPtr ClassHandle { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance native int ClassHandle" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -129,7 +136,8 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Delegate">
-      <MemberSignature Language="C#" Value="public MonoMac.CoreLocation.CLLocationManagerDelegate Delegate { set; get; }" />
+      <MemberSignature Language="C#" Value="public MonoMac.CoreLocation.CLLocationManagerDelegate Delegate { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.CoreLocation.CLLocationManagerDelegate Delegate" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -148,19 +156,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="DesiredAccuracy">
-      <MemberSignature Language="C#" Value="public virtual double DesiredAccuracy { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual double DesiredAccuracy { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64 DesiredAccuracy" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Double</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("desiredAccuracy", MonoMac.ObjCRuntime.ArgumentSemantic.Assign)</AttributeName>
@@ -169,13 +170,6 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setDesiredAccuracy:", MonoMac.ObjCRuntime.ArgumentSemantic.Assign)</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="DistanceFilter">
-      <MemberSignature Language="C#" Value="public virtual double DistanceFilter { set; get; }" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
@@ -184,6 +178,14 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="DistanceFilter">
+      <MemberSignature Language="C#" Value="public virtual double DistanceFilter { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64 DistanceFilter" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("distanceFilter", MonoMac.ObjCRuntime.ArgumentSemantic.Assign)</AttributeName>
@@ -192,9 +194,18 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setDistanceFilter:", MonoMac.ObjCRuntime.ArgumentSemantic.Assign)</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="Failed">
       <MemberSignature Language="C#" Value="public event EventHandler&lt;MonoMac.CoreLocation.NSErrorEventArgs&gt; Failed;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler`1&lt;class MonoMac.CoreLocation.NSErrorEventArgs&gt; Failed" />
       <MemberType>Event</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -209,10 +220,16 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="Location">
       <MemberSignature Language="C#" Value="public virtual MonoMac.CoreLocation.CLLocation Location { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.CoreLocation.CLLocation Location" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("location")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.CoreLocation.CLLocation</ReturnType>
       </ReturnValue>
@@ -221,14 +238,10 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("location")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="LocationServicesEnabled">
       <MemberSignature Language="C#" Value="public static bool LocationServicesEnabled { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property bool LocationServicesEnabled" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -243,7 +256,8 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="ShouldDisplayHeadingCalibration">
-      <MemberSignature Language="C#" Value="public MonoMac.CoreLocation.CLLocationManagerEventArgs ShouldDisplayHeadingCalibration { set; get; }" />
+      <MemberSignature Language="C#" Value="public MonoMac.CoreLocation.CLLocationManagerEventArgs ShouldDisplayHeadingCalibration { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.CoreLocation.CLLocationManagerEventArgs ShouldDisplayHeadingCalibration" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -259,6 +273,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="StartUpdatingLocation">
       <MemberSignature Language="C#" Value="public virtual void StartUpdatingLocation ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void StartUpdatingLocation() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -279,6 +294,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="StopUpdatingLocation">
       <MemberSignature Language="C#" Value="public virtual void StopUpdatingLocation ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void StopUpdatingLocation() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -299,6 +315,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="UpdatedLocation">
       <MemberSignature Language="C#" Value="public event EventHandler&lt;MonoMac.CoreLocation.CLLocationUpdatedEventArgs&gt; UpdatedLocation;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler`1&lt;class MonoMac.CoreLocation.CLLocationUpdatedEventArgs&gt; UpdatedLocation" />
       <MemberType>Event</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -312,11 +329,20 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="WeakDelegate">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject WeakDelegate { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject WeakDelegate { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSObject WeakDelegate" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("delegate", MonoMac.ObjCRuntime.ArgumentSemantic.Assign)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: MonoMac.Foundation.Export("setDelegate:", MonoMac.ObjCRuntime.ArgumentSemantic.Assign)</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
       </ReturnValue>
@@ -329,14 +355,6 @@ public class MyClass : BaseClass {
           <para>   Methods must be decorated with the [Export ("selectorName")] attribute to respond to each method from the protocol.   Alternatively use the Delegate method which is strongly typed and does not require the [Export] attributes on methods.</para>
         </remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("delegate", MonoMac.ObjCRuntime.ArgumentSemantic.Assign)</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>set: MonoMac.Foundation.Export("setDelegate:", MonoMac.ObjCRuntime.ArgumentSemantic.Assign)</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
   </Members>
 </Type>

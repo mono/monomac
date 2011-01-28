@@ -207,20 +207,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Document">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSDocument Document { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSDocument Document { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AppKit.NSDocument Document" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.AppKit.NSDocument</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("document")</AttributeName>
@@ -229,22 +221,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setDocument:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="IsWindowLoaded">
-      <MemberSignature Language="C#" Value="public virtual bool IsWindowLoaded { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool IsWindowLoaded" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
+        <ReturnType>MonoMac.AppKit.NSDocument</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="IsWindowLoaded">
+      <MemberSignature Language="C#" Value="public virtual bool IsWindowLoaded { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsWindowLoaded" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("isWindowLoaded")</AttributeName>
@@ -253,6 +245,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setIsWindowLoaded:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="LoadWindow">
       <MemberSignature Language="C#" Value="public virtual void LoadWindow ();" />
@@ -282,6 +282,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("owner")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
       </ReturnValue>
@@ -290,11 +295,6 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("owner")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="SetDocumentEdited">
       <MemberSignature Language="C#" Value="public virtual void SetDocumentEdited (bool dirtyFlag);" />
@@ -321,20 +321,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="ShouldCascadeWindows">
-      <MemberSignature Language="C#" Value="public virtual bool ShouldCascadeWindows { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual bool ShouldCascadeWindows { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool ShouldCascadeWindows" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("shouldCascadeWindows")</AttributeName>
@@ -343,14 +335,6 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setShouldCascadeWindows:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="ShouldCloseDocument">
-      <MemberSignature Language="C#" Value="public virtual bool ShouldCloseDocument { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool ShouldCloseDocument" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -359,6 +343,14 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="ShouldCloseDocument">
+      <MemberSignature Language="C#" Value="public virtual bool ShouldCloseDocument { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool ShouldCloseDocument" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("shouldCloseDocument")</AttributeName>
@@ -367,6 +359,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setShouldCloseDocument:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="ShowWindow">
       <MemberSignature Language="C#" Value="public virtual void ShowWindow (MonoMac.Foundation.NSObject sender);" />
@@ -414,20 +414,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Window">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSWindow Window { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSWindow Window { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AppKit.NSWindow Window" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.AppKit.NSWindow</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("window")</AttributeName>
@@ -436,6 +428,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setWindow:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AppKit.NSWindow</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="WindowDidLoad">
       <MemberSignature Language="C#" Value="public virtual void WindowDidLoad ();" />
@@ -459,7 +459,8 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="WindowFrameAutosaveName">
-      <MemberSignature Language="C#" Value="public virtual string WindowFrameAutosaveName { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual string WindowFrameAutosaveName { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string WindowFrameAutosaveName" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -488,6 +489,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("windowNibName")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -496,11 +502,6 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("windowNibName")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="WindowNibPath">
       <MemberSignature Language="C#" Value="public virtual string WindowNibPath { get; }" />
@@ -509,6 +510,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("windowNibPath")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -517,11 +523,6 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("windowNibPath")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="WindowTitleForDocumentDisplayName">
       <MemberSignature Language="C#" Value="public virtual string WindowTitleForDocumentDisplayName (string displayName);" />

@@ -129,20 +129,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="AnimationBlockingMode">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSAnimationBlockingMode AnimationBlockingMode { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSAnimationBlockingMode AnimationBlockingMode { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.AppKit.NSAnimationBlockingMode AnimationBlockingMode" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.AppKit.NSAnimationBlockingMode</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("animationBlockingMode")</AttributeName>
@@ -151,22 +143,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setAnimationBlockingMode:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="AnimationCurve">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSAnimationCurve AnimationCurve { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.AppKit.NSAnimationCurve AnimationCurve" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>MonoMac.AppKit.NSAnimationCurve</ReturnType>
+        <ReturnType>MonoMac.AppKit.NSAnimationBlockingMode</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="AnimationCurve">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSAnimationCurve AnimationCurve { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.AppKit.NSAnimationCurve AnimationCurve" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("animationCurve")</AttributeName>
@@ -175,6 +167,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setAnimationCurve:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AppKit.NSAnimationCurve</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="AnimationDidEnd">
       <MemberSignature Language="C#" Value="public event EventHandler AnimationDidEnd;" />
@@ -221,24 +221,8 @@ public class MyClass : BaseClass {
         <remarks>If you assign a value to this event, this will reset the value for the Delegate property to an internal handler that maps delegates to events.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="AnimationProgress">
-      <MemberSignature Language="C#" Value="public MonoMac.AppKit.NSAnimationProgress AnimationProgress { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AppKit.NSAnimationProgress AnimationProgress" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.AppKit.NSAnimationProgress</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Delegate invoked by the object to get a value.</summary>
-        <value>To be added.</value>
-        <remarks>You assign a function, delegate or anonymous method to this property to return a value to the object.   If you assign a value to this property, it this will reset the value for the Delegate property to an internal handler that maps delegates to events.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="AnimationShouldStart">
-      <MemberSignature Language="C#" Value="public MonoMac.AppKit.NSAnimationPredicate AnimationShouldStart { set; get; }" />
+      <MemberSignature Language="C#" Value="public MonoMac.AppKit.NSAnimationPredicate AnimationShouldStart { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AppKit.NSAnimationPredicate AnimationShouldStart" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -311,6 +295,22 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="ComputeAnimationCurve">
+      <MemberSignature Language="C#" Value="public MonoMac.AppKit.NSAnimationProgress ComputeAnimationCurve { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AppKit.NSAnimationProgress ComputeAnimationCurve" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.AppKit.NSAnimationProgress</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Constant">
       <MemberSignature Language="C#" Value="public virtual IntPtr Constant (double duration, MonoMac.AppKit.NSAnimationCurve animationCurve);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance native int Constant(float64 duration, valuetype MonoMac.AppKit.NSAnimationCurve animationCurve) cil managed" />
@@ -339,20 +339,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="CurrentProgress">
-      <MemberSignature Language="C#" Value="public virtual float CurrentProgress { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual float CurrentProgress { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 CurrentProgress" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("currentProgress")</AttributeName>
@@ -361,14 +353,6 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setCurrentProgress:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="CurrentValue">
-      <MemberSignature Language="C#" Value="public virtual float CurrentValue { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance float32 CurrentValue" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -377,19 +361,43 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="CurrentValue">
+      <MemberSignature Language="C#" Value="public virtual float CurrentValue { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 CurrentValue" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("currentValue")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="Delegate">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSAnimationDelegate Delegate { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSAnimationDelegate Delegate { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AppKit.NSAnimationDelegate Delegate" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("delegate")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: MonoMac.Foundation.Export("setDelegate:")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.AppKit.NSAnimationDelegate</ReturnType>
       </ReturnValue>
@@ -402,30 +410,14 @@ public class MyClass : BaseClass {
           <para>This is the strongly typed version of the object, use the WeakDelegate property instead if you want to merely assign a class derived from NSObject that has been decorated with [Export] attributes.</para>
         </remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("delegate")</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>set: MonoMac.Foundation.Export("setDelegate:")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="Duration">
-      <MemberSignature Language="C#" Value="public virtual double Duration { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual double Duration { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float64 Duration" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Double</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("duration")</AttributeName>
@@ -434,22 +426,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setDuration:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="FrameRate">
-      <MemberSignature Language="C#" Value="public virtual float FrameRate { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance float32 FrameRate" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
+        <ReturnType>System.Double</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="FrameRate">
+      <MemberSignature Language="C#" Value="public virtual float FrameRate { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 FrameRate" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("frameRate")</AttributeName>
@@ -458,6 +450,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setFrameRate:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="IsAnimating">
       <MemberSignature Language="C#" Value="public virtual bool IsAnimating ();" />
@@ -514,20 +514,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="ProgressMarks">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSNumber[] ProgressMarks { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSNumber[] ProgressMarks { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSNumber[] ProgressMarks" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSNumber[]</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("progressMarks")</AttributeName>
@@ -536,6 +528,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setProgressMarks:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSNumber[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="RemoveProgressMark">
       <MemberSignature Language="C#" Value="public virtual void RemoveProgressMark (float progressMark);" />

@@ -153,20 +153,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="AlignmentMode">
-      <MemberSignature Language="C#" Value="public virtual string AlignmentMode { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual string AlignmentMode { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string AlignmentMode" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("alignmentMode", MonoMac.ObjCRuntime.ArgumentSemantic.Copy)</AttributeName>
@@ -175,6 +167,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setAlignmentMode:", MonoMac.ObjCRuntime.ArgumentSemantic.Copy)</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="AlignmentNatural">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString AlignmentNatural { get; }" />
@@ -225,20 +225,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="FontSize">
-      <MemberSignature Language="C#" Value="public virtual float FontSize { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual float FontSize { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 FontSize" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("fontSize")</AttributeName>
@@ -247,22 +239,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setFontSize:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="ForegroundColor">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreGraphics.CGColor ForegroundColor { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.CoreGraphics.CGColor ForegroundColor" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>MonoMac.CoreGraphics.CGColor</ReturnType>
+        <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="ForegroundColor">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreGraphics.CGColor ForegroundColor { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.CoreGraphics.CGColor ForegroundColor" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("foregroundColor")</AttributeName>
@@ -271,9 +263,18 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setForegroundColor:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreGraphics.CGColor</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="SetFont">
       <MemberSignature Language="C#" Value="public void SetFont (MonoMac.AppKit.NSFont font);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetFont(class MonoMac.AppKit.NSFont font) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -292,6 +293,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="SetFont">
       <MemberSignature Language="C#" Value="public void SetFont (MonoMac.CoreGraphics.CGFont font);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetFont(class MonoMac.CoreGraphics.CGFont font) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -310,6 +312,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="SetFont">
       <MemberSignature Language="C#" Value="public void SetFont (MonoMac.CoreText.CTFont font);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetFont(class MonoMac.CoreText.CTFont font) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -328,6 +331,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="SetFont">
       <MemberSignature Language="C#" Value="public void SetFont (string fontName);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetFont(string fontName) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -345,20 +349,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="String">
-      <MemberSignature Language="C#" Value="public virtual string String { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual string String { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string String" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("string", MonoMac.ObjCRuntime.ArgumentSemantic.Copy)</AttributeName>
@@ -367,6 +363,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setString:", MonoMac.ObjCRuntime.ArgumentSemantic.Copy)</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="TruncantionEnd">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString TruncantionEnd { get; }" />
@@ -417,20 +421,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="TruncationMode">
-      <MemberSignature Language="C#" Value="public virtual string TruncationMode { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual string TruncationMode { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string TruncationMode" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("truncationMode", MonoMac.ObjCRuntime.ArgumentSemantic.Copy)</AttributeName>
@@ -439,6 +435,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setTruncationMode:", MonoMac.ObjCRuntime.ArgumentSemantic.Copy)</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="TruncationNone">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString TruncationNone { get; }" />
@@ -457,7 +461,8 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="WeakFont">
-      <MemberSignature Language="C#" Value="public object WeakFont { set; get; }" />
+      <MemberSignature Language="C#" Value="public object WeakFont { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance object WeakFont" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -472,20 +477,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Wrapped">
-      <MemberSignature Language="C#" Value="public virtual bool Wrapped { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual bool Wrapped { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool Wrapped" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("isWrapped")</AttributeName>
@@ -494,6 +491,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setWrapped:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
   </Members>
 </Type>

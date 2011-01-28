@@ -126,7 +126,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Cell">
-      <MemberSignature Language="C#" Value="public MonoMac.AppKit.NSLevelIndicatorCell Cell { set; get; }" />
+      <MemberSignature Language="C#" Value="public MonoMac.AppKit.NSLevelIndicatorCell Cell { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AppKit.NSLevelIndicatorCell Cell" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -158,20 +158,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="CriticalValue">
-      <MemberSignature Language="C#" Value="public virtual double CriticalValue { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual double CriticalValue { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float64 CriticalValue" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Double</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("criticalValue")</AttributeName>
@@ -180,22 +172,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setCriticalValue:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="MajorTickMarkCount">
-      <MemberSignature Language="C#" Value="public virtual int MajorTickMarkCount { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance int32 MajorTickMarkCount" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
+        <ReturnType>System.Double</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="MajorTickMarkCount">
+      <MemberSignature Language="C#" Value="public virtual int MajorTickMarkCount { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 MajorTickMarkCount" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("numberOfMajorTickMarks")</AttributeName>
@@ -204,22 +196,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setNumberOfMajorTickMarks:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="MaxValue">
-      <MemberSignature Language="C#" Value="public virtual double MaxValue { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance float64 MaxValue" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Double</ReturnType>
+        <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="MaxValue">
+      <MemberSignature Language="C#" Value="public virtual double MaxValue { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64 MaxValue" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("maxValue")</AttributeName>
@@ -228,14 +220,6 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setMaxValue:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="MinValue">
-      <MemberSignature Language="C#" Value="public virtual double MinValue { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance float64 MinValue" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
@@ -244,6 +228,14 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="MinValue">
+      <MemberSignature Language="C#" Value="public virtual double MinValue { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64 MinValue" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("minValue")</AttributeName>
@@ -252,6 +244,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setMinValue:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="RectOfTickMark">
       <MemberSignature Language="C#" Value="public virtual System.Drawing.RectangleF RectOfTickMark (int index);" />
@@ -279,20 +279,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="TickMarkCount">
-      <MemberSignature Language="C#" Value="public virtual int TickMarkCount { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual int TickMarkCount { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance int32 TickMarkCount" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("numberOfTickMarks")</AttributeName>
@@ -301,22 +293,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setNumberOfTickMarks:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="TickMarkPosition">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSTickMarkPosition TickMarkPosition { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.AppKit.NSTickMarkPosition TickMarkPosition" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>MonoMac.AppKit.NSTickMarkPosition</ReturnType>
+        <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="TickMarkPosition">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSTickMarkPosition TickMarkPosition { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.AppKit.NSTickMarkPosition TickMarkPosition" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("tickMarkPosition")</AttributeName>
@@ -325,6 +317,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setTickMarkPosition:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AppKit.NSTickMarkPosition</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="TickMarkValueAt">
       <MemberSignature Language="C#" Value="public virtual double TickMarkValueAt (int index);" />
@@ -352,20 +352,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="WarningValue">
-      <MemberSignature Language="C#" Value="public virtual double WarningValue { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual double WarningValue { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float64 WarningValue" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Double</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("warningValue")</AttributeName>
@@ -374,6 +366,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setWarningValue:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
   </Members>
 </Type>

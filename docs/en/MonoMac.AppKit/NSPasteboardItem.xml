@@ -122,6 +122,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="GetAvailableTypeFromArray">
       <MemberSignature Language="C#" Value="public virtual string GetAvailableTypeFromArray (string[] types);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string GetAvailableTypeFromArray(string[] types) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -146,6 +147,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="GetDataForType">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSData GetDataForType (string type);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class MonoMac.Foundation.NSData GetDataForType(string type) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -170,6 +172,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="GetPropertyListForType">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject GetPropertyListForType (string type);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class MonoMac.Foundation.NSObject GetPropertyListForType(string type) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -194,6 +197,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="GetStringForType">
       <MemberSignature Language="C#" Value="public virtual string GetStringForType (string type);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string GetStringForType(string type) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -218,6 +222,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="SetDataForType">
       <MemberSignature Language="C#" Value="public virtual bool SetDataForType (MonoMac.Foundation.NSData data, string type);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool SetDataForType(class MonoMac.Foundation.NSData data, string type) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -244,6 +249,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="SetDataProviderForTypes">
       <MemberSignature Language="C#" Value="public virtual bool SetDataProviderForTypes (MonoMac.AppKit.NSPasteboardItemDataProvider dataProvider, string[] types);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool SetDataProviderForTypes(class MonoMac.AppKit.NSPasteboardItemDataProvider dataProvider, string[] types) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -270,6 +276,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="SetPropertyListForType">
       <MemberSignature Language="C#" Value="public virtual bool SetPropertyListForType (MonoMac.Foundation.NSObject propertyList, string type);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool SetPropertyListForType(class MonoMac.Foundation.NSObject propertyList, string type) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -296,6 +303,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="SetStringForType">
       <MemberSignature Language="C#" Value="public virtual bool SetStringForType (string str, string type);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool SetStringForType(string str, string type) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -327,6 +335,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("types")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.String[]</ReturnType>
       </ReturnValue>
@@ -335,11 +348,6 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("types")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
   </Members>
 </Type>

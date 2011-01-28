@@ -144,7 +144,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Delegate">
-      <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSObject Delegate { set; get; }" />
+      <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSObject Delegate { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSObject Delegate" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -170,6 +170,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("drawSelector")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.ObjCRuntime.Selector</ReturnType>
       </ReturnValue>
@@ -178,19 +183,22 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("drawSelector")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="WeakDelegate">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject WeakDelegate { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject WeakDelegate { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSObject WeakDelegate" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("delegate", MonoMac.ObjCRuntime.ArgumentSemantic.Assign)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: MonoMac.Foundation.Export("setDelegate:", MonoMac.ObjCRuntime.ArgumentSemantic.Assign)</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
       </ReturnValue>
@@ -203,14 +211,6 @@ public class MyClass : BaseClass {
           <para>   Methods must be decorated with the [Export ("selectorName")] attribute to respond to each method from the protocol.   Alternatively use the Delegate method which is strongly typed and does not require the [Export] attributes on methods.</para>
         </remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("delegate", MonoMac.ObjCRuntime.ArgumentSemantic.Assign)</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>set: MonoMac.Foundation.Export("setDelegate:", MonoMac.ObjCRuntime.ArgumentSemantic.Assign)</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
   </Members>
 </Type>

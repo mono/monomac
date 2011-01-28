@@ -1,5 +1,6 @@
 <Type Name="NSCompoundPredicate" FullName="MonoMac.Foundation.NSCompoundPredicate">
   <TypeSignature Language="C#" Value="public class NSCompoundPredicate : MonoMac.Foundation.NSPredicate" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit NSCompoundPredicate extends MonoMac.Foundation.NSPredicate" />
   <AssemblyInfo>
     <AssemblyName>MonoMac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -20,6 +21,7 @@
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSCompoundPredicate ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -37,6 +39,7 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSCompoundPredicate (MonoMac.Foundation.NSCoder coder);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSCoder coder) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -57,6 +60,7 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSCompoundPredicate (MonoMac.Foundation.NSObjectFlag t);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSObjectFlag t) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -84,6 +88,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSCompoundPredicate (IntPtr handle);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int handle) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -101,6 +106,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSCompoundPredicate (MonoMac.Foundation.NSCompoundPredicateType type, MonoMac.Foundation.NSPredicate[] subpredicates);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype MonoMac.Foundation.NSCompoundPredicateType type, class MonoMac.Foundation.NSPredicate[] subpredicates) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -123,6 +129,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="ClassHandle">
       <MemberSignature Language="C#" Value="public override IntPtr ClassHandle { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance native int ClassHandle" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -138,6 +145,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="CreateAndPredicate">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSPredicate CreateAndPredicate (MonoMac.Foundation.NSPredicate[] subpredicates);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSPredicate CreateAndPredicate(class MonoMac.Foundation.NSPredicate[] subpredicates) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -162,6 +170,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="CreateNotPredicate">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSPredicate CreateNotPredicate (MonoMac.Foundation.NSPredicate predicate);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSPredicate CreateNotPredicate(class MonoMac.Foundation.NSPredicate predicate) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -186,6 +195,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="CreateOrPredicate">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSPredicate CreateOrPredicate (MonoMac.Foundation.NSPredicate[] subpredicates);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSPredicate CreateOrPredicate(class MonoMac.Foundation.NSPredicate[] subpredicates) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -210,10 +220,16 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="Subpredicates">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSPredicate[] Subpredicates { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSPredicate[] Subpredicates" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("subpredicates")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSPredicate[]</ReturnType>
       </ReturnValue>
@@ -222,18 +238,19 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("subpredicates")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="Type">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSCompoundPredicateType Type { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.Foundation.NSCompoundPredicateType Type" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("compoundPredicateType")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSCompoundPredicateType</ReturnType>
       </ReturnValue>
@@ -242,11 +259,6 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("compoundPredicateType")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
   </Members>
 </Type>

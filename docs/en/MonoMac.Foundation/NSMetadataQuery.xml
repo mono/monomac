@@ -121,7 +121,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Delegate">
-      <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSMetadataQueryDelegate Delegate { set; get; }" />
+      <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSMetadataQueryDelegate Delegate { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSMetadataQueryDelegate Delegate" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -253,6 +253,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("groupedResults")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSObject[]</ReturnType>
       </ReturnValue>
@@ -261,27 +266,14 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("groupedResults")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="GroupingAttributes">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSArray GroupingAttributes { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSArray GroupingAttributes { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSArray GroupingAttributes" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSArray</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("groupingAttributes")</AttributeName>
@@ -290,6 +282,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setGroupingAttributes:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSArray</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="IndexOfResult">
       <MemberSignature Language="C#" Value="public virtual int IndexOfResult (MonoMac.Foundation.NSObject result);" />
@@ -323,6 +323,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("isGathering")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -331,11 +336,6 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("isGathering")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="IsStarted">
       <MemberSignature Language="C#" Value="public virtual bool IsStarted { get; }" />
@@ -344,6 +344,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("isStarted")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -352,11 +357,6 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("isStarted")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="IsStopped">
       <MemberSignature Language="C#" Value="public virtual bool IsStopped { get; }" />
@@ -365,6 +365,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("isStopped")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -373,11 +378,6 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("isStopped")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="LocalComputerScope">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString LocalComputerScope { get; }" />
@@ -396,20 +396,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="NotificationBatchingInterval">
-      <MemberSignature Language="C#" Value="public virtual double NotificationBatchingInterval { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual double NotificationBatchingInterval { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float64 NotificationBatchingInterval" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Double</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("notificationBatchingInterval")</AttributeName>
@@ -418,22 +410,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setNotificationBatchingInterval:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="Predicate">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSPredicate Predicate { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSPredicate Predicate" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSPredicate</ReturnType>
+        <ReturnType>System.Double</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="Predicate">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSPredicate Predicate { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSPredicate Predicate" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("predicate")</AttributeName>
@@ -442,6 +434,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setPredicate:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSPredicate</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="QueryNetworkScope">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString QueryNetworkScope { get; }" />
@@ -460,7 +460,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="ReplacementObjectForResultObject">
-      <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSMetadataQueryObject ReplacementObjectForResultObject { set; get; }" />
+      <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSMetadataQueryObject ReplacementObjectForResultObject { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSMetadataQueryObject ReplacementObjectForResultObject" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -476,7 +476,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="ReplacementValueForAttributevalue">
-      <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSMetadataQueryValue ReplacementValueForAttributevalue { set; get; }" />
+      <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSMetadataQueryValue ReplacementValueForAttributevalue { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSMetadataQueryValue ReplacementValueForAttributevalue" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -539,6 +539,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("resultCount")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -547,11 +552,6 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("resultCount")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="Results">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSMetadataItem[] Results { get; }" />
@@ -560,6 +560,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("results")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSMetadataItem[]</ReturnType>
       </ReturnValue>
@@ -568,27 +573,14 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("results")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="SearchScopes">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject[] SearchScopes { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject[] SearchScopes { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSObject[] SearchScopes" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSObject[]</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("searchScopes")</AttributeName>
@@ -597,22 +589,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setSearchScopes:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="SortDescriptors">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSSortDescriptor[] SortDescriptors { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSSortDescriptor[] SortDescriptors" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSSortDescriptor[]</ReturnType>
+        <ReturnType>MonoMac.Foundation.NSObject[]</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="SortDescriptors">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSSortDescriptor[] SortDescriptors { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSSortDescriptor[] SortDescriptors" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("sortDescriptors")</AttributeName>
@@ -621,6 +613,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setSortDescriptors:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSSortDescriptor[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="StartQuery">
       <MemberSignature Language="C#" Value="public virtual bool StartQuery ();" />
@@ -682,20 +682,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="ValueListAttributes">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject[] ValueListAttributes { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject[] ValueListAttributes { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSObject[] ValueListAttributes" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSObject[]</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("valueListAttributes")</AttributeName>
@@ -704,6 +696,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setValueListAttributes:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSObject[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="ValueLists">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSDictionary ValueLists { get; }" />
@@ -712,6 +712,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("valueLists")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSDictionary</ReturnType>
       </ReturnValue>
@@ -720,11 +725,6 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("valueLists")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="ValueOfAttribute">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject ValueOfAttribute (string attribyteName, int atIndex);" />
@@ -754,12 +754,20 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="WeakDelegate">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSMetadataQueryDelegate WeakDelegate { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSMetadataQueryDelegate WeakDelegate { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSMetadataQueryDelegate WeakDelegate" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("delegate", MonoMac.ObjCRuntime.ArgumentSemantic.Assign)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: MonoMac.Foundation.Export("setDelegate:", MonoMac.ObjCRuntime.ArgumentSemantic.Assign)</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSMetadataQueryDelegate</ReturnType>
       </ReturnValue>
@@ -772,14 +780,6 @@ public class MyClass : BaseClass {
           <para>   Methods must be decorated with the [Export ("selectorName")] attribute to respond to each method from the protocol.   Alternatively use the Delegate method which is strongly typed and does not require the [Export] attributes on methods.</para>
         </remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("delegate", MonoMac.ObjCRuntime.ArgumentSemantic.Assign)</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>set: MonoMac.Foundation.Export("setDelegate:", MonoMac.ObjCRuntime.ArgumentSemantic.Assign)</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
   </Members>
 </Type>

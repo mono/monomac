@@ -126,20 +126,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="BottomMargin">
-      <MemberSignature Language="C#" Value="public virtual float BottomMargin { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual float BottomMargin { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 BottomMargin" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("bottomMargin")</AttributeName>
@@ -148,6 +140,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setBottomMargin:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="ClassHandle">
       <MemberSignature Language="C#" Value="public override IntPtr ClassHandle { get; }" />
@@ -172,6 +172,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("defaultPrinter")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.AppKit.NSPrinter</ReturnType>
       </ReturnValue>
@@ -180,11 +185,6 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("defaultPrinter")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="Dictionary">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSMutableDictionary Dictionary { get; }" />
@@ -193,6 +193,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("dictionary")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSMutableDictionary</ReturnType>
       </ReturnValue>
@@ -201,27 +206,14 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("dictionary")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="HorizontallyCentered">
-      <MemberSignature Language="C#" Value="public virtual bool HorizontallyCentered { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual bool HorizontallyCentered { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool HorizontallyCentered" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("isHorizontallyCentered")</AttributeName>
@@ -230,22 +222,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setHorizontallyCentered:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="HorizontalPagination">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSPrintingPaginationMode HorizontalPagination { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.AppKit.NSPrintingPaginationMode HorizontalPagination" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>MonoMac.AppKit.NSPrintingPaginationMode</ReturnType>
+        <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="HorizontalPagination">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSPrintingPaginationMode HorizontalPagination { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.AppKit.NSPrintingPaginationMode HorizontalPagination" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("horizontalPagination")</AttributeName>
@@ -254,6 +246,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setHorizontalPagination:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AppKit.NSPrintingPaginationMode</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="ImageablePageBounds">
       <MemberSignature Language="C#" Value="public virtual System.Drawing.RectangleF ImageablePageBounds { get; }" />
@@ -262,6 +262,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("imageablePageBounds")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Drawing.RectangleF</ReturnType>
       </ReturnValue>
@@ -270,27 +275,14 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("imageablePageBounds")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="JobDisposition">
-      <MemberSignature Language="C#" Value="public virtual string JobDisposition { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual string JobDisposition { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string JobDisposition" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("jobDisposition")</AttributeName>
@@ -299,22 +291,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setJobDisposition:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="LeftMargin">
-      <MemberSignature Language="C#" Value="public virtual float LeftMargin { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance float32 LeftMargin" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
+        <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="LeftMargin">
+      <MemberSignature Language="C#" Value="public virtual float LeftMargin { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 LeftMargin" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("leftMargin")</AttributeName>
@@ -323,6 +315,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setLeftMargin:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="LocalizedPaperName">
       <MemberSignature Language="C#" Value="public virtual string LocalizedPaperName { get; }" />
@@ -331,6 +331,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("localizedPaperName")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -339,27 +344,14 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("localizedPaperName")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="Orientation">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSPrintingOrientation Orientation { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSPrintingOrientation Orientation { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.AppKit.NSPrintingOrientation Orientation" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.AppKit.NSPrintingOrientation</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("orientation")</AttributeName>
@@ -368,22 +360,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setOrientation:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="PaperName">
-      <MemberSignature Language="C#" Value="public virtual string PaperName { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance string PaperName" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.String</ReturnType>
+        <ReturnType>MonoMac.AppKit.NSPrintingOrientation</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="PaperName">
+      <MemberSignature Language="C#" Value="public virtual string PaperName { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string PaperName" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("paperName")</AttributeName>
@@ -392,22 +384,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setPaperName:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="PaperSize">
-      <MemberSignature Language="C#" Value="public virtual System.Drawing.SizeF PaperSize { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Drawing.SizeF PaperSize" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Drawing.SizeF</ReturnType>
+        <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="PaperSize">
+      <MemberSignature Language="C#" Value="public virtual System.Drawing.SizeF PaperSize { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Drawing.SizeF PaperSize" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("paperSize")</AttributeName>
@@ -416,6 +408,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setPaperSize:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Drawing.SizeF</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="PMPageFormat">
       <MemberSignature Language="C#" Value="public virtual void PMPageFormat ();" />
@@ -481,20 +481,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Printer">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSPrinter Printer { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSPrinter Printer { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AppKit.NSPrinter Printer" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.AppKit.NSPrinter</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("printer")</AttributeName>
@@ -503,6 +495,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setPrinter:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AppKit.NSPrinter</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="PrintSettings">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSMutableDictionary PrintSettings { get; }" />
@@ -511,6 +511,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("printSettings")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSMutableDictionary</ReturnType>
       </ReturnValue>
@@ -519,27 +524,14 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("printSettings")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="RightMargin">
-      <MemberSignature Language="C#" Value="public virtual float RightMargin { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual float RightMargin { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 RightMargin" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("rightMargin")</AttributeName>
@@ -548,14 +540,6 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setRightMargin:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="ScalingFactor">
-      <MemberSignature Language="C#" Value="public virtual float ScalingFactor { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance float32 ScalingFactor" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -564,6 +548,14 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="ScalingFactor">
+      <MemberSignature Language="C#" Value="public virtual float ScalingFactor { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 ScalingFactor" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("scalingFactor")</AttributeName>
@@ -572,22 +564,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setScalingFactor:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="SelectionOnly">
-      <MemberSignature Language="C#" Value="public virtual bool SelectionOnly { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool SelectionOnly" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
+        <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="SelectionOnly">
+      <MemberSignature Language="C#" Value="public virtual bool SelectionOnly { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool SelectionOnly" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("isSelectionOnly")</AttributeName>
@@ -596,6 +588,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setSelectionOnly:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="SetUpPrintOperationDefaultValues">
       <MemberSignature Language="C#" Value="public virtual void SetUpPrintOperationDefaultValues ();" />
@@ -619,20 +619,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="SharedPrintInfo">
-      <MemberSignature Language="C#" Value="public static MonoMac.AppKit.NSPrintInfo SharedPrintInfo { set; get; }" />
+      <MemberSignature Language="C#" Value="public static MonoMac.AppKit.NSPrintInfo SharedPrintInfo { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property class MonoMac.AppKit.NSPrintInfo SharedPrintInfo" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.AppKit.NSPrintInfo</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("sharedPrintInfo")</AttributeName>
@@ -641,22 +633,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setSharedPrintInfo:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="TopMargin">
-      <MemberSignature Language="C#" Value="public virtual float TopMargin { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance float32 TopMargin" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
+        <ReturnType>MonoMac.AppKit.NSPrintInfo</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="TopMargin">
+      <MemberSignature Language="C#" Value="public virtual float TopMargin { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 TopMargin" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("topMargin")</AttributeName>
@@ -665,6 +657,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setTopMargin:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="UpdateFromPMPageFormat">
       <MemberSignature Language="C#" Value="public virtual void UpdateFromPMPageFormat ();" />
@@ -709,20 +709,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="VerticallyCentered">
-      <MemberSignature Language="C#" Value="public virtual bool VerticallyCentered { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual bool VerticallyCentered { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool VerticallyCentered" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("isVerticallyCentered")</AttributeName>
@@ -731,22 +723,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setVerticallyCentered:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="VerticalPagination">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSPrintingPaginationMode VerticalPagination { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.AppKit.NSPrintingPaginationMode VerticalPagination" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>MonoMac.AppKit.NSPrintingPaginationMode</ReturnType>
+        <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="VerticalPagination">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSPrintingPaginationMode VerticalPagination { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.AppKit.NSPrintingPaginationMode VerticalPagination" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("verticalPagination")</AttributeName>
@@ -755,6 +747,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setVerticalPagination:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AppKit.NSPrintingPaginationMode</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
   </Members>
 </Type>

@@ -126,20 +126,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="AllowsMultipleSelection">
-      <MemberSignature Language="C#" Value="public virtual bool AllowsMultipleSelection { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual bool AllowsMultipleSelection { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool AllowsMultipleSelection" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("allowsMultipleSelection")</AttributeName>
@@ -148,22 +140,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setAllowsMultipleSelection:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="BackgroundColors">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSColor[] BackgroundColors { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AppKit.NSColor[] BackgroundColors" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>MonoMac.AppKit.NSColor[]</ReturnType>
+        <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="BackgroundColors">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSColor[] BackgroundColors { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AppKit.NSColor[] BackgroundColors" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("backgroundColors")</AttributeName>
@@ -172,6 +164,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setBackgroundColors:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AppKit.NSColor[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="ClassHandle">
       <MemberSignature Language="C#" Value="public override IntPtr ClassHandle { get; }" />
@@ -190,20 +190,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Content">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject[] Content { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject[] Content { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSObject[] Content" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSObject[]</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("content")</AttributeName>
@@ -212,9 +204,17 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setContent:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSObject[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="Delegate">
-      <MemberSignature Language="C#" Value="public MonoMac.AppKit.NSCollectionViewDelegate Delegate { set; get; }" />
+      <MemberSignature Language="C#" Value="public MonoMac.AppKit.NSCollectionViewDelegate Delegate { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AppKit.NSCollectionViewDelegate Delegate" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -265,6 +265,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("isFirstResponder")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -273,11 +278,6 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("isFirstResponder")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="ItemAtIndex">
       <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSCollectionViewItem ItemAtIndex (int index);" />
@@ -305,20 +305,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="ItemPrototype">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSCollectionViewItem ItemPrototype { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSCollectionViewItem ItemPrototype { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AppKit.NSCollectionViewItem ItemPrototype" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.AppKit.NSCollectionViewItem</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("itemPrototype")</AttributeName>
@@ -327,22 +319,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setItemPrototype:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="MaxItemSize">
-      <MemberSignature Language="C#" Value="public virtual System.Drawing.SizeF MaxItemSize { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Drawing.SizeF MaxItemSize" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Drawing.SizeF</ReturnType>
+        <ReturnType>MonoMac.AppKit.NSCollectionViewItem</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="MaxItemSize">
+      <MemberSignature Language="C#" Value="public virtual System.Drawing.SizeF MaxItemSize { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Drawing.SizeF MaxItemSize" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("maxItemSize")</AttributeName>
@@ -351,62 +343,6 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setMaxItemSize:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="MaxNumberOfColumns">
-      <MemberSignature Language="C#" Value="public virtual int MaxNumberOfColumns { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance int32 MaxNumberOfColumns" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("maxNumberOfColumns")</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>set: MonoMac.Foundation.Export("setMaxNumberOfColumns:")</AttributeName>
-        </Attribute>
-      </Attributes>
-    </Member>
-    <Member MemberName="MaxNumberOfRows">
-      <MemberSignature Language="C#" Value="public virtual int MaxNumberOfRows { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance int32 MaxNumberOfRows" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("maxNumberOfRows")</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>set: MonoMac.Foundation.Export("setMaxNumberOfRows:")</AttributeName>
-        </Attribute>
-      </Attributes>
-    </Member>
-    <Member MemberName="MinItemSize">
-      <MemberSignature Language="C#" Value="public virtual System.Drawing.SizeF MinItemSize { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Drawing.SizeF MinItemSize" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Drawing.SizeF</ReturnType>
       </ReturnValue>
@@ -415,6 +351,62 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="MaxNumberOfColumns">
+      <MemberSignature Language="C#" Value="public virtual int MaxNumberOfColumns { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 MaxNumberOfColumns" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("maxNumberOfColumns")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: MonoMac.Foundation.Export("setMaxNumberOfColumns:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxNumberOfRows">
+      <MemberSignature Language="C#" Value="public virtual int MaxNumberOfRows { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 MaxNumberOfRows" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("maxNumberOfRows")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: MonoMac.Foundation.Export("setMaxNumberOfRows:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MinItemSize">
+      <MemberSignature Language="C#" Value="public virtual System.Drawing.SizeF MinItemSize { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Drawing.SizeF MinItemSize" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("minItemSize")</AttributeName>
@@ -423,6 +415,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setMinItemSize:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Drawing.SizeF</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="NewItemForRepresentedObject">
       <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSCollectionViewItem NewItemForRepresentedObject (MonoMac.Foundation.NSObject obj);" />
@@ -450,20 +450,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Selectable">
-      <MemberSignature Language="C#" Value="public virtual bool Selectable { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual bool Selectable { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool Selectable" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("isSelectable")</AttributeName>
@@ -472,22 +464,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setSelectable:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="SelectionIndexes">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSIndexSet SelectionIndexes { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSIndexSet SelectionIndexes" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSIndexSet</ReturnType>
+        <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="SelectionIndexes">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSIndexSet SelectionIndexes { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSIndexSet SelectionIndexes" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("selectionIndexes")</AttributeName>
@@ -496,6 +488,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setSelectionIndexes:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSIndexSet</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="SetDraggingSource">
       <MemberSignature Language="C#" Value="public virtual void SetDraggingSource (MonoMac.AppKit.NSDragOperation dragOperationMask, bool localDestination);" />
@@ -524,12 +524,20 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="WeakDelegate">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject WeakDelegate { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject WeakDelegate { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSObject WeakDelegate" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("delegate")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: MonoMac.Foundation.Export("setDelegate:")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
       </ReturnValue>
@@ -542,14 +550,6 @@ public class MyClass : BaseClass {
           <para>   Methods must be decorated with the [Export ("selectorName")] attribute to respond to each method from the protocol.   Alternatively use the Delegate method which is strongly typed and does not require the [Export] attributes on methods.</para>
         </remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("delegate")</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>set: MonoMac.Foundation.Export("setDelegate:")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
   </Members>
 </Type>

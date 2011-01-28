@@ -134,6 +134,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("CGLContextObj")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.IntPtr</ReturnType>
       </ReturnValue>
@@ -142,11 +147,6 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("CGLContextObj")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="ClassHandle">
       <MemberSignature Language="C#" Value="public override IntPtr ClassHandle { get; }" />
@@ -283,20 +283,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="CurrentVirtualScreen">
-      <MemberSignature Language="C#" Value="public virtual int CurrentVirtualScreen { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual int CurrentVirtualScreen { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance int32 CurrentVirtualScreen" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("currentVirtualScreen")</AttributeName>
@@ -305,6 +297,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setCurrentVirtualScreen:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="FlushBuffer">
       <MemberSignature Language="C#" Value="public virtual void FlushBuffer ();" />
@@ -381,6 +381,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("pixelBuffer")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.AppKit.NSOpenGLPixelBuffer</ReturnType>
       </ReturnValue>
@@ -389,11 +394,6 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("pixelBuffer")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="PixelBufferCubeMapFace">
       <MemberSignature Language="C#" Value="public virtual int PixelBufferCubeMapFace { get; }" />
@@ -402,6 +402,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("pixelBufferCubeMapFace")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -410,11 +415,6 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("pixelBufferCubeMapFace")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="PixelBufferMipMapLevel">
       <MemberSignature Language="C#" Value="public virtual int PixelBufferMipMapLevel { get; }" />
@@ -423,6 +423,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("pixelBufferMipMapLevel")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -431,11 +436,6 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("pixelBufferMipMapLevel")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="SetFullScreen">
       <MemberSignature Language="C#" Value="public virtual void SetFullScreen ();" />
@@ -592,20 +592,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="View">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSView View { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSView View { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AppKit.NSView View" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.AppKit.NSView</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("view")</AttributeName>
@@ -614,6 +606,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setView:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AppKit.NSView</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
   </Members>
 </Type>

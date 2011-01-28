@@ -111,6 +111,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("attributes")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSDictionary</ReturnType>
       </ReturnValue>
@@ -119,11 +124,6 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("attributes")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="CIContext">
       <MemberSignature Language="C#" Value="public virtual MonoMac.CoreImage.CIContext CIContext { get; }" />
@@ -132,6 +132,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("CIContext")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.CoreImage.CIContext</ReturnType>
       </ReturnValue>
@@ -140,11 +145,6 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("CIContext")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="ClassHandle">
       <MemberSignature Language="C#" Value="public override IntPtr ClassHandle { get; }" />
@@ -163,20 +163,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="ColorRenderingIntent">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSColorRenderingIntent ColorRenderingIntent { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSColorRenderingIntent ColorRenderingIntent { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.AppKit.NSColorRenderingIntent ColorRenderingIntent" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.AppKit.NSColorRenderingIntent</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("colorRenderingIntent")</AttributeName>
@@ -185,22 +177,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setColorRenderingIntent:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="CompositingOperation">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSComposite CompositingOperation { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.AppKit.NSComposite CompositingOperation" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>MonoMac.AppKit.NSComposite</ReturnType>
+        <ReturnType>MonoMac.AppKit.NSColorRenderingIntent</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="CompositingOperation">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSComposite CompositingOperation { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.AppKit.NSComposite CompositingOperation" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("compositingOperation")</AttributeName>
@@ -209,22 +201,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setCompositingOperation:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="CurrentContext">
-      <MemberSignature Language="C#" Value="public static MonoMac.AppKit.NSGraphicsContext CurrentContext { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.AppKit.NSGraphicsContext CurrentContext" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>MonoMac.AppKit.NSGraphicsContext</ReturnType>
+        <ReturnType>MonoMac.AppKit.NSComposite</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="CurrentContext">
+      <MemberSignature Language="C#" Value="public static MonoMac.AppKit.NSGraphicsContext CurrentContext { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.AppKit.NSGraphicsContext CurrentContext" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("currentContext")</AttributeName>
@@ -233,6 +225,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setCurrentContext:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AppKit.NSGraphicsContext</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="FlushGraphics">
       <MemberSignature Language="C#" Value="public virtual void FlushGraphics ();" />
@@ -406,6 +406,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("graphicsPort")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.CoreGraphics.CGContext</ReturnType>
       </ReturnValue>
@@ -414,27 +419,14 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("graphicsPort")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="ImageInterpolation">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSImageInterpolation ImageInterpolation { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSImageInterpolation ImageInterpolation { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.AppKit.NSImageInterpolation ImageInterpolation" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.AppKit.NSImageInterpolation</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("imageInterpolation")</AttributeName>
@@ -443,6 +435,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setImageInterpolation:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AppKit.NSImageInterpolation</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="IsCurrentContextDrawingToScreen">
       <MemberSignature Language="C#" Value="public static bool IsCurrentContextDrawingToScreen { get; }" />
@@ -451,6 +451,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("currentContextDrawingToScreen")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -459,11 +464,6 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("currentContextDrawingToScreen")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="IsDrawingToScreen">
       <MemberSignature Language="C#" Value="public virtual bool IsDrawingToScreen { get; }" />
@@ -472,6 +472,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("isDrawingToScreen")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -480,11 +485,6 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("isDrawingToScreen")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="IsFlipped">
       <MemberSignature Language="C#" Value="public virtual bool IsFlipped { get; }" />
@@ -493,6 +493,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("isFlipped")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -501,27 +506,14 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("isFlipped")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="PatternPhase">
-      <MemberSignature Language="C#" Value="public virtual System.Drawing.PointF PatternPhase { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual System.Drawing.PointF PatternPhase { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Drawing.PointF PatternPhase" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Drawing.PointF</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("patternPhase")</AttributeName>
@@ -530,6 +522,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setPatternPhase:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Drawing.PointF</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="RestoreGraphicsState">
       <MemberSignature Language="C#" Value="public virtual void RestoreGraphicsState ();" />
@@ -598,20 +598,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="ShouldAntialias">
-      <MemberSignature Language="C#" Value="public virtual bool ShouldAntialias { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual bool ShouldAntialias { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool ShouldAntialias" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("shouldAntialias")</AttributeName>
@@ -620,6 +612,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setShouldAntialias:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
   </Members>
 </Type>

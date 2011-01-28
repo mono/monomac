@@ -192,6 +192,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("defaultPixelFormat")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.AppKit.NSOpenGLPixelFormat</ReturnType>
       </ReturnValue>
@@ -200,27 +205,14 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("defaultPixelFormat")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="OpenGLContext">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSOpenGLContext OpenGLContext { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSOpenGLContext OpenGLContext { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AppKit.NSOpenGLContext OpenGLContext" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.AppKit.NSOpenGLContext</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("openGLContext")</AttributeName>
@@ -229,22 +221,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setOpenGLContext:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="PixelFormat">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSOpenGLPixelFormat PixelFormat { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AppKit.NSOpenGLPixelFormat PixelFormat" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>MonoMac.AppKit.NSOpenGLPixelFormat</ReturnType>
+        <ReturnType>MonoMac.AppKit.NSOpenGLContext</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="PixelFormat">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSOpenGLPixelFormat PixelFormat { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AppKit.NSOpenGLPixelFormat PixelFormat" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("pixelFormat")</AttributeName>
@@ -253,6 +245,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setPixelFormat:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AppKit.NSOpenGLPixelFormat</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="PrepareOpenGL">
       <MemberSignature Language="C#" Value="public virtual void PrepareOpenGL ();" />

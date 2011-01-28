@@ -111,6 +111,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("availableVideoPreviewConnections")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.QTKit.QTCaptureConnection[]</ReturnType>
       </ReturnValue>
@@ -119,27 +124,14 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("availableVideoPreviewConnections")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="CaptureSession">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.QTKit.QTCaptureSession CaptureSession { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.QTKit.QTCaptureSession CaptureSession { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.QTKit.QTCaptureSession CaptureSession" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.QTKit.QTCaptureSession</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("captureSession")</AttributeName>
@@ -148,6 +140,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setCaptureSession:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.QTKit.QTCaptureSession</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="ClassHandle">
       <MemberSignature Language="C#" Value="public override IntPtr ClassHandle { get; }" />
@@ -166,7 +166,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Delegate">
-      <MemberSignature Language="C#" Value="public MonoMac.QTKit.QTCaptureViewDelegate Delegate { set; get; }" />
+      <MemberSignature Language="C#" Value="public MonoMac.QTKit.QTCaptureViewDelegate Delegate { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.QTKit.QTCaptureViewDelegate Delegate" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -186,20 +186,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="FillColor">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSColor FillColor { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSColor FillColor { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AppKit.NSColor FillColor" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.AppKit.NSColor</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("fillColor")</AttributeName>
@@ -208,22 +200,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setFillColor:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="PreservesAspectRatio">
-      <MemberSignature Language="C#" Value="public virtual bool PreservesAspectRatio { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool PreservesAspectRatio" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
+        <ReturnType>MonoMac.AppKit.NSColor</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="PreservesAspectRatio">
+      <MemberSignature Language="C#" Value="public virtual bool PreservesAspectRatio { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool PreservesAspectRatio" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("preservesAspectRatio")</AttributeName>
@@ -232,6 +224,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setPreservesAspectRatio:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="PreviewBounds">
       <MemberSignature Language="C#" Value="public virtual System.Drawing.RectangleF PreviewBounds { get; }" />
@@ -240,6 +240,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("previewBounds")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Drawing.RectangleF</ReturnType>
       </ReturnValue>
@@ -248,27 +253,14 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("previewBounds")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="VideoPreviewConnection">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.QTKit.QTCaptureConnection VideoPreviewConnection { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.QTKit.QTCaptureConnection VideoPreviewConnection { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.QTKit.QTCaptureConnection VideoPreviewConnection" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.QTKit.QTCaptureConnection</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("videoPreviewConnection")</AttributeName>
@@ -277,14 +269,30 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setVideoPreviewConnection:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.QTKit.QTCaptureConnection</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="WeakDelegate">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject WeakDelegate { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject WeakDelegate { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSObject WeakDelegate" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("delegate")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: MonoMac.Foundation.Export("setDelegate:")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
       </ReturnValue>
@@ -297,17 +305,9 @@ public class MyClass : BaseClass {
           <para>   Methods must be decorated with the [Export ("selectorName")] attribute to respond to each method from the protocol.   Alternatively use the Delegate method which is strongly typed and does not require the [Export] attributes on methods.</para>
         </remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("delegate")</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>set: MonoMac.Foundation.Export("setDelegate:")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="WillDisplayImage">
-      <MemberSignature Language="C#" Value="public MonoMac.QTKit.QTCaptureImageEvent WillDisplayImage { set; get; }" />
+      <MemberSignature Language="C#" Value="public MonoMac.QTKit.QTCaptureImageEvent WillDisplayImage { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.QTKit.QTCaptureImageEvent WillDisplayImage" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>

@@ -189,6 +189,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("defaultCenter")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
       </ReturnValue>
@@ -197,11 +202,6 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("defaultCenter")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="NSLocalNotificationCenterType">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSLocalNotificationCenterType { get; }" />
@@ -362,20 +362,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Suspended">
-      <MemberSignature Language="C#" Value="public virtual bool Suspended { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual bool Suspended { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool Suspended" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("suspended")</AttributeName>
@@ -384,6 +376,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setSuspended:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
   </Members>
 </Type>

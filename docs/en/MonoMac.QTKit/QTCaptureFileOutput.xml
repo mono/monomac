@@ -121,7 +121,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Delegate">
-      <MemberSignature Language="C#" Value="public MonoMac.QTKit.QTCaptureFileOutputDelegate Delegate { set; get; }" />
+      <MemberSignature Language="C#" Value="public MonoMac.QTKit.QTCaptureFileOutputDelegate Delegate { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.QTKit.QTCaptureFileOutputDelegate Delegate" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -247,6 +247,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("isRecordingPaused")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -255,27 +260,14 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("isRecordingPaused")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="MaximumRecordedDuration">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.QTKit.QTTime MaximumRecordedDuration { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.QTKit.QTTime MaximumRecordedDuration { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.QTKit.QTTime MaximumRecordedDuration" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.QTKit.QTTime</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("maximumRecordedDuration")</AttributeName>
@@ -284,22 +276,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setMaximumRecordedDuration:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="MaximumRecordedFileSize">
-      <MemberSignature Language="C#" Value="public virtual ulong MaximumRecordedFileSize { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance unsigned int64 MaximumRecordedFileSize" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.UInt64</ReturnType>
+        <ReturnType>MonoMac.QTKit.QTTime</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="MaximumRecordedFileSize">
+      <MemberSignature Language="C#" Value="public virtual ulong MaximumRecordedFileSize { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int64 MaximumRecordedFileSize" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("maximumRecordedFileSize")</AttributeName>
@@ -308,22 +300,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setMaximumRecordedFileSize:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="MaximumVideoSize">
-      <MemberSignature Language="C#" Value="public virtual System.Drawing.SizeF MaximumVideoSize { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Drawing.SizeF MaximumVideoSize" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Drawing.SizeF</ReturnType>
+        <ReturnType>System.UInt64</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="MaximumVideoSize">
+      <MemberSignature Language="C#" Value="public virtual System.Drawing.SizeF MaximumVideoSize { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Drawing.SizeF MaximumVideoSize" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("maximumVideoSize")</AttributeName>
@@ -332,22 +324,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setMaximumVideoSize:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="MinimumVideoFrameInterval">
-      <MemberSignature Language="C#" Value="public virtual double MinimumVideoFrameInterval { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance float64 MinimumVideoFrameInterval" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Double</ReturnType>
+        <ReturnType>System.Drawing.SizeF</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="MinimumVideoFrameInterval">
+      <MemberSignature Language="C#" Value="public virtual double MinimumVideoFrameInterval { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64 MinimumVideoFrameInterval" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("minimumVideoFrameInterval")</AttributeName>
@@ -356,6 +348,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setMinimumVideoFrameInterval:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="MustChangeOutputFile">
       <MemberSignature Language="C#" Value="public event EventHandler&lt;MonoMac.QTKit.QTCaptureFileErrorEventArgs&gt; MustChangeOutputFile;" />
@@ -379,6 +379,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("outputFileURL")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSUrl</ReturnType>
       </ReturnValue>
@@ -387,11 +392,6 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("outputFileURL")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="PauseRecording">
       <MemberSignature Language="C#" Value="public virtual void PauseRecording ();" />
@@ -421,6 +421,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("recordedDuration")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.QTKit.QTTime</ReturnType>
       </ReturnValue>
@@ -429,11 +434,6 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("recordedDuration")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="RecordedFileSize">
       <MemberSignature Language="C#" Value="public virtual ulong RecordedFileSize { get; }" />
@@ -442,6 +442,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("recordedFileSize")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.UInt64</ReturnType>
       </ReturnValue>
@@ -450,11 +455,6 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("recordedFileSize")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="RecordToOutputFile">
       <MemberSignature Language="C#" Value="public virtual void RecordToOutputFile (MonoMac.Foundation.NSUrl url);" />
@@ -554,7 +554,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="ShouldChangeOutputFile">
-      <MemberSignature Language="C#" Value="public MonoMac.QTKit.QTCaptureFileError ShouldChangeOutputFile { set; get; }" />
+      <MemberSignature Language="C#" Value="public MonoMac.QTKit.QTCaptureFileError ShouldChangeOutputFile { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.QTKit.QTCaptureFileError ShouldChangeOutputFile" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -570,12 +570,20 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="WeakDelegate">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject WeakDelegate { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject WeakDelegate { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSObject WeakDelegate" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("delegate")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: MonoMac.Foundation.Export("setDelegate:")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
       </ReturnValue>
@@ -588,14 +596,6 @@ public class MyClass : BaseClass {
           <para>   Methods must be decorated with the [Export ("selectorName")] attribute to respond to each method from the protocol.   Alternatively use the Delegate method which is strongly typed and does not require the [Export] attributes on methods.</para>
         </remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("delegate")</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>set: MonoMac.Foundation.Export("setDelegate:")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="WillFinishRecording">
       <MemberSignature Language="C#" Value="public event EventHandler&lt;MonoMac.QTKit.QTCaptureFileErrorEventArgs&gt; WillFinishRecording;" />

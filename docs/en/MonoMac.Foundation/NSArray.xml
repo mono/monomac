@@ -213,6 +213,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("count")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
@@ -221,11 +226,6 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("count")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="FromFile">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSArray FromFile (string path);" />
@@ -300,6 +300,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="FromObjects">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSArray FromObjects (object[] items);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSArray FromObjects(object[] items) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>

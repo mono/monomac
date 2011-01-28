@@ -147,20 +147,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="AllowsTickMarkValuesOnly">
-      <MemberSignature Language="C#" Value="public virtual bool AllowsTickMarkValuesOnly { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual bool AllowsTickMarkValuesOnly { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool AllowsTickMarkValuesOnly" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("allowsTickMarkValuesOnly")</AttributeName>
@@ -169,22 +161,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setAllowsTickMarkValuesOnly:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="AltIncrementValue">
-      <MemberSignature Language="C#" Value="public virtual double AltIncrementValue { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance float64 AltIncrementValue" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Double</ReturnType>
+        <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="AltIncrementValue">
+      <MemberSignature Language="C#" Value="public virtual double AltIncrementValue { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64 AltIncrementValue" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("altIncrementValue")</AttributeName>
@@ -193,6 +185,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setAltIncrementValue:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="ClassHandle">
       <MemberSignature Language="C#" Value="public override IntPtr ClassHandle { get; }" />
@@ -338,6 +338,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("isVertical")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -346,11 +351,6 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("isVertical")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="KnobRectFlipped">
       <MemberSignature Language="C#" Value="public virtual System.Drawing.RectangleF KnobRectFlipped (bool flipped);" />
@@ -378,20 +378,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="KnobThickness">
-      <MemberSignature Language="C#" Value="public virtual float KnobThickness { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual float KnobThickness { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 KnobThickness" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("knobThickness")</AttributeName>
@@ -400,22 +392,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setKnobThickness:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="MaxValue">
-      <MemberSignature Language="C#" Value="public virtual double MaxValue { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance float64 MaxValue" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Double</ReturnType>
+        <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="MaxValue">
+      <MemberSignature Language="C#" Value="public virtual double MaxValue { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64 MaxValue" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("maxValue")</AttributeName>
@@ -424,14 +416,6 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setMaxValue:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="MinValue">
-      <MemberSignature Language="C#" Value="public virtual double MinValue { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance float64 MinValue" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
@@ -440,6 +424,14 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="MinValue">
+      <MemberSignature Language="C#" Value="public virtual double MinValue { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64 MinValue" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("minValue")</AttributeName>
@@ -448,6 +440,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setMinValue:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="PrefersTrackingUntilMouseUp">
       <MemberSignature Language="C#" Value="public virtual bool PrefersTrackingUntilMouseUp ();" />
@@ -497,20 +497,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="SliderType">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSSliderType SliderType { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSSliderType SliderType { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.AppKit.NSSliderType SliderType" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.AppKit.NSSliderType</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("sliderType")</AttributeName>
@@ -519,22 +511,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setSliderType:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="TickMarkPosition">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSTickMarkPosition TickMarkPosition { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.AppKit.NSTickMarkPosition TickMarkPosition" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>MonoMac.AppKit.NSTickMarkPosition</ReturnType>
+        <ReturnType>MonoMac.AppKit.NSSliderType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="TickMarkPosition">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSTickMarkPosition TickMarkPosition { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.AppKit.NSTickMarkPosition TickMarkPosition" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("tickMarkPosition")</AttributeName>
@@ -543,22 +535,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setTickMarkPosition:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="TickMarks">
-      <MemberSignature Language="C#" Value="public virtual int TickMarks { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance int32 TickMarks" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
+        <ReturnType>MonoMac.AppKit.NSTickMarkPosition</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="TickMarks">
+      <MemberSignature Language="C#" Value="public virtual int TickMarks { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 TickMarks" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("numberOfTickMarks")</AttributeName>
@@ -567,6 +559,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setNumberOfTickMarks:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="TickMarkValue">
       <MemberSignature Language="C#" Value="public virtual double TickMarkValue (int index);" />
@@ -594,20 +594,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Title">
-      <MemberSignature Language="C#" Value="public virtual string Title { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual string Title { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string Title" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("title")</AttributeName>
@@ -616,22 +608,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setTitle:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="TitleCell">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject TitleCell { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSObject TitleCell" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
+        <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="TitleCell">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject TitleCell { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSObject TitleCell" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("titleCell")</AttributeName>
@@ -640,22 +632,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setTitleCell:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="TitleColor">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSColor TitleColor { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AppKit.NSColor TitleColor" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>MonoMac.AppKit.NSColor</ReturnType>
+        <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="TitleColor">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSColor TitleColor { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AppKit.NSColor TitleColor" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("titleColor")</AttributeName>
@@ -664,22 +656,22 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setTitleColor:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="TitleFont">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSFont TitleFont { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AppKit.NSFont TitleFont" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>MonoMac.AppKit.NSFont</ReturnType>
+        <ReturnType>MonoMac.AppKit.NSColor</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="TitleFont">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSFont TitleFont { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AppKit.NSFont TitleFont" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("titleFont")</AttributeName>
@@ -688,6 +680,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setTitleFont:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AppKit.NSFont</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="TrackRect">
       <MemberSignature Language="C#" Value="public virtual System.Drawing.RectangleF TrackRect { get; }" />
@@ -696,6 +696,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("trackRect")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Drawing.RectangleF</ReturnType>
       </ReturnValue>
@@ -704,11 +709,6 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("trackRect")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
   </Members>
 </Type>
