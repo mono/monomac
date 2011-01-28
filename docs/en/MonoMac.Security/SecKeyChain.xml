@@ -8,13 +8,36 @@
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
+		
   <Interfaces />
   <Docs>
     <summary>Access to the operating system keychain.</summary>
     <remarks>
       <para>
-This class can be used to add, remove, update or query the iOS or MacOS keychain.   MacOS is limited to a single kind of password (SecKind.InternetPassword) while iOS offers a wider range of options.
-</para>
+    This class provides both basic and advanced means to manipulate iOS or MacOS keychain.
+    Majority Mac OS X keychain scenarios involve adding or looking up the stored password.
+	AddInternetPassword and FindInternetPassword provide high-level API to accomplish this for Internet passwords.
+	For generic passwords, the AddGenericPassword and FindInternetPassword perform the same task.
+	Other methods of this class may be used for iOS or more advanced MacOS keychain scenarios.
+			</para>
+      <example>
+      	<code lang="C#">
+var password = Encoding.UTF8.GetBytes("pA$$w0rd");
+SecKeyChain.AddInternetPassword("bugzilla.novell.com", "miguel", password);
+
+      	</code>
+      </example>
+      <example>
+      	<code lang="C#">
+byte[] password = null;
+var code = SecKeyChain.FindInternetPassword("bugzilla.novell.com", "miguel", out password);
+if (code == SecStatusCode.Success) {
+	var passwordString = Encoding.UTF8.GetString(password);
+	Console.WriteLine("The password for the account is: {0}", passwordString);
+}
+
+      	</code>
+      </example>
       <example>
         <code lang="C#">
 var query = new SecRecord (SecKind.InternetPassword) {
@@ -24,7 +47,7 @@ var query = new SecRecord (SecKind.InternetPassword) {
 var password = SecKeyChain.QueryAsData (query);
 Console.WriteLine ("The password for the account is: {0}", password);
 
-  </code>
+  			</code>
       </example>
     </remarks>
   </Docs>
@@ -65,12 +88,20 @@ Console.WriteLine ("The password for the account is: {0}", password);
         <Parameter Name="password" Type="System.Byte[]" />
       </Parameters>
       <Docs>
-        <param name="serviceName">To be added.</param>
-        <param name="accountName">To be added.</param>
-        <param name="password">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="serviceName">The name of the service for the generic password.</param>
+        <param name="accountName">The name of the account for the generic password.</param>
+        <param name="password">Array of bytes representing the password.</param>
+        <summary>
+        The method allows to add a new generic password to the default keychain (MacOS only).
+        </summary>
+        <returns>If the method succeeds, SecStatusCode.Success is returned. Otherwise the return value indicates the reason for the failure.</returns>
+        <remarks>
+        	This method can be used to add passwords to the default MacOS keychain for the various types of accounts other than the Internet: databases, network shares and so on.
+					If the password with the given serviceName or accountName already exist in the default keychain, the method will fail with the SecStatusCode.DuplicateItem return value.
+					To update existing password, use SecKeyChain.Update.
+					This method will cause the Unlock Keychain dialog box to be displayed, if the default keychain is currently locked.
+					This method is not available for iOS.
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="AddInternetPassword">
@@ -94,17 +125,25 @@ Console.WriteLine ("The password for the account is: {0}", password);
         <Parameter Name="securityDomain" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="serverName">To be added.</param>
-        <param name="accountName">To be added.</param>
-        <param name="password">To be added.</param>
-        <param name="protocolType">To be added.</param>
-        <param name="port">To be added.</param>
-        <param name="path">To be added.</param>
-        <param name="authenticationType">To be added.</param>
-        <param name="securityDomain">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="serverName">The server name for the Internet password.</param>
+        <param name="accountName">The account name for the Internet password.</param>
+        <param name="password">Array of bytes representing the password.</param>
+        <param name="protocolType">Optional network protocol associated with the Internet password. If not provided, defaults to SecProtocol.Http.</param>
+        <param name="port">Optional TCP/IP port associated with the Internet password. If not provided, defaults to 0.</param>
+        <param name="path">Optional string which represents the path for the Internet password. If not provided, defaults to null.</param>
+        <param name="authenticationType">Optional authentication type for the Internet password. If not provided, defaults to SecAuthenticationType.Default.</param>
+        <param name="securityDomain">Optional security domain, if the protocol requires it. If not provided, defaults to null.</param>
+        <summary>
+        This method allows to add a new Internet password to the default keychain (MacOS only).
+        </summary>
+        <returns>If the method succeeds, SecStatusCode.Success is returned. Otherwise the return value indicates the reason for the failure.</returns>
+        <remarks>
+        	This method can be used to add passwords to the default MacOS keychain for the Internet accounts. For any other types of accounts, use SecKeyChain.AddGenericPassword.
+					If the password with the given serviceName or accountName already exist in the default keychain, the method will fail with the SecStatusCode.DuplicateItem return value.
+					To update existing password, use SecKeyChain.Update.
+					This method will cause the Unlock Keychain dialog box to be displayed, if the default keychain is currently locked.
+					This method is not available for iOS.
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="FindGenericPassword">
@@ -123,12 +162,18 @@ Console.WriteLine ("The password for the account is: {0}", password);
         <Parameter Name="password" Type="System.Byte[]&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="serviceName">To be added.</param>
-        <param name="accountName">To be added.</param>
-        <param name="password">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="serviceName">The name of the service for generic password.</param>
+        <param name="accountName">The account name of the service for generic password.</param>
+        <param name="password">If the method succeeds, the byte array representing the password.</param>
+        <summary>This method looks up for a generic password in the default keychain (MacOS only).</summary>
+        <returns>If the method succeeds, SecStatusCode.Success is returned. Otherwise the return value indicates the reason for the failure.</returns>
+        <remarks>
+	        This method can be used to lookup for the password in the default MacOS keychain for accounts other than Internet.
+					Both serviceName and accountName are optional and will accept nulls. Provide as many as needed to narrow the search sufficiently for your application.
+					If multiple matching passwords exist, the first one will be returned.
+					This method will cause the Unlock Keychain dialog box to be displayed, if the default keychain is currently locked.
+					This method is not available for iOS.
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="FindInternetPassword">
@@ -152,17 +197,23 @@ Console.WriteLine ("The password for the account is: {0}", password);
         <Parameter Name="securityDomain" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="serverName">To be added.</param>
-        <param name="accountName">To be added.</param>
-        <param name="password">To be added.</param>
-        <param name="protocolType">To be added.</param>
-        <param name="port">To be added.</param>
-        <param name="path">To be added.</param>
-        <param name="authenticationType">To be added.</param>
-        <param name="securityDomain">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="serverName">The server name for the Internet password.</param>
+        <param name="accountName">The account name for the internet password.</param>
+        <param name="password">If the method succeeds, the byte array representing the password.</param>
+        <param name="protocolType">Optional network protocol associated with the Internet password. If not provided, defaults to SecProtocol.Http.</param>
+        <param name="port">Optional TCP/IP port associated with the Internet password. If not provided, defaults to 0.</param>
+        <param name="path">Optional string which represents the path for the Internet password. If not provided, defaults to null.</param>
+        <param name="authenticationType">Optional authentication type for the Internet password. If not provided, defaults to SecAuthenticationType.Default.</param>
+        <param name="securityDomain">Optional security domain, if the protocol requires it. If not provided, defaults to null.</param>
+        <summary>This method looks up for the password in the default MacOS keychain for Internet accounts.</summary>
+        <returns>If the method succeeds, SecStatusCode.Success is returned. Otherwise the return value indicates the reason for the failure.</returns>
+        <remarks>
+	        This method can be used to lookup for the password in the default MacOS keychain for Internet accounts.
+					Most of the parameters are optional and will accept null. Provide as many as needed to narrow the search sufficiently for your application.
+					If multiple matching passwords exist, the first one will be returned.
+					This method will cause the Unlock Keychain dialog box to be displayed, if the default keychain is currently locked.
+					This method is not available for iOS.
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="QueryAsData">
