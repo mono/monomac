@@ -41,7 +41,7 @@ monomac-lib.zip : Makefile
 	mdoc assemble -o $(basename $@) en
 
 fetch-shared-docs:
-	for i in en/*/*.xml; do d=`echo $$i | sed -e 's,MonoMac,MonoTouch,' -e s,^,../../iphone/docs/,`; echo $$d; if test -f $$d; then sed -e 's/MonoTouch/MonoMac/g' -e 's/<AssemblyName>monotouch/<AssemblyName>monomac/' < $$d > $$i; fi; done
+	for i in en/*/*.xml; do d=`echo $$i | sed -e 's,MonoMac,MonoTouch,' -e s,^,../../iphone/docs/,`; if test $i != en/MonoMac.Security/SecKeyChain.xml; then echo $$d; if test -f $$d; then sed -e 's/MonoTouch/MonoMac/g' -e 's/<AssemblyName>monotouch/<AssemblyName>monomac/' < $$d > $$i; fi; fi; done
 
 populate: populate.exe
 	MONO_PATH=../src mono --debug populate.exe .
