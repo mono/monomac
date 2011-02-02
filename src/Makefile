@@ -14,6 +14,7 @@ CORE_SOURCES =					\
 	./CoreImage/Enums.cs				\
 	./Foundation/EnumDesktop.cs			\
 	./Foundation/NSObject.cs			\
+	./ImageKit/Enums.cs				\
 	./ObjCRuntime/Class.cs				\
 	./ObjCRuntime/Messaging.cs			\
 	./ObjCRuntime/NativeConstructorBuilder.cs	\
@@ -98,6 +99,7 @@ APIS = \
 	corewlan.cs		\
 	foundation-desktop.cs 	\
 	growl.cs		\
+	imagekit.cs		\
 	qtkit.cs		\
 	pdfkit.cs		\
 	webkit.cs		\

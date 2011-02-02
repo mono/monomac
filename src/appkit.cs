@@ -3728,7 +3728,60 @@ namespace MonoMac.AppKit {
 		string [] PromisedFilesDroppedAtDestination (NSUrl dropDestination);
 	}
 
+	[BaseType (typeof (NSObject))]
+	[Model]
+	public interface NSDraggingDestination {
+		[Export ("draggingEntered:"), DefaultValue (NSDragOperation.None)]
+		NSDragOperation DraggingEntered (NSDraggingInfo sender);
 
+		[Export ("draggingUpdated:"), DefaultValue (NSDragOperation.None)]
+		NSDragOperation DraggingUpdated (NSDraggingInfo sender);
+
+		[Export ("draggingExited:")]
+		void DraggingExited (NSDraggingInfo sender);
+
+		[Export ("prepareForDragOperation:"), DefaultValue (false)]
+		bool PrepareForDragOperation (NSDraggingInfo sender);
+
+		[Export ("performDragOperation:"), DefaultValue (false)]
+		bool PerformDragOperation (NSDraggingInfo sender);
+
+		[Export ("concludeDragOperation:")]
+		void ConcludeDragOperation (NSDraggingInfo sender);
+
+		[Export ("draggingEnded:")]
+		void DraggingEnded (NSDraggingInfo sender);
+
+		[Export ("wantsPeriodicDraggingUpdates"), DefaultValue (false)]
+		bool WantsPeriodicDraggingUpdates { get; }
+	}
+
+	[BaseType (typeof (NSObject))]
+	[Model]
+	public interface NSDraggingSource {
+		[Export ("draggingSourceOperationMaskForLocal:"), DefaultValue (NSDragOperation.None)]
+		NSDragOperation DraggingSourceOperationMaskForLocal (bool flag);
+
+		[Export ("namesOfPromisedFilesDroppedAtDestination:"), DefaultValue (new string[0])]
+		string [] NamesOfPromisedFilesDroppedAtDestination (NSUrl dropDestination);
+
+		[Export ("draggedImage:beganAt:")]
+		void DraggedImageBeganAt (NSImage image, PointF screenPoint);
+
+		[Export ("draggedImage:endedAt:operation:")]
+		void DraggedImageEndedAtOperation (NSImage image, PointF screenPoint, NSDragOperation operation);
+
+		[Export ("draggedImage:movedTo:")]
+		void DraggedImageMovedTo (NSImage image, PointF screenPoint);
+
+		[Export ("ignoreModifierKeysWhileDragging"), DefaultValue (false)]
+		bool IgnoreModifierKeysWhileDragging { get; }
+
+		[Obsolete ("On 10.1 and newer, use DraggedImageEndedAtOperation() instead")]
+		[Export ("draggedImage:endedAt:deposited:")]
+		void DraggedImageEndedAtDeposited (NSImage image, PointF screenPoint, bool flag);
+	}
+	
 	[BaseType (typeof (NSResponder), Delegates=new string [] { "WeakDelegate" }, Events=new Type [] { typeof (NSDrawerDelegate)})]
 	public interface NSDrawer {
 		[Export ("initWithContentSize:preferredEdge:")]
