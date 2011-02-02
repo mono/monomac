@@ -3310,7 +3310,7 @@ namespace MonoMac.AppKit {
 		[Export ("showsApplicationBadge")]
 		bool ShowsApplicationBadge { get; set; }
 
-		[Export ("badgeLabel")]
+		[Export ("badgeLabel"), NullAllowed]
 		string BadgeLabel { get; set; }
 	}
 
