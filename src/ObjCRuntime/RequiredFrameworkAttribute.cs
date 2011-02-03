@@ -28,14 +28,23 @@ namespace MonoMac {
         [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
         public class RequiredFrameworkAttribute : Attribute
         {
-                public string Path { get; private set; }
+                public string LibraryPath { get; private set; }
                 public string Name { get; private set; }
 
                 public RequiredFrameworkAttribute (string name)
                 {
-                        string frameworksPath = System.IO.Path.Combine (AppDomain.CurrentDomain.BaseDirectory, "../Frameworks");
-                        string frameworkPath = System.IO.Path.Combine (frameworksPath, name);
-                        Path = System.IO.Path.Combine (frameworkPath, name.Replace (".framework", ""));
+			string basePath = Path.Combine (AppDomain.CurrentDomain.BaseDirectory, "..");
+
+			if (name.Contains (".dylib")) {
+				basePath = Path.Combine (basePath, "Resources");
+				Name = name;
+			}
+			else {
+				basePath = Path.Combine (basePath, "Frameworks");
+				basePath = Path.Combine (basePath, name);
+				Name = name.Replace (".frameworks", "");
+			}
+                        LibraryPath = Path.Combine (basePath, Name);
                 }
         }
 }

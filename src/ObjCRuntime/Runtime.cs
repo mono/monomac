@@ -42,7 +42,7 @@ namespace MonoMac.ObjCRuntime {
 			foreach (var attribute in attributes) {
 				var requiredFramework = (RequiredFrameworkAttribute)attribute;
 
-				if (Dlfcn.dlopen (requiredFramework.Path, 0) == IntPtr.Zero)
+				if (Dlfcn.dlopen (requiredFramework.LibraryPath, 0) == IntPtr.Zero)
 					throw new Exception (string.Format ("Unable to load required framework: '{0}'", requiredFramework.Name),
 					                     new Exception (Dlfcn.dlerror()));
 			}
