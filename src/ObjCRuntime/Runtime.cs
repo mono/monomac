@@ -37,6 +37,16 @@ namespace MonoMac.ObjCRuntime {
 		static IntPtr selClass = Selector.GetHandle ("class");
 		
 		public static void RegisterAssembly (Assembly a) {
+			var attributes = a.GetCustomAttributes (typeof (RequiredFrameworkAttribute), false);
+			
+			foreach (var attribute in attributes) {
+				var requiredFramework = (RequiredFrameworkAttribute)attribute;
+
+				if (Dlfcn.dlopen (requiredFramework.Path, 0) == IntPtr.Zero)
+					throw new Exception (string.Format ("Unable to load required framework: '{0}'", requiredFramework.Name),
+					                     new Exception (Dlfcn.dlerror()));
+			}
+			
 			if (assemblies == null) {
 				assemblies = new List <Assembly> ();
 				Class.Register (typeof (NSObject));
