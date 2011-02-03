@@ -22,6 +22,7 @@
 //
 using System;
 using System.Runtime.InteropServices;
+using System.IO;
 
 namespace MonoMac {
         [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
@@ -32,10 +33,9 @@ namespace MonoMac {
 
                 public RequiredFrameworkAttribute (string name)
                 {
-                        Name = name.Replace (".framework", "");
                         string frameworksPath = System.IO.Path.Combine (AppDomain.CurrentDomain.BaseDirectory, "../Frameworks");
-                        Path = System.IO.Path.Combine (frameworksPath, name);
-                        Path = System.IO.Path.Combine (Path, Name);
+                        string frameworkPath = System.IO.Path.Combine (frameworksPath, name);
+                        Path = System.IO.Path.Combine (frameworkPath, name.Replace (".framework", ""));
                 }
         }
 }
