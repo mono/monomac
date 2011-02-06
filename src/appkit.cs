@@ -532,7 +532,7 @@ namespace MonoMac.AppKit {
 		void WillBecomeActive (NSNotification notification);
 	
 		[Export ("applicationDidBecomeActive:"), EventArgs ("NSNotification")]
-		void DidBecomeActivep (NSNotification notification);
+		void DidBecomeActive (NSNotification notification);
 	
 		[Export ("applicationWillResignActive:"), EventArgs ("NSNotification")]
 		void WillResignActive (NSNotification notification);
