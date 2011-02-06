@@ -28,7 +28,7 @@ install-docs: $(DOCS_MAN)
 	cp $(DOCS_MAN) monomac-docs.source $(docdir)
 
 install-monodoc-docs: $(DOCS_MAN) $(DOCS_LIB) monomac-docs.source
-	install -m 644 $^ `pkg-config --variable=sourcesdir monodoc`
+install -m 644 $^ `pkg-config --variable=sourcesdir monodoc`
 
 clean-docs:
 	-rm $(DOCS_MAN) $(DOCS_LIB)
@@ -76,3 +76,6 @@ push:
 	rsync -a deploy/en/ root@mono.ximian.com:/srv/www/mono-website/monomac-docs/Docs/monomac.dll
 AgilityPack.dll: $(MACCORE)/AgilityPack.dll
 	cp $< $@
+
+audit: document-generated-code.exe
+	MONO_PATH=../src mono --debug document-generated-code.exe --debugdoc  ../src/temp.dll deploy > log
