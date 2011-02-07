@@ -1103,6 +1103,7 @@ namespace MonoMac.AppKit {
 		FamilyClassMask = (int) -268435456,
 	}
 
+	[Flags]
 	public enum NSFontTraitMask {
 		Italic = 1,
 		Bold = 2,

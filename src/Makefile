@@ -140,7 +140,7 @@ clean:
 all: MonoMac.dll
 
 update: MonoMac.dll
-	cp monomac.dll ~/.config/MonoDevelop/addins/MonoDevelop.MonoMac.2.4.*/MonoMac.dll
+	cp MonoMac.dll* ~/.config/MonoDevelop/addins/MonoDevelop.MonoMac.2.4.*/
 
 push-to-monodevelop:
 	cp MonoMac.dll* /cvs/monodevelop/extras/MonoDevelop.MonoMac/MonoDevelop.MonoMac
