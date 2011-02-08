@@ -7836,7 +7836,7 @@ namespace MonoMac.AppKit {
 		float ThicknessRequiredInRuler { get; }
 
 		[Export ("drawRect:")]
-		void Draw (RectangleF rect);
+		void DrawRect (RectangleF rect);
 
 		[Export ("trackMouse:adding:")]
 		bool TrackMouse (NSEvent mouseDownEvent, bool isAdding);
@@ -9277,7 +9277,7 @@ namespace MonoMac.AppKit {
 		void DisplayIfNeededInRectIgnoringOpacity (RectangleF rect);
 
 		[Export ("drawRect:")]
-		void Draw (RectangleF dirtyRect);
+		void DrawRect (RectangleF dirtyRect);
 
 		[Export ("displayRectIgnoringOpacity:inContext:")]
 		void DisplayRectIgnoringOpacityinContext (RectangleF aRect, NSGraphicsContext context);
