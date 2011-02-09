@@ -2960,7 +2960,7 @@ namespace MonoMac.AppKit {
 		bool Enabled { [Bind ("isEnabled")]get; set; }
 
 		[Export ("alignment")]
-		uint Alignment { get; set; }
+		NSTextAlignment Alignment { get; set; }
 
 		[Export ("font")]
 		NSFont Font { get; set; }
