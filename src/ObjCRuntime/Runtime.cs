@@ -114,14 +114,13 @@ namespace MonoMac.ObjCRuntime {
 			}
 		}
 
-		public static void ConnectMethod (NSObject target, MethodInfo method, Selector selector) {
-			var type = target.GetType ();
+		public static void ConnectMethod (Class klass, MethodInfo method, Selector selector) {
+			var type = Class.Lookup (klass.Handle);
 
 			if (!Class.IsCustomType (type))
 				throw new ArgumentException ("Cannot late bind methods on core types");
 
 			var ea = new ExportAttribute (selector.Name);
-			var klass = new Class (type);
 
 			Class.RegisterMethod (method, ea, type, klass.Handle);
 		}
