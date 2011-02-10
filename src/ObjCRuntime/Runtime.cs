@@ -85,7 +85,8 @@ namespace MonoMac.ObjCRuntime {
 			lock (lock_obj) {
 				WeakReference reference;
 				if (object_map.TryGetValue (ptr, out reference))
-					return (NSObject) reference.Target;
+					if (reference.IsAlive)
+						return (NSObject) reference.Target;
 			}
 
 			return null;
