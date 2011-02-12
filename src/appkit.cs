@@ -5460,7 +5460,7 @@ namespace MonoMac.AppKit {
 
 		[Static]
 		[Export ("currentContext")]
-		NSOpenGLContext CurrentContext ();
+		NSOpenGLContext CurrentContext { get; }
 
 		[Export ("copyAttributesFromContext:withMask:")]
 		void CopyAttributes (NSOpenGLContext context, uint mask);
