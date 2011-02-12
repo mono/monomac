@@ -53,7 +53,6 @@ namespace MonoMac.Foundation {
 
 		private IntPtr handle;
 		private IntPtr super;
-		private IntPtr super_ptr;
 		private IntPtr gchandle;
 		private object lock_obj = new object ();
 		
@@ -110,7 +109,6 @@ namespace MonoMac.Foundation {
 
 		private void InitializeObject () {
 			IsDirectBinding = (this.GetType ().Assembly == NSObject.MonoMacAssembly);
-			super_ptr = ClassHandle;	
 			Runtime.RegisterNSObject (this, handle);
 
 #if !OBJECT_REF_TRACKING
@@ -201,7 +199,8 @@ namespace MonoMac.Foundation {
 					super = Marshal.AllocHGlobal (Marshal.SizeOf (typeof (objc_super)));
 					objc_super sup = new objc_super ();
 					sup.receiver = handle;
-					sup.super = super_ptr;
+					// Find the threshold class
+					sup.super = ClassHandle;
 					Marshal.StructureToPtr (sup, super, false);
 				}
 				return super;
@@ -253,6 +252,10 @@ namespace MonoMac.Foundation {
 				SetObjCIvar (name, IntPtr.Zero);
 			else
 				SetObjCIvar (name, value.Handle);
+		}
+
+		internal void SetAsProxy () {
+			IsDirectBinding = true;
 		}
 
 		[Export ("performSelector:withObject:afterDelay:")]

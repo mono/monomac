@@ -9547,7 +9547,7 @@ namespace MonoMac.AppKit {
 
 #region From NSAnimatablePropertyContainer
 		[Export ("animator")]
-		NSObject Animator { get; }
+		NSObject Animator { [return: Proxy] get; }
 	
 		[Export ("animations")]
 		NSDictionary Animations { get; set; }
@@ -9569,7 +9569,7 @@ namespace MonoMac.AppKit {
 		NSDictionary [] ViewAnimations { get; set; }
 	
 		[Export ("animator")]
-		NSObject Animator { get; }
+		NSObject Animator { [return: Proxy] get; }
 	
 		[Export ("animations")]
 		NSDictionary Animations  { get; set; }
@@ -12535,7 +12535,7 @@ namespace MonoMac.AppKit {
 	
 #region From NSAnimatablePropertyContainer
 		[Export ("animator")]
-		NSObject Animator { get; }
+		NSObject Animator { [return: Proxy] get; }
 	
 		[Export ("animations")]
 		NSDictionary Animations { get; set; }
