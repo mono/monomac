@@ -1,5 +1,5 @@
 //
-// Copyright 2010, Novell, Inc.
+// Copyright 2010, Duane Wandless
 //
 // Permission is hereby granted, free of charge, to any person obtaining
 // a copy of this software and associated documentation files (the
@@ -28,23 +28,11 @@ namespace MonoMac {
         [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
         public class RequiredFrameworkAttribute : Attribute
         {
-                public string LibraryPath { get; private set; }
                 public string Name { get; private set; }
 
                 public RequiredFrameworkAttribute (string name)
                 {
-			string basePath = Path.Combine (AppDomain.CurrentDomain.BaseDirectory, "..");
-
-			if (name.Contains (".dylib")) {
-				basePath = Path.Combine (basePath, "Resources");
-				Name = name;
-			}
-			else {
-				basePath = Path.Combine (basePath, "Frameworks");
-				basePath = Path.Combine (basePath, name);
-				Name = name.Replace (".frameworks", "");
-			}
-                        LibraryPath = Path.Combine (basePath, Name);
+			Name = name;
                 }
         }
 }
