@@ -119,7 +119,7 @@ namespace MonoMac.ObjCRuntime {
 
 		private Type MarshalerForType (Type t) {
 			if (t == typeof (NSObject) || t.IsSubclassOf (typeof (NSObject)))
-				return typeof (NSObjectMarshaler);
+				return typeof (NSObjectMarshaler<>).MakeGenericType (t);
 			if (t == typeof (Selector))
 				return typeof (SelectorMarshaler);
 

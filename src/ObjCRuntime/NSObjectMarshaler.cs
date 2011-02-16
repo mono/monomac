@@ -26,20 +26,20 @@ using System.Runtime.InteropServices;
 using MonoMac.Foundation;
 
 namespace MonoMac.ObjCRuntime {
-	public class NSObjectMarshaler : ICustomMarshaler {
-		static NSObjectMarshaler marshaler;
+	public class NSObjectMarshaler<T> : ICustomMarshaler where T : NSObject {
+		static NSObjectMarshaler<T> marshaler;
 
 		public object MarshalNativeToManaged (IntPtr handle) {
-			return Runtime.GetNSObject (handle);
+			return (T) Runtime.GetNSObject (handle);
 		}
 
 		public IntPtr MarshalManagedToNative (object obj) {
 			if (obj == null)
 				return IntPtr.Zero;
-			if (!(obj is NSObject))
+			if (!(obj is T))
 				throw new MarshalDirectiveException ("This custom marshaler must be used on a NSObject derived type.");
 
-			return (obj as NSObject).Handle;
+			return (obj as T).Handle;
 		}
 
 		public void CleanUpNativeData (IntPtr handle) {
@@ -54,7 +54,7 @@ namespace MonoMac.ObjCRuntime {
 
 		public static ICustomMarshaler GetInstance(string cookie) {
 			if(marshaler == null)
-				return marshaler = new NSObjectMarshaler ();
+				return marshaler = new NSObjectMarshaler<T> ();
 
 			return marshaler;
 		}
