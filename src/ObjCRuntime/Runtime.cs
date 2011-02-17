@@ -39,28 +39,26 @@ namespace MonoMac.ObjCRuntime {
 		
 		public static void RegisterAssembly (Assembly a) {
 			var attributes = a.GetCustomAttributes (typeof (RequiredFrameworkAttribute), false);
-	                string basePath = Path.Combine (AppDomain.CurrentDomain.BaseDirectory, "..");
+			string basePath = Path.Combine (AppDomain.CurrentDomain.BaseDirectory, "..");
 
-			for (int i = 0; i < max; i++) {
-				foreach (var attribute in attributes) {
-					var requiredFramework = (RequiredFrameworkAttribute)attribute;
-					string libPath;
-					string libName = requiredFramework.Name;
-					
-					if (libName.Contains (".dylib")) {
-						libPath = Path.Combine (basePath, "Resources");
-					}
-					else {
-						libPath = Path.Combine (basePath, "Frameworks");
-						libPath = Path.Combine (libPath, libName);
-						libName = libName.Replace (".frameworks", "");
-					}
-					libPath = Path.Combine (libPath, libName);
-					
-					if (Dlfcn.dlopen (libPath, 0) == IntPtr.Zero)
-						throw new Exception (string.Format ("Unable to load required framework: '{0}'", requiredFramework.Name),
-					new Exception (Dlfcn.dlerror()));
+			foreach (var attribute in attributes) {
+				var requiredFramework = (RequiredFrameworkAttribute)attribute;
+				string libPath;
+				string libName = requiredFramework.Name;
+				
+				if (libName.Contains (".dylib")) {
+					libPath = Path.Combine (basePath, "Resources");
 				}
+				else {
+					libPath = Path.Combine (basePath, "Frameworks");
+					libPath = Path.Combine (libPath, libName);
+					libName = libName.Replace (".frameworks", "");
+				}
+				libPath = Path.Combine (libPath, libName);
+				
+				if (Dlfcn.dlopen (libPath, 0) == IntPtr.Zero)
+					throw new Exception (string.Format ("Unable to load required framework: '{0}'", requiredFramework.Name),
+				new Exception (Dlfcn.dlerror()));
 			}
 			
 			if (assemblies == null) {
