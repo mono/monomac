@@ -25,14 +25,14 @@ using System.Runtime.InteropServices;
 using System.IO;
 
 namespace MonoMac {
-        [AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
-        public class RequiredFrameworkAttribute : Attribute
-        {
-                public string Name { get; private set; }
-
-                public RequiredFrameworkAttribute (string name)
-                {
+	[AttributeUsage(AttributeTargets.Assembly, AllowMultiple = true)]
+	public class RequiredFrameworkAttribute : Attribute
+	{
+		public string Name { get; private set; }
+	
+		public RequiredFrameworkAttribute (string name)
+		{
 			Name = name;
-                }
-        }
+		}
+	}
 }
