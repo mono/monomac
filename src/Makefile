@@ -29,6 +29,7 @@ CORE_SOURCES =					\
 	./QTKit/Defs.cs					\
 	./QTKit/Enums.cs				\
 	./OpenGL/CGLContext.cs				\
+	./OpenGL/CGLPixelFormat.cs			\
 	./WebKit/Enums.cs
 
 # Sources that are not part of CORE_SOURCES or the generated templates
