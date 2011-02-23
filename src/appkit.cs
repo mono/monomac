@@ -3408,7 +3408,7 @@ namespace MonoMac.AppKit {
 		void SaveToUrl (NSUrl absoluteUrl, string typeName, NSSaveOperationType saveOperation, NSObject delegateObject, Selector didSaveSelector, IntPtr contextInfo);
 
 		[Export ("saveToURL:ofType:forSaveOperation:error:")]
-		bool SaveToUrl (NSUrl absoluteUrl, string typeName, NSSaveOperationType saveOperation, NSError outError);
+		bool SaveToUrl (NSUrl absoluteUrl, string typeName, NSSaveOperationType saveOperation, out NSError outError);
 
 		[Export ("hasUnautosavedChanges")]
 		bool HasUnautosavedChanges { get; }
@@ -3444,7 +3444,7 @@ namespace MonoMac.AppKit {
 		void PrintDocument (NSDictionary printSettings, bool showPrintPanel, NSObject delegateObject, Selector didPrintSelector, IntPtr contextInfo);
 
 		[Export ("printOperationWithSettings:error:")]
-		NSPrintOperation PrintOperation (NSDictionary printSettings, NSError outError);
+		NSPrintOperation PrintOperation (NSDictionary printSettings, out NSError outError);
 
 		[Export ("runModalPrintOperation:delegate:didRunSelector:contextInfo:")]
 		void RunModalPrintOperation (NSPrintOperation printOperation, NSObject delegateObject, Selector didRunSelector, IntPtr contextInfo);
@@ -3588,16 +3588,16 @@ namespace MonoMac.AppKit {
 		int RunModalOpenPanelforTypes (NSOpenPanel openPanel, string [] types);
 
 		[Export ("openDocumentWithContentsOfURL:display:error:")]
-		NSObject OpenDocument (NSUrl absoluteUrl, bool displayDocument, NSError outError);
+		NSObject OpenDocument (NSUrl absoluteUrl, bool displayDocument, out NSError outError);
 
 		[Export ("makeDocumentWithContentsOfURL:ofType:error:")]
-		NSObject MakeDocument (NSUrl absoluteUrl, string typeName, NSError outError);
+		NSObject MakeDocument (NSUrl absoluteUrl, string typeName, out NSError outError);
 
 		[Export ("reopenDocumentForURL:withContentsOfURL:error:")]
-		bool ReopenDocument (NSUrl absoluteDocumentUrl, NSUrl absoluteDocumentContentsUrl, NSError outError);
+		bool ReopenDocument (NSUrl absoluteDocumentUrl, NSUrl absoluteDocumentContentsUrl, out NSError outError);
 
 		[Export ("makeDocumentForURL:withContentsOfURL:ofType:error:")]
-		NSObject MakeDocument (NSUrl absoluteDocumentUrl, NSUrl absoluteDocumentContentsUrl, string typeName, NSError outError);
+		NSObject MakeDocument (NSUrl absoluteDocumentUrl, NSUrl absoluteDocumentContentsUrl, string typeName, out NSError outError);
 
 		[Export ("saveAllDocuments:")]
 		void SaveAllDocuments ([NullAllowed] NSObject sender);
@@ -3639,7 +3639,7 @@ namespace MonoMac.AppKit {
 		string DefaultType { get; }
 
 		[Export ("typeForContentsOfURL:error:")]
-		string TypeForUrl (NSUrl inAbsoluteUrl, NSError outError);
+		string TypeForUrl (NSUrl inAbsoluteUrl, out NSError outError);
 
 		[Export ("documentClassNames")]
 		string [] DocumentClassNames  {get; }
@@ -12825,7 +12825,7 @@ namespace MonoMac.AppKit {
 		NSDictionary ActiveApplication { get; }
 		
 		[Export ("typeOfFile:error:")]
-		string TypeOfFile (string absoluteFilePath, NSError outError);
+		string TypeOfFile (string absoluteFilePath, out NSError outError);
 		
 		[Export ("localizedDescriptionForType:")]
 		string LocalizedDescription (string typeName);
