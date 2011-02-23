@@ -28,6 +28,7 @@ CORE_SOURCES =					\
 	./PdfKit/Enums.cs				\
 	./QTKit/Defs.cs					\
 	./QTKit/Enums.cs				\
+	./OpenGL/CGLContext.cs				\
 	./WebKit/Enums.cs
 
 # Sources that are not part of CORE_SOURCES or the generated templates
