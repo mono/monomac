@@ -11491,12 +11491,11 @@ namespace MonoMac.AppKit {
 		[Export ("textView:willChangeSelectionFromCharacterRange:toCharacterRange:"), DelegateName ("NSTextViewSelectionChange"), DefaultValueFromArgument ("newSelectedCharRange")]
 		NSRange WillChangeSelection (NSTextView textView, NSRange oldSelectedCharRange, NSRange newSelectedCharRange);
 
-		// FIXME: binding for NSArray, what is the type?
-		[Export ("textView:willChangeSelectionFromCharacterRanges:toCharacterRanges:")]
-		NSValue [] WillChangeSelection (NSTextView textView, NSValue [] oldSelectedCharRanges, NSValue [] newSelectedCharRanges);
+		[Export ("textView:willChangeSelectionFromCharacterRanges:toCharacterRanges:"), DelegateName ("NSTextViewSelectionWillChange"), DefaultValueFromArgument ("newSelectedCharRanges")]
+		NSValue [] WillChangeSelectionFromRanges (NSTextView textView, NSValue [] oldSelectedCharRanges, NSValue [] newSelectedCharRanges);
 
-		[Export ("textView:shouldChangeTextInRanges:replacementStrings:")]
-		bool ShouldChangeText (NSTextView textView, NSValue [] affectedRanges, string [] replacementStrings);
+		[Export ("textView:shouldChangeTextInRanges:replacementStrings:"), DelegateName ("NSTextViewSelectionShouldChange"), DefaultValueFromArgument ("null")]
+		bool ShouldChangeTextInRanges (NSTextView textView, NSValue [] affectedRanges, string [] replacementStrings);
 
 		[Export ("textView:shouldChangeTypingAttributes:toAttributes:"), DelegateName ("NSTextViewTypeAttribute"), DefaultValueFromArgument ("newTypingAttributes")]
 		NSDictionary ShouldChangeTypingAttributes (NSTextView textView, NSDictionary oldTypingAttributes, NSDictionary newTypingAttributes);
