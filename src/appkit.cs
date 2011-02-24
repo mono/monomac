@@ -11492,12 +11492,11 @@ namespace MonoMac.AppKit {
 		NSRange WillChangeSelection (NSTextView textView, NSRange oldSelectedCharRange, NSRange newSelectedCharRange);
 
 		// FIXME: binding for NSArray, what is the type?
-		//[Export ("textView:willChangeSelectionFromCharacterRanges:toCharacterRanges:")]
-		//NSArray WillChangeSelection (NSTextView textView, NSArray oldSelectedCharRanges, NSArray newSelectedCharRanges);
+		[Export ("textView:willChangeSelectionFromCharacterRanges:toCharacterRanges:")]
+		NSValue [] WillChangeSelection (NSTextView textView, NSValue [] oldSelectedCharRanges, NSValue [] newSelectedCharRanges);
 
-		// FIXME: binding
-		//[Export ("textView:shouldChangeTextInRanges:replacementStrings:")]
-		//bool ShouldChangeText (NSTextView textView, NSArray affectedRanges, NSArray replacementStrings);
+		[Export ("textView:shouldChangeTextInRanges:replacementStrings:")]
+		bool ShouldChangeText (NSTextView textView, NSValue [] affectedRanges, string [] replacementStrings);
 
 		[Export ("textView:shouldChangeTypingAttributes:toAttributes:"), DelegateName ("NSTextViewTypeAttribute"), DefaultValueFromArgument ("newTypingAttributes")]
 		NSDictionary ShouldChangeTypingAttributes (NSTextView textView, NSDictionary oldTypingAttributes, NSDictionary newTypingAttributes);
