@@ -38,5 +38,9 @@ namespace MonoMac.AppKit {
     
 		[DllImport (Constants.AppKitLibrary)]
 		public static extern void NSBeep();
+		
+		// This is actally a var arg, extern that how?
+		[DllImport (Constants.AppKitLibrary)] 
+		public static extern int NSRunAlertPanel(IntPtr title, IntPtr msg, IntPtr defaultButton, IntPtr alternateButton, IntPtr otherButton);
 	}
 }
