@@ -773,16 +773,16 @@ namespace MonoMac.OpenGL
 
         #region DeleteTexture
 
-        //public static void DeleteTexture(int id)
-        //{
-        //    DeleteTextures(1, ref id);
-        //}
+        public static void DeleteTexture(int id)
+        {
+            DeleteTextures(1, ref id);
+        }
 
-        //[CLSCompliant(false)]
-        //public static void DeleteTexture(uint id)
-        //{
-        //    DeleteTextures(1, ref id);
-        //}
+        [CLSCompliant(false)]
+        public static void DeleteTexture(uint id)
+        {
+            DeleteTextures(1, ref id);
+        }
 
         #endregion
 
