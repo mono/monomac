@@ -24,6 +24,7 @@ CORE_SOURCES =					\
 	./ObjCRuntime/NSObjectMarshaler.cs		\
 	./ObjCRuntime/SelectorMarshaler.cs		\
 	./ObjCRuntime/Runtime.cs			\
+	./ObjCRuntime/RequiredFrameworkAttribute.cs	\
 	./ObjCRuntime/Selector.cs			\
 	./PdfKit/Enums.cs				\
 	./QTKit/Defs.cs					\
