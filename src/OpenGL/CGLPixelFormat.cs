@@ -157,11 +157,13 @@ namespace MonoMac.OpenGL {
 		extern static CGLErrorCode CGLChoosePixelFormat (CGLPixelFormatAttribute[] attributes, IntPtr pix, IntPtr npix);
 		public CGLPixelFormat (CGLPixelFormatAttribute[] attributes, out int npix)
 		{
+			var pixelFormatOut = Marshal.AllocHGlobal (Marshal.SizeOf (typeof (IntPtr)));
+			var npixOut = Marshal.AllocHGlobal (Marshal.SizeOf (typeof (IntPtr)));
+			var marshalAttribs = new CGLPixelFormatAttribute [attributes.Length + 1];
 
-			IntPtr pixelFormatOut = Marshal.AllocHGlobal (Marshal.SizeOf (typeof (IntPtr)));
-			IntPtr npixOut = Marshal.AllocHGlobal (Marshal.SizeOf (typeof (IntPtr)));
+			Array.Copy (attributes, marshalAttribs, attributes.Length);
 
-			CGLErrorCode ret = CGLChoosePixelFormat (attributes, pixelFormatOut, npixOut);
+			CGLErrorCode ret = CGLChoosePixelFormat (marshalAttribs, pixelFormatOut, npixOut);
 
 			if (ret != CGLErrorCode.NoError) {
 				Marshal.FreeHGlobal (pixelFormatOut);
@@ -173,7 +175,6 @@ namespace MonoMac.OpenGL {
 			npix = Marshal.ReadInt32 (npixOut);
 			Marshal.FreeHGlobal (pixelFormatOut);
 			Marshal.FreeHGlobal (npixOut);
-
 		}
 	}
 }
