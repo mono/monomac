@@ -64,6 +64,7 @@ MONOMAC_SOURCES = \
 	./CoreImage/CIContext.cs			\
 	./CoreImage/CISampler.cs			\
 	./CoreImage/CIVector.cs				\
+	./CoreVideo/CVDisplayLink.cs			\
 	./Growl/Constants.cs				\
 	./QTKit/QTCaptureDevice.cs			\
 	./QTKit/QTMovie.cs				\
