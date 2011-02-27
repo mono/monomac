@@ -29,6 +29,7 @@ CORE_SOURCES =					\
 	./PdfKit/Enums.cs				\
 	./QTKit/Defs.cs					\
 	./QTKit/Enums.cs				\
+	./OpenGL/CGLEnums.cs				\
 	./OpenGL/CGLContext.cs				\
 	./OpenGL/CGLPixelFormat.cs			\
 	./WebKit/Enums.cs

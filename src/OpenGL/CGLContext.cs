@@ -48,7 +48,7 @@ namespace MonoMac.OpenGL {
 		internal CGLContext ()
 		{
 		}
-		
+
 		[Preserve (Conditional=true)]
 		internal CGLContext (IntPtr handle, bool owns)
 		{
@@ -75,10 +75,10 @@ namespace MonoMac.OpenGL {
 	
 		[DllImport (Constants.OpenGLLibrary)]
 		extern static void CGLRetainContext (IntPtr handle);
-		
+
 		[DllImport (Constants.OpenGLLibrary)]
 		extern static void CGLReleaseContext (IntPtr handle);
-		
+
 		protected virtual void Dispose (bool disposing)
 		{
 			if (handle != IntPtr.Zero){
@@ -86,5 +86,19 @@ namespace MonoMac.OpenGL {
 				handle = IntPtr.Zero;
 			}
 		}
+
+                [DllImport (Constants.OpenGLLibrary)]
+		extern static CGLErrorCode CGLLockContext (IntPtr ctx);
+		public CGLErrorCode Lock ()
+		{
+			return CGLLockContext (this.handle);
+		}
+
+                [DllImport (Constants.OpenGLLibrary)]
+		extern static CGLErrorCode CGLUnlockContext (IntPtr ctx);
+		public CGLErrorCode Unlock ()
+		{
+			return CGLUnlockContext (this.handle);
+		}                
 	}
 }
