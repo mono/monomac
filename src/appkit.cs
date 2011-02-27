@@ -34,6 +34,7 @@ using MonoMac.CoreGraphics;
 using MonoMac.CoreImage;
 using MonoMac.CoreAnimation;
 using MonoMac.CoreData;
+using MonoMac.OpenGL;
 
 namespace MonoMac.AppKit {
 		
@@ -5396,7 +5397,7 @@ namespace MonoMac.AppKit {
 		int NumberOfVirtualScreens { get; }
 
 		[Export ("CGLPixelFormatObj")]
-		IntPtr CGLPixelFormatObj  { get; }
+		CGLPixelFormat CGLPixelFormat { get; }
 	}
 
 	[BaseType (typeof (NSObject))]
@@ -5409,7 +5410,7 @@ namespace MonoMac.AppKit {
 		// IntPtr Constructor (IntPtr pbuffer);
 
 		[Export ("CGLPBufferObj")]
-		IntPtr CGLPBufferObj { get; }
+		IntPtr CGLPBuffer { get; }
 
 		[Export ("pixelsWide")]
 		int PixelsWide { get; }
