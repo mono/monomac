@@ -5475,7 +5475,7 @@ namespace MonoMac.AppKit {
 		void CreateTexture (int targetIdentifier, NSView view, int format);
 
 		[Export ("CGLContextObj")]
-		IntPtr CGLContext { get; }
+		CGLContext CGLContext { get; }
 
 		[Export ("setPixelBuffer:cubeMapFace:mipMapLevel:currentVirtualScreen:")]
 		void SetPixelBuffer (NSOpenGLPixelBuffer pixelBuffer, NSGLTextureCubeMap face, int level, int screen);
