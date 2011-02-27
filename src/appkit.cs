@@ -9537,14 +9537,29 @@ namespace MonoMac.AppKit {
 		*/
 		
 		// Fields
-		[Field ("NSFullScreenModeAllScreens")]   
+		[Field ("NSFullScreenModeAllScreens")]
 		NSString NSFullScreenModeAllScreens { get; }
 		
-		[Field ("NSFullScreenModeSetting")]   
+		[Field ("NSFullScreenModeSetting")]
 		NSString NSFullScreenModeSetting { get; }
 		
-		[Field ("NSFullScreenModeWindowLevel")]   
+		[Field ("NSFullScreenModeWindowLevel")]
 		NSString NSFullScreenModeWindowLevel { get; }
+
+		[Field ("NSViewFrameDidChangeNotification")]
+		NSString NSViewFrameDidChangeNotification { get; }
+ 
+		[Field ("NSViewFocusDidChangeNotification")]
+		NSString NSViewFocusDidChangeNotification { get; }
+
+		[Field ("NSViewBoundsDidChangeNotification")]
+		NSString NSViewBoundsDidChangeNotification { get; }
+
+		[Field ("NSViewGlobalFrameDidChangeNotification")]
+		NSString NSViewGlobalFrameDidChangeNotification { get; }
+
+		[Field ("NSViewDidUpdateTrackingAreasNotification")]
+		NSString NSViewDidUpdateTrackingAreasNotification { get; }
 
 #region From NSAnimatablePropertyContainer
 		[Export ("animator")]
