@@ -181,20 +181,20 @@ namespace MonoMac.CoreVideo {
 		return ret;
 	}
 	
-	public delegate CVReturn DisplayLinkOutputCallback (CVDisplayLink displayLink, ref CVTimeStamp inNow, ref CVTimeStamp inOutputTime, CVOptionFlags flagsIn, out CVOptionFlags flagsOut);	
-	delegate CVReturn CVDisplayLinkOutputCallback (IntPtr displayLink, ref CVTimeStamp inNow, ref CVTimeStamp inOutputTime, CVOptionFlags flagsIn, out CVOptionFlags flagsOut, IntPtr displayLinkContext);		
+	public delegate CVReturn DisplayLinkOutputCallback (CVDisplayLink displayLink, ref CVTimeStamp inNow, ref CVTimeStamp inOutputTime, CVOptionFlags flagsIn, ref CVOptionFlags flagsOut);	
+	delegate CVReturn CVDisplayLinkOutputCallback (IntPtr displayLink, ref CVTimeStamp inNow, ref CVTimeStamp inOutputTime, CVOptionFlags flagsIn, ref CVOptionFlags flagsOut, IntPtr displayLinkContext);		
   
 	static CVDisplayLinkOutputCallback static_OutputCallback = new CVDisplayLinkOutputCallback (OutputCallback);
 		
 #if !MONOMAC
 	[MonoPInvokeCallback (typeof (CVDisplayLinkOutputCallback))]
 #endif
-	static CVReturn OutputCallback (IntPtr displayLink, ref CVTimeStamp inNow, ref CVTimeStamp inOutputTime, CVOptionFlags flagsIn, out CVOptionFlags flagsOut, IntPtr displayLinkContext)
+	static CVReturn OutputCallback (IntPtr displayLink, ref CVTimeStamp inNow, ref CVTimeStamp inOutputTime, CVOptionFlags flagsIn, ref CVOptionFlags flagsOut, IntPtr displayLinkContext)
 	{
 		GCHandle callbackHandle = GCHandle.FromIntPtr (displayLinkContext);
 		DisplayLinkOutputCallback func = (DisplayLinkOutputCallback) callbackHandle.Target;
 		CVDisplayLink delegateDisplayLink = new CVDisplayLink(displayLink, false);
-		return func (delegateDisplayLink, ref inNow, ref inOutputTime, flagsIn, out flagsOut);
+		return func (delegateDisplayLink, ref inNow, ref inOutputTime, flagsIn, ref flagsOut);
 	}
   
 	[DllImport (Constants.CoreVideoLibrary)]
