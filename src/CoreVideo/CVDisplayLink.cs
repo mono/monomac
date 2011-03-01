@@ -137,7 +137,7 @@ namespace MonoMac.CoreVideo {
 	extern static CVReturn CVDisplayLinkStop (IntPtr displayLink);
 	public CVReturn Stop ()
 	{
-		return CVDisplayLinkStart (this.handle);
+		return CVDisplayLinkStop (this.handle);
 	}		     
 		
 	[DllImport (Constants.CoreVideoLibrary)]
