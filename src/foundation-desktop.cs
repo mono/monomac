@@ -33,7 +33,7 @@ using MonoMac.CoreGraphics;
 using MonoMac.AppKit;
 
 namespace MonoMac.Foundation {
-	
+
 	[BaseType (typeof (NSObject))]
 	public interface NSAffineTransform {
 		[Export ("initWithTransform:")]
@@ -149,72 +149,68 @@ namespace MonoMac.Foundation {
 
 	}
 
+    [BaseType (typeof (NSObject))]
+    public interface NSTask {
+        [Export ("launch")]
+        void Launch();
 
-	[BaseType (typeof (NSObject))]
-	public interface NSTask {
-		[Export ("init")]
-		NSObject Init ();
+        [Export ("interrupt")]
+        void Interrupt();
 
-		[Export ("launch")]
-		void Launch ();
+        [Export ("terminate")]
+        void Terminate();
 
-		[Export ("interrupt")]
-		void Interrupt ();
+        [Export ("suspend")]
+        bool Suspend();
 
-		[Export ("terminate")]
-		void Terminate ();
+        [Export ("resume")]
+        bool Resume();
 
-		[Export ("suspend")]
-		bool Suspend ();
-
-		[Export ("resume")]
-		bool Resume ();
-
-		[Export ("waitUntilExit")]
-		void WaitUntilExit ();
+        [Export ("waitUntilExit")]
+        void WaitUntilExit();
 
         [Static]
         [Export ("launchedTaskWithLaunchPath:arguments:")]
-        NSTask LaunchedTaskWithLaunchPath (string path, string[] arguments);
+        NSTask LaunchFromPath(string path, string[] arguments);
 
-		//Detected properties
-		[Export ("launchPath")]
-		string LaunchPath { get; set; }
+        //Detected properties
+        [Export ("launchPath")]
+        string LaunchPath { get; set; }
 
-		[Export ("arguments")]
-		NSArray Arguments { get; set; }
+        [Export ("arguments")]
+        NSArray Arguments { get; set; }
 
-		[Export ("environment")]
-		NSDictionary Environment { get; set; }
+        [Export ("environment")]
+        NSDictionary Environment { get; set; }
 
-		[Export ("currentDirectoryPath")]
-		string CurrentDirectoryPath { get; set; }
+        [Export ("currentDirectoryPath")]
+        string CurrentDirectoryPath { get; set; }
 
-		[Export ("standardInput")]
-		NSObject StandardInput { get; set; }
+        [Export ("standardInput")]
+        NSObject StandardInput { get; set; }
 
-		[Export ("standardOutput")]
-		NSObject StandardOutput { get; set; }
+        [Export ("standardOutput")]
+        NSObject StandardOutput { get; set; }
 
-		[Export ("standardError")]
-		NSObject StandardError { get; set; }
-		
-		[Export ("isRunning")]
-		bool IsRunning { get; }
-		
-		[Export ("processIdentifier")]
-		int ProcessIdentifier { get; }
-		
-		[Export ("terminationStatus")]
-		int TerminationStatus { get; }
+        [Export ("standardError")]
+        NSObject StandardError { get; set; }
 
-		[Export ("terminationReason")]
-		NSTaskTerminationReason TerminationReason { get; }
-		
-		// Fields
+        [Export ("isRunning")]
+        bool IsRunning { get; }
+
+        [Export ("processIdentifier")]
+        int ProcessIdentifier { get; }
+
+        [Export ("terminationStatus")]
+        int TerminationStatus { get; }
+
+        [Export ("terminationReason")]
+        NSTaskTerminationReason TerminationReason { get; }
+
+        // Fields
         [Field ("NSTaskDidTerminateNotification")]
-		NSString NSTaskDidTerminateNotification { get; }
-	}
+        NSString NSTaskDidTerminateNotification { get; }
+    }
 
 	[BaseType (typeof (NSObject))]
 	public interface NSAppleEventDescriptor {
