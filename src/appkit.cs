@@ -34,6 +34,7 @@ using MonoMac.CoreGraphics;
 using MonoMac.CoreImage;
 using MonoMac.CoreAnimation;
 using MonoMac.CoreData;
+using MonoMac.OpenGL;
 
 namespace MonoMac.AppKit {
 		
@@ -5396,7 +5397,7 @@ namespace MonoMac.AppKit {
 		int NumberOfVirtualScreens { get; }
 
 		[Export ("CGLPixelFormatObj")]
-		IntPtr CGLPixelFormatObj  { get; }
+		CGLPixelFormat CGLPixelFormat { get; }
 	}
 
 	[BaseType (typeof (NSObject))]
@@ -5409,7 +5410,7 @@ namespace MonoMac.AppKit {
 		// IntPtr Constructor (IntPtr pbuffer);
 
 		[Export ("CGLPBufferObj")]
-		IntPtr CGLPBufferObj { get; }
+		IntPtr CGLPBuffer { get; }
 
 		[Export ("pixelsWide")]
 		int PixelsWide { get; }
@@ -5475,7 +5476,7 @@ namespace MonoMac.AppKit {
 		void CreateTexture (int targetIdentifier, NSView view, int format);
 
 		[Export ("CGLContextObj")]
-		IntPtr CGLContextObj { get; }
+		CGLContext CGLContext { get; }
 
 		[Export ("setPixelBuffer:cubeMapFace:mipMapLevel:currentVirtualScreen:")]
 		void SetPixelBuffer (NSOpenGLPixelBuffer pixelBuffer, NSGLTextureCubeMap face, int level, int screen);
@@ -9536,14 +9537,29 @@ namespace MonoMac.AppKit {
 		*/
 		
 		// Fields
-		[Field ("NSFullScreenModeAllScreens")]   
+		[Field ("NSFullScreenModeAllScreens")]
 		NSString NSFullScreenModeAllScreens { get; }
 		
-		[Field ("NSFullScreenModeSetting")]   
+		[Field ("NSFullScreenModeSetting")]
 		NSString NSFullScreenModeSetting { get; }
 		
-		[Field ("NSFullScreenModeWindowLevel")]   
+		[Field ("NSFullScreenModeWindowLevel")]
 		NSString NSFullScreenModeWindowLevel { get; }
+
+		[Field ("NSViewFrameDidChangeNotification")]
+		NSString NSViewFrameDidChangeNotification { get; }
+ 
+		[Field ("NSViewFocusDidChangeNotification")]
+		NSString NSViewFocusDidChangeNotification { get; }
+
+		[Field ("NSViewBoundsDidChangeNotification")]
+		NSString NSViewBoundsDidChangeNotification { get; }
+
+		[Field ("NSViewGlobalFrameDidChangeNotification")]
+		NSString NSViewGlobalFrameDidChangeNotification { get; }
+
+		[Field ("NSViewDidUpdateTrackingAreasNotification")]
+		NSString NSViewDidUpdateTrackingAreasNotification { get; }
 
 #region From NSAnimatablePropertyContainer
 		[Export ("animator")]
@@ -11491,13 +11507,11 @@ namespace MonoMac.AppKit {
 		[Export ("textView:willChangeSelectionFromCharacterRange:toCharacterRange:"), DelegateName ("NSTextViewSelectionChange"), DefaultValueFromArgument ("newSelectedCharRange")]
 		NSRange WillChangeSelection (NSTextView textView, NSRange oldSelectedCharRange, NSRange newSelectedCharRange);
 
-		// FIXME: binding for NSArray, what is the type?
-		//[Export ("textView:willChangeSelectionFromCharacterRanges:toCharacterRanges:")]
-		//NSArray WillChangeSelection (NSTextView textView, NSArray oldSelectedCharRanges, NSArray newSelectedCharRanges);
+		[Export ("textView:willChangeSelectionFromCharacterRanges:toCharacterRanges:"), DelegateName ("NSTextViewSelectionWillChange"), DefaultValueFromArgument ("newSelectedCharRanges")]
+		NSValue [] WillChangeSelectionFromRanges (NSTextView textView, NSValue [] oldSelectedCharRanges, NSValue [] newSelectedCharRanges);
 
-		// FIXME: binding
-		//[Export ("textView:shouldChangeTextInRanges:replacementStrings:")]
-		//bool ShouldChangeText (NSTextView textView, NSArray affectedRanges, NSArray replacementStrings);
+		[Export ("textView:shouldChangeTextInRanges:replacementStrings:"), DelegateName ("NSTextViewSelectionShouldChange"), DefaultValueFromArgument ("null")]
+		bool ShouldChangeTextInRanges (NSTextView textView, NSValue [] affectedRanges, string [] replacementStrings);
 
 		[Export ("textView:shouldChangeTypingAttributes:toAttributes:"), DelegateName ("NSTextViewTypeAttribute"), DefaultValueFromArgument ("newTypingAttributes")]
 		NSDictionary ShouldChangeTypingAttributes (NSTextView textView, NSDictionary oldTypingAttributes, NSDictionary newTypingAttributes);
