@@ -1349,6 +1349,11 @@ namespace MonoMac.AppKit {
 		StateValidation = 301,
 	}
 	
+	public enum NSSurfaceOrder {
+		AboveWindow = 1,
+		BelowWindow = -1
+	}
+
 	public enum NSOpenGLPixelFormatAttribute {
 		AllRenderers       =   1,
 		DoubleBuffer       =   5,
