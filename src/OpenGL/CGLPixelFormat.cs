@@ -3,7 +3,7 @@
 //
 // Authors: Mono Team
 //
-// Copyright 2009 Novell, Inc
+// Copyright 2009-2010 Novell, Inc
 //
 // Permission is hereby granted, free of charge, to any person obtaining
 // a copy of this software and associated documentation files (the
@@ -28,7 +28,7 @@
 using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
-
+using System.Collections.Generic;
 using MonoMac.ObjCRuntime;
 using MonoMac.Foundation;
 
@@ -110,5 +110,77 @@ namespace MonoMac.OpenGL {
 			Marshal.FreeHGlobal (pixelFormatOut);
 			Marshal.FreeHGlobal (npixOut);
 		}
+
+		static int ignored;
+			
+		public CGLPixelFormat (params object [] attributes) : this (ConvertToAttributes (attributes), out ignored)
+		{
+		}
+
+		public CGLPixelFormat (out int npix, params object [] attributes) : this (ConvertToAttributes (attributes), out npix)
+		{
+		}
+
+		static CGLPixelFormatAttribute [] ConvertToAttributes (object [] args)
+		{
+			var list = new List<CGLPixelFormatAttribute> ();
+			for (int i = 0; i < args.Length; i++){
+				var v = (CGLPixelFormatAttribute) args [i];
+				switch (v){
+				case CGLPixelFormatAttribute.AllRenderers:
+				case CGLPixelFormatAttribute.DoubleBuffer:
+				case CGLPixelFormatAttribute.Stereo:
+				case CGLPixelFormatAttribute.MinimumPolicy:
+				case CGLPixelFormatAttribute.MaximumPolicy:
+				case CGLPixelFormatAttribute.OffScreen:
+				case CGLPixelFormatAttribute.FullScreen:
+				case CGLPixelFormatAttribute.SingleRenderer:
+				case CGLPixelFormatAttribute.NoRecovery:
+				case CGLPixelFormatAttribute.Accelerated:
+				case CGLPixelFormatAttribute.ClosestPolicy:
+				case CGLPixelFormatAttribute.Robust:
+				case CGLPixelFormatAttribute.BackingStore:
+				case CGLPixelFormatAttribute.Window:
+				case CGLPixelFormatAttribute.MultiScreen:
+				case CGLPixelFormatAttribute.Compliant:
+				case CGLPixelFormatAttribute.PixelBuffer:
+
+					// Not listed in the docs, but header file implies it
+				case CGLPixelFormatAttribute.RemotePixelBuffer:
+				case CGLPixelFormatAttribute.AuxDepthStencil:
+				case CGLPixelFormatAttribute.ColorFloat:
+				case CGLPixelFormatAttribute.Multisample:
+				case CGLPixelFormatAttribute.Supersample:
+				case CGLPixelFormatAttribute.SampleAlpha:
+				case CGLPixelFormatAttribute.AllowOfflineRenderers:
+				case CGLPixelFormatAttribute.AcceleratedCompute:
+				case CGLPixelFormatAttribute.MPSafe:
+					list.Add (v);
+					break;
+					
+				case CGLPixelFormatAttribute.AuxBuffers:
+				case CGLPixelFormatAttribute.ColorSize:
+				case CGLPixelFormatAttribute.AlphaSize:
+				case CGLPixelFormatAttribute.DepthSize:
+				case CGLPixelFormatAttribute.StencilSize:
+				case CGLPixelFormatAttribute.AccumSize:
+				case CGLPixelFormatAttribute.RendererID:
+				case CGLPixelFormatAttribute.ScreenMask:
+
+					// not listed in the docs, but header file implies it
+				case CGLPixelFormatAttribute.SampleBuffers:
+				case CGLPixelFormatAttribute.Samples:
+				case CGLPixelFormatAttribute.VirtualScreenCount:
+					list.Add (v);
+					i++;
+					if (i >= args.Length)
+						throw new ArgumentException ("Attribute " + v + " needs a value");
+					list.Add ((CGLPixelFormatAttribute) args [i]);
+					break;
+				}
+			}
+			return list.ToArray ();
+		}
+		
 	}
 }
