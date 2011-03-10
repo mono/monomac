@@ -12532,7 +12532,7 @@ namespace MonoMac.AppKit {
 		void RecalculateKeyViewLoop ();
 	
 		[Export ("toolbar")]
-		NSToolbar Toolbar ();
+		NSToolbar Toolbar { get; set; }
 	
 		[Export ("toggleToolbarShown:")]
 		void ToggleToolbarShown (NSObject sender);
