@@ -46,5 +46,6 @@ namespace MonoMac {
 		public const string PdfKitLibrary = "/System/Library/Frameworks/Quartz.framework/Frameworks/PDFKit.framework/PDFKit";
 		public const string ImageKitLibrary = "/System/Library/Frameworks/Quartz.framework/Frameworks/ImageKit.framework/ImageKit";
 		public const string OpenGLLibrary = "/System/Library/Frameworks/OpenGL.framework/OpenGL";
+		public const string CoreMediaLibrary = "/System/Library/PrivateFrameworks/CoreMedia.framework/Versions/A/CoreMedia";
         }
 }
