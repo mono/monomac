@@ -5581,7 +5581,7 @@ namespace MonoMac.AppKit {
 		[Export ("panel:compareFilename:with:caseSensitive"), DelegateName ("NSOpenSaveCompare"), DefaultValue (NSComparisonResult.Same)]
 		NSComparisonResult CompareFilenames (NSSavePanel panel, string name1, string name2, bool caseSensitive);
 
-		[Obsolete ("After 10.6 use ShouldEnableUrl")]
+		[Obsolete ("On 10.6 and newer use ShouldEnableUrl")]
 		[Export ("panel:shouldShowFilename:"), DelegateName ("NSOpenSaveFilename"), DefaultValue (true)]
 		bool ShouldShowFilename (NSSavePanel panel, string filename);
 	}
@@ -8001,7 +8001,7 @@ namespace MonoMac.AppKit {
 		[Export ("beginSheetForDirectory:file:modalForWindow:modalDelegate:didEndSelector:contextInfo:")]
 		void Begin (string directory, string filename, NSWindow docWindow, NSObject modalDelegate, Selector selector, IntPtr context);
 
-		[Obsolete ("On 10.6 and newer use RunModal instead")]
+		[Obsolete ("On 10.6 and newer use RunModal without parameters instead")]
 		[Export ("runModalForDirectory:file:")]
 		int RunModal ([NullAllowed] string directory, [NullAllowed]  string filename);
 	}
