@@ -1409,7 +1409,8 @@ namespace MonoMac.AppKit {
 		//NSImage DraggingImageForRowsWithIndexes (NSBrowser browser, NSIndexSet rowIndexes, int column, NSEvent theEvent, NSPointPointer dragImageOffset);
 
 		[Export ("browser:validateDrop:proposedRow:column:dropOperation:")]
-		NSDragOperation ValidateDrop (NSBrowser browser, NSDraggingInfo info, int proposedRow, int column, NSBrowserDropOperation dropOperation);
+		//FIXME: NSBrowserDropOperation is also a ref (in/out) parameter
+		NSDragOperation ValidateDrop (NSBrowser browser, NSDraggingInfo info, ref int row, ref int column, NSBrowserDropOperation dropOperation);
 
 		[Export ("browser:acceptDrop:atRow:column:dropOperation:")]
 		bool AcceptDrop (NSBrowser browser, NSDraggingInfo info, int row, int column, NSBrowserDropOperation dropOperation);
@@ -2128,7 +2129,8 @@ namespace MonoMac.AppKit {
 		//NSImage DraggingImageForItems (NSCollectionView collectionView, NSIndexSet indexes, NSEvent evg, NSPointPointer dragImageOffset);
 
 		[Export ("collectionView:validateDrop:proposedIndex:dropOperation:")]
-		NSDragOperation ValidateDrop (NSCollectionView collectionView, NSDraggingInfo draggingInfo, int proposedDropIndex, NSCollectionViewDropOperation proposedDropOperation);
+		//FIXME: NSCollectionViewDropOperation is also a ref (in/out) parameter
+		NSDragOperation ValidateDrop (NSCollectionView collectionView, NSDraggingInfo draggingInfo, ref int dropIndex, NSCollectionViewDropOperation dropOperation);
 
 		[Export ("collectionView:acceptDrop:index:dropOperation:")]
 		bool AcceptDrop (NSCollectionView collectionView, NSDraggingInfo draggingInfo, int index, NSCollectionViewDropOperation dropOperation);
@@ -3659,72 +3661,38 @@ namespace MonoMac.AppKit {
 		double AutosavingDelay { get; set; }
 	}
 
-	[BaseType (typeof (NSObject))]
-	public interface NSDragDestination {
-	    [Export ("draggingSourceOperationMask")]
-	    NSDragOperation DraggingSourceOperationMask { get; }
-	
-	    [Export ("draggingLocation")]
-	    PointF DraggingLocation { get; }
-	
-	    [Export ("draggedImageLocation")]
-	    PointF DraggedImageLocation { get; }
-	
-	    [Export ("draggedImage")]
-	    NSImage DraggedImage { get; }
-	
-	    [Export ("draggingPasteboard")]
-	    NSPasteboard DraggingPasteboard { get; }
-	
-	    [Export ("draggingSource")]
-	    NSObject DraggingSource { get; }
-	
-	    [Export ("draggingSequenceNumber")]
-	    int DraggingSequenceNumber { get; }
-	
-	    [Export ("slideDraggedImageTo:")]
-	    void SlideDraggedImageTo (PointF screenPoint);
-	
-	    [Export ("namesOfPromisedFilesDroppedAtDestination:")]
-	    string [] PromisedFilesDroppedAtDestination (NSUrl dropDestination);
-	}
-	
-	[BaseType (typeof (NSObject))]
-	[Model]
-	public interface NSDraggingInfo {
-		[Abstract]
+	//NSDraggingInfo is documented as a protocol, but it doesn't work as a protocol.
+	//per the docs: "In Java, sender is an NSDragDestination object, which implements the NSDraggingInfo interface." - from Drag and Drop Programming Topics for Cocoa
+	//furthermore, "you never need to create a class that implements the NSDraggingInfo protocol" from NSDraggingInfo Protocol Reference
+	[BaseType (typeof (NSObject), Name="NSDragDestination")]
+	public interface NSDraggingInfo  {
+		[Export ("draggingDestinationWindow")]
+		NSWindow DraggingDestinationWindow { get; }
+
 		[Export ("draggingSourceOperationMask")]
 		NSDragOperation DraggingSourceOperationMask { get; }
 
-		[Abstract]
 		[Export ("draggingLocation")]
 		PointF DraggingLocation { get; }
-
-		[Abstract]
+	
 		[Export ("draggedImageLocation")]
 		PointF DraggedImageLocation { get; }
 
-		[Abstract]
 		[Export ("draggedImage")]
 		NSImage DraggedImage { get; }
 
-		[Abstract]
 		[Export ("draggingPasteboard")]
 		NSPasteboard DraggingPasteboard { get; }
 
-		[Abstract]
 		[Export ("draggingSource")]
 		NSObject DraggingSource { get; }
 
-		[Abstract]
 		[Export ("draggingSequenceNumber")]
 		int DraggingSequenceNumber { get; }
 
-		[Abstract]
 		[Export ("slideDraggedImageTo:")]
 		void SlideDraggedImageTo (PointF screenPoint);
 
-		[Abstract]
 		[Export ("namesOfPromisedFilesDroppedAtDestination:")]
 		string [] PromisedFilesDroppedAtDestination (NSUrl dropDestination);
 	}
@@ -3753,7 +3721,7 @@ namespace MonoMac.AppKit {
 		[Export ("draggingEnded:")]
 		void DraggingEnded (NSDraggingInfo sender);
 
-		[Export ("wantsPeriodicDraggingUpdates"), DefaultValue (false)]
+		[Export ("wantsPeriodicDraggingUpdates"), DefaultValue (true)]
 		bool WantsPeriodicDraggingUpdates { get; }
 	}
 
