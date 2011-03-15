@@ -11666,6 +11666,26 @@ namespace MonoMac.AppKit {
 		[Export ("autosavesConfiguration")]
 		bool AutosavesConfiguration { get; set; }
 
+		[Field ("NSToolbarSeparatorItemIdentifier")]
+		NSString NSToolbarSeparatorItemIdentifier { get; }
+		
+		[Field ("NSToolbarSpaceItemIdentifier")]
+		NSString NSToolbarSpaceItemIdentifier { get; }
+		
+		[Field ("NSToolbarFlexibleSpaceItemIdentifier")]
+		NSString NSToolbarFlexibleSpaceItemIdentifier { get; }
+		
+		[Field ("NSToolbarShowColorsItemIdentifier")]
+		NSString NSToolbarShowColorsItemIdentifier { get; }
+		
+		[Field ("NSToolbarShowFontsItemIdentifier")]
+		NSString NSToolbarShowFontsItemIdentifier { get; }
+		
+		[Field ("NSToolbarCustomizeToolbarItemIdentifier")]
+		NSString NSToolbarCustomizeToolbarItemIdentifier { get; }
+		
+		[Field ("NSToolbarPrintItemIdentifier")]
+		NSString NSToolbarPrintItemIdentifier { get; }
 	}
 
 	[BaseType (typeof (NSObject))]
