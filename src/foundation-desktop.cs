@@ -154,4 +154,67 @@ namespace MonoMac.Foundation {
 		[Export ("nullDescriptor"), Static]
 		NSAppleEventDescriptor Null { get; }
 	}
+
+	[BaseType (typeof (NSObject))]
+	public interface NSTask {
+		[Export ("launch")]
+		void Launch ();
+
+		[Export ("interrupt")]
+		void Interrupt ();
+
+		[Export ("terminate")]
+		void Terminate ();
+
+		[Export ("suspend")]
+		bool Suspend ();
+
+		[Export ("resume")]
+		bool Resume ();
+
+		[Export ("waitUntilExit")]
+		void WaitUntilExit ();
+
+		[Static]
+		[Export ("launchedTaskWithLaunchPath:arguments:")]
+		NSTask LaunchFromPath (string path, string[] arguments);
+
+		//Detected properties
+		[Export ("launchPath")]
+		string LaunchPath { get; set; }
+
+		[Export ("arguments")]
+		string [] Arguments { get; set; }
+
+		[Export ("environment")]
+		NSDictionary Environment { get; set; }
+
+		[Export ("currentDirectoryPath")]
+		string CurrentDirectoryPath { get; set; }
+
+		[Export ("standardInput")]
+		NSObject StandardInput { get; set; }
+
+		[Export ("standardOutput")]
+		NSObject StandardOutput { get; set; }
+
+		[Export ("standardError")]
+		NSObject StandardError { get; set; }
+
+		[Export ("isRunning")]
+		bool IsRunning { get; }
+
+		[Export ("processIdentifier")]
+		int ProcessIdentifier { get; }
+
+		[Export ("terminationStatus")]
+		int TerminationStatus { get; }
+
+		[Export ("terminationReason")]
+		NSTaskTerminationReason TerminationReason { get; }
+
+		// Fields
+		[Field ("NSTaskDidTerminateNotification")]
+		NSString NSTaskDidTerminateNotification { get; }
+	}
 }
