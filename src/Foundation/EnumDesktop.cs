@@ -39,4 +39,9 @@ namespace MonoMac.Foundation {
 		AllCustomTypes = 0xffffffff00000000,
 		AllTypes = 0xffffffffffffffff
 	}
+
+	public enum NSTaskTerminationReason {
+		Exit = 1,
+		UncaughtSignal = 2
+	}
 }
