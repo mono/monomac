@@ -100,5 +100,28 @@ namespace MonoMac.OpenGL {
 		{
 			return CGLUnlockContext (this.handle);
 		}                
+	
+		[DllImport (Constants.OpenGLLibrary)]
+		extern static CGLErrorCode CGLSetCurrentContext (IntPtr ctx);
+
+		[DllImport (Constants.OpenGLLibrary)]
+		extern static IntPtr CGLGetCurrentContext ();
+
+		public static CGLContext CurrentContext {
+			get {
+				IntPtr ctx = CGLGetCurrentContext ();
+				if (ctx != IntPtr.Zero)
+					return new CGLContext (ctx);
+				else
+					return null;
+			} 
+
+			set {
+
+				CGLErrorCode retValue = CGLSetCurrentContext (value.Handle);
+				if (retValue != CGLErrorCode.NoError)
+					throw new Exception ("Error setting the Current Context");
+			}
+		}
 	}
 }
