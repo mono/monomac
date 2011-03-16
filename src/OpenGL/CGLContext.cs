@@ -24,6 +24,7 @@
 // OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
+
 using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
@@ -31,10 +32,8 @@ using System.Runtime.InteropServices;
 using MonoMac.ObjCRuntime;
 using MonoMac.Foundation;
 
-namespace MonoMac.OpenGL
-{
-	public class CGLContext : INativeObject, IDisposable
-	{
+namespace MonoMac.OpenGL {
+	public class CGLContext : INativeObject, IDisposable {
 		internal IntPtr handle;
 
 		public CGLContext (IntPtr handle)
@@ -51,7 +50,7 @@ namespace MonoMac.OpenGL
 		}
 
 		[Preserve (Conditional=true)]
-		internal CGLContext (IntPtr handle,bool owns)
+		internal CGLContext (IntPtr handle, bool owns)
 		{
 			if (!owns)
 				CGLRetainContext (handle);
@@ -73,7 +72,7 @@ namespace MonoMac.OpenGL
 		public IntPtr Handle {
 			get { return handle; }
 		}
-
+	
 		[DllImport (Constants.OpenGLLibrary)]
 		extern static void CGLRetainContext (IntPtr handle);
 
@@ -82,49 +81,24 @@ namespace MonoMac.OpenGL
 
 		protected virtual void Dispose (bool disposing)
 		{
-			if (handle != IntPtr.Zero) {
+			if (handle != IntPtr.Zero){
 				CGLReleaseContext (handle);
 				handle = IntPtr.Zero;
 			}
 		}
 
-		[DllImport (Constants.OpenGLLibrary)]
+                [DllImport (Constants.OpenGLLibrary)]
 		extern static CGLErrorCode CGLLockContext (IntPtr ctx);
-
 		public CGLErrorCode Lock ()
 		{
 			return CGLLockContext (this.handle);
 		}
 
-		[DllImport (Constants.OpenGLLibrary)]
+                [DllImport (Constants.OpenGLLibrary)]
 		extern static CGLErrorCode CGLUnlockContext (IntPtr ctx);
-
 		public CGLErrorCode Unlock ()
 		{
 			return CGLUnlockContext (this.handle);
-		}
-
-		[DllImport (Constants.OpenGLLibrary)]
-		extern static CGLErrorCode CGLSetCurrentContext (IntPtr ctx);
-
-		[DllImport (Constants.OpenGLLibrary)]
-		extern static IntPtr CGLGetCurrentContext ();
-
-		public static CGLContext CurrentContext {
-			get {
-				IntPtr ctx = CGLGetCurrentContext ();
-				if (ctx != IntPtr.Zero)
-					return new CGLContext (ctx);
-				else
-					return null;
-			} 
-
-			set {
-
-				CGLErrorCode retValue = CGLSetCurrentContext (value.Handle);
-				if (retValue != CGLErrorCode.NoError)
-					throw new Exception ("Error setting the Current Context");
-			}
-		}
+		}                
 	}
 }
