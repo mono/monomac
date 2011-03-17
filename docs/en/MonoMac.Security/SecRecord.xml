@@ -14,8 +14,26 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Tracks a set of properties from the keychain.</summary>
+    <remarks>
+      <para>
+This represents a set of properties on a keychain record.   It can be used to query the keychain by filling out a few of the properties and calling one of the Query methods on the <see cref="T:MonoMac.Security.SecKeyChain" /> class and it is also used as a result from some of the same Query methods.
+</para>
+      <para>
+You would typically use it like this:
+</para>
+      <example>
+        <code lang="C#">
+var query = new SecRecord (SecKind.InternetPassword) {
+   Sever = "bugzilla.novell.com",
+   Account = "miguel"
+};
+var password = SecKeyChain.QueryAsData (query);
+Console.WriteLine ("The password for the account is: {0}", password);
+
+  </code>
+      </example>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -29,9 +47,29 @@
         <Parameter Name="secKind" Type="MonoMac.Security.SecKind" />
       </Parameters>
       <Docs>
-        <param name="secKind">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="secKind">Determines the class for this record.</param>
+        <summary>Creates a keychain record.</summary>
+        <remarks>
+          <para>
+When you create a SecRecord you need to specify the kind of record that you will be matching using one of the SecKind values, and you must set also:
+
+<list type="bullet"><item><term>One or more attributes to match (AccessGroup, Accessible, Account, ApplicationLabel, ApplicationTag, AuthenticationType, CanDecrypt, CanDerive, CanEncrypt, CanSign, CanUnwrap, CanVerify, CanWrap, CertificateEncoding, CertificateType, Comment, CreationDate, Creator, CreatorType, Description, EffectiveKeySize, Generic, Invisible, IsNegative, IsPermanent, Issuer, KeyClass, KeySizeInBits, KeyType, Label, ModificationDate, Path, Port, Protocol, PublicKeyHash, SecurityDomain, SerialNumber, Server, Service, Subject, SubjectKeyID)</term></item><item><term>Optional search attributes, used to determine how the search is performed.   You do this by setting any of the Match properties in the class (MatchCaseInsensitive, MatchEmailAddressIfPresent, MatchIssuers, MatchItemList, MatchPolicy, MatchSubjectContains, MatchTrustedOnly, MatchValidOnDate)  </term></item></list></para>
+          <para>
+Once the class is constructed, you can pass this to the Query, Add, Remove or Update methods on the SecKeyChain class.
+</para>
+          <example>
+            <code lang="C#">
+var query = new SecRecord (SecKind.InternetPassword) {
+   Sever = "bugzilla.novell.com",
+   Account = "miguel"
+};
+var password = SecKeyChain.QueryAsData (query);
+Console.WriteLine ("The password for the account is: {0}", password);
+
+  </code>
+          </example>
+          <para>Internally this is setting the kSecClass key to one of the kSec* values as specifed by the SecKind.   On MacOS X the only supported value is InternetPassword, while iOS offers a wider range of options.</para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="AccessGroup">
@@ -45,9 +83,11 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>
+          <para>Access group name. </para>
+        </summary>
+        <value />
+        <remarks>Access groups are used to share information between applications that share the same access group.    Applications that wish to do this, need to register the access group on their keychain-access-group entitlement.   This value must be set when the item is added to the keychain for the second application to be able to look it up.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Accessible">
@@ -61,9 +101,9 @@
         <ReturnType>MonoMac.Security.SecAccessible</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>When should the keychain information be accessed.</summary>
+        <value />
+        <remarks>Applications should use the most restrictive possible value for this property.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Account">
@@ -77,9 +117,9 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Accout name.</summary>
+        <value />
+        <remarks>Used by GenericPassword and InternetPassword kinds.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ApplicationLabel">
@@ -93,9 +133,9 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>An application-level tag, used to identify this key.</summary>
+        <value />
+        <remarks>Intended for your program to use as an identifier that you can lookup.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ApplicationTag">
@@ -109,9 +149,9 @@
         <ReturnType>MonoMac.Foundation.NSData</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>To store your application data.</summary>
+        <value />
+        <remarks>You can use this to store application-level binary data in the form of an NSData source.</remarks>
       </Docs>
     </Member>
     <Member MemberName="AuthenticationType">
@@ -125,9 +165,9 @@
         <ReturnType>MonoMac.Security.SecAuthenticationType</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>The authentication type.</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="CanDecrypt">
@@ -141,9 +181,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Whether this cryptographic key can be used to decrypt data.</summary>
+        <value />
+        <remarks>For keys, whether this can be used to decrypt data.</remarks>
       </Docs>
     </Member>
     <Member MemberName="CanDerive">
@@ -157,9 +197,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Whether this key can be used to derive another key.</summary>
+        <value />
+        <remarks>For keys, whether this can be used to derive another key.</remarks>
       </Docs>
     </Member>
     <Member MemberName="CanEncrypt">
@@ -173,9 +213,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Whether this cryptographic key can be used to encrypt data.</summary>
+        <value />
+        <remarks>For keys, this determines whether the key can be used to encrypt data.</remarks>
       </Docs>
     </Member>
     <Member MemberName="CanSign">
@@ -189,9 +229,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Whether this key can be used to sign data.</summary>
+        <value />
+        <remarks>For keys, whether this can be used to sign.</remarks>
       </Docs>
     </Member>
     <Member MemberName="CanUnwrap">
@@ -205,9 +245,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Whether this key can be used to unwrap another key.</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="CanVerify">
@@ -221,9 +261,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Whether this key can be used to verify a digital signature.</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="CanWrap">
@@ -237,9 +277,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Whether this key can be used to wrap another key.</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="CertificateEncoding">
@@ -253,9 +293,9 @@
         <ReturnType>MonoMac.Foundation.NSNumber</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>The encoding used for the certificate.</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="CertificateType">
@@ -269,9 +309,9 @@
         <ReturnType>MonoMac.Foundation.NSNumber</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>A certificate type.</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Clone">
@@ -286,9 +326,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>Makes a copy of this SecRecord.</summary>
+        <returns />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Comment">
@@ -302,9 +342,9 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Used editable comment for this record.</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="CreationDate">
@@ -318,9 +358,9 @@
         <ReturnType>MonoMac.Foundation.NSDate</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Creation date for this item.</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Creator">
@@ -334,9 +374,9 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Creator key, a 32-bit value</summary>
+        <value />
+        <remarks>A 32 bit value used to flag the entry with the creator key.</remarks>
       </Docs>
     </Member>
     <Member MemberName="CreatorType">
@@ -350,9 +390,9 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Item's type.   32-bit value.</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Description">
@@ -366,9 +406,9 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>User visible description of this item.</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Dispose">
@@ -427,9 +467,9 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Number of effective bits on the key.</summary>
+        <value />
+        <remarks>The number of effective bits on the key.   Contrast this with the KeySize that might be larger, but contains padding.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Finalize">
@@ -459,9 +499,9 @@
         <ReturnType>MonoMac.Foundation.NSData</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Generic password's NSData storage.</summary>
+        <value>Items of kind GenericPassword use this field to store item-specific data.</value>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Invisible">
@@ -475,9 +515,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>If set, the item is not displayed to the user.</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="IsNegative">
@@ -491,9 +531,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Whether there is a valid password associated</summary>
+        <value />
+        <remarks>You can set this flag if you want to force the user to enter the password every time he needs to use the item.</remarks>
       </Docs>
     </Member>
     <Member MemberName="IsPermanent">
@@ -523,9 +563,9 @@
         <ReturnType>MonoMac.Foundation.NSData</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>X.500 Issuer certificate name as an NSData block</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="KeyClass">
@@ -539,9 +579,9 @@
         <ReturnType>MonoMac.Security.SecKeyClass</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>The key class.</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="KeySizeInBits">
@@ -555,9 +595,9 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Bitsize for the key, contrast this with EffectiveKeySize.</summary>
+        <value />
+        <remarks>This determines the number of bits in the key.   This can contain padding, contrast this with EffectiveKeySize.</remarks>
       </Docs>
     </Member>
     <Member MemberName="KeyType">
@@ -571,9 +611,9 @@
         <ReturnType>MonoMac.Security.SecKeyType</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>The key type.</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Label">
@@ -587,9 +627,9 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>User visible label for this item.</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="MatchCaseInsensitive">
@@ -603,9 +643,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Whether matches should be case insensitive</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="MatchEmailAddressIfPresent">
@@ -747,9 +787,9 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Path component of an InternetPassword.</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Port">
@@ -763,9 +803,9 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Port component of an InternetPassword</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Protocol">
@@ -779,9 +819,10 @@
         <ReturnType>MonoMac.Security.SecProtocol</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Protocol component of an InternetPassword
+</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="PublicKeyHash">
@@ -795,9 +836,9 @@
         <ReturnType>MonoMac.Foundation.NSData</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Public key hash</summary>
+        <value />
+        <remarks>The public key hash, used by certificates.</remarks>
       </Docs>
     </Member>
     <Member MemberName="SecurityDomain">
@@ -811,7 +852,7 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Security domain for InternetPassword items.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -827,9 +868,9 @@
         <ReturnType>MonoMac.Foundation.NSData</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Serial number for the certificate.</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Server">
@@ -843,7 +884,7 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Server component for an InternetPassword</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -859,9 +900,9 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Service associated with an InternetPassword.</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Subject">
@@ -875,9 +916,9 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>X.500 Subject name stored as an NSData.</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SubjectKeyID">
@@ -891,9 +932,9 @@
         <ReturnType>MonoMac.Foundation.NSData</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>SubjectKeyID of the certificate.</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ValueData">
@@ -907,7 +948,7 @@
         <ReturnType>MonoMac.Foundation.NSData</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The value data to store.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>

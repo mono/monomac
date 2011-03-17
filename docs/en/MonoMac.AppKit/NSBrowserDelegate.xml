@@ -926,8 +926,8 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="ValidateDrop">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSDragOperation ValidateDrop (MonoMac.AppKit.NSBrowser browser, MonoMac.AppKit.NSDraggingInfo info, int proposedRow, int column, MonoMac.AppKit.NSBrowserDropOperation dropOperation);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype MonoMac.AppKit.NSDragOperation ValidateDrop(class MonoMac.AppKit.NSBrowser browser, class MonoMac.AppKit.NSDraggingInfo info, int32 proposedRow, int32 column, valuetype MonoMac.AppKit.NSBrowserDropOperation dropOperation) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSDragOperation ValidateDrop (MonoMac.AppKit.NSBrowser browser, MonoMac.AppKit.NSDraggingInfo info, ref int row, ref int column, MonoMac.AppKit.NSBrowserDropOperation dropOperation);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype MonoMac.AppKit.NSDragOperation ValidateDrop(class MonoMac.AppKit.NSBrowser browser, class MonoMac.AppKit.NSDraggingInfo info, int32 row, int32 column, valuetype MonoMac.AppKit.NSBrowserDropOperation dropOperation) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -943,14 +943,14 @@ public class MyClass : BaseClass {
       <Parameters>
         <Parameter Name="browser" Type="MonoMac.AppKit.NSBrowser" />
         <Parameter Name="info" Type="MonoMac.AppKit.NSDraggingInfo" />
-        <Parameter Name="proposedRow" Type="System.Int32" />
-        <Parameter Name="column" Type="System.Int32" />
+        <Parameter Name="row" Type="System.Int32&amp;" RefType="ref" />
+        <Parameter Name="column" Type="System.Int32&amp;" RefType="ref" />
         <Parameter Name="dropOperation" Type="MonoMac.AppKit.NSBrowserDropOperation" />
       </Parameters>
       <Docs>
         <param name="browser">To be added.</param>
         <param name="info">To be added.</param>
-        <param name="proposedRow">To be added.</param>
+        <param name="row">To be added.</param>
         <param name="column">To be added.</param>
         <param name="dropOperation">To be added.</param>
         <summary>To be added.</summary>

@@ -141,9 +141,31 @@ public class MyClass : BaseClass {
         </remarks>
       </Docs>
     </Member>
-    <Member MemberName="CGLPixelFormatObj">
-      <MemberSignature Language="C#" Value="public virtual IntPtr CGLPixelFormatObj { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance native int CGLPixelFormatObj" />
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public NSOpenGLPixelFormat (object[] attribs);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(object[] attribs) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="attribs" Type="System.Object[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.ParamArray</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
+      </Parameters>
+      <Docs>
+        <param name="attribs">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CGLPixelFormat">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.OpenGL.CGLPixelFormat CGLPixelFormat { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.OpenGL.CGLPixelFormat CGLPixelFormat" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -154,7 +176,7 @@ public class MyClass : BaseClass {
         </Attribute>
       </Attributes>
       <ReturnValue>
-        <ReturnType>System.IntPtr</ReturnType>
+        <ReturnType>MonoMac.OpenGL.CGLPixelFormat</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
