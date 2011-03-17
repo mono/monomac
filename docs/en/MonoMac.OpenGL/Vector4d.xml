@@ -14,7 +14,7 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
+    <summary>Represents a 4D vector using four double-precision floating-point numbers.</summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -29,8 +29,10 @@
         <Parameter Name="v" Type="MonoMac.OpenGL.Vector2d" />
       </Parameters>
       <Docs>
-        <param name="v">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="v">The Vector2d to copy components from.</param>
+        <summary>
+            Constructs a new Vector4d from the given Vector2d.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -45,9 +47,14 @@
         <Parameter Name="v" Type="MonoMac.OpenGL.Vector3d" />
       </Parameters>
       <Docs>
-        <param name="v">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="v">The Vector3d to copy components from.</param>
+        <summary>
+            Constructs a new Vector4d from the given Vector3d.
+            The w component is initialized to 0.
+            </summary>
+        <remarks>
+          <seealso cref="T:MonoMac.OpenGL.Vector4d" />
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -61,8 +68,10 @@
         <Parameter Name="v" Type="MonoMac.OpenGL.Vector4d" />
       </Parameters>
       <Docs>
-        <param name="v">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="v">The Vector4d to copy components from.</param>
+        <summary>
+            Constructs a new Vector4d from the given Vector4d.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -77,8 +86,10 @@
         <Parameter Name="value" Type="System.Double" />
       </Parameters>
       <Docs>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="value">The value that will initialize this instance.</param>
+        <summary>
+            Constructs a new instance.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -94,9 +105,11 @@
         <Parameter Name="w" Type="System.Double" />
       </Parameters>
       <Docs>
-        <param name="v">To be added.</param>
-        <param name="w">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="v">The Vector3d to copy components from.</param>
+        <param name="w">The w component of the new Vector4.</param>
+        <summary>
+            Constructs a new Vector4d from the specified Vector3d and w component.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -114,11 +127,13 @@
         <Parameter Name="w" Type="System.Double" />
       </Parameters>
       <Docs>
-        <param name="x">To be added.</param>
-        <param name="y">To be added.</param>
-        <param name="z">To be added.</param>
-        <param name="w">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="x">The x component of the Vector4d.</param>
+        <param name="y">The y component of the Vector4d.</param>
+        <param name="z">The z component of the Vector4d.</param>
+        <param name="w">The w component of the Vector4d.</param>
+        <summary>
+            Constructs a new Vector4d.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -141,8 +156,8 @@
         <Parameter Name="right" Type="MonoMac.OpenGL.Vector4d" />
       </Parameters>
       <Docs>
-        <param name="right">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="right">Right operand. This parameter is only read from.</param>
+        <summary>Add the Vector passed as parameter to this instance.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -168,8 +183,8 @@
         <Parameter Name="right" Type="MonoMac.OpenGL.Vector4d&amp;" RefType="ref" />
       </Parameters>
       <Docs>
-        <param name="right">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="right">Right operand. This parameter is only read from.</param>
+        <summary>Add the Vector passed as parameter to this instance.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -188,10 +203,12 @@
         <Parameter Name="b" Type="MonoMac.OpenGL.Vector4d" />
       </Parameters>
       <Docs>
-        <param name="a">To be added.</param>
-        <param name="b">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="a">Left operand.</param>
+        <param name="b">Right operand.</param>
+        <summary>
+            Adds two vectors.
+            </summary>
+        <returns>Result of operation.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -211,10 +228,12 @@
         <Parameter Name="result" Type="MonoMac.OpenGL.Vector4d&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="a">To be added.</param>
-        <param name="b">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="a">Left operand.</param>
+        <param name="b">Right operand.</param>
+        <param name="result">Result of operation.</param>
+        <summary>
+            Adds two vectors.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -236,13 +255,15 @@
         <Parameter Name="v" Type="System.Double" />
       </Parameters>
       <Docs>
-        <param name="a">To be added.</param>
-        <param name="b">To be added.</param>
-        <param name="c">To be added.</param>
-        <param name="u">To be added.</param>
-        <param name="v">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="a">First input Vector</param>
+        <param name="b">Second input Vector</param>
+        <param name="c">Third input Vector</param>
+        <param name="u">First Barycentric Coordinate</param>
+        <param name="v">Second Barycentric Coordinate</param>
+        <summary>
+            Interpolate 3 Vectors using Barycentric coordinates
+            </summary>
+        <returns>a when u=v=0, b when u=1,v=0, c when u=0,v=1, and a linear combination of a,b,c otherwise</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -265,13 +286,13 @@
         <Parameter Name="result" Type="MonoMac.OpenGL.Vector4d&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="a">To be added.</param>
-        <param name="b">To be added.</param>
-        <param name="c">To be added.</param>
-        <param name="u">To be added.</param>
-        <param name="v">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="a">First input Vector.</param>
+        <param name="b">Second input Vector.</param>
+        <param name="c">Third input Vector.</param>
+        <param name="u">First Barycentric Coordinate.</param>
+        <param name="v">Second Barycentric Coordinate.</param>
+        <param name="result">Output Vector. a when u=v=0, b when u=1,v=0, c when u=0,v=1, and a linear combination of a,b,c otherwise</param>
+        <summary>Interpolate 3 Vectors using Barycentric coordinates</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -291,11 +312,13 @@
         <Parameter Name="max" Type="MonoMac.OpenGL.Vector4d" />
       </Parameters>
       <Docs>
-        <param name="vec">To be added.</param>
-        <param name="min">To be added.</param>
-        <param name="max">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="vec">Input vector</param>
+        <param name="min">Minimum vector</param>
+        <param name="max">Maximum vector</param>
+        <summary>
+            Clamp a vector to the given minimum and maximum vectors
+            </summary>
+        <returns>The clamped vector</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -316,11 +339,13 @@
         <Parameter Name="result" Type="MonoMac.OpenGL.Vector4d&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="vec">To be added.</param>
-        <param name="min">To be added.</param>
-        <param name="max">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="vec">Input vector</param>
+        <param name="min">Minimum vector</param>
+        <param name="max">Maximum vector</param>
+        <param name="result">The clamped vector</param>
+        <summary>
+            Clamp a vector to the given minimum and maximum vectors
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -343,8 +368,8 @@
         <Parameter Name="f" Type="System.Double" />
       </Parameters>
       <Docs>
-        <param name="f">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="f">Scalar operand.</param>
+        <summary>Divide this instance by a scalar.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -368,10 +393,12 @@
         <Parameter Name="f" Type="System.Double" />
       </Parameters>
       <Docs>
-        <param name="a">To be added.</param>
-        <param name="f">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="a">Vector operand</param>
+        <param name="f">Scalar operand</param>
+        <summary>
+            Divide a vector by a scalar
+            </summary>
+        <returns>Result of the division</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -396,10 +423,12 @@
         <Parameter Name="result" Type="MonoMac.OpenGL.Vector4d&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="a">To be added.</param>
-        <param name="f">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="a">Vector operand</param>
+        <param name="f">Scalar operand</param>
+        <param name="result">Result of the division</param>
+        <summary>
+            Divide a vector by a scalar
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -418,10 +447,12 @@
         <Parameter Name="scale" Type="MonoMac.OpenGL.Vector4d" />
       </Parameters>
       <Docs>
-        <param name="vector">To be added.</param>
-        <param name="scale">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="vector">Left operand.</param>
+        <param name="scale">Right operand.</param>
+        <summary>
+            Divides a vector by the components of a vector (scale).
+            </summary>
+        <returns>Result of the operation.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -440,10 +471,12 @@
         <Parameter Name="scale" Type="System.Double" />
       </Parameters>
       <Docs>
-        <param name="vector">To be added.</param>
-        <param name="scale">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="vector">Left operand.</param>
+        <param name="scale">Right operand.</param>
+        <summary>
+            Divides a vector by a scalar.
+            </summary>
+        <returns>Result of the operation.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -463,10 +496,12 @@
         <Parameter Name="result" Type="MonoMac.OpenGL.Vector4d&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="vector">To be added.</param>
-        <param name="scale">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="vector">Left operand.</param>
+        <param name="scale">Right operand.</param>
+        <param name="result">Result of the operation.</param>
+        <summary>
+            Divide a vector by the components of a vector (scale).
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -486,10 +521,12 @@
         <Parameter Name="result" Type="MonoMac.OpenGL.Vector4d&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="vector">To be added.</param>
-        <param name="scale">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="vector">Left operand.</param>
+        <param name="scale">Right operand.</param>
+        <param name="result">Result of the operation.</param>
+        <summary>
+            Divides a vector by a scalar.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -508,10 +545,12 @@
         <Parameter Name="right" Type="MonoMac.OpenGL.Vector4d" />
       </Parameters>
       <Docs>
-        <param name="left">To be added.</param>
-        <param name="right">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="left">First operand</param>
+        <param name="right">Second operand</param>
+        <summary>
+            Calculate the dot product of two vectors
+            </summary>
+        <returns>The dot product of the two inputs</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -531,10 +570,12 @@
         <Parameter Name="result" Type="System.Double&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="left">To be added.</param>
-        <param name="right">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="left">First operand</param>
+        <param name="right">Second operand</param>
+        <param name="result">The dot product of the two inputs</param>
+        <summary>
+            Calculate the dot product of two vectors
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -552,9 +593,9 @@
         <Parameter Name="other" Type="MonoMac.OpenGL.Vector4d" />
       </Parameters>
       <Docs>
-        <param name="other">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="other">A vector to compare with this vector.</param>
+        <summary>Indicates whether the current vector is equal to another vector.</summary>
+        <returns>true if the current vector is equal to the vector parameter; otherwise, false.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -572,9 +613,11 @@
         <Parameter Name="obj" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="obj">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="obj">The object to compare to.</param>
+        <summary>
+            Indicates whether this instance and a specified object are equal.
+            </summary>
+        <returns>True if the instances are equal; false otherwise.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -590,8 +633,10 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>
+            Returns the hashcode for this instance.
+            </summary>
+        <returns>A System.Int32 containing the unique hashcode for this instance.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -606,9 +651,13 @@
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Gets the length (magnitude) of the vector.
+            </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
+        <see cref="P:MonoMac.OpenGL.Vector4d.LengthFast" />
+        <altmember cref="P:MonoMac.OpenGL.Vector4d.LengthSquared" />
       </Docs>
     </Member>
     <Member MemberName="LengthFast">
@@ -622,9 +671,16 @@
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Gets an approximation of the vector length (magnitude).
+            </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>
+            This property uses an approximation of the square root function to calculate vector magnitude, with
+            an upper error bound of 0.001.
+            </remarks>
+        <see cref="P:MonoMac.OpenGL.Vector4d.Length" />
+        <altmember cref="P:MonoMac.OpenGL.Vector4d.LengthSquared" />
       </Docs>
     </Member>
     <Member MemberName="LengthSquared">
@@ -638,9 +694,15 @@
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Gets the square of the vector length (magnitude).
+            </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>
+            This property avoids the costly square root operation required by the Length property. This makes it more suitable
+            for comparisons.
+            </remarks>
+        <see cref="P:MonoMac.OpenGL.Vector4d.Length" />
       </Docs>
     </Member>
     <Member MemberName="Lerp">
@@ -659,11 +721,13 @@
         <Parameter Name="blend" Type="System.Double" />
       </Parameters>
       <Docs>
-        <param name="a">To be added.</param>
-        <param name="b">To be added.</param>
-        <param name="blend">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="a">First input vector</param>
+        <param name="b">Second input vector</param>
+        <param name="blend">The blend factor. a when blend=0, b when blend=1.</param>
+        <summary>
+            Returns a new Vector that is the linear blend of the 2 given Vectors
+            </summary>
+        <returns>a when blend=0, b when blend=1, and a linear combination otherwise</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -684,11 +748,13 @@
         <Parameter Name="result" Type="MonoMac.OpenGL.Vector4d&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="a">To be added.</param>
-        <param name="b">To be added.</param>
-        <param name="blend">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="a">First input vector</param>
+        <param name="b">Second input vector</param>
+        <param name="blend">The blend factor. a when blend=0, b when blend=1.</param>
+        <param name="result">a when blend=0, b when blend=1, and a linear combination otherwise</param>
+        <summary>
+            Returns a new Vector that is the linear blend of the 2 given Vectors
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -707,10 +773,12 @@
         <Parameter Name="b" Type="MonoMac.OpenGL.Vector4d" />
       </Parameters>
       <Docs>
-        <param name="a">To be added.</param>
-        <param name="b">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="a">First operand</param>
+        <param name="b">Second operand</param>
+        <summary>
+            Calculate the component-wise maximum of two vectors
+            </summary>
+        <returns>The component-wise maximum</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -730,10 +798,12 @@
         <Parameter Name="result" Type="MonoMac.OpenGL.Vector4d&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="a">To be added.</param>
-        <param name="b">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="a">First operand</param>
+        <param name="b">Second operand</param>
+        <param name="result">The component-wise maximum</param>
+        <summary>
+            Calculate the component-wise maximum of two vectors
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -752,10 +822,12 @@
         <Parameter Name="b" Type="MonoMac.OpenGL.Vector4d" />
       </Parameters>
       <Docs>
-        <param name="a">To be added.</param>
-        <param name="b">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="a">First operand</param>
+        <param name="b">Second operand</param>
+        <summary>
+            Calculate the component-wise minimum of two vectors
+            </summary>
+        <returns>The component-wise minimum</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -775,10 +847,12 @@
         <Parameter Name="result" Type="MonoMac.OpenGL.Vector4d&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="a">To be added.</param>
-        <param name="b">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="a">First operand</param>
+        <param name="b">Second operand</param>
+        <param name="result">The component-wise minimum</param>
+        <summary>
+            Calculate the component-wise minimum of two vectors
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -801,8 +875,8 @@
         <Parameter Name="f" Type="System.Double" />
       </Parameters>
       <Docs>
-        <param name="f">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="f">Scalar operand.</param>
+        <summary>Multiply this instance by a scalar.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -826,10 +900,12 @@
         <Parameter Name="f" Type="System.Double" />
       </Parameters>
       <Docs>
-        <param name="a">To be added.</param>
-        <param name="f">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="a">Vector operand</param>
+        <param name="f">Scalar operand</param>
+        <summary>
+            Multiply a vector and a scalar
+            </summary>
+        <returns>Result of the multiplication</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -854,10 +930,12 @@
         <Parameter Name="result" Type="MonoMac.OpenGL.Vector4d&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="a">To be added.</param>
-        <param name="f">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="a">Vector operand</param>
+        <param name="f">Scalar operand</param>
+        <param name="result">Result of the multiplication</param>
+        <summary>
+            Multiply a vector and a scalar
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -876,10 +954,12 @@
         <Parameter Name="scale" Type="MonoMac.OpenGL.Vector4d" />
       </Parameters>
       <Docs>
-        <param name="vector">To be added.</param>
-        <param name="scale">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="vector">Left operand.</param>
+        <param name="scale">Right operand.</param>
+        <summary>
+            Multiplies a vector by the components a vector (scale).
+            </summary>
+        <returns>Result of the operation.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -898,10 +978,12 @@
         <Parameter Name="scale" Type="System.Double" />
       </Parameters>
       <Docs>
-        <param name="vector">To be added.</param>
-        <param name="scale">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="vector">Left operand.</param>
+        <param name="scale">Right operand.</param>
+        <summary>
+            Multiplies a vector by a scalar.
+            </summary>
+        <returns>Result of the operation.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -921,10 +1003,12 @@
         <Parameter Name="result" Type="MonoMac.OpenGL.Vector4d&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="vector">To be added.</param>
-        <param name="scale">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="vector">Left operand.</param>
+        <param name="scale">Right operand.</param>
+        <param name="result">Result of the operation.</param>
+        <summary>
+            Multiplies a vector by the components of a vector (scale).
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -944,10 +1028,12 @@
         <Parameter Name="result" Type="MonoMac.OpenGL.Vector4d&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="vector">To be added.</param>
-        <param name="scale">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="vector">Left operand.</param>
+        <param name="scale">Right operand.</param>
+        <param name="result">Result of the operation.</param>
+        <summary>
+            Multiplies a vector by a scalar.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -963,7 +1049,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Scales the Vector4d to unit length.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -981,9 +1069,11 @@
         <Parameter Name="vec" Type="MonoMac.OpenGL.Vector4d" />
       </Parameters>
       <Docs>
-        <param name="vec">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="vec">The input vector</param>
+        <summary>
+            Scale a vector to unit length
+            </summary>
+        <returns>The normalized vector</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1002,9 +1092,11 @@
         <Parameter Name="result" Type="MonoMac.OpenGL.Vector4d&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="vec">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="vec">The input vector</param>
+        <param name="result">The normalized vector</param>
+        <summary>
+            Scale a vector to unit length
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1020,7 +1112,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Scales the Vector4d to approximately unit length.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1038,9 +1132,11 @@
         <Parameter Name="vec" Type="MonoMac.OpenGL.Vector4d" />
       </Parameters>
       <Docs>
-        <param name="vec">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="vec">The input vector</param>
+        <summary>
+            Scale a vector to approximately unit length
+            </summary>
+        <returns>The normalized vector</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1059,9 +1155,11 @@
         <Parameter Name="result" Type="MonoMac.OpenGL.Vector4d&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="vec">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="vec">The input vector</param>
+        <param name="result">The normalized vector</param>
+        <summary>
+            Scale a vector to approximately unit length
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1076,7 +1174,9 @@
         <ReturnType>MonoMac.OpenGL.Vector4d</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Defines an instance with all components set to 1.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1095,10 +1195,12 @@
         <Parameter Name="right" Type="MonoMac.OpenGL.Vector4d" />
       </Parameters>
       <Docs>
-        <param name="left">To be added.</param>
-        <param name="right">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="left">The first instance.</param>
+        <param name="right">The second instance.</param>
+        <summary>
+            Adds two instances.
+            </summary>
+        <returns>The result of the calculation.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1117,10 +1219,12 @@
         <Parameter Name="scale" Type="System.Double" />
       </Parameters>
       <Docs>
-        <param name="vec">To be added.</param>
-        <param name="scale">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="vec">The instance.</param>
+        <param name="scale">The scalar.</param>
+        <summary>
+            Divides an instance by a scalar.
+            </summary>
+        <returns>The result of the calculation.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1139,10 +1243,12 @@
         <Parameter Name="right" Type="MonoMac.OpenGL.Vector4d" />
       </Parameters>
       <Docs>
-        <param name="left">To be added.</param>
-        <param name="right">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="left">The first instance.</param>
+        <param name="right">The second instance.</param>
+        <summary>
+            Compares two instances for equality.
+            </summary>
+        <returns>True, if left equals right; false otherwise.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1160,9 +1266,9 @@
         <Parameter Name="v4" Type="MonoMac.OpenGL.Vector4" />
       </Parameters>
       <Docs>
-        <param name="v4">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="v4">The Vector4 to convert.</param>
+        <summary>Converts OpenTK.Vector4 to OpenTK.Vector4d.</summary>
+        <returns>The resulting Vector4d.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1180,9 +1286,9 @@
         <Parameter Name="v4d" Type="MonoMac.OpenGL.Vector4d" />
       </Parameters>
       <Docs>
-        <param name="v4d">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="v4d">The Vector4d to convert.</param>
+        <summary>Converts OpenTK.Vector4d to OpenTK.Vector4.</summary>
+        <returns>The resulting Vector4.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1205,9 +1311,11 @@
         <Parameter Name="v" Type="MonoMac.OpenGL.Vector4d" />
       </Parameters>
       <Docs>
-        <param name="v">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="v">The instance.</param>
+        <summary>
+            Returns a pointer to the first element of the specified instance.
+            </summary>
+        <returns>A pointer to the first element of v.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1225,9 +1333,11 @@
         <Parameter Name="v" Type="MonoMac.OpenGL.Vector4d" />
       </Parameters>
       <Docs>
-        <param name="v">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="v">The instance.</param>
+        <summary>
+            Returns a pointer to the first element of the specified instance.
+            </summary>
+        <returns>A pointer to the first element of v.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1246,10 +1356,12 @@
         <Parameter Name="right" Type="MonoMac.OpenGL.Vector4d" />
       </Parameters>
       <Docs>
-        <param name="left">To be added.</param>
-        <param name="right">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="left">The first instance.</param>
+        <param name="right">The second instance.</param>
+        <summary>
+            Compares two instances for inequality.
+            </summary>
+        <returns>True, if left does not equa lright; false otherwise.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1268,10 +1380,12 @@
         <Parameter Name="scale" Type="System.Double" />
       </Parameters>
       <Docs>
-        <param name="vec">To be added.</param>
-        <param name="scale">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="vec">The instance.</param>
+        <param name="scale">The scalar.</param>
+        <summary>
+            Multiplies an instance by a scalar.
+            </summary>
+        <returns>The result of the calculation.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1290,10 +1404,12 @@
         <Parameter Name="vec" Type="MonoMac.OpenGL.Vector4d" />
       </Parameters>
       <Docs>
-        <param name="scale">To be added.</param>
-        <param name="vec">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="scale">The scalar.</param>
+        <param name="vec">The instance.</param>
+        <summary>
+            Multiplies an instance by a scalar.
+            </summary>
+        <returns>The result of the calculation.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1312,10 +1428,12 @@
         <Parameter Name="right" Type="MonoMac.OpenGL.Vector4d" />
       </Parameters>
       <Docs>
-        <param name="left">To be added.</param>
-        <param name="right">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="left">The first instance.</param>
+        <param name="right">The second instance.</param>
+        <summary>
+            Subtracts two instances.
+            </summary>
+        <returns>The result of the calculation.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1333,9 +1451,11 @@
         <Parameter Name="vec" Type="MonoMac.OpenGL.Vector4d" />
       </Parameters>
       <Docs>
-        <param name="vec">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="vec">The instance.</param>
+        <summary>
+            Negates an instance.
+            </summary>
+        <returns>The result of the calculation.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1358,8 +1478,8 @@
         <Parameter Name="scale" Type="MonoMac.OpenGL.Vector4d" />
       </Parameters>
       <Docs>
-        <param name="scale">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="scale">The scaling of the individual components.</param>
+        <summary>Scales this instance by the given parameter.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1385,8 +1505,8 @@
         <Parameter Name="scale" Type="MonoMac.OpenGL.Vector4d&amp;" RefType="ref" />
       </Parameters>
       <Docs>
-        <param name="scale">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="scale">The scaling of the individual components.</param>
+        <summary>Scales this instance by the given parameter.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1412,11 +1532,13 @@
         <Parameter Name="sw" Type="System.Double" />
       </Parameters>
       <Docs>
-        <param name="sx">To be added.</param>
-        <param name="sy">To be added.</param>
-        <param name="sz">To be added.</param>
-        <param name="sw">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="sx">The scale of the X component.</param>
+        <param name="sy">The scale of the Y component.</param>
+        <param name="sz">The scale of the Z component.</param>
+        <param name="sw">The scale of the Z component.</param>
+        <summary>
+            Scales the current Vector4d by the given amounts.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1431,7 +1553,9 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Defines the size of the Vector4d struct in bytes.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1454,8 +1578,8 @@
         <Parameter Name="right" Type="MonoMac.OpenGL.Vector4d" />
       </Parameters>
       <Docs>
-        <param name="right">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="right">Right operand. This parameter is only read from.</param>
+        <summary>Subtract the Vector passed as parameter from this instance.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1481,8 +1605,8 @@
         <Parameter Name="right" Type="MonoMac.OpenGL.Vector4d&amp;" RefType="ref" />
       </Parameters>
       <Docs>
-        <param name="right">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="right">Right operand. This parameter is only read from.</param>
+        <summary>Subtract the Vector passed as parameter from this instance.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1506,10 +1630,12 @@
         <Parameter Name="b" Type="MonoMac.OpenGL.Vector4d" />
       </Parameters>
       <Docs>
-        <param name="a">To be added.</param>
-        <param name="b">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="a">First operand</param>
+        <param name="b">Second operand</param>
+        <summary>
+            Subtract one Vector from another
+            </summary>
+        <returns>Result of subtraction</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1534,10 +1660,12 @@
         <Parameter Name="result" Type="MonoMac.OpenGL.Vector4d&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="a">To be added.</param>
-        <param name="b">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="a">First operand</param>
+        <param name="b">Second operand</param>
+        <param name="result">Result of subtraction</param>
+        <summary>
+            Subtract one Vector from another
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1556,10 +1684,12 @@
         <Parameter Name="b" Type="MonoMac.OpenGL.Vector4d" />
       </Parameters>
       <Docs>
-        <param name="a">To be added.</param>
-        <param name="b">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="a">First operand</param>
+        <param name="b">Second operand</param>
+        <summary>
+            Subtract one Vector from another
+            </summary>
+        <returns>Result of subtraction</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1579,10 +1709,12 @@
         <Parameter Name="result" Type="MonoMac.OpenGL.Vector4d&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="a">To be added.</param>
-        <param name="b">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="a">First operand</param>
+        <param name="b">Second operand</param>
+        <param name="result">Result of subtraction</param>
+        <summary>
+            Subtract one Vector from another
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1598,8 +1730,10 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>
+            Returns a System.String that represents the current Vector4d.
+            </summary>
+        <returns />
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1618,10 +1752,10 @@
         <Parameter Name="mat" Type="MonoMac.OpenGL.Matrix4d" />
       </Parameters>
       <Docs>
-        <param name="vec">To be added.</param>
-        <param name="mat">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="vec">The vector to transform</param>
+        <param name="mat">The desired transformation</param>
+        <summary>Transform a Vector by the given Matrix</summary>
+        <returns>The transformed vector</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1640,10 +1774,12 @@
         <Parameter Name="quat" Type="MonoMac.OpenGL.Quaterniond" />
       </Parameters>
       <Docs>
-        <param name="vec">To be added.</param>
-        <param name="quat">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="vec">The vector to transform.</param>
+        <param name="quat">The quaternion to rotate the vector by.</param>
+        <summary>
+            Transforms a vector by a quaternion rotation.
+            </summary>
+        <returns>The result of the operation.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1663,10 +1799,10 @@
         <Parameter Name="result" Type="MonoMac.OpenGL.Vector4d&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="vec">To be added.</param>
-        <param name="mat">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="vec">The vector to transform</param>
+        <param name="mat">The desired transformation</param>
+        <param name="result">The transformed vector</param>
+        <summary>Transform a Vector by the given Matrix</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1686,10 +1822,12 @@
         <Parameter Name="result" Type="MonoMac.OpenGL.Vector4d&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="vec">To be added.</param>
-        <param name="quat">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="vec">The vector to transform.</param>
+        <param name="quat">The quaternion to rotate the vector by.</param>
+        <param name="result">The result of the operation.</param>
+        <summary>
+            Transforms a vector by a quaternion rotation.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1704,7 +1842,9 @@
         <ReturnType>MonoMac.OpenGL.Vector4d</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Defines a unit-length Vector4d that points towards the W-axis.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1719,7 +1859,9 @@
         <ReturnType>MonoMac.OpenGL.Vector4d</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Defines a unit-length Vector4d that points towards the X-axis.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1734,7 +1876,9 @@
         <ReturnType>MonoMac.OpenGL.Vector4d</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Defines a unit-length Vector4d that points towards the Y-axis.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1749,7 +1893,9 @@
         <ReturnType>MonoMac.OpenGL.Vector4d</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Defines a unit-length Vector4d that points towards the Z-axis.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1764,7 +1910,9 @@
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            The W component of the Vector4d.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1779,7 +1927,9 @@
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            The X component of the Vector4d.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1799,7 +1949,9 @@
         <ReturnType>MonoMac.OpenGL.Vector2d</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Gets or sets an OpenTK.Vector2d with the X and Y components of this instance.
+            </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -1820,7 +1972,9 @@
         <ReturnType>MonoMac.OpenGL.Vector3d</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Gets or sets an OpenTK.Vector3d with the X, Y and Z components of this instance.
+            </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -1836,7 +1990,9 @@
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            The Y component of the Vector4d.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1851,7 +2007,9 @@
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            The Z component of the Vector4d.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1866,7 +2024,9 @@
         <ReturnType>MonoMac.OpenGL.Vector4d</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Defines a zero-length Vector4d.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

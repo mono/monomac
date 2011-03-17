@@ -14,7 +14,9 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
+    <summary>
+            Represents a 4x4 Matrix
+            </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -32,11 +34,13 @@
         <Parameter Name="row3" Type="MonoMac.OpenGL.Vector4" />
       </Parameters>
       <Docs>
-        <param name="row0">To be added.</param>
-        <param name="row1">To be added.</param>
-        <param name="row2">To be added.</param>
-        <param name="row3">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="row0">Top row of the matrix</param>
+        <param name="row1">Second row of the matrix</param>
+        <param name="row2">Third row of the matrix</param>
+        <param name="row3">Bottom row of the matrix</param>
+        <summary>
+            Constructs a new instance.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -66,23 +70,25 @@
         <Parameter Name="m33" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="m00">To be added.</param>
-        <param name="m01">To be added.</param>
-        <param name="m02">To be added.</param>
-        <param name="m03">To be added.</param>
-        <param name="m10">To be added.</param>
-        <param name="m11">To be added.</param>
-        <param name="m12">To be added.</param>
-        <param name="m13">To be added.</param>
-        <param name="m20">To be added.</param>
-        <param name="m21">To be added.</param>
-        <param name="m22">To be added.</param>
-        <param name="m23">To be added.</param>
-        <param name="m30">To be added.</param>
-        <param name="m31">To be added.</param>
-        <param name="m32">To be added.</param>
-        <param name="m33">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="m00">First item of the first row of the matrix.</param>
+        <param name="m01">Second item of the first row of the matrix.</param>
+        <param name="m02">Third item of the first row of the matrix.</param>
+        <param name="m03">Fourth item of the first row of the matrix.</param>
+        <param name="m10">First item of the second row of the matrix.</param>
+        <param name="m11">Second item of the second row of the matrix.</param>
+        <param name="m12">Third item of the second row of the matrix.</param>
+        <param name="m13">Fourth item of the second row of the matrix.</param>
+        <param name="m20">First item of the third row of the matrix.</param>
+        <param name="m21">Second item of the third row of the matrix.</param>
+        <param name="m22">Third item of the third row of the matrix.</param>
+        <param name="m23">First item of the third row of the matrix.</param>
+        <param name="m30">Fourth item of the fourth row of the matrix.</param>
+        <param name="m31">Second item of the fourth row of the matrix.</param>
+        <param name="m32">Third item of the fourth row of the matrix.</param>
+        <param name="m33">Fourth item of the fourth row of the matrix.</param>
+        <summary>
+            Constructs a new instance.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -97,7 +103,9 @@
         <ReturnType>MonoMac.OpenGL.Vector4</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            The first column of this matrix
+            </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -113,7 +121,9 @@
         <ReturnType>MonoMac.OpenGL.Vector4</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            The second column of this matrix
+            </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -129,7 +139,9 @@
         <ReturnType>MonoMac.OpenGL.Vector4</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            The third column of this matrix
+            </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -145,7 +157,9 @@
         <ReturnType>MonoMac.OpenGL.Vector4</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            The fourth column of this matrix
+            </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -165,10 +179,12 @@
         <Parameter Name="angle" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="axis">To be added.</param>
-        <param name="angle">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="axis">The axis to rotate about.</param>
+        <param name="angle">Angle in radians to rotate counter-clockwise (looking in the direction of the given axis).</param>
+        <summary>
+            Build a rotation matrix from the specified axis/angle rotation.
+            </summary>
+        <returns>A matrix instance.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -188,10 +204,12 @@
         <Parameter Name="result" Type="MonoMac.OpenGL.Matrix4&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="axis">To be added.</param>
-        <param name="angle">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="axis">The axis to rotate about.</param>
+        <param name="angle">Angle in radians to rotate counter-clockwise (looking in the direction of the given axis).</param>
+        <param name="result">A matrix instance.</param>
+        <summary>
+            Build a rotation matrix from the specified axis/angle rotation.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -212,13 +230,16 @@
         <Parameter Name="zFar" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="width">To be added.</param>
-        <param name="height">To be added.</param>
-        <param name="zNear">To be added.</param>
-        <param name="zFar">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="width">The width of the projection volume.</param>
+        <param name="height">The height of the projection volume.</param>
+        <param name="zNear">The near edge of the projection volume.</param>
+        <param name="zFar">The far edge of the projection volume.</param>
+        <summary>
+            Creates an orthographic projection matrix.
+            </summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
+        <rereturns>The resulting Matrix4 instance.</rereturns>
       </Docs>
     </Member>
     <Member MemberName="CreateOrthographic">
@@ -239,12 +260,14 @@
         <Parameter Name="result" Type="MonoMac.OpenGL.Matrix4&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="width">To be added.</param>
-        <param name="height">To be added.</param>
-        <param name="zNear">To be added.</param>
-        <param name="zFar">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="width">The width of the projection volume.</param>
+        <param name="height">The height of the projection volume.</param>
+        <param name="zNear">The near edge of the projection volume.</param>
+        <param name="zFar">The far edge of the projection volume.</param>
+        <param name="result">The resulting Matrix4 instance.</param>
+        <summary>
+            Creates an orthographic projection matrix.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -267,14 +290,16 @@
         <Parameter Name="zFar" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="left">To be added.</param>
-        <param name="right">To be added.</param>
-        <param name="bottom">To be added.</param>
-        <param name="top">To be added.</param>
-        <param name="zNear">To be added.</param>
-        <param name="zFar">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="left">The left edge of the projection volume.</param>
+        <param name="right">The right edge of the projection volume.</param>
+        <param name="bottom">The bottom edge of the projection volume.</param>
+        <param name="top">The top edge of the projection volume.</param>
+        <param name="zNear">The near edge of the projection volume.</param>
+        <param name="zFar">The far edge of the projection volume.</param>
+        <summary>
+            Creates an orthographic projection matrix.
+            </summary>
+        <returns>The resulting Matrix4 instance.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -298,14 +323,16 @@
         <Parameter Name="result" Type="MonoMac.OpenGL.Matrix4&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="left">To be added.</param>
-        <param name="right">To be added.</param>
-        <param name="bottom">To be added.</param>
-        <param name="top">To be added.</param>
-        <param name="zNear">To be added.</param>
-        <param name="zFar">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="left">The left edge of the projection volume.</param>
+        <param name="right">The right edge of the projection volume.</param>
+        <param name="bottom">The bottom edge of the projection volume.</param>
+        <param name="top">The top edge of the projection volume.</param>
+        <param name="zNear">The near edge of the projection volume.</param>
+        <param name="zFar">The far edge of the projection volume.</param>
+        <param name="result">The resulting Matrix4 instance.</param>
+        <summary>
+            Creates an orthographic projection matrix.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -326,13 +353,18 @@
         <Parameter Name="zFar" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="fovy">To be added.</param>
-        <param name="aspect">To be added.</param>
-        <param name="zNear">To be added.</param>
-        <param name="zFar">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="fovy">Angle of the field of view in the y direction (in radians)</param>
+        <param name="aspect">Aspect ratio of the view (width / height)</param>
+        <param name="zNear">Distance to the near clip plane</param>
+        <param name="zFar">Distance to the far clip plane</param>
+        <summary>
+            Creates a perspective projection matrix.
+            </summary>
+        <returns>A projection matrix that transforms camera space to raster space</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentOutOfRangeException">
+            Thrown under the following conditions:
+            <list type="bullet"><item>fovy is zero, less than zero or larger than Math.PI</item><item>aspect is negative or zero</item><item>zNear is negative or zero</item><item>zFar is negative or zero</item><item>zNear is larger than zFar</item></list></exception>
       </Docs>
     </Member>
     <Member MemberName="CreatePerspectiveFieldOfView">
@@ -353,13 +385,18 @@
         <Parameter Name="result" Type="MonoMac.OpenGL.Matrix4&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="fovy">To be added.</param>
-        <param name="aspect">To be added.</param>
-        <param name="zNear">To be added.</param>
-        <param name="zFar">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="fovy">Angle of the field of view in the y direction (in radians)</param>
+        <param name="aspect">Aspect ratio of the view (width / height)</param>
+        <param name="zNear">Distance to the near clip plane</param>
+        <param name="zFar">Distance to the far clip plane</param>
+        <param name="result">A projection matrix that transforms camera space to raster space</param>
+        <summary>
+            Creates a perspective projection matrix.
+            </summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentOutOfRangeException">
+            Thrown under the following conditions:
+            <list type="bullet"><item>fovy is zero, less than zero or larger than Math.PI</item><item>aspect is negative or zero</item><item>zNear is negative or zero</item><item>zFar is negative or zero</item><item>zNear is larger than zFar</item></list></exception>
       </Docs>
     </Member>
     <Member MemberName="CreatePerspectiveOffCenter">
@@ -381,15 +418,20 @@
         <Parameter Name="zFar" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="left">To be added.</param>
-        <param name="right">To be added.</param>
-        <param name="bottom">To be added.</param>
-        <param name="top">To be added.</param>
-        <param name="zNear">To be added.</param>
-        <param name="zFar">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="left">Left edge of the view frustum</param>
+        <param name="right">Right edge of the view frustum</param>
+        <param name="bottom">Bottom edge of the view frustum</param>
+        <param name="top">Top edge of the view frustum</param>
+        <param name="zNear">Distance to the near clip plane</param>
+        <param name="zFar">Distance to the far clip plane</param>
+        <summary>
+            Creates an perspective projection matrix.
+            </summary>
+        <returns>A projection matrix that transforms camera space to raster space</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentOutOfRangeException">
+            Thrown under the following conditions:
+            <list type="bullet"><item>zNear is negative or zero</item><item>zFar is negative or zero</item><item>zNear is larger than zFar</item></list></exception>
       </Docs>
     </Member>
     <Member MemberName="CreatePerspectiveOffCenter">
@@ -412,15 +454,20 @@
         <Parameter Name="result" Type="MonoMac.OpenGL.Matrix4&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="left">To be added.</param>
-        <param name="right">To be added.</param>
-        <param name="bottom">To be added.</param>
-        <param name="top">To be added.</param>
-        <param name="zNear">To be added.</param>
-        <param name="zFar">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="left">Left edge of the view frustum</param>
+        <param name="right">Right edge of the view frustum</param>
+        <param name="bottom">Bottom edge of the view frustum</param>
+        <param name="top">Top edge of the view frustum</param>
+        <param name="zNear">Distance to the near clip plane</param>
+        <param name="zFar">Distance to the far clip plane</param>
+        <param name="result">A projection matrix that transforms camera space to raster space</param>
+        <summary>
+            Creates an perspective projection matrix.
+            </summary>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.ArgumentOutOfRangeException">
+            Thrown under the following conditions:
+            <list type="bullet"><item>zNear is negative or zero</item><item>zFar is negative or zero</item><item>zNear is larger than zFar</item></list></exception>
       </Docs>
     </Member>
     <Member MemberName="CreateRotationX">
@@ -437,9 +484,11 @@
         <Parameter Name="angle" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="angle">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="angle">The counter-clockwise angle in radians.</param>
+        <summary>
+            Builds a rotation matrix for a rotation around the x-axis.
+            </summary>
+        <returns>The resulting Matrix4 instance.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -458,9 +507,11 @@
         <Parameter Name="result" Type="MonoMac.OpenGL.Matrix4&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="angle">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="angle">The counter-clockwise angle in radians.</param>
+        <param name="result">The resulting Matrix4 instance.</param>
+        <summary>
+            Builds a rotation matrix for a rotation around the x-axis.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -478,9 +529,11 @@
         <Parameter Name="angle" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="angle">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="angle">The counter-clockwise angle in radians.</param>
+        <summary>
+            Builds a rotation matrix for a rotation around the y-axis.
+            </summary>
+        <returns>The resulting Matrix4 instance.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -499,9 +552,11 @@
         <Parameter Name="result" Type="MonoMac.OpenGL.Matrix4&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="angle">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="angle">The counter-clockwise angle in radians.</param>
+        <param name="result">The resulting Matrix4 instance.</param>
+        <summary>
+            Builds a rotation matrix for a rotation around the y-axis.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -519,9 +574,11 @@
         <Parameter Name="angle" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="angle">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="angle">The counter-clockwise angle in radians.</param>
+        <summary>
+            Builds a rotation matrix for a rotation around the z-axis.
+            </summary>
+        <returns>The resulting Matrix4 instance.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -540,9 +597,11 @@
         <Parameter Name="result" Type="MonoMac.OpenGL.Matrix4&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="angle">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="angle">The counter-clockwise angle in radians.</param>
+        <param name="result">The resulting Matrix4 instance.</param>
+        <summary>
+            Builds a rotation matrix for a rotation around the z-axis.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -560,9 +619,11 @@
         <Parameter Name="vector" Type="MonoMac.OpenGL.Vector3" />
       </Parameters>
       <Docs>
-        <param name="vector">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="vector">The translation vector.</param>
+        <summary>
+            Creates a translation matrix.
+            </summary>
+        <returns>The resulting Matrix4 instance.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -581,9 +642,11 @@
         <Parameter Name="result" Type="MonoMac.OpenGL.Matrix4&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="vector">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="vector">The translation vector.</param>
+        <param name="result">The resulting Matrix4 instance.</param>
+        <summary>
+            Creates a translation matrix.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -603,11 +666,13 @@
         <Parameter Name="z" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="x">To be added.</param>
-        <param name="y">To be added.</param>
-        <param name="z">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="x">X translation.</param>
+        <param name="y">Y translation.</param>
+        <param name="z">Z translation.</param>
+        <summary>
+            Creates a translation matrix.
+            </summary>
+        <returns>The resulting Matrix4 instance.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -628,11 +693,13 @@
         <Parameter Name="result" Type="MonoMac.OpenGL.Matrix4&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="x">To be added.</param>
-        <param name="y">To be added.</param>
-        <param name="z">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="x">X translation.</param>
+        <param name="y">Y translation.</param>
+        <param name="z">Z translation.</param>
+        <param name="result">The resulting Matrix4 instance.</param>
+        <summary>
+            Creates a translation matrix.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -647,7 +714,9 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            The determinant of this matrix
+            </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -666,9 +735,9 @@
         <Parameter Name="other" Type="MonoMac.OpenGL.Matrix4" />
       </Parameters>
       <Docs>
-        <param name="other">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="other">An matrix to compare with this matrix.</param>
+        <summary>Indicates whether the current matrix is equal to another matrix.</summary>
+        <returns>true if the current matrix is equal to the matrix parameter; otherwise, false.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -686,9 +755,11 @@
         <Parameter Name="obj" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="obj">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="obj">The object to compare tresult.</param>
+        <summary>
+            Indicates whether this instance and a specified object are equal.
+            </summary>
+        <returns>True if the instances are equal; false otherwise.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -716,14 +787,16 @@
         <Parameter Name="far" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="left">To be added.</param>
-        <param name="right">To be added.</param>
-        <param name="bottom">To be added.</param>
-        <param name="top">To be added.</param>
-        <param name="near">To be added.</param>
-        <param name="far">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="left">Left edge of the view frustum</param>
+        <param name="right">Right edge of the view frustum</param>
+        <param name="bottom">Bottom edge of the view frustum</param>
+        <param name="top">Top edge of the view frustum</param>
+        <param name="near">Distance to the near clip plane</param>
+        <param name="far">Distance to the far clip plane</param>
+        <summary>
+            Build a projection matrix
+            </summary>
+        <returns>A projection matrix that transforms camera space to raster space</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -739,8 +812,10 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>
+            Returns the hashcode for this instance.
+            </summary>
+        <returns>A System.Int32 containing the unique hashcode for this instance.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -755,7 +830,9 @@
         <ReturnType>MonoMac.OpenGL.Matrix4</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            The identity matrix
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -771,7 +848,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Converts this instance into its inverse.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -789,10 +868,13 @@
         <Parameter Name="mat" Type="MonoMac.OpenGL.Matrix4" />
       </Parameters>
       <Docs>
-        <param name="mat">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="mat">The matrix to invert</param>
+        <summary>
+            Calculate the inverse of the given matrix
+            </summary>
+        <returns>The inverse of the given matrix if it has one, or the input if it is singular</returns>
         <remarks>To be added.</remarks>
+        <exception cref="T:System.InvalidOperationException">Thrown if the Matrix4 is singular.</exception>
       </Docs>
     </Member>
     <Member MemberName="LookAt">
@@ -811,11 +893,13 @@
         <Parameter Name="up" Type="MonoMac.OpenGL.Vector3" />
       </Parameters>
       <Docs>
-        <param name="eye">To be added.</param>
-        <param name="target">To be added.</param>
-        <param name="up">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="eye">Eye (camera) position in world space</param>
+        <param name="target">Target position in world space</param>
+        <param name="up">Up vector in world space (should not be parallel to the camera direction, that is target - eye)</param>
+        <summary>
+            Build a world space to camera space matrix
+            </summary>
+        <returns>A Matrix4 that transforms world space to camera space</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -841,17 +925,19 @@
         <Parameter Name="upZ" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="eyeX">To be added.</param>
-        <param name="eyeY">To be added.</param>
-        <param name="eyeZ">To be added.</param>
-        <param name="targetX">To be added.</param>
-        <param name="targetY">To be added.</param>
-        <param name="targetZ">To be added.</param>
-        <param name="upX">To be added.</param>
-        <param name="upY">To be added.</param>
-        <param name="upZ">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="eyeX">Eye (camera) position in world space</param>
+        <param name="eyeY">Eye (camera) position in world space</param>
+        <param name="eyeZ">Eye (camera) position in world space</param>
+        <param name="targetX">Target position in world space</param>
+        <param name="targetY">Target position in world space</param>
+        <param name="targetZ">Target position in world space</param>
+        <param name="upX">Up vector in world space (should not be parallel to the camera direction, that is target - eye)</param>
+        <param name="upY">Up vector in world space (should not be parallel to the camera direction, that is target - eye)</param>
+        <param name="upZ">Up vector in world space (should not be parallel to the camera direction, that is target - eye)</param>
+        <summary>
+            Build a world space to camera space matrix
+            </summary>
+        <returns>A Matrix4 that transforms world space to camera space</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -866,7 +952,9 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Gets or sets the value at row 1, column 1 of this instance.
+            </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -882,7 +970,9 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Gets or sets the value at row 1, column 2 of this instance.
+            </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -898,7 +988,9 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Gets or sets the value at row 1, column 3 of this instance.
+            </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -914,7 +1006,9 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Gets or sets the value at row 1, column 4 of this instance.
+            </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -930,7 +1024,9 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Gets or sets the value at row 2, column 1 of this instance.
+            </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -946,7 +1042,9 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Gets or sets the value at row 2, column 2 of this instance.
+            </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -962,7 +1060,9 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Gets or sets the value at row 2, column 3 of this instance.
+            </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -978,7 +1078,9 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Gets or sets the value at row 2, column 4 of this instance.
+            </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -994,7 +1096,9 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Gets or sets the value at row 3, column 1 of this instance.
+            </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -1010,7 +1114,9 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Gets or sets the value at row 3, column 2 of this instance.
+            </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -1026,7 +1132,9 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Gets or sets the value at row 3, column 3 of this instance.
+            </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -1042,7 +1150,9 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Gets or sets the value at row 3, column 4 of this instance.
+            </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -1058,7 +1168,9 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Gets or sets the value at row 4, column 1 of this instance.
+            </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -1074,7 +1186,9 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Gets or sets the value at row 4, column 2 of this instance.
+            </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -1090,7 +1204,9 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Gets or sets the value at row 4, column 3 of this instance.
+            </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -1106,7 +1222,9 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Gets or sets the value at row 4, column 4 of this instance.
+            </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -1126,10 +1244,12 @@
         <Parameter Name="right" Type="MonoMac.OpenGL.Matrix4" />
       </Parameters>
       <Docs>
-        <param name="left">To be added.</param>
-        <param name="right">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="left">The left operand of the multiplication.</param>
+        <param name="right">The right operand of the multiplication.</param>
+        <summary>
+            Multiplies two instances.
+            </summary>
+        <returns>A new instance that is the result of the multiplication</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1149,10 +1269,12 @@
         <Parameter Name="result" Type="MonoMac.OpenGL.Matrix4&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="left">To be added.</param>
-        <param name="right">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="left">The left operand of the multiplication.</param>
+        <param name="right">The right operand of the multiplication.</param>
+        <param name="result">A new instance that is the result of the multiplication</param>
+        <summary>
+            Multiplies two instances.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1171,10 +1293,12 @@
         <Parameter Name="right" Type="MonoMac.OpenGL.Matrix4" />
       </Parameters>
       <Docs>
-        <param name="left">To be added.</param>
-        <param name="right">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="left">The first instance.</param>
+        <param name="right">The second instance.</param>
+        <summary>
+            Compares two instances for equality.
+            </summary>
+        <returns>True, if left equals right; false otherwise.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1193,10 +1317,12 @@
         <Parameter Name="right" Type="MonoMac.OpenGL.Matrix4" />
       </Parameters>
       <Docs>
-        <param name="left">To be added.</param>
-        <param name="right">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="left">The first instance.</param>
+        <param name="right">The second instance.</param>
+        <summary>
+            Compares two instances for inequality.
+            </summary>
+        <returns>True, if left does not equal right; false otherwise.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1215,10 +1341,12 @@
         <Parameter Name="right" Type="MonoMac.OpenGL.Matrix4" />
       </Parameters>
       <Docs>
-        <param name="left">To be added.</param>
-        <param name="right">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="left">left-hand operand</param>
+        <param name="right">right-hand operand</param>
+        <summary>
+            Matrix multiplication
+            </summary>
+        <returns>A new Matrix44 which holds the result of the multiplication</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1244,12 +1372,14 @@
         <Parameter Name="far" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="fovy">To be added.</param>
-        <param name="aspect">To be added.</param>
-        <param name="near">To be added.</param>
-        <param name="far">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="fovy">Angle of the field of view in the y direction (in radians)</param>
+        <param name="aspect">Aspect ratio of the view (width / height)</param>
+        <param name="near">Distance to the near clip plane</param>
+        <param name="far">Distance to the far clip plane</param>
+        <summary>
+            Build a projection matrix
+            </summary>
+        <returns>A projection matrix that transforms camera space to raster space</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1267,9 +1397,11 @@
         <Parameter Name="q" Type="MonoMac.OpenGL.Quaternion" />
       </Parameters>
       <Docs>
-        <param name="q">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="q">the quaternion</param>
+        <summary>
+            Build a rotation matrix from a quaternion
+            </summary>
+        <returns>A rotation matrix</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1293,10 +1425,12 @@
         <Parameter Name="angle" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="axis">To be added.</param>
-        <param name="angle">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="axis">the axis to rotate about</param>
+        <param name="angle">angle in radians to rotate counter-clockwise (looking in the direction of the given axis)</param>
+        <summary>
+            Build a rotation matrix to rotate about the given axis
+            </summary>
+        <returns>A rotation matrix</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1319,9 +1453,11 @@
         <Parameter Name="angle" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="angle">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="angle">angle in radians to rotate counter-clockwise around the x-axis</param>
+        <summary>
+            Build a rotation matrix that rotates about the x-axis
+            </summary>
+        <returns>A rotation matrix</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1344,9 +1480,11 @@
         <Parameter Name="angle" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="angle">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="angle">angle in radians to rotate counter-clockwise around the y-axis</param>
+        <summary>
+            Build a rotation matrix that rotates about the y-axis
+            </summary>
+        <returns>A rotation matrix</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1369,9 +1507,11 @@
         <Parameter Name="angle" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="angle">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="angle">angle in radians to rotate counter-clockwise around the z-axis</param>
+        <summary>
+            Build a rotation matrix that rotates about the z-axis
+            </summary>
+        <returns>A rotation matrix</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1386,7 +1526,9 @@
         <ReturnType>MonoMac.OpenGL.Vector4</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Top row of the matrix
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1401,7 +1543,9 @@
         <ReturnType>MonoMac.OpenGL.Vector4</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            2nd row of the matrix
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1416,7 +1560,9 @@
         <ReturnType>MonoMac.OpenGL.Vector4</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            3rd row of the matrix
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1431,7 +1577,9 @@
         <ReturnType>MonoMac.OpenGL.Vector4</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Bottom row of the matrix
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1449,9 +1597,11 @@
         <Parameter Name="scale" Type="MonoMac.OpenGL.Vector3" />
       </Parameters>
       <Docs>
-        <param name="scale">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="scale">Scale factors for x,y and z axes</param>
+        <summary>
+            Build a scaling matrix
+            </summary>
+        <returns>A scaling matrix</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1469,9 +1619,11 @@
         <Parameter Name="scale" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="scale">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="scale">Single scale factor for x,y and z axes</param>
+        <summary>
+            Build a scaling matrix
+            </summary>
+        <returns>A scaling matrix</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1491,11 +1643,13 @@
         <Parameter Name="z" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="x">To be added.</param>
-        <param name="y">To be added.</param>
-        <param name="z">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="x">Scale factor for x-axis</param>
+        <param name="y">Scale factor for y-axis</param>
+        <param name="z">Scale factor for z-axis</param>
+        <summary>
+            Build a scaling matrix
+            </summary>
+        <returns>A scaling matrix</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1511,8 +1665,10 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>
+            Returns a System.String that represents the current Matrix44.
+            </summary>
+        <returns />
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1535,9 +1691,11 @@
         <Parameter Name="trans" Type="MonoMac.OpenGL.Vector3" />
       </Parameters>
       <Docs>
-        <param name="trans">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="trans">The translation vector.</param>
+        <summary>
+            Builds a translation matrix.
+            </summary>
+        <returns>A new Matrix4 instance.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1562,11 +1720,13 @@
         <Parameter Name="z" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="x">To be added.</param>
-        <param name="y">To be added.</param>
-        <param name="z">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="x">X translation</param>
+        <param name="y">Y translation</param>
+        <param name="z">Z translation</param>
+        <summary>
+            Build a translation matrix with the given translation
+            </summary>
+        <returns>A Translation matrix</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1582,7 +1742,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Converts this instance into its transpose.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1600,9 +1762,11 @@
         <Parameter Name="mat" Type="MonoMac.OpenGL.Matrix4" />
       </Parameters>
       <Docs>
-        <param name="mat">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="mat">The matrix to transpose</param>
+        <summary>
+            Calculate the transpose of the given matrix
+            </summary>
+        <returns>The transpose of the given matrix</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1621,9 +1785,11 @@
         <Parameter Name="result" Type="MonoMac.OpenGL.Matrix4&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="mat">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="mat">The matrix to transpose</param>
+        <param name="result">The result of the calculation</param>
+        <summary>
+            Calculate the transpose of the given matrix
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

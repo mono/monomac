@@ -14,7 +14,9 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
+    <summary>
+            Represents a Quaternion.
+            </summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -30,9 +32,11 @@
         <Parameter Name="w" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="v">To be added.</param>
-        <param name="w">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="v">The vector part</param>
+        <param name="w">The w part</param>
+        <summary>
+            Construct a new Quaternion from vector and w components
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -50,11 +54,13 @@
         <Parameter Name="w" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="x">To be added.</param>
-        <param name="y">To be added.</param>
-        <param name="z">To be added.</param>
-        <param name="w">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="x">The x component</param>
+        <param name="y">The y component</param>
+        <param name="z">The z component</param>
+        <param name="w">The w component</param>
+        <summary>
+            Construct a new Quaternion
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -73,10 +79,12 @@
         <Parameter Name="right" Type="MonoMac.OpenGL.Quaternion" />
       </Parameters>
       <Docs>
-        <param name="left">To be added.</param>
-        <param name="right">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="left">The first operand</param>
+        <param name="right">The second operand</param>
+        <summary>
+            Add two quaternions
+            </summary>
+        <returns>The result of the addition</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -96,10 +104,12 @@
         <Parameter Name="result" Type="MonoMac.OpenGL.Quaternion&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="left">To be added.</param>
-        <param name="right">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="left">The first operand</param>
+        <param name="right">The second operand</param>
+        <param name="result">The result of the addition</param>
+        <summary>
+            Add two quaternions
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -115,7 +125,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Convert this quaternion to its conjugate
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -133,9 +145,11 @@
         <Parameter Name="q" Type="MonoMac.OpenGL.Quaternion" />
       </Parameters>
       <Docs>
-        <param name="q">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="q">The quaternion</param>
+        <summary>
+            Get the conjugate of the given quaternion
+            </summary>
+        <returns>The conjugate of the given quaternion</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -154,9 +168,11 @@
         <Parameter Name="result" Type="MonoMac.OpenGL.Quaternion&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="q">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="q">The quaternion</param>
+        <param name="result">The conjugate of the given quaternion</param>
+        <summary>
+            Get the conjugate of the given quaternion
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -174,9 +190,11 @@
         <Parameter Name="other" Type="MonoMac.OpenGL.Quaternion" />
       </Parameters>
       <Docs>
-        <param name="other">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="other">The other Quaternion to be used in the comparison.</param>
+        <summary>
+            Compares this Quaternion instance to another Quaternion for equality.
+            </summary>
+        <returns>True if both instances are equal; false otherwise.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -194,9 +212,11 @@
         <Parameter Name="other" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="other">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="other">The other object to be used in the comparison.</param>
+        <summary>
+            Compares this object instance to another object for equality.
+            </summary>
+        <returns>True if both objects are Quaternions of equal value. Otherwise it returns false.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -215,10 +235,12 @@
         <Parameter Name="angle" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="axis">To be added.</param>
-        <param name="angle">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="axis">The axis to rotate about</param>
+        <param name="angle">The rotation angle in radians</param>
+        <summary>
+            Build a quaternion from the given axis and angle
+            </summary>
+        <returns />
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -234,8 +256,10 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>
+            Provides the hash code for this object.
+            </summary>
+        <returns>A hash code formed from the bitwise XOR of this objects members.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -250,7 +274,9 @@
         <ReturnType>MonoMac.OpenGL.Quaternion</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Defines the identity quaternion.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -268,9 +294,11 @@
         <Parameter Name="q" Type="MonoMac.OpenGL.Quaternion" />
       </Parameters>
       <Docs>
-        <param name="q">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="q">The quaternion to invert</param>
+        <summary>
+            Get the inverse of the given quaternion
+            </summary>
+        <returns>The inverse of the given quaternion</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -289,9 +317,11 @@
         <Parameter Name="result" Type="MonoMac.OpenGL.Quaternion&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="q">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="q">The quaternion to invert</param>
+        <param name="result">The inverse of the given quaternion</param>
+        <summary>
+            Get the inverse of the given quaternion
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -306,9 +336,12 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Gets the length (magnitude) of the quaternion.
+            </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
+        <altmember cref="P:MonoMac.OpenGL.Quaternion.LengthSquared" />
       </Docs>
     </Member>
     <Member MemberName="LengthSquared">
@@ -322,7 +355,9 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Gets the square of the quaternion length (magnitude).
+            </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -347,10 +382,12 @@
         <Parameter Name="right" Type="MonoMac.OpenGL.Quaternion" />
       </Parameters>
       <Docs>
-        <param name="left">To be added.</param>
-        <param name="right">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="left">The first instance.</param>
+        <param name="right">The second instance.</param>
+        <summary>
+            Multiplies two instances.
+            </summary>
+        <returns>A new instance containing the result of the calculation.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -375,10 +412,12 @@
         <Parameter Name="result" Type="MonoMac.OpenGL.Quaternion&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="left">To be added.</param>
-        <param name="right">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="left">The first instance.</param>
+        <param name="right">The second instance.</param>
+        <param name="result">A new instance containing the result of the calculation.</param>
+        <summary>
+            Multiplies two instances.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -397,10 +436,12 @@
         <Parameter Name="right" Type="MonoMac.OpenGL.Quaternion" />
       </Parameters>
       <Docs>
-        <param name="left">To be added.</param>
-        <param name="right">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="left">The first instance.</param>
+        <param name="right">The second instance.</param>
+        <summary>
+            Multiplies two instances.
+            </summary>
+        <returns>A new instance containing the result of the calculation.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -419,10 +460,12 @@
         <Parameter Name="scale" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="quaternion">To be added.</param>
-        <param name="scale">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="quaternion">The instance.</param>
+        <param name="scale">The scalar.</param>
+        <summary>
+            Multiplies an instance by a scalar.
+            </summary>
+        <returns>A new instance containing the result of the calculation.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -442,10 +485,12 @@
         <Parameter Name="result" Type="MonoMac.OpenGL.Quaternion&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="left">To be added.</param>
-        <param name="right">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="left">The first instance.</param>
+        <param name="right">The second instance.</param>
+        <param name="result">A new instance containing the result of the calculation.</param>
+        <summary>
+            Multiplies two instances.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -465,10 +510,12 @@
         <Parameter Name="result" Type="MonoMac.OpenGL.Quaternion&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="quaternion">To be added.</param>
-        <param name="scale">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="quaternion">The instance.</param>
+        <param name="scale">The scalar.</param>
+        <param name="result">A new instance containing the result of the calculation.</param>
+        <summary>
+            Multiplies an instance by a scalar.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -484,7 +531,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Scales the Quaternion to unit length.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -502,9 +551,11 @@
         <Parameter Name="q" Type="MonoMac.OpenGL.Quaternion" />
       </Parameters>
       <Docs>
-        <param name="q">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="q">The quaternion to normalize</param>
+        <summary>
+            Scale the given quaternion to unit length
+            </summary>
+        <returns>The normalized quaternion</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -523,9 +574,11 @@
         <Parameter Name="result" Type="MonoMac.OpenGL.Quaternion&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="q">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="q">The quaternion to normalize</param>
+        <param name="result">The normalized quaternion</param>
+        <summary>
+            Scale the given quaternion to unit length
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -544,10 +597,12 @@
         <Parameter Name="right" Type="MonoMac.OpenGL.Quaternion" />
       </Parameters>
       <Docs>
-        <param name="left">To be added.</param>
-        <param name="right">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="left">The first instance.</param>
+        <param name="right">The second instance.</param>
+        <summary>
+            Adds two instances.
+            </summary>
+        <returns>The result of the calculation.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -566,10 +621,12 @@
         <Parameter Name="right" Type="MonoMac.OpenGL.Quaternion" />
       </Parameters>
       <Docs>
-        <param name="left">To be added.</param>
-        <param name="right">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="left">The first instance.</param>
+        <param name="right">The second instance.</param>
+        <summary>
+            Compares two instances for equality.
+            </summary>
+        <returns>True, if left equals right; false otherwise.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -588,10 +645,12 @@
         <Parameter Name="right" Type="MonoMac.OpenGL.Quaternion" />
       </Parameters>
       <Docs>
-        <param name="left">To be added.</param>
-        <param name="right">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="left">The first instance.</param>
+        <param name="right">The second instance.</param>
+        <summary>
+            Compares two instances for inequality.
+            </summary>
+        <returns>True, if left does not equal right; false otherwise.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -610,10 +669,12 @@
         <Parameter Name="right" Type="MonoMac.OpenGL.Quaternion" />
       </Parameters>
       <Docs>
-        <param name="left">To be added.</param>
-        <param name="right">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="left">The first instance.</param>
+        <param name="right">The second instance.</param>
+        <summary>
+            Multiplies two instances.
+            </summary>
+        <returns>The result of the calculation.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -632,10 +693,12 @@
         <Parameter Name="scale" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="quaternion">To be added.</param>
-        <param name="scale">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="quaternion">The instance.</param>
+        <param name="scale">The scalar.</param>
+        <summary>
+            Multiplies an instance by a scalar.
+            </summary>
+        <returns>A new instance containing the result of the calculation.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -654,10 +717,12 @@
         <Parameter Name="quaternion" Type="MonoMac.OpenGL.Quaternion" />
       </Parameters>
       <Docs>
-        <param name="scale">To be added.</param>
-        <param name="quaternion">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="scale">The scalar.</param>
+        <param name="quaternion">The instance.</param>
+        <summary>
+            Multiplies an instance by a scalar.
+            </summary>
+        <returns>A new instance containing the result of the calculation.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -676,10 +741,12 @@
         <Parameter Name="right" Type="MonoMac.OpenGL.Quaternion" />
       </Parameters>
       <Docs>
-        <param name="left">To be added.</param>
-        <param name="right">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="left">The first instance.</param>
+        <param name="right">The second instance.</param>
+        <summary>
+            Subtracts two instances.
+            </summary>
+        <returns>The result of the calculation.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -699,11 +766,13 @@
         <Parameter Name="blend" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="q1">To be added.</param>
-        <param name="q2">To be added.</param>
-        <param name="blend">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="q1">The first quaternion</param>
+        <param name="q2">The second quaternion</param>
+        <param name="blend">The blend factor</param>
+        <summary>
+            Do Spherical linear interpolation between two quaternions
+            </summary>
+        <returns>A smooth blend between the given quaternions</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -722,10 +791,12 @@
         <Parameter Name="right" Type="MonoMac.OpenGL.Quaternion" />
       </Parameters>
       <Docs>
-        <param name="left">To be added.</param>
-        <param name="right">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="left">The left instance.</param>
+        <param name="right">The right instance.</param>
+        <summary>
+            Subtracts two instances.
+            </summary>
+        <returns>The result of the operation.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -745,10 +816,12 @@
         <Parameter Name="result" Type="MonoMac.OpenGL.Quaternion&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="left">To be added.</param>
-        <param name="right">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="left">The left instance.</param>
+        <param name="right">The right instance.</param>
+        <param name="result">The result of the operation.</param>
+        <summary>
+            Subtracts two instances.
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -764,8 +837,10 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>
+            Convert this instance to an axis-angle representation.
+            </summary>
+        <returns>A Vector4 that is the axis-angle representation of this quaternion.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -784,9 +859,11 @@
         <Parameter Name="angle" Type="System.Single&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="axis">To be added.</param>
-        <param name="angle">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="axis">The resultant axis</param>
+        <param name="angle">The resultant angle</param>
+        <summary>
+            Convert the current quaternion to axis angle representation
+            </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -802,8 +879,10 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>
+            Returns a System.String that represents the current Quaternion.
+            </summary>
+        <returns />
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -818,7 +897,9 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Gets or sets the W component of this instance.
+            </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -839,7 +920,9 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Gets or sets the X component of this instance.
+            </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -855,7 +938,9 @@
         <ReturnType>MonoMac.OpenGL.Vector3</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Gets or sets an OpenTK.Vector3 with the X, Y and Z components of this instance.
+            </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -885,7 +970,9 @@
         <ReturnType>MonoMac.OpenGL.Vector3</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Gets or sets an OpenTK.Vector3 with the X, Y and Z components of this instance.
+            </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -906,7 +993,9 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Gets or sets the Y component of this instance.
+            </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -927,7 +1016,9 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+            Gets or sets the Z component of this instance.
+            </summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
