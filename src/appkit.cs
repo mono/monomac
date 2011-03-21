@@ -7779,7 +7779,7 @@ namespace MonoMac.AppKit {
 		bool ShouldBeTreatedAsInkEvent (NSEvent theEvent);
 
 		//Detected properties
-		[Export ("nextResponder")]
+		[Export ("nextResponder")][NullAllowed]
 		NSResponder NextResponder { get; set; }
 
 		[Export ("menu")]
