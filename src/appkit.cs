@@ -1637,7 +1637,7 @@ namespace MonoMac.AppKit {
 		[Export ("setTitleWithMnemonic:")]
 		void SetTitleWithMnemonic (string mnemonic);
 
-		[Export ("setAttributedTitle:")]
+		[Export ("attributedTitle")]
 		NSAttributedString AttributedTitle { get; set; }
 
 		[Export ("attributedAlternateTitle")]
