@@ -197,8 +197,8 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="ValidateDrop">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSDragOperation ValidateDrop (MonoMac.AppKit.NSCollectionView collectionView, MonoMac.AppKit.NSDraggingInfo draggingInfo, int proposedDropIndex, MonoMac.AppKit.NSCollectionViewDropOperation proposedDropOperation);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype MonoMac.AppKit.NSDragOperation ValidateDrop(class MonoMac.AppKit.NSCollectionView collectionView, class MonoMac.AppKit.NSDraggingInfo draggingInfo, int32 proposedDropIndex, valuetype MonoMac.AppKit.NSCollectionViewDropOperation proposedDropOperation) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSDragOperation ValidateDrop (MonoMac.AppKit.NSCollectionView collectionView, MonoMac.AppKit.NSDraggingInfo draggingInfo, ref int dropIndex, MonoMac.AppKit.NSCollectionViewDropOperation dropOperation);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype MonoMac.AppKit.NSDragOperation ValidateDrop(class MonoMac.AppKit.NSCollectionView collectionView, class MonoMac.AppKit.NSDraggingInfo draggingInfo, int32 dropIndex, valuetype MonoMac.AppKit.NSCollectionViewDropOperation dropOperation) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -214,14 +214,14 @@ public class MyClass : BaseClass {
       <Parameters>
         <Parameter Name="collectionView" Type="MonoMac.AppKit.NSCollectionView" />
         <Parameter Name="draggingInfo" Type="MonoMac.AppKit.NSDraggingInfo" />
-        <Parameter Name="proposedDropIndex" Type="System.Int32" />
-        <Parameter Name="proposedDropOperation" Type="MonoMac.AppKit.NSCollectionViewDropOperation" />
+        <Parameter Name="dropIndex" Type="System.Int32&amp;" RefType="ref" />
+        <Parameter Name="dropOperation" Type="MonoMac.AppKit.NSCollectionViewDropOperation" />
       </Parameters>
       <Docs>
         <param name="collectionView">To be added.</param>
         <param name="draggingInfo">To be added.</param>
-        <param name="proposedDropIndex">To be added.</param>
-        <param name="proposedDropOperation">To be added.</param>
+        <param name="dropIndex">To be added.</param>
+        <param name="dropOperation">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
