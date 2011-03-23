@@ -56,7 +56,7 @@ namespace MonoMac.OpenGL
 		{
 		}
 
-		public MonoMacGameView (RectangleF frame,NSOpenGLContext context) : base(frame)
+		public MonoMacGameView (RectangleF frame, NSOpenGLContext context) : base(frame)
 		{
 			var attribs = new object [] {
 				NSOpenGLPixelFormatAttribute.Accelerated,
@@ -88,7 +88,7 @@ namespace MonoMac.OpenGL
 		{
 			if (animating) {
 				if (displayLinkSupported) {
-					// Ignore if the display link is still running
+					// Render Scene only if the display link is running
 					if (displayLink.IsRunning)
 						RenderScene ();
 				} else {
@@ -145,14 +145,19 @@ namespace MonoMac.OpenGL
 					// resolution, and we need better (e.g. 60fps doesn't fit nicely
 					// in 1ms resolution, but does in ticks).
 					var timeout = new TimeSpan ((long)(((1.0 * TimeSpan.TicksPerSecond) / updatesPerSecond) + 0.5));
-					animationTimer = NSTimer.CreateRepeatingScheduledTimer (timeout, 
-						delegate {
-							if (SwapInterval)
-								NeedsDisplay = true;
-							else
-								RenderScene ();
-						});
 
+					if (SwapInterval) {
+						animationTimer = NSTimer.CreateRepeatingScheduledTimer (timeout, 
+							delegate {
+								NeedsDisplay = true;
+							});
+					} else {
+						animationTimer = NSTimer.CreateRepeatingScheduledTimer (timeout, 
+							delegate {
+								RenderScene ();
+							});
+					}
+					
 					NSRunLoop.Current.AddTimer (animationTimer, NSRunLoopMode.Default);
 					NSRunLoop.Current.AddTimer (animationTimer, NSRunLoopMode.EventTracking);
 
@@ -423,9 +428,9 @@ namespace MonoMac.OpenGL
 			OpenGLContext.FlushBuffer ();
 		}
 
-		public bool SwapInterval { get; set; }
+		private bool SwapInterval { get; set; }
 
-		public bool DisplaylinkSupported {
+		private bool DisplaylinkSupported {
 			get { return displayLinkSupported; }	
 			set { 
 				displayLinkSupported = value;	
@@ -453,7 +458,13 @@ namespace MonoMac.OpenGL
 				Run ();
 				return;
 			}
+
 			OnLoad (EventArgs.Empty);
+
+			// Here we set these to false for now and let the main logic continue
+			// in the future we may open up these properties to the public
+			SwapInterval = false;
+			DisplaylinkSupported = false;
 
 			// Synchronize buffer swaps with vertical refresh rate
 			openGLContext.SwapInterval = SwapInterval;
@@ -519,14 +530,7 @@ namespace MonoMac.OpenGL
 		// Private Callback function for CVDisplayLink
 		private CVReturn MyDisplayLinkOutputCallback (CVDisplayLink displayLink, ref CVTimeStamp inNow, ref CVTimeStamp inOutputTime, CVOptionFlags flagsIn, ref CVOptionFlags flagsOut)
 		{
-			CVReturn result = GetFrameForTime (inOutputTime);
-
-			return result;
-		}
-
-		private CVReturn GetFrameForTime (CVTimeStamp outputTime)
-		{
-
+			//CVReturn result = GetFrameForTime (inOutputTime);
 			CVReturn result = CVReturn.Error;
 
 			// There is no autorelease pool when this method is called because it will be called from a background thread
@@ -538,7 +542,6 @@ namespace MonoMac.OpenGL
 			}
 
 			return result;
-
 		}
 
 		protected virtual void OnLoad (EventArgs e)
