@@ -1637,7 +1637,7 @@ namespace MonoMac.AppKit {
 		[Export ("setTitleWithMnemonic:")]
 		void SetTitleWithMnemonic (string mnemonic);
 
-		[Export ("setAttributedTitle:")]
+		[Export ("attributedTitle")]
 		NSAttributedString AttributedTitle { get; set; }
 
 		[Export ("attributedAlternateTitle")]
@@ -7779,7 +7779,7 @@ namespace MonoMac.AppKit {
 		bool ShouldBeTreatedAsInkEvent (NSEvent theEvent);
 
 		//Detected properties
-		[Export ("nextResponder")]
+		[Export ("nextResponder")][NullAllowed]
 		NSResponder NextResponder { get; set; }
 
 		[Export ("menu")]

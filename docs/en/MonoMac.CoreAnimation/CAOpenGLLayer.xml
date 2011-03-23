@@ -129,8 +129,8 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="CanDrawInCGLContext">
-      <MemberSignature Language="C#" Value="public virtual bool CanDrawInCGLContext (MonoMac.AppKit.NSOpenGLContext ctx, MonoMac.AppKit.NSOpenGLPixelFormat pf, double t, MonoMac.CoreVideo.CVTimeStamp ts);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool CanDrawInCGLContext(class MonoMac.AppKit.NSOpenGLContext ctx, class MonoMac.AppKit.NSOpenGLPixelFormat pf, float64 t, valuetype MonoMac.CoreVideo.CVTimeStamp ts) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual bool CanDrawInCGLContext (MonoMac.OpenGL.CGLContext glContext, MonoMac.OpenGL.CGLPixelFormat pixelFormat, double timeInterval, MonoMac.CoreVideo.CVTimeStamp timeStamp);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool CanDrawInCGLContext(class MonoMac.OpenGL.CGLContext glContext, class MonoMac.OpenGL.CGLPixelFormat pixelFormat, float64 timeInterval, valuetype MonoMac.CoreVideo.CVTimeStamp timeStamp) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -144,16 +144,16 @@ public class MyClass : BaseClass {
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="ctx" Type="MonoMac.AppKit.NSOpenGLContext" />
-        <Parameter Name="pf" Type="MonoMac.AppKit.NSOpenGLPixelFormat" />
-        <Parameter Name="t" Type="System.Double" />
-        <Parameter Name="ts" Type="MonoMac.CoreVideo.CVTimeStamp" />
+        <Parameter Name="glContext" Type="MonoMac.OpenGL.CGLContext" />
+        <Parameter Name="pixelFormat" Type="MonoMac.OpenGL.CGLPixelFormat" />
+        <Parameter Name="timeInterval" Type="System.Double" />
+        <Parameter Name="timeStamp" Type="MonoMac.CoreVideo.CVTimeStamp" />
       </Parameters>
       <Docs>
-        <param name="ctx">To be added.</param>
-        <param name="pf">To be added.</param>
-        <param name="t">To be added.</param>
-        <param name="ts">To be added.</param>
+        <param name="glContext">To be added.</param>
+        <param name="pixelFormat">To be added.</param>
+        <param name="timeInterval">To be added.</param>
+        <param name="timeStamp">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -176,8 +176,8 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="CopyCGLPixelFormatForDisplayMask">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSOpenGLPixelFormat CopyCGLPixelFormatForDisplayMask (uint mask);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class MonoMac.AppKit.NSOpenGLPixelFormat CopyCGLPixelFormatForDisplayMask(unsigned int32 mask) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.OpenGL.CGLPixelFormat CopyCGLPixelFormatForDisplayMask (uint mask);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class MonoMac.OpenGL.CGLPixelFormat CopyCGLPixelFormatForDisplayMask(unsigned int32 mask) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -188,7 +188,7 @@ public class MyClass : BaseClass {
         </Attribute>
       </Attributes>
       <ReturnValue>
-        <ReturnType>MonoMac.AppKit.NSOpenGLPixelFormat</ReturnType>
+        <ReturnType>MonoMac.OpenGL.CGLPixelFormat</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="mask" Type="System.UInt32" />
@@ -201,8 +201,8 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="CopyContext">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSOpenGLContext CopyContext (MonoMac.AppKit.NSOpenGLPixelFormat pf);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class MonoMac.AppKit.NSOpenGLContext CopyContext(class MonoMac.AppKit.NSOpenGLPixelFormat pf) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.OpenGL.CGLContext CopyContext (MonoMac.OpenGL.CGLPixelFormat pixelFormat);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class MonoMac.OpenGL.CGLContext CopyContext(class MonoMac.OpenGL.CGLPixelFormat pixelFormat) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -213,21 +213,21 @@ public class MyClass : BaseClass {
         </Attribute>
       </Attributes>
       <ReturnValue>
-        <ReturnType>MonoMac.AppKit.NSOpenGLContext</ReturnType>
+        <ReturnType>MonoMac.OpenGL.CGLContext</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pf" Type="MonoMac.AppKit.NSOpenGLPixelFormat" />
+        <Parameter Name="pixelFormat" Type="MonoMac.OpenGL.CGLPixelFormat" />
       </Parameters>
       <Docs>
-        <param name="pf">To be added.</param>
+        <param name="pixelFormat">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="DrawInCGLContext">
-      <MemberSignature Language="C#" Value="public virtual void DrawInCGLContext (MonoMac.AppKit.NSOpenGLContext ctx, MonoMac.AppKit.NSOpenGLPixelFormat pf, double t, MonoMac.CoreVideo.CVTimeStamp ts);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void DrawInCGLContext(class MonoMac.AppKit.NSOpenGLContext ctx, class MonoMac.AppKit.NSOpenGLPixelFormat pf, float64 t, valuetype MonoMac.CoreVideo.CVTimeStamp ts) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual void DrawInCGLContext (MonoMac.OpenGL.CGLContext glContext, MonoMac.OpenGL.CGLPixelFormat pixelFormat, double timeInterval, MonoMac.CoreVideo.CVTimeStamp timeStamp);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void DrawInCGLContext(class MonoMac.OpenGL.CGLContext glContext, class MonoMac.OpenGL.CGLPixelFormat pixelFormat, float64 timeInterval, valuetype MonoMac.CoreVideo.CVTimeStamp timeStamp) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -241,23 +241,23 @@ public class MyClass : BaseClass {
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="ctx" Type="MonoMac.AppKit.NSOpenGLContext" />
-        <Parameter Name="pf" Type="MonoMac.AppKit.NSOpenGLPixelFormat" />
-        <Parameter Name="t" Type="System.Double" />
-        <Parameter Name="ts" Type="MonoMac.CoreVideo.CVTimeStamp" />
+        <Parameter Name="glContext" Type="MonoMac.OpenGL.CGLContext" />
+        <Parameter Name="pixelFormat" Type="MonoMac.OpenGL.CGLPixelFormat" />
+        <Parameter Name="timeInterval" Type="System.Double" />
+        <Parameter Name="timeStamp" Type="MonoMac.CoreVideo.CVTimeStamp" />
       </Parameters>
       <Docs>
-        <param name="ctx">To be added.</param>
-        <param name="pf">To be added.</param>
-        <param name="t">To be added.</param>
-        <param name="ts">To be added.</param>
+        <param name="glContext">To be added.</param>
+        <param name="pixelFormat">To be added.</param>
+        <param name="timeInterval">To be added.</param>
+        <param name="timeStamp">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Release">
-      <MemberSignature Language="C#" Value="public virtual void Release (MonoMac.AppKit.NSOpenGLContext ctx);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Release(class MonoMac.AppKit.NSOpenGLContext ctx) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual void Release (MonoMac.OpenGL.CGLContext glContext);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Release(class MonoMac.OpenGL.CGLContext glContext) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -271,17 +271,17 @@ public class MyClass : BaseClass {
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="ctx" Type="MonoMac.AppKit.NSOpenGLContext" />
+        <Parameter Name="glContext" Type="MonoMac.OpenGL.CGLContext" />
       </Parameters>
       <Docs>
-        <param name="ctx">To be added.</param>
+        <param name="glContext">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Release">
-      <MemberSignature Language="C#" Value="public virtual void Release (MonoMac.AppKit.NSOpenGLPixelFormat pf);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Release(class MonoMac.AppKit.NSOpenGLPixelFormat pf) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual void Release (MonoMac.OpenGL.CGLPixelFormat pixelFormat);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Release(class MonoMac.OpenGL.CGLPixelFormat pixelFormat) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -295,10 +295,10 @@ public class MyClass : BaseClass {
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pf" Type="MonoMac.AppKit.NSOpenGLPixelFormat" />
+        <Parameter Name="pixelFormat" Type="MonoMac.OpenGL.CGLPixelFormat" />
       </Parameters>
       <Docs>
-        <param name="pf">To be added.</param>
+        <param name="pixelFormat">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>

@@ -1,0 +1,675 @@
+<Type Name="Half" FullName="MonoMac.OpenGL.Half">
+  <TypeSignature Language="C#" Value="public struct Half : IComparable&lt;MonoMac.OpenGL.Half&gt;, IEquatable&lt;MonoMac.OpenGL.Half&gt;, IFormattable, System.Runtime.Serialization.ISerializable" />
+  <TypeSignature Language="ILAsm" Value=".class public sequential ansi serializable sealed beforefieldinit Half extends System.ValueType implements class System.IComparable`1&lt;valuetype MonoMac.OpenGL.Half&gt;, class System.IEquatable`1&lt;valuetype MonoMac.OpenGL.Half&gt;, class System.IFormattable, class System.Runtime.Serialization.ISerializable" />
+  <AssemblyInfo>
+    <AssemblyName>MonoMac</AssemblyName>
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.ValueType</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>System.IComparable&lt;MonoMac.OpenGL.Half&gt;</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>System.IEquatable&lt;MonoMac.OpenGL.Half&gt;</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>System.IFormattable</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>System.Runtime.Serialization.ISerializable</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>
+            The name Half is derived from half-precision floating-point number.
+            It occupies only 16 bits, which are split into 1 Sign bit, 5 Exponent bits and 10 Mantissa bits.
+            </summary>
+    <remarks>
+            Quote from ARB_half_float_pixel specification:
+            Any representable 16-bit floating-point value is legal as input to a GL command that accepts 16-bit floating-point data.  The
+            result of providing a value that is not a floating-point number (such as infinity or NaN) to such a command is unspecified,
+            but must not lead to GL interruption or termination. Providing a denormalized number or negative zero to GL must yield
+            predictable results.
+            </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Half (double d);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float64 d) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="d" Type="System.Double" />
+      </Parameters>
+      <Docs>
+        <param name="d">64-bit double-precision floating-point number.</param>
+        <summary>
+            The new Half instance will convert the parameter into 16-bit half-precision floating-point.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Half (float f);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 f) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="f" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="f">32-bit single-precision floating-point number.</param>
+        <summary>
+            The new Half instance will convert the parameter into 16-bit half-precision floating-point.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Half (double d, bool throwOnError);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float64 d, bool throwOnError) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="d" Type="System.Double" />
+        <Parameter Name="throwOnError" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="d">64-bit double-precision floating-point number.</param>
+        <param name="throwOnError">Enable checks that will throw if the conversion result is not meaningful.</param>
+        <summary>
+            The new Half instance will convert the parameter into 16-bit half-precision floating-point.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Half (System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.Runtime.Serialization.SerializationInfo info, valuetype System.Runtime.Serialization.StreamingContext context) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="info" Type="System.Runtime.Serialization.SerializationInfo" />
+        <Parameter Name="context" Type="System.Runtime.Serialization.StreamingContext" />
+      </Parameters>
+      <Docs>
+        <param name="info">
+        </param>
+        <param name="context">
+        </param>
+        <summary>Constructor used by ISerializable to deserialize the object.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Half (float f, bool throwOnError);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 f, bool throwOnError) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="f" Type="System.Single" />
+        <Parameter Name="throwOnError" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="f">32-bit single-precision floating-point number.</param>
+        <param name="throwOnError">Enable checks that will throw if the conversion result is not meaningful.</param>
+        <summary>
+            The new Half instance will convert the parameter into 16-bit half-precision floating-point.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CompareTo">
+      <MemberSignature Language="C#" Value="public int CompareTo (MonoMac.OpenGL.Half other);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance int32 CompareTo(valuetype MonoMac.OpenGL.Half other) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="other" Type="MonoMac.OpenGL.Half" />
+      </Parameters>
+      <Docs>
+        <param name="other">A half-precision floating-point number to compare.</param>
+        <summary>
+            Compares this instance to a specified half-precision floating-point number
+            and returns an integer that indicates whether the value of this instance
+            is less than, equal to, or greater than the value of the specified half-precision
+            floating-point number.
+            </summary>
+        <returns>
+            A signed number indicating the relative values of this instance and value. If the number is:
+            <para>Less than zero, then this instance is less than other, or this instance is not a number
+            (OpenTK.Half.NaN) and other is a number.</para><para>Zero: this instance is equal to value, or both this instance and other
+            are not a number (OpenTK.Half.NaN), OpenTK.Half.PositiveInfinity, or
+            OpenTK.Half.NegativeInfinity.</para><para>Greater than zero: this instance is greater than othrs, or this instance is a number
+            and other is not a number (OpenTK.Half.NaN).</para></returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Epsilon">
+      <MemberSignature Language="C#" Value="public static readonly float Epsilon;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly float32 Epsilon" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Smallest positive e for which half (1.0 + e) != half (1.0)</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Equals">
+      <MemberSignature Language="C#" Value="public bool Equals (MonoMac.OpenGL.Half other);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool Equals(valuetype MonoMac.OpenGL.Half other) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="other" Type="MonoMac.OpenGL.Half" />
+      </Parameters>
+      <Docs>
+        <param name="other">OpenTK.Half object to compare to this instance..</param>
+        <summary>
+            Returns a value indicating whether this instance is equal to a specified OpenTK.Half value.
+            </summary>
+        <returns>True, if other is equal to this instance; false otherwise.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FromBinaryStream">
+      <MemberSignature Language="C#" Value="public void FromBinaryStream (System.IO.BinaryReader bin);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void FromBinaryStream(class System.IO.BinaryReader bin) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="bin" Type="System.IO.BinaryReader" />
+      </Parameters>
+      <Docs>
+        <param name="bin">A BinaryReader instance associated with an open Stream.</param>
+        <summary>Updates the Half by reading from a Stream.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FromBytes">
+      <MemberSignature Language="C#" Value="public static MonoMac.OpenGL.Half FromBytes (byte[] value, int startIndex);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype MonoMac.OpenGL.Half FromBytes(unsigned int8[] value, int32 startIndex) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.OpenGL.Half</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="value" Type="System.Byte[]" />
+        <Parameter Name="startIndex" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="value">A Half in it's byte[] representation.</param>
+        <param name="startIndex">The starting position within value.</param>
+        <summary>Converts an array of bytes into Half.</summary>
+        <returns>A new Half instance.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetBytes">
+      <MemberSignature Language="C#" Value="public static byte[] GetBytes (MonoMac.OpenGL.Half h);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig unsigned int8[] GetBytes(valuetype MonoMac.OpenGL.Half h) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Byte[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="h" Type="MonoMac.OpenGL.Half" />
+      </Parameters>
+      <Docs>
+        <param name="h">The Half to convert.</param>
+        <summary>Returns the Half as an array of bytes.</summary>
+        <returns>The input as byte array.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetObjectData">
+      <MemberSignature Language="C#" Value="public void GetObjectData (System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void GetObjectData(class System.Runtime.Serialization.SerializationInfo info, valuetype System.Runtime.Serialization.StreamingContext context) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="info" Type="System.Runtime.Serialization.SerializationInfo" />
+        <Parameter Name="context" Type="System.Runtime.Serialization.StreamingContext" />
+      </Parameters>
+      <Docs>
+        <param name="info">
+        </param>
+        <param name="context">
+        </param>
+        <summary>Used by ISerialize to serialize the object.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsNaN">
+      <MemberSignature Language="C#" Value="public bool IsNaN { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsNaN" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Returns true if the Half represents Not A Number (NaN)</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsNegativeInfinity">
+      <MemberSignature Language="C#" Value="public bool IsNegativeInfinity { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsNegativeInfinity" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Returns true if the Half represents negative infinity.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsPositiveInfinity">
+      <MemberSignature Language="C#" Value="public bool IsPositiveInfinity { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsPositiveInfinity" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Returns true if the Half represents positive infinity.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsZero">
+      <MemberSignature Language="C#" Value="public bool IsZero { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsZero" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Returns true if the Half is zero.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxValue">
+      <MemberSignature Language="C#" Value="public static readonly float MaxValue;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly float32 MaxValue" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Largest positive half</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MinNormalizedValue">
+      <MemberSignature Language="C#" Value="public static readonly float MinNormalizedValue;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly float32 MinNormalizedValue" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Smallest positive normalized half</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MinValue">
+      <MemberSignature Language="C#" Value="public static readonly float MinValue;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly float32 MinValue" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Smallest positive half</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Explicit">
+      <MemberSignature Language="C#" Value="public static MonoMac.OpenGL.Half op_Explicit (double d);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype MonoMac.OpenGL.Half op_Explicit(float64 d) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.OpenGL.Half</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="d" Type="System.Double" />
+      </Parameters>
+      <Docs>
+        <param name="d">The value to convert.
+            A <see cref="T:System.Double" /></param>
+        <summary>
+            Converts a System.Double to a OpenTK.Half.
+            </summary>
+        <returns>The result of the conversion.
+            A <see cref="T:MonoMac.OpenGL.Half" /></returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Explicit">
+      <MemberSignature Language="C#" Value="public static MonoMac.OpenGL.Half op_Explicit (float f);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype MonoMac.OpenGL.Half op_Explicit(float32 f) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.OpenGL.Half</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="f" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="f">The value to convert.
+            A <see cref="T:System.Single" /></param>
+        <summary>
+            Converts a System.Single to a OpenTK.Half.
+            </summary>
+        <returns>The result of the conversion.
+            A <see cref="T:MonoMac.OpenGL.Half" /></returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Implicit">
+      <MemberSignature Language="C#" Value="public static double op_Implicit (MonoMac.OpenGL.Half h);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname float64 op_Implicit(valuetype MonoMac.OpenGL.Half h) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="h" Type="MonoMac.OpenGL.Half" />
+      </Parameters>
+      <Docs>
+        <param name="h">The value to convert.
+            A <see cref="T:MonoMac.OpenGL.Half" /></param>
+        <summary>
+            Converts a OpenTK.Half to a System.Double.
+            </summary>
+        <returns>The result of the conversion.
+            A <see cref="T:System.Double" /></returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Implicit">
+      <MemberSignature Language="C#" Value="public static float op_Implicit (MonoMac.OpenGL.Half h);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname float32 op_Implicit(valuetype MonoMac.OpenGL.Half h) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="h" Type="MonoMac.OpenGL.Half" />
+      </Parameters>
+      <Docs>
+        <param name="h">The value to convert.
+            A <see cref="T:MonoMac.OpenGL.Half" /></param>
+        <summary>
+            Converts a OpenTK.Half to a System.Single.
+            </summary>
+        <returns>The result of the conversion.
+            A <see cref="T:System.Single" /></returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Parse">
+      <MemberSignature Language="C#" Value="public static MonoMac.OpenGL.Half Parse (string s);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype MonoMac.OpenGL.Half Parse(string s) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.OpenGL.Half</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="s" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="s">String representation of the number to convert.</param>
+        <summary>Converts the string representation of a number to a half-precision floating-point equivalent.</summary>
+        <returns>A new Half instance.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Parse">
+      <MemberSignature Language="C#" Value="public static MonoMac.OpenGL.Half Parse (string s, System.Globalization.NumberStyles style, IFormatProvider provider);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype MonoMac.OpenGL.Half Parse(string s, valuetype System.Globalization.NumberStyles style, class System.IFormatProvider provider) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.OpenGL.Half</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="s" Type="System.String" />
+        <Parameter Name="style" Type="System.Globalization.NumberStyles" />
+        <Parameter Name="provider" Type="System.IFormatProvider" />
+      </Parameters>
+      <Docs>
+        <param name="s">String representation of the number to convert.</param>
+        <param name="style">Specifies the format of s.</param>
+        <param name="provider">Culture-specific formatting information.</param>
+        <summary>Converts the string representation of a number to a half-precision floating-point equivalent.</summary>
+        <returns>A new Half instance.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SizeInBytes">
+      <MemberSignature Language="C#" Value="public static readonly int SizeInBytes;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly int32 SizeInBytes" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The size in bytes for an instance of the Half struct.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ToBinaryStream">
+      <MemberSignature Language="C#" Value="public void ToBinaryStream (System.IO.BinaryWriter bin);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ToBinaryStream(class System.IO.BinaryWriter bin) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="bin" Type="System.IO.BinaryWriter" />
+      </Parameters>
+      <Docs>
+        <param name="bin">A BinaryWriter instance associated with an open Stream.</param>
+        <summary>Writes the Half into a Stream.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ToSingle">
+      <MemberSignature Language="C#" Value="public float ToSingle ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance float32 ToSingle() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Converts the 16-bit half to 32-bit floating-point.</summary>
+        <returns>A single-precision floating-point number.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ToString">
+      <MemberSignature Language="C#" Value="public override string ToString ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance string ToString() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Converts this Half into a human-legible string representation.</summary>
+        <returns>The string representation of this instance.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ToString">
+      <MemberSignature Language="C#" Value="public string ToString (string format, IFormatProvider formatProvider);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string ToString(string format, class System.IFormatProvider formatProvider) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="format" Type="System.String" />
+        <Parameter Name="formatProvider" Type="System.IFormatProvider" />
+      </Parameters>
+      <Docs>
+        <param name="format">Formatting for the output string.</param>
+        <param name="formatProvider">Culture-specific formatting information.</param>
+        <summary>Converts this Half into a human-legible string representation.</summary>
+        <returns>The string representation of this instance.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TryParse">
+      <MemberSignature Language="C#" Value="public static bool TryParse (string s, out MonoMac.OpenGL.Half result);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool TryParse(string s, valuetype MonoMac.OpenGL.Half result) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="s" Type="System.String" />
+        <Parameter Name="result" Type="MonoMac.OpenGL.Half&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="s">String representation of the number to convert.</param>
+        <param name="result">The Half instance to write to.</param>
+        <summary>Converts the string representation of a number to a half-precision floating-point equivalent. Returns success.</summary>
+        <returns>Success.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TryParse">
+      <MemberSignature Language="C#" Value="public static bool TryParse (string s, System.Globalization.NumberStyles style, IFormatProvider provider, out MonoMac.OpenGL.Half result);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool TryParse(string s, valuetype System.Globalization.NumberStyles style, class System.IFormatProvider provider, valuetype MonoMac.OpenGL.Half result) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="s" Type="System.String" />
+        <Parameter Name="style" Type="System.Globalization.NumberStyles" />
+        <Parameter Name="provider" Type="System.IFormatProvider" />
+        <Parameter Name="result" Type="MonoMac.OpenGL.Half&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="s">String representation of the number to convert.</param>
+        <param name="style">Specifies the format of s.</param>
+        <param name="provider">Culture-specific formatting information.</param>
+        <param name="result">The Half instance to write to.</param>
+        <summary>Converts the string representation of a number to a half-precision floating-point equivalent. Returns success.</summary>
+        <returns>Success.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>
