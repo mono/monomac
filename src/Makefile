@@ -73,7 +73,13 @@ MONOMAC_SOURCES = \
 	./WebKit/Enumerators.cs				\
 	./WebKit/Indexers.cs				\
 	./WebKit/WebKit.cs				\
-	./WebKit/WebView.cs
+	./WebKit/WebView.cs				\
+	./OpenGL/FrameEventArgs.cs				\
+	./OpenGL/IGameWindow.cs				\
+	./OpenGL/INativeWindow.cs				\
+	./OpenGL/WindowBorder.cs				\
+	./OpenGL/WindowState.cs				\
+	./OpenGL/MonoMacGameView.cs
 
 OPENTK_SOURCES = \
 	./OpenGL/OpenTK/Graphics/Color4.cs		\
