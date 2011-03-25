@@ -37,6 +37,7 @@ CORE_SOURCES =					\
 # Sources that are not part of CORE_SOURCES or the generated templates
 MONOMAC_SOURCES = \
 	./Foundation/NSObjectMac.cs			\
+	./Foundation/NSSearchPath.cs		\
 	./AppKit/ActionDispatcher.cs			\
 	./AppKit/BeginSheet.cs				\
 	./AppKit/DoubleWrapper.cs			\
