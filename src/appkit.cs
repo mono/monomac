@@ -10713,7 +10713,7 @@ namespace MonoMac.AppKit {
 		[Export ("control:textView:doCommandBySelector:"), DelegateName ("NSControlCommand"), DefaultValue (false)]
 		bool DoCommandBySelector (NSControl control, NSTextView textView, Selector commandSelector);
 
-		[Export ("control:textView:completions:forPartialWordRange:indexOfSelectedItem:"), DelegateName ("NSControlTextFilter"), DefaultValue (null)]
+		[Export ("control:textView:completions:forPartialWordRange:indexOfSelectedItem:"), DelegateName ("NSControlTextFilter"), DefaultValue ("new string[0]")]
 		string [] GetCompletions (NSControl control, NSTextView textView, string [] words, NSRange charRange, int index);
 
 		[Export ("controlTextDidEndEditing:"), EventArgs ("NSNotification")]
