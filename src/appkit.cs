@@ -1,4 +1,4 @@
-//
+///
 // Copyright 2010, Novell, Inc.
 // Copyright 2010, Kenneth Pouncey
 // Coprightt 2010, James Clancey
@@ -6513,6 +6513,14 @@ namespace MonoMac.AppKit {
 
 	[BaseType (typeof (NSObject))]
 	public interface NSLayoutManager {
+		[Export("addTextContainer:")]
+		void AddTextContainer(NSTextContainer textContainer);
+		
+		[Export("glyphRangeForTextContainer:")]
+		NSRange GlyphRangeForTextContainer(NSTextContainer textContainer);
+		
+		[Export ("usedRectForTextContainer:")]
+		RectangleF UsedRectForTextContainer(NSTextContainer textContainer);
 	}
 	
 
