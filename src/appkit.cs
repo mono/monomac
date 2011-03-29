@@ -6517,10 +6517,10 @@ namespace MonoMac.AppKit {
 		void AddTextContainer(NSTextContainer textContainer);
 		
 		[Export("glyphRangeForTextContainer:")]
-		NSRange GlyphRangeForTextContainer(NSTextContainer textContainer);
+		NSRange GetGlyphRange(NSTextContainer textContainer);
 		
 		[Export ("usedRectForTextContainer:")]
-		RectangleF UsedRectForTextContainer(NSTextContainer textContainer);
+		RectangleF GetUsedRectFor(NSTextContainer textContainer);
 	}
 	
 
