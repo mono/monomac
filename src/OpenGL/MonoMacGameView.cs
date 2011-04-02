@@ -205,21 +205,30 @@ namespace MonoMac.OpenGL
 		public virtual string Title {
 			get {
 				AssertValid ();
-				var c = GetViewController ();
-				if (c != null)
-					return c.Title;
-				throw new NotSupportedException ();
+				if (Window != null)
+					return Window.Title;
+				else
+					throw new NotSupportedException();
+//				
+//				var c = GetViewController ();
+//				if (c != null)
+//					return c.Title;
+//				throw new NotSupportedException ();
 			}
 			set {
 				AssertValid ();
-				var c = GetViewController ();
-				if (c != null) {
-					if (c.Title != value) {
-						c.Title = value;
-						OnTitleChanged (EventArgs.Empty);
-					}
-				} else
-					throw new NotSupportedException ();
+				if (Window != null)
+					Window.Title = value;
+				else
+					throw new NotSupportedException();
+//				var c = GetViewController ();
+//				if (c != null) {
+//					if (c.Title != value) {
+//						c.Title = value;
+//						OnTitleChanged (EventArgs.Empty);
+//					}
+//				} else
+//					throw new NotSupportedException ();
 			}
 		}		
 
