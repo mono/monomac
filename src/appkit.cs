@@ -4447,6 +4447,15 @@ namespace MonoMac.AppKit {
 	}
 
 	[BaseType (typeof (NSObject))]
+	public interface NSGlyphGenerator {
+		[Export ("generateGlyphsForGlyphStorage:desiredNumberOfCharacters:glyphIndex:characterIndex:")]
+		void GenerateGlyphs (NSObject nsGlyphStorageOrNSLayoutManager, int nchars, int glyphIndex, int charIndex);
+
+		[Static, Export ("sharedGlyphGenerator")]
+		NSGlyphGenerator SharedGlyphGenerator { get; }
+	}
+	
+	[BaseType (typeof (NSObject))]
 	public interface NSGradient {
 		[Export ("initWithStartingColor:endingColor:")]
 		IntPtr Constructor  (NSColor startingColor, NSColor endingColor);
@@ -6513,16 +6522,351 @@ namespace MonoMac.AppKit {
 
 	[BaseType (typeof (NSObject))]
 	public interface NSLayoutManager {
-		[Export("addTextContainer:")]
-		void AddTextContainer(NSTextContainer textContainer);
-		
-		[Export("glyphRangeForTextContainer:")]
-		NSRange GetGlyphRange(NSTextContainer textContainer);
-		
+		[Export ("attributedString")]
+		NSAttributedString AttributedString { get; }
+
+		[Export ("replaceTextStorage:")]
+		void ReplaceTextStorage (NSTextStorage newTextStorage);
+
+		[Export ("textContainers")]
+		NSTextContainer [] TextContainers { get; }
+
+		[Export ("addTextContainer:")]
+		void AddTextContainer (NSTextContainer container);
+
+		[Export ("insertTextContainer:atIndex:")]
+		void InsertTextContainer (NSTextContainer container, int index);
+
+		[Export ("removeTextContainerAtIndex:")]
+		void RemoveTextContainer (int index);
+
+		[Export ("textContainerChangedGeometry:")]
+		void TextContainerChangedGeometry (NSTextContainer container);
+
+		[Export ("textContainerChangedTextView:")]
+		void TextContainerChangedTextView (NSTextContainer container);
+
+		[Export ("layoutOptions")]
+		NSGlyphStorageOptions LayoutOptions { get; }
+
+		[Export ("hasNonContiguousLayout")]
+		bool HasNonContiguousLayout { get; }
+
+		//[Export ("invalidateGlyphsForCharacterRange:changeInLength:actualCharacterRange:")]
+		//void InvalidateGlyphs (NSRange charRange, int changeInLength, NSRangePointer actualCharRange);
+
+		//[Export ("invalidateLayoutForCharacterRange:actualCharacterRange:")]
+		//void InvalidateLayout (NSRange charRange, NSRangePointer actualCharRange);
+
+		//[Export ("invalidateLayoutForCharacterRange:isSoft:actualCharacterRange:")]
+		//void InvalidateLayout (NSRange charRange, bool isSoft, NSRangePointer actualCharRange);
+
+		[Export ("invalidateDisplayForCharacterRange:")]
+		void InvalidateDisplayForCharacterRange (NSRange charRange);
+
+		[Export ("invalidateDisplayForGlyphRange:")]
+		void InvalidateDisplayForGlyphRange (NSRange glyphRange);
+
+		[Export ("textStorage:edited:range:changeInLength:invalidatedRange:")]
+		void TextStorageEdited (NSTextStorage str, NSTextStorageEditedFlags editedMask, NSRange newCharRange, int changeInLength, NSRange invalidatedCharRange);
+
+		[Export ("ensureGlyphsForCharacterRange:")]
+		void EnsureGlyphsForCharacterRange (NSRange charRange);
+
+		[Export ("ensureGlyphsForGlyphRange:")]
+		void EnsureGlyphsForGlyphRange (NSRange glyphRange);
+
+		[Export ("ensureLayoutForCharacterRange:")]
+		void EnsureLayoutForCharacterRange (NSRange charRange);
+
+		[Export ("ensureLayoutForGlyphRange:")]
+		void EnsureLayoutForGlyphRange (NSRange glyphRange);
+
+		[Export ("ensureLayoutForTextContainer:")]
+		void EnsureLayoutForTextContainer (NSTextContainer container);
+
+		[Export ("ensureLayoutForBoundingRect:inTextContainer:")]
+		void EnsureLayoutForBoundingRect (RectangleF bounds, NSTextContainer container);
+
+		//[Export ("insertGlyphs:length:forStartingGlyphAtIndex:characterIndex:")]
+		//void InsertGlyphs (uint [] glyphs, int length, int glyphIndex, int charIndex);
+
+		[Export ("insertGlyph:atGlyphIndex:characterIndex:")]
+		void InsertGlyph (uint glyph, int glyphIndex, int charIndex);
+
+		[Export ("replaceGlyphAtIndex:withGlyph:")]
+		void ReplaceGlyphAtIndex (int glyphIndex, uint newGlyph);
+
+		[Export ("deleteGlyphsInRange:")]
+		void DeleteGlyphs (NSRange glyphRange);
+
+		[Export ("setCharacterIndex:forGlyphAtIndex:")]
+		void SetCharacterIndex (int charIndex, int glyphIndex);
+
+		[Export ("setIntAttribute:value:forGlyphAtIndex:")]
+		void SetIntAttribute (int attributeTag, int value, int glyphIndex);
+
+		[Export ("invalidateGlyphsOnLayoutInvalidationForGlyphRange:")]
+		void InvalidateGlyphsOnLayoutInvalidation (NSRange glyphRange);
+
+		[Export ("numberOfGlyphs")]
+		int NumberOfGlyphs { get; }
+
+		[Export ("glyphAtIndex:isValidIndex:")]
+		uint GlyphAtIndexisValidIndex (int glyphIndex, bool isValidIndex);
+
+		[Export ("glyphAtIndex:")]
+		uint GlyphCount (int glyphIndex);
+
+		[Export ("isValidGlyphIndex:")]
+		bool IsValidGlyphIndex (int glyphIndex);
+
+		[Export ("characterIndexForGlyphAtIndex:")]
+		uint CharacterIndexForGlyphAtIndex (int glyphIndex);
+
+		[Export ("glyphIndexForCharacterAtIndex:")]
+		uint GlyphIndexForCharacterAtIndex (int charIndex);
+
+		[Export ("intAttribute:forGlyphAtIndex:")]
+		int IntAttributeforGlyphAtIndex (int attributeTag, int glyphIndex);
+
+		// TODO: bind this with a safe version
+		[Export ("getGlyphsInRange:glyphs:characterIndexes:glyphInscriptions:elasticBits:"), Internal]
+		int GetGlyphs (NSRange glyphRange, IntPtr glyphBuffer, uint charIndexBuffer, NSGlyphInscription inscribeBuffer, bool elasticBuffer);
+
+		// TODO: bind this with a safe version
+		[Internal, Export ("getGlyphsInRange:glyphs:characterIndexes:glyphInscriptions:elasticBits:bidiLevels:")]
+		int GetGlyphs (NSRange glyphRange, IntPtr glyphBuffer, uint charIndexBuffer, NSGlyphInscription inscribeBuffer, bool elasticBuffer, ushort bidiLevelBuffer);
+
+		// TODO: bidn this with a safe version
+		[Internal, Export ("getGlyphs:range:")]
+		uint GetGlyphsrange (IntPtr glyphArray, NSRange glyphRange);
+
+		[Export ("setTextContainer:forGlyphRange:")]
+		void SetTextContainerForRange (NSTextContainer container, NSRange glyphRange);
+
+		[Export ("setLineFragmentRect:forGlyphRange:usedRect:")]
+		void SetLineFragmentRect (RectangleF fragmentRect, NSRange glyphRange, RectangleF usedRect);
+
+		[Export ("setExtraLineFragmentRect:usedRect:textContainer:")]
+		void SetExtraLineFragmentRect (RectangleF fragmentRect, RectangleF usedRect, NSTextContainer container);
+
+		[Export ("setLocation:forStartOfGlyphRange:")]
+		void SetLocation (PointF location, NSRange forStartOfGlyphRange);
+
+		//[Export ("setLocations:startingGlyphIndexes:count:forGlyphRange:")]
+		//void SetLocations (NSPointArray locations, int glyphIndexes, uint count, NSRange glyphRange);
+
+		[Export ("setNotShownAttribute:forGlyphAtIndex:")]
+		void SetNotShownAttribute (bool flag, int glyphIndex);
+
+		[Export ("setDrawsOutsideLineFragment:forGlyphAtIndex:")]
+		void SetDrawsOutsideLineFragment (bool flag, int glyphIndex);
+
+		[Export ("setAttachmentSize:forGlyphRange:")]
+		void SetAttachmentSize (SizeF attachmentSize, NSRange glyphRange);
+
+		[Export ("getFirstUnlaidCharacterIndex:glyphIndex:")]
+		void GetFirstUnlaidCharacterIndex (int charIndex, int glyphIndex);
+
+		[Export ("firstUnlaidCharacterIndex")]
+		int FirstUnlaidCharacterIndex { get; }
+
+		[Export ("firstUnlaidGlyphIndex")]
+		int FirstUnlaidGlyphIndex { get; }
+
+		//[Export ("textContainerForGlyphAtIndex:effectiveRange:")]
+		//NSTextContainer TextContainerForGlyphAt (int glyphIndex, NSRangePointer effectiveGlyphRange);
+
 		[Export ("usedRectForTextContainer:")]
-		RectangleF GetUsedRectFor(NSTextContainer textContainer);
+		RectangleF GetUsedRectForTextContainer (NSTextContainer container);
+
+		//[Export ("lineFragmentRectForGlyphAtIndex:effectiveRange:")]
+		//RectangleF LineFragmentRectForGlyphAt (int glyphIndex, NSRangePointer effectiveGlyphRange);
+
+		//[Export ("lineFragmentUsedRectForGlyphAtIndex:effectiveRange:")]
+		//RectangleF LineFragmentUsedRectForGlyphAt (int glyphIndex, NSRangePointer effectiveGlyphRange);
+
+		//[Export ("lineFragmentRectForGlyphAtIndex:effectiveRange:withoutAdditionalLayout:")]
+		//RectangleF LineFragmentRectForGlyphAt (int glyphIndex, NSRangePointer effectiveGlyphRange, bool flag);
+
+		//[Export ("lineFragmentUsedRectForGlyphAtIndex:effectiveRange:withoutAdditionalLayout:")]
+		//RectangleF LineFragmentUsedRectForGlyphAt (int glyphIndex, NSRangePointer effectiveGlyphRange, bool flag);
+
+		//[Export ("textContainerForGlyphAtIndex:effectiveRange:withoutAdditionalLayout:")]
+		//NSTextContainer TextContainerForGlyphAt (int glyphIndex, NSRangePointer effectiveGlyphRange, bool flag);
+
+		[Export ("extraLineFragmentRect")]
+		RectangleF ExtraLineFragmentRect { get; }
+
+		[Export ("extraLineFragmentUsedRect")]
+		RectangleF ExtraLineFragmentUsedRect { get; }
+
+		[Export ("extraLineFragmentTextContainer")]
+		NSTextContainer ExtraLineFragmentTextContainer { get; }
+
+		[Export ("locationForGlyphAtIndex:")]
+		PointF LocationForGlyphAtIndex (int glyphIndex);
+
+		[Export ("notShownAttributeForGlyphAtIndex:")]
+		bool NotShownAttributeForGlyphAtIndex (int glyphIndex);
+
+		[Export ("drawsOutsideLineFragmentForGlyphAtIndex:")]
+		bool DrawsOutsideLineFragmentForGlyphAt (int glyphIndex);
+
+		[Export ("attachmentSizeForGlyphAtIndex:")]
+		SizeF AttachmentSizeForGlyphAt (int glyphIndex);
+
+		[Export ("setLayoutRect:forTextBlock:glyphRange:")]
+		void SetLayoutRect (RectangleF layoutRect, NSTextBlock forTextBlock, NSRange glyphRange);
+
+		[Export ("setBoundsRect:forTextBlock:glyphRange:")]
+		void SetBoundsRect (RectangleF boundsRect, NSTextBlock forTextBlock, NSRange glyphRange);
+
+		[Export ("layoutRectForTextBlock:glyphRange:")]
+		RectangleF LayoutRect (NSTextBlock block, NSRange glyphRange);
+
+		[Export ("boundsRectForTextBlock:glyphRange:")]
+		RectangleF BoundsRect (NSTextBlock block, NSRange glyphRange);
+
+		//[Export ("layoutRectForTextBlock:atIndex:effectiveRange:")]
+		//RectangleF LayoutRect (NSTextBlock block, int glyphIndex, NSRangePointer effectiveGlyphRange);
+
+		//[Export ("boundsRectForTextBlock:atIndex:effectiveRange:")]
+		//RectangleF BoundsRect (NSTextBlock block, int glyphIndex, NSRangePointer effectiveGlyphRange);
+
+		//[Export ("glyphRangeForCharacterRange:actualCharacterRange:")]
+		//NSRange GetGlyphRange (NSRange charRange, NSRangePointer actualCharRange);
+
+		//[Export ("characterRangeForGlyphRange:actualGlyphRange:")]
+		//NSRange GetCharacterRange (NSRange glyphRange, NSRangePointer actualGlyphRange);
+
+		[Export ("glyphRangeForTextContainer:")]
+		NSRange GetGlyphRange (NSTextContainer container);
+
+		[Export ("rangeOfNominallySpacedGlyphsContainingIndex:")]
+		NSRange RangeOfNominallySpacedGlyphsContainingIndex (int glyphIndex);
+
+		//[Export ("rectArrayForCharacterRange:withinSelectedCharacterRange:inTextContainer:rectCount:")]
+		//NSRectArray RectArrayForCharacterRangewithinSelectedCharacterRangeinTextContainerrectCount (NSRange charRange, NSRange selCharRange, NSTextContainer container, uint rectCount);
+
+		//[Export ("rectArrayForGlyphRange:withinSelectedGlyphRange:inTextContainer:rectCount:")]
+		//NSRectArray RectArrayForGlyphRangewithinSelectedGlyphRangeinTextContainerrectCount (NSRange glyphRange, NSRange selGlyphRange, NSTextContainer container, uint rectCount);
+
+		[Export ("boundingRectForGlyphRange:inTextContainer:")]
+		RectangleF BoundingRectForGlyphRange (NSRange glyphRange, NSTextContainer container);
+
+		[Export ("glyphRangeForBoundingRect:inTextContainer:")]
+		NSRange GlyphRangeForBoundingRect (RectangleF bounds, NSTextContainer container);
+
+		[Export ("glyphRangeForBoundingRectWithoutAdditionalLayout:inTextContainer:")]
+		NSRange GlyphRangeForBoundingRectWithoutAdditionalLayout (RectangleF bounds, NSTextContainer container);
+
+		[Export ("glyphIndexForPoint:inTextContainer:fractionOfDistanceThroughGlyph:")]
+		uint GlyphIndexForPointInTextContainer (PointF point, NSTextContainer container, float fractionOfDistanceThroughGlyph);
+
+		[Export ("glyphIndexForPoint:inTextContainer:")]
+		uint GlyphIndexForPoint (PointF point, NSTextContainer container);
+
+		[Export ("fractionOfDistanceThroughGlyphForPoint:inTextContainer:")]
+		float FractionOfDistanceThroughGlyphForPoint (PointF point, NSTextContainer container);
+
+		[Export ("characterIndexForPoint:inTextContainer:fractionOfDistanceBetweenInsertionPoints:")]
+		uint CharacterIndexForPoint (PointF point, NSTextContainer container, float fractionOfDistanceBetweenInsertionPoints);
+
+		[Export ("getLineFragmentInsertionPointsForCharacterAtIndex:alternatePositions:inDisplayOrder:positions:characterIndexes:")]
+		uint GetLineFragmentInsertionPoints (int charIndex, bool aFlag, bool dFlag, float positions, uint charIndexes);
+
+		//[Export ("temporaryAttributesAtCharacterIndex:effectiveRange:")]
+		//NSDictionary GetTemporaryAttributes (int charIndex, NSRangePointer effectiveCharRange);
+
+		[Export ("setTemporaryAttributes:forCharacterRange:")]
+		void SetTemporaryAttributes (NSDictionary attrs, NSRange charRange);
+
+		[Export ("addTemporaryAttributes:forCharacterRange:")]
+		void AddTemporaryAttributes (NSDictionary attrs, NSRange charRange);
+
+		[Export ("removeTemporaryAttribute:forCharacterRange:")]
+		void RemoveTemporaryAttribute (string attrName, NSRange charRange);
+
+		//[Export ("temporaryAttribute:atCharacterIndex:effectiveRange:")]
+		//NSObject GetTemporaryAttribute (string attrName, uint location, NSRangePointer range);
+
+		//[Export ("temporaryAttribute:atCharacterIndex:longestEffectiveRange:inRange:")]
+		//NSObject GetTemporaryAttribute (string attrName, uint location, NSRangePointer range, NSRange rangeLimit);
+
+		//[Export ("temporaryAttributesAtCharacterIndex:longestEffectiveRange:inRange:")]
+		//NSDictionary GetTemporaryAttributes (int characterIndex, NSRangePointer longestEffectiveRange, NSRange rangeLimit);
+
+		[Export ("addTemporaryAttribute:value:forCharacterRange:")]
+		void AddTemporaryAttribute (string attrName, NSObject value, NSRange charRange);
+
+		[Export ("substituteFontForFont:")]
+		NSFont SubstituteFontForFont (NSFont originalFont);
+
+		[Export ("defaultLineHeightForFont:")]
+		float DefaultLineHeightForFont (NSFont theFont);
+
+		[Export ("defaultBaselineOffsetForFont:")]
+		float DefaultBaselineOffsetForFont (NSFont theFont);
+
+		//Detected properties
+		[Export ("textStorage")]
+		NSTextStorage TextStorage { get; set; }
+
+		[Export ("glyphGenerator")]
+		NSGlyphGenerator GlyphGenerator { get; set; }
+
+		[Export ("typesetter")]
+		NSTypesetter Typesetter { get; set; }
+
+		[Export ("delegate")]
+		NSObject WeakDelegate { get; set; }
+
+		[Wrap ("WeakDelegate")]
+		NSLayoutManagerDelegate Delegate { get; set; }
+
+		[Export ("backgroundLayoutEnabled")]
+		bool BackgroundLayoutEnabled { get; set; }
+
+		[Export ("usesScreenFonts")]
+		bool UsesScreenFonts { get; set; }
+
+		[Export ("showsInvisibleCharacters")]
+		bool ShowsInvisibleCharacters { get; set; }
+
+		[Export ("showsControlCharacters")]
+		bool ShowsControlCharacters { get; set; }
+
+		[Export ("hyphenationFactor")]
+		float HyphenationFactor { get; set; }
+
+		[Export ("defaultAttachmentScaling")]
+		NSImageScaling DefaultAttachmentScaling { get; set; }
+
+		[Export ("typesetterBehavior")]
+		NSTypesetterBehavior TypesetterBehavior { get; set; }
+
+		[Export ("allowsNonContiguousLayout")]
+		bool AllowsNonContiguousLayout { get; set; }
+
+		[Export ("usesFontLeading")]
+		bool UsesFontLeading { get; set; }
 	}
-	
+
+	[BaseType (typeof (NSObject))]
+	[Model]
+	public interface NSLayoutManagerDelegate {
+		[Export ("layoutManagerDidInvalidateLayout:")]
+		void LayoutInvalidated (NSLayoutManager sender);
+
+		[Export ("layoutManager:didCompleteLayoutForTextContainer:atEnd:")]
+		void LayoutCompleted (NSLayoutManager layoutManager, NSTextContainer textContainer, bool layoutFinishedFlag);
+
+		[Export ("layoutManager:shouldUseTemporaryAttributes:forDrawingToScreen:atCharacterIndex:effectiveRange:")]
+		NSDictionary ShouldUseTemporaryAttributes (NSLayoutManager layoutManager, NSDictionary temporaryAttributes, bool drawingToScreen, int charIndex, IntPtr effectiveCharRange);
+
+	}
 
 	[Model]
 	[BaseType (typeof (NSObject))]
@@ -11965,6 +12309,11 @@ namespace MonoMac.AppKit {
 
 		[Export ("leafKeyPathForNode:")]
 		string LeafKeyPathForNode (NSTreeNode node);
+	}
+
+	[BaseType (typeof (NSObject))]
+	public interface NSTypesetter {
+		// Must bound
 	}
 	
 	[BaseType (typeof (NSResponder), Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (NSWindowDelegate)})]
