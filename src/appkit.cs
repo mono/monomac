@@ -1947,8 +1947,8 @@ namespace MonoMac.AppKit {
 		bool WantsNotificationForMarkedText { get; }
 	
 		// NSCell(NSCellAttributedStringMethods)
-		[Export ("setAttributedStringValue:")]
-		void SetAttributedStringValue (NSAttributedString  obj);
+		[Export ("attributedStringValue")]
+		NSAttributedString AttributedStringValue { get; set; }
 	
 		[Export ("allowsEditingTextAttributes")]
 		bool AllowsEditingTextAttributes { get; set; }
