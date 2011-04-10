@@ -8,7 +8,6 @@
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
-		
   <Interfaces />
   <Docs>
     <summary>Access to the operating system keychain.</summary>
@@ -21,14 +20,14 @@
 	Other methods of this class may be used for iOS or more advanced MacOS keychain scenarios.
 			</para>
       <example>
-      	<code lang="C#">
+        <code lang="C#">
 var password = Encoding.UTF8.GetBytes("pA$$w0rd");
 SecKeyChain.AddInternetPassword("bugzilla.novell.com", "miguel", password);
 
       	</code>
       </example>
       <example>
-      	<code lang="C#">
+        <code lang="C#">
 byte[] password = null;
 var code = SecKeyChain.FindInternetPassword("bugzilla.novell.com", "miguel", out password);
 if (code == SecStatusCode.Success) {
