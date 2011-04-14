@@ -55,10 +55,10 @@ namespace MonoMac.AppKit {
 		[Export ("initImageCell:")]
 		IntPtr Constructor (NSImage  image);
 	
-		[Export ("target")]
+		[Export ("target"), NullAllowed]
 		NSObject Target  { get; set; }
 	
-		[Export ("action")]
+		[Export ("action"), NullAllowed]
 		Selector Action  { get; set; }
 	
 		[Export ("tag")]
@@ -1695,10 +1695,10 @@ namespace MonoMac.AppKit {
 		[Export ("state")]
 		NSCellStateValue State { get; set; }
 	
-		[Export ("target")]
+		[Export ("target"), NullAllowed]
 		NSObject Target { get; set; }
 	
-		[Export ("action")]
+		[Export ("action"), NullAllowed]
 		Selector Action { get; set; }
 	
 		[Export ("tag")]
@@ -2944,10 +2944,10 @@ namespace MonoMac.AppKit {
 		[Export ("cell")]
 		NSCell Cell { get; set; }
 
-		[Export ("target")]
+		[Export ("target"), NullAllowed]
 		NSObject Target { get; set; }
 
-		[Export ("action")]
+		[Export ("action"), NullAllowed]
 		Selector Action { get; set; }
 
 		[Export ("tag")]
@@ -4231,7 +4231,7 @@ namespace MonoMac.AppKit {
 		[Export ("enabled")]
 		bool Enabled { [Bind ("isEnabled")] get; set; }
 
-		[Export ("action")]
+		[Export ("action"), NullAllowed]
 		Selector Action { get; set; }
 
 		[Export ("sendAction")]
@@ -4276,7 +4276,7 @@ namespace MonoMac.AppKit {
 		[Export ("convertFontTraits:")]
 		NSFontTraitMask ConvertFontTraits (NSFontTraitMask traits);
 
-		[Export ("target")]
+		[Export ("target"), NullAllowed]
 		NSObject Target { get; set; }
 
 		[Export ("fontNamed:hasTraits:")]
@@ -9335,7 +9335,7 @@ namespace MonoMac.AppKit {
 		[Export ("length")]
 		float Length { get; set; }
 
-		[Export ("action")]
+		[Export ("action"), NullAllowed]
 		Selector Action { get; set; }
 
 		[Export ("sendActionOn:")]
@@ -9351,7 +9351,7 @@ namespace MonoMac.AppKit {
 		[Export ("doubleAction")]
 		Selector DoubleAction { get; set; }
 
-		[Export ("target")]
+		[Export ("target"), NullAllowed]
 		NSObject Target { get; set; }
 
 		[Export ("title")]
