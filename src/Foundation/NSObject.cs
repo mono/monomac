@@ -53,7 +53,6 @@ namespace MonoMac.Foundation {
 
 		private IntPtr handle;
 		private IntPtr super;
-		private IntPtr super_ptr;
 		private IntPtr gchandle;
 		private object lock_obj = new object ();
 		
@@ -65,24 +64,22 @@ namespace MonoMac.Foundation {
 
 		[Export ("init")]
 		public NSObject () {
-			bool alloced = AllocIfNeeded ();
-			InitializeObject (alloced);
+			AllocIfNeeded ();
+			InitializeObject ();
 		}
 
 		// This is just here as a constructor chain that can will
 		// only do Init at the most derived class.
 		public NSObject (NSObjectFlag x)
 		{
-			bool alloced = AllocIfNeeded ();
-			InitializeObject (alloced);
+			AllocIfNeeded ();
+			InitializeObject ();
 		}
 
-		public NSObject (IntPtr handle) : this (handle, false) {
-		}
-		
-		private NSObject (IntPtr handle, bool alloced) {
+		public NSObject (IntPtr handle) {
 			this.handle = handle;
-			InitializeObject (alloced);
+			InitializeObject ();
+			Retain ();
 		}
 
 		~NSObject () {
@@ -110,12 +107,9 @@ namespace MonoMac.Foundation {
 			Messaging.void_objc_msgSendSuper_intptr (SuperHandle, selDoesNotRecognizeSelector, sel.Handle);
 		}
 
-		private void InitializeObject (bool alloced) {
+		private void InitializeObject () {
 			IsDirectBinding = (this.GetType ().Assembly == NSObject.MonoMacAssembly);
-			super_ptr = ClassHandle;	
 			Runtime.RegisterNSObject (this, handle);
-			if (!alloced)
-				Messaging.void_objc_msgSend (handle, selRetain);
 
 #if !OBJECT_REF_TRACKING
 			gchandle = GCHandle.ToIntPtr (GCHandle.Alloc (this));
@@ -205,7 +199,8 @@ namespace MonoMac.Foundation {
 					super = Marshal.AllocHGlobal (Marshal.SizeOf (typeof (objc_super)));
 					objc_super sup = new objc_super ();
 					sup.receiver = handle;
-					sup.super = super_ptr;
+					// Find the threshold class
+					sup.super = ClassHandle;
 					Marshal.StructureToPtr (sup, super, false);
 				}
 				return super;
@@ -223,12 +218,9 @@ namespace MonoMac.Foundation {
 			}
 		}
 
-		private bool AllocIfNeeded () {
-			if (handle == IntPtr.Zero) {
+		private void AllocIfNeeded () {
+			if (handle == IntPtr.Zero)
 				handle = Messaging.intptr_objc_msgSend (new Class (this.GetType ()).Handle, selAlloc);
-				return true;
-			}
-			return false;
 		}
 
 		private IntPtr GetObjCIvar (string name) {
@@ -260,6 +252,10 @@ namespace MonoMac.Foundation {
 				SetObjCIvar (name, IntPtr.Zero);
 			else
 				SetObjCIvar (name, value.Handle);
+		}
+
+		internal void SetAsProxy () {
+			IsDirectBinding = true;
 		}
 
 		[Export ("performSelector:withObject:afterDelay:")]

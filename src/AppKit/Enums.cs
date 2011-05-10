@@ -1103,6 +1103,7 @@ namespace MonoMac.AppKit {
 		FamilyClassMask = (int) -268435456,
 	}
 
+	[Flags]
 	public enum NSFontTraitMask {
 		Italic = 1,
 		Bold = 2,
@@ -1348,6 +1349,11 @@ namespace MonoMac.AppKit {
 		StateValidation = 301,
 	}
 	
+	public enum NSSurfaceOrder {
+		AboveWindow = 1,
+		BelowWindow = -1
+	}
+
 	public enum NSOpenGLPixelFormatAttribute {
 		AllRenderers       =   1,
 		DoubleBuffer       =   5,
@@ -1473,15 +1479,29 @@ namespace MonoMac.AppKit {
 		TornOffMenu = 3
 	}
 	
-    public enum NSRuleEditorRowType{
+	public enum NSRuleEditorRowType{
 		Simple = 0,
 		Compound
-    };
+	}
    
-    public enum NSRuleEditorNestingMode {
+	public enum NSRuleEditorNestingMode {
 		Single,
 		List,
 		Compound,
 		Simple
-    };	
+	}
+
+	public enum NSGlyphInscription {
+		Base, Below, Above, Overstrike, OverBelow
+	}
+
+	public enum NSTypesetterBehavior {
+		Latest = -1,
+		Original = 0,
+		Specific_10_2_WithCompatibility = 1,
+		Specific_10_2 = 2,
+		Specific_10_3 = 3,
+		Specific_10_4 = 4,
+			
+	}
 } 

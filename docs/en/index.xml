@@ -14,6 +14,7 @@
     <Namespace Name="MonoMac">
       <Type Name="Constants" Kind="Class" />
       <Type Name="MonoPInvokeCallbackAttribute" Kind="Class" />
+      <Type Name="RequiredFrameworkAttribute" Kind="Class" />
     </Namespace>
     <Namespace Name="MonoMac.AddressBook">
       <Type Name="ABAddressBook" Kind="Class" />
@@ -160,8 +161,9 @@
       <Type Name="NSDocument" Kind="Class" />
       <Type Name="NSDocumentChangeType" Kind="Enumeration" />
       <Type Name="NSDocumentController" Kind="Class" />
-      <Type Name="NSDragDestination" Kind="Class" />
+      <Type Name="NSDraggingDestination" Kind="Class" />
       <Type Name="NSDraggingInfo" Kind="Class" />
+      <Type Name="NSDraggingSource" Kind="Class" />
       <Type Name="NSDragOperation" Kind="Enumeration" />
       <Type Name="NSDrawer" Kind="Class" />
       <Type Name="NSDrawerDelegate" Kind="Class" />
@@ -192,6 +194,8 @@
       <Type Name="NSGLFormat" Kind="Enumeration" />
       <Type Name="NSGLTextureCubeMap" Kind="Enumeration" />
       <Type Name="NSGLTextureTarget" Kind="Enumeration" />
+      <Type Name="NSGlyphGenerator" Kind="Class" />
+      <Type Name="NSGlyphInscription" Kind="Enumeration" />
       <Type Name="NSGlyphStorageOptions" Kind="Enumeration" />
       <Type Name="NSGradient" Kind="Class" />
       <Type Name="NSGradientDrawingOptions" Kind="Enumeration" />
@@ -218,6 +222,7 @@
       <Type Name="NSImageView" Kind="Class" />
       <Type Name="NSKey" Kind="Enumeration" />
       <Type Name="NSLayoutManager" Kind="Class" />
+      <Type Name="NSLayoutManagerDelegate" Kind="Class" />
       <Type Name="NSLevelIndicator" Kind="Class" />
       <Type Name="NSLevelIndicatorCell" Kind="Class" />
       <Type Name="NSLevelIndicatorStyle" Kind="Enumeration" />
@@ -354,6 +359,7 @@
       <Type Name="NSStatusBar" Kind="Class" />
       <Type Name="NSStatusItem" Kind="Class" />
       <Type Name="NSStepper" Kind="Class" />
+      <Type Name="NSSurfaceOrder" Kind="Enumeration" />
       <Type Name="NSSystemDefinedEvents" Kind="Enumeration" />
       <Type Name="NSTableColumn" Kind="Class" />
       <Type Name="NSTableColumnResizingMask" Kind="Enumeration" />
@@ -432,6 +438,8 @@
       <Type Name="NSTextViewLink" Kind="Delegate" />
       <Type Name="NSTextViewOnTextCheck" Kind="Delegate" />
       <Type Name="NSTextViewSelectionChange" Kind="Delegate" />
+      <Type Name="NSTextViewSelectionShouldChange" Kind="Delegate" />
+      <Type Name="NSTextViewSelectionWillChange" Kind="Delegate" />
       <Type Name="NSTextViewSelectorCommand" Kind="Delegate" />
       <Type Name="NSTextViewSpellingQuery" Kind="Delegate" />
       <Type Name="NSTextViewTextChecked" Kind="Delegate" />
@@ -457,6 +465,8 @@
       <Type Name="NSTreeController" Kind="Class" />
       <Type Name="NSTreeNode" Kind="Class" />
       <Type Name="NSType" Kind="Enumeration" />
+      <Type Name="NSTypesetter" Kind="Class" />
+      <Type Name="NSTypesetterBehavior" Kind="Enumeration" />
       <Type Name="NSUnderlinePattern" Kind="Enumeration" />
       <Type Name="NSUnderlineStyle" Kind="Enumeration" />
       <Type Name="NSUsableScrollerParts" Kind="Enumeration" />
@@ -520,6 +530,7 @@
       <Type Name="AudioQueueDeviceProperty" Kind="Enumeration" />
       <Type Name="AudioQueueException" Kind="Class" />
       <Type Name="AudioQueueHardwareCodecPolicy" Kind="Enumeration" />
+      <Type Name="AudioQueueLevelMeterState" Kind="Structure" />
       <Type Name="AudioQueueParameter" Kind="Enumeration" />
       <Type Name="AudioQueueParameterEvent" Kind="Structure" />
       <Type Name="AudioQueueProperty" Kind="Enumeration" />
@@ -591,12 +602,15 @@
       <Type Name="CAConstraintAttribute" Kind="Enumeration" />
       <Type Name="CAConstraintLayoutManager" Kind="Class" />
       <Type Name="CAEdgeAntialiasingMask" Kind="Enumeration" />
+      <Type Name="CAEmitterCell" Kind="Class" />
+      <Type Name="CAEmitterLayer" Kind="Class" />
       <Type Name="CAFillMode" Kind="Class" />
       <Type Name="CAGradientLayer" Kind="Class" />
       <Type Name="CAKeyFrameAnimation" Kind="Class" />
       <Type Name="CALayer" Kind="Class" />
       <Type Name="CALayerDelegate" Kind="Class" />
       <Type Name="CAMediaTimingFunction" Kind="Class" />
+      <Type Name="CAOpenGLLayer" Kind="Class" />
       <Type Name="CAPropertyAnimation" Kind="Class" />
       <Type Name="CAReplicatorLayer" Kind="Class" />
       <Type Name="CAScrollLayer" Kind="Class" />
@@ -713,6 +727,7 @@
       <Type Name="CIPlugIn" Kind="Class" />
       <Type Name="CISampler" Kind="Class" />
       <Type Name="CISamplerOptions" Kind="Class" />
+      <Type Name="CIVector" Kind="Class" />
       <Type Name="CIWrapMode" Kind="Enumeration" />
     </Namespace>
     <Namespace Name="MonoMac.CoreLocation">
@@ -731,6 +746,7 @@
     <Namespace Name="MonoMac.CoreMedia">
       <Type Name="CMSampleBuffer" Kind="Class" />
       <Type Name="CMTime" Kind="Structure" />
+      <Type Name="CMTime+Flags" Kind="Enumeration" />
       <Type Name="CMTimeMapping" Kind="Structure" />
       <Type Name="CMTimeRange" Kind="Structure" />
     </Namespace>
@@ -801,14 +817,35 @@
     <Namespace Name="MonoMac.CoreVideo">
       <Type Name="CVAttachmentMode" Kind="Enumeration" />
       <Type Name="CVBuffer" Kind="Class" />
+      <Type Name="CVDisplayLink" Kind="Class" />
+      <Type Name="CVDisplayLink+DisplayLinkOutputCallback" Kind="Delegate" />
+      <Type Name="CVFillExtendedPixelsCallBack" Kind="Delegate" />
+      <Type Name="CVFillExtendedPixelsCallBackData" Kind="Structure" />
       <Type Name="CVImageBuffer" Kind="Class" />
       <Type Name="CVOptionFlags" Kind="Enumeration" />
+      <Type Name="CVPixelBuffer" Kind="Class" />
       <Type Name="CVPixelBufferLock" Kind="Enumeration" />
+      <Type Name="CVPixelBufferPool" Kind="Class" />
+      <Type Name="CVPixelFormatDescription" Kind="Class" />
       <Type Name="CVPixelFormatType" Kind="Enumeration" />
       <Type Name="CVPlanarComponentInfo" Kind="Structure" />
       <Type Name="CVPlanarPixelBufferInfo" Kind="Structure" />
       <Type Name="CVPlanarPixelBufferInfo_YCbCrPlanar" Kind="Structure" />
       <Type Name="CVReturn" Kind="Enumeration" />
+      <Type Name="CVSMPTETime" Kind="Structure" />
+      <Type Name="CVSMPTETimeFlags" Kind="Enumeration" />
+      <Type Name="CVSMPTETimeType" Kind="Enumeration" />
+      <Type Name="CVTime" Kind="Structure" />
+      <Type Name="CVTimeFlags" Kind="Enumeration" />
+      <Type Name="CVTimeStamp" Kind="Structure" />
+      <Type Name="CVTimeStampFlags" Kind="Enumeration" />
+    </Namespace>
+    <Namespace Name="MonoMac.CoreWlan">
+      <Type Name="CW8021XProfile" Kind="Class" />
+      <Type Name="CWConfiguration" Kind="Class" />
+      <Type Name="CWInterface" Kind="Class" />
+      <Type Name="CWNetwork" Kind="Class" />
+      <Type Name="CWWirelessProfile" Kind="Class" />
     </Namespace>
     <Namespace Name="MonoMac.Foundation">
       <Type Name="ConnectAttribute" Kind="Class" />
@@ -828,6 +865,7 @@
       <Type Name="NSCache" Kind="Class" />
       <Type Name="NSCacheDelegate" Kind="Class" />
       <Type Name="NSCachedUrlResponse" Kind="Class" />
+      <Type Name="NSCalculationError" Kind="Enumeration" />
       <Type Name="NSCalendar" Kind="Class" />
       <Type Name="NSCalendarUnit" Kind="Enumeration" />
       <Type Name="NSCharacterSet" Kind="Class" />
@@ -851,6 +889,7 @@
       <Type Name="NSDecoderCallback" Kind="Delegate" />
       <Type Name="NSDecoderHandler" Kind="Delegate" />
       <Type Name="NSDictionary" Kind="Class" />
+      <Type Name="NSDirectoryEnumerationOptions" Kind="Enumeration" />
       <Type Name="NSDirectoryEnumerator" Kind="Class" />
       <Type Name="NSDistributedNotificationCenter" Kind="Class" />
       <Type Name="NSEncodeHook" Kind="Delegate" />
@@ -862,8 +901,11 @@
       <Type Name="NSExpression" Kind="Class" />
       <Type Name="NSExpressionHandler" Kind="Delegate" />
       <Type Name="NSExpressionType" Kind="Enumeration" />
+      <Type Name="NSFileAttributes" Kind="Class" />
       <Type Name="NSFileManager" Kind="Class" />
       <Type Name="NSFileManagerDelegate" Kind="Class" />
+      <Type Name="NSFileManagerItemReplacementOptions" Kind="Enumeration" />
+      <Type Name="NSFileType" Kind="Enumeration" />
       <Type Name="NSFormatter" Kind="Class" />
       <Type Name="NSHttpCookie" Kind="Class" />
       <Type Name="NSHttpCookieAcceptPolicy" Kind="Enumeration" />
@@ -929,8 +971,12 @@
       <Type Name="NSPropertyListFormat" Kind="Enumeration" />
       <Type Name="NSPurgeableData" Kind="Class" />
       <Type Name="NSRange" Kind="Structure" />
+      <Type Name="NSRoundingMode" Kind="Enumeration" />
       <Type Name="NSRunLoop" Kind="Class" />
       <Type Name="NSRunLoopMode" Kind="Enumeration" />
+      <Type Name="NSSearchPath" Kind="Class" />
+      <Type Name="NSSearchPathDirectory" Kind="Enumeration" />
+      <Type Name="NSSearchPathDomain" Kind="Enumeration" />
       <Type Name="NSSet" Kind="Class" />
       <Type Name="NSSetEnumerator" Kind="Delegate" />
       <Type Name="NSSortDescriptor" Kind="Class" />
@@ -940,7 +986,10 @@
       <Type Name="NSStreamEventArgs" Kind="Class" />
       <Type Name="NSStreamStatus" Kind="Enumeration" />
       <Type Name="NSString" Kind="Class" />
+      <Type Name="NSStringDrawingOptions" Kind="Enumeration" />
       <Type Name="NSStringEncoding" Kind="Enumeration" />
+      <Type Name="NSTask" Kind="Class" />
+      <Type Name="NSTaskTerminationReason" Kind="Enumeration" />
       <Type Name="NSTextCheckingResult" Kind="Class" />
       <Type Name="NSTextCheckingType" Kind="Enumeration" />
       <Type Name="NSTextCheckingTypes" Kind="Enumeration" />
@@ -960,11 +1009,20 @@
       <Type Name="NSUrlDownloadDelegate" Kind="Class" />
       <Type Name="NSUrlError" Kind="Enumeration" />
       <Type Name="NSUrlProtectionSpace" Kind="Class" />
+      <Type Name="NSUrlProtocol" Kind="Class" />
+      <Type Name="NSUrlProtocolCachedResponseEventArgs" Kind="Class" />
+      <Type Name="NSUrlProtocolChallengeEventArgs" Kind="Class" />
+      <Type Name="NSUrlProtocolClient" Kind="Class" />
+      <Type Name="NSUrlProtocolDataEventArgs" Kind="Class" />
+      <Type Name="NSUrlProtocolErrorEventArgs" Kind="Class" />
+      <Type Name="NSUrlProtocolRedirectEventArgs" Kind="Class" />
+      <Type Name="NSUrlProtocolResponseEventArgs" Kind="Class" />
       <Type Name="NSUrlRequest" Kind="Class" />
       <Type Name="NSUrlRequestCachePolicy" Kind="Enumeration" />
       <Type Name="NSUrlResponse" Kind="Class" />
       <Type Name="NSUserDefaults" Kind="Class" />
       <Type Name="NSValue" Kind="Class" />
+      <Type Name="NSVolumeEnumerationOptions" Kind="Enumeration" />
       <Type Name="PreserveAttribute" Kind="Class" />
       <Type Name="RegisterAttribute" Kind="Class" />
       <Type Name="You_Should_Not_Call_base_In_This_Method" Kind="Class" />
@@ -984,6 +1042,49 @@
       <Type Name="CGImageSourceStatus" Kind="Enumeration" />
       <Type Name="CGImageThumbnailOptions" Kind="Class" />
     </Namespace>
+    <Namespace Name="MonoMac.ImageKit">
+      <Type Name="IKCameraDeviceView" Kind="Class" />
+      <Type Name="IKCameraDeviceViewDelegate" Kind="Class" />
+      <Type Name="IKCameraDeviceViewDisplayMode" Kind="Enumeration" />
+      <Type Name="IKCameraDeviceViewNSErrorEventArgs" Kind="Class" />
+      <Type Name="IKCameraDeviceViewTransferMode" Kind="Enumeration" />
+      <Type Name="IKCellsStyle" Kind="Enumeration" />
+      <Type Name="IKDeviceBrowserView" Kind="Class" />
+      <Type Name="IKDeviceBrowserViewDelegate" Kind="Class" />
+      <Type Name="IKDeviceBrowserViewDisplayMode" Kind="Enumeration" />
+      <Type Name="IKDeviceBrowserViewNSErrorEventArgs" Kind="Class" />
+      <Type Name="IKFilterBrowserPanel" Kind="Class" />
+      <Type Name="IKFilterBrowserPanelStyleMask" Kind="Enumeration" />
+      <Type Name="IKFilterBrowserView" Kind="Class" />
+      <Type Name="IKFilterCustomUIProvider" Kind="Class" />
+      <Type Name="IKFilterUIView" Kind="Class" />
+      <Type Name="IKGroupStyle" Kind="Enumeration" />
+      <Type Name="IKImageBrowserCell" Kind="Class" />
+      <Type Name="IKImageBrowserCellState" Kind="Enumeration" />
+      <Type Name="IKImageBrowserDataSource" Kind="Class" />
+      <Type Name="IKImageBrowserDelegate" Kind="Class" />
+      <Type Name="IKImageBrowserDropOperation" Kind="Enumeration" />
+      <Type Name="IKImageBrowserItem" Kind="Class" />
+      <Type Name="IKImageBrowserView" Kind="Class" />
+      <Type Name="IKImageBrowserViewEventEventArgs" Kind="Class" />
+      <Type Name="IKImageBrowserViewIndexEventArgs" Kind="Class" />
+      <Type Name="IKImageBrowserViewIndexEventEventArgs" Kind="Class" />
+      <Type Name="IKImageEditPanel" Kind="Class" />
+      <Type Name="IKImageEditPanelDataSource" Kind="Class" />
+      <Type Name="IKImageView" Kind="Class" />
+      <Type Name="IKPictureTaker" Kind="Class" />
+      <Type Name="IKSaveOptions" Kind="Class" />
+      <Type Name="IKSaveOptionsDelegate" Kind="Class" />
+      <Type Name="IKScannerDeviceView" Kind="Class" />
+      <Type Name="IKScannerDeviceViewDelegate" Kind="Class" />
+      <Type Name="IKScannerDeviceViewDisplayMode" Kind="Enumeration" />
+      <Type Name="IKScannerDeviceViewErrorEventArgs" Kind="Class" />
+      <Type Name="IKScannerDeviceViewScanEventArgs" Kind="Class" />
+      <Type Name="IKScannerDeviceViewTransferMode" Kind="Enumeration" />
+      <Type Name="IKSlideshow" Kind="Class" />
+      <Type Name="IKSlideshowDataSource" Kind="Class" />
+      <Type Name="SaveOptionsShouldShowUTType" Kind="Delegate" />
+    </Namespace>
     <Namespace Name="MonoMac.ObjCRuntime">
       <Type Name="AlphaAttribute" Kind="Class" />
       <Type Name="ArgumentSemantic" Kind="Enumeration" />
@@ -992,15 +1093,764 @@
       <Type Name="BlockLiteral" Kind="Structure" />
       <Type Name="Class" Kind="Class" />
       <Type Name="CompileFlagsAttribute" Kind="Class" />
+      <Type Name="Dlfcn" Kind="Class" />
       <Type Name="INativeObject" Kind="Interface" />
       <Type Name="Messaging" Kind="Class" />
       <Type Name="MethodDescription" Kind="Structure" />
-      <Type Name="NSObjectMarshaler" Kind="Class" />
+      <Type Name="NSObjectMarshaler`1" DisplayName="NSObjectMarshaler&lt;T&gt;" Kind="Class" />
       <Type Name="Runtime" Kind="Class" />
       <Type Name="Selector" Kind="Class" />
       <Type Name="SelectorMarshaler" Kind="Class" />
       <Type Name="SinceAttribute" Kind="Class" />
       <Type Name="TypeConverter" Kind="Class" />
+    </Namespace>
+    <Namespace Name="MonoMac.OpenGL">
+      <Type Name="AccumOp" Kind="Enumeration" />
+      <Type Name="ActiveAttribType" Kind="Enumeration" />
+      <Type Name="ActiveSubroutineUniformParameter" Kind="Enumeration" />
+      <Type Name="ActiveUniformBlockParameter" Kind="Enumeration" />
+      <Type Name="ActiveUniformParameter" Kind="Enumeration" />
+      <Type Name="ActiveUniformType" Kind="Enumeration" />
+      <Type Name="All" Kind="Enumeration" />
+      <Type Name="AlphaFunction" Kind="Enumeration" />
+      <Type Name="AmdCompressed3DcTexture" Kind="Enumeration" />
+      <Type Name="AmdCompressedAtcTexture" Kind="Enumeration" />
+      <Type Name="AmdConservativeDepth" Kind="Enumeration" />
+      <Type Name="AmdDebugOutput" Kind="Enumeration" />
+      <Type Name="AmdDepthClampSeparate" Kind="Enumeration" />
+      <Type Name="AmdDrawBuffersBlend" Kind="Enumeration" />
+      <Type Name="AmdNameGenDelete" Kind="Enumeration" />
+      <Type Name="AmdPerformanceMonitor" Kind="Enumeration" />
+      <Type Name="AmdProgramBinaryZ400" Kind="Enumeration" />
+      <Type Name="AmdSeamlessCubemapPerTexture" Kind="Enumeration" />
+      <Type Name="AmdShaderStencilExport" Kind="Enumeration" />
+      <Type Name="AmdTextureTexture4" Kind="Enumeration" />
+      <Type Name="AmdTransformFeedback3LinesTriangles" Kind="Enumeration" />
+      <Type Name="AmdVertexShaderTesselator" Kind="Enumeration" />
+      <Type Name="AngleFramebufferBlit" Kind="Enumeration" />
+      <Type Name="AngleFramebufferMultisample" Kind="Enumeration" />
+      <Type Name="AppleAuxDepthStencil" Kind="Enumeration" />
+      <Type Name="AppleClientStorage" Kind="Enumeration" />
+      <Type Name="AppleElementArray" Kind="Enumeration" />
+      <Type Name="AppleFence" Kind="Enumeration" />
+      <Type Name="AppleFloatPixels" Kind="Enumeration" />
+      <Type Name="AppleFlushBufferRange" Kind="Enumeration" />
+      <Type Name="AppleObjectPurgeable" Kind="Enumeration" />
+      <Type Name="AppleRgb422" Kind="Enumeration" />
+      <Type Name="AppleRowBytes" Kind="Enumeration" />
+      <Type Name="AppleSpecularVector" Kind="Enumeration" />
+      <Type Name="AppleTextureRange" Kind="Enumeration" />
+      <Type Name="AppleTransformHint" Kind="Enumeration" />
+      <Type Name="AppleVertexArrayObject" Kind="Enumeration" />
+      <Type Name="AppleVertexArrayRange" Kind="Enumeration" />
+      <Type Name="AppleVertexProgramEvaluators" Kind="Enumeration" />
+      <Type Name="AppleYcbcr422" Kind="Enumeration" />
+      <Type Name="ArbBlendFuncExtended" Kind="Enumeration" />
+      <Type Name="ArbClEvent" Kind="Enumeration" />
+      <Type Name="ArbColorBufferFloat" Kind="Enumeration" />
+      <Type Name="ArbCompatibility" Kind="Enumeration" />
+      <Type Name="ArbCopyBuffer" Kind="Enumeration" />
+      <Type Name="ArbDebugOutput" Kind="Enumeration" />
+      <Type Name="ArbDepthBufferFloat" Kind="Enumeration" />
+      <Type Name="ArbDepthClamp" Kind="Enumeration" />
+      <Type Name="ArbDepthTexture" Kind="Enumeration" />
+      <Type Name="ArbDrawBuffers" Kind="Enumeration" />
+      <Type Name="ArbDrawBuffersBlend" Kind="Enumeration" />
+      <Type Name="ArbDrawElementsBaseVertex" Kind="Enumeration" />
+      <Type Name="ArbDrawIndirect" Kind="Enumeration" />
+      <Type Name="ArbDrawInstanced" Kind="Enumeration" />
+      <Type Name="ArbEs2Compatibility" Kind="Enumeration" />
+      <Type Name="ArbExplicitAttribLocation" Kind="Enumeration" />
+      <Type Name="ArbFragmentCoordConventions" Kind="Enumeration" />
+      <Type Name="ArbFragmentProgram" Kind="Enumeration" />
+      <Type Name="ArbFragmentProgramShadow" Kind="Enumeration" />
+      <Type Name="ArbFragmentShader" Kind="Enumeration" />
+      <Type Name="ArbFramebufferObject" Kind="Enumeration" />
+      <Type Name="ArbFramebufferObjectDeprecated" Kind="Enumeration" />
+      <Type Name="ArbFramebufferSrgb" Kind="Enumeration" />
+      <Type Name="ArbGeometryShader4" Kind="Enumeration" />
+      <Type Name="ArbGetProgramBinary" Kind="Enumeration" />
+      <Type Name="ArbGpuShader5" Kind="Enumeration" />
+      <Type Name="ArbGpuShaderFp64" Kind="Enumeration" />
+      <Type Name="ArbHalfFloatPixel" Kind="Enumeration" />
+      <Type Name="ArbHalfFloatVertex" Kind="Enumeration" />
+      <Type Name="ArbImaging" Kind="Enumeration" />
+      <Type Name="ArbImagingDeprecated" Kind="Enumeration" />
+      <Type Name="ArbInstancedArrays" Kind="Enumeration" />
+      <Type Name="ArbMapBufferRange" Kind="Enumeration" />
+      <Type Name="ArbMatrixPalette" Kind="Enumeration" />
+      <Type Name="ArbMultisample" Kind="Enumeration" />
+      <Type Name="ArbMultitexture" Kind="Enumeration" />
+      <Type Name="ArbOcclusionQuery" Kind="Enumeration" />
+      <Type Name="ArbOcclusionQuery2" Kind="Enumeration" />
+      <Type Name="ArbPixelBufferObject" Kind="Enumeration" />
+      <Type Name="ArbPointParameters" Kind="Enumeration" />
+      <Type Name="ArbPointSprite" Kind="Enumeration" />
+      <Type Name="ArbProvokingVertex" Kind="Enumeration" />
+      <Type Name="ArbRobustness" Kind="Enumeration" />
+      <Type Name="ArbSamplerObjects" Kind="Enumeration" />
+      <Type Name="ArbSampleShading" Kind="Enumeration" />
+      <Type Name="ArbSeamlessCubeMap" Kind="Enumeration" />
+      <Type Name="ArbSeparateShaderObjects" Kind="Enumeration" />
+      <Type Name="ArbShaderBitEncoding" Kind="Enumeration" />
+      <Type Name="ArbShaderObjects" Kind="Enumeration" />
+      <Type Name="ArbShaderPrecision" Kind="Enumeration" />
+      <Type Name="ArbShaderStencilExport" Kind="Enumeration" />
+      <Type Name="ArbShaderSubroutine" Kind="Enumeration" />
+      <Type Name="ArbShaderTextureLod" Kind="Enumeration" />
+      <Type Name="ArbShadingLanguage100" Kind="Enumeration" />
+      <Type Name="ArbShadingLanguageInclude" Kind="Enumeration" />
+      <Type Name="ArbShadow" Kind="Enumeration" />
+      <Type Name="ArbShadowAmbient" Kind="Enumeration" />
+      <Type Name="ArbSync" Kind="Enumeration" />
+      <Type Name="ArbTessellationShader" Kind="Enumeration" />
+      <Type Name="ArbTextureBorderClamp" Kind="Enumeration" />
+      <Type Name="ArbTextureBufferObject" Kind="Enumeration" />
+      <Type Name="ArbTextureBufferObjectRgb32" Kind="Enumeration" />
+      <Type Name="ArbTextureCompression" Kind="Enumeration" />
+      <Type Name="ArbTextureCompressionBptc" Kind="Enumeration" />
+      <Type Name="ArbTextureCompressionRgtc" Kind="Enumeration" />
+      <Type Name="ArbTextureCubeMap" Kind="Enumeration" />
+      <Type Name="ArbTextureCubeMapArray" Kind="Enumeration" />
+      <Type Name="ArbTextureEnvAdd" Kind="Enumeration" />
+      <Type Name="ArbTextureEnvCombine" Kind="Enumeration" />
+      <Type Name="ArbTextureEnvCrossbar" Kind="Enumeration" />
+      <Type Name="ArbTextureEnvDot3" Kind="Enumeration" />
+      <Type Name="ArbTextureFloat" Kind="Enumeration" />
+      <Type Name="ArbTextureGather" Kind="Enumeration" />
+      <Type Name="ArbTextureMirroredRepeat" Kind="Enumeration" />
+      <Type Name="ArbTextureMultisample" Kind="Enumeration" />
+      <Type Name="ArbTextureNonPowerOfTwo" Kind="Enumeration" />
+      <Type Name="ArbTextureQueryLod" Kind="Enumeration" />
+      <Type Name="ArbTextureRectangle" Kind="Enumeration" />
+      <Type Name="ArbTextureRg" Kind="Enumeration" />
+      <Type Name="ArbTextureRgb10A2ui" Kind="Enumeration" />
+      <Type Name="ArbTextureSwizzle" Kind="Enumeration" />
+      <Type Name="ArbTimerQuery" Kind="Enumeration" />
+      <Type Name="ArbTransformFeedback2" Kind="Enumeration" />
+      <Type Name="ArbTransformFeedback3" Kind="Enumeration" />
+      <Type Name="ArbTransposeMatrix" Kind="Enumeration" />
+      <Type Name="ArbUniformBufferObject" Kind="Enumeration" />
+      <Type Name="ArbVertexArrayBgra" Kind="Enumeration" />
+      <Type Name="ArbVertexArrayObject" Kind="Enumeration" />
+      <Type Name="ArbVertexAttrib64bit" Kind="Enumeration" />
+      <Type Name="ArbVertexBlend" Kind="Enumeration" />
+      <Type Name="ArbVertexBufferObject" Kind="Enumeration" />
+      <Type Name="ArbVertexProgram" Kind="Enumeration" />
+      <Type Name="ArbVertexShader" Kind="Enumeration" />
+      <Type Name="ArbVertexType2101010Rev" Kind="Enumeration" />
+      <Type Name="ArbViewportArray" Kind="Enumeration" />
+      <Type Name="ArbWindowPos" Kind="Enumeration" />
+      <Type Name="ArmMaliShaderBinary" Kind="Enumeration" />
+      <Type Name="ArrayCap" Kind="Enumeration" />
+      <Type Name="AssemblyProgramFormatArb" Kind="Enumeration" />
+      <Type Name="AssemblyProgramParameterArb" Kind="Enumeration" />
+      <Type Name="AssemblyProgramStringParameterArb" Kind="Enumeration" />
+      <Type Name="AssemblyProgramTargetArb" Kind="Enumeration" />
+      <Type Name="AtiDrawBuffers" Kind="Enumeration" />
+      <Type Name="AtiElementArray" Kind="Enumeration" />
+      <Type Name="AtiEnvmapBumpmap" Kind="Enumeration" />
+      <Type Name="AtiFragmentShader" Kind="Enumeration" />
+      <Type Name="AtiMapObjectBuffer" Kind="Enumeration" />
+      <Type Name="AtiMeminfo" Kind="Enumeration" />
+      <Type Name="AtiPixelFormatFloat" Kind="Enumeration" />
+      <Type Name="AtiPnTriangles" Kind="Enumeration" />
+      <Type Name="AtiSeparateStencil" Kind="Enumeration" />
+      <Type Name="AtiTextFragmentShader" Kind="Enumeration" />
+      <Type Name="AtiTextureEnvCombine3" Kind="Enumeration" />
+      <Type Name="AtiTextureFloat" Kind="Enumeration" />
+      <Type Name="AtiTextureMirrorOnce" Kind="Enumeration" />
+      <Type Name="AtiVertexArrayObject" Kind="Enumeration" />
+      <Type Name="AtiVertexAttribArrayObject" Kind="Enumeration" />
+      <Type Name="AtiVertexStreams" Kind="Enumeration" />
+      <Type Name="AttribMask" Kind="Enumeration" />
+      <Type Name="BeginFeedbackMode" Kind="Enumeration" />
+      <Type Name="BeginMode" Kind="Enumeration" />
+      <Type Name="BinaryFormat" Kind="Enumeration" />
+      <Type Name="BlendEquationMode" Kind="Enumeration" />
+      <Type Name="BlendEquationModeExt" Kind="Enumeration" />
+      <Type Name="BlendingFactorDest" Kind="Enumeration" />
+      <Type Name="BlendingFactorSrc" Kind="Enumeration" />
+      <Type Name="BlitFramebufferFilter" Kind="Enumeration" />
+      <Type Name="Boolean" Kind="Enumeration" />
+      <Type Name="BufferAccess" Kind="Enumeration" />
+      <Type Name="BufferAccessArb" Kind="Enumeration" />
+      <Type Name="BufferAccessMask" Kind="Enumeration" />
+      <Type Name="BufferParameterApple" Kind="Enumeration" />
+      <Type Name="BufferParameterName" Kind="Enumeration" />
+      <Type Name="BufferParameterNameArb" Kind="Enumeration" />
+      <Type Name="BufferPointer" Kind="Enumeration" />
+      <Type Name="BufferPointerNameArb" Kind="Enumeration" />
+      <Type Name="BufferTarget" Kind="Enumeration" />
+      <Type Name="BufferTargetArb" Kind="Enumeration" />
+      <Type Name="BufferUsageArb" Kind="Enumeration" />
+      <Type Name="BufferUsageHint" Kind="Enumeration" />
+      <Type Name="CGLContext" Kind="Class" />
+      <Type Name="CGLErrorCode" Kind="Enumeration" />
+      <Type Name="CGLPixelFormat" Kind="Class" />
+      <Type Name="CGLPixelFormatAttribute" Kind="Enumeration" />
+      <Type Name="ClampColorMode" Kind="Enumeration" />
+      <Type Name="ClampColorTarget" Kind="Enumeration" />
+      <Type Name="ClearBuffer" Kind="Enumeration" />
+      <Type Name="ClearBufferMask" Kind="Enumeration" />
+      <Type Name="ClientAttribMask" Kind="Enumeration" />
+      <Type Name="ClipPlaneName" Kind="Enumeration" />
+      <Type Name="Color4" Kind="Structure" />
+      <Type Name="ColorMaterialFace" Kind="Enumeration" />
+      <Type Name="ColorMaterialParameter" Kind="Enumeration" />
+      <Type Name="ColorPointerType" Kind="Enumeration" />
+      <Type Name="ColorTableParameterPName" Kind="Enumeration" />
+      <Type Name="ColorTableParameterPNameSgi" Kind="Enumeration" />
+      <Type Name="ColorTableTarget" Kind="Enumeration" />
+      <Type Name="ColorTableTargetSgi" Kind="Enumeration" />
+      <Type Name="ConditionalRenderType" Kind="Enumeration" />
+      <Type Name="ConvolutionBorderModeExt" Kind="Enumeration" />
+      <Type Name="ConvolutionParameter" Kind="Enumeration" />
+      <Type Name="ConvolutionParameterExt" Kind="Enumeration" />
+      <Type Name="ConvolutionParameterValue" Kind="Enumeration" />
+      <Type Name="ConvolutionTarget" Kind="Enumeration" />
+      <Type Name="ConvolutionTargetExt" Kind="Enumeration" />
+      <Type Name="CullFaceMode" Kind="Enumeration" />
+      <Type Name="DataType" Kind="Enumeration" />
+      <Type Name="DepthFunction" Kind="Enumeration" />
+      <Type Name="DrawBufferMode" Kind="Enumeration" />
+      <Type Name="DrawBuffersEnum" Kind="Enumeration" />
+      <Type Name="DrawElementsType" Kind="Enumeration" />
+      <Type Name="EnableCap" Kind="Enumeration" />
+      <Type Name="ErrorCode" Kind="Enumeration" />
+      <Type Name="Ext422Pixels" Kind="Enumeration" />
+      <Type Name="ExtAbgr" Kind="Enumeration" />
+      <Type Name="ExtBgra" Kind="Enumeration" />
+      <Type Name="ExtBindableUniform" Kind="Enumeration" />
+      <Type Name="ExtBlendColor" Kind="Enumeration" />
+      <Type Name="ExtBlendEquationSeparate" Kind="Enumeration" />
+      <Type Name="ExtBlendFuncSeparate" Kind="Enumeration" />
+      <Type Name="ExtBlendLogicOp" Kind="Enumeration" />
+      <Type Name="ExtBlendMinmax" Kind="Enumeration" />
+      <Type Name="ExtBlendSubtract" Kind="Enumeration" />
+      <Type Name="ExtClipVolumeHint" Kind="Enumeration" />
+      <Type Name="ExtCmyka" Kind="Enumeration" />
+      <Type Name="ExtColorSubtable" Kind="Enumeration" />
+      <Type Name="ExtCompiledVertexArray" Kind="Enumeration" />
+      <Type Name="ExtConvolution" Kind="Enumeration" />
+      <Type Name="ExtCoordinateFrame" Kind="Enumeration" />
+      <Type Name="ExtCopyTexture" Kind="Enumeration" />
+      <Type Name="ExtCullVertex" Kind="Enumeration" />
+      <Type Name="ExtDepthBoundsTest" Kind="Enumeration" />
+      <Type Name="ExtDirectStateAccess" Kind="Enumeration" />
+      <Type Name="ExtDiscardFramebuffer" Kind="Enumeration" />
+      <Type Name="ExtDrawBuffers2" Kind="Enumeration" />
+      <Type Name="ExtDrawInstanced" Kind="Enumeration" />
+      <Type Name="ExtDrawRangeElements" Kind="Enumeration" />
+      <Type Name="ExtFogCoord" Kind="Enumeration" />
+      <Type Name="ExtFramebufferBlit" Kind="Enumeration" />
+      <Type Name="ExtFramebufferMultisample" Kind="Enumeration" />
+      <Type Name="ExtFramebufferObject" Kind="Enumeration" />
+      <Type Name="ExtFramebufferSrgb" Kind="Enumeration" />
+      <Type Name="ExtGeometryShader4" Kind="Enumeration" />
+      <Type Name="ExtGpuProgramParameters" Kind="Enumeration" />
+      <Type Name="ExtGpuShader4" Kind="Enumeration" />
+      <Type Name="ExtHistogram" Kind="Enumeration" />
+      <Type Name="ExtIndexArrayFormats" Kind="Enumeration" />
+      <Type Name="ExtIndexFunc" Kind="Enumeration" />
+      <Type Name="ExtIndexMaterial" Kind="Enumeration" />
+      <Type Name="ExtIndexTexture" Kind="Enumeration" />
+      <Type Name="ExtLightTexture" Kind="Enumeration" />
+      <Type Name="ExtMiscAttribute" Kind="Enumeration" />
+      <Type Name="ExtMultiDrawArrays" Kind="Enumeration" />
+      <Type Name="ExtMultisample" Kind="Enumeration" />
+      <Type Name="ExtPackedDepthStencil" Kind="Enumeration" />
+      <Type Name="ExtPackedFloat" Kind="Enumeration" />
+      <Type Name="ExtPackedPixels" Kind="Enumeration" />
+      <Type Name="ExtPalettedTexture" Kind="Enumeration" />
+      <Type Name="ExtPixelBufferObject" Kind="Enumeration" />
+      <Type Name="ExtPixelTransform" Kind="Enumeration" />
+      <Type Name="ExtPixelTransformColorTable" Kind="Enumeration" />
+      <Type Name="ExtPointParameters" Kind="Enumeration" />
+      <Type Name="ExtPolygonOffset" Kind="Enumeration" />
+      <Type Name="ExtProvokingVertex" Kind="Enumeration" />
+      <Type Name="ExtRescaleNormal" Kind="Enumeration" />
+      <Type Name="ExtSecondaryColor" Kind="Enumeration" />
+      <Type Name="ExtSeparateShaderObjects" Kind="Enumeration" />
+      <Type Name="ExtSeparateSpecularColor" Kind="Enumeration" />
+      <Type Name="ExtShaderImageLoadStore" Kind="Enumeration" />
+      <Type Name="ExtShadowFuncs" Kind="Enumeration" />
+      <Type Name="ExtSharedTexturePalette" Kind="Enumeration" />
+      <Type Name="ExtStencilClearTag" Kind="Enumeration" />
+      <Type Name="ExtStencilTwoSide" Kind="Enumeration" />
+      <Type Name="ExtStencilWrap" Kind="Enumeration" />
+      <Type Name="ExtSubtexture" Kind="Enumeration" />
+      <Type Name="ExtTexture" Kind="Enumeration" />
+      <Type Name="ExtTexture3D" Kind="Enumeration" />
+      <Type Name="ExtTextureArray" Kind="Enumeration" />
+      <Type Name="ExtTextureBufferObject" Kind="Enumeration" />
+      <Type Name="ExtTextureCompressionLatc" Kind="Enumeration" />
+      <Type Name="ExtTextureCompressionRgtc" Kind="Enumeration" />
+      <Type Name="ExtTextureCompressionS3tc" Kind="Enumeration" />
+      <Type Name="ExtTextureCubeMap" Kind="Enumeration" />
+      <Type Name="ExtTextureEnvAdd" Kind="Enumeration" />
+      <Type Name="ExtTextureEnvCombine" Kind="Enumeration" />
+      <Type Name="ExtTextureEnvDot3" Kind="Enumeration" />
+      <Type Name="ExtTextureFilterAnisotropic" Kind="Enumeration" />
+      <Type Name="ExtTextureInteger" Kind="Enumeration" />
+      <Type Name="ExtTextureLodBias" Kind="Enumeration" />
+      <Type Name="ExtTextureMirrorClamp" Kind="Enumeration" />
+      <Type Name="ExtTextureObject" Kind="Enumeration" />
+      <Type Name="ExtTexturePerturbNormal" Kind="Enumeration" />
+      <Type Name="ExtTextureSharedExponent" Kind="Enumeration" />
+      <Type Name="ExtTextureSnorm" Kind="Enumeration" />
+      <Type Name="ExtTextureSrgb" Kind="Enumeration" />
+      <Type Name="ExtTextureSwizzle" Kind="Enumeration" />
+      <Type Name="ExtTextureType2101010Rev" Kind="Enumeration" />
+      <Type Name="ExtTimerQuery" Kind="Enumeration" />
+      <Type Name="ExtTransformFeedback" Kind="Enumeration" />
+      <Type Name="ExtVertexArray" Kind="Enumeration" />
+      <Type Name="ExtVertexArrayBgra" Kind="Enumeration" />
+      <Type Name="ExtVertexAttrib64bit" Kind="Enumeration" />
+      <Type Name="ExtVertexShader" Kind="Enumeration" />
+      <Type Name="ExtVertexWeighting" Kind="Enumeration" />
+      <Type Name="FeedBackToken" Kind="Enumeration" />
+      <Type Name="FeedbackType" Kind="Enumeration" />
+      <Type Name="FfdMaskSgix" Kind="Enumeration" />
+      <Type Name="FfdTargetSgix" Kind="Enumeration" />
+      <Type Name="FogMode" Kind="Enumeration" />
+      <Type Name="FogParameter" Kind="Enumeration" />
+      <Type Name="FogPointerType" Kind="Enumeration" />
+      <Type Name="FragmentLightModelParameterSgix" Kind="Enumeration" />
+      <Type Name="FramebufferAttachment" Kind="Enumeration" />
+      <Type Name="FramebufferAttachmentComponentType" Kind="Enumeration" />
+      <Type Name="FramebufferAttachmentObjectType" Kind="Enumeration" />
+      <Type Name="FramebufferErrorCode" Kind="Enumeration" />
+      <Type Name="FramebufferParameterName" Kind="Enumeration" />
+      <Type Name="FramebufferTarget" Kind="Enumeration" />
+      <Type Name="FrameEventArgs" Kind="Class" />
+      <Type Name="FrontFaceDirection" Kind="Enumeration" />
+      <Type Name="GenerateMipmapTarget" Kind="Enumeration" />
+      <Type Name="GetColorTableParameterPName" Kind="Enumeration" />
+      <Type Name="GetColorTableParameterPNameSgi" Kind="Enumeration" />
+      <Type Name="GetConvolutionParameter" Kind="Enumeration" />
+      <Type Name="GetConvolutionParameterPName" Kind="Enumeration" />
+      <Type Name="GetHistogramParameterPName" Kind="Enumeration" />
+      <Type Name="GetHistogramParameterPNameExt" Kind="Enumeration" />
+      <Type Name="GetIndexedPName" Kind="Enumeration" />
+      <Type Name="GetMapQuery" Kind="Enumeration" />
+      <Type Name="GetMinmaxParameterPName" Kind="Enumeration" />
+      <Type Name="GetMinmaxParameterPNameExt" Kind="Enumeration" />
+      <Type Name="GetMultisamplePName" Kind="Enumeration" />
+      <Type Name="GetPixelMap" Kind="Enumeration" />
+      <Type Name="GetPName" Kind="Enumeration" />
+      <Type Name="GetPointervPName" Kind="Enumeration" />
+      <Type Name="GetQueryObjectParam" Kind="Enumeration" />
+      <Type Name="GetQueryParam" Kind="Enumeration" />
+      <Type Name="GetTextureParameter" Kind="Enumeration" />
+      <Type Name="GL" Kind="Class" />
+      <Type Name="Gl3DfxMultisample" Kind="Enumeration" />
+      <Type Name="Gl3DfxTbuffer" Kind="Enumeration" />
+      <Type Name="Gl3DfxTextureCompressionFxt1" Kind="Enumeration" />
+      <Type Name="GremedyFrameTerminator" Kind="Enumeration" />
+      <Type Name="GremedyStringMarker" Kind="Enumeration" />
+      <Type Name="Half" Kind="Structure" />
+      <Type Name="HintMode" Kind="Enumeration" />
+      <Type Name="HintTarget" Kind="Enumeration" />
+      <Type Name="HistogramTarget" Kind="Enumeration" />
+      <Type Name="HistogramTargetExt" Kind="Enumeration" />
+      <Type Name="HpConvolutionBorderModes" Kind="Enumeration" />
+      <Type Name="HpImageTransform" Kind="Enumeration" />
+      <Type Name="HpOcclusionTest" Kind="Enumeration" />
+      <Type Name="HpTextureLighting" Kind="Enumeration" />
+      <Type Name="IbmCullVertex" Kind="Enumeration" />
+      <Type Name="IbmMultimodeDrawArrays" Kind="Enumeration" />
+      <Type Name="IbmRasterposClip" Kind="Enumeration" />
+      <Type Name="IbmTextureMirroredRepeat" Kind="Enumeration" />
+      <Type Name="IbmVertexArrayLists" Kind="Enumeration" />
+      <Type Name="IGameWindow" Kind="Interface" />
+      <Type Name="ImgMultisampledRenderToTexture" Kind="Enumeration" />
+      <Type Name="ImgProgramBinary" Kind="Enumeration" />
+      <Type Name="ImgShaderBinary" Kind="Enumeration" />
+      <Type Name="ImgTextureCompressionPvrtc" Kind="Enumeration" />
+      <Type Name="ImgTextureEnvEnhancedFixedFunction" Kind="Enumeration" />
+      <Type Name="INativeWindow" Kind="Interface" />
+      <Type Name="IndexedEnableCap" Kind="Enumeration" />
+      <Type Name="IndexPointerType" Kind="Enumeration" />
+      <Type Name="IngrColorClamp" Kind="Enumeration" />
+      <Type Name="IngrInterlaceRead" Kind="Enumeration" />
+      <Type Name="IngrPaletteBuffer" Kind="Enumeration" />
+      <Type Name="IntelParallelArrays" Kind="Enumeration" />
+      <Type Name="IntelTextureScissor" Kind="Enumeration" />
+      <Type Name="InterleavedArrayFormat" Kind="Enumeration" />
+      <Type Name="LightEnvModeSgix" Kind="Enumeration" />
+      <Type Name="LightEnvParameterSgix" Kind="Enumeration" />
+      <Type Name="LightModelColorControl" Kind="Enumeration" />
+      <Type Name="LightModelParameter" Kind="Enumeration" />
+      <Type Name="LightName" Kind="Enumeration" />
+      <Type Name="LightParameter" Kind="Enumeration" />
+      <Type Name="ListMode" Kind="Enumeration" />
+      <Type Name="ListNameType" Kind="Enumeration" />
+      <Type Name="ListParameterName" Kind="Enumeration" />
+      <Type Name="LogicOp" Kind="Enumeration" />
+      <Type Name="MapTarget" Kind="Enumeration" />
+      <Type Name="MaterialFace" Kind="Enumeration" />
+      <Type Name="MaterialParameter" Kind="Enumeration" />
+      <Type Name="MathHelper" Kind="Class" />
+      <Type Name="Matrix4" Kind="Structure" />
+      <Type Name="Matrix4d" Kind="Structure" />
+      <Type Name="MatrixMode" Kind="Enumeration" />
+      <Type Name="MatrixModeArb" Kind="Enumeration" />
+      <Type Name="MesaPackedDepthStencil" Kind="Enumeration" />
+      <Type Name="MesaPackInvert" Kind="Enumeration" />
+      <Type Name="MesaProgramDebug" Kind="Enumeration" />
+      <Type Name="MesaResizeBuffers" Kind="Enumeration" />
+      <Type Name="MesaShaderDebug" Kind="Enumeration" />
+      <Type Name="MesaTrace" Kind="Enumeration" />
+      <Type Name="MesaWindowPos" Kind="Enumeration" />
+      <Type Name="MesaxTextureStack" Kind="Enumeration" />
+      <Type Name="MesaYcbcrTexture" Kind="Enumeration" />
+      <Type Name="MeshMode1" Kind="Enumeration" />
+      <Type Name="MeshMode2" Kind="Enumeration" />
+      <Type Name="MinmaxTarget" Kind="Enumeration" />
+      <Type Name="MinmaxTargetExt" Kind="Enumeration" />
+      <Type Name="MonoMacGameView" Kind="Class" />
+      <Type Name="NormalPointerType" Kind="Enumeration" />
+      <Type Name="NvBlendSquare" Kind="Enumeration" />
+      <Type Name="NvConditionalRender" Kind="Enumeration" />
+      <Type Name="NvCopyDepthToColor" Kind="Enumeration" />
+      <Type Name="NvCopyImage" Kind="Enumeration" />
+      <Type Name="NvCoverageSample" Kind="Enumeration" />
+      <Type Name="NvDepthBufferFloat" Kind="Enumeration" />
+      <Type Name="NvDepthClamp" Kind="Enumeration" />
+      <Type Name="NvDepthNonlinear" Kind="Enumeration" />
+      <Type Name="NvEvaluators" Kind="Enumeration" />
+      <Type Name="NvExplicitMultisample" Kind="Enumeration" />
+      <Type Name="NvFence" Kind="Enumeration" />
+      <Type Name="NvFloatBuffer" Kind="Enumeration" />
+      <Type Name="NvFogDistance" Kind="Enumeration" />
+      <Type Name="NvFragmentProgram" Kind="Enumeration" />
+      <Type Name="NvFragmentProgram2" Kind="Enumeration" />
+      <Type Name="NvFragmentProgram4" Kind="Enumeration" />
+      <Type Name="NvFragmentProgramOption" Kind="Enumeration" />
+      <Type Name="NvFramebufferMultisampleCoverage" Kind="Enumeration" />
+      <Type Name="NvGeometryProgram4" Kind="Enumeration" />
+      <Type Name="NvGeometryShader4" Kind="Enumeration" />
+      <Type Name="NvGpuProgram4" Kind="Enumeration" />
+      <Type Name="NvGpuProgram5" Kind="Enumeration" />
+      <Type Name="NvGpuShader5" Kind="Enumeration" />
+      <Type Name="NvHalfFloat" Kind="Enumeration" />
+      <Type Name="NvLightMaxExponent" Kind="Enumeration" />
+      <Type Name="NvMultisampleCoverage" Kind="Enumeration" />
+      <Type Name="NvMultisampleFilterHint" Kind="Enumeration" />
+      <Type Name="NvOcclusionQuery" Kind="Enumeration" />
+      <Type Name="NvPackedDepthStencil" Kind="Enumeration" />
+      <Type Name="NvParameterBufferObject" Kind="Enumeration" />
+      <Type Name="NvParameterBufferObject2" Kind="Enumeration" />
+      <Type Name="NvPixelDataRange" Kind="Enumeration" />
+      <Type Name="NvPointSprite" Kind="Enumeration" />
+      <Type Name="NvPresentVideo" Kind="Enumeration" />
+      <Type Name="NvPrimitiveRestart" Kind="Enumeration" />
+      <Type Name="NvRegisterCombiners" Kind="Enumeration" />
+      <Type Name="NvRegisterCombiners2" Kind="Enumeration" />
+      <Type Name="NvShaderBufferLoad" Kind="Enumeration" />
+      <Type Name="NvShaderBufferStore" Kind="Enumeration" />
+      <Type Name="NvTessellationProgram5" Kind="Enumeration" />
+      <Type Name="NvTexgenEmboss" Kind="Enumeration" />
+      <Type Name="NvTexgenReflection" Kind="Enumeration" />
+      <Type Name="NvTextureBarrier" Kind="Enumeration" />
+      <Type Name="NvTextureCompressionVtc" Kind="Enumeration" />
+      <Type Name="NvTextureEnvCombine4" Kind="Enumeration" />
+      <Type Name="NvTextureExpandNormal" Kind="Enumeration" />
+      <Type Name="NvTextureRectangle" Kind="Enumeration" />
+      <Type Name="NvTextureShader" Kind="Enumeration" />
+      <Type Name="NvTextureShader2" Kind="Enumeration" />
+      <Type Name="NvTextureShader3" Kind="Enumeration" />
+      <Type Name="NvTransformFeedback" Kind="Enumeration" />
+      <Type Name="NvTransformFeedback2" Kind="Enumeration" />
+      <Type Name="NvVdpauInterop" Kind="Enumeration" />
+      <Type Name="NvVertexArrayRange" Kind="Enumeration" />
+      <Type Name="NvVertexArrayRange2" Kind="Enumeration" />
+      <Type Name="NvVertexAttribInteger64bit" Kind="Enumeration" />
+      <Type Name="NvVertexBufferUnifiedMemory" Kind="Enumeration" />
+      <Type Name="NvVertexProgram" Kind="Enumeration" />
+      <Type Name="NvVertexProgram11" Kind="Enumeration" />
+      <Type Name="NvVertexProgram2" Kind="Enumeration" />
+      <Type Name="NvVertexProgram2Option" Kind="Enumeration" />
+      <Type Name="NvVertexProgram3" Kind="Enumeration" />
+      <Type Name="NvVertexProgram4" Kind="Enumeration" />
+      <Type Name="NvVideoCapture" Kind="Enumeration" />
+      <Type Name="OesBlendEquationSeparate" Kind="Enumeration" />
+      <Type Name="OesBlendFuncSeparate" Kind="Enumeration" />
+      <Type Name="OesBlendSubtract" Kind="Enumeration" />
+      <Type Name="OesCompressedEtc1Rgb8Texture" Kind="Enumeration" />
+      <Type Name="OesCompressedPalettedTexture" Kind="Enumeration" />
+      <Type Name="OesDepth24" Kind="Enumeration" />
+      <Type Name="OesDepth32" Kind="Enumeration" />
+      <Type Name="OesDepthTexture" Kind="Enumeration" />
+      <Type Name="OesDrawTexture" Kind="Enumeration" />
+      <Type Name="OesEglImageExternal" Kind="Enumeration" />
+      <Type Name="OesElementIndexUint" Kind="Enumeration" />
+      <Type Name="OesFixedPoint" Kind="Enumeration" />
+      <Type Name="OesFramebufferObject" Kind="Enumeration" />
+      <Type Name="OesGetProgramBinary" Kind="Enumeration" />
+      <Type Name="OesMapbuffer" Kind="Enumeration" />
+      <Type Name="OesMatrixGet" Kind="Enumeration" />
+      <Type Name="OesMatrixPalette" Kind="Enumeration" />
+      <Type Name="OesPackedDepthStencil" Kind="Enumeration" />
+      <Type Name="OesPointSizeArray" Kind="Enumeration" />
+      <Type Name="OesPointSprite" Kind="Enumeration" />
+      <Type Name="OesReadFormat" Kind="Enumeration" />
+      <Type Name="OesRgb8Rgba8" Kind="Enumeration" />
+      <Type Name="OesStandardDerivatives" Kind="Enumeration" />
+      <Type Name="OesStencil1" Kind="Enumeration" />
+      <Type Name="OesStencil4" Kind="Enumeration" />
+      <Type Name="OesStencil8" Kind="Enumeration" />
+      <Type Name="OesStencilWrap" Kind="Enumeration" />
+      <Type Name="OesTexture3D" Kind="Enumeration" />
+      <Type Name="OesTextureCubeMap" Kind="Enumeration" />
+      <Type Name="OesTextureEnvCrossbar" Kind="Enumeration" />
+      <Type Name="OesTextureFloat" Kind="Enumeration" />
+      <Type Name="OesTextureMirroredRepeat" Kind="Enumeration" />
+      <Type Name="OesVertexHalfFloat" Kind="Enumeration" />
+      <Type Name="OesVertexType1010102" Kind="Enumeration" />
+      <Type Name="OmlInterlace" Kind="Enumeration" />
+      <Type Name="OmlResample" Kind="Enumeration" />
+      <Type Name="OmlSubsample" Kind="Enumeration" />
+      <Type Name="PackedPointerType" Kind="Enumeration" />
+      <Type Name="PatchParameterFloat" Kind="Enumeration" />
+      <Type Name="PatchParameterInt" Kind="Enumeration" />
+      <Type Name="PgiMiscHints" Kind="Enumeration" />
+      <Type Name="PgiVertexHints" Kind="Enumeration" />
+      <Type Name="PixelCopyType" Kind="Enumeration" />
+      <Type Name="PixelFormat" Kind="Enumeration" />
+      <Type Name="PixelInternalFormat" Kind="Enumeration" />
+      <Type Name="PixelMap" Kind="Enumeration" />
+      <Type Name="PixelStoreParameter" Kind="Enumeration" />
+      <Type Name="PixelStoreResampleMode" Kind="Enumeration" />
+      <Type Name="PixelStoreSubsampleRate" Kind="Enumeration" />
+      <Type Name="PixelTexGenMode" Kind="Enumeration" />
+      <Type Name="PixelTexGenParameterNameSgis" Kind="Enumeration" />
+      <Type Name="PixelTransferParameter" Kind="Enumeration" />
+      <Type Name="PixelType" Kind="Enumeration" />
+      <Type Name="PointParameterName" Kind="Enumeration" />
+      <Type Name="PointParameterNameSgis" Kind="Enumeration" />
+      <Type Name="PointSpriteCoordOriginParameter" Kind="Enumeration" />
+      <Type Name="PolygonMode" Kind="Enumeration" />
+      <Type Name="ProgramParameter" Kind="Enumeration" />
+      <Type Name="ProgramPipelineParameter" Kind="Enumeration" />
+      <Type Name="ProgramStageMask" Kind="Enumeration" />
+      <Type Name="ProgramStageParameter" Kind="Enumeration" />
+      <Type Name="ProvokingVertexMode" Kind="Enumeration" />
+      <Type Name="QcomDriverControl" Kind="Enumeration" />
+      <Type Name="QcomExtendedGet" Kind="Enumeration" />
+      <Type Name="QcomWriteonlyRendering" Kind="Enumeration" />
+      <Type Name="Quaternion" Kind="Structure" />
+      <Type Name="Quaterniond" Kind="Structure" />
+      <Type Name="QueryCounterTarget" Kind="Enumeration" />
+      <Type Name="QueryTarget" Kind="Enumeration" />
+      <Type Name="ReadBufferMode" Kind="Enumeration" />
+      <Type Name="RenderbufferParameterName" Kind="Enumeration" />
+      <Type Name="RenderbufferStorage" Kind="Enumeration" />
+      <Type Name="RenderbufferTarget" Kind="Enumeration" />
+      <Type Name="RenderingMode" Kind="Enumeration" />
+      <Type Name="RendScreenCoordinates" Kind="Enumeration" />
+      <Type Name="S3S3tc" Kind="Enumeration" />
+      <Type Name="SamplePatternSgis" Kind="Enumeration" />
+      <Type Name="SamplerParameter" Kind="Enumeration" />
+      <Type Name="SeparableTarget" Kind="Enumeration" />
+      <Type Name="SeparableTargetExt" Kind="Enumeration" />
+      <Type Name="SgiColorMatrix" Kind="Enumeration" />
+      <Type Name="SgiColorTable" Kind="Enumeration" />
+      <Type Name="SgiDepthPassInstrument" Kind="Enumeration" />
+      <Type Name="SgisDetailTexture" Kind="Enumeration" />
+      <Type Name="SgisFogFunction" Kind="Enumeration" />
+      <Type Name="SgisGenerateMipmap" Kind="Enumeration" />
+      <Type Name="SgisMultisample" Kind="Enumeration" />
+      <Type Name="SgisPixelTexture" Kind="Enumeration" />
+      <Type Name="SgisPointLineTexgen" Kind="Enumeration" />
+      <Type Name="SgisPointParameters" Kind="Enumeration" />
+      <Type Name="SgisSharpenTexture" Kind="Enumeration" />
+      <Type Name="SgisTexture4D" Kind="Enumeration" />
+      <Type Name="SgisTextureBorderClamp" Kind="Enumeration" />
+      <Type Name="SgisTextureColorMask" Kind="Enumeration" />
+      <Type Name="SgisTextureEdgeClamp" Kind="Enumeration" />
+      <Type Name="SgisTextureFilter4" Kind="Enumeration" />
+      <Type Name="SgisTextureLod" Kind="Enumeration" />
+      <Type Name="SgisTextureSelect" Kind="Enumeration" />
+      <Type Name="SgiTextureColorTable" Kind="Enumeration" />
+      <Type Name="SgixAsync" Kind="Enumeration" />
+      <Type Name="SgixAsyncHistogram" Kind="Enumeration" />
+      <Type Name="SgixAsyncPixel" Kind="Enumeration" />
+      <Type Name="SgixBlendAlphaMinmax" Kind="Enumeration" />
+      <Type Name="SgixCalligraphicFragment" Kind="Enumeration" />
+      <Type Name="SgixClipmap" Kind="Enumeration" />
+      <Type Name="SgixConvolutionAccuracy" Kind="Enumeration" />
+      <Type Name="SgixDepthPassInstrument" Kind="Enumeration" />
+      <Type Name="SgixDepthTexture" Kind="Enumeration" />
+      <Type Name="SgixFlushRaster" Kind="Enumeration" />
+      <Type Name="SgixFogOffset" Kind="Enumeration" />
+      <Type Name="SgixFogScale" Kind="Enumeration" />
+      <Type Name="SgixFragmentLighting" Kind="Enumeration" />
+      <Type Name="SgixFragmentsInstrument" Kind="Enumeration" />
+      <Type Name="SgixFramezoom" Kind="Enumeration" />
+      <Type Name="SgixIccTexture" Kind="Enumeration" />
+      <Type Name="SgixImpactPixelTexture" Kind="Enumeration" />
+      <Type Name="SgixInstruments" Kind="Enumeration" />
+      <Type Name="SgixInterlace" Kind="Enumeration" />
+      <Type Name="SgixIrInstrument1" Kind="Enumeration" />
+      <Type Name="SgixLineQualityHint" Kind="Enumeration" />
+      <Type Name="SgixListPriority" Kind="Enumeration" />
+      <Type Name="SgixPixelTexture" Kind="Enumeration" />
+      <Type Name="SgixPixelTiles" Kind="Enumeration" />
+      <Type Name="SgixPolynomialFfd" Kind="Enumeration" />
+      <Type Name="SgixReferencePlane" Kind="Enumeration" />
+      <Type Name="SgixResample" Kind="Enumeration" />
+      <Type Name="SgixScalebiasHint" Kind="Enumeration" />
+      <Type Name="SgixShadow" Kind="Enumeration" />
+      <Type Name="SgixShadowAmbient" Kind="Enumeration" />
+      <Type Name="SgixSlim" Kind="Enumeration" />
+      <Type Name="SgixSprite" Kind="Enumeration" />
+      <Type Name="SgixSubsample" Kind="Enumeration" />
+      <Type Name="SgixTagSampleBuffer" Kind="Enumeration" />
+      <Type Name="SgixTextureAddEnv" Kind="Enumeration" />
+      <Type Name="SgixTextureCoordinateClamp" Kind="Enumeration" />
+      <Type Name="SgixTextureLodBias" Kind="Enumeration" />
+      <Type Name="SgixTextureMultiBuffer" Kind="Enumeration" />
+      <Type Name="SgixTextureScaleBias" Kind="Enumeration" />
+      <Type Name="SgixVertexPreclip" Kind="Enumeration" />
+      <Type Name="SgixYcrcb" Kind="Enumeration" />
+      <Type Name="SgixYcrcba" Kind="Enumeration" />
+      <Type Name="SgixYcrcbSubsample" Kind="Enumeration" />
+      <Type Name="ShaderParameter" Kind="Enumeration" />
+      <Type Name="ShaderPrecisionType" Kind="Enumeration" />
+      <Type Name="ShaderType" Kind="Enumeration" />
+      <Type Name="ShadingModel" Kind="Enumeration" />
+      <Type Name="SizedInternalFormat" Kind="Enumeration" />
+      <Type Name="StencilFace" Kind="Enumeration" />
+      <Type Name="StencilFunction" Kind="Enumeration" />
+      <Type Name="StencilOp" Kind="Enumeration" />
+      <Type Name="StringName" Kind="Enumeration" />
+      <Type Name="SunConvolutionBorderModes" Kind="Enumeration" />
+      <Type Name="SunGlobalAlpha" Kind="Enumeration" />
+      <Type Name="SunMeshArray" Kind="Enumeration" />
+      <Type Name="SunSliceAccum" Kind="Enumeration" />
+      <Type Name="SunTriangleList" Kind="Enumeration" />
+      <Type Name="SunVertex" Kind="Enumeration" />
+      <Type Name="SunxConstantData" Kind="Enumeration" />
+      <Type Name="SunxGeneralTriangleList" Kind="Enumeration" />
+      <Type Name="TexCoordPointerType" Kind="Enumeration" />
+      <Type Name="TextureBufferTarget" Kind="Enumeration" />
+      <Type Name="TextureCompareMode" Kind="Enumeration" />
+      <Type Name="TextureCoordName" Kind="Enumeration" />
+      <Type Name="TextureEnvMode" Kind="Enumeration" />
+      <Type Name="TextureEnvModeCombine" Kind="Enumeration" />
+      <Type Name="TextureEnvModeOperandAlpha" Kind="Enumeration" />
+      <Type Name="TextureEnvModeOperandRgb" Kind="Enumeration" />
+      <Type Name="TextureEnvModePointSprite" Kind="Enumeration" />
+      <Type Name="TextureEnvModeScale" Kind="Enumeration" />
+      <Type Name="TextureEnvModeSource" Kind="Enumeration" />
+      <Type Name="TextureEnvParameter" Kind="Enumeration" />
+      <Type Name="TextureEnvTarget" Kind="Enumeration" />
+      <Type Name="TextureFilterFuncSgis" Kind="Enumeration" />
+      <Type Name="TextureGenMode" Kind="Enumeration" />
+      <Type Name="TextureGenParameter" Kind="Enumeration" />
+      <Type Name="TextureMagFilter" Kind="Enumeration" />
+      <Type Name="TextureMinFilter" Kind="Enumeration" />
+      <Type Name="TextureParameterName" Kind="Enumeration" />
+      <Type Name="TextureTarget" Kind="Enumeration" />
+      <Type Name="TextureTargetMultisample" Kind="Enumeration" />
+      <Type Name="TextureUnit" Kind="Enumeration" />
+      <Type Name="TextureWrapMode" Kind="Enumeration" />
+      <Type Name="TransformFeedbackMode" Kind="Enumeration" />
+      <Type Name="TransformFeedbackTarget" Kind="Enumeration" />
+      <Type Name="Vector2" Kind="Structure" />
+      <Type Name="Vector2d" Kind="Structure" />
+      <Type Name="Vector2h" Kind="Structure" />
+      <Type Name="Vector3" Kind="Structure" />
+      <Type Name="Vector3d" Kind="Structure" />
+      <Type Name="Vector3h" Kind="Structure" />
+      <Type Name="Vector4" Kind="Structure" />
+      <Type Name="Vector4d" Kind="Structure" />
+      <Type Name="Vector4h" Kind="Structure" />
+      <Type Name="Version11" Kind="Enumeration" />
+      <Type Name="Version11Deprecated" Kind="Enumeration" />
+      <Type Name="Version12" Kind="Enumeration" />
+      <Type Name="Version12Deprecated" Kind="Enumeration" />
+      <Type Name="Version13" Kind="Enumeration" />
+      <Type Name="Version13Deprecated" Kind="Enumeration" />
+      <Type Name="Version14" Kind="Enumeration" />
+      <Type Name="Version14Deprecated" Kind="Enumeration" />
+      <Type Name="Version15" Kind="Enumeration" />
+      <Type Name="Version15Deprecated" Kind="Enumeration" />
+      <Type Name="Version20" Kind="Enumeration" />
+      <Type Name="Version20Deprecated" Kind="Enumeration" />
+      <Type Name="Version21" Kind="Enumeration" />
+      <Type Name="Version21Deprecated" Kind="Enumeration" />
+      <Type Name="Version30" Kind="Enumeration" />
+      <Type Name="Version30Deprecated" Kind="Enumeration" />
+      <Type Name="Version31" Kind="Enumeration" />
+      <Type Name="Version32" Kind="Enumeration" />
+      <Type Name="Version33" Kind="Enumeration" />
+      <Type Name="Version40" Kind="Enumeration" />
+      <Type Name="Version41" Kind="Enumeration" />
+      <Type Name="VertexAttribDPointerType" Kind="Enumeration" />
+      <Type Name="VertexAttribIPointerType" Kind="Enumeration" />
+      <Type Name="VertexAttribParameter" Kind="Enumeration" />
+      <Type Name="VertexAttribParameterArb" Kind="Enumeration" />
+      <Type Name="VertexAttribPointerParameter" Kind="Enumeration" />
+      <Type Name="VertexAttribPointerParameterArb" Kind="Enumeration" />
+      <Type Name="VertexAttribPointerType" Kind="Enumeration" />
+      <Type Name="VertexAttribPointerTypeArb" Kind="Enumeration" />
+      <Type Name="VertexPointerType" Kind="Enumeration" />
+      <Type Name="VivShaderBinary" Kind="Enumeration" />
+      <Type Name="WindowBorder" Kind="Enumeration" />
+      <Type Name="WindowState" Kind="Enumeration" />
+      <Type Name="WinPhongShading" Kind="Enumeration" />
+      <Type Name="WinSpecularFog" Kind="Enumeration" />
+    </Namespace>
+    <Namespace Name="MonoMac.PdfKit">
+      <Type Name="ClassForAnnotationClassDelegate" Kind="Delegate" />
+      <Type Name="PdfAction" Kind="Class" />
+      <Type Name="PdfActionGoTo" Kind="Class" />
+      <Type Name="PdfActionNamed" Kind="Class" />
+      <Type Name="PdfActionNamedName" Kind="Enumeration" />
+      <Type Name="PdfActionRemoteGoTo" Kind="Class" />
+      <Type Name="PdfActionResetForm" Kind="Class" />
+      <Type Name="PdfActionUrl" Kind="Class" />
+      <Type Name="PdfAnnotation" Kind="Class" />
+      <Type Name="PdfAnnotationButtonWidget" Kind="Class" />
+      <Type Name="PdfAnnotationChoiceWidget" Kind="Class" />
+      <Type Name="PdfAnnotationCircle" Kind="Class" />
+      <Type Name="PdfAnnotationFreeText" Kind="Class" />
+      <Type Name="PdfAnnotationInk" Kind="Class" />
+      <Type Name="PdfAnnotationLine" Kind="Class" />
+      <Type Name="PdfAnnotationLink" Kind="Class" />
+      <Type Name="PdfAnnotationMarkup" Kind="Class" />
+      <Type Name="PdfAnnotationPopup" Kind="Class" />
+      <Type Name="PdfAnnotationSquare" Kind="Class" />
+      <Type Name="PdfAnnotationStamp" Kind="Class" />
+      <Type Name="PdfAnnotationText" Kind="Class" />
+      <Type Name="PdfAnnotationTextWidget" Kind="Class" />
+      <Type Name="PdfAreaOfInterest" Kind="Enumeration" />
+      <Type Name="PdfBorder" Kind="Class" />
+      <Type Name="PdfBorderStyle" Kind="Enumeration" />
+      <Type Name="PdfDestination" Kind="Class" />
+      <Type Name="PdfDisplayBox" Kind="Enumeration" />
+      <Type Name="PdfDisplayMode" Kind="Enumeration" />
+      <Type Name="PdfDocument" Kind="Class" />
+      <Type Name="PdfDocumentDelegate" Kind="Class" />
+      <Type Name="PdfDocumentPermissions" Kind="Enumeration" />
+      <Type Name="PdfLineStyle" Kind="Enumeration" />
+      <Type Name="PdfMarkupType" Kind="Enumeration" />
+      <Type Name="PdfOutline" Kind="Class" />
+      <Type Name="PdfPage" Kind="Class" />
+      <Type Name="PdfPrintScalingMode" Kind="Enumeration" />
+      <Type Name="PdfSelection" Kind="Class" />
+      <Type Name="PdfTextAnnotationIconType" Kind="Enumeration" />
+      <Type Name="PdfThumbnailView" Kind="Class" />
+      <Type Name="PdfView" Kind="Class" />
+      <Type Name="PdfViewActionEventArgs" Kind="Class" />
+      <Type Name="PdfViewDelegate" Kind="Class" />
+      <Type Name="PdfViewScale" Kind="Delegate" />
+      <Type Name="PdfViewTitle" Kind="Delegate" />
+      <Type Name="PdfViewUrlEventArgs" Kind="Class" />
+      <Type Name="PdfWidgetControlType" Kind="Enumeration" />
     </Namespace>
     <Namespace Name="MonoMac.QTKit">
       <Type Name="QTCaptureAudioPreviewOutput" Kind="Class" />
@@ -1049,6 +1899,11 @@
       <Type Name="QTTimeRange" Kind="Structure" />
       <Type Name="QTTrack" Kind="Class" />
       <Type Name="TimeFlags" Kind="Enumeration" />
+    </Namespace>
+    <Namespace Name="MonoMac.QuartzComposer">
+      <Type Name="QCComposition" Kind="Class" />
+      <Type Name="QCCompositionLayer" Kind="Class" />
+      <Type Name="QCCompositionRepository" Kind="Class" />
     </Namespace>
     <Namespace Name="MonoMac.Security">
       <Type Name="SecAccessible" Kind="Enumeration" />

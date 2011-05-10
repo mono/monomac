@@ -14,8 +14,26 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Tracks a set of properties from the keychain.</summary>
+    <remarks>
+      <para>
+This represents a set of properties on a keychain record.   It can be used to query the keychain by filling out a few of the properties and calling one of the Query methods on the <see cref="T:MonoMac.Security.SecKeyChain" /> class and it is also used as a result from some of the same Query methods.
+</para>
+      <para>
+You would typically use it like this:
+</para>
+      <example>
+        <code lang="C#">
+var query = new SecRecord (SecKind.InternetPassword) {
+   Sever = "bugzilla.novell.com",
+   Account = "miguel"
+};
+var password = SecKeyChain.QueryAsData (query);
+Console.WriteLine ("The password for the account is: {0}", password);
+
+  </code>
+      </example>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -29,13 +47,33 @@
         <Parameter Name="secKind" Type="MonoMac.Security.SecKind" />
       </Parameters>
       <Docs>
-        <param name="secKind">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="secKind">Determines the class for this record.</param>
+        <summary>Creates a keychain record.</summary>
+        <remarks>
+          <para>
+When you create a SecRecord you need to specify the kind of record that you will be matching using one of the SecKind values, and you must set also:
+
+<list type="bullet"><item><term>One or more attributes to match (AccessGroup, Accessible, Account, ApplicationLabel, ApplicationTag, AuthenticationType, CanDecrypt, CanDerive, CanEncrypt, CanSign, CanUnwrap, CanVerify, CanWrap, CertificateEncoding, CertificateType, Comment, CreationDate, Creator, CreatorType, Description, EffectiveKeySize, Generic, Invisible, IsNegative, IsPermanent, Issuer, KeyClass, KeySizeInBits, KeyType, Label, ModificationDate, Path, Port, Protocol, PublicKeyHash, SecurityDomain, SerialNumber, Server, Service, Subject, SubjectKeyID)</term></item><item><term>Optional search attributes, used to determine how the search is performed.   You do this by setting any of the Match properties in the class (MatchCaseInsensitive, MatchEmailAddressIfPresent, MatchIssuers, MatchItemList, MatchPolicy, MatchSubjectContains, MatchTrustedOnly, MatchValidOnDate)  </term></item></list></para>
+          <para>
+Once the class is constructed, you can pass this to the Query, Add, Remove or Update methods on the SecKeyChain class.
+</para>
+          <example>
+            <code lang="C#">
+var query = new SecRecord (SecKind.InternetPassword) {
+   Sever = "bugzilla.novell.com",
+   Account = "miguel"
+};
+var password = SecKeyChain.QueryAsData (query);
+Console.WriteLine ("The password for the account is: {0}", password);
+
+  </code>
+          </example>
+          <para>Internally this is setting the kSecClass key to one of the kSec* values as specifed by the SecKind.   On MacOS X the only supported value is InternetPassword, while iOS offers a wider range of options.</para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="AccessGroup">
-      <MemberSignature Language="C#" Value="public string AccessGroup { set; get; }" />
+      <MemberSignature Language="C#" Value="public string AccessGroup { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string AccessGroup" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -45,13 +83,15 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>
+          <para>Access group name. </para>
+        </summary>
+        <value />
+        <remarks>Access groups are used to share information between applications that share the same access group.    Applications that wish to do this, need to register the access group on their keychain-access-group entitlement.   This value must be set when the item is added to the keychain for the second application to be able to look it up.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Accessible">
-      <MemberSignature Language="C#" Value="public MonoMac.Security.SecAccessible Accessible { set; get; }" />
+      <MemberSignature Language="C#" Value="public MonoMac.Security.SecAccessible Accessible { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.Security.SecAccessible Accessible" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -61,13 +101,13 @@
         <ReturnType>MonoMac.Security.SecAccessible</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>When should the keychain information be accessed.</summary>
+        <value />
+        <remarks>Applications should use the most restrictive possible value for this property.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Account">
-      <MemberSignature Language="C#" Value="public string Account { set; get; }" />
+      <MemberSignature Language="C#" Value="public string Account { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string Account" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -77,13 +117,13 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Accout name.</summary>
+        <value />
+        <remarks>Used by GenericPassword and InternetPassword kinds.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ApplicationLabel">
-      <MemberSignature Language="C#" Value="public string ApplicationLabel { set; get; }" />
+      <MemberSignature Language="C#" Value="public string ApplicationLabel { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string ApplicationLabel" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -93,13 +133,13 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>An application-level tag, used to identify this key.</summary>
+        <value />
+        <remarks>Intended for your program to use as an identifier that you can lookup.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ApplicationTag">
-      <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSData ApplicationTag { set; get; }" />
+      <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSData ApplicationTag { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSData ApplicationTag" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -109,13 +149,13 @@
         <ReturnType>MonoMac.Foundation.NSData</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>To store your application data.</summary>
+        <value />
+        <remarks>You can use this to store application-level binary data in the form of an NSData source.</remarks>
       </Docs>
     </Member>
     <Member MemberName="AuthenticationType">
-      <MemberSignature Language="C#" Value="public MonoMac.Security.SecAuthenticationType AuthenticationType { set; get; }" />
+      <MemberSignature Language="C#" Value="public MonoMac.Security.SecAuthenticationType AuthenticationType { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.Security.SecAuthenticationType AuthenticationType" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -125,13 +165,13 @@
         <ReturnType>MonoMac.Security.SecAuthenticationType</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>The authentication type.</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="CanDecrypt">
-      <MemberSignature Language="C#" Value="public bool CanDecrypt { set; get; }" />
+      <MemberSignature Language="C#" Value="public bool CanDecrypt { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool CanDecrypt" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -141,13 +181,13 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Whether this cryptographic key can be used to decrypt data.</summary>
+        <value />
+        <remarks>For keys, whether this can be used to decrypt data.</remarks>
       </Docs>
     </Member>
     <Member MemberName="CanDerive">
-      <MemberSignature Language="C#" Value="public bool CanDerive { set; get; }" />
+      <MemberSignature Language="C#" Value="public bool CanDerive { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool CanDerive" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -157,13 +197,13 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Whether this key can be used to derive another key.</summary>
+        <value />
+        <remarks>For keys, whether this can be used to derive another key.</remarks>
       </Docs>
     </Member>
     <Member MemberName="CanEncrypt">
-      <MemberSignature Language="C#" Value="public bool CanEncrypt { set; get; }" />
+      <MemberSignature Language="C#" Value="public bool CanEncrypt { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool CanEncrypt" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -173,13 +213,13 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Whether this cryptographic key can be used to encrypt data.</summary>
+        <value />
+        <remarks>For keys, this determines whether the key can be used to encrypt data.</remarks>
       </Docs>
     </Member>
     <Member MemberName="CanSign">
-      <MemberSignature Language="C#" Value="public bool CanSign { set; get; }" />
+      <MemberSignature Language="C#" Value="public bool CanSign { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool CanSign" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -189,13 +229,13 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Whether this key can be used to sign data.</summary>
+        <value />
+        <remarks>For keys, whether this can be used to sign.</remarks>
       </Docs>
     </Member>
     <Member MemberName="CanUnwrap">
-      <MemberSignature Language="C#" Value="public bool CanUnwrap { set; get; }" />
+      <MemberSignature Language="C#" Value="public bool CanUnwrap { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool CanUnwrap" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -205,13 +245,13 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Whether this key can be used to unwrap another key.</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="CanVerify">
-      <MemberSignature Language="C#" Value="public bool CanVerify { set; get; }" />
+      <MemberSignature Language="C#" Value="public bool CanVerify { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool CanVerify" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -221,13 +261,13 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Whether this key can be used to verify a digital signature.</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="CanWrap">
-      <MemberSignature Language="C#" Value="public bool CanWrap { set; get; }" />
+      <MemberSignature Language="C#" Value="public bool CanWrap { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool CanWrap" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -237,9 +277,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Whether this key can be used to wrap another key.</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="CertificateEncoding">
@@ -253,9 +293,9 @@
         <ReturnType>MonoMac.Foundation.NSNumber</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>The encoding used for the certificate.</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="CertificateType">
@@ -269,9 +309,9 @@
         <ReturnType>MonoMac.Foundation.NSNumber</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>A certificate type.</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Clone">
@@ -286,13 +326,13 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>Makes a copy of this SecRecord.</summary>
+        <returns />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Comment">
-      <MemberSignature Language="C#" Value="public string Comment { set; get; }" />
+      <MemberSignature Language="C#" Value="public string Comment { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string Comment" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -302,13 +342,13 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Used editable comment for this record.</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="CreationDate">
-      <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSDate CreationDate { set; get; }" />
+      <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSDate CreationDate { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSDate CreationDate" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -318,13 +358,13 @@
         <ReturnType>MonoMac.Foundation.NSDate</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Creation date for this item.</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Creator">
-      <MemberSignature Language="C#" Value="public int Creator { set; get; }" />
+      <MemberSignature Language="C#" Value="public int Creator { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance int32 Creator" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -334,13 +374,13 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Creator key, a 32-bit value</summary>
+        <value />
+        <remarks>A 32 bit value used to flag the entry with the creator key.</remarks>
       </Docs>
     </Member>
     <Member MemberName="CreatorType">
-      <MemberSignature Language="C#" Value="public int CreatorType { set; get; }" />
+      <MemberSignature Language="C#" Value="public int CreatorType { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance int32 CreatorType" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -350,13 +390,13 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Item's type.   32-bit value.</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Description">
-      <MemberSignature Language="C#" Value="public string Description { set; get; }" />
+      <MemberSignature Language="C#" Value="public string Description { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string Description" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -366,9 +406,9 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>User visible description of this item.</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Dispose">
@@ -417,7 +457,7 @@
       </Docs>
     </Member>
     <Member MemberName="EffectiveKeySize">
-      <MemberSignature Language="C#" Value="public int EffectiveKeySize { set; get; }" />
+      <MemberSignature Language="C#" Value="public int EffectiveKeySize { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance int32 EffectiveKeySize" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -427,9 +467,9 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Number of effective bits on the key.</summary>
+        <value />
+        <remarks>The number of effective bits on the key.   Contrast this with the KeySize that might be larger, but contains padding.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Finalize">
@@ -449,7 +489,7 @@
       </Docs>
     </Member>
     <Member MemberName="Generic">
-      <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSData Generic { set; get; }" />
+      <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSData Generic { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSData Generic" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -459,13 +499,13 @@
         <ReturnType>MonoMac.Foundation.NSData</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Generic password's NSData storage.</summary>
+        <value>Items of kind GenericPassword use this field to store item-specific data.</value>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Invisible">
-      <MemberSignature Language="C#" Value="public bool Invisible { set; get; }" />
+      <MemberSignature Language="C#" Value="public bool Invisible { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool Invisible" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -475,13 +515,13 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>If set, the item is not displayed to the user.</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="IsNegative">
-      <MemberSignature Language="C#" Value="public bool IsNegative { set; get; }" />
+      <MemberSignature Language="C#" Value="public bool IsNegative { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool IsNegative" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -491,13 +531,13 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Whether there is a valid password associated</summary>
+        <value />
+        <remarks>You can set this flag if you want to force the user to enter the password every time he needs to use the item.</remarks>
       </Docs>
     </Member>
     <Member MemberName="IsPermanent">
-      <MemberSignature Language="C#" Value="public bool IsPermanent { set; get; }" />
+      <MemberSignature Language="C#" Value="public bool IsPermanent { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool IsPermanent" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -523,13 +563,13 @@
         <ReturnType>MonoMac.Foundation.NSData</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>X.500 Issuer certificate name as an NSData block</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="KeyClass">
-      <MemberSignature Language="C#" Value="public MonoMac.Security.SecKeyClass KeyClass { set; get; }" />
+      <MemberSignature Language="C#" Value="public MonoMac.Security.SecKeyClass KeyClass { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.Security.SecKeyClass KeyClass" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -539,13 +579,13 @@
         <ReturnType>MonoMac.Security.SecKeyClass</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>The key class.</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="KeySizeInBits">
-      <MemberSignature Language="C#" Value="public int KeySizeInBits { set; get; }" />
+      <MemberSignature Language="C#" Value="public int KeySizeInBits { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance int32 KeySizeInBits" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -555,13 +595,13 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Bitsize for the key, contrast this with EffectiveKeySize.</summary>
+        <value />
+        <remarks>This determines the number of bits in the key.   This can contain padding, contrast this with EffectiveKeySize.</remarks>
       </Docs>
     </Member>
     <Member MemberName="KeyType">
-      <MemberSignature Language="C#" Value="public MonoMac.Security.SecKeyType KeyType { set; get; }" />
+      <MemberSignature Language="C#" Value="public MonoMac.Security.SecKeyType KeyType { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.Security.SecKeyType KeyType" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -571,13 +611,13 @@
         <ReturnType>MonoMac.Security.SecKeyType</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>The key type.</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Label">
-      <MemberSignature Language="C#" Value="public string Label { set; get; }" />
+      <MemberSignature Language="C#" Value="public string Label { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string Label" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -587,13 +627,13 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>User visible label for this item.</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="MatchCaseInsensitive">
-      <MemberSignature Language="C#" Value="public bool MatchCaseInsensitive { set; get; }" />
+      <MemberSignature Language="C#" Value="public bool MatchCaseInsensitive { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool MatchCaseInsensitive" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -603,13 +643,13 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Whether matches should be case insensitive</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="MatchEmailAddressIfPresent">
-      <MemberSignature Language="C#" Value="public string MatchEmailAddressIfPresent { set; get; }" />
+      <MemberSignature Language="C#" Value="public string MatchEmailAddressIfPresent { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string MatchEmailAddressIfPresent" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -641,7 +681,7 @@
       </Docs>
     </Member>
     <Member MemberName="MatchItemList">
-      <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSArray MatchItemList { set; get; }" />
+      <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSArray MatchItemList { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSArray MatchItemList" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -657,7 +697,7 @@
       </Docs>
     </Member>
     <Member MemberName="MatchPolicy">
-      <MemberSignature Language="C#" Value="public MonoMac.Security.SecPolicy MatchPolicy { set; get; }" />
+      <MemberSignature Language="C#" Value="public MonoMac.Security.SecPolicy MatchPolicy { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Security.SecPolicy MatchPolicy" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -673,7 +713,7 @@
       </Docs>
     </Member>
     <Member MemberName="MatchSubjectContains">
-      <MemberSignature Language="C#" Value="public string MatchSubjectContains { set; get; }" />
+      <MemberSignature Language="C#" Value="public string MatchSubjectContains { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string MatchSubjectContains" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -689,7 +729,7 @@
       </Docs>
     </Member>
     <Member MemberName="MatchTrustedOnly">
-      <MemberSignature Language="C#" Value="public bool MatchTrustedOnly { set; get; }" />
+      <MemberSignature Language="C#" Value="public bool MatchTrustedOnly { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool MatchTrustedOnly" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -705,7 +745,7 @@
       </Docs>
     </Member>
     <Member MemberName="MatchValidOnDate">
-      <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSDate MatchValidOnDate { set; get; }" />
+      <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSDate MatchValidOnDate { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSDate MatchValidOnDate" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -721,7 +761,7 @@
       </Docs>
     </Member>
     <Member MemberName="ModificationDate">
-      <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSDate ModificationDate { set; get; }" />
+      <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSDate ModificationDate { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSDate ModificationDate" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -737,7 +777,7 @@
       </Docs>
     </Member>
     <Member MemberName="Path">
-      <MemberSignature Language="C#" Value="public string Path { set; get; }" />
+      <MemberSignature Language="C#" Value="public string Path { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string Path" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -747,13 +787,13 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Path component of an InternetPassword.</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Port">
-      <MemberSignature Language="C#" Value="public int Port { set; get; }" />
+      <MemberSignature Language="C#" Value="public int Port { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance int32 Port" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -763,13 +803,13 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Port component of an InternetPassword</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Protocol">
-      <MemberSignature Language="C#" Value="public MonoMac.Security.SecProtocol Protocol { set; get; }" />
+      <MemberSignature Language="C#" Value="public MonoMac.Security.SecProtocol Protocol { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.Security.SecProtocol Protocol" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -779,9 +819,10 @@
         <ReturnType>MonoMac.Security.SecProtocol</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Protocol component of an InternetPassword
+</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="PublicKeyHash">
@@ -795,13 +836,13 @@
         <ReturnType>MonoMac.Foundation.NSData</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Public key hash</summary>
+        <value />
+        <remarks>The public key hash, used by certificates.</remarks>
       </Docs>
     </Member>
     <Member MemberName="SecurityDomain">
-      <MemberSignature Language="C#" Value="public string SecurityDomain { set; get; }" />
+      <MemberSignature Language="C#" Value="public string SecurityDomain { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string SecurityDomain" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -811,7 +852,7 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Security domain for InternetPassword items.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -827,13 +868,13 @@
         <ReturnType>MonoMac.Foundation.NSData</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Serial number for the certificate.</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Server">
-      <MemberSignature Language="C#" Value="public string Server { set; get; }" />
+      <MemberSignature Language="C#" Value="public string Server { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string Server" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -843,13 +884,13 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Server component for an InternetPassword</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Service">
-      <MemberSignature Language="C#" Value="public string Service { set; get; }" />
+      <MemberSignature Language="C#" Value="public string Service { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string Service" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -859,9 +900,9 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Service associated with an InternetPassword.</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Subject">
@@ -875,9 +916,9 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>X.500 Subject name stored as an NSData.</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SubjectKeyID">
@@ -891,13 +932,13 @@
         <ReturnType>MonoMac.Foundation.NSData</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>SubjectKeyID of the certificate.</summary>
+        <value />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="ValueData">
-      <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSData ValueData { set; get; }" />
+      <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSData ValueData { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSData ValueData" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -907,7 +948,7 @@
         <ReturnType>MonoMac.Foundation.NSData</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The value data to store.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>

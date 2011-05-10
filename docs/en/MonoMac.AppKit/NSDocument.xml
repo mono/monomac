@@ -204,7 +204,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="AutosavedContentsFileUrl">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSUrl AutosavedContentsFileUrl { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSUrl AutosavedContentsFileUrl { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSUrl AutosavedContentsFileUrl" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -421,7 +421,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="FileModificationDate">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSDate FileModificationDate { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSDate FileModificationDate { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSDate FileModificationDate" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -493,7 +493,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="FileType">
-      <MemberSignature Language="C#" Value="public virtual string FileType { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual string FileType { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string FileType" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -538,7 +538,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="FileUrl">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSUrl FileUrl { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSUrl FileUrl { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSUrl FileUrl" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -637,7 +637,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="HasUndoManager">
-      <MemberSignature Language="C#" Value="public virtual bool HasUndoManager { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual bool HasUndoManager { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool HasUndoManager" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -913,7 +913,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="PrintInfo">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSPrintInfo PrintInfo { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSPrintInfo PrintInfo { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AppKit.NSPrintInfo PrintInfo" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -937,7 +937,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="PrintOperation">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSPrintOperation PrintOperation (MonoMac.Foundation.NSDictionary printSettings, MonoMac.Foundation.NSError outError);" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSPrintOperation PrintOperation (MonoMac.Foundation.NSDictionary printSettings, out MonoMac.Foundation.NSError outError);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class MonoMac.AppKit.NSPrintOperation PrintOperation(class MonoMac.Foundation.NSDictionary printSettings, class MonoMac.Foundation.NSError outError) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
@@ -953,7 +953,7 @@ public class MyClass : BaseClass {
       </ReturnValue>
       <Parameters>
         <Parameter Name="printSettings" Type="MonoMac.Foundation.NSDictionary" />
-        <Parameter Name="outError" Type="MonoMac.Foundation.NSError" />
+        <Parameter Name="outError" Type="MonoMac.Foundation.NSError&amp;" RefType="out" />
       </Parameters>
       <Docs>
         <param name="printSettings">To be added.</param>
@@ -1363,7 +1363,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="SaveToUrl">
-      <MemberSignature Language="C#" Value="public virtual bool SaveToUrl (MonoMac.Foundation.NSUrl absoluteUrl, string typeName, MonoMac.AppKit.NSSaveOperationType saveOperation, MonoMac.Foundation.NSError outError);" />
+      <MemberSignature Language="C#" Value="public virtual bool SaveToUrl (MonoMac.Foundation.NSUrl absoluteUrl, string typeName, MonoMac.AppKit.NSSaveOperationType saveOperation, out MonoMac.Foundation.NSError outError);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool SaveToUrl(class MonoMac.Foundation.NSUrl absoluteUrl, string typeName, valuetype MonoMac.AppKit.NSSaveOperationType saveOperation, class MonoMac.Foundation.NSError outError) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
@@ -1381,7 +1381,7 @@ public class MyClass : BaseClass {
         <Parameter Name="absoluteUrl" Type="MonoMac.Foundation.NSUrl" />
         <Parameter Name="typeName" Type="System.String" />
         <Parameter Name="saveOperation" Type="MonoMac.AppKit.NSSaveOperationType" />
-        <Parameter Name="outError" Type="MonoMac.Foundation.NSError" />
+        <Parameter Name="outError" Type="MonoMac.Foundation.NSError&amp;" RefType="out" />
       </Parameters>
       <Docs>
         <param name="absoluteUrl">To be added.</param>
@@ -1549,7 +1549,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="UndoManager">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSUndoManager UndoManager { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSUndoManager UndoManager { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSUndoManager UndoManager" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>

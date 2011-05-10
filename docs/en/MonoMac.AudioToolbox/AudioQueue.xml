@@ -1,7 +1,8 @@
 <Type Name="AudioQueue" FullName="MonoMac.AudioToolbox.AudioQueue">
   <TypeSignature Language="C#" Value="public class AudioQueue : IDisposable" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit AudioQueue extends System.Object implements class System.IDisposable" />
   <AssemblyInfo>
-    <AssemblyName>monomac</AssemblyName>
+    <AssemblyName>MonoMac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -19,6 +20,7 @@
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public AudioQueue ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -31,6 +33,7 @@
     </Member>
     <Member MemberName="AddListener">
       <MemberSignature Language="C#" Value="public void AddListener (MonoMac.AudioToolbox.AudioQueueProperty id, MonoMac.AudioToolbox.AudioQueue.AudioQueuePropertyChanged callback);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddListener(valuetype MonoMac.AudioToolbox.AudioQueueProperty id, class MonoMac.AudioToolbox.AudioQueue/AudioQueuePropertyChanged callback) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -51,6 +54,7 @@
     </Member>
     <Member MemberName="AllocateBuffer">
       <MemberSignature Language="C#" Value="public MonoMac.AudioToolbox.AudioQueueStatus AllocateBuffer (int bufferSize, out IntPtr audioQueueBuffer);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype MonoMac.AudioToolbox.AudioQueueStatus AllocateBuffer(int32 bufferSize, native int audioQueueBuffer) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -72,6 +76,7 @@
     </Member>
     <Member MemberName="AllocateBufferWithPacketDescriptors">
       <MemberSignature Language="C#" Value="public MonoMac.AudioToolbox.AudioQueueStatus AllocateBufferWithPacketDescriptors (int bufferSize, int nPackets, out IntPtr audioQueueBuffer);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype MonoMac.AudioToolbox.AudioQueueStatus AllocateBufferWithPacketDescriptors(int32 bufferSize, int32 nPackets, native int audioQueueBuffer) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -93,8 +98,25 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="AudioStreamPacketDescription">
+      <MemberSignature Language="C#" Value="public MonoMac.AudioToolbox.AudioStreamPacketDescription AudioStreamPacketDescription { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.AudioToolbox.AudioStreamPacketDescription AudioStreamPacketDescription" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.AudioToolbox.AudioStreamPacketDescription</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="ChannelLayout">
-      <MemberSignature Language="C#" Value="public MonoMac.AudioToolbox.AudioChannelLayout ChannelLayout { set; get; }" />
+      <MemberSignature Language="C#" Value="public MonoMac.AudioToolbox.AudioChannelLayout ChannelLayout { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AudioToolbox.AudioChannelLayout ChannelLayout" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -110,6 +132,7 @@
     </Member>
     <Member MemberName="CreateTimeline">
       <MemberSignature Language="C#" Value="public MonoMac.AudioToolbox.AudioQueueTimeline CreateTimeline ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.AudioToolbox.AudioQueueTimeline CreateTimeline() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -125,7 +148,8 @@
       </Docs>
     </Member>
     <Member MemberName="CurrentDevice">
-      <MemberSignature Language="C#" Value="public string CurrentDevice { set; get; }" />
+      <MemberSignature Language="C#" Value="public string CurrentDevice { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string CurrentDevice" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -139,8 +163,41 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="CurrentLevelMeter">
+      <MemberSignature Language="C#" Value="public MonoMac.AudioToolbox.AudioQueueLevelMeterState[] CurrentLevelMeter { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.AudioToolbox.AudioQueueLevelMeterState[] CurrentLevelMeter" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.AudioToolbox.AudioQueueLevelMeterState[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CurrentLevelMeterDB">
+      <MemberSignature Language="C#" Value="public MonoMac.AudioToolbox.AudioQueueLevelMeterState[] CurrentLevelMeterDB { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.AudioToolbox.AudioQueueLevelMeterState[] CurrentLevelMeterDB" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.AudioToolbox.AudioQueueLevelMeterState[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="CurrentTime">
       <MemberSignature Language="C#" Value="public MonoMac.AudioToolbox.AudioTimeStamp CurrentTime { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.AudioToolbox.AudioTimeStamp CurrentTime" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -154,8 +211,25 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="DecodeBufferSizeFrames">
+      <MemberSignature Language="C#" Value="public int DecodeBufferSizeFrames { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 DecodeBufferSizeFrames" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="DeviceChannels">
       <MemberSignature Language="C#" Value="public int DeviceChannels { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 DeviceChannels" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -171,6 +245,7 @@
     </Member>
     <Member MemberName="Dispose">
       <MemberSignature Language="C#" Value="public void Dispose ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Dispose() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -189,6 +264,7 @@
     </Member>
     <Member MemberName="Dispose">
       <MemberSignature Language="C#" Value="public virtual void Dispose (bool disposing, bool immediate);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Dispose(bool disposing, bool immediate) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -214,8 +290,25 @@
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName="EnableLevelMetering">
+      <MemberSignature Language="C#" Value="public bool EnableLevelMetering { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool EnableLevelMetering" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="EnqueueBuffer">
       <MemberSignature Language="C#" Value="public MonoMac.AudioToolbox.AudioQueueStatus EnqueueBuffer (IntPtr audioQueueBuffer, int bytes, MonoMac.AudioToolbox.AudioStreamPacketDescription[] desc);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype MonoMac.AudioToolbox.AudioQueueStatus EnqueueBuffer(native int audioQueueBuffer, int32 bytes, valuetype MonoMac.AudioToolbox.AudioStreamPacketDescription[] desc) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -239,6 +332,7 @@
     </Member>
     <Member MemberName="FillAudioData">
       <MemberSignature Language="C#" Value="public static void FillAudioData (IntPtr audioQueueBuffer, int offset, IntPtr source, int sourceOffset, int size);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void FillAudioData(native int audioQueueBuffer, int32 offset, native int source, int32 sourceOffset, int32 size) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -265,6 +359,7 @@
     </Member>
     <Member MemberName="Flush">
       <MemberSignature Language="C#" Value="public MonoMac.AudioToolbox.AudioQueueStatus Flush ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype MonoMac.AudioToolbox.AudioQueueStatus Flush() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -281,6 +376,7 @@
     </Member>
     <Member MemberName="FreeBuffer">
       <MemberSignature Language="C#" Value="public void FreeBuffer (IntPtr audioQueueBuffer);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void FreeBuffer(native int audioQueueBuffer) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -299,6 +395,7 @@
     </Member>
     <Member MemberName="gch">
       <MemberSignature Language="C#" Value="protected System.Runtime.InteropServices.GCHandle gch;" />
+      <MemberSignature Language="ILAsm" Value=".field familyorassembly valuetype System.Runtime.InteropServices.GCHandle gch" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -313,6 +410,7 @@
     </Member>
     <Member MemberName="GetCurrentTime">
       <MemberSignature Language="C#" Value="public MonoMac.AudioToolbox.AudioQueueStatus GetCurrentTime (MonoMac.AudioToolbox.AudioQueueTimeline timeline, ref MonoMac.AudioToolbox.AudioTimeStamp time, ref bool timelineDiscontinuty);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype MonoMac.AudioToolbox.AudioQueueStatus GetCurrentTime(class MonoMac.AudioToolbox.AudioQueueTimeline timeline, valuetype MonoMac.AudioToolbox.AudioTimeStamp time, bool timelineDiscontinuty) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -336,6 +434,7 @@
     </Member>
     <Member MemberName="GetNearestStartTime">
       <MemberSignature Language="C#" Value="public MonoMac.AudioToolbox.AudioTimeStamp GetNearestStartTime (MonoMac.AudioToolbox.AudioTimeStamp requestedStartTime);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype MonoMac.AudioToolbox.AudioTimeStamp GetNearestStartTime(valuetype MonoMac.AudioToolbox.AudioTimeStamp requestedStartTime) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -355,6 +454,7 @@
     </Member>
     <Member MemberName="GetProperty">
       <MemberSignature Language="C#" Value="public IntPtr GetProperty (MonoMac.AudioToolbox.AudioQueueProperty property, out int size);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance native int GetProperty(valuetype MonoMac.AudioToolbox.AudioQueueProperty property, int32 size) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -376,6 +476,7 @@
     </Member>
     <Member MemberName="GetProperty">
       <MemberSignature Language="C#" Value="public bool GetProperty (MonoMac.AudioToolbox.AudioQueueProperty property, ref int dataSize, IntPtr outdata);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool GetProperty(valuetype MonoMac.AudioToolbox.AudioQueueProperty property, int32 dataSize, native int outdata) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -399,6 +500,7 @@
     </Member>
     <Member MemberName="GetProperty&lt;T&gt;">
       <MemberSignature Language="C#" Value="public T GetProperty&lt;T&gt; (MonoMac.AudioToolbox.AudioQueueProperty property);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance !!T GetProperty&lt;T&gt;(valuetype MonoMac.AudioToolbox.AudioQueueProperty property) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -422,6 +524,7 @@
     </Member>
     <Member MemberName="handle">
       <MemberSignature Language="C#" Value="protected IntPtr handle;" />
+      <MemberSignature Language="ILAsm" Value=".field familyorassembly native int handle" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -436,6 +539,7 @@
     </Member>
     <Member MemberName="Handle">
       <MemberSignature Language="C#" Value="public IntPtr Handle { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance native int Handle" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -451,6 +555,7 @@
     </Member>
     <Member MemberName="IsRunning">
       <MemberSignature Language="C#" Value="public bool IsRunning { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsRunning" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -465,7 +570,8 @@
       </Docs>
     </Member>
     <Member MemberName="MagicCookie">
-      <MemberSignature Language="C#" Value="public byte[] MagicCookie { set; get; }" />
+      <MemberSignature Language="C#" Value="public byte[] MagicCookie { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int8[] MagicCookie" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -479,8 +585,25 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="MaximumOutputPacketSize">
+      <MemberSignature Language="C#" Value="public int MaximumOutputPacketSize { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 MaximumOutputPacketSize" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Pause">
       <MemberSignature Language="C#" Value="public MonoMac.AudioToolbox.AudioQueueStatus Pause ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype MonoMac.AudioToolbox.AudioQueueStatus Pause() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -497,6 +620,7 @@
     </Member>
     <Member MemberName="Prime">
       <MemberSignature Language="C#" Value="public MonoMac.AudioToolbox.AudioQueueStatus Prime (int toPrepare, out int prepared);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype MonoMac.AudioToolbox.AudioQueueStatus Prime(int32 toPrepare, int32 prepared) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -518,6 +642,7 @@
     </Member>
     <Member MemberName="QueueDispose">
       <MemberSignature Language="C#" Value="public void QueueDispose ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void QueueDispose() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -533,6 +658,7 @@
     </Member>
     <Member MemberName="RemoveListener">
       <MemberSignature Language="C#" Value="public void RemoveListener (MonoMac.AudioToolbox.AudioQueueProperty id, MonoMac.AudioToolbox.AudioQueue.AudioQueuePropertyChanged callback);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveListener(valuetype MonoMac.AudioToolbox.AudioQueueProperty id, class MonoMac.AudioToolbox.AudioQueue/AudioQueuePropertyChanged callback) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -553,6 +679,7 @@
     </Member>
     <Member MemberName="Reset">
       <MemberSignature Language="C#" Value="public MonoMac.AudioToolbox.AudioQueueStatus Reset ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype MonoMac.AudioToolbox.AudioQueueStatus Reset() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -569,6 +696,7 @@
     </Member>
     <Member MemberName="SampleRate">
       <MemberSignature Language="C#" Value="public double SampleRate { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64 SampleRate" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -584,6 +712,7 @@
     </Member>
     <Member MemberName="SetProperty">
       <MemberSignature Language="C#" Value="public bool SetProperty (MonoMac.AudioToolbox.AudioQueueProperty property, int dataSize, IntPtr propertyData);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool SetProperty(valuetype MonoMac.AudioToolbox.AudioQueueProperty property, int32 dataSize, native int propertyData) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -607,6 +736,7 @@
     </Member>
     <Member MemberName="Start">
       <MemberSignature Language="C#" Value="public MonoMac.AudioToolbox.AudioQueueStatus Start ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype MonoMac.AudioToolbox.AudioQueueStatus Start() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -623,6 +753,7 @@
     </Member>
     <Member MemberName="Start">
       <MemberSignature Language="C#" Value="public MonoMac.AudioToolbox.AudioQueueStatus Start (MonoMac.AudioToolbox.AudioTimeStamp startTime);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype MonoMac.AudioToolbox.AudioQueueStatus Start(valuetype MonoMac.AudioToolbox.AudioTimeStamp startTime) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -642,6 +773,7 @@
     </Member>
     <Member MemberName="Stop">
       <MemberSignature Language="C#" Value="public MonoMac.AudioToolbox.AudioQueueStatus Stop (bool immediate);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype MonoMac.AudioToolbox.AudioQueueStatus Stop(bool immediate) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -661,6 +793,7 @@
     </Member>
     <Member MemberName="TranslateTime">
       <MemberSignature Language="C#" Value="public MonoMac.AudioToolbox.AudioTimeStamp TranslateTime (MonoMac.AudioToolbox.AudioTimeStamp timeToTranslate);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype MonoMac.AudioToolbox.AudioTimeStamp TranslateTime(valuetype MonoMac.AudioToolbox.AudioTimeStamp timeToTranslate) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -679,7 +812,8 @@
       </Docs>
     </Member>
     <Member MemberName="Volume">
-      <MemberSignature Language="C#" Value="public float Volume { set; get; }" />
+      <MemberSignature Language="C#" Value="public float Volume { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 Volume" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>

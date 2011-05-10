@@ -265,6 +265,27 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="AppendPathWithGlyphs">
+      <MemberSignature Language="C#" Value="public void AppendPathWithGlyphs (uint[] glyphs, MonoMac.AppKit.NSFont font);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AppendPathWithGlyphs(unsigned int32[] glyphs, class MonoMac.AppKit.NSFont font) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="glyphs" Type="System.UInt32[]" />
+        <Parameter Name="font" Type="MonoMac.AppKit.NSFont" />
+      </Parameters>
+      <Docs>
+        <param name="glyphs">To be added.</param>
+        <param name="font">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="AppendPathWithOvalInRect">
       <MemberSignature Language="C#" Value="public virtual void AppendPathWithOvalInRect (System.Drawing.RectangleF rect);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void AppendPathWithOvalInRect(valuetype System.Drawing.RectangleF rect) cil managed" />
@@ -285,6 +306,49 @@ public class MyClass : BaseClass {
       </Parameters>
       <Docs>
         <param name="rect">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AppendPathWithPackedGlyphs">
+      <MemberSignature Language="C#" Value="public virtual void AppendPathWithPackedGlyphs (IntPtr packedGlyphs);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void AppendPathWithPackedGlyphs(native int packedGlyphs) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("appendBezierPathWithPackedGlyphs:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="packedGlyphs" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="packedGlyphs">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AppendPathWithPoints">
+      <MemberSignature Language="C#" Value="public void AppendPathWithPoints (System.Drawing.PointF[] points);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AppendPathWithPoints(valuetype System.Drawing.PointF[] points) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="points" Type="System.Drawing.PointF[]" />
+      </Parameters>
+      <Docs>
+        <param name="points">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -380,35 +444,6 @@ public class MyClass : BaseClass {
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="BezierPathWithRoundedRect">
-      <MemberSignature Language="C#" Value="public static MonoMac.AppKit.NSBezierPath BezierPathWithRoundedRect (System.Drawing.RectangleF rect, float xRadius, float yRadius);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.AppKit.NSBezierPath BezierPathWithRoundedRect(valuetype System.Drawing.RectangleF rect, float32 xRadius, float32 yRadius) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>MonoMac.Foundation.Export("bezierPathWithRoundedRect:xRadius:yRadius:")</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>MonoMac.AppKit.NSBezierPath</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="rect" Type="System.Drawing.RectangleF" />
-        <Parameter Name="xRadius" Type="System.Single" />
-        <Parameter Name="yRadius" Type="System.Single" />
-      </Parameters>
-      <Docs>
-        <param name="rect">To be added.</param>
-        <param name="xRadius">To be added.</param>
-        <param name="yRadius">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -542,28 +577,6 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="CreateBezierPath">
-      <MemberSignature Language="C#" Value="public static MonoMac.AppKit.NSBezierPath CreateBezierPath ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.AppKit.NSBezierPath CreateBezierPath() cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>MonoMac.Foundation.Export("bezierPath")</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>MonoMac.AppKit.NSBezierPath</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="CurrentPoint">
       <MemberSignature Language="C#" Value="public virtual System.Drawing.PointF CurrentPoint { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Drawing.PointF CurrentPoint" />
@@ -614,7 +627,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="DefaultFlatness">
-      <MemberSignature Language="C#" Value="public static float DefaultFlatness { set; get; }" />
+      <MemberSignature Language="C#" Value="public static float DefaultFlatness { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property float32 DefaultFlatness" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -638,7 +651,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="DefaultLineCapStyle">
-      <MemberSignature Language="C#" Value="public static MonoMac.AppKit.NSLineCapStyle DefaultLineCapStyle { set; get; }" />
+      <MemberSignature Language="C#" Value="public static MonoMac.AppKit.NSLineCapStyle DefaultLineCapStyle { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property valuetype MonoMac.AppKit.NSLineCapStyle DefaultLineCapStyle" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -662,7 +675,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="DefaultLineJoinStyle">
-      <MemberSignature Language="C#" Value="public static MonoMac.AppKit.NSLineJoinStyle DefaultLineJoinStyle { set; get; }" />
+      <MemberSignature Language="C#" Value="public static MonoMac.AppKit.NSLineJoinStyle DefaultLineJoinStyle { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property valuetype MonoMac.AppKit.NSLineJoinStyle DefaultLineJoinStyle" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -686,7 +699,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="DefaultLineWidth">
-      <MemberSignature Language="C#" Value="public static float DefaultLineWidth { set; get; }" />
+      <MemberSignature Language="C#" Value="public static float DefaultLineWidth { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property float32 DefaultLineWidth" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -710,7 +723,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="DefaultMiterLimit">
-      <MemberSignature Language="C#" Value="public static float DefaultMiterLimit { set; get; }" />
+      <MemberSignature Language="C#" Value="public static float DefaultMiterLimit { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property float32 DefaultMiterLimit" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -734,7 +747,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="DefaultWindingRule">
-      <MemberSignature Language="C#" Value="public static MonoMac.AppKit.NSWindingRule DefaultWindingRule { set; get; }" />
+      <MemberSignature Language="C#" Value="public static MonoMac.AppKit.NSWindingRule DefaultWindingRule { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property valuetype MonoMac.AppKit.NSWindingRule DefaultWindingRule" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -754,6 +767,32 @@ public class MyClass : BaseClass {
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DrawPackedGlyphsAtPoint">
+      <MemberSignature Language="C#" Value="public static void DrawPackedGlyphsAtPoint (IntPtr packedGlyphs, System.Drawing.PointF point);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawPackedGlyphsAtPoint(native int packedGlyphs, valuetype System.Drawing.PointF point) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("drawPackedGlyphs:atPoint:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="packedGlyphs" Type="System.IntPtr" />
+        <Parameter Name="point" Type="System.Drawing.PointF" />
+      </Parameters>
+      <Docs>
+        <param name="packedGlyphs">To be added.</param>
+        <param name="point">To be added.</param>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -777,6 +816,28 @@ public class MyClass : BaseClass {
       </Parameters>
       <Docs>
         <param name="index">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ElementAt">
+      <MemberSignature Language="C#" Value="public MonoMac.AppKit.NSBezierPathElement ElementAt (int index, out System.Drawing.PointF[] points);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype MonoMac.AppKit.NSBezierPathElement ElementAt(int32 index, valuetype System.Drawing.PointF[] points) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.AppKit.NSBezierPathElement</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="index" Type="System.Int32" />
+        <Parameter Name="points" Type="System.Drawing.PointF[]&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="index">To be added.</param>
+        <param name="points">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -849,7 +910,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Flatness">
-      <MemberSignature Language="C#" Value="public virtual float Flatness { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual float Flatness { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 Flatness" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -922,6 +983,56 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="FromRoundedRect">
+      <MemberSignature Language="C#" Value="public static MonoMac.AppKit.NSBezierPath FromRoundedRect (System.Drawing.RectangleF rect, float xRadius, float yRadius);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.AppKit.NSBezierPath FromRoundedRect(valuetype System.Drawing.RectangleF rect, float32 xRadius, float32 yRadius) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("bezierPathWithRoundedRect:xRadius:yRadius:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AppKit.NSBezierPath</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="rect" Type="System.Drawing.RectangleF" />
+        <Parameter Name="xRadius" Type="System.Single" />
+        <Parameter Name="yRadius" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="rect">To be added.</param>
+        <param name="xRadius">To be added.</param>
+        <param name="yRadius">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetLineDash">
+      <MemberSignature Language="C#" Value="public void GetLineDash (out float[] pattern, out float phase);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void GetLineDash(float32[] pattern, float32 phase) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pattern" Type="System.Single[]&amp;" RefType="out" />
+        <Parameter Name="phase" Type="System.Single&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="pattern">To be added.</param>
+        <param name="phase">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="IsEmpty">
       <MemberSignature Language="C#" Value="public virtual bool IsEmpty { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool IsEmpty" />
@@ -944,7 +1055,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="LineCapStyle">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSLineCapStyle LineCapStyle { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSLineCapStyle LineCapStyle { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.AppKit.NSLineCapStyle LineCapStyle" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -968,7 +1079,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="LineJoinStyle">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSLineJoinStyle LineJoinStyle { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSLineJoinStyle LineJoinStyle { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.AppKit.NSLineJoinStyle LineJoinStyle" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -1016,7 +1127,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="LineWidth">
-      <MemberSignature Language="C#" Value="public virtual float LineWidth { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual float LineWidth { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 LineWidth" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -1040,7 +1151,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="MiterLimit">
-      <MemberSignature Language="C#" Value="public virtual float MiterLimit { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual float MiterLimit { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 MiterLimit" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -1184,6 +1295,27 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="SetAssociatedPointsAtIndex">
+      <MemberSignature Language="C#" Value="public void SetAssociatedPointsAtIndex (System.Drawing.PointF[] points, int index);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetAssociatedPointsAtIndex(valuetype System.Drawing.PointF[] points, int32 index) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="points" Type="System.Drawing.PointF[]" />
+        <Parameter Name="index" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="points">To be added.</param>
+        <param name="index">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="SetClip">
       <MemberSignature Language="C#" Value="public virtual void SetClip ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetClip() cil managed" />
@@ -1201,6 +1333,27 @@ public class MyClass : BaseClass {
       </ReturnValue>
       <Parameters />
       <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetLineDash">
+      <MemberSignature Language="C#" Value="public void SetLineDash (float[] pattern, float phase);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetLineDash(float32[] pattern, float32 phase) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pattern" Type="System.Single[]" />
+        <Parameter Name="phase" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="pattern">To be added.</param>
+        <param name="phase">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -1301,7 +1454,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="WindingRule">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSWindingRule WindingRule { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSWindingRule WindingRule { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.AppKit.NSWindingRule WindingRule" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>

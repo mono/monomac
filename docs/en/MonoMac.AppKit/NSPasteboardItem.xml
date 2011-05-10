@@ -104,9 +104,25 @@ public class MyClass : BaseClass {
         </remarks>
       </Docs>
     </Member>
-    <Member MemberName="AvailableTypeFromArray">
-      <MemberSignature Language="C#" Value="public virtual string AvailableTypeFromArray (string[] types);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string AvailableTypeFromArray(string[] types) cil managed" />
+    <Member MemberName="ClassHandle">
+      <MemberSignature Language="C#" Value="public override IntPtr ClassHandle { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance native int ClassHandle" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.IntPtr</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The handle for this class.</summary>
+        <value>The pointer to the Objective-C class.</value>
+        <remarks>Each MonoMac class mirrors an unmanaged Objective-C class.   This value contains the pointer to the Objective-C class, it is similar to calling objc_getClass with the object name.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetAvailableTypeFromArray">
+      <MemberSignature Language="C#" Value="public virtual string GetAvailableTypeFromArray (string[] types);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string GetAvailableTypeFromArray(string[] types) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -129,25 +145,9 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="ClassHandle">
-      <MemberSignature Language="C#" Value="public override IntPtr ClassHandle { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance native int ClassHandle" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.IntPtr</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>The handle for this class.</summary>
-        <value>The pointer to the Objective-C class.</value>
-        <remarks>Each MonoMac class mirrors an unmanaged Objective-C class.   This value contains the pointer to the Objective-C class, it is similar to calling objc_getClass with the object name.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="DataForType">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSData DataForType (string type);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class MonoMac.Foundation.NSData DataForType(string type) cil managed" />
+    <Member MemberName="GetDataForType">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSData GetDataForType (string type);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class MonoMac.Foundation.NSData GetDataForType(string type) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -170,9 +170,9 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="PropertyListForType">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject PropertyListForType (string type);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class MonoMac.Foundation.NSObject PropertyListForType(string type) cil managed" />
+    <Member MemberName="GetPropertyListForType">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject GetPropertyListForType (string type);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class MonoMac.Foundation.NSObject GetPropertyListForType(string type) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -195,9 +195,34 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="SetDataforType">
-      <MemberSignature Language="C#" Value="public virtual bool SetDataforType (MonoMac.Foundation.NSData data, string type);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool SetDataforType(class MonoMac.Foundation.NSData data, string type) cil managed" />
+    <Member MemberName="GetStringForType">
+      <MemberSignature Language="C#" Value="public virtual string GetStringForType (string type);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string GetStringForType(string type) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("stringForType:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="type" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="type">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetDataForType">
+      <MemberSignature Language="C#" Value="public virtual bool SetDataForType (MonoMac.Foundation.NSData data, string type);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool SetDataForType(class MonoMac.Foundation.NSData data, string type) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -222,9 +247,9 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="SetDataProviderforTypes">
-      <MemberSignature Language="C#" Value="public virtual bool SetDataProviderforTypes (MonoMac.AppKit.NSPasteboardItemDataProvider dataProvider, string[] types);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool SetDataProviderforTypes(class MonoMac.AppKit.NSPasteboardItemDataProvider dataProvider, string[] types) cil managed" />
+    <Member MemberName="SetDataProviderForTypes">
+      <MemberSignature Language="C#" Value="public virtual bool SetDataProviderForTypes (MonoMac.AppKit.NSPasteboardItemDataProvider dataProvider, string[] types);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool SetDataProviderForTypes(class MonoMac.AppKit.NSPasteboardItemDataProvider dataProvider, string[] types) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -249,9 +274,9 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="SetPropertyListforType">
-      <MemberSignature Language="C#" Value="public virtual bool SetPropertyListforType (MonoMac.Foundation.NSObject propertyList, string type);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool SetPropertyListforType(class MonoMac.Foundation.NSObject propertyList, string type) cil managed" />
+    <Member MemberName="SetPropertyListForType">
+      <MemberSignature Language="C#" Value="public virtual bool SetPropertyListForType (MonoMac.Foundation.NSObject propertyList, string type);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool SetPropertyListForType(class MonoMac.Foundation.NSObject propertyList, string type) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -276,9 +301,9 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="SetStringforType">
-      <MemberSignature Language="C#" Value="public virtual bool SetStringforType (string str, string type);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool SetStringforType(string str, string type) cil managed" />
+    <Member MemberName="SetStringForType">
+      <MemberSignature Language="C#" Value="public virtual bool SetStringForType (string str, string type);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool SetStringForType(string str, string type) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -297,31 +322,6 @@ public class MyClass : BaseClass {
       </Parameters>
       <Docs>
         <param name="str">To be added.</param>
-        <param name="type">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="StringForType">
-      <MemberSignature Language="C#" Value="public virtual string StringForType (string type);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string StringForType(string type) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>MonoMac.Foundation.Export("stringForType:")</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="type" Type="System.String" />
-      </Parameters>
-      <Docs>
         <param name="type">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>

@@ -1,6 +1,6 @@
 <Type Name="NSDraggingInfo" FullName="MonoMac.AppKit.NSDraggingInfo">
-  <TypeSignature Language="C#" Value="public abstract class NSDraggingInfo : MonoMac.Foundation.NSObject" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit NSDraggingInfo extends MonoMac.Foundation.NSObject" />
+  <TypeSignature Language="C#" Value="public class NSDraggingInfo : MonoMac.Foundation.NSObject" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit NSDraggingInfo extends MonoMac.Foundation.NSObject" />
   <AssemblyInfo>
     <AssemblyName>MonoMac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -11,10 +11,7 @@
   <Interfaces />
   <Attributes>
     <Attribute>
-      <AttributeName>MonoMac.Foundation.Model</AttributeName>
-    </Attribute>
-    <Attribute>
-      <AttributeName>MonoMac.Foundation.Register("NSDraggingInfo")</AttributeName>
+      <AttributeName>MonoMac.Foundation.Register("NSDragDestination")</AttributeName>
     </Attribute>
   </Attributes>
   <Docs>
@@ -107,8 +104,24 @@ public class MyClass : BaseClass {
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName="ClassHandle">
+      <MemberSignature Language="C#" Value="public override IntPtr ClassHandle { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance native int ClassHandle" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.IntPtr</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The handle for this class.</summary>
+        <value>The pointer to the Objective-C class.</value>
+        <remarks>Each MonoMac class mirrors an unmanaged Objective-C class.   This value contains the pointer to the Objective-C class, it is similar to calling objc_getClass with the object name.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="DraggedImage">
-      <MemberSignature Language="C#" Value="public abstract MonoMac.AppKit.NSImage DraggedImage { get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSImage DraggedImage { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AppKit.NSImage DraggedImage" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -129,7 +142,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="DraggedImageLocation">
-      <MemberSignature Language="C#" Value="public abstract System.Drawing.PointF DraggedImageLocation { get; }" />
+      <MemberSignature Language="C#" Value="public virtual System.Drawing.PointF DraggedImageLocation { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Drawing.PointF DraggedImageLocation" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -149,8 +162,29 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="DraggingDestinationWindow">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSWindow DraggingDestinationWindow { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AppKit.NSWindow DraggingDestinationWindow" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("draggingDestinationWindow")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AppKit.NSWindow</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="DraggingLocation">
-      <MemberSignature Language="C#" Value="public abstract System.Drawing.PointF DraggingLocation { get; }" />
+      <MemberSignature Language="C#" Value="public virtual System.Drawing.PointF DraggingLocation { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Drawing.PointF DraggingLocation" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -171,7 +205,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="DraggingPasteboard">
-      <MemberSignature Language="C#" Value="public abstract MonoMac.AppKit.NSPasteboard DraggingPasteboard { get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSPasteboard DraggingPasteboard { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AppKit.NSPasteboard DraggingPasteboard" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -192,7 +226,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="DraggingSequenceNumber">
-      <MemberSignature Language="C#" Value="public abstract int DraggingSequenceNumber { get; }" />
+      <MemberSignature Language="C#" Value="public virtual int DraggingSequenceNumber { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance int32 DraggingSequenceNumber" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -213,7 +247,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="DraggingSource">
-      <MemberSignature Language="C#" Value="public abstract MonoMac.Foundation.NSObject DraggingSource { get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject DraggingSource { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSObject DraggingSource" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -234,7 +268,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="DraggingSourceOperationMask">
-      <MemberSignature Language="C#" Value="public abstract MonoMac.AppKit.NSDragOperation DraggingSourceOperationMask { get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSDragOperation DraggingSourceOperationMask { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.AppKit.NSDragOperation DraggingSourceOperationMask" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -255,7 +289,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="PromisedFilesDroppedAtDestination">
-      <MemberSignature Language="C#" Value="public abstract string[] PromisedFilesDroppedAtDestination (MonoMac.Foundation.NSUrl dropDestination);" />
+      <MemberSignature Language="C#" Value="public virtual string[] PromisedFilesDroppedAtDestination (MonoMac.Foundation.NSUrl dropDestination);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string[] PromisedFilesDroppedAtDestination(class MonoMac.Foundation.NSUrl dropDestination) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
@@ -280,7 +314,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="SlideDraggedImageTo">
-      <MemberSignature Language="C#" Value="public abstract void SlideDraggedImageTo (System.Drawing.PointF screenPoint);" />
+      <MemberSignature Language="C#" Value="public virtual void SlideDraggedImageTo (System.Drawing.PointF screenPoint);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SlideDraggedImageTo(valuetype System.Drawing.PointF screenPoint) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>

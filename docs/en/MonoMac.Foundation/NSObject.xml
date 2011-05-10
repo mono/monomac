@@ -671,6 +671,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="FromObject">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSObject FromObject (object obj);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSObject FromObject(object obj) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -786,7 +787,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Handle">
-      <MemberSignature Language="C#" Value="public IntPtr Handle { set; get; }" />
+      <MemberSignature Language="C#" Value="public IntPtr Handle { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance native int Handle" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -1099,6 +1100,29 @@ public class MyClass : BaseClass {
         <param name="keyPath">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetValueForKeyPath">
+      <MemberSignature Language="C#" Value="public void SetValueForKeyPath (IntPtr handle, MonoMac.Foundation.NSString keyPath);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetValueForKeyPath(native int handle, class MonoMac.Foundation.NSString keyPath) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="handle" Type="System.IntPtr" />
+        <Parameter Name="keyPath" Type="MonoMac.Foundation.NSString" />
+      </Parameters>
+      <Docs>
+        <param name="handle">Pointer (handle) to the unmanaged object.</param>
+        <param name="keyPath">To be added.</param>
+        <summary>A constructor used when creating managed representations of unmanaged objects;  Called by the runtime.</summary>
+        <remarks>
+          <para>This constructor is invoked by the runtime infrastructure (<see cref="M:MonoMac.ObjCRuntime.GetNSObject (System.IntPtr)" />) to create a new managed representation for a pointer to an unmanaged Objective-C object.    You should not invoke this method directly, instead you should call the GetNSObject method as it will prevent two instances of a managed object to point to the same native object.</para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="SetValueForUndefinedKey">

@@ -42,6 +42,10 @@ namespace MonoMac {
 		public const string SecurityLibrary = "/System/Library/Frameworks/Security.framework/Security";
 		public const string CoreVideoLibrary = "/System/Library/Frameworks/CoreVideo.framework/CoreVideo";
 		public const string QuartzComposerLibrary = "/System/Library/Frameworks/Quartz.framework/Frameworks/QuartzComposer.framework/QuartzComposer";
-		
-	}
+		public const string CoreWlanLibrary = "/System/Library/Frameworks/CoreWLAN.framework/CoreWLAN";
+		public const string PdfKitLibrary = "/System/Library/Frameworks/Quartz.framework/Frameworks/PDFKit.framework/PDFKit";
+		public const string ImageKitLibrary = "/System/Library/Frameworks/Quartz.framework/Frameworks/ImageKit.framework/ImageKit";
+		public const string OpenGLLibrary = "/System/Library/Frameworks/OpenGL.framework/OpenGL";
+		public const string CoreMediaLibrary = "/System/Library/PrivateFrameworks/CoreMedia.framework/Versions/A/CoreMedia";
+        }
 }

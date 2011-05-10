@@ -1,7 +1,8 @@
 <Type Name="NSUrlCache" FullName="MonoMac.Foundation.NSUrlCache">
   <TypeSignature Language="C#" Value="public class NSUrlCache : MonoMac.Foundation.NSObject" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit NSUrlCache extends MonoMac.Foundation.NSObject" />
   <AssemblyInfo>
-    <AssemblyName>monomac</AssemblyName>
+    <AssemblyName>MonoMac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -20,6 +21,7 @@
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSUrlCache ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -37,6 +39,7 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSUrlCache (MonoMac.Foundation.NSCoder coder);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSCoder coder) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -57,6 +60,7 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSUrlCache (MonoMac.Foundation.NSObjectFlag t);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSObjectFlag t) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -84,6 +88,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSUrlCache (IntPtr handle);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int handle) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -101,6 +106,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSUrlCache (uint memoryCapacity, uint diskCapacity, string diskPath);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(unsigned int32 memoryCapacity, unsigned int32 diskCapacity, string diskPath) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -125,6 +131,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="CachedResponseForRequest">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSCachedUrlResponse CachedResponseForRequest (MonoMac.Foundation.NSUrlRequest request);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class MonoMac.Foundation.NSCachedUrlResponse CachedResponseForRequest(class MonoMac.Foundation.NSUrlRequest request) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -149,6 +156,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="ClassHandle">
       <MemberSignature Language="C#" Value="public override IntPtr ClassHandle { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance native int ClassHandle" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -164,30 +172,16 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="CurrentDiskUsage">
       <MemberSignature Language="C#" Value="public virtual uint CurrentDiskUsage { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 CurrentDiskUsage" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.UInt32</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("currentDiskUsage")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="CurrentMemoryUsage">
-      <MemberSignature Language="C#" Value="public virtual uint CurrentMemoryUsage { get; }" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
@@ -196,18 +190,19 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="CurrentMemoryUsage">
+      <MemberSignature Language="C#" Value="public virtual uint CurrentMemoryUsage { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 CurrentMemoryUsage" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("currentMemoryUsage")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="DiskCapacity">
-      <MemberSignature Language="C#" Value="public virtual uint DiskCapacity { set; get; }" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
@@ -216,6 +211,14 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="DiskCapacity">
+      <MemberSignature Language="C#" Value="public virtual uint DiskCapacity { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 DiskCapacity" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("diskCapacity")</AttributeName>
@@ -224,13 +227,6 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setDiskCapacity:")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="MemoryCapacity">
-      <MemberSignature Language="C#" Value="public virtual uint MemoryCapacity { set; get; }" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
@@ -239,6 +235,14 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="MemoryCapacity">
+      <MemberSignature Language="C#" Value="public virtual uint MemoryCapacity { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MemoryCapacity" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("memoryCapacity")</AttributeName>
@@ -247,9 +251,18 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setMemoryCapacity:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="RemoveAllCachedResponses">
       <MemberSignature Language="C#" Value="public virtual void RemoveAllCachedResponses ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void RemoveAllCachedResponses() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -270,6 +283,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="RemoveCachedResponse">
       <MemberSignature Language="C#" Value="public virtual void RemoveCachedResponse (MonoMac.Foundation.NSUrlRequest request);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void RemoveCachedResponse(class MonoMac.Foundation.NSUrlRequest request) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -292,19 +306,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="SharedCache">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSUrlCache SharedCache { set; get; }" />
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSUrlCache SharedCache { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSUrlCache SharedCache" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSUrlCache</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("sharedURLCache")</AttributeName>
@@ -313,9 +320,18 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setSharedURLCache:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSUrlCache</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="StoreCachedResponse">
       <MemberSignature Language="C#" Value="public virtual void StoreCachedResponse (MonoMac.Foundation.NSCachedUrlResponse cachedResponse, MonoMac.Foundation.NSUrlRequest forRequest);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void StoreCachedResponse(class MonoMac.Foundation.NSCachedUrlResponse cachedResponse, class MonoMac.Foundation.NSUrlRequest forRequest) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>

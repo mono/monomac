@@ -15,8 +15,27 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Draws a bezier curve and composes the result with its first sublayer.</summary>
+    <remarks>
+      <para>
+   When you want to use one of the CALayer subclasses as your UIView's backing layer, you need to add the following code snippet to your class:
+</para>
+      <example>
+        <code lang="C#">
+class MyView : UIView {
+    //
+    // This instructs the runtime that whenever a MyView is created
+    // that it should instantiate a CAShapeLayer and assign that to the
+    // UIView.Layer property
+    //
+    [Export ("layerClass")]
+    public static Class LayerClass () {
+        return new Class (typeof (CAShapeLayer));
+    }
+}
+  </code>
+      </example>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -104,6 +123,54 @@ public class MyClass : BaseClass {
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName="CapButt">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString CapButt { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString CapButt" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CapRound">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString CapRound { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString CapRound" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CapSquare">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString CapSquare { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString CapSquare" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="ClassHandle">
       <MemberSignature Language="C#" Value="public override IntPtr ClassHandle { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance native int ClassHandle" />
@@ -120,8 +187,30 @@ public class MyClass : BaseClass {
         <remarks>Each MonoMac class mirrors an unmanaged Objective-C class.   This value contains the pointer to the Objective-C class, it is similar to calling objc_getClass with the object name.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Create">
+      <MemberSignature Language="C#" Value="public static MonoMac.CoreAnimation.CALayer Create ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.CoreAnimation.CALayer Create() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("layer")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreAnimation.CALayer</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="FillColor">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreGraphics.CGColor FillColor { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreGraphics.CGColor FillColor { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.CoreGraphics.CGColor FillColor" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -145,8 +234,8 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="FillRule">
-      <MemberSignature Language="C#" Value="public virtual string FillRule { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance string FillRule" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSString FillRule { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSString FillRule" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -160,7 +249,87 @@ public class MyClass : BaseClass {
         </Attribute>
       </Attributes>
       <ReturnValue>
-        <ReturnType>System.String</ReturnType>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FillRuleEvenOdd">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString FillRuleEvenOdd { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString FillRuleEvenOdd" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FillRuleNonZero">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString FillRuleNonZero { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString FillRuleNonZero" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="JoinBevel">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString JoinBevel { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString JoinBevel" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="JoinMiter">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString JoinMiter { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString JoinMiter" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="JoinRound">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString JoinRound { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString JoinRound" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -169,8 +338,8 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="LineCap">
-      <MemberSignature Language="C#" Value="public virtual string LineCap { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance string LineCap" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSString LineCap { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSString LineCap" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -184,7 +353,7 @@ public class MyClass : BaseClass {
         </Attribute>
       </Attributes>
       <ReturnValue>
-        <ReturnType>System.String</ReturnType>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -193,7 +362,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="LineDashPattern">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSNumber[] LineDashPattern { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSNumber[] LineDashPattern { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSNumber[] LineDashPattern" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -217,7 +386,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="LineDashPhase">
-      <MemberSignature Language="C#" Value="public virtual float LineDashPhase { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual float LineDashPhase { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 LineDashPhase" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -241,8 +410,8 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="LineJoin">
-      <MemberSignature Language="C#" Value="public virtual string LineJoin { set; get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance string LineJoin" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSString LineJoin { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSString LineJoin" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -256,7 +425,7 @@ public class MyClass : BaseClass {
         </Attribute>
       </Attributes>
       <ReturnValue>
-        <ReturnType>System.String</ReturnType>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -265,7 +434,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="LineWidth">
-      <MemberSignature Language="C#" Value="public virtual float LineWidth { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual float LineWidth { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 LineWidth" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -289,7 +458,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="MiterLimit">
-      <MemberSignature Language="C#" Value="public virtual float MiterLimit { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual float MiterLimit { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 MiterLimit" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -313,7 +482,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Path">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreGraphics.CGPath Path { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreGraphics.CGPath Path { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.CoreGraphics.CGPath Path" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -337,7 +506,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="StrokeColor">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreGraphics.CGColor StrokeColor { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreGraphics.CGColor StrokeColor { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.CoreGraphics.CGColor StrokeColor" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -361,7 +530,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="StrokeEnd">
-      <MemberSignature Language="C#" Value="public virtual float StrokeEnd { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual float StrokeEnd { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 StrokeEnd" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -385,7 +554,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="StrokeStart">
-      <MemberSignature Language="C#" Value="public virtual float StrokeStart { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual float StrokeStart { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 StrokeStart" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>

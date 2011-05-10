@@ -29,15 +29,13 @@ using System;
 using System.Drawing;
 using MonoMac.ObjCRuntime;
 using MonoMac.CoreFoundation;
+using MonoMac.CoreGraphics;
+using MonoMac.AppKit;
 
 namespace MonoMac.Foundation {
 	
 	[BaseType (typeof (NSObject))]
 	public interface NSAffineTransform {
-		[Static]
-		[Export ("transform")]
-		NSAffineTransform Transform ();
-
 		[Export ("initWithTransform:")]
 		IntPtr Constructor (NSAffineTransform transform);
 
@@ -71,9 +69,8 @@ namespace MonoMac.Foundation {
 		[Export ("transformSize:")]
 		SizeF TransformSize (SizeF aSize);
 		
-		// FAK Leave this off for now as it requiers a forward ref to AppKit
-		//[Export ("transformBezierPath:")]
-		//NSBezierPath TransformBezierPath (NSBezierPath path);
+		[Export ("transformBezierPath:")]
+		NSBezierPath TransformBezierPath (NSBezierPath path);
 
 		[Export ("set")]
 		void Set ();
@@ -81,10 +78,8 @@ namespace MonoMac.Foundation {
 		[Export ("concat")]
 		void Concat ();
 
-		//Detected properties
-		// FAK Left off until I understand how to do structs
-		//[Export ("transformStruct")]
-		//NSAffineTransformStruct TransformStruct { get; set; }
+		[Export ("transformStruct")]
+		CGAffineTransform TransformStruct { get; set; }
 	}
 	
 	// FAK Left off until I understand how to do structs
@@ -158,5 +153,68 @@ namespace MonoMac.Foundation {
 	public interface NSAppleEventDescriptor {
 		[Export ("nullDescriptor"), Static]
 		NSAppleEventDescriptor Null { get; }
+	}
+
+	[BaseType (typeof (NSObject))]
+	public interface NSTask {
+		[Export ("launch")]
+		void Launch ();
+
+		[Export ("interrupt")]
+		void Interrupt ();
+
+		[Export ("terminate")]
+		void Terminate ();
+
+		[Export ("suspend")]
+		bool Suspend ();
+
+		[Export ("resume")]
+		bool Resume ();
+
+		[Export ("waitUntilExit")]
+		void WaitUntilExit ();
+
+		[Static]
+		[Export ("launchedTaskWithLaunchPath:arguments:")]
+		NSTask LaunchFromPath (string path, string[] arguments);
+
+		//Detected properties
+		[Export ("launchPath")]
+		string LaunchPath { get; set; }
+
+		[Export ("arguments")]
+		string [] Arguments { get; set; }
+
+		[Export ("environment")]
+		NSDictionary Environment { get; set; }
+
+		[Export ("currentDirectoryPath")]
+		string CurrentDirectoryPath { get; set; }
+
+		[Export ("standardInput")]
+		NSObject StandardInput { get; set; }
+
+		[Export ("standardOutput")]
+		NSObject StandardOutput { get; set; }
+
+		[Export ("standardError")]
+		NSObject StandardError { get; set; }
+
+		[Export ("isRunning")]
+		bool IsRunning { get; }
+
+		[Export ("processIdentifier")]
+		int ProcessIdentifier { get; }
+
+		[Export ("terminationStatus")]
+		int TerminationStatus { get; }
+
+		[Export ("terminationReason")]
+		NSTaskTerminationReason TerminationReason { get; }
+
+		// Fields
+		[Field ("NSTaskDidTerminateNotification")]
+		NSString NSTaskDidTerminateNotification { get; }
 	}
 }

@@ -8,14 +8,6 @@ Binding:
 	And expose INSValidatedUserInterfaceItem in the APIs, instead of the 
 	few places where we have NSObject due to this.
 
-NSOpenGL:
-	various GLEnum values should really take strongly typed enum values
-
-Code:
-	Figure out what code is just a copy of MonoTouch
-	And write a script that populates the code here with a sed job
-	Instead of having a fork
-
 Missing: @interface NSObject(NSDraggingSource)
 	Discussion: perhaps those should be turned into INSDraggingSource?
 	as they are real interfaces
@@ -83,14 +75,10 @@ IsOpaque vs Opaque and other similar properties.
 #import <AppKit/NSGlyphInfo.h>
 #import <AppKit/NSATSTypesetter.h>
 #import <AppKit/NSGlyphGenerator.h>
-#import <AppKit/NSArrayController.h>
 #import <AppKit/NSDictionaryController.h>
 #import <AppKit/NSUserDefaultsController.h>
 #import <AppKit/NSKeyValueBinding.h>
 #import <AppKit/NSPersistentDocument.h>
-#import <AppKit/NSRuleEditor.h>
-#import <AppKit/NSPredicateEditor.h>
-#import <AppKit/NSPredicateEditorRowTemplate.h>
 #import <AppKit/NSTextInputClient.h>
 #import <AppKit/NSTextInputContext.h>
 #import <AppKit/NSUserInterfaceItemSearching.h>

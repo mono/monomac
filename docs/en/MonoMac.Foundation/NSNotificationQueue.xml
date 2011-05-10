@@ -1,7 +1,8 @@
 <Type Name="NSNotificationQueue" FullName="MonoMac.Foundation.NSNotificationQueue">
   <TypeSignature Language="C#" Value="public class NSNotificationQueue : MonoMac.Foundation.NSObject" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit NSNotificationQueue extends MonoMac.Foundation.NSObject" />
   <AssemblyInfo>
-    <AssemblyName>monomac</AssemblyName>
+    <AssemblyName>MonoMac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -20,6 +21,7 @@
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSNotificationQueue ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -37,6 +39,7 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSNotificationQueue (MonoMac.Foundation.NSCoder coder);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSCoder coder) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -57,6 +60,7 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSNotificationQueue (MonoMac.Foundation.NSNotificationCenter notificationCenter);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSNotificationCenter notificationCenter) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -77,6 +81,7 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSNotificationQueue (MonoMac.Foundation.NSObjectFlag t);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSObjectFlag t) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -104,6 +109,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSNotificationQueue (IntPtr handle);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int handle) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -121,6 +127,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="ClassHandle">
       <MemberSignature Language="C#" Value="public override IntPtr ClassHandle { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance native int ClassHandle" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -136,10 +143,16 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="DefaultQueue">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSObject DefaultQueue { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSObject DefaultQueue" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("defaultQueue")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
       </ReturnValue>
@@ -148,14 +161,10 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("defaultQueue")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="DequeueNotificationsMatchingcoalesceMask">
       <MemberSignature Language="C#" Value="public virtual void DequeueNotificationsMatchingcoalesceMask (MonoMac.Foundation.NSNotification notification, MonoMac.Foundation.NSNotificationCoalescing coalesceMask);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void DequeueNotificationsMatchingcoalesceMask(class MonoMac.Foundation.NSNotification notification, valuetype MonoMac.Foundation.NSNotificationCoalescing coalesceMask) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -181,6 +190,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="EnqueueNotification">
       <MemberSignature Language="C#" Value="public virtual void EnqueueNotification (MonoMac.Foundation.NSNotification notification, MonoMac.Foundation.NSPostingStyle postingStyle);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void EnqueueNotification(class MonoMac.Foundation.NSNotification notification, valuetype MonoMac.Foundation.NSPostingStyle postingStyle) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -206,6 +216,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="EnqueueNotification">
       <MemberSignature Language="C#" Value="public virtual void EnqueueNotification (MonoMac.Foundation.NSNotification notification, MonoMac.Foundation.NSPostingStyle postingStyle, MonoMac.Foundation.NSNotificationCoalescing coalesceMask, string[] modes);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void EnqueueNotification(class MonoMac.Foundation.NSNotification notification, valuetype MonoMac.Foundation.NSPostingStyle postingStyle, valuetype MonoMac.Foundation.NSNotificationCoalescing coalesceMask, string[] modes) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>

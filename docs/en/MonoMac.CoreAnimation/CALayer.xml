@@ -16,7 +16,26 @@
   </Attributes>
   <Docs>
     <summary>Layers encapsulate position, size and transformation components of a layer as well as implement the CAMediaTiming methods.</summary>
-    <remarks>To be added.</remarks>
+    <remarks>
+      <para>
+   When you want to use one of the CALayer subclasses as your UIView's backing layer, you need to add the following code snippet to your class:
+</para>
+      <example>
+        <code lang="C#">
+class MyView : UIView {
+    //
+    // This instructs the runtime that whenever a MyView is created
+    // that it should instantiate a CATiledLayer and assign that to the
+    // UIView.Layer property
+    //
+    [Export ("layerClass")]
+    public static Class LayerClass () {
+        return new Class (typeof (CATiledLayer));
+    }
+}
+  </code>
+      </example>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -151,7 +170,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Actions">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreAnimation.CAAction[] Actions { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreAnimation.CAAction[] Actions { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.CoreAnimation.CAAction[] Actions" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -202,6 +221,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="AddConstraint">
       <MemberSignature Language="C#" Value="public virtual void AddConstraint (MonoMac.CoreAnimation.CAConstraint c);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void AddConstraint(class MonoMac.CoreAnimation.CAConstraint c) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -248,7 +268,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="AffineTransform">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreGraphics.CGAffineTransform AffineTransform { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreGraphics.CGAffineTransform AffineTransform { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.CoreGraphics.CGAffineTransform AffineTransform" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -272,7 +292,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="AnchorPoint">
-      <MemberSignature Language="C#" Value="public virtual System.Drawing.PointF AnchorPoint { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual System.Drawing.PointF AnchorPoint { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Drawing.PointF AnchorPoint" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -296,7 +316,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="AnchorPointZ">
-      <MemberSignature Language="C#" Value="public virtual float AnchorPointZ { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual float AnchorPointZ { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 AnchorPointZ" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -366,7 +386,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="AutoresizinMask">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreAnimation.CAAutoresizingMask AutoresizinMask { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreAnimation.CAAutoresizingMask AutoresizinMask { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.CoreAnimation.CAAutoresizingMask AutoresizinMask" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -390,7 +410,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="AutoReverses">
-      <MemberSignature Language="C#" Value="public virtual bool AutoReverses { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual bool AutoReverses { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool AutoReverses" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -414,7 +434,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="BackgroundColor">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreGraphics.CGColor BackgroundColor { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreGraphics.CGColor BackgroundColor { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.CoreGraphics.CGColor BackgroundColor" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -438,7 +458,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="BeginTime">
-      <MemberSignature Language="C#" Value="public virtual double BeginTime { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual double BeginTime { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float64 BeginTime" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -462,7 +482,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="BorderColor">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreGraphics.CGColor BorderColor { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreGraphics.CGColor BorderColor { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.CoreGraphics.CGColor BorderColor" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -486,7 +506,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="BorderWidth">
-      <MemberSignature Language="C#" Value="public virtual float BorderWidth { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual float BorderWidth { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 BorderWidth" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -510,7 +530,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Bounds">
-      <MemberSignature Language="C#" Value="public virtual System.Drawing.RectangleF Bounds { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual System.Drawing.RectangleF Bounds { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Drawing.RectangleF Bounds" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -534,7 +554,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="CFTimeInterval">
-      <MemberSignature Language="C#" Value="public double CFTimeInterval { set; get; }" />
+      <MemberSignature Language="C#" Value="public double CFTimeInterval { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float64 CFTimeInterval" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -590,7 +610,8 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Constraints">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreAnimation.CAConstraint[] Constraints { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreAnimation.CAConstraint[] Constraints { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.CoreAnimation.CAConstraint[] Constraints" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -638,7 +659,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Contents">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreGraphics.CGImage Contents { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreGraphics.CGImage Contents { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.CoreGraphics.CGImage Contents" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -683,7 +704,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="ContentsCenter">
-      <MemberSignature Language="C#" Value="public virtual System.Drawing.RectangleF ContentsCenter { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual System.Drawing.RectangleF ContentsCenter { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Drawing.RectangleF ContentsCenter" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -707,7 +728,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="ContentsGravity">
-      <MemberSignature Language="C#" Value="public virtual string ContentsGravity { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual string ContentsGravity { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string ContentsGravity" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -731,7 +752,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="ContentsRect">
-      <MemberSignature Language="C#" Value="public virtual System.Drawing.RectangleF ContentsRect { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual System.Drawing.RectangleF ContentsRect { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Drawing.RectangleF ContentsRect" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -917,7 +938,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="CornerRadius">
-      <MemberSignature Language="C#" Value="public virtual float CornerRadius { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual float CornerRadius { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 CornerRadius" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -1013,7 +1034,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Delegate">
-      <MemberSignature Language="C#" Value="public MonoMac.CoreAnimation.CALayerDelegate Delegate { set; get; }" />
+      <MemberSignature Language="C#" Value="public MonoMac.CoreAnimation.CALayerDelegate Delegate { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.CoreAnimation.CALayerDelegate Delegate" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -1075,7 +1096,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="DoubleSided">
-      <MemberSignature Language="C#" Value="public virtual bool DoubleSided { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual bool DoubleSided { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool DoubleSided" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -1123,7 +1144,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Duration">
-      <MemberSignature Language="C#" Value="public virtual double Duration { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual double Duration { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float64 Duration" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -1147,7 +1168,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="EdgeAntialiasingMask">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreAnimation.CAEdgeAntialiasingMask EdgeAntialiasingMask { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreAnimation.CAEdgeAntialiasingMask EdgeAntialiasingMask { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.CoreAnimation.CAEdgeAntialiasingMask EdgeAntialiasingMask" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -1171,7 +1192,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="FillMode">
-      <MemberSignature Language="C#" Value="public virtual string FillMode { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual string FillMode { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string FillMode" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -1226,6 +1247,30 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Filters">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreImage.CIFilter[] Filters { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.CoreImage.CIFilter[] Filters" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("filter")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: MonoMac.Foundation.Export("setFilter:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreImage.CIFilter[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="FilterTrilinear">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString FilterTrilinear { get; }" />
       <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString FilterTrilinear" />
@@ -1243,7 +1288,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Frame">
-      <MemberSignature Language="C#" Value="public virtual System.Drawing.RectangleF Frame { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual System.Drawing.RectangleF Frame { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Drawing.RectangleF Frame" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -1267,7 +1312,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="GeometryFlipped">
-      <MemberSignature Language="C#" Value="public virtual bool GeometryFlipped { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual bool GeometryFlipped { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool GeometryFlipped" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -1483,7 +1528,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Hidden">
-      <MemberSignature Language="C#" Value="public virtual bool Hidden { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual bool Hidden { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool Hidden" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -1631,7 +1676,8 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="LayoutManager">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject LayoutManager { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject LayoutManager { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSObject LayoutManager" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -1675,7 +1721,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="MagnificationFilter">
-      <MemberSignature Language="C#" Value="public virtual string MagnificationFilter { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual string MagnificationFilter { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string MagnificationFilter" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -1699,7 +1745,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Mask">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreAnimation.CALayer Mask { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreAnimation.CALayer Mask { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.CoreAnimation.CALayer Mask" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -1723,7 +1769,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="MasksToBounds">
-      <MemberSignature Language="C#" Value="public virtual bool MasksToBounds { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual bool MasksToBounds { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool MasksToBounds" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -1747,7 +1793,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="MinificationFilter">
-      <MemberSignature Language="C#" Value="public virtual string MinificationFilter { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual string MinificationFilter { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string MinificationFilter" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -1792,7 +1838,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Name">
-      <MemberSignature Language="C#" Value="public virtual string Name { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual string Name { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string Name" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -1862,7 +1908,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="NeedsDisplayOnBoundsChange">
-      <MemberSignature Language="C#" Value="public virtual bool NeedsDisplayOnBoundsChange { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual bool NeedsDisplayOnBoundsChange { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool NeedsDisplayOnBoundsChange" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -1940,7 +1986,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Opacity">
-      <MemberSignature Language="C#" Value="public virtual float Opacity { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual float Opacity { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 Opacity" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -1964,7 +2010,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Opaque">
-      <MemberSignature Language="C#" Value="public virtual bool Opaque { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual bool Opaque { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool Opaque" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -1988,7 +2034,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Position">
-      <MemberSignature Language="C#" Value="public virtual System.Drawing.PointF Position { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual System.Drawing.PointF Position { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Drawing.PointF Position" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -2145,7 +2191,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="RepeatCount">
-      <MemberSignature Language="C#" Value="public virtual float RepeatCount { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual float RepeatCount { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 RepeatCount" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -2169,7 +2215,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="RepeatDuration">
-      <MemberSignature Language="C#" Value="public virtual double RepeatDuration { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual double RepeatDuration { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float64 RepeatDuration" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -2381,7 +2427,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="ShadowColor">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreGraphics.CGColor ShadowColor { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreGraphics.CGColor ShadowColor { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.CoreGraphics.CGColor ShadowColor" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -2405,7 +2451,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="ShadowOffset">
-      <MemberSignature Language="C#" Value="public virtual System.Drawing.SizeF ShadowOffset { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual System.Drawing.SizeF ShadowOffset { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Drawing.SizeF ShadowOffset" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -2429,7 +2475,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="ShadowOpacity">
-      <MemberSignature Language="C#" Value="public virtual float ShadowOpacity { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual float ShadowOpacity { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 ShadowOpacity" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -2453,7 +2499,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="ShadowRadius">
-      <MemberSignature Language="C#" Value="public virtual float ShadowRadius { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual float ShadowRadius { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 ShadowRadius" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -2477,7 +2523,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Speed">
-      <MemberSignature Language="C#" Value="public virtual float Speed { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual float Speed { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 Speed" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -2501,7 +2547,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Sublayers">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreAnimation.CALayer[] Sublayers { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreAnimation.CALayer[] Sublayers { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.CoreAnimation.CALayer[] Sublayers" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -2525,7 +2571,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="SublayerTransform">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreAnimation.CATransform3D SublayerTransform { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreAnimation.CATransform3D SublayerTransform { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.CoreAnimation.CATransform3D SublayerTransform" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -2570,7 +2616,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="TimeOffset">
-      <MemberSignature Language="C#" Value="public virtual double TimeOffset { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual double TimeOffset { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float64 TimeOffset" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -2594,7 +2640,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Transform">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreAnimation.CATransform3D Transform { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreAnimation.CATransform3D Transform { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.CoreAnimation.CATransform3D Transform" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -2655,7 +2701,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="WeakDelegate">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject WeakDelegate { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject WeakDelegate { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSObject WeakDelegate" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -2683,7 +2729,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="ZPosition">
-      <MemberSignature Language="C#" Value="public virtual float ZPosition { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual float ZPosition { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 ZPosition" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>

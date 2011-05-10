@@ -1,7 +1,8 @@
 <Type Name="ExportAttribute" FullName="MonoMac.Foundation.ExportAttribute">
   <TypeSignature Language="C#" Value="public sealed class ExportAttribute : Attribute" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed beforefieldinit ExportAttribute extends System.Attribute" />
   <AssemblyInfo>
-    <AssemblyName>monomac</AssemblyName>
+    <AssemblyName>MonoMac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -34,6 +35,7 @@ public class Test : SomeBaseClass {
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public ExportAttribute ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -46,6 +48,7 @@ public class Test : SomeBaseClass {
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public ExportAttribute (string selector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string selector) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -61,6 +64,7 @@ public class Test : SomeBaseClass {
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public ExportAttribute (string selector, MonoMac.ObjCRuntime.ArgumentSemantic semantic);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string selector, valuetype MonoMac.ObjCRuntime.ArgumentSemantic semantic) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -77,7 +81,8 @@ public class Test : SomeBaseClass {
       </Docs>
     </Member>
     <Member MemberName="ArgumentSemantic">
-      <MemberSignature Language="C#" Value="public MonoMac.ObjCRuntime.ArgumentSemantic ArgumentSemantic { set; get; }" />
+      <MemberSignature Language="C#" Value="public MonoMac.ObjCRuntime.ArgumentSemantic ArgumentSemantic { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.ObjCRuntime.ArgumentSemantic ArgumentSemantic" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -92,7 +97,8 @@ public class Test : SomeBaseClass {
       </Docs>
     </Member>
     <Member MemberName="Selector">
-      <MemberSignature Language="C#" Value="public string Selector { set; get; }" />
+      <MemberSignature Language="C#" Value="public string Selector { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Selector" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -104,6 +110,46 @@ public class Test : SomeBaseClass {
         <summary>The name of the C# selector if specified, or null if it is derived from the property name or method.</summary>
         <value />
         <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="ToGetter">
+      <MemberSignature Language="C#" Value="public MonoMac.Foundation.ExportAttribute ToGetter (System.Reflection.PropertyInfo prop);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.Foundation.ExportAttribute ToGetter(class System.Reflection.PropertyInfo prop) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.ExportAttribute</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="prop" Type="System.Reflection.PropertyInfo" />
+      </Parameters>
+      <Docs>
+        <param name="prop">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ToSetter">
+      <MemberSignature Language="C#" Value="public MonoMac.Foundation.ExportAttribute ToSetter (System.Reflection.PropertyInfo prop);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.Foundation.ExportAttribute ToSetter(class System.Reflection.PropertyInfo prop) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.ExportAttribute</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="prop" Type="System.Reflection.PropertyInfo" />
+      </Parameters>
+      <Docs>
+        <param name="prop">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>

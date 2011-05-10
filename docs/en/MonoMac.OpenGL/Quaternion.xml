@@ -1,0 +1,1027 @@
+<Type Name="Quaternion" FullName="MonoMac.OpenGL.Quaternion">
+  <TypeSignature Language="C#" Value="public struct Quaternion : IEquatable&lt;MonoMac.OpenGL.Quaternion&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public sequential ansi serializable sealed beforefieldinit Quaternion extends System.ValueType implements class System.IEquatable`1&lt;valuetype MonoMac.OpenGL.Quaternion&gt;" />
+  <AssemblyInfo>
+    <AssemblyName>MonoMac</AssemblyName>
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.ValueType</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>System.IEquatable&lt;MonoMac.OpenGL.Quaternion&gt;</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>
+            Represents a Quaternion.
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Quaternion (MonoMac.OpenGL.Vector3 v, float w);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype MonoMac.OpenGL.Vector3 v, float32 w) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="v" Type="MonoMac.OpenGL.Vector3" />
+        <Parameter Name="w" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="v">The vector part</param>
+        <param name="w">The w part</param>
+        <summary>
+            Construct a new Quaternion from vector and w components
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public Quaternion (float x, float y, float z, float w);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 x, float32 y, float32 z, float32 w) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="x" Type="System.Single" />
+        <Parameter Name="y" Type="System.Single" />
+        <Parameter Name="z" Type="System.Single" />
+        <Parameter Name="w" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="x">The x component</param>
+        <param name="y">The y component</param>
+        <param name="z">The z component</param>
+        <param name="w">The w component</param>
+        <summary>
+            Construct a new Quaternion
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Add">
+      <MemberSignature Language="C#" Value="public static MonoMac.OpenGL.Quaternion Add (MonoMac.OpenGL.Quaternion left, MonoMac.OpenGL.Quaternion right);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype MonoMac.OpenGL.Quaternion Add(valuetype MonoMac.OpenGL.Quaternion left, valuetype MonoMac.OpenGL.Quaternion right) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.OpenGL.Quaternion</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="left" Type="MonoMac.OpenGL.Quaternion" />
+        <Parameter Name="right" Type="MonoMac.OpenGL.Quaternion" />
+      </Parameters>
+      <Docs>
+        <param name="left">The first operand</param>
+        <param name="right">The second operand</param>
+        <summary>
+            Add two quaternions
+            </summary>
+        <returns>The result of the addition</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Add">
+      <MemberSignature Language="C#" Value="public static void Add (ref MonoMac.OpenGL.Quaternion left, ref MonoMac.OpenGL.Quaternion right, out MonoMac.OpenGL.Quaternion result);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void Add(valuetype MonoMac.OpenGL.Quaternion left, valuetype MonoMac.OpenGL.Quaternion right, valuetype MonoMac.OpenGL.Quaternion result) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="left" Type="MonoMac.OpenGL.Quaternion&amp;" RefType="ref" />
+        <Parameter Name="right" Type="MonoMac.OpenGL.Quaternion&amp;" RefType="ref" />
+        <Parameter Name="result" Type="MonoMac.OpenGL.Quaternion&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="left">The first operand</param>
+        <param name="right">The second operand</param>
+        <param name="result">The result of the addition</param>
+        <summary>
+            Add two quaternions
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Conjugate">
+      <MemberSignature Language="C#" Value="public void Conjugate ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Conjugate() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+            Convert this quaternion to its conjugate
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Conjugate">
+      <MemberSignature Language="C#" Value="public static MonoMac.OpenGL.Quaternion Conjugate (MonoMac.OpenGL.Quaternion q);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype MonoMac.OpenGL.Quaternion Conjugate(valuetype MonoMac.OpenGL.Quaternion q) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.OpenGL.Quaternion</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="q" Type="MonoMac.OpenGL.Quaternion" />
+      </Parameters>
+      <Docs>
+        <param name="q">The quaternion</param>
+        <summary>
+            Get the conjugate of the given quaternion
+            </summary>
+        <returns>The conjugate of the given quaternion</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Conjugate">
+      <MemberSignature Language="C#" Value="public static void Conjugate (ref MonoMac.OpenGL.Quaternion q, out MonoMac.OpenGL.Quaternion result);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void Conjugate(valuetype MonoMac.OpenGL.Quaternion q, valuetype MonoMac.OpenGL.Quaternion result) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="q" Type="MonoMac.OpenGL.Quaternion&amp;" RefType="ref" />
+        <Parameter Name="result" Type="MonoMac.OpenGL.Quaternion&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="q">The quaternion</param>
+        <param name="result">The conjugate of the given quaternion</param>
+        <summary>
+            Get the conjugate of the given quaternion
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Equals">
+      <MemberSignature Language="C#" Value="public bool Equals (MonoMac.OpenGL.Quaternion other);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool Equals(valuetype MonoMac.OpenGL.Quaternion other) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="other" Type="MonoMac.OpenGL.Quaternion" />
+      </Parameters>
+      <Docs>
+        <param name="other">The other Quaternion to be used in the comparison.</param>
+        <summary>
+            Compares this Quaternion instance to another Quaternion for equality.
+            </summary>
+        <returns>True if both instances are equal; false otherwise.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Equals">
+      <MemberSignature Language="C#" Value="public override bool Equals (object other);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool Equals(object other) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="other" Type="System.Object" />
+      </Parameters>
+      <Docs>
+        <param name="other">The other object to be used in the comparison.</param>
+        <summary>
+            Compares this object instance to another object for equality.
+            </summary>
+        <returns>True if both objects are Quaternions of equal value. Otherwise it returns false.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FromAxisAngle">
+      <MemberSignature Language="C#" Value="public static MonoMac.OpenGL.Quaternion FromAxisAngle (MonoMac.OpenGL.Vector3 axis, float angle);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype MonoMac.OpenGL.Quaternion FromAxisAngle(valuetype MonoMac.OpenGL.Vector3 axis, float32 angle) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.OpenGL.Quaternion</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="axis" Type="MonoMac.OpenGL.Vector3" />
+        <Parameter Name="angle" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="axis">The axis to rotate about</param>
+        <param name="angle">The rotation angle in radians</param>
+        <summary>
+            Build a quaternion from the given axis and angle
+            </summary>
+        <returns />
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetHashCode">
+      <MemberSignature Language="C#" Value="public override int GetHashCode ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance int32 GetHashCode() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+            Provides the hash code for this object.
+            </summary>
+        <returns>A hash code formed from the bitwise XOR of this objects members.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Identity">
+      <MemberSignature Language="C#" Value="public static MonoMac.OpenGL.Quaternion Identity;" />
+      <MemberSignature Language="ILAsm" Value=".field public static valuetype MonoMac.OpenGL.Quaternion Identity" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.OpenGL.Quaternion</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Defines the identity quaternion.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Invert">
+      <MemberSignature Language="C#" Value="public static MonoMac.OpenGL.Quaternion Invert (MonoMac.OpenGL.Quaternion q);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype MonoMac.OpenGL.Quaternion Invert(valuetype MonoMac.OpenGL.Quaternion q) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.OpenGL.Quaternion</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="q" Type="MonoMac.OpenGL.Quaternion" />
+      </Parameters>
+      <Docs>
+        <param name="q">The quaternion to invert</param>
+        <summary>
+            Get the inverse of the given quaternion
+            </summary>
+        <returns>The inverse of the given quaternion</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Invert">
+      <MemberSignature Language="C#" Value="public static void Invert (ref MonoMac.OpenGL.Quaternion q, out MonoMac.OpenGL.Quaternion result);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void Invert(valuetype MonoMac.OpenGL.Quaternion q, valuetype MonoMac.OpenGL.Quaternion result) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="q" Type="MonoMac.OpenGL.Quaternion&amp;" RefType="ref" />
+        <Parameter Name="result" Type="MonoMac.OpenGL.Quaternion&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="q">The quaternion to invert</param>
+        <param name="result">The inverse of the given quaternion</param>
+        <summary>
+            Get the inverse of the given quaternion
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Length">
+      <MemberSignature Language="C#" Value="public float Length { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 Length" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Gets the length (magnitude) of the quaternion.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+        <altmember cref="P:MonoMac.OpenGL.Quaternion.LengthSquared" />
+      </Docs>
+    </Member>
+    <Member MemberName="LengthSquared">
+      <MemberSignature Language="C#" Value="public float LengthSquared { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 LengthSquared" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Gets the square of the quaternion length (magnitude).
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Mult">
+      <MemberSignature Language="C#" Value="public static MonoMac.OpenGL.Quaternion Mult (MonoMac.OpenGL.Quaternion left, MonoMac.OpenGL.Quaternion right);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype MonoMac.OpenGL.Quaternion Mult(valuetype MonoMac.OpenGL.Quaternion left, valuetype MonoMac.OpenGL.Quaternion right) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use Multiply instead.")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.OpenGL.Quaternion</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="left" Type="MonoMac.OpenGL.Quaternion" />
+        <Parameter Name="right" Type="MonoMac.OpenGL.Quaternion" />
+      </Parameters>
+      <Docs>
+        <param name="left">The first instance.</param>
+        <param name="right">The second instance.</param>
+        <summary>
+            Multiplies two instances.
+            </summary>
+        <returns>A new instance containing the result of the calculation.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Mult">
+      <MemberSignature Language="C#" Value="public static void Mult (ref MonoMac.OpenGL.Quaternion left, ref MonoMac.OpenGL.Quaternion right, out MonoMac.OpenGL.Quaternion result);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void Mult(valuetype MonoMac.OpenGL.Quaternion left, valuetype MonoMac.OpenGL.Quaternion right, valuetype MonoMac.OpenGL.Quaternion result) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use Multiply instead.")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="left" Type="MonoMac.OpenGL.Quaternion&amp;" RefType="ref" />
+        <Parameter Name="right" Type="MonoMac.OpenGL.Quaternion&amp;" RefType="ref" />
+        <Parameter Name="result" Type="MonoMac.OpenGL.Quaternion&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="left">The first instance.</param>
+        <param name="right">The second instance.</param>
+        <param name="result">A new instance containing the result of the calculation.</param>
+        <summary>
+            Multiplies two instances.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Multiply">
+      <MemberSignature Language="C#" Value="public static MonoMac.OpenGL.Quaternion Multiply (MonoMac.OpenGL.Quaternion left, MonoMac.OpenGL.Quaternion right);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype MonoMac.OpenGL.Quaternion Multiply(valuetype MonoMac.OpenGL.Quaternion left, valuetype MonoMac.OpenGL.Quaternion right) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.OpenGL.Quaternion</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="left" Type="MonoMac.OpenGL.Quaternion" />
+        <Parameter Name="right" Type="MonoMac.OpenGL.Quaternion" />
+      </Parameters>
+      <Docs>
+        <param name="left">The first instance.</param>
+        <param name="right">The second instance.</param>
+        <summary>
+            Multiplies two instances.
+            </summary>
+        <returns>A new instance containing the result of the calculation.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Multiply">
+      <MemberSignature Language="C#" Value="public static MonoMac.OpenGL.Quaternion Multiply (MonoMac.OpenGL.Quaternion quaternion, float scale);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype MonoMac.OpenGL.Quaternion Multiply(valuetype MonoMac.OpenGL.Quaternion quaternion, float32 scale) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.OpenGL.Quaternion</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="quaternion" Type="MonoMac.OpenGL.Quaternion" />
+        <Parameter Name="scale" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="quaternion">The instance.</param>
+        <param name="scale">The scalar.</param>
+        <summary>
+            Multiplies an instance by a scalar.
+            </summary>
+        <returns>A new instance containing the result of the calculation.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Multiply">
+      <MemberSignature Language="C#" Value="public static void Multiply (ref MonoMac.OpenGL.Quaternion left, ref MonoMac.OpenGL.Quaternion right, out MonoMac.OpenGL.Quaternion result);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void Multiply(valuetype MonoMac.OpenGL.Quaternion left, valuetype MonoMac.OpenGL.Quaternion right, valuetype MonoMac.OpenGL.Quaternion result) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="left" Type="MonoMac.OpenGL.Quaternion&amp;" RefType="ref" />
+        <Parameter Name="right" Type="MonoMac.OpenGL.Quaternion&amp;" RefType="ref" />
+        <Parameter Name="result" Type="MonoMac.OpenGL.Quaternion&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="left">The first instance.</param>
+        <param name="right">The second instance.</param>
+        <param name="result">A new instance containing the result of the calculation.</param>
+        <summary>
+            Multiplies two instances.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Multiply">
+      <MemberSignature Language="C#" Value="public static void Multiply (ref MonoMac.OpenGL.Quaternion quaternion, float scale, out MonoMac.OpenGL.Quaternion result);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void Multiply(valuetype MonoMac.OpenGL.Quaternion quaternion, float32 scale, valuetype MonoMac.OpenGL.Quaternion result) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="quaternion" Type="MonoMac.OpenGL.Quaternion&amp;" RefType="ref" />
+        <Parameter Name="scale" Type="System.Single" />
+        <Parameter Name="result" Type="MonoMac.OpenGL.Quaternion&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="quaternion">The instance.</param>
+        <param name="scale">The scalar.</param>
+        <param name="result">A new instance containing the result of the calculation.</param>
+        <summary>
+            Multiplies an instance by a scalar.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Normalize">
+      <MemberSignature Language="C#" Value="public void Normalize ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Normalize() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+            Scales the Quaternion to unit length.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Normalize">
+      <MemberSignature Language="C#" Value="public static MonoMac.OpenGL.Quaternion Normalize (MonoMac.OpenGL.Quaternion q);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype MonoMac.OpenGL.Quaternion Normalize(valuetype MonoMac.OpenGL.Quaternion q) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.OpenGL.Quaternion</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="q" Type="MonoMac.OpenGL.Quaternion" />
+      </Parameters>
+      <Docs>
+        <param name="q">The quaternion to normalize</param>
+        <summary>
+            Scale the given quaternion to unit length
+            </summary>
+        <returns>The normalized quaternion</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Normalize">
+      <MemberSignature Language="C#" Value="public static void Normalize (ref MonoMac.OpenGL.Quaternion q, out MonoMac.OpenGL.Quaternion result);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void Normalize(valuetype MonoMac.OpenGL.Quaternion q, valuetype MonoMac.OpenGL.Quaternion result) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="q" Type="MonoMac.OpenGL.Quaternion&amp;" RefType="ref" />
+        <Parameter Name="result" Type="MonoMac.OpenGL.Quaternion&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="q">The quaternion to normalize</param>
+        <param name="result">The normalized quaternion</param>
+        <summary>
+            Scale the given quaternion to unit length
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Addition">
+      <MemberSignature Language="C#" Value="public static MonoMac.OpenGL.Quaternion op_Addition (MonoMac.OpenGL.Quaternion left, MonoMac.OpenGL.Quaternion right);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype MonoMac.OpenGL.Quaternion op_Addition(valuetype MonoMac.OpenGL.Quaternion left, valuetype MonoMac.OpenGL.Quaternion right) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.OpenGL.Quaternion</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="left" Type="MonoMac.OpenGL.Quaternion" />
+        <Parameter Name="right" Type="MonoMac.OpenGL.Quaternion" />
+      </Parameters>
+      <Docs>
+        <param name="left">The first instance.</param>
+        <param name="right">The second instance.</param>
+        <summary>
+            Adds two instances.
+            </summary>
+        <returns>The result of the calculation.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Equality">
+      <MemberSignature Language="C#" Value="public static bool op_Equality (MonoMac.OpenGL.Quaternion left, MonoMac.OpenGL.Quaternion right);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname bool op_Equality(valuetype MonoMac.OpenGL.Quaternion left, valuetype MonoMac.OpenGL.Quaternion right) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="left" Type="MonoMac.OpenGL.Quaternion" />
+        <Parameter Name="right" Type="MonoMac.OpenGL.Quaternion" />
+      </Parameters>
+      <Docs>
+        <param name="left">The first instance.</param>
+        <param name="right">The second instance.</param>
+        <summary>
+            Compares two instances for equality.
+            </summary>
+        <returns>True, if left equals right; false otherwise.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Inequality">
+      <MemberSignature Language="C#" Value="public static bool op_Inequality (MonoMac.OpenGL.Quaternion left, MonoMac.OpenGL.Quaternion right);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname bool op_Inequality(valuetype MonoMac.OpenGL.Quaternion left, valuetype MonoMac.OpenGL.Quaternion right) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="left" Type="MonoMac.OpenGL.Quaternion" />
+        <Parameter Name="right" Type="MonoMac.OpenGL.Quaternion" />
+      </Parameters>
+      <Docs>
+        <param name="left">The first instance.</param>
+        <param name="right">The second instance.</param>
+        <summary>
+            Compares two instances for inequality.
+            </summary>
+        <returns>True, if left does not equal right; false otherwise.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Multiply">
+      <MemberSignature Language="C#" Value="public static MonoMac.OpenGL.Quaternion op_Multiply (MonoMac.OpenGL.Quaternion left, MonoMac.OpenGL.Quaternion right);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype MonoMac.OpenGL.Quaternion op_Multiply(valuetype MonoMac.OpenGL.Quaternion left, valuetype MonoMac.OpenGL.Quaternion right) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.OpenGL.Quaternion</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="left" Type="MonoMac.OpenGL.Quaternion" />
+        <Parameter Name="right" Type="MonoMac.OpenGL.Quaternion" />
+      </Parameters>
+      <Docs>
+        <param name="left">The first instance.</param>
+        <param name="right">The second instance.</param>
+        <summary>
+            Multiplies two instances.
+            </summary>
+        <returns>The result of the calculation.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Multiply">
+      <MemberSignature Language="C#" Value="public static MonoMac.OpenGL.Quaternion op_Multiply (MonoMac.OpenGL.Quaternion quaternion, float scale);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype MonoMac.OpenGL.Quaternion op_Multiply(valuetype MonoMac.OpenGL.Quaternion quaternion, float32 scale) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.OpenGL.Quaternion</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="quaternion" Type="MonoMac.OpenGL.Quaternion" />
+        <Parameter Name="scale" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="quaternion">The instance.</param>
+        <param name="scale">The scalar.</param>
+        <summary>
+            Multiplies an instance by a scalar.
+            </summary>
+        <returns>A new instance containing the result of the calculation.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Multiply">
+      <MemberSignature Language="C#" Value="public static MonoMac.OpenGL.Quaternion op_Multiply (float scale, MonoMac.OpenGL.Quaternion quaternion);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype MonoMac.OpenGL.Quaternion op_Multiply(float32 scale, valuetype MonoMac.OpenGL.Quaternion quaternion) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.OpenGL.Quaternion</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="scale" Type="System.Single" />
+        <Parameter Name="quaternion" Type="MonoMac.OpenGL.Quaternion" />
+      </Parameters>
+      <Docs>
+        <param name="scale">The scalar.</param>
+        <param name="quaternion">The instance.</param>
+        <summary>
+            Multiplies an instance by a scalar.
+            </summary>
+        <returns>A new instance containing the result of the calculation.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Subtraction">
+      <MemberSignature Language="C#" Value="public static MonoMac.OpenGL.Quaternion op_Subtraction (MonoMac.OpenGL.Quaternion left, MonoMac.OpenGL.Quaternion right);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype MonoMac.OpenGL.Quaternion op_Subtraction(valuetype MonoMac.OpenGL.Quaternion left, valuetype MonoMac.OpenGL.Quaternion right) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.OpenGL.Quaternion</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="left" Type="MonoMac.OpenGL.Quaternion" />
+        <Parameter Name="right" Type="MonoMac.OpenGL.Quaternion" />
+      </Parameters>
+      <Docs>
+        <param name="left">The first instance.</param>
+        <param name="right">The second instance.</param>
+        <summary>
+            Subtracts two instances.
+            </summary>
+        <returns>The result of the calculation.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Slerp">
+      <MemberSignature Language="C#" Value="public static MonoMac.OpenGL.Quaternion Slerp (MonoMac.OpenGL.Quaternion q1, MonoMac.OpenGL.Quaternion q2, float blend);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype MonoMac.OpenGL.Quaternion Slerp(valuetype MonoMac.OpenGL.Quaternion q1, valuetype MonoMac.OpenGL.Quaternion q2, float32 blend) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.OpenGL.Quaternion</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="q1" Type="MonoMac.OpenGL.Quaternion" />
+        <Parameter Name="q2" Type="MonoMac.OpenGL.Quaternion" />
+        <Parameter Name="blend" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="q1">The first quaternion</param>
+        <param name="q2">The second quaternion</param>
+        <param name="blend">The blend factor</param>
+        <summary>
+            Do Spherical linear interpolation between two quaternions
+            </summary>
+        <returns>A smooth blend between the given quaternions</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Sub">
+      <MemberSignature Language="C#" Value="public static MonoMac.OpenGL.Quaternion Sub (MonoMac.OpenGL.Quaternion left, MonoMac.OpenGL.Quaternion right);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype MonoMac.OpenGL.Quaternion Sub(valuetype MonoMac.OpenGL.Quaternion left, valuetype MonoMac.OpenGL.Quaternion right) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.OpenGL.Quaternion</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="left" Type="MonoMac.OpenGL.Quaternion" />
+        <Parameter Name="right" Type="MonoMac.OpenGL.Quaternion" />
+      </Parameters>
+      <Docs>
+        <param name="left">The left instance.</param>
+        <param name="right">The right instance.</param>
+        <summary>
+            Subtracts two instances.
+            </summary>
+        <returns>The result of the operation.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Sub">
+      <MemberSignature Language="C#" Value="public static void Sub (ref MonoMac.OpenGL.Quaternion left, ref MonoMac.OpenGL.Quaternion right, out MonoMac.OpenGL.Quaternion result);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void Sub(valuetype MonoMac.OpenGL.Quaternion left, valuetype MonoMac.OpenGL.Quaternion right, valuetype MonoMac.OpenGL.Quaternion result) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="left" Type="MonoMac.OpenGL.Quaternion&amp;" RefType="ref" />
+        <Parameter Name="right" Type="MonoMac.OpenGL.Quaternion&amp;" RefType="ref" />
+        <Parameter Name="result" Type="MonoMac.OpenGL.Quaternion&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="left">The left instance.</param>
+        <param name="right">The right instance.</param>
+        <param name="result">The result of the operation.</param>
+        <summary>
+            Subtracts two instances.
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ToAxisAngle">
+      <MemberSignature Language="C#" Value="public MonoMac.OpenGL.Vector4 ToAxisAngle ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype MonoMac.OpenGL.Vector4 ToAxisAngle() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.OpenGL.Vector4</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+            Convert this instance to an axis-angle representation.
+            </summary>
+        <returns>A Vector4 that is the axis-angle representation of this quaternion.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ToAxisAngle">
+      <MemberSignature Language="C#" Value="public void ToAxisAngle (out MonoMac.OpenGL.Vector3 axis, out float angle);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ToAxisAngle(valuetype MonoMac.OpenGL.Vector3 axis, float32 angle) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="axis" Type="MonoMac.OpenGL.Vector3&amp;" RefType="out" />
+        <Parameter Name="angle" Type="System.Single&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="axis">The resultant axis</param>
+        <param name="angle">The resultant angle</param>
+        <summary>
+            Convert the current quaternion to axis angle representation
+            </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ToString">
+      <MemberSignature Language="C#" Value="public override string ToString ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance string ToString() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+            Returns a System.String that represents the current Quaternion.
+            </summary>
+        <returns />
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="W">
+      <MemberSignature Language="C#" Value="public float W { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 W" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Gets or sets the W component of this instance.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="X">
+      <MemberSignature Language="C#" Value="public float X { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 X" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Xml.Serialization.XmlIgnore</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Gets or sets the X component of this instance.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Xyz">
+      <MemberSignature Language="C#" Value="public MonoMac.OpenGL.Vector3 Xyz { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.OpenGL.Vector3 Xyz" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.OpenGL.Vector3</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Gets or sets an OpenTK.Vector3 with the X, Y and Z components of this instance.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="XYZ">
+      <MemberSignature Language="C#" Value="public MonoMac.OpenGL.Vector3 XYZ { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.OpenGL.Vector3 XYZ" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.CLSCompliant(false)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use Xyz property instead.")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Xml.Serialization.XmlIgnore</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.OpenGL.Vector3</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Gets or sets an OpenTK.Vector3 with the X, Y and Z components of this instance.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Y">
+      <MemberSignature Language="C#" Value="public float Y { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 Y" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Xml.Serialization.XmlIgnore</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Gets or sets the Y component of this instance.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Z">
+      <MemberSignature Language="C#" Value="public float Z { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 Z" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Xml.Serialization.XmlIgnore</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+            Gets or sets the Z component of this instance.
+            </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

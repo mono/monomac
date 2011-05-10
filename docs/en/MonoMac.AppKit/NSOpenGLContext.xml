@@ -127,9 +127,9 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="CGLContextObj">
-      <MemberSignature Language="C#" Value="public virtual IntPtr CGLContextObj { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance native int CGLContextObj" />
+    <Member MemberName="CGLContext">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.OpenGL.CGLContext CGLContext { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.OpenGL.CGLContext CGLContext" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -140,7 +140,7 @@ public class MyClass : BaseClass {
         </Attribute>
       </Attributes>
       <ReturnValue>
-        <ReturnType>System.IntPtr</ReturnType>
+        <ReturnType>MonoMac.OpenGL.CGLContext</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -261,29 +261,28 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="CurrentContext">
-      <MemberSignature Language="C#" Value="public static MonoMac.AppKit.NSOpenGLContext CurrentContext ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.AppKit.NSOpenGLContext CurrentContext() cil managed" />
-      <MemberType>Method</MemberType>
+      <MemberSignature Language="C#" Value="public static MonoMac.AppKit.NSOpenGLContext CurrentContext { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.AppKit.NSOpenGLContext CurrentContext" />
+      <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>MonoMac.Foundation.Export("currentContext")</AttributeName>
+          <AttributeName>get: MonoMac.Foundation.Export("currentContext")</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.AppKit.NSOpenGLContext</ReturnType>
       </ReturnValue>
-      <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="CurrentVirtualScreen">
-      <MemberSignature Language="C#" Value="public virtual int CurrentVirtualScreen { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual int CurrentVirtualScreen { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance int32 CurrentVirtualScreen" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -437,6 +436,22 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="RasterizationEnabled">
+      <MemberSignature Language="C#" Value="public bool RasterizationEnabled { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool RasterizationEnabled" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="SetFullScreen">
       <MemberSignature Language="C#" Value="public virtual void SetFullScreen ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetFullScreen() cil managed" />
@@ -570,6 +585,102 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="StateValidation">
+      <MemberSignature Language="C#" Value="public bool StateValidation { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool StateValidation" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SurfaceOpaque">
+      <MemberSignature Language="C#" Value="public bool SurfaceOpaque { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool SurfaceOpaque" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SurfaceOrder">
+      <MemberSignature Language="C#" Value="public MonoMac.AppKit.NSSurfaceOrder SurfaceOrder { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.AppKit.NSSurfaceOrder SurfaceOrder" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.AppKit.NSSurfaceOrder</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SwapInterval">
+      <MemberSignature Language="C#" Value="public bool SwapInterval { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool SwapInterval" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SwapRectangle">
+      <MemberSignature Language="C#" Value="public System.Drawing.Rectangle SwapRectangle { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Drawing.Rectangle SwapRectangle" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Drawing.Rectangle</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SwapRectangleEnabled">
+      <MemberSignature Language="C#" Value="public bool SwapRectangleEnabled { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool SwapRectangleEnabled" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Update">
       <MemberSignature Language="C#" Value="public virtual void Update ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Update() cil managed" />
@@ -592,7 +703,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="View">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSView View { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSView View { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AppKit.NSView View" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>

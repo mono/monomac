@@ -15,8 +15,27 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Layer used to show portions of another layer.</summary>
+    <remarks>
+      <para>
+   When you want to use one of the CALayer subclasses as your UIView's backing layer, you need to add the following code snippet to your class:
+</para>
+      <example>
+        <code lang="C#">
+class MyView : UIView {
+    //
+    // This instructs the runtime that whenever a MyView is created
+    // that it should instantiate a CAScrollLayer and assign that to the
+    // UIView.Layer property
+    //
+    [Export ("layerClass")]
+    public static Class LayerClass () {
+        return new Class (typeof (CAScrollLayer));
+    }
+}
+  </code>
+      </example>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -120,6 +139,28 @@ public class MyClass : BaseClass {
         <remarks>Each MonoMac class mirrors an unmanaged Objective-C class.   This value contains the pointer to the Objective-C class, it is similar to calling objc_getClass with the object name.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Create">
+      <MemberSignature Language="C#" Value="public static MonoMac.CoreAnimation.CALayer Create ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.CoreAnimation.CALayer Create() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("layer")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreAnimation.CALayer</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="ScrollBoth">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString ScrollBoth { get; }" />
       <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString ScrollBoth" />
@@ -153,7 +194,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="ScrollMode">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSString ScrollMode { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSString ScrollMode { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSString ScrollMode" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>

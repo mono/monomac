@@ -1,7 +1,8 @@
 <Type Name="NSTimeZone" FullName="MonoMac.Foundation.NSTimeZone">
   <TypeSignature Language="C#" Value="public class NSTimeZone : MonoMac.Foundation.NSObject" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit NSTimeZone extends MonoMac.Foundation.NSObject" />
   <AssemblyInfo>
-    <AssemblyName>monomac</AssemblyName>
+    <AssemblyName>MonoMac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -20,6 +21,7 @@
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSTimeZone ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -37,6 +39,7 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSTimeZone (MonoMac.Foundation.NSCoder coder);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSCoder coder) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -57,6 +60,7 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSTimeZone (MonoMac.Foundation.NSObjectFlag t);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSObjectFlag t) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -84,6 +88,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSTimeZone (IntPtr handle);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int handle) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -101,6 +106,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSTimeZone (string name);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string name) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -121,6 +127,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="Abbreviation">
       <MemberSignature Language="C#" Value="public virtual string Abbreviation (MonoMac.Foundation.NSDate date);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string Abbreviation(class MonoMac.Foundation.NSDate date) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -145,6 +152,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="ClassHandle">
       <MemberSignature Language="C#" Value="public override IntPtr ClassHandle { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance native int ClassHandle" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -160,10 +168,16 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="Data">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSData Data { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSData Data" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("data")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSData</ReturnType>
       </ReturnValue>
@@ -172,14 +186,10 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("data")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="DaylightSavingTimeOffset">
       <MemberSignature Language="C#" Value="public virtual double DaylightSavingTimeOffset (MonoMac.Foundation.NSDate date);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance float64 DaylightSavingTimeOffset(class MonoMac.Foundation.NSDate date) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -203,19 +213,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="DefaultTimeZone">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSTimeZone DefaultTimeZone { set; get; }" />
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSTimeZone DefaultTimeZone { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSTimeZone DefaultTimeZone" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSTimeZone</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("defaultTimeZone")</AttributeName>
@@ -224,13 +227,27 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setDefaultTimeZone:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSTimeZone</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="Description">
       <MemberSignature Language="C#" Value="public virtual string Description { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Description" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("description")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -239,14 +256,10 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("description")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="FromAbbreviation">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSTimeZone FromAbbreviation (string abbreviation);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSTimeZone FromAbbreviation(string abbreviation) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -271,6 +284,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="FromName">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSTimeZone FromName (string tzName);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSTimeZone FromName(string tzName) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -295,10 +309,16 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="GetSecondsFromGMT">
       <MemberSignature Language="C#" Value="public virtual int GetSecondsFromGMT { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 GetSecondsFromGMT" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("secondsFromGMT")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -307,14 +327,10 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("secondsFromGMT")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="IsDaylightSavingsTime">
       <MemberSignature Language="C#" Value="public virtual bool IsDaylightSavingsTime (MonoMac.Foundation.NSDate date);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool IsDaylightSavingsTime(class MonoMac.Foundation.NSDate date) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -339,10 +355,16 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="LocalTimeZone">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSTimeZone LocalTimeZone { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSTimeZone LocalTimeZone" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("localTimeZone")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSTimeZone</ReturnType>
       </ReturnValue>
@@ -351,18 +373,19 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("localTimeZone")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="Name">
       <MemberSignature Language="C#" Value="public virtual string Name { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Name" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("name")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -371,14 +394,10 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("name")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="NextDaylightSavingTimeTransitionAfter">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSDate NextDaylightSavingTimeTransitionAfter (MonoMac.Foundation.NSDate date);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class MonoMac.Foundation.NSDate NextDaylightSavingTimeTransitionAfter(class MonoMac.Foundation.NSDate date) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -403,6 +422,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="ResetSystemTimeZone">
       <MemberSignature Language="C#" Value="public static void ResetSystemTimeZone ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void ResetSystemTimeZone() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -423,6 +443,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="SecondsFromGMT">
       <MemberSignature Language="C#" Value="public virtual int SecondsFromGMT (MonoMac.Foundation.NSDate date);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance int32 SecondsFromGMT(class MonoMac.Foundation.NSDate date) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -447,10 +468,16 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="SystemTimeZone">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSTimeZone SystemTimeZone { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSTimeZone SystemTimeZone" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("systemTimeZone")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSTimeZone</ReturnType>
       </ReturnValue>
@@ -459,11 +486,6 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("systemTimeZone")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
   </Members>
 </Type>

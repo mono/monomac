@@ -151,7 +151,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="AcceptsTouchEvents">
-      <MemberSignature Language="C#" Value="public virtual bool AcceptsTouchEvents { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual bool AcceptsTouchEvents { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool AcceptsTouchEvents" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -383,7 +383,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="AlphaValue">
-      <MemberSignature Language="C#" Value="public virtual float AlphaValue { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual float AlphaValue { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 AlphaValue" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -457,7 +457,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Animations">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSDictionary Animations { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSDictionary Animations { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSDictionary Animations" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -502,7 +502,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="AutoresizesSubviews">
-      <MemberSignature Language="C#" Value="public virtual bool AutoresizesSubviews { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual bool AutoresizesSubviews { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool AutoresizesSubviews" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -526,7 +526,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="AutoresizingMask">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSViewResizingMask AutoresizingMask { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSViewResizingMask AutoresizingMask { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.AppKit.NSViewResizingMask AutoresizingMask" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -574,6 +574,30 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="BackgroundFilters">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreImage.CIFilter[] BackgroundFilters { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.CoreImage.CIFilter[] BackgroundFilters" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("backgroundFilters")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: MonoMac.Foundation.Export("setBackgroundFilters:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreImage.CIFilter[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="BitmapImageRepForCachingDisplayInRect">
       <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSBitmapImageRep BitmapImageRepForCachingDisplayInRect (System.Drawing.RectangleF rect);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class MonoMac.AppKit.NSBitmapImageRep BitmapImageRepForCachingDisplayInRect(valuetype System.Drawing.RectangleF rect) cil managed" />
@@ -600,7 +624,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Bounds">
-      <MemberSignature Language="C#" Value="public virtual System.Drawing.RectangleF Bounds { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual System.Drawing.RectangleF Bounds { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Drawing.RectangleF Bounds" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -624,7 +648,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="BoundsRotation">
-      <MemberSignature Language="C#" Value="public virtual float BoundsRotation { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual float BoundsRotation { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 BoundsRotation" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -696,7 +720,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="CanDrawConcurrently">
-      <MemberSignature Language="C#" Value="public virtual bool CanDrawConcurrently { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual bool CanDrawConcurrently { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool CanDrawConcurrently" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -760,6 +784,54 @@ public class MyClass : BaseClass {
         <remarks>Each MonoMac class mirrors an unmanaged Objective-C class.   This value contains the pointer to the Objective-C class, it is similar to calling objc_getClass with the object name.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="CompositingFilter">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreImage.CIFilter CompositingFilter { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.CoreImage.CIFilter CompositingFilter" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("compositingFilter")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: MonoMac.Foundation.Export("setCompositingFilter:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreImage.CIFilter</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ContentFilters">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreImage.CIFilter[] ContentFilters { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.CoreImage.CIFilter[] ContentFilters" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("contentFilters")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: MonoMac.Foundation.Export("setContentFilters:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreImage.CIFilter[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="ConvertPointFromBase">
       <MemberSignature Language="C#" Value="public virtual System.Drawing.PointF ConvertPointFromBase (System.Drawing.PointF aPoint);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype System.Drawing.PointF ConvertPointFromBase(valuetype System.Drawing.PointF aPoint) cil managed" />
@@ -785,9 +857,9 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="ConvertPointfromView">
-      <MemberSignature Language="C#" Value="public virtual System.Drawing.PointF ConvertPointfromView (System.Drawing.PointF aPoint, MonoMac.AppKit.NSView aView);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype System.Drawing.PointF ConvertPointfromView(valuetype System.Drawing.PointF aPoint, class MonoMac.AppKit.NSView aView) cil managed" />
+    <Member MemberName="ConvertPointFromView">
+      <MemberSignature Language="C#" Value="public virtual System.Drawing.PointF ConvertPointFromView (System.Drawing.PointF aPoint, MonoMac.AppKit.NSView aView);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype System.Drawing.PointF ConvertPointFromView(valuetype System.Drawing.PointF aPoint, class MonoMac.AppKit.NSView aView) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -837,9 +909,9 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="ConvertPointtoView">
-      <MemberSignature Language="C#" Value="public virtual System.Drawing.PointF ConvertPointtoView (System.Drawing.PointF aPoint, MonoMac.AppKit.NSView aView);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype System.Drawing.PointF ConvertPointtoView(valuetype System.Drawing.PointF aPoint, class MonoMac.AppKit.NSView aView) cil managed" />
+    <Member MemberName="ConvertPointToView">
+      <MemberSignature Language="C#" Value="public virtual System.Drawing.PointF ConvertPointToView (System.Drawing.PointF aPoint, MonoMac.AppKit.NSView aView);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype System.Drawing.PointF ConvertPointToView(valuetype System.Drawing.PointF aPoint, class MonoMac.AppKit.NSView aView) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -889,9 +961,9 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="ConvertRectfromView">
-      <MemberSignature Language="C#" Value="public virtual System.Drawing.RectangleF ConvertRectfromView (System.Drawing.RectangleF aRect, MonoMac.AppKit.NSView aView);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype System.Drawing.RectangleF ConvertRectfromView(valuetype System.Drawing.RectangleF aRect, class MonoMac.AppKit.NSView aView) cil managed" />
+    <Member MemberName="ConvertRectFromView">
+      <MemberSignature Language="C#" Value="public virtual System.Drawing.RectangleF ConvertRectFromView (System.Drawing.RectangleF aRect, MonoMac.AppKit.NSView aView);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype System.Drawing.RectangleF ConvertRectFromView(valuetype System.Drawing.RectangleF aRect, class MonoMac.AppKit.NSView aView) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -941,9 +1013,9 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="ConvertRecttoView">
-      <MemberSignature Language="C#" Value="public virtual System.Drawing.RectangleF ConvertRecttoView (System.Drawing.RectangleF aRect, MonoMac.AppKit.NSView aView);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype System.Drawing.RectangleF ConvertRecttoView(valuetype System.Drawing.RectangleF aRect, class MonoMac.AppKit.NSView aView) cil managed" />
+    <Member MemberName="ConvertRectToView">
+      <MemberSignature Language="C#" Value="public virtual System.Drawing.RectangleF ConvertRectToView (System.Drawing.RectangleF aRect, MonoMac.AppKit.NSView aView);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype System.Drawing.RectangleF ConvertRectToView(valuetype System.Drawing.RectangleF aRect, class MonoMac.AppKit.NSView aView) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -993,9 +1065,9 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="ConvertSizefromView">
-      <MemberSignature Language="C#" Value="public virtual System.Drawing.SizeF ConvertSizefromView (System.Drawing.SizeF aSize, MonoMac.AppKit.NSView aView);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype System.Drawing.SizeF ConvertSizefromView(valuetype System.Drawing.SizeF aSize, class MonoMac.AppKit.NSView aView) cil managed" />
+    <Member MemberName="ConvertSizeFromView">
+      <MemberSignature Language="C#" Value="public virtual System.Drawing.SizeF ConvertSizeFromView (System.Drawing.SizeF aSize, MonoMac.AppKit.NSView aView);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype System.Drawing.SizeF ConvertSizeFromView(valuetype System.Drawing.SizeF aSize, class MonoMac.AppKit.NSView aView) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -1045,9 +1117,9 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="ConvertSizetoView">
-      <MemberSignature Language="C#" Value="public virtual System.Drawing.SizeF ConvertSizetoView (System.Drawing.SizeF aSize, MonoMac.AppKit.NSView aView);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype System.Drawing.SizeF ConvertSizetoView(valuetype System.Drawing.SizeF aSize, class MonoMac.AppKit.NSView aView) cil managed" />
+    <Member MemberName="ConvertSizeToView">
+      <MemberSignature Language="C#" Value="public virtual System.Drawing.SizeF ConvertSizeToView (System.Drawing.SizeF aSize, MonoMac.AppKit.NSView aView);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype System.Drawing.SizeF ConvertSizeToView(valuetype System.Drawing.SizeF aSize, class MonoMac.AppKit.NSView aView) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -1567,7 +1639,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Frame">
-      <MemberSignature Language="C#" Value="public virtual System.Drawing.RectangleF Frame { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual System.Drawing.RectangleF Frame { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Drawing.RectangleF Frame" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -1591,7 +1663,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="FrameCenterRotation">
-      <MemberSignature Language="C#" Value="public virtual float FrameCenterRotation { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual float FrameCenterRotation { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 FrameCenterRotation" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -1615,7 +1687,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="FrameRotation">
-      <MemberSignature Language="C#" Value="public virtual float FrameRotation { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual float FrameRotation { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 FrameRotation" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -1661,7 +1733,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Hidden">
-      <MemberSignature Language="C#" Value="public virtual bool Hidden { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual bool Hidden { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool Hidden" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -1903,7 +1975,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Layer">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreAnimation.CALayer Layer { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreAnimation.CALayer Layer { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.CoreAnimation.CALayer Layer" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -1927,7 +1999,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="LayerContentsPlacement">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSViewLayerContentsPlacement LayerContentsPlacement { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSViewLayerContentsPlacement LayerContentsPlacement { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.AppKit.NSViewLayerContentsPlacement LayerContentsPlacement" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -1951,7 +2023,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="LayerContentsRedrawPolicy">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSViewLayerContentsRedrawPolicy LayerContentsRedrawPolicy { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSViewLayerContentsRedrawPolicy LayerContentsRedrawPolicy { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.AppKit.NSViewLayerContentsRedrawPolicy LayerContentsRedrawPolicy" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -2138,7 +2210,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="NeedsDisplay">
-      <MemberSignature Language="C#" Value="public virtual bool NeedsDisplay { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual bool NeedsDisplay { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool NeedsDisplay" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -2255,6 +2327,86 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="NSViewBoundsDidChangeNotification">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSViewBoundsDidChangeNotification { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString NSViewBoundsDidChangeNotification" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NSViewDidUpdateTrackingAreasNotification">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSViewDidUpdateTrackingAreasNotification { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString NSViewDidUpdateTrackingAreasNotification" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NSViewFocusDidChangeNotification">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSViewFocusDidChangeNotification { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString NSViewFocusDidChangeNotification" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NSViewFrameDidChangeNotification">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSViewFrameDidChangeNotification { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString NSViewFrameDidChangeNotification" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NSViewGlobalFrameDidChangeNotification">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSViewGlobalFrameDidChangeNotification { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString NSViewGlobalFrameDidChangeNotification" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="OpaqueAncestor">
       <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSView OpaqueAncestor { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AppKit.NSView OpaqueAncestor" />
@@ -2302,7 +2454,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="PostsBoundsChangedNotifications">
-      <MemberSignature Language="C#" Value="public virtual bool PostsBoundsChangedNotifications { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual bool PostsBoundsChangedNotifications { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool PostsBoundsChangedNotifications" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -2326,7 +2478,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="PostsFrameChangedNotifications">
-      <MemberSignature Language="C#" Value="public virtual bool PostsFrameChangedNotifications { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual bool PostsFrameChangedNotifications { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool PostsFrameChangedNotifications" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -2640,9 +2792,9 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="ReplaceSubviewwith">
-      <MemberSignature Language="C#" Value="public virtual void ReplaceSubviewwith (MonoMac.AppKit.NSView oldView, MonoMac.AppKit.NSView newView);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void ReplaceSubviewwith(class MonoMac.AppKit.NSView oldView, class MonoMac.AppKit.NSView newView) cil managed" />
+    <Member MemberName="ReplaceSubviewWith">
+      <MemberSignature Language="C#" Value="public virtual void ReplaceSubviewWith (MonoMac.AppKit.NSView oldView, MonoMac.AppKit.NSView newView);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void ReplaceSubviewWith(class MonoMac.AppKit.NSView oldView, class MonoMac.AppKit.NSView newView) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -3000,7 +3152,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Shadow">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSShadow Shadow { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSShadow Shadow { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AppKit.NSShadow Shadow" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -3070,7 +3222,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Subviews">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSView[] Subviews { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSView[] Subviews { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AppKit.NSView[] Subviews" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -3136,7 +3288,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="ToolTip">
-      <MemberSignature Language="C#" Value="public virtual string ToolTip { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual string ToolTip { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string ToolTip" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -3558,7 +3710,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="WantsLayer">
-      <MemberSignature Language="C#" Value="public virtual bool WantsLayer { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual bool WantsLayer { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool WantsLayer" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -3582,7 +3734,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="WantsRestingTouches">
-      <MemberSignature Language="C#" Value="public virtual bool WantsRestingTouches { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual bool WantsRestingTouches { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool WantsRestingTouches" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>

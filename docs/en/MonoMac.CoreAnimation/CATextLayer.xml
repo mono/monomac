@@ -16,7 +16,26 @@
   </Attributes>
   <Docs>
     <summary>Simple text layour and rendering of regular or attributed text.</summary>
-    <remarks>To be added.</remarks>
+    <remarks>
+      <para>
+   When you want to use one of the CALayer subclasses as your UIView's backing layer, you need to add the following code snippet to your class:
+</para>
+      <example>
+        <code lang="C#">
+class MyView : UIView {
+    //
+    // This instructs the runtime that whenever a MyView is created
+    // that it should instantiate a CATextLayer and assign that to the
+    // UIView.Layer property
+    //
+    [Export ("layerClass")]
+    public static Class LayerClass () {
+        return new Class (typeof (CATextLayer));
+    }
+}
+  </code>
+      </example>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -153,7 +172,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="AlignmentMode">
-      <MemberSignature Language="C#" Value="public virtual string AlignmentMode { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual string AlignmentMode { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string AlignmentMode" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -224,8 +243,30 @@ public class MyClass : BaseClass {
         <remarks>Each MonoMac class mirrors an unmanaged Objective-C class.   This value contains the pointer to the Objective-C class, it is similar to calling objc_getClass with the object name.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Create">
+      <MemberSignature Language="C#" Value="public static MonoMac.CoreAnimation.CALayer Create ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.CoreAnimation.CALayer Create() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("layer")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreAnimation.CALayer</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="FontSize">
-      <MemberSignature Language="C#" Value="public virtual float FontSize { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual float FontSize { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 FontSize" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -249,7 +290,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="ForegroundColor">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreGraphics.CGColor ForegroundColor { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreGraphics.CGColor ForegroundColor { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.CoreGraphics.CGColor ForegroundColor" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -274,6 +315,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="SetFont">
       <MemberSignature Language="C#" Value="public void SetFont (MonoMac.AppKit.NSFont font);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetFont(class MonoMac.AppKit.NSFont font) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -292,6 +334,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="SetFont">
       <MemberSignature Language="C#" Value="public void SetFont (MonoMac.CoreGraphics.CGFont font);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetFont(class MonoMac.CoreGraphics.CGFont font) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -310,6 +353,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="SetFont">
       <MemberSignature Language="C#" Value="public void SetFont (MonoMac.CoreText.CTFont font);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetFont(class MonoMac.CoreText.CTFont font) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -328,6 +372,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="SetFont">
       <MemberSignature Language="C#" Value="public void SetFont (string fontName);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetFont(string fontName) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -345,7 +390,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="String">
-      <MemberSignature Language="C#" Value="public virtual string String { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual string String { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string String" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -417,7 +462,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="TruncationMode">
-      <MemberSignature Language="C#" Value="public virtual string TruncationMode { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual string TruncationMode { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string TruncationMode" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -457,7 +502,8 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="WeakFont">
-      <MemberSignature Language="C#" Value="public object WeakFont { set; get; }" />
+      <MemberSignature Language="C#" Value="public object WeakFont { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance object WeakFont" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -472,7 +518,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Wrapped">
-      <MemberSignature Language="C#" Value="public virtual bool Wrapped { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual bool Wrapped { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool Wrapped" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>

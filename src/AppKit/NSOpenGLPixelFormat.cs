@@ -22,6 +22,7 @@
 //
 
 using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Drawing;
 using MonoMac.Foundation;
@@ -53,6 +54,86 @@ namespace MonoMac.AppKit {
 				
 			}
 		}
+
+		static NSOpenGLPixelFormatAttribute [] ConvertToAttributes (object [] args)
+		{
+			var list = new List<NSOpenGLPixelFormatAttribute> ();
+			for (int i = 0; i < args.Length; i++){
+				var v = (NSOpenGLPixelFormatAttribute) args [i];
+				switch (v){
+				case NSOpenGLPixelFormatAttribute.AllRenderers:
+				case NSOpenGLPixelFormatAttribute.DoubleBuffer:
+				case NSOpenGLPixelFormatAttribute.Stereo:
+				case NSOpenGLPixelFormatAttribute.MinimumPolicy:
+				case NSOpenGLPixelFormatAttribute.MaximumPolicy:
+				case NSOpenGLPixelFormatAttribute.OffScreen:
+				case NSOpenGLPixelFormatAttribute.FullScreen:
+				case NSOpenGLPixelFormatAttribute.SingleRenderer:
+				case NSOpenGLPixelFormatAttribute.NoRecovery:
+				case NSOpenGLPixelFormatAttribute.Accelerated:
+				case NSOpenGLPixelFormatAttribute.ClosestPolicy:
+				case NSOpenGLPixelFormatAttribute.Robust:
+				case NSOpenGLPixelFormatAttribute.BackingStore:
+				case NSOpenGLPixelFormatAttribute.Window:
+				case NSOpenGLPixelFormatAttribute.MultiScreen:
+				case NSOpenGLPixelFormatAttribute.Compliant:
+				case NSOpenGLPixelFormatAttribute.PixelBuffer:
+
+					// Not listed in the docs, but header file implies it
+				case NSOpenGLPixelFormatAttribute.RemotePixelBuffer:
+				case NSOpenGLPixelFormatAttribute.AuxDepthStencil:
+				case NSOpenGLPixelFormatAttribute.ColorFloat:
+				case NSOpenGLPixelFormatAttribute.Multisample:
+				case NSOpenGLPixelFormatAttribute.Supersample:
+				case NSOpenGLPixelFormatAttribute.SampleAlpha:
+				case NSOpenGLPixelFormatAttribute.AllowOfflineRenderers:
+				case NSOpenGLPixelFormatAttribute.AcceleratedCompute:
+				case NSOpenGLPixelFormatAttribute.MPSafe:
+					list.Add (v);
+					break;
+					
+				case NSOpenGLPixelFormatAttribute.AuxBuffers:
+				case NSOpenGLPixelFormatAttribute.ColorSize:
+				case NSOpenGLPixelFormatAttribute.AlphaSize:
+				case NSOpenGLPixelFormatAttribute.DepthSize:
+				case NSOpenGLPixelFormatAttribute.StencilSize:
+				case NSOpenGLPixelFormatAttribute.AccumSize:
+				case NSOpenGLPixelFormatAttribute.RendererID:
+				case NSOpenGLPixelFormatAttribute.ScreenMask:
+
+					// not listed in the docs, but header file implies it
+				case NSOpenGLPixelFormatAttribute.SampleBuffers:
+				case NSOpenGLPixelFormatAttribute.Samples:
+				case NSOpenGLPixelFormatAttribute.VirtualScreenCount:
+					list.Add (v);
+					i++;
+					if (i >= args.Length)
+						throw new ArgumentException ("Attribute " + v + " needs a value");
+					list.Add ((NSOpenGLPixelFormatAttribute) args [i]);
+					break;
+				}
+			}
+			return list.ToArray ();
+		}
 		
+		public NSOpenGLPixelFormat (params object [] attribs) : this (ConvertToAttributes (attribs))
+		{
+			if (attribs == null)
+				throw new ArgumentNullException ("attribs");
+
+			unsafe {
+				NSOpenGLPixelFormatAttribute [] copy = new NSOpenGLPixelFormatAttribute [attribs.Length+1];
+				Array.Copy (attribs, 0, copy, 0, attribs.Length);
+
+				fixed (NSOpenGLPixelFormatAttribute* pArray = copy){
+					if (IsDirectBinding) {
+						Handle = MonoMac.ObjCRuntime.Messaging.IntPtr_objc_msgSend_IntPtr (this.Handle, selInitWithAttributes, new IntPtr((void*)pArray ));
+					} else {
+						Handle = MonoMac.ObjCRuntime.Messaging.IntPtr_objc_msgSendSuper_IntPtr (this.SuperHandle, selInitWithAttributes, new IntPtr((void*)pArray));
+					}
+				}
+				
+			}
+		}
 	}
 }

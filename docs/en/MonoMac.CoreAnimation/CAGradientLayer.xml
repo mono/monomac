@@ -16,7 +16,26 @@
   </Attributes>
   <Docs>
     <summary>Layer that renders a gradient over its background.</summary>
-    <remarks>To be added.</remarks>
+    <remarks>
+      <para>
+   When you want to use one of the CALayer subclasses as your UIView's backing layer, you need to add the following code snippet to your class:
+</para>
+      <example>
+        <code lang="C#">
+class MyView : UIView {
+    //
+    // This instructs the runtime that whenever a MyView is created
+    // that it should instantiate a CAGradientLayer and assign that to the
+    // UIView.Layer property
+    //
+    [Export ("layerClass")]
+    public static Class LayerClass () {
+        return new Class (typeof (CAGradientLayer));
+    }
+}
+  </code>
+      </example>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -121,7 +140,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Colors">
-      <MemberSignature Language="C#" Value="public MonoMac.CoreGraphics.CGColor[] Colors { set; get; }" />
+      <MemberSignature Language="C#" Value="public MonoMac.CoreGraphics.CGColor[] Colors { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.CoreGraphics.CGColor[] Colors" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -133,6 +152,28 @@ public class MyClass : BaseClass {
       <Docs>
         <summary>An array of colors defining the gradient.   These values can be animated.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Create">
+      <MemberSignature Language="C#" Value="public static MonoMac.CoreAnimation.CALayer Create ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.CoreAnimation.CALayer Create() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("layer")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreAnimation.CALayer</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -157,7 +198,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="EndPoint">
-      <MemberSignature Language="C#" Value="public virtual System.Drawing.PointF EndPoint { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual System.Drawing.PointF EndPoint { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Drawing.PointF EndPoint" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -197,7 +238,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Locations">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSNumber[] Locations { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSNumber[] Locations { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSNumber[] Locations" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -221,7 +262,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="StartPoint">
-      <MemberSignature Language="C#" Value="public virtual System.Drawing.PointF StartPoint { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual System.Drawing.PointF StartPoint { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Drawing.PointF StartPoint" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -245,7 +286,7 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Type">
-      <MemberSignature Language="C#" Value="public virtual string Type { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual string Type { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string Type" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>

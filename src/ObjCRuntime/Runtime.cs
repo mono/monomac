@@ -124,8 +124,7 @@ namespace MonoMac.ObjCRuntime {
 			lock (lock_obj) {
 				WeakReference reference;
 				if (object_map.TryGetValue (ptr, out reference))
-					if (reference.IsAlive)
-						return (NSObject) reference.Target;
+					return (NSObject) reference.Target;
 			}
 			
 			type = Class.Lookup (Messaging.intptr_objc_msgSend (ptr, selClass));
@@ -136,6 +135,18 @@ namespace MonoMac.ObjCRuntime {
 				Console.WriteLine ("WARNING: Cannot find type for {0} ({1}) using NSObject", new Class (ptr).Name, ptr);
 				return new NSObject (ptr);
 			}
+		}
+
+		public static void ConnectMethod (MethodInfo method, Selector selector) {
+			var type = method.DeclaringType;
+
+			if (!Class.IsCustomType (type))
+				throw new ArgumentException ("Cannot late bind methods on core types");
+
+			var ea = new ExportAttribute (selector.Name);
+			var klass = new Class (type);
+
+			Class.RegisterMethod (method, ea, type, klass.Handle);
 		}
 	}
 }

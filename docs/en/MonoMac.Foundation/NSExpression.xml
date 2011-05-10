@@ -1,7 +1,8 @@
 <Type Name="NSExpression" FullName="MonoMac.Foundation.NSExpression">
   <TypeSignature Language="C#" Value="public class NSExpression : MonoMac.Foundation.NSObject" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit NSExpression extends MonoMac.Foundation.NSObject" />
   <AssemblyInfo>
-    <AssemblyName>monomac</AssemblyName>
+    <AssemblyName>MonoMac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -20,6 +21,7 @@
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSExpression ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -37,6 +39,7 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSExpression (MonoMac.Foundation.NSCoder coder);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSCoder coder) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -57,6 +60,7 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSExpression (MonoMac.Foundation.NSExpressionType type);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype MonoMac.Foundation.NSExpressionType type) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -77,6 +81,7 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSExpression (MonoMac.Foundation.NSObjectFlag t);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSObjectFlag t) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -104,6 +109,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSExpression (IntPtr handle);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int handle) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -121,10 +127,16 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="Arguments">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSExpression[] Arguments { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSExpression[] Arguments" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("arguments")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSExpression[]</ReturnType>
       </ReturnValue>
@@ -133,14 +145,10 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("arguments")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="ClassHandle">
       <MemberSignature Language="C#" Value="public override IntPtr ClassHandle { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance native int ClassHandle" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -156,30 +164,16 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="Collection">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject Collection { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSObject Collection" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("collection")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="ConstantValue">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject ConstantValue { get; }" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
       </ReturnValue>
@@ -188,18 +182,40 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="ConstantValue">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject ConstantValue { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSObject ConstantValue" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("constantValue")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="ExpressionForEvaluatedObject">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSExpression ExpressionForEvaluatedObject { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSExpression ExpressionForEvaluatedObject" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("expressionForEvaluatedObject")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSExpression</ReturnType>
       </ReturnValue>
@@ -208,18 +224,19 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("expressionForEvaluatedObject")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="ExpressionType">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSExpressionType ExpressionType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.Foundation.NSExpressionType ExpressionType" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("expressionType")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSExpressionType</ReturnType>
       </ReturnValue>
@@ -228,14 +245,10 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("expressionType")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="ExpressionValueWithObject">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSExpression ExpressionValueWithObject (MonoMac.Foundation.NSObject object1, MonoMac.Foundation.NSMutableDictionary context);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class MonoMac.Foundation.NSExpression ExpressionValueWithObject(class MonoMac.Foundation.NSObject object1, class MonoMac.Foundation.NSMutableDictionary context) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -262,6 +275,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="FromAggregate">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSExpression FromAggregate (MonoMac.Foundation.NSExpression[] subexpressions);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class MonoMac.Foundation.NSExpression FromAggregate(class MonoMac.Foundation.NSExpression[] subexpressions) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -286,6 +300,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="FromConstant">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSExpression FromConstant (MonoMac.Foundation.NSObject obj);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSExpression FromConstant(class MonoMac.Foundation.NSObject obj) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -310,6 +325,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="FromFuction">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSExpression FromFuction (string name, MonoMac.Foundation.NSExpression[] parameters);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSExpression FromFuction(string name, class MonoMac.Foundation.NSExpression[] parameters) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -336,6 +352,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="FromFunction">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSExpression FromFunction (MonoMac.Foundation.NSExpressionHandler target, MonoMac.Foundation.NSExpression[] parameters);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSExpression FromFunction(class MonoMac.Foundation.NSExpressionHandler target, class MonoMac.Foundation.NSExpression[] parameters) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -362,6 +379,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="FromFunction">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSExpression FromFunction (MonoMac.Foundation.NSExpression target, string name, MonoMac.Foundation.NSExpression[] parameters);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSExpression FromFunction(class MonoMac.Foundation.NSExpression target, string name, class MonoMac.Foundation.NSExpression[] parameters) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -390,6 +408,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="FromIntersectSet">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSExpression FromIntersectSet (MonoMac.Foundation.NSExpression left, MonoMac.Foundation.NSExpression right);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSExpression FromIntersectSet(class MonoMac.Foundation.NSExpression left, class MonoMac.Foundation.NSExpression right) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -416,6 +435,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="FromKeyPath">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSExpression FromKeyPath (string keyPath);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSExpression FromKeyPath(string keyPath) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -440,6 +460,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="FromMinusSet">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSExpression FromMinusSet (MonoMac.Foundation.NSExpression left, MonoMac.Foundation.NSExpression right);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSExpression FromMinusSet(class MonoMac.Foundation.NSExpression left, class MonoMac.Foundation.NSExpression right) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -466,6 +487,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="FromSubquery">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSExpression FromSubquery (MonoMac.Foundation.NSExpression expression, string variable, MonoMac.Foundation.NSObject predicate);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSExpression FromSubquery(class MonoMac.Foundation.NSExpression expression, string variable, class MonoMac.Foundation.NSObject predicate) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -494,6 +516,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="FromUnionSet">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSExpression FromUnionSet (MonoMac.Foundation.NSExpression left, MonoMac.Foundation.NSExpression right);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSExpression FromUnionSet(class MonoMac.Foundation.NSExpression left, class MonoMac.Foundation.NSExpression right) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -520,6 +543,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="FromVariable">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSExpression FromVariable (string string1);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSExpression FromVariable(string string1) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -544,30 +568,16 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="Function">
       <MemberSignature Language="C#" Value="public virtual string Function { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Function" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("function")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="KeyPath">
-      <MemberSignature Language="C#" Value="public virtual string KeyPath { get; }" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -576,38 +586,40 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="KeyPath">
+      <MemberSignature Language="C#" Value="public virtual string KeyPath { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string KeyPath" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("keyPath")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="LeftExpression">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSExpression LeftExpression { get; }" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSExpression</ReturnType>
+        <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="LeftExpression">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSExpression LeftExpression { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSExpression LeftExpression" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("leftExpression")</AttributeName>
         </Attribute>
       </Attributes>
-    </Member>
-    <Member MemberName="Operand">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSExpression Operand { get; }" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSExpression</ReturnType>
       </ReturnValue>
@@ -616,18 +628,40 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
+    </Member>
+    <Member MemberName="Operand">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSExpression Operand { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSExpression Operand" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("operand")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSExpression</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="Predicate">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSPredicate Predicate { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSPredicate Predicate" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("predicate")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSPredicate</ReturnType>
       </ReturnValue>
@@ -636,18 +670,19 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("predicate")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="RightExpression">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSExpression RightExpression { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSExpression RightExpression" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("rightExpression")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSExpression</ReturnType>
       </ReturnValue>
@@ -656,18 +691,19 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("rightExpression")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="Variable">
       <MemberSignature Language="C#" Value="public virtual string Variable { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Variable" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("variable")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -676,11 +712,6 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("variable")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
   </Members>
 </Type>

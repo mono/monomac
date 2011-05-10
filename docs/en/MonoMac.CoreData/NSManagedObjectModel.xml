@@ -1,7 +1,8 @@
 <Type Name="NSManagedObjectModel" FullName="MonoMac.CoreData.NSManagedObjectModel">
   <TypeSignature Language="C#" Value="public class NSManagedObjectModel : MonoMac.Foundation.NSObject" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit NSManagedObjectModel extends MonoMac.Foundation.NSObject" />
   <AssemblyInfo>
-    <AssemblyName>monomac</AssemblyName>
+    <AssemblyName>MonoMac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
@@ -20,6 +21,7 @@
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSManagedObjectModel ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -37,6 +39,7 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSManagedObjectModel (MonoMac.Foundation.NSCoder coder);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSCoder coder) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -57,6 +60,7 @@
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSManagedObjectModel (MonoMac.Foundation.NSObjectFlag t);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSObjectFlag t) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -84,6 +88,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSManagedObjectModel (MonoMac.Foundation.NSUrl url);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSUrl url) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -104,6 +109,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSManagedObjectModel (IntPtr handle);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int handle) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -121,6 +127,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="ClassHandle">
       <MemberSignature Language="C#" Value="public override IntPtr ClassHandle { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance native int ClassHandle" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -136,10 +143,16 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="Configurations">
       <MemberSignature Language="C#" Value="public virtual string[] Configurations { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string[] Configurations" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("configurations")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.String[]</ReturnType>
       </ReturnValue>
@@ -148,26 +161,14 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("configurations")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="Entities">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreData.NSEntityDescription[] Entities { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreData.NSEntityDescription[] Entities { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.CoreData.NSEntityDescription[] Entities" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.CoreData.NSEntityDescription[]</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("entities")</AttributeName>
@@ -176,13 +177,27 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setEntities:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreData.NSEntityDescription[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="EntitiesByName">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSDictionary EntitiesByName { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSDictionary EntitiesByName" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("entitiesByName")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSDictionary</ReturnType>
       </ReturnValue>
@@ -191,14 +206,10 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("entitiesByName")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="EntitiesForConfiguration">
       <MemberSignature Language="C#" Value="public virtual string[] EntitiesForConfiguration (string configuration);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string[] EntitiesForConfiguration(string configuration) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -223,10 +234,16 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="EntityVersionHashesByName">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSDictionary EntityVersionHashesByName { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSDictionary EntityVersionHashesByName" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("entityVersionHashesByName")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSDictionary</ReturnType>
       </ReturnValue>
@@ -235,14 +252,10 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("entityVersionHashesByName")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="FetchRequestFromTemplateWithName">
       <MemberSignature Language="C#" Value="public virtual MonoMac.CoreData.NSFetchRequest FetchRequestFromTemplateWithName (string name, MonoMac.Foundation.NSDictionary variables);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class MonoMac.CoreData.NSFetchRequest FetchRequestFromTemplateWithName(string name, class MonoMac.Foundation.NSDictionary variables) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -269,6 +282,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="FetchRequestTemplateForName">
       <MemberSignature Language="C#" Value="public virtual MonoMac.CoreData.NSFetchRequest FetchRequestTemplateForName (string name);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class MonoMac.CoreData.NSFetchRequest FetchRequestTemplateForName(string name) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -293,10 +307,16 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="FetchRequestTemplatesByName">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSDictionary FetchRequestTemplatesByName { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSDictionary FetchRequestTemplatesByName" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("fetchRequestTemplatesByName")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSDictionary</ReturnType>
       </ReturnValue>
@@ -305,18 +325,19 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("fetchRequestTemplatesByName")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="Init">
       <MemberSignature Language="C#" Value="public virtual IntPtr Init { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance native int Init" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("init")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.IntPtr</ReturnType>
       </ReturnValue>
@@ -325,14 +346,10 @@ public class MyClass : BaseClass {
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("init")</AttributeName>
-        </Attribute>
-      </Attributes>
     </Member>
     <Member MemberName="IsConfiguration">
       <MemberSignature Language="C#" Value="public virtual bool IsConfiguration (string configuration, MonoMac.Foundation.NSDictionary metadata);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool IsConfiguration(string configuration, class MonoMac.Foundation.NSDictionary metadata) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -358,19 +375,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="LocalizationDictionary">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSDictionary LocalizationDictionary { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSDictionary LocalizationDictionary { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSDictionary LocalizationDictionary" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSDictionary</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("localizationDictionary")</AttributeName>
@@ -379,9 +389,18 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setLocalizationDictionary:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSDictionary</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
     <Member MemberName="MergedModelFromBundles">
       <MemberSignature Language="C#" Value="public static MonoMac.CoreData.NSManagedObjectModel MergedModelFromBundles (MonoMac.Foundation.NSBundle[] bundles);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.CoreData.NSManagedObjectModel MergedModelFromBundles(class MonoMac.Foundation.NSBundle[] bundles) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -406,6 +425,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="MergedModelFromBundles">
       <MemberSignature Language="C#" Value="public static MonoMac.CoreData.NSManagedObjectModel MergedModelFromBundles (MonoMac.Foundation.NSBundle[] bundles, MonoMac.Foundation.NSDictionary metadata);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.CoreData.NSManagedObjectModel MergedModelFromBundles(class MonoMac.Foundation.NSBundle[] bundles, class MonoMac.Foundation.NSDictionary metadata) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -432,6 +452,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="ModelByMergingModels">
       <MemberSignature Language="C#" Value="public static MonoMac.CoreData.NSManagedObjectModel ModelByMergingModels (MonoMac.CoreData.NSManagedObjectModel[] models);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.CoreData.NSManagedObjectModel ModelByMergingModels(class MonoMac.CoreData.NSManagedObjectModel[] models) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -456,6 +477,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="ModelByMergingModels">
       <MemberSignature Language="C#" Value="public static MonoMac.CoreData.NSManagedObjectModel ModelByMergingModels (MonoMac.CoreData.NSManagedObjectModel[] models, MonoMac.Foundation.NSDictionary metadata);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.CoreData.NSManagedObjectModel ModelByMergingModels(class MonoMac.CoreData.NSManagedObjectModel[] models, class MonoMac.Foundation.NSDictionary metadata) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -482,6 +504,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="SetEntities">
       <MemberSignature Language="C#" Value="public virtual void SetEntities (MonoMac.CoreData.NSEntityDescription[] entities, string configuration);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetEntities(class MonoMac.CoreData.NSEntityDescription[] entities, string configuration) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -507,6 +530,7 @@ public class MyClass : BaseClass {
     </Member>
     <Member MemberName="SetFetchRequestTemplate">
       <MemberSignature Language="C#" Value="public virtual void SetFetchRequestTemplate (MonoMac.CoreData.NSFetchRequest fetchRequestTemplate, string name);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetFetchRequestTemplate(class MonoMac.CoreData.NSFetchRequest fetchRequestTemplate, string name) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -531,19 +555,12 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="VersionIdentifiers">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSSet VersionIdentifiers { set; get; }" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSSet VersionIdentifiers { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSSet VersionIdentifiers" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSSet</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("versionIdentifiers")</AttributeName>
@@ -552,6 +569,14 @@ public class MyClass : BaseClass {
           <AttributeName>set: MonoMac.Foundation.Export("setVersionIdentifiers:")</AttributeName>
         </Attribute>
       </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSSet</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
     </Member>
   </Members>
 </Type>

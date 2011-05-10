@@ -14,6 +14,7 @@ CORE_SOURCES =					\
 	./CoreImage/Enums.cs				\
 	./Foundation/EnumDesktop.cs			\
 	./Foundation/NSObject.cs			\
+	./ImageKit/Enums.cs				\
 	./ObjCRuntime/Class.cs				\
 	./ObjCRuntime/Messaging.cs			\
 	./ObjCRuntime/NativeConstructorBuilder.cs	\
@@ -25,13 +26,18 @@ CORE_SOURCES =					\
 	./ObjCRuntime/Runtime.cs			\
 	./ObjCRuntime/RequiredFrameworkAttribute.cs	\
 	./ObjCRuntime/Selector.cs			\
+	./PdfKit/Enums.cs				\
 	./QTKit/Defs.cs					\
 	./QTKit/Enums.cs				\
+	./OpenGL/CGLEnums.cs				\
+	./OpenGL/CGLContext.cs				\
+	./OpenGL/CGLPixelFormat.cs			\
 	./WebKit/Enums.cs
 
 # Sources that are not part of CORE_SOURCES or the generated templates
 MONOMAC_SOURCES = \
 	./Foundation/NSObjectMac.cs			\
+	./Foundation/NSSearchPath.cs		\
 	./AppKit/ActionDispatcher.cs			\
 	./AppKit/BeginSheet.cs				\
 	./AppKit/DoubleWrapper.cs			\
@@ -46,10 +52,12 @@ MONOMAC_SOURCES = \
 	./AppKit/NSControl.cs				\
 	./AppKit/NSGradient.cs				\
 	./AppKit/NSGraphics.cs				\
+	./AppKit/NSImage.cs				\
 	./AppKit/NSLevelIndicator.cs			\
 	./AppKit/NSMatrix.cs				\
 	./AppKit/NSMenu.cs				\
 	./AppKit/NSMenuItem.cs				\
+	./AppKit/NSOpenGLContext.cs			\
 	./AppKit/NSOpenGLPixelFormat.cs			\
 	./AppKit/NSPopUpButton.cs			\
 	./AppKit/NSPopUpButtonCell.cs			\
@@ -59,6 +67,7 @@ MONOMAC_SOURCES = \
 	./CoreImage/CIContext.cs			\
 	./CoreImage/CISampler.cs			\
 	./CoreImage/CIVector.cs				\
+	./CoreVideo/CVDisplayLink.cs			\
 	./Growl/Constants.cs				\
 	./QTKit/QTCaptureDevice.cs			\
 	./QTKit/QTMovie.cs				\
@@ -66,7 +75,36 @@ MONOMAC_SOURCES = \
 	./WebKit/Enumerators.cs				\
 	./WebKit/Indexers.cs				\
 	./WebKit/WebKit.cs				\
-	./WebKit/WebView.cs
+	./WebKit/WebView.cs				\
+	./OpenGL/FrameEventArgs.cs				\
+	./OpenGL/IGameWindow.cs				\
+	./OpenGL/INativeWindow.cs				\
+	./OpenGL/WindowBorder.cs				\
+	./OpenGL/WindowState.cs				\
+	./OpenGL/MonoMacGameView.cs
+
+OPENTK_SOURCES = \
+	./OpenGL/OpenTK/Graphics/Color4.cs		\
+	./OpenGL/OpenTK/Graphics/OpenGL/GL.cs		\
+	./OpenGL/OpenTK/Graphics/OpenGL/GLCore.cs	\
+	./OpenGL/OpenTK/Graphics/OpenGL/GLEnums.cs	\
+	./OpenGL/OpenTK/Graphics/OpenGL/GLHelper.cs	\
+	./OpenGL/OpenTK/Math/Half.cs			\
+	./OpenGL/OpenTK/Math/MathHelper.cs		\
+	./OpenGL/OpenTK/Math/Matrix3d.cs		\
+	./OpenGL/OpenTK/Math/Matrix4.cs			\
+	./OpenGL/OpenTK/Math/Matrix4d.cs		\
+	./OpenGL/OpenTK/Math/Quaternion.cs		\
+	./OpenGL/OpenTK/Math/Quaterniond.cs		\
+	./OpenGL/OpenTK/Math/Vector2.cs			\
+	./OpenGL/OpenTK/Math/Vector2d.cs		\
+	./OpenGL/OpenTK/Math/Vector2h.cs		\
+	./OpenGL/OpenTK/Math/Vector3.cs			\
+	./OpenGL/OpenTK/Math/Vector3d.cs		\
+	./OpenGL/OpenTK/Math/Vector3h.cs		\
+	./OpenGL/OpenTK/Math/Vector4.cs			\
+	./OpenGL/OpenTK/Math/Vector4d.cs		\
+	./OpenGL/OpenTK/Math/Vector4h.cs
 
 GENERATOR_SOURCES = \
 	../../maccore/src/generator.cs			\
@@ -95,9 +133,12 @@ SHARED_APIS = $(patsubst %,../../maccore/src/%,$(SHARED_API))
 APIS = \
 	appkit.cs		\
 	coreimage.cs		\
+	corewlan.cs		\
 	foundation-desktop.cs 	\
 	growl.cs		\
+	imagekit.cs		\
 	qtkit.cs		\
+	pdfkit.cs		\
 	webkit.cs		\
 	composer.cs		\
 	$(SHARED_APIS)
@@ -125,8 +166,8 @@ count:
 counts:
 	make pass | grep 'could not be' | sed 's/.*`//' | sed "s/'.*//" | sort | uniq -c | sort -n
 
-MonoMac.dll: $(SOURCES) generated_sources $(MONOMAC_SOURCES) $(SHARED_SOURCES) $(SHARED_CORE_SOURCES)
-	gmcs -define:OBJECT_REF_TRACKING -nowarn:0414,$(WARNINGS_I_SHOULD_FIX) -debug -unsafe $(SOURCES) @generated_sources $(MONOMAC_SOURCES) $(SHARED_SOURCES) $(SHARED_CORE_SOURCES) -target:library -define:MONOMAC -out:MonoMac.dll -r:System.Drawing
+MonoMac.dll: $(SOURCES) generated_sources $(MONOMAC_SOURCES) $(SHARED_SOURCES) $(SHARED_CORE_SOURCES) $(OPENTK_SOURCES)
+	gmcs -define:OBJECT_REF_TRACKING -nowarn:3021,0219,0414,$(WARNINGS_I_SHOULD_FIX) -debug -unsafe $(SOURCES) @generated_sources $(MONOMAC_SOURCES) $(SHARED_SOURCES) $(SHARED_CORE_SOURCES) $(OPENTK_SOURCES) -target:library -define:MONOMAC -out:MonoMac.dll -r:System.Drawing
 
 clean:
 	rm -f $(TARGETS) core.dll
@@ -134,7 +175,7 @@ clean:
 all: MonoMac.dll
 
 update: MonoMac.dll
-	cp monomac.dll ~/.config/MonoDevelop/addins/MonoDevelop.MonoMac.2.4.0.*/MonoMac.dll
+	cp MonoMac.dll* ~/.config/MonoDevelop/addins/MonoDevelop.MonoMac.2.4.*/
 
 push-to-monodevelop:
 	cp MonoMac.dll* /cvs/monodevelop/extras/MonoDevelop.MonoMac/MonoDevelop.MonoMac
