@@ -32,6 +32,7 @@ CORE_SOURCES =					\
 	./OpenGL/CGLEnums.cs				\
 	./OpenGL/CGLContext.cs				\
 	./OpenGL/CGLPixelFormat.cs			\
+	./ScriptingBridge/Enums.cs			\
 	./WebKit/Enums.cs
 
 # Sources that are not part of CORE_SOURCES or the generated templates
@@ -141,6 +142,7 @@ APIS = \
 	pdfkit.cs		\
 	webkit.cs		\
 	composer.cs		\
+	scriptingbridge.cs		\
 	$(SHARED_APIS)
 
 all: $(TARGETS)

@@ -3,13 +3,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>10.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{45A824E6-D41D-4748-BD45-FEC96E6057F1}</ProjectGuid>
+    <ProjectGuid>{8A58025F-03B6-409C-980E-55178E0402D0}</ProjectGuid>
     <ProjectTypeGuids>{1C533B1C-72DD-4CB1-9F6B-BF11D93BCFBE};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Exe</OutputType>
-    <RootNamespace>DatePicker</RootNamespace>
-    <AssemblyName>DatePicker</AssemblyName>
+    <RootNamespace>ScriptingBridgeFinder</RootNamespace>
+    <AssemblyName>ScriptingBridgeFinder</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -41,6 +41,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MainWindow.cs">
+      <DependentUpon>MainWindow.xib</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindowController.cs">
+      <DependentUpon>MainWindow.xib</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xib.designer.cs">
+      <DependentUpon>MainWindow.xib</DependentUpon>
+    </Compile>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs">
       <DependentUpon>MainMenu.xib</DependentUpon>
@@ -48,19 +57,11 @@
     <Compile Include="MainMenu.xib.designer.cs">
       <DependentUpon>MainMenu.xib</DependentUpon>
     </Compile>
-    <Compile Include="TestWindow.cs">
-      <DependentUpon>TestWindow.xib</DependentUpon>
-    </Compile>
-    <Compile Include="TestWindowController.cs">
-      <DependentUpon>TestWindow.xib</DependentUpon>
-    </Compile>
-    <Compile Include="TestWindow.xib.designer.cs">
-      <DependentUpon>TestWindow.xib</DependentUpon>
-    </Compile>
+    <Compile Include="FinderFile.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="MainWindow.xib" />
     <Page Include="MainMenu.xib" />
-    <Page Include="TestWindow.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
