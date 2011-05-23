@@ -289,7 +289,7 @@ namespace MonoMac.Foundation {
 
 		private void InvokeOnMainThread (Selector sel, NSObject obj, bool wait)
 		{
-			Messaging.void_objc_msgSend_intptr_intptr_bool (this.Handle, selPerformSelectorOnMainThreadWithObjectWaitUntilDone, sel.Handle, obj.Handle, wait);
+			Messaging.void_objc_msgSend_intptr_intptr_bool (this.Handle, selPerformSelectorOnMainThreadWithObjectWaitUntilDone, sel.Handle, obj == null ? IntPtr.Zero : obj.Handle, wait);
 		}
 
 		public void BeginInvokeOnMainThread (Selector sel, NSObject obj)
