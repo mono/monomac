@@ -3927,6 +3927,7 @@ namespace MonoMac.AppKit {
 		[Export ("fontWithDescriptor:textTransform:")]
 		NSFont FromDescription (NSFontDescriptor fontDescriptor, NSAffineTransform textTransform);
 
+		[Static]
 		[Export ("userFontOfSize:")]
 		NSFont UserFontOfSize (float fontSize);
 
