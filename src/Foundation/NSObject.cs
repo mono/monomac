@@ -154,7 +154,7 @@ namespace MonoMac.Foundation {
 		[Export ("release")]
 		internal void NativeRelease () {
 			lock (lock_obj) {
-				uint count = Messaging.uint_objc_msgSend (handle, selRetainCount);
+				uint count = Messaging.UInt32_objc_msgSend (handle, selRetainCount);
 				Messaging.void_objc_msgSendSuper (SuperHandle, selRelease);
 
 				if (count == 2) {
@@ -172,7 +172,7 @@ namespace MonoMac.Foundation {
 		[Export ("retain")]
 		internal IntPtr NativeRetain () {
 			lock (lock_obj) {
-				uint count = Messaging.uint_objc_msgSend (handle, selRetainCount);
+				uint count = Messaging.UInt32_objc_msgSend (handle, selRetainCount);
 				Messaging.void_objc_msgSendSuper (SuperHandle, selRetain);
 
 				if (count == 1) {
