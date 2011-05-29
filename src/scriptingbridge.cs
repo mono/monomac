@@ -129,26 +129,4 @@ namespace MonoMac.ScriptingBridge {
 
 	}
 	
-
-	[BaseType (typeof (NSMutableArray))]
-	interface SBElementArray {
-		[Export ("objectWithName:")]
-		NSObject Object (string name);
-
-		[Export ("objectWithID:")]
-		NSObject Object (NSObject identifier);
-
-		[Export ("objectAtLocation:")]
-		NSObject ObjectAt (NSObject location);
-
-		[Export ("arrayByApplyingSelector:")]
-		NSArray GetArray (Selector selector);
-
-		[Export ("arrayByApplyingSelector:withObject:")]
-		NSArray GetArray (Selector aSelector, NSObject argument);
-
-		[Export ("get")]
-		NSArray Get { get; }
-
-	}	
 }
