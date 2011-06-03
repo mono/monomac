@@ -190,7 +190,7 @@ namespace MonoMac.ObjCRuntime {
 		protected void ConvertArguments (ILGenerator il, int locoffset) {
 #if !MONOMAC_BOOTSTRAP
 			for (int i = ArgumentOffset, j = 0; i < ParameterTypes.Length; i++) {
-				if (Parameters [i-ArgumentOffset].ParameterType.IsByRef && (Attribute.GetCustomAttribute (Parameters [i-ArgumentOffset], typeof (OutAttribute)) == null) && IsWrappedType (Parameters[i-ArgumentOffset].ParameterType.GetElementType ())) {
+				if (Parameters [i-ArgumentOffset].ParameterType.IsByRef && (Attribute.GetCustomAttribute (Parameters [i-ArgumentOffset], typeof (InAttribute)) != null) && IsWrappedType (Parameters[i-ArgumentOffset].ParameterType.GetElementType ())) {
 					il.Emit (OpCodes.Ldarg, i);
 					il.Emit (OpCodes.Ldind_I);
 					il.Emit (OpCodes.Call, getobject);
@@ -237,7 +237,7 @@ namespace MonoMac.ObjCRuntime {
 		protected void UpdateByRefArguments (ILGenerator il, int locoffset) {
 #if !MONOMAC_BOOTSTRAP
 			for (int i = ArgumentOffset, j = 0; i < ParameterTypes.Length; i++) {
-				if (Parameters [i-ArgumentOffset].ParameterType.IsByRef && IsWrappedType (Parameters[i-ArgumentOffset].ParameterType.GetElementType ())) {
+				if (Parameters [i-ArgumentOffset].ParameterType.IsByRef && (Attribute.GetCustomAttribute (Parameters [i-ArgumentOffset], typeof (OutAttribute)) != null) && IsWrappedType (Parameters[i-ArgumentOffset].ParameterType.GetElementType ())) {
 					Label nullout = il.DefineLabel ();
 					Label done = il.DefineLabel ();
 					il.Emit (OpCodes.Ldloc, j+locoffset);
