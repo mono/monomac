@@ -224,13 +224,9 @@ namespace MonoMac.Foundation {
 		}
 
 		private IntPtr GetObjCIvar (string name) {
-			IntPtr buf;
 			IntPtr native;
 			
-			buf = Marshal.AllocHGlobal (Marshal.SizeOf (typeof (IntPtr)));
-			object_getInstanceVariable (handle, name, buf);
-			native = Marshal.ReadIntPtr (buf);
-			Marshal.FreeHGlobal (buf);
+			object_getInstanceVariable (handle, name, ref native);
 	
 			return native;
 		}
@@ -268,7 +264,7 @@ namespace MonoMac.Foundation {
 		}
 
 		[DllImport ("/usr/lib/libobjc.dylib")]
-		extern static void object_getInstanceVariable (IntPtr obj, string name, IntPtr val);
+		extern static void object_getInstanceVariable (IntPtr obj, string name, ref IntPtr val);
 		[DllImport ("/usr/lib/libobjc.dylib")]
 		extern static void object_setInstanceVariable (IntPtr obj, string name, IntPtr val);
 
