@@ -1363,10 +1363,10 @@ namespace MonoMac.WebKit {
 		[Export ("webView:didReceiveServerRedirectForProvisionalLoadForFrame:"), EventArgs ("WebFrame")]
 		void ReceivedServerRedirectForProvisionalLoad (WebView sender, WebFrame forFrame);
 
-		[Export ("webView:didFailProvisionalLoadWithError:forFrame:"), EventArgs ("WebFrameErrorEventArgs")]
+		[Export ("webView:didFailProvisionalLoadWithError:forFrame:"), EventArgs ("WebFrameError")]
 		void FailedProvisionalLoad (WebView sender, NSError error, WebFrame forFrame);
 
-		[Export ("webView:didCommitLoadForFrame:"), EventArgs ("WebFrameEventArgs")]
+		[Export ("webView:didCommitLoadForFrame:"), EventArgs ("WebFrame")]
 		void CommitedLoad (WebView sender, WebFrame forFrame);
 
 		[Export ("webView:didReceiveTitle:forFrame:"), EventArgs ("WebFrameTitle")]
