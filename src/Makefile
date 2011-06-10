@@ -11,7 +11,6 @@ WARNINGS_I_SHOULD_FIX=114,108
 CORE_SOURCES =					\
 	Constants.cs					\
 	./AppKit/Enums.cs				\
-	./CoreImage/Enums.cs				\
 	./Foundation/EnumDesktop.cs			\
 	./Foundation/NSObject.cs			\
 	./ImageKit/Enums.cs				\
@@ -65,9 +64,6 @@ MONOMAC_SOURCES = \
 	./AppKit/NSSegmentedControl.cs			\
 	./AppKit/NSTableView.cs				\
 	./AppKit/NSWindow.cs				\
-	./CoreImage/CIContext.cs			\
-	./CoreImage/CISampler.cs			\
-	./CoreImage/CIVector.cs				\
 	./CoreVideo/CVDisplayLink.cs			\
 	./Growl/Constants.cs				\
 	./QTKit/QTCaptureDevice.cs			\
@@ -125,6 +121,7 @@ SHARED_API = \
 	./foundation.cs		\
 	./coreanimation.cs	\
 	./coredata.cs		\
+	./coreimage.cs		\
 	./corelocation.cs
 
 SHARED_SOURCES = $(patsubst %,../../maccore/src/%,$(SHARED_SOURCE))
@@ -133,7 +130,6 @@ SHARED_APIS = $(patsubst %,../../maccore/src/%,$(SHARED_API))
 
 APIS = \
 	appkit.cs		\
-	coreimage.cs		\
 	corewlan.cs		\
 	foundation-desktop.cs 	\
 	growl.cs		\
