@@ -12,6 +12,7 @@ using System.Linq;
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
+using Mono.Options;
 
 class SourceStream : Stream {
 	Stream source;
@@ -212,6 +213,11 @@ class TrivialParser {
 	StreamWriter gencs = File.CreateText ("gen.cs");
 	StreamWriter other = File.CreateText ("other.c");
 	StreamReader r;
+
+	// Used to limit which APIs to include in the binding
+	string limit;
+	OptionSet options;
+	
 	ArrayList types = new ArrayList ();
 	
 	void ProcessProperty (string line)
@@ -416,6 +422,11 @@ class TrivialParser {
 	
 	Declaration ProcessDeclaration (bool isProtocol, string line, bool is_optional)
 	{
+		if (limit != null){
+			if (line.IndexOf ("__OSX_AVAILABLE_STARTING") == -1 || line.IndexOf (limit) == -1)
+				return null;
+		}
+		
 		line = CleanDeclaration (line);
 		if (line.Length == 0)
 			return null;
@@ -458,7 +469,7 @@ class TrivialParser {
 		types.Add (cols [1]);
 		if (cols.Length >= 4)
 			gencs.WriteLine ("\n\t[BaseType (typeof ({0}))]", cols [3]);
-		gencs.WriteLine ("\tinterface {0} {{", cols [1]);
+		gencs.WriteLine ("\t{0}interface {1} {{", limit == null ? "" : "public partial ", cols [1]);
 		
 		while ((line = r.ReadLine ()) != null && (need_close && !line.StartsWith ("}"))){
 			if (line == "{")
@@ -515,17 +526,41 @@ class TrivialParser {
 		gencs.WriteLine ("\t}");
 	}
 
-	TrivialParser () {}
+	void ShowHelp ()
+	{
+		options.WriteOptionDescriptions (Console.Out);
+		
+		Environment.Exit (0);
+	}
+	
+	TrivialParser ()
+	{
+		options = new OptionSet () {
+			{ "limit=", "Limit methods to methods for the specific API level (ex: 5_0)", arg => limit = arg },
+			{ "help", "Shows the help", a => ShowHelp () }
+		};
+	}
 
 	void Run (string [] args)
 	{
-		foreach (string f in args){
+		List<string> sources = null;
+		
+		try {
+			sources = options.Parse (args);
+		} catch {
+			Console.WriteLine ("Error parsing argument");
+			return;
+		}
+		if (sources.Count == 0)
+			ShowHelp ();
+		
+		foreach (string f in sources){
 			using (var fs = File.OpenRead (f)){
 				r = new StreamReader (new SourceStream (fs));
 				string line;
 				while ((line = r.ReadLine ()) != null){
 					line = line.Replace ("UIKIT_EXTERN_CLASS ","");
-					
+
 					if (line.StartsWith ("#"))
 						continue;
 					if (line.Length == 0)
@@ -533,6 +568,13 @@ class TrivialParser {
 					if (line.StartsWith ("@class"))
 						continue;
 
+					if (line.IndexOf ("UIKIT_CLASS_AVAILABLE") != -1){
+						int p = line.IndexOf ('@');
+						if (p == -1)
+							continue;
+						line = line.Substring (p);
+					}
+					
 					if (line.StartsWith ("@interface"))
 						ProcessInterface (line);
 					if (line.StartsWith ("@protocol") && !line.EndsWith (";")) // && line.IndexOf ("<") != -1)
