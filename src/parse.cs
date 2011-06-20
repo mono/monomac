@@ -407,23 +407,32 @@ class TrivialParser {
 		return type;
 	}
 	
-	Regex rx = new Regex ("__OSX_AVAILABLE_STARTING\\(.*\\)");
+	Regex rx = new Regex ("NS_AVAILABLE\\(.*\\)");
 	Regex rx2 = new Regex ("AVAILABLE_MAC_OS_X_VERSION[_A-Z0-9]*");
+	Regex rx3 = new Regex ("AVAILABLE_MAC_OS_X_VERSION[_A-Z0-9]*");
 	
 	string CleanDeclaration (string line)
 	{
-		return rx2.Replace (rx.Replace (line, ""), "");
+		return rx3.Replace (rx2.Replace (rx.Replace (line, ""), ""), "");
 	}
 
 	public static string CleanSelector (string selector)
 	{
 		return selector.Replace (":", "");
 	}
+
+	public static bool HasLimitKeyword (string line)
+	{
+		return line.IndexOf ("__OSX_AVAILABLE_STARTING") != -1 || line.IndexOf ("NS_AVAILABLE") != -1;
+	}
 	
 	Declaration ProcessDeclaration (bool isProtocol, string line, bool is_optional)
 	{
 		if (limit != null){
-			if (line.IndexOf ("__OSX_AVAILABLE_STARTING") == -1 || line.IndexOf (limit) == -1)
+			if (!HasLimitKeyword (line))
+				return null;
+
+			if (line.IndexOf (limit) == -1)
 				return null;
 		}
 		
