@@ -49,5 +49,6 @@ namespace MonoMac {
 		public const string CoreMediaLibrary = "/System/Library/PrivateFrameworks/CoreMedia.framework/Versions/A/CoreMedia";
 		public const string ScriptingBridgeLibrary = "/System/Library/Frameworks/ScriptingBridge.framework/ScriptingBridge";
 		public const string CoreDataLibrary = "/System/Library/Frameworks/CoreData.framework/CoreData";
+		public const string CoreImageLibrary = "/System/Library/Frameworks/CoreImage.framework/CoreImage";
         }
 }
