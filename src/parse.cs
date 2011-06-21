@@ -271,7 +271,7 @@ class TrivialParser {
 		}
 		gencs.WriteLine ("\t\t[Export (\"{0}\")]", selector);
 		gencs.WriteLine ("\t\t{0} {1} {{ {2} {3} }}",
-				 RemapType (type.ToString ()), selector,
+				 RemapType (type.ToString ()), AsMethod (selector.ToString ()),
 				 getter != null ? "[Bind (\"" + getter + "\")] get;" : "get;",
 				 ro ? "" : "set; ");
 		gencs.WriteLine ();
@@ -376,6 +376,7 @@ class TrivialParser {
 		case "NSInteger":
 			return "int";
 		case "CGFloat":
+		case "GLfloat":
 			return "float";
 		case "NSTextAlignment":
 			return "uint";
