@@ -396,6 +396,7 @@ class TrivialParser {
 		case "id":
 			return "NSObject";
 		case "BOOL":
+		case "GLboolean":
 			return "bool";
 		case "SEL":
 			return "Selector";
