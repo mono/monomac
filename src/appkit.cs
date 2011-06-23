@@ -353,7 +353,7 @@ namespace MonoMac.AppKit {
 		void DiscardEvents (NSEventMask mask, NSEvent lastEvent);
 	
 		[Export ("postEvent:atStart:")]
-		void PostEvent (NSEvent theEvent, bool flag);
+		void PostEvent (NSEvent theEvent, bool atStart);
 	
 		[Export ("currentEvent")]
 		NSEvent CurrentEvent { get; }
@@ -1840,7 +1840,7 @@ namespace MonoMac.AppKit {
 		void DrawWithFrame (RectangleF cellFrame, NSView inView);
 	
 		[Export ("highlight:withFrame:inView:")]
-		void Highlight (bool flag, RectangleF withFrame, NSView  inView);
+		void Highlight (bool highlight, RectangleF withFrame, NSView  inView);
 	
 		[Export ("mouseDownFlags")]
 		int MouseDownFlags { get; }
@@ -3748,7 +3748,7 @@ namespace MonoMac.AppKit {
 
 		[Obsolete ("On 10.1 and newer, use DraggedImageEndedAtOperation() instead")]
 		[Export ("draggedImage:endedAt:deposited:")]
-		void DraggedImageEndedAtDeposited (NSImage image, PointF screenPoint, bool flag);
+		void DraggedImageEndedAtDeposited (NSImage image, PointF screenPoint, bool deposited);
 	}
 	
 	[BaseType (typeof (NSResponder), Delegates=new string [] { "WeakDelegate" }, Events=new Type [] { typeof (NSDrawerDelegate)})]
@@ -4245,7 +4245,7 @@ namespace MonoMac.AppKit {
 		string LocalizedNameForFamily (string family, string faceKey);
 
 		[Export ("setSelectedAttributes:isMultiple:")]
-		void SetSelectedAttributes (NSDictionary attributes, bool flag);
+		void SetSelectedAttributes (NSDictionary attributes, bool isMultiple);
 
 		[Export ("convertAttributes:")]
 		NSDictionary ConvertAttributes (NSDictionary attributes);
@@ -4356,10 +4356,10 @@ namespace MonoMac.AppKit {
 		void SetInterlineSpacing (float spacing);
 
 		[Export ("setBordered:")]
-		void SetBordered (bool flag);
+		void SetBordered (bool bordered);
 
 		[Export ("setBezeled:")]
-		void SetBezeled (bool flag);
+		void SetBezeled (bool bezeled);
 
 		[Export ("setTitleAlignment:")]
 		void SetTitleAlignment (NSTextAlignment mode);
@@ -4756,7 +4756,7 @@ namespace MonoMac.AppKit {
 
 		[Static]
 		[Export ("keyEventWithType:location:modifierFlags:timestamp:windowNumber:context:characters:charactersIgnoringModifiers:isARepeat:keyCode:")]
-		NSEvent KeyEvent (NSEventType type, PointF location, NSEventModifierMask flags, double time, int wNum, NSGraphicsContext context, string keys, string ukeys, bool flag, ushort code);
+		NSEvent KeyEvent (NSEventType type, PointF location, NSEventModifierMask flags, double time, int wNum, NSGraphicsContext context, string keys, string ukeys, bool isARepeat, ushort code);
 
 		[Static]
 		[Export ("enterExitEventWithType:location:modifierFlags:timestamp:windowNumber:context:eventNumber:trackingNumber:userData:")]
@@ -5317,7 +5317,7 @@ namespace MonoMac.AppKit {
 		void RemoveObject (NSObject object1);
 
 		[Export ("setEditable:")]
-		void SetEditable (bool flag);
+		void SetEditable (bool editable);
 
 		[Export ("editable")]
 		bool Editable { [Bind ("isEditable")] get; set; }
@@ -6064,7 +6064,7 @@ namespace MonoMac.AppKit {
 		bool DrawInRect (RectangleF dstSpacePortionRect, RectangleF srcSpacePortionRect, NSCompositingOperation op, float requestedAlpha, bool respectContextIsFlipped, NSDictionary hints);
 
 		[Export ("setAlpha:")]
-		void SetAlpha (bool flag);
+		void SetAlpha (bool alpha);
 
 		[Export ("hasAlpha")]
 		bool HasAlpha { get; }
@@ -6214,7 +6214,7 @@ namespace MonoMac.AppKit {
 		NSCell MakeCellAtRowcolumn (int row, int col);
 
 		[Export ("sendAction:to:forAllCells:")]
-		void SendAction (Selector aSelector, NSObject anObject, bool flag);
+		void SendAction (Selector aSelector, NSObject anObject, bool forAllCells);
 
 		[Export ("cells")]
 		NSCell [] Cells { get; }
@@ -6333,7 +6333,7 @@ namespace MonoMac.AppKit {
 		void DrawCellAtRowColumn (int row, int col);
 
 		[Export ("highlightCell:atRow:column:")]
-		void HighlightCellatRowColumn (bool flag, int row, int col);
+		void HighlightCellatRowColumn (bool highlight, int row, int col);
 
 		[Export ("scrollCellToVisibleAtRow:column:")]
 		void ScrollCellToVisibleAtRowcolumn (int row, int col);
@@ -9686,7 +9686,7 @@ namespace MonoMac.AppKit {
 		void ResetCursorRects ();
 
 		[Export ("addTrackingRect:owner:userData:assumeInside:")]
-		int AddTrackingRect (RectangleF aRect, NSObject anObject, IntPtr data, bool flag);
+		int AddTrackingRect (RectangleF aRect, NSObject anObject, IntPtr data, bool assumeInside);
 
 		[Export ("removeTrackingRect:")]
 		void RemoveTrackingRect (int tag);
@@ -10869,10 +10869,10 @@ namespace MonoMac.AppKit {
 		bool WantsToTrackMouse ();
 
 		[Export ("highlight:withFrame:inView:")]
-		void Highlight (bool flag, RectangleF cellFrame, NSView controlView);
+		void Highlight (bool highlight, RectangleF cellFrame, NSView controlView);
 
 		[Export ("trackMouse:inRect:ofView:untilMouseUp:")]
-		bool TrackMouseinRectofViewuntilMouseUp (NSEvent theEvent, RectangleF cellFrame, NSView controlView, bool flag);
+		bool TrackMouseinRectofViewuntilMouseUp (NSEvent theEvent, RectangleF cellFrame, NSView controlView, bool untilMouseUp);
 
 		[Export ("cellSize")]
 		SizeF CellSize { get; }
@@ -10892,7 +10892,7 @@ namespace MonoMac.AppKit {
 		bool WantsToTrackMouse (NSEvent theEvent, RectangleF cellFrame, NSView controlView, uint charIndex);
 
 		[Export ("trackMouse:inRect:ofView:atCharacterIndex:untilMouseUp:")]
-		bool TrackMouse (NSEvent theEvent, RectangleF cellFrame, NSView controlView, uint charIndex, bool flag);
+		bool TrackMouse (NSEvent theEvent, RectangleF cellFrame, NSView controlView, uint charIndex, bool untilMouseUp);
 
 		[Export ("cellFrameForTextContainer:proposedLineFragment:glyphPosition:characterIndex:")]
 		RectangleF CellFrameForTextContainer (NSTextContainer textContainer, RectangleF lineFrag, PointF position, uint charIndex);
@@ -11454,7 +11454,7 @@ namespace MonoMac.AppKit {
 		bool ShouldDrawInsertionPoint { get; }
 
 		[Export ("drawInsertionPointInRect:color:turnedOn:")]
-		void DrawInsertionPointInRectcolorturnedOn (RectangleF rect, NSColor color, bool flag);
+		void DrawInsertionPointInRectcolorturnedOn (RectangleF rect, NSColor color, bool turnedOn);
 
 		[Export ("drawViewBackgroundInRect:")]
 		void DrawViewBackgroundInRect (RectangleF rect);
@@ -11503,7 +11503,7 @@ namespace MonoMac.AppKit {
 		string [] CompletionsForPartialWord (NSRange charRange, int index);
 
 		[Export ("insertCompletion:forPartialWordRange:movement:isFinal:")]
-		void InsertCompletionforPartialWord (string word, NSRange charRange, int movement, bool flag);
+		void InsertCompletionforPartialWord (string word, NSRange charRange, int movement, bool isFinal);
 
 		// Pasteboard
 		[Export ("writablePasteboardTypes")]
@@ -12341,10 +12341,10 @@ namespace MonoMac.AppKit {
 		RectangleF ContentRectFor (RectangleF frameRect);
 	
 		[Export ("initWithContentRect:styleMask:backing:defer:")]
-		IntPtr Constructor (RectangleF contentRect, NSWindowStyle aStyle, NSBackingStore bufferingType, bool flag);
+		IntPtr Constructor (RectangleF contentRect, NSWindowStyle aStyle, NSBackingStore bufferingType, bool deferCreation);
 	
 		[Export ("initWithContentRect:styleMask:backing:defer:screen:")]
-		IntPtr Constructor (RectangleF contentRect, NSWindowStyle aStyle, NSBackingStore bufferingType, bool flag, NSScreen  screen);
+		IntPtr Constructor (RectangleF contentRect, NSWindowStyle aStyle, NSBackingStore bufferingType, bool deferCreation, NSScreen  screen);
 	
 		[Export ("title")]
 		string Title  { get; set; }
@@ -12776,7 +12776,7 @@ namespace MonoMac.AppKit {
 		void DiscardEventsMatchingMask (NSEventMask mask, NSEvent beforeLastEvent);
 	
 		[Export ("postEvent:atStart:")]
-		void PostEvent (NSEvent theEvent, bool flag);
+		void PostEvent (NSEvent theEvent, bool atStart);
 	
 		[Export ("currentEvent")]
 		NSEvent CurrentEvent ();
