@@ -123,8 +123,11 @@ namespace MonoMac.ObjCRuntime {
 
 			lock (lock_obj) {
 				WeakReference reference;
-				if (object_map.TryGetValue (ptr, out reference))
-					return (NSObject) reference.Target;
+				if (object_map.TryGetValue (ptr, out reference)) {
+					NSObject target = (NSObject) reference.Target;
+
+					if (target != null)
+						return target;
 			}
 			
 			type = Class.Lookup (Messaging.intptr_objc_msgSend (ptr, selClass));
