@@ -128,6 +128,7 @@ namespace MonoMac.ObjCRuntime {
 
 					if (target != null)
 						return target;
+				}
 			}
 			
 			type = Class.Lookup (Messaging.intptr_objc_msgSend (ptr, selClass));
