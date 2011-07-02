@@ -224,7 +224,7 @@ namespace MonoMac.Foundation {
 		}
 
 		private IntPtr GetObjCIvar (string name) {
-			IntPtr native;
+			IntPtr native = IntPtr.Zero;
 			
 			object_getInstanceVariable (handle, name, ref native);
 	
