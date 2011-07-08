@@ -6015,6 +6015,9 @@ namespace MonoMac.AppKit {
 
 		[Bind ("drawInRect:withAttributes:")]
 		void DrawInRect ([Target] string str, RectangleF rect, NSDictionary attributes);
+
+		[Export ("drawInRect:fromRect:operation:fraction:")]
+		void DrawInRect (RectangleF dstRect, RectangleF srcRect, NSCompositingOperation operation, float delta);
 	}
 
 	[BaseType (typeof (NSObject))]
