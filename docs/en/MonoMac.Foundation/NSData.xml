@@ -402,7 +402,36 @@ public class MyClass : BaseClass {
         <Parameter Name="url" Type="MonoMac.Foundation.NSUrl" />
       </Parameters>
       <Docs>
+        <param name="url">The URL to load the data from.</param>
+        <summary>Synchronously loads the contents of the data at the given URL and returns it as an NSData.</summary>
+        <returns>An NSData with the contents of the URL, or null on failure.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FromUrl">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSData FromUrl (MonoMac.Foundation.NSUrl url, MonoMac.Foundation.NSDataReadingOptions mask, out MonoMac.Foundation.NSError error);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSData FromUrl(class MonoMac.Foundation.NSUrl url, valuetype MonoMac.Foundation.NSDataReadingOptions mask, class MonoMac.Foundation.NSError error) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("dataWithContentsOfURL:options:error:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSData</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="url" Type="MonoMac.Foundation.NSUrl" />
+        <Parameter Name="mask" Type="MonoMac.Foundation.NSDataReadingOptions" />
+        <Parameter Name="error" Type="MonoMac.Foundation.NSError&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
         <param name="url">To be added.</param>
+        <param name="mask">To be added.</param>
+        <param name="error">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>

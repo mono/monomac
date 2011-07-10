@@ -285,6 +285,30 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="AttributedStringValue">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSAttributedString AttributedStringValue { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSAttributedString AttributedStringValue" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("attributedStringValue")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: MonoMac.Foundation.Export("setAttributedStringValue:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSAttributedString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Controls the attributed string value in the cell if it is available.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="BackgroundStyle">
       <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSBackgroundStyle BackgroundStyle { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.AppKit.NSBackgroundStyle BackgroundStyle" />
@@ -1111,8 +1135,8 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Highlight">
-      <MemberSignature Language="C#" Value="public virtual void Highlight (bool flag, System.Drawing.RectangleF withFrame, MonoMac.AppKit.NSView inView);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Highlight(bool flag, valuetype System.Drawing.RectangleF withFrame, class MonoMac.AppKit.NSView inView) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual void Highlight (bool highlight, System.Drawing.RectangleF withFrame, MonoMac.AppKit.NSView inView);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Highlight(bool highlight, valuetype System.Drawing.RectangleF withFrame, class MonoMac.AppKit.NSView inView) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -1126,12 +1150,12 @@ public class MyClass : BaseClass {
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="flag" Type="System.Boolean" />
+        <Parameter Name="highlight" Type="System.Boolean" />
         <Parameter Name="withFrame" Type="System.Drawing.RectangleF" />
         <Parameter Name="inView" Type="MonoMac.AppKit.NSView" />
       </Parameters>
       <Docs>
-        <param name="flag">To be added.</param>
+        <param name="highlight">To be added.</param>
         <param name="withFrame">To be added.</param>
         <param name="inView">To be added.</param>
         <summary>To be added.</summary>
@@ -1882,30 +1906,6 @@ public class MyClass : BaseClass {
       <Docs>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="SetAttributedStringValue">
-      <MemberSignature Language="C#" Value="public virtual void SetAttributedStringValue (MonoMac.Foundation.NSAttributedString obj);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetAttributedStringValue(class MonoMac.Foundation.NSAttributedString obj) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>MonoMac.Foundation.Export("setAttributedStringValue:")</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="obj" Type="MonoMac.Foundation.NSAttributedString" />
-      </Parameters>
-      <Docs>
-        <param name="obj">To be added.</param>
-        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

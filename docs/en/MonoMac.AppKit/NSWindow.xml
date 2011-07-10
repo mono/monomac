@@ -140,8 +140,8 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public NSWindow (System.Drawing.RectangleF contentRect, MonoMac.AppKit.NSWindowStyle aStyle, MonoMac.AppKit.NSBackingStore bufferingType, bool flag);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype System.Drawing.RectangleF contentRect, valuetype MonoMac.AppKit.NSWindowStyle aStyle, valuetype MonoMac.AppKit.NSBackingStore bufferingType, bool flag) cil managed" />
+      <MemberSignature Language="C#" Value="public NSWindow (System.Drawing.RectangleF contentRect, MonoMac.AppKit.NSWindowStyle aStyle, MonoMac.AppKit.NSBackingStore bufferingType, bool deferCreation);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype System.Drawing.RectangleF contentRect, valuetype MonoMac.AppKit.NSWindowStyle aStyle, valuetype MonoMac.AppKit.NSBackingStore bufferingType, bool deferCreation) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -155,20 +155,20 @@ public class MyClass : BaseClass {
         <Parameter Name="contentRect" Type="System.Drawing.RectangleF" />
         <Parameter Name="aStyle" Type="MonoMac.AppKit.NSWindowStyle" />
         <Parameter Name="bufferingType" Type="MonoMac.AppKit.NSBackingStore" />
-        <Parameter Name="flag" Type="System.Boolean" />
+        <Parameter Name="deferCreation" Type="System.Boolean" />
       </Parameters>
       <Docs>
         <param name="contentRect">To be added.</param>
         <param name="aStyle">To be added.</param>
         <param name="bufferingType">To be added.</param>
-        <param name="flag">To be added.</param>
+        <param name="deferCreation">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public NSWindow (System.Drawing.RectangleF contentRect, MonoMac.AppKit.NSWindowStyle aStyle, MonoMac.AppKit.NSBackingStore bufferingType, bool flag, MonoMac.AppKit.NSScreen screen);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype System.Drawing.RectangleF contentRect, valuetype MonoMac.AppKit.NSWindowStyle aStyle, valuetype MonoMac.AppKit.NSBackingStore bufferingType, bool flag, class MonoMac.AppKit.NSScreen screen) cil managed" />
+      <MemberSignature Language="C#" Value="public NSWindow (System.Drawing.RectangleF contentRect, MonoMac.AppKit.NSWindowStyle aStyle, MonoMac.AppKit.NSBackingStore bufferingType, bool deferCreation, MonoMac.AppKit.NSScreen screen);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype System.Drawing.RectangleF contentRect, valuetype MonoMac.AppKit.NSWindowStyle aStyle, valuetype MonoMac.AppKit.NSBackingStore bufferingType, bool deferCreation, class MonoMac.AppKit.NSScreen screen) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -182,14 +182,14 @@ public class MyClass : BaseClass {
         <Parameter Name="contentRect" Type="System.Drawing.RectangleF" />
         <Parameter Name="aStyle" Type="MonoMac.AppKit.NSWindowStyle" />
         <Parameter Name="bufferingType" Type="MonoMac.AppKit.NSBackingStore" />
-        <Parameter Name="flag" Type="System.Boolean" />
+        <Parameter Name="deferCreation" Type="System.Boolean" />
         <Parameter Name="screen" Type="MonoMac.AppKit.NSScreen" />
       </Parameters>
       <Docs>
         <param name="contentRect">To be added.</param>
         <param name="aStyle">To be added.</param>
         <param name="bufferingType">To be added.</param>
-        <param name="flag">To be added.</param>
+        <param name="deferCreation">To be added.</param>
         <param name="screen">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
@@ -3363,8 +3363,8 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="PostEvent">
-      <MemberSignature Language="C#" Value="public virtual void PostEvent (MonoMac.AppKit.NSEvent theEvent, bool flag);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void PostEvent(class MonoMac.AppKit.NSEvent theEvent, bool flag) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual void PostEvent (MonoMac.AppKit.NSEvent theEvent, bool atStart);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void PostEvent(class MonoMac.AppKit.NSEvent theEvent, bool atStart) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -3379,11 +3379,11 @@ public class MyClass : BaseClass {
       </ReturnValue>
       <Parameters>
         <Parameter Name="theEvent" Type="MonoMac.AppKit.NSEvent" />
-        <Parameter Name="flag" Type="System.Boolean" />
+        <Parameter Name="atStart" Type="System.Boolean" />
       </Parameters>
       <Docs>
         <param name="theEvent">To be added.</param>
-        <param name="flag">To be added.</param>
+        <param name="atStart">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>

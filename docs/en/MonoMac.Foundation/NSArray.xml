@@ -227,6 +227,35 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="FromArray&lt;T&gt;">
+      <MemberSignature Language="C#" Value="public static T[] FromArray&lt;T&gt; (MonoMac.Foundation.NSArray weakArray) where T : MonoMac.Foundation.NSObject;" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig !!T[] FromArray&lt;(class MonoMac.Foundation.NSObject) T&gt;(class MonoMac.Foundation.NSArray weakArray) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>T[]</ReturnType>
+      </ReturnValue>
+      <TypeParameters>
+        <TypeParameter Name="T">
+          <Constraints>
+            <BaseTypeName>MonoMac.Foundation.NSObject</BaseTypeName>
+          </Constraints>
+        </TypeParameter>
+      </TypeParameters>
+      <Parameters>
+        <Parameter Name="weakArray" Type="MonoMac.Foundation.NSArray" />
+      </Parameters>
+      <Docs>
+        <typeparam name="T">To be added.</typeparam>
+        <param name="weakArray">The weakly typed NSArray.</param>
+        <summary>Creates a strongly-typed C# Array from a weakly typed NSArray.</summary>
+        <returns>The strongly-typed array, or null if one of the elements in the weakArray can not be cast into the type T.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
     <Member MemberName="FromFile">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSArray FromFile (string path);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSArray FromFile(string path) cil managed" />

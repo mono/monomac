@@ -276,8 +276,8 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="Highlight">
-      <MemberSignature Language="C#" Value="public virtual void Highlight (bool flag, System.Drawing.RectangleF cellFrame, MonoMac.AppKit.NSView controlView);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Highlight(bool flag, valuetype System.Drawing.RectangleF cellFrame, class MonoMac.AppKit.NSView controlView) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual void Highlight (bool highlight, System.Drawing.RectangleF cellFrame, MonoMac.AppKit.NSView controlView);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Highlight(bool highlight, valuetype System.Drawing.RectangleF cellFrame, class MonoMac.AppKit.NSView controlView) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -291,12 +291,12 @@ public class MyClass : BaseClass {
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="flag" Type="System.Boolean" />
+        <Parameter Name="highlight" Type="System.Boolean" />
         <Parameter Name="cellFrame" Type="System.Drawing.RectangleF" />
         <Parameter Name="controlView" Type="MonoMac.AppKit.NSView" />
       </Parameters>
       <Docs>
-        <param name="flag">To be added.</param>
+        <param name="highlight">To be added.</param>
         <param name="cellFrame">To be added.</param>
         <param name="controlView">To be added.</param>
         <summary>To be added.</summary>
@@ -304,8 +304,8 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="TrackMouse">
-      <MemberSignature Language="C#" Value="public virtual bool TrackMouse (MonoMac.AppKit.NSEvent theEvent, System.Drawing.RectangleF cellFrame, MonoMac.AppKit.NSView controlView, uint charIndex, bool flag);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool TrackMouse(class MonoMac.AppKit.NSEvent theEvent, valuetype System.Drawing.RectangleF cellFrame, class MonoMac.AppKit.NSView controlView, unsigned int32 charIndex, bool flag) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual bool TrackMouse (MonoMac.AppKit.NSEvent theEvent, System.Drawing.RectangleF cellFrame, MonoMac.AppKit.NSView controlView, uint charIndex, bool untilMouseUp);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool TrackMouse(class MonoMac.AppKit.NSEvent theEvent, valuetype System.Drawing.RectangleF cellFrame, class MonoMac.AppKit.NSView controlView, unsigned int32 charIndex, bool untilMouseUp) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -323,22 +323,22 @@ public class MyClass : BaseClass {
         <Parameter Name="cellFrame" Type="System.Drawing.RectangleF" />
         <Parameter Name="controlView" Type="MonoMac.AppKit.NSView" />
         <Parameter Name="charIndex" Type="System.UInt32" />
-        <Parameter Name="flag" Type="System.Boolean" />
+        <Parameter Name="untilMouseUp" Type="System.Boolean" />
       </Parameters>
       <Docs>
         <param name="theEvent">To be added.</param>
         <param name="cellFrame">To be added.</param>
         <param name="controlView">To be added.</param>
         <param name="charIndex">To be added.</param>
-        <param name="flag">To be added.</param>
+        <param name="untilMouseUp">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="TrackMouseinRectofViewuntilMouseUp">
-      <MemberSignature Language="C#" Value="public virtual bool TrackMouseinRectofViewuntilMouseUp (MonoMac.AppKit.NSEvent theEvent, System.Drawing.RectangleF cellFrame, MonoMac.AppKit.NSView controlView, bool flag);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool TrackMouseinRectofViewuntilMouseUp(class MonoMac.AppKit.NSEvent theEvent, valuetype System.Drawing.RectangleF cellFrame, class MonoMac.AppKit.NSView controlView, bool flag) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual bool TrackMouseinRectofViewuntilMouseUp (MonoMac.AppKit.NSEvent theEvent, System.Drawing.RectangleF cellFrame, MonoMac.AppKit.NSView controlView, bool untilMouseUp);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool TrackMouseinRectofViewuntilMouseUp(class MonoMac.AppKit.NSEvent theEvent, valuetype System.Drawing.RectangleF cellFrame, class MonoMac.AppKit.NSView controlView, bool untilMouseUp) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -355,13 +355,13 @@ public class MyClass : BaseClass {
         <Parameter Name="theEvent" Type="MonoMac.AppKit.NSEvent" />
         <Parameter Name="cellFrame" Type="System.Drawing.RectangleF" />
         <Parameter Name="controlView" Type="MonoMac.AppKit.NSView" />
-        <Parameter Name="flag" Type="System.Boolean" />
+        <Parameter Name="untilMouseUp" Type="System.Boolean" />
       </Parameters>
       <Docs>
         <param name="theEvent">To be added.</param>
         <param name="cellFrame">To be added.</param>
         <param name="controlView">To be added.</param>
-        <param name="flag">To be added.</param>
+        <param name="untilMouseUp">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>

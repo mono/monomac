@@ -182,6 +182,50 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Item">
+      <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSObject this[MonoMac.Foundation.NSString key] { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSObject Item(class MonoMac.Foundation.NSString)" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="key" Type="MonoMac.Foundation.NSString" />
+      </Parameters>
+      <Docs>
+        <param name="key">A stream property</param>
+        <summary>Gets or sets one of the stream properties.</summary>
+        <value>
+        </value>
+        <remarks>
+          <list type="table">
+            <listheader>
+              <term>Stream Property</term>
+              <description>Description</description>
+            </listheader>
+            <item>
+              <term>SocketSecurityLevelKey</term>
+              <description>Sets the socket security level.   It can be set to one of the following values: SocketSecurityLevelNone, SocketSecurityLevelSslV2, SocketSecurityLevelSslV3, SocketSecurityLevelTlsV1, SocketSecurityLevelNegotiatedSsl.</description>
+            </item>
+            <item>
+              <term>SocksProxyConfigurationKey</term>
+              <description>An NSDictionary with SOCKS configuration.   The keys for this dictionary are: SocksProxyHostKey (NSString), SocksProxyPortKey (NSNumber), SocksProxyVersionKey (one of SocksProxyVersion4 or SocksProxyVersion5), SocksProxyUserKey (NSString), SocksProxyPasswordKey (NSString).  The value for SocksProxyVersionKey can be one of: SocksProxyVersion4, SocksProxyVersion5, if it is not specified, it defaults to Version 5.</description>
+            </item>
+            <item>
+              <term>DataWrittenToMemoryStreamKey</term>
+              <description>On output streams, this key contains an NSData instance with the accumulated data written to it.</description>
+            </item>
+            <item>
+              <term>FileCurrentOffsetKey</term>
+              <description>This key contains an NSNumber with the current offset of the stream from the start.</description>
+            </item>
+          </list>
+        </remarks>
+      </Docs>
+    </Member>
     <Member MemberName="OnEvent">
       <MemberSignature Language="C#" Value="public event EventHandler&lt;MonoMac.Foundation.NSStreamEventArgs&gt; OnEvent;" />
       <MemberSignature Language="ILAsm" Value=".event class System.EventHandler`1&lt;class MonoMac.Foundation.NSStreamEventArgs&gt; OnEvent" />
