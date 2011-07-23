@@ -13065,6 +13065,43 @@ namespace MonoMac.AppKit {
 	
 		[Export ("windowDidEndLiveResize:"), EventArgs ("NSNotification")]
 		void DidEndLiveResize (NSNotification  notification);
+
+		[Export ("windowWillEnterFullScreen:"), EventArgs ("NSNotification")]
+		void WillEnterFullScreen (NSNotification  notification);
+
+		[Export ("windowDidEnterFullScreen:"), EventArgs ("NSNotification")]
+		void DidEnterFullScreen (NSNotification  notification);
+
+		[Export ("windowWillExitFullScreen:"), EventArgs ("NSNotification")]
+		void WillExitFullScreen (NSNotification  notification);
+		
+		[Export ("windowDidExitFullScreen:"), EventArgs ("NSNotification")]
+		void DidExitFullScreen (NSNotification  notification);
+
+		[Export ("windowDidFailToEnterFullScreen:"), EventArgs ("NSWindow")]
+		void DidFailToEnterFullScreen (NSWindow window);
+
+		[Export ("windowDidFailToExitFullScreen:"), EventArgs ("NSWindow")]
+		void DidFailToExitFullScreen (NSWindow window);
+		
+		[Export ("window:willUseFullScreenContentSize:"), DelegateName ("NSWindowSize"), DefaultValueFromArgument ("proposedSize")]
+		SizeF WillUseFullScreenContentSize (NSWindow  window, SizeF proposedSize);
+		
+		[Export ("window:willUseFullScreenPresentationOptions:"), DelegateName ("NSWindowApplicationPresentationOptions"), DefaultValueFromArgument ("proposedOptions")]
+		NSApplicationPresentationOptions WillUseFullScreenPresentationOptions (NSWindow  window, NSApplicationPresentationOptions proposedOptions);
+		
+		[Export ("customWindowsToEnterFullScreenForWindow:"), DelegateName ("NSWindowWindows"), DefaultValue (null)]
+		NSWindow[] CustomWindowsToEnterFullScreen (NSWindow  window);
+
+		[Export ("customWindowsToExitFullScreenForWindow:"), DelegateName ("NSWindowWindows"), DefaultValue (null)]
+		NSWindow[] CustomWindowsToExitFullScreen (NSWindow  window);
+
+		[Export ("window:startCustomAnimationToEnterFullScreenWithDuration:"), EventArgs("NSWindowDuration")]
+		void StartCustomAnimationToEnterFullScreen (NSWindow  window, double duration);
+
+		[Export ("window:startCustomAnimationToExitFullScreenWithDuration:"), EventArgs("NSWindowDuration")]
+		void StartCustomAnimationToExitFullScreen (NSWindow  window, double duration);
+		
 	}
 
 	public delegate void NSWorkspaceUrlHandler (NSDictionary newUrls, NSError error);
