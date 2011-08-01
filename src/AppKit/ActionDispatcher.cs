@@ -41,14 +41,14 @@ namespace MonoMac.AppKit
 		public EventHandler Activated;
 		public EventHandler DoubleActivated;
 
-		[Export (skey)]
+		[Preserve, Export (skey)]
 		public void OnActivated (NSObject sender)
 		{
 			if (Activated != null)
 				Activated (sender, EventArgs.Empty);
 		}
 
-		[Export (dkey)]
+		[Preserve, Export (dkey)]
 		public void OnActivated2 (NSObject sender)
 		{
 			if (DoubleActivated != null)
