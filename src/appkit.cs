@@ -219,6 +219,7 @@ namespace MonoMac.AppKit {
 		NSButton SuppressionButton { get; } 
 	
 		[Export ("accessoryView")]
+		[NullAllowed]
 		NSView AccessoryView { get; set; } 
 	
 		[Export ("layout")]
@@ -2581,6 +2582,7 @@ namespace MonoMac.AppKit {
 
 		//Detected properties
 		[Export ("accessoryView")]
+		[NullAllowed]
 		NSView AccessoryView { get; set; }
 
 		[Export ("continuous")]
@@ -4329,6 +4331,7 @@ namespace MonoMac.AppKit {
 
 		//Detected properties
 		[Export ("accessoryView")]
+		[NullAllowed]
 		NSView AccessoryView { get; set; }
 
 		[Export ("enabled")]
@@ -8257,6 +8260,7 @@ namespace MonoMac.AppKit {
 		NSRulerMarker [] Markers { get; set; }
 
 		[Export ("accessoryView")]
+		[NullAllowed]
 		NSView AccessoryView { get; set; }
 	}
 
@@ -8303,6 +8307,7 @@ namespace MonoMac.AppKit {
 		bool AllowsOtherFileTypes { get; set; }
 
 		[Export ("accessoryView")]
+		[NullAllowed]
 		NSView AccessoryView { get; set; }
 
 		[Export ("delegate"), NullAllowed]
@@ -9135,6 +9140,7 @@ namespace MonoMac.AppKit {
 
 		//Detected properties
 		[Export ("accessoryView")]
+		[NullAllowed]
 		NSView AccessoryView { get; set; }
 
 		[Export ("substitutionsPanelAccessoryViewController")]
@@ -13101,6 +13107,27 @@ namespace MonoMac.AppKit {
 
 		[Export ("window:startCustomAnimationToExitFullScreenWithDuration:"), EventArgs("NSWindowDuration")]
 		void StartCustomAnimationToExitFullScreen (NSWindow  window, double duration);
+		
+		[Export ("window:willEncodeRestorableState:"), EventArgs ("NSWindowCoder")]
+		void WillEncodeRestorableState(NSWindow window, NSCoder coder);
+
+		[Export ("window:didDecodeRestorableState:"), EventArgs ("NSWindowCoder")]
+		void DidDecodeRestorableState(NSWindow window, NSCoder coder);
+		
+		[Export ("window:willResizeForVersionBrowserWithMaxPreferredSize:maxAllowedSize:"), DelegateName ("NSWindowSizeSize"), DefaultValueFromArgument ("maxPreferredSize")]
+		SizeF WillResizeForVersionBrowser(NSWindow window, SizeF maxPreferredSize, SizeF maxAllowedSize);
+
+		[Export ("windowWillEnterVersionBrowser:"), EventArgs ("NSNotification")]
+		void WillEnterVersionBrowser (NSNotification notification);
+
+		[Export ("windowDidEnterVersionBrowser:"), EventArgs ("NSNotification")]
+		void DidEnterVersionBrowser (NSNotification notification);
+		
+		[Export ("windowWillExitVersionBrowser:"), EventArgs ("NSNotification")]
+		void WillExitVersionBrowser (NSNotification notification);
+
+		[Export ("windowDidExitVersionBrowser:"), EventArgs ("NSNotification")]
+		void DidExitVersionBrowser (NSNotification notification);
 		
 	}
 
