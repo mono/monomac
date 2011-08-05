@@ -218,11 +218,6 @@ namespace MonoMac.Foundation {
 			}
 		}
 
-		internal static IntPtr AllocObject (IntPtr class_handle)
-		{
-			 return Messaging.intptr_objc_msgSend (class_handle, selAlloc);
-		}
-
 		private void AllocIfNeeded () {
 			if (handle == IntPtr.Zero)
 				handle = Messaging.intptr_objc_msgSend (new Class (this.GetType ()).Handle, selAlloc);
