@@ -21,6 +21,38 @@
     <remarks />
   </Docs>
   <Members>
+    <Member MemberName="CFDefaultRunLoopMode">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString CFDefaultRunLoopMode { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString CFDefaultRunLoopMode" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CFRunLoopCommonModes">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString CFRunLoopCommonModes { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString CFRunLoopCommonModes" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Current">
       <MemberSignature Language="C#" Value="public static MonoMac.CoreFoundation.CFRunLoop Current { get; }" />
       <MemberSignature Language="ILAsm" Value=".property class MonoMac.CoreFoundation.CFRunLoop Current" />
@@ -152,6 +184,22 @@
         <remarks>This IntPtr is a handle to the underlying unmanaged representation for this object.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="IsWaiting">
+      <MemberSignature Language="C#" Value="public bool IsWaiting { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsWaiting" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Main">
       <MemberSignature Language="C#" Value="public static MonoMac.CoreFoundation.CFRunLoop Main { get; }" />
       <MemberSignature Language="ILAsm" Value=".property class MonoMac.CoreFoundation.CFRunLoop Main" />
@@ -259,8 +307,8 @@
       </Docs>
     </Member>
     <Member MemberName="RunInMode">
-      <MemberSignature Language="C#" Value="public MonoMac.CoreFoundation.CFRunLoopExitReason RunInMode (string mode, double interval, bool returnAfterSourceHandled);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype MonoMac.CoreFoundation.CFRunLoopExitReason RunInMode(string mode, float64 interval, bool returnAfterSourceHandled) cil managed" />
+      <MemberSignature Language="C#" Value="public MonoMac.CoreFoundation.CFRunLoopExitReason RunInMode (MonoMac.Foundation.NSString mode, double seconds, bool returnAfterSourceHandled);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype MonoMac.CoreFoundation.CFRunLoopExitReason RunInMode(class MonoMac.Foundation.NSString mode, float64 seconds, bool returnAfterSourceHandled) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -269,13 +317,42 @@
         <ReturnType>MonoMac.CoreFoundation.CFRunLoopExitReason</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="mode" Type="System.String" />
-        <Parameter Name="interval" Type="System.Double" />
+        <Parameter Name="mode" Type="MonoMac.Foundation.NSString" />
+        <Parameter Name="seconds" Type="System.Double" />
         <Parameter Name="returnAfterSourceHandled" Type="System.Boolean" />
       </Parameters>
       <Docs>
         <param name="mode">To be added.</param>
-        <param name="interval">To be added.</param>
+        <param name="seconds">To be added.</param>
+        <param name="returnAfterSourceHandled">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RunInMode">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreFoundation.CFRunLoopExitReason RunInMode (string mode, double seconds, bool returnAfterSourceHandled);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype MonoMac.CoreFoundation.CFRunLoopExitReason RunInMode(string mode, float64 seconds, bool returnAfterSourceHandled) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use the NSString version of CFRunLoop.RunInMode() instead.")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreFoundation.CFRunLoopExitReason</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="mode" Type="System.String" />
+        <Parameter Name="seconds" Type="System.Double" />
+        <Parameter Name="returnAfterSourceHandled" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="mode">To be added.</param>
+        <param name="seconds">To be added.</param>
         <param name="returnAfterSourceHandled">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
