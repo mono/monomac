@@ -219,6 +219,7 @@ namespace MonoMac.AppKit {
 		NSButton SuppressionButton { get; } 
 	
 		[Export ("accessoryView")]
+		[NullAllowed]
 		NSView AccessoryView { get; set; } 
 	
 		[Export ("layout")]
@@ -2581,6 +2582,7 @@ namespace MonoMac.AppKit {
 
 		//Detected properties
 		[Export ("accessoryView")]
+		[NullAllowed]
 		NSView AccessoryView { get; set; }
 
 		[Export ("continuous")]
@@ -4329,6 +4331,7 @@ namespace MonoMac.AppKit {
 
 		//Detected properties
 		[Export ("accessoryView")]
+		[NullAllowed]
 		NSView AccessoryView { get; set; }
 
 		[Export ("enabled")]
@@ -8257,6 +8260,7 @@ namespace MonoMac.AppKit {
 		NSRulerMarker [] Markers { get; set; }
 
 		[Export ("accessoryView")]
+		[NullAllowed]
 		NSView AccessoryView { get; set; }
 	}
 
@@ -8303,6 +8307,7 @@ namespace MonoMac.AppKit {
 		bool AllowsOtherFileTypes { get; set; }
 
 		[Export ("accessoryView")]
+		[NullAllowed]
 		NSView AccessoryView { get; set; }
 
 		[Export ("delegate"), NullAllowed]
@@ -8412,6 +8417,7 @@ namespace MonoMac.AppKit {
 		float ScrollerWidthForControlSize (NSControlSize controlSize);
 
 		[Export ("drawParts")]
+		[Obsolete ()]
 		void DrawParts ();
 
 		[Export ("rectForPart:")]
@@ -8459,6 +8465,27 @@ namespace MonoMac.AppKit {
 
 		[Export ("knobProportion")]
 		float KnobProportion { get; set; }
+		
+		[Static]
+		[Export ("isCompatibleWithOverlayScrollers")]
+		bool CompatibleWithOverlayScrollers { get; }
+		
+		[Export ("knobStyle")]
+		NSScrollerKnobStyle KnobStyle { get; set; }
+		
+		[Static]
+		[Export ("preferredScrollerStyle")]
+		NSScrollerStyle PreferredScrollerStyle { get; }
+		
+		[Export ("scrollerStyle")]
+		NSScrollerStyle ScrollerStyle { get; set; }
+		
+		[Static]
+		[Export ("scrollerWidthForControlSize:scrollerStyle:")]
+		float ScrollerWidthForControlSize (NSControlSize controlSize, NSScrollerStyle scrollerStyle);
+		
+		[Field ("NSPreferredScrollerStyleDidChangeNotification")]
+		NSString NSPreferredScrollerStyleDidChangeNotification { get; }
 
 	}
 
@@ -8559,6 +8586,35 @@ namespace MonoMac.AppKit {
    
         [Export ("verticalRulerView")]
         NSRulerView VerticalRulerView { get; set; }    
+        
+		[Static]
+		[Export ("contentSizeForFrameSize:horizontalScrollerClass:verticalScrollerClass:borderType:controlSize:scrollerStyle:")]
+		SizeF ContentSizeForFrame (SizeF frameSize, Class horizontalScrollerClass, Class verticalScrollerClass, NSBorderType borderType, NSControlSize controlSize, NSScrollerStyle scrollerStyle);
+        
+        [Export ("findBarPosition")]
+        NSScrollViewFindBarPosition FindBarPosition { get; set; }
+        
+        [Export ("flashScrollers")]
+        void FlashScrollers ();
+        
+		[Static]
+		[Export ("frameSizeForContentSize:horizontalScrollerClass:verticalScrollerClass:borderType:controlSize:scrollerStyle")]
+		SizeF FrameSizeForContent (SizeF contentSize, Class horizontalScrollerClass, Class verticalScrollerClass, NSBorderType borderType, NSControlSize controlSize, NSScrollerStyle scrollerStyle);
+		
+		[Export ("horizontalScrollElasticity")]
+		NSScrollElasticity HorizontalScrollElasticity { get; set; }
+        
+        [Export ("scrollerKnobStyle")]
+        NSScrollerKnobStyle ScrollerKnobStyle { get; set; }
+        
+        [Export ("scrollerStyle")]
+        NSScrollerStyle ScrollerStyle { get; set; }
+        
+        [Export ("usesPredominantAxisScrolling")]
+        bool UsesPredominantAxisScrolling { get; set; }
+
+		[Export ("verticalScrollElasticity")]
+		NSScrollElasticity VerticalScrollElasticity { get; set; }
 	}
 
 	[BaseType (typeof (NSTextField))]
@@ -9135,6 +9191,7 @@ namespace MonoMac.AppKit {
 
 		//Detected properties
 		[Export ("accessoryView")]
+		[NullAllowed]
 		NSView AccessoryView { get; set; }
 
 		[Export ("substitutionsPanelAccessoryViewController")]
@@ -13065,6 +13122,64 @@ namespace MonoMac.AppKit {
 	
 		[Export ("windowDidEndLiveResize:"), EventArgs ("NSNotification")]
 		void DidEndLiveResize (NSNotification  notification);
+
+		[Export ("windowWillEnterFullScreen:"), EventArgs ("NSNotification")]
+		void WillEnterFullScreen (NSNotification  notification);
+
+		[Export ("windowDidEnterFullScreen:"), EventArgs ("NSNotification")]
+		void DidEnterFullScreen (NSNotification  notification);
+
+		[Export ("windowWillExitFullScreen:"), EventArgs ("NSNotification")]
+		void WillExitFullScreen (NSNotification  notification);
+		
+		[Export ("windowDidExitFullScreen:"), EventArgs ("NSNotification")]
+		void DidExitFullScreen (NSNotification  notification);
+
+		[Export ("windowDidFailToEnterFullScreen:"), EventArgs ("NSWindow")]
+		void DidFailToEnterFullScreen (NSWindow window);
+
+		[Export ("windowDidFailToExitFullScreen:"), EventArgs ("NSWindow")]
+		void DidFailToExitFullScreen (NSWindow window);
+		
+		[Export ("window:willUseFullScreenContentSize:"), DelegateName ("NSWindowSize"), DefaultValueFromArgument ("proposedSize")]
+		SizeF WillUseFullScreenContentSize (NSWindow  window, SizeF proposedSize);
+		
+		[Export ("window:willUseFullScreenPresentationOptions:"), DelegateName ("NSWindowApplicationPresentationOptions"), DefaultValueFromArgument ("proposedOptions")]
+		NSApplicationPresentationOptions WillUseFullScreenPresentationOptions (NSWindow  window, NSApplicationPresentationOptions proposedOptions);
+		
+		[Export ("customWindowsToEnterFullScreenForWindow:"), DelegateName ("NSWindowWindows"), DefaultValue (null)]
+		NSWindow[] CustomWindowsToEnterFullScreen (NSWindow  window);
+
+		[Export ("customWindowsToExitFullScreenForWindow:"), DelegateName ("NSWindowWindows"), DefaultValue (null)]
+		NSWindow[] CustomWindowsToExitFullScreen (NSWindow  window);
+
+		[Export ("window:startCustomAnimationToEnterFullScreenWithDuration:"), EventArgs("NSWindowDuration")]
+		void StartCustomAnimationToEnterFullScreen (NSWindow  window, double duration);
+
+		[Export ("window:startCustomAnimationToExitFullScreenWithDuration:"), EventArgs("NSWindowDuration")]
+		void StartCustomAnimationToExitFullScreen (NSWindow  window, double duration);
+		
+		[Export ("window:willEncodeRestorableState:"), EventArgs ("NSWindowCoder")]
+		void WillEncodeRestorableState(NSWindow window, NSCoder coder);
+
+		[Export ("window:didDecodeRestorableState:"), EventArgs ("NSWindowCoder")]
+		void DidDecodeRestorableState(NSWindow window, NSCoder coder);
+		
+		[Export ("window:willResizeForVersionBrowserWithMaxPreferredSize:maxAllowedSize:"), DelegateName ("NSWindowSizeSize"), DefaultValueFromArgument ("maxPreferredSize")]
+		SizeF WillResizeForVersionBrowser(NSWindow window, SizeF maxPreferredSize, SizeF maxAllowedSize);
+
+		[Export ("windowWillEnterVersionBrowser:"), EventArgs ("NSNotification")]
+		void WillEnterVersionBrowser (NSNotification notification);
+
+		[Export ("windowDidEnterVersionBrowser:"), EventArgs ("NSNotification")]
+		void DidEnterVersionBrowser (NSNotification notification);
+		
+		[Export ("windowWillExitVersionBrowser:"), EventArgs ("NSNotification")]
+		void WillExitVersionBrowser (NSNotification notification);
+
+		[Export ("windowDidExitVersionBrowser:"), EventArgs ("NSNotification")]
+		void DidExitVersionBrowser (NSNotification notification);
+		
 	}
 
 	public delegate void NSWorkspaceUrlHandler (NSDictionary newUrls, NSError error);
