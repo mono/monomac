@@ -487,6 +487,10 @@ namespace MonoMac.OpenGL
 				prevUpdateTime = curUpdateTime;
 			}
 			var t = (curUpdateTime - prevUpdateTime).TotalSeconds;
+
+			// This fixes a potential error
+			if (t <= 0) t = Double.Epsilon;
+
 			updateEventArgs.Time = t;
 			OnUpdateFrame (updateEventArgs);
 			prevUpdateTime = curUpdateTime;
@@ -496,6 +500,10 @@ namespace MonoMac.OpenGL
 				prevRenderTime = curRenderTime;
 			}
 			t = (curRenderTime - prevRenderTime).TotalSeconds;
+
+			// This fixes a potential error
+			if (t <= 0) t = Double.Epsilon;
+			
 			renderEventArgs.Time = t;
 			OnRenderFrame (renderEventArgs);
 			prevRenderTime = curRenderTime;
