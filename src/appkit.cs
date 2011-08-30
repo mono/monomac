@@ -175,6 +175,16 @@ namespace MonoMac.AppKit {
 		//Detected properties
 		[Export ("duration")]
 		double Duration { get; set; }
+		
+		[Export ("completionHandler")]
+		NSAction CompletionHandler { get; set; }
+		
+		[Static]
+		[Export ("runAnimationGroup:completionHandler:")]
+		void RunAnimation(NSAnimationContext context, NSAction completionHandler);
+		
+		[Export ("timingFunction")]
+		CAMediaTimingFunction TimingFunction { get; set; }
 	}
 	
 	[BaseType (typeof (NSObject), Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (NSAlertDelegate)})]
@@ -8579,23 +8589,23 @@ namespace MonoMac.AppKit {
 		bool HasHorizontalRuler { get; set; }
 		
 		[Export ("rulersVisible")]
-        bool RulersVisible { get; set; }
+		bool RulersVisible { get; set; }
        
-        [Export ("horizontalRulerView")]
-        NSRulerView HorizontalRulerView { get; set; }
+		[Export ("horizontalRulerView")]
+		NSRulerView HorizontalRulerView { get; set; }
    
-        [Export ("verticalRulerView")]
-        NSRulerView VerticalRulerView { get; set; }    
+		[Export ("verticalRulerView")]
+		NSRulerView VerticalRulerView { get; set; }    
         
 		[Static]
 		[Export ("contentSizeForFrameSize:horizontalScrollerClass:verticalScrollerClass:borderType:controlSize:scrollerStyle:")]
 		SizeF ContentSizeForFrame (SizeF frameSize, Class horizontalScrollerClass, Class verticalScrollerClass, NSBorderType borderType, NSControlSize controlSize, NSScrollerStyle scrollerStyle);
         
-        [Export ("findBarPosition")]
-        NSScrollViewFindBarPosition FindBarPosition { get; set; }
+		[Export ("findBarPosition")]
+		NSScrollViewFindBarPosition FindBarPosition { get; set; }
         
-        [Export ("flashScrollers")]
-        void FlashScrollers ();
+		[Export ("flashScrollers")]
+		void FlashScrollers ();
         
 		[Static]
 		[Export ("frameSizeForContentSize:horizontalScrollerClass:verticalScrollerClass:borderType:controlSize:scrollerStyle")]
@@ -8604,14 +8614,14 @@ namespace MonoMac.AppKit {
 		[Export ("horizontalScrollElasticity")]
 		NSScrollElasticity HorizontalScrollElasticity { get; set; }
         
-        [Export ("scrollerKnobStyle")]
-        NSScrollerKnobStyle ScrollerKnobStyle { get; set; }
+		[Export ("scrollerKnobStyle")]
+		NSScrollerKnobStyle ScrollerKnobStyle { get; set; }
         
-        [Export ("scrollerStyle")]
-        NSScrollerStyle ScrollerStyle { get; set; }
+		[Export ("scrollerStyle")]
+		NSScrollerStyle ScrollerStyle { get; set; }
         
-        [Export ("usesPredominantAxisScrolling")]
-        bool UsesPredominantAxisScrolling { get; set; }
+		[Export ("usesPredominantAxisScrolling")]
+		bool UsesPredominantAxisScrolling { get; set; }
 
 		[Export ("verticalScrollElasticity")]
 		NSScrollElasticity VerticalScrollElasticity { get; set; }
