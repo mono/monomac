@@ -8417,6 +8417,7 @@ namespace MonoMac.AppKit {
 		float ScrollerWidthForControlSize (NSControlSize controlSize);
 
 		[Export ("drawParts")]
+		[Obsolete ()]
 		void DrawParts ();
 
 		[Export ("rectForPart:")]
@@ -8464,6 +8465,27 @@ namespace MonoMac.AppKit {
 
 		[Export ("knobProportion")]
 		float KnobProportion { get; set; }
+		
+		[Static]
+		[Export ("isCompatibleWithOverlayScrollers")]
+		bool CompatibleWithOverlayScrollers { get; }
+		
+		[Export ("knobStyle")]
+		NSScrollerKnobStyle KnobStyle { get; set; }
+		
+		[Static]
+		[Export ("preferredScrollerStyle")]
+		NSScrollerStyle PreferredScrollerStyle { get; }
+		
+		[Export ("scrollerStyle")]
+		NSScrollerStyle ScrollerStyle { get; set; }
+		
+		[Static]
+		[Export ("scrollerWidthForControlSize:scrollerStyle:")]
+		float ScrollerWidthForControlSize (NSControlSize controlSize, NSScrollerStyle scrollerStyle);
+		
+		[Field ("NSPreferredScrollerStyleDidChangeNotification")]
+		NSString NSPreferredScrollerStyleDidChangeNotification { get; }
 
 	}
 
@@ -8564,6 +8586,35 @@ namespace MonoMac.AppKit {
    
         [Export ("verticalRulerView")]
         NSRulerView VerticalRulerView { get; set; }    
+        
+		[Static]
+		[Export ("contentSizeForFrameSize:horizontalScrollerClass:verticalScrollerClass:borderType:controlSize:scrollerStyle:")]
+		SizeF ContentSizeForFrame (SizeF frameSize, Class horizontalScrollerClass, Class verticalScrollerClass, NSBorderType borderType, NSControlSize controlSize, NSScrollerStyle scrollerStyle);
+        
+        [Export ("findBarPosition")]
+        NSScrollViewFindBarPosition FindBarPosition { get; set; }
+        
+        [Export ("flashScrollers")]
+        void FlashScrollers ();
+        
+		[Static]
+		[Export ("frameSizeForContentSize:horizontalScrollerClass:verticalScrollerClass:borderType:controlSize:scrollerStyle")]
+		SizeF FrameSizeForContent (SizeF contentSize, Class horizontalScrollerClass, Class verticalScrollerClass, NSBorderType borderType, NSControlSize controlSize, NSScrollerStyle scrollerStyle);
+		
+		[Export ("horizontalScrollElasticity")]
+		NSScrollElasticity HorizontalScrollElasticity { get; set; }
+        
+        [Export ("scrollerKnobStyle")]
+        NSScrollerKnobStyle ScrollerKnobStyle { get; set; }
+        
+        [Export ("scrollerStyle")]
+        NSScrollerStyle ScrollerStyle { get; set; }
+        
+        [Export ("usesPredominantAxisScrolling")]
+        bool UsesPredominantAxisScrolling { get; set; }
+
+		[Export ("verticalScrollElasticity")]
+		NSScrollElasticity VerticalScrollElasticity { get; set; }
 	}
 
 	[BaseType (typeof (NSTextField))]
