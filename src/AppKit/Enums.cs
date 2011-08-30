@@ -1516,20 +1516,26 @@ namespace MonoMac.AppKit {
 	}
 	
 	public enum NSScrollerStyle {
-   		Legacy = 0,
+		Legacy = 0,
 		Overlay
 	}
 	
 	public enum  NSScrollElasticity {
 		Automatic = 0,
-   		None,
+		None,
 		Allowed
 	}
 	
 	public enum  NSScrollerKnobStyle {
 		Default  = 0,
-		Dark     = 1,
-		Light    = 2
+		Dark,
+		Light,
+	}
+	
+	[Flags]
+	public enum NSRemoteNotificationType {
+		None    = 0,
+		Badge   = 1 << 0
 	}
    
 } 

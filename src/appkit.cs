@@ -478,6 +478,28 @@ namespace MonoMac.AppKit {
 		// From NSColorPanel
 		[Export ("orderFrontColorPanel:")]
 		void OrderFrontColorPanel (NSObject sender);
+		
+		[Export ("disableRelaunchOnLogin")]
+		void DisableRelaunchOnLogin ();
+		
+		[Export ("enableRelaunchOnLogin")]
+		void EnableRelaunchOnLogin ();
+		
+		[Export ("enabledRemoteNotificationTypes")]
+		NSRemoteNotificationType EnabledRemoteNotificationTypes { get; }
+		
+		[Export ("registerForRemoteNotificationTypes:")]
+		void RegisterForRemoteNotifications (NSRemoteNotificationType types);
+		
+		[Export ("unregisterForRemoteNotifications")]
+		void UnregisterForRemoteNotifications ();
+		
+		[Field ("NSApplicationLaunchRemoteNotificationKey", "AppKit")]
+		NSString NSApplicationLaunchRemoteNotificationKey { get; }
+
+		[Field ("NSApplicationLaunchIsDefaultLaunchKey", "AppKit")]
+		NSString NSApplicationLaunchRemoteNotificationKey { get; }
+
 	}
 	
 	[BaseType (typeof (NSObject))]
@@ -578,6 +600,22 @@ namespace MonoMac.AppKit {
 	
 		[Export ("orderFrontStandardAboutPanelWithOptions:"), EventArgs ("NSDictionary")]
 		void OrderFrontStandardAboutPanelWithOptions (NSDictionary optionsDictionary);
+		
+		[Export ("application:didDecodeRestorableState:"), EventArgs ("NSApplicationCoder")]
+		void DidDecodeRestorableState (NSApplication application, NSCoder coder);
+		
+		[Export ("application:didFailToRegisterForRemoteNotificationsWithError:"), EventArgs ("NSApplicationError")]
+		void DidFailToRegisterForRemoteNotifications (NSApplication application, NSError error);
+		
+		[Export ("application:didReceiveRemoteNotification:"), EventArgs ("NSApplicationDictionary")]
+		void DidReceiveRemoteNotification (NSApplication application, NSDictionary userInfo);
+		
+		[Export ("application:didRegisterForRemoteNotificationsWithDeviceToken:"), EventArgs ("NSApplicationData")]
+		void DidRegisterForRemoteNotificationsWithDeviceToken (NSApplication application, NSData deviceToken);
+
+		[Export ("application:willEncodeRestorableState:"), EventArgs("NSApplicationCoder")]
+		void WillEncodeRestorableState (NSApplication application, NSCoder coder);
+		
 	}
 
 
