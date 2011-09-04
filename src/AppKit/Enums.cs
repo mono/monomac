@@ -52,7 +52,10 @@ namespace MonoMac.AppKit {
 		DisableForceQuit           = (1 <<  6),
 		DisableSessionTermination  = (1 <<  7),
 		DisableHideApplication     = (1 <<  8),
-		DisableMenuBarTransparency = (1 <<  9) 
+		DisableMenuBarTransparency = (1 <<  9),
+
+		PresentationFullScreen     = (1 << 10),
+		AutoHideToolbar            = (1 << 11)
 	}
 
 	public enum NSApplicationDelegateReply {
@@ -723,7 +726,8 @@ namespace MonoMac.AppKit {
 		TexturedRounded,
 		RoundRect,
 		Recessed,
-		RoundedDisclosure
+		RoundedDisclosure,
+		Inline
 	}
 
 	public enum NSGradientType {
@@ -1503,5 +1507,11 @@ namespace MonoMac.AppKit {
 		Specific_10_3 = 3,
 		Specific_10_4 = 4,
 			
+	}
+
+	[Flags]
+	public enum NSRemoteNotificationType {
+		None = 0,
+		Badge = 1
 	}
 } 

@@ -467,6 +467,75 @@ namespace MonoMac.AppKit {
 		// From NSColorPanel
 		[Export ("orderFrontColorPanel:")]
 		void OrderFrontColorPanel (NSObject sender);
+
+		[Lion, Export ("disableRelaunchOnLogin")]
+		void DisableRelaunchOnLogin ();
+
+		[Lion, Export ("enableRelaunchOnLogin")]
+		void EnableRelaunchOnLogin ();
+
+		[Lion, Export ("enabledRemoteNotificationTypes")]
+		NSRemoteNotificationType EnabledRemoteNotificationTypes ();
+
+		[Lion, Export ("registerForRemoteNotificationTypes")]
+		void RegisterForRemoteNotificationTypes (NSRemoteNotificationType types);
+
+		[Lion, Export ("unregisterForRemoteNotifications")]
+		void UnregisterForRemoteNotifications ();
+
+		[Field ("NSApplicationDidBecomeActiveNotification")]
+		NSString DidBecomeActiveNotification { get; }
+
+		[Field ("NSApplicationDidHideNotification")]
+		NSString DidHideNotification { get; }
+
+		[Field ("NSApplicationDidFinishLaunchingNotification")]
+		NSString DidFinishLaunchingNotification { get; }
+
+		[Field ("NSApplicationDidResignActiveNotification")]
+		NSString DidResignActiveNotification { get; }
+
+		[Field ("NSApplicationDidUnhideNotification")]
+		NSString DidUnhideNotification { get; }
+
+		[Field ("NSApplicationDidUpdateNotification")]
+		NSString DidUpdateNotification { get; }
+
+		[Field ("NSApplicationWillBecomeActiveNotification")]
+		NSString WillBecomeActiveNotification { get; }
+
+		[Field ("NSApplicationWillHideNotification")]
+		NSString WillHideNotification { get; }
+
+		[Field ("NSApplicationWillFinishLaunchingNotification")]
+		NSString WillFinishLaunchingNotification { get; }
+
+		[Field ("NSApplicationWillResignActiveNotification")]
+		NSString WillResignActiveNotification { get; }
+
+		[Field ("NSApplicationWillUnhideNotification")]
+		NSString WillUnhideNotification { get; }
+
+		[Field ("NSApplicationWillUpdateNotification")]
+		NSString WillUpdateNotification { get; }
+
+		[Field ("NSApplicationWillTerminateNotification")]
+		NSString WillTerminateNotification { get; }
+
+		[Field ("NSApplicationDidChangeScreenParametersNotification")]
+		NSString DidChangeScreenParametersNotification { get; }
+
+		[Lion, Field ("NSApplicationLaunchRemoteNotificationKe")]
+		NSString LaunchRemoteNotificationKe { get; }
+
+		[Lion, Field ("NSApplicationLaunchIsDefaultLaunchKe")]
+		NSString LaunchIsDefaultLaunchKe { get; }
+
+		[Lion, Field ("NSApplicationLaunchIsDefaultLaunchKey")]
+		NSString LaunchIsDefaultLaunchKey  { get; }
+
+		[Lion, Field ("NSApplicationLaunchRemoteNotificationKey")]
+		NSString LaunchRemoteNotificationKey { get; }
 	}
 	
 	[BaseType (typeof (NSObject))]
@@ -567,9 +636,22 @@ namespace MonoMac.AppKit {
 	
 		[Export ("orderFrontStandardAboutPanelWithOptions:"), EventArgs ("NSDictionary")]
 		void OrderFrontStandardAboutPanelWithOptions (NSDictionary optionsDictionary);
+
+		[Lion, Export ("application:didRegisterForRemoteNotificationsWithDeviceToken:"), EventArgs ("NSData")]
+		void RegisteredForRemoteNotifications (NSApplication application, NSData deviceToken);
+
+		[Lion, Export ("application:didFailToRegisterForRemoteNotificationsWithError:"), EventArgs ("NSError")]
+		void FailedToRegisterForRemoteNotifications (NSApplication application, NSError error);
+
+		[Lion, Export ("application:didReceiveRemoteNotification:"), EventArgs ("NSDictionary")]
+		void ReceivedRemoteNotification (NSApplication application, NSDictionary userInfo);
+
+		[Lion, Export ("application:willEncodeRestorableState:"), EventArgs ("NSCoder")]
+		void WillEncodeRestorableState (NSApplication app, NSCoder encoder);
+
+		[Lion, Export ("application:didDecodeRestorableState:"), EventArgs ("NSCoder")]
+		void DecodedRestorableState (NSApplication app, NSCoder state);
 	}
-
-
 	
 	[BaseType (typeof (NSObjectController))]
 	public interface NSArrayController {
