@@ -3423,6 +3423,8 @@ namespace MonoMac.AppKit {
 		[Export ("dockMenu")]
 		NSMenu DockMenu ();
 	}
+
+	public delegate void NSDocumentCompletionHandler (IntPtr nsErrorPointerOrZero);
 	
 	[BaseType (typeof (NSObject))]
 	public interface NSDocument {
@@ -3432,21 +3434,20 @@ namespace MonoMac.AppKit {
 		[Export ("canConcurrentlyReadDocumentsOfType:")]
 		bool CanConcurrentlyReadDocumentsOfType (string typeName);
 
-		// Binding out error
 		[Export ("initWithContentsOfURL:ofType:error:")]
-		IntPtr Constructor (NSUrl absoluteUrl, string typeName, out NSError outError);
+		IntPtr Constructor (NSUrl url, string typeName, out NSError outError);
 
 		[Export ("initForURL:withContentsOfURL:ofType:error:")]
-		IntPtr Constructor (NSUrl absoluteDocumentUrl, NSUrl absoluteDocumentContentsUrl, string typeName, out NSError outError);
+		IntPtr Constructor ([NullAllowed] NSUrl documentUrl, NSUrl documentContentsUrl, string typeName, out NSError outError);
 
 		 [Export ("revertDocumentToSaved:")]
 		 void RevertDocumentToSaved (NSObject sender);
 
 		 [Export ("revertToContentsOfURL:ofType:error:")]
-		 bool RevertToContentsOfUrl (NSUrl absoluteUrl, string typeName, out NSError outError);
+		 bool RevertToContentsOfUrl (NSUrl url, string typeName, out NSError outError);
 
 		[Export ("readFromURL:ofType:error:")]
-		bool ReadFromUrl (NSUrl absoluteUrl, string typeName, out NSError outError);
+		bool ReadFromUrl (NSUrl url, string typeName, out NSError outError);
 
 		[Export ("readFromFileWrapper:ofType:error:")]
 		bool ReadFromFileWrapper (NSFileWrapper fileWrapper, string typeName, out NSError outError);
@@ -3455,7 +3456,7 @@ namespace MonoMac.AppKit {
 		bool ReadFromData (NSData data, string typeName, out NSError outError);
 
 		[Export ("writeToURL:ofType:error:")]
-		bool WriteToUrl (NSUrl absoluteUrl, string typeName, out NSError outError);
+		bool WriteToUrl (NSUrl url, string typeName, out NSError outError);
 
 		[Export ("fileWrapperOfType:error:")]
 		NSFileWrapper GetAsFileWrapper (string typeName, out NSError outError);
@@ -3464,10 +3465,10 @@ namespace MonoMac.AppKit {
 		NSData GetAsData (string typeName, out NSError outError);
 
 		[Export ("writeSafelyToURL:ofType:forSaveOperation:error:")]
-		bool WriteSafelyToUrl (NSUrl absoluteUrl, string typeName, NSSaveOperationType saveOperation, out NSError outError);
+		bool WriteSafelyToUrl (NSUrl url, string typeName, NSSaveOperationType saveOperation, out NSError outError);
 
 		[Export ("writeToURL:ofType:forSaveOperation:originalContentsURL:error:")]
-		bool WriteToUrl (NSUrl absoluteUrl, string typeName, NSSaveOperationType saveOperation, NSUrl absoluteOriginalContentsUrl, out NSError outError);
+		bool WriteToUrl (NSUrl url, string typeName, NSSaveOperationType saveOperation, NSUrl absoluteOriginalContentsUrl, out NSError outError);
 
 		[Export ("fileAttributesToWriteToURL:ofType:forSaveOperation:originalContentsURL:error:")]
 		NSDictionary FileAttributesToWrite (NSUrl toUrl, string typeName, NSSaveOperationType saveOperation, NSUrl absoluteOriginalContentsUrl, out NSError outError);
@@ -3503,10 +3504,10 @@ namespace MonoMac.AppKit {
 		string FileTypeFromLastRunSavePanel { get; }
 
 		[Export ("saveToURL:ofType:forSaveOperation:delegate:didSaveSelector:contextInfo:")]
-		void SaveToUrl (NSUrl absoluteUrl, string typeName, NSSaveOperationType saveOperation, NSObject delegateObject, Selector didSaveSelector, IntPtr contextInfo);
+		void SaveToUrl (NSUrl url, string typeName, NSSaveOperationType saveOperation, NSObject delegateObject, Selector didSaveSelector, IntPtr contextInfo);
 
 		[Export ("saveToURL:ofType:forSaveOperation:error:")]
-		bool SaveToUrl (NSUrl absoluteUrl, string typeName, NSSaveOperationType saveOperation, out NSError outError);
+		bool SaveToUrl (NSUrl url, string typeName, NSSaveOperationType saveOperation, out NSError outError);
 
 		[Export ("hasUnautosavedChanges")]
 		bool HasUnautosavedChanges { get; }
@@ -3639,6 +3640,76 @@ namespace MonoMac.AppKit {
 
 		[Export ("hasUndoManager")]
 		bool HasUndoManager { get; set; }
+
+		[Lion, Export ("performActivityWithSynchronousWaiting:usingBlock:")]
+		void PerformActivity (bool waitSynchronously, NSAction activityCompletionHandler);
+
+		[Lion, Export ("continueActivityUsingBlock:")]
+		void ContinueActivity (NSAction resume);
+
+		[Lion, Export ("continueAsynchronousWorkOnMainThreadUsingBlock:")]
+		void ContinueAsynchronousWorkOnMainThread (NSAction work);
+
+		[Lion, Export ("performSynchronousFileAccessUsingBlock:")]
+		void PerformSynchronousFileAccess (NSAction fileAccessCallback);
+
+		[Lion, Export ("performAsynchronousFileAccessUsingBlock:")]
+		void PerformAsynchronousFileAccess (NSAction ioCode);
+
+		[Lion, Export ("isEntireFileLoaded")]
+		bool IsEntireFileLoaded { get; }
+
+		[Lion, Export ("unblockUserInteraction")]
+		void UnblockUserInteraction ();
+
+		[Lion, Export ("autosavingIsImplicitlyCancellable")]
+		bool AutosavingIsImplicitlyCancellable { get; }
+
+		[Lion, Export ("saveToURL:ofType:forSaveOperation:completionHandler:")]
+		void SaveTo (NSUrl url, string typeName, NSSaveOperationType saveOperation, NSDocumentCompletionHandler completionHandler);
+
+		[Lion, Export ("canAsynchronouslyWriteToURL:ofType:forSaveOperation:")]
+		bool CanWriteAsynchronously (NSUrl toUrl, string typeName, NSSaveOperationType saveOperation);
+
+		[Lion, Export ("checkAutosavingSafetyAndReturnError:")]
+		bool CheckAutosavingSafety (out NSError outError);
+
+		[Lion, Export ("scheduleAutosaving")]
+		void ScheduleAutosaving ();
+
+		[Lion, Export ("autosaveWithImplicitCancellability:completionHandler:")]
+		void Autosave (bool autosavingIsImplicitlyCancellable, NSDocumentCompletionHandler completionHandler);
+
+		[Lion, Export ("autosavesInPlace")]
+		bool AutosavesInPlace ();
+
+		[Static]
+		[Lion, Export ("preservesVersions")]
+		bool PreservesVersions ();
+
+		[Lion, Export ("duplicateDocument:")]
+		void DuplicateDocument (NSObject sender);
+
+		[Lion, Export ("duplicateDocumentWithDelegate:didDuplicateSelector:contextInfo:"), Internal]
+		void _DuplicateDocument ([NullAllowed] NSObject cbackobject, [NullAllowed] Selector didDuplicateSelector, IntPtr contextInfo);
+
+		[Lion, Export ("duplicateAndReturnError:")]
+		NSDocument Duplicate (out NSError outError);
+
+		[Lion, Export ("isInViewingMode")]
+		bool IsInViewingMode { get; }
+
+		[Lion, Export ("changeCountTokenForSaveOperation:")]
+		NSObject ChangeCountToken (NSSaveOperationType saveOperation);
+
+		[Lion, Export ("updateChangeCountWithToken:forSaveOperation:")]
+		void UpdateChangeCount (NSObject changeCountToken, NSSaveOperationType saveOperation);
+
+		[Lion, Export ("willNotPresentError:")]
+		void WillNotPresentError (NSError error);
+
+		[Lion, Export ("setDisplayName:")]
+		void SetDisplayName ([NullAllowed] string displayNameOrNull);
 	}
 
 	[BaseType (typeof (NSObject))]
@@ -10090,7 +10161,7 @@ namespace MonoMac.AppKit {
 	[BaseType (typeof (NSResponder))]
 	public interface NSViewController {
 		[Export ("initWithNibName:bundle:")]
-		IntPtr Constructor ([NullAllowed] string nibNameOrNil, [NullAllowed] NSBundle nibBundleOrNil);
+		IntPtr Constructor ([NullAllowed] string nibNameOrNull, [NullAllowed] NSBundle nibBundleOrNull);
 
 		[Export ("loadView")]
 		void LoadView ();
