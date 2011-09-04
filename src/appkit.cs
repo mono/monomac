@@ -2065,6 +2065,14 @@ namespace MonoMac.AppKit {
 		[Export ("interiorBackgroundStyle")]
 		NSBackgroundStyle InteriorBackgroundStyle { get; }
 	
+		[Lion, Export ("draggingImageComponentsWithFrame:inView:")]
+		NSDraggingImageComponent [] GenerateDraggingImageComponents (RectangleF frame, NSView view);
+
+		[Lion, Export ("drawFocusRingMaskWithFrame:inView:")]
+		void DrawFocusRing (RectangleF cellFrameMask, NSView inControlView);
+
+		[Lion, Export ("focusRingMaskBoundsForFrame:inView:")]
+		RectangleF GetFocusRingMaskBounds (RectangleF cellFrame, NSView controlView);
 	}
 
 	[BaseType (typeof (NSImageRep))]
@@ -3743,6 +3751,56 @@ namespace MonoMac.AppKit {
 		double AutosavingDelay { get; set; }
 	}
 
+	[Lion]
+	[BaseType (typeof (NSObject))]
+	public interface NSDraggingImageComponent {
+		[Export ("key")]
+		string Key { get; set;  }
+
+		[Export ("contents")]
+		NSObject Contents { get; set;  }
+
+		[Export ("frame")]
+		RectangleF Frame { get; set;  }
+
+		[Static]
+		[Export ("draggingImageComponentWithKey:")]
+		NSDraggingImageComponent FromKey (string key);
+
+		[Export ("initWithKey:")]
+		IntPtr Constructor (string key);
+
+		[Field ("NSDraggingImageComponentIconKey")]
+		NSString IconKey { get; }
+
+		[Field ("NSDraggingImageComponentLabelKey")]
+		NSString LabelKey { get; }
+	}
+
+	delegate NSDraggingImageComponent [] NSDraggingItemImagesContentProvider ();
+	
+	[BaseType (typeof (NSObject))]
+	interface NSDraggingItem {
+		[Export ("item")]
+		NSObject Item { get;  }
+
+		[Export ("draggingFrame")]
+		RectangleF DraggingFrame { get; set;  }
+
+		[Export ("imageComponents")]
+		NSDraggingImageComponent [] ImageComponents { get;  }
+
+		[Export ("initWithPasteboardWriter:")]
+		IntPtr Constructor (NSPasteboardWriting pasteboardWriter);
+
+		[Export ("setImageComponentsProvider:")]
+		void SetImagesContentProvider ([NullAllowed] NSDraggingItemImagesContentProvider provider);
+
+		[Export ("setDraggingFrame:contents:")]
+		void SetDraggingFrame (RectangleF frame, NSObject contents);
+
+	}
+	
 	//NSDraggingInfo is documented as a protocol, but it doesn't work as a protocol.
 	//per the docs: "In Java, sender is an NSDragDestination object, which implements the NSDraggingInfo interface." - from Drag and Drop Programming Topics for Cocoa
 	//furthermore, "you never need to create a class that implements the NSDraggingInfo protocol" from NSDraggingInfo Protocol Reference
