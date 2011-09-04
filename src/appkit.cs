@@ -3189,6 +3189,11 @@ namespace MonoMac.AppKit {
 		[Export ("contextualMenuCursor")]
 		NSCursor ContextualMenuCursor { get; }
 
+		[Lion]
+		[Static]
+		[Export ("IBeamCursorForVerticalLayout")]
+		NSCursor IBeamCursorForVerticalLayout { get; }
+		
 		[Export ("initWithImage:hotSpot:")]
 		NSObject InitWithImagehotSpot (NSImage newImage, PointF aPoint);
 
