@@ -3,6 +3,7 @@
 // Copyright 2010, 2011, Novell, Inc.
 // Copyright 2010, Kenneth Pouncey
 // Coprightt 2010, James Clancey
+// Copyright 2011, Curtis Wensley
 //
 // Permission is hereby granted, free of charge, to any person obtaining
 // a copy of this software and associated documentation files (the
@@ -13270,19 +13271,55 @@ namespace MonoMac.AppKit {
 		void DidChangeScreen (NSNotification  notification);
 	
 		[Export ("windowDidChangeScreenProfile:"), EventArgs ("NSNotification")]
-		void DidChangeScreenProfile (NSNotification  notification);
+		void DidChangeScreenProfile (NSNotification notification);
 	
 		[Export ("windowWillBeginSheet:"), EventArgs ("NSNotification")]
-		void WillBeginSheet (NSNotification  notification);
+		void WillBeginSheet (NSNotification notification);
 	
 		[Export ("windowDidEndSheet:"), EventArgs ("NSNotification")]
-		void DidEndSheet (NSNotification  notification);
+		void DidEndSheet (NSNotification notification);
 	
 		[Export ("windowWillStartLiveResize:"), EventArgs ("NSNotification")]
-		void WillStartLiveResize (NSNotification  notification);
+		void WillStartLiveResize (NSNotification notification);
 	
 		[Export ("windowDidEndLiveResize:"), EventArgs ("NSNotification")]
-		void DidEndLiveResize (NSNotification  notification);
+		void DidEndLiveResize (NSNotification notification);
+
+		[Lion, Export ("windowWillEnterFullScreen:"), EventArgs ("NSNotification")]
+		void WillEnterFullScreen (NSNotification notification);
+
+		[Lion, Export ("windowDidEnterFullScreen:"), EventArgs ("NSNotification")]
+		void DidEnterFullScreen (NSNotification notification);
+
+		[Lion, Export ("windowWillExitFullScreen:"), EventArgs ("NSNotification")]
+		void WillExitFullScreen (NSNotification  notification);
+		
+		[Lion, Export ("windowDidExitFullScreen:"), EventArgs ("NSNotification")]
+		void DidExitFullScreen (NSNotification notification);
+
+		[Lion, Export ("windowDidFailToEnterFullScreen:"), EventArgs ("NSWindow")]
+		void DidFailToEnterFullScreen (NSWindow window);
+
+		[Lion, Export ("windowDidFailToExitFullScreen:"), EventArgs ("NSWindow")]
+		void DidFailToExitFullScreen (NSWindow window);
+		
+		[Lion, Export ("window:willUseFullScreenContentSize:"), DelegateName ("NSWindowSize"), DefaultValueFromArgument ("proposedSize")]
+		SizeF WillUseFullScreenContentSize (NSWindow  window, SizeF proposedSize);
+		
+		[Lion, Export ("window:willUseFullScreenPresentationOptions:"), DelegateName ("NSWindowApplicationPresentationOptions"), DefaultValueFromArgument ("proposedOptions")]
+		NSApplicationPresentationOptions WillUseFullScreenPresentationOptions (NSWindow  window, NSApplicationPresentationOptions proposedOptions);
+		
+		[Lion, Export ("customWindowsToEnterFullScreenForWindow:"), DelegateName ("NSWindowWindows"), DefaultValue (null)]
+		NSWindow[] CustomWindowsToEnterFullScreen (NSWindow  window);
+
+		[Lion, Export ("customWindowsToExitFullScreenForWindow:"), DelegateName ("NSWindowWindows"), DefaultValue (null)]
+		NSWindow[] CustomWindowsToExitFullScreen (NSWindow  window);
+
+		[Lion, Export ("window:startCustomAnimationToEnterFullScreenWithDuration:"), EventArgs("NSWindowDuration")]
+		void StartCustomAnimationToEnterFullScreen (NSWindow  window, double duration);
+
+		[Lion, Export ("window:startCustomAnimationToExitFullScreenWithDuration:"), EventArgs("NSWindowDuration")]
+		void StartCustomAnimationToExitFullScreen (NSWindow  window, double duration);
 	}
 
 	public delegate void NSWorkspaceUrlHandler (NSDictionary newUrls, NSError error);
