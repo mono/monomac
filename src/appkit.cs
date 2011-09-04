@@ -220,7 +220,7 @@ namespace MonoMac.AppKit {
 		[Export ("suppressionButton")]
 		NSButton SuppressionButton { get; } 
 	
-		[Export ("accessoryView")]
+		[Export ("accessoryView"), NullAllowed]
 		NSView AccessoryView { get; set; } 
 	
 		[Export ("layout")]
@@ -2672,7 +2672,7 @@ namespace MonoMac.AppKit {
 		void DetachColorList (NSColorList colorList);
 
 		//Detected properties
-		[Export ("accessoryView")]
+		[Export ("accessoryView"), NullAllowed]
 		NSView AccessoryView { get; set; }
 
 		[Export ("continuous")]
@@ -4546,7 +4546,7 @@ namespace MonoMac.AppKit {
 		void ReloadDefaultFontFamilies ();
 
 		//Detected properties
-		[Export ("accessoryView")]
+		[Export ("accessoryView"), NullAllowed]
 		NSView AccessoryView { get; set; }
 
 		[Export ("enabled")]
@@ -8471,7 +8471,7 @@ namespace MonoMac.AppKit {
 		[Export ("markers"), NullAllowed]
 		NSRulerMarker [] Markers { get; set; }
 
-		[Export ("accessoryView")]
+		[Export ("accessoryView"), NullAllowed]
 		NSView AccessoryView { get; set; }
 	}
 
@@ -8517,7 +8517,7 @@ namespace MonoMac.AppKit {
 		[Export ("allowsOtherFileTypes")]
 		bool AllowsOtherFileTypes { get; set; }
 
-		[Export ("accessoryView")]
+		[Export ("accessoryView"), NullAllowed]
 		NSView AccessoryView { get; set; }
 
 		[Export ("delegate"), NullAllowed]
@@ -9349,7 +9349,7 @@ namespace MonoMac.AppKit {
 		void UnlearnWord (string word);
 
 		//Detected properties
-		[Export ("accessoryView")]
+		[Export ("accessoryView"), NullAllowed]
 		NSView AccessoryView { get; set; }
 
 		[Export ("substitutionsPanelAccessoryViewController")]
