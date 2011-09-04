@@ -13320,6 +13320,27 @@ namespace MonoMac.AppKit {
 
 		[Lion, Export ("window:startCustomAnimationToExitFullScreenWithDuration:"), EventArgs("NSWindowDuration")]
 		void StartCustomAnimationToExitFullScreen (NSWindow  window, double duration);
+
+		[Lion, Export ("window:willEncodeRestorableState:"), EventArgs ("NSWindowCoder")]
+		void WillEncodeRestorableState(NSWindow window, NSCoder coder);
+		
+		[Lion, Export ("window:didDecodeRestorableState:"), EventArgs ("NSWindowCoder")]
+		void DidDecodeRestorableState(NSWindow window, NSCoder coder);
+		
+		[Lion, Export ("window:willResizeForVersionBrowserWithMaxPreferredSize:maxAllowedSize:"), DelegateName ("NSWindowSizeSize"), DefaultValueFromArgument ("maxPreferredSize")]
+		SizeF WillResizeForVersionBrowser(NSWindow window, SizeF maxPreferredSize, SizeF maxAllowedSize);
+		
+		[Lion, Export ("windowWillEnterVersionBrowser:"), EventArgs ("NSNotification")]
+		void WillEnterVersionBrowser (NSNotification notification);
+		
+		[Lion, Export ("windowDidEnterVersionBrowser:"), EventArgs ("NSNotification")]
+		void DidEnterVersionBrowser (NSNotification notification);
+		
+		[Lion, Export ("windowWillExitVersionBrowser:"), EventArgs ("NSNotification")]
+		void WillExitVersionBrowser (NSNotification notification);
+		
+		[Lion, Export ("windowDidExitVersionBrowser:"), EventArgs ("NSNotification")]
+		void DidExitVersionBrowser (NSNotification notification);
 	}
 
 	public delegate void NSWorkspaceUrlHandler (NSDictionary newUrls, NSError error);
