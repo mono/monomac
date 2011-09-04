@@ -1,5 +1,6 @@
 ///
-// Copyright 2010, Novell, Inc.
+// Copyright 2011, Xamarin, Inc.
+// Copyright 2010, 2011, Novell, Inc.
 // Copyright 2010, Kenneth Pouncey
 // Coprightt 2010, James Clancey
 //

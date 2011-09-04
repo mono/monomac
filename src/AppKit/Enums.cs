@@ -1,5 +1,6 @@
 //
-// Copyright 2010, Novell, Inc.
+// Copyright 2010, 2011 Novell, Inc.
+// Copyright 2011, Xamarin, Inc.
 //
 // Permission is hereby granted, free of charge, to any person obtaining
 // a copy of this software and associated documentation files (the
@@ -54,7 +55,7 @@ namespace MonoMac.AppKit {
 		DisableHideApplication     = (1 <<  8),
 		DisableMenuBarTransparency = (1 <<  9),
 
-		PresentationFullScreen     = (1 << 10),
+		FullScreen                 = (1 << 10),
 		AutoHideToolbar            = (1 << 11)
 	}
 
@@ -819,7 +820,10 @@ namespace MonoMac.AppKit {
 	}
 
 	public enum NSSaveOperationType  {
-		Save, SaveAs, SaveTo, Autosave
+		Save, SaveAs, SaveTo,
+		Autosave = 3,	/* Deprecated name in Lion */
+		Elsewhere = 3,	/* New Lion name */
+		InPlace = 4	/* New in Lion */
 	}
 
 #endregion
