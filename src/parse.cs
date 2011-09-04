@@ -210,8 +210,7 @@ class Declarations {
 }
 
 class TrivialParser {
-	StreamWriter gencs = File.CreateText ("gen.cs");
-	StreamWriter other = File.CreateText ("other.c");
+	StreamWriter gencs, other;
 	StreamReader r;
 
 	// Used to limit which APIs to include in the binding
@@ -409,7 +408,7 @@ class TrivialParser {
 		return type;
 	}
 	
-	Regex rx = new Regex ("NS_AVAILABLE\\(.*\\)");
+	Regex rx = new Regex ("(NS_AVAILABLE\\(.*\\)|NS_AVAILABLE_MAC\\([0-9_]+\\))");
 	Regex rx2 = new Regex ("AVAILABLE_MAC_OS_X_VERSION[_A-Z0-9]*");
 	Regex rx3 = new Regex ("AVAILABLE_MAC_OS_X_VERSION[_A-Z0-9]*");
 	
@@ -546,6 +545,18 @@ class TrivialParser {
 	
 	TrivialParser ()
 	{
+		try {
+			gencs = File.CreateText ("gen.cs");
+		} catch {
+			gencs = File.CreateText ("/tmp/gen.cs");
+		}
+
+		try {
+			other = File.CreateText ("other.c");
+		} catch {
+			other = File.CreateText ("/tmp/other.c");
+		}
+		
 		options = new OptionSet () {
 			{ "limit=", "Limit methods to methods for the specific API level (ex: 5_0)", arg => limit = arg },
 			{ "help", "Shows the help", a => ShowHelp () }
