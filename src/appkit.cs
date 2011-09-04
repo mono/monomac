@@ -6097,9 +6097,6 @@ namespace MonoMac.AppKit {
 
 		[Bind ("drawInRect:withAttributes:")]
 		void DrawInRect ([Target] string str, RectangleF rect, NSDictionary attributes);
-
-		[Export ("drawInRect:fromRect:operation:fraction:")]
-		void DrawInRect (RectangleF dstRect, RectangleF srcRect, NSCompositingOperation operation, float delta);
 	}
 
 	[BaseType (typeof (NSObject))]
@@ -9549,12 +9546,16 @@ namespace MonoMac.AppKit {
 		void WillRemoveSubview (NSView subview);
 
 		[Export ("removeFromSuperview")]
+		[PreSnippet ("var mySuper = Superview;")]
+		[PostSnippet ("__mt_Superview_var = null;\n\tif (mySuper != null) {\n\t#pragma warning disable 168\n\tvar flush = mySuper.Subviews;\n#pragma warning restore 168\n\t}")]
 		void RemoveFromSuperview ();
 
 		[Export ("replaceSubview:with:")]
 		void ReplaceSubviewWith (NSView oldView, NSView newView);
 
 		[Export ("removeFromSuperviewWithoutNeedingDisplay")]
+		[PreSnippet ("var mySuper = Superview;")]
+		[PostSnippet ("__mt_Superview_var = null;\n\tif (mySuper != null) {\n\t#pragma warning disable 168\n\tvar flush = mySuper.Subviews;\n#pragma warning restore 168\n\t}")]
 		void RemoveFromSuperviewWithoutNeedingDisplay ();
 
 		[Export ("resizeSubviewsWithOldSize:")]
