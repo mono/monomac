@@ -3,6 +3,8 @@
 #
 WARNINGS_I_SHOULD_FIX=114,108
 
+MACCORE_DIR ?= ../../maccore
+
 #
 # CORE_SOURCES are source files that are written by hand
 # and are linked with the generator
@@ -104,9 +106,9 @@ OPENTK_SOURCES = \
 	./OpenGL/OpenTK/Math/Vector4h.cs
 
 GENERATOR_SOURCES = \
-	../../maccore/src/generator.cs			\
-	../../maccore/src/Options.cs			\
-	../../maccore/src/btouch.cs
+	$(MACCORE_DIR)/src/generator.cs			\
+	$(MACCORE_DIR)/src/Options.cs			\
+	$(MACCORE_DIR)/src/btouch.cs
 
 SOURCES = \
 	$(CORE_SOURCES)
@@ -124,9 +126,9 @@ SHARED_API = \
 	./coreimage.cs		\
 	./corelocation.cs
 
-SHARED_SOURCES = $(patsubst %,../../maccore/src/%,$(SHARED_SOURCE))
-SHARED_CORE_SOURCES = $(patsubst %,../../maccore/src/%,$(SHARED_CORE_SOURCE))
-SHARED_APIS = $(patsubst %,../../maccore/src/%,$(SHARED_API))
+SHARED_SOURCES = $(patsubst %,$(MACCORE_DIR)/src/%,$(SHARED_SOURCE))
+SHARED_CORE_SOURCES = $(patsubst %,$(MACCORE_DIR)/src/%,$(SHARED_CORE_SOURCE))
+SHARED_APIS = $(patsubst %,$(MACCORE_DIR)/src/%,$(SHARED_API))
 
 APIS = \
 	appkit.cs		\
@@ -143,8 +145,8 @@ APIS = \
 
 all: $(TARGETS)
 
-parse.exe: parse.cs ../../maccore/src/Options.cs
-	gmcs parse.cs ../../maccore/src/Options.cs
+parse.exe: parse.cs $(MACCORE_DIR)/src/Options.cs
+	gmcs parse.cs $(MACCORE_DIR)/src/Options.cs
 
 core.dll: $(CORE_SOURCES) $(SHARED_CORE_SOURCES) Makefile
 	gmcs -target:library -debug -unsafe -out:core.dll -define:MONOMAC,MONOMAC_BOOTSTRAP,COREBUILD $(CORE_SOURCES) $(SHARED_CORE_SOURCES) -r:System.Drawing
