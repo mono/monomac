@@ -1518,4 +1518,28 @@ namespace MonoMac.AppKit {
 		None = 0,
 		Badge = 1
 	}
+	
+	public enum NSScrollViewFindBarPosition {
+		AboveHorizontalRuler = 0,
+		AboveContent,
+		BelowContent
+	}
+	
+	public enum NSScrollerStyle {
+   		Legacy = 0,
+		Overlay
+	}
+	
+	public enum  NSScrollElasticity {
+		Automatic = 0,
+   		None,
+		Allowed
+	}
+	
+	public enum  NSScrollerKnobStyle {
+		Default  = 0,
+		Dark     = 1,
+		Light    = 2
+	}
+   
 } 

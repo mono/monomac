@@ -182,10 +182,10 @@ namespace MonoMac.AppKit {
 		NSAction CompletionHandler { get; set; }
 
 		[Static]
-		[Export ("runAnimationGroup:completionHandler:")]
+		[Lion, Export ("runAnimationGroup:completionHandler:")]
 		void RunAnimation (NSAnimationContext context, NSAction completionHandler);
     
-		[Export ("timingFunction")]
+		[Lion, Export ("timingFunction")]
 		CAMediaTimingFunction TimingFunction { get; set; }		
 	}
 	
@@ -8637,6 +8637,7 @@ namespace MonoMac.AppKit {
 		float ScrollerWidthForControlSize (NSControlSize controlSize);
 
 		[Export ("drawParts")]
+		[Obsolete]
 		void DrawParts ();
 
 		[Export ("rectForPart:")]
@@ -8684,6 +8685,27 @@ namespace MonoMac.AppKit {
 
 		[Export ("knobProportion")]
 		float KnobProportion { get; set; }
+		
+		[Static]
+		[Lion, Export ("isCompatibleWithOverlayScrollers")]
+		bool CompatibleWithOverlayScrollers { get; }
+		
+		[Lion, Export ("knobStyle")]
+		NSScrollerKnobStyle KnobStyle { get; set; }
+		
+		[Static]
+		[Lion, Export ("preferredScrollerStyle")]
+		NSScrollerStyle PreferredScrollerStyle { get; }
+		
+		[Export ("scrollerStyle")]
+		NSScrollerStyle ScrollerStyle { get; set; }
+		
+		[Static]
+		[Lion, Export ("scrollerWidthForControlSize:scrollerStyle:")]
+		float GetScrollerWidth (NSControlSize forControlSize, NSScrollerStyle scrollerStyle);
+		
+		[Field ("NSPreferredScrollerStyleDidChangeNotification")]
+		NSString NSPreferredScrollerStyleDidChangeNotification { get; }
 
 	}
 
@@ -8783,7 +8805,36 @@ namespace MonoMac.AppKit {
 		NSRulerView HorizontalRulerView { get; set; }
 		
 		[Export ("verticalRulerView")]
-		NSRulerView VerticalRulerView { get; set; }    
+		NSRulerView VerticalRulerView { get; set; }
+
+		[Static]
+		[Lion, Export ("contentSizeForFrameSize:horizontalScrollerClass:verticalScrollerClass:borderType:controlSize:scrollerStyle:")]
+		SizeF GetContentSizeForFrame (SizeF forFrameSize, Class horizontalScrollerClass, Class verticalScrollerClass, NSBorderType borderType, NSControlSize controlSize, NSScrollerStyle scrollerStyle);
+        
+        	[Lion, Export ("findBarPosition")]
+        	NSScrollViewFindBarPosition FindBarPosition { get; set; }
+        
+        	[Lion, Export ("flashScrollers")]
+        	void FlashScrollers ();
+        
+		[Static]
+		[Lion, Export ("frameSizeForContentSize:horizontalScrollerClass:verticalScrollerClass:borderType:controlSize:scrollerStyle")]
+		SizeF GetFrameSizeForContent (SizeF contentSize, Class horizontalScrollerClass, Class verticalScrollerClass, NSBorderType borderType, NSControlSize controlSize, NSScrollerStyle scrollerStyle);
+		
+		[Lion, Export ("horizontalScrollElasticity")]
+		NSScrollElasticity HorizontalScrollElasticity { get; set; }
+        
+        	[Lion, Export ("scrollerKnobStyle")]
+        	NSScrollerKnobStyle ScrollerKnobStyle { get; set; }
+        
+        	[Lion, Export ("scrollerStyle")]
+        	NSScrollerStyle ScrollerStyle { get; set; }
+        
+		[Lion, Export ("usesPredominantAxisScrolling")]
+        	bool UsesPredominantAxisScrolling { get; set; }
+
+		[Lion, Export ("verticalScrollElasticity")]
+		NSScrollElasticity VerticalScrollElasticity { get; set; }
 	}
 
 	[BaseType (typeof (NSTextField))]
