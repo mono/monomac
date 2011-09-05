@@ -177,6 +177,16 @@ namespace MonoMac.AppKit {
 		//Detected properties
 		[Export ("duration")]
 		double Duration { get; set; }
+
+		[Lion, Export ("completionHandler")]
+		NSAction CompletionHandler { get; set; }
+
+		[Static]
+		[Export ("runAnimationGroup:completionHandler:")]
+		void RunAnimation (NSAnimationContext context, NSAction completionHandler);
+    
+		[Export ("timingFunction")]
+		CAMediaTimingFunction TimingFunction { get; set; }		
 	}
 	
 	[BaseType (typeof (NSObject), Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (NSAlertDelegate)})]
@@ -8767,13 +8777,13 @@ namespace MonoMac.AppKit {
 		bool HasHorizontalRuler { get; set; }
 		
 		[Export ("rulersVisible")]
-        bool RulersVisible { get; set; }
-       
-        [Export ("horizontalRulerView")]
-        NSRulerView HorizontalRulerView { get; set; }
-   
-        [Export ("verticalRulerView")]
-        NSRulerView VerticalRulerView { get; set; }    
+		bool RulersVisible { get; set; }
+		
+		[Export ("horizontalRulerView")]
+		NSRulerView HorizontalRulerView { get; set; }
+		
+		[Export ("verticalRulerView")]
+		NSRulerView VerticalRulerView { get; set; }    
 	}
 
 	[BaseType (typeof (NSTextField))]
