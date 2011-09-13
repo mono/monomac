@@ -255,7 +255,7 @@ namespace MonoMac.AppKit {
 	}
 
 	[BaseType (typeof (NSResponder), Delegates=new string [] { "WeakDelegate" }, Events=new Type [] { typeof (NSApplicationDelegate) })]
-	public interface NSApplication : NSWindowRestoration {
+	public interface NSApplication {
 		[Export ("sharedApplication"), Static]
 		NSApplication SharedApplication { get; }
 	
@@ -548,9 +548,6 @@ namespace MonoMac.AppKit {
 
 		[Lion, Field ("NSApplicationLaunchRemoteNotificationKey")]
 		NSString LaunchRemoteNotificationKey { get; }
-
-		[Field ("NSApplicationDidFinishRestoringWindowsNotification")]
-		NSString DidFinishRestoringWindowsNotification { get; }
 	}
 	
 	[BaseType (typeof (NSObject))]
@@ -3725,26 +3722,10 @@ namespace MonoMac.AppKit {
 
 		[Lion, Export ("setDisplayName:")]
 		void SetDisplayName ([NullAllowed] string displayNameOrNull);
-
-		[Lion, Export ("restoreDocumentWindowWithIdentifier:state:completionHandler:")]
-		void RestoreDocumentWindow (string identifier, NSCoder state, NSWindowCompletionHandler completionHandler);
-
-		[Lion, Export ("encodeRestorableStateWithCoder:")]
-		void EncodeRestorableState (NSCoder coder);
-
-		[Export ("restoreStateWithCoder:")]
-		void RestoreState (NSCoder coder);
-
-		[Export ("invalidateRestorableState")]
-		void InvalidateRestorableState ();
-
-		[Static]
-		[Export ("restorableStateKeyPaths")]
-		string [] RestorableStateKeyPaths ();
 	}
 
 	[BaseType (typeof (NSObject))]
-	public interface NSDocumentController : NSWindowRestoration {
+	public interface NSDocumentController {
 		[Static, Export ("sharedDocumentController")]
 		NSObject SharedDocumentController { get; }
 
@@ -8387,20 +8368,6 @@ namespace MonoMac.AppKit {
 
 		[Export ("menu")]
 		NSMenu Menu { get; set; }
-
-		[Lion, Export ("encodeRestorableStateWithCoder:")]
-		void EncodeRestorableState (NSCoder coder);
-
-		[Lion, Export ("restoreStateWithCoder:")]
-		void RestoreState (NSCoder coder);
-
-		[Lion, Export ("invalidateRestorableState")]
-		void InvalidateRestorableState ();
-
-		[Static]
-		[Lion, Export ("restorableStateKeyPaths")]
-		string [] RestorableStateKeyPaths ();
-		
 	}
 
 
@@ -13230,32 +13197,8 @@ namespace MonoMac.AppKit {
 		[Static, Export ("defaultAnimationForKey:")]
 		NSObject DefaultAnimationFor (NSString key);
 #endregion
-		[Lion, Export ("disableSnapshotRestoration")]
-		void DisableSnapshotRestoration ();
-
-		[Lion, Export ("enableSnapshotRestoration")]
-		void EnableSnapshotRestoration ();
-
-		//Detected properties
-		[Lion, Export ("restorable")]
-		bool Restorable { [Bind ("isRestorable")]get; set; }
-
-		[Lion, Export ("restorationClass")]
-		NSWindowRestoration RestorationClass { get; set; }
 	}
-
-	public delegate void NSWindowCompletionHandler (NSWindow window, NSError error);
 	
-	[BaseType (typeof (NSObject))]
-	[Model]
-	[Lion]
-	public interface NSWindowRestoration {
-		[Static]
-		[Export ("restoreWindowWithIdentifier:state:completionHandler:")]
-		void RestoreWindow (string identifier, NSCoder state, NSWindowCompletionHandler onCompletion);
-
-	}
-
 	[BaseType (typeof (NSResponder))]
 	public interface NSWindowController {
 		[Export ("initWithWindow:")]
