@@ -583,7 +583,7 @@ namespace MonoMac.PdfKit {
 		[Export ("label")]
 		string Label { get; }
 
-		[Export ("boundsForBox:box")]
+		[Export ("boundsForBox:")]
 		RectangleF GetBoundsForBox (PdfDisplayBox box);
 
 		[Export ("setBounds:forBox:")]
