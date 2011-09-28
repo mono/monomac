@@ -1852,7 +1852,7 @@ namespace MonoMac.AppKit {
 		[Export ("formatter")]
 		NSFormatter Formatter { get; set; }
 	
-		[Export ("objectValue")]
+		[Export ("objectValue"), NullAllowed]
 		NSObject ObjectValue { get; set; }
 	
 		[Export ("hasValidObjectValue")]
@@ -6136,7 +6136,7 @@ namespace MonoMac.AppKit {
 		void Draw (RectangleF rect, RectangleF fromRect, NSCompositingOperation op, float delta);
 
 		[Export ("drawInRect:fromRect:operation:fraction:respectFlipped:hints:")]
-		void Draw (RectangleF dstSpacePortionRect, RectangleF srcSpacePortionRect, NSCompositingOperation op, float requestedAlpha, bool respectContextIsFlipped, NSDictionary hints);
+		void Draw (RectangleF dstSpacePortionRect, RectangleF srcSpacePortionRect, NSCompositingOperation op, float requestedAlpha, bool respectContextIsFlipped, [NullAllowed] NSDictionary hints);
 
 		[Export ("drawRepresentation:inRect:")]
 		bool Draw (NSImageRep imageRep, RectangleF rect);
@@ -6265,6 +6265,9 @@ namespace MonoMac.AppKit {
 
 		[Export ("drawInRect:fromRect:operation:fraction:")]
 		void DrawInRect (RectangleF dstRect, RectangleF srcRect, NSCompositingOperation operation, float delta);
+		
+		[Obsolete ("On 10.6 and newer use DrawInRect with respectContextIsFlipped instead"), Export ("flipped")]
+		bool Flipped { [Bind ("isFlipped")] get; set; }
 	}
 
 	[BaseType (typeof (NSObject))]
