@@ -634,7 +634,9 @@ namespace MonoMac.AppKit {
 		Transient = 1 << 3,
 		Stationary = 1 << 4,
 		ParticipatesInCycle = 1 << 5,
-		IgnoresCycle = 1 << 6
+		IgnoresCycle = 1 << 6,
+		FullScreenPrimary = 1 << 7,
+		FullScreenAuxiliary = 1 << 8
 	}
 
 	public enum NSWindowNumberListOptions {
