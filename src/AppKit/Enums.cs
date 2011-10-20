@@ -1401,8 +1401,14 @@ namespace MonoMac.AppKit {
 		RemotePixelBuffer  =  91,
 		AllowOfflineRenderers = 96,
 		AcceleratedCompute =  97,
+		OpenGLProfile = 99,
 		VirtualScreenCount = 128,
 	}
+
+	public enum NSOpenGLPFAOpenGLProfile {
+		VersionLegacy    = 0x1000, // choose a Legacy/Pre-OpenGL 3.0 Implementation
+		Version3_2Core   = 0x3200, // choose an OpenGL 3.2 Core Implementation
+	}	
     
 	public enum NSAlertButtonReturn {
 		First = 1000,
