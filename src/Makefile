@@ -13,6 +13,7 @@ MACCORE_DIR ?= ../../maccore
 CORE_SOURCES =					\
 	Constants.cs					\
 	./AppKit/Enums.cs				\
+	./AppKit/Defs.cs				\
 	./Foundation/EnumDesktop.cs			\
 	./Foundation/NSObject.cs			\
 	./ImageKit/Enums.cs				\

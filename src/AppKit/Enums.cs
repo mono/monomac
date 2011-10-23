@@ -1563,4 +1563,61 @@ namespace MonoMac.AppKit {
 	public enum NSEventGestureAxis {
 		None, Horizontal, Vertical
 	}
+
+	public enum NSLayoutRelation {
+		LessThanOrEqual = -1,
+		Equal = 0,
+		GreaterThanOrEqual = 1
+	}
+
+	public enum NSLayoutAttribute {
+		NoAttribute = 0,
+		Left = 1,
+		Right,
+		Top,
+		Bottom,
+		Leading,
+		Trailing,
+		Width,
+		Height,
+		CenterX,
+		CenterY,
+		Baseline
+	}
+
+	public enum NSLayoutFormatOptions {
+		AlignAllLeft = (1 << NSLayoutAttribute.Left),
+		AlignAllRight = (1 << NSLayoutAttribute.Right),
+		AlignAllTop = (1 << NSLayoutAttribute.Top),
+		AlignAllBottom = (1 << NSLayoutAttribute.Bottom),
+		AlignAllLeading = (1 << NSLayoutAttribute.Leading),
+		AlignAllTrailing = (1 << NSLayoutAttribute.Trailing),
+		AlignAllCenterX = (1 << NSLayoutAttribute.CenterX),
+		AlignAllCenterY = (1 << NSLayoutAttribute.CenterY),
+		AlignAllBaseline = (1 << NSLayoutAttribute.Baseline),
+		
+		AlignmentMask = 0xFFFF,
+		
+		/* choose only one of these three
+		 */
+		DirectionLeadingToTrailing = 0 << 16, // default
+		DirectionLeftToRight = 1 << 16,
+		DirectionRightToLeft = 2 << 16,
+		
+		DirectionMask = 0x3 << 16,
+	}
+
+	public enum NSLayoutConstraintOrientation {
+		Horizontal, Vertical
+	}
+
+	public enum NSLayoutPriority {
+		Required = 1000,
+		DefaultHigh = 750,
+		DragThatCanResizeWindow = 510,
+		WindowSizeStayPut = 500,
+		DragThatCannotResizeWindow = 490,
+		DefaultLow = 250,
+		FittingSizeCompression = 50,
+	}
 } 

@@ -24,10 +24,12 @@
 // OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-
 //
 // appkit.cs: Definitions for AppKit
 //
+
+// TODO: turn NSAnimatablePropertyCOntainer into a system similar to UIAppearance
+
 using System;
 using System.Drawing;
 using MonoMac.Foundation;
@@ -6807,6 +6809,45 @@ namespace MonoMac.AppKit {
 		void SetImage (NSImage image);
 	}
 
+	[Lion]
+	[BaseType (typeof (NSObject))]
+	public interface NSLayoutConstraint {
+		[Static]
+		[Export ("constraintsWithVisualFormat:options:metrics:views:")]
+		NSLayoutConstraint [] FromVisualFormat (string format, NSLayoutFormatOptions formatOptions, NSDictionary metrics, NSDictionary views);
+
+		[Static]
+		[Export ("constraintWithItem:attribute:relatedBy:toItem:attribute:multiplier:constant:")]
+		NSLayoutConstraint Create (NSObject view1, NSLayoutAttribute attribute1, NSLayoutRelation relation, NSObject view2, NSLayoutAttribute attribute2, float multiplier, float constant);
+		
+		[Export ("NSLayoutPriority")]
+		NSLayoutPriority Priority { get; set;  }
+
+		[Export ("shouldBeArchived")]
+		bool ShouldBeArchived { get; set;  }
+
+		[Export ("firstItem")]
+		NSObject FirstItem { get;  }
+
+		[Export ("firstAttribute")]
+		NSLayoutAttribute FirstAttribute { get;  }
+
+		[Export ("relation")]
+		NSLayoutRelation Relation { get;  }
+
+		[Export ("secondItem")]
+		NSObject SecondItem { get;  }
+
+		[Export ("secondAttribute")]
+		NSLayoutAttribute SecondAttribute { get;  }
+
+		[Export ("multiplier")]
+		float Multiplier { get;  }
+
+		[Export ("CGFloat")]
+		float Constant { get; set;  }
+	}
+	
 	[BaseType (typeof (NSObject))]
 	public interface NSLayoutManager {
 		[Export ("attributedString")]
@@ -10250,6 +10291,89 @@ namespace MonoMac.AppKit {
 		[Static, Export ("defaultAnimationForKey:")]
 		NSObject DefaultAnimationFor (NSString key);
 #endregion
+
+		[Lion, Export ("constraints")]
+		NSLayoutConstraint [] Constraints { get; }
+		
+		[Lion, Export ("addConstraint:")][PostGet ("Constraints")]
+		void AddConstraint (NSLayoutConstraint constraint);
+
+		[Lion, Export ("addConstraints:")][PostGet ("Constraints")]
+		void AddConstraints (NSLayoutConstraint [] constraints);
+
+		[Lion, Export ("removeConstraint:")][PostGet ("Constraints")]
+		void RemoveConstraint (NSLayoutConstraint constraint);
+
+		[Lion, Export ("removeConstraints:")][PostGet ("Constraints")]
+		void RemoveConstraints (NSLayoutConstraint [] constraints);
+
+		[Lion, Export ("layoutSubtreeIfNeeded")]
+		void LayoutSubtreeIfNeeded ();
+
+		[Lion, Export ("layout")]
+		void Layout ();
+
+		[Lion, Export ("needsUpdateConstraints")]
+		bool NeedsUpdateConstraints { get; set; }
+
+		[Lion, Export ("needsLayout")]
+		bool NeedsLayout { get; set; }
+
+		[Lion, Export ("updateConstraints")]
+		void UpdateConstraints ();
+
+		[Lion, Export ("updateConstraintsForSubtreeIfNeeded")]
+		void UpdateConstraintsForSubtreeIfNeeded ();
+
+		[Static]
+		[Lion, Export ("requiresConstraintBasedLayout")]
+		bool RequiresConstraintBasedLayout ();
+
+		//Detected properties
+		[Lion, Export ("translatesAutoresizingMaskIntoConstraints")]
+		bool TranslatesAutoresizingMaskIntoConstraints { get; set; }
+
+		[Lion, Export ("alignmentRectForFrame:")]
+		RectangleF GetAlignmentRectForFrame (RectangleF frame);
+
+		[Lion, Export ("frameForAlignmentRect:")]
+		RectangleF GetFrameForAlignmentRect (RectangleF alignmentRect);
+
+		[Lion, Export ("alignmentRectInsets")]
+		NSEdgeInsets AlignmentRectInsets { get; }
+
+		[Lion, Export ("baselineOffsetFromBottom")]
+		float BaselineOffsetFromBottom { get; }
+
+		[Lion, Export ("intrinsicContentSize")]
+		SizeF IntrinsicContentSize { get; }
+
+		[Lion, Export ("invalidateIntrinsicContentSize")]
+		void InvalidateIntrinsicContentSize ();
+
+		[Lion, Export ("contentHuggingPriorityForOrientation:")]
+		NSLayoutPriority GetContentHuggingPriorityForOrientation (NSLayoutConstraintOrientation orientation);
+
+		[Lion, Export ("setContentHuggingPriority:forOrientation:")]
+		void SetContentHuggingPriorityforOrientation (NSLayoutPriority priority, NSLayoutConstraintOrientation orientation);
+
+		[Lion, Export ("contentCompressionResistancePriorityForOrientation:")]
+		NSLayoutPriority GetContentCompressionResistancePriority (NSLayoutConstraintOrientation orientation);
+
+		[Lion, Export ("setContentCompressionResistancePriority:forOrientation:")]
+		void SetContentCompressionResistancePriority (NSLayoutPriority priority, NSLayoutConstraintOrientation orientation);
+
+		[Lion, Export ("fittingSize")]
+		SizeF FittingSize { get; }
+
+		[Lion, Export ("constraintsAffectingLayoutForOrientation:")]
+		NSLayoutConstraint [] GetConstraintsAffectingLayout (NSLayoutConstraintOrientation orientation);
+
+		[Lion, Export ("hasAmbiguousLayout")]
+		bool HasAmbiguousLayout { get; }
+
+		[Lion, Export ("exerciseAmbiguityInLayout")]
+		void ExerciseAmbiguityInLayout ();
 	}
 
 	[BaseType (typeof (NSAnimation))]
@@ -13278,6 +13402,18 @@ namespace MonoMac.AppKit {
 
 		[Lion, Export ("restorationClass")]
 		NSWindowRestoration RestorationClass { get; set; }
+
+		[Lion, Export ("updateConstraintsIfNeeded")]
+		void UpdateConstraintsIfNeeded ();
+
+		[Lion, Export ("layoutIfNeeded")]
+		void LayoutIfNeeded ();
+
+		[Lion, Export ("setAnchorAttribute:forOrientation:")]
+		void SetAnchorAttribute (NSLayoutAttribute layoutAttribute, NSLayoutConstraintOrientation forOrientation);
+
+		[Lion, Export ("visualizeConstraints:")]
+		void VisualizeConstraints (NSLayoutConstraint [] constraints);
 	}
 
 	public delegate void NSWindowCompletionHandler (NSWindow window, NSError error);
