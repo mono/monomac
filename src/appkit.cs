@@ -4836,6 +4836,7 @@ namespace MonoMac.AppKit {
 
 	public delegate void GlobalEventHandler (NSEvent theEvent);
 	public delegate NSEvent LocalEventHandler (NSEvent theEvent);
+	public delegate void NSEventTrackHandler (float gestureAmount, NSEventPhase eventPhase, bool isComplete, ref bool stop);
 
 	[BaseType (typeof (NSObject))]
 	public interface NSEvent {
@@ -5054,6 +5055,38 @@ namespace MonoMac.AppKit {
 		[Export ("mouseCoalescingEnabled")]
 		bool MouseCoalescingEnabled { [Bind ("isMouseCoalescingEnabled")]get; set; }
 
+		[Lion]
+		[Export ("hasPreciseScrollingDeltas")]
+		bool HasPreciseScrollingDeltas { get; }
+
+		[Lion]
+		[Export ("scrollingDeltaX")]
+		float ScrollingDeltaX { get; }
+
+		[Lion]
+		[Export ("scrollingDeltaY")]
+		float ScrollingDeltaY { get; }
+
+		[Lion]
+		[Export ("momentumPhase")]
+		NSEventPhase MomentumPhase { get; }
+
+		[Lion]
+		[Export ("isDirectionInvertedFromDevice")]
+		bool IsDirectionInvertedFromDevice { get; }
+
+		[Lion]
+		[Export ("phase")]
+		NSEventPhase Phase { get; }
+
+		[Lion]
+		[Static]
+		[Export ("isSwipeTrackingFromScrollEventsEnabled")]
+		bool IsSwipeTrackingFromScrollEventsEnabled { get; }
+
+		[Lion]
+		[Export ("trackSwipeEventWithOptions:dampenAmountThresholdMin:max:usingHandler:")]
+		void TrackSwipeEvent (NSEventSwipeTrackingOptions options, float minDampenThreshold, float maxDampenThreshold, NSEventTrackHandler trackingHandler);
 	}
 
 	[BaseType (typeof (NSObject))]

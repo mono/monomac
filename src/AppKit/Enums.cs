@@ -1543,5 +1543,24 @@ namespace MonoMac.AppKit {
 		Dark     = 1,
 		Light    = 2
 	}
-   
+
+	[Flags]
+	public enum NSEventPhase {
+		None,
+		Began = 1,
+		Stationary = 2,
+		Changed = 4,
+		Ended = 8,
+		Cancelled = 16
+	}
+
+	[Flags]
+	public enum NSEventSwipeTrackingOptions {
+		LockDirection = 1,
+		ClampGestureAmount = 2
+	}
+
+	public enum NSEventGestureAxis {
+		None, Horizontal, Vertical
+	}
 } 
