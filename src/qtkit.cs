@@ -924,13 +924,13 @@ namespace MonoMac.QTKit
 		QTTime CurrentTime { get; set; }
 
 		[Export ("rate")]
-		float Rate { get; }
+		float Rate { get; set; }
 
 		[Export ("volume")]
-		float Volume { get; }
+		float Volume { get; set; }
 
 		[Export ("muted")]
-		bool Muted { get; }
+		bool Muted { get; set; }
 		
 		[Export ("movieAttributes")]
 		NSDictionary MovieAttributes { get; }
