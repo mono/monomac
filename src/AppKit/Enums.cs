@@ -332,7 +332,7 @@ namespace MonoMac.AppKit {
 	}
 
 	[Flags]
-	public enum NSEventMask : uint {
+	public enum NSEventMask : ulong {
 		LeftMouseDown         = 1 << NSEventType.LeftMouseDown,
 		LeftMouseUp           = 1 << NSEventType.LeftMouseUp,
 		RightMouseDown        = 1 << NSEventType.RightMouseDown,
