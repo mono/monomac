@@ -7758,6 +7758,88 @@ namespace MonoMac.AppKit {
 		void WillPopUpMenu (NSPathControl pathControl, NSMenu menu);
 	}
 
+	[BaseType (typeof (NSResponder))]
+	interface NSPopover {
+		[Export ("appearance")]
+		NSPopoverAppearance Appearance { get; set;  }
+
+		[Export ("behavior")]
+		NSPopoverBehavior Behavior { get; set;  }
+
+		[Export ("animates")]
+		bool Animates { get; set;  }
+
+		[Export ("contentViewController")]
+		NSViewController ContentViewController { get; set;  }
+
+		[Export ("contentSize")]
+		SizeF ContentSize { get; set;  }
+
+		[Export ("shown")]
+		bool Shown { [Bind ("isShown")] get;  }
+
+		[Export ("positioningRect")]
+		RectangleF PositioningRect { get; set;  }
+
+		[Export ("delegate"), NullAllowed]
+		NSObject WeakDelegate { get; set; }
+
+		[Wrap ("WeakDelegate")]
+		NSPopoverDelegate Delegat { set; get; }
+		
+		[Export ("showRelativeToRect:ofView:preferredEdge:")]
+		void Show (RectangleF relativePositioningRect, NSView positioningView, NSRectEdge preferredEdge);
+
+		[Export ("performClose:")]
+		void PerformClose (NSObject sender);
+
+		[Export ("close")]
+		void Close ();
+
+		[Field ("NSPopoverCloseReasonKey")]
+		NSString CloseReasonKey { get; }
+		
+		[Field ("NSPopoverCloseReasonStandard")]
+		NSString CloseReasonStandard { get; }
+		
+		[Field ("NSPopoverCloseReasonDetachToWindow")]
+		NSString CloseReasonDetachToWindow { get; }
+		
+		[Field ("NSPopoverWillShowNotification")]
+		NSString WillShowNotification { get; }
+		
+		[Field ("NSPopoverDidShowNotification")]
+		NSString DidShowNotification { get; }
+		
+		[Field ("NSPopoverWillCloseNotification")]
+		NSString WillCloseNotification { get; }
+		
+		[Field ("NSPopoverDidCloseNotification")]
+		NSString DidCloseNotification { get; }
+	}
+	
+	[BaseType (typeof (NSObject))]
+	[Model]
+	interface NSPopoverDelegate {
+		[Export ("popoverShouldClose:")]
+		bool ShouldClose (NSPopover popover);
+
+		[Export ("detachableWindowForPopover:")]
+		NSWindow GetDetachableWindowForPopover (NSPopover popover);
+
+		[Export ("popoverWillShow:")]
+		void WillShow (NSNotification notification);
+
+		[Export ("popoverDidShow:")]
+		void DidShow (NSNotification notification);
+
+		[Export ("popoverWillClose:")]
+		void WillClose (NSNotification notification);
+
+		[Export ("popoverDidClose:")]
+		void DidClose (NSNotification notification);
+	}
+
 	[BaseType (typeof (NSButton))]
 	public interface NSPopUpButton {
 		[Export ("initWithFrame:pullsDown:")]
@@ -8732,8 +8814,20 @@ namespace MonoMac.AppKit {
 		[Export ("supportedWindowDepths")]
 		NSWindowDepth SupportedWindowDepths { get; }
 
-		[Export ("userSpaceScaleFactor")]
+		[Export ("userSpaceScaleFactor"), Obsolete ("On Lion")]
 		float UserSpaceScaleFactor { get; }
+
+		[Lion, Export ("convertRectToBacking:")]
+		RectangleF ConvertRectToBacking (RectangleF aRect);
+
+		[Lion, Export ("convertRectFromBacking:")]
+		RectangleF ConvertRectfromBacking (RectangleF aRect);
+
+		[Lion, Export ("backingAlignedRect:options:")]
+		RectangleF GetBackingAlignedRect (RectangleF globalScreenCoordRect, NSAlignmentOptions options);
+
+		[Lion, Export ("backingScaleFactor")]
+		float BackingScaleFactor { get; }
 	}
 
 	[BaseType (typeof (NSControl))]

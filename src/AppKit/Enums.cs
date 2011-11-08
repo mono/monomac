@@ -1620,4 +1620,12 @@ namespace MonoMac.AppKit {
 		DefaultLow = 250,
 		FittingSizeCompression = 50,
 	}
+
+	public enum NSPopoverAppearance {
+		Minimal, HUD
+	}
+
+	public enum NSPopoverBehavior {
+		ApplicationDefined, Transient, Semitransient
+	}
 } 
