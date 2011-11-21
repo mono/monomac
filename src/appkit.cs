@@ -13880,7 +13880,7 @@ namespace MonoMac.AppKit {
 		NSDictionary DesktopImageOptions (NSScreen screen);		
 		
 		[Export ("runningApplications")]
-		NSDictionary[] RunningApplications { get; }
+		NSRunningApplication [] RunningApplications { get; }
 	
 	}
 	
