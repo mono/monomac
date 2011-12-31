@@ -2160,7 +2160,7 @@ namespace MonoMac.AppKit {
 	}
 
 	[BaseType (typeof (NSView))]
-	public interface NSCollectionView {
+	public interface NSCollectionView : NSDraggingSource {
 		[Export ("initWithFrame:")]
 		IntPtr Constructor (RectangleF frameRect);
 
@@ -9914,7 +9914,7 @@ namespace MonoMac.AppKit {
 	}
 
 	[BaseType (typeof (NSResponder))]
-	public interface NSView {
+	public interface NSView : NSDraggingDestination  {
 		[Export ("initWithFrame:")]
 		IntPtr Constructor (RectangleF frameRect);
 
@@ -10675,7 +10675,7 @@ namespace MonoMac.AppKit {
 	public delegate void NSTableViewRowHandler (NSTableRowView rowView, int row);
 	
 	[BaseType (typeof (NSControl), Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (NSTableViewDelegate)})]
-	public interface NSTableView{
+	public interface NSTableView : NSDraggingSource {
 		[Export ("initWithFrame:")]
 		IntPtr Constructor (RectangleF frameRect);
 
@@ -12101,7 +12101,7 @@ namespace MonoMac.AppKit {
 	}
 
 	[BaseType (typeof (NSText), Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (NSTextViewDelegate)})]
-	public interface NSTextView {
+	public interface NSTextView : NSDraggingSource {
 		[Export ("initWithFrame:textContainer:")]
 		IntPtr Constructor (RectangleF frameRect, NSTextContainer container);
 
