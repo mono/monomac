@@ -1651,4 +1651,8 @@ namespace MonoMac.AppKit {
 	public enum NSDraggingFormation {
 		Default, None, Pile, List, Stack
 	}
+
+	public enum NSDraggingContext {
+		OutsideApplication, WithinApplication
+	}
 } 

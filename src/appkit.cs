@@ -3944,6 +3944,23 @@ namespace MonoMac.AppKit {
 
 		[Export ("namesOfPromisedFilesDroppedAtDestination:")]
 		string [] PromisedFilesDroppedAtDestination (NSUrl dropDestination);
+
+		[Lion]
+		[Export ("animatesToDestination")]
+		bool AnimatesToDestination { get; set; }
+
+		[Lion]
+		[Export ("numberOfValidItemsForDrop")]
+		int NumberOfValidItemsForDrop { get; set; }
+
+		[Lion]
+		[Export ("draggingFormation")]
+		NSDraggingFormation DraggingFormation { get; set; } 
+
+		[Lion]
+		[Export ("enumerateDraggingItemsWithOptions:forView:classes:searchOptions:usingBlock:")]
+		void EnumerateDraggingItems (NSDraggingItemEnumerationOptions enumOpts, NSView view, NSPasteboardReading [] classArray,
+					     NSDictionary searchOptions, NSDraggingEnumerator enumerator);
 	}
 
 	[BaseType (typeof (NSObject))]
@@ -4112,79 +4129,6 @@ namespace MonoMac.AppKit {
 
 	}
 	
-	[BaseType (typeof (NSObject))]
-	public interface NSFileWrapper {
-		[Export ("initWithURL:options:error:")]
-		IntPtr Constructor (NSUrl url, NSFileWrapperReadingOptions options, out NSError outError);
-
-		[Export ("initDirectoryWithFileWrappers:")]
-		IntPtr Constructor (NSDictionary childrenByPreferredName);
-
-		[Export ("initRegularFileWithContents:")]
-		IntPtr Constructor (NSData contents);
-
-		[Export ("initSymbolicLinkWithDestinationURL:")]
-		IntPtr Constructor (NSUrl url);
-
-		//[Export ("initWithSerializedRepresentation:")]
-		//IntPtr Constructor (NSData serializeRepresentation);
-
-		[Export ("isDirectory")]
-		bool IsDirectory { get; }
-
-		[Export ("isRegularFile")]
-		bool IsRegularFile { get; }
-
-		[Export ("isSymbolicLink")]
-		bool IsSymbolicLink { get; }
-
-		[Export ("matchesContentsOfURL:")]
-		bool MatchesContentsOfUrl (NSUrl url);
-
-		[Export ("readFromURL:options:error:")]
-		bool ReadFrom (NSUrl url, NSFileWrapperReadingOptions options, out NSError outError);
-
-		//[Export ("writeToURL:options:originalContentsURL:error:")]
-		//bool WriteTo (NSUrl url, NSFileWrapperWritingOptions options, NSUrl originalContentsURL, out NSError outError);
-
-		[Export ("serializedRepresentation")]
-		NSData SerializedRepresentation { get; }
-
-		[Export ("addFileWrapper:")]
-		string AddFileWrapper (NSFileWrapper child);
-
-		[Export ("addRegularFileWithContents:preferredFilename:")]
-		string AddRegularFile (NSData data, string fileName);
-
-		[Export ("removeFileWrapper:")]
-		void RemoveFileWrapper (NSFileWrapper child);
-
-		[Export ("fileWrappers")]
-		NSDictionary FileWrappers { get; }
-
-		[Export ("keyForFileWrapper:")]
-		string KeyForFileWrapper (NSFileWrapper child);
-
-		[Export ("regularFileContents")]
-		NSData RegularFileContents { get; }
-
-		[Export ("symbolicLinkDestinationURL")]
-		NSUrl SymbolicLinkDestinationUrl { get; }
-
-		//Detected properties
-		[Export ("preferredFilename")]
-		string PreferredFilename { get; set; }
-
-		[Export ("filename")]
-		string Filename { get; set; }
-
-		[Export ("fileAttributes")]
-		NSDictionary FileAttributes { get; set; }
-
-		[Export ("icon")]
-		NSImage Icon { get; set; }
-	}
-
 	[BaseType (typeof (NSObject))]
 	public interface NSFont {
 		[Static]
