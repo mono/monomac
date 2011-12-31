@@ -1641,4 +1641,14 @@ namespace MonoMac.AppKit {
 		None, Fade = 1, Gap = 2,
 		SlideUp = 0x10, SlideDown = 0x20, SlideLeft = 0x30, SlideRight = 0x40
 	}
+
+	[Flags]
+	public enum NSDraggingItemEnumerationOptions {
+		Concurrent = 1 << 0,
+		ClearNonenumeratedImages = 1 << 16
+	}
+
+	public enum NSDraggingFormation {
+		Default, None, Pile, List, Stack
+	}
 } 

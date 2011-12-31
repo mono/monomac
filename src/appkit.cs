@@ -3886,10 +3886,10 @@ namespace MonoMac.AppKit {
 		NSString LabelKey { get; }
 	}
 
-	delegate NSDraggingImageComponent [] NSDraggingItemImagesContentProvider ();
+	public delegate NSDraggingImageComponent [] NSDraggingItemImagesContentProvider ();
 	
 	[BaseType (typeof (NSObject))]
-	interface NSDraggingItem {
+	public interface NSDraggingItem {
 		[Export ("item")]
 		NSObject Item { get;  }
 
@@ -3972,6 +3972,32 @@ namespace MonoMac.AppKit {
 
 		[Export ("wantsPeriodicDraggingUpdates"), DefaultValue (true)]
 		bool WantsPeriodicDraggingUpdates { get; }
+	}
+
+	public delegate void NSDraggingEnumerator (NSDraggingItem draggingItem, int idx, ref bool stop);
+	[BaseType (typeof (NSObject))]
+	public interface NSDraggingSession {
+		[Export ("draggingFormation")]
+		NSDraggingFormation DraggingFormation { get; set;  }
+
+		[Export ("animatesToStartingPositionsOnCancelOrFail")]
+		bool AnimatesToStartingPositionsOnCancelOrFail { get; set;  }
+
+		[Export ("draggingLeaderIndex")]
+		int DraggingLeaderIndex { get; set;  }
+
+		[Export ("draggingPasteboard")]
+		NSPasteboard DraggingPasteboard { get;  }
+
+		[Export ("draggingSequenceNumber")]
+		int DraggingSequenceNumber { get;  }
+
+		[Export ("draggingLocation")]
+		PointF DraggingLocation { get;  }
+
+		[Export ("enumerateDraggingItemsWithOptions:forView:classes:searchOptions:usingBlock:")]
+		void EnumerateDraggingItems (NSDraggingItemEnumerationOptions enumOpts, NSView view, NSPasteboardReading [] classArray, NSDictionary searchOptions, NSDraggingEnumerator enumerator);
+
 	}
 
 	[BaseType (typeof (NSObject))]
@@ -11102,6 +11128,22 @@ namespace MonoMac.AppKit {
 	
 		[Export ("tableView:namesOfPromisedFilesDroppedAtDestination:forDraggedRowsWithIndexes:")]
 		string [] FilesDropped (NSTableView tableView, NSUrl dropDestination, NSIndexSet indexSet );
+
+		[Lion]
+                [Export ("tableView:pasteboardWriterForRow:")]
+                NSPasteboardWriting GetPasteboardWriterForRow (NSTableView tableView, int row);
+
+		[Lion]
+                [Export ("tableView:draggingSession:willBeginAtPoint:forRowIndexes:")]
+                void DraggingSessionWillBegin (NSTableView tableView, NSDraggingSession draggingSession, PointF willBeginAtScreenPoint, NSIndexSet rowIndexes);
+
+		[Lion]
+                [Export ("tableView:draggingSession:endedAtPoint:operation:")]
+                void DraggingSessionEnded (NSTableView tableView, NSDraggingSession draggingSession, PointF endedAtScreenPoint, NSDragOperation operation);
+
+		[Lion]
+                [Export ("tableView:updateDraggingItemsForDrag:")]
+                void UpdateDraggingItems (NSTableView tableView, NSDraggingInfo draggingInfo);
 	}
 
 	//
@@ -11226,6 +11268,22 @@ namespace MonoMac.AppKit {
 		[Lion]
                 [Export ("tableView:didRemoveRowView:forRow:")]
                 void DidRemoveRowView (NSTableView tableView, NSTableRowView rowView, int row);
+
+		[Lion]
+                [Export ("tableView:pasteboardWriterForRow:")]
+                NSPasteboardWriting GetPasteboardWriterForRow (NSTableView tableView, int row);
+
+		[Lion]
+                [Export ("tableView:draggingSession:willBeginAtPoint:forRowIndexes:")]
+                void DraggingSessionWillBegin (NSTableView tableView, NSDraggingSession draggingSession, PointF willBeginAtScreenPoint, NSIndexSet rowIndexes);
+
+		[Lion]
+                [Export ("tableView:draggingSession:endedAtPoint:operation:")]
+                void DraggingSessionEnded (NSTableView tableView, NSDraggingSession draggingSession, PointF endedAtScreenPoint, NSDragOperation operation);
+
+		[Lion]
+                [Export ("tableView:updateDraggingItemsForDrag:")]
+                void UpdateDraggingItems (NSTableView tableView, NSDraggingInfo draggingInfo);
 	}
 	
 	[BaseType (typeof (NSTextFieldCell))]
