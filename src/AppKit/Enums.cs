@@ -1181,17 +1181,18 @@ namespace MonoMac.AppKit {
 	}
 
 	[Flags]
-	public enum NSTableColumnResizingMask{
+	public enum NSTableColumnResizing {
 		None = -1,
 		Autoresizing = ( 1 << 0 ),
 		UserResizingMask = ( 1 << 1 )
 	} 
 
 	[Flags]
-	public enum NSTableViewGridStyleMask{
+	public enum NSTableViewGridStyle {
 		None = 0,
 		SolidVerticalLine   = 1 << 0,
-		SolidHorizontalLine = 1 << 1 
+		SolidHorizontalLine = 1 << 1,
+		DashedHorizontalGridLine = 1 << 3
 	}
 
 	[Flags]
@@ -1627,5 +1628,17 @@ namespace MonoMac.AppKit {
 
 	public enum NSPopoverBehavior {
 		ApplicationDefined, Transient, Semitransient
+	}
+
+	public enum NSTableViewRowSizeStyle {
+		Default = -1,
+		Custom = 0,
+		Small, Medium, Large
+	}
+
+	[Flags]
+	public enum NSTableViewAnimation {
+		None, Fade = 1, Gap = 2,
+		SlideUp = 0x10, SlideDown = 0x20, SlideLeft = 0x30, SlideRight = 0x40
 	}
 } 

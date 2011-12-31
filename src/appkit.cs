@@ -10585,7 +10585,7 @@ namespace MonoMac.AppKit {
 		NSSortDescriptor SortDescriptorPrototype { get; set; }
 	
 		[Export ("resizingMask")]
-		NSTableColumnResizingMask ResizingMask { get; set; }
+		NSTableColumnResizing ResizingMask { get; set; }
 	
 		[Export ("headerToolTip")]
 		string HeaderToolTip { get; set; }
@@ -10593,10 +10593,63 @@ namespace MonoMac.AppKit {
 		[Export ("hidden")]
 		bool Hidden { [Bind ("isHidden")]get; set; }
 	}
-	
+
+	[Lion]
+	[BaseType (typeof (NSView))]
+	public interface NSTableRowView {
+		[Export ("selectionHighlightStyle")]
+		NSTableViewSelectionHighlightStyle SelectionHighlightStyle { get; set;  }
+
+		[Export ("emphasized")]
+		bool Emphasized { [Bind ("isEmphasized")] get; set;  }
+
+		[Export ("groupRowStyle")]
+		bool GroupRowStyle { [Bind ("isGroupRowStyle")] get; set;  }
+
+		[Export ("selected")]
+		bool Selected { [Bind ("isSelected")] get; set;  }
+
+		[Export ("floating")]
+		bool Floating { [Bind ("isFloating")] get; set;  }
+
+		[Export ("draggingDestinationFeedbackStyle")]
+		NSTableViewDraggingDestinationFeedbackStyle DraggingDestinationFeedbackStyle { get; set;  }
+
+		[Export ("indentationForDropOperation")]
+		float IndentationForDropOperation { get; set;  }
+
+		[Export ("interiorBackgroundStyle")]
+		NSBackgroundStyle InteriorBackgroundStyle { get;  }
+
+		[Export ("backgroundColor")]
+		NSColor BackgroundColor { get; set;  }
+
+		[Export ("numberOfColumns")]
+		int NumberOfColumns { get;  }
+
+		[Export ("targetForDropOperation")]
+		bool TargetForDropOperation { [Bind ("isTargetForDropOperation")] get; set; }
+
+		[Export ("drawBackgroundInRect:")]
+		void DrawBackgrounn (RectangleF dirtyRect);
+
+		[Export ("drawSelectionInRect:")]
+		void DrawSelection (RectangleF dirtyRect);
+
+		[Export ("drawSeparatorInRect:")]
+		void DrawSeparator (RectangleF dirtyRect);
+
+		[Export ("drawDraggingDestinationFeedbackInRect:")]
+		void DrawDraggingDestinationFeedback (RectangleF dirtyRect);
+
+		[Export ("viewAtColumn:")]
+		NSView ViewAtColumn (int column);
+	}
+
+	public delegate void NSTableViewRowHandler (NSTableRowView rowView, int row);
 	
 	[BaseType (typeof (NSControl), Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (NSTableViewDelegate)})]
-	public interface NSTableView {
+	public interface NSTableView{
 		[Export ("initWithFrame:")]
 		IntPtr Constructor (RectangleF frameRect);
 
@@ -10622,10 +10675,10 @@ namespace MonoMac.AppKit {
 		void MoveColumn (int oldIndex, int newIndex);
 	
 		[Export ("columnWithIdentifier:")]
-		int FindColumn (NSObject identifier);
+		int FindColumn (NSString identifier);
 	
 		[Export ("tableColumnWithIdentifier:")]
-		NSTableColumn FindTableColumn (NSObject identifier);
+		NSTableColumn FindTableColumn (NSString identifier);
 	
 		[Export ("tile")]
 		void Tile ();
@@ -10813,7 +10866,7 @@ namespace MonoMac.AppKit {
 		NSTableViewColumnAutoresizingStyle ColumnAutoresizingStyle { get; set; }
 	
 		[Export ("gridStyleMask")]
-		NSTableViewGridStyleMask GridStyleMask { get; set; }
+		NSTableViewGridStyle GridStyleMask { get; set; }
 	
 		[Export ("intercellSpacing")]
 		SizeF IntercellSpacing { get; set; }
@@ -10868,6 +10921,65 @@ namespace MonoMac.AppKit {
 	
 		[Export ("focusedColumn")]
 		int FocusedColumn { get; set; }
+
+		[Lion]
+		[Export ("effectiveRowSizeStyle")]
+		NSTableViewRowSizeStyle EffectiveRowSizeStyle { get; }
+
+		[Lion]
+		[Export ("viewAtColumn:row:makeIfNecessary:")]
+		NSView GetView (int column, int row, bool makeIfNecessary);
+
+		[Lion]
+		[Export ("rowViewAtRow:makeIfNecessary:")]
+		NSTableRowView GetRowView (int row, bool makeIfNecessary);
+
+		[Lion]
+		[Export ("rowForView:")]
+		int RowForView (NSView view);
+
+		[Lion]
+		[Export ("columnForView:")]
+		int ColumnForView (NSView view);
+
+		[Lion]
+		[Export ("makeViewWithIdentifier:owner:")]
+		NSView MakeView (string identifier, NSObject owner);
+
+		[Lion]
+		[Export ("enumerateAvailableRowViewsUsingBlock:")]
+		void EnumerateAvailableRowViews (NSTableViewRowHandler callback);
+
+		[Lion]
+		[Export ("beginUpdates")]
+		void BeginUpdates ();
+
+		[Lion]
+		[Export ("endUpdates")]
+		void EndUpdates ();
+
+		[Lion]
+		[Export ("insertRowsAtIndexes:withAnimation:")]
+		void InsertRows (NSIndexSet indexes, NSTableViewAnimation animationOptions);
+
+		[Lion]
+		[Export ("removeRowsAtIndexes:withAnimation:")]
+		void RemoveRows (NSIndexSet indexes, NSTableViewAnimation animationOptions);
+
+		[Lion]
+		[Export ("moveRowAtIndex:toIndex:")]
+		void MoveRow (int oldIndex, int newIndex);
+
+		[Lion]
+		[Export ("rowSizeStyle")]
+		NSTableViewRowSizeStyle RowSizeStyle { get; set; }
+
+		[Lion]
+		[Export ("floatsGroupRows")]
+		bool FloatsGroupRows { get; set; }
+
+		[Field ("NSTableViewRowViewKey")]
+		NSString RowViewKey { get; }
 	} 
 	
 	[BaseType (typeof (NSObject))]
@@ -10945,6 +11057,23 @@ namespace MonoMac.AppKit {
 	
 		[Export ("tableViewSelectionIsChanging:"), EventArgs ("NSNotification")]
 		void SelectionIsChanging (NSNotification notification);
+
+		[Lion]
+                [Export ("tableView:viewForTableColumn:row:"), DelegateName ("NSTableViewViewGetter"), DefaultValue (null)]
+                NSView GetViewForItem (NSTableView tableView, NSTableColumn tableColumn, int row);
+
+		[Lion]
+                [Export ("tableView:rowViewForRow:"), DelegateName ("NSTableViewRowGetter"), DefaultValue (null)]
+                NSTableRowView CoreGetRowView (NSTableView tableView, int row);
+
+		[Lion]
+                [Export ("tableView:didAddRowView:forRow:"), EventArgs ("NSTableViewRow")]
+                void DidAddRowView (NSTableView tableView, NSTableRowView rowView, int row);
+
+		[Lion]
+                [Export ("tableView:didRemoveRowView:forRow:"), EventArgs ("NSTableViewRow")]
+                void DidRemoveRowView (NSTableView tableView, NSTableRowView rowView, int row);
+
 	}
 	
 	[BaseType (typeof (NSObject))]
@@ -11082,6 +11211,21 @@ namespace MonoMac.AppKit {
 		[Export ("tableView:namesOfPromisedFilesDroppedAtDestination:forDraggedRowsWithIndexes:")]
 		string [] FilesDropped (NSTableView tableView, NSUrl dropDestination, NSIndexSet indexSet );
 		
+		[Lion]
+                [Export ("tableView:viewForTableColumn:row:")]
+                NSView GetViewForItem (NSTableView tableView, NSTableColumn tableColumn, int row);
+
+		[Lion]
+                [Export ("tableView:rowViewForRow:")]
+                NSTableRowView GetRowView (NSTableView tableView, int row);
+
+		[Lion]
+                [Export ("tableView:didAddRowView:forRow:")]
+                void DidAddRowView (NSTableView tableView, NSTableRowView rowView, int row);
+
+		[Lion]
+                [Export ("tableView:didRemoveRowView:forRow:")]
+                void DidRemoveRowView (NSTableView tableView, NSTableRowView rowView, int row);
 	}
 	
 	[BaseType (typeof (NSTextFieldCell))]
@@ -13470,7 +13614,7 @@ namespace MonoMac.AppKit {
 	
 		[Export ("windowRef")]
 		IntPtr WindowRef { get; }
-	
+
 #region From NSAnimatablePropertyContainer
 		[Export ("animator")]
 		NSObject Animator { [return: Proxy] get; }
