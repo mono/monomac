@@ -89,6 +89,12 @@ OPENTK_SOURCES = \
 	./OpenGL/OpenTK/Graphics/OpenGL/GLCore.cs	\
 	./OpenGL/OpenTK/Graphics/OpenGL/GLEnums.cs	\
 	./OpenGL/OpenTK/Graphics/OpenGL/GLHelper.cs	\
+	./OpenGL/OpenTK/Audio/ContextHandle.cs	\
+	./OpenGL/OpenTK/Audio/OpenAL/AL/ALEnums.cs	\
+	./OpenGL/OpenTK/Audio/BlittableValueType.cs	\
+	./OpenGL/OpenTK/Audio/OpenAL/AL/AL.cs	\
+	./OpenGL/OpenTK/Audio/OpenAL/Alc/AlcEnums.cs	\
+	./OpenGL/OpenTK/Audio/OpenAL/Alc/Alc.cs	\
 	./OpenGL/OpenTK/Math/Half.cs			\
 	./OpenGL/OpenTK/Math/MathHelper.cs		\
 	./OpenGL/OpenTK/Math/Matrix3d.cs		\
