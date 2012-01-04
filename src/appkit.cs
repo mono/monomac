@@ -10134,10 +10134,10 @@ namespace MonoMac.AppKit {
 		bool MouseDownCanMoveWindow { get; }
 
 		[Export ("addCursorRect:cursor:")]
-		void AddCursorRectcursor (RectangleF aRect, NSCursor anObj);
+		void AddCursorRect (RectangleF aRect, NSCursor cursor);
 
 		[Export ("removeCursorRect:cursor:")]
-		void RemoveCursorRectcursor (RectangleF aRect, NSCursor anObj);
+		void RemoveCursorRect (RectangleF aRect, NSCursor cursor);
 
 		[Export ("discardCursorRects")]
 		void DiscardCursorRects ();
