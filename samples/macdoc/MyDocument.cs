@@ -47,6 +47,7 @@ namespace macdoc
 		{
 			base.WindowControllerDidLoadNib (windowController);
 		
+			tabSelector.SelectFirst (this);
 			LoadImages ();
 			history = new History (navigationCells);
 			SetupOutline ();
