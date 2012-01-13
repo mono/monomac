@@ -17,6 +17,10 @@ namespace macdoc
 		History history;
 		bool ignoreSelect;
 		
+		// For the index
+		IndexReader index_reader;
+		IndexEntry current_entry;
+		
 		// Called when created from unmanaged code
 		public MyDocument (IntPtr handle) : base(handle)
 		{
@@ -40,11 +44,132 @@ namespace macdoc
 			
 			LoadImages ();
 			history = new History (navigationCells);
-			outlineView.DataSource = new DocTreeDataSource (this);
-			outlineView.Delegate = new OutlineDelegate (this);
+			SetupOutline ();
+			SetupIndexSearch ();
+			HideMultipleMatches ();
+			ShowMultipleMatches ();
 			webView.DecidePolicyForNavigation += HandleWebViewDecidePolicyForNavigation; 
 		}
+		
+		void HideMultipleMatches ()
+		{
+			splitView.SetPositionofDivider (splitView.MaxPositionOfDivider (0), 0);
+		}
+		
+		void ShowMultipleMatches ()
+		{
+			float middle = (splitView.MaxPositionOfDivider (0) - splitView.MinPositionOfDivider (0))/2;
+			splitView.SetPositionofDivider (middle, 0);
+		}
+		
+		void SetupOutline ()
+		{
+			outlineView.DataSource = new DocTreeDataSource (this);
+			outlineView.Delegate = new OutlineDelegate (this);
+		}
 
+		void SetupIndexSearch ()
+		{
+			index_reader = AppDelegate.Root.GetIndex ();
+			searchResults.Source = new IndexDataSource ();
+			searchField.Changed += HandleChanged;
+		}
+		
+		void HandleChanged (object sender, EventArgs e)
+		{
+			var text = searchField.StringValue;
+			if (text == null || text == "")
+				return;
+			
+			int targetRow = FindClosest (text);
+			searchResults.SelectRow (targetRow, false);
+			searchResults.ScrollRowToVisible (targetRow);
+
+			OnIndexRowSelected (targetRow);
+		}
+		
+		void OnIndexRowSelected (int targetRow)
+		{
+			current_entry = index_reader.GetIndexEntry (targetRow);
+			if (current_entry.Count > 1){
+				ShowMultipleMatches ();
+				
+			}
+		}
+		
+		int FindClosest (string text)
+		{
+			int low = 0;
+			int top = index_reader.Rows-1;
+			int high = top;
+			int best_rate_idx = Int32.MaxValue, best_rate = -1;
+			
+			while (low < high){
+				int mid = (high+low)/2;
+				int p = mid;
+				string s;
+				
+				for (s = index_reader.GetValue (mid); s [0] == ' ';){
+					if (p == high){
+						if (p == low){
+							if (best_rate_idx != Int32.MaxValue)
+								return best_rate_idx;
+							else
+								return p;
+						}
+						high = mid;
+						break;
+					}
+					if (p < 0)
+						return 0;
+					s = index_reader.GetValue (++p);
+				}
+				if (s [0] == ' ')
+					continue;
+				int c, rate;
+				c = Rate (text, s, out rate);
+				if (rate > best_rate){
+					best_rate = rate;
+					best_rate_idx = p;
+				}
+				if (c == 0)
+					return mid;
+				if (low == high){
+					if (best_rate_idx != Int32.MaxValue)
+						return best_rate_idx;
+					else
+						return low;
+				}
+				if (c < 0)
+					high = mid;
+				else {
+					if (low == mid)
+						low = high;
+					else
+						low = mid;
+				}
+			}
+			return high;
+		}
+		
+		int Rate (string user_text, string db_text, out int rate)
+		{
+			int c = String.Compare (user_text, db_text, true);
+			if (c == 0){
+				rate = 0;
+				return 0;
+			}
+			int i;
+			for (i = 0; i < user_text.Length; i++){
+				if (db_text [i] != user_text [i]){
+					rate = i;
+					return c;
+				}
+			}
+			rate = i;
+			return c;
+		}
+		
 		void HandleWebViewDecidePolicyForNavigation (object sender, WebNavigatioPolicyEventArgs e)
 		{
 			if (LoadingFromString){
@@ -236,6 +361,33 @@ namespace macdoc
 			
 			return new NSString (GetNode (item).Caption);
 		}
+	}
+	
+	//
+	// Data source for rendering the index
+	//
+	public class IndexDataSource : NSTableViewSource {
+		RootTree Root = AppDelegate.Root;
+		IndexReader index_reader;
+		
+		public IndexDataSource ()
+		{
+			index_reader = Root.GetIndex ();
+			
+		}
+		
+		public override int GetRowCount (NSTableView tableView)
+		{
+			if (index_reader == null)
+				return 0;
+			return index_reader.Rows;
+		}
+		
+		public override NSObject GetObjectValue (NSTableView tableView, NSTableColumn tableColumn, int row)
+		{
+			return new NSString (index_reader.GetValue (row));
+		}
+		
 	}
 }
 
