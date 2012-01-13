@@ -22,11 +22,26 @@ namespace macdoc
 
 		[Outlet]
 		MonoMac.AppKit.NSTableView searchResults { get; set; }
-		
+
 		[Outlet]
 		MonoMac.AppKit.NSSplitView splitView { get; set; }
-		
+
 		[Outlet]
-		MonoMac.WebKit.WebView webView { get; set; }		
+		MonoMac.WebKit.WebView webView { get; set; }
+
+		[Outlet]
+		MonoMac.AppKit.NSTableView multipleMatchResults { get; set; }
+
+		[Outlet]
+		MonoMac.AppKit.NSTabView tabSelector { get; set; }
+
+		[Action ("IndexItemClicked:")]
+		partial void IndexItemClicked (MonoMac.AppKit.NSTableView sender);
+
+		[Action ("MultipleMatchItemClicked:")]
+		partial void MultipleMatchItemClicked (MonoMac.AppKit.NSTableView sender);
+
+		[Action ("StartSearch:")]
+		partial void StartSearch (MonoMac.AppKit.NSSearchField sender);
 	}
 }

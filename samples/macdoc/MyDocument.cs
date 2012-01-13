@@ -38,16 +38,20 @@ namespace macdoc
 			navigationCells.SetImage (new NSImage (Path.Combine (resourcesPath, "Images", "forward.png")), 1);
 		}
 		
+		public override string DisplayName {
+			get {
+				return "Mono Documentation Browser";
+			}
+		}
 		public override void WindowControllerDidLoadNib (NSWindowController windowController)
 		{
 			base.WindowControllerDidLoadNib (windowController);
-			
+		
 			LoadImages ();
 			history = new History (navigationCells);
 			SetupOutline ();
 			SetupIndexSearch ();
 			HideMultipleMatches ();
-			ShowMultipleMatches ();
 			webView.DecidePolicyForNavigation += HandleWebViewDecidePolicyForNavigation; 
 		}
 		
@@ -67,12 +71,27 @@ namespace macdoc
 			outlineView.DataSource = new DocTreeDataSource (this);
 			outlineView.Delegate = new OutlineDelegate (this);
 		}
-
+		
 		void SetupIndexSearch ()
 		{
 			index_reader = AppDelegate.Root.GetIndex ();
 			searchResults.Source = new IndexDataSource ();
 			searchField.Changed += HandleChanged;
+			multipleMatchResults.Source = new MultipleMatchDataSource (this);
+		}
+		
+		void LoadUrl (string url)
+		{
+			if (url.StartsWith ("#")){
+				Console.WriteLine ("FIXME: Anchor jump");
+				return;
+			}
+			Node node;
+			string res = DocTools.GetHtml (url, null, out node);
+			if (res != null){
+					history.AppendHistory (new LinkPageVisit (this, node.PublicUrl));
+					LoadHtml (res);
+			}
 		}
 		
 		void HandleChanged (object sender, EventArgs e)
@@ -80,7 +99,11 @@ namespace macdoc
 			var text = searchField.StringValue;
 			if (text == null || text == "")
 				return;
-			
+			IndexSearch (text);
+		}
+		
+		void IndexSearch (string text)
+		{
 			int targetRow = FindClosest (text);
 			searchResults.SelectRow (targetRow, false);
 			searchResults.ScrollRowToVisible (targetRow);
@@ -91,12 +114,45 @@ namespace macdoc
 		void OnIndexRowSelected (int targetRow)
 		{
 			current_entry = index_reader.GetIndexEntry (targetRow);
+			multipleMatchResults.ReloadData ();
 			if (current_entry.Count > 1){
+				multipleMatchResults.SelectRow (0, false);
+				multipleMatchResults.ScrollRowToVisible (0);
 				ShowMultipleMatches ();
-				
+			} else {
+				HideMultipleMatches ();
+				LoadUrl (current_entry [0].Url);
 			}
 		}
 		
+		// Action: when the user clicks on the index table view
+		partial void IndexItemClicked (NSTableView sender)
+		{
+			OnIndexRowSelected (sender.ClickedRow);
+		}
+		
+		// Action: when the user clicks on the multiple matches table view
+		partial void MultipleMatchItemClicked (NSTableView sender)
+		{
+			string url = null;
+			try {
+				url = current_entry [sender.ClickedRow].Url;
+			} catch {
+				return;
+			}
+			LoadUrl (url);
+		}
+		
+		// Action: when the user starts typing on the toolbar search bar	
+		partial void StartSearch (NSSearchField sender)
+		{
+			var contents = sender.StringValue;
+			if (contents == null || contents == "")
+				return;
+			tabSelector.SelectAt (1);
+			IndexSearch (contents);
+		}
+
 		int FindClosest (string text)
 		{
 			int low = 0;
@@ -202,7 +258,6 @@ namespace macdoc
 		{
 			LoadingFromString = true;
 			webView.MainFrame.LoadHtmlString (html, AppDelegate.MonodocBaseUrl);
-			
 #if debug_html
 			using (var x = System.IO.File.CreateText (AppDelegate.MonodocDir + "/foo.html")){
 				x.Write (html);
@@ -266,9 +321,53 @@ namespace macdoc
 				
 				parent.LoadHtml ("<html><body>do we really need anything else: " + node.PublicUrl);
 			}			
-
 		}
-				
+		
+		// 
+		// Table view model that renders the contents when there is more than one
+		// match for an entry in the index, for example "ToString"
+		//
+		public class MultipleMatchDataSource : NSTableViewSource {
+			MyDocument doc;
+			
+			public MultipleMatchDataSource (MyDocument doc)
+			{
+				this.doc = doc;
+			}
+			
+			public override int GetRowCount (NSTableView tableView)
+			{
+				if (doc.current_entry == null)
+					return 0;
+				return doc.current_entry.Count;
+			}
+			
+			public override NSObject GetObjectValue (NSTableView tableView, NSTableColumn tableColumn, int row)
+			{
+				Topic topic = doc.current_entry [row];
+				return new NSString (RenderTopicMatch (topic));
+			}
+			
+            // Names from the ECMA provider are somewhat
+            // ambigious (you have like a million ToString
+            // methods), so lets give the user the full name
+			string RenderTopicMatch (Topic t)
+			{
+                // Filter out non-ecma
+                if (t.Url [1] != ':')
+                    return t.Caption;
+
+                switch (t.Url [0]) {
+                case 'C': return t.Url.Substring (2) + " constructor";
+                case 'M': return t.Url.Substring (2) + " method";
+                case 'P': return t.Url.Substring (2) + " property";
+                case 'F': return t.Url.Substring (2) + " field";
+                case 'E': return t.Url.Substring (2) + " event";
+                }
+                return t.Caption;
+			}
+		}
+
 		// If this returns the name of a NIB file instead of null, a NSDocumentController 
 		// is automatically created for you.
 		public override string WindowNibName {
@@ -387,7 +486,6 @@ namespace macdoc
 		{
 			return new NSString (index_reader.GetValue (row));
 		}
-		
-	}
+	}	
 }
 
