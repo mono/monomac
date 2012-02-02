@@ -96,11 +96,11 @@ namespace macdoc
 				searchResults.ReloadData ();
 			}));
 			searchResults.ReloadData ();
-			/*if (results.Count > 0) {
-				searchResults.SelectRow (0, false);
+			if (results.Count > 0) {
+				searchResults.SelectRow (1, false);
 				searchResults.ScrollRowToVisible (0);
-				OnIndexRowSelected (0);
-			}*/
+				OnIndexRowSelected (1);
+			}
 		}
 		
 		void OnIndexRowSelected (int targetRow)
