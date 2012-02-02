@@ -392,6 +392,8 @@ namespace macdoc
 		
 		public override NSCell GetCell (NSTableView tableView, NSTableColumn tableColumn, int row)
 		{
+			if (tableView == null)
+				return null;
 			var cell = new NSTextFieldCell ();
 			var resultEntry = data[row];
 			if (!string.IsNullOrEmpty (resultEntry.SectionName)) {
