@@ -18,8 +18,6 @@ namespace macdoc
 		History history;
 		bool ignoreSelect;
 		
-		// For the index
-		IndexReader index_reader;
 		SearchableIndex searchIndex;
 		
 		// Called when created from unmanaged code
@@ -65,7 +63,6 @@ namespace macdoc
 		
 		void SetupSearch ()
 		{
-			index_reader = AppDelegate.Root.GetIndex ();
 			searchIndex = AppDelegate.Root.GetSearchIndex ();
 			searchResults.Source = new ResultDataSource ();
 		}
@@ -129,25 +126,7 @@ namespace macdoc
 			tabSelector.SelectAt (1);
 			IndexSearch (contents);
 		}
-		
-		int Rate (string user_text, string db_text, out int rate)
-		{
-			int c = String.Compare (user_text, db_text, true);
-			if (c == 0){
-				rate = 0;
-				return 0;
-			}
-			int i;
-			for (i = 0; i < user_text.Length; i++){
-				if (db_text [i] != user_text [i]){
-					rate = i;
-					return c;
-				}
-			}
-			rate = i;
-			return c;
-		}
-		
+
 		void HandleWebViewDecidePolicyForNavigation (object sender, WebNavigatioPolicyEventArgs e)
 		{
 			if (LoadingFromString){
