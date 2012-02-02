@@ -7,6 +7,7 @@ using MonoMac.AppKit;
 using MonoMac.Foundation;
 using MonoMac.WebKit;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace macdoc
 {
@@ -19,7 +20,7 @@ namespace macdoc
 		
 		// For the index
 		IndexReader index_reader;
-		IndexEntry current_entry;
+		SearchableIndex searchIndex;
 		
 		// Called when created from unmanaged code
 		public MyDocument (IntPtr handle) : base(handle)
@@ -43,6 +44,7 @@ namespace macdoc
 				return "Mono Documentation Browser";
 			}
 		}
+		
 		public override void WindowControllerDidLoadNib (NSWindowController windowController)
 		{
 			base.WindowControllerDidLoadNib (windowController);
@@ -51,20 +53,8 @@ namespace macdoc
 			LoadImages ();
 			history = new History (navigationCells);
 			SetupOutline ();
-			SetupIndexSearch ();
-			HideMultipleMatches ();
+			SetupSearch ();
 			webView.DecidePolicyForNavigation += HandleWebViewDecidePolicyForNavigation; 
-		}
-		
-		void HideMultipleMatches ()
-		{
-			splitView.SetPositionofDivider (splitView.MaxPositionOfDivider (0), 0);
-		}
-		
-		void ShowMultipleMatches ()
-		{
-			float middle = (splitView.MaxPositionOfDivider (0) - splitView.MinPositionOfDivider (0))/2;
-			splitView.SetPositionofDivider (middle, 0);
 		}
 		
 		void SetupOutline ()
@@ -73,12 +63,11 @@ namespace macdoc
 			outlineView.Delegate = new OutlineDelegate (this);
 		}
 		
-		void SetupIndexSearch ()
+		void SetupSearch ()
 		{
 			index_reader = AppDelegate.Root.GetIndex ();
-			searchResults.Source = new IndexDataSource ();
-			searchField.Changed += HandleChanged;
-			multipleMatchResults.Source = new MultipleMatchDataSource (this);
+			searchIndex = AppDelegate.Root.GetSearchIndex ();
+			searchResults.Source = new ResultDataSource ();
 		}
 		
 		void LoadUrl (string url)
@@ -95,53 +84,40 @@ namespace macdoc
 			}
 		}
 		
-		void HandleChanged (object sender, EventArgs e)
-		{
-			var text = searchField.StringValue;
-			if (text == null || text == "")
-				return;
-			IndexSearch (text);
-		}
-		
 		void IndexSearch (string text)
 		{
-			int targetRow = FindClosest (text);
-			searchResults.SelectRow (targetRow, false);
-			searchResults.ScrollRowToVisible (targetRow);
-
-			OnIndexRowSelected (targetRow);
+			var dataSource = ((ResultDataSource)searchResults.Source);
+			dataSource.LatestSearchTerm = text;
+			Result results = searchIndex.FastSearch (text, 5);
+			dataSource.AddResultSet (results);
+			// No SynchronizationContext for MonoMac yet
+			Task.Factory.StartNew (() => InvokeOnMainThread (() => {
+				var rs = searchIndex.Search (text, 20);
+				if (rs == null || rs.Count == 0 || text != dataSource.LatestSearchTerm)
+					return;
+				dataSource.AddResultSet (rs);
+				searchResults.ReloadData ();
+			}));
+			searchResults.ReloadData ();
+			/*if (results.Count > 0) {
+				searchResults.SelectRow (0, false);
+				searchResults.ScrollRowToVisible (0);
+				OnIndexRowSelected (0);
+			}*/
 		}
 		
 		void OnIndexRowSelected (int targetRow)
 		{
-			current_entry = index_reader.GetIndexEntry (targetRow);
-			multipleMatchResults.ReloadData ();
-			if (current_entry.Count > 1){
-				multipleMatchResults.SelectRow (0, false);
-				multipleMatchResults.ScrollRowToVisible (0);
-				ShowMultipleMatches ();
-			} else {
-				HideMultipleMatches ();
-				LoadUrl (current_entry [0].Url);
-			}
+			var url = ((ResultDataSource)searchResults.Source).GetResultUrl (targetRow);
+			if (url == null)
+				return;
+			LoadUrl (url);
 		}
 		
 		// Action: when the user clicks on the index table view
 		partial void IndexItemClicked (NSTableView sender)
 		{
 			OnIndexRowSelected (sender.ClickedRow);
-		}
-		
-		// Action: when the user clicks on the multiple matches table view
-		partial void MultipleMatchItemClicked (NSTableView sender)
-		{
-			string url = null;
-			try {
-				url = current_entry [sender.ClickedRow].Url;
-			} catch {
-				return;
-			}
-			LoadUrl (url);
 		}
 		
 		// Action: when the user starts typing on the toolbar search bar	
@@ -152,61 +128,6 @@ namespace macdoc
 				return;
 			tabSelector.SelectAt (1);
 			IndexSearch (contents);
-		}
-
-		int FindClosest (string text)
-		{
-			int low = 0;
-			int top = index_reader.Rows-1;
-			int high = top;
-			int best_rate_idx = Int32.MaxValue, best_rate = -1;
-			
-			while (low < high){
-				int mid = (high+low)/2;
-				int p = mid;
-				string s;
-				
-				for (s = index_reader.GetValue (mid); s [0] == ' ';){
-					if (p == high){
-						if (p == low){
-							if (best_rate_idx != Int32.MaxValue)
-								return best_rate_idx;
-							else
-								return p;
-						}
-						high = mid;
-						break;
-					}
-					if (p < 0)
-						return 0;
-					s = index_reader.GetValue (++p);
-				}
-				if (s [0] == ' ')
-					continue;
-				int c, rate;
-				c = Rate (text, s, out rate);
-				if (rate > best_rate){
-					best_rate = rate;
-					best_rate_idx = p;
-				}
-				if (c == 0)
-					return mid;
-				if (low == high){
-					if (best_rate_idx != Int32.MaxValue)
-						return best_rate_idx;
-					else
-						return low;
-				}
-				if (c < 0)
-					high = mid;
-				else {
-					if (low == mid)
-						low = high;
-					else
-						low = mid;
-				}
-			}
-			return high;
 		}
 		
 		int Rate (string user_text, string db_text, out int rate)
@@ -322,51 +243,6 @@ namespace macdoc
 				
 				parent.LoadHtml ("<html><body>do we really need anything else: " + node.PublicUrl);
 			}			
-		}
-		
-		// 
-		// Table view model that renders the contents when there is more than one
-		// match for an entry in the index, for example "ToString"
-		//
-		public class MultipleMatchDataSource : NSTableViewSource {
-			MyDocument doc;
-			
-			public MultipleMatchDataSource (MyDocument doc)
-			{
-				this.doc = doc;
-			}
-			
-			public override int GetRowCount (NSTableView tableView)
-			{
-				if (doc.current_entry == null)
-					return 0;
-				return doc.current_entry.Count;
-			}
-			
-			public override NSObject GetObjectValue (NSTableView tableView, NSTableColumn tableColumn, int row)
-			{
-				Topic topic = doc.current_entry [row];
-				return new NSString (RenderTopicMatch (topic));
-			}
-			
-            // Names from the ECMA provider are somewhat
-            // ambigious (you have like a million ToString
-            // methods), so lets give the user the full name
-			string RenderTopicMatch (Topic t)
-			{
-                // Filter out non-ecma
-                if (t.Url [1] != ':')
-                    return t.Caption;
-
-                switch (t.Url [0]) {
-                case 'C': return t.Url.Substring (2) + " constructor";
-                case 'M': return t.Url.Substring (2) + " method";
-                case 'P': return t.Url.Substring (2) + " property";
-                case 'F': return t.Url.Substring (2) + " field";
-                case 'E': return t.Url.Substring (2) + " event";
-                }
-                return t.Caption;
-			}
 		}
 
 		// If this returns the name of a NIB file instead of null, a NSDocumentController 
@@ -487,6 +363,81 @@ namespace macdoc
 		{
 			return new NSString (index_reader.GetValue (row));
 		}
-	}	
+	}
+	
+	public class ResultDataSource : NSTableViewSource
+	{
+		struct ResultDataEntry
+		{
+			// value is element is a section, null if it's a section child
+			public string SectionName { get; set; }
+			public Result ResultSet { get; set; }
+			public int Index { get; set; }
+		}
+		
+		// Dict key is section name, value is a sorted list of section element (result it comes from and the index in it) with key being the url (to avoid duplicates)
+		Dictionary<string, SortedList<string, Tuple<Result, int>>> sections = new Dictionary<string, SortedList<string, Tuple<Result, int>>> ();
+		List<ResultDataEntry> data = new List<ResultDataEntry> ();
+		
+		public ResultDataSource ()
+		{
+		}
+		
+		public void AddResultSet (Result result)
+		{
+			for (int i = 0; i < result.Count; i++) {
+				string fullTitle = result.GetFullTitle (i);
+				string section = string.IsNullOrWhiteSpace (fullTitle) ? "Other" : fullTitle.Split (':')[0];
+				SortedList<string, Tuple<Result, int>> sectionContent;
+				var newItem = Tuple.Create (result, i);
+				var url = result.GetUrl (i);
+				
+				if (!sections.TryGetValue (section, out sectionContent))
+					sections[section] = new SortedList<string, Tuple<Result, int>> () { { url, newItem } };
+				else
+					sectionContent[url] = newItem;
+			}
+			// Flatten everything back to a list
+			data.Clear ();
+			foreach (var kvp in sections) {
+				data.Add (new ResultDataEntry { SectionName = kvp.Key });
+				foreach (var item in kvp.Value)
+					data.Add (new ResultDataEntry { ResultSet = item.Value.Item1, Index = item.Value.Item2 });
+			}
+		}
+		
+		public override int GetRowCount (NSTableView tableView)
+		{
+			return data.Count;
+		}
+		
+		public override NSCell GetCell (NSTableView tableView, NSTableColumn tableColumn, int row)
+		{
+			var cell = new NSTextFieldCell ();
+			var resultEntry = data[row];
+			if (!string.IsNullOrEmpty (resultEntry.SectionName)) {
+				cell.TextColor = NSColor.Gray;
+				cell.Alignment = NSTextAlignment.Center;
+				cell.Selectable = false;
+				cell.Editable = false;
+			}
+			return cell;
+		}
+		
+		public string GetResultUrl (int row)
+		{
+			var resultEntry = data[row];
+			return resultEntry.ResultSet == null ? null : resultEntry.ResultSet.GetUrl (resultEntry.Index);
+		}
+		
+		public override NSObject GetObjectValue (NSTableView tableView, NSTableColumn tableColumn, int row)
+		{
+			var resultEntry = data[row];
+			return new NSString (!string.IsNullOrEmpty (resultEntry.SectionName) ? resultEntry.SectionName : resultEntry.ResultSet.GetTitle (resultEntry.Index));
+		}
+		
+		// Keep the search term in memory so that heavy search can check if its result are still fresh enough
+		public string LatestSearchTerm { get; set; }
+	}
 }
 
