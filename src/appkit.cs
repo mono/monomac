@@ -4995,19 +4995,19 @@ namespace MonoMac.AppKit {
 
 		[Static]
 		[Export ("mouseEventWithType:location:modifierFlags:timestamp:windowNumber:context:eventNumber:clickCount:pressure:")]
-		NSEvent MouseEvent (NSEventType type, PointF location, NSEventModifierMask flags, double time, int wNum, NSGraphicsContext context, int eNum, int cNum, float pressure);
+		NSEvent MouseEvent (NSEventType type, PointF location, NSEventModifierMask flags, double time, int wNum, [NullAllowed] NSGraphicsContext context, int eNum, int cNum, float pressure);
 
 		[Static]
 		[Export ("keyEventWithType:location:modifierFlags:timestamp:windowNumber:context:characters:charactersIgnoringModifiers:isARepeat:keyCode:")]
-		NSEvent KeyEvent (NSEventType type, PointF location, NSEventModifierMask flags, double time, int wNum, NSGraphicsContext context, string keys, string ukeys, bool isARepeat, ushort code);
+		NSEvent KeyEvent (NSEventType type, PointF location, NSEventModifierMask flags, double time, int wNum, [NullAllowed] NSGraphicsContext context, string keys, string ukeys, bool isARepeat, ushort code);
 
 		[Static]
 		[Export ("enterExitEventWithType:location:modifierFlags:timestamp:windowNumber:context:eventNumber:trackingNumber:userData:")]
-		NSEvent EnterExitEvent (NSEventType type, PointF location, NSEventModifierMask flags, double time, int wNum, NSGraphicsContext context, int eNum, int tNum, IntPtr data);
+		NSEvent EnterExitEvent (NSEventType type, PointF location, NSEventModifierMask flags, double time, int wNum, [NullAllowed] NSGraphicsContext context, int eNum, int tNum, IntPtr data);
 
 		[Static]
 		[Export ("otherEventWithType:location:modifierFlags:timestamp:windowNumber:context:subtype:data1:data2:")]
-		NSEvent OtherEvent (NSEventType type, PointF location, NSEventModifierMask flags, double time, int wNum, NSGraphicsContext context, short subtype, int d1, int d2);
+		NSEvent OtherEvent (NSEventType type, PointF location, NSEventModifierMask flags, double time, int wNum, [NullAllowed] NSGraphicsContext context, short subtype, int d1, int d2);
 
 		[Static]
 		[Export ("mouseLocation")]
@@ -5089,15 +5089,16 @@ namespace MonoMac.AppKit {
 		[Export ("initWithTitle:")]
 		IntPtr Constructor (string aTitle);
 
+		[Static]
 		[Export ("popUpContextMenu:withEvent:forView:")]
 		void PopUpContextMenu (NSMenu menu, NSEvent theEvent, NSView view);
 
 		[Static]
 		[Export ("popUpContextMenu:withEvent:forView:withFont:")]
-		void PopUpContextMenu (NSMenu menu, NSEvent theEvent, NSView view, NSFont font);
+		void PopUpContextMenu (NSMenu menu, NSEvent theEvent, NSView view, [NullAllowed] NSFont font);
 
 		[Export ("popUpMenuPositioningItem:atLocation:inView:")]
-		bool PopUpMenu (NSMenuItem item, PointF location, NSView view);
+		bool PopUpMenu ([NullAllowed] NSMenuItem item, PointF location, [NullAllowed] NSView view);
 
 		[Export ("insertItem:atIndex:")]
 		void InsertItematIndex (NSMenuItem newItem, int index);
