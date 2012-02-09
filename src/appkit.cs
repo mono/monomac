@@ -70,6 +70,23 @@ namespace MonoMac.AppKit {
 	
 	}
 
+	//
+	// Inlined, not really an object implementation
+	//
+	public interface NSAnimatablePropertyContainer {
+		[Export ("animator")]
+		NSObject Animator { [return: Proxy] get; }
+	
+		[Export ("animations")]
+		NSDictionary Animations { get; set; }
+	
+		[Export ("animationForKey:")]
+		NSObject AnimationFor (NSString key);
+	
+		[Static, Export ("defaultAnimationForKey:")]
+		NSObject DefaultAnimationFor (NSString key);
+	}
+	
 	[BaseType (typeof (NSObject), Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (NSAnimationDelegate)})]
 	public interface NSAnimation {
 		[Export ("initWithDuration:animationCurve:")]
@@ -6781,7 +6798,7 @@ namespace MonoMac.AppKit {
 
 	[Lion]
 	[BaseType (typeof (NSObject))]
-	public interface NSLayoutConstraint {
+	public interface NSLayoutConstraint : NSAnimatablePropertyContainer {
 		[Static]
 		[Export ("constraintsWithVisualFormat:options:metrics:views:")]
 		NSLayoutConstraint [] FromVisualFormat (string format, NSLayoutFormatOptions formatOptions, NSDictionary metrics, NSDictionary views);
@@ -9858,7 +9875,7 @@ namespace MonoMac.AppKit {
 	}
 
 	[BaseType (typeof (NSResponder))]
-	public interface NSView : NSDraggingDestination  {
+	public interface NSView : NSDraggingDestination, NSAnimatablePropertyContainer  {
 		[Export ("initWithFrame:")]
 		IntPtr Constructor (RectangleF frameRect);
 
@@ -10341,20 +10358,6 @@ namespace MonoMac.AppKit {
 
 		[Field ("NSViewDidUpdateTrackingAreasNotification")]
 		NSString NSViewDidUpdateTrackingAreasNotification { get; }
-
-#region From NSAnimatablePropertyContainer
-		[Export ("animator")]
-		NSObject Animator { [return: Proxy] get; }
-	
-		[Export ("animations")]
-		NSDictionary Animations { get; set; }
-	
-		[Export ("animationForKey:")]
-		NSObject AnimationFor (NSString key);
-	
-		[Static, Export ("defaultAnimationForKey:")]
-		NSObject DefaultAnimationFor (NSString key);
-#endregion
 
 		[Lion, Export ("constraints")]
 		NSLayoutConstraint [] Constraints { get; }
@@ -13037,7 +13040,7 @@ namespace MonoMac.AppKit {
 	}
 	
 	[BaseType (typeof (NSResponder), Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (NSWindowDelegate)})]
-	public interface NSWindow {
+	public interface NSWindow : NSAnimatablePropertyContainer {
 		[Static, Export ("frameRectForContentRect:styleMask:")]
 		RectangleF FrameRectFor (RectangleF contectRect, NSWindowStyle styleMask);
 	
@@ -13617,19 +13620,6 @@ namespace MonoMac.AppKit {
 		[Export ("windowRef")]
 		IntPtr WindowRef { get; }
 
-#region From NSAnimatablePropertyContainer
-		[Export ("animator")]
-		NSObject Animator { [return: Proxy] get; }
-	
-		[Export ("animations")]
-		NSDictionary Animations { get; set; }
-	
-		[Export ("animationForKey:")]
-		NSObject AnimationFor (NSString key);
-	
-		[Static, Export ("defaultAnimationForKey:")]
-		NSObject DefaultAnimationFor (NSString key);
-#endregion
 		[Lion, Export ("disableSnapshotRestoration")]
 		void DisableSnapshotRestoration ();
 
@@ -13983,6 +13973,7 @@ namespace MonoMac.AppKit {
 		
 		[Lion, Export ("windowDidExitVersionBrowser:"), EventArgs ("NSNotification")]
 		void DidExitVersionBrowser (NSNotification notification);
+		
 	}
 
 	public delegate void NSWorkspaceUrlHandler (NSDictionary newUrls, NSError error);
