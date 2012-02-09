@@ -13654,6 +13654,115 @@ namespace MonoMac.AppKit {
 
 		[Lion, Export ("visualizeConstraints:")]
 		void VisualizeConstraints (NSLayoutConstraint [] constraints);
+
+                [Lion, Export ("convertRectToScreen:")]
+                RectangleF ConvertRectToScreen (RectangleF aRect);
+
+                [Lion, Export ("convertRectFromScreen:")]
+                RectangleF ConvertRectFromScreen (RectangleF aRect);
+
+                [Lion, Export ("convertRectToBacking:")]
+                RectangleF ConvertRectToBacking (RectangleF aRect);
+
+                [Lion, Export ("convertRectFromBacking:")]
+                RectangleF ConvertRectFromBacking (RectangleF aRect);
+
+                [Lion, Export ("backingAlignedRect:options:")]
+                RectangleF BackingAlignedRect (RectangleF aRect, NSAlignmentOptions options);
+
+                [Lion, Export ("backingScaleFactor")]
+                float BackingScaleFactor { get; }
+
+                [Lion, Export ("toggleFullScreen:")]
+                void ToggleFullScreen (NSObject sender);
+
+                //Detected properties
+                [Export ("animationBehavior")]
+                NSWindowAnimationBehavior AnimationBehavior { get; set; }
+
+		//
+		// Fields
+		//
+		[Field ("NSWindowDidBecomeKeyNotification")]
+		NSString DidBecomeKeyNotification { get; }
+
+		[Field ("NSWindowDidBecomeMainNotification")]
+		NSString DidBecomeMainNotification { get; }
+
+		[Field ("NSWindowDidChangeScreenNotification")]
+		NSString DidChangeScreenNotification { get; }
+
+		[Field ("NSWindowDidDeminiaturizeNotification")]
+		NSString DidDeminiaturizeNotification { get; }
+
+		[Field ("NSWindowDidExposeNotification")]
+		NSString DidExposeNotification { get; }
+
+		[Field ("NSWindowDidMiniaturizeNotification")]
+		NSString DidMiniaturizeNotification { get; }
+
+		[Field ("NSWindowDidMoveNotification")]
+		NSString DidMoveNotification { get; }
+
+		[Field ("NSWindowDidResignKeyNotification")]
+		NSString DidResignKeyNotification { get; }
+
+		[Field ("NSWindowDidResignMainNotification")]
+		NSString DidResignMainNotification { get; }
+
+		[Field ("NSWindowDidResizeNotification")]
+		NSString DidResizeNotification { get; }
+
+		[Field ("NSWindowDidUpdateNotification")]
+		NSString DidUpdateNotification { get; }
+
+		[Field ("NSWindowWillCloseNotification")]
+		NSString WillCloseNotification { get; }
+
+		[Field ("NSWindowWillMiniaturizeNotification")]
+		NSString WillMiniaturizeNotification { get; }
+
+		[Field ("NSWindowWillMoveNotification")]
+		NSString WillMoveNotification { get; }
+
+		[Field ("NSWindowWillBeginSheetNotification")]
+		NSString WillBeginSheetNotification { get; }
+
+		[Field ("NSWindowDidEndSheetNotification")]
+		NSString DidEndSheetNotification { get; }
+
+		[Field ("NSWindowDidChangeScreenProfileNotification ")]
+		NSString DidChangeScreenProfileNotification { get; }
+
+		[Field ("NSWindowWillStartLiveResizeNotification")]
+		NSString WillStartLiveResizeNotification { get; }
+
+		[Field ("NSWindowDidEndLiveResizeNotification")]
+		NSString DidEndLiveResizeNotification { get; }
+
+		[Field ("NSWindowWillEnterFullScreenNotification")]
+		NSString WillEnterFullScreenNotification { get; }
+
+		[Lion, Field ("NSWindowDidEnterFullScreenNotification")]
+		NSString DidEnterFullScreenNotification { get; }
+
+		[Lion, Field ("NSWindowWillExitFullScreenNotification")]
+		NSString WillExitFullScreenNotification { get; }
+
+		[Lion, Field ("NSWindowDidExitFullScreenNotification")]
+		NSString DidExitFullScreenNotification { get; }
+
+		[Lion, Field ("NSWindowWillEnterVersionBrowserNotification")]
+		NSString WillEnterVersionBrowserNotification { get; }
+
+		[Lion, Field ("NSWindowDidEnterVersionBrowserNotification")]
+		NSString DidEnterVersionBrowserNotification { get; }
+
+		[Lion, Field ("NSWindowWillExitVersionBrowserNotification")]
+		NSString WillExitVersionBrowserNotification { get; }
+
+		[Lion, Field ("NSWindowDidExitVersionBrowserNotification")]
+		NSString DidExitVersionBrowserNotification { get; }
 	}
 
 	public delegate void NSWindowCompletionHandler (NSWindow window, NSError error);

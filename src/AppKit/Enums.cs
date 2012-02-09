@@ -614,7 +614,8 @@ namespace MonoMac.AppKit {
 		Resizable = 8,
 		TexturedBackground = 1 << 8,
 		Unscaled = 1 << 11,
-		UnifiedTitleAndToolbar = 1 << 12
+		UnifiedTitleAndToolbar = 1 << 12,
+		FullScreenWindow = 1 << 14
 	}
 
 	public enum NSWindowSharingType {
@@ -627,7 +628,7 @@ namespace MonoMac.AppKit {
 
 	[Flags]
 	public enum NSWindowCollectionBehavior {
-	Default = 0,
+		Default = 0,
 		CanJoinAllSpaces = 1 << 0,
 		MoveToActiveSpace = 1 << 1,
 		Managed = 1 << 2,
@@ -651,7 +652,7 @@ namespace MonoMac.AppKit {
 	}
 
 	public enum NSWindowButton {
-		CloseButton, MiniaturizeButton, ZoomButton, ToolbarButton, DocumentIconButton
+		CloseButton, MiniaturizeButton, ZoomButton, ToolbarButton, DocumentIconButton, DocumentVersionsButton = 6, FullScreenButton
 	}
 
 	[Flags]
@@ -1655,4 +1656,9 @@ namespace MonoMac.AppKit {
 	public enum NSDraggingContext {
 		OutsideApplication, WithinApplication
 	}
+
+	public enum NSWindowAnimationBehavior {
+		Default = 0, None = 2, DocumentWindow, UtilityWindow, AlertPanel
+	}
+
 } 
