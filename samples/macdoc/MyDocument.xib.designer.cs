@@ -35,6 +35,9 @@ namespace macdoc
 		[Outlet]
 		MonoMac.AppKit.NSTabView tabSelector { get; set; }
 
+		[Outlet]
+		MonoMac.AppKit.NSButton thebutton { get; set; }
+
 		[Action ("IndexItemClicked:")]
 		partial void IndexItemClicked (MonoMac.AppKit.NSTableView sender);
 

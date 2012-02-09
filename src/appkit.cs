@@ -13280,7 +13280,7 @@ namespace MonoMac.AppKit {
 		void OrderBack (NSObject sender);
 	
 		[Export ("orderOut:")]
-		void OrderOut (NSObject sender);
+		void OrderOut ([NullAllowed] NSObject sender);
 	
 		[Export ("orderWindow:relativeTo:")]
 		void OrderWindow (NSWindowOrderingMode place, int relativeTo);

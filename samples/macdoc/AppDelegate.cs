@@ -56,7 +56,7 @@ namespace macdoc
 			HelpSource.use_css = true;
 			
 		}
-
+		
 		public override void FinishedLaunching (NSObject notification)
 		{
 		}

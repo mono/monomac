@@ -31,7 +31,7 @@ namespace macdoc
 		public MyDocument (NSCoder coder) : base(coder)
 		{
 		}
-		
+
 		void LoadImages ()
 		{
 			navigationCells.SetImage (new NSImage (Path.Combine (resourcesPath, "Images", "back.png")), 0);
