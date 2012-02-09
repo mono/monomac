@@ -1792,7 +1792,7 @@ namespace MonoMac.AppKit {
 	}
 	
 	[BaseType (typeof (NSObject))]
-	public interface NSCell {
+	public interface NSCell : NSUserInterfaceItemIdentification {
 		[Static, Export ("prefersTrackingUntilMouseUp")]
 		bool PrefersTrackingUntilMouseUp { get; }
 	
@@ -9874,8 +9874,16 @@ namespace MonoMac.AppKit {
 
 	}
 
+	//
+	// Protocol, hence why it has no BaseType
+	//
+	public interface NSUserInterfaceItemIdentification {
+		[Lion, Export ("identifier")]
+		string Identifier { get; }
+	}
+	
 	[BaseType (typeof (NSResponder))]
-	public interface NSView : NSDraggingDestination, NSAnimatablePropertyContainer  {
+	public interface NSView : NSDraggingDestination, NSAnimatablePropertyContainer, NSUserInterfaceItemIdentification  {
 		[Export ("initWithFrame:")]
 		IntPtr Constructor (RectangleF frameRect);
 
@@ -13040,7 +13048,7 @@ namespace MonoMac.AppKit {
 	}
 	
 	[BaseType (typeof (NSResponder), Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (NSWindowDelegate)})]
-	public interface NSWindow : NSAnimatablePropertyContainer {
+	public interface NSWindow : NSAnimatablePropertyContainer, NSUserInterfaceItemIdentification {
 		[Static, Export ("frameRectForContentRect:styleMask:")]
 		RectangleF FrameRectFor (RectangleF contectRect, NSWindowStyle styleMask);
 	
