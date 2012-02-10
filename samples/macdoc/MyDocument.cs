@@ -17,6 +17,7 @@ namespace macdoc
 		string resourcesPath = NSBundle.MainBundle.ResourceUrl.Path;
 		History history;
 		bool ignoreSelect;
+		string initialLoadFromUrl;
 		
 		SearchableIndex searchIndex;
 		
@@ -43,6 +44,25 @@ namespace macdoc
 			}
 		}
 		
+		public override bool ReadFromUrl (NSUrl url, string typeName, out NSError outError)
+		{
+			Console.WriteLine ("ReadFromUrl : {0}", url.ToString ());
+			outError = null;
+			const int NSServiceMiscellaneousError = 66800;
+			if (url.Scheme != "monodoc" && url.Scheme != "mdoc") {
+				outError = new NSError (NSError.CocoaErrorDomain,
+				                       	NSServiceMiscellaneousError,
+				                      	NSDictionary.FromObjectAndKey (NSError.LocalizedFailureReasonErrorKey, new NSString (string.Format ("Scheme {0} isn't supported", url.Scheme))));
+				return false;
+			}
+			
+			// ResourceSpecifier is e.g. "//T:System.String"
+			initialLoadFromUrl = url.ResourceSpecifier.Substring (2);
+			this.FileUrl = url;
+			
+			return true;
+		}
+		
 		public override void WindowControllerDidLoadNib (NSWindowController windowController)
 		{
 			base.WindowControllerDidLoadNib (windowController);
@@ -52,7 +72,9 @@ namespace macdoc
 			history = new History (navigationCells);
 			SetupOutline ();
 			SetupSearch ();
-			webView.DecidePolicyForNavigation += HandleWebViewDecidePolicyForNavigation; 
+			webView.DecidePolicyForNavigation += HandleWebViewDecidePolicyForNavigation;
+			if (!string.IsNullOrEmpty (initialLoadFromUrl))
+				LoadUrl (initialLoadFromUrl);
 		}
 		
 		void SetupOutline ()

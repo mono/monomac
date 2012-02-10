@@ -12,6 +12,7 @@ namespace macdoc
 		static public RootTree Root;
 		static public string MonodocDir;
 		static public NSUrl MonodocBaseUrl;
+		static MonodocDocumentController controller;
 		
 		static void PrepareCache ()
 		{
@@ -46,6 +47,7 @@ namespace macdoc
 		{
 			PrepareCache ();
 			ExtractImages ();
+			controller = new MonodocDocumentController ();
 			
 			// Load documentation
 			Root = RootTree.LoadTree (null);
@@ -59,6 +61,26 @@ namespace macdoc
 		
 		public override void FinishedLaunching (NSObject notification)
 		{
+		}
+		
+		public override void WillFinishLaunching (NSNotification notification)
+		{
+			Console.WriteLine ("Setting up Apple handler");
+			var selector = new MonoMac.ObjCRuntime.Selector ("handleGetURLEvent:withReplyEvent:");
+			NSAppleEventManager.SharedAppleEventManager.SetEventHandler (this,
+			                                                             selector,
+			                                                             AEEventClass.Internet,
+			                                                             AEEventID.GetUrl);
+		}
+		
+		[Export ("handleGetURLEvent:withReplyEvent:")]
+		public void HandleGetURLEvent (NSAppleEventDescriptor evt, NSAppleEventDescriptor replyEvt)
+		{
+			// Received event is a list (1-based) of URL strings
+			for (int i = 1; i <= evt.NumberOfItems; i++) {
+				var innerDesc = evt.DescriptorAtIndex (i);
+				controller.OpenDocument (new NSUrl (innerDesc.StringValue), i == evt.NumberOfItems, delegate {});
+			}
 		}
 	}
 }
