@@ -131,6 +131,7 @@ SHARED_API = \
 	./coreanimation.cs	\
 	./coredata.cs		\
 	./coreimage.cs		\
+	./coremidi.cs		\
 	./corelocation.cs
 
 SHARED_SOURCES = $(patsubst %,$(MACCORE_DIR)/src/%,$(SHARED_SOURCE))
