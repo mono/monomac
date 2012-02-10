@@ -32,6 +32,12 @@ using MonoMac.CoreFoundation;
 using MonoMac.CoreGraphics;
 using MonoMac.AppKit;
 
+// In Apple headers, this is a typedef to a pointer to a private struct
+using NSAppleEventManagerSuspensionID = System.IntPtr;
+// These two are both four char codes i.e. defined on a uint with constant like 'xxxx'
+using AEKeyword = System.UInt32;
+using OSType = System.UInt32;
+
 namespace MonoMac.Foundation {
 	
 	[BaseType (typeof (NSObject))]
