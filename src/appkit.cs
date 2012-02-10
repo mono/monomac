@@ -3762,6 +3762,8 @@ namespace MonoMac.AppKit {
 		string [] RestorableStateKeyPaths ();
 	}
 
+	public delegate void OpenDocumentCompletionHandler (NSDocument document, bool documentWasAlreadyOpen, NSError error);
+
 	[BaseType (typeof (NSObject))]
 	public interface NSDocumentController : NSWindowRestoration {
 		[Static, Export ("sharedDocumentController")]
@@ -3808,6 +3810,10 @@ namespace MonoMac.AppKit {
 
 		[Export ("openDocumentWithContentsOfURL:display:error:")]
 		NSObject OpenDocument (NSUrl absoluteUrl, bool displayDocument, out NSError outError);
+
+		[Lion]
+		[Export ("openDocumentWithContentsOfURL:display:completionHandler:")]
+		void OpenDocument (NSUrl url, bool display, OpenDocumentCompletionHandler completionHandler);
 
 		[Export ("makeDocumentWithContentsOfURL:ofType:error:")]
 		NSObject MakeDocument (NSUrl absoluteUrl, string typeName, out NSError outError);
