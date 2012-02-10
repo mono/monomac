@@ -381,8 +381,18 @@ namespace macdoc
 		Dictionary<string, SortedList<string, Tuple<Result, int>>> sections = new Dictionary<string, SortedList<string, Tuple<Result, int>>> ();
 		List<ResultDataEntry> data = new List<ResultDataEntry> ();
 		
+		NSTextFieldCell normalCell;
+		NSTextFieldCell headerCell;
+		
 		public ResultDataSource ()
 		{
+			normalCell = new NSTextFieldCell ();
+			
+			headerCell = new NSTextFieldCell ();
+			headerCell.TextColor = NSColor.Gray;
+			headerCell.Alignment = NSTextAlignment.Center;
+			headerCell.Selectable = false;
+			headerCell.Editable = false;
 		}
 		
 		public void AddResultSet (Result result)
@@ -422,7 +432,9 @@ namespace macdoc
 		{
 			if (tableView == null)
 				return null;
-			var cell = new NSTextFieldCell ();
+			var resultEntry = data[row];
+			return !string.IsNullOrEmpty (resultEntry.SectionName) ? headerCell : normalCell;
+			/*var cell = new NSTextFieldCell ();
 			var resultEntry = data[row];
 			if (!string.IsNullOrEmpty (resultEntry.SectionName)) {
 				cell.TextColor = NSColor.Gray;
@@ -430,7 +442,7 @@ namespace macdoc
 				cell.Selectable = false;
 				cell.Editable = false;
 			}
-			return cell;
+			return cell;*/
 		}
 		
 		public string GetResultUrl (int row)
