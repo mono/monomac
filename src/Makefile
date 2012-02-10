@@ -16,6 +16,7 @@ CORE_SOURCES =					\
 	./AppKit/Defs.cs				\
 	./Foundation/EnumDesktop.cs			\
 	./Foundation/NSObject.cs			\
+	./Foundation/Defs.cs			\
 	./ImageKit/Enums.cs				\
 	./ObjCRuntime/Class.cs				\
 	./ObjCRuntime/Messaging.cs			\

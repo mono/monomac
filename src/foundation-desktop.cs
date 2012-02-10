@@ -151,8 +151,181 @@ namespace MonoMac.Foundation {
 
 	[BaseType (typeof (NSObject))]
 	public interface NSAppleEventDescriptor {
-		[Export ("nullDescriptor"), Static]
-		NSAppleEventDescriptor Null { get; }
+		[Static]
+		[Export ("nullDescriptor")]
+		NSAppleEventDescriptor NullDescriptor { get; }
+
+		/*		[Static]
+		[Export ("descriptorWithDescriptorType:bytes:length:")]
+		NSAppleEventDescriptor DescriptorWithDescriptorTypebyteslength (DescType descriptorType, void bytes, uint byteCount);
+
+		[Static]
+		[Export ("descriptorWithDescriptorType:data:")]
+		NSAppleEventDescriptor DescriptorWithDescriptorTypedata (DescType descriptorType, NSData data);*/
+
+		[Static]
+		[Export ("descriptorWithBoolean:")]
+		NSAppleEventDescriptor DescriptorWithBoolean (Boolean boolean);
+
+		[Static]
+		[Export ("descriptorWithEnumCode:")]
+		NSAppleEventDescriptor DescriptorWithEnumCode (OSType enumerator);
+
+		[Static]
+		[Export ("descriptorWithInt32:")]
+		NSAppleEventDescriptor DescriptorWithInt32 (int signedInt);
+
+		[Static]
+		[Export ("descriptorWithTypeCode:")]
+		NSAppleEventDescriptor DescriptorWithTypeCode (OSType typeCode);
+
+		[Static]
+		[Export ("descriptorWithString:")]
+		NSAppleEventDescriptor DescriptorWithString (string str);
+
+		/*[Static]
+		[Export ("appleEventWithEventClass:eventID:targetDescriptor:returnID:transactionID:")]
+		NSAppleEventDescriptor AppleEventWithEventClasseventIDtargetDescriptorreturnIDtransactionID (AEEventClass eventClass, AEEventID eventID, NSAppleEventDescriptor targetDescriptor, AEReturnID returnID, AETransactionID transactionID);*/
+
+		[Static]
+		[Export ("listDescriptor")]
+		NSAppleEventDescriptor ListDescriptor { get; }
+
+		[Static]
+		[Export ("recordDescriptor")]
+		NSAppleEventDescriptor RecordDescriptor { get; }
+
+		/*[Export ("initWithAEDescNoCopy:")]
+		NSObject InitWithAEDescNoCopy (const AEDesc aeDesc);
+
+		[Export ("initWithDescriptorType:bytes:length:")]
+		NSObject InitWithDescriptorTypebyteslength (DescType descriptorType, void bytes, uint byteCount);
+
+		[Export ("initWithDescriptorType:data:")]
+		NSObject InitWithDescriptorTypedata (DescType descriptorType, NSData data);
+
+		[Export ("initWithEventClass:eventID:targetDescriptor:returnID:transactionID:")]
+		NSObject InitWithEventClasseventIDtargetDescriptorreturnIDtransactionID (AEEventClass eventClass, AEEventID eventID, NSAppleEventDescriptor targetDescriptor, AEReturnID returnID, AETransactionID transactionID);*/
+
+		[Export ("initListDescriptor")]
+		NSObject InitListDescriptor ();
+
+		[Export ("initRecordDescriptor")]
+		NSObject InitRecordDescriptor ();
+
+		/*[Export ("aeDesc")]
+		const AEDesc AeDesc ();
+
+		[Export ("descriptorType")]
+		DescType DescriptorType ();*/
+
+		[Export ("data")]
+		NSData Data { get; }
+
+		[Export ("booleanValue")]
+		Boolean BooleanValue { get; }
+
+		[Export ("enumCodeValue")]
+		OSType EnumCodeValue ();
+
+		[Export ("int32Value")]
+		Int32 Int32Value { get; }
+
+		[Export ("typeCodeValue")]
+		OSType TypeCodeValue { get; }
+
+		[Export ("stringValue")]
+		string StringValue { get; }
+
+		[Export ("eventClass")]
+		AEEventClass EventClass { get; }
+
+		[Export ("eventID")]
+		AEEventID EventID { get; }
+
+		/*[Export ("returnID")]
+		AEReturnID ReturnID ();
+
+		[Export ("transactionID")]
+		AETransactionID TransactionID ();*/
+
+		[Export ("setParamDescriptor:forKeyword:")]
+		void SetParamDescriptorforKeyword (NSAppleEventDescriptor descriptor, AEKeyword keyword);
+
+		[Export ("paramDescriptorForKeyword:")]
+		NSAppleEventDescriptor ParamDescriptorForKeyword (AEKeyword keyword);
+
+		[Export ("removeParamDescriptorWithKeyword:")]
+		void RemoveParamDescriptorWithKeyword (AEKeyword keyword);
+
+		[Export ("setAttributeDescriptor:forKeyword:")]
+		void SetAttributeDescriptorforKeyword (NSAppleEventDescriptor descriptor, AEKeyword keyword);
+
+		[Export ("attributeDescriptorForKeyword:")]
+		NSAppleEventDescriptor AttributeDescriptorForKeyword (AEKeyword keyword);
+
+		[Export ("numberOfItems")]
+		int NumberOfItems { get; }
+
+		[Export ("insertDescriptor:atIndex:")]
+		void InsertDescriptoratIndex (NSAppleEventDescriptor descriptor, int index);
+
+		[Export ("descriptorAtIndex:")]
+		NSAppleEventDescriptor DescriptorAtIndex (int index);
+
+		[Export ("removeDescriptorAtIndex:")]
+		void RemoveDescriptorAtIndex (int index);
+
+		[Export ("setDescriptor:forKeyword:")]
+		void SetDescriptorforKeyword (NSAppleEventDescriptor descriptor, AEKeyword keyword);
+
+		[Export ("descriptorForKeyword:")]
+		NSAppleEventDescriptor DescriptorForKeyword (AEKeyword keyword);
+
+		[Export ("removeDescriptorWithKeyword:")]
+		void RemoveDescriptorWithKeyword (AEKeyword keyword);
+
+		[Export ("keywordForDescriptorAtIndex:")]
+		AEKeyword KeywordForDescriptorAtIndex (int index);
+
+		/*[Export ("coerceToDescriptorType:")]
+		NSAppleEventDescriptor CoerceToDescriptorType (DescType descriptorType);*/
+
+	}
+
+	[BaseType (typeof (NSObject))]
+	public interface NSAppleEventManager {
+		[Static]
+		[Export ("sharedAppleEventManager")]
+		NSAppleEventManager SharedAppleEventManager { get; }
+
+		[Export ("setEventHandler:andSelector:forEventClass:andEventID:")]
+		void SetEventHandler (NSObject handler, Selector handleEventSelector, AEEventClass eventClass, AEEventID eventID);
+
+		[Export ("removeEventHandlerForEventClass:andEventID:")]
+		void RemoveEventHandlerForEventClassandEventID (AEEventClass eventClass, AEEventID eventID);
+
+		[Export ("currentAppleEvent")]
+		NSAppleEventDescriptor CurrentAppleEvent { get; }
+
+		[Export ("currentReplyAppleEvent")]
+		NSAppleEventDescriptor CurrentReplyAppleEvent { get; }
+
+		[Export ("suspendCurrentAppleEvent")]
+		NSAppleEventManagerSuspensionID SuspendCurrentAppleEvent ();
+
+		[Export ("appleEventForSuspensionID:")]
+		NSAppleEventDescriptor AppleEventForSuspensionID (NSAppleEventManagerSuspensionID suspensionID);
+
+		[Export ("replyAppleEventForSuspensionID:")]
+		NSAppleEventDescriptor ReplyAppleEventForSuspensionID (NSAppleEventManagerSuspensionID suspensionID);
+
+		[Export ("setCurrentAppleEventAndReplyEventWithSuspensionID:")]
+		void SetCurrentAppleEventAndReplyEventWithSuspensionID (NSAppleEventManagerSuspensionID suspensionID);
+
+		[Export ("resumeWithSuspensionID:")]
+		void ResumeWithSuspensionID (NSAppleEventManagerSuspensionID suspensionID);
+
 	}
 
 	[BaseType (typeof (NSObject))]

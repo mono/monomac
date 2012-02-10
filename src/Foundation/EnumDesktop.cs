@@ -44,4 +44,39 @@ namespace MonoMac.Foundation {
 		Exit = 1,
 		UncaughtSignal = 2
 	}
+
+	// The following constants where taken from MonoDevelop Carbon.cs MacInterop file
+	public enum AEEventID {
+		OpenApplication = 1868656752, // 'oapp'
+		ReopenApplication = 1918988400, //'rapp'
+		OpenDocuments = 1868853091, // 'odoc'
+		PrintDocuments = 188563030, // 'pdoc'
+		OpenContents = 1868787566, // 'ocon'
+		QuitApplication =  1903520116, // 'quit'
+		ShowPreferences = 1886545254, // 'pref'
+		ApplicationDied = 1868720500, // 'obit'
+		GetUrl = 1196773964, // 'GURL'
+	}
+
+	public enum AEEventClass {
+		Mouse = 1836021107, // 'mous'
+		Keyboard = 1801812322, // 'keyb'
+		TextInput = 1952807028, // 'text'
+		Application = 1634758764, // 'appl'
+		RemoteAppleEvent = 1701867619,  //'eppc' //remote apple event?
+		Menu = 1835363957, // 'menu'
+		Window = 2003398244, // 'wind'
+		Control = 1668183148, // 'cntl'
+		Command = 1668113523, // 'cmds'
+		Tablet = 1952607348, // 'tblt'
+		Volume = 1987013664, // 'vol '
+		Appearance = 1634758765, // 'appm'
+		Service = 1936028278, // 'serv'
+		Toolbar = 1952604530, // 'tbar'
+		ToolbarItem = 1952606580, // 'tbit'
+		Accessibility = 1633903461, // 'acce'
+		HIObject = 1751740258, // 'hiob'
+		AppleEvent = 1634039412, // 'aevt'
+		Internet = 1196773964, // 'GURL'
+	}
 }
