@@ -2,8 +2,10 @@ using System;
 using System.Drawing;
 using MonoMac.Foundation;
 using MonoMac.AppKit;
+using MonoMac.ObjCRuntime;
 using Monodoc;
 using System.IO;
+using System.Runtime.InteropServices;
 
 namespace macdoc
 {
@@ -76,12 +78,29 @@ namespace macdoc
 		[Export ("handleGetURLEvent:withReplyEvent:")]
 		public void HandleGetURLEvent (NSAppleEventDescriptor evt, NSAppleEventDescriptor replyEvt)
 		{
+			NSError error;
 			// Received event is a list (1-based) of URL strings
 			for (int i = 1; i <= evt.NumberOfItems; i++) {
 				var innerDesc = evt.DescriptorAtIndex (i);
-				controller.OpenDocument (new NSUrl (innerDesc.StringValue), i == evt.NumberOfItems, delegate {});
+				// The next call works fine but is Lion-specific 
+				//controller.OpenDocument (new NSUrl (innerDesc.StringValue), i == evt.NumberOfItems, delegate {});
+				Call_OpenDocument (new NSUrl (innerDesc.StringValue), i == evt.NumberOfItems, out error);
 			}
 		}
+		
+		// We use a working OpenDocument method that doesn't return anything because of MonoMac bug#3380
+		public void Call_OpenDocument (NSUrl absoluteUrl, bool displayDocument, out NSError outError)
+		{
+			outError = null;
+			if (absoluteUrl == null)
+				throw new ArgumentNullException ("absoluteUrl");
+			IntPtr outErrorPtr = Marshal.AllocHGlobal(4);
+			Marshal.WriteInt32(outErrorPtr, 0);
+
+			MonoMac.ObjCRuntime.Messaging.IntPtr_objc_msgSend_IntPtr_bool_IntPtr (controller.Handle, selOpenDocumentWithContentsOfURLDisplayError_, absoluteUrl.Handle, displayDocument, outErrorPtr);
+		}
+		
+		IntPtr selOpenDocumentWithContentsOfURLDisplayError_  = new Selector ("openDocumentWithContentsOfURL:display:error:").Handle;
 	}
 }
 
