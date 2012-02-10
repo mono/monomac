@@ -108,6 +108,7 @@ namespace macdoc
 			var dataSource = ((ResultDataSource)searchResults.Source);
 			dataSource.LatestSearchTerm = text;
 			Result results = searchIndex.FastSearch (text, 5);
+			dataSource.ClearResultSet ();
 			dataSource.AddResultSet (results);
 			// No SynchronizationContext for MonoMac yet
 			Task.Factory.StartNew (() => InvokeOnMainThread (() => {
@@ -405,6 +406,11 @@ namespace macdoc
 				foreach (var item in kvp.Value)
 					data.Add (new ResultDataEntry { ResultSet = item.Value.Item1, Index = item.Value.Item2 });
 			}
+		}
+		
+		public void ClearResultSet ()
+		{
+			sections.Clear ();
 		}
 		
 		public override int GetRowCount (NSTableView tableView)
