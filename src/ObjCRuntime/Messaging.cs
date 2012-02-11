@@ -33,6 +33,9 @@ namespace MonoMac.ObjCRuntime {
 
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSend")]
 		public extern static uint uint_objc_msgSend (IntPtr receiver, IntPtr selector);
+		
+		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSend")]
+		public extern static int int_objc_msgSend (IntPtr receiver, IntPtr selector);
 
 		/* void returns */
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSend")]
@@ -96,6 +99,8 @@ namespace MonoMac.ObjCRuntime {
 		public extern static void void_objc_msgSendSuper_stret_rcgrect (ref RectangleF stret, IntPtr receiver, IntPtr selector);
 
 		/* intptr returns */
+		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSend")]
+		public extern static IntPtr IntPtr_objc_msgSend_IntPtr (IntPtr receiver, IntPtr selector, IntPtr arg1);
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSend")]
 		public extern static IntPtr intptr_objc_msgSend (IntPtr receiver, IntPtr selector);
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSend")]

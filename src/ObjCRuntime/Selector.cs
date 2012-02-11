@@ -28,6 +28,8 @@ namespace MonoMac.ObjCRuntime {
 	public class Selector {
 		public static IntPtr Init = Selector.GetHandle ("init");
 		public static IntPtr InitWithCoder = Selector.GetHandle ("initWithCoder:");
+		static IntPtr MethodSignatureForSelector = Selector.GetHandle ("methodSignatureForSelector:");
+		static IntPtr FrameLength = Selector.GetHandle ("frameLength");
 		internal static IntPtr Alloc = Selector.GetHandle ("alloc");
 
 		internal IntPtr handle;
@@ -52,6 +54,12 @@ namespace MonoMac.ObjCRuntime {
 		}
 
 		public Selector (string name) : this (name, false) {}
+
+		public static int GetFrameLength (IntPtr @this, IntPtr sel)
+		{
+			IntPtr sig = Messaging.IntPtr_objc_msgSend_IntPtr (@this, MethodSignatureForSelector, sel);
+			return Messaging.int_objc_msgSend (sig, FrameLength);
+		}
 
 		public IntPtr Handle {
 			get { return handle; }

@@ -223,17 +223,182 @@ namespace MonoMac.ObjCRuntime {
 
 			RegisterMethod (minfo, ea, type, handle);
 		}
+		
+		static IntPtr memory;
+		static int size_left;
+		static IntPtr AllocExecMemory (int size)
+		{
+			IntPtr result;
 
+			if (size_left < size) {
+				size_left = 4096;
+				memory = Marshal.AllocHGlobal (size_left);
+				if (memory == IntPtr.Zero)
+					throw new Exception (string.Format ("Could not allocate memory for specialized x86 floating point stret delegate thunk: {0}", Marshal.GetLastWin32Error ()));
+				if (mprotect (memory, size_left, 7 /*MmapProts.PROT_READ | MmapProts.PROT_WRITE | MmapProts.PROT_EXEC*/) != 0)
+					throw new Exception (string.Format ("Could not make allocated memory for specialized x86 floating point stret delegate thunk code executable: {0}", Marshal.GetLastWin32Error ()));
+			}
+
+			result = memory;
+			size_left -= size;
+			memory = new IntPtr (memory.ToInt32 () + size);
+			return result;
+		}
+		
+		
+		static bool TypeRequiresFloatingPointTrampoline (Type t)
+		{
+			// this is an x86 requirement only
+			if (IntPtr.Size != 4)
+				return false;
+
+			if (typeof (float) == t || typeof (double) == t)
+				return false;
+			
+			if (!t.IsValueType || t.IsEnum)
+				return false;
+
+			if (Marshal.SizeOf (t) <= 8)
+				return false;
+			
+			return TypeContainsFloatingPoint (t);
+		}
+		
+		static bool TypeContainsFloatingPoint (Type t) {
+			if (!t.IsValueType || t.IsEnum)
+				return false;
+
+			foreach (var field in t.GetFields (BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)) {
+				if (field.FieldType == typeof (double) || field.FieldType == typeof (float))
+					return true;
+				if (TypeContainsFloatingPoint (field.FieldType))
+					return true;
+			}
+
+			return false;
+		}
+		
+		delegate int getFrameLengthDelegate (IntPtr @this, IntPtr sel);
+		static getFrameLengthDelegate getFrameLength = Selector.GetFrameLength;
+		static IntPtr getFrameLengthPtr = Marshal.GetFunctionPointerForDelegate (getFrameLength);
+		
+		static IntPtr GetFunctionPointer (MethodInfo minfo, Delegate @delegate)
+		{
+			IntPtr fptr = Marshal.GetFunctionPointerForDelegate (@delegate);
+			
+			if (!TypeRequiresFloatingPointTrampoline (minfo.ReturnType))
+				return fptr;
+			
+			var thunk_ptr = AllocExecMemory (83);
+			var rel_Delegate = new IntPtr (fptr.ToInt32 () - thunk_ptr.ToInt32 () - 70);
+			var rel_GetFrameLengthPtr = new IntPtr (getFrameLengthPtr.ToInt32 () - thunk_ptr.ToInt32 () - 27);
+			var delptr = BitConverter.GetBytes (rel_Delegate.ToInt32 ());
+			var getlen = BitConverter.GetBytes (rel_GetFrameLengthPtr.ToInt32 ());
+			var thunk = new byte [] 
+			{
+/*
+# 
+# the problem we are trying to solve here is that the abi apparently requires
+# us to leave the stack unbalanced upon return (pop off one more value than we get,
+# this is the "ret $0x4" at the end).
+#
+# method definition:
+# trampoline (void *buffer, id this, SEL sel, ...)
+#
+# input stack layout:
+# %esp+20: ...
+# %esp+16: second vararg
+# %esp+12: first vararg
+# %esp+8:  sel
+# %esp+4:  this
+# %esp:    buffer
+# and %ebp+8 = %esp
+#
+# We extend the stack (big enough for all the arguments again),
+# and copy all the arguments as-is there, before
+# calling the original delegate with those copied arguments.
+#
+
+# prolog
+pushl    %ebp                   */  0x55,                                                 /*
+movl     %esp,%ebp              */  0x89, 0xe5,                                           /*
+pushl    %esi                   */  0x56,                                                 /*
+pushl    %edi                   */  0x57,                                                 /*
+pushl    %ebx                   */  0x53,                                                 /*
+subl     $0x3c,%esp             */  0x83, 0xec, 0x3c,                                     /*
+
+# get the size of the stack space used by all the arguments 
+# int frame_length = get_frame_length (this, sel)
+movl     0x10(%ebp),%eax        */  0x8b, 0x45, 0x10,                                     /*
+movl     %eax,0x04(%esp)        */  0x89, 0x44, 0x24, 0x04,                               /*
+movl     0x0c(%ebp),%eax        */  0x8b, 0x45, 0x0c,                                     /*
+movl     %eax,(%esp)            */  0x89, 0x04, 0x24,                                     /*
+calll    _get_frame_length      */  0xe8, getlen [0], getlen [1], getlen [2], getlen [3], /*
+movl     %eax,0xf0(%ebp)        */  0x89, 0x45, 0xf0,                                     /*
+
+# use eax to extend the stack, but it needs to be aligned to 16 bytes first 
+addl    $0x0f,%eax              */  0x83, 0xc0, 0x0f,                                     /*
+shrl    $0x04,%eax              */  0xc1, 0xe8, 0x04,                                     /*
+shll    $0x04,%eax              */  0xc1, 0xe0, 0x04,                                     /*
+subl    %eax,%esp               */  0x29, 0xc4,                                           /*
+
+# copy arguments from old location in the stack to new location in the stack
+# %ecx will hold the amount of bytes left to copy
+# %esi the current src location
+# %edi the current dst location
+
+# %ecx will already be a multiple of 4, since the abi requires it
+# (arguments smaller than 4 bytes are extended to 4 bytes according to
+# http://developer.apple.com/library/mac/#documentation/DeveloperTools/Conceptual/LowLevelABI/130-IA-32_Function_Calling_Conventions/IA32.html#//apple_ref/doc/uid/TP40002492-SW4)
+
+# Do not use memcpy, it may not work since we can get arguments in registers memcpy is free to clobber (XMM0-XMM3)
+
+movl    0xf0(%ebp),%ecx        */  0x8b, 0x4d, 0xf0,                                      /*
+leal    0x08(%ebp),%esi        */  0x8d, 0x75, 0x08,                                      /*
+movl    %esp,%edi              */  0x89, 0xe7,                                            /*
+
+L_start:
+cmpl    $0,%ecx                */  0x83, 0xf9, 0x00,                                      /*
+je      L_end                  */  0x74, 0x0b,                                            /*
+subl    $0x04,%ecx             */  0x83, 0xe9, 0x04,                                      /*
+movl    (%esi,%ecx),%eax       */  0x8b, 0x04, 0x0e,                                      /*
+movl    %eax,(%edi,%ecx)       */  0x89, 0x04, 0x0f,                                      /*
+jmp     L_start                */  0xeb, 0xf0,                                            /*
+
+L_end:
+calll    delegate              */  0xe8, delptr [0], delptr [1], delptr [2], delptr [3], /*
+# epilogue:
+movl    0xf4(%ebp),%ebx        */  0x8b, 0x5d, 0xf4,                                      /*
+movl    0xf8(%ebp),%edi        */  0x8b, 0x7d, 0xf8,                                      /*
+movl    0xfc(%ebp),%esi        */  0x8b, 0x75, 0xfc,                                      /*
+leave                          */  0xc9,                                                  /*
+retl    $0x4                   */  0xc2, 0x04, 0x00,                                      /*
+
+*/
+			};
+				
+			Marshal.Copy (thunk, 0, thunk_ptr, thunk.Length);
+			// Console.WriteLine ("Adding marshalling thunk for: {0} {1} ({2} params) new fptr: 0x{3} old fptr: 0x{4} thunk size: {5}", minfo.DeclaringType.FullName, minfo.Name, minfo.GetParameters ().Length, thunk_ptr.ToString ("X"), fptr.ToString ("X"), thunk.Length);
+			fptr = thunk_ptr;
+
+			return fptr;
+		}
+		
 		internal unsafe static void RegisterMethod (MethodInfo minfo, ExportAttribute ea, Type type, IntPtr handle) {
 			NativeMethodBuilder builder = new NativeMethodBuilder (minfo, type, ea);
 
-			class_addMethod (minfo.IsStatic ? ((objc_class *) handle)->isa : handle, builder.Selector, builder.Delegate, builder.Signature);
+			class_addMethod (minfo.IsStatic ? ((objc_class *) handle)->isa : handle, builder.Selector, GetFunctionPointer (minfo, builder.Delegate), builder.Signature);
 			method_wrappers.Add (builder.Delegate);
 #if DEBUG
 			Console.WriteLine ("[METHOD] Registering {0}[0x{1:x}|{2}] on {3} -> ({4})", ea.Selector, (int) builder.Selector, builder.Signature, type, minfo);
 #endif
 		}
 
+		[DllImport ("libc", SetLastError=true)]
+		extern static int mprotect (IntPtr addr, int len, int prot);
+		[DllImport ("libc", SetLastError=true)]
+		static extern IntPtr mmap (IntPtr start, ulong length, int prot, int flags, int fd, long offset);
+		
 		[DllImport ("/usr/lib/libobjc.dylib")]
 		extern static IntPtr objc_allocateClassPair (IntPtr superclass, string name, IntPtr extraBytes);
 		[DllImport ("/usr/lib/libobjc.dylib")]
@@ -246,6 +411,8 @@ namespace MonoMac.ObjCRuntime {
 		extern static bool class_addIvar (IntPtr cls, string name, IntPtr size, ushort alignment, string types);
 		[DllImport ("/usr/lib/libobjc.dylib")]
 		extern static bool class_addMethod (IntPtr cls, IntPtr name, Delegate imp, string types);
+		[DllImport ("/usr/lib/libobjc.dylib")]
+		extern static bool class_addMethod (IntPtr cls, IntPtr name, IntPtr imp, string types);
 		[DllImport ("/usr/lib/libobjc.dylib")]
 		extern static IntPtr class_getName (IntPtr cls);
 		[DllImport ("/usr/lib/libobjc.dylib")]
