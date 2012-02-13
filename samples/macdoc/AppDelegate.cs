@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Drawing;
 using MonoMac.Foundation;
 using MonoMac.AppKit;
@@ -54,15 +55,34 @@ namespace macdoc
 			// Load documentation
 			Root = RootTree.LoadTree (null);
 			
+			var macDocPath = Path.Combine (Environment.GetFolderPath (Environment.SpecialFolder.ApplicationData), "macdoc");
+			if (!Directory.Exists (macDocPath))
+				Directory.CreateDirectory (macDocPath);
+			IndexUpdateManager = new IndexUpdateManager (Root.HelpSources.Cast<HelpSource> ().Select (hs => Path.Combine (hs.BaseFilePath, hs.Name + ".zip")).Where (File.Exists),
+			                                             macDocPath);
+			
 			// Configure the documentation rendering.
 			SettingsHandler.Settings.EnableEditing = false;
 			SettingsHandler.Settings.preferred_font_size = 200;
 			HelpSource.use_css = true;
-			
 		}
 		
 		public override void FinishedLaunching (NSObject notification)
 		{
+			var indexManager = IndexUpdateManager;
+			indexManager.CheckIndexIsFresh ().ContinueWith (t => { 
+				if (t.IsFaulted)
+					Console.WriteLine (t.Exception);
+				if (!t.Result) { 
+					Console.WriteLine ("Doing a search index creation");
+					indexManager.PerformSearchIndexCreation ();
+				}
+			});
+		}
+		
+		public static IndexUpdateManager IndexUpdateManager {
+			get;
+			set;
 		}
 		
 		public override void WillFinishLaunching (NSNotification notification)

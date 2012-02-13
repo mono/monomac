@@ -85,8 +85,27 @@ namespace macdoc
 		
 		void SetupSearch ()
 		{
+			AppDelegate.IndexUpdateManager.UpdaterChange += ToggleSearchCreationStatus;
 			searchIndex = AppDelegate.Root.GetSearchIndex ();
 			searchResults.Source = new ResultDataSource ();
+		}
+		
+		void ToggleSearchCreationStatus (object sender, EventArgs e)
+		{
+			var manager = (IndexUpdateManager)sender;
+
+			if (!manager.IsCreatingSearchIndex) {
+				InvokeOnMainThread (delegate {
+					spinnerWidget.StopAnimation (this);
+					spinnerView.Hidden = true;
+					searchIndex = AppDelegate.Root.GetSearchIndex ();
+				});
+			} else {
+				InvokeOnMainThread (delegate {
+					spinnerView.Hidden = false;
+					spinnerWidget.StartAnimation (this);
+				});
+			}
 		}
 		
 		void LoadUrl (string url)

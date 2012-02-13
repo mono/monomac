@@ -61,6 +61,16 @@ namespace macdoc
 				tabSelector.Dispose ();
 				tabSelector = null;
 			}
+
+			if (spinnerView != null) {
+				spinnerView.Dispose ();
+				spinnerView = null;
+			}
+
+			if (spinnerWidget != null) {
+				spinnerWidget.Dispose ();
+				spinnerWidget = null;
+			}
 		}
 	}
 }
