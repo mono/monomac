@@ -394,6 +394,8 @@ namespace macdoc
 			headerCell.Alignment = NSTextAlignment.Center;
 			headerCell.Selectable = false;
 			headerCell.Editable = false;
+			headerCell.FocusRingType = NSFocusRingType.None;
+			headerCell.LineBreakMode = NSLineBreakMode.TruncatingMiddle;
 		}
 		
 		public void AddResultSet (Result result)
@@ -435,15 +437,6 @@ namespace macdoc
 				return null;
 			var resultEntry = data[row];
 			return !string.IsNullOrEmpty (resultEntry.SectionName) ? headerCell : normalCell;
-			/*var cell = new NSTextFieldCell ();
-			var resultEntry = data[row];
-			if (!string.IsNullOrEmpty (resultEntry.SectionName)) {
-				cell.TextColor = NSColor.Gray;
-				cell.Alignment = NSTextAlignment.Center;
-				cell.Selectable = false;
-				cell.Editable = false;
-			}
-			return cell;*/
 		}
 		
 		public string GetResultUrl (int row)
@@ -456,6 +449,12 @@ namespace macdoc
 		{
 			var resultEntry = data[row];
 			return new NSString (!string.IsNullOrEmpty (resultEntry.SectionName) ? resultEntry.SectionName : resultEntry.ResultSet.GetTitle (resultEntry.Index));
+		}
+		
+		public override bool ShouldSelectRow (NSTableView tableView, int row)
+		{
+			// If it's a section, do not select
+			return string.IsNullOrEmpty (data[row].SectionName);
 		}
 		
 		// Keep the search term in memory so that heavy search can check if its result are still fresh enough
