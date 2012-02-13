@@ -111,10 +111,11 @@ namespace macdoc
 			dataSource.ClearResultSet ();
 			dataSource.AddResultSet (results);
 			// No SynchronizationContext for MonoMac yet
-			Task.Factory.StartNew (() => InvokeOnMainThread (() => {
-				var rs = searchIndex.Search (text, 20);
+			Task.Factory.StartNew (() => searchIndex.Search (text, 20)).ContinueWith (t => InvokeOnMainThread (() => {
+				var rs = t.Result;
 				if (rs == null || rs.Count == 0 || text != dataSource.LatestSearchTerm)
 					return;
+				Console.WriteLine ("adding result");
 				dataSource.AddResultSet (rs);
 				searchResults.ReloadData ();
 			}));
