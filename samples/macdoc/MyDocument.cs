@@ -73,6 +73,7 @@ namespace macdoc
 			SetupOutline ();
 			SetupSearch ();
 			webView.DecidePolicyForNavigation += HandleWebViewDecidePolicyForNavigation;
+			webView.FinishedLoad += HandleWebViewFinishedLoad;
 			if (!string.IsNullOrEmpty (initialLoadFromUrl))
 				LoadUrl (initialLoadFromUrl);
 		}
@@ -195,6 +196,37 @@ namespace macdoc
 			history.AppendHistory (new LinkPageVisit (this, url));
 			LoadHtml (res);	
 			ShowNode (match);
+		}
+		
+		// Because WebView doesn't let me answer a NSUrlRequest myself I have to resort to this piece of crap of a solution
+		void HandleWebViewFinishedLoad (object sender, WebFrameEventArgs e)
+		{
+			var dom = e.ForFrame.DomDocument;
+			var imgs = dom.GetElementsByTagName ("img").Where (node => node.Attributes["src"].Value.StartsWith ("source-id"));
+			byte[] buffer = new byte[4096];
+			
+			foreach (var img in imgs) {
+				var src = img.Attributes["src"].Value;
+				var imgStream = AppDelegate.Root.GetImage (src);
+				if (imgStream == null)
+					continue;
+				Console.WriteLine ("Buffer length {0}", buffer.Length);
+				var length = imgStream.Read (buffer, 0, buffer.Length);
+				var read = length;
+				Console.WriteLine (length);
+				while (read != 0) {
+					if (length == buffer.Length) {
+						var oldBuffer = buffer;
+						buffer = new byte[oldBuffer.Length * 2];
+						Buffer.BlockCopy (oldBuffer, 0, buffer, 0, oldBuffer.Length);
+					}
+					length += read = imgStream.Read (buffer, length, buffer.Length - length);
+				}
+				
+				var data = Convert.ToBase64String (buffer, 0, length, Base64FormattingOptions.None);
+				var uri = "data:image/" + src.Substring (src.LastIndexOf ('.')) + ";base64," + data;
+				((DomElement)img).SetAttribute ("src", uri);
+			}
 		}
 		
 		bool LoadingFromString;
