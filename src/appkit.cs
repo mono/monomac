@@ -10317,6 +10317,9 @@ namespace MonoMac.AppKit {
 		   NSString NSFullScreenModeApplicationPresentationOptions { get; }
 		*/
 		
+		[Export ("focusRingType")]
+		NSFocusRingType FocusRingType { get; set; }
+		
 		// Fields
 		[Field ("NSFullScreenModeAllScreens")]
 		NSString NSFullScreenModeAllScreens { get; }
