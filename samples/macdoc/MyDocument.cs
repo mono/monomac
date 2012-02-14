@@ -160,13 +160,17 @@ namespace macdoc
 			}).ContinueWith (t => {
 				var node = t.Result.Node;
 				var res = t.Result.Html;
-				BeginInvokeOnMainThread (() => {
-					if (res != null){
+				if (res != null){
+					BeginInvokeOnMainThread (() => {
 						currentUrl = node.PublicUrl;
 						history.AppendHistory (new LinkPageVisit (this, node.PublicUrl));
 						LoadHtml (res);
-					}
-				});
+						if (syncTreeView) {
+							tabSelector.SelectAt (0);
+							this.match = node;
+						}
+					});
+				}
 			});
 		}
 		
@@ -269,7 +273,6 @@ namespace macdoc
 				var imgStream = AppDelegate.Root.GetImage (src);
 				if (imgStream == null)
 					continue;
-				Console.WriteLine ("Buffer length {0}", buffer.Length);
 				var length = imgStream.Read (buffer, 0, buffer.Length);
 				var read = length;
 				Console.WriteLine (length);
@@ -355,7 +358,7 @@ namespace macdoc
 				}
 				
 				parent.LoadHtml ("<html><body>do we really need anything else: " + node.PublicUrl);
-			}			
+			}
 		}
 
 		// If this returns the name of a NIB file instead of null, a NSDocumentController 
