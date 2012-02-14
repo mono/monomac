@@ -59,10 +59,19 @@
     <Compile Include="history.cs" />
     <Compile Include="MonodocDocumentController.cs" />
     <Compile Include="IndexUpdateManager.cs" />
+    <Compile Include="BookmarkPopover.cs">
+	  <DependentUpon>BookmarkPopover.xib</DependentUpon>
+	</Compile>
+    <Compile Include="BookmarkPopoverController.cs" />
+    <Compile Include="BookmarkPopover.designer.cs">
+      <DependentUpon>BookmarkPopover.xib</DependentUpon>
+    </Compile>
+    <Compile Include="BookmarkManager.cs"/>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MyDocument.xib" xmlns="" />
     <InterfaceDefinition Include="MainMenu.xib" xmlns="" />
+    <InterfaceDefinition Include="BookmarkPopover.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />

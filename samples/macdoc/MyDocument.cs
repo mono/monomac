@@ -8,6 +8,7 @@ using MonoMac.Foundation;
 using MonoMac.WebKit;
 using System.IO;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace macdoc
 {
@@ -17,8 +18,11 @@ namespace macdoc
 		string resourcesPath = NSBundle.MainBundle.ResourceUrl.Path;
 		History history;
 		bool ignoreSelect;
+		
 		string initialLoadFromUrl;
 		Node match;
+		string currentUrl;
+		string currentTitle;
 		
 		SearchableIndex searchIndex;
 		
@@ -67,16 +71,29 @@ namespace macdoc
 		public override void WindowControllerDidLoadNib (NSWindowController windowController)
 		{
 			base.WindowControllerDidLoadNib (windowController);
-		
 			tabSelector.SelectFirst (this);
 			LoadImages ();
 			history = new History (navigationCells);
 			SetupOutline ();
 			SetupSearch ();
+			SetupBookmarks ();
 			webView.DecidePolicyForNavigation += HandleWebViewDecidePolicyForNavigation;
 			webView.FinishedLoad += HandleWebViewFinishedLoad;
 			if (!string.IsNullOrEmpty (initialLoadFromUrl))
 				LoadUrl (initialLoadFromUrl);
+		}
+
+		void HandleAddBookmarkBtnActivated (object sender, EventArgs e)
+		{
+			var title = string.IsNullOrWhiteSpace (currentTitle) ? "No Title" : currentTitle;
+			Console.WriteLine ("Frame element : {0}", title);
+			
+			var entry = new BookmarkManager.Entry () { Name = title, Url = currentUrl, Notes = string.Empty };
+			AppDelegate.BookmarkManager.AddBookmark (entry);
+			var popover = new NSPopover ();
+			popover.Behavior = NSPopoverBehavior.Transient;
+			popover.ContentViewController = new BookmarkPopoverController (popover, entry);
+			popover.Show (new RectangleF (0, 0, 0, 0), addBookmarkBtn, NSRectEdge.MinYEdge);
 		}
 		
 		void SetupOutline ()
@@ -90,6 +107,26 @@ namespace macdoc
 			AppDelegate.IndexUpdateManager.UpdaterChange += ToggleSearchCreationStatus;
 			searchIndex = AppDelegate.Root.GetSearchIndex ();
 			searchResults.Source = new ResultDataSource ();
+		}
+		
+		void SetupBookmarks ()
+		{
+			AppDelegate.BookmarkManager.BookmarkListChanged += (sender, e) => {
+				if (e.WasDeleted)
+					bookmarkSelector.RemoveItem (e.Entry.Name);
+				else
+					bookmarkSelector.AddItem (e.Entry.Name);
+			};
+			addBookmarkBtn.Activated += HandleAddBookmarkBtnActivated;
+			bookmarkSelector.AddItems (AppDelegate.BookmarkManager.GetAllBookmarks ().Select (i => i.Name).ToArray ());
+			bookmarkSelector.Activated += (sender, e) => {
+				var bmarks = AppDelegate.BookmarkManager.GetAllBookmarks ();
+				var index = bookmarkSelector.IndexOfSelectedItem;
+				if (index >= 0 && index < bmarks.Count)
+					LoadUrl (bmarks[index].Url, true);
+				bookmarkSelector.SelectItem (-1);
+			};
+			bookmarkSelector.SelectItem (-1);
 		}
 		
 		void ToggleSearchCreationStatus (object sender, EventArgs e)
@@ -110,7 +147,7 @@ namespace macdoc
 			}
 		}
 		
-		void LoadUrl (string url)
+		void LoadUrl (string url, bool syncTreeView = false)
 		{
 			if (url.StartsWith ("#")){
 				Console.WriteLine ("FIXME: Anchor jump");
@@ -219,6 +256,11 @@ namespace macdoc
 				match = null;
 			}
 			var dom = e.ForFrame.DomDocument;
+			
+			var elements = dom.GetElementsByTagName ("title");
+			if (elements.Count > 0 && !string.IsNullOrWhiteSpace (elements[0].TextContent))
+				currentTitle = elements[0].TextContent.Length > 2 ? elements[0].TextContent.Substring (2) : elements[0].TextContent;
+			
 			var imgs = dom.GetElementsByTagName ("img").Where (node => node.Attributes["src"].Value.StartsWith ("source-id"));
 			byte[] buffer = new byte[4096];
 			

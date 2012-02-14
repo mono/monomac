@@ -60,6 +60,7 @@ namespace macdoc
 				Directory.CreateDirectory (macDocPath);
 			IndexUpdateManager = new IndexUpdateManager (Root.HelpSources.Cast<HelpSource> ().Select (hs => Path.Combine (hs.BaseFilePath, hs.Name + ".zip")).Where (File.Exists),
 			                                             macDocPath);
+			BookmarkManager = new BookmarkManager (macDocPath);
 			
 			// Configure the documentation rendering.
 			SettingsHandler.Settings.EnableEditing = false;
@@ -82,7 +83,12 @@ namespace macdoc
 		
 		public static IndexUpdateManager IndexUpdateManager {
 			get;
-			set;
+			private set;
+		}
+		
+		public static BookmarkManager BookmarkManager {
+			get;
+			private set;
 		}
 		
 		public override void WillFinishLaunching (NSNotification notification)
@@ -125,6 +131,11 @@ namespace macdoc
 		partial void HandlePrint (NSObject sender)
 		{
 			controller.CurrentDocument.PrintDocument (sender);
+		}
+		
+		public override void WillTerminate (NSNotification notification)
+		{
+			BookmarkManager.SaveBookmarks ();
 		}
 	}
 }
