@@ -116,12 +116,21 @@ namespace macdoc
 				Console.WriteLine ("FIXME: Anchor jump");
 				return;
 			}
-			Node node;
-			string res = DocTools.GetHtml (url, null, out node);
-			if (res != null){
-					history.AppendHistory (new LinkPageVisit (this, node.PublicUrl));
-					LoadHtml (res);
-			}
+			Task.Factory.StartNew (() => {
+				Node node;
+				var res = DocTools.GetHtml (url, null, out node);
+				return new { Node = node, Html = res };
+			}).ContinueWith (t => {
+				var node = t.Result.Node;
+				var res = t.Result.Html;
+				BeginInvokeOnMainThread (() => {
+					if (res != null){
+						currentUrl = node.PublicUrl;
+						history.AppendHistory (new LinkPageVisit (this, node.PublicUrl));
+						LoadHtml (res);
+					}
+				});
+			});
 		}
 		
 		void IndexSearch (string text)
