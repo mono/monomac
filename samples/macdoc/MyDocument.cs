@@ -18,6 +18,7 @@ namespace macdoc
 		History history;
 		bool ignoreSelect;
 		string initialLoadFromUrl;
+		Node match;
 		
 		SearchableIndex searchIndex;
 		
@@ -194,13 +195,20 @@ namespace macdoc
 				return;
 			
 			history.AppendHistory (new LinkPageVisit (this, url));
-			LoadHtml (res);	
-			ShowNode (match);
+			LoadHtml (res);
+			// When navigation occurs after a link on search result is clicked
+			// we need to show the panel so that ShowNode work as expected
+			tabSelector.SelectAt (0);
+			this.match = match;
 		}
 		
 		// Because WebView doesn't let me answer a NSUrlRequest myself I have to resort to this piece of crap of a solution
 		void HandleWebViewFinishedLoad (object sender, WebFrameEventArgs e)
 		{
+			if (match != null) {
+				ShowNode (match);
+				match = null;
+			}
 			var dom = e.ForFrame.DomDocument;
 			var imgs = dom.GetElementsByTagName ("img").Where (node => node.Attributes["src"].Value.StartsWith ("source-id"));
 			byte[] buffer = new byte[4096];
