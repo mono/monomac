@@ -312,6 +312,17 @@ namespace macdoc
 		public override string WindowNibName {
 			get { return "MyDocument"; }
 		}
+		
+		public override NSPrintOperation PrintOperation (NSDictionary printSettings, out NSError outError)
+		{
+			outError = null;
+			return webView.MainFrame.FrameView.GetPrintOperation (new NSPrintInfo (printSettings));
+		}
+		
+		public override bool ShouldChangePrintInfo (NSPrintInfo newPrintInfo)
+		{
+			return false;
+		}
 	}
 
 	class LinkPageVisit : PageVisit {

@@ -121,6 +121,11 @@ namespace macdoc
 		}
 		
 		IntPtr selOpenDocumentWithContentsOfURLDisplayError_  = new Selector ("openDocumentWithContentsOfURL:display:error:").Handle;
+		
+		partial void HandlePrint (NSObject sender)
+		{
+			controller.CurrentDocument.PrintDocument (sender);
+		}
 	}
 }
 
