@@ -7778,7 +7778,7 @@ namespace MonoMac.AppKit {
 		NSObject WeakDelegate { get; set; }
 
 		[Wrap ("WeakDelegate")]
-		NSPopoverDelegate Delegat { set; get; }
+		NSPopoverDelegate Delegate { set; get; }
 		
 		[Export ("showRelativeToRect:ofView:preferredEdge:")]
 		void Show (RectangleF relativePositioningRect, NSView positioningView, NSRectEdge preferredEdge);
