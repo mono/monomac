@@ -7,6 +7,7 @@ using MonoMac.AppKit;
 using MonoMac.Foundation;
 using MonoMac.WebKit;
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Drawing;
 
@@ -18,6 +19,8 @@ namespace macdoc
 		string resourcesPath = NSBundle.MainBundle.ResourceUrl.Path;
 		History history;
 		bool ignoreSelect;
+		// This is used if the user click on different urls while some are still loading so that only the most recent content is displayed
+		long loadUrlTimestamp = long.MinValue;
 		
 		string initialLoadFromUrl;
 		Node match;
@@ -152,6 +155,7 @@ namespace macdoc
 				Console.WriteLine ("FIXME: Anchor jump");
 				return;
 			}
+			var ts = Interlocked.Increment (ref loadUrlTimestamp);
 			Task.Factory.StartNew (() => {
 				Node node;
 				var res = DocTools.GetHtml (url, null, out node);
@@ -161,6 +165,8 @@ namespace macdoc
 				var res = t.Result.Html;
 				if (res != null){
 					BeginInvokeOnMainThread (() => {
+						if (ts < loadUrlTimestamp)
+							return;
 						currentUrl = node.PublicUrl;
 						history.AppendHistory (new LinkPageVisit (this, node.PublicUrl));
 						LoadHtml (res);
