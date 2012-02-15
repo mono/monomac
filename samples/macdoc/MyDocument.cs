@@ -113,22 +113,42 @@ namespace macdoc
 		
 		void SetupBookmarks ()
 		{
-			AppDelegate.BookmarkManager.BookmarkListChanged += (sender, e) => {
-				if (e.WasDeleted)
+			var manager = AppDelegate.BookmarkManager;
+			manager.BookmarkListChanged += (sender, e) => {
+				switch (e.EventType) {
+				case BookmarkEventType.Modified:
+					int index = manager.GetAllBookmarks ().IndexOf (e.Entry);
+					var item = bookmarkSelector.ItemAtIndex (index);
+					if (item != null)
+						item.Title = e.Entry.Name;
+					break;
+				case BookmarkEventType.Deleted:
 					bookmarkSelector.RemoveItem (e.Entry.Name);
-				else
+					break;
+				case BookmarkEventType.Added:
 					bookmarkSelector.AddItem (e.Entry.Name);
+					break;
+				}
 			};
 			addBookmarkBtn.Activated += HandleAddBookmarkBtnActivated;
-			bookmarkSelector.AddItems (AppDelegate.BookmarkManager.GetAllBookmarks ().Select (i => i.Name).ToArray ());
+			viewBookmarksBtn.Activated += HandleViewBookmarksBtnActivated;;
+			bookmarkSelector.AddItems (manager.GetAllBookmarks ().Select (i => i.Name).ToArray ());
 			bookmarkSelector.Activated += (sender, e) => {
-				var bmarks = AppDelegate.BookmarkManager.GetAllBookmarks ();
+				var bmarks = manager.GetAllBookmarks ();
 				var index = bookmarkSelector.IndexOfSelectedItem;
 				if (index >= 0 && index < bmarks.Count)
 					LoadUrl (bmarks[index].Url, true);
 				bookmarkSelector.SelectItem (-1);
 			};
 			bookmarkSelector.SelectItem (-1);
+		}
+
+		void HandleViewBookmarksBtnActivated (object sender, EventArgs e)
+		{
+			var popover = new NSPopover ();
+			popover.Behavior = NSPopoverBehavior.Transient;
+			popover.ContentViewController = new BookmarkAssistantController (AppDelegate.BookmarkManager.GetAllBookmarks ());
+			popover.Show (new RectangleF (0, 0, 0, 0), viewBookmarksBtn, NSRectEdge.MinYEdge);
 		}
 		
 		void ToggleSearchCreationStatus (object sender, EventArgs e)

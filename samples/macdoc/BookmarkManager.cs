@@ -5,10 +5,16 @@ using System.Xml.Serialization;
 
 namespace macdoc
 {
+	public enum BookmarkEventType {
+		Added,
+		Deleted,
+		Modified
+	}
+	
 	public class BookmarkManagerEventsArgs : EventArgs
 	{
 		public BookmarkManager.Entry Entry { get; set; }
-		public bool WasDeleted { get; set; }
+		public BookmarkEventType EventType { get; set; }
 	}
 	
 	public class BookmarkManager
@@ -43,14 +49,14 @@ namespace macdoc
 			if (entry == null)
 				throw new ArgumentNullException ("entry");
 			bookmarks.Add (entry);
-			FireChangedEvent (entry, false);
+			FireChangedEvent (entry, BookmarkEventType.Added);
 		}
 		
 		public bool DeleteBookmark (Entry entry)
 		{
 			var result = bookmarks.Remove (entry);
 			if (result)
-				FireChangedEvent (entry, true);
+				FireChangedEvent (entry, BookmarkEventType.Deleted);
 			return result;
 		}
 		
@@ -78,11 +84,16 @@ namespace macdoc
 				serializer.Serialize (file, bookmarks);
 		}
 		
-		void FireChangedEvent (Entry entry, bool wasRemoved)
+		public void CommitBookmarkChange (Entry entry)
+		{
+			FireChangedEvent (entry, BookmarkEventType.Modified);
+		}
+		
+		void FireChangedEvent (Entry entry, BookmarkEventType evtType)
 		{
 			var temp = BookmarkListChanged;
 			if (temp != null)
-				temp (this, new BookmarkManagerEventsArgs () { Entry = entry, WasDeleted = wasRemoved });
+				temp (this, new BookmarkManagerEventsArgs () { Entry = entry, EventType = evtType });
 		}
 	}
 }
