@@ -74,10 +74,8 @@ namespace macdoc
 			indexManager.CheckIndexIsFresh ().ContinueWith (t => { 
 				if (t.IsFaulted)
 					Console.WriteLine (t.Exception);
-				if (!t.Result) { 
-					Console.WriteLine ("Doing a search index creation");
+				else if (!t.Result)
 					indexManager.PerformSearchIndexCreation ();
-				}
 			});
 		}
 		
@@ -93,7 +91,6 @@ namespace macdoc
 		
 		public override void WillFinishLaunching (NSNotification notification)
 		{
-			Console.WriteLine ("Setting up Apple handler");
 			var selector = new MonoMac.ObjCRuntime.Selector ("handleGetURLEvent:withReplyEvent:");
 			NSAppleEventManager.SharedAppleEventManager.SetEventHandler (this,
 			                                                             selector,

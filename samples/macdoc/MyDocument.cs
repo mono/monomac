@@ -86,7 +86,6 @@ namespace macdoc
 		void HandleAddBookmarkBtnActivated (object sender, EventArgs e)
 		{
 			var title = string.IsNullOrWhiteSpace (currentTitle) ? "No Title" : currentTitle;
-			Console.WriteLine ("Frame element : {0}", title);
 			
 			var entry = new BookmarkManager.Entry () { Name = title, Url = currentUrl, Notes = string.Empty };
 			AppDelegate.BookmarkManager.AddBookmark (entry);
@@ -149,7 +148,7 @@ namespace macdoc
 		
 		void LoadUrl (string url, bool syncTreeView = false)
 		{
-			if (url.StartsWith ("#")){
+			if (url.StartsWith ("#")) {
 				Console.WriteLine ("FIXME: Anchor jump");
 				return;
 			}
@@ -186,7 +185,6 @@ namespace macdoc
 				var rs = t.Result;
 				if (rs == null || rs.Count == 0 || text != dataSource.LatestSearchTerm)
 					return;
-				Console.WriteLine ("adding result");
 				dataSource.AddResultSet (rs);
 				searchResults.ReloadData ();
 			}));
@@ -275,7 +273,6 @@ namespace macdoc
 					continue;
 				var length = imgStream.Read (buffer, 0, buffer.Length);
 				var read = length;
-				Console.WriteLine (length);
 				while (read != 0) {
 					if (length == buffer.Length) {
 						var oldBuffer = buffer;
