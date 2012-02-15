@@ -400,6 +400,19 @@ namespace macdoc
 		{
 			return false;
 		}
+		
+		public override void EncodeRestorableState (NSCoder coder)
+		{
+			base.EncodeRestorableState (coder);
+			coder.Encode (new NSString (string.IsNullOrEmpty (currentUrl) ? string.Empty : currentUrl), "monodoc.currentUrl");
+		}
+		
+		public override void RestoreState (NSCoder coder)
+		{
+			NSString url = coder.DecodeObject ("monodoc.currentUrl") as NSString;
+			if (url != null && !string.IsNullOrEmpty (url.ToString ()))
+				LoadUrl (url.ToString (), true);
+		}
 	}
 
 	class LinkPageVisit : PageVisit {
