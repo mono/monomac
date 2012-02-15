@@ -16,6 +16,7 @@ namespace macdoc
 		static public string MonodocDir;
 		static public NSUrl MonodocBaseUrl;
 		static MonodocDocumentController controller;
+		bool shouldOpenInitialFile = true;
 		
 		static void PrepareCache ()
 		{
@@ -102,6 +103,8 @@ namespace macdoc
 		public void HandleGetURLEvent (NSAppleEventDescriptor evt, NSAppleEventDescriptor replyEvt)
 		{
 			NSError error;
+			shouldOpenInitialFile = evt.NumberOfItems == 0;
+			
 			// Received event is a list (1-based) of URL strings
 			for (int i = 1; i <= evt.NumberOfItems; i++) {
 				var innerDesc = evt.DescriptorAtIndex (i);
@@ -109,6 +112,28 @@ namespace macdoc
 				//controller.OpenDocument (new NSUrl (innerDesc.StringValue), i == evt.NumberOfItems, delegate {});
 				Call_OpenDocument (new NSUrl (innerDesc.StringValue), i == evt.NumberOfItems, out error);
 			}
+		}
+		
+		// If the application was launched with an url, we don't open a default window
+		public override bool ApplicationShouldOpenUntitledFile (NSApplication sender)
+		{
+			return shouldOpenInitialFile;
+		}
+		
+		// Prevent new document from being created when already launched
+		public override bool ApplicationShouldHandleReopen (NSApplication sender, bool hasVisibleWindows)
+		{
+			return false;
+		}
+				
+		partial void HandlePrint (NSObject sender)
+		{
+			controller.CurrentDocument.PrintDocument (sender);
+		}
+		
+		public override void WillTerminate (NSNotification notification)
+		{
+			BookmarkManager.SaveBookmarks ();
 		}
 		
 		// We use a working OpenDocument method that doesn't return anything because of MonoMac bug#3380
@@ -124,16 +149,6 @@ namespace macdoc
 		}
 		
 		IntPtr selOpenDocumentWithContentsOfURLDisplayError_  = new Selector ("openDocumentWithContentsOfURL:display:error:").Handle;
-		
-		partial void HandlePrint (NSObject sender)
-		{
-			controller.CurrentDocument.PrintDocument (sender);
-		}
-		
-		public override void WillTerminate (NSNotification notification)
-		{
-			BookmarkManager.SaveBookmarks ();
-		}
 	}
 }
 
