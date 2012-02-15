@@ -65,6 +65,7 @@ namespace macdoc
 			var path = Path.Combine (storagePath, "bookmarks.xml");
 			if (!File.Exists (path)) {
 				bookmarks = new List<Entry> ();
+				readonlyVersion = bookmarks.AsReadOnly ();
 				return false;
 			}
 			using (var file = File.OpenRead (path))
