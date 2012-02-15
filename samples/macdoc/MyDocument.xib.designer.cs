@@ -27,7 +27,10 @@ namespace macdoc
 		MonoMac.AppKit.NSTabView tabSelector { get; set; }
 
 		[Outlet]
-		MonoMac.AppKit.NSButton thebutton { get; set; }
+		MonoMac.AppKit.NSView spinnerView { get; set; }
+
+		[Outlet]
+		MonoMac.AppKit.NSProgressIndicator spinnerWidget { get; set; }
 
 		[Outlet]
 		MonoMac.AppKit.NSButton addBookmarkBtn { get; set; }
