@@ -416,6 +416,9 @@ namespace macdoc
 		
 		public override void RestoreState (NSCoder coder)
 		{
+			base.RestoreState (coder);
+			if (!coder.ContainsKey ("monodoc.currentUrl"))
+				return;
 			NSString url = coder.DecodeObject ("monodoc.currentUrl") as NSString;
 			if (url != null && !string.IsNullOrEmpty (url.ToString ()))
 				LoadUrl (url.ToString (), true);
