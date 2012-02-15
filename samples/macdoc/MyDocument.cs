@@ -201,6 +201,13 @@ namespace macdoc
 		
 		void IndexSearch (string text)
 		{
+			// We may have a null search index if it's the first time the app is launched
+			// In that case try to grab a snapshot and if still nothing exits cleanly
+			if (searchIndex == null) {
+				searchIndex = AppDelegate.Root.GetSearchIndex ();
+				if (searchIndex == null)
+					return;
+			}
 			var dataSource = ((ResultDataSource)searchResults.Source);
 			dataSource.LatestSearchTerm = text;
 			Result results = searchIndex.FastSearch (text, 5);
