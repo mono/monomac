@@ -41,11 +41,29 @@ namespace macdoc
 		[Outlet]
 		MonoMac.AppKit.NSButton viewBookmarksBtn { get; set; }
 
+		[Outlet]
+		MonoMac.AppKit.NSSearchField indexSearchEntry { get; set; }
+
+		[Outlet]
+		MonoMac.AppKit.NSTableView indexResults { get; set; }
+
+		[Outlet]
+		MonoMac.AppKit.NSTableView multipleMatchResults { get; set; }
+
+		[Outlet]
+		MonoMac.AppKit.NSSplitView splitView { get; set; }
+
+		[Action ("MultipleMatchItemClicked:")]
+		partial void MultipleMatchItemClicked (MonoMac.AppKit.NSTableView sender);
+
 		[Action ("IndexItemClicked:")]
 		partial void IndexItemClicked (MonoMac.AppKit.NSTableView sender);
 
 		[Action ("StartSearch:")]
 		partial void StartSearch (MonoMac.AppKit.NSSearchField sender);
+
+		[Action ("StartIndexSearch:")]
+		partial void StartIndexSearch (MonoMac.AppKit.NSSearchField sender);
 		
 		void ReleaseDesignerOutlets ()
 		{
@@ -97,6 +115,26 @@ namespace macdoc
 			if (viewBookmarksBtn != null) {
 				viewBookmarksBtn.Dispose ();
 				viewBookmarksBtn = null;
+			}
+
+			if (indexSearchEntry != null) {
+				indexSearchEntry.Dispose ();
+				indexSearchEntry = null;
+			}
+
+			if (indexResults != null) {
+				indexResults.Dispose ();
+				indexResults = null;
+			}
+
+			if (multipleMatchResults != null) {
+				multipleMatchResults.Dispose ();
+				multipleMatchResults = null;
+			}
+
+			if (splitView != null) {
+				splitView.Dispose ();
+				splitView = null;
 			}
 		}
 	}

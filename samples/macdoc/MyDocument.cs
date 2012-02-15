@@ -28,6 +28,8 @@ namespace macdoc
 		string currentTitle;
 		
 		SearchableIndex searchIndex;
+		IndexSearcher mdocSearch;
+		IndexEntry current_entry;
 		
 		// Called when created from unmanaged code
 		public MyDocument (IntPtr handle) : base(handle)
@@ -82,6 +84,7 @@ namespace macdoc
 			SetupBookmarks ();
 			webView.DecidePolicyForNavigation += HandleWebViewDecidePolicyForNavigation;
 			webView.FinishedLoad += HandleWebViewFinishedLoad;
+			HideMultipleMatches ();
 			if (!string.IsNullOrEmpty (initialLoadFromUrl))
 				LoadUrl (initialLoadFromUrl);
 		}
@@ -107,8 +110,11 @@ namespace macdoc
 		void SetupSearch ()
 		{
 			AppDelegate.IndexUpdateManager.UpdaterChange += ToggleSearchCreationStatus;
-			searchIndex = AppDelegate.Root.GetSearchIndex ();
-			searchResults.Source = new ResultDataSource ();
+			//searchIndex = AppDelegate.Root.GetSearchIndex ();
+			mdocSearch = new IndexSearcher (AppDelegate.Root.GetIndex ());
+			indexResults.Source = new IndexDataSource (mdocSearch);
+			multipleMatchResults.Source = new MultipleMatchDataSource (this);
+			//searchResults.Source = new ResultDataSource ();
 		}
 		
 		void SetupBookmarks ()
@@ -157,14 +163,19 @@ namespace macdoc
 
 			if (!manager.IsCreatingSearchIndex) {
 				InvokeOnMainThread (delegate {
-					spinnerWidget.StopAnimation (this);
+					/*spinnerWidget.StopAnimation (this);
 					spinnerView.Hidden = true;
 					searchIndex = AppDelegate.Root.GetSearchIndex ();
+					*/
+					indexSearchEntry.Enabled = true;
+					mdocSearch.Index = AppDelegate.Root.GetIndex ();
+					indexResults.ReloadData ();
 				});
 			} else {
 				InvokeOnMainThread (delegate {
-					spinnerView.Hidden = false;
-					spinnerWidget.StartAnimation (this);
+					/*spinnerView.Hidden = false;
+					spinnerWidget.StartAnimation (this);*/
+					indexSearchEntry.Enabled = false;
 				});
 			}
 		}
@@ -199,7 +210,7 @@ namespace macdoc
 			});
 		}
 		
-		void IndexSearch (string text)
+		void Search (string text)
 		{
 			// We may have a null search index if it's the first time the app is launched
 			// In that case try to grab a snapshot and if still nothing exits cleanly
@@ -229,12 +240,48 @@ namespace macdoc
 			}
 		}
 		
-		void OnIndexRowSelected (int targetRow)
+		void IndexSearch (string text)
+		{
+			int targetRow = mdocSearch.FindClosest (text);
+			indexResults.SelectRow (targetRow, false);
+			indexResults.ScrollRowToVisible (targetRow);
+
+			OnIndexRowSelected (targetRow);
+		}
+		
+		void OnSearchRowSelected (int targetRow)
 		{
 			var url = ((ResultDataSource)searchResults.Source).GetResultUrl (targetRow);
 			if (url == null)
 				return;
 			LoadUrl (url);
+		}
+		
+		void OnIndexRowSelected (int targetRow)
+		{
+			current_entry = mdocSearch.GetIndexEntry (targetRow);
+			if (current_entry == null)
+				return;
+			multipleMatchResults.ReloadData ();
+			if (current_entry.Count > 1){
+				multipleMatchResults.SelectRow (0, false);
+				multipleMatchResults.ScrollRowToVisible (0);
+				ShowMultipleMatches ();
+			} else {
+				HideMultipleMatches ();
+				LoadUrl (current_entry [0].Url);
+			}
+		}
+		
+		void HideMultipleMatches ()
+		{
+			splitView.SetPositionofDivider (splitView.MaxPositionOfDivider (0), 0);
+		}
+		
+		void ShowMultipleMatches ()
+		{
+			float middle = (splitView.MaxPositionOfDivider (0) - splitView.MinPositionOfDivider (0))/2;
+			splitView.SetPositionofDivider (middle, 0);
 		}
 		
 		// Action: when the user clicks on the index table view
@@ -243,8 +290,36 @@ namespace macdoc
 			OnIndexRowSelected (sender.ClickedRow);
 		}
 		
+		// Action: when the user clicks on the index table view
+		/*partial*/ void SearchItemClicked (NSTableView sender)
+		{
+			OnSearchRowSelected (sender.ClickedRow);
+		}
+		
+		// Action: when the user clicks on the multiple matches table view
+		partial void MultipleMatchItemClicked (NSTableView sender)
+		{
+			string url = null;
+			try {
+				url = current_entry [sender.ClickedRow].Url;
+			} catch {
+				return;
+			}
+			LoadUrl (url);
+		}
+		
 		// Action: when the user starts typing on the toolbar search bar	
 		partial void StartSearch (NSSearchField sender)
+		{
+			var contents = sender.StringValue;
+			if (contents == null || contents == "")
+				return;
+			tabSelector.SelectAt (1);
+			IndexSearch (contents);
+		}
+		
+		// Typing in the index panel
+		partial void StartIndexSearch (NSSearchField sender)
 		{
 			var contents = sender.StringValue;
 			if (contents == null || contents == "")
@@ -423,6 +498,48 @@ namespace macdoc
 			if (url != null && !string.IsNullOrEmpty (url.ToString ()))
 				LoadUrl (url.ToString (), true);
 		}
+		
+		public class MultipleMatchDataSource : NSTableViewSource 
+		{
+			MyDocument doc;
+				
+			public MultipleMatchDataSource (MyDocument doc)
+			{
+				this.doc = doc;
+			}
+				
+			public override int GetRowCount (NSTableView tableView)
+			{
+				if (doc.current_entry == null)
+					return 0;
+				return doc.current_entry.Count;
+			}
+				
+			public override NSObject GetObjectValue (NSTableView tableView, NSTableColumn tableColumn, int row)
+			{
+				Topic topic = doc.current_entry [row];
+				return new NSString (RenderTopicMatch (topic));
+			}
+				
+			// Names from the ECMA provider are somewhat
+			// ambigious (you have like a million ToString
+			// methods), so lets give the user the full name
+			string RenderTopicMatch (Topic t)
+			{
+				// Filter out non-ecma
+				if (t.Url [1] != ':')
+					return t.Caption;
+	
+				switch (t.Url [0]) {
+				case 'C': return t.Url.Substring (2) + " constructor";
+				case 'M': return t.Url.Substring (2) + " method";
+				case 'P': return t.Url.Substring (2) + " property";
+				case 'F': return t.Url.Substring (2) + " field";
+				case 'E': return t.Url.Substring (2) + " event";
+				}
+				return t.Caption;
+			}
+		}
 	}
 
 	class LinkPageVisit : PageVisit {
@@ -516,25 +633,23 @@ namespace macdoc
 	// Data source for rendering the index
 	//
 	public class IndexDataSource : NSTableViewSource {
-		RootTree Root = AppDelegate.Root;
-		IndexReader index_reader;
+		IndexSearcher searcher;
 		
-		public IndexDataSource ()
+		public IndexDataSource (IndexSearcher searcher)
 		{
-			index_reader = Root.GetIndex ();
-			
+			this.searcher = searcher;
 		}
 		
 		public override int GetRowCount (NSTableView tableView)
 		{
-			if (index_reader == null)
+			if (searcher.Index == null)
 				return 0;
-			return index_reader.Rows;
+			return searcher.Index.Rows;
 		}
 		
 		public override NSObject GetObjectValue (NSTableView tableView, NSTableColumn tableColumn, int row)
 		{
-			return new NSString (index_reader.GetValue (row));
+			return new NSString (searcher.Index.GetValue (row));
 		}
 	}
 	

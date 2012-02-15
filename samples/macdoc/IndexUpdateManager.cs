@@ -82,6 +82,7 @@ namespace macdoc
 		public void PerformSearchIndexCreation ()
 		{
 			FireSearchIndexCreationEvent (true);
+			RootTree.MakeIndex ();
 			RootTree.MakeSearchIndex ();
 			FireSearchIndexCreationEvent (false);
 		}
