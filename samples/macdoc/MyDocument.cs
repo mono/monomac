@@ -611,6 +611,9 @@ namespace macdoc
 		
 		public string GetResultUrl (int row)
 		{
+			if (data == null || row >= data.Count || row < 0)
+				return null;
+			
 			var resultEntry = data[row];
 			return resultEntry.ResultSet == null ? null : resultEntry.ResultSet.GetUrl (resultEntry.Index);
 		}
