@@ -207,9 +207,9 @@ namespace macdoc
 					BeginInvokeOnMainThread (() => {
 						if (ts < loadUrlTimestamp)
 							return;
-						currentUrl = node.PublicUrl;
+						currentUrl = node == null ? url : node.PublicUrl;
 						if (addToHistory)
-							history.AppendHistory (new LinkPageVisit (this, node.PublicUrl));
+							history.AppendHistory (new LinkPageVisit (this, currentUrl));
 						LoadHtml (res);
 						if (syncTreeView) {
 							// When navigation occurs after a link on search result is clicked
