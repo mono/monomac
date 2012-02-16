@@ -663,7 +663,11 @@ namespace macdoc
 			normalCell = new NSTextFieldCell ();
 			
 			headerCell = new NSTextFieldCell ();
-			headerCell.TextColor = NSColor.Gray;
+			headerCell.BackgroundColor = NSColor.ControlShadow;
+			headerCell.BackgroundStyle = NSBackgroundStyle.Dark;
+			headerCell.Bezeled = false;
+			headerCell.DrawsBackground = true;
+			headerCell.TextColor = NSColor.ControlLightHighlight;
 			headerCell.Alignment = NSTextAlignment.Center;
 			headerCell.Selectable = false;
 			headerCell.Editable = false;
