@@ -68,7 +68,7 @@ namespace macdoc
 			}
 			
 			// ResourceSpecifier is e.g. "//T:System.String"
-			initialLoadFromUrl = url.ResourceSpecifier.Substring (2);
+			initialLoadFromUrl = Uri.UnescapeDataString (url.ResourceSpecifier.Substring (2));
 			this.FileUrl = url;
 			
 			return true;
