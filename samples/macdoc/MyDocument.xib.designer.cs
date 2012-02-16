@@ -4,7 +4,9 @@
 // actions made in the Xcode designer. If it is removed, they will be lost.
 // Manual changes to this file may not be handled correctly.
 //
+using MonoMac.AppKit;
 using MonoMac.Foundation;
+using MonoMac.WebKit;
 
 namespace macdoc
 {
@@ -12,58 +14,61 @@ namespace macdoc
 	partial class MyDocument
 	{
 		[Outlet]
-		MonoMac.AppKit.NSSegmentedCell navigationCells { get; set; }
+		NSSegmentedCell navigationCells { get; set; }
 
 		[Outlet]
-		MonoMac.AppKit.NSOutlineView outlineView { get; set; }
+		NSOutlineView outlineView { get; set; }
 
 		[Outlet]
-		MonoMac.AppKit.NSTableView searchResults { get; set; }
+		NSTableView searchResults { get; set; }
 
 		[Outlet]
-		MonoMac.WebKit.WebView webView { get; set; }
+		WebView webView { get; set; }
 
 		[Outlet]
-		MonoMac.AppKit.NSTabView tabSelector { get; set; }
+		NSTabView tabSelector { get; set; }
 
 		[Outlet]
-		MonoMac.AppKit.NSView spinnerView { get; set; }
+		NSView spinnerView { get; set; }
 
 		[Outlet]
-		MonoMac.AppKit.NSProgressIndicator spinnerWidget { get; set; }
+		NSProgressIndicator spinnerWidget { get; set; }
 
 		[Outlet]
-		MonoMac.AppKit.NSButton addBookmarkBtn { get; set; }
+		NSButton addBookmarkBtn { get; set; }
 
 		[Outlet]
-		MonoMac.AppKit.NSPopUpButton bookmarkSelector { get; set; }
+		NSPopUpButton bookmarkSelector { get; set; }
 
 		[Outlet]
-		MonoMac.AppKit.NSButton viewBookmarksBtn { get; set; }
+		NSButton viewBookmarksBtn { get; set; }
 
 		[Outlet]
-		MonoMac.AppKit.NSSearchField indexSearchEntry { get; set; }
+		NSSplitView splitView { get; set; }
 
 		[Outlet]
-		MonoMac.AppKit.NSTableView indexResults { get; set; }
+		NSTableView multipleMatchResults { get; set; }
 
 		[Outlet]
-		MonoMac.AppKit.NSTableView multipleMatchResults { get; set; }
+		NSTableView indexResults { get; set; }
 
 		[Outlet]
-		MonoMac.AppKit.NSSplitView splitView { get; set; }
-
-		[Action ("MultipleMatchItemClicked:")]
-		partial void MultipleMatchItemClicked (MonoMac.AppKit.NSTableView sender);
+		NSSearchField indexSearchEntry { get; set; }
 
 		[Action ("IndexItemClicked:")]
-		partial void IndexItemClicked (MonoMac.AppKit.NSTableView sender);
+		partial void IndexItemClicked (NSTableView sender);
 
 		[Action ("StartSearch:")]
-		partial void StartSearch (MonoMac.AppKit.NSSearchField sender);
+		partial void StartSearch (NSSearchField sender);
+
+		[Action ("MultipleMatchItemClicked:")]
+		partial void MultipleMatchItemClicked (NSTableView sender);
+
+		[Action ("SearchItemClicked:")]
+		partial void SearchItemClicked (NSTableView sender);
 
 		[Action ("StartIndexSearch:")]
-		partial void StartIndexSearch (MonoMac.AppKit.NSSearchField sender);
+		partial void StartIndexSearch (NSSearchField sender);
 		
 		void ReleaseDesignerOutlets ()
 		{
@@ -117,14 +122,9 @@ namespace macdoc
 				viewBookmarksBtn = null;
 			}
 
-			if (indexSearchEntry != null) {
-				indexSearchEntry.Dispose ();
-				indexSearchEntry = null;
-			}
-
-			if (indexResults != null) {
-				indexResults.Dispose ();
-				indexResults = null;
+			if (splitView != null) {
+				splitView.Dispose ();
+				splitView = null;
 			}
 
 			if (multipleMatchResults != null) {
@@ -132,9 +132,14 @@ namespace macdoc
 				multipleMatchResults = null;
 			}
 
-			if (splitView != null) {
-				splitView.Dispose ();
-				splitView = null;
+			if (indexResults != null) {
+				indexResults.Dispose ();
+				indexResults = null;
+			}
+
+			if (indexSearchEntry != null) {
+				indexSearchEntry.Dispose ();
+				indexSearchEntry = null;
 			}
 		}
 	}

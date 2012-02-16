@@ -110,11 +110,11 @@ namespace macdoc
 		void SetupSearch ()
 		{
 			AppDelegate.IndexUpdateManager.UpdaterChange += ToggleSearchCreationStatus;
-			//searchIndex = AppDelegate.Root.GetSearchIndex ();
+			searchIndex = AppDelegate.Root.GetSearchIndex ();
 			mdocSearch = new IndexSearcher (AppDelegate.Root.GetIndex ());
 			indexResults.Source = new IndexDataSource (mdocSearch);
 			multipleMatchResults.Source = new MultipleMatchDataSource (this);
-			//searchResults.Source = new ResultDataSource ();
+			searchResults.Source = new ResultDataSource ();
 		}
 		
 		void SetupBookmarks ()
@@ -163,18 +163,17 @@ namespace macdoc
 
 			if (!manager.IsCreatingSearchIndex) {
 				InvokeOnMainThread (delegate {
-					/*spinnerWidget.StopAnimation (this);
+					spinnerWidget.StopAnimation (this);
 					spinnerView.Hidden = true;
 					searchIndex = AppDelegate.Root.GetSearchIndex ();
-					*/
 					indexSearchEntry.Enabled = true;
 					mdocSearch.Index = AppDelegate.Root.GetIndex ();
 					indexResults.ReloadData ();
 				});
 			} else {
 				InvokeOnMainThread (delegate {
-					/*spinnerView.Hidden = false;
-					spinnerWidget.StartAnimation (this);*/
+					spinnerView.Hidden = false;
+					spinnerWidget.StartAnimation (this);
 					indexSearchEntry.Enabled = false;
 				});
 			}
@@ -236,7 +235,7 @@ namespace macdoc
 			if (results.Count > 0) {
 				searchResults.SelectRow (1, false);
 				searchResults.ScrollRowToVisible (0);
-				OnIndexRowSelected (1);
+				OnSearchRowSelected (1);
 			}
 		}
 		
@@ -291,7 +290,7 @@ namespace macdoc
 		}
 		
 		// Action: when the user clicks on the index table view
-		/*partial*/ void SearchItemClicked (NSTableView sender)
+		partial void SearchItemClicked (NSTableView sender)
 		{
 			OnSearchRowSelected (sender.ClickedRow);
 		}
@@ -314,8 +313,8 @@ namespace macdoc
 			var contents = sender.StringValue;
 			if (contents == null || contents == "")
 				return;
-			tabSelector.SelectAt (1);
-			IndexSearch (contents);
+			tabSelector.SelectAt (2);
+			Search (contents);
 		}
 		
 		// Typing in the index panel
