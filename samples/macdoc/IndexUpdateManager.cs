@@ -30,13 +30,21 @@ namespace macdoc
 				Dictionary<string, string> md5sums = null;
 				var path = Path.Combine (baseUserDir, "index_freshness");
 				
-				if (File.Exists (path)) {
-					try {
-						md5sums = DeserializeDictionary (path);
-					} catch {}
-				}
-				if (md5sums == null)
+				// Two cases can trigger index creation/re-creation:
+				//   1- there is no search_index folder or no monodoc.index file (i.e. GetIndex or GetSearchIndex returns null)
+				//   2- one of the doc source we use is stale
+				if (AppDelegate.Root.GetIndex () == null || AppDelegate.Root.GetSearchIndex () == null) {
+					// force stale state
 					md5sums = new Dictionary<string, string> ();
+				} else {
+					if (File.Exists (path)) {
+						try {
+							md5sums = DeserializeDictionary (path);
+						} catch {}
+					}
+					if (md5sums == null)
+						md5sums = new Dictionary<string, string> ();
+				}
 				
 				bool isFresh = true;
 				HashAlgorithm hasher = MD5.Create ();
