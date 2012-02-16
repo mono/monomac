@@ -31,7 +31,8 @@ namespace macdoc
 		public void PostInitialization ()
 		{
 			nameField.StringValue = Name ?? string.Empty;
-			notesField.PlaceholderString = "You can add additional notes to this bookmark if you wish";
+			notesField.PlaceholderString = "You can add additional notes to this bookmark";
+			notesField.LineBreakMode = NSLineBreakMode.TruncatingTail;
 			doneButton.Activated += (sender, e) => Done (this, new BookmarkEventArgs () { Name = nameField.StringValue, Notes = notesField.StringValue });
 			deleteButton.Activated += (sender, e) => Delete (this, EventArgs.Empty);
 		}
