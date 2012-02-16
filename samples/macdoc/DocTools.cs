@@ -24,7 +24,8 @@ namespace macdoc
 				htmlContent = helpSource.GetText (url, out match);
 			if (htmlContent == null){
 				// the displayed url have a lower case type code (e.g. t: instead of T:) which confuse monodoc
-				url = char.ToUpperInvariant (url[0]) + url.Substring (1);
+				if (url.Length > 2 && url[1] == ':')
+					url = char.ToUpperInvariant (url[0]) + url.Substring (1);
 				htmlContent = AppDelegate.Root.RenderUrl (url, out match);
 				if (htmlContent != null && match != null && match.tree != null){
 					helpSource = match.tree.HelpSource;
