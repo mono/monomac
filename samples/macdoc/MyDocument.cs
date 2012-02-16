@@ -131,6 +131,12 @@ namespace macdoc
 		
 		void SetupBookmarks ()
 		{
+			addBookmarkBtn.Hidden = true;
+			
+			viewBookmarksBtn.Hidden = true;
+			bookmarkSelector.Hidden = true;
+			return;
+			
 			var manager = AppDelegate.BookmarkManager;
 			manager.BookmarkListChanged += (sender, e) => {
 				switch (e.EventType) {
