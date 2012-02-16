@@ -182,7 +182,7 @@ namespace macdoc
 			}
 		}
 		
-		public void LoadUrl (string url, bool syncTreeView = false, HelpSource source = null)
+		internal void LoadUrl (string url, bool syncTreeView = false, HelpSource source = null, bool addToHistory = true)
 		{
 			if (url.StartsWith ("#")) {
 				Console.WriteLine ("FIXME: Anchor jump");
@@ -201,7 +201,8 @@ namespace macdoc
 						if (ts < loadUrlTimestamp)
 							return;
 						currentUrl = node.PublicUrl;
-						history.AppendHistory (new LinkPageVisit (this, node.PublicUrl));
+						if (addToHistory)
+							history.AppendHistory (new LinkPageVisit (this, node.PublicUrl));
 						LoadHtml (res);
 						if (syncTreeView) {
 							// When navigation occurs after a link on search result is clicked
@@ -545,7 +546,7 @@ namespace macdoc
 		
 		public override void Go ()
 		{
-			document.LoadUrl (url, true);
+			document.LoadUrl (url, true, null, false);
 		}
 	}
 	
