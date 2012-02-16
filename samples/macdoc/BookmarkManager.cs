@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Linq;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 
@@ -48,8 +49,21 @@ namespace macdoc
 		{
 			if (entry == null)
 				throw new ArgumentNullException ("entry");
+			RenameIfDuplicated (entry);
 			bookmarks.Add (entry);
 			FireChangedEvent (entry, BookmarkEventType.Added);
+		}
+		
+		void RenameIfDuplicated (Entry entry)
+		{
+			var duplicatedNames = new HashSet<string> (bookmarks.Where (b => b != entry && b.Name.StartsWith (entry.Name)).Select (b => b.Name));
+			if (duplicatedNames.Count == 0)
+				return;
+			var nameTry = entry.Name;
+			var suffixCount = 1;
+			while (duplicatedNames.Contains (nameTry))
+				nameTry = entry.Name + '_' + (suffixCount++);
+			entry.Name = nameTry;
 		}
 		
 		public bool DeleteBookmark (Entry entry)
@@ -87,6 +101,7 @@ namespace macdoc
 		
 		public void CommitBookmarkChange (Entry entry)
 		{
+			RenameIfDuplicated (entry);
 			FireChangedEvent (entry, BookmarkEventType.Modified);
 		}
 		
