@@ -74,6 +74,9 @@ namespace macdoc
 			return true;
 		}
 		
+		// Temporary: if we don't ship with the search tab we don't show it and store it here
+		NSTabViewItem searchTab;
+		
 		public override void WindowControllerDidLoadNib (NSWindowController windowController)
 		{
 			base.WindowControllerDidLoadNib (windowController);
@@ -86,6 +89,10 @@ namespace macdoc
 			webView.DecidePolicyForNavigation += HandleWebViewDecidePolicyForNavigation;
 			webView.FinishedLoad += HandleWebViewFinishedLoad;
 			HideMultipleMatches ();
+			if (string.IsNullOrEmpty (Environment.GetEnvironmentVariable ("MACDOC_SEARCH"))) {
+				searchTab = tabSelector.Item (2);
+				tabSelector.Remove (searchTab);
+			}
 			if (!string.IsNullOrEmpty (initialLoadFromUrl))
 				LoadUrl (initialLoadFromUrl);
 		}
@@ -323,6 +330,11 @@ namespace macdoc
 		// Action: when the user starts typing on the toolbar search bar	
 		partial void StartSearch (NSSearchField sender)
 		{
+			// If we don't display search tab, we redirect search to index
+			if (tabSelector.Items.Length != 3) {
+				StartIndexSearch (sender);
+				return;
+			}
 			var contents = sender.StringValue;
 			if (contents == null || contents == "")
 				return;
