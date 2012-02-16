@@ -26,6 +26,7 @@ namespace macdoc
 		Node match;
 		string currentUrl;
 		string currentTitle;
+		int currentBookmarkIndex;
 		
 		SearchableIndex searchIndex;
 		IndexSearcher mdocSearch;
@@ -133,6 +134,7 @@ namespace macdoc
 					break;
 				case BookmarkEventType.Added:
 					bookmarkSelector.AddItem (e.Entry.Name);
+					bookmarkSelector.SelectItem (e.Entry.Name);
 					break;
 				}
 			};
@@ -142,9 +144,10 @@ namespace macdoc
 			bookmarkSelector.Activated += (sender, e) => {
 				var bmarks = manager.GetAllBookmarks ();
 				var index = bookmarkSelector.IndexOfSelectedItem;
-				if (index >= 0 && index < bmarks.Count)
+				if (index >= 0 && index < bmarks.Count) {
+					currentBookmarkIndex = index;
 					LoadUrl (bmarks[index].Url, true);
-				bookmarkSelector.SelectItem (-1);
+				}
 			};
 			bookmarkSelector.SelectItem (-1);
 		}
@@ -205,6 +208,13 @@ namespace macdoc
 							// we need to show the panel so that ShowNode work as expected
 							tabSelector.SelectAt (0);
 							this.match = node;
+						}
+						// Bookmark spinner management
+						if (currentBookmarkIndex != -1) {
+							bookmarkSelector.SelectItem (currentBookmarkIndex);
+							currentBookmarkIndex = -1;
+						} else {
+						    bookmarkSelector.SelectItem (-1);
 						}
 					});
 				}
