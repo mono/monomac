@@ -179,7 +179,7 @@ namespace macdoc
 			}
 		}
 		
-		void LoadUrl (string url, bool syncTreeView = false)
+		public void LoadUrl (string url, bool syncTreeView = false, HelpSource source = null)
 		{
 			if (url.StartsWith ("#")) {
 				Console.WriteLine ("FIXME: Anchor jump");
@@ -188,7 +188,7 @@ namespace macdoc
 			var ts = Interlocked.Increment (ref loadUrlTimestamp);
 			Task.Factory.StartNew (() => {
 				Node node;
-				var res = DocTools.GetHtml (url, null, out node);
+				var res = DocTools.GetHtml (url, source, out node);
 				return new { Node = node, Html = res };
 			}).ContinueWith (t => {
 				var node = t.Result.Node;
@@ -201,6 +201,8 @@ namespace macdoc
 						history.AppendHistory (new LinkPageVisit (this, node.PublicUrl));
 						LoadHtml (res);
 						if (syncTreeView) {
+							// When navigation occurs after a link on search result is clicked
+							// we need to show the panel so that ShowNode work as expected
 							tabSelector.SelectAt (0);
 							this.match = node;
 						}
@@ -343,21 +345,10 @@ namespace macdoc
 				return;
 			}
 			
-			Node match;
 			WebView.DecideIgnore (e.DecisionToken);
-			var res = DocTools.GetHtml (url, null, out match);
-			if (res == null)
-				return;
-			
-			history.AppendHistory (new LinkPageVisit (this, url));
-			LoadHtml (res);
-			// When navigation occurs after a link on search result is clicked
-			// we need to show the panel so that ShowNode work as expected
-			tabSelector.SelectAt (0);
-			this.match = match;
+			LoadUrl (url, true);
 		}
 		
-		// Because WebView doesn't let me answer a NSUrlRequest myself I have to resort to this piece of crap of a solution
 		void HandleWebViewFinishedLoad (object sender, WebFrameEventArgs e)
 		{
 			if (match != null) {
@@ -366,10 +357,13 @@ namespace macdoc
 			}
 			var dom = e.ForFrame.DomDocument;
 			
+			// Update the title of the current page
 			var elements = dom.GetElementsByTagName ("title");
 			if (elements.Count > 0 && !string.IsNullOrWhiteSpace (elements[0].TextContent))
 				currentTitle = elements[0].TextContent.Length > 2 ? elements[0].TextContent.Substring (2) : elements[0].TextContent;
 			
+			// Process embedded images coming from doc source
+			// Because WebView doesn't let me answer a NSUrlRequest myself I have to resort to this piece of crap of a solution
 			var imgs = dom.GetElementsByTagName ("img").Where (node => node.Attributes["src"].Value.StartsWith ("source-id"));
 			byte[] buffer = new byte[4096];
 			
@@ -396,15 +390,10 @@ namespace macdoc
 		}
 		
 		bool LoadingFromString;
-		public void LoadHtml (string html)
+		void LoadHtml (string html)
 		{
 			LoadingFromString = true;
 			webView.MainFrame.LoadHtmlString (html, AppDelegate.MonodocBaseUrl);
-#if debug_html
-			using (var x = System.IO.File.CreateText (AppDelegate.MonodocDir + "/foo.html")){
-				x.Write (html);
-			}
-#endif
 			LoadingFromString = false;
 		}
 		
@@ -454,14 +443,7 @@ namespace macdoc
 					return;
 				
 				var node = WrapNode.FromObject (parent.outlineView.ItemAtRow ((int) indexes.FirstIndex));
-				string html = DocTools.GetHtml (node.PublicUrl, node.tree.HelpSource);
-				if (html != null){
-					parent.history.AppendHistory (new LinkPageVisit (parent, node.PublicUrl));
-					parent.LoadHtml (html);
-					return;
-				}
-				
-				parent.LoadHtml ("<html><body>do we really need anything else: " + node.PublicUrl);
+				parent.LoadUrl (node.PublicUrl, false, node.tree.HelpSource);
 			}
 		}
 
@@ -553,10 +535,7 @@ namespace macdoc
 		
 		public override void Go ()
 		{
-			Node match;
-			string res =  DocTools.GetHtml (url, null, out match);
-			document.LoadHtml (res);
-			document.ShowNode (match);
+			document.LoadUrl (url, true);
 		}
 	}
 	
