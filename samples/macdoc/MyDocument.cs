@@ -99,6 +99,10 @@ namespace macdoc
 
 		void HandleAddBookmarkBtnActivated (object sender, EventArgs e)
 		{
+			if (!AppDelegate.IsOnLion) {
+				ShowNonLionAlert ();
+				return;
+			}
 			var title = string.IsNullOrWhiteSpace (currentTitle) ? "No Title" : currentTitle;
 			
 			var entry = new BookmarkManager.Entry () { Name = title, Url = currentUrl, Notes = string.Empty };
@@ -161,6 +165,10 @@ namespace macdoc
 
 		void HandleViewBookmarksBtnActivated (object sender, EventArgs e)
 		{
+			if (!AppDelegate.IsOnLion) {
+				ShowNonLionAlert ();
+				return;
+			}
 			var popover = new NSPopover ();
 			popover.Behavior = NSPopoverBehavior.Transient;
 			popover.ContentViewController = new BookmarkAssistantController (AppDelegate.BookmarkManager.GetAllBookmarks ());
@@ -543,6 +551,12 @@ namespace macdoc
 				}
 				return t.Caption;
 			}
+		}
+		
+		void ShowNonLionAlert ()
+		{
+			var alert = NSAlert.WithMessage ("Sorry", null, null, null, "The bookmark feature requires Lion specific controls that are not available on your Mac OS X version");
+			alert.RunModal ();
 		}
 	}
 }

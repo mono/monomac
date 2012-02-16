@@ -16,6 +16,8 @@ namespace macdoc
 		static public string MonodocDir;
 		static public NSUrl MonodocBaseUrl;
 		static MonodocDocumentController controller;
+		static bool isOnLion = false;
+		
 		bool shouldOpenInitialFile = true;
 		
 		static void PrepareCache ()
@@ -53,6 +55,12 @@ namespace macdoc
 			ExtractImages ();
 			controller = new MonodocDocumentController ();
 			
+			// Some UI feature we use rely on Lion, so special case it
+			try {
+				var version = new NSDictionary ("/System/Library/CoreServices/SystemVersion.plist");
+				isOnLion = version.ObjectForKey (new NSString ("ProductVersion")).ToString ().StartsWith ("10.7");
+			} catch {}
+			
 			// Load documentation
 			Root = RootTree.LoadTree (null);
 			
@@ -88,6 +96,12 @@ namespace macdoc
 		public static BookmarkManager BookmarkManager {
 			get;
 			private set;
+		}
+		
+		public static bool IsOnLion {
+			get {
+				return isOnLion;
+			}
 		}
 		
 		public override void WillFinishLaunching (NSNotification notification)
