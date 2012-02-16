@@ -656,23 +656,17 @@ namespace macdoc
 		List<ResultDataEntry> data = new List<ResultDataEntry> ();
 		
 		NSTextFieldCell normalCell;
-		NSTextFieldCell headerCell;
+		NSTableHeaderCell headerCell;
 		
 		public ResultDataSource ()
 		{
 			normalCell = new NSTextFieldCell ();
 			
-			headerCell = new NSTextFieldCell ();
-			headerCell.BackgroundColor = NSColor.ControlShadow;
-			headerCell.BackgroundStyle = NSBackgroundStyle.Dark;
-			headerCell.Bezeled = false;
-			headerCell.DrawsBackground = true;
-			headerCell.TextColor = NSColor.ControlLightHighlight;
-			headerCell.Alignment = NSTextAlignment.Center;
-			headerCell.Selectable = false;
-			headerCell.Editable = false;
-			headerCell.FocusRingType = NSFocusRingType.None;
+			headerCell = new NSTableHeaderCell ();
 			headerCell.LineBreakMode = NSLineBreakMode.TruncatingMiddle;
+			headerCell.FocusRingType = NSFocusRingType.None;
+			headerCell.Editable = false;
+			headerCell.Selectable = false;
 		}
 		
 		public void AddResultSet (Result result)
