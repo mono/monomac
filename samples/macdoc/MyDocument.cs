@@ -74,9 +74,6 @@ namespace macdoc
 			return true;
 		}
 		
-		// Temporary: if we don't ship with the search tab we don't show it and store it here
-		NSTabViewItem searchTab;
-		
 		public override void WindowControllerDidLoadNib (NSWindowController windowController)
 		{
 			base.WindowControllerDidLoadNib (windowController);
