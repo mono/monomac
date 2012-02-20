@@ -10572,7 +10572,7 @@ namespace MonoMac.AppKit {
 		[Export ("editable")]
 		bool Editable { [Bind ("isEditable")]get; set; }
 	
-		[Export ("sortDescriptorPrototype")]
+		[Export ("sortDescriptorPrototype"), NullAllowed]
 		NSSortDescriptor SortDescriptorPrototype { get; set; }
 	
 		[Export ("resizingMask")]
