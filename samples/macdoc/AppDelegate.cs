@@ -6,6 +6,7 @@ using MonoMac.AppKit;
 using MonoMac.ObjCRuntime;
 using Monodoc;
 using System.IO;
+using System.Threading.Tasks;
 using System.Runtime.InteropServices;
 
 namespace macdoc
@@ -70,6 +71,7 @@ namespace macdoc
 			IndexUpdateManager = new IndexUpdateManager (Root.HelpSources.Cast<HelpSource> ().Select (hs => Path.Combine (hs.BaseFilePath, hs.Name + ".zip")).Where (File.Exists),
 			                                             macDocPath);
 			BookmarkManager = new BookmarkManager (macDocPath);
+			AppleDocHandler = new AppleDocHandler ();
 			
 			// Configure the documentation rendering.
 			SettingsHandler.Settings.EnableEditing = false;
@@ -86,6 +88,14 @@ namespace macdoc
 				else if (!t.Result)
 					indexManager.PerformSearchIndexCreation ();
 			});
+			// Check if there is a MonoTouch documentation installed and launch accordingly
+			if (Root.HelpSources.Cast<HelpSource> ().Any (hs => hs.Name.StartsWith ("MonoTouch", StringComparison.InvariantCultureIgnoreCase))) {
+				Task.Factory.StartNew (() => {
+					AppleDocHandler.AppleDocInformation infos;
+					if (AppleDocHandler.CheckAppleDocFreshness (AppleDocHandler.IosAtomFeed, out infos) || AppleDocHandler.CheckMergedDocumentationFreshness (infos))
+					    RootLauncher.LaunchExternalTool (Path.Combine (Path.GetDirectoryName (NSBundle.MainBundle.ExecutablePath), "AppleDocWizard.sh"));
+				});
+			}
 		}
 		
 		public static IndexUpdateManager IndexUpdateManager {
@@ -94,6 +104,11 @@ namespace macdoc
 		}
 		
 		public static BookmarkManager BookmarkManager {
+			get;
+			private set;
+		}
+		
+		public static AppleDocHandler AppleDocHandler {
 			get;
 			private set;
 		}
