@@ -1661,4 +1661,18 @@ namespace MonoMac.AppKit {
 		Default = 0, None = 2, DocumentWindow, UtilityWindow, AlertPanel
 	}
 
+	[Flags]
+	public enum NSFontPanelMode {
+		NSFontPanelFaceModeMask = 1 << 0,
+		NSFontPanelSizeModeMask = 1 << 1,
+		NSFontPanelCollectionModeMask = 1 << 2,
+		NSFontPanelUnderlineEffectModeMask = 1<<8,
+		NSFontPanelStrikethroughEffectModeMask = 1<<9,
+		NSFontPanelTextColorEffectModeMask = 1<< 10,
+		NSFontPanelDocumentColorEffectModeMask = 1<<11,
+		NSFontPanelShadowEffectModeMask = 1<<12,
+		NSFontPanelAllEffectsModeMask = 0XFFF00,
+		NSFontPanelStandardModesMask = 0xFFFF,
+		NSFontPanelAllModesMask = unchecked( (int)0xFFFFFFFF )
+	};
 } 
