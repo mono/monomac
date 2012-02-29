@@ -5875,7 +5875,7 @@ namespace MonoMac.AppKit {
 	
 	[BaseType (typeof (NSTableView))]
 	public interface NSOutlineView {
-		[Export ("outlineTableColumn")]
+		[Export ("outlineTableColumn"), NullAllowed]
 		NSTableColumn OutlineTableColumn { get; set; }
 
 		[Export ("isExpandable:")]
