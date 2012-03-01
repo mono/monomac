@@ -53,5 +53,6 @@ namespace MonoMac {
 		public const string CoreImageLibrary = "/System/Library/Frameworks/CoreImage.framework/CoreImage";
 		public const string CFNetworkLibrary = "/System/Library/Frameworks/CoreServices.framework/Frameworks/CFNetwork.framework/CFNetwork";
 		public const string CoreMidiLibrary = "/System/Library/Frameworks/CoreMIDI.framework/CoreMIDI";
+		public const string QuickLookLibrary = "/System/Library//Frameworks/QuickLook.framework/QuickLook";
         }
 }
