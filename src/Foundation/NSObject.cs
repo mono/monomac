@@ -300,10 +300,9 @@ namespace MonoMac.Foundation {
 
 		public void BeginInvokeOnMainThread (NSAction action)
 		{
-			var d = new NSActionDispatcher (action);
+			var d = new NSAsyncActionDispatcher (action);
 			Messaging.void_objc_msgSend_intptr_intptr_bool (d.Handle, selPerformSelectorOnMainThreadWithObjectWaitUntilDone, 
 					NSActionDispatcher.Selector.Handle, d.Handle, false);
-			GC.KeepAlive (d);
 		}
 
 		public void InvokeOnMainThread (NSAction action)
