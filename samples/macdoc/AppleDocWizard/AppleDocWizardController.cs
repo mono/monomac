@@ -13,7 +13,8 @@ namespace macdoc
 		enum FinishState {
 			NothingToDo,
 			Processed,
-			Canceled
+			Canceled,
+			Error
 		}
 		
 		CancellationTokenSource source = new CancellationTokenSource ();
@@ -54,7 +55,12 @@ namespace macdoc
 					handler.AdvertiseEarlyFinish ();
 					ShowAlert (FinishState.NothingToDo);
 				}
-			});
+			}).ContinueWith (t => {
+				Console.WriteLine ("Exception occured during doc process");
+				Console.WriteLine ();
+				Console.WriteLine (t.Exception.ToString ());
+				ShowAlert (FinishState.Error);
+			}, TaskContinuationOptions.OnlyOnFaulted);
 		}
 		
 		void ShowAlert (FinishState finishState)
@@ -72,7 +78,11 @@ namespace macdoc
 					break;
 				case FinishState.Canceled:
 					alert.MessageText = "Canceled";
-					alert.MessageText = "The update operation was canceled";
+					alert.InformativeText = "The update operation was canceled";
+					break;
+				case FinishState.Error:
+					alert.MessageText = "An error occured";
+					alert.InformativeText = "A fatal error occured during one of the documentation installer step";
 					break;
 				}
 				
