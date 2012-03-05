@@ -21,7 +21,7 @@ namespace macdoc
 	{
 		public ProcessStage Stage { get; set; }
 		public int Percentage { get; set; } // Used during Downloading stage, a value of -1 indicates the stage just started
-		public string CurrentFile { get; set; } // User during Extracting stage, a value of null indicates the stage just started
+		public string CurrentFile { get; set; } // User during Extracting/Merging stage, a value of null indicates the stage just started
 	}
 	
 	public class AppleDocHandler

@@ -7,6 +7,10 @@ namespace macdoc
 {
 	class XarApi
 	{
+		// A pity but the xar API doesn't seem thread-safe even for read operations like these
+		// Otherwise possible algorithm is to setup a TaskScheduler.Default.MaxConcurrencyLevel amount of task
+		// which rejoice on a barrier that sequentially extract xar_file_t from the iterator with each task then 
+		// xar_extract'ing their own xar_file_t
 		public static bool ExtractXar (string filename, string prefix, CancellationToken token, Action<string> pathCallback)
 		{
 			var cwdSave = Directory.GetCurrentDirectory ();
