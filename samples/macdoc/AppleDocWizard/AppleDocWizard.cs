@@ -63,11 +63,16 @@ namespace macdoc
 				}
 				break;
 			case ProcessStage.Merging:
-				currentStage = ProcessStage.Merging;
-				stageLabel.StringValue = "Merging MonoTouch documentation with Apple documentation";
-				progressIndicator.Indeterminate = true;
-				progressIndicator.StartAnimation (this);
-				extraStageInfoLabel.Hidden = true;
+				if (currentStage == ProcessStage.Merging)
+					extraStageInfoLabel.StringValue = e.CurrentFile;
+				else {
+					currentStage = ProcessStage.Merging;
+					stageLabel.StringValue = "Merging MonoTouch documentation with Apple documentation";
+					progressIndicator.Indeterminate = true;
+					progressIndicator.StartAnimation (this);
+					extraStageInfoLabel.Hidden = false;
+					extraStageInfoLabel.StringValue = "Preparing merge";
+				}
 				break;
 			case ProcessStage.Finished:
 				currentStage = ProcessStage.Finished;

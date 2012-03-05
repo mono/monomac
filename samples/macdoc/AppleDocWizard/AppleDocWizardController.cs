@@ -43,13 +43,14 @@ namespace macdoc
 		{
 			Task.Factory.StartNew (() => {
 				AppleDocHandler.AppleDocInformation infos;
+				var resourcePath = NSBundle.MainBundle.ResourcePath;
 				
 				if (handler.CheckAppleDocFreshness (AppleDocHandler.IosAtomFeed, out infos)) {
 					handler.DownloadAppleDocs (infos, source.Token);
-					handler.LaunchMergeProcess (infos, source.Token);
+					handler.LaunchMergeProcess (infos, resourcePath, source.Token);
 					ShowAlert (source.IsCancellationRequested ? FinishState.Canceled : FinishState.Processed);
 				} else if (handler.CheckMergedDocumentationFreshness (infos)) {
-					handler.LaunchMergeProcess (infos, source.Token);
+					handler.LaunchMergeProcess (infos, resourcePath, source.Token);
 					ShowAlert (source.IsCancellationRequested ? FinishState.Canceled : FinishState.Processed);
 				} else {
 					handler.AdvertiseEarlyFinish ();

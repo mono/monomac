@@ -61,7 +61,7 @@ namespace macdoc
 			
 			WebClient wc = new WebClient ();
 			var feed = wc.DownloadString (feedUrl);
-			return appleFeed = XDocument.Parse (feed);	
+			return appleFeed = XDocument.Parse (feed);
 		}
 
 		// This method transforms the Atom XML data into a POCO for the the most recent item of the feed
@@ -175,15 +175,29 @@ namespace macdoc
 			}
 		}
 		
-		public void LaunchMergeProcess (AppleDocInformation infos, CancellationToken token)
+		public void LaunchMergeProcess (AppleDocInformation infos, string resourcePath, CancellationToken token)
 		{
 			// TODO: take token into account inside merging
 			if (token.IsCancellationRequested)
 				return;
 			
-			FireAppleDocEvent (new AppleDocEventArgs () { Stage = ProcessStage.Merging });
-			DocGenerator.Main (new [] { "--import-samples",  });
-			//Thread.Sleep (5000);
+			var evtArgs = new AppleDocEventArgs () { Stage = ProcessStage.Merging };
+			FireAppleDocEvent (evtArgs);
+			
+			var mdocArchive = MDocZipArchive.ExtractAndLoad (Path.Combine (MonodocLibPath, "sources", "MonoTouch-lib.zip"));
+			var merger = new AppleDocMerger (new AppleDocMerger.Options () {
+				DocBase = Path.Combine (searchPaths.First (), infos.ID + ".docset", "Contents/Resources/Documents/documentation"),
+				Assembly = System.Reflection.Assembly.ReflectionOnlyLoadFrom (MonoTouchLibPath),
+				BaseAssemblyNamespace = "MonoTouch",
+				ImportSamples = true,
+				//SamplesRepositoryPath = Path.Combine (resourcePath, "samples.zip"),
+				MonodocArchive = mdocArchive,
+				SamplesRepositoryPath = "/Users/jeremie/mono/doctest/samples.zip",
+				MergingPathCallback = path => { evtArgs.CurrentFile = path; FireAppleDocEvent (evtArgs); }
+			});
+			merger.MergeDocumentation ();
+			mdocArchive.Dispose ();
+			
 			var statusFile = Path.Combine (Environment.GetFolderPath (Environment.SpecialFolder.ApplicationData), "macdoc", "merge.status");
 			File.WriteAllText (statusFile, infos.Version.ToString ());
 			FireAppleDocEvent (new AppleDocEventArgs () { Stage = ProcessStage.Finished });
