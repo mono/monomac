@@ -149,10 +149,11 @@ namespace macdoc
 			
 			var tempPath = Path.GetTempFileName ();
 			var evt = new ManualResetEvent (false);
+			var evtArgs = new AppleDocEventArgs () { Stage = ProcessStage.Downloading };
 			
 			WebClient client = new WebClient ();
 			client.DownloadFileCompleted += (sender, e) => HandleAppleDocDownloadFinished (e, tempPath, evt, token);
-			client.DownloadProgressChanged += (sender, e) => FireAppleDocEvent (new AppleDocEventArgs () { Stage = ProcessStage.Downloading, Percentage = e.ProgressPercentage});
+			client.DownloadProgressChanged += (sender, e) => { evtArgs.Percentage = e.ProgressPercentage; FireAppleDocEvent (evtArgs); };
 
 			FireAppleDocEvent (new AppleDocEventArgs () { Stage = ProcessStage.Downloading, Percentage = -1 });
 			client.DownloadFileAsync (new Uri (infos.DownloadUrl), tempPath);
@@ -167,7 +168,8 @@ namespace macdoc
 					return;
 				}
 				FireAppleDocEvent (new AppleDocEventArgs () { Stage = ProcessStage.Extracting, CurrentFile = null });
-				XarApi.ExtractXar (path, searchPaths.First (), token, (filepath) => FireAppleDocEvent (new AppleDocEventArgs () { Stage = ProcessStage.Extracting, CurrentFile = filepath }));
+				var evtArgs = new AppleDocEventArgs () { Stage = ProcessStage.Extracting };
+				XarApi.ExtractXar (path, searchPaths.First (), token, (filepath) => { evtArgs.CurrentFile = filepath; FireAppleDocEvent (evtArgs); });
 			} finally {
 				evt.Set ();
 			}
