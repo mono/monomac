@@ -212,11 +212,11 @@ namespace macdoc
 						if (addToHistory)
 							history.AppendHistory (new LinkPageVisit (this, currentUrl));
 						LoadHtml (res);
+						this.match = node;
 						if (syncTreeView) {
 							// When navigation occurs after a link on search result is clicked
 							// we need to show the panel so that ShowNode work as expected
 							tabSelector.SelectAt (0);
-							this.match = node;
 						}
 						// Bookmark spinner management
 						if (currentBookmarkIndex != -1) {
