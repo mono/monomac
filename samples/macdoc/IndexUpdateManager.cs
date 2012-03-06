@@ -53,7 +53,7 @@ namespace macdoc
 					var hash = StringHash (hasher, File.OpenRead (source));
 					string originalHash;
 					if (md5sums.TryGetValue (source, out originalHash))
-						isFresh = originalHash.Equals (hash, StringComparison.OrdinalIgnoreCase);
+						isFresh &= originalHash.Equals (hash, StringComparison.OrdinalIgnoreCase);
 					else
 						isFresh = false;
 					md5sums[source] = hash;
