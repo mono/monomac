@@ -4,9 +4,7 @@
 // actions made in the Xcode designer. If it is removed, they will be lost.
 // Manual changes to this file may not be handled correctly.
 //
-using MonoMac.AppKit;
 using MonoMac.Foundation;
-using MonoMac.WebKit;
 
 namespace macdoc
 {
@@ -14,61 +12,67 @@ namespace macdoc
 	partial class MyDocument
 	{
 		[Outlet]
-		NSSegmentedCell navigationCells { get; set; }
+		MonoMac.AppKit.NSSegmentedCell navigationCells { get; set; }
 
 		[Outlet]
-		NSOutlineView outlineView { get; set; }
+		MonoMac.AppKit.NSOutlineView outlineView { get; set; }
 
 		[Outlet]
-		NSTableView searchResults { get; set; }
+		MonoMac.AppKit.NSTableView searchResults { get; set; }
 
 		[Outlet]
-		WebView webView { get; set; }
+		MonoMac.WebKit.WebView webView { get; set; }
 
 		[Outlet]
-		NSTabView tabSelector { get; set; }
+		MonoMac.AppKit.NSTabView tabSelector { get; set; }
 
 		[Outlet]
-		NSView spinnerView { get; set; }
+		MonoMac.AppKit.NSView spinnerView { get; set; }
 
 		[Outlet]
-		NSProgressIndicator spinnerWidget { get; set; }
+		MonoMac.AppKit.NSProgressIndicator spinnerWidget { get; set; }
 
 		[Outlet]
-		NSButton addBookmarkBtn { get; set; }
+		MonoMac.AppKit.NSButton addBookmarkBtn { get; set; }
 
 		[Outlet]
-		NSPopUpButton bookmarkSelector { get; set; }
+		MonoMac.AppKit.NSPopUpButton bookmarkSelector { get; set; }
 
 		[Outlet]
-		NSButton viewBookmarksBtn { get; set; }
+		MonoMac.AppKit.NSButton viewBookmarksBtn { get; set; }
 
 		[Outlet]
-		NSSplitView splitView { get; set; }
+		MonoMac.AppKit.NSSegmentedCell bookmarkToolbar { get; set; }
 
 		[Outlet]
-		NSTableView multipleMatchResults { get; set; }
+		MonoMac.AppKit.NSSplitView splitView { get; set; }
 
 		[Outlet]
-		NSTableView indexResults { get; set; }
+		MonoMac.AppKit.NSTableView multipleMatchResults { get; set; }
 
 		[Outlet]
-		NSSearchField indexSearchEntry { get; set; }
+		MonoMac.AppKit.NSTableView indexResults { get; set; }
+
+		[Outlet]
+		MonoMac.AppKit.NSSearchField indexSearchEntry { get; set; }
 
 		[Action ("IndexItemClicked:")]
-		partial void IndexItemClicked (NSTableView sender);
+		partial void IndexItemClicked (MonoMac.AppKit.NSTableView sender);
 
 		[Action ("StartSearch:")]
-		partial void StartSearch (NSSearchField sender);
+		partial void StartSearch (MonoMac.AppKit.NSSearchField sender);
 
 		[Action ("MultipleMatchItemClicked:")]
-		partial void MultipleMatchItemClicked (NSTableView sender);
+		partial void MultipleMatchItemClicked (MonoMac.AppKit.NSTableView sender);
 
 		[Action ("SearchItemClicked:")]
-		partial void SearchItemClicked (NSTableView sender);
+		partial void SearchItemClicked (MonoMac.AppKit.NSTableView sender);
 
 		[Action ("StartIndexSearch:")]
-		partial void StartIndexSearch (NSSearchField sender);
+		partial void StartIndexSearch (MonoMac.AppKit.NSSearchField sender);
+
+		[Action ("BookmarkToolbarClicked:")]
+		partial void BookmarkToolbarClicked (MonoMac.Foundation.NSObject sender);
 		
 		void ReleaseDesignerOutlets ()
 		{
@@ -120,6 +124,11 @@ namespace macdoc
 			if (viewBookmarksBtn != null) {
 				viewBookmarksBtn.Dispose ();
 				viewBookmarksBtn = null;
+			}
+
+			if (bookmarkToolbar != null) {
+				bookmarkToolbar.Dispose ();
+				bookmarkToolbar = null;
 			}
 
 			if (splitView != null) {

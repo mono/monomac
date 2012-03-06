@@ -98,7 +98,20 @@ namespace macdoc
 			var popover = new NSPopover ();
 			popover.Behavior = NSPopoverBehavior.Transient;
 			popover.ContentViewController = new BookmarkPopoverController (popover, entry);
-			popover.Show (new RectangleF (0, 0, 0, 0), addBookmarkBtn, NSRectEdge.MinYEdge);
+			popover.Show (new RectangleF (0, 0, 0, 0), (NSView)sender, NSRectEdge.MinYEdge);
+		}
+		
+		void HandleRemoveBookmarkBtnActivated (object sender, EventArgs e)
+		{
+			var selected = bookmarkSelector.IndexOfSelectedItem;
+			if (selected < 0 || selected >= bookmarkSelector.ItemCount)
+				return;
+			var bk = AppDelegate.BookmarkManager.GetAllBookmarks ()
+				.Where (b => b.Name.Equals (bookmarkSelector.TitleOfSelectedItem, StringComparison.InvariantCultureIgnoreCase))
+				.FirstOrDefault ();
+			if (bk == null)
+				return;
+			AppDelegate.BookmarkManager.DeleteBookmark (bk);
 		}
 		
 		void SetupOutline ()
@@ -144,8 +157,6 @@ namespace macdoc
 					break;
 				}
 			};
-			addBookmarkBtn.Activated += HandleAddBookmarkBtnActivated;
-			viewBookmarksBtn.Activated += HandleViewBookmarksBtnActivated;;
 			bookmarkSelector.AddItems (manager.GetAllBookmarks ().Select (i => i.Name).ToArray ());
 			bookmarkSelector.Activated += (sender, e) => {
 				var bmarks = manager.GetAllBookmarks ();
@@ -161,7 +172,7 @@ namespace macdoc
 			var popover = new NSPopover ();
 			popover.Behavior = NSPopoverBehavior.Transient;
 			popover.ContentViewController = new BookmarkAssistantController (AppDelegate.BookmarkManager.GetAllBookmarks ());
-			popover.Show (new RectangleF (0, 0, 0, 0), viewBookmarksBtn, NSRectEdge.MinYEdge);
+			popover.Show (new RectangleF (0, 0, 0, 0), (NSView)sender, NSRectEdge.MinYEdge);
 		}
 		
 		void ToggleSearchCreationStatus (object sender, EventArgs e)
@@ -339,6 +350,21 @@ namespace macdoc
 				return;
 			tabSelector.SelectAt (1);
 			IndexSearch (contents);
+		}
+		
+		partial void BookmarkToolbarClicked (NSObject sender)
+		{
+			switch (bookmarkToolbar.SelectedSegment) {
+			case 0: // Add button
+				HandleAddBookmarkBtnActivated (bookmarkToolbar.ControlView, EventArgs.Empty);
+				break;
+			case 1: // Remove button
+				HandleRemoveBookmarkBtnActivated (bookmarkToolbar.ControlView, EventArgs.Empty);
+				break;
+			case 2: // Settings button
+				HandleViewBookmarksBtnActivated (bookmarkToolbar.ControlView, EventArgs.Empty);
+				break;
+			}
 		}
 
 		void HandleWebViewDecidePolicyForNavigation (object sender, WebNavigatioPolicyEventArgs e)
