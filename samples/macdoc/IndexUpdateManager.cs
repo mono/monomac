@@ -15,6 +15,9 @@ namespace macdoc
 		readonly string baseUserDir; // This is e.g. .config/MonoDoc, a user-specific place where we can write stuff
 		readonly IEnumerable<string> sourceFiles; // this is $prefix/monodoc/sources folder
 		
+		Dictionary<string, string> md5sums;
+		const string sumFile = "index_freshness";
+		
 		public event EventHandler UpdaterChange;
 		
 		public IndexUpdateManager (IEnumerable<string> sourceFiles, string baseUserDir)
@@ -28,7 +31,7 @@ namespace macdoc
 		{
 			return Task.Factory.StartNew (() => {
 				Dictionary<string, string> md5sums = null;
-				var path = Path.Combine (baseUserDir, "index_freshness");
+				var path = Path.Combine (baseUserDir, sumFile);
 				
 				// Two cases can trigger index creation/re-creation:
 				//   1- there is no search_index folder or no monodoc.index file (i.e. GetIndex or GetSearchIndex returns null)
@@ -59,7 +62,6 @@ namespace macdoc
 					md5sums[source] = hash;
 				}
 				
-				SerializeDictionary (path, md5sums);
 				Console.WriteLine ("We have a {0} fresh index", isFresh);
 				
 				return isFresh;
@@ -93,6 +95,8 @@ namespace macdoc
 			RootTree.MakeSearchIndex ();
 			RootTree.MakeIndex ();
 			FireSearchIndexCreationEvent (false);
+			if (md5sums != null)
+				SerializeDictionary (Path.Combine (baseUserDir, sumFile), md5sums);
 		}
 		
 		void FireSearchIndexCreationEvent (bool status)
