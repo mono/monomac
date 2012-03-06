@@ -25,19 +25,11 @@ namespace macdoc
 			this.entries = entries;
 			this.source = new BookmarkDataSource (entries, AppDelegate.BookmarkManager);
 			View.TableView.DataSource = source;
-			View.TableView.Activated += HandleViewTableViewActivated;
+			View.BookmarkDeleted += HandleBookmarkDeleted;
 		}
 
-		void HandleViewTableViewActivated (object sender, EventArgs e)
+		void HandleBookmarkDeleted (int row)
 		{
-			var tableView = (NSTableView)sender;
-			var row = tableView.ClickedRow;
-			var column = tableView.ClickedColumn;
-			
-			// Only process action on the delete button
-			if (row == -1 || column != 3 || row >= entries.Count)
-				return;
-			
 			var entry = entries[row];
 			AppDelegate.BookmarkManager.DeleteBookmark (entry);
 			Console.WriteLine ("Removed entry {0}", entry.Name);

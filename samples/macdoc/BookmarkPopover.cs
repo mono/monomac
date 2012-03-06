@@ -19,13 +19,11 @@ namespace macdoc
 		
 		public BookmarkPopover (IntPtr handle) : base (handle)
 		{
-			Initialize ();
 		}
 
 		[Export ("initWithCoder:")]
 		public BookmarkPopover (NSCoder coder) : base (coder)
 		{
-			Initialize ();
 		}
 		
 		public void PostInitialization ()
@@ -35,10 +33,6 @@ namespace macdoc
 			notesField.LineBreakMode = NSLineBreakMode.TruncatingTail;
 			doneButton.Activated += (sender, e) => Done (this, new BookmarkEventArgs () { Name = nameField.StringValue, Notes = notesField.StringValue });
 			deleteButton.Activated += (sender, e) => Delete (this, EventArgs.Empty);
-		}
-		
-		void Initialize ()
-		{
 		}
 		
 		public string Name {

@@ -15,7 +15,10 @@ namespace macdoc
 		MonoMac.AppKit.NSTableView bookmarkTableView { get; set; }
 
 		[Outlet]
-		MonoMac.AppKit.NSButtonCell bookmarkTableDeleteBtn { get; set; }
+		MonoMac.AppKit.NSButton deleteButton { get; set; }
+
+		[Action ("DeleteButtonClicked:")]
+		partial void DeleteButtonClicked (MonoMac.AppKit.NSButton sender);
 		
 		void ReleaseDesignerOutlets ()
 		{
@@ -24,9 +27,9 @@ namespace macdoc
 				bookmarkTableView = null;
 			}
 
-			if (bookmarkTableDeleteBtn != null) {
-				bookmarkTableDeleteBtn.Dispose ();
-				bookmarkTableDeleteBtn = null;
+			if (deleteButton != null) {
+				deleteButton.Dispose ();
+				deleteButton = null;
 			}
 		}
 	}

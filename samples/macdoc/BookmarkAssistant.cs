@@ -8,6 +8,8 @@ namespace macdoc
 {
 	public partial class BookmarkAssistant : MonoMac.AppKit.NSView
 	{
+		public event Action<int> BookmarkDeleted;
+		
 		public BookmarkAssistant (IntPtr handle) : base (handle)
 		{
 		}
@@ -17,15 +19,22 @@ namespace macdoc
 		{
 		}
 		
+		partial void DeleteButtonClicked (NSButton sender)
+		{
+			if (bookmarkTableView.SelectedRowCount != 1)
+				return;
+			
+			var index = bookmarkTableView.SelectedRow;
+			if (index < 0 || index > bookmarkTableView.RowCount)
+				return;
+			var temp = BookmarkDeleted;
+			if (temp != null)
+				temp (index);
+		}
+		
 		public NSTableView TableView {
 			get {
 				return bookmarkTableView;
-			}
-		}
-		
-		public NSButtonCell DeleteButtonCell {
-			get {
-				return bookmarkTableDeleteBtn;
 			}
 		}
 	}
