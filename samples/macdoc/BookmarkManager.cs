@@ -105,6 +105,11 @@ namespace macdoc
 			FireChangedEvent (entry, BookmarkEventType.Modified);
 		}
 		
+		public int FindIndexOfBookmarkFromUrl (string url)
+		{
+			return bookmarks.FindIndex (entry => entry.Url.Equals (url, StringComparison.InvariantCultureIgnoreCase));
+		}
+		
 		void FireChangedEvent (Entry entry, BookmarkEventType evtType)
 		{
 			var temp = BookmarkListChanged;

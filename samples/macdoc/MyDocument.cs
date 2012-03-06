@@ -26,7 +26,6 @@ namespace macdoc
 		Node match;
 		string currentUrl;
 		string currentTitle;
-		int currentBookmarkIndex;
 		
 		SearchableIndex searchIndex;
 		IndexSearcher mdocSearch;
@@ -151,10 +150,8 @@ namespace macdoc
 			bookmarkSelector.Activated += (sender, e) => {
 				var bmarks = manager.GetAllBookmarks ();
 				var index = bookmarkSelector.IndexOfSelectedItem;
-				if (index >= 0 && index < bmarks.Count) {
-					currentBookmarkIndex = index;
+				if (index >= 0 && index < bmarks.Count)
 					LoadUrl (bmarks[index].Url, true);
-				}
 			};
 			bookmarkSelector.SelectItem (-1);
 		}
@@ -218,12 +215,9 @@ namespace macdoc
 							tabSelector.SelectAt (0);
 						}
 						// Bookmark spinner management
-						if (currentBookmarkIndex != -1) {
-							bookmarkSelector.SelectItem (currentBookmarkIndex);
-							currentBookmarkIndex = -1;
-						} else {
-						    bookmarkSelector.SelectItem (-1);
-						}
+						var bookmarkIndex = AppDelegate.BookmarkManager.FindIndexOfBookmarkFromUrl (url);
+						if (bookmarkIndex == -1 || bookmarkIndex < bookmarkSelector.ItemCount)
+							bookmarkSelector.SelectItem (bookmarkIndex);
 					});
 				}
 			});
