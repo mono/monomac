@@ -220,6 +220,7 @@ namespace macdoc
 						if (ts < loadUrlTimestamp)
 							return;
 						currentUrl = node == null ? url : node.PublicUrl;
+						InvalidateRestorableState ();
 						if (addToHistory)
 							history.AppendHistory (new LinkPageVisit (this, currentUrl));
 						LoadHtml (res);
