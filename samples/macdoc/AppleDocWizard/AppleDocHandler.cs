@@ -152,7 +152,7 @@ namespace macdoc
 			var evtArgs = new AppleDocEventArgs () { Stage = ProcessStage.Downloading };
 			
 			WebClient client = new WebClient ();
-			client.DownloadFileCompleted += (sender, e) => HandleAppleDocDownloadFinished (e, tempPath, evt, token);
+			client.DownloadFileCompleted += (sender, e) => HandleAppleDocDownloadFinished (e, infos, tempPath, evt, token);
 			client.DownloadProgressChanged += (sender, e) => { evtArgs.Percentage = e.ProgressPercentage; FireAppleDocEvent (evtArgs); };
 
 			FireAppleDocEvent (new AppleDocEventArgs () { Stage = ProcessStage.Downloading, Percentage = -1 });
@@ -161,7 +161,7 @@ namespace macdoc
 			evt.WaitOne ();
 		}
 
-		void HandleAppleDocDownloadFinished (System.ComponentModel.AsyncCompletedEventArgs e, string path, ManualResetEvent evt, CancellationToken token)
+		void HandleAppleDocDownloadFinished (System.ComponentModel.AsyncCompletedEventArgs e, AppleDocInformation infos, string path, ManualResetEvent evt, CancellationToken token)
 		{
 			try {
 				if (e.Cancelled || token.IsCancellationRequested) {
@@ -170,6 +170,11 @@ namespace macdoc
 				FireAppleDocEvent (new AppleDocEventArgs () { Stage = ProcessStage.Extracting, CurrentFile = null });
 				var evtArgs = new AppleDocEventArgs () { Stage = ProcessStage.Extracting };
 				XarApi.ExtractXar (path, searchPaths.First (), token, (filepath) => { evtArgs.CurrentFile = filepath; FireAppleDocEvent (evtArgs); });
+				if (token.IsCancellationRequested) {
+					var extractedDocDir = Path.Combine (searchPaths.First (), infos.ID + ".docset");
+					if (Directory.Exists (extractedDocDir))
+						Directory.Delete (extractedDocDir, true);
+				}
 			} finally {
 				evt.Set ();
 			}
