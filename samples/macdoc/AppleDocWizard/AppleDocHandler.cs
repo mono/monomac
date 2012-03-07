@@ -182,7 +182,6 @@ namespace macdoc
 		
 		public void LaunchMergeProcess (AppleDocInformation infos, string resourcePath, CancellationToken token)
 		{
-			// TODO: take token into account inside merging
 			if (token.IsCancellationRequested)
 				return;
 			
@@ -198,7 +197,8 @@ namespace macdoc
 				//SamplesRepositoryPath = Path.Combine (resourcePath, "samples.zip"),
 				MonodocArchive = mdocArchive,
 				SamplesRepositoryPath = "/Users/jeremie/mono/doctest/samples.zip",
-				MergingPathCallback = path => { evtArgs.CurrentFile = path; FireAppleDocEvent (evtArgs); }
+				MergingPathCallback = path => { evtArgs.CurrentFile = path; FireAppleDocEvent (evtArgs); },
+				CancellationToken = token
 			});
 			merger.MergeDocumentation ();
 			mdocArchive.Dispose ();

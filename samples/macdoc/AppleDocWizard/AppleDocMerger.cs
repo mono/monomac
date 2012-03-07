@@ -58,6 +58,9 @@ namespace macdoc
 			
 			// People can supply a callback that will be called when a new file is being processed
 			public Action<string> MergingPathCallback { get; set; }
+			
+			// Token used to end prematurely the process if needed
+			public CancellationToken CancellationToken { get; set; }
 		}
 		
 		class ProcessingContext
@@ -154,6 +157,8 @@ namespace macdoc
 			foreach (var t in GetTypesSafe (options.Assembly)) {
 				if (t.IsNotPublic || t.IsNested)
 					continue;
+				if (options.CancellationToken.IsCancellationRequested)
+					break;
 	
 				/*if (debug != null && t.FullName != debug)
 					continue;*/
