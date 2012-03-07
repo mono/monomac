@@ -98,6 +98,11 @@ namespace macdoc
 				SerializeDictionary (Path.Combine (baseUserDir, sumFile), md5sums);
 		}
 		
+		public void AdvertiseFreshIndex ()
+		{
+			FireSearchIndexCreationEvent (false);
+		}
+		
 		void FireSearchIndexCreationEvent (bool status)
 		{
 			IsCreatingSearchIndex = status;
