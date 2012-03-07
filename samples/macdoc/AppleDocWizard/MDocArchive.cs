@@ -92,7 +92,7 @@ namespace macdoc
 		
 		public void SaveBack ()
 		{
-			File.Copy (originalArchivePath, originalArchivePath + ".origin");
+			File.Copy (originalArchivePath, originalArchivePath + ".origin", true);
 			File.Delete (originalArchivePath);
 			using (var zip = new ZipFile (originalArchivePath)) {
 				zip.AddDirectory (baseDir);
