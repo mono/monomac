@@ -84,10 +84,13 @@ namespace macdoc
 			var indexManager = IndexUpdateManager;
 			indexManager.CheckIndexIsFresh ().ContinueWith (t => { 
 				if (t.IsFaulted)
-					Console.WriteLine (t.Exception);
+					Console.WriteLine ("Error while checking indexes: {0}", t.Exception);
 				else if (!t.Result)
 					indexManager.PerformSearchIndexCreation ();
-			});
+				else
+					indexManager.AdvertiseFreshIndex ();
+			}).ContinueWith (t => Console.WriteLine ("Error while creating indexes: {0}", t.Exception), TaskContinuationOptions.OnlyOnFaulted);
+			
 			// Check if there is a MonoTouch documentation installed and launch accordingly
 			if (Root.HelpSources.Cast<HelpSource> ().Any (hs => hs.Name.StartsWith ("MonoTouch", StringComparison.InvariantCultureIgnoreCase))) {
 				Task.Factory.StartNew (() => {
