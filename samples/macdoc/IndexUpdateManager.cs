@@ -30,7 +30,6 @@ namespace macdoc
 		public Task<bool> CheckIndexIsFresh ()
 		{
 			return Task.Factory.StartNew (() => {
-				Dictionary<string, string> md5sums = null;
 				var path = Path.Combine (baseUserDir, sumFile);
 				
 				// Two cases can trigger index creation/re-creation:
