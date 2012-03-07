@@ -367,10 +367,12 @@ namespace macdoc
 		
 		string GetSelector (IList<CustomAttributeData> attrs)
 		{
-			/*return attrs
-				.Where (attr => attr.Constructor.DeclaringType.FullName.Equals (exportAttributeFullName, StringComparison.InvariantCultureIgnoreCase))
-				.Select (attr => attr.ConstructorArguments[0].Value.ToString ()).FirstOrDefault ();*/
-			return attrs.Where (a => a != null && a.ConstructorArguments.Count > 0).Select (a => a.ConstructorArguments[0].Value.ToString ()).FirstOrDefault ();
+			return attrs
+				.Where (attr => attr != null
+				        && attr.ConstructorArguments.Count > 0
+				        && attr.Constructor.DeclaringType.FullName.Equals (exportAttributeFullName, StringComparison.InvariantCultureIgnoreCase))
+				.Select (attr => attr.ConstructorArguments[0].Value.ToString ()).FirstOrDefault ();
+			//return attrs.Where (a => a != null && a.ConstructorArguments.Count > 0).Select (a => a.ConstructorArguments[0].Value.ToString ()).FirstOrDefault ();
 		}
 
 		// Extract the path from Apple's Database
