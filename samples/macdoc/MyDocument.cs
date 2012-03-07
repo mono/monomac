@@ -183,6 +183,8 @@ namespace macdoc
 				InvokeOnMainThread (delegate {
 					spinnerWidget.StopAnimation (this);
 					spinnerView.Hidden = true;
+					indexSpinnerWidget.StopAnimation (this);
+					indexSpinnerView.Hidden = true;
 					searchIndex = AppDelegate.Root.GetSearchIndex ();
 					indexSearchEntry.Enabled = true;
 					mdocSearch.Index = AppDelegate.Root.GetIndex ();
@@ -192,6 +194,8 @@ namespace macdoc
 				InvokeOnMainThread (delegate {
 					spinnerView.Hidden = false;
 					spinnerWidget.StartAnimation (this);
+					indexSpinnerView.Hidden = false;
+					indexSpinnerWidget.StartAnimation (this);
 					indexSearchEntry.Enabled = false;
 				});
 			}
