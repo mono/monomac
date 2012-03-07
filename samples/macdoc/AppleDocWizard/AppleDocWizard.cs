@@ -41,14 +41,15 @@ namespace macdoc
 				extraStageInfoLabel.Hidden = true;
 				break;
 			case ProcessStage.Downloading:
-				if (currentStage == ProcessStage.Downloading)
+				if (currentStage == ProcessStage.Downloading) {
 					progressIndicator.DoubleValue = e.Percentage;
-				else {
+					extraStageInfoLabel.IntValue = e.Percentage;
+				} else {
 					currentStage = ProcessStage.Downloading;
 					progressIndicator.Indeterminate = false;
 					progressIndicator.StartAnimation (this);
 					stageLabel.StringValue = "Downloading Apple documentation";
-					extraStageInfoLabel.Hidden = true;
+					extraStageInfoLabel.Hidden = false;
 				}
 				break;
 			case ProcessStage.Extracting:
@@ -60,6 +61,7 @@ namespace macdoc
 					progressIndicator.StartAnimation (this);
 					stageLabel.StringValue = "Extracting Apple documentation";
 					extraStageInfoLabel.Hidden = false;
+					extraStageInfoLabel.StringValue = string.Empty;
 				}
 				break;
 			case ProcessStage.Merging:
