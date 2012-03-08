@@ -78,9 +78,7 @@ namespace macdoc
 				break;
 			case ProcessStage.Finished:
 				currentStage = ProcessStage.Finished;
-				stageLabel.StringValue = "Operation(s) ran successfully";
-				progressIndicator.Hidden = true;
-				extraStageInfoLabel.Hidden = true;
+				progressIndicator.StopAnimation (this);
 				break;
 			default:
 				break;

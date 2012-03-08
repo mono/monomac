@@ -75,7 +75,7 @@ namespace macdoc
 					break;
 				case FinishState.Processed:
 					alert.MessageText = "Success";
-					alert.InformativeText = "Your MonoTouch documentation was successfully updated";
+					alert.InformativeText = "Your MonoTouch documentation was successfully merged with the available Apple documentation on your system";
 					break;
 				case FinishState.Canceled:
 					alert.MessageText = "Canceled";
