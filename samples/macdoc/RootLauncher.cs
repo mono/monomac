@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 
 namespace macdoc
@@ -24,5 +25,15 @@ namespace macdoc
 		
 		[DllImport (SecurityFramework)]
 		extern static int AuthorizationExecuteWithPrivileges (IntPtr authRef, string pathToTool, int authFlags, string[] args, IntPtr pipe);
+	}
+	
+	public static class UrlLauncher
+	{
+		public static void Launch (string url)
+		{
+			if (string.IsNullOrEmpty (url))
+				throw new ArgumentNullException (url);
+			Process.Start (new ProcessStartInfo (url));
+		}
 	}
 }

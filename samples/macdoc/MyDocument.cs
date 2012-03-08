@@ -207,6 +207,12 @@ namespace macdoc
 				Console.WriteLine ("FIXME: Anchor jump");
 				return;
 			}
+			// In case user click on an external link e.g. [Android documentation] link at bottom of MonoDroid docs
+			if (url.StartsWith ("http://")) {
+				UrlLauncher.Launch (url);
+				return;
+			}
+			Console.WriteLine ("Loading {0}", url);
 			var ts = Interlocked.Increment (ref loadUrlTimestamp);
 			Task.Factory.StartNew (() => {
 				Node node;
