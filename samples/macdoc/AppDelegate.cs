@@ -82,7 +82,7 @@ namespace macdoc
 		public override void FinishedLaunching (NSObject notification)
 		{
 			var indexManager = IndexUpdateManager;
-			indexManager.CheckIndexIsFresh ().ContinueWith (t => { 
+			indexManager.CheckIndexIsFresh ().ContinueWith (t => {
 				if (t.IsFaulted)
 					Console.WriteLine ("Error while checking indexes: {0}", t.Exception);
 				else if (!t.Result)
@@ -95,8 +95,31 @@ namespace macdoc
 			if (Root.HelpSources.Cast<HelpSource> ().Any (hs => hs.Name.StartsWith ("MonoTouch", StringComparison.InvariantCultureIgnoreCase))) {
 				Task.Factory.StartNew (() => {
 					AppleDocHandler.AppleDocInformation infos;
-					if (AppleDocHandler.CheckAppleDocFreshness (AppleDocHandler.IosAtomFeed, out infos) || AppleDocHandler.CheckMergedDocumentationFreshness (infos))
-					    RootLauncher.LaunchExternalTool (Path.Combine (Path.GetDirectoryName (NSBundle.MainBundle.ExecutablePath), "AppleDocWizard.sh"));
+					return AppleDocHandler.CheckAppleDocFreshness (AppleDocHandler.IosAtomFeed, out infos) || AppleDocHandler.CheckMergedDocumentationFreshness (infos);
+				}).ContinueWith (t => {
+					if (!t.Result)
+							return;
+					BeginInvokeOnMainThread (() => {
+						var infoDialog = new NSAlert {
+							AlertStyle = NSAlertStyle.Informational,
+							MessageText = "Documentation update available",
+							InformativeText = "We have detected your MonoTouch documentation can be upgraded with Apple documentation, would you like to launch the merge now (root password required)?"
+						};
+						
+						infoDialog.AddButton ("Yes");
+						infoDialog.AddButton ("Cancel");
+						var dialogResult = infoDialog.RunModal ();
+						// If Cancel was clicked, just return
+						if (dialogResult == (int)NSAlertButtonReturn.Second)
+							return;
+						
+						// Launching AppleDocWizard as root
+						// First get the directory
+						var updaterPath = Path.Combine (Path.GetDirectoryName (NSBundle.MainBundle.BuiltinPluginsPath), "MacOS");
+						// Next get the executable
+						updaterPath = Path.Combine (updaterPath, "AppleDocWizard.app", "Contents", "MacOS", "AppleDocWizard");
+						RootLauncher.LaunchExternalTool (updaterPath);
+					});
 				});
 			}
 		}
