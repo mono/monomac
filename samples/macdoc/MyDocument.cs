@@ -77,6 +77,12 @@ namespace macdoc
 			SetupBookmarks ();
 			webView.DecidePolicyForNavigation += HandleWebViewDecidePolicyForNavigation;
 			webView.FinishedLoad += HandleWebViewFinishedLoad;
+			((WebViewExtraordinaire)webView).SwipeEvent += (sender, e) => {
+				if (e.Side == SwipeSide.Left && history.BackClicked ())
+					navigationCells.SetSelected (true, 0);
+				else if (history.ForwardClicked ())
+					navigationCells.SetSelected (true, 1);
+			};
 			HideMultipleMatches ();
 			if (!string.IsNullOrEmpty (initialLoadFromUrl))
 				LoadUrl (initialLoadFromUrl);
@@ -398,6 +404,8 @@ namespace macdoc
 				ShowNode (match);
 				match = null;
 			}
+			if (navigationCells.SelectedSegment != -1)
+				navigationCells.SetSelected (false, navigationCells.SelectedSegment);
 			var dom = e.ForFrame.DomDocument;
 			
 			// Update the title of the current page

@@ -50,10 +50,10 @@ namespace Monodoc {
 			navigation.SetEnabled (false, 1);							
 		}
 
-		internal void BackClicked ()
+		internal bool BackClicked ()
 		{
 			if (!active || pos < 1)
-				return;
+				return false;
 			pos--;
 			PageVisit p = (PageVisit) history [pos];
 			ignoring = true;
@@ -61,12 +61,13 @@ namespace Monodoc {
 			ignoring = false;
 			navigation.SetEnabled (pos > 0, 0);
 			navigation.SetEnabled (true, 1);
+			return true;
 		}
 	
-		internal void ForwardClicked ()
+		internal bool ForwardClicked ()
 		{
 			if (!active || pos+1 == history.Count)
-				return;
+				return false;
 			pos++;
 			var pageVisit = history [pos];
 			ignoring = true;
@@ -74,6 +75,7 @@ namespace Monodoc {
 			ignoring = false;
 			navigation.SetEnabled (pos+1 < history.Count, 1);
 			navigation.SetEnabled (true, 0);
+			return true;
 		}
 
 		public void AppendHistory (PageVisit page)
