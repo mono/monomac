@@ -8553,7 +8553,10 @@ namespace MonoMac.AppKit {
 		[Static]
 		[Lion, Export ("restorableStateKeyPaths")]
 		string [] RestorableStateKeyPaths ();
-		
+
+		[Lion]
+		[Export ("wantsForwardedScrollEventsForAxis:")]
+		bool WantsForwardedScrollEventsForAxis (NSEventGestureAxis axis);
 	}
 
 
