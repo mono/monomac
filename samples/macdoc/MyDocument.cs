@@ -41,12 +41,6 @@ namespace macdoc
 		public MyDocument (NSCoder coder) : base(coder)
 		{
 		}
-
-		void LoadImages ()
-		{
-			navigationCells.SetImage (new NSImage (Path.Combine (resourcesPath, "Images", "back.png")), 0);
-			navigationCells.SetImage (new NSImage (Path.Combine (resourcesPath, "Images", "forward.png")), 1);
-		}
 		
 		public override string DisplayName {
 			get {
@@ -77,7 +71,6 @@ namespace macdoc
 		{
 			base.WindowControllerDidLoadNib (windowController);
 			tabSelector.SelectFirst (this);
-			LoadImages ();
 			history = new History (navigationCells);
 			SetupOutline ();
 			SetupSearch ();
