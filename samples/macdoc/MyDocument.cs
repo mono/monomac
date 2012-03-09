@@ -111,6 +111,7 @@ namespace macdoc
 		{
 			outlineView.DataSource = new DocTreeDataSource (this);
 			outlineView.Delegate = new OutlineDelegate (this);
+			outlineView.EnclosingScrollView.HorizontalScrollElasticity = outlineView.EnclosingScrollView.VerticalScrollElasticity = NSScrollElasticity.None;
 		}
 		
 		void SetupSearch ()
