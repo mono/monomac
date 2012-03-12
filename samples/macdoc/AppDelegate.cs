@@ -186,6 +186,17 @@ namespace macdoc
 			controller.CurrentDocument.PrintDocument (sender);
 		}
 		
+		partial void HandleFind (NSMenuItem sender)
+		{
+			controller.CurrentMyDocument.MainWebView.PerformFindPanelAction (sender);
+		}
+		
+		partial void HandleSearch (NSObject sender)
+		{
+			var searchField = controller.CurrentMyDocument.WindowForSheet.Toolbar.VisibleItems.Last ().View;
+			controller.CurrentDocument.WindowForSheet.MakeFirstResponder (searchField);
+		}
+		
 		public override void WillTerminate (NSNotification notification)
 		{
 			BookmarkManager.SaveBookmarks ();

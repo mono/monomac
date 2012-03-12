@@ -26,6 +26,9 @@ namespace macdoc
 		public event EventHandler<SwipeEventArgs> SwipeEvent;
 		public event EventHandler<SwipeEventArgs> OngoingSwipeEvent;
 		
+		FindBarExtraordinaireController findBarController;
+		NSScrollView currentScrollView;
+		
 		public WebViewExtraordinaire (IntPtr handle) : base (handle)
 		{
 			Initialize ();
@@ -39,8 +42,11 @@ namespace macdoc
 		
 		void Initialize ()
 		{
+			findBarController = new FindBarExtraordinaireController ();
 			IsSwipeEnabled = NSEvent.IsSwipeTrackingFromScrollEventsEnabled;
-			//FinishedLoad += (sender, e) => MainFrame.FrameView.DocumentView.EnclosingScrollView.HorizontalScrollElasticity = NSScrollElasticity.Allowed;
+			FinishedLoad += (sender, e) => SetupFindBar (MainFrame.FrameView.DocumentView.EnclosingScrollView);
+			findBarController.View.FindTextChanged += (sender, e) => InternalPerformFinderAction (NSTextFinderAction.SetSearchString);
+			findBarController.View.CloseFindPanel += (sender, e) => InternalPerformFinderAction (NSTextFinderAction.HideFindInterface);
 		}
 		
 		public bool IsSwipeEnabled { get; set; }
@@ -116,6 +122,52 @@ namespace macdoc
 			var temp = OngoingSwipeEvent;
 			if (temp != null)
 				temp (this, new SwipeEventArgs { Side = status });
+		}
+		
+		public override void PerformFindPanelAction (NSObject sender)
+		{
+			var ctrl = sender as NSMenuItem;
+			if (ctrl == null)
+				return;
+			
+			InternalPerformFinderAction ((NSTextFinderAction)ctrl.Tag);
+		}
+		
+		void InternalPerformFinderAction (NSTextFinderAction action)
+		{
+			switch (action) {
+			case NSTextFinderAction.ShowFindInterface:
+				if (currentScrollView != null)
+					currentScrollView.FindBarVisible = true;
+				findBarController.View.GrabFocus ();
+				break;
+			case NSTextFinderAction.HideFindInterface:
+				if (currentScrollView != null)
+					currentScrollView.FindBarVisible = false;
+				break;
+			case NSTextFinderAction.NextMatch:
+			case NSTextFinderAction.SetSearchString:
+				DoSearch (true);
+				break;
+			case NSTextFinderAction.PreviousMatch:
+				DoSearch (false);
+				break;
+			default:
+				break;
+			}
+		}
+		
+		void SetupFindBar (NSScrollView scrollView)
+		{
+			currentScrollView = scrollView;
+			scrollView.FindBarView = findBarController.View;
+			scrollView.FindBarPosition = NSScrollViewFindBarPosition.AboveContent;
+		}
+		
+		void DoSearch (bool forward)
+		{
+			var findBar = findBarController.View;
+			Search (findBar.FindText, forward, findBar.CaseSensitive, findBar.Wrap);
 		}
 	}
 }

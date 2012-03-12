@@ -504,6 +504,12 @@ namespace macdoc
 			get { return "MyDocument"; }
 		}
 		
+		public WebView MainWebView {
+			get {
+				return webView;
+			}
+		}
+		
 		public override NSPrintOperation PrintOperation (NSDictionary printSettings, out NSError outError)
 		{
 			outError = null;

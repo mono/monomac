@@ -13,6 +13,12 @@ namespace macdoc
 	{
 		[Action ("HandlePrint:")]
 		partial void HandlePrint (MonoMac.Foundation.NSObject sender);
+
+		[Action ("HandleSearch:")]
+		partial void HandleSearch (MonoMac.Foundation.NSObject sender);
+
+		[Action ("HandleFind:")]
+		partial void HandleFind (MonoMac.AppKit.NSMenuItem sender);
 		
 		void ReleaseDesignerOutlets ()
 		{

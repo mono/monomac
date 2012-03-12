@@ -23,6 +23,12 @@ namespace macdoc
 			outError = null;
 			return "MyDocument";
 		}
+		
+		public MyDocument CurrentMyDocument {
+			get {
+				return (MyDocument)CurrentDocument;
+			}
+		}
 	}
 }
 
