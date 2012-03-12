@@ -1661,4 +1661,19 @@ namespace MonoMac.AppKit {
 		Default = 0, None = 2, DocumentWindow, UtilityWindow, AlertPanel
 	}
 
+	public enum NSTextFinderAction {
+		ShowFindInterface = 1,
+		NextMatch = 2,
+		PreviousMatch = 3,
+		ReplaceAll = 4,
+		Replace = 5,
+		ReplaceAndFind = 6,
+		SetSearchString = 7,
+		ReplaceAllInSelection = 8,
+		SelectAll = 9,
+		SelectAllInSelection = 10,
+		HideFindInterface = 11,
+		ShowReplaceInterface = 12,
+		HideReplaceInterface = 13
+	}
 } 

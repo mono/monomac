@@ -8914,7 +8914,7 @@ namespace MonoMac.AppKit {
 	}
 
 	[BaseType (typeof (NSView))]
-	public interface NSScrollView {
+	public interface NSScrollView : NSTextFinderBarContainer {
 		[Static]
 		[Export ("frameSizeForContentSize:hasHorizontalScroller:hasVerticalScroller:borderType:")]
 		SizeF FrameSizeForContentSize (SizeF cSize, bool hFlag, bool vFlag, NSBorderType aType);
@@ -9891,7 +9891,132 @@ namespace MonoMac.AppKit {
 		[Lion, Export ("identifier")]
 		string Identifier { get; }
 	}
-	
+
+	[BaseType (typeof (NSObject))]
+	[Lion]
+	[Model]
+	interface NSTextFinderClient {
+		[Abstract]
+		[Export ("allowsMultipleSelection")]
+		bool AllowsMultipleSelection { get;  }
+
+		[Abstract]
+		[Export ("editable")]
+		bool Editable { [Bind ("isEditable")] get;  }
+
+		[Abstract]
+		[Export ("string")]
+		string String { get;  }
+
+		[Abstract]
+		[Export ("firstSelectedRange")]
+		NSRange FirstSelectedRange { get;  }
+
+		[Abstract]
+		[Export ("selectedRanges")]
+		NSArray SelectedRanges { get; set;  }
+
+		[Abstract]
+		[Export ("visibleCharacterRanges")]
+		NSArray VisibleCharacterRanges { get;  }
+
+		[Abstract]
+		[Export ("selectable")]
+		bool Selectable { [Bind ("isSelectable")] get;  }
+
+		[Abstract]
+		[Export ("stringAtIndex:effectiveRange:endsWithSearchBoundary:")]
+		string StringAtIndexeffectiveRangeendsWithSearchBoundary (uint characterIndex, ref NSRange outRange, bool outFlag);
+
+		[Abstract]
+		[Export ("stringLength")]
+		uint StringLength ();
+
+		[Abstract]
+		[Export ("scrollRangeToVisible:")]
+		void ScrollRangeToVisible (NSRange range);
+
+		[Abstract]
+		[Export ("shouldReplaceCharactersInRanges:withStrings:")]
+		bool ShouldReplaceCharactersInRangeswithStrings (NSArray ranges, NSArray strings);
+
+		[Abstract]
+		[Export ("replaceCharactersInRange:withString:")]
+		void ReplaceCharactersInRangewithString (NSRange range, string str);
+
+		[Abstract]
+		[Export ("didReplaceCharacters")]
+		void DidReplaceCharacters ();
+
+		[Abstract]
+		[Export ("contentViewAtIndex:effectiveCharacterRange:")]
+		NSView ContentViewAtIndexeffectiveCharacterRange (uint index, ref NSRange outRange);
+
+		[Abstract]
+		[Export ("rectsForCharacterRange:")]
+		NSArray RectsForCharacterRange (NSRange range);
+
+		[Abstract]
+		[Export ("drawCharactersInRange:forContentView:")]
+		void DrawCharactersInRangeforContentView (NSRange range, NSView view);
+	}
+
+	[BaseType (typeof (NSObject))]
+	[Lion]
+	[Model]
+	public interface NSTextFinderBarContainer {
+		[Abstract]
+		[Export ("findBarVisible")]
+		bool FindBarVisible { [Bind ("isFindBarVisible")] get; set;  }
+
+		[Abstract]
+		[Export ("findBarView")]
+		NSView FindBarView { get; set; }
+
+		[Abstract]
+		[Export ("findBarViewDidChangeHeight")]
+		void FindBarViewDidChangeHeight ();
+
+		/*[Abstract]
+		[Export ("contentView")]
+		NSView ContentView { get; }*/
+	}
+
+	[Lion]
+	[BaseType (typeof (NSObject))]
+	interface NSTextFinder {
+		[Export ("client")]
+		NSTextFinderClient Client { set; }
+
+		[Export ("findBarContainer")]
+		NSTextFinderBarContainer FindBarContainer { set; }
+
+		[Export ("findIndicatorNeedsUpdate")]
+		bool FindIndicatorNeedsUpdate { get; set; }
+
+		[Export ("incrementalSearchingEnabled")]
+		bool IncrementalSearchingEnabled { [Bind ("isIncrementalSearchingEnabled")] get; set;  }
+
+		[Export ("incrementalMatchRanges")]
+		NSArray IncrementalMatchRanges { get;  }
+
+		[Export ("performAction:")]
+		void PerformAction (NSTextFinderAction op);
+
+		[Export ("validateAction:")]
+		bool ValidateAction (NSTextFinderAction op);
+
+		[Export ("cancelFindIndicator")]
+		void CancelFindIndicator ();
+
+		[Static]
+		[Export ("drawIncrementalMatchHighlightInRect:")]
+		void DrawIncrementalMatchHighlightInRect (RectangleF rect);
+
+		[Export ("noteClientStringWillChange")]
+		void NoteClientStringWillChange ();
+	}
+
 	[BaseType (typeof (NSResponder))]
 	public interface NSView : NSDraggingDestination, NSAnimatablePropertyContainer, NSUserInterfaceItemIdentification  {
 		[Export ("initWithFrame:")]
