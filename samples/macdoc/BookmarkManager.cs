@@ -84,7 +84,8 @@ namespace macdoc
 			}
 			using (var file = File.OpenRead (path))
 				bookmarks = (List<Entry>)serializer.Deserialize (file);
-			
+			// Sanitize input to possibly remove buggy elements (i.e. missing url, name, etc..)
+			bookmarks = bookmarks.Where (b => b != null && !string.IsNullOrWhiteSpace (b.Name) && !string.IsNullOrWhiteSpace (b.Url)).ToList ();
 			readonlyVersion = bookmarks.AsReadOnly ();
 			
 			return true;
