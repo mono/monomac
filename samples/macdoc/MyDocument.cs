@@ -455,6 +455,9 @@ namespace macdoc
 			
 			if (!nodeToWrapper.ContainsKey (n))
 				ShowNode (n.Parent);
+			// If the dictionary still doesn't contain anything about us, time to leave
+			if (!nodeToWrapper.ContainsKey (n))
+				return;
 			
 			var item = nodeToWrapper [n];
 			outlineView.ExpandItem (item);
