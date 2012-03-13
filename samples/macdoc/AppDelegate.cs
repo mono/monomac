@@ -99,27 +99,7 @@ namespace macdoc
 				}).ContinueWith (t => {
 					if (!t.Result)
 							return;
-					BeginInvokeOnMainThread (() => {
-						var infoDialog = new NSAlert {
-							AlertStyle = NSAlertStyle.Informational,
-							MessageText = "Documentation update available",
-							InformativeText = "We have detected your MonoTouch documentation can be upgraded with Apple documentation, would you like to launch the merge now (root password required)?"
-						};
-						
-						infoDialog.AddButton ("Yes");
-						infoDialog.AddButton ("Cancel");
-						var dialogResult = infoDialog.RunModal ();
-						// If Cancel was clicked, just return
-						if (dialogResult == (int)NSAlertButtonReturn.Second)
-							return;
-						
-						// Launching AppleDocWizard as root
-						// First get the directory
-						var updaterPath = Path.Combine (Path.GetDirectoryName (NSBundle.MainBundle.BuiltinPluginsPath), "MacOS");
-						// Next get the executable
-						updaterPath = Path.Combine (updaterPath, "AppleDocWizard.app", "Contents", "MacOS", "AppleDocWizard");
-						RootLauncher.LaunchExternalTool (updaterPath);
-					});
+					BeginInvokeOnMainThread (LaunchDocumentationUpdate);
 				});
 			}
 		}
@@ -200,6 +180,38 @@ namespace macdoc
 		public override void WillTerminate (NSNotification notification)
 		{
 			BookmarkManager.SaveBookmarks ();
+		}
+		
+		void LaunchDocumentationUpdate ()
+		{
+			var infoDialog = new NSAlert {
+				AlertStyle = NSAlertStyle.Informational,
+				MessageText = "Documentation update available",
+				InformativeText = "We have detected your MonoTouch documentation can be upgraded with Apple documentation, would you like to launch the merge now (root password required)?"
+			};
+			
+			infoDialog.AddButton ("Yes");
+			infoDialog.AddButton ("Cancel");
+			var dialogResult = infoDialog.RunModal ();
+			// If Cancel was clicked, just return
+			if (dialogResult == (int)NSAlertButtonReturn.Second)
+				return;
+			
+			// Launching AppleDocWizard as root
+			// First get the directory
+			var updaterPath = Path.Combine (Path.GetDirectoryName (NSBundle.MainBundle.BuiltinPluginsPath), "MacOS");
+			// Next get the executable
+			updaterPath = Path.Combine (updaterPath, "AppleDocWizard.app", "Contents", "MacOS", "AppleDocWizard");
+			try {
+				RootLauncher.LaunchExternalTool (updaterPath);
+			} catch (RootLauncherException ex) {
+				var alertDialog = new NSAlert {
+					AlertStyle = NSAlertStyle.Critical,
+					MessageText = "Documentation updater error",
+					InformativeText = string.Format ("There was an error launching the documentation updater: {0}{1}{2}", ex.ResultCode.ToString (), Environment.NewLine, ex.Message)
+				};
+				alertDialog.RunModal ();
+			}
 		}
 		
 		// We use a working OpenDocument method that doesn't return anything because of MonoMac bug#3380
