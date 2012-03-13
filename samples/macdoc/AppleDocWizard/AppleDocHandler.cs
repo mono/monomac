@@ -177,6 +177,9 @@ namespace macdoc
 				}
 			} finally {
 				evt.Set ();
+				// Delete the .xar file
+				if (File.Exists (path))
+					File.Delete (path);
 			}
 		}
 		
