@@ -279,9 +279,9 @@ namespace macdoc
 		{
 			int targetRow = mdocSearch.FindClosest (text);
 			indexResults.SelectRow (targetRow, false);
-			indexResults.ScrollRowToVisible (targetRow);
 
 			OnIndexRowSelected (targetRow);
+			indexResults.ScrollRowToVisible (targetRow);
 		}
 		
 		void OnSearchRowSelected (int targetRow)
