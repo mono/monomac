@@ -29,10 +29,21 @@
         <Parameter Name="selector" Type="MonoMac.ObjCRuntime.Selector" />
       </Parameters>
       <Docs>
-        <param name="method">To be added.</param>
-        <param name="selector">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="method">Method to register with the runtime.</param>
+        <param name="selector">Selector that will we want to connect to.</param>
+        <summary>This call allows the specified method in this method to respond to message invocations on this selector.</summary>
+        <remarks>
+          <para>
+	    The method must be declared on an NSObject-derived class.    
+	  </para>
+          <para>
+
+	    You can use this method to dynamically reconfigure which
+	    methods on a class should respond to which Objective-C
+	    selectors.
+
+	  </para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="GetNSObject">

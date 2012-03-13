@@ -20,325 +20,7 @@
   </Attributes>
   <Docs>
     <summary>To be added.</summary>
-    <remarks>
-      <format type="text/html">
-        <h2 class="jump">Overview</h2>
-      </format>
-      <para>The <c>NSIndexSet</c> class represents an immutable collection of unique unsigned integers, known as <i>indexes</i> because of the way they are used. This collection is referred to as a <i>index set</i>.</para>
-      <para>You use index sets in your code to store indexes into some other data structure. For example, given an <c>NSArray</c> object, you could use an index set to identify a subset of objects in that array.</para>
-      <para>Each index value can appear only once in the index set. This is an important concept to understand and is why you would not use index sets to store an arbitrary collection of integer values. To illustrate how this works, if you created an <c>NSIndexSet</c> object with the values <c>4</c>, <c>5</c>, <c>2</c>, and <c>5</c>, the resulting set would only have the values <c>4</c>, <c>5</c>, and <c>2</c> in it. Because index values are always maintained in sorted order, the actual order of the values when you created the set would be <c>2</c>, <c>4</c>, and then <c>5</c>.</para>
-      <para>In most cases, using an index set is more efficient than storing a collection of individual integers. Internally, the <c>NSIndexSet</c> class represents indexes using ranges. For maximum performance and efficiency, overlapping ranges in an index set are automatically coalesced—that is, ranges merge rather than overlap. Thus, the more contiguous the indexes in the set, the fewer ranges are required to specify those indexes.</para>
-      <para>The designated initializers of the NSIndexSet class are: <c><format type="text/html"><a href="Reference.html#//apple_ref/occ/instm/NSIndexSet/initWithIndexesInRange:">initWithIndexesInRange:</a></format></c> and <c><see cref="C:MonoMac.Foundation.NSIndexSet(MonoMac.Foundation.NSIndexSet)" /></c>.</para>
-      <para>You must not subclass the <c>NSIndexSet</c> class.</para>
-      <para>The mutable subclass of <c>NSIndexSet</c> is <format type="text/html"><a target="_top" href="../../NSMutableIndexSet_Class/Reference/Reference.html#//apple_ref/occ/cl/NSMutableIndexSet">NSMutableIndexSet</a></format>.</para>
-      <format type="text/html">
-        <h2 class="jump">Adopted Protocols</h2>
-      </format>
-      <format type="text/html">
-        <a target="_top" href="../../../Protocols/NSCoding_Protocol/Reference/Reference.html#//apple_ref/occ/intf/NSCoding">NSCoding</a>
-      </format>
-      <list type="bullet">
-        <item>
-          <term>
-            <para>
-              <c>
-                <format type="text/html">
-                  <a target="_top" href="../../../Protocols/NSCoding_Protocol/Reference/Reference.html#//apple_ref/occ/intfm/NSCoding/encodeWithCoder:">- encodeWithCoder:</a>
-                </format>
-              </c>
-            </para>
-          </term>
-        </item>
-        <item>
-          <term>
-            <para>
-              <c>
-                <format type="text/html">
-                  <a target="_top" href="../../../Protocols/NSCoding_Protocol/Reference/Reference.html#//apple_ref/occ/intfm/NSCoding/initWithCoder:">- initWithCoder:</a>
-                </format>
-              </c>
-            </para>
-          </term>
-        </item>
-      </list>
-      <format type="text/html">
-        <a target="_top" href="../../../Protocols/NSCopying_Protocol/Reference/Reference.html#//apple_ref/occ/intf/NSCopying">NSCopying</a>
-      </format>
-      <list type="bullet">
-        <item>
-          <term>
-            <para>
-              <c>
-                <format type="text/html">
-                  <a target="_top" href="../../../Protocols/NSCopying_Protocol/Reference/Reference.html#//apple_ref/occ/intfm/NSCopying/copyWithZone:">- copyWithZone:</a>
-                </format>
-              </c>
-            </para>
-          </term>
-        </item>
-      </list>
-      <format type="text/html">
-        <a target="_top" href="../../../Protocols/NSMutableCopying_Protocol/Reference/Reference.html#//apple_ref/occ/intf/NSMutableCopying">NSMutableCopying</a>
-      </format>
-      <list type="bullet">
-        <item>
-          <term>
-            <para>
-              <c>
-                <format type="text/html">
-                  <a target="_top" href="../../../Protocols/NSMutableCopying_Protocol/Reference/Reference.html#//apple_ref/occ/intfm/NSMutableCopying/mutableCopyWithZone:">- mutableCopyWithZone:</a>
-                </format>
-              </c>
-            </para>
-          </term>
-        </item>
-      </list>
-      <format type="text/html">
-        <h2 class="jump">Tasks</h2>
-      </format>
-      <format type="text/html">
-        <h3 class="tasks">Creating Index Sets</h3>
-      </format>
-      <list type="bullet">
-        <item>
-          <term>
-            <c>
-              <format type="text/html">
-                <a href="Reference.html#//apple_ref/occ/clm/NSIndexSet/indexSet">+ indexSet</a>
-              </format>
-            </c>
-            <format type="text/html">
-              <img data-abstract="Creates an empty index set." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
-            </format>
-          </term>
-        </item>
-        <item>
-          <term>
-            <c>
-              <see cref="M:MonoMac.Foundation.NSIndexSet.FromIndex(System.Int32)" />
-            </c>
-            <format type="text/html">
-              <img data-abstract="Creates an index set with an index." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
-            </format>
-          </term>
-        </item>
-        <item>
-          <term>
-            <c>
-              <see cref="M:MonoMac.Foundation.NSIndexSet.FromNSRange(MonoMac.Foundation.NSRange)" />
-            </c>
-            <format type="text/html">
-              <img data-abstract="Creates an index set with an index range." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
-            </format>
-          </term>
-        </item>
-        <item>
-          <term>
-            <c>
-              <see cref="C:MonoMac.Foundation.NSIndexSet" />
-            </c>
-            <format type="text/html">
-              <img data-abstract="Initializes an allocated &lt;code&gt;NSIndexSet&lt;/code&gt; object." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
-            </format>
-          </term>
-        </item>
-        <item>
-          <term>
-            <c>
-              <see cref="C:MonoMac.Foundation.NSIndexSet(System.UInt32)" />
-            </c>
-            <format type="text/html">
-              <img data-abstract="Initializes an allocated &lt;code&gt;NSIndexSet&lt;/code&gt; object with an index." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
-            </format>
-          </term>
-        </item>
-        <item>
-          <term>
-            <c>
-              <format type="text/html">
-                <a href="Reference.html#//apple_ref/occ/instm/NSIndexSet/initWithIndexesInRange:">- initWithIndexesInRange:</a>
-              </format>
-            </c>
-            <format type="text/html">
-              <img data-abstract="Initializes an allocated &lt;code&gt;NSIndexSet&lt;/code&gt; object with an index range." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
-            </format>
-          </term>
-        </item>
-        <item>
-          <term>
-            <c>
-              <see cref="C:MonoMac.Foundation.NSIndexSet(MonoMac.Foundation.NSIndexSet)" />
-            </c>
-            <format type="text/html">
-              <img data-abstract="Initializes an allocated &lt;code&gt;NSIndexSet&lt;/code&gt; object with an index set." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
-            </format>
-          </term>
-        </item>
-      </list>
-      <format type="text/html">
-        <h3 class="tasks">Querying Index Sets</h3>
-      </format>
-      <list type="bullet">
-        <item>
-          <term>
-            <c>
-              <see cref="M:MonoMac.Foundation.NSIndexSet.Contains(System.UInt32)" />
-            </c>
-            <format type="text/html">
-              <img data-abstract="Indicates whether the receiver contains a specific index." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
-            </format>
-          </term>
-        </item>
-        <item>
-          <term>
-            <c>
-              <see cref="M:MonoMac.Foundation.NSIndexSet.Contains(MonoMac.Foundation.NSIndexSet)" />
-            </c>
-            <format type="text/html">
-              <img data-abstract="Indicates whether the receiver contains a superset of the indexes in another index set." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
-            </format>
-          </term>
-        </item>
-        <item>
-          <term>
-            <c>
-              <format type="text/html">
-                <a href="Reference.html#//apple_ref/occ/instm/NSIndexSet/containsIndexesInRange:">- containsIndexesInRange:</a>
-              </format>
-            </c>
-            <format type="text/html">
-              <img data-abstract="Indicates whether the receiver contains the indexes represented by an index range." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
-            </format>
-          </term>
-        </item>
-        <item>
-          <term>
-            <c>
-              <format type="text/html">
-                <a href="Reference.html#//apple_ref/occ/instm/NSIndexSet/intersectsIndexesInRange:">- intersectsIndexesInRange:</a>
-              </format>
-            </c>
-            <format type="text/html">
-              <img data-abstract="Indicates whether the receiver contains any of the indexes in a range." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
-            </format>
-          </term>
-        </item>
-        <item>
-          <term>
-            <c>
-              <see cref="P:MonoMac.Foundation.NSIndexSet.Count" />
-            </c>
-            <format type="text/html">
-              <img data-abstract="Returns the number of indexes in the receiver." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
-            </format>
-          </term>
-        </item>
-        <item>
-          <term>
-            <c>
-              <format type="text/html">
-                <a href="Reference.html#//apple_ref/occ/instm/NSIndexSet/countOfIndexesInRange:">- countOfIndexesInRange:</a>
-              </format>
-            </c>
-            <format type="text/html">
-              <img data-abstract="Returns the number of indexes in the receiver that are members of a given range." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
-            </format>
-          </term>
-        </item>
-      </list>
-      <format type="text/html">
-        <h3 class="tasks">Comparing Index Sets</h3>
-      </format>
-      <list type="bullet">
-        <item>
-          <term>
-            <c>
-              <see cref="M:MonoMac.Foundation.NSIndexSet.IsEqual(MonoMac.Foundation.NSIndexSet)" />
-            </c>
-            <format type="text/html">
-              <img data-abstract="Indicates whether the indexes in the receiver are the same indeces contained in another index set." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
-            </format>
-          </term>
-        </item>
-      </list>
-      <format type="text/html">
-        <h3 class="tasks">Getting Indexes</h3>
-      </format>
-      <list type="bullet">
-        <item>
-          <term>
-            <c>
-              <see cref="P:MonoMac.Foundation.NSIndexSet.FirstIndex" />
-            </c>
-            <format type="text/html">
-              <img data-abstract="Returns either the first index in the receiver or the not-found indicator." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
-            </format>
-          </term>
-        </item>
-        <item>
-          <term>
-            <c>
-              <see cref="P:MonoMac.Foundation.NSIndexSet.LastIndex" />
-            </c>
-            <format type="text/html">
-              <img data-abstract="Returns either the last index in the receiver or the not-found indicator." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
-            </format>
-          </term>
-        </item>
-        <item>
-          <term>
-            <c>
-              <see cref="M:MonoMac.Foundation.NSIndexSet.IndexLessThan(System.UInt32)" />
-            </c>
-            <format type="text/html">
-              <img data-abstract="Returns either the closest index in the receiver that is less than a specific index or the not-found indicator." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
-            </format>
-          </term>
-        </item>
-        <item>
-          <term>
-            <c>
-              <see cref="M:MonoMac.Foundation.NSIndexSet.IndexLessThanOrEqual(System.UInt32)" />
-            </c>
-            <format type="text/html">
-              <img data-abstract="Returns either the closest index in the receiver that is less than or equal to a specific index or the not-found indicator." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
-            </format>
-          </term>
-        </item>
-        <item>
-          <term>
-            <c>
-              <see cref="M:MonoMac.Foundation.NSIndexSet.IndexGreaterThanOrEqual(System.UInt32)" />
-            </c>
-            <format type="text/html">
-              <img data-abstract="Returns either the closest index in the receiver that is greater than or equal to a specific index or the not-found indicator." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
-            </format>
-          </term>
-        </item>
-        <item>
-          <term>
-            <c>
-              <see cref="M:MonoMac.Foundation.NSIndexSet.IndexGreaterThan(System.UInt32)" />
-            </c>
-            <format type="text/html">
-              <img data-abstract="Returns either the closest index in the receiver that is greater than a specific index or the not-found indicator." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
-            </format>
-          </term>
-        </item>
-        <item>
-          <term>
-            <c>
-              <format type="text/html">
-                <a href="Reference.html#//apple_ref/occ/instm/NSIndexSet/getIndexes:maxCount:inIndexRange:">- getIndexes:maxCount:inIndexRange:</a>
-              </format>
-            </c>
-            <format type="text/html">
-              <img data-abstract="The receiver fills an index buffer with the indexes contained both in the receiver and in an index range, returning the number of indexes copied." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
-            </format>
-          </term>
-        </item>
-      </list>
-    </remarks>
+    <remarks>To be added.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -355,9 +37,7 @@
       </Attributes>
       <Parameters />
       <Docs>
-        <summary>
-          <para>Initializes an allocated <c><format type="text/html"><a href="Reference.html#//apple_ref/doc/uid/20002197-SW1">NSIndexSet</a></format></c> object.</para>
-        </summary>
+        <summary>Default constructor, initializes a new instance of this class.</summary>
         <remarks>
         </remarks>
       </Docs>
@@ -400,20 +80,8 @@
       </Parameters>
       <Docs>
         <param name="other">To be added.</param>
-        <summary>
-          <para>Initializes an allocated <c><format type="text/html"><a href="Reference.html#//apple_ref/doc/uid/20002197-SW1">NSIndexSet</a></format></c> object with an index set.</para>
-        </summary>
-        <remarks>
-          <para>This method is a designated initializer for <c><format type="text/html"><a href="Reference.html#//apple_ref/doc/uid/20002197-SW1">NSIndexSet</a></format></c>.</para>
-          <format type="text/html">
-            <h5 class="tight">Availability</h5>
-          </format>
-          <list type="bullet">
-            <item>
-              <term>Available in iPhone OS 2.0 and later.</term>
-            </item>
-          </list>
-        </remarks>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -428,17 +96,32 @@
       </Parameters>
       <Docs>
         <param name="t">Unused sentinel value, pass NSObjectFlag.Empty.</param>
-        <summary>Constructor to call on derived classes when the derived class has an [Export] constructor.</summary>
+        <summary>Constructor to call on derived classes to skip initialization and merely allocate the object.</summary>
         <remarks>
-          <para>This constructor should be called by derived classes when they are initialized using an [Export] attribute. The argument value is ignore, typically the chaining would look like this:</para>
+          <para>This constructor should be called by derived classes when they completely construct the object in managed code and merely want the runtime to allocate and initialize the NSObject.   This is required to implement the two-step initialization process that Objective-C uses, the first step is to perform the object allocation, the second step is to initialize the object.   When you invoke the constructor that takes the NSObjectFlag.Empty you taking advatnage of a direct path that goes all the way up to NSObject to merely allocate the object's memory and bind the Objective-C and C# objects together.    The actual initialization of the object is up to you.</para>
+          <para>This constructor is typically used by the binding generator to allocate the object, but prevent the actual initialization to take place.   Once the allocation has taken place, the constructor has to initialize the object.   With constructors generated by the binding generator this means that it manually invokes one of the "init" methods to initialize the object.</para>
+          <para>It is your responsability to completely initialize the object if you chain up using the NSObjectFlag.Empty path.</para>
+          <para>In general, if your constructors invokes the NSObjectFlag.Empty base implementation, then it should be calling an Objective-C init method.   If this is not the case, you should instead chain to the proper constructor in your class. </para>
+          <para>The argument value is ignored and merely ensures that the only code that is executed is the construction phase is the basic NSObject allocation and runtime type registration.  Typically the chaining would look like this:</para>
           <example>
             <code lang="C#">
-public class MyClass : BaseClass {
-    [Export ("initWithFoo:")]
-    public MyClass (string foo) : base (NSObjectFlag.Empty)
-    {
-        ...
-    }
+//
+// The NSObjectFlag merely allocates the object and registers the
+// C# class with the Objective-C runtime if necessary, but no actual
+// initXxx method is invoked, that is done later in the constructor
+//
+// This is taken from MonoMac's source code:
+//
+[Export ("initWithFrame:")]
+public UIView (System.Drawing.RectangleF frame) : base (NSObjectFlag.Empty)
+{
+// Invoke the init method now.
+	var initWithFrame = new Selector ("initWithFrame:").Handle;
+	if (IsDirectBinding)
+		Handle = MonoMac.ObjCRuntime.Messaging.IntPtr_objc_msgSend_RectangleF (this.Handle, initWithFrame, frame);
+	else
+		Handle = MonoMac.ObjCRuntime.Messaging.IntPtr_objc_msgSendSuper_RectangleF (this.SuperHandle, initWithFrame, frame);
+}
 </code>
           </example>
         </remarks>
@@ -495,11 +178,8 @@ public class MyClass : BaseClass {
       </Parameters>
       <Docs>
         <param name="index">To be added.</param>
-        <summary>
-          <para>Initializes an allocated <c><format type="text/html"><a href="Reference.html#//apple_ref/doc/uid/20002197-SW1">NSIndexSet</a></format></c> object with an index.</para>
-        </summary>
-        <remarks>
-        </remarks>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ClassHandle">
@@ -538,15 +218,9 @@ public class MyClass : BaseClass {
       </Parameters>
       <Docs>
         <param name="indexes">To be added.</param>
-        <summary>
-          <para>Indicates whether the receiver contains a superset of the indexes in another index set.</para>
-        </summary>
-        <returns>
-          <para>
-            <see langword="true" /> when the receiver contains a superset of the indexes in <i>indexSet</i>, <see langword="false" /> otherwise.</para>
-        </returns>
-        <remarks>
-        </remarks>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Contains">
@@ -569,15 +243,9 @@ public class MyClass : BaseClass {
       </Parameters>
       <Docs>
         <param name="index">To be added.</param>
-        <summary>
-          <para>Indicates whether the receiver contains a specific index.</para>
-        </summary>
-        <returns>
-          <para>
-            <see langword="true" /> when the receiver contains <i>index</i>, <see langword="false" /> otherwise.</para>
-        </returns>
-        <remarks>
-        </remarks>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Count">
@@ -596,12 +264,87 @@ public class MyClass : BaseClass {
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>
-          <para>Returns the number of indexes in the receiver.</para>
-        </summary>
+        <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>
-        </remarks>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EnumerateRanges">
+      <MemberSignature Language="C#" Value="public virtual void EnumerateRanges (MonoMac.Foundation.NSRangeIterator iterator);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void EnumerateRanges(class MonoMac.Foundation.NSRangeIterator iterator) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("enumerateRangesUsingBlock:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="iterator" Type="MonoMac.Foundation.NSRangeIterator" />
+      </Parameters>
+      <Docs>
+        <param name="iterator">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EnumerateRanges">
+      <MemberSignature Language="C#" Value="public virtual void EnumerateRanges (MonoMac.Foundation.NSEnumerationOptions opts, MonoMac.Foundation.NSRangeIterator iterator);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void EnumerateRanges(valuetype MonoMac.Foundation.NSEnumerationOptions opts, class MonoMac.Foundation.NSRangeIterator iterator) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("enumerateRangesWithOptions:usingBlock:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="opts" Type="MonoMac.Foundation.NSEnumerationOptions" />
+        <Parameter Name="iterator" Type="MonoMac.Foundation.NSRangeIterator" />
+      </Parameters>
+      <Docs>
+        <param name="opts">To be added.</param>
+        <param name="iterator">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EnumerateRanges">
+      <MemberSignature Language="C#" Value="public virtual void EnumerateRanges (MonoMac.Foundation.NSRange range, MonoMac.Foundation.NSEnumerationOptions opts, MonoMac.Foundation.NSRangeIterator iterator);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void EnumerateRanges(valuetype MonoMac.Foundation.NSRange range, valuetype MonoMac.Foundation.NSEnumerationOptions opts, class MonoMac.Foundation.NSRangeIterator iterator) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("enumerateRangesInRange:options:usingBlock:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="range" Type="MonoMac.Foundation.NSRange" />
+        <Parameter Name="opts" Type="MonoMac.Foundation.NSEnumerationOptions" />
+        <Parameter Name="iterator" Type="MonoMac.Foundation.NSRangeIterator" />
+      </Parameters>
+      <Docs>
+        <param name="range">To be added.</param>
+        <param name="opts">To be added.</param>
+        <param name="iterator">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="FirstIndex">
@@ -620,12 +363,9 @@ public class MyClass : BaseClass {
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>
-          <para>Returns either the first index in the receiver or the not-found indicator.</para>
-        </summary>
+        <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>
-        </remarks>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="FromArray">
@@ -688,19 +428,9 @@ public class MyClass : BaseClass {
       </Parameters>
       <Docs>
         <param name="idx">To be added.</param>
-        <summary>
-          <para>Creates an index set with an index.</para>
-        </summary>
-        <returns>
-          <para>
-            <c>
-              <format type="text/html">
-                <a href="Reference.html#//apple_ref/doc/uid/20002197-SW1">NSIndexSet</a>
-              </format>
-            </c> object containing <i>index</i>.</para>
-        </returns>
-        <remarks>
-        </remarks>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="FromNSRange">
@@ -723,19 +453,9 @@ public class MyClass : BaseClass {
       </Parameters>
       <Docs>
         <param name="indexRange">To be added.</param>
-        <summary>
-          <para>Creates an index set with an index range.</para>
-        </summary>
-        <returns>
-          <para>
-            <c>
-              <format type="text/html">
-                <a href="Reference.html#//apple_ref/doc/uid/20002197-SW1">NSIndexSet</a>
-              </format>
-            </c> object containing <i>indexRange</i>.</para>
-        </returns>
-        <remarks>
-        </remarks>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="GetEnumerator">
@@ -775,14 +495,9 @@ public class MyClass : BaseClass {
       </Parameters>
       <Docs>
         <param name="index">To be added.</param>
-        <summary>
-          <para>Returns either the closest index in the receiver that is greater than a specific index or the not-found indicator.</para>
-        </summary>
-        <returns>
-          <para>Closest index in the receiver greater than <i>index</i>; <c><format type="text/html"><a target="_top" href="../../../Miscellaneous/Foundation_Constants/Reference/reference.html#//apple_ref/doc/constant_group/NSNotFound">NSNotFound</a></format></c> when the receiver contains no qualifying index.</para>
-        </returns>
-        <remarks>
-        </remarks>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="IndexGreaterThanOrEqual">
@@ -805,14 +520,9 @@ public class MyClass : BaseClass {
       </Parameters>
       <Docs>
         <param name="index">To be added.</param>
-        <summary>
-          <para>Returns either the closest index in the receiver that is greater than or equal to a specific index or the not-found indicator.</para>
-        </summary>
-        <returns>
-          <para>Closest index in the receiver greater than or equal to <i>index</i>; <c><format type="text/html"><a target="_top" href="../../../Miscellaneous/Foundation_Constants/Reference/reference.html#//apple_ref/doc/constant_group/NSNotFound">NSNotFound</a></format></c> when the receiver contains no qualifying index.</para>
-        </returns>
-        <remarks>
-        </remarks>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="IndexLessThan">
@@ -835,14 +545,9 @@ public class MyClass : BaseClass {
       </Parameters>
       <Docs>
         <param name="index">To be added.</param>
-        <summary>
-          <para>Returns either the closest index in the receiver that is less than a specific index or the not-found indicator.</para>
-        </summary>
-        <returns>
-          <para>Closest index in the receiver less than <i>index</i>; <c><format type="text/html"><a target="_top" href="../../../Miscellaneous/Foundation_Constants/Reference/reference.html#//apple_ref/doc/constant_group/NSNotFound">NSNotFound</a></format></c> when the receiver contains no qualifying index.</para>
-        </returns>
-        <remarks>
-        </remarks>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="IndexLessThanOrEqual">
@@ -865,14 +570,9 @@ public class MyClass : BaseClass {
       </Parameters>
       <Docs>
         <param name="index">To be added.</param>
-        <summary>
-          <para>Returns either the closest index in the receiver that is less than or equal to a specific index or the not-found indicator.</para>
-        </summary>
-        <returns>
-          <para>Closest index in the receiver less than or equal to <i>index</i>; <c><format type="text/html"><a target="_top" href="../../../Miscellaneous/Foundation_Constants/Reference/reference.html#//apple_ref/doc/constant_group/NSNotFound">NSNotFound</a></format></c> when the receiver contains no qualifying index.</para>
-        </returns>
-        <remarks>
-        </remarks>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="IsEqual">
@@ -895,13 +595,8 @@ public class MyClass : BaseClass {
       </Parameters>
       <Docs>
         <param name="other">To be added.</param>
-        <summary>
-          <para>Indicates whether the indexes in the receiver are the same indeces contained in another index set.</para>
-        </summary>
-        <returns>
-          <para>
-            <see langword="true" /> when the indexes in the receiver are the same indexes <i>indexSet</i> contains, <see langword="false" /> otherwise.</para>
-        </returns>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -921,9 +616,7 @@ public class MyClass : BaseClass {
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>
-          <para>Returns either the last index in the receiver or the not-found indicator.</para>
-        </summary>
+        <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>

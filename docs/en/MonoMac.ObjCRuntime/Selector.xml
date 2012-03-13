@@ -41,9 +41,10 @@
         <Parameter Name="name" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="name">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="name">The selector name.</param>
+        <summary>Creates a new selector and registers it with the Objective-C runtime.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -58,10 +59,11 @@
         <Parameter Name="alloc" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="name">To be added.</param>
-        <param name="alloc">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="name">The selector name.</param>
+        <param name="alloc">Whether we need to allocate for holding the name of the selector.</param>
+        <summary>Creates a new selector and registers it with the Objective-C runtime.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Equals">
@@ -78,7 +80,30 @@
         <Parameter Name="right" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="right">To be added.</param>
+        <param name="right">The other object to compare against.</param>
+        <summary>Compares two objects for equality</summary>
+        <returns>True if the objects represent the same object</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetFrameLength">
+      <MemberSignature Language="C#" Value="public static int GetFrameLength (IntPtr this, IntPtr sel);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig int32 GetFrameLength(native int this, native int sel) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="this" Type="System.IntPtr" />
+        <Parameter Name="sel" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="this">To be added.</param>
+        <param name="sel">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>

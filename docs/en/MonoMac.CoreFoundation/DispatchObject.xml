@@ -17,8 +17,48 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Base class for dispatch objects.</summary>
+    <remarks>
+      <para>
+	Dispatch objects share functions for coordinating memory management, suspension, cancellation and con-
+	text pointers. While all dispatch objects are retainable, not all objects support suspension, context
+	pointers or finalizers (currently only queues and sources support these additional interfaces).
+      </para>
+      <para>
+
+	The invocation of blocks on dispatch queues or dispatch sources may be suspended or resumed with the
+	methods <see cref="M:MonoMac.CoreFoundation.DispatchObject.Suspend()" /> and <see cref="M:MonoMac.CoreFoundation.DispatchObject.Resume()" /> respectively.  The dispatch framework always checks
+	the suspension status before executing a block, but such changes never affect a block during execution
+	(non-preemptive).  Therefore the suspension of an object is asynchronous, unless it is performed from
+	the context of the target queue for the given object.  The result of suspending or resuming an object
+	that is not a dispatch queue or a dispatch source is undefined.
+
+      </para>
+      <para>
+
+	Important: suspension applies to all aspects of the dispatch
+	object life cycle, including the finalizer function and
+	cancellation handler. Therefore it is important to balance
+	calls to <see cref="M:MonoMac.CoreFoundation.DispatchObject.Suspend()" />
+	and <see cref="M:MonoMac.CoreFoundation.DispatchObject.Resume()" />
+	such that the dispatch object is fully resumed when the last
+	reference is released.  The result of releasing all references
+	to a dispatch object while in a suspended state is undefined.
+
+      </para>
+      <para>
+
+	Dispatch queues and sources support supplemental context pointers. The value of the context point may
+	be retrieved and updated with the <see cref="P:MonoMac.CoreFoundation.DispatchObject.Context" /> property.  
+
+      </para>
+      <para>
+
+	The result of getting or setting the context of an object that is not a dispatch queue or a dispatch
+	source is undefined.	
+
+      </para>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName="Context">
@@ -32,9 +72,14 @@
         <ReturnType>System.IntPtr</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>User-defined Context information to attach to a DispatchObject.</summary>
+        <value>
+        </value>
+        <remarks>
+
+	  You can use the Context property on a DispatchObject to store state that your application might want to associate with it.
+
+	</remarks>
       </Docs>
     </Member>
     <Member MemberName="Dispose">
@@ -131,7 +176,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Returns the hashcode for this object</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
@@ -208,7 +253,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Resumes execution of the queue</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -224,7 +269,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Suspends the execution of the queue.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

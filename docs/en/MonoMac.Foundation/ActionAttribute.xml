@@ -15,8 +15,23 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Flags a method to respond to an Objective-C action</summary>
+    <remarks>
+      <para>
+	You can apply this attribute to a method, turning it into an action that can be invoked by the Objective-C world. 
+      </para>
+      <para>
+        <example>
+          <code lang="C#">
+	    [Action ("clicked:")]
+	    void Submit (NSObject sender)
+	    {
+		    // User has clicked on the Submit button, respond to this action
+	    }
+	  </code>
+        </example>
+      </para>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -28,8 +43,9 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Initializes a new instance of an Action attribute</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -43,9 +59,10 @@
         <Parameter Name="selector" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="selector">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="selector">Name for the selector to expose</param>
+        <summary>Creates a new instance of the action attribtue with the given selector.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
   </Members>

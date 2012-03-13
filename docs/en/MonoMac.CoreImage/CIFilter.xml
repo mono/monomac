@@ -15,8 +15,93 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>CoreImage image filter.</summary>
+    <remarks>
+      <para>
+
+	On iOS 5.0, the following are the built-in filters:
+
+	<see cref="T:MonoMac.CoreImage.CICategoryBlur" />, <see cref="T:MonoMac.CoreImage.CICategoryColorEffect" />,
+	<see cref="T:MonoMac.CoreImage.CIAdditionCompositing" />,
+	<see cref="T:MonoMac.CoreImage.CIAffineTransform" />,
+	<see cref="T:MonoMac.CoreImage.CICheckerboardGenerator" />,
+	<see cref="T:MonoMac.CoreImage.CIColorBlendMode" />,
+	<see cref="T:MonoMac.CoreImage.CIColorBurnBlendMode" />,
+	<see cref="T:MonoMac.CoreImage.CIColorControls" />,
+	<see cref="T:MonoMac.CoreImage.CIColorCube" />,
+	<see cref="T:MonoMac.CoreImage.CIColorDodgeBlendMode" />,
+	<see cref="T:MonoMac.CoreImage.CIColorInvert" />,
+	<see cref="T:MonoMac.CoreImage.CIColorMatrix" />,
+	<see cref="T:MonoMac.CoreImage.CIColorMonochrome" />,
+	<see cref="T:MonoMac.CoreImage.CIConstantColorGenerator" />,
+	<see cref="T:MonoMac.CoreImage.CICrop" />,
+	<see cref="T:MonoMac.CoreImage.CIDarkenBlendMode" />,
+	<see cref="T:MonoMac.CoreImage.CIDifferenceBlendMode" />,
+	<see cref="T:MonoMac.CoreImage.CIExclusionBlendMode" />,
+	<see cref="T:MonoMac.CoreImage.CIExposureAdjust" />,
+	<see cref="T:MonoMac.CoreImage.CIFalseColor" />,
+	<see cref="T:MonoMac.CoreImage.CIGammaAdjust" />,
+	<see cref="T:MonoMac.CoreImage.CIGaussianGradient" />,
+	<see cref="T:MonoMac.CoreImage.CIHardLightBlendMode" />,
+	<see cref="T:MonoMac.CoreImage.CIHighlightShadowAdjust" />,
+	<see cref="T:MonoMac.CoreImage.CIHueAdjust" />,
+	<see cref="T:MonoMac.CoreImage.CIHueBlendMode" />,
+	<see cref="T:MonoMac.CoreImage.CILightenBlendMode" />,
+	<see cref="T:MonoMac.CoreImage.CILinearGradient" />,
+	<see cref="T:MonoMac.CoreImage.CILuminosityBlendMode" />,
+	<see cref="T:MonoMac.CoreImage.CIMaximumCompositing" />,
+	<see cref="T:MonoMac.CoreImage.CIMinimumCompositing" />,
+	<see cref="T:MonoMac.CoreImage.CIMultiplyBlendMode" />,
+	<see cref="T:MonoMac.CoreImage.CIMultiplyCompositing" />,
+	<see cref="T:MonoMac.CoreImage.CIOverlayBlendMode" />,
+	<see cref="T:MonoMac.CoreImage.CIRadialGradient" />,
+	<see cref="T:MonoMac.CoreImage.CISaturationBlendMode" />,
+	<see cref="T:MonoMac.CoreImage.CIScreenBlendMode" />,
+	<see cref="T:MonoMac.CoreImage.CISepiaTone" />,
+	<see cref="T:MonoMac.CoreImage.CISoftLightBlendMode" />,
+	<see cref="T:MonoMac.CoreImage.CISourceAtopCompositing" />,
+	<see cref="T:MonoMac.CoreImage.CISourceInCompositing" />,
+	<see cref="T:MonoMac.CoreImage.CISourceOutCompositing" />,
+	<see cref="T:MonoMac.CoreImage.CISourceOverCompositing" />,
+	<see cref="T:MonoMac.CoreImage.CIStraightenFilter" />,
+	<see cref="T:MonoMac.CoreImage.CIStripesGenerator" />,
+	<see cref="T:MonoMac.CoreImage.CITemperatureAndTint" />,
+	<see cref="T:MonoMac.CoreImage.CIToneCurve" />,
+	<see cref="T:MonoMac.CoreImage.CIVibrance" />,
+	<see cref="T:MonoMac.CoreImage.CIVignette" /> and <see cref="T:MonoMac.CoreImage.CIWhitePointAdjust" />.
+
+      </para>
+      <para>
+
+	To create a filter of the specified type, instantiate an
+	instance of one of the above types, assign values to their
+	properties and extract the result by using the OutputImage
+	property.
+
+      </para>
+      <example>
+        <code lang="C#">
+var sepiaFilter = new CISepiaTone () {
+	Image = mySourceImage,
+	Intensity = 0.8f
+};
+	</code>
+      </example>
+      <para>
+	You can chain your filters as well:
+      </para>
+      <example>
+        <code lang="C#">
+var sepiaFilter = new CISepiaTone () {
+	Image = mySourceImage,
+	Intensity = .8f
+};
+var invert = new CIColorInvert () {
+	Image = sepia.OutputImage
+};
+        </code>
+      </example>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -33,8 +118,9 @@
       </Attributes>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Default constructor that initializes a new instance of this class with no parameters.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -70,17 +156,32 @@
       </Parameters>
       <Docs>
         <param name="t">Unused sentinel value, pass NSObjectFlag.Empty.</param>
-        <summary>Constructor to call on derived classes when the derived class has an [Export] constructor.</summary>
+        <summary>Constructor to call on derived classes to skip initialization and merely allocate the object.</summary>
         <remarks>
-          <para>This constructor should be called by derived classes when they are initialized using an [Export] attribute. The argument value is ignore, typically the chaining would look like this:</para>
+          <para>This constructor should be called by derived classes when they completely construct the object in managed code and merely want the runtime to allocate and initialize the NSObject.   This is required to implement the two-step initialization process that Objective-C uses, the first step is to perform the object allocation, the second step is to initialize the object.   When you invoke the constructor that takes the NSObjectFlag.Empty you taking advatnage of a direct path that goes all the way up to NSObject to merely allocate the object's memory and bind the Objective-C and C# objects together.    The actual initialization of the object is up to you.</para>
+          <para>This constructor is typically used by the binding generator to allocate the object, but prevent the actual initialization to take place.   Once the allocation has taken place, the constructor has to initialize the object.   With constructors generated by the binding generator this means that it manually invokes one of the "init" methods to initialize the object.</para>
+          <para>It is your responsability to completely initialize the object if you chain up using the NSObjectFlag.Empty path.</para>
+          <para>In general, if your constructors invokes the NSObjectFlag.Empty base implementation, then it should be calling an Objective-C init method.   If this is not the case, you should instead chain to the proper constructor in your class. </para>
+          <para>The argument value is ignored and merely ensures that the only code that is executed is the construction phase is the basic NSObject allocation and runtime type registration.  Typically the chaining would look like this:</para>
           <example>
             <code lang="C#">
-public class MyClass : BaseClass {
-    [Export ("initWithFoo:")]
-    public MyClass (string foo) : base (NSObjectFlag.Empty)
-    {
-        ...
-    }
+//
+// The NSObjectFlag merely allocates the object and registers the
+// C# class with the Objective-C runtime if necessary, but no actual
+// initXxx method is invoked, that is done later in the constructor
+//
+// This is taken from MonoMac's source code:
+//
+[Export ("initWithFrame:")]
+public UIView (System.Drawing.RectangleF frame) : base (NSObjectFlag.Empty)
+{
+// Invoke the init method now.
+	var initWithFrame = new Selector ("initWithFrame:").Handle;
+	if (IsDirectBinding)
+		Handle = MonoMac.ObjCRuntime.Messaging.IntPtr_objc_msgSend_RectangleF (this.Handle, initWithFrame, frame);
+	else
+		Handle = MonoMac.ObjCRuntime.Messaging.IntPtr_objc_msgSendSuper_RectangleF (this.SuperHandle, initWithFrame, frame);
+}
 </code>
           </example>
         </remarks>
@@ -104,9 +205,9 @@ public class MyClass : BaseClass {
         </remarks>
       </Docs>
     </Member>
-    <Member MemberName="Applyargumentsoptions">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreImage.CIImage Applyargumentsoptions (MonoMac.CoreImage.CIKernel k, MonoMac.Foundation.NSArray args, MonoMac.Foundation.NSDictionary options);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class MonoMac.CoreImage.CIImage Applyargumentsoptions(class MonoMac.CoreImage.CIKernel k, class MonoMac.Foundation.NSArray args, class MonoMac.Foundation.NSDictionary options) cil managed" />
+    <Member MemberName="Apply">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreImage.CIImage Apply (MonoMac.CoreImage.CIKernel k, MonoMac.Foundation.NSArray args, MonoMac.Foundation.NSDictionary options);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class MonoMac.CoreImage.CIImage Apply(class MonoMac.CoreImage.CIKernel k, class MonoMac.Foundation.NSArray args, class MonoMac.Foundation.NSDictionary options) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -133,246 +234,6 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="ApplyOptionDefinition">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString ApplyOptionDefinition { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString ApplyOptionDefinition" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ApplyOptionExtent">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString ApplyOptionExtent { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString ApplyOptionExtent" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ApplyOptionUserInfo">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString ApplyOptionUserInfo { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString ApplyOptionUserInfo" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AttributeClass">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString AttributeClass { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString AttributeClass" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AttributeDefault">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString AttributeDefault { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString AttributeDefault" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AttributeDescription">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString AttributeDescription { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString AttributeDescription" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AttributeDisplayName">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString AttributeDisplayName { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString AttributeDisplayName" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AttributeFilterCategories">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString AttributeFilterCategories { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString AttributeFilterCategories" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AttributeFilterDisplayName">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString AttributeFilterDisplayName { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString AttributeFilterDisplayName" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AttributeFilterName">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString AttributeFilterName { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString AttributeFilterName" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AttributeIdentity">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString AttributeIdentity { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString AttributeIdentity" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AttributeMax">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString AttributeMax { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString AttributeMax" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AttributeMin">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString AttributeMin { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString AttributeMin" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AttributeName">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString AttributeName { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString AttributeName" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AttributeReferenceDocumentation">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString AttributeReferenceDocumentation { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString AttributeReferenceDocumentation" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Attributes">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSDictionary Attributes { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSDictionary Attributes" />
@@ -389,473 +250,21 @@ public class MyClass : BaseClass {
         <ReturnType>MonoMac.Foundation.NSDictionary</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Configurable attributes of the filter.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AttributeSliderMax">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString AttributeSliderMax { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString AttributeSliderMax" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AttributeSliderMin">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString AttributeSliderMin { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString AttributeSliderMin" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AttributeType">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString AttributeType { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString AttributeType" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AttributeTypeAngle">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString AttributeTypeAngle { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString AttributeTypeAngle" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AttributeTypeBoolean">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString AttributeTypeBoolean { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString AttributeTypeBoolean" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AttributeTypeCount">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString AttributeTypeCount { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString AttributeTypeCount" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AttributeTypeDistance">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString AttributeTypeDistance { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString AttributeTypeDistance" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AttributeTypeGradient">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString AttributeTypeGradient { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString AttributeTypeGradient" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AttributeTypeInteger">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString AttributeTypeInteger { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString AttributeTypeInteger" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AttributeTypeOffset">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString AttributeTypeOffset { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString AttributeTypeOffset" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AttributeTypeOpaqueColor">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString AttributeTypeOpaqueColor { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString AttributeTypeOpaqueColor" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AttributeTypePosition">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString AttributeTypePosition { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString AttributeTypePosition" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AttributeTypePosition3">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString AttributeTypePosition3 { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString AttributeTypePosition3" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AttributeTypeRectangle">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString AttributeTypeRectangle { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString AttributeTypeRectangle" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AttributeTypeScalar">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString AttributeTypeScalar { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString AttributeTypeScalar" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AttributeTypeTime">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString AttributeTypeTime { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString AttributeTypeTime" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="CategoryBlur">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString CategoryBlur { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString CategoryBlur" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="CategoryBuiltIn">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString CategoryBuiltIn { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString CategoryBuiltIn" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="CategoryColorAdjustment">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString CategoryColorAdjustment { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString CategoryColorAdjustment" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="CategoryColorEffect">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString CategoryColorEffect { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString CategoryColorEffect" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="CategoryCompositeOperation">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString CategoryCompositeOperation { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString CategoryCompositeOperation" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="CategoryDistortionEffect">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString CategoryDistortionEffect { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString CategoryDistortionEffect" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="CategoryFilterGenerator">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString CategoryFilterGenerator { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString CategoryFilterGenerator" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="CategoryGenerator">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString CategoryGenerator { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString CategoryGenerator" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="CategoryGeometryAdjustment">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString CategoryGeometryAdjustment { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString CategoryGeometryAdjustment" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="CategoryGradient">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString CategoryGradient { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString CategoryGradient" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="CategoryHalftoneEffect">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString CategoryHalftoneEffect { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString CategoryHalftoneEffect" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="CategoryHighDynamicRange">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString CategoryHighDynamicRange { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString CategoryHighDynamicRange" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="CategoryInterlaced">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString CategoryInterlaced { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString CategoryInterlaced" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <para>
+
+	    Each filter has a set of attributes that control it.  You can
+	    get this list by requesting the Attributes dictionary from the
+	    filter.  Each fitler, in addition to having a series of
+	    configurable properties always includes its name
+	    ("CIAttributeFilterName" key), a user friendly name
+	    ("CIAttributeFilterDisplayName" key) and a list of categories
+	    that this filter belongs to ("CIAttributeFilterCategories").   
+
+	  </para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CategoryLocalizedName">
@@ -880,134 +289,6 @@ public class MyClass : BaseClass {
         <param name="category">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="CategoryNonSquarePixels">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString CategoryNonSquarePixels { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString CategoryNonSquarePixels" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="CategoryReduction">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString CategoryReduction { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString CategoryReduction" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="CategorySharpen">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString CategorySharpen { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString CategorySharpen" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="CategoryStillImage">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString CategoryStillImage { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString CategoryStillImage" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="CategoryStylize">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString CategoryStylize { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString CategoryStylize" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="CategoryTileEffect">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString CategoryTileEffect { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString CategoryTileEffect" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="CategoryTransition">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString CategoryTransition { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString CategoryTransition" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="CategoryVideo">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString CategoryVideo { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString CategoryVideo" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1128,31 +409,6 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="FilterNamesInCategories">
-      <MemberSignature Language="C#" Value="public static string[] FilterNamesInCategories (string[] categories);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig string[] FilterNamesInCategories(string[] categories) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>MonoMac.Foundation.Export("filterNamesInCategories:")</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.String[]</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="categories" Type="System.String[]" />
-      </Parameters>
-      <Docs>
-        <param name="categories">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="FilterNamesInCategory">
       <MemberSignature Language="C#" Value="public static string[] FilterNamesInCategory (string category);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig string[] FilterNamesInCategory(string category) cil managed" />
@@ -1197,202 +453,80 @@ public class MyClass : BaseClass {
         <Parameter Name="name" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="name">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="name">The name of the CoreImage filter to instantiate.</param>
+        <summary>Returns a CIFilter for the specific effect.</summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="InputAngleKey">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString InputAngleKey { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString InputAngleKey" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="InputAspectRatioKey">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString InputAspectRatioKey { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString InputAspectRatioKey" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="InputBackgroundImageKey">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString InputBackgroundImageKey { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString InputBackgroundImageKey" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="InputBrightnessKey">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString InputBrightnessKey { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString InputBrightnessKey" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="InputCenterKey">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString InputCenterKey { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString InputCenterKey" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="InputColorKey">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString InputColorKey { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString InputColorKey" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="InputContrastKey">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString InputContrastKey { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString InputContrastKey" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="InputEVKey">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString InputEVKey { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString InputEVKey" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="InputExtentKey">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString InputExtentKey { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString InputExtentKey" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="InputGradientImageKey">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString InputGradientImageKey { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString InputGradientImageKey" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="InputImageKey">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString InputImageKey { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString InputImageKey" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="InputIntensityKey">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString InputIntensityKey { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString InputIntensityKey" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <para>
+	    
+	    On iOS 5.0, the following are the built-in filters:
+	    <see cref="T:MonoMac.CoreImage.CICategoryBlur" />, <see cref="T:MonoMac.CoreImage.CICategoryColorEffect" />,
+	    <see cref="T:MonoMac.CoreImage.CIAdditionCompositing" />,
+	    <see cref="T:MonoMac.CoreImage.CIAffineTransform" />,
+	    <see cref="T:MonoMac.CoreImage.CICheckerboardGenerator" />,
+	    <see cref="T:MonoMac.CoreImage.CIColorBlendMode" />,
+	    <see cref="T:MonoMac.CoreImage.CIColorBurnBlendMode" />,
+	    <see cref="T:MonoMac.CoreImage.CIColorControls" />,
+	    <see cref="T:MonoMac.CoreImage.CIColorCube" />,
+	    <see cref="T:MonoMac.CoreImage.CIColorDodgeBlendMode" />,
+	    <see cref="T:MonoMac.CoreImage.CIColorInvert" />,
+	    <see cref="T:MonoMac.CoreImage.CIColorMatrix" />,
+	    <see cref="T:MonoMac.CoreImage.CIColorMonochrome" />,
+	    <see cref="T:MonoMac.CoreImage.CIConstantColorGenerator" />,
+	    <see cref="T:MonoMac.CoreImage.CICrop" />,
+	    <see cref="T:MonoMac.CoreImage.CIDarkenBlendMode" />,
+	    <see cref="T:MonoMac.CoreImage.CIDifferenceBlendMode" />,
+	    <see cref="T:MonoMac.CoreImage.CIExclusionBlendMode" />,
+	    <see cref="T:MonoMac.CoreImage.CIExposureAdjust" />,
+	    <see cref="T:MonoMac.CoreImage.CIFalseColor" />,
+	    <see cref="T:MonoMac.CoreImage.CIGammaAdjust" />,
+	    <see cref="T:MonoMac.CoreImage.CIGaussianGradient" />,
+	    <see cref="T:MonoMac.CoreImage.CIHardLightBlendMode" />,
+	    <see cref="T:MonoMac.CoreImage.CIHighlightShadowAdjust" />,
+	    <see cref="T:MonoMac.CoreImage.CIHueAdjust" />,
+	    <see cref="T:MonoMac.CoreImage.CIHueBlendMode" />,
+	    <see cref="T:MonoMac.CoreImage.CILightenBlendMode" />,
+	    <see cref="T:MonoMac.CoreImage.CILinearGradient" />,
+	    <see cref="T:MonoMac.CoreImage.CILuminosityBlendMode" />,
+	    <see cref="T:MonoMac.CoreImage.CIMaximumCompositing" />,
+	    <see cref="T:MonoMac.CoreImage.CIMinimumCompositing" />,
+	    <see cref="T:MonoMac.CoreImage.CIMultiplyBlendMode" />,
+	    <see cref="T:MonoMac.CoreImage.CIMultiplyCompositing" />,
+	    <see cref="T:MonoMac.CoreImage.CIOverlayBlendMode" />,
+	    <see cref="T:MonoMac.CoreImage.CIRadialGradient" />,
+	    <see cref="T:MonoMac.CoreImage.CISaturationBlendMode" />,
+	    <see cref="T:MonoMac.CoreImage.CIScreenBlendMode" />,
+	    <see cref="T:MonoMac.CoreImage.CISepiaTone" />,
+	    <see cref="T:MonoMac.CoreImage.CISoftLightBlendMode" />,
+	    <see cref="T:MonoMac.CoreImage.CISourceAtopCompositing" />,
+	    <see cref="T:MonoMac.CoreImage.CISourceInCompositing" />,
+	    <see cref="T:MonoMac.CoreImage.CISourceOutCompositing" />,
+	    <see cref="T:MonoMac.CoreImage.CISourceOverCompositing" />,
+	    <see cref="T:MonoMac.CoreImage.CIStraightenFilter" />,
+	    <see cref="T:MonoMac.CoreImage.CIStripesGenerator" />,
+	    <see cref="T:MonoMac.CoreImage.CITemperatureAndTint" />,
+	    <see cref="T:MonoMac.CoreImage.CIToneCurve" />,
+	    <see cref="T:MonoMac.CoreImage.CIVibrance" />,
+	    <see cref="T:MonoMac.CoreImage.CIVignette" /> and <see cref="T:MonoMac.CoreImage.CIWhitePointAdjust" />.
+  
+	  </para>
+          <para>
+	    
+	    To create a filter of the specified type, instantiate an
+	    instance of one of the above types, assign values to their
+	    properties and extract the result by using the OutputImage
+	    property.
+	    
+	  </para>
+          <example>
+            <code lang="C#">
+var sepiaFilter = new CISepiaTone () {
+  	Image = mySourceImage,
+	Intensity = 0.8f
+};
+	    </code>
+          </example>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="InputKeys">
@@ -1409,182 +543,6 @@ public class MyClass : BaseClass {
       </Attributes>
       <ReturnValue>
         <ReturnType>System.String[]</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="InputMaskImageKey">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString InputMaskImageKey { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString InputMaskImageKey" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="InputRadiusKey">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString InputRadiusKey { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString InputRadiusKey" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="InputRefractionKey">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString InputRefractionKey { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString InputRefractionKey" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="InputSaturationKey">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString InputSaturationKey { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString InputSaturationKey" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="InputScaleKey">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString InputScaleKey { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString InputScaleKey" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="InputShadingImageKey">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString InputShadingImageKey { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString InputShadingImageKey" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="InputSharpnessKey">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString InputSharpnessKey { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString InputSharpnessKey" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="InputTargetImageKey">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString InputTargetImageKey { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString InputTargetImageKey" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="InputTimeKey">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString InputTimeKey { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString InputTimeKey" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="InputTransformKey">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString InputTransformKey { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString InputTransformKey" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="InputWidthKey">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString InputWidthKey { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString InputWidthKey" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -1609,22 +567,6 @@ public class MyClass : BaseClass {
       </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="OutputImageKey">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString OutputImageKey { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString OutputImageKey" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -1699,86 +641,6 @@ public class MyClass : BaseClass {
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="UIParameterSet">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString UIParameterSet { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString UIParameterSet" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="UISetAdvanced">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString UISetAdvanced { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString UISetAdvanced" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="UISetBasic">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString UISetBasic { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString UISetBasic" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="UISetDevelopment">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString UISetDevelopment { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString UISetDevelopment" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="UISetIntermediate">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString UISetIntermediate { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString UISetIntermediate" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

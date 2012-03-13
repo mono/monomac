@@ -10,8 +10,17 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Encapsulated a series of AudioBuffers.</summary>
+    <remarks>
+      <para> For interleaved stereo audio buffers (for example when
+	the Left and Right audio packets are in a single stream) there
+	is a single AudioBuffer which contains both the left and right
+	sample in the buffer.  For non-interleaved stereo buffers,
+	there are two buffers, the left samples are stored in one buffer and the right samples are stored on the other one.  </para>
+      <para>
+	This is an immutable data structure, if you are looking for a mutable version, see the <see cref="MonoMac.AudioToolbox.MutableAudioBufferList" />.
+      </para>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -23,8 +32,9 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Default constructor</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="BufferCount">
@@ -38,9 +48,11 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Returns the number of buffers encapsulated.</summary>
+        <value>
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Buffers">
@@ -54,9 +66,11 @@
         <ReturnType>MonoMac.AudioToolbox.AudioBuffer[]</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>The AudioBuffers in this AudioBufferList group.</summary>
+        <value>
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ToString">
@@ -71,7 +85,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Debugging method that describes the AudioBufferList</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>

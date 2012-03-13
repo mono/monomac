@@ -14,8 +14,16 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Flags describing the stream in the <see cref="T:MonoMac.AudioToolbox.AudioStreamBasicDescription" />.</summary>
+    <remarks>
+      <para> The core set of flags describe properties of the audio
+	stream (integer vs float values, endianess, interleaved) while
+	the other flags are only used if the AudioFormatType is set to
+	either LinearPCM (those are the values prefixed with
+	LinearPCM) or AppleLossles (enumeration values prefixed with
+	AppleLossles).
+      </para>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName="AppleLossless16BitSourceData">
@@ -113,7 +121,7 @@
         <ReturnType>MonoMac.AudioToolbox.AudioFormatFlags</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>If this flag is set, the data is encoded in big endian format otherwise it is in little endian.</summary>
       </Docs>
     </Member>
     <Member MemberName="IsFloat">
@@ -127,7 +135,7 @@
         <ReturnType>MonoMac.AudioToolbox.AudioFormatFlags</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>If this flag is set, the data is encoded using floating point values instead of integers.</summary>
       </Docs>
     </Member>
     <Member MemberName="IsNonInterleaved">
@@ -183,7 +191,7 @@
         <ReturnType>MonoMac.AudioToolbox.AudioFormatFlags</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>If the data encoded using integers (the IsFloat flag is cleared) this determines whether they are signed or unsigned.</summary>
       </Docs>
     </Member>
     <Member MemberName="LinearPCMFlagsAreAllClear">
@@ -253,7 +261,9 @@
         <ReturnType>MonoMac.AudioToolbox.AudioFormatFlags</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>If this flag is set then there are separate <see cref="T:MonoMac.AudioToolbox.AudioBuffer" />s for each
+        channel, otherwise the data for the left and right channels is
+        interleaved in the same buffer.</summary>
       </Docs>
     </Member>
     <Member MemberName="LinearPCMIsNonMixable">

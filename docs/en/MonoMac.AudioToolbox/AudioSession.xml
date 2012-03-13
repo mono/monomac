@@ -248,6 +248,22 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="InputRoute">
+      <MemberSignature Language="C#" Value="public static MonoMac.AudioToolbox.AudioSessionInputRouteKind InputRoute { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype MonoMac.AudioToolbox.AudioSessionInputRouteKind InputRoute" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.AudioToolbox.AudioSessionInputRouteKind</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Interrupted">
       <MemberSignature Language="C#" Value="public static event EventHandler Interrupted;" />
       <MemberSignature Language="ILAsm" Value=".event class System.EventHandler Interrupted" />
@@ -284,6 +300,36 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Mode">
+      <MemberSignature Language="C#" Value="public static MonoMac.AudioToolbox.AudioSessionMode Mode { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype MonoMac.AudioToolbox.AudioSessionMode Mode" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.AudioToolbox.AudioSessionMode</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Configuration modes for Audio, it provides finer control over the Category property.</summary>
+        <value>
+        </value>
+        <remarks>
+          <para>
+
+	    This property is used to do the fine-level control over
+	    the audio session.  The major component is determined by
+	    the <see cref="P:MonoMac.AudioToolbox.AudioSession.Category" />
+	    property and this is used to tune whether the session
+	    behaves in the default mode (what every app got in the pre
+	    iOS 5.0 days), Voice Chat, Video Recording or is being
+	    used in Measurement mode (where you get raw data, without
+	    any gain changes for Audio).
+
+	  </para>
+        </remarks>
+      </Docs>
+    </Member>
     <Member MemberName="OtherAudioIsPlaying">
       <MemberSignature Language="C#" Value="public static bool OtherAudioIsPlaying { get; }" />
       <MemberSignature Language="ILAsm" Value=".property bool OtherAudioIsPlaying" />
@@ -296,6 +342,54 @@
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OutputRoutes">
+      <MemberSignature Language="C#" Value="public static MonoMac.AudioToolbox.AudioSessionOutputRouteKind[] OutputRoutes { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype MonoMac.AudioToolbox.AudioSessionOutputRouteKind[] OutputRoutes" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.AudioToolbox.AudioSessionOutputRouteKind[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OverrideCategoryDefaultToSpeaker">
+      <MemberSignature Language="C#" Value="public static bool OverrideCategoryDefaultToSpeaker { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property bool OverrideCategoryDefaultToSpeaker" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OverrideCategoryEnableBluetoothInput">
+      <MemberSignature Language="C#" Value="public static bool OverrideCategoryEnableBluetoothInput { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property bool OverrideCategoryEnableBluetoothInput" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>If input is coming from a bluetooth headset, it routes the audio output to the headset.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>

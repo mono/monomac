@@ -1,6 +1,6 @@
 <Type Name="CMTime" FullName="MonoMac.CoreMedia.CMTime">
   <TypeSignature Language="C#" Value="public struct CMTime" />
-  <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit CMTime extends System.ValueType" />
+  <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed CMTime extends System.ValueType" />
   <AssemblyInfo>
     <AssemblyName>MonoMac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -29,6 +29,293 @@
         <param name="value">To be added.</param>
         <param name="timescale">To be added.</param>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CMTime (long value, int timescale, long epoch);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(int64 value, int32 timescale, int64 epoch) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="value" Type="System.Int64" />
+        <Parameter Name="timescale" Type="System.Int32" />
+        <Parameter Name="epoch" Type="System.Int64" />
+      </Parameters>
+      <Docs>
+        <param name="value">To be added.</param>
+        <param name="timescale">To be added.</param>
+        <param name="epoch">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AbsoluteValue">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreMedia.CMTime AbsoluteValue { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.CoreMedia.CMTime AbsoluteValue" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreMedia.CMTime</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Add">
+      <MemberSignature Language="C#" Value="public static MonoMac.CoreMedia.CMTime Add (MonoMac.CoreMedia.CMTime time1, MonoMac.CoreMedia.CMTime time2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype MonoMac.CoreMedia.CMTime Add(valuetype MonoMac.CoreMedia.CMTime time1, valuetype MonoMac.CoreMedia.CMTime time2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreMedia.CMTime</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="time1" Type="MonoMac.CoreMedia.CMTime" />
+        <Parameter Name="time2" Type="MonoMac.CoreMedia.CMTime" />
+      </Parameters>
+      <Docs>
+        <param name="time1">To be added.</param>
+        <param name="time2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AsDictionary">
+      <MemberSignature Language="C#" Value="public IntPtr AsDictionary { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance native int AsDictionary" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.IntPtr</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Compare">
+      <MemberSignature Language="C#" Value="public static int Compare (MonoMac.CoreMedia.CMTime time1, MonoMac.CoreMedia.CMTime time2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig int32 Compare(valuetype MonoMac.CoreMedia.CMTime time1, valuetype MonoMac.CoreMedia.CMTime time2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="time1" Type="MonoMac.CoreMedia.CMTime" />
+        <Parameter Name="time2" Type="MonoMac.CoreMedia.CMTime" />
+      </Parameters>
+      <Docs>
+        <param name="time1">To be added.</param>
+        <param name="time2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ConvertScale">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreMedia.CMTime ConvertScale (int newScale, MonoMac.CoreMedia.CMTimeRoundingMethod method);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype MonoMac.CoreMedia.CMTime ConvertScale(int32 newScale, valuetype MonoMac.CoreMedia.CMTimeRoundingMethod method) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreMedia.CMTime</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="newScale" Type="System.Int32" />
+        <Parameter Name="method" Type="MonoMac.CoreMedia.CMTimeRoundingMethod" />
+      </Parameters>
+      <Docs>
+        <param name="newScale">To be added.</param>
+        <param name="method">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Description">
+      <MemberSignature Language="C#" Value="public string Description { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Description" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EpochKey">
+      <MemberSignature Language="C#" Value="public static readonly MonoMac.Foundation.NSString EpochKey;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly class MonoMac.Foundation.NSString EpochKey" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Equals">
+      <MemberSignature Language="C#" Value="public override bool Equals (object obj);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool Equals(object obj) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="obj" Type="System.Object" />
+      </Parameters>
+      <Docs>
+        <param name="obj">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FlagsKey">
+      <MemberSignature Language="C#" Value="public static readonly MonoMac.Foundation.NSString FlagsKey;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly class MonoMac.Foundation.NSString FlagsKey" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FromDictionary">
+      <MemberSignature Language="C#" Value="public static MonoMac.CoreMedia.CMTime FromDictionary (IntPtr dict);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype MonoMac.CoreMedia.CMTime FromDictionary(native int dict) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreMedia.CMTime</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="dict" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="dict">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FromSeconds">
+      <MemberSignature Language="C#" Value="public static MonoMac.CoreMedia.CMTime FromSeconds (double seconds, int preferredTimeScale);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype MonoMac.CoreMedia.CMTime FromSeconds(float64 seconds, int32 preferredTimeScale) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreMedia.CMTime</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="seconds" Type="System.Double" />
+        <Parameter Name="preferredTimeScale" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="seconds">To be added.</param>
+        <param name="preferredTimeScale">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetHashCode">
+      <MemberSignature Language="C#" Value="public override int GetHashCode ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance int32 GetHashCode() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetMaximum">
+      <MemberSignature Language="C#" Value="public static MonoMac.CoreMedia.CMTime GetMaximum (MonoMac.CoreMedia.CMTime time1, MonoMac.CoreMedia.CMTime time2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype MonoMac.CoreMedia.CMTime GetMaximum(valuetype MonoMac.CoreMedia.CMTime time1, valuetype MonoMac.CoreMedia.CMTime time2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreMedia.CMTime</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="time1" Type="MonoMac.CoreMedia.CMTime" />
+        <Parameter Name="time2" Type="MonoMac.CoreMedia.CMTime" />
+      </Parameters>
+      <Docs>
+        <param name="time1">To be added.</param>
+        <param name="time2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetMinimum">
+      <MemberSignature Language="C#" Value="public static MonoMac.CoreMedia.CMTime GetMinimum (MonoMac.CoreMedia.CMTime time1, MonoMac.CoreMedia.CMTime time2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype MonoMac.CoreMedia.CMTime GetMinimum(valuetype MonoMac.CoreMedia.CMTime time1, valuetype MonoMac.CoreMedia.CMTime time2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreMedia.CMTime</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="time1" Type="MonoMac.CoreMedia.CMTime" />
+        <Parameter Name="time2" Type="MonoMac.CoreMedia.CMTime" />
+      </Parameters>
+      <Docs>
+        <param name="time1">To be added.</param>
+        <param name="time2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -142,6 +429,50 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Multiply">
+      <MemberSignature Language="C#" Value="public static MonoMac.CoreMedia.CMTime Multiply (MonoMac.CoreMedia.CMTime time, double multiplier);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype MonoMac.CoreMedia.CMTime Multiply(valuetype MonoMac.CoreMedia.CMTime time, float64 multiplier) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreMedia.CMTime</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="time" Type="MonoMac.CoreMedia.CMTime" />
+        <Parameter Name="multiplier" Type="System.Double" />
+      </Parameters>
+      <Docs>
+        <param name="time">To be added.</param>
+        <param name="multiplier">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Multiply">
+      <MemberSignature Language="C#" Value="public static MonoMac.CoreMedia.CMTime Multiply (MonoMac.CoreMedia.CMTime time, int multiplier);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype MonoMac.CoreMedia.CMTime Multiply(valuetype MonoMac.CoreMedia.CMTime time, int32 multiplier) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreMedia.CMTime</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="time" Type="MonoMac.CoreMedia.CMTime" />
+        <Parameter Name="multiplier" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="time">To be added.</param>
+        <param name="multiplier">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="NegativeInfinity">
       <MemberSignature Language="C#" Value="public static MonoMac.CoreMedia.CMTime NegativeInfinity;" />
       <MemberSignature Language="ILAsm" Value=".field public static valuetype MonoMac.CoreMedia.CMTime NegativeInfinity" />
@@ -157,6 +488,138 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="op_Addition">
+      <MemberSignature Language="C#" Value="public static MonoMac.CoreMedia.CMTime op_Addition (MonoMac.CoreMedia.CMTime time1, MonoMac.CoreMedia.CMTime time2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype MonoMac.CoreMedia.CMTime op_Addition(valuetype MonoMac.CoreMedia.CMTime time1, valuetype MonoMac.CoreMedia.CMTime time2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreMedia.CMTime</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="time1" Type="MonoMac.CoreMedia.CMTime" />
+        <Parameter Name="time2" Type="MonoMac.CoreMedia.CMTime" />
+      </Parameters>
+      <Docs>
+        <param name="time1">To be added.</param>
+        <param name="time2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Equality">
+      <MemberSignature Language="C#" Value="public static bool op_Equality (MonoMac.CoreMedia.CMTime time1, MonoMac.CoreMedia.CMTime time2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname bool op_Equality(valuetype MonoMac.CoreMedia.CMTime time1, valuetype MonoMac.CoreMedia.CMTime time2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="time1" Type="MonoMac.CoreMedia.CMTime" />
+        <Parameter Name="time2" Type="MonoMac.CoreMedia.CMTime" />
+      </Parameters>
+      <Docs>
+        <param name="time1">To be added.</param>
+        <param name="time2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Inequality">
+      <MemberSignature Language="C#" Value="public static bool op_Inequality (MonoMac.CoreMedia.CMTime time1, MonoMac.CoreMedia.CMTime time2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname bool op_Inequality(valuetype MonoMac.CoreMedia.CMTime time1, valuetype MonoMac.CoreMedia.CMTime time2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="time1" Type="MonoMac.CoreMedia.CMTime" />
+        <Parameter Name="time2" Type="MonoMac.CoreMedia.CMTime" />
+      </Parameters>
+      <Docs>
+        <param name="time1">To be added.</param>
+        <param name="time2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Multiply">
+      <MemberSignature Language="C#" Value="public static MonoMac.CoreMedia.CMTime op_Multiply (MonoMac.CoreMedia.CMTime time, double multiplier);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype MonoMac.CoreMedia.CMTime op_Multiply(valuetype MonoMac.CoreMedia.CMTime time, float64 multiplier) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreMedia.CMTime</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="time" Type="MonoMac.CoreMedia.CMTime" />
+        <Parameter Name="multiplier" Type="System.Double" />
+      </Parameters>
+      <Docs>
+        <param name="time">To be added.</param>
+        <param name="multiplier">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Multiply">
+      <MemberSignature Language="C#" Value="public static MonoMac.CoreMedia.CMTime op_Multiply (MonoMac.CoreMedia.CMTime time, int multiplier);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype MonoMac.CoreMedia.CMTime op_Multiply(valuetype MonoMac.CoreMedia.CMTime time, int32 multiplier) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreMedia.CMTime</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="time" Type="MonoMac.CoreMedia.CMTime" />
+        <Parameter Name="multiplier" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="time">To be added.</param>
+        <param name="multiplier">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Subtraction">
+      <MemberSignature Language="C#" Value="public static MonoMac.CoreMedia.CMTime op_Subtraction (MonoMac.CoreMedia.CMTime minuend, MonoMac.CoreMedia.CMTime subtraend);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype MonoMac.CoreMedia.CMTime op_Subtraction(valuetype MonoMac.CoreMedia.CMTime minuend, valuetype MonoMac.CoreMedia.CMTime subtraend) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreMedia.CMTime</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="minuend" Type="MonoMac.CoreMedia.CMTime" />
+        <Parameter Name="subtraend" Type="MonoMac.CoreMedia.CMTime" />
+      </Parameters>
+      <Docs>
+        <param name="minuend">To be added.</param>
+        <param name="subtraend">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="PositiveInfinity">
       <MemberSignature Language="C#" Value="public static MonoMac.CoreMedia.CMTime PositiveInfinity;" />
       <MemberSignature Language="ILAsm" Value=".field public static valuetype MonoMac.CoreMedia.CMTime PositiveInfinity" />
@@ -169,6 +632,59 @@
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ScaleKey">
+      <MemberSignature Language="C#" Value="public static readonly MonoMac.Foundation.NSString ScaleKey;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly class MonoMac.Foundation.NSString ScaleKey" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Seconds">
+      <MemberSignature Language="C#" Value="public double Seconds { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64 Seconds" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Subtract">
+      <MemberSignature Language="C#" Value="public static MonoMac.CoreMedia.CMTime Subtract (MonoMac.CoreMedia.CMTime minuend, MonoMac.CoreMedia.CMTime subtraend);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype MonoMac.CoreMedia.CMTime Subtract(valuetype MonoMac.CoreMedia.CMTime minuend, valuetype MonoMac.CoreMedia.CMTime subtraend) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreMedia.CMTime</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="minuend" Type="MonoMac.CoreMedia.CMTime" />
+        <Parameter Name="subtraend" Type="MonoMac.CoreMedia.CMTime" />
+      </Parameters>
+      <Docs>
+        <param name="minuend">To be added.</param>
+        <param name="subtraend">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -217,6 +733,23 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="ToString">
+      <MemberSignature Language="C#" Value="public override string ToString ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance string ToString() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Value">
       <MemberSignature Language="C#" Value="public long Value;" />
       <MemberSignature Language="ILAsm" Value=".field public int64 Value" />
@@ -226,6 +759,21 @@
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int64</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ValueKey">
+      <MemberSignature Language="C#" Value="public static readonly MonoMac.Foundation.NSString ValueKey;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly class MonoMac.Foundation.NSString ValueKey" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

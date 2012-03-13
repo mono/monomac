@@ -14,8 +14,12 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Represents a PDF Dictionary.</summary>
+    <remarks>Dictionaries are used extensively in the PDF file format.
+    Instances of this class represent dictionaries in your documents
+    and the methods in this class can be used to look up the values in
+    the dictionary or iterate over all of the elements of
+    it.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -29,9 +33,37 @@
         <Parameter Name="handle" Type="System.IntPtr" />
       </Parameters>
       <Docs>
-        <param name="handle">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="handle">Pointer (handle) to the unmanaged object.</param>
+        <summary>A constructor used when creating managed representations of unmanaged objects.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Apply">
+      <MemberSignature Language="C#" Value="public void Apply (Action&lt;string,object&gt; callback);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Apply(class System.Action`2&lt;string, object&gt; callback) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="callback" Type="System.Action&lt;System.String,System.Object&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="callback">The method or lambda to be invoked for each element in the dictionary.</param>
+        <summary>Iterates over all the elements in the dictionary, invoking the provided callback method for each element.</summary>
+        <remarks>
+          <para>This method is used to iterate over all of the elements in the dictionary without having to know the names of the keys in the dictionary. </para>
+          <para>The callback is invoked with the name of the
+	  dictionary key and an boxed object.  The type of the boxed
+	  object in the callback is one of: null value, boolean, int,
+	  float, string, CGPDFArray, CGPDFDictionary or
+	  CGPDFStream.
+	</para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Count">
@@ -45,9 +77,10 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>The number of items on this dictionary.</summary>
+        <value>
+        </value>
+        <remarks>You can iterate over the dictionary elements by using the Apply method.</remarks>
       </Docs>
     </Member>
     <Member MemberName="GetArray">
@@ -65,11 +98,12 @@
         <Parameter Name="array" Type="MonoMac.CoreGraphics.CGPDFArray&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="key">To be added.</param>
-        <param name="array">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="key">The name of the element to get out of the dictionary.</param>
+        <param name="array">The array, if the function returns true.</param>
+        <summary>Looks up an array value by name on the dictionary.</summary>
+        <returns>true if the value was found on the dictionary and the out parameter set to the value.   If the value is false, the result of the out parameter is undefined.</returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="GetBoolean">
@@ -87,11 +121,12 @@
         <Parameter Name="result" Type="System.Boolean&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="key">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="key">The name of the element to get out of the dictionary.</param>
+        <param name="result">The boolean value, if the function returns true.</param>
+        <summary>Looks up a boolean value by name on the dictionary.</summary>
+        <returns>true if the value was found on the dictionary and the out parameter set to the value.   If the value is false, the result of the out parameter is undefined.</returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="GetDictionary">
@@ -109,11 +144,12 @@
         <Parameter Name="result" Type="MonoMac.CoreGraphics.CGPDFDictionary&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="key">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="key">The name of the element to get out of the dictionary.</param>
+        <param name="result">The dictionary, if the function returns true.</param>
+        <summary>Looks up a dictionary value by name on the dictionary.</summary>
+        <returns>true if the value was found on the dictionary and the out parameter set to the value.   If the value is false, the result of the out parameter is undefined.</returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="GetFloat">
@@ -131,11 +167,12 @@
         <Parameter Name="result" Type="System.Single&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="key">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="key">The name of the element to get out of the dictionary.</param>
+        <param name="result">The float value, if the function returns true.</param>
+        <summary>Looks up a float value by name on the dictionary.</summary>
+        <returns>true if the value was found on the dictionary and the out parameter set to the value.   If the value is false, the result of the out parameter is undefined.</returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="GetInt">
@@ -153,11 +190,12 @@
         <Parameter Name="result" Type="System.Int32&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="key">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="key">The name of the element to get out of the dictionary.</param>
+        <param name="result">The integer, if the function returns true.</param>
+        <summary>Looks up an integer value by name on the dictionary.</summary>
+        <returns>true if the value was found on the dictionary and the out parameter set to the value.   If the value is false, the result of the out parameter is undefined.</returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="GetName">
@@ -175,11 +213,12 @@
         <Parameter Name="result" Type="System.String&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="key">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="key">The name of the element to get out of the dictionary.</param>
+        <param name="result">The name, if the function returns true.</param>
+        <summary>Looks up a name in the dictionary.</summary>
+        <returns>true if the value was found on the dictionary and the out parameter set to the value.   If the value is false, the result of the out parameter is undefined.</returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="GetStream">
@@ -197,11 +236,35 @@
         <Parameter Name="result" Type="MonoMac.CoreGraphics.CGPDFStream&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="key">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="key">The name of the element to get out of the dictionary.</param>
+        <param name="result">The stream, if the function returns true.</param>
+        <summary>Looks up a CGPDFStream in the dictionary.</summary>
+        <returns>true if the value was found on the dictionary and the out parameter set to the value.   If the value is false, the result of the out parameter is undefined.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetString">
+      <MemberSignature Language="C#" Value="public bool GetString (string key, out string result);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool GetString(string key, string result) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="key" Type="System.String" />
+        <Parameter Name="result" Type="System.String&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="key">The name of the element to get out of the dictionary.</param>
+        <param name="result">The string, if the function returns true.</param>
+        <summary>Looks up a string in the dictionary.</summary>
+        <returns>true if the value was found on the dictionary and the out parameter set to the value.   If the value is false, the result of the out parameter is undefined.</returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Handle">

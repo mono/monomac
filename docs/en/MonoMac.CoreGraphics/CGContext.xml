@@ -1568,9 +1568,9 @@
         <Parameter Name="components" Type="System.Single[]" />
       </Parameters>
       <Docs>
-        <param name="components">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="components">An array of components, specific to the currently selected colorspace</param>
+        <summary>Sets the fill color. This API has undefined behavior if you do not set the colorspace beforehand.</summary>
+        <remarks>Sets the fill color to the values specified in the components array. The number of elements in this array must be equal to the number of components in the current colorspace plus an additional element for the alpha value. For this API to work, you must previously set the colorspace on the context using SetFillColorSpace(), otherwise the results of calling this method are unspecified.</remarks>
       </Docs>
     </Member>
     <Member MemberName="SetFillColor">
@@ -2176,9 +2176,9 @@
         <Parameter Name="components" Type="System.Single[]" />
       </Parameters>
       <Docs>
-        <param name="components">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="components">An array of components, specific to the currently selected colorspace</param>
+        <summary>Sets the stroke color. This API has undefined behavior if you do not set the colorspace beforehand.</summary>
+        <remarks>Sets the stroke color to the values specified in the components array. The number of elements in this array must be equal to the number of components in the current colorspace plus an additional element for the alpha value. For this API to work, you must previously set the colorspace on the context using SetStrokeColorSpace(), otherwise the results of calling this method are unspecified.</remarks>
       </Docs>
     </Member>
     <Member MemberName="SetStrokeColor">

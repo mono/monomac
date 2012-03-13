@@ -1,0 +1,329 @@
+<Type Name="MidiClient" FullName="MonoMac.CoreMidi.MidiClient">
+  <TypeSignature Language="C#" Value="public class MidiClient : MonoMac.CoreMidi.MidiObject" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit MidiClient extends MonoMac.CoreMidi.MidiObject" />
+  <AssemblyInfo>
+    <AssemblyName>MonoMac</AssemblyName>
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>MonoMac.CoreMidi.MidiObject</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Main entry point to use MIDI in MacOS X and iOS.</summary>
+    <remarks>
+      <para>
+	The MidiClient class is your gateway to communicate with the
+	MIDI subsystem on MacOS and iOS.  
+      </para>
+      <para>
+
+	You typically will create an instance of MidiClient with a
+	name that identifies this particular client, connect to the
+	various events that are exposed to this class and create both
+	input and output midi ports using the <see cref="M:MonoMac.CoreMidi.MidiClient.CreateInputPort(string)" /><see cref="M:MonoMac.CoreMidi.MidiClient.CreateOutputPort(string)" />
+	methods.
+
+      </para>
+      <example>
+        <code lang="c#">
+client = new MidiClient ("CoreMidiSample MIDI CLient");
+client.ObjectAdded += delegate(object sender, ObjectAddedOrRemovedEventArgs e) {
+	Console.WriteLine ("Object {0} added to {1}", e.Child, e.Parent);
+};
+client.ObjectRemoved += delegate(object sender, ObjectAddedOrRemovedEventArgs e) {
+	Console.WriteLine ("Object {0} removed to {1}", e.Child, e.Parent);
+};
+client.PropertyChanged += delegate(object sender, ObjectPropertyChangedEventArgs e) {
+	Console.WriteLine ("Property {0} changed on {1}", e.PropertyName, e.MidiObject);
+};
+client.ThruConnectionsChanged += delegate {
+	Console.WriteLine ("Thru connections changed");
+};
+client.SerialPortOwnerChanged += delegate {
+	Console.WriteLine ("Serial port changed");
+};
+
+//
+// Create your input and output ports
+//
+outputPort = client.CreateOutputPort ("CoreMidiSample Output Port");
+inputPort = client.CreateInputPort ("CoreMidiSample Input Port");
+
+// Print out packets when we receive them
+inputPort.MessageReceived += delegate(object sender, MidiPacketsEventArgs e) {
+    Console.WriteLine ("Got {0} packets", e.Packets.Length);
+};
+	</code>
+      </example>
+      <para>
+	
+	The following events will be raised on your MidiClient instance: 
+	<see cref="E:MonoMac.CoreMidi.MidiClient.IOError" />, 
+	<see cref="E:MonoMac.CoreMidi.MidiClient.ObjectAdded" />,
+	<see cref="E:MonoMac.CoreMidi.MidiClient.ObjectRemoved" />, 
+	<see cref="E:MonoMac.CoreMidi.MidiClient.PropertyChanged" />, 
+	<see cref="E:MonoMac.CoreMidi.MidiClient.SerialPortOwnerChanged" />,
+	<see cref="E:MonoMac.CoreMidi.MidiClient.SetupChanged" /> and 
+	<see cref="E:MonoMac.CoreMidi.MidiClient.ThruConnectionsChanged" /></para>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public MidiClient (string name);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string name) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="name" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="name">Name for this client</param>
+        <summary>Creates a new MidiClient.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateInputPort">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreMidi.MidiPort CreateInputPort (string name);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.CoreMidi.MidiPort CreateInputPort(string name) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreMidi.MidiPort</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="name" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="name">name for the input port.</param>
+        <summary>Creates a new MIDI input port.</summary>
+        <returns>
+        </returns>
+        <remarks>The input port can be used to read events from MIDI, the returned MidiPort raises an event to notify you of new data available.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateOutputPort">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreMidi.MidiPort CreateOutputPort (string name);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.CoreMidi.MidiPort CreateOutputPort(string name) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreMidi.MidiPort</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="name" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="name">name for the output port.</param>
+        <summary>Creates a new MIDI output port.</summary>
+        <returns>
+        </returns>
+        <remarks>You can use an output MIDI port to transmit MIDI packets.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateVirtualSource">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreMidi.MidiEndpoint CreateVirtualSource (string name);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.CoreMidi.MidiEndpoint CreateVirtualSource(string name) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreMidi.MidiEndpoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="name" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="name">name for the virtual source.</param>
+        <summary>Creates a MIDI virtual source</summary>
+        <returns>
+        </returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Dispose">
+      <MemberSignature Language="C#" Value="public override void Dispose (bool disposing);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Dispose(bool disposing) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="disposing" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="disposing">
+          <para>If set to <see langword="true" />, the method is invoked directly and will dispose manage and unmanaged resources;   If set to <see langword="false" /> the method is being called by the garbage collector finalizer and should only release unmanaged resources.</para>
+        </param>
+        <summary>Releases the resourced used by the MidiClient object.</summary>
+        <remarks>
+          <para>This Dispose method releases the resources used by the MidiClient class.</para>
+          <para>This method is called by both the Dispose() method and the object finalizer (Finalize).    When invoked by the Dispose method, the parameter disposting <paramref name="disposing" /> is set to <see langword="true" /> and any managed object references that this object holds are also disposed or released;  when invoked by the object finalizer, on the finalizer thread the value is set to <see langword="false" />. </para>
+          <para>Calling the Dispose method when you are finished using the MidiClient ensures that all external resources used by this managed object are released as soon as possible.  Once you have invoked the Dispose method, the object is no longer useful and you should no longer make any calls to it.</para>
+          <para>  For more information on how to override this method and on the Dispose/IDisposable pattern, read the ``Implementing a Dispose Method'' document at http://msdn.microsoft.com/en-us/library/fs2xkftw.aspx</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IOError">
+      <MemberSignature Language="C#" Value="public event EventHandler&lt;MonoMac.CoreMidi.IOErrorEventArgs&gt; IOError;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler`1&lt;class MonoMac.CoreMidi.IOErrorEventArgs&gt; IOError" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.EventHandler&lt;MonoMac.CoreMidi.IOErrorEventArgs&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Event raised when there there is an error in the MIDI pipeline.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Name">
+      <MemberSignature Language="C#" Value="public string Name { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Name" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Name of this MidiClient.</summary>
+        <value>
+        </value>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ObjectAdded">
+      <MemberSignature Language="C#" Value="public event EventHandler&lt;MonoMac.CoreMidi.ObjectAddedOrRemovedEventArgs&gt; ObjectAdded;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler`1&lt;class MonoMac.CoreMidi.ObjectAddedOrRemovedEventArgs&gt; ObjectAdded" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.EventHandler&lt;MonoMac.CoreMidi.ObjectAddedOrRemovedEventArgs&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Event raised when a MidiDevice, MidiEntity or MidiEndpoint has been added to the session.</summary>
+        <remarks>Both the parent MidiObject and the actual MidiObject are available as part of the passed arguments.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ObjectRemoved">
+      <MemberSignature Language="C#" Value="public event EventHandler&lt;MonoMac.CoreMidi.ObjectAddedOrRemovedEventArgs&gt; ObjectRemoved;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler`1&lt;class MonoMac.CoreMidi.ObjectAddedOrRemovedEventArgs&gt; ObjectRemoved" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.EventHandler&lt;MonoMac.CoreMidi.ObjectAddedOrRemovedEventArgs&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Event raised when a MidiDevice, MidiEntity or MidiEndpoint has been removed the session.</summary>
+        <remarks>Both the parent MidiObject and the actual MidiObject are available as part of the passed arguments.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PropertyChanged">
+      <MemberSignature Language="C#" Value="public event EventHandler&lt;MonoMac.CoreMidi.ObjectPropertyChangedEventArgs&gt; PropertyChanged;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler`1&lt;class MonoMac.CoreMidi.ObjectPropertyChangedEventArgs&gt; PropertyChanged" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.EventHandler&lt;MonoMac.CoreMidi.ObjectPropertyChangedEventArgs&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The property of an object has changed.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SerialPortOwnerChanged">
+      <MemberSignature Language="C#" Value="public event EventHandler SerialPortOwnerChanged;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler SerialPortOwnerChanged" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+        </summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetupChanged">
+      <MemberSignature Language="C#" Value="public event EventHandler SetupChanged;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler SetupChanged" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The MIDI setup has changed.   Not necessary to implement if you listen to ObjectAdded, ObjectRemoved, PropertyChanged, ThruConnectionsChanged and SerialPortOwnerChanged events.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ThruConnectionsChanged">
+      <MemberSignature Language="C#" Value="public event EventHandler ThruConnectionsChanged;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler ThruConnectionsChanged" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Event raised when a persistent connection has been added or removed.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ToString">
+      <MemberSignature Language="C#" Value="public override string ToString ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance string ToString() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+        </summary>
+        <returns>
+        </returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

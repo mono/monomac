@@ -1,0 +1,220 @@
+<Type Name="CIDetector" FullName="MonoMac.CoreImage.CIDetector">
+  <TypeSignature Language="C#" Value="public class CIDetector : MonoMac.Foundation.NSObject" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CIDetector extends MonoMac.Foundation.NSObject" />
+  <AssemblyInfo>
+    <AssemblyName>MonoMac</AssemblyName>
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>MonoMac.Foundation.NSObject</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Attributes>
+    <Attribute>
+      <AttributeName>MonoMac.Foundation.Register("CIDetector", true)</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>Image analysis class for face detection..</summary>
+    <remarks>
+      <para>
+	CIDetector is a general API to perform image analysis on an
+	image, but as of iOS5 only face detection is supported.  You
+	initiate the face detection by calling the static method <see cref="M:MonoMac.CoreImage.CIDetector.CreateFaceDetector(MonoMac.CoreImage.CIContext,bool)" />
+	and then get the results by calling one of the FeaturesInImage
+	overloads.
+      </para>
+      <example>
+        <code lang="C#">
+var imageFile = "photoFace2.jpg";
+var image = new UIImage(imageFile);
+
+var context = new CIContext ();
+var detector = CIDetector.CreateFaceDetector (context, true);
+var ciImage = CIImage.FromCGImage (image.CGImage);
+var features = detector.GetFeatures (ciImage);
+
+Console.WriteLine ("Found " + features.Length + " faces (origin bottom-left)");
+foreach (var feature in features){
+    var facefeature = (CIFaceFeature) feature;
+
+    Console.WriteLine ("Left eye  {0} {1}\n", facefeature.HasLeftEyePosition,  facefeature.LeftEyePosition);
+    Console.WriteLine ("Right eye {0} {1}\n", facefeature.HasRightEyePosition, facefeature.RightEyePosition);
+    Console.WriteLine ("Mouth     {0} {1}\n", facefeature.HasMouthPosition,    facefeature.MouthPosition);
+}
+	</code>
+      </example>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CIDetector ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("init")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <Parameters />
+      <Docs>
+        <summary>Default constructor that initializes a new instance of this class with no parameters.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CIDetector (MonoMac.Foundation.NSCoder coder);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSCoder coder) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("initWithCoder:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <Parameters>
+        <Parameter Name="coder" Type="MonoMac.Foundation.NSCoder" />
+      </Parameters>
+      <Docs>
+        <param name="coder">The unarchiver object.</param>
+        <summary>A constructor that initializes the object from the data stored in the unarchiver object.</summary>
+        <remarks>This constructor is provided to allow the class to be initialized from an unarchiver (for example, during NIB deserialization).</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CIDetector (MonoMac.Foundation.NSObjectFlag t);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSObjectFlag t) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="t" Type="MonoMac.Foundation.NSObjectFlag" />
+      </Parameters>
+      <Docs>
+        <param name="t">Unused sentinel value, pass NSObjectFlag.Empty.</param>
+        <summary>Constructor to call on derived classes to skip initialization and merely allocate the object.</summary>
+        <remarks>
+          <para>This constructor should be called by derived classes when they completely construct the object in managed code and merely want the runtime to allocate and initialize the NSObject.   This is required to implement the two-step initialization process that Objective-C uses, the first step is to perform the object allocation, the second step is to initialize the object.   When you invoke the constructor that takes the NSObjectFlag.Empty you taking advatnage of a direct path that goes all the way up to NSObject to merely allocate the object's memory and bind the Objective-C and C# objects together.    The actual initialization of the object is up to you.</para>
+          <para>This constructor is typically used by the binding generator to allocate the object, but prevent the actual initialization to take place.   Once the allocation has taken place, the constructor has to initialize the object.   With constructors generated by the binding generator this means that it manually invokes one of the "init" methods to initialize the object.</para>
+          <para>It is your responsability to completely initialize the object if you chain up using the NSObjectFlag.Empty path.</para>
+          <para>In general, if your constructors invokes the NSObjectFlag.Empty base implementation, then it should be calling an Objective-C init method.   If this is not the case, you should instead chain to the proper constructor in your class. </para>
+          <para>The argument value is ignored and merely ensures that the only code that is executed is the construction phase is the basic NSObject allocation and runtime type registration.  Typically the chaining would look like this:</para>
+          <example>
+            <code lang="C#">
+//
+// The NSObjectFlag merely allocates the object and registers the
+// C# class with the Objective-C runtime if necessary, but no actual
+// initXxx method is invoked, that is done later in the constructor
+//
+// This is taken from MonoMac's source code:
+//
+[Export ("initWithFrame:")]
+public UIView (System.Drawing.RectangleF frame) : base (NSObjectFlag.Empty)
+{
+// Invoke the init method now.
+	var initWithFrame = new Selector ("initWithFrame:").Handle;
+	if (IsDirectBinding)
+		Handle = MonoMac.ObjCRuntime.Messaging.IntPtr_objc_msgSend_RectangleF (this.Handle, initWithFrame, frame);
+	else
+		Handle = MonoMac.ObjCRuntime.Messaging.IntPtr_objc_msgSendSuper_RectangleF (this.SuperHandle, initWithFrame, frame);
+}
+</code>
+          </example>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CIDetector (IntPtr handle);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int handle) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="handle" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="handle">Pointer (handle) to the unmanaged object.</param>
+        <summary>A constructor used when creating managed representations of unmanaged objects;  Called by the runtime.</summary>
+        <remarks>
+          <para>This constructor is invoked by the runtime infrastructure (<see cref="M:MonoMac.ObjCRuntime.GetNSObject (System.IntPtr)" />) to create a new managed representation for a pointer to an unmanaged Objective-C object.    You should not invoke this method directly, instead you should call the GetNSObject method as it will prevent two instances of a managed object to point to the same native object.</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ClassHandle">
+      <MemberSignature Language="C#" Value="public override IntPtr ClassHandle { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance native int ClassHandle" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.IntPtr</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The handle for this class.</summary>
+        <value>The pointer to the Objective-C class.</value>
+        <remarks>Each MonoMac class mirrors an unmanaged Objective-C class.   This value contains the pointer to the Objective-C class, it is similar to calling objc_getClass with the object name.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FeaturesInImage">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreImage.CIFeature[] FeaturesInImage (MonoMac.CoreImage.CIImage image);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class MonoMac.CoreImage.CIFeature[] FeaturesInImage(class MonoMac.CoreImage.CIImage image) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("featuresInImage:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreImage.CIFeature[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="image" Type="MonoMac.CoreImage.CIImage" />
+      </Parameters>
+      <Docs>
+        <param name="image">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FeaturesInImage">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreImage.CIFeature[] FeaturesInImage (MonoMac.CoreImage.CIImage image, MonoMac.Foundation.NSDictionary options);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class MonoMac.CoreImage.CIFeature[] FeaturesInImage(class MonoMac.CoreImage.CIImage image, class MonoMac.Foundation.NSDictionary options) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("featuresInImage:options:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreImage.CIFeature[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="image" Type="MonoMac.CoreImage.CIImage" />
+        <Parameter Name="options" Type="MonoMac.Foundation.NSDictionary" />
+      </Parameters>
+      <Docs>
+        <param name="image">To be added.</param>
+        <param name="options">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

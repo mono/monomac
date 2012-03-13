@@ -48,9 +48,10 @@
         <Parameter Name="file" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="file">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="file">The file to load data from.</param>
+        <summary>Exposes the contents of the file as a CGDataProvider.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -84,10 +85,10 @@
         <Parameter Name="count" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="buffer">To be added.</param>
-        <param name="offset">To be added.</param>
-        <param name="count">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="buffer">A block of bytes that contains the data to be provided.</param>
+        <param name="offset">Offset into the block that is considered part of the data to be provided.</param>
+        <param name="count">The number of bytes to consume from the offset start from the block.</param>
+        <summary>Creates a CGDataProvider that exposes the byte array starting at the specified offset for the specified amount of bytes.   This is merely a wrapper around</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -104,10 +105,10 @@
         <Parameter Name="ownBuffer" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="memoryBlock">To be added.</param>
-        <param name="size">To be added.</param>
-        <param name="ownBuffer">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="memoryBlock">Pointer to the memory block.</param>
+        <param name="size">Size of the block.</param>
+        <param name="ownBuffer">If true this means that the CGDataProvider owns the buffer and will call FreeHGlobal when it is disposed, otherwise it is assumed that the block is owned by another object.</param>
+        <summary>Creates a CGDataProvider from an in-memory block.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

@@ -104,6 +104,27 @@ public class MyClass : BaseClass {
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName="BackingScaleFactor">
+      <MemberSignature Language="C#" Value="public virtual float BackingScaleFactor { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 BackingScaleFactor" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("backingScaleFactor")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="ClassHandle">
       <MemberSignature Language="C#" Value="public override IntPtr ClassHandle { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance native int ClassHandle" />
@@ -138,6 +159,56 @@ public class MyClass : BaseClass {
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ConvertRectfromBacking">
+      <MemberSignature Language="C#" Value="public virtual System.Drawing.RectangleF ConvertRectfromBacking (System.Drawing.RectangleF aRect);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype System.Drawing.RectangleF ConvertRectfromBacking(valuetype System.Drawing.RectangleF aRect) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("convertRectFromBacking:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Drawing.RectangleF</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="aRect" Type="System.Drawing.RectangleF" />
+      </Parameters>
+      <Docs>
+        <param name="aRect">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ConvertRectToBacking">
+      <MemberSignature Language="C#" Value="public virtual System.Drawing.RectangleF ConvertRectToBacking (System.Drawing.RectangleF aRect);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype System.Drawing.RectangleF ConvertRectToBacking(valuetype System.Drawing.RectangleF aRect) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("convertRectToBacking:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Drawing.RectangleF</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="aRect" Type="System.Drawing.RectangleF" />
+      </Parameters>
+      <Docs>
+        <param name="aRect">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -251,6 +322,33 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="GetBackingAlignedRect">
+      <MemberSignature Language="C#" Value="public virtual System.Drawing.RectangleF GetBackingAlignedRect (System.Drawing.RectangleF globalScreenCoordRect, MonoMac.Foundation.NSAlignmentOptions options);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype System.Drawing.RectangleF GetBackingAlignedRect(valuetype System.Drawing.RectangleF globalScreenCoordRect, valuetype MonoMac.Foundation.NSAlignmentOptions options) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("backingAlignedRect:options:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Drawing.RectangleF</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="globalScreenCoordRect" Type="System.Drawing.RectangleF" />
+        <Parameter Name="options" Type="MonoMac.Foundation.NSAlignmentOptions" />
+      </Parameters>
+      <Docs>
+        <param name="globalScreenCoordRect">To be added.</param>
+        <param name="options">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="MainScreen">
       <MemberSignature Language="C#" Value="public static MonoMac.AppKit.NSScreen MainScreen { get; }" />
       <MemberSignature Language="ILAsm" Value=".property class MonoMac.AppKit.NSScreen MainScreen" />
@@ -322,6 +420,9 @@ public class MyClass : BaseClass {
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("On Lion", false)</AttributeName>
+        </Attribute>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("userSpaceScaleFactor")</AttributeName>
         </Attribute>

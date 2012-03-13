@@ -105,8 +105,8 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="AddObserver">
-      <MemberSignature Language="C#" Value="public virtual void AddObserver (MonoMac.Foundation.NSObject observer, MonoMac.ObjCRuntime.Selector aSelector, string aName, string anObject);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void AddObserver(class MonoMac.Foundation.NSObject observer, class MonoMac.ObjCRuntime.Selector aSelector, string aName, string anObject) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual void AddObserver (MonoMac.Foundation.NSObject observer, MonoMac.ObjCRuntime.Selector aSelector, string aName, MonoMac.Foundation.NSObject anObject);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void AddObserver(class MonoMac.Foundation.NSObject observer, class MonoMac.ObjCRuntime.Selector aSelector, string aName, class MonoMac.Foundation.NSObject anObject) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -123,7 +123,7 @@ public class MyClass : BaseClass {
         <Parameter Name="observer" Type="MonoMac.Foundation.NSObject" />
         <Parameter Name="aSelector" Type="MonoMac.ObjCRuntime.Selector" />
         <Parameter Name="aName" Type="System.String" />
-        <Parameter Name="anObject" Type="System.String" />
+        <Parameter Name="anObject" Type="MonoMac.Foundation.NSObject" />
       </Parameters>
       <Docs>
         <param name="observer">To be added.</param>
@@ -135,8 +135,8 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="AddObserver">
-      <MemberSignature Language="C#" Value="public virtual void AddObserver (MonoMac.Foundation.NSObject observer, MonoMac.ObjCRuntime.Selector selector, string name, string anObject, MonoMac.Foundation.NSNotificationSuspensionBehavior suspensionBehavior);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void AddObserver(class MonoMac.Foundation.NSObject observer, class MonoMac.ObjCRuntime.Selector selector, string name, string anObject, valuetype MonoMac.Foundation.NSNotificationSuspensionBehavior suspensionBehavior) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual void AddObserver (MonoMac.Foundation.NSObject observer, MonoMac.ObjCRuntime.Selector selector, string notificationName, string notificationSenderc, MonoMac.Foundation.NSNotificationSuspensionBehavior suspensionBehavior);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void AddObserver(class MonoMac.Foundation.NSObject observer, class MonoMac.ObjCRuntime.Selector selector, string notificationName, string notificationSenderc, valuetype MonoMac.Foundation.NSNotificationSuspensionBehavior suspensionBehavior) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -152,15 +152,15 @@ public class MyClass : BaseClass {
       <Parameters>
         <Parameter Name="observer" Type="MonoMac.Foundation.NSObject" />
         <Parameter Name="selector" Type="MonoMac.ObjCRuntime.Selector" />
-        <Parameter Name="name" Type="System.String" />
-        <Parameter Name="anObject" Type="System.String" />
+        <Parameter Name="notificationName" Type="System.String" />
+        <Parameter Name="notificationSenderc" Type="System.String" />
         <Parameter Name="suspensionBehavior" Type="MonoMac.Foundation.NSNotificationSuspensionBehavior" />
       </Parameters>
       <Docs>
         <param name="observer">To be added.</param>
         <param name="selector">To be added.</param>
-        <param name="name">To be added.</param>
-        <param name="anObject">To be added.</param>
+        <param name="notificationName">To be added.</param>
+        <param name="notificationSenderc">To be added.</param>
         <param name="suspensionBehavior">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
@@ -274,8 +274,8 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="PostNotificationName">
-      <MemberSignature Language="C#" Value="public virtual void PostNotificationName (string name, string anObject, MonoMac.Foundation.NSDictionary userInfo, MonoMac.Foundation.NSNotificationFlags options);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void PostNotificationName(string name, string anObject, class MonoMac.Foundation.NSDictionary userInfo, valuetype MonoMac.Foundation.NSNotificationFlags options) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual void PostNotificationName (string name, string anObjecb, MonoMac.Foundation.NSDictionary userInfo, MonoMac.Foundation.NSNotificationFlags options);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void PostNotificationName(string name, string anObjecb, class MonoMac.Foundation.NSDictionary userInfo, valuetype MonoMac.Foundation.NSNotificationFlags options) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -290,13 +290,13 @@ public class MyClass : BaseClass {
       </ReturnValue>
       <Parameters>
         <Parameter Name="name" Type="System.String" />
-        <Parameter Name="anObject" Type="System.String" />
+        <Parameter Name="anObjecb" Type="System.String" />
         <Parameter Name="userInfo" Type="MonoMac.Foundation.NSDictionary" />
         <Parameter Name="options" Type="MonoMac.Foundation.NSNotificationFlags" />
       </Parameters>
       <Docs>
         <param name="name">To be added.</param>
-        <param name="anObject">To be added.</param>
+        <param name="anObjecb">To be added.</param>
         <param name="userInfo">To be added.</param>
         <param name="options">To be added.</param>
         <summary>To be added.</summary>
@@ -334,8 +334,8 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="RemoveObserver">
-      <MemberSignature Language="C#" Value="public virtual void RemoveObserver (MonoMac.Foundation.NSObject observer, string aName, string anObject);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void RemoveObserver(class MonoMac.Foundation.NSObject observer, string aName, string anObject) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual void RemoveObserver (MonoMac.Foundation.NSObject observer, string aName, MonoMac.Foundation.NSObject anObject);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void RemoveObserver(class MonoMac.Foundation.NSObject observer, string aName, class MonoMac.Foundation.NSObject anObject) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -351,7 +351,7 @@ public class MyClass : BaseClass {
       <Parameters>
         <Parameter Name="observer" Type="MonoMac.Foundation.NSObject" />
         <Parameter Name="aName" Type="System.String" />
-        <Parameter Name="anObject" Type="System.String" />
+        <Parameter Name="anObject" Type="MonoMac.Foundation.NSObject" />
       </Parameters>
       <Docs>
         <param name="observer">To be added.</param>

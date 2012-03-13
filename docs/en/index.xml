@@ -38,11 +38,15 @@
       <Type Name="ABPersonPhoneLabel" Kind="Class" />
       <Type Name="ABPersonProperty" Kind="Enumeration" />
       <Type Name="ABPersonRelatedNamesLabel" Kind="Class" />
+      <Type Name="ABPersonSocialProfile" Kind="Class" />
       <Type Name="ABPersonSortBy" Kind="Enumeration" />
       <Type Name="ABPersonUrlLabel" Kind="Class" />
       <Type Name="ABPropertyType" Kind="Enumeration" />
       <Type Name="ABRecord" Kind="Class" />
       <Type Name="ABRecordType" Kind="Enumeration" />
+      <Type Name="ABSource" Kind="Class" />
+      <Type Name="ABSourceProperty" Kind="Enumeration" />
+      <Type Name="ABSourceType" Kind="Enumeration" />
       <Type Name="ExternalChangeEventArgs" Kind="Class" />
     </Namespace>
     <Namespace Name="MonoMac.AppKit">
@@ -118,6 +122,7 @@
       <Type Name="NSCellType" Kind="Enumeration" />
       <Type Name="NSCIImageRep" Kind="Class" />
       <Type Name="NSClipView" Kind="Class" />
+      <Type Name="NSCoderEventArgs" Kind="Class" />
       <Type Name="NSCollectionView" Kind="Class" />
       <Type Name="NSCollectionViewDelegate" Kind="Class" />
       <Type Name="NSCollectionViewDropOperation" Kind="Enumeration" />
@@ -149,6 +154,7 @@
       <Type Name="NSControlTint" Kind="Enumeration" />
       <Type Name="NSCursor" Kind="Class" />
       <Type Name="NSCustomImageRep" Kind="Class" />
+      <Type Name="NSDataEventArgs" Kind="Class" />
       <Type Name="NSDatePicker" Kind="Class" />
       <Type Name="NSDatePickerCell" Kind="Class" />
       <Type Name="NSDatePickerCellDelegate" Kind="Class" />
@@ -156,27 +162,42 @@
       <Type Name="NSDatePickerMode" Kind="Enumeration" />
       <Type Name="NSDatePickerStyle" Kind="Enumeration" />
       <Type Name="NSDatePickerValidatorEventArgs" Kind="Class" />
+      <Type Name="NSDictionaryEventArgs" Kind="Class" />
       <Type Name="NSDockTile" Kind="Class" />
       <Type Name="NSDockTilePlugIn" Kind="Class" />
       <Type Name="NSDocument" Kind="Class" />
       <Type Name="NSDocumentChangeType" Kind="Enumeration" />
+      <Type Name="NSDocumentCompletionHandler" Kind="Delegate" />
       <Type Name="NSDocumentController" Kind="Class" />
+      <Type Name="NSDraggingContext" Kind="Enumeration" />
       <Type Name="NSDraggingDestination" Kind="Class" />
+      <Type Name="NSDraggingEnumerator" Kind="Delegate" />
+      <Type Name="NSDraggingFormation" Kind="Enumeration" />
+      <Type Name="NSDraggingImageComponent" Kind="Class" />
       <Type Name="NSDraggingInfo" Kind="Class" />
+      <Type Name="NSDraggingItem" Kind="Class" />
+      <Type Name="NSDraggingItemEnumerationOptions" Kind="Enumeration" />
+      <Type Name="NSDraggingItemImagesContentProvider" Kind="Delegate" />
+      <Type Name="NSDraggingSession" Kind="Class" />
       <Type Name="NSDraggingSource" Kind="Class" />
       <Type Name="NSDragOperation" Kind="Enumeration" />
       <Type Name="NSDrawer" Kind="Class" />
       <Type Name="NSDrawerDelegate" Kind="Class" />
       <Type Name="NSDrawerState" Kind="Enumeration" />
+      <Type Name="NSEdgeInsets" Kind="Structure" />
       <Type Name="NSEPSImageRep" Kind="Class" />
+      <Type Name="NSErrorEventArgs" Kind="Class" />
       <Type Name="NSEvent" Kind="Class" />
+      <Type Name="NSEventGestureAxis" Kind="Enumeration" />
       <Type Name="NSEventMask" Kind="Enumeration" />
       <Type Name="NSEventModifierMask" Kind="Enumeration" />
       <Type Name="NSEventMouseSubtype" Kind="Enumeration" />
+      <Type Name="NSEventPhase" Kind="Enumeration" />
       <Type Name="NSEventSubtype" Kind="Enumeration" />
+      <Type Name="NSEventSwipeTrackingOptions" Kind="Enumeration" />
+      <Type Name="NSEventTrackHandler" Kind="Delegate" />
       <Type Name="NSEventType" Kind="Enumeration" />
       <Type Name="NSFileTypeForHFSTypeCode" Kind="Class" />
-      <Type Name="NSFileWrapper" Kind="Class" />
       <Type Name="NSFileWrapperReadingOptions" Kind="Enumeration" />
       <Type Name="NSFocusRingPlacement" Kind="Enumeration" />
       <Type Name="NSFocusRingType" Kind="Enumeration" />
@@ -221,8 +242,14 @@
       <Type Name="NSImageScaling" Kind="Enumeration" />
       <Type Name="NSImageView" Kind="Class" />
       <Type Name="NSKey" Kind="Enumeration" />
+      <Type Name="NSLayoutAttribute" Kind="Enumeration" />
+      <Type Name="NSLayoutConstraint" Kind="Class" />
+      <Type Name="NSLayoutConstraintOrientation" Kind="Enumeration" />
+      <Type Name="NSLayoutFormatOptions" Kind="Enumeration" />
       <Type Name="NSLayoutManager" Kind="Class" />
       <Type Name="NSLayoutManagerDelegate" Kind="Class" />
+      <Type Name="NSLayoutPriority" Kind="Enumeration" />
+      <Type Name="NSLayoutRelation" Kind="Enumeration" />
       <Type Name="NSLevelIndicator" Kind="Class" />
       <Type Name="NSLevelIndicatorCell" Kind="Class" />
       <Type Name="NSLevelIndicatorStyle" Kind="Enumeration" />
@@ -286,6 +313,10 @@
       <Type Name="NSPathStyle" Kind="Enumeration" />
       <Type Name="NSPointingDeviceMask" Kind="Enumeration" />
       <Type Name="NSPointingDeviceType" Kind="Enumeration" />
+      <Type Name="NSPopover" Kind="Class" />
+      <Type Name="NSPopoverAppearance" Kind="Enumeration" />
+      <Type Name="NSPopoverBehavior" Kind="Enumeration" />
+      <Type Name="NSPopoverDelegate" Kind="Class" />
       <Type Name="NSPopUpArrowPosition" Kind="Enumeration" />
       <Type Name="NSPopUpButton" Kind="Class" />
       <Type Name="NSPopUpButtonCell" Kind="Class" />
@@ -305,6 +336,7 @@
       <Type Name="NSProgressIndicatorStyle" Kind="Enumeration" />
       <Type Name="NSProgressIndicatorThickness" Kind="Enumeration" />
       <Type Name="NSRectEdge" Kind="Enumeration" />
+      <Type Name="NSRemoteNotificationType" Kind="Enumeration" />
       <Type Name="NSRequestUserAttentionType" Kind="Enumeration" />
       <Type Name="NSResponder" Kind="Class" />
       <Type Name="NSRuleEditor" Kind="Class" />
@@ -325,10 +357,14 @@
       <Type Name="NSSavePanelComplete" Kind="Delegate" />
       <Type Name="NSScreen" Kind="Class" />
       <Type Name="NSScrollArrowPosition" Kind="Enumeration" />
+      <Type Name="NSScrollElasticity" Kind="Enumeration" />
       <Type Name="NSScroller" Kind="Class" />
       <Type Name="NSScrollerArrow" Kind="Enumeration" />
+      <Type Name="NSScrollerKnobStyle" Kind="Enumeration" />
       <Type Name="NSScrollerPart" Kind="Enumeration" />
+      <Type Name="NSScrollerStyle" Kind="Enumeration" />
       <Type Name="NSScrollView" Kind="Class" />
+      <Type Name="NSScrollViewFindBarPosition" Kind="Enumeration" />
       <Type Name="NSSearchField" Kind="Class" />
       <Type Name="NSSearchFieldCell" Kind="Class" />
       <Type Name="NSSecureTextField" Kind="Class" />
@@ -362,11 +398,13 @@
       <Type Name="NSSurfaceOrder" Kind="Enumeration" />
       <Type Name="NSSystemDefinedEvents" Kind="Enumeration" />
       <Type Name="NSTableColumn" Kind="Class" />
-      <Type Name="NSTableColumnResizingMask" Kind="Enumeration" />
+      <Type Name="NSTableColumnResizing" Kind="Enumeration" />
       <Type Name="NSTableHeaderCell" Kind="Class" />
       <Type Name="NSTableHeaderView" Kind="Class" />
       <Type Name="NSTableReorder" Kind="Delegate" />
+      <Type Name="NSTableRowView" Kind="Class" />
       <Type Name="NSTableView" Kind="Class" />
+      <Type Name="NSTableViewAnimation" Kind="Enumeration" />
       <Type Name="NSTableViewCell" Kind="Delegate" />
       <Type Name="NSTableViewCellEventArgs" Kind="Class" />
       <Type Name="NSTableViewCellGetter" Kind="Delegate" />
@@ -380,15 +418,20 @@
       <Type Name="NSTableViewDraggingDestinationFeedbackStyle" Kind="Enumeration" />
       <Type Name="NSTableViewDropOperation" Kind="Enumeration" />
       <Type Name="NSTableViewEventString" Kind="Delegate" />
-      <Type Name="NSTableViewGridStyleMask" Kind="Enumeration" />
+      <Type Name="NSTableViewGridStyle" Kind="Enumeration" />
       <Type Name="NSTableViewIndexFilter" Kind="Delegate" />
       <Type Name="NSTableViewPredicate" Kind="Delegate" />
+      <Type Name="NSTableViewRowEventArgs" Kind="Class" />
+      <Type Name="NSTableViewRowGetter" Kind="Delegate" />
+      <Type Name="NSTableViewRowHandler" Kind="Delegate" />
       <Type Name="NSTableViewRowHeight" Kind="Delegate" />
       <Type Name="NSTableViewRowPredicate" Kind="Delegate" />
+      <Type Name="NSTableViewRowSizeStyle" Kind="Enumeration" />
       <Type Name="NSTableViewSearchString" Kind="Delegate" />
       <Type Name="NSTableViewSelectionHighlightStyle" Kind="Enumeration" />
       <Type Name="NSTableViewSource" Kind="Class" />
       <Type Name="NSTableViewTableEventArgs" Kind="Class" />
+      <Type Name="NSTableViewViewGetter" Kind="Delegate" />
       <Type Name="NSTabState" Kind="Enumeration" />
       <Type Name="NSTabView" Kind="Class" />
       <Type Name="NSTabViewDelegate" Kind="Class" />
@@ -411,6 +454,10 @@
       <Type Name="NSTextFieldBezelStyle" Kind="Enumeration" />
       <Type Name="NSTextFieldCell" Kind="Class" />
       <Type Name="NSTextFieldDelegate" Kind="Class" />
+      <Type Name="NSTextFinder" Kind="Class" />
+      <Type Name="NSTextFinderAction" Kind="Enumeration" />
+      <Type Name="NSTextFinderBarContainer" Kind="Class" />
+      <Type Name="NSTextFinderClient" Kind="Class" />
       <Type Name="NSTextInputContext" Kind="Class" />
       <Type Name="NSTextList" Kind="Class" />
       <Type Name="NSTextListOptions" Kind="Enumeration" />
@@ -479,14 +526,19 @@
       <Type Name="NSViewResizingMask" Kind="Enumeration" />
       <Type Name="NSWindingRule" Kind="Enumeration" />
       <Type Name="NSWindow" Kind="Class" />
+      <Type Name="NSWindowAnimationBehavior" Kind="Enumeration" />
+      <Type Name="NSWindowApplicationPresentationOptions" Kind="Delegate" />
       <Type Name="NSWindowBackingLocation" Kind="Enumeration" />
       <Type Name="NSWindowButton" Kind="Enumeration" />
       <Type Name="NSWindowClient" Kind="Delegate" />
+      <Type Name="NSWindowCoderEventArgs" Kind="Class" />
       <Type Name="NSWindowCollectionBehavior" Kind="Enumeration" />
+      <Type Name="NSWindowCompletionHandler" Kind="Delegate" />
       <Type Name="NSWindowController" Kind="Class" />
       <Type Name="NSWindowDelegate" Kind="Class" />
       <Type Name="NSWindowDepth" Kind="Enumeration" />
       <Type Name="NSWindowDocumentDrag" Kind="Delegate" />
+      <Type Name="NSWindowDurationEventArgs" Kind="Class" />
       <Type Name="NSWindowFrame" Kind="Delegate" />
       <Type Name="NSWindowFramePredicate" Kind="Delegate" />
       <Type Name="NSWindowLevel" Kind="Enumeration" />
@@ -494,15 +546,20 @@
       <Type Name="NSWindowNumberListOptions" Kind="Enumeration" />
       <Type Name="NSWindowOrderingMode" Kind="Enumeration" />
       <Type Name="NSWindowResize" Kind="Delegate" />
+      <Type Name="NSWindowRestoration" Kind="Class" />
       <Type Name="NSWindowSharingType" Kind="Enumeration" />
       <Type Name="NSWindowSheetRect" Kind="Delegate" />
+      <Type Name="NSWindowSize" Kind="Delegate" />
+      <Type Name="NSWindowSizeSize" Kind="Delegate" />
       <Type Name="NSWindowStyle" Kind="Enumeration" />
       <Type Name="NSWindowUndoManager" Kind="Delegate" />
+      <Type Name="NSWindowWindows" Kind="Delegate" />
       <Type Name="NSWorkspace" Kind="Class" />
       <Type Name="NSWorkspaceIconCreationOptions" Kind="Enumeration" />
       <Type Name="NSWorkspaceLaunchOptions" Kind="Enumeration" />
       <Type Name="NSWorkspaceUrlHandler" Kind="Delegate" />
       <Type Name="NSWritingDirection" Kind="Enumeration" />
+      <Type Name="OpenDocumentCompletionHandler" Kind="Delegate" />
     </Namespace>
     <Namespace Name="MonoMac.AudioToolbox">
       <Type Name="AudioBuffer" Kind="Structure" />
@@ -541,8 +598,11 @@
       <Type Name="AudioSessionCategory" Kind="Enumeration" />
       <Type Name="AudioSessionErrors" Kind="Enumeration" />
       <Type Name="AudioSessionException" Kind="Class" />
+      <Type Name="AudioSessionInputRouteKind" Kind="Enumeration" />
       <Type Name="AudioSessionInterruptionState" Kind="Enumeration" />
       <Type Name="AudioSessionInterruptionType" Kind="Enumeration" />
+      <Type Name="AudioSessionMode" Kind="Enumeration" />
+      <Type Name="AudioSessionOutputRouteKind" Kind="Enumeration" />
       <Type Name="AudioSessionProperty" Kind="Enumeration" />
       <Type Name="AudioSessionPropertyEventArgs" Kind="Class" />
       <Type Name="AudioSessionRouteChangeReason" Kind="Enumeration" />
@@ -636,18 +696,27 @@
       <Type Name="NSFetchedPropertyDescription" Kind="Class" />
       <Type Name="NSFetchRequest" Kind="Class" />
       <Type Name="NSFetchRequestResultType" Kind="Enumeration" />
+      <Type Name="NSIncrementalStore" Kind="Class" />
+      <Type Name="NSIncrementalStoreNode" Kind="Class" />
       <Type Name="NSKeyValueSetMutationKind" Kind="Enumeration" />
       <Type Name="NSManagedObject" Kind="Class" />
       <Type Name="NSManagedObjectContext" Kind="Class" />
+      <Type Name="NSManagedObjectContextConcurrencyType" Kind="Enumeration" />
       <Type Name="NSManagedObjectID" Kind="Class" />
       <Type Name="NSManagedObjectModel" Kind="Class" />
       <Type Name="NSMappingModel" Kind="Class" />
+      <Type Name="NSMergeConflict" Kind="Class" />
+      <Type Name="NSMergePolicy" Kind="Class" />
+      <Type Name="NSMergePolicyType" Kind="Enumeration" />
       <Type Name="NSMigrationManager" Kind="Class" />
       <Type Name="NSPersistentStore" Kind="Class" />
       <Type Name="NSPersistentStoreCoordinator" Kind="Class" />
+      <Type Name="NSPersistentStoreRequest" Kind="Class" />
+      <Type Name="NSPersistentStoreRequestType" Kind="Enumeration" />
       <Type Name="NSPropertyDescription" Kind="Class" />
       <Type Name="NSPropertyMapping" Kind="Class" />
       <Type Name="NSRelationshipDescription" Kind="Class" />
+      <Type Name="NSSaveChangesRequest" Kind="Class" />
     </Namespace>
     <Namespace Name="MonoMac.CoreFoundation">
       <Type Name="CFErrorDomain" Kind="Class" />
@@ -716,17 +785,26 @@
       <Type Name="CIColor" Kind="Class" />
       <Type Name="CIContext" Kind="Class" />
       <Type Name="CIContextOptions" Kind="Class" />
+      <Type Name="CIDetector" Kind="Class" />
+      <Type Name="CIFaceFeature" Kind="Class" />
+      <Type Name="CIFeature" Kind="Class" />
       <Type Name="CIFilter" Kind="Class" />
+      <Type Name="CIFilterApply" Kind="Class" />
+      <Type Name="CIFilterAttributes" Kind="Class" />
+      <Type Name="CIFilterCategory" Kind="Class" />
       <Type Name="CIFilterGenerator" Kind="Class" />
+      <Type Name="CIFilterInputKey" Kind="Class" />
       <Type Name="CIFilterMode" Kind="Enumeration" />
+      <Type Name="CIFilterOutputKey" Kind="Class" />
       <Type Name="CIFilterShape" Kind="Class" />
-      <Type Name="CIFormat" Kind="Enumeration" />
       <Type Name="CIImage" Kind="Class" />
       <Type Name="CIImageAccumulator" Kind="Class" />
+      <Type Name="CIImageOrientation" Kind="Enumeration" />
       <Type Name="CIKernel" Kind="Class" />
       <Type Name="CIPlugIn" Kind="Class" />
       <Type Name="CISampler" Kind="Class" />
       <Type Name="CISamplerOptions" Kind="Class" />
+      <Type Name="CIUIParameterSet" Kind="Class" />
       <Type Name="CIVector" Kind="Class" />
       <Type Name="CIWrapMode" Kind="Enumeration" />
     </Namespace>
@@ -741,7 +819,6 @@
       <Type Name="CLLocationManagerDelegate" Kind="Class" />
       <Type Name="CLLocationManagerEventArgs" Kind="Delegate" />
       <Type Name="CLLocationUpdatedEventArgs" Kind="Class" />
-      <Type Name="NSErrorEventArgs" Kind="Class" />
     </Namespace>
     <Namespace Name="MonoMac.CoreMedia">
       <Type Name="CMBlockBuffer" Kind="Class" />
@@ -752,6 +829,27 @@
       <Type Name="CMTime+Flags" Kind="Enumeration" />
       <Type Name="CMTimeMapping" Kind="Structure" />
       <Type Name="CMTimeRange" Kind="Structure" />
+      <Type Name="CMTimeRoundingMethod" Kind="Enumeration" />
+    </Namespace>
+    <Namespace Name="MonoMac.CoreMidi">
+      <Type Name="IOErrorEventArgs" Kind="Class" />
+      <Type Name="Midi" Kind="Class" />
+      <Type Name="MidiClient" Kind="Class" />
+      <Type Name="MidiDevice" Kind="Class" />
+      <Type Name="MidiEndpoint" Kind="Class" />
+      <Type Name="MidiEntity" Kind="Class" />
+      <Type Name="MidiError" Kind="Enumeration" />
+      <Type Name="MidiException" Kind="Class" />
+      <Type Name="MidiNetworkConnection" Kind="Class" />
+      <Type Name="MidiNetworkConnectionPolicy" Kind="Enumeration" />
+      <Type Name="MidiNetworkHost" Kind="Class" />
+      <Type Name="MidiNetworkSession" Kind="Class" />
+      <Type Name="MidiObject" Kind="Class" />
+      <Type Name="MidiPacket" Kind="Class" />
+      <Type Name="MidiPacketsEventArgs" Kind="Class" />
+      <Type Name="MidiPort" Kind="Class" />
+      <Type Name="ObjectAddedOrRemovedEventArgs" Kind="Class" />
+      <Type Name="ObjectPropertyChangedEventArgs" Kind="Class" />
     </Namespace>
     <Namespace Name="MonoMac.CoreText">
       <Type Name="CTCharacterCollection" Kind="Enumeration" />
@@ -852,13 +950,17 @@
     </Namespace>
     <Namespace Name="MonoMac.Foundation">
       <Type Name="ActionAttribute" Kind="Class" />
+      <Type Name="AEEventClass" Kind="Enumeration" />
+      <Type Name="AEEventID" Kind="Enumeration" />
       <Type Name="ConnectAttribute" Kind="Class" />
       <Type Name="ExportAttribute" Kind="Class" />
       <Type Name="ModelAttribute" Kind="Class" />
       <Type Name="ModelNotImplementedException" Kind="Class" />
       <Type Name="NSAction" Kind="Delegate" />
       <Type Name="NSAffineTransform" Kind="Class" />
+      <Type Name="NSAlignmentOptions" Kind="Enumeration" />
       <Type Name="NSAppleEventDescriptor" Kind="Class" />
+      <Type Name="NSAppleEventManager" Kind="Class" />
       <Type Name="NSArchiveReplaceEventArgs" Kind="Class" />
       <Type Name="NSArray" Kind="Class" />
       <Type Name="NSAttributedString" Kind="Class" />
@@ -907,11 +1009,18 @@
       <Type Name="NSExpressionHandler" Kind="Delegate" />
       <Type Name="NSExpressionType" Kind="Enumeration" />
       <Type Name="NSFileAttributes" Kind="Class" />
+      <Type Name="NSFileCoordinatorReadingOptions" Kind="Enumeration" />
+      <Type Name="NSFileCoordinatorWritingOptions" Kind="Enumeration" />
       <Type Name="NSFileManager" Kind="Class" />
       <Type Name="NSFileManagerDelegate" Kind="Class" />
       <Type Name="NSFileManagerItemReplacementOptions" Kind="Enumeration" />
       <Type Name="NSFileSystemAttributes" Kind="Class" />
       <Type Name="NSFileType" Kind="Enumeration" />
+      <Type Name="NSFileVersionAddingOptions" Kind="Enumeration" />
+      <Type Name="NSFileVersionReplacingOptions" Kind="Enumeration" />
+      <Type Name="NSFileWrapper" Kind="Class" />
+      <Type Name="NSFileWrapperReadingOptions" Kind="Enumeration" />
+      <Type Name="NSFileWrapperWritingOptions" Kind="Enumeration" />
       <Type Name="NSFormatter" Kind="Class" />
       <Type Name="NSHttpCookie" Kind="Class" />
       <Type Name="NSHttpCookieAcceptPolicy" Kind="Enumeration" />
@@ -920,6 +1029,9 @@
       <Type Name="NSIndexPath" Kind="Class" />
       <Type Name="NSIndexSet" Kind="Class" />
       <Type Name="NSInputStream" Kind="Class" />
+      <Type Name="NSJsonReadingOptions" Kind="Enumeration" />
+      <Type Name="NSJsonSerialization" Kind="Class" />
+      <Type Name="NSJsonWritingOptions" Kind="Enumeration" />
       <Type Name="NSKeyedArchiver" Kind="Class" />
       <Type Name="NSKeyedArchiverDelegate" Kind="Class" />
       <Type Name="NSKeyedUnarchiver" Kind="Class" />
@@ -927,7 +1039,12 @@
       <Type Name="NSKeyValueChange" Kind="Enumeration" />
       <Type Name="NSKeyValueObservingOptions" Kind="Enumeration" />
       <Type Name="NSKeyValueSetMutationKind" Kind="Enumeration" />
+      <Type Name="NSLinguisticTag" Kind="Class" />
+      <Type Name="NSLinguisticTagger" Kind="Class" />
+      <Type Name="NSLinguisticTaggerOptions" Kind="Enumeration" />
+      <Type Name="NSLingusticEnumerator" Kind="Delegate" />
       <Type Name="NSLocale" Kind="Class" />
+      <Type Name="NSLocaleLanguageDirection" Kind="Enumeration" />
       <Type Name="NSMetadataItem" Kind="Class" />
       <Type Name="NSMetadataQuery" Kind="Class" />
       <Type Name="NSMetadataQueryAttributeValueTuple" Kind="Class" />
@@ -935,6 +1052,7 @@
       <Type Name="NSMetadataQueryObject" Kind="Delegate" />
       <Type Name="NSMetadataQueryResultGroup" Kind="Class" />
       <Type Name="NSMetadataQueryValue" Kind="Delegate" />
+      <Type Name="NSMutableArray" Kind="Class" />
       <Type Name="NSMutableAttributedString" Kind="Class" />
       <Type Name="NSMutableCharacterSet" Kind="Class" />
       <Type Name="NSMutableData" Kind="Class" />
@@ -982,6 +1100,7 @@
       <Type Name="NSPropertyListFormat" Kind="Enumeration" />
       <Type Name="NSPurgeableData" Kind="Class" />
       <Type Name="NSRange" Kind="Structure" />
+      <Type Name="NSRangeIterator" Kind="Delegate" />
       <Type Name="NSRoundingMode" Kind="Enumeration" />
       <Type Name="NSRunLoop" Kind="Class" />
       <Type Name="NSRunLoopMode" Kind="Enumeration" />
@@ -997,6 +1116,7 @@
       <Type Name="NSStreamEventArgs" Kind="Class" />
       <Type Name="NSStreamStatus" Kind="Enumeration" />
       <Type Name="NSString" Kind="Class" />
+      <Type Name="NSStringCompareOptions" Kind="Enumeration" />
       <Type Name="NSStringDrawingOptions" Kind="Enumeration" />
       <Type Name="NSStringEncoding" Kind="Enumeration" />
       <Type Name="NSTask" Kind="Class" />
@@ -1007,15 +1127,19 @@
       <Type Name="NSThread" Kind="Class" />
       <Type Name="NSTimer" Kind="Class" />
       <Type Name="NSTimeZone" Kind="Class" />
+      <Type Name="NSUbiquitousKeyValueStoreChangeReason" Kind="Enumeration" />
       <Type Name="NSUndoManager" Kind="Class" />
       <Type Name="NSUrl" Kind="Class" />
       <Type Name="NSUrlAuthenticationChallenge" Kind="Class" />
       <Type Name="NSUrlCache" Kind="Class" />
       <Type Name="NSUrlCacheStoragePolicy" Kind="Enumeration" />
       <Type Name="NSUrlConnection" Kind="Class" />
+      <Type Name="NSUrlConnectionDataResponse" Kind="Delegate" />
       <Type Name="NSUrlConnectionDelegate" Kind="Class" />
+      <Type Name="NSUrlConnectionDownloadDelegate" Kind="Class" />
       <Type Name="NSUrlCredential" Kind="Class" />
       <Type Name="NSUrlCredentialPersistence" Kind="Enumeration" />
+      <Type Name="NSUrlCredentialStorage" Kind="Class" />
       <Type Name="NSUrlDownload" Kind="Class" />
       <Type Name="NSUrlDownloadDelegate" Kind="Class" />
       <Type Name="NSUrlError" Kind="Enumeration" />
@@ -1098,6 +1222,7 @@
       <Type Name="SaveOptionsShouldShowUTType" Kind="Delegate" />
     </Namespace>
     <Namespace Name="MonoMac.ObjCRuntime">
+      <Type Name="AdoptsAttribute" Kind="Class" />
       <Type Name="AlphaAttribute" Kind="Class" />
       <Type Name="ArgumentSemantic" Kind="Enumeration" />
       <Type Name="BlockDescriptor" Kind="Structure" />
@@ -1107,6 +1232,7 @@
       <Type Name="CompileFlagsAttribute" Kind="Class" />
       <Type Name="Dlfcn" Kind="Class" />
       <Type Name="INativeObject" Kind="Interface" />
+      <Type Name="LionAttribute" Kind="Class" />
       <Type Name="Messaging" Kind="Class" />
       <Type Name="MethodDescription" Kind="Structure" />
       <Type Name="NSObjectMarshaler`1" DisplayName="NSObjectMarshaler&lt;T&gt;" Kind="Class" />
@@ -1115,6 +1241,38 @@
       <Type Name="SelectorMarshaler" Kind="Class" />
       <Type Name="SinceAttribute" Kind="Class" />
       <Type Name="TypeConverter" Kind="Class" />
+    </Namespace>
+    <Namespace Name="MonoMac.OpenAL">
+      <Type Name="AL" Kind="Class" />
+      <Type Name="ALBufferState" Kind="Enumeration" />
+      <Type Name="Alc" Kind="Class" />
+      <Type Name="ALCapability" Kind="Enumeration" />
+      <Type Name="AlcContextAttributes" Kind="Enumeration" />
+      <Type Name="AlcError" Kind="Enumeration" />
+      <Type Name="AlcGetInteger" Kind="Enumeration" />
+      <Type Name="AlcGetString" Kind="Enumeration" />
+      <Type Name="AlcGetStringList" Kind="Enumeration" />
+      <Type Name="ALDistanceModel" Kind="Enumeration" />
+      <Type Name="ALError" Kind="Enumeration" />
+      <Type Name="ALFormat" Kind="Enumeration" />
+      <Type Name="ALGetBufferi" Kind="Enumeration" />
+      <Type Name="ALGetFloat" Kind="Enumeration" />
+      <Type Name="ALGetInteger" Kind="Enumeration" />
+      <Type Name="ALGetSourcei" Kind="Enumeration" />
+      <Type Name="ALGetString" Kind="Enumeration" />
+      <Type Name="ALListener3f" Kind="Enumeration" />
+      <Type Name="ALListenerf" Kind="Enumeration" />
+      <Type Name="ALListenerfv" Kind="Enumeration" />
+      <Type Name="ALSource3f" Kind="Enumeration" />
+      <Type Name="ALSource3i" Kind="Enumeration" />
+      <Type Name="ALSourceb" Kind="Enumeration" />
+      <Type Name="ALSourcef" Kind="Enumeration" />
+      <Type Name="ALSourcei" Kind="Enumeration" />
+      <Type Name="ALSourceState" Kind="Enumeration" />
+      <Type Name="ALSourceType" Kind="Enumeration" />
+      <Type Name="BlittableValueType" Kind="Class" />
+      <Type Name="BlittableValueType`1" DisplayName="BlittableValueType&lt;T&gt;" Kind="Class" />
+      <Type Name="ContextHandle" Kind="Structure" />
     </Namespace>
     <Namespace Name="MonoMac.OpenGL">
       <Type Name="AccumOp" Kind="Enumeration" />
@@ -1916,6 +2074,9 @@
       <Type Name="QCComposition" Kind="Class" />
       <Type Name="QCCompositionLayer" Kind="Class" />
       <Type Name="QCCompositionRepository" Kind="Class" />
+    </Namespace>
+    <Namespace Name="MonoMac.QuickLook">
+      <Type Name="QLThumbnailImage" Kind="Class" />
     </Namespace>
     <Namespace Name="MonoMac.ScriptingBridge">
       <Type Name="AESendMode" Kind="Enumeration" />

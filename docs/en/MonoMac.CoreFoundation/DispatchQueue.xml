@@ -10,8 +10,43 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Provides a task queue that can perform tasks either synchronously or asynchronously.</summary>
+    <remarks>
+      <para>
+	
+	Queues are the fundamental mechanism for scheduling blocks for execution within the Apple Grand Central Dispatch framework.
+      </para>
+      <para> All blocks submitted to dispatch queues are dequeued in
+	FIFO order.  By default, queues created with the default
+	constructor wait for the previously dequeued block to complete
+	before dequeuing the next block. This FIFO completion behavior
+	is sometimes simply described as a "serial queue."  Queues are
+	not bound to any specific thread of execution and blocks
+	submitted to independent queues may execute con- currently.
+	Queues, like all dispatch objects, are reference counted and
+	newly created queues have a reference count of one.
+      </para>
+      <para>
+	The optional label argument is used to describe the purpose of the queue and is useful during debugging
+	and performance analysis. By convention, clients should pass a reverse DNS style label.  If a label is
+	provided, it is copied. If a label is not provided, then Label property returns an empty C
+	string.  For example:
+      </para>
+      <example>
+        <code lang="C#">
+	  var my_queue = new DispatchQueue ("com.example.subsystem.taskXYZ");
+	</code>
+      </example>
+      <para>
+
+	Queues may be temporarily suspended and resumed with the
+	functions <see cref="M:MonoMac.CoreFoundation.DispatchObject.Suspend()" />
+	and <see cref="M:MonoMac.CoreFoundation.DispatchObject.Resume()" />
+	respectively. Suspension is checked prior to block execution
+	and is not preemptive.
+
+      </para>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -25,9 +60,10 @@
         <Parameter Name="handle" Type="System.IntPtr" />
       </Parameters>
       <Docs>
-        <param name="handle">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="handle">Handle to an unmanaged dispatch queue.</param>
+        <summary>Surfaces an unmanaged DispatchQueue as a managed object.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -41,9 +77,10 @@
         <Parameter Name="label" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="label">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="label">Name for the dispatch queue, as a convention, use reverse-style DNS names for your queue name.</param>
+        <summary>Creates a named dispatch queue.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CurrentQueue">
@@ -57,8 +94,10 @@
         <ReturnType>MonoMac.CoreFoundation.DispatchQueue</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Returns the current dispatch queue.</summary>
+        <value>The current dispatch queue if invoked from code that
+        was queued into a DispatchQueue, otherwise it returns the same
+        queue as <see cref="P:MonoMac.CoreFoundation.DispatchQueue.MainQueue" />.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -73,9 +112,11 @@
         <ReturnType>MonoMac.CoreFoundation.DispatchQueue</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Returns the default global queue, which is one of the built-in queues at the default priority.</summary>
+        <value>
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="DispatchAsync">
@@ -92,9 +133,15 @@
         <Parameter Name="action" Type="MonoMac.Foundation.NSAction" />
       </Parameters>
       <Docs>
-        <param name="action">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="action">Code block to be executed asynchronously.</param>
+        <summary>Schedule blocks for concurrent execution.</summary>
+        <remarks>
+
+	  Excecutes the given code in the background.  This avoids
+	  creating a new thread, and reuses one of the threads from
+	  the Dispatch framework pool.
+
+	</remarks>
       </Docs>
     </Member>
     <Member MemberName="DispatchSync">
@@ -111,9 +158,15 @@
         <Parameter Name="action" Type="MonoMac.Foundation.NSAction" />
       </Parameters>
       <Docs>
-        <param name="action">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="action">Code block to be executed synchronously.</param>
+        <summary>
+        </summary>
+        <remarks>
+
+	  This method is a convenient wrapper around DispatchAsync() method with the addition of a
+	  semaphore to wait for completion of the block, and a wrapper around the block to signal its completion.
+
+	</remarks>
       </Docs>
     </Member>
     <Member MemberName="GetGlobalQueue">
@@ -130,10 +183,23 @@
         <Parameter Name="priority" Type="MonoMac.CoreFoundation.DispatchQueuePriority" />
       </Parameters>
       <Docs>
-        <param name="priority">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="priority">Determines the priority of the queue to be returned.</param>
+        <summary>Returns one of the global dispatch queues based on the requested priority.</summary>
+        <returns>The queue priority.</returns>
+        <remarks>
+          <para>
+	    Unlike the main queue or queues allocated with the named
+	    DispatchQueue constructor, the global concurrent queues
+	    schedule blocks as soon as threads become available
+	    (non-FIFO completion order). The global concurrent queues
+	    represent three priority bands: DispatchQueuePriority.High, DispatchQueuePriority.Default and DispatchQueuePriority.Low.
+	  </para>
+          <para>
+	    Tasks submitted to the high priority global queue will be invoked before those submitted to the
+	    default or low priority global queues. Blocks submitted to the low priority global queue will only be
+	    invoked if no blocks are pending on the default or high priority queues.
+	  </para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Label">
@@ -147,9 +213,10 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Returns the label for this DispatchQueue.</summary>
+        <value>
+        </value>
+        <remarks>This is the same name that was provided when the queue was constructed</remarks>
       </Docs>
     </Member>
     <Member MemberName="MainIteration">
@@ -179,9 +246,17 @@
         <ReturnType>MonoMac.CoreFoundation.DispatchQueue</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Returns the main global queue.</summary>
+        <value>
+        </value>
+        <remarks>
+
+	  The dispatch framework provides a default serial queue for
+	  the application to use.  If you are using this on MonoMac
+	  without using AppKit, you must invoke the MainIteration
+	  method to run the main dispatch queue.
+
+	</remarks>
       </Docs>
     </Member>
   </Members>

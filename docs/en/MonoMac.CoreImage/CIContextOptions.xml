@@ -10,8 +10,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Use to configure the CIContext rendering pipeline.</summary>
+    <remarks>You would use an instance of this class to configure the CIContext rendering operations.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -23,8 +23,9 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Creates an empty set of options for CIContext rendering.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="OutputColorSpace">
@@ -38,9 +39,10 @@
         <ReturnType>MonoMac.CoreGraphics.CGColorSpace</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>The desired CIColorSpace to be used for the CIContext rendering operation.</summary>
+        <value>
+        </value>
+        <remarks>This color space is used before the image is rendered into the output.</remarks>
       </Docs>
     </Member>
     <Member MemberName="UseSoftwareRenderer">
@@ -54,9 +56,52 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Setting this to true will force the CPU software rendered to be used and prevent the job to be offloaded to the GPU</summary>
+        <value>
+        </value>
+        <remarks>
+          <para>
+
+	    GPU contexts can be offloaded to the graphics processing
+	    unit and can run very fast and have the added advantage
+	    that they do not tax the main process with their task.
+	    GPU contexts have image sizes limits imposed by the
+	    underlying hardware, on some devices this can be 2048x2048
+	    and on devices like the iPad 2 this is 4096x4096.
+
+	  </para>
+          <para>
+
+	    CPU contexts have a few benefits, they can perform their
+	    tasks on the background, support larger input and output
+	    images (at the time of this writing, 8192x8192) and have
+	    improved fidelity due to the IEEE compliant floating point
+	    support.
+
+	  </para>
+          <para>
+
+	    You can check the actual limits for input and output image
+	    sizes by checking the <see cref="P:MonoMac.CoreImage.CIContext.InputImageMaximumSize" />
+	    and the <see cref="P:MonoMac.CoreImage.CIContext.OutputImageMaximumSize" />
+	    properties.
+
+	  </para>
+          <para>
+
+	    GPU contexts have one extra downside when interacting with
+	    background operations.  Consider the case where your
+	    application applies a number of filters and saves the
+	    result.  Typically, you will queue this work to take place
+	    even if the user suspends the application by pressing the
+	    home button.  The user might take a picture, and switch to
+	    another app.  If you chose to use a GPU context to process
+	    your image but you have been sent to the background, your
+	    application will be terminated when it tries to access the
+	    GPU, as the GPU is now in use by another application.
+
+	  </para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="WorkingColorSpace">
@@ -70,7 +115,7 @@
         <ReturnType>MonoMac.CoreGraphics.CGColorSpace</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The colorspace used by image processing operations, this is different than the colorspace used for the final rendering.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>

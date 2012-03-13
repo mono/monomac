@@ -1,0 +1,200 @@
+<Type Name="Midi" FullName="MonoMac.CoreMidi.Midi">
+  <TypeSignature Language="C#" Value="public static class Midi" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit Midi extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>MonoMac</AssemblyName>
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Global methods and constants for using CoreMidi.</summary>
+    <remarks>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="DestinationCount">
+      <MemberSignature Language="C#" Value="public static int DestinationCount { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property int32 DestinationCount" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The number of MIDI destinations.</summary>
+        <value>
+        </value>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DeviceCount">
+      <MemberSignature Language="C#" Value="public static int DeviceCount { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property int32 DeviceCount" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The number of MIDI devices in the system (do not confused with external connected devices).</summary>
+        <value>
+        </value>
+        <remarks>You can retrieve a specific MIDI device by using the <see cref="T:MonoMac.CoreMidi.Midi.GetDevice(int)" />.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ExternalDeviceCount">
+      <MemberSignature Language="C#" Value="public static int ExternalDeviceCount { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property int32 ExternalDeviceCount" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The number of external devices connected to this system.</summary>
+        <value>
+        </value>
+        <remarks>You can retrieve a specific MIDI device by using the <see cref="T:MonoMac.CoreMidi.Midi.GetExternalDevice(int)" />.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetDevice">
+      <MemberSignature Language="C#" Value="public static MonoMac.CoreMidi.MidiDevice GetDevice (int deviceIndex);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.CoreMidi.MidiDevice GetDevice(int32 deviceIndex) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreMidi.MidiDevice</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="deviceIndex" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="deviceIndex">The device index.</param>
+        <summary>Returns an object representing the specified MIDI device.</summary>
+        <returns>An instance of MidiDevice, or null on error.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetExternalDevice">
+      <MemberSignature Language="C#" Value="public static MonoMac.CoreMidi.MidiDevice GetExternalDevice (int deviceIndex);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.CoreMidi.MidiDevice GetExternalDevice(int32 deviceIndex) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreMidi.MidiDevice</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="deviceIndex" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="deviceIndex">The external MIDI device index.</param>
+        <summary>Returns an object representing the specified external MIDI device.</summary>
+        <returns>An instance of MidiDevice, or null on error.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NetworkBonjourServiceType">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NetworkBonjourServiceType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString NetworkBonjourServiceType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Constant that defines the Bonjour service type for MIDI devices.</summary>
+        <value>
+        </value>
+        <remarks>You can pass this type to <see cref="M:MonoMac.Foundation.NSNetServiceBrowser.SearchForServices(System.String type, System.String domain)" /> to find MIDI devices available
+        over bonjour.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NetworkNotificationContactsDidChange">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NetworkNotificationContactsDidChange { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString NetworkNotificationContactsDidChange" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Notification raised when the MIDI network has changed.</summary>
+        <value>
+        </value>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NetworkNotificationSessionDidChange">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NetworkNotificationSessionDidChange { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString NetworkNotificationSessionDidChange" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Notification raised when the MIDI session has changed</summary>
+        <value>
+        </value>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Restart">
+      <MemberSignature Language="C#" Value="public static void Restart ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void Restart() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Restarts the MIDI Subsystem.</summary>
+        <remarks>This stops the MIDI subsystems and forces it to be reinitialized.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SourceCount">
+      <MemberSignature Language="C#" Value="public static int SourceCount { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property int32 SourceCount" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Returns the number of sources in the system.</summary>
+        <value>
+        </value>
+        <remarks>Use the <see cref="T:MonoMac.CoreMidi.MidiEndpoint.GetSource(int)" /> to fetch a specific source (represented by a MidiEndpoint).</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

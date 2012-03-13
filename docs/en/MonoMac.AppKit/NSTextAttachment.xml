@@ -38,27 +38,6 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public NSTextAttachment (MonoMac.AppKit.NSFileWrapper fileWrapper);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.AppKit.NSFileWrapper fileWrapper) cil managed" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>MonoMac.Foundation.Export("initWithFileWrapper:")</AttributeName>
-        </Attribute>
-      </Attributes>
-      <Parameters>
-        <Parameter Name="fileWrapper" Type="MonoMac.AppKit.NSFileWrapper" />
-      </Parameters>
-      <Docs>
-        <param name="fileWrapper">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSTextAttachment (MonoMac.Foundation.NSCoder coder);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSCoder coder) cil managed" />
       <MemberType>Constructor</MemberType>
@@ -77,6 +56,27 @@
         <param name="coder">The unarchiver object.</param>
         <summary>A constructor that initializes the object from the data stored in the unarchiver object.</summary>
         <remarks>This constructor is provided to allow the class to be initialized from an unarchiver (for example, during NIB deserialization).</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public NSTextAttachment (MonoMac.Foundation.NSFileWrapper fileWrapper);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSFileWrapper fileWrapper) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("initWithFileWrapper:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <Parameters>
+        <Parameter Name="fileWrapper" Type="MonoMac.Foundation.NSFileWrapper" />
+      </Parameters>
+      <Docs>
+        <param name="fileWrapper">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -192,8 +192,8 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="FileWrapper">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSFileWrapper FileWrapper { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AppKit.NSFileWrapper FileWrapper" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSFileWrapper FileWrapper { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSFileWrapper FileWrapper" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -207,7 +207,7 @@ public class MyClass : BaseClass {
         </Attribute>
       </Attributes>
       <ReturnValue>
-        <ReturnType>MonoMac.AppKit.NSFileWrapper</ReturnType>
+        <ReturnType>MonoMac.Foundation.NSFileWrapper</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

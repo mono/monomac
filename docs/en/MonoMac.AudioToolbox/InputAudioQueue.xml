@@ -11,7 +11,13 @@
   <Interfaces />
   <Docs>
     <summary>An Input Audio Queue, used for audio capturing and recording.</summary>
-    <remarks />
+    <remarks>
+
+      To receive input completed notifications, you can either hook up
+      to the C# event InputCompleted or you can subclass and override the 
+      OnInputCompleted method.   They serve the same purpose.
+
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -25,9 +31,10 @@
         <Parameter Name="desc" Type="MonoMac.AudioToolbox.AudioStreamBasicDescription" />
       </Parameters>
       <Docs>
-        <param name="desc">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="desc">Audio stream description.</param>
+        <summary>Creates an AudioQueue for recording, and invokes the notification callback on an internal AudioQueue thread.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -43,11 +50,12 @@
         <Parameter Name="runMode" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="desc">To be added.</param>
-        <param name="runLoop">To be added.</param>
-        <param name="runMode">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="desc">Audio stream description.</param>
+        <param name="runLoop">If you specify null, InputAudioQueue will invoke the callback on an internal thread.   Otherwise the callback will be invoked on the specified runLoop thread.</param>
+        <param name="runMode">The run mode for the run loop.</param>
+        <summary>Creates an AudioQueue for recording, specifying on which run loop events are delivered.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="InputCompleted">
@@ -61,8 +69,12 @@
         <ReturnType>System.EventHandler&lt;MonoMac.AudioToolbox.InputCompletedEventArgs&gt;</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Event raised when a buffer has been filled up with recorded data.</summary>
+        <remarks>This event is raised when the audio system has
+        completely filled one of the buffers with audio data.  You
+        would typically connect to this event a method that would save
+        the contents of the buffer to a disk, encode it using <see cref="T:MonoMac.AudioToolbox.AudioFile" /> or do some
+        real-time processing with the audio packets.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnInputCompleted">
@@ -81,11 +93,26 @@
         <Parameter Name="packetDescriptions" Type="MonoMac.AudioToolbox.AudioStreamPacketDescription[]" />
       </Parameters>
       <Docs>
-        <param name="audioQueueBuffer">To be added.</param>
+        <param name="audioQueueBuffer">.</param>
         <param name="timeStamp">To be added.</param>
         <param name="packetDescriptions">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Method invoked .</summary>
+        <remarks>
+          <para>
+
+	    This method is invoked when the audio system has
+	    completely filled one of the buffers with audio data.  You
+	    would override this method to process the data, to either
+	    save the raw bytes to disk, encode them using the <see cref="T:MonoMac.AudioToolbox.AudioFile" /> or do some
+	    real-time processing with the audio packets.  
+	  </para>
+          <para>
+	    If you override this method, you do not necessarily
+	    need to call base.OnInputComplete (audioQueueBuffer,
+	    timeStamp, packetDescriptions) unless you are interested in
+	    raising the C# events to potential consumers of your class.
+	  </para>
+        </remarks>
       </Docs>
     </Member>
   </Members>

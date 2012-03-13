@@ -10,8 +10,14 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Represents a collection of audio samples.</summary>
+    <remarks>
+      <para> The samples stored on the audio buffer can either contain
+	monophonic samples, in which case the NumberOfChannels
+	property will be set to one.  If the samples stored are
+	stereo, then the NumberOfChannels will be set to two, and the
+	samples are interleaved in the buffer. </para>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName="Data">
@@ -25,8 +31,8 @@
         <ReturnType>System.IntPtr</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Pointer to the raw audio data.</summary>
+        <remarks>The size of this buffer is described by the <see cref="P:MonoMac.AudioBuffer.DataByteSize" /> property.</remarks>
       </Docs>
     </Member>
     <Member MemberName="DataByteSize">
@@ -40,8 +46,9 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>The size of the buffer pointed to by <see cref="P:MonoMac.AudioBuffer.Data" />.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="NumberChannels">
@@ -55,8 +62,9 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>The number of channels in the audio buffer.   One for monophonic, non-interleaved data or two for stereo, interleaved data.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ToString">
@@ -71,7 +79,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Debugging method that display information about the AudioBuffer.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>

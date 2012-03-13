@@ -317,28 +317,27 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="AnimationFor">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject AnimationFor (MonoMac.Foundation.NSString key);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class MonoMac.Foundation.NSObject AnimationFor(class MonoMac.Foundation.NSString key) cil managed" />
-      <MemberType>Method</MemberType>
+    <Member MemberName="AnimationBehavior">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSWindowAnimationBehavior AnimationBehavior { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.AppKit.NSWindowAnimationBehavior AnimationBehavior" />
+      <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>MonoMac.Foundation.Export("animationForKey:")</AttributeName>
+          <AttributeName>get: MonoMac.Foundation.Export("animationBehavior")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: MonoMac.Foundation.Export("setAnimationBehavior:")</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
+        <ReturnType>MonoMac.AppKit.NSWindowAnimationBehavior</ReturnType>
       </ReturnValue>
-      <Parameters>
-        <Parameter Name="key" Type="MonoMac.Foundation.NSString" />
-      </Parameters>
       <Docs>
-        <param name="key">To be added.</param>
         <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -575,6 +574,33 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="BackingAlignedRect">
+      <MemberSignature Language="C#" Value="public virtual System.Drawing.RectangleF BackingAlignedRect (System.Drawing.RectangleF aRect, MonoMac.Foundation.NSAlignmentOptions options);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype System.Drawing.RectangleF BackingAlignedRect(valuetype System.Drawing.RectangleF aRect, valuetype MonoMac.Foundation.NSAlignmentOptions options) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("backingAlignedRect:options:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Drawing.RectangleF</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="aRect" Type="System.Drawing.RectangleF" />
+        <Parameter Name="options" Type="MonoMac.Foundation.NSAlignmentOptions" />
+      </Parameters>
+      <Docs>
+        <param name="aRect">To be added.</param>
+        <param name="options">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="BackingLocation">
       <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSWindowBackingLocation BackingLocation { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.AppKit.NSWindowBackingLocation BackingLocation" />
@@ -589,6 +615,27 @@ public class MyClass : BaseClass {
       </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.AppKit.NSWindowBackingLocation</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BackingScaleFactor">
+      <MemberSignature Language="C#" Value="public virtual float BackingScaleFactor { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 BackingScaleFactor" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("backingScaleFactor")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -1177,6 +1224,106 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="ConvertRectFromBacking">
+      <MemberSignature Language="C#" Value="public virtual System.Drawing.RectangleF ConvertRectFromBacking (System.Drawing.RectangleF aRect);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype System.Drawing.RectangleF ConvertRectFromBacking(valuetype System.Drawing.RectangleF aRect) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("convertRectFromBacking:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Drawing.RectangleF</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="aRect" Type="System.Drawing.RectangleF" />
+      </Parameters>
+      <Docs>
+        <param name="aRect">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ConvertRectFromScreen">
+      <MemberSignature Language="C#" Value="public virtual System.Drawing.RectangleF ConvertRectFromScreen (System.Drawing.RectangleF aRect);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype System.Drawing.RectangleF ConvertRectFromScreen(valuetype System.Drawing.RectangleF aRect) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("convertRectFromScreen:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Drawing.RectangleF</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="aRect" Type="System.Drawing.RectangleF" />
+      </Parameters>
+      <Docs>
+        <param name="aRect">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ConvertRectToBacking">
+      <MemberSignature Language="C#" Value="public virtual System.Drawing.RectangleF ConvertRectToBacking (System.Drawing.RectangleF aRect);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype System.Drawing.RectangleF ConvertRectToBacking(valuetype System.Drawing.RectangleF aRect) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("convertRectToBacking:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Drawing.RectangleF</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="aRect" Type="System.Drawing.RectangleF" />
+      </Parameters>
+      <Docs>
+        <param name="aRect">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ConvertRectToScreen">
+      <MemberSignature Language="C#" Value="public virtual System.Drawing.RectangleF ConvertRectToScreen (System.Drawing.RectangleF aRect);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype System.Drawing.RectangleF ConvertRectToScreen(valuetype System.Drawing.RectangleF aRect) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("convertRectToScreen:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Drawing.RectangleF</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="aRect" Type="System.Drawing.RectangleF" />
+      </Parameters>
+      <Docs>
+        <param name="aRect">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="ConvertScreenToBase">
       <MemberSignature Language="C#" Value="public virtual System.Drawing.PointF ConvertScreenToBase (System.Drawing.PointF aPoint);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype System.Drawing.PointF ConvertScreenToBase(valuetype System.Drawing.PointF aPoint) cil managed" />
@@ -1221,6 +1368,38 @@ public class MyClass : BaseClass {
       <Docs>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CustomWindowsToEnterFullScreen">
+      <MemberSignature Language="C#" Value="public MonoMac.AppKit.NSWindowWindows CustomWindowsToEnterFullScreen { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AppKit.NSWindowWindows CustomWindowsToEnterFullScreen" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.AppKit.NSWindowWindows</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CustomWindowsToExitFullScreen">
+      <MemberSignature Language="C#" Value="public MonoMac.AppKit.NSWindowWindows CustomWindowsToExitFullScreen { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AppKit.NSWindowWindows CustomWindowsToExitFullScreen" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.AppKit.NSWindowWindows</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1292,31 +1471,6 @@ public class MyClass : BaseClass {
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="DefaultAnimationFor">
-      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSObject DefaultAnimationFor (MonoMac.Foundation.NSString key);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSObject DefaultAnimationFor(class MonoMac.Foundation.NSString key) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>MonoMac.Foundation.Export("defaultAnimationForKey:")</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="key" Type="MonoMac.Foundation.NSString" />
-      </Parameters>
-      <Docs>
-        <param name="key">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1469,6 +1623,22 @@ public class MyClass : BaseClass {
         <remarks>If you assign a value to this event, this will reset the value for the Delegate property to an internal handler that maps delegates to events.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="DidBecomeKeyNotification">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString DidBecomeKeyNotification { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString DidBecomeKeyNotification" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="DidBecomeMain">
       <MemberSignature Language="C#" Value="public event EventHandler DidBecomeMain;" />
       <MemberSignature Language="ILAsm" Value=".event class System.EventHandler DidBecomeMain" />
@@ -1482,6 +1652,22 @@ public class MyClass : BaseClass {
       <Docs>
         <summary>Event raised by the object.</summary>
         <remarks>If you assign a value to this event, this will reset the value for the Delegate property to an internal handler that maps delegates to events.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DidBecomeMainNotification">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString DidBecomeMainNotification { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString DidBecomeMainNotification" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="DidChangeScreen">
@@ -1499,6 +1685,22 @@ public class MyClass : BaseClass {
         <remarks>If you assign a value to this event, this will reset the value for the Delegate property to an internal handler that maps delegates to events.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="DidChangeScreenNotification">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString DidChangeScreenNotification { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString DidChangeScreenNotification" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="DidChangeScreenProfile">
       <MemberSignature Language="C#" Value="public event EventHandler DidChangeScreenProfile;" />
       <MemberSignature Language="ILAsm" Value=".event class System.EventHandler DidChangeScreenProfile" />
@@ -1512,6 +1714,37 @@ public class MyClass : BaseClass {
       <Docs>
         <summary>Event raised by the object.</summary>
         <remarks>If you assign a value to this event, this will reset the value for the Delegate property to an internal handler that maps delegates to events.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DidChangeScreenProfileNotification">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString DidChangeScreenProfileNotification { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString DidChangeScreenProfileNotification" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DidDecodeRestorableState">
+      <MemberSignature Language="C#" Value="public event EventHandler&lt;MonoMac.AppKit.NSWindowCoderEventArgs&gt; DidDecodeRestorableState;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler`1&lt;class MonoMac.AppKit.NSWindowCoderEventArgs&gt; DidDecodeRestorableState" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.EventHandler&lt;MonoMac.AppKit.NSWindowCoderEventArgs&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="DidDeminiaturize">
@@ -1529,6 +1762,22 @@ public class MyClass : BaseClass {
         <remarks>If you assign a value to this event, this will reset the value for the Delegate property to an internal handler that maps delegates to events.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="DidDeminiaturizeNotification">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString DidDeminiaturizeNotification { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString DidDeminiaturizeNotification" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="DidEndLiveResize">
       <MemberSignature Language="C#" Value="public event EventHandler DidEndLiveResize;" />
       <MemberSignature Language="ILAsm" Value=".event class System.EventHandler DidEndLiveResize" />
@@ -1542,6 +1791,22 @@ public class MyClass : BaseClass {
       <Docs>
         <summary>Event raised by the object.</summary>
         <remarks>If you assign a value to this event, this will reset the value for the Delegate property to an internal handler that maps delegates to events.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DidEndLiveResizeNotification">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString DidEndLiveResizeNotification { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString DidEndLiveResizeNotification" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="DidEndSheet">
@@ -1559,6 +1824,146 @@ public class MyClass : BaseClass {
         <remarks>If you assign a value to this event, this will reset the value for the Delegate property to an internal handler that maps delegates to events.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="DidEndSheetNotification">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString DidEndSheetNotification { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString DidEndSheetNotification" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DidEnterFullScreen">
+      <MemberSignature Language="C#" Value="public event EventHandler DidEnterFullScreen;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler DidEnterFullScreen" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DidEnterFullScreenNotification">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString DidEnterFullScreenNotification { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString DidEnterFullScreenNotification" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DidEnterVersionBrowser">
+      <MemberSignature Language="C#" Value="public event EventHandler DidEnterVersionBrowser;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler DidEnterVersionBrowser" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DidEnterVersionBrowserNotification">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString DidEnterVersionBrowserNotification { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString DidEnterVersionBrowserNotification" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DidExitFullScreen">
+      <MemberSignature Language="C#" Value="public event EventHandler DidExitFullScreen;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler DidExitFullScreen" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DidExitFullScreenNotification">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString DidExitFullScreenNotification { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString DidExitFullScreenNotification" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DidExitVersionBrowser">
+      <MemberSignature Language="C#" Value="public event EventHandler DidExitVersionBrowser;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler DidExitVersionBrowser" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DidExitVersionBrowserNotification">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString DidExitVersionBrowserNotification { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString DidExitVersionBrowserNotification" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="DidExpose">
       <MemberSignature Language="C#" Value="public event EventHandler DidExpose;" />
       <MemberSignature Language="ILAsm" Value=".event class System.EventHandler DidExpose" />
@@ -1572,6 +1977,52 @@ public class MyClass : BaseClass {
       <Docs>
         <summary>Event raised by the object.</summary>
         <remarks>If you assign a value to this event, this will reset the value for the Delegate property to an internal handler that maps delegates to events.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DidExposeNotification">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString DidExposeNotification { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString DidExposeNotification" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DidFailToEnterFullScreen">
+      <MemberSignature Language="C#" Value="public event EventHandler DidFailToEnterFullScreen;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler DidFailToEnterFullScreen" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DidFailToExitFullScreen">
+      <MemberSignature Language="C#" Value="public event EventHandler DidFailToExitFullScreen;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler DidFailToExitFullScreen" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="DidMiniaturize">
@@ -1589,6 +2040,22 @@ public class MyClass : BaseClass {
         <remarks>If you assign a value to this event, this will reset the value for the Delegate property to an internal handler that maps delegates to events.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="DidMiniaturizeNotification">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString DidMiniaturizeNotification { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString DidMiniaturizeNotification" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="DidMoved">
       <MemberSignature Language="C#" Value="public event EventHandler DidMoved;" />
       <MemberSignature Language="ILAsm" Value=".event class System.EventHandler DidMoved" />
@@ -1602,6 +2069,22 @@ public class MyClass : BaseClass {
       <Docs>
         <summary>Event raised by the object.</summary>
         <remarks>If you assign a value to this event, this will reset the value for the Delegate property to an internal handler that maps delegates to events.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DidMoveNotification">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString DidMoveNotification { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString DidMoveNotification" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="DidResignKey">
@@ -1619,6 +2102,22 @@ public class MyClass : BaseClass {
         <remarks>If you assign a value to this event, this will reset the value for the Delegate property to an internal handler that maps delegates to events.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="DidResignKeyNotification">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString DidResignKeyNotification { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString DidResignKeyNotification" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="DidResignMain">
       <MemberSignature Language="C#" Value="public event EventHandler DidResignMain;" />
       <MemberSignature Language="ILAsm" Value=".event class System.EventHandler DidResignMain" />
@@ -1632,6 +2131,22 @@ public class MyClass : BaseClass {
       <Docs>
         <summary>Event raised by the object.</summary>
         <remarks>If you assign a value to this event, this will reset the value for the Delegate property to an internal handler that maps delegates to events.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DidResignMainNotification">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString DidResignMainNotification { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString DidResignMainNotification" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="DidResize">
@@ -1649,6 +2164,22 @@ public class MyClass : BaseClass {
         <remarks>If you assign a value to this event, this will reset the value for the Delegate property to an internal handler that maps delegates to events.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="DidResizeNotification">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString DidResizeNotification { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString DidResizeNotification" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="DidUpdate">
       <MemberSignature Language="C#" Value="public event EventHandler DidUpdate;" />
       <MemberSignature Language="ILAsm" Value=".event class System.EventHandler DidUpdate" />
@@ -1662,6 +2193,22 @@ public class MyClass : BaseClass {
       <Docs>
         <summary>Event raised by the object.</summary>
         <remarks>If you assign a value to this event, this will reset the value for the Delegate property to an internal handler that maps delegates to events.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DidUpdateNotification">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString DidUpdateNotification { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString DidUpdateNotification" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="DisableCursorRects">
@@ -1737,6 +2284,27 @@ public class MyClass : BaseClass {
       <Attributes>
         <Attribute>
           <AttributeName>MonoMac.Foundation.Export("disableScreenUpdatesUntilFlush")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DisableSnapshotRestoration">
+      <MemberSignature Language="C#" Value="public virtual void DisableSnapshotRestoration ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void DisableSnapshotRestoration() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("disableSnapshotRestoration")</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
@@ -2005,6 +2573,27 @@ public class MyClass : BaseClass {
       <Attributes>
         <Attribute>
           <AttributeName>MonoMac.Foundation.Export("enableKeyEquivalentForDefaultButtonCell")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EnableSnapshotRestoration">
+      <MemberSignature Language="C#" Value="public virtual void EnableSnapshotRestoration ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void EnableSnapshotRestoration() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("enableSnapshotRestoration")</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
@@ -2404,6 +2993,27 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Identifier">
+      <MemberSignature Language="C#" Value="public virtual string Identifier { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Identifier" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("identifier")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="IgnoresMouseEvents">
       <MemberSignature Language="C#" Value="public virtual bool IgnoresMouseEvents { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool IgnoresMouseEvents" />
@@ -2783,6 +3393,27 @@ public class MyClass : BaseClass {
       <Docs>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LayoutIfNeeded">
+      <MemberSignature Language="C#" Value="public virtual void LayoutIfNeeded ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void LayoutIfNeeded() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("layoutIfNeeded")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -3783,6 +4414,54 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Restorable">
+      <MemberSignature Language="C#" Value="public virtual bool Restorable { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Restorable" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("isRestorable")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: MonoMac.Foundation.Export("setRestorable:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RestorationClass">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSWindowRestoration RestorationClass { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AppKit.NSWindowRestoration RestorationClass" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("restorationClass")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: MonoMac.Foundation.Export("setRestorationClass:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AppKit.NSWindowRestoration</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="RestoreCachedImage">
       <MemberSignature Language="C#" Value="public virtual void RestoreCachedImage ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void RestoreCachedImage() cil managed" />
@@ -3989,6 +4668,32 @@ public class MyClass : BaseClass {
       </Parameters>
       <Docs>
         <param name="theEvent">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetAnchorAttribute">
+      <MemberSignature Language="C#" Value="public virtual void SetAnchorAttribute (MonoMac.AppKit.NSLayoutAttribute layoutAttribute, MonoMac.AppKit.NSLayoutConstraintOrientation forOrientation);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetAnchorAttribute(valuetype MonoMac.AppKit.NSLayoutAttribute layoutAttribute, valuetype MonoMac.AppKit.NSLayoutConstraintOrientation forOrientation) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("setAnchorAttribute:forOrientation:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="layoutAttribute" Type="MonoMac.AppKit.NSLayoutAttribute" />
+        <Parameter Name="forOrientation" Type="MonoMac.AppKit.NSLayoutConstraintOrientation" />
+      </Parameters>
+      <Docs>
+        <param name="layoutAttribute">To be added.</param>
+        <param name="forOrientation">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -4491,6 +5196,36 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="StartCustomAnimationToEnterFullScreen">
+      <MemberSignature Language="C#" Value="public event EventHandler&lt;MonoMac.AppKit.NSWindowDurationEventArgs&gt; StartCustomAnimationToEnterFullScreen;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler`1&lt;class MonoMac.AppKit.NSWindowDurationEventArgs&gt; StartCustomAnimationToEnterFullScreen" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.EventHandler&lt;MonoMac.AppKit.NSWindowDurationEventArgs&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StartCustomAnimationToExitFullScreen">
+      <MemberSignature Language="C#" Value="public event EventHandler&lt;MonoMac.AppKit.NSWindowDurationEventArgs&gt; StartCustomAnimationToExitFullScreen;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler`1&lt;class MonoMac.AppKit.NSWindowDurationEventArgs&gt; StartCustomAnimationToExitFullScreen" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.EventHandler&lt;MonoMac.AppKit.NSWindowDurationEventArgs&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="StringWithSavedFrame">
       <MemberSignature Language="C#" Value="public virtual string StringWithSavedFrame ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string StringWithSavedFrame() cil managed" />
@@ -4558,6 +5293,30 @@ public class MyClass : BaseClass {
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ToggleFullScreen">
+      <MemberSignature Language="C#" Value="public virtual void ToggleFullScreen (MonoMac.Foundation.NSObject sender);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void ToggleFullScreen(class MonoMac.Foundation.NSObject sender) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("toggleFullScreen:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="sender" Type="MonoMac.Foundation.NSObject" />
+      </Parameters>
+      <Docs>
+        <param name="sender">To be added.</param>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -4678,6 +5437,27 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="UpdateConstraintsIfNeeded">
+      <MemberSignature Language="C#" Value="public virtual void UpdateConstraintsIfNeeded ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void UpdateConstraintsIfNeeded() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("updateConstraintsIfNeeded")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="UseOptimizedDrawing">
       <MemberSignature Language="C#" Value="public virtual void UseOptimizedDrawing (bool flag);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void UseOptimizedDrawing(bool flag) cil managed" />
@@ -4774,6 +5554,30 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="VisualizeConstraints">
+      <MemberSignature Language="C#" Value="public virtual void VisualizeConstraints (MonoMac.AppKit.NSLayoutConstraint[] constraints);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void VisualizeConstraints(class MonoMac.AppKit.NSLayoutConstraint[] constraints) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("visualizeConstraints:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="constraints" Type="MonoMac.AppKit.NSLayoutConstraint[]" />
+      </Parameters>
+      <Docs>
+        <param name="constraints">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="WeakDelegate">
       <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSObject WeakDelegate { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSObject WeakDelegate" />
@@ -4817,6 +5621,22 @@ public class MyClass : BaseClass {
         <remarks>If you assign a value to this event, this will reset the value for the Delegate property to an internal handler that maps delegates to events.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="WillBeginSheetNotification">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString WillBeginSheetNotification { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString WillBeginSheetNotification" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="WillClose">
       <MemberSignature Language="C#" Value="public event EventHandler WillClose;" />
       <MemberSignature Language="ILAsm" Value=".event class System.EventHandler WillClose" />
@@ -4830,6 +5650,161 @@ public class MyClass : BaseClass {
       <Docs>
         <summary>Event raised by the object.</summary>
         <remarks>If you assign a value to this event, this will reset the value for the Delegate property to an internal handler that maps delegates to events.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WillCloseNotification">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString WillCloseNotification { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString WillCloseNotification" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WillEncodeRestorableState">
+      <MemberSignature Language="C#" Value="public event EventHandler&lt;MonoMac.AppKit.NSWindowCoderEventArgs&gt; WillEncodeRestorableState;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler`1&lt;class MonoMac.AppKit.NSWindowCoderEventArgs&gt; WillEncodeRestorableState" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.EventHandler&lt;MonoMac.AppKit.NSWindowCoderEventArgs&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WillEnterFullScreen">
+      <MemberSignature Language="C#" Value="public event EventHandler WillEnterFullScreen;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler WillEnterFullScreen" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WillEnterFullScreenNotification">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString WillEnterFullScreenNotification { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString WillEnterFullScreenNotification" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WillEnterVersionBrowser">
+      <MemberSignature Language="C#" Value="public event EventHandler WillEnterVersionBrowser;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler WillEnterVersionBrowser" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WillEnterVersionBrowserNotification">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString WillEnterVersionBrowserNotification { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString WillEnterVersionBrowserNotification" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WillExitFullScreen">
+      <MemberSignature Language="C#" Value="public event EventHandler WillExitFullScreen;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler WillExitFullScreen" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WillExitFullScreenNotification">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString WillExitFullScreenNotification { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString WillExitFullScreenNotification" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WillExitVersionBrowser">
+      <MemberSignature Language="C#" Value="public event EventHandler WillExitVersionBrowser;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler WillExitVersionBrowser" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WillExitVersionBrowserNotification">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString WillExitVersionBrowserNotification { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString WillExitVersionBrowserNotification" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="WillMiniaturize">
@@ -4847,6 +5822,22 @@ public class MyClass : BaseClass {
         <remarks>If you assign a value to this event, this will reset the value for the Delegate property to an internal handler that maps delegates to events.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="WillMiniaturizeNotification">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString WillMiniaturizeNotification { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString WillMiniaturizeNotification" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="WillMove">
       <MemberSignature Language="C#" Value="public event EventHandler WillMove;" />
       <MemberSignature Language="ILAsm" Value=".event class System.EventHandler WillMove" />
@@ -4860,6 +5851,22 @@ public class MyClass : BaseClass {
       <Docs>
         <summary>Event raised by the object.</summary>
         <remarks>If you assign a value to this event, this will reset the value for the Delegate property to an internal handler that maps delegates to events.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WillMoveNotification">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString WillMoveNotification { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString WillMoveNotification" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="WillPositionSheet">
@@ -4892,6 +5899,22 @@ public class MyClass : BaseClass {
         <summary>Delegate invoked by the object to get a value.</summary>
         <value>To be added.</value>
         <remarks>You assign a function, delegate or anonymous method to this property to return a value to the object.   If you assign a value to this property, it this will reset the value for the Delegate property to an internal handler that maps delegates to events.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WillResizeForVersionBrowser">
+      <MemberSignature Language="C#" Value="public MonoMac.AppKit.NSWindowSizeSize WillResizeForVersionBrowser { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AppKit.NSWindowSizeSize WillResizeForVersionBrowser" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.AppKit.NSWindowSizeSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="WillReturnFieldEditor">
@@ -4939,6 +5962,54 @@ public class MyClass : BaseClass {
       <Docs>
         <summary>Event raised by the object.</summary>
         <remarks>If you assign a value to this event, this will reset the value for the Delegate property to an internal handler that maps delegates to events.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WillStartLiveResizeNotification">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString WillStartLiveResizeNotification { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString WillStartLiveResizeNotification" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WillUseFullScreenContentSize">
+      <MemberSignature Language="C#" Value="public MonoMac.AppKit.NSWindowSize WillUseFullScreenContentSize { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AppKit.NSWindowSize WillUseFullScreenContentSize" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.AppKit.NSWindowSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WillUseFullScreenPresentationOptions">
+      <MemberSignature Language="C#" Value="public MonoMac.AppKit.NSWindowApplicationPresentationOptions WillUseFullScreenPresentationOptions { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AppKit.NSWindowApplicationPresentationOptions WillUseFullScreenPresentationOptions" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.AppKit.NSWindowApplicationPresentationOptions</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="WillUseStandardFrame">

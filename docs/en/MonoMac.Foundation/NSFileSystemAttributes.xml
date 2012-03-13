@@ -10,8 +10,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>File system attributes (size, blocks and free information).</summary>
+    <remarks>This is a strong wrapper around the underlying NSDictionary returned by NSFileSystem APIs.</remarks>
   </Docs>
   <Members>
     <Member MemberName="FreeNodes">
@@ -25,7 +25,7 @@
         <ReturnType>System.Int64</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The number of free nodes in the volume.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -41,7 +41,7 @@
         <ReturnType>System.UInt64</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The number of free bytes in the volume.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -57,7 +57,7 @@
         <ReturnType>System.Int64</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The total number of nodes in the volume (maximum number of files).</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -73,7 +73,7 @@
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The device number (corresponds to st_dev on the Unix stat structure).</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -92,8 +92,8 @@
         <Parameter Name="attr" Type="MonoMac.Foundation.NSFileSystemAttributes" />
       </Parameters>
       <Docs>
-        <param name="attr">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="attr">The strongly typed NSFileSystemAttribute.</param>
+        <summary>Converts the NSFileSystemAttribute class into an NSDictionary, for source code compatibility with older versions of MonoMac/MonoMac.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
@@ -109,7 +109,7 @@
         <ReturnType>System.UInt64</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The volume size in bytes.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>

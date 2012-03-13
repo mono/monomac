@@ -1,0 +1,103 @@
+<Type Name="AdoptsAttribute" FullName="MonoMac.ObjCRuntime.AdoptsAttribute">
+  <TypeSignature Language="C#" Value="public class AdoptsAttribute : Attribute" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit AdoptsAttribute extends System.Attribute" />
+  <AssemblyInfo>
+    <AssemblyName>MonoMac</AssemblyName>
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Attribute</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Attributes>
+    <Attribute>
+      <AttributeName>System.AttributeUsage(System.AttributeTargets.Class, AllowMultiple=true)</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>An attribute used to specify that a class adopts a specific Objective-C protocol.</summary>
+    <remarks>
+      <para> 
+
+	You can use this attribute to decorate NSObject-derived
+	classes to report back to the Objective-C runtime that the
+	class adopts the specified Objective-C protocol.  
+
+      </para>
+      <para>
+
+	Unlike C# interfaces, Objective-C protocols have optional
+	components which means that they are not directly mapped to C#
+	constructs.  In both the MonoMac and MonoMac bindings
+	protocols are inlined directly into the classes that adopt the
+	protocols which allow developers to invoke any methods adopted
+	by the system classes.
+
+      </para>
+      <para>
+
+	User subclasses use this attribute when they want to
+	explicitly inform the Objective-C runtime that they adopt the
+	protocol.  This attribute is looked up by the
+	NSObject.ConformsToProtocol method.
+
+      </para>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public AdoptsAttribute (string protocolType);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string protocolType) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="protocolType" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="protocolType">The name of the protocol you are adopting.</param>
+        <summary>
+        </summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ProtocolHandle">
+      <MemberSignature Language="C#" Value="public IntPtr ProtocolHandle { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance native int ProtocolHandle" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.IntPtr</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Returns the underlying handle to the Protocol.</summary>
+        <value>
+        </value>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ProtocolType">
+      <MemberSignature Language="C#" Value="public string ProtocolType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string ProtocolType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The name of the protocol type adopted.</summary>
+        <value>
+        </value>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -1,0 +1,186 @@
+<Type Name="MidiEndpoint" FullName="MonoMac.CoreMidi.MidiEndpoint">
+  <TypeSignature Language="C#" Value="public class MidiEndpoint : MonoMac.CoreMidi.MidiObject" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit MidiEndpoint extends MonoMac.CoreMidi.MidiObject" />
+  <AssemblyInfo>
+    <AssemblyName>MonoMac</AssemblyName>
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>MonoMac.CoreMidi.MidiObject</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Endpoints represent an individual source or destination on the MIDI stream.</summary>
+    <remarks>Physical endpoints are owned by <see cref="T:MonoMac.CoreMidi.MidiEntity" /> objects, virtual endpoints do not have an owning entity.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Dispose">
+      <MemberSignature Language="C#" Value="public override void Dispose (bool disposing);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Dispose(bool disposing) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="disposing" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="disposing">
+          <para>If set to <see langword="true" />, the method is invoked directly and will dispose manage and unmanaged resources;   If set to <see langword="false" /> the method is being called by the garbage collector finalizer and should only release unmanaged resources.</para>
+        </param>
+        <summary>Releases the resourced used by the MidiEndpoint object.</summary>
+        <remarks>
+          <para>This Dispose method releases the resources used by the MidiEndpoint class.</para>
+          <para>This method is called by both the Dispose() method and the object finalizer (Finalize).    When invoked by the Dispose method, the parameter disposting <paramref name="disposing" /> is set to <see langword="true" /> and any managed object references that this object holds are also disposed or released;  when invoked by the object finalizer, on the finalizer thread the value is set to <see langword="false" />. </para>
+          <para>Calling the Dispose method when you are finished using the MidiEndpoint ensures that all external resources used by this managed object are released as soon as possible.  Once you have invoked the Dispose method, the object is no longer useful and you should no longer make any calls to it.</para>
+          <para>  For more information on how to override this method and on the Dispose/IDisposable pattern, read the ``Implementing a Dispose Method'' document at http://msdn.microsoft.com/en-us/library/fs2xkftw.aspx</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EndpointName">
+      <MemberSignature Language="C#" Value="public string EndpointName { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string EndpointName" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Entity">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreMidi.MidiEntity Entity { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.CoreMidi.MidiEntity Entity" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreMidi.MidiEntity</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FlushOutput">
+      <MemberSignature Language="C#" Value="public void FlushOutput ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void FlushOutput() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetDestination">
+      <MemberSignature Language="C#" Value="public static MonoMac.CoreMidi.MidiEndpoint GetDestination (int destinationIndex);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.CoreMidi.MidiEndpoint GetDestination(int32 destinationIndex) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreMidi.MidiEndpoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="destinationIndex" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="destinationIndex">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetSource">
+      <MemberSignature Language="C#" Value="public static MonoMac.CoreMidi.MidiEndpoint GetSource (int sourceIndex);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.CoreMidi.MidiEndpoint GetSource(int32 sourceIndex) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreMidi.MidiEndpoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="sourceIndex" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="sourceIndex">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsNetworkSession">
+      <MemberSignature Language="C#" Value="public bool IsNetworkSession { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsNetworkSession" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Determines if the Endpoint represents a network session.</summary>
+        <value>
+        </value>
+        <remarks>This probes for the apple.midirtp.session property in the endpoint properties.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MessageReceived">
+      <MemberSignature Language="C#" Value="public event EventHandler&lt;MonoMac.CoreMidi.MidiPacketsEventArgs&gt; MessageReceived;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler`1&lt;class MonoMac.CoreMidi.MidiPacketsEventArgs&gt; MessageReceived" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.EventHandler&lt;MonoMac.CoreMidi.MidiPacketsEventArgs&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Event raised when a new set of packets have been received on this endpoint.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Received">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreMidi.MidiError Received (MonoMac.CoreMidi.MidiPacket[] packets);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype MonoMac.CoreMidi.MidiError Received(class MonoMac.CoreMidi.MidiPacket[] packets) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreMidi.MidiError</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="packets" Type="MonoMac.CoreMidi.MidiPacket[]" />
+      </Parameters>
+      <Docs>
+        <param name="packets">Packets received.</param>
+        <summary>Broadcasts the packets to the client input ports which are connected to this source</summary>
+        <returns>Status code of the operation</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

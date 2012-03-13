@@ -186,6 +186,27 @@ public class MyClass : BaseClass {
         <remarks>Each MonoMac class mirrors an unmanaged Objective-C class.   This value contains the pointer to the Objective-C class, it is similar to calling objc_getClass with the object name.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="CompatibleWithOverlayScrollers">
+      <MemberSignature Language="C#" Value="public static bool CompatibleWithOverlayScrollers { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property bool CompatibleWithOverlayScrollers" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("isCompatibleWithOverlayScrollers")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="ControlSize">
       <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSControlSize ControlSize { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.AppKit.NSControlSize ControlSize" />
@@ -318,6 +339,9 @@ public class MyClass : BaseClass {
         <Attribute>
           <AttributeName>MonoMac.Foundation.Export("drawParts")</AttributeName>
         </Attribute>
+        <Attribute>
+          <AttributeName>System.Obsolete("", false)</AttributeName>
+        </Attribute>
       </Attributes>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -325,6 +349,33 @@ public class MyClass : BaseClass {
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetScrollerWidth">
+      <MemberSignature Language="C#" Value="public static float GetScrollerWidth (MonoMac.AppKit.NSControlSize forControlSize, MonoMac.AppKit.NSScrollerStyle scrollerStyle);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig float32 GetScrollerWidth(valuetype MonoMac.AppKit.NSControlSize forControlSize, valuetype MonoMac.AppKit.NSScrollerStyle scrollerStyle) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("scrollerWidthForControlSize:scrollerStyle:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="forControlSize" Type="MonoMac.AppKit.NSControlSize" />
+        <Parameter Name="scrollerStyle" Type="MonoMac.AppKit.NSScrollerStyle" />
+      </Parameters>
+      <Docs>
+        <param name="forControlSize">To be added.</param>
+        <param name="scrollerStyle">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -397,6 +448,67 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="KnobStyle">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSScrollerKnobStyle KnobStyle { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.AppKit.NSScrollerKnobStyle KnobStyle" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("knobStyle")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: MonoMac.Foundation.Export("setKnobStyle:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AppKit.NSScrollerKnobStyle</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NSPreferredScrollerStyleDidChangeNotification">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString NSPreferredScrollerStyleDidChangeNotification { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString NSPreferredScrollerStyleDidChangeNotification" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PreferredScrollerStyle">
+      <MemberSignature Language="C#" Value="public static MonoMac.AppKit.NSScrollerStyle PreferredScrollerStyle { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype MonoMac.AppKit.NSScrollerStyle PreferredScrollerStyle" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("preferredScrollerStyle")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AppKit.NSScrollerStyle</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="RectForPart">
       <MemberSignature Language="C#" Value="public virtual System.Drawing.RectangleF RectForPart (MonoMac.AppKit.NSScrollerPart partCode);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype System.Drawing.RectangleF RectForPart(valuetype MonoMac.AppKit.NSScrollerPart partCode) cil managed" />
@@ -419,6 +531,30 @@ public class MyClass : BaseClass {
         <param name="partCode">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ScrollerStyle">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AppKit.NSScrollerStyle ScrollerStyle { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.AppKit.NSScrollerStyle ScrollerStyle" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("scrollerStyle")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: MonoMac.Foundation.Export("setScrollerStyle:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AppKit.NSScrollerStyle</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

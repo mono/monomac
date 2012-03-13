@@ -10,8 +10,25 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Provides access to the dynamic linker</summary>
+    <remarks>
+      <para>
+
+	The methods in this class are used to access the iOS/OSX
+	dynamic linker.  You can use the methods in this class to get
+	a handle to native shared libraries and looking up public
+	symbols from them as well as looking up constants defined in a
+	dynamic library.
+
+      </para>
+      <para> You can use dlopen to bring a library into memory and
+	dlclose to close the library and dlerror to diagnose problems
+	with calls to dlopen.
+      </para>
+      <para>
+	There are various methods exposed to look up constants from libraries (GetDouble, GetFloat, GetIndirect, GetInt32, GetIntPtr, GetNSNumber, GetStringConstant).
+      </para>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName="dlclose">
@@ -28,10 +45,11 @@
         <Parameter Name="handle" Type="System.IntPtr" />
       </Parameters>
       <Docs>
-        <param name="handle">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="handle">Handle previously returned by dlopen</param>
+        <summary>Closes and unloads the native shared library referenced by the handle.</summary>
+        <returns>A Unix error code, or zero on success.</returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="dlerror">
@@ -46,9 +64,10 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>Returns a diagnostics message for the last failure when using any of the methods in this class.</summary>
+        <returns>Human-readable message.</returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="dlopen">
@@ -66,11 +85,36 @@
         <Parameter Name="mode" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="path">To be added.</param>
-        <param name="mode">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="path">Path to the dynamic library.</param>
+        <param name="mode">Bitmask, values defined in the Unix dlopen(2) man page.</param>
+        <summary>Loads the specified dynamic library into memory. </summary>
+        <returns>The handle to the library, or IntPtr.Zero on failure.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="dlsym">
+      <MemberSignature Language="C#" Value="public static IntPtr dlsym (IntPtr handle, string symbol);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig pinvokeimpl (&quot;/usr/lib/libSystem.dylib&quot; as &quot;dlsym&quot; winapi)native int dlsym(native int handle, string symbol) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.IntPtr</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="handle" Type="System.IntPtr" />
+        <Parameter Name="symbol" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="handle">Handle to the dynamic library previously opened with dlopen.</param>
+        <param name="symbol">Name of the public symbol in the dynamic library to look up.</param>
+        <summary>Returns the address of the specified symbol in the dynamic library.</summary>
+        <returns>
+        </returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="GetDouble">
@@ -88,11 +132,11 @@
         <Parameter Name="symbol" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="handle">To be added.</param>
-        <param name="symbol">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="handle">Handle to the dynamic library previously opened with dlopen.</param>
+        <param name="symbol">Name of the public symbol in the dynamic library to look up.</param>
+        <summary>Gets the double value exposed with the given symbol from the dynamic library.</summary>
+        <returns>The value from the library.</returns>
+        <remarks>This routine silently fails and returns the default value for double.</remarks>
       </Docs>
     </Member>
     <Member MemberName="GetFloat">
@@ -110,11 +154,11 @@
         <Parameter Name="symbol" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="handle">To be added.</param>
-        <param name="symbol">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="handle">Handle to the dynamic library previously opened with dlopen.</param>
+        <param name="symbol">Name of the public symbol in the dynamic library to look up.</param>
+        <summary>Gets the float value exposed with the given symbol from the dynamic library.</summary>
+        <returns>The value from the library.</returns>
+        <remarks>This routine silently fails and returns the default value for float.</remarks>
       </Docs>
     </Member>
     <Member MemberName="GetIndirect">
@@ -132,11 +176,11 @@
         <Parameter Name="symbol" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="handle">To be added.</param>
-        <param name="symbol">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="handle">Handle to the dynamic library previously opened with dlopen.</param>
+        <param name="symbol">Name of the public symbol in the dynamic library to look up.</param>
+        <summary>Gets the pointer in memory to the specified symbol.</summary>
+        <returns>The value from the library, or IntPtr.Zero on failure.</returns>
+        <remarks>Use this to get a generic pointer to a public symbol in the library.</remarks>
       </Docs>
     </Member>
     <Member MemberName="GetInt32">
@@ -154,11 +198,11 @@
         <Parameter Name="symbol" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="handle">To be added.</param>
-        <param name="symbol">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="handle">Handle to the dynamic library previously opened with dlopen.</param>
+        <param name="symbol">Name of the public symbol in the dynamic library to look up.</param>
+        <summary>Gets the Int32 value exposed with the given symbol from the dynamic library.</summary>
+        <returns>The value from the library.</returns>
+        <remarks>This routine silently fails and returns zero.</remarks>
       </Docs>
     </Member>
     <Member MemberName="GetIntPtr">
@@ -176,11 +220,11 @@
         <Parameter Name="symbol" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="handle">To be added.</param>
-        <param name="symbol">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="handle">Handle to the dynamic library previously opened with dlopen.</param>
+        <param name="symbol">Name of the public symbol in the dynamic library to look up.</param>
+        <summary>Gets the IntPtr value exposed with the given symbol from the dynamic library.</summary>
+        <returns>The value from the library.</returns>
+        <remarks>This routine silently fails and returns IntPtr.Zero.</remarks>
       </Docs>
     </Member>
     <Member MemberName="GetNSNumber">
@@ -198,11 +242,12 @@
         <Parameter Name="symbol" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="handle">To be added.</param>
-        <param name="symbol">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="handle">Handle to the dynamic library previously opened with dlopen.</param>
+        <param name="symbol">Name of the public symbol in the dynamic library to look up.</param>
+        <summary>Gets an NSNumber value exposed with the given symbol from the dynamic library.</summary>
+        <returns>The NSNumer value from the library, or null on error.</returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="GetStringConstant">
@@ -220,11 +265,11 @@
         <Parameter Name="symbol" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="handle">To be added.</param>
-        <param name="symbol">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="handle">Handle to the dynamic library previously opened with dlopen.</param>
+        <param name="symbol">Name of the public symbol in the dynamic library to look up.</param>
+        <summary>Gets the NSString value exposed with the given symbol from the dynamic library.</summary>
+        <returns>The value from the library, or null on error.</returns>
+        <remarks>This routine silently fails and returns the default value for stringconstant.</remarks>
       </Docs>
     </Member>
   </Members>

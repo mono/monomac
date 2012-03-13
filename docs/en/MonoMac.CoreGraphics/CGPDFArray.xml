@@ -14,8 +14,9 @@
     </Interface>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Represents a PDF array</summary>
+    <remarks>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -45,9 +46,11 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>The number of elements in the PDF array.</summary>
+        <value>
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="GetArray">
@@ -65,11 +68,12 @@
         <Parameter Name="array" Type="MonoMac.CoreGraphics.CGPDFArray&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="idx">To be added.</param>
-        <param name="array">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="idx">Index for the element we want to access.</param>
+        <param name="array">If the element at position idx is an array, this will contain the resulting array.</param>
+        <summary>Returns the array element in the array at the specified index.</summary>
+        <returns>True if the element at the given position is of the specified type and the result is set on the out parameter;   False if you tried to access an out of bounds element, or if the element at that position is of a different type.</returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="GetBoolean">
@@ -87,16 +91,17 @@
         <Parameter Name="result" Type="System.Boolean&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="idx">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="idx">Index for the element we want to access.</param>
+        <param name="result">If the element at position idx is a boolean, this will contain the resulting value.</param>
+        <summary>Returns the boolean element in the array at the specified index.</summary>
+        <returns>True if the element at the given position is of the specified type and the result is set on the out parameter;   False if you tried to access an out of bounds element, or if the element at that position is of a different type.</returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="GetDictionary">
-      <MemberSignature Language="C#" Value="public bool GetDictionary (int idx, out MonoMac.CoreGraphics.CGPDFArray result);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool GetDictionary(int32 idx, class MonoMac.CoreGraphics.CGPDFArray result) cil managed" />
+      <MemberSignature Language="C#" Value="public bool GetDictionary (int idx, out MonoMac.CoreGraphics.CGPDFDictionary result);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool GetDictionary(int32 idx, class MonoMac.CoreGraphics.CGPDFDictionary result) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -106,14 +111,15 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="idx" Type="System.Int32" />
-        <Parameter Name="result" Type="MonoMac.CoreGraphics.CGPDFArray&amp;" RefType="out" />
+        <Parameter Name="result" Type="MonoMac.CoreGraphics.CGPDFDictionary&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="idx">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="idx">Index for the element we want to access.</param>
+        <param name="result">If the element at position idx is a dictionary, this will contain the resulting dictionary.</param>
+        <summary>Returns the dictionary element in the array at the specified index.</summary>
+        <returns>True if the element at the given position is of the specified type and the result is set on the out parameter;   False if you tried to access an out of bounds element, or if the element at that position is of a different type.</returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="GetFloat">
@@ -131,11 +137,12 @@
         <Parameter Name="result" Type="System.Single&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="idx">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="idx">Index for the element we want to access.</param>
+        <param name="result">If the element at position idx is a float value, this will contain the resulting value.</param>
+        <summary>Returns the float element in the array at the specified index.</summary>
+        <returns>True if the element at the given position is of the specified type and the result is set on the out parameter;   False if you tried to access an out of bounds element, or if the element at that position is of a different type.</returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="GetInt">
@@ -153,11 +160,12 @@
         <Parameter Name="result" Type="System.Int32&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="idx">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="idx">Index for the element we want to access.</param>
+        <param name="result">If the element at position idx is an integer, this will contain the resulting value.</param>
+        <summary>Returns the integer element in the array at the specified index.</summary>
+        <returns>True if the element at the given position is of the specified type and the result is set on the out parameter;   False if you tried to access an out of bounds element, or if the element at that position is of a different type.</returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="GetName">
@@ -175,11 +183,12 @@
         <Parameter Name="result" Type="System.String&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="idx">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="idx">Index for the element we want to access.</param>
+        <param name="result">If the element at position idx is a name, this will contain the resulting value.</param>
+        <summary>Returns the name element in the array at the specified index.</summary>
+        <returns>True if the element at the given position is of the specified type and the result is set on the out parameter;   False if you tried to access an out of bounds element, or if the element at that position is of a different type.</returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="GetStream">
@@ -197,11 +206,35 @@
         <Parameter Name="result" Type="MonoMac.CoreGraphics.CGPDFStream&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="idx">To be added.</param>
-        <param name="result">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="idx">Index for the element we want to access.</param>
+        <param name="result">If the element at position idx is a PDF stream, this will contain the resulting stream.</param>
+        <summary>Returns the PDF element in the array at the specified index.</summary>
+        <returns>True if the element at the given position is of the specified type and the result is set on the out parameter;   False if you tried to access an out of bounds element, or if the element at that position is of a different type.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetString">
+      <MemberSignature Language="C#" Value="public bool GetString (int idx, out string result);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool GetString(int32 idx, string result) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="idx" Type="System.Int32" />
+        <Parameter Name="result" Type="System.String&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="idx">Index for the element we want to access.</param>
+        <param name="result">If the element at position idx is a string, this will contain the resulting value.</param>
+        <summary>Returns the string element in the array at the specified index.</summary>
+        <returns>True if the element at the given position is of the specified type and the result is set on the out parameter;   False if you tried to access an out of bounds element, or if the element at that position is of a different type.</returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Handle">

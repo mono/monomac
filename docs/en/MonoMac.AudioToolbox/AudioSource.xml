@@ -25,6 +25,23 @@ To use this class, you must create a class that derives from AudioSource and ove
   </Docs>
   <Members>
     <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public AudioSource ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>Constructor used when creating subclasses</summary>
+        <remarks>
+	  This constructor is provided as a convenience for
+	  developers that need to decouple the creation of the
+	  AudioSource from starting the read and write process.    Once you have created this object, you need to invoke the <see cref="M:MonoMac.AudioToolbox.AudioSource.Initialize" /> method to complete the setup.
+	</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public AudioSource (MonoMac.AudioToolbox.AudioFileType fileTypeHint);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype MonoMac.AudioToolbox.AudioFileType fileTypeHint) cil managed" />
       <MemberType>Constructor</MemberType>
@@ -82,6 +99,46 @@ To use this class, you must create a class that derives from AudioSource and ove
           <para>Calling the Dispose method when you are finished using the AudioSource ensures that all external resources used by this managed object are released as soon as possible.  Once you have invoked the Dispose method, the object is no longer useful and you should no longer make any calls to it.</para>
           <para>  For more information on how to override this method and on the Dispose/IDisposable pattern, read the ``Implementing a Dispose Method'' document at http://msdn.microsoft.com/en-us/library/fs2xkftw.aspx</para>
         </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Initialize">
+      <MemberSignature Language="C#" Value="protected void Initialize (MonoMac.AudioToolbox.AudioFileType inFileType, MonoMac.AudioToolbox.AudioStreamBasicDescription format);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void Initialize(valuetype MonoMac.AudioToolbox.AudioFileType inFileType, valuetype MonoMac.AudioToolbox.AudioStreamBasicDescription format) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="inFileType" Type="MonoMac.AudioToolbox.AudioFileType" />
+        <Parameter Name="format" Type="MonoMac.AudioToolbox.AudioStreamBasicDescription" />
+      </Parameters>
+      <Docs>
+        <param name="inFileType">To be added.</param>
+        <param name="format">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Open">
+      <MemberSignature Language="C#" Value="protected void Open (MonoMac.AudioToolbox.AudioFileType fileTypeHint);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void Open(valuetype MonoMac.AudioToolbox.AudioFileType fileTypeHint) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="fileTypeHint" Type="MonoMac.AudioToolbox.AudioFileType" />
+      </Parameters>
+      <Docs>
+        <param name="fileTypeHint">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Read">

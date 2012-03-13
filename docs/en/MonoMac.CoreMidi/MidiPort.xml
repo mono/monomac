@@ -1,0 +1,188 @@
+<Type Name="MidiPort" FullName="MonoMac.CoreMidi.MidiPort">
+  <TypeSignature Language="C#" Value="public class MidiPort : MonoMac.CoreMidi.MidiObject" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit MidiPort extends MonoMac.CoreMidi.MidiObject" />
+  <AssemblyInfo>
+    <AssemblyName>MonoMac</AssemblyName>
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>MonoMac.CoreMidi.MidiObject</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Input and Output ports.</summary>
+    <remarks>
+
+      The input and output port objects are created by calling the
+      <see cref="T:MonoMac.MidiClient.CreateInputPort(System.String&#xA;      name)" /> or <see cref="T:MonoMac.MidiClient.CreateOutputPort(System.String&#xA;      name)" /> methods.
+
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Client">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreMidi.MidiClient Client { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.CoreMidi.MidiClient Client" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreMidi.MidiClient</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The MidiClient that created this port.</summary>
+        <value>
+        </value>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ConnectSource">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreMidi.MidiError ConnectSource (MonoMac.CoreMidi.MidiEndpoint endpoint);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype MonoMac.CoreMidi.MidiError ConnectSource(class MonoMac.CoreMidi.MidiEndpoint endpoint) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreMidi.MidiError</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="endpoint" Type="MonoMac.CoreMidi.MidiEndpoint" />
+      </Parameters>
+      <Docs>
+        <param name="endpoint">
+        </param>
+        <summary>Connects an input port to an endpoint.</summary>
+        <returns>
+        </returns>
+        <remarks>This method can be called multiple times to connect various endpoints to this port.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Disconnect">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreMidi.MidiError Disconnect (MonoMac.CoreMidi.MidiEndpoint endpoint);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype MonoMac.CoreMidi.MidiError Disconnect(class MonoMac.CoreMidi.MidiEndpoint endpoint) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreMidi.MidiError</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="endpoint" Type="MonoMac.CoreMidi.MidiEndpoint" />
+      </Parameters>
+      <Docs>
+        <param name="endpoint">
+        </param>
+        <summary>Disconnects the port from the specified endpoint.</summary>
+        <returns>
+        </returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Dispose">
+      <MemberSignature Language="C#" Value="public override void Dispose (bool disposing);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Dispose(bool disposing) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="disposing" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="disposing">
+          <para>If set to <see langword="true" />, the method is invoked directly and will dispose manage and unmanaged resources;   If set to <see langword="false" /> the method is being called by the garbage collector finalizer and should only release unmanaged resources.</para>
+        </param>
+        <summary>Releases the resourced used by the MidiPort object.</summary>
+        <remarks>
+          <para>This Dispose method releases the resources used by the MidiPort class.</para>
+          <para>This method is called by both the Dispose() method and the object finalizer (Finalize).    When invoked by the Dispose method, the parameter disposting <paramref name="disposing" /> is set to <see langword="true" /> and any managed object references that this object holds are also disposed or released;  when invoked by the object finalizer, on the finalizer thread the value is set to <see langword="false" />. </para>
+          <para>Calling the Dispose method when you are finished using the MidiPort ensures that all external resources used by this managed object are released as soon as possible.  Once you have invoked the Dispose method, the object is no longer useful and you should no longer make any calls to it.</para>
+          <para>  For more information on how to override this method and on the Dispose/IDisposable pattern, read the ``Implementing a Dispose Method'' document at http://msdn.microsoft.com/en-us/library/fs2xkftw.aspx</para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MessageReceived">
+      <MemberSignature Language="C#" Value="public event EventHandler&lt;MonoMac.CoreMidi.MidiPacketsEventArgs&gt; MessageReceived;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler`1&lt;class MonoMac.CoreMidi.MidiPacketsEventArgs&gt; MessageReceived" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.EventHandler&lt;MonoMac.CoreMidi.MidiPacketsEventArgs&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Event raised when data has been received on this port.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PortName">
+      <MemberSignature Language="C#" Value="public string PortName { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string PortName" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The port name specified when the port was created</summary>
+        <value>
+        </value>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Send">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreMidi.MidiError Send (MonoMac.CoreMidi.MidiEndpoint endpoint, MonoMac.CoreMidi.MidiPacket[] packets);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype MonoMac.CoreMidi.MidiError Send(class MonoMac.CoreMidi.MidiEndpoint endpoint, class MonoMac.CoreMidi.MidiPacket[] packets) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreMidi.MidiError</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="endpoint" Type="MonoMac.CoreMidi.MidiEndpoint" />
+        <Parameter Name="packets" Type="MonoMac.CoreMidi.MidiPacket[]" />
+      </Parameters>
+      <Docs>
+        <param name="endpoint">Endpoint to send packets to.</param>
+        <param name="packets">The packets to send to the endpoint.</param>
+        <summary>Sends a set of MidiPackets to the specified endpoint.</summary>
+        <returns>A status code</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ToString">
+      <MemberSignature Language="C#" Value="public override string ToString ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance string ToString() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Returns a human-readable description of this port.</summary>
+        <returns>
+        </returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -11,7 +11,30 @@
   <Interfaces />
   <Docs>
     <summary>Used to specify when the API first became available.</summary>
-    <remarks>MonoMac started using the [Since] attribute starting with the iPad release (version 3.2) to flag new methods, class and enumeration values that became available with the new OS.    </remarks>
+    <remarks>
+      <para> 
+	This attribute can be applied at the class level, to
+	indicate that the class was introduced in a particular
+	revision of the OS, or in independent members (properties,
+	fields, methods, constructors) to indicate that one of those
+	components was introduced in that version.  It can also be
+	applied to enumeration values, as this might be useful for
+	developers to know.
+      </para>
+      <para>
+
+	You should not use the [Since] attribute on C# delegates,
+	since those delegates are always usable from C#.  They might
+	not be used as a parameter to some method, but those methods
+	would have already been flagged with the [Since] attribute.
+
+      </para>
+      <para>
+	MonoMac started using the [Since] attribute starting with
+	the iPad release (version 3.2) to flag new methods, class and
+	enumeration values that became available with the new OS.
+      </para>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -26,10 +49,11 @@
         <Parameter Name="minor" Type="System.Byte" />
       </Parameters>
       <Docs>
-        <param name="major">To be added.</param>
-        <param name="minor">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="major">iOS major version.</param>
+        <param name="minor">iOS minor version.</param>
+        <summary>Constructor used to flag that this component was introduced on the specifid major/version of iOS.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Major">

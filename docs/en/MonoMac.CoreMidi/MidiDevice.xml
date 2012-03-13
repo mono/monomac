@@ -1,0 +1,67 @@
+<Type Name="MidiDevice" FullName="MonoMac.CoreMidi.MidiDevice">
+  <TypeSignature Language="C#" Value="public class MidiDevice : MonoMac.CoreMidi.MidiObject" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit MidiDevice extends MonoMac.CoreMidi.MidiObject" />
+  <AssemblyInfo>
+    <AssemblyName>MonoMac</AssemblyName>
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>MonoMac.CoreMidi.MidiObject</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Represents a MIDI device (typically they represent a hardware device, but virtual devices also exist).   Devices can contain one or more entities.</summary>
+    <remarks>
+      <para>
+	A single MIDI hardware device contains one or more entities.
+	For example a single box could contain two independent MIDI tone
+	generators, or a generator and a keyboard.
+      </para>
+      <para>
+
+	To obtain a MidiDevice, use the <see cref="T:MonoMac.CoreMidi.Midi.GetDevice(int)" /> or the <see cref="T:MonoMac.CoreMidi.Midi.GetExternalDevice(int)" /> methods.
+
+      </para>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="EntityCount">
+      <MemberSignature Language="C#" Value="public int EntityCount { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 EntityCount" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Returns the number of MIDI entities in this device.</summary>
+        <value>
+        </value>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetEntity">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreMidi.MidiEntity GetEntity (int entityIndex);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.CoreMidi.MidiEntity GetEntity(int32 entityIndex) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreMidi.MidiEntity</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="entityIndex" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="entityIndex">The index of the entity</param>
+        <summary>Returns the specified entity.</summary>
+        <returns>An object representing the specified entity, or null on error.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

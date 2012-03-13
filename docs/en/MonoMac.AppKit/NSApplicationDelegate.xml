@@ -259,6 +259,32 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="DecodedRestorableState">
+      <MemberSignature Language="C#" Value="public virtual void DecodedRestorableState (MonoMac.AppKit.NSApplication app, MonoMac.Foundation.NSCoder state);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void DecodedRestorableState(class MonoMac.AppKit.NSApplication app, class MonoMac.Foundation.NSCoder state) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("application:didDecodeRestorableState:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="app" Type="MonoMac.AppKit.NSApplication" />
+        <Parameter Name="state" Type="MonoMac.Foundation.NSCoder" />
+      </Parameters>
+      <Docs>
+        <param name="app">To be added.</param>
+        <param name="state">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="DidBecomeActive">
       <MemberSignature Language="C#" Value="public virtual void DidBecomeActive (MonoMac.Foundation.NSNotification notification);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void DidBecomeActive(class MonoMac.Foundation.NSNotification notification) cil managed" />
@@ -399,6 +425,32 @@ public class MyClass : BaseClass {
       </Parameters>
       <Docs>
         <param name="notification">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FailedToRegisterForRemoteNotifications">
+      <MemberSignature Language="C#" Value="public virtual void FailedToRegisterForRemoteNotifications (MonoMac.AppKit.NSApplication application, MonoMac.Foundation.NSError error);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void FailedToRegisterForRemoteNotifications(class MonoMac.AppKit.NSApplication application, class MonoMac.Foundation.NSError error) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("application:didFailToRegisterForRemoteNotificationsWithError:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="application" Type="MonoMac.AppKit.NSApplication" />
+        <Parameter Name="error" Type="MonoMac.Foundation.NSError" />
+      </Parameters>
+      <Docs>
+        <param name="application">To be added.</param>
+        <param name="error">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -665,6 +717,58 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="ReceivedRemoteNotification">
+      <MemberSignature Language="C#" Value="public virtual void ReceivedRemoteNotification (MonoMac.AppKit.NSApplication application, MonoMac.Foundation.NSDictionary userInfo);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void ReceivedRemoteNotification(class MonoMac.AppKit.NSApplication application, class MonoMac.Foundation.NSDictionary userInfo) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("application:didReceiveRemoteNotification:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="application" Type="MonoMac.AppKit.NSApplication" />
+        <Parameter Name="userInfo" Type="MonoMac.Foundation.NSDictionary" />
+      </Parameters>
+      <Docs>
+        <param name="application">To be added.</param>
+        <param name="userInfo">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RegisteredForRemoteNotifications">
+      <MemberSignature Language="C#" Value="public virtual void RegisteredForRemoteNotifications (MonoMac.AppKit.NSApplication application, MonoMac.Foundation.NSData deviceToken);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void RegisteredForRemoteNotifications(class MonoMac.AppKit.NSApplication application, class MonoMac.Foundation.NSData deviceToken) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("application:didRegisterForRemoteNotificationsWithDeviceToken:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="application" Type="MonoMac.AppKit.NSApplication" />
+        <Parameter Name="deviceToken" Type="MonoMac.Foundation.NSData" />
+      </Parameters>
+      <Docs>
+        <param name="application">To be added.</param>
+        <param name="deviceToken">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="RegisterServicesMenu">
       <MemberSignature Language="C#" Value="public virtual void RegisterServicesMenu (string[] sendTypes, string[] returnTypes);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void RegisterServicesMenu(string[] sendTypes, string[] returnTypes) cil managed" />
@@ -735,6 +839,32 @@ public class MyClass : BaseClass {
       </Parameters>
       <Docs>
         <param name="notification">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WillEncodeRestorableState">
+      <MemberSignature Language="C#" Value="public virtual void WillEncodeRestorableState (MonoMac.AppKit.NSApplication app, MonoMac.Foundation.NSCoder encoder);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void WillEncodeRestorableState(class MonoMac.AppKit.NSApplication app, class MonoMac.Foundation.NSCoder encoder) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("application:willEncodeRestorableState:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="app" Type="MonoMac.AppKit.NSApplication" />
+        <Parameter Name="encoder" Type="MonoMac.Foundation.NSCoder" />
+      </Parameters>
+      <Docs>
+        <param name="app">To be added.</param>
+        <param name="encoder">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>

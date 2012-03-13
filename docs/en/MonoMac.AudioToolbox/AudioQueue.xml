@@ -15,22 +15,76 @@
   </Interfaces>
   <Docs>
     <summary>Base class for Input and Output audio queues.</summary>
-    <remarks />
+    <remarks>
+      <para>
+
+	AudioQueues can be used to record audio from the system input
+	devices into a stream, and to play back audio.  They are
+	responsible for encoding your audio when recording or decoding
+	your compressed audio when playing back and interact directly
+	with the audio hardware and decoding hardware where
+	appropriate.
+
+      </para>
+      <para> AudioQueue is a base class for both the <see cref="T:MonoMac.AudioToolBox.InputAudioQueue" /> which is
+	used to record audio and the <see cref="T:MonoMac.AudioToolBox.OutputAudioQueue" /> which is
+	used to playback audio.  This class provides services to
+	start, prime, stop, pause the queues as well as volume
+	control, resource management and event notifications.
+
+      </para>
+      <para>
+
+	When you use AudioQueues, you must allocate buffers for
+	playback or recording.  You use the <see cref="M:MonoMac.AudioToolBox.AllocateBuffer" /> method or the
+	<see cref="M:MonoMac.AudioToolBox.AllocateBufferWithPacketDescriptors" />
+	to allocate them and you use the <see cref="M:MonoMac.AudioToolBox.FreeBuffer" /> to release them.
+	You keep a collection of buffers around that the underlying
+	hardware can use to either playback audio, or record into.  As
+	the buffers are used, a notification callback is invoked.  In
+	the OutputAudioQueue case, you connect to the OutputCompleted
+	event to be notified when a buffer has been fully played back,
+	and in the InputAudioQueue you use the InputCompleted event to
+	be notified when a recording has fully utilized a buffer.
+
+      </para>
+      <para>
+
+	Unless otherwise specified, the callbacks for processing a
+	filled audio buffer, or filling out an audio buffer are
+	invoked on an AudioQueue thread.  You can change this by
+	providing an instance of the CFRunLoop that you want to use
+	for processing the events in your queue.
+
+      </para>
+      <para> 
+
+	When processing an input or output queue, you might want to
+	listen to a few property changes raised by the queues during
+	their processing (See the <see cref="E:MonoMac.AudioToolBox.AudioQueueProperty" /> for a
+	list of events that you can listen to).  To do this, use the
+	<see cref="M:MonoMac.AudioToolBox.AddListener(MonoMac.AudioToolBox.AudioQueueProperty,AudioQueuePropertyChanged)" />
+	method to add a listener and use the <see cref="M:MonoMac.AudioToolBox.RemoveListener(MonoMac.AudioToolBox.AudioQueueProperty,AudioQueuePropertyChanged)" />
+	method to remove the listener.
+
+      </para>
+      <para> You can see the <a href="https://github.com/xamarin/monotouch-samples/tree/master/StreamingAudio">StreamingAudio</a>
+	to see how to use AudioBuffers. 
+      </para>
+      <para>
+
+	The various AudioQueue properties are exposed as high-level C#
+	properties.  In addition to the high-level properties, a
+	low-level interface to the AudioQueue property system is
+	exposed in case Apple introduces a new property that was not
+	previously bound or if you need finer grained control.  The
+	low-level interface is provided by the GetProperty and
+	SetProperty family of methods.
+	
+      </para>
+    </remarks>
   </Docs>
   <Members>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public AudioQueue ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="AddListener">
       <MemberSignature Language="C#" Value="public void AddListener (MonoMac.AudioToolbox.AudioQueueProperty id, MonoMac.AudioToolbox.AudioQueue.AudioQueuePropertyChanged callback);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddListener(valuetype MonoMac.AudioToolbox.AudioQueueProperty id, class MonoMac.AudioToolbox.AudioQueue/AudioQueuePropertyChanged callback) cil managed" />
@@ -67,10 +121,10 @@
         <Parameter Name="audioQueueBuffer" Type="System.IntPtr&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="bufferSize">To be added.</param>
-        <param name="audioQueueBuffer">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="bufferSize">The audio buffer size in bytes.</param>
+        <param name="audioQueueBuffer">Returns the pointer to the allocated buffer as an IntPtr.</param>
+        <summary>Allocates an audio buffer associated with this AudioQueue</summary>
+        <returns>AudioQueueStatus.Ok on success, otherwise the error. </returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -94,7 +148,7 @@
         <param name="nPackets">To be added.</param>
         <param name="audioQueueBuffer">To be added.</param>
         <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <returns>AudioQueueStatus.Ok on success and the audioQueueBuffer pointing to the buffer, otherwise the error.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -123,6 +177,22 @@
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>MonoMac.AudioToolbox.AudioChannelLayout</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ConverterError">
+      <MemberSignature Language="C#" Value="public uint ConverterError { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 ConverterError" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -326,7 +396,7 @@
         <param name="bytes">To be added.</param>
         <param name="desc">To be added.</param>
         <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <returns>wAudioQueueStatus.Ok on success, otherwise the error.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -370,7 +440,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <returns>AudioQueueStatus.Ok on success, otherwise the error.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -428,7 +498,7 @@
         <param name="time">To be added.</param>
         <param name="timelineDiscontinuty">To be added.</param>
         <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <returns>AudioQueueStatus.Ok on success, otherwise the error.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -580,9 +650,16 @@
         <ReturnType>System.Byte[]</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Audio metadata required by certain formats.</summary>
+        <value>Opaque byte array with a codec-specific token.</value>
+        <remarks>
+
+	  Certain file format produce a MagicCookie that
+	  contains audio metadata.  When playing back or recording, you need to copy
+	  this magic cookie from the AudioQueue to the <see cref="T:MonoMac.AudioToolbox.AudioFileStream" /> by copying this property to the 
+	  <see cref="P:MonoMac.AudioToolbox.AudioFileStream.MagicCookie" />
+	  property.   
+	</remarks>
       </Docs>
     </Member>
     <Member MemberName="MaximumOutputPacketSize">
@@ -614,7 +691,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <returns>AudioQueueStatus.Ok on success, otherwise the error.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -633,11 +710,12 @@
         <Parameter Name="prepared" Type="System.Int32&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="toPrepare">To be added.</param>
-        <param name="prepared">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="toPrepare">Number of frames to process.  If you pass zero, this will process all the frames.</param>
+        <param name="prepared">Returns the number of frames actually processed</param>
+        <summary>Used to prepare the audio buffers to play back and ensure that there is data ready to be played by the audio hardware.</summary>
+        <returns>AudioQueueStatus.Ok on success, otherwise the error.</returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="QueueDispose">
@@ -690,7 +768,7 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <returns>AudioQueueStatus.Ok on success, otherwise the error.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -746,8 +824,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <summary>Starts the audio queue.</summary>
+        <returns>AudioQueueStatus.Ok on success, otherwise the error.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -767,7 +845,7 @@
       <Docs>
         <param name="startTime">To be added.</param>
         <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <returns>AudioQueueStatus.Ok on success, otherwise the error.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -785,9 +863,9 @@
         <Parameter Name="immediate" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="immediate">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <param name="immediate">If true, by the time the function returns, audio would have stopped playing.   Otherwise the pending buffers are flushed and audio continues to play or be recorded until then.</param>
+        <summary>Stops the AudioQueue.</summary>
+        <returns>AudioQueueStatus.Ok on success, otherwise the error.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -822,9 +900,10 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>The volume</summary>
+        <value>Value between 0.0 and 1.0.</value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
   </Members>

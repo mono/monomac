@@ -105,8 +105,8 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CIImageAccumulator (System.Drawing.RectangleF rectangle, MonoMac.CoreImage.CIFormat format);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype System.Drawing.RectangleF rectangle, valuetype MonoMac.CoreImage.CIFormat format) cil managed" />
+      <MemberSignature Language="C#" Value="public CIImageAccumulator (System.Drawing.RectangleF rectangle, int ciImageFormat);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype System.Drawing.RectangleF rectangle, int32 ciImageFormat) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -118,12 +118,33 @@ public class MyClass : BaseClass {
       </Attributes>
       <Parameters>
         <Parameter Name="rectangle" Type="System.Drawing.RectangleF" />
-        <Parameter Name="format" Type="MonoMac.CoreImage.CIFormat" />
+        <Parameter Name="ciImageFormat" Type="System.Int32" />
       </Parameters>
       <Docs>
         <param name="rectangle">To be added.</param>
-        <param name="format">To be added.</param>
+        <param name="ciImageFormat">To be added.</param>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CIImageFormat">
+      <MemberSignature Language="C#" Value="public virtual int CIImageFormat { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 CIImageFormat" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("format")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -211,30 +232,9 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Format">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreImage.CIFormat Format { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.CoreImage.CIFormat Format" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("format")</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>MonoMac.CoreImage.CIFormat</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="FromRectangle">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreImage.CIImageAccumulator FromRectangle (System.Drawing.RectangleF rect, MonoMac.CoreImage.CIFormat format);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class MonoMac.CoreImage.CIImageAccumulator FromRectangle(valuetype System.Drawing.RectangleF rect, valuetype MonoMac.CoreImage.CIFormat format) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual MonoMac.CoreImage.CIImageAccumulator FromRectangle (System.Drawing.RectangleF rect, int ciImageFormat);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class MonoMac.CoreImage.CIImageAccumulator FromRectangle(valuetype System.Drawing.RectangleF rect, int32 ciImageFormat) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -249,11 +249,11 @@ public class MyClass : BaseClass {
       </ReturnValue>
       <Parameters>
         <Parameter Name="rect" Type="System.Drawing.RectangleF" />
-        <Parameter Name="format" Type="MonoMac.CoreImage.CIFormat" />
+        <Parameter Name="ciImageFormat" Type="System.Int32" />
       </Parameters>
       <Docs>
         <param name="rect">To be added.</param>
-        <param name="format">To be added.</param>
+        <param name="ciImageFormat">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>

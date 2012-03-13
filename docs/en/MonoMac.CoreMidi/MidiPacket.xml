@@ -1,0 +1,144 @@
+<Type Name="MidiPacket" FullName="MonoMac.CoreMidi.MidiPacket">
+  <TypeSignature Language="C#" Value="public class MidiPacket" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit MidiPacket extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>MonoMac</AssemblyName>
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Encapsulates a series of MIDI events.</summary>
+    <remarks>
+      <para>
+
+	When you consume a MidiPacket (because some data was received)
+	you would use the Bytes property to get access to the
+	underlying Midi data.  The actual number of valid bytes is
+	stored in the Length property and you should not read beyond
+	that point.
+
+      </para>
+      <para>
+
+	When you produce MidiPackets, you can either create MidiPacket
+	instances by providing both an IntPtr and a Length parameter
+	to your own buffers, or you can provide a byte array as well
+	as a range within the array that determines where the Midi
+	data is stored.
+
+      </para>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public MidiPacket (long timestamp, byte[] bytes);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(int64 timestamp, unsigned int8[] bytes) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="timestamp" Type="System.Int64" />
+        <Parameter Name="bytes" Type="System.Byte[]" />
+      </Parameters>
+      <Docs>
+        <param name="timestamp">Timestamp for the packet.</param>
+        <param name="bytes">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public MidiPacket (long timestamp, ushort length, IntPtr bytes);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(int64 timestamp, unsigned int16 length, native int bytes) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="timestamp" Type="System.Int64" />
+        <Parameter Name="length" Type="System.UInt16" />
+        <Parameter Name="bytes" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="timestamp">To be added.</param>
+        <param name="length">To be added.</param>
+        <param name="bytes">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public MidiPacket (long timestamp, byte[] bytes, int start, int len);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(int64 timestamp, unsigned int8[] bytes, int32 start, int32 len) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="timestamp" Type="System.Int64" />
+        <Parameter Name="bytes" Type="System.Byte[]" />
+        <Parameter Name="start" Type="System.Int32" />
+        <Parameter Name="len" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="timestamp">To be added.</param>
+        <param name="bytes">To be added.</param>
+        <param name="start">To be added.</param>
+        <param name="len">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Bytes">
+      <MemberSignature Language="C#" Value="public IntPtr Bytes { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance native int Bytes" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.IntPtr</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Length">
+      <MemberSignature Language="C#" Value="public ushort Length;" />
+      <MemberSignature Language="ILAsm" Value=".field public unsigned int16 Length" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt16</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The number of bytes in the Bytes array</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TimeStamp">
+      <MemberSignature Language="C#" Value="public long TimeStamp;" />
+      <MemberSignature Language="ILAsm" Value=".field public int64 TimeStamp" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int64</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Time for the event, use zero to mean now.</summary>
+        <remarks>This is the time used by the host, this is measured using the Unix mach_absolute_time() result value.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

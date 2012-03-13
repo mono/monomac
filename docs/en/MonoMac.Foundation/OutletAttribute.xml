@@ -15,8 +15,25 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Exposes the given property as an outlet to the Objective-C world.</summary>
+    <remarks>
+      <para> 
+
+	This property is used to flag properties that need to be
+	exposed as outlets to the Objective-C world.  This is used
+	both by the designer support as well connecting the managed
+	object with the unmanaged Objective-C outlet.
+
+      </para>
+      <para>
+        <example>
+          <code lang="C#">
+	    [Outlet ("mainWindow")]
+	    UIWindows mainWindow  { get; set; }
+	  </code>
+        </example>
+      </para>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -28,8 +45,9 @@
       </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Default constructor</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -43,9 +61,10 @@
         <Parameter Name="name" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="name">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="name">Outlet name.</param>
+        <summary>Links the managed property with the specified Objective-C outlet.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
   </Members>

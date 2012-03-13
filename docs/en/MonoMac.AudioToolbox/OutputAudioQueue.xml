@@ -52,7 +52,7 @@ See the StreamingAudio sample program in monotouch-samples for an example progra
       </Parameters>
       <Docs>
         <param name="desc">Stream description.</param>
-        <param name="runLoop">The run loop in which the OnOutputCompleted method and the OutputCompleted event are raised.</param>
+        <param name="runLoop">The run loop in which the OnOutputCompleted method and the OutputCompleted event are raised, if you pass null, this uses an internal thread.</param>
         <param name="runMode">The run mode for the run loop.</param>
         <summary>Creates an OutputAudioQueue, specifying on which run loop events are delivered.</summary>
         <remarks>Usually the stream description is fetched from an AudioFile or an AudioStreamFile.</remarks>
@@ -74,7 +74,19 @@ See the StreamingAudio sample program in monotouch-samples for an example progra
       <Docs>
         <param name="audioQueueBuffer">The specified audio buffer that has completed playback.</param>
         <summary>This method is invoked when a buffer has finished playing.</summary>
-        <remarks>The implementation on OutputAudioQueue will raise the OutputCompleted event.    If you derive from this class, you do not need to invoke this base method, unless you want it to raise the OutputCompleted event.   The method is exposed as a protected method to allow developers to directly plug into the pipeline when no event dispatching is required.</remarks>
+        <remarks>
+          <para>
+	    At this point you would typically feed another one of the data buffers into the AudioQueue system. 
+	  </para>
+          <para>
+	    The implementation on OutputAudioQueue will raise the
+	    OutputCompleted event.  If you derive from this class, you do
+	    not need to invoke this base method, unless you want it to
+	    raise the OutputCompleted event.  The method is exposed as a
+	    protected method to allow developers to directly plug into the
+	    pipeline when no event dispatching is required.
+	  </para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="OutputCompleted">
@@ -89,7 +101,8 @@ See the StreamingAudio sample program in monotouch-samples for an example progra
       </ReturnValue>
       <Docs>
         <summary>Event raised when an audio buffer has completed playing.</summary>
-        <remarks />
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
   </Members>
