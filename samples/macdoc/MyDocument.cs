@@ -16,7 +16,6 @@ namespace macdoc
 	public partial class MyDocument : MonoMac.AppKit.NSDocument
 	{
 		internal Dictionary<Node,WrapNode> nodeToWrapper = new Dictionary<Node, WrapNode> ();
-		string resourcesPath = NSBundle.MainBundle.ResourceUrl.Path;
 		History history;
 		bool ignoreSelect;
 		// This is used if the user click on different urls while some are still loading so that only the most recent content is displayed

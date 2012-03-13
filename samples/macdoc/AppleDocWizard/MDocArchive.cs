@@ -63,7 +63,6 @@ namespace macdoc
 					if (string.IsNullOrEmpty (typeFullName))
 						continue;
 					typeMapping[typeFullName] = file;
-					//Console.WriteLine ("Mapping {0} to {1}", typeFullName, file);
 				}
 			}
 		}
