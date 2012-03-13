@@ -42,6 +42,7 @@ namespace macdoc
 			"/Users/jeremie/mono/doctest"
 		};*/
 		const string MonodocLibPath = "/Library/Frameworks/Mono.framework/Versions/Current/lib/monodoc/";
+		const string MonoTouchLibPath = "/Developer/MonoTouch/usr/lib/mono/2.1/monotouch.dll";
 
 		public const string IosAtomFeed = "https://developer.apple.com/rss/com.apple.adc.documentation.AppleiPhone5_0.atom";
 		public const string MacLionAtomFeed = "http://developer.apple.com/rss/com.apple.adc.documentation.AppleLion.atom";
@@ -197,9 +198,8 @@ namespace macdoc
 				Assembly = System.Reflection.Assembly.ReflectionOnlyLoadFrom (MonoTouchLibPath),
 				BaseAssemblyNamespace = "MonoTouch",
 				ImportSamples = true,
-				//SamplesRepositoryPath = Path.Combine (resourcePath, "samples.zip"),
 				MonodocArchive = mdocArchive,
-				SamplesRepositoryPath = "/Users/jeremie/mono/doctest/samples.zip",
+				SamplesRepositoryPath = Path.Combine (resourcePath, "samples.zip"),
 				MergingPathCallback = path => { evtArgs.CurrentFile = path; FireAppleDocEvent (evtArgs); },
 				CancellationToken = token
 			});
