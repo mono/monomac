@@ -14,7 +14,8 @@ namespace macdoc
 			NothingToDo,
 			Processed,
 			Canceled,
-			Error
+			Error,
+			NotAdmin
 		}
 		
 		CancellationTokenSource source = new CancellationTokenSource ();
@@ -35,13 +36,16 @@ namespace macdoc
 			Window.CancellationSource = source;
 			handler = new AppleDocHandler ();
 			handler.AppleDocProgress += HandleAppleDocProgress;
-			
-			VerifyFreshnessAndLaunchDocProcess ();
 		}
 		
-		void VerifyFreshnessAndLaunchDocProcess ()
+		public void VerifyFreshnessAndLaunchDocProcess ()
 		{
 			Task.Factory.StartNew (() => {
+				if (System.Security.Principal.WindowsIdentity.GetCurrent().Name != "root") {
+					ShowAlert (FinishState.NotAdmin);
+					return;
+				}
+				
 				AppleDocHandler.AppleDocInformation infos;
 				var resourcePath = NSBundle.MainBundle.ResourcePath;
 				
@@ -84,6 +88,10 @@ namespace macdoc
 				case FinishState.Error:
 					alert.MessageText = "An error occured";
 					alert.InformativeText = "A fatal error occured during one of the documentation installer step";
+					break;
+				case FinishState.NotAdmin:
+					alert.MessageText = "Not enough rights";
+					alert.InformativeText = "You need to be an administrator to use this tool";
 					break;
 				}
 				
