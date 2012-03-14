@@ -15,8 +15,12 @@ namespace macdoc
 		public override void DidFinishLaunching (MonoMac.Foundation.NSNotification notification)
 		{
 			wizard = new AppleDocWizardController ();
+			NSApplication.SharedApplication.ActivateIgnoringOtherApps (true);
+			wizard.Window.MakeMainWindow ();
+			wizard.Window.MakeKeyWindow ();
+			wizard.Window.MakeKeyAndOrderFront (this);
 			wizard.Window.Center ();
-			NSApplication.SharedApplication.ArrangeInFront (this);
+			wizard.VerifyFreshnessAndLaunchDocProcess ();
 			NSApplication.SharedApplication.RunModalForWindow (wizard.Window);
 		}
 	}
