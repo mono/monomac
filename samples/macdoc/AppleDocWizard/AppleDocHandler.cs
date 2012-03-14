@@ -38,10 +38,7 @@ namespace macdoc
 			"/Library/Developer/Shared/Documentation/DocSets/",
 			"/Developer/Platforms/iPhoneOS.platform/Developer/Documentation/DocSets/"
 		};
-		/*readonly string[] searchPaths = new[] {
-			"/Users/jeremie/mono/doctest"
-		};*/
-		const string MonodocLibPath = "/Library/Frameworks/Mono.framework/Versions/Current/lib/monodoc/";
+		const string MonodocLibPath = "/Library/Frameworks/Mono.framework/External/monodoc/";
 		const string MonoTouchLibPath = "/Developer/MonoTouch/usr/lib/mono/2.1/monotouch.dll";
 
 		public const string IosAtomFeed = "https://developer.apple.com/rss/com.apple.adc.documentation.AppleiPhone5_0.atom";
@@ -192,7 +189,7 @@ namespace macdoc
 			var evtArgs = new AppleDocEventArgs () { Stage = ProcessStage.Merging };
 			FireAppleDocEvent (evtArgs);
 			
-			var mdocArchive = MDocZipArchive.ExtractAndLoad (Path.Combine (MonodocLibPath, "sources", "MonoTouch-lib.zip"));
+			var mdocArchive = MDocZipArchive.ExtractAndLoad (Path.Combine (MonodocLibPath, "MonoTouch-lib.zip"));
 			var merger = new AppleDocMerger (new AppleDocMerger.Options () {
 				DocBase = Path.Combine (searchPaths.First (), infos.ID + ".docset", "Contents/Resources/Documents/documentation"),
 				Assembly = System.Reflection.Assembly.ReflectionOnlyLoadFrom (MonoTouchLibPath),
