@@ -35,6 +35,8 @@ namespace macdoc
 	// This represent a .zip archive of a ECMA API doc set
 	public class MDocZipArchive : IMdocArchive
 	{
+		const string originSuffix = ".origin";
+		
 		string baseDir;
 		string originalArchivePath;
 		// Provide a mapping between a type full name (e.g. System.String) and the file name of its documentation (in ecma doc case, a number)
@@ -78,6 +80,10 @@ namespace macdoc
 		{
 			if (!File.Exists (archivePath))
 				throw new ArgumentException ("Archive file doesn't exists", "archivePath");
+			// If there is an existing .origin file it means some merging operation has already happened
+			// and so we need to start at a clean state
+			if (File.Exists (archivePath + originSuffix))
+				File.Copy (archivePath + originSuffix, archivePath, true);
 			
 			var extractionDir = Path.Combine (Path.GetTempPath (), Path.GetFileNameWithoutExtension (archivePath));
 			if (Directory.Exists (extractionDir))
@@ -91,7 +97,7 @@ namespace macdoc
 		
 		public void SaveBack ()
 		{
-			File.Copy (originalArchivePath, originalArchivePath + ".origin", true);
+			File.Copy (originalArchivePath, originalArchivePath + originSuffix, true);
 			File.Delete (originalArchivePath);
 			using (var zip = new ZipFile (originalArchivePath)) {
 				zip.AddDirectory (baseDir);
