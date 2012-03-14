@@ -134,6 +134,8 @@ namespace macdoc
 			statusFile = Path.Combine (statusFile, "merge.status");
 			if (!File.Exists (statusFile))
 				return true;
+			if (!string.IsNullOrEmpty (Environment.GetEnvironmentVariable ("APPLEDOCWIZARD_FORCE_MERGE")))
+				return true;
 			
 			var mergedVersion = CloneFillWithZeros (new Version (File.ReadAllText (statusFile)));
 			
