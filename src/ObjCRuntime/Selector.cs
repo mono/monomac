@@ -69,10 +69,6 @@ namespace MonoMac.ObjCRuntime {
 			get { return Marshal.PtrToStringAuto (sel_getName (handle)); }
 		}
 
-		public static IntPtr GetHandle (string name) {
-			return sel_registerName (name);
-		}
-
 		public static Selector Register (IntPtr handle) {
 			return new Selector (handle);
 		}
@@ -115,6 +111,8 @@ namespace MonoMac.ObjCRuntime {
 		extern static IntPtr sel_registerName (IntPtr name);
 		[DllImport ("/usr/lib/libobjc.dylib")]
 		internal extern static IntPtr sel_registerName (string name);
+		[DllImport ("/usr/lib/libobjc.dylib", EntryPoint="sel_registerName")]
+		public extern static IntPtr GetHandle (string name);
 		[DllImport ("/usr/lib/libobjc.dylib")]
 		extern static bool sel_isMapped (IntPtr sel);
 		[DllImport ("/usr/lib/libobjc.dylib")]
