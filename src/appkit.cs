@@ -10059,7 +10059,7 @@ namespace MonoMac.AppKit {
 		void AddSubview (NSView aView);
 
 		[Export ("addSubview:positioned:relativeTo:")]
-		void AddSubview (NSView aView, NSWindowOrderingMode place, NSView otherView);
+		void AddSubview (NSView aView, NSWindowOrderingMode place, [NullAllowed] NSView otherView);
 
 		[Export ("viewWillMoveToWindow:")]
 		void ViewWillMoveToWindow (NSWindow newWindow);
