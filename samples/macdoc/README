@@ -2,30 +2,18 @@
 MacDoc
 ======
 
-Sample program that uses the Monodoc.dll assembly to render
-the system documentation.   The actual loading is very crude
-right now, as this was done in merely 20 minutes of copying 
-some features from the Gtk# monodoc browser.
+MonoMac Monodoc replacement used to display your Mono/MonoTouch/Mono for Android/... documentation and better integrate with Mac OS X.
 
-Pending Tasks
-=============
+There is also a subproject called AppleDocWizard which is a tiny application that perform the merging of MT/MonoMac doc with Apple documentation. It is launched by macdoc and/or the MonoTouch installer and needs to be run as root.
 
-OS Integration:
-* Support the various open Url commands, to replace MonoDoc
+Building
+--------
 
-UI:
-* Print should always pring the HTML area, not the current widget
-* Detect out of date indexes, offer to rebuild
-* Implement anchor click support (not there now)
-* Hook up bookmarks
-* Hook up URL loading from links
-* Hook up anchor url loading
-* Hook up New Window again
+- AppleDocWizard: Ionic.Zip.dll and AgilityPack.dll are provided in the repository, as an extra you just need a recent MonoMac.dll (not necessarily from master).
+- macdoc: you will need a master version of both monodoc.dll (part of mono) and MonoMac.dll (that you can build from here). For the doc merging step to work correctly, you also need to manually copy AppleDocWizard.app inside macdoc.app/Contents/MacOS folder.
 
-Index:
-* Offer to create index
+Running
+-------
 
-Full Body text search:
-* Offer to create full text index
-* Implement search
+- AppleDocWizard: the tool needs to be run as root. Using the 'open' command or launching from the Finder won't work. Macdoc uses authexec and MonoTouch installer uses Apple script to correctly launch the tool as root. If you want to run it yourself from the command line, use: sudo ./AppleDocWizard.app/Contents/MacOS/AppleDocWizard
 
