@@ -607,15 +607,19 @@ namespace MonoMac.AppKit {
 #region NSWindow
 	[Flags]
 	public enum NSWindowStyle {
-		Borderless = 0,
-		Titled = 1,
-		Closable = 2,
-		Miniaturizable = 4,
-		Resizable = 8,
-		TexturedBackground = 1 << 8,
-		Unscaled = 1 << 11,
+		Borderless	       = 0,
+		Titled		       = 1 << 0,
+		Closable	       = 1 << 1,
+		Miniaturizable	       = 1 << 2,
+		Resizable	       = 1 << 3,
+		Utility		       = 1 << 4,
+		DocModal	       = 1 << 6,
+		NonactivatingPanel     = 1 << 7
+		TexturedBackground     = 1 << 8,
+		Unscaled	       = 1 << 11,
 		UnifiedTitleAndToolbar = 1 << 12,
-		FullScreenWindow = 1 << 14
+		Hud		       = 1 << 13
+		FullScreenWindow       = 1 << 14
 	}
 
 	public enum NSWindowSharingType {
