@@ -48,8 +48,14 @@ namespace macdoc
 		
 		readonly XNamespace docsetNamespace = "http://developer.apple.com/rss/docset_extensions";
 		readonly XNamespace atomNamespace = "http://www.w3.org/2005/Atom";
+		readonly string baseApplicationPath;
 
 		XDocument appleFeed;
+		
+		public AppleDocHandler (string baseApplicationPath)
+		{
+			this.baseApplicationPath = baseApplicationPath;
+		}
 		
 		// We load the atom field that contains a timeline of the modifications down to documentation by Apple
 		XDocument LoadAppleFeed (string feedUrl)
@@ -126,7 +132,7 @@ namespace macdoc
 		
 		public bool CheckMergedDocumentationFreshness (AppleDocInformation infos)
 		{
-			var statusFile = Path.Combine (Environment.GetFolderPath (Environment.SpecialFolder.ApplicationData), "macdoc");
+			var statusFile = Path.Combine (baseApplicationPath, "macdoc");
 			if (!Directory.Exists (statusFile)) {
 				Directory.CreateDirectory (statusFile);
 				return true;
@@ -205,7 +211,7 @@ namespace macdoc
 			merger.MergeDocumentation ();
 			mdocArchive.Dispose ();
 			
-			var statusFile = Path.Combine (Environment.GetFolderPath (Environment.SpecialFolder.ApplicationData), "macdoc", "merge.status");
+			var statusFile = Path.Combine (baseApplicationPath, "macdoc", "merge.status");
 			File.WriteAllText (statusFile, infos.Version.ToString ());
 			FireAppleDocEvent (new AppleDocEventArgs () { Stage = ProcessStage.Finished });
 		}
