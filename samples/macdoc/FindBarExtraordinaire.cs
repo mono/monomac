@@ -26,6 +26,12 @@ namespace macdoc
 		{
 		}
 		
+		public override void DrawRect (System.Drawing.RectangleF dirtyRect)
+		{
+			NSColor.WindowBackground.Set ();
+			NSBezierPath.FillRect (dirtyRect);
+		}
+		
 		partial void StartSearch (NSObject sender)
 		{
 			var temp = FindTextChanged;

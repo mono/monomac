@@ -161,7 +161,7 @@ namespace macdoc
 		{
 			currentScrollView = scrollView;
 			scrollView.FindBarView = findBarController.View;
-			scrollView.FindBarPosition = NSScrollViewFindBarPosition.AboveContent;
+			scrollView.FindBarPosition = NSScrollViewFindBarPosition.BelowContent;
 		}
 		
 		void DoSearch (bool forward)
