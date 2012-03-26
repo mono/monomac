@@ -614,11 +614,11 @@ namespace MonoMac.AppKit {
 		Resizable	       = 1 << 3,
 		Utility		       = 1 << 4,
 		DocModal	       = 1 << 6,
-		NonactivatingPanel     = 1 << 7
+		NonactivatingPanel     = 1 << 7,
 		TexturedBackground     = 1 << 8,
 		Unscaled	       = 1 << 11,
 		UnifiedTitleAndToolbar = 1 << 12,
-		Hud		       = 1 << 13
+		Hud		       = 1 << 13,
 		FullScreenWindow       = 1 << 14
 	}
 
