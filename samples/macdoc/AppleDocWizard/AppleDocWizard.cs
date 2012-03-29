@@ -43,7 +43,7 @@ namespace macdoc
 			case ProcessStage.Downloading:
 				if (currentStage == ProcessStage.Downloading) {
 					progressIndicator.DoubleValue = e.Percentage;
-					extraStageInfoLabel.IntValue = e.Percentage;
+					extraStageInfoLabel.StringValue = e.Percentage + " %";
 				} else {
 					currentStage = ProcessStage.Downloading;
 					progressIndicator.Indeterminate = false;
@@ -54,7 +54,7 @@ namespace macdoc
 				break;
 			case ProcessStage.Extracting:
 				if (currentStage == ProcessStage.Extracting)
-					extraStageInfoLabel.StringValue = e.CurrentFile;
+					extraStageInfoLabel.StringValue = e.CurrentFile ?? "(none)";
 				else {
 					currentStage = ProcessStage.Extracting;
 					progressIndicator.Indeterminate = true;

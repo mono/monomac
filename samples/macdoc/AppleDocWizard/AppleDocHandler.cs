@@ -161,7 +161,12 @@ namespace macdoc
 			
 			WebClient client = new WebClient ();
 			client.DownloadFileCompleted += (sender, e) => HandleAppleDocDownloadFinished (e, infos, tempPath, evt, token);
-			client.DownloadProgressChanged += (sender, e) => { evtArgs.Percentage = e.ProgressPercentage; FireAppleDocEvent (evtArgs); };
+			client.DownloadProgressChanged += (sender, e) => { 
+				if (e.ProgressPercentage - evtArgs.Percentage < 1.0)
+					return;
+				evtArgs.Percentage = e.ProgressPercentage;
+				FireAppleDocEvent (evtArgs);
+			};
 
 			FireAppleDocEvent (new AppleDocEventArgs () { Stage = ProcessStage.Downloading, Percentage = -1 });
 			client.DownloadFileAsync (new Uri (infos.DownloadUrl), tempPath);
