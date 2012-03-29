@@ -77,24 +77,24 @@ namespace macdoc
 				var alert = new NSAlert ();
 				switch (finishState) {
 				case FinishState.NothingToDo:
-					alert.MessageText = "Up-to-date";
-					alert.InformativeText = "Your MonoTouch documentation is already based on the latest version of the Apple documentation";
+					alert.MessageText = "Up to date";
+					alert.InformativeText = "Your MonoTouch documentation is already based on the latest Apple documentation.";
 					break;
 				case FinishState.Processed:
 					alert.MessageText = "Success";
-					alert.InformativeText = "Your MonoTouch documentation was successfully merged with the available Apple documentation on your system";
+					alert.InformativeText = "Your MonoTouch documentation was successfully merged with the latest Apple documentation.";
 					break;
 				case FinishState.Canceled:
-					alert.MessageText = "Canceled";
-					alert.InformativeText = "The update operation was canceled";
+					alert.MessageText = "Cancelled";
+					alert.InformativeText = "The update operation was cancelled.";
 					break;
 				case FinishState.Error:
-					alert.MessageText = "An error occured";
-					alert.InformativeText = "A fatal error occured during one of the documentation installer step";
+					alert.MessageText = "An error occurred";
+					alert.InformativeText = "A fatal error occurred during one of the merge step. Please report it.";
 					break;
 				case FinishState.NotAdmin:
 					alert.MessageText = "Not enough rights";
-					alert.InformativeText = "You need to be an administrator to use this tool";
+					alert.InformativeText = "You need to be an administrator to use this tool.";
 					break;
 				}
 				
