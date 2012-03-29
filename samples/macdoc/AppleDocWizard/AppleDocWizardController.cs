@@ -92,7 +92,7 @@ namespace macdoc
 					break;
 				case FinishState.Error:
 					alert.MessageText = "An error occurred";
-					alert.InformativeText = "A fatal error occurred during one of the merge step. Please report it.";
+					alert.InformativeText = "A fatal error occurred during one of the merge steps. Please report it.";
 					break;
 				case FinishState.NotAdmin:
 					alert.MessageText = "Not enough rights";
