@@ -214,7 +214,10 @@ namespace macdoc
 			
 			if (!token.IsCancellationRequested) {
 				mdocArchive.CommitChanges ();
-				var statusFile = Path.Combine (baseApplicationPath, "macdoc", "merge.status");
+				var statusDirectory = Path.Combine (baseApplicationPath, "macdoc");
+				if (!Directory.Exists (statusDirectory))
+					Directory.CreateDirectory (statusDirectory);
+				var statusFile = Path.Combine (statusDirectory, "merge.status");
 				File.WriteAllText (statusFile, infos.Version.ToString ());
 			}
 			FireAppleDocEvent (new AppleDocEventArgs () { Stage = ProcessStage.Finished });
