@@ -18,6 +18,9 @@ namespace macdoc
 			NotAdmin
 		}
 		
+		const string ConfigDir = "/Library/Frameworks/Mono.framework/Versions/Current/etc/";
+		const string LogFile = "/Library/Frameworks/Mono.framework/Versions/Current/var/appledocwizard.log";
+		
 		CancellationTokenSource source = new CancellationTokenSource ();
 		AppleDocHandler handler;
 		
@@ -34,7 +37,7 @@ namespace macdoc
 		public AppleDocWizardController () : base ("AppleDocWizard")
 		{
 			Window.CancellationSource = source;
-			handler = new AppleDocHandler ();
+			handler = new AppleDocHandler (ConfigDir);
 			handler.AppleDocProgress += HandleAppleDocProgress;
 		}
 		

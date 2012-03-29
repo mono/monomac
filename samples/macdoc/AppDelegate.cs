@@ -71,8 +71,7 @@ namespace macdoc
 			IndexUpdateManager = new IndexUpdateManager (Root.HelpSources.Cast<HelpSource> ().Select (hs => Path.Combine (hs.BaseFilePath, hs.Name + ".zip")).Where (File.Exists),
 			                                             macDocPath);
 			BookmarkManager = new BookmarkManager (macDocPath);
-			// Keep the passed path in sync with what a root Environment.GetFolderPath (Environment.SpecialFolder.ApplicationData) returns
-			AppleDocHandler = new AppleDocHandler ("/var/root/.config");
+			AppleDocHandler = new AppleDocHandler ("/Library/Frameworks/Mono.framework/Versions/Current/etc/");
 			
 			// Configure the documentation rendering.
 			SettingsHandler.Settings.EnableEditing = false;
