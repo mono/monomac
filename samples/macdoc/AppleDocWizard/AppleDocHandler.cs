@@ -211,10 +211,12 @@ namespace macdoc
 				CancellationToken = token
 			});
 			merger.MergeDocumentation ();
-			mdocArchive.Dispose ();
 			
-			var statusFile = Path.Combine (baseApplicationPath, "macdoc", "merge.status");
-			File.WriteAllText (statusFile, infos.Version.ToString ());
+			if (!token.IsCancellationRequested) {
+				mdocArchive.CommitChanges ();
+				var statusFile = Path.Combine (baseApplicationPath, "macdoc", "merge.status");
+				File.WriteAllText (statusFile, infos.Version.ToString ());
+			}
 			FireAppleDocEvent (new AppleDocEventArgs () { Stage = ProcessStage.Finished });
 		}
 		

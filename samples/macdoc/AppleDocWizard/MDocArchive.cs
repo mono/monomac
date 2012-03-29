@@ -6,9 +6,10 @@ using Ionic.Zip;
 
 namespace macdoc
 {
-	public interface IMdocArchive : IDisposable
+	public interface IMdocArchive
 	{
 		string GetPathForType (Type t);
+		void CommitChanges ();
 	}
 	
 	// This is an uncompiled 'en' directory of ECMA documentation
@@ -26,7 +27,7 @@ namespace macdoc
 			return Path.Combine (baseDir, t.Namespace, t.Name + ".xml");
 		}
 		
-		public void Dispose ()
+		public void CommitChanges ()
 		{
 			
 		}
@@ -95,7 +96,7 @@ namespace macdoc
 			return new MDocZipArchive (archivePath, extractionDir);
 		}
 		
-		public void SaveBack ()
+		public void CommitChanges ()
 		{
 			File.Copy (originalArchivePath, originalArchivePath + originSuffix, true);
 			File.Delete (originalArchivePath);
@@ -103,11 +104,6 @@ namespace macdoc
 				zip.AddDirectory (baseDir);
 				zip.Save ();
 			}
-		}
-		
-		public void Dispose ()
-		{
-			SaveBack ();
 		}
 	}
 }
