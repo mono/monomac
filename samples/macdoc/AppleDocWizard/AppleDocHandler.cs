@@ -134,7 +134,9 @@ namespace macdoc
 		{
 			var statusFile = Path.Combine (baseApplicationPath, "macdoc");
 			if (!Directory.Exists (statusFile)) {
-				Directory.CreateDirectory (statusFile);
+				try {
+					Directory.CreateDirectory (statusFile);
+				} catch {}
 				return true;
 			}
 			statusFile = Path.Combine (statusFile, "merge.status");
