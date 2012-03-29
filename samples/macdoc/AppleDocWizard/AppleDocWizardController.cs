@@ -64,9 +64,11 @@ namespace macdoc
 					ShowAlert (FinishState.NothingToDo);
 				}
 			}).ContinueWith (t => {
-				Console.WriteLine ("Exception occured during doc process");
-				Console.WriteLine ();
-				Console.WriteLine (t.Exception.ToString ());
+				var errorLog = string.Format ("Exception occured during doc process{0}{1}", Environment.NewLine, t.Exception.ToString ());
+				Console.WriteLine (errorLog);
+				try {
+					System.IO.File.WriteAllText (LogFile, errorLog);
+				} catch {}
 				ShowAlert (FinishState.Error);
 			}, TaskContinuationOptions.OnlyOnFaulted);
 		}
