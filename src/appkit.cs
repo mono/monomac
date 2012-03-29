@@ -9017,6 +9017,9 @@ namespace MonoMac.AppKit {
         
         	[Lion, Export ("findBarPosition")]
         	NSScrollViewFindBarPosition FindBarPosition { get; set; }
+
+		[Export ("findBarViewDidChangeHeight"), Lion]
+		void FindBarViewDidChangeHeight ();
         
         	[Lion, Export ("flashScrollers")]
         	void FlashScrollers ();
@@ -9892,7 +9895,6 @@ namespace MonoMac.AppKit {
 		string Identifier { get; }
 	}
 
-	[BaseType (typeof (NSObject))]
 	[Lion]
 	[Model]
 	interface NSTextFinderClient {
@@ -9961,20 +9963,14 @@ namespace MonoMac.AppKit {
 		void DrawCharactersInRangeforContentView (NSRange range, NSView view);
 	}
 
-	[BaseType (typeof (NSObject))]
-	[Lion]
-	[Model]
-	public interface NSTextFinderBarContainer {
-		[Abstract]
-		[Export ("findBarVisible")]
+ 	public interface NSTextFinderBarContainer {
+		[Abstract, Export ("findBarVisible"), Lion]
 		bool FindBarVisible { [Bind ("isFindBarVisible")] get; set;  }
 
-		[Abstract]
-		[Export ("findBarView")]
+		[Abstract, Export ("findBarView"), Lion]
 		NSView FindBarView { get; set; }
 
-		[Abstract]
-		[Export ("findBarViewDidChangeHeight")]
+		[Abstract, Export ("findBarViewDidChangeHeight"), Lion]
 		void FindBarViewDidChangeHeight ();
 
 		/*[Abstract]
@@ -9983,7 +9979,6 @@ namespace MonoMac.AppKit {
 	}
 
 	[Lion]
-	[BaseType (typeof (NSObject))]
 	interface NSTextFinder {
 		[Export ("client")]
 		NSTextFinderClient Client { set; }
