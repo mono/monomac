@@ -100,6 +100,9 @@ namespace MonoMac.ObjCRuntime {
 		public extern static IntPtr intptr_objc_msgSend (IntPtr receiver, IntPtr selector);
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSend")]
 		public extern static IntPtr intptr_objc_msgSend_intptr (IntPtr receiver, IntPtr selector, IntPtr arg1);
+		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSend")]		
+		public extern static IntPtr intptr_objc_msgsend_intptr_int (IntPtr receiver, IntPtr selector, IntPtr arg1, int arg2);
+		
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSend")]
 		public extern static IntPtr intptr_objc_msgSend_float (IntPtr receiver, IntPtr selector, float arg1);
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSend")]
