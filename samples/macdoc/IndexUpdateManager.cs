@@ -63,7 +63,7 @@ namespace macdoc
 				
 				Console.WriteLine ("We have a {0} fresh index", isFresh);
 				
-				return isFresh;
+				return IsFresh = isFresh;
 			});
 		}
 		
@@ -93,6 +93,7 @@ namespace macdoc
 			FireSearchIndexCreationEvent (true);
 			RootTree.MakeSearchIndex ();
 			RootTree.MakeIndex ();
+			IsFresh = true;
 			FireSearchIndexCreationEvent (false);
 			if (md5sums != null)
 				SerializeDictionary (Path.Combine (baseUserDir, sumFile), md5sums);
@@ -113,6 +114,11 @@ namespace macdoc
 		}
 		
 		public bool IsCreatingSearchIndex {
+			get;
+			set;
+		}
+		
+		public bool IsFresh {
 			get;
 			set;
 		}

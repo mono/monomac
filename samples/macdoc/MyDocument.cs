@@ -123,7 +123,7 @@ namespace macdoc
 		{
 			AppDelegate.IndexUpdateManager.UpdaterChange += ToggleSearchCreationStatus;
 			searchIndex = AppDelegate.Root.GetSearchIndex ();
-			mdocSearch = new IndexSearcher (null);
+			mdocSearch = new IndexSearcher (AppDelegate.IndexUpdateManager.IsFresh ? AppDelegate.Root.GetIndex () : null);
 			indexResults.Source = new IndexDataSource (mdocSearch);
 			multipleMatchResults.Source = new MultipleMatchDataSource (this);
 			searchResults.Source = new ResultDataSource ();
