@@ -5819,11 +5819,11 @@ namespace MonoMac.AppKit {
 		//runModalForWindows:Completeion
 		[Obsolete ("On 10.6 and newer use runModalForWindow:")]
 		[Export ("beginSheetForDirectory:file:types:modalForWindow:modalDelegate:didEndSelector:contextInfo:")]
-		void BeginSheet (string directory, string fileName, string [] fileTypes, NSWindow modalForWindow, [NullAllowed] NSObject modalDelegate, [NullAllowed] Selector didEndSelector, IntPtr contextInfo);
+		void BeginSheet ([NullAllowed] string directory, [NullAllowed] string fileName, [NullAllowed] string [] fileTypes, [NullAllowed] NSWindow modalForWindow, [NullAllowed] NSObject modalDelegate, [NullAllowed] Selector didEndSelector, IntPtr contextInfo);
 
 		[Obsolete ("On 10.6 and newer use runWithCompletionHandler:")]
 		[Export ("beginForDirectory:file:types:modelessDelegate:didEndSelector:contextInfo:")]
-		void Begin (string directory, string fileName, string [] fileTypes, NSObject modelessDelegate, Selector didEndSelector, IntPtr contextInfo);
+		void Begin ([NullAllowed] string directory, [NullAllowed] string fileName, [NullAllowed] string [] fileTypes, [NullAllowed] NSObject modelessDelegate, [NullAllowed] Selector didEndSelector, IntPtr contextInfo);
 		
 		[Obsolete ("On 10.6 and newer use runModal:")]
 		[Export ("runModalForDirectory:file:types:")]
