@@ -127,6 +127,18 @@ namespace macdoc
 			indexResults.Source = new IndexDataSource (mdocSearch);
 			multipleMatchResults.Source = new MultipleMatchDataSource (this);
 			searchResults.Source = new ResultDataSource ();
+			splitView.Delegate = new SplitViewDelegate ();
+		}
+		
+		class SplitViewDelegate : NSSplitViewDelegate
+		{
+			public override float ConstrainSplitPosition (NSSplitView splitView, float proposedPosition, int subviewDividerIndex)
+			{
+				if (subviewDividerIndex != 0)
+					return proposedPosition;
+				var middle = (splitView.MaxPositionOfDivider (0) - splitView.MinPositionOfDivider (0)) / 2;
+				return proposedPosition < middle ? middle : proposedPosition;
+			}
 		}
 		
 		void SetupBookmarks ()
