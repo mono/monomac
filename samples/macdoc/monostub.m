@@ -215,6 +215,26 @@ decode_qstring (unsigned char **in, unsigned char qchar)
 	return value;
 }
 
+/* Taken from http://opensource.apple.com/source/gcc/gcc-5575.11/libiberty/strndup.c
+ * Mac OS X < Lion don't natively implement strndup
+ */
+char *
+strndup (const char *s, size_t n)
+{
+  char *result;
+  size_t len = strlen (s);
+
+  if (n < len)
+    len = n;
+
+  result = (char *) malloc (len + 1);
+  if (!result)
+    return 0;
+
+  result[len] = '\0';
+  return (char *) memcpy (result, s, len);
+}
+
 static char **
 get_mono_env_options (int *count)
 {
