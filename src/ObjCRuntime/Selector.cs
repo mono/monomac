@@ -31,6 +31,7 @@ namespace MonoMac.ObjCRuntime {
 		static IntPtr MethodSignatureForSelector = Selector.GetHandle ("methodSignatureForSelector:");
 		static IntPtr FrameLength = Selector.GetHandle ("frameLength");
 		internal static IntPtr Alloc = Selector.GetHandle ("alloc");
+		internal static IntPtr Release = Selector.GetHandle ("release");
 
 		internal IntPtr handle;
 
