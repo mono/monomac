@@ -248,7 +248,7 @@ get_mono_env_options (int *count)
 			while (*inptr && !isblank ((int) *inptr))
 				inptr++;
 			
-			value = strndup ((char *) start, (size_t) (inptr - start));
+			value = strndup ((const char *) start, (size_t) (inptr - start));
 			break;
 		}
 		
