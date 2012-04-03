@@ -34,4 +34,4 @@ $(MONO_MAC_DLL):
 	(cd ../../src/ && make)
 
 monostub: monostub.m
-	$(CC) -m32 $^ -o $@ -framework AppKit
+	$(CC) -m32 $^ -o $@ -framework AppKit -D_GNU_SOURCE
