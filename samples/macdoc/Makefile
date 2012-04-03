@@ -17,7 +17,7 @@ appledocwizard: monostub
 	rm -f $(APPLEDOCWIZARD_APP)/AppleDocWizard
 	rm -f $(APPLEDOCWIZARD_APP)/Contents/MacOS/mono-version-check
 
-macdoc: appledocwizard monostub
+macdoc: appledocwizard monostub monomac
 	$(MDTOOL_BUILD)
 	cp monostub $(MACDOC_APP)/Contents/MacOS/macdoc
 	rm -f $(MACDOC_APP)/macdoc
