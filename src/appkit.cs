@@ -9018,9 +9018,6 @@ namespace MonoMac.AppKit {
         	[Lion, Export ("findBarPosition")]
         	NSScrollViewFindBarPosition FindBarPosition { get; set; }
 
-		[Export ("findBarViewDidChangeHeight"), Lion]
-		void FindBarViewDidChangeHeight ();
-        
         	[Lion, Export ("flashScrollers")]
         	void FlashScrollers ();
         
