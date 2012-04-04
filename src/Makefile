@@ -187,5 +187,14 @@ all: MonoMac.dll
 update: MonoMac.dll
 	cp MonoMac.dll* ~/.config/MonoDevelop/addins/MonoDevelop.MonoMac.2.4.*/
 
+#
+# Pushes this to the MonoDevelop source code repo
+#
 push-to-monodevelop: MonoMac.dll
 	cp MonoMac.dll* /cvs/md/monodevelop/extras/MonoDevelop.MonoMac/MonoDevelop.MonoMac
+
+#
+# Pushes the assembly to the system MonoDevelop, for testing
+#
+upgrade-monodevelop: MonoMac.dll
+	cp MonoMac.dll* /Applications/MonoDevelop.app/Contents/MacOS//lib/monodevelop/AddIns/MonoDevelop.MonoMac/
