@@ -14198,7 +14198,7 @@ namespace MonoMac.AppKit {
 		void DuplicateUrls (NSDictionary urls, NSWorkspaceUrlHandler completionHandler);
 		
 		[Export ("getFileSystemInfoForPath:isRemovable:isWritable:isUnmountable:description:type:")]
-		bool GetFileSystemInfo (string fullPath, bool removableFlag, bool writableFlag, bool unmountableFlag, string description, string fileSystemType);
+		bool GetFileSystemInfo (string fullPath, out bool removableFlag, out bool writableFlag, out bool unmountableFlag, out string description, out string fileSystemType);
 		
 		[Export ("performFileOperation:source:destination:files:tag:")]
 		bool PerformFileOperation (string operation, string source, string destination, string[] files, int tag);
