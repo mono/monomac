@@ -42,6 +42,9 @@
     <Reference Include="AgilityPack">
       <HintPath>..\lib\AgilityPack.dll</HintPath>
     </Reference>
+    <Reference Include="Mono.Cecil, Version=0.9.4.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756">
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -60,11 +63,21 @@
     <Compile Include="Main.cs" />
     <Compile Include="XarApi.cs" />
     <Compile Include="AppleDocWizardDelegate.cs" />
-    <Compile Include="AppleDocMerger.cs" />
-    <Compile Include="SQLite.cs" />
-    <Compile Include="samples.cs" />
-    <Compile Include="AppleDocKnownIssues.cs" />
-    <Compile Include="MDocArchive.cs" />
+    <Compile Include="..\..\..\..\maccore\tools\docfixer\AppleDocKnownIssues.cs">
+      <Link>AppleDocKnownIssues.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\maccore\tools\docfixer\AppleDocMerger.cs">
+      <Link>AppleDocMerger.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\maccore\tools\docfixer\MDocArchive.cs">
+      <Link>MDocArchive.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\maccore\tools\docfixer\samples.cs">
+      <Link>samples.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\..\maccore\tools\docfixer\SQLite.cs">
+      <Link>SQLite.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="AppleDocWizard.xib" />

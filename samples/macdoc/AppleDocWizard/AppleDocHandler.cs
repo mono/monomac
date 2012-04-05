@@ -207,7 +207,7 @@ namespace macdoc
 			var mdocArchive = MDocZipArchive.ExtractAndLoad (Path.Combine (MonodocLibPath, "MonoTouch-lib.zip"));
 			var merger = new AppleDocMerger (new AppleDocMerger.Options () {
 				DocBase = Path.Combine (searchPaths.First (), infos.ID + ".docset", "Contents/Resources/Documents/documentation"),
-				Assembly = System.Reflection.Assembly.ReflectionOnlyLoadFrom (MonoTouchLibPath),
+				Assembly = Mono.Cecil.AssemblyDefinition.ReadAssembly (MonoTouchLibPath),
 				BaseAssemblyNamespace = "MonoTouch",
 				ImportSamples = true,
 				MonodocArchive = mdocArchive,
