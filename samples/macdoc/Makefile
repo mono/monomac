@@ -11,7 +11,7 @@ all: monomac monostub appledocwizard macdoc monodoc
 
 monomac: $(MONO_MAC_DLL)
 
-appledocwizard: monostub
+appledocwizard: monomac monostub
 	rm -Rf $(APPLEDOCWIZARD_APP)
 	(cd AppleDocWizard && $(MDTOOL_BUILD))
 	cp monostub $(APPLEDOCWIZARD_APP)/Contents/MacOS/AppleDocWizard
@@ -19,7 +19,7 @@ appledocwizard: monostub
 	rm -f $(APPLEDOCWIZARD_APP)/Contents/MacOS/mono-version-check
 	if test ! -e $(APPLEDOCWIZARD_APP)/Contents/Resources/MonoMac.dll; then cp $(MONO_MAC_DLL)* $(APPLEDOCWIZARD_APP)/Contents/Resources/MonoMac.dll; fi;
 
-macdoc: appledocwizard monostub monomac
+macdoc: monomac appledocwizard monostub
 	rm -Rf $(MACDOC_APP)
 	$(MDTOOL_BUILD)
 	cp monostub $(MACDOC_APP)/Contents/MacOS/macdoc
