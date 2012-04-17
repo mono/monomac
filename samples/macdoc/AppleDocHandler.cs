@@ -7,23 +7,6 @@ using System.Xml.Linq;
 
 namespace macdoc
 {
-	public enum ProcessStage
-	{
-		Initializing,
-		GettingManifest,
-		Downloading,
-		Extracting,
-		Merging,
-		Finished
-	}
-	
-	public class AppleDocEventArgs : EventArgs
-	{
-		public ProcessStage Stage { get; set; }
-		public int Percentage { get; set; } // Used during Downloading stage, a value of -1 indicates the stage just started
-		public string CurrentFile { get; set; } // User during Extracting/Merging stage, a value of null indicates the stage just started
-	}
-	
 	public class AppleDocHandler
 	{
 		public class AppleDocInformation
@@ -43,9 +26,7 @@ namespace macdoc
 
 		public const string IosAtomFeed = "https://developer.apple.com/rss/com.apple.adc.documentation.AppleiPhone5_0.atom";
 		public const string MacLionAtomFeed = "http://developer.apple.com/rss/com.apple.adc.documentation.AppleLion.atom";
-		
-		public EventHandler<AppleDocEventArgs> AppleDocProgress;
-		
+
 		readonly XNamespace docsetNamespace = "http://developer.apple.com/rss/docset_extensions";
 		readonly XNamespace atomNamespace = "http://www.w3.org/2005/Atom";
 		readonly string baseApplicationPath;
@@ -122,7 +103,6 @@ namespace macdoc
 		// is given the completion percentage
 		public bool CheckAppleDocFreshness (string atomFeed, out AppleDocInformation infos)
 		{
-			FireAppleDocEvent (new AppleDocEventArgs () { Stage = ProcessStage.GettingManifest });
 			var feed = LoadAppleFeed (atomFeed);
 			infos = GetLatestAppleDocInformation (feed);
 			var needRefresh = !CheckAppleDocAvailabilityAndFreshness (infos);
@@ -150,89 +130,6 @@ namespace macdoc
 			return mergedVersion != infos.Version;
 		}
 		
-		public void DownloadAppleDocs (AppleDocInformation infos, CancellationToken token)
-		{
-			if (token.IsCancellationRequested)
-				return;
-			
-			var tempPath = Path.GetTempFileName ();
-			var evt = new ManualResetEvent (false);
-			var evtArgs = new AppleDocEventArgs () { Stage = ProcessStage.Downloading };
-			
-			WebClient client = new WebClient ();
-			client.DownloadFileCompleted += (sender, e) => HandleAppleDocDownloadFinished (e, infos, tempPath, evt, token);
-			client.DownloadProgressChanged += (sender, e) => { 
-				if (e.ProgressPercentage - evtArgs.Percentage < 1.0)
-					return;
-				evtArgs.Percentage = e.ProgressPercentage;
-				FireAppleDocEvent (evtArgs);
-			};
-
-			FireAppleDocEvent (new AppleDocEventArgs () { Stage = ProcessStage.Downloading, Percentage = -1 });
-			client.DownloadFileAsync (new Uri (infos.DownloadUrl), tempPath);
-			token.Register (() => client.CancelAsync ());
-			evt.WaitOne ();
-		}
-
-		void HandleAppleDocDownloadFinished (System.ComponentModel.AsyncCompletedEventArgs e, AppleDocInformation infos, string path, ManualResetEvent evt, CancellationToken token)
-		{
-			try {
-				if (e.Cancelled || token.IsCancellationRequested) {
-					return;
-				}
-				FireAppleDocEvent (new AppleDocEventArgs () { Stage = ProcessStage.Extracting, CurrentFile = null });
-				var evtArgs = new AppleDocEventArgs () { Stage = ProcessStage.Extracting };
-				XarApi.ExtractXar (path, searchPaths.First (), token, (filepath) => { evtArgs.CurrentFile = filepath; FireAppleDocEvent (evtArgs); });
-				if (token.IsCancellationRequested) {
-					var extractedDocDir = Path.Combine (searchPaths.First (), infos.ID + ".docset");
-					if (Directory.Exists (extractedDocDir))
-						Directory.Delete (extractedDocDir, true);
-				}
-			} finally {
-				evt.Set ();
-				// Delete the .xar file
-				if (File.Exists (path))
-					File.Delete (path);
-			}
-		}
-		
-		public void LaunchMergeProcess (AppleDocInformation infos, string resourcePath, CancellationToken token)
-		{
-			if (token.IsCancellationRequested)
-				return;
-			
-			var evtArgs = new AppleDocEventArgs () { Stage = ProcessStage.Merging };
-			FireAppleDocEvent (evtArgs);
-			
-			var mdocArchive = MDocZipArchive.ExtractAndLoad (Path.Combine (MonodocLibPath, "MonoTouch-lib.zip"));
-			var merger = new AppleDocMerger (new AppleDocMerger.Options () {
-				DocBase = Path.Combine (searchPaths.First (), infos.ID + ".docset", "Contents/Resources/Documents/documentation"),
-				Assembly = Mono.Cecil.AssemblyDefinition.ReadAssembly (MonoTouchLibPath),
-				BaseAssemblyNamespace = "MonoTouch",
-				ImportSamples = true,
-				MonodocArchive = mdocArchive,
-				SamplesRepositoryPath = Path.Combine (resourcePath, "samples.zip"),
-				MergingPathCallback = path => { evtArgs.CurrentFile = path; FireAppleDocEvent (evtArgs); },
-				CancellationToken = token
-			});
-			merger.MergeDocumentation ();
-			
-			if (!token.IsCancellationRequested) {
-				mdocArchive.CommitChanges ();
-				var statusDirectory = Path.Combine (baseApplicationPath, "macdoc");
-				if (!Directory.Exists (statusDirectory))
-					Directory.CreateDirectory (statusDirectory);
-				var statusFile = Path.Combine (statusDirectory, "merge.status");
-				File.WriteAllText (statusFile, infos.Version.ToString ());
-			}
-			FireAppleDocEvent (new AppleDocEventArgs () { Stage = ProcessStage.Finished });
-		}
-		
-		public void AdvertiseEarlyFinish ()
-		{
-			FireAppleDocEvent (new AppleDocEventArgs () { Stage = ProcessStage.Finished });
-		}
-		
 		static Version CloneFillWithZeros (Version v)
 		{
 			if (v == null)
@@ -244,12 +141,6 @@ namespace macdoc
 
 			return new Version (major, minor, build, revision);
 		}
-		
-		void FireAppleDocEvent (AppleDocEventArgs e)
-		{
-			var temp = AppleDocProgress;
-			if (temp != null)
-				temp (this, e);
-		}
+
 	}
 }
