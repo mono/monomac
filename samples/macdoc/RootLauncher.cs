@@ -1,6 +1,8 @@
 using System;
 using System.IO;
+using System.Linq;
 using System.Diagnostics;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
 namespace macdoc
@@ -39,7 +41,7 @@ namespace macdoc
 	{
 		const string SecurityFramework = "/System/Library/Frameworks/Security.framework/Versions/Current/Security";
 		
-		public static void LaunchExternalTool (string toolPath)
+		public static void LaunchExternalTool (string toolPath, params string[] args)
 		{
 			if (!File.Exists (toolPath))
 				throw new RootLauncherException ("[Launcher] Error, the tool doesn't exist and can't be launched") { ResultCode = AuthorizationResultCode.FileNotFound };
@@ -49,7 +51,7 @@ namespace macdoc
 			if (result != AuthorizationResultCode.Success)
 				throw new RootLauncherException ("[Launcher] Error while creating Auth Reference") { ResultCode = result };
 			
-			result = AuthorizationExecuteWithPrivileges (authReference, toolPath, 0, new string[] { null }, IntPtr.Zero);
+			result = AuthorizationExecuteWithPrivileges (authReference, toolPath, 0, (args ?? Enumerable.Empty<string> ()).Concat (Enumerable.Repeat ((string)null, 1)).ToArray (), IntPtr.Zero);
 			if (result != AuthorizationResultCode.Success)
 				throw new RootLauncherException ("[Launcher] Error while executing") { ResultCode = result };
 		}
