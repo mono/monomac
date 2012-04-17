@@ -460,15 +460,15 @@ namespace MonoMac.Foundation {
 
 		[Static]
 		[Export ("fileHandleForReadingFromURL:error:")]
-		NSObject FileHandleForReadingFromURLerror (NSUrl url, NSError error);
+		NSObject FileHandleForReadingFromURLerror (NSUrl url, out NSError error);
 
 		[Static]
 		[Export ("fileHandleForWritingToURL:error:")]
-		NSObject FileHandleForWritingToURLerror (NSUrl url, NSError error);
+		NSObject FileHandleForWritingToURLerror (NSUrl url, out NSError error);
 
 		[Static]
 		[Export ("fileHandleForUpdatingURL:error:")]
-		NSObject FileHandleForUpdatingURLerror (NSUrl url, NSError error);
+		NSObject FileHandleForUpdatingURLerror (NSUrl url, out NSError error);
 		
 		[Export ("readInBackgroundAndNotifyForModes:")]
 		void ReadInBackgroundAndNotifyForModes (NSArray modes);
@@ -501,20 +501,20 @@ namespace MonoMac.Foundation {
 		IntPtr Constructor (int fd);
 
 		[Export ("fileDescriptor")]
-		int FileDescriptor ();
+		int FileDescriptor { get; set; }
 	}
 	
 	[BaseType (typeof (NSObject))]
 	public interface NSPipe {
 		
 		[Export ("fileHandleForReading")]
-		NSFileHandle fileHandleForReading ();
+		NSFileHandle FileHandleForReading ();
 		
 		[Export ("fileHandleForWriting")]
-		NSFileHandle fileHandleForWriting ();
+		NSFileHandle FileHandleForWriting ();
 
 		[Static]
 		[Export ("pipe")]
-		NSPipe pipe ();
+		NSPipe Pipe ();
 	}
 }
