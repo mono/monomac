@@ -13,6 +13,8 @@ namespace macdoc
 {
 	public partial class AppDelegate : NSApplicationDelegate
 	{
+		const string mergeToolPath = "/Developer/MonoTouch/usr/share/doc/MonoTouch/apple-doc-wizard.sh";
+		
 		static public RootTree Root;
 		static public string MonodocDir;
 		static public NSUrl MonodocBaseUrl;
@@ -92,13 +94,15 @@ namespace macdoc
 			}).ContinueWith (t => Console.WriteLine ("Error while creating indexes: {0}", t.Exception), TaskContinuationOptions.OnlyOnFaulted);
 			
 			// Check if there is a MonoTouch documentation installed and launch accordingly
-			if (Root.HelpSources.Cast<HelpSource> ().Any (hs => hs.Name.StartsWith ("MonoTouch", StringComparison.InvariantCultureIgnoreCase))) {
+			if (Root.HelpSources.Cast<HelpSource> ().Any (hs => hs.Name.StartsWith ("MonoTouch", StringComparison.InvariantCultureIgnoreCase))
+			    && File.Exists (mergeToolPath)) {
 				Task.Factory.StartNew (() => {
 					AppleDocHandler.AppleDocInformation infos;
 					return AppleDocHandler.CheckAppleDocFreshness (AppleDocHandler.IosAtomFeed, out infos) || AppleDocHandler.CheckMergedDocumentationFreshness (infos);
 				}).ContinueWith (t => {
+					Console.WriteLine ("Merged status {0}", t.Result);
 					if (!t.Result)
-							return;
+						return;
 					BeginInvokeOnMainThread (LaunchDocumentationUpdate);
 				});
 			}
@@ -187,7 +191,8 @@ namespace macdoc
 			var infoDialog = new NSAlert {
 				AlertStyle = NSAlertStyle.Informational,
 				MessageText = "Documentation update available",
-				InformativeText = "We have detected your MonoTouch documentation can be upgraded with Apple documentation, would you like to launch the merge now (root password required)?"
+				InformativeText = "We have detected your MonoTouch documentation can be upgraded with Apple documentation."
+					+ Environment.NewLine + Environment.NewLine + "Would you like to do the merge now (the process will be ran in the background)?"
 			};
 			
 			infoDialog.AddButton ("Yes");
@@ -199,11 +204,8 @@ namespace macdoc
 			
 			// Launching AppleDocWizard as root
 			// First get the directory
-			var updaterPath = Path.Combine (Path.GetDirectoryName (NSBundle.MainBundle.BuiltinPluginsPath), "MacOS");
-			// Next get the executable
-			updaterPath = Path.Combine (updaterPath, "AppleDocWizard.app", "Contents", "MacOS", "AppleDocWizard");
 			try {
-				RootLauncher.LaunchExternalTool (updaterPath);
+				RootLauncher.LaunchExternalTool (mergeToolPath, "--force-download");
 			} catch (RootLauncherException ex) {
 				var alertDialog = new NSAlert {
 					AlertStyle = NSAlertStyle.Critical,
