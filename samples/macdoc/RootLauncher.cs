@@ -41,7 +41,7 @@ namespace macdoc
 	{
 		const string SecurityFramework = "/System/Library/Frameworks/Security.framework/Versions/Current/Security";
 		
-		public static void LaunchExternalTool (string toolPath, params string[] args)
+		public static void LaunchExternalTool (string toolPath, string[] args)
 		{
 			if (!File.Exists (toolPath))
 				throw new RootLauncherException ("[Launcher] Error, the tool doesn't exist and can't be launched") { ResultCode = AuthorizationResultCode.FileNotFound };

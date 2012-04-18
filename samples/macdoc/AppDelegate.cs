@@ -98,12 +98,16 @@ namespace macdoc
 			    && File.Exists (mergeToolPath)) {
 				Task.Factory.StartNew (() => {
 					AppleDocHandler.AppleDocInformation infos;
-					return AppleDocHandler.CheckAppleDocFreshness (AppleDocHandler.IosAtomFeed, out infos) || AppleDocHandler.CheckMergedDocumentationFreshness (infos);
+					bool mergeOutdated = false;
+					bool docOutdated = AppleDocHandler.CheckAppleDocFreshness (AppleDocHandler.IosAtomFeed, out infos);
+					if (!docOutdated)
+						mergeOutdated = AppleDocHandler.CheckMergedDocumentationFreshness (infos);
+					return Tuple.Create (docOutdated || mergeOutdated, docOutdated, mergeOutdated);
 				}).ContinueWith (t => {
 					Console.WriteLine ("Merged status {0}", t.Result);
-					if (!t.Result)
+					if (!t.Result.Item1)
 						return;
-					BeginInvokeOnMainThread (LaunchDocumentationUpdate);
+					BeginInvokeOnMainThread (() => LaunchDocumentationUpdate (t.Result.Item2, t.Result.Item3));
 				});
 			}
 		}
@@ -186,7 +190,7 @@ namespace macdoc
 			BookmarkManager.SaveBookmarks ();
 		}
 		
-		void LaunchDocumentationUpdate ()
+		void LaunchDocumentationUpdate (bool docOutdated, bool mergeOutdated)
 		{
 			var infoDialog = new NSAlert {
 				AlertStyle = NSAlertStyle.Informational,
@@ -205,7 +209,7 @@ namespace macdoc
 			// Launching AppleDocWizard as root
 			// First get the directory
 			try {
-				RootLauncher.LaunchExternalTool (mergeToolPath, "--force-download");
+				RootLauncher.LaunchExternalTool (mergeToolPath, docOutdated ? new string[] { "--force-download" } : (string[])null);
 			} catch (RootLauncherException ex) {
 				var alertDialog = new NSAlert {
 					AlertStyle = NSAlertStyle.Critical,
