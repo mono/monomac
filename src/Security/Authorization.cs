@@ -82,9 +82,9 @@ namespace MonoMac.Security {
 		public int    flags;  // zero
 	}
 
-	struct AuthorizationItemSet {
+	unsafe struct AuthorizationItemSet {
 		public int count;
-		public IntPtr ptrToAuthorization;
+		public AuthorizationItem *ptrToAuthorization;
 	}
 
 	public unsafe class Authorization : INativeObject, IDisposable {
@@ -93,7 +93,7 @@ namespace MonoMac.Security {
 		public IntPtr Handle { get { return handle; } }
 		
 		[DllImport (Constants.SecurityLibrary)]
-		extern static int AuthorizationCreate (AuthorizationItem *rights, AuthorizationItem *environment, AuthorizationFlags flags, out IntPtr auth);
+		extern static int AuthorizationCreate (AuthorizationItemSet *rights, AuthorizationItemSet *environment, AuthorizationFlags flags, out IntPtr auth);
 
 		[DllImport (Constants.SecurityLibrary)]
 		extern static int AuthorizationExecuteWithPrivileges (IntPtr handle, string pathToTool, AuthorizationFlags flags, string [] args, IntPtr FILEPtr);
@@ -146,52 +146,57 @@ namespace MonoMac.Security {
 		
 		public static Authorization Create (AuthorizationParameters parameters, AuthorizationEnvironment environment, AuthorizationFlags flags)
 		{
-			AuthorizationItem *pars = null;
-			AuthorizationItem *env = null;
-			int npars = 0, nenv = 0;
+			AuthorizationItemSet pars = new AuthorizationItemSet ();
+			AuthorizationItemSet *ppars = null;
+			AuthorizationItem *pitems = null;
+			AuthorizationItemSet env = new AuthorizationItemSet ();
+			AuthorizationItemSet *penv = null;
+			AuthorizationItem *eitems = null;
 			int code;
 			IntPtr auth;
 
 			try {
 				unsafe {
 					if (parameters != null){
-						pars = (AuthorizationItem *) Marshal.AllocHGlobal (sizeof (AuthorizationItem) * 3);
+						ppars = &pars;
+						pars.ptrToAuthorization = (AuthorizationItem *) Marshal.AllocHGlobal (sizeof (AuthorizationItem) * 3);
 						if (parameters.PathToSystemPrivilegeTool != null)
-							EncodeString (ref pars [npars++], "system.privilege.admin", parameters.PathToSystemPrivilegeTool);
+							EncodeString (ref pars.ptrToAuthorization [pars.count++], "system.privilege.admin", parameters.PathToSystemPrivilegeTool);
 						if (parameters.Prompt != null)
-							EncodeString (ref pars [npars++], "prompt", parameters.Prompt);
+							EncodeString (ref pars.ptrToAuthorization [pars.count++], "prompt", parameters.Prompt);
 						if (parameters.IconPath != null)
-							EncodeString (ref pars [npars++], "prompt", parameters.IconPath);
+							EncodeString (ref pars.ptrToAuthorization [pars.count++], "prompt", parameters.IconPath);
 					}
 					if (environment != null){
-						env = (AuthorizationItem *) Marshal.AllocHGlobal (sizeof (AuthorizationItem) * 3);
+						penv = &env;
+						env.ptrToAuthorization = (AuthorizationItem *) Marshal.AllocHGlobal (sizeof (AuthorizationItem) * 3);
 						if (environment.Username != null)
-							EncodeString (ref pars [nenv++], "username", environment.Username);
+							EncodeString (ref env.ptrToAuthorization [env.count++], "username", environment.Username);
 						if (environment.Password != null)
-							EncodeString (ref pars [nenv++], "password", environment.Password);
+							EncodeString (ref env.ptrToAuthorization [env.count++], "password", environment.Password);
 						if (environment.AddToSharedCredentialPool != null)
-							EncodeString (ref pars [nenv++], "shared", null);
+							EncodeString (ref env.ptrToAuthorization [env.count++], "shared", null);
 					}
-					code = AuthorizationCreate (pars, env, flags, out auth);
+					code = AuthorizationCreate (ppars, penv, flags, out auth);
 					if (code != 0)
 						return null;
 					return new Authorization (auth);
 				}
 			} finally {
-				if (pars != null){
-					for (int i = 0; i < npars; i++){
-						Marshal.FreeHGlobal (pars [i].name);
-						Marshal.FreeHGlobal (pars [i].value);
+				if (ppars != null){
+					for (int i = 0; i < pars.count; i++){
+						Marshal.FreeHGlobal (pars.ptrToAuthorization [i].name);
+						Marshal.FreeHGlobal (pars.ptrToAuthorization [i].value);
 					}
-					Marshal.FreeHGlobal ((IntPtr)pars);
+					Marshal.FreeHGlobal ((IntPtr)pars.ptrToAuthorization);
 				}
-				if (env != null){
-					for (int i = 0; i < npars; i++){
-						Marshal.FreeHGlobal (pars [i].name);
-						if (pars [i].value != IntPtr.Zero)
-							Marshal.FreeHGlobal (pars [i].value);
+				if (penv != null){
+					for (int i = 0; i < env.count; i++){
+						Marshal.FreeHGlobal (env.ptrToAuthorization [i].name);
+						if (env.ptrToAuthorization [i].value != IntPtr.Zero)
+							Marshal.FreeHGlobal (env.ptrToAuthorization [i].value);
 					}
-					Marshal.FreeHGlobal ((IntPtr)env);
+					Marshal.FreeHGlobal ((IntPtr)env.ptrToAuthorization);
 				}
 			}
 		}
