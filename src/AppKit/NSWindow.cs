@@ -21,6 +21,7 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 using System;
+using MonoMac.CoreFoundation;
 using MonoMac.Foundation;
 using MonoMac.ObjCRuntime;
 
@@ -42,6 +43,25 @@ namespace MonoMac.AppKit {
 		static public NSWindow FromWindowRef (IntPtr windowRef)
 		{
 			return new NSWindow (windowRef, NSObjectFlag.Empty);
+		}
+
+		public void Close ()
+		{
+			// Windows that do not have a WindowController use released_when_closed
+			// if set to true, the call to Close will release the object, and we will
+			// end up with a double free.
+			//
+			// If that is the case, we take a reference first, and to keep the behavior
+			// we call Dispose after that.
+			if (WindowController == null){
+				bool released_when_closed = ReleasedWhenClosed;
+				if (released_when_closed)
+					CFObject.CFRetain (Handle);
+				_Close ();
+				if (released_when_closed)
+					Dispose ();
+			} else
+				_Close ();
 		}
 		
 // NSString NSWindowDidBecomeKeyNotification;
