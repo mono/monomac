@@ -128,6 +128,7 @@ TARGETS = _bmac.exe MonoMac.dll  parse.exe bmac.exe
 include Make.shared
 
 SHARED_API = \
+	./avfoundation.cs	\
 	./foundation.cs		\
 	./coreanimation.cs	\
 	./coredata.cs		\

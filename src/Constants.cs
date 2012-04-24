@@ -1,5 +1,6 @@
 //
 // Copyright 2010, Novell, Inc.
+// Copyright 2011, 2012 Xamarin Inc
 //
 // Permission is hereby granted, free of charge, to any person obtaining
 // a copy of this software and associated documentation files (the
@@ -53,6 +54,7 @@ namespace MonoMac {
 		public const string CoreImageLibrary = "/System/Library/Frameworks/CoreImage.framework/CoreImage";
 		public const string CFNetworkLibrary = "/System/Library/Frameworks/CoreServices.framework/Frameworks/CFNetwork.framework/CFNetwork";
 		public const string CoreMidiLibrary = "/System/Library/Frameworks/CoreMIDI.framework/CoreMIDI";
-		public const string QuickLookLibrary = "/System/Library//Frameworks/QuickLook.framework/QuickLook";
+		public const string QuickLookLibrary = "/System/Library/Frameworks/QuickLook.framework/QuickLook";
+		public const string AVFoundationLibrary = "/System/Library/Frameworks/AVFoundation.framework/AVFoundation";
         }
 }
