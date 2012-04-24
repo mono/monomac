@@ -13327,7 +13327,7 @@ namespace MonoMac.AppKit {
 		void Update ();
 	
 		[Export ("makeFirstResponder:")]
-		bool MakeFirstResponder (NSResponder  aResponder);
+		bool MakeFirstResponder ([NullAllowed] NSResponder  aResponder);
 	
 		[Export ("firstResponder")]
 		NSResponder FirstResponder { get; }
