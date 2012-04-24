@@ -6814,7 +6814,7 @@ namespace MonoMac.AppKit {
 		[Export ("constraintWithItem:attribute:relatedBy:toItem:attribute:multiplier:constant:")]
 		NSLayoutConstraint Create (NSObject view1, NSLayoutAttribute attribute1, NSLayoutRelation relation, NSObject view2, NSLayoutAttribute attribute2, float multiplier, float constant);
 		
-		[Export ("NSLayoutPriority")]
+		[Export ("priority")]
 		NSLayoutPriority Priority { get; set;  }
 
 		[Export ("shouldBeArchived")]
@@ -6838,7 +6838,7 @@ namespace MonoMac.AppKit {
 		[Export ("multiplier")]
 		float Multiplier { get;  }
 
-		[Export ("CGFloat")]
+		[Export ("constant")]
 		float Constant { get; set;  }
 	}
 	
