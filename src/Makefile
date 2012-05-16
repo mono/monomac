@@ -41,6 +41,7 @@ CORE_SOURCES =					\
 MONOMAC_SOURCES = \
 	./Foundation/NSObjectMac.cs			\
 	./Foundation/NSSearchPath.cs		\
+	./AppKit/AppKitSynchronizationContext.cs	\
 	./AppKit/ActionDispatcher.cs			\
 	./AppKit/BeginSheet.cs				\
 	./AppKit/DoubleWrapper.cs			\
