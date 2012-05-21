@@ -11096,7 +11096,7 @@ namespace MonoMac.AppKit {
 	[BaseType (typeof (NSObject))]
 	[Model]
 	public interface NSTableViewDelegate {
-		[Export ("tableView:willDispayCell:forTableColumn:row:"), EventArgs ("NSTableViewCell")]
+		[Export ("tableView:willDisplayCell:forTableColumn:row:"), EventArgs ("NSTableViewCell")]
 		void WillDisplayCell (NSTableView tableView, NSObject cell, NSTableColumn tableColumn, int row);
 	
 		[Export ("tableView:shouldEditTableColumn:row:"), DelegateName ("NSTableViewColumnRowPredicate"), DefaultValue (false)]
@@ -11240,7 +11240,7 @@ namespace MonoMac.AppKit {
 		//
 		// These come form NSTableViewDataSource
 		//
-		[Export ("tableView:willDispayCell:forTableColumn:row:")]
+		[Export ("tableView:willDisplayCell:forTableColumn:row:")]
 		void WillDisplayCell (NSTableView tableView, NSObject cell, NSTableColumn tableColumn, int row);
 	
 		[Export ("tableView:shouldEditTableColumn:row:")] [DefaultValue (false)]
