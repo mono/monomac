@@ -128,6 +128,10 @@ namespace macdoc
 			multipleMatchResults.Source = new MultipleMatchDataSource (this);
 			searchResults.Source = new ResultDataSource ();
 			splitView.Delegate = new SplitViewDelegate ();
+			tabSelector.DidSelect += (sender, e) => {
+				if (e.Item.TabView.IndexOf (e.Item) == 2)
+					WindowForSheet.MakeFirstResponder (toolbarSearchEntry);
+			};
 		}
 		
 		class SplitViewDelegate : NSSplitViewDelegate
