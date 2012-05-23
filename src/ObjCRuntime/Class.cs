@@ -265,7 +265,7 @@ namespace MonoMac.ObjCRuntime {
 		}
 		
 		static bool TypeContainsFloatingPoint (Type t) {
-			if (!t.IsValueType || t.IsEnum)
+			if (!t.IsValueType || t.IsEnum || t.IsPrimitive)
 				return false;
 
 			foreach (var field in t.GetFields (BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)) {
