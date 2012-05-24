@@ -396,4 +396,125 @@ namespace MonoMac.Foundation {
 		[Field ("NSTaskDidTerminateNotification")]
 		NSString NSTaskDidTerminateNotification { get; }
 	}
+	
+	[BaseType (typeof (NSObject))]
+	public interface NSFileHandle 
+	{
+		[Export ("availableData")]
+		NSData AvailableData ();
+		
+		[Export ("readDataToEndOfFile")]
+		NSData ReadDataToEndOfFile ();
+
+		[Export ("readDataOfLength:")]
+		NSData ReadDataOfLength (uint length);
+
+		[Export ("writeData:")]
+		void WriteData (NSData data);
+
+		[Export ("offsetInFile")]
+		ulong OffsetInFile ();
+
+		[Export ("seekToEndOfFile")]
+		ulong SeekToEndOfFile ();
+
+		[Export ("seekToFileOffset:")]
+		void SeekToFileOffset (ulong offset);
+
+		[Export ("truncateFileAtOffset:")]
+		void TruncateFileAtOffset (ulong offset);
+
+		[Export ("synchronizeFile")]
+		void SynchronizeFile ();
+
+		[Export ("closeFile")]
+		void CloseFile ();
+		
+		[Static]
+		[Export ("fileHandleWithStandardInput")]
+		NSObject FileHandleWithStandardInput ();
+		
+		[Static]
+		[Export ("fileHandleWithStandardOutput")]
+		NSObject FileHandleWithStandardOutput ();
+
+		[Static]
+		[Export ("fileHandleWithStandardError")]
+		NSObject FileHandleWithStandardError ();
+
+		[Static]
+		[Export ("fileHandleWithNullDevice")]
+		NSObject FileHandleWithNullDevice ();
+
+		[Static]
+		[Export ("fileHandleForReadingAtPath:")]
+		NSObject FileHandleForReadingAtPath (string path);
+
+		[Static]
+		[Export ("fileHandleForWritingAtPath:")]
+		NSObject FileHandleForWritingAtPath (string path);
+
+		[Static]
+		[Export ("fileHandleForUpdatingAtPath:")]
+		NSObject FileHandleForUpdatingAtPath (string path);
+
+		[Static]
+		[Export ("fileHandleForReadingFromURL:error:")]
+		NSObject FileHandleForReadingFromURLerror (NSUrl url, out NSError error);
+
+		[Static]
+		[Export ("fileHandleForWritingToURL:error:")]
+		NSObject FileHandleForWritingToURLerror (NSUrl url, out NSError error);
+
+		[Static]
+		[Export ("fileHandleForUpdatingURL:error:")]
+		NSObject FileHandleForUpdatingURLerror (NSUrl url, out NSError error);
+		
+		[Export ("readInBackgroundAndNotifyForModes:")]
+		void ReadInBackgroundAndNotifyForModes (NSArray modes);
+		
+		[Export ("readInBackgroundAndNotify")]
+		void ReadInBackgroundAndNotify ();
+
+		[Export ("readToEndOfFileInBackgroundAndNotifyForModes:")]
+		void ReadToEndOfFileInBackgroundAndNotifyForModes (NSArray modes);
+
+		[Export ("readToEndOfFileInBackgroundAndNotify")]
+		void ReadToEndOfFileInBackgroundAndNotify ();
+
+		[Export ("acceptConnectionInBackgroundAndNotifyForModes:")]
+		void AcceptConnectionInBackgroundAndNotifyForModes (NSArray modes);
+
+		[Export ("acceptConnectionInBackgroundAndNotify")]
+		void AcceptConnectionInBackgroundAndNotify ();
+
+		[Export ("waitForDataInBackgroundAndNotifyForModes:")]
+		void WaitForDataInBackgroundAndNotifyForModes (NSArray modes);
+
+		[Export ("waitForDataInBackgroundAndNotify")]
+		void WaitForDataInBackgroundAndNotify ();
+		
+		[Export ("initWithFileDescriptor:closeOnDealloc:")]
+		IntPtr Constructor (int fd, bool closeopt);
+		
+		[Export ("initWithFileDescriptor:")]
+		IntPtr Constructor (int fd);
+
+		[Export ("fileDescriptor")]
+		int FileDescriptor { get; set; }
+	}
+	
+	[BaseType (typeof (NSObject))]
+	public interface NSPipe {
+		
+		[Export ("fileHandleForReading")]
+		NSFileHandle FileHandleForReading ();
+		
+		[Export ("fileHandleForWriting")]
+		NSFileHandle FileHandleForWriting ();
+
+		[Static]
+		[Export ("pipe")]
+		NSPipe Pipe ();
+	}
 }
