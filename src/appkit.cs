@@ -2169,6 +2169,9 @@ namespace MonoMac.AppKit {
 
 	[BaseType (typeof (NSViewController))]
 	public interface NSCollectionViewItem {
+		[Export ("initWithNibName:bundle:")]
+		IntPtr Constructor ([NullAllowed] string nibNameOrNull, [NullAllowed] NSBundle nibBundleOrNull);
+
 		[Export ("collectionView")]
 		NSCollectionView CollectionView { get; }
 
