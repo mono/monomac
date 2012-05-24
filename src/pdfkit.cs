@@ -912,6 +912,36 @@ namespace MonoMac.PdfKit {
 
 		[Export ("enableDataDetectors")]
 		bool EnableDataDetectors { get; set; }
+
+		[Field("PDFViewChangedHistoryNotification")]
+		NSString ChangedHistoryNotification { get; }
+
+		[Field("PDFViewDocumentChangedNotification")]
+		NSString DocumentChangedNotification { get; }
+
+		[Field ("PDFViewPageChangedNotification")]
+		NSString PageChangedNotification { get; }
+
+		[Field ("PDFViewScaleChangedNotification")]
+		NSString ScaleChangedNotification { get; }
+
+		[Field ("PDFViewAnnotationHitNotification")]
+		NSString AnnotationHitNotification { get; }
+
+		[Field ("PDFViewCopyPermissionNotification")]
+		NSString CopyPermissionNotification { get; }
+
+		[Field ("PDFViewAnnotationWillHitNotification")]
+		NSString AnnotationWillHitNotification { get; }
+
+		[Field ("PDFViewSelectionChangedNotification")]
+		NSString SelectionChangedNotification { get; }
+
+		[Field ("PDFViewDisplayModeChangedNotification")]
+		NSString DisplayModeChangedNotification { get; }
+
+		[Field ("PDFViewDisplayBoxChangedNotification")]
+		NSString DisplayBoxChangedNotification { get; }
 	}
 
 	//Verify delegate methods.  There are default actions (not just return null ) that should occur
