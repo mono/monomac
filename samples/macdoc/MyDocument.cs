@@ -196,14 +196,30 @@ namespace macdoc
 
 			if (!manager.IsCreatingSearchIndex) {
 				InvokeOnMainThread (delegate {
+					var indexSpinnerHeight = indexSpinnerView.Frame.Height * 3 /4;
+					var searchSpinnerHeight = spinnerView.Frame.Height * 3 / 4;
+					
 					spinnerWidget.StopAnimation (this);
 					spinnerView.Hidden = true;
 					indexSpinnerWidget.StopAnimation (this);
 					indexSpinnerView.Hidden = true;
+
 					searchIndex = AppDelegate.Root.GetSearchIndex ();
 					indexSearchEntry.Enabled = true;
 					mdocSearch.Index = AppDelegate.Root.GetIndex ();
 					indexResults.ReloadData ();
+					
+					var splitViewFrame = splitView.Frame;
+					splitView.Frame = new RectangleF (splitViewFrame.X,
+					                                  splitViewFrame.Y - indexSpinnerHeight,
+					                                  splitViewFrame.Width,
+					                                  splitViewFrame.Height + indexSpinnerHeight);
+					
+					var searchScrollViewFrame = searchScrollView.Frame;
+					searchScrollView.Frame = new RectangleF (searchScrollViewFrame.X,
+					                                         searchScrollViewFrame.Y - searchSpinnerHeight,
+					                                         searchScrollViewFrame.Width,
+					                                         searchScrollViewFrame.Height + searchSpinnerHeight);
 				});
 			} else {
 				InvokeOnMainThread (delegate {

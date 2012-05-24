@@ -64,6 +64,9 @@ namespace macdoc
 
 		[Outlet]
 		MonoMac.AppKit.NSSearchField toolbarSearchEntry { get; set; }
+
+		[Outlet]
+		MonoMac.AppKit.NSScrollView searchScrollView { get; set; }
 		
 		[Action ("IndexItemClicked:")]
 		partial void IndexItemClicked (MonoMac.AppKit.NSTableView sender);
@@ -76,7 +79,7 @@ namespace macdoc
 
 		[Action ("SearchItemClicked:")]
 		partial void SearchItemClicked (MonoMac.AppKit.NSTableView sender);
-
+ 
 		[Action ("StartIndexSearch:")]
 		partial void StartIndexSearch (MonoMac.AppKit.NSSearchField sender);
 
@@ -173,6 +176,11 @@ namespace macdoc
 			if (toolbarSearchEntry != null) {
 				toolbarSearchEntry.Dispose ();
 				toolbarSearchEntry = null;
+			}
+
+			if (searchScrollView != null) {
+				searchScrollView.Dispose ();
+				searchScrollView = null;
 			}
 		}
 	}
