@@ -1680,4 +1680,19 @@ namespace MonoMac.AppKit {
 		ShowReplaceInterface = 12,
 		HideReplaceInterface = 13
 	}
-} 
+
+	[Flags]
+	public enum NSFontPanelMode {
+		FaceMask = 1 << 0,
+		SizeMask = 1 << 1,
+		CollectionMask = 1 << 2,
+		UnderlineEffectMask = 1<<8,
+		StrikethroughEffectMask = 1<<9,
+		TextColorEffectMask = 1<< 10,
+		DocumentColorEffectMask = 1<<11,
+		ShadowEffectMask = 1<<12,
+		AllEffectsMask = 0XFFF00,
+		StandardMask = 0xFFFF,
+		AllModesMask = unchecked( (int)0xFFFFFFFF )
+	}
+}
