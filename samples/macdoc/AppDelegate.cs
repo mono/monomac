@@ -196,11 +196,13 @@ namespace macdoc
 				AlertStyle = NSAlertStyle.Informational,
 				MessageText = "Documentation update available",
 				InformativeText = "We have detected your MonoTouch documentation can be upgraded with Apple documentation."
-					+ Environment.NewLine + Environment.NewLine + "Would you like to do the merge now (the process will be ran in the background)?"
+					+ Environment.NewLine
+					+ Environment.NewLine
+					+ "Would you like to update the documentation now? You can continue to browse the documentation while the update is performed."
 			};
 			
-			infoDialog.AddButton ("Yes");
-			infoDialog.AddButton ("Cancel");
+			infoDialog.AddButton ("Reming me later");
+			infoDialog.AddButton ("Update now");
 			var dialogResult = infoDialog.RunModal ();
 			// If Cancel was clicked, just return
 			if (dialogResult == (int)NSAlertButtonReturn.Second)
