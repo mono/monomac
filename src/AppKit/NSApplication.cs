@@ -23,6 +23,7 @@
 using System;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Threading;
 
 using MonoMac;
 using MonoMac.Foundation;
@@ -71,6 +72,8 @@ namespace MonoMac.AppKit {
 
 		public static void Main (string [] args)
 		{
+			SynchronizationContext.SetSynchronizationContext (new AppKitSynchronizationContext ());
+			
 			NSApplicationMain (args.Length, args);
 		}
 	}
