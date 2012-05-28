@@ -271,6 +271,8 @@ namespace MonoMac.ObjCRuntime {
 			foreach (var field in t.GetFields (BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)) {
 				if (field.FieldType == typeof (double) || field.FieldType == typeof (float))
 					return true;
+				if (field.FieldType == t)
+					continue;
 				if (TypeContainsFloatingPoint (field.FieldType))
 					return true;
 			}
