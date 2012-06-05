@@ -43,7 +43,7 @@ namespace macdoc
 		void Initialize ()
 		{
 			findBarController = new FindBarExtraordinaireController ();
-			IsSwipeEnabled = NSEvent.IsSwipeTrackingFromScrollEventsEnabled;
+			IsSwipeEnabled = AppDelegate.IsOnLion && NSEvent.IsSwipeTrackingFromScrollEventsEnabled;
 			FinishedLoad += (sender, e) => SetupFindBar (MainFrame.FrameView.DocumentView.EnclosingScrollView);
 			findBarController.View.FindTextChanged += (sender, e) => InternalPerformFinderAction (NSTextFinderAction.SetSearchString);
 			findBarController.View.CloseFindPanel += (sender, e) => InternalPerformFinderAction (NSTextFinderAction.HideFindInterface);
