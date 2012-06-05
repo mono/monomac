@@ -115,6 +115,7 @@ OPENTK_SOURCES = \
 	./OpenGL/OpenTK/Math/Vector4h.cs
 
 GENERATOR_SOURCES = \
+	$(MACCORE_DIR)/src/error.cs				\
 	$(MACCORE_DIR)/src/generator.cs			\
 	$(MACCORE_DIR)/src/Options.cs			\
 	$(MACCORE_DIR)/src/btouch.cs
