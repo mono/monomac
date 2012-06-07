@@ -1703,4 +1703,11 @@ namespace MonoMac.AppKit {
 		StandardMask = 0xFFFF,
 		AllModesMask = unchecked( (int)0xFFFFFFFF )
 	}
+
+	[Flags]
+	public enum NSFontCollectionVisibility {
+		Process = 1 << 0,
+		User = 1 << 1,
+		Computer = 1 << 2,
+	}
 }

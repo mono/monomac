@@ -2177,10 +2177,20 @@ namespace MonoMac.AppKit {
 
 		[Export ("selected")]
 		bool Selected { [Bind ("isSelected")]get; set; }
+
+		[Export ("imageView")]
+		[Lion]
+		NSImageView ImageView { get; set;  }
+
+		[Export ("textField")]
+		NSTextField TextField { get; set;  }
+
+		[Export ("draggingImageComponents")]
+		NSDraggingImageComponent [] DraggingImageComponents { get;  }
 	}
 
 	[BaseType (typeof (NSView))]
-	public interface NSCollectionView : NSDraggingSource {
+	public interface NSCollectionView : NSDraggingSource, NSDraggingDestination {
 		[Export ("initWithFrame:")]
 		IntPtr Constructor (RectangleF frameRect);
 
@@ -2238,6 +2248,10 @@ namespace MonoMac.AppKit {
 
 		[Export ("backgroundColors"), NullAllowed]
 		NSColor [] BackgroundColors { get; set; }
+
+		[Lion]
+		[Export ("frameForItemAtIndex:withNumberOfItems:")]
+		RectangleF FrameForItemAtIndex (int index, int numberOfItems);
 	}
 
 	[BaseType (typeof (NSObject))]
@@ -4345,7 +4359,137 @@ namespace MonoMac.AppKit {
 
 		[Export ("renderingMode")]
 		NSFontRenderingMode RenderingMode { get; }
+
+		[Export ("isVertical")]
+		bool IsVertical { get; }
+
+		//
+		// Not a property because this causes the creation of a new font on request in the specified configuration.
+		//
+		[Export ("verticalFont")]
+		NSFont GetVerticalFont ();
 	}
+
+	[Lion]
+	[BaseType (typeof (NSObject))]
+	interface NSFontCollection {
+		[Static]
+		[Export ("fontCollectionWithDescriptors:")]
+		NSFontCollection FromDescriptors (NSFontDescriptor [] queryDescriptors);
+
+		[Static]
+		[Export ("fontCollectionWithAllAvailableDescriptors")]
+		NSFontCollection GetAllAvailableFonts ();
+
+		[Static]
+		[Export ("fontCollectionWithLocale:")]
+		NSFontCollection FromLocale (NSLocale locale);
+
+		[Static]
+		[Export ("showFontCollection:withName:visibility:error:")]
+		bool ShowFontCollection (NSFontCollection fontCollection, string name, NSFontCollectionVisibility visibility, out NSError error);
+
+		[Static]
+		[Export ("hideFontCollectionWithName:visibility:error:")]
+		bool HideFontCollection (string name, NSFontCollectionVisibility visibility, out NSError error);
+
+		[Static]
+		[Export ("renameFontCollectionWithName:visibility:toName:error:")]
+		bool RenameFontCollection (string fromName, NSFontCollectionVisibility visibility, string toName, out NSError error);
+
+		[Static]
+		[Export ("allFontCollectionNames")]
+		string [] AllFontCollectionNames { get; }
+
+		[Static]
+		[Export ("fontCollectionWithName:")]
+		NSFontCollection FromName (string name);
+
+		[Static]
+		[Export ("fontCollectionWithName:visibility:")]
+		NSFontCollection FromName (string name, NSFontCollectionVisibility visibility);
+
+		[Export ("queryDescriptors")]
+		NSFontDescriptor [] GetQueryDescriptors ();
+
+		[Export ("exclusionDescriptors")]
+		NSFontDescriptor [] GetExclusionDescriptors ();
+
+		[Export ("matchingDescriptors")]
+		NSFontDescriptor [] GetMatchingDescriptors ();
+
+		[Export ("matchingDescriptorsWithOptions:")]
+		NSFontDescriptor [] GetMatchingDescriptors (NSDictionary options);
+
+		[Export ("matchingDescriptorsForFamily:")]
+		NSFontDescriptor [] GetMatchingDescriptors (string family);
+
+		[Export ("matchingDescriptorsForFamily:options:")]
+		NSFontDescriptor [] GetMatchingDescriptors (string family, NSDictionary options);
+
+		[Field ("NSFontCollectionIncludeDisabledFontsOption")]
+		NSString IncludeDisabledFontsOption { get; }
+		
+		[Field ("NSFontCollectionRemoveDuplicatesOption")]
+		NSString RemoveDuplicatesOption { get; }
+		
+		[Field ("NSFontCollectionDisallowAutoActivationOption")]
+		NSString DisallowAutoActivationOption { get; }
+		
+		[Field ("NSFontCollectionDidChangeNotification")]
+		NSString DidChangeNotification { get; }
+		
+		[Field ("NSFontCollectionActionKey")]
+		NSString ActionKey { get; }
+		
+		[Field ("NSFontCollectionNameKey")]
+		NSString NameKey { get; }
+		
+		[Field ("NSFontCollectionOldNameKey")]
+		NSString OldNameKey { get; }
+		
+		[Field ("NSFontCollectionVisibilityKey")]
+		NSString VisibilityKey { get; }
+		
+		[Field ("NSFontCollectionWasShown")]
+		NSString ActionWasShown { get; }
+		
+		[Field ("NSFontCollectionWasHidden")]
+		NSString ActionWasHidden { get; }
+		
+		[Field ("NSFontCollectionWasRenamed")]
+		NSString ActionWasRenamed { get; }
+		
+		[Field ("NSFontCollectionAllFonts")]
+		NSString NameAllFonts { get; }
+		
+		[Field ("NSFontCollectionUser")]
+		NSString NameUser { get; }
+		
+		[Field ("NSFontCollectionFavorites")]
+		NSString NameFavorites { get; }
+		
+		[Field ("NSFontCollectionRecentlyUsed")]
+		NSString NameRecentlyUsed { get; }
+		
+	}
+
+	[Lion]
+	[BaseType (typeof (NSFontCollection))]
+	interface NSMutableFontCollection {
+		[Export ("setQueryDescriptors:")]
+		void SetQueryDescriptors (NSFontDescriptor [] descriptors);
+
+		[Export ("setExclusionDescriptors:")]
+		void SetExclusionDescriptors (NSFontDescriptor [] descriptors);
+
+		[Export ("addQueryForDescriptors:")]
+		void AddQueryForDescriptors (NSFontDescriptor [] descriptors);
+
+		[Export ("removeQueryForDescriptors:")]
+		void RemoveQueryForDescriptors (NSFontDescriptor [] descriptors);
+
+	}	
 
 	[BaseType (typeof (NSObject))]
 	public interface NSFontDescriptor {
@@ -14267,7 +14411,14 @@ namespace MonoMac.AppKit {
 		
 		[Export ("runningApplications")]
 		NSRunningApplication [] RunningApplications { get; }
-	
+
+		[Lion]
+		[Export ("frontmostApplication")]
+		NSRunningApplication FrontmostApplication { get; }
+
+		[Lion]
+		[Export ("menuBarOwningApplication")]
+		NSRunningApplication MenuBarOwningApplication { get; }
 	}
 	
 	
