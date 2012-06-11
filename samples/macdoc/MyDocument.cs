@@ -498,7 +498,8 @@ namespace macdoc
 				ScrollToVisible ((Node) n.Nodes [n.Nodes.Count-1]);
 			var row = ScrollToVisible (n);
 			ignoreSelect = true;
-			outlineView.SelectRows (new NSIndexSet (row), false);
+			if (row > 0)
+				outlineView.SelectRows (new NSIndexSet (row), false);
 			ignoreSelect = false;
 		}
 		
