@@ -152,8 +152,9 @@ namespace macdoc
 			for (int i = 1; i <= evt.NumberOfItems; i++) {
 				var innerDesc = evt.DescriptorAtIndex (i);
 				// The next call works fine but is Lion-specific 
-				//controller.OpenDocument (new NSUrl (innerDesc.StringValue), i == evt.NumberOfItems, delegate {});
-				Call_OpenDocument (new NSUrl (innerDesc.StringValue), i == evt.NumberOfItems, out error);
+				// controller.OpenDocument (new NSUrl (innerDesc.StringValue), i == evt.NumberOfItems, delegate {});
+				if (!string.IsNullOrEmpty (innerDesc.StringValue))
+					Call_OpenDocument (new NSUrl (innerDesc.StringValue), true, out error);
 			}
 		}
 		
