@@ -167,7 +167,7 @@ namespace macdoc
 		// Prevent new document from being created when already launched
 		public override bool ApplicationShouldHandleReopen (NSApplication sender, bool hasVisibleWindows)
 		{
-			return false;
+			return !hasVisibleWindows;
 		}
 				
 		partial void HandlePrint (NSObject sender)
