@@ -113,9 +113,9 @@ class Declaration {
 
 class Declarations {
 	List<Declaration> decls = new List<Declaration> ();
-	StreamWriter gencs;
+	TextWriter gencs;
 	
-	public Declarations (StreamWriter gencs)
+	public Declarations (TextWriter gencs)
 	{
 		this.gencs = gencs;
 	}
@@ -210,7 +210,7 @@ class Declarations {
 }
 
 class TrivialParser {
-	StreamWriter gencs, other;
+	TextWriter gencs, other;
 	StreamReader r;
 
 	// Used to limit which APIs to include in the binding
@@ -393,6 +393,7 @@ class TrivialParser {
 			return "uint";
 		case "NSUInteger":
 			return "uint";
+		case "instancetype":
 		case "id":
 			return "NSObject";
 		case "BOOL":
@@ -429,6 +430,10 @@ class TrivialParser {
 	
 	Declaration ProcessDeclaration (bool isProtocol, string line, bool is_optional)
 	{
+		bool debug = false;
+		if (line.IndexOf ("6_0") != -1)
+			debug = true;
+
 		if (limit != null){
 			if (!HasLimitKeyword (line))
 				return null;
@@ -436,7 +441,7 @@ class TrivialParser {
 			if (line.IndexOf (limit) == -1)
 				return null;
 		}
-		
+
 		line = CleanDeclaration (line);
 		if (line.Length == 0)
 			return null;
@@ -542,9 +547,15 @@ class TrivialParser {
 		
 		Environment.Exit (0);
 	}
+
+	string Clean (string prefix, string line)
+	{
+		return line.Substring (line.IndexOf (prefix));
+	}
 	
 	TrivialParser ()
 	{
+#if false
 		try {
 			gencs = File.CreateText ("gen.cs");
 		} catch {
@@ -556,7 +567,10 @@ class TrivialParser {
 		} catch {
 			other = File.CreateText ("/tmp/other.c");
 		}
-		
+#endif
+		gencs = Console.Out;
+		other = new StringWriter ();
+
 		options = new OptionSet () {
 			{ "limit=", "Limit methods to methods for the specific API level (ex: 5_0)", arg => limit = arg },
 			{ "help", "Shows the help", a => ShowHelp () }
@@ -597,17 +611,14 @@ class TrivialParser {
 						line = line.Substring (p);
 					}
 					
-					if (line.StartsWith ("@interface"))
-						ProcessInterface (line);
-					if (line.StartsWith ("@protocol") && !line.EndsWith (";")) // && line.IndexOf ("<") != -1)
-						ProcessProtocol (line);
+					if (line.IndexOf ("@interface") != -1)
+						ProcessInterface (Clean ("@interface", line));
+					if (line.IndexOf ("@protocol") != -1 && !line.EndsWith (";")) // && line.IndexOf ("<") != -1)
+						ProcessProtocol (Clean ("@protocol", line));
 					
 					other.WriteLine (line);
 				}
 			}
-		}
-		foreach (string s in types){
-			Console.WriteLine ("\t\ttypeof ({0}),", s);
 		}
 		gencs.Close ();
 		other.Close ();
