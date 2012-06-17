@@ -174,7 +174,7 @@ namespace MonoMac.Security {
 							EncodeString (ref env.ptrToAuthorization [env.count++], "username", environment.Username);
 						if (environment.Password != null)
 							EncodeString (ref env.ptrToAuthorization [env.count++], "password", environment.Password);
-						if (environment.AddToSharedCredentialPool != null)
+						if (environment.AddToSharedCredentialPool)
 							EncodeString (ref env.ptrToAuthorization [env.count++], "shared", null);
 					}
 					code = AuthorizationCreate (ppars, penv, flags, out auth);
