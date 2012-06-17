@@ -10194,10 +10194,10 @@ namespace MonoMac.AppKit {
 		[Export ("viewDidUnhide")]
 		void ViewDidUnhide ();
 
-		[Export ("addSubview:")]
+		[Export ("addSubview:")][PostGet ("Subviews")]
 		void AddSubview (NSView aView);
 
-		[Export ("addSubview:positioned:relativeTo:")]
+		[Export ("addSubview:positioned:relativeTo:")][PostGet ("Subviews")]
 		void AddSubview (NSView aView, NSWindowOrderingMode place, [NullAllowed] NSView otherView);
 
 		[Export ("viewWillMoveToWindow:")]
@@ -10223,7 +10223,7 @@ namespace MonoMac.AppKit {
 		[PostSnippet ("__mt_Superview_var = null;\n\tif (mySuper != null) {\n\t#pragma warning disable 168\n\tvar flush = mySuper.Subviews;\n#pragma warning restore 168\n\t}")]
 		void RemoveFromSuperview ();
 
-		[Export ("replaceSubview:with:")]
+		[Export ("replaceSubview:with:")][PostGet ("Subviews")]
 		void ReplaceSubviewWith (NSView oldView, NSView newView);
 
 		[Export ("removeFromSuperviewWithoutNeedingDisplay")]
@@ -10453,10 +10453,10 @@ namespace MonoMac.AppKit {
 		[Export ("makeBackingLayer")]
 		CALayer MakeBackingLayer ();
 
-		[Export ("addTrackingArea:")]
+		[Export ("addTrackingArea:")][PostGet ("TrackingAreas")]
 		void AddTrackingArea (NSTrackingArea trackingArea);
 
-		[Export ("removeTrackingArea:")]
+		[Export ("removeTrackingArea:")][PostGet ("TrackingAreas")]
 		void RemoveTrackingArea (NSTrackingArea trackingArea);
 
 		[Export ("trackingAreas")]
