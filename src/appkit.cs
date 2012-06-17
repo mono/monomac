@@ -10453,10 +10453,10 @@ namespace MonoMac.AppKit {
 		[Export ("makeBackingLayer")]
 		CALayer MakeBackingLayer ();
 
-		[Export ("addTrackingArea:")][PostGet ("TrackingAreas")]
+		[Export ("addTrackingArea:")][PostGet ("TrackingAreas ()")]
 		void AddTrackingArea (NSTrackingArea trackingArea);
 
-		[Export ("removeTrackingArea:")][PostGet ("TrackingAreas")]
+		[Export ("removeTrackingArea:")][PostGet ("TrackingAreas ()")]
 		void RemoveTrackingArea (NSTrackingArea trackingArea);
 
 		[Export ("trackingAreas")]
