@@ -409,7 +409,7 @@ class TrivialParser {
 		return type;
 	}
 	
-	Regex rx = new Regex ("(NS_AVAILABLE\\(.*\\)|NS_AVAILABLE_MAC\\([0-9_]+\\))");
+	Regex rx = new Regex ("(NS_AVAILABLE\\(.*\\)|NS_AVAILABLE_IOS\\([0-9_]+\\)|NS_AVAILABLE_MAC\\([0-9_]+\\))");
 	Regex rx2 = new Regex ("AVAILABLE_MAC_OS_X_VERSION[_A-Z0-9]*");
 	Regex rx3 = new Regex ("AVAILABLE_MAC_OS_X_VERSION[_A-Z0-9]*");
 	
