@@ -469,11 +469,11 @@ class TrivialParser {
 		if (p == -1)
 			return null;
 		q = line.IndexOf (')');
-		Console.WriteLine ("->{0}\np={1} q-p={2}", line, p, q-p);
+		//Console.WriteLine ("->{0}\np={1} q-p={2}", line, p, q-p);
 		string retval = RemapType (line.Substring (p+1, q-p-1));
 		p = line.IndexOf (';');
 		string signature = line.Substring (q+1, p-q).Trim (new char [] { ' ', ';' });
-		Console.WriteLine ("SIG: {0} {1}", line, p);
+		//Console.WriteLine ("SIG: {0} {1}", line, p);
 		string selector = MakeSelector (signature);
 		string parameters = MakeParameters (signature);
 
