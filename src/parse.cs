@@ -164,7 +164,7 @@ class Declarations {
 
 	List<string> ignore = new List<string> ();
 	
-	public void Generate ()
+	public void Generate (string extraAttribute)
 	{
 		var copy = decls;
 		var properties = (from d in copy
@@ -181,6 +181,8 @@ class Declarations {
 			if (ignore.Contains (d.selector) || properties.Contains (d.selector))
 				continue;
 
+			if (extraAttribute != null)
+				gencs.WriteLine ("\t\t[{0}]", extraAttribute);
 			if (d.is_abstract)
 				gencs.WriteLine ("\t\t[Abstract]");
 			if (d.is_static)
@@ -218,6 +220,7 @@ class TrivialParser {
 
 	// Used to limit which APIs to include in the binding
 	string limit;
+	string extraAttribute;
 	OptionSet options;
 	
 	ArrayList types = new ArrayList ();
@@ -271,6 +274,8 @@ class TrivialParser {
 				break;
 			selector.Append (c);
 		}
+		if (extraAttribute != null)
+			gencs.WriteLine ("\t\t[{0}]", extraAttribute);
 		if (appearance)
 			gencs.WriteLine ("\t\t[Appearance]");
 		gencs.WriteLine ("\t\t[Export (\"{0}\")]", selector);
@@ -490,6 +495,8 @@ class TrivialParser {
 
 		//Console.WriteLine ("**** {0} ", iface);
 		types.Add (cols [1]);
+		if (extraAttribute != null)
+			gencs.WriteLine ("\n\t[{0}]", extraAttribute);
 		if (cols.Length >= 4)
 			gencs.WriteLine ("\n\t[BaseType (typeof ({0}))]", cols [3]);
 		gencs.WriteLine ("\t{0}interface {1} {{", limit == null ? "" : "public partial ", cols [1]);
@@ -513,7 +520,7 @@ class TrivialParser {
 			}
 			break;
 		}
-		decl.Generate ();
+		decl.Generate (extraAttribute);
 		gencs.WriteLine ("\t}");
 	}
 
@@ -523,6 +530,8 @@ class TrivialParser {
 		string line;
 
 		types.Add (d [1]);
+		if (extraAttribute != null)
+			gencs.WriteLine ("\n\t[{0}]", extraAttribute);
 		gencs.WriteLine ("\n\t[BaseType (typeof ({0}))]", d.Length > 2 ? d [2] : "NSObject");
 		gencs.WriteLine ("\t[Model]");
 		gencs.WriteLine ("\tinterface {0} {{", d [1]);
@@ -545,7 +554,7 @@ class TrivialParser {
 			if (line.StartsWith ("@end"))
 				break;
 		}
-		decl.Generate ();
+		decl.Generate (extraAttribute);
 		gencs.WriteLine ("\t}");
 	}
 
@@ -581,6 +590,7 @@ class TrivialParser {
 
 		options = new OptionSet () {
 			{ "limit=", "Limit methods to methods for the specific API level (ex: 5_0)", arg => limit = arg },
+			{ "extra=", "Extra attribute to add, for example: 'Since(6,0)'", arg => extraAttribute = arg },
 			{ "help", "Shows the help", a => ShowHelp () }
 		};
 	}
