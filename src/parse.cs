@@ -419,7 +419,7 @@ class TrivialParser {
 		return type;
 	}
 	
-	Regex rx = new Regex ("(NS_AVAILABLE\\(.*\\)|NS_AVAILABLE_IOS\\([0-9_]+\\)|NS_AVAILABLE_MAC\\([0-9_]+\\))");
+	Regex rx = new Regex ("(NS_AVAILABLE\\(.*\\)|NS_AVAILABLE_IOS\\([0-9_]+\\)|NS_AVAILABLE_MAC\\([0-9_]+\\)|__OSX_AVAILABLE_STARTING\\([_A-Z0-9,]+\\))");
 	Regex rx2 = new Regex ("AVAILABLE_MAC_OS_X_VERSION[_A-Z0-9]*");
 	Regex rx3 = new Regex ("AVAILABLE_MAC_OS_X_VERSION[_A-Z0-9]*");
 	Regex rx4 = new Regex ("UI_APPEARANCE_SELECTOR");
@@ -496,7 +496,7 @@ class TrivialParser {
 		//Console.WriteLine ("**** {0} ", iface);
 		types.Add (cols [1]);
 		if (extraAttribute != null)
-			gencs.WriteLine ("\n\t[{0}]", extraAttribute);
+			gencs.Write ("\n\t[{0}]", extraAttribute);
 		if (cols.Length >= 4)
 			gencs.WriteLine ("\n\t[BaseType (typeof ({0}))]", cols [3]);
 		gencs.WriteLine ("\t{0}interface {1} {{", limit == null ? "" : "public partial ", cols [1]);
