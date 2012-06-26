@@ -202,8 +202,8 @@ namespace macdoc
 					+ "Would you like to update the documentation now? You can continue to browse the documentation while the update is performed."
 			};
 			
-			infoDialog.AddButton ("Reming me later");
 			infoDialog.AddButton ("Update now");
+			infoDialog.AddButton ("Remind me later");
 			var dialogResult = infoDialog.RunModal ();
 			// If Cancel was clicked, just return
 			if (dialogResult == (int)NSAlertButtonReturn.Second)
