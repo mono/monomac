@@ -46,9 +46,11 @@ namespace macdoc
 				var image = Path.Combine (MonodocDir, "mdocimages", res);
 				if (File.Exists (image))
 					continue;
-				
-				using (var output = File.Create (image))
-					mdocAssembly.GetManifestResourceStream (res).CopyTo (output);
+
+				try {
+					using (var output = File.Create (image))
+						mdocAssembly.GetManifestResourceStream (res).CopyTo (output);
+				} catch (UnauthorizedAccessException) {}
 			}
 		}
 		
