@@ -42,8 +42,11 @@ namespace macdoc
 		
 		void Initialize ()
 		{
+			// The initializations we do here are Lion-specific
+			if (!AppDelegate.IsOnLion)
+				return;
 			findBarController = new FindBarExtraordinaireController ();
-			IsSwipeEnabled = AppDelegate.IsOnLion && NSEvent.IsSwipeTrackingFromScrollEventsEnabled;
+			IsSwipeEnabled = NSEvent.IsSwipeTrackingFromScrollEventsEnabled;
 			FinishedLoad += (sender, e) => SetupFindBar (MainFrame.FrameView.DocumentView.EnclosingScrollView);
 			findBarController.View.FindTextChanged += (sender, e) => InternalPerformFinderAction (NSTextFinderAction.SetSearchString);
 			findBarController.View.CloseFindPanel += (sender, e) => InternalPerformFinderAction (NSTextFinderAction.HideFindInterface);
@@ -107,7 +110,7 @@ namespace macdoc
 	
 		public override bool AcceptsFirstResponder ()
 		{
-			return true;
+			return AppDelegate.IsOnLion;
 		}
 		
 		void FireSwipeEvent (SwipeSide side)
@@ -126,6 +129,9 @@ namespace macdoc
 		
 		public override void PerformFindPanelAction (NSObject sender)
 		{
+			if (!AppDelegate.IsOnLion)
+				return;
+
 			var ctrl = sender as NSMenuItem;
 			if (ctrl == null)
 				return;
