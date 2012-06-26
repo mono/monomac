@@ -56,6 +56,8 @@ namespace macdoc
 		
 		public override void ScrollWheel (NSEvent theEvent)
 		{
+			if (!IsSwipeEnabled)
+				return;
 			if (theEvent.Phase != NSEventPhase.Began)
 				return;
 			if (theEvent.DeltaX == 0 || Math.Abs (theEvent.DeltaX) <= Math.Abs (theEvent.DeltaY) * 8)
