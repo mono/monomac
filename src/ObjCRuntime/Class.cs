@@ -214,6 +214,23 @@ namespace MonoMac.ObjCRuntime {
 			m = prop.GetSetMethod (true);
 			if (m != null)
 				RegisterMethod (m, ea.ToSetter (prop), type, handle);
+				
+			// http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtPropertyIntrospection.html
+			int count = 0;
+			var props = new objc_attribute_prop [3];
+			props [count++] = new objc_attribute_prop { name = "T", value = TypeConverter.ToNative (prop.PropertyType) };
+			switch (ea.ArgumentSemantic) {
+			case ArgumentSemantic.Copy:
+				props [count++] = new objc_attribute_prop { name = "C", value = "" };
+				break;
+			case ArgumentSemantic.Retain:
+				props [count++] = new objc_attribute_prop { name = "&", value = "" };
+				break;
+			}
+			props [count++] = new objc_attribute_prop { name = "V", value = ea.Selector };
+			
+			class_addProperty (handle, ea.Selector, props, count);
+			
 		}
 
 		private unsafe static void RegisterMethod (MethodInfo minfo, Type type, IntPtr handle) {
@@ -420,6 +437,34 @@ retl    $0x4                   */  0xc2, 0x04, 0x00,                            
 		[DllImport ("/usr/lib/libobjc.dylib")]
 		extern static IntPtr class_getSuperclass (IntPtr cls);
 
+		delegate IntPtr addPropertyDelegate (IntPtr cls, string name, objc_attribute_prop [] attributes, int count);
+		static addPropertyDelegate addProperty;
+		static bool addPropertyInitialized;
+
+		static IntPtr class_addProperty (IntPtr cls, string name, objc_attribute_prop [] attributes, int count)
+		{
+			if (!addPropertyInitialized) {
+				var handle = Dlfcn.dlopen (Constants.ObjectiveCLibrary, 0);
+				try {
+					var fptr = Dlfcn.dlsym (handle, "class_addProperty");
+					if (fptr != IntPtr.Zero)
+						addProperty = (addPropertyDelegate) Marshal.GetDelegateForFunctionPointer (fptr, typeof (addPropertyDelegate));
+				} finally {
+					Dlfcn.dlclose (handle);
+				}
+				addPropertyInitialized = true;
+			}
+			if (addProperty == null)
+				return IntPtr.Zero;
+			return addProperty (cls, name, attributes, count);
+		}
+
+		[StructLayout (LayoutKind.Sequential, CharSet=CharSet.Ansi)]
+		private struct objc_attribute_prop {
+			[MarshalAs (UnmanagedType.LPStr)] internal string name;
+			[MarshalAs (UnmanagedType.LPStr)] internal string value;
+		}
+		
 		internal struct objc_class {
 			internal IntPtr isa;
 		}
