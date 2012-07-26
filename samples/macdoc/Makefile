@@ -4,8 +4,10 @@ MDTOOL_SYSTEM = /Applications/MonoDevelop.app/Contents/MacOS/mdtool
 
 # If invoked from CI, we pass the just built MonoDevelop as mdtool
 ifeq ($(wildcard $(MDTOOL_MASTER)),)
+    @echo "Using system mdtool"
     MDTOOL_BUILD = $(MDTOOL_SYSTEM) build
 else
+    @echo "Using mdtool at" $(MDTOOL_MASTER)
     MDTOOL_BUILD = mono $(MDTOOL_MASTER) setup reg-build && mono $(MDTOOL_MASTER) build
 endif
 
