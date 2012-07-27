@@ -12844,7 +12844,7 @@ namespace MonoMac.AppKit {
 		NSTextCheckingTypes EnabledTextCheckingTypes { get; set; }
 	}
 
-	[BaseType (typeof (NSObject))]
+	[BaseType (typeof (NSTextDelegate))]
 	[Model]
 	public interface NSTextViewDelegate {
 		[Export ("textView:clickedOnLink:atIndex:"), DelegateName ("NSTextViewLink"), DefaultValue (false)]
