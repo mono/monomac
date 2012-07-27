@@ -289,6 +289,9 @@ class TrivialParser {
 
 	public static string AsMethod (string msg)
 	{
+		if (msg.Length == 0)
+			return msg;
+		
 		return Char.ToUpper (msg [0]) + msg.Substring (1);
 	}
 	

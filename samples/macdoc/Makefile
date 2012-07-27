@@ -1,32 +1,29 @@
-CC = gcc
-MDTOOL = /Applications/MonoDevelop.app/Contents/MacOS/mdtool
-MDTOOL_BUILD = $(MDTOOL) build
+
+MDTOOL_MASTER = $(MONODEVELOP_DIR)/main/build/bin/mdtool.exe
+MDTOOL_SYSTEM = /Applications/MonoDevelop.app/Contents/MacOS/mdtool
+
+# If invoked from CI, we pass the just built MonoDevelop as mdtool
+ifeq ($(wildcard $(MDTOOL_MASTER)),)
+    @echo "Using system mdtool"
+    MDTOOL_BUILD = $(MDTOOL_SYSTEM) build
+else
+    @echo "Using mdtool at" $(MDTOOL_MASTER)
+    MDTOOL_BUILD = mono $(MDTOOL_MASTER) setup reg-build && mono $(MDTOOL_MASTER) build
+endif
+
 MONO_MAC_DLL = ../../src/MonoMac.dll
 APPLEDOCWIZARD_APP = AppleDocWizard/bin/Debug/AppleDocWizard.app
 MACDOC_APP = bin/Debug/macdoc.app
 MONODOC_APP = $(dir $(MACDOC_APP))/MonoDoc.app
 MONODOC_ARCHIVE = MonoDoc.tar.bz2
 
-all: monomac monostub appledocwizard macdoc monodoc
+all: monomac macdoc monodoc
 
 monomac: $(MONO_MAC_DLL)
 
-appledocwizard: monomac monostub
-	rm -Rf $(APPLEDOCWIZARD_APP)
-	(cd AppleDocWizard && $(MDTOOL_BUILD))
-	cp monostub $(APPLEDOCWIZARD_APP)/Contents/MacOS/AppleDocWizard
-	rm -f $(APPLEDOCWIZARD_APP)/AppleDocWizard
-	rm -f $(APPLEDOCWIZARD_APP)/Contents/MacOS/mono-version-check
-	if test ! -e $(APPLEDOCWIZARD_APP)/Contents/Resources/MonoMac.dll; then cp $(MONO_MAC_DLL)* $(APPLEDOCWIZARD_APP)/Contents/Resources/; fi;
-
-#macdoc: monomac appledocwizard monostub
-macdoc: monomac monostub
+macdoc: monomac
 	rm -Rf $(MACDOC_APP)
 	$(MDTOOL_BUILD)
-	cp monostub $(MACDOC_APP)/Contents/MacOS/macdoc
-	rm -f $(MACDOC_APP)/macdoc
-	rm -f $(MACDOC_APP)/Contents/MacOS/mono-version-check
-#	cp -R $(APPLEDOCWIZARD_APP) $(MACDOC_APP)/Contents/MacOS/
 
 monodoc: macdoc
 	rm -Rf $(MONODOC_APP)
@@ -37,6 +34,3 @@ dist: monodoc
 
 $(MONO_MAC_DLL):
 	(cd ../../src/ && make)
-
-monostub: monostub.m
-	$(CC) -m32 $^ -o $@ -framework AppKit -D_GNU_SOURCE
