@@ -84,7 +84,8 @@ MONOMAC_SOURCES = \
 	./OpenGL/WindowBorder.cs			\
 	./OpenGL/WindowState.cs				\
 	./OpenGL/MonoMacGameView.cs			\
-	./Security/Authorization.cs
+	./Security/Authorization.cs			\
+	./LaunchServices/LaunchServices.cs
 
 OPENTK_SOURCES = \
 	./OpenGL/OpenTK/Graphics/Color4.cs		\
