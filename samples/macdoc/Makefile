@@ -20,6 +20,7 @@ all: monomac macdoc monodoc
 monomac: $(MONO_MAC_DLL)
 
 macdoc: monomac
+	@echo "MDTOOL_BUILD: " $(MDTOOL_BUILD)
 	rm -Rf $(MACDOC_APP)
 	$(MDTOOL_BUILD)
 
