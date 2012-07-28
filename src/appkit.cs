@@ -10179,9 +10179,6 @@ namespace MonoMac.AppKit {
 		[Export ("isHiddenOrHasHiddenAncestor")]
 		bool IsHiddenOrHasHiddenAncestor { get; }
 
-                [Export ("nextKeyView")][NullAllowed]
-		NSView NextKeyView { get; set; }
-
 		//[Export ("getRectsBeingDrawn:count:")]
 		// void GetRectsBeingDrawn
 
