@@ -418,6 +418,8 @@ class TrivialParser {
 			return "NSUrl";
 		case "NSTimeInterval":
 			return "double";
+		case "dispatch_queue_t":
+			return "DispatchQueue";
 		}
 		return type;
 	}

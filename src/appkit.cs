@@ -10614,13 +10614,8 @@ namespace MonoMac.AppKit {
 		[Export ("isInFullScreenMode")]
 		bool IsInFullscreenMode { get; }
 		
-		/* 10.6+ Only - How do you specify that? - jm
-		   [Field ("NSFullScreenModeApplicationPresentationOptions")]   
-		   NSString NSFullScreenModeApplicationPresentationOptions { get; }
-		*/
-		
-		[Export ("focusRingType")]
-		NSFocusRingType FocusRingType { get; set; }
+		[Field ("NSFullScreenModeApplicationPresentationOptions")]   
+		NSString NSFullScreenModeApplicationPresentationOptions { get; }
 		
 		// Fields
 		[Field ("NSFullScreenModeAllScreens")]
@@ -10729,6 +10724,42 @@ namespace MonoMac.AppKit {
 
 		[Lion, Export ("exerciseAmbiguityInLayout")]
 		void ExerciseAmbiguityInLayout ();
+
+		[Export ("performMnemonic:")]
+		void PerformMnemonic (string mnemonic);
+
+		[Export ("nextKeyView")]
+		NSView NextKeyView { get; set; }
+
+		[Export ("previousKeyView")]
+		NSView PreviousKeyView { get; }
+
+		[Export ("nextValidKeyView")]
+		NSView NextValidKeyView { get; }
+
+		[Export ("previousValidKeyView")]
+		NSView PreviousValidKeyView { get; }
+
+		[Export ("canBecomeKeyView")]
+		bool CanBecomeKeyView { get; }
+
+		[Export ("setKeyboardFocusRingNeedsDisplayInRect:")]
+		void SetKeyboardFocusRingNeedsDisplay (RectangleF rect);
+
+		[Export ("setFocusRingType:")]
+		NSFocusRingType FocusRingType { get; set; }
+
+		[Static, Export ("defaultFocusRingType")]
+		NSFocusRingType DefaultFocusRingType { get; }
+
+		[Export ("drawFocusRingMask")]
+		void DrawFocusRingMask ();
+
+		[Export ("focusRingMaskBounds")]
+		RectangleF FocusRingMaskBounds { get; }
+
+		[Export ("noteFocusRingMaskChanged")]
+		void NoteFocusRingMaskChanged ();
 	}
 
 	[BaseType (typeof (NSAnimation))]
@@ -12816,7 +12847,7 @@ namespace MonoMac.AppKit {
 		NSTextCheckingTypes EnabledTextCheckingTypes { get; set; }
 	}
 
-	[BaseType (typeof (NSObject))]
+	[BaseType (typeof (NSTextDelegate))]
 	[Model]
 	public interface NSTextViewDelegate {
 		[Export ("textView:clickedOnLink:atIndex:"), DelegateName ("NSTextViewLink"), DefaultValue (false)]
