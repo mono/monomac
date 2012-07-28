@@ -8035,7 +8035,7 @@ namespace MonoMac.AppKit {
 		NSMenuItem LastItem { get; }
 
 		[Export ("selectItem:")]
-		void SelectItem (NSMenuItem item);
+		void SelectItem ([NullAllowed] NSMenuItem item);
 
 		[Export ("selectItemAtIndex:")]
 		void SelectItem (int index);
