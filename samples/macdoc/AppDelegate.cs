@@ -8,6 +8,7 @@ using Monodoc;
 using System.IO;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
+using System.Collections.Generic;
 
 namespace macdoc
 {
@@ -67,12 +68,39 @@ namespace macdoc
 			} catch {}
 			
 			// Load documentation
+			var args = Environment.GetCommandLineArgs ();
+			IEnumerable<string> extraDocs = null, extraUncompiledDocs = null;
+			if (args != null && args.Length > 1) {
+				var extraDirs = args.Skip (1);
+				extraDocs = extraDirs
+					.Where (d => d.StartsWith ("+"))
+					.Select (d => d.Substring (1))
+					.Where (d => Directory.Exists (d));
+				extraUncompiledDocs = extraDirs
+					.Where (d => d.StartsWith ("@"))
+					.Select (d => d.Substring (1))
+					.Where (d => Directory.Exists (d));
+			}
+
+			if (extraUncompiledDocs != null)
+				foreach (var dir in extraUncompiledDocs)
+					RootTree.UncompiledHelpSources.Add (dir);
+
 			Root = RootTree.LoadTree (null);
+
+			if (extraDocs != null)
+				foreach (var dir in extraDocs)
+					Root.AddSource (dir);
 			
 			var macDocPath = Path.Combine (Environment.GetFolderPath (Environment.SpecialFolder.ApplicationData), "macdoc");
 			if (!Directory.Exists (macDocPath))
 				Directory.CreateDirectory (macDocPath);
-			IndexUpdateManager = new IndexUpdateManager (Root.HelpSources.Cast<HelpSource> ().Select (hs => Path.Combine (hs.BaseFilePath, hs.Name + ".zip")).Where (File.Exists),
+			var helpSources = Root.HelpSources
+				.Cast<HelpSource> ()
+				.Where (hs => !string.IsNullOrEmpty (hs.BaseFilePath) && !string.IsNullOrEmpty (hs.Name))
+				.Select (hs => Path.Combine (hs.BaseFilePath, hs.Name + ".zip"))
+				.Where (File.Exists);
+			IndexUpdateManager = new IndexUpdateManager (helpSources,
 			                                             macDocPath);
 			BookmarkManager = new BookmarkManager (macDocPath);
 			AppleDocHandler = new AppleDocHandler ("/Library/Frameworks/Mono.framework/Versions/Current/etc/");
@@ -96,7 +124,7 @@ namespace macdoc
 			}).ContinueWith (t => Console.WriteLine ("Error while creating indexes: {0}", t.Exception), TaskContinuationOptions.OnlyOnFaulted);
 			
 			// Check if there is a MonoTouch documentation installed and launch accordingly
-			if (Root.HelpSources.Cast<HelpSource> ().Any (hs => hs.Name.StartsWith ("MonoTouch", StringComparison.InvariantCultureIgnoreCase))
+			if (Root.HelpSources.Cast<HelpSource> ().Any (hs => hs != null && hs.Name != null && hs.Name.StartsWith ("MonoTouch", StringComparison.InvariantCultureIgnoreCase))
 			    && File.Exists (mergeToolPath)) {
 				Task.Factory.StartNew (() => {
 					AppleDocHandler.AppleDocInformation infos;
@@ -155,8 +183,10 @@ namespace macdoc
 				var innerDesc = evt.DescriptorAtIndex (i);
 				// The next call works fine but is Lion-specific 
 				// controller.OpenDocument (new NSUrl (innerDesc.StringValue), i == evt.NumberOfItems, delegate {});
-				if (!string.IsNullOrEmpty (innerDesc.StringValue))
-					Call_OpenDocument (new NSUrl (innerDesc.StringValue), true, out error);
+				if (!string.IsNullOrEmpty (innerDesc.StringValue)) {
+					NSUrl url = new NSUrl (innerDesc.StringValue);
+					Call_OpenDocument (url, true, out error);
+				}
 			}
 		}
 		
