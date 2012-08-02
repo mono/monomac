@@ -51,13 +51,10 @@ namespace macdoc
 		{
 			Console.WriteLine ("ReadFromUrl : {0}", url.ToString ());
 			outError = null;
-			const int NSServiceMiscellaneousError = 66800;
-			if (url.Scheme != "monodoc" && url.Scheme != "mdoc") {
-				outError = new NSError (NSError.CocoaErrorDomain,
-				                       	NSServiceMiscellaneousError,
-				                      	NSDictionary.FromObjectAndKey (NSError.LocalizedFailureReasonErrorKey, new NSString (string.Format ("Scheme {0} isn't supported", url.Scheme))));
-				return false;
-			}
+
+			// if scheme is not right, we ignore the url
+			if (url.Scheme != "monodoc" && url.Scheme != "mdoc")
+				return true;
 			
 			// ResourceSpecifier is e.g. "//T:System.String"
 			initialLoadFromUrl = Uri.UnescapeDataString (url.ResourceSpecifier.Substring (2));

@@ -10560,7 +10560,7 @@ namespace MonoMac.AppKit {
 		[Export ("wantsLayer")]
 		bool WantsLayer { get; set; }
 
-		[Export ("layer")]
+		[Export ("layer"), NullAllowed]
 		CALayer Layer { get; set; }
 
 		[Export ("alphaValue")]
