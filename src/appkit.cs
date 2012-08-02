@@ -13042,7 +13042,7 @@ namespace MonoMac.AppKit {
 		[Export ("displayMode")]
 		NSToolbarDisplayMode DisplayMode { get; set; }
 
-		[Export ("selectedItemIdentifier")]
+		[Export ("selectedItemIdentifier"), NullAllowed]
 		string SelectedItemIdentifier { get; set; }
 
 		[Export ("sizeMode")]
