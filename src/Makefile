@@ -68,7 +68,8 @@ MONOMAC_SOURCES = \
 	./AppKit/NSPopUpButtonCell.cs			\
 	./AppKit/NSSegmentedControl.cs			\
 	./AppKit/NSTableView.cs				\
-	./AppKit/NSWindow.cs				\
+        ./AppKit/NSToolbarItem.cs                       \
+        ./AppKit/NSWindow.cs				\
 	./CoreVideo/CVDisplayLink.cs			\
 	./Growl/Constants.cs				\
 	./QTKit/QTCaptureDevice.cs			\
