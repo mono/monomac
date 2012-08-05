@@ -10743,7 +10743,7 @@ namespace MonoMac.AppKit {
 		[Export ("setKeyboardFocusRingNeedsDisplayInRect:")]
 		void SetKeyboardFocusRingNeedsDisplay (RectangleF rect);
 
-		[Export ("setFocusRingType:")]
+		[Export ("focusRingType")]
 		NSFocusRingType FocusRingType { get; set; }
 
 		[Static, Export ("defaultFocusRingType")]
