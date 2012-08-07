@@ -518,4 +518,12 @@ namespace MonoMac.Foundation {
 		NSPipe Create ();
 	}
 
+	[BaseType (typeof (NSObject))]
+	public interface NSValueTransformer {
+		[Export ("reverseTransformedValue:")]
+		NSObject ReverseTransformedValue (NSObject value);
+
+		[Export ("transformedValue:")]
+		NSObject TransformedValue (NSObject value);
+	}
 }
