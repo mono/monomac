@@ -114,6 +114,13 @@ OPENTK_SOURCES = \
 	./OpenGL/OpenTK/Math/Vector4.cs			\
 	./OpenGL/OpenTK/Math/Vector4d.cs		\
 	./OpenGL/OpenTK/Math/Vector4h.cs
+	
+CFNETWORK_SOURCES = \
+	$(MACCORE_DIR)/src/CFNetwork/Content.cs			\
+	$(MACCORE_DIR)/src/CFNetwork/MessageHandler.cs		\
+	$(MACCORE_DIR)/src/CFNetwork/WebRequestStream.cs	\
+	$(MACCORE_DIR)/src/CFNetwork/WebResponseStream.cs	\
+	$(MACCORE_DIR)/src/CFNetwork/WorkerThread.cs
 
 GENERATOR_SOURCES = \
 	$(MACCORE_DIR)/src/error.cs				\
@@ -126,7 +133,7 @@ SOURCES = \
 
 DEFINES = -define:NET_2_0
 
-TARGETS = _bmac.exe MonoMac.dll  parse.exe bmac.exe
+TARGETS = _bmac.exe MonoMac.dll MonoMac.CFNetwork.dll parse.exe bmac.exe
 
 include Make.shared
 
@@ -182,6 +189,9 @@ counts:
 
 MonoMac.dll: $(SOURCES) generated_sources $(MONOMAC_SOURCES) $(SHARED_SOURCES) $(SHARED_CORE_SOURCES) $(OPENTK_SOURCES)
 	gmcs -define:OBJECT_REF_TRACKING -nowarn:3021,0219,0414,$(WARNINGS_I_SHOULD_FIX) -debug -unsafe $(SOURCES) @generated_sources $(MONOMAC_SOURCES) $(SHARED_SOURCES) $(SHARED_CORE_SOURCES) $(OPENTK_SOURCES) -target:library -define:MONOMAC -out:MonoMac.dll -r:System.Drawing
+	
+MonoMac.CFNetwork.dll: $(CFNETWORK_SOURCES)
+	mcs -debug -target:library -define:MONOMAC -r:System.Net.Http -r:MonoMac.dll -out:MonoMac.CFNetwork.dll $(CFNETWORK_SOURCES)
 
 clean:
 	rm -f $(TARGETS) core.dll
