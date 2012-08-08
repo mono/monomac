@@ -308,8 +308,8 @@ namespace MonoMac.ObjCRuntime {
 			if (!TypeRequiresFloatingPointTrampoline (minfo.ReturnType))
 				return fptr;
 			
-			var thunk_ptr = AllocExecMemory (83);
-			var rel_Delegate = new IntPtr (fptr.ToInt32 () - thunk_ptr.ToInt32 () - 70);
+			var thunk_ptr = AllocExecMemory (86);
+			var rel_Delegate = new IntPtr (fptr.ToInt32 () - thunk_ptr.ToInt32 () - 73);
 			var rel_GetFrameLengthPtr = new IntPtr (getFrameLengthPtr.ToInt32 () - thunk_ptr.ToInt32 () - 27);
 			var delptr = BitConverter.GetBytes (rel_Delegate.ToInt32 ());
 			var getlen = BitConverter.GetBytes (rel_GetFrameLengthPtr.ToInt32 ());
@@ -353,6 +353,8 @@ movl     %eax,0x04(%esp)        */  0x89, 0x44, 0x24, 0x04,                     
 movl     0x0c(%ebp),%eax        */  0x8b, 0x45, 0x0c,                                     /*
 movl     %eax,(%esp)            */  0x89, 0x04, 0x24,                                     /*
 calll    _get_frame_length      */  0xe8, getlen [0], getlen [1], getlen [2], getlen [3], /*
+# get_frame_length doesn't know about the initial 'buffer' argument, add 4 more bytes to copy
+addl    $0x04,$eax              */  0x83, 0xc0, 0x04,                                     /*
 movl     %eax,0xf0(%ebp)        */  0x89, 0x45, 0xf0,                                     /*
 
 # use eax to extend the stack, but it needs to be aligned to 16 bytes first 
