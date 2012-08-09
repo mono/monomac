@@ -133,7 +133,15 @@ SOURCES = \
 
 DEFINES = -define:NET_2_0
 
-TARGETS = _bmac.exe MonoMac.dll MonoMac.CFNetwork.dll parse.exe bmac.exe
+HAVE_ASYNC=`if pkg-config --atleast-version=2.11 mono; then echo true; else echo false; fi`
+
+ifeq ($(HAVE_ASYNC),true)
+	ASYNC_TARGETS = MonoMac.CFNetwork.dll
+endif
+
+TARGETS = _bmac.exe MonoMac.dll parse.exe bmac.exe $(ASYNC_TARGETS)
+
+
 
 include Make.shared
 
