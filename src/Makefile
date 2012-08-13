@@ -54,6 +54,7 @@ MONOMAC_SOURCES = \
 	./AppKit/NSBezierPath.cs			\
 	./AppKit/NSColor.cs				\
 	./AppKit/NSControl.cs				\
+	./AppKit/NSEvent.cs				\
 	./AppKit/NSGradient.cs				\
 	./AppKit/NSGraphics.cs				\
 	./AppKit/NSGraphicsContext.cs			\
