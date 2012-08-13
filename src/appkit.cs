@@ -13845,7 +13845,8 @@ namespace MonoMac.AppKit {
 	
 		[Export ("attachedSheet")]
 		NSWindow AttachedSheet { get; }
-	
+
+		[Static]
 		[Export ("standardWindowButton:forStyleMask:")]
 		NSButton StandardWindowButton (NSWindowButton b, NSWindowStyle styleMask);
 	
