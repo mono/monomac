@@ -126,7 +126,7 @@ namespace MonoMac.Foundation {
 						Messaging.void_objc_msgSend (handle, selRelease);
 
 					Marshal.FreeHGlobal (SuperHandle);
-				} else {
+				} else if (disposer != null) {
 					bool calldrain = false;
 
 					if (Class.IsCustomType (this.GetType ()))
@@ -360,6 +360,12 @@ namespace MonoMac.Foundation {
 					}
 					direct_handles.Clear ();
 				}
+			}
+
+			protected override void Dispose (bool disposing)
+			{
+				NSObject.disposer = null;
+				base.Dispose (disposing);
 			}
 		}
 	}
