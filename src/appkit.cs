@@ -6152,6 +6152,9 @@ namespace MonoMac.AppKit {
 	
 		[Export ("outlineView:dataCellForTableColumn:item:")]
 		NSCell GetCell (NSOutlineView outlineView, NSTableColumn tableColumn, NSObject item);
+
+		[Export ("outlineView:viewForTableColumn:item:")]
+		NSView GetView (NSOutlineView outlineView, NSTableColumn tableColumn, NSObject item);
 	
 		[Export ("outlineView:isGroupItem:")]
 		bool IsGroupItem (NSOutlineView outlineView, NSObject item);
@@ -13845,7 +13848,8 @@ namespace MonoMac.AppKit {
 	
 		[Export ("attachedSheet")]
 		NSWindow AttachedSheet { get; }
-	
+
+		[Static]
 		[Export ("standardWindowButton:forStyleMask:")]
 		NSButton StandardWindowButton (NSWindowButton b, NSWindowStyle styleMask);
 	
