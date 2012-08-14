@@ -57,7 +57,7 @@ namespace MonoMac.ObjCRuntime {
 
 			// FIXME: We should detect if this is in a bound assembly or not and only alloc if needed
 			Selector = new Selector (ea.Selector ?? minfo.Name, true).Handle;
-			Signature = string.Format ("{0}@:", TypeConverter.ToNative (rettype));
+			Signature = string.Format ("{0}@:", TypeConverter.ToNative (minfo.ReturnType));
 
 			ConvertParameters (Parameters, minfo.IsStatic, isstret);
 			

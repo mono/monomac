@@ -6152,6 +6152,9 @@ namespace MonoMac.AppKit {
 	
 		[Export ("outlineView:dataCellForTableColumn:item:")]
 		NSCell GetCell (NSOutlineView outlineView, NSTableColumn tableColumn, NSObject item);
+
+		[Export ("outlineView:viewForTableColumn:item:")]
+		NSView GetView (NSOutlineView outlineView, NSTableColumn tableColumn, NSObject item);
 	
 		[Export ("outlineView:isGroupItem:")]
 		bool IsGroupItem (NSOutlineView outlineView, NSObject item);
@@ -10560,7 +10563,7 @@ namespace MonoMac.AppKit {
 		[Export ("wantsLayer")]
 		bool WantsLayer { get; set; }
 
-		[Export ("layer")]
+		[Export ("layer"), NullAllowed]
 		CALayer Layer { get; set; }
 
 		[Export ("alphaValue")]
@@ -10611,13 +10614,8 @@ namespace MonoMac.AppKit {
 		[Export ("isInFullScreenMode")]
 		bool IsInFullscreenMode { get; }
 		
-		/* 10.6+ Only - How do you specify that? - jm
-		   [Field ("NSFullScreenModeApplicationPresentationOptions")]   
-		   NSString NSFullScreenModeApplicationPresentationOptions { get; }
-		*/
-		
-		[Export ("focusRingType")]
-		NSFocusRingType FocusRingType { get; set; }
+		[Field ("NSFullScreenModeApplicationPresentationOptions")]   
+		NSString NSFullScreenModeApplicationPresentationOptions { get; }
 		
 		// Fields
 		[Field ("NSFullScreenModeAllScreens")]
@@ -10726,6 +10724,42 @@ namespace MonoMac.AppKit {
 
 		[Lion, Export ("exerciseAmbiguityInLayout")]
 		void ExerciseAmbiguityInLayout ();
+
+		[Export ("performMnemonic:")]
+		void PerformMnemonic (string mnemonic);
+
+		[Export ("nextKeyView")]
+		NSView NextKeyView { get; set; }
+
+		[Export ("previousKeyView")]
+		NSView PreviousKeyView { get; }
+
+		[Export ("nextValidKeyView")]
+		NSView NextValidKeyView { get; }
+
+		[Export ("previousValidKeyView")]
+		NSView PreviousValidKeyView { get; }
+
+		[Export ("canBecomeKeyView")]
+		bool CanBecomeKeyView { get; }
+
+		[Export ("setKeyboardFocusRingNeedsDisplayInRect:")]
+		void SetKeyboardFocusRingNeedsDisplay (RectangleF rect);
+
+		[Export ("setFocusRingType:")]
+		NSFocusRingType FocusRingType { get; set; }
+
+		[Static, Export ("defaultFocusRingType")]
+		NSFocusRingType DefaultFocusRingType { get; }
+
+		[Export ("drawFocusRingMask")]
+		void DrawFocusRingMask ();
+
+		[Export ("focusRingMaskBounds")]
+		RectangleF FocusRingMaskBounds { get; }
+
+		[Export ("noteFocusRingMaskChanged")]
+		void NoteFocusRingMaskChanged ();
 	}
 
 	[BaseType (typeof (NSAnimation))]
@@ -11262,7 +11296,7 @@ namespace MonoMac.AppKit {
 		bool ShouldSelectTableColumn (NSTableView tableView, NSTableColumn tableColumn);
 	
 		[Export ("tableView:mouseDownInHeaderOfTableColumn:"), EventArgs ("NSTableViewTable")]
-		void MouseDown (NSTableView tableView, NSTableColumn tableColumn);
+		void MouseDownInHeaderOfTableColumn (NSTableView tableView, NSTableColumn tableColumn);
 	
 		[Export ("tableView:didClickTableColumn:"), EventArgs ("NSTableViewTable")]
 		void DidClickTableColumn (NSTableView tableView, NSTableColumn tableColumn);
@@ -12813,7 +12847,7 @@ namespace MonoMac.AppKit {
 		NSTextCheckingTypes EnabledTextCheckingTypes { get; set; }
 	}
 
-	[BaseType (typeof (NSObject))]
+	[BaseType (typeof (NSTextDelegate))]
 	[Model]
 	public interface NSTextViewDelegate {
 		[Export ("textView:clickedOnLink:atIndex:"), DelegateName ("NSTextViewLink"), DefaultValue (false)]
@@ -13814,7 +13848,8 @@ namespace MonoMac.AppKit {
 	
 		[Export ("attachedSheet")]
 		NSWindow AttachedSheet { get; }
-	
+
+		[Static]
 		[Export ("standardWindowButton:forStyleMask:")]
 		NSButton StandardWindowButton (NSWindowButton b, NSWindowStyle styleMask);
 	
