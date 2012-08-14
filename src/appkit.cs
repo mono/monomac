@@ -11296,7 +11296,7 @@ namespace MonoMac.AppKit {
 		bool ShouldSelectTableColumn (NSTableView tableView, NSTableColumn tableColumn);
 	
 		[Export ("tableView:mouseDownInHeaderOfTableColumn:"), EventArgs ("NSTableViewTable")]
-		void MouseDown (NSTableView tableView, NSTableColumn tableColumn);
+		void MouseDownInHeaderOfTableColumn (NSTableView tableView, NSTableColumn tableColumn);
 	
 		[Export ("tableView:didClickTableColumn:"), EventArgs ("NSTableViewTable")]
 		void DidClickTableColumn (NSTableView tableView, NSTableColumn tableColumn);
