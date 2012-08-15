@@ -255,11 +255,11 @@ namespace MonoMac.Foundation {
 		}
 
 		[Export ("performSelector:withObject:afterDelay:")]
-		public virtual void PerformSelector (Selector sel, NSObject obj, float delay) {
+		public virtual void PerformSelector (Selector sel, NSObject obj, double delay) {
 			if (IsDirectBinding) {
-				Messaging.void_objc_msgSend_intptr_intptr_float (this.Handle, selPerformSelectorWithObjectAfterDelay, sel.Handle, obj == null ? IntPtr.Zero : obj.Handle, delay);
+				Messaging.void_objc_msgSend_intptr_intptr_double (this.Handle, selPerformSelectorWithObjectAfterDelay, sel.Handle, obj == null ? IntPtr.Zero : obj.Handle, delay);
 			} else {
-				Messaging.void_objc_msgSendSuper_intptr_intptr_float (this.SuperHandle, selPerformSelectorWithObjectAfterDelay, sel.Handle, obj == null ? IntPtr.Zero : obj.Handle, delay);
+				Messaging.void_objc_msgSendSuper_intptr_intptr_double (this.SuperHandle, selPerformSelectorWithObjectAfterDelay, sel.Handle, obj == null ? IntPtr.Zero : obj.Handle, delay);
 			}
 		}
 
