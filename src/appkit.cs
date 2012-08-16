@@ -32,6 +32,7 @@
 
 using System;
 using System.Drawing;
+using System.Diagnostics;
 using MonoMac.Foundation;
 using MonoMac.ObjCRuntime;
 using MonoMac.CoreGraphics;
@@ -4998,60 +4999,79 @@ namespace MonoMac.AppKit {
 		int WindowNumber { get; }
 
 		[Export ("context")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		NSGraphicsContext Context { get; }
 
 		[Export ("clickCount")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		int ClickCount { get; }
 
 		[Export ("buttonNumber")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		int ButtonNumber { get; }
 
 		[Export ("eventNumber")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		int EventNumber { get; }
 
 		[Export ("pressure")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		float Pressure { get; }
 
 		[Export ("locationInWindow")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		PointF LocationInWindow { get; }
 
 		[Export ("deltaX")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		float DeltaX { get; }
 
 		[Export ("deltaY")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		float DeltaY { get; }
 
 		[Export ("deltaZ")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		float DeltaZ { get; }
 
 		[Export ("characters")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		string Characters { get; }
 
 		[Export ("charactersIgnoringModifiers")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		string CharactersIgnoringModifiers { get; }
 
 		[Export ("isARepeat")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		bool IsARepeat { get; }
 
 		[Export ("keyCode")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		ushort KeyCode { get; }
 
 		[Export ("trackingNumber")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		int TrackingNumber { get; }
 
 		[Export ("userData")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		IntPtr UserData { get; }
 
 		[Export ("trackingArea")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		NSTrackingArea TrackingArea { get; }
 
 		[Export ("subtype")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		short Subtype { get; }
 
 		[Export ("data1")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		int Data1 { get; }
 
 		[Export ("data2")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		int Data2 { get; }
 
 		//[Export ("eventRef")]
@@ -5069,64 +5089,83 @@ namespace MonoMac.AppKit {
 		NSEvent EventWithCGEvent (IntPtr cgEventPtr);
 
 		[Export ("magnification")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		float Magnification { get; }
 
 		[Export ("deviceID")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		uint DeviceID { get; }
 
 		[Export ("rotation")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		float Rotation { get; }
 
 		[Export ("absoluteX")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		int AbsoluteX { get; }
 
 		[Export ("absoluteY")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		int AbsoluteY { get; }
 
 		[Export ("absoluteZ")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		int AbsoluteZ { get; }
 
 		// TODO: What is the type?
 		[Export ("buttonMask")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		uint ButtonMask { get; }
 
 		[Export ("tilt")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		PointF Tilt { get; }
 
 		[Export ("tangentialPressure")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		float TangentialPressure { get; }
 
 		[Export ("vendorDefined")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		NSObject VendorDefined { get; }
 
 		[Export ("vendorID")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		uint VendorID { get; }
 
 		[Export ("tabletID")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		uint TabletID { get; }
 
 		[Export ("pointingDeviceID")]
 		uint PointingDeviceID ();
 
 		[Export ("systemTabletID")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		uint SystemTabletID { get; }
 
 		[Export ("vendorPointingDeviceType")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		uint VendorPointingDeviceType { get; }
 
 		[Export ("pointingDeviceSerialNumber")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		uint PointingDeviceSerialNumber { get; }
 
 		[Export ("uniqueID")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		long UniqueID { get; }
 
 		[Export ("capabilityMask")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		uint CapabilityMask { get; }
 
 		[Export ("pointingDeviceType")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		NSPointingDeviceType PointingDeviceType { get; }
 
 		[Export ("isEnteringProximity")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		bool IsEnteringProximity { get; }
 
 		[Export ("touchesMatchingPhase:inView:")]
@@ -5199,26 +5238,32 @@ namespace MonoMac.AppKit {
 
 		[Lion]
 		[Export ("hasPreciseScrollingDeltas")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		bool HasPreciseScrollingDeltas { get; }
 
 		[Lion]
 		[Export ("scrollingDeltaX")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		float ScrollingDeltaX { get; }
 
 		[Lion]
 		[Export ("scrollingDeltaY")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		float ScrollingDeltaY { get; }
 
 		[Lion]
 		[Export ("momentumPhase")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		NSEventPhase MomentumPhase { get; }
 
 		[Lion]
 		[Export ("isDirectionInvertedFromDevice")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		bool IsDirectionInvertedFromDevice { get; }
 
 		[Lion]
 		[Export ("phase")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		NSEventPhase Phase { get; }
 
 		[Lion]
