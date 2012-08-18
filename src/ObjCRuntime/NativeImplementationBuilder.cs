@@ -191,22 +191,46 @@ namespace MonoMac.ObjCRuntime {
 #if !MONOMAC_BOOTSTRAP
 			for (int i = ArgumentOffset, j = 0; i < ParameterTypes.Length; i++) {
 				if (Parameters [i-ArgumentOffset].ParameterType.IsByRef && (Attribute.GetCustomAttribute (Parameters [i-ArgumentOffset], typeof (OutAttribute)) == null) && IsWrappedType (Parameters[i-ArgumentOffset].ParameterType.GetElementType ())) {
+					var nullout = il.DefineLabel ();
+					var done = il.DefineLabel ();
+					il.Emit (OpCodes.Ldarg, i);
+					il.Emit (OpCodes.Brfalse, nullout);
 					il.Emit (OpCodes.Ldarg, i);
 					il.Emit (OpCodes.Ldind_I);
 					il.Emit (OpCodes.Call, getobject);
+					il.Emit (OpCodes.Br, done);
+					il.MarkLabel (nullout);
+					il.Emit (OpCodes.Ldnull);
+					il.MarkLabel (done);
 					il.Emit (OpCodes.Stloc, j+locoffset);
 					j++;
 				} else if (Parameters [i-ArgumentOffset].ParameterType.IsArray && IsWrappedType (Parameters [i-ArgumentOffset].ParameterType.GetElementType ())) {
+					var nullout = il.DefineLabel ();
+					var done = il.DefineLabel ();
+					il.Emit (OpCodes.Ldarg, i);
+					il.Emit (OpCodes.Brfalse, nullout);
 					il.Emit (OpCodes.Ldarg, i);
 					if (Parameters [i-ArgumentOffset].ParameterType.GetElementType () == typeof (string))
 						il.Emit (OpCodes.Call, convertsarray);
 					else
 						il.Emit (OpCodes.Call, convertarray.MakeGenericMethod (Parameters [i-ArgumentOffset].ParameterType.GetElementType ()));
+					il.Emit (OpCodes.Br, done);
+					il.MarkLabel (nullout);
+					il.Emit (OpCodes.Ldnull);
+					il.MarkLabel (done);
 					il.Emit (OpCodes.Stloc, j+locoffset);
 					j++;
 				} else if (Parameters [i-ArgumentOffset].ParameterType == typeof (string)) {
+					var nullout = il.DefineLabel ();
+					var done = il.DefineLabel ();
+					il.Emit (OpCodes.Ldarg, i);
+					il.Emit (OpCodes.Brfalse, nullout);
 					il.Emit (OpCodes.Ldarg, i);
 					il.Emit (OpCodes.Call, convertstring);
+					il.Emit (OpCodes.Br, done);
+					il.MarkLabel (nullout);
+					il.Emit (OpCodes.Ldnull);
+					il.MarkLabel (done);
 					il.Emit (OpCodes.Stloc, j+locoffset);
 					j++;
 				}
