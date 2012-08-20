@@ -10983,6 +10983,35 @@ namespace MonoMac.AppKit {
 		NSView ViewAtColumn (int column);
 	}
 
+	[Lion]
+	[BaseType (typeof (NSView))]
+	public interface NSTableCellView {
+		[Export ("backgroundStyle")]
+		NSBackgroundStyle BackgroundStyle {
+			get; set;
+		}
+
+		[Export ("imageView", ArgumentSemantic.Assign)]
+		NSImageView ImageView {
+			get; set;
+		}
+
+		[Export ("objectValue", ArgumentSemantic.Retain)]
+		NSObject ObjectValue {
+			get; set;
+		}
+
+		[Export ("rowSizeStyle")]
+		NSTableViewRowSizeStyle RowSizeStyle {
+			get; set;
+		}
+
+		[Export ("textField", ArgumentSemantic.Assign)]
+		NSTextField TextField {
+			get; set;
+		}
+	}
+
 	public delegate void NSTableViewRowHandler (NSTableRowView rowView, int row);
 	
 	[BaseType (typeof (NSControl), Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (NSTableViewDelegate)})]
