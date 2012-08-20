@@ -1477,9 +1477,9 @@ namespace MonoMac.AppKit {
 	}
 
 	public static class NSFileTypeForHFSTypeCode {
-		public static string ComputerIcon = "root";
-		public static string DesktopIcon = "desk";
-		public static string FinderIcon = "FNDR";
+		public static readonly string ComputerIcon = "root";
+		public static readonly string DesktopIcon = "desk";
+		public static readonly string FinderIcon = "FNDR";
 	}
 	
 	// These constants specify the possible states of a drawer.
