@@ -70,10 +70,8 @@ namespace MonoMac.Foundation {
 
 		// This is just here as a constructor chain that can will
 		// only do Init at the most derived class.
-		public NSObject (NSObjectFlag x)
+		public NSObject (NSObjectFlag x) : this ()
 		{
-			AllocIfNeeded ();
-			InitializeObject ();
 		}
 
 		public NSObject (IntPtr handle) {
