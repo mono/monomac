@@ -49,7 +49,7 @@ namespace MonoMac.ObjCRuntime {
 			this.handle = objc_getClass (name);
 
 			if (this.handle == IntPtr.Zero)
-				throw new ArgumentException ("name is an unknown class", name);
+				throw new ArgumentException (String.Format ("name {0} is an unknown class", name), "name");
 		}
 
 		public Class (Type type) {
