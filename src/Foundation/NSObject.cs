@@ -29,14 +29,14 @@ using MonoMac.ObjCRuntime;
 
 namespace MonoMac.Foundation {
 	public class NSObjectFlag {
-		public static NSObjectFlag Empty = null;
+		public static readonly NSObjectFlag Empty = null;
 
 		NSObjectFlag () {}
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
 	public partial class NSObject : INativeObject, IDisposable {
-		public static Assembly MonoMacAssembly = typeof (NSObject).Assembly;
+		public static readonly Assembly MonoMacAssembly = typeof (NSObject).Assembly;
 
 		static IntPtr selAlloc = Selector.GetHandle ("alloc");
 		static IntPtr selAwakeFromNib = Selector.GetHandle ("awakeFromNib");
