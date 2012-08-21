@@ -175,6 +175,7 @@ namespace MonoMac.ObjCRuntime {
 		}
 
 		protected void DeclareLocals (ILGenerator il) {
+			// Keep in sync with UpdateByRefArguments()
 			for (int i = 0; i < Parameters.Length; i++) {
 				if (Parameters [i].ParameterType.IsByRef && IsWrappedType (Parameters [i].ParameterType.GetElementType ())) {
 					il.DeclareLocal (Parameters [i].ParameterType.GetElementType ());
@@ -260,6 +261,7 @@ namespace MonoMac.ObjCRuntime {
 
 		protected void UpdateByRefArguments (ILGenerator il, int locoffset) {
 #if !MONOMAC_BOOTSTRAP
+			// Keep in sync with DeclareLocals()
 			for (int i = ArgumentOffset, j = 0; i < ParameterTypes.Length; i++) {
 				if (Parameters [i-ArgumentOffset].ParameterType.IsByRef && IsWrappedType (Parameters[i-ArgumentOffset].ParameterType.GetElementType ())) {
 					Label nullout = il.DefineLabel ();
@@ -276,6 +278,10 @@ namespace MonoMac.ObjCRuntime {
 					il.Emit (OpCodes.Ldsfld, intptrzero);
 					il.Emit (OpCodes.Stind_I);
 					il.MarkLabel (done);
+					j++;
+				} else if (Parameters [i-ArgumentOffset].ParameterType.IsArray && IsWrappedType (Parameters [i-ArgumentOffset].ParameterType.GetElementType ())) {
+					j++;
+				} else if (Parameters [i-ArgumentOffset].ParameterType == typeof (string)) {
 					j++;
 				}
 			}
