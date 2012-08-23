@@ -1467,7 +1467,7 @@ namespace MonoMac.WebKit {
 	[BaseType (typeof (NSObject))]
 	[Model]
 	interface WebPolicyDelegate  {
-		[Export ("webView:decidePolicyForNavigationAction:request:frame:decisionListener:"), EventArgs ("WebNavigatioPolicy")]
+		[Export ("webView:decidePolicyForNavigationAction:request:frame:decisionListener:"), EventArgs ("WebNavigationPolicy")]
 		void DecidePolicyForNavigation (WebView webView, NSDictionary actionInformation, NSUrlRequest request, WebFrame frame, WebPolicyDecisionListener listener);
 
 		[Export ("webView:decidePolicyForNewWindowAction:request:newFrameName:decisionListener:"), EventArgs ("WebNewWindowPolicy")]
@@ -1481,7 +1481,6 @@ namespace MonoMac.WebKit {
 	}
 
 	[BaseType (typeof (NSObject))]
-	[Model]
 	interface WebPolicyDecisionListener {
 		[Export ("use")]
 		void Use ();
