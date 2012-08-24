@@ -10805,6 +10805,57 @@ namespace MonoMac.AppKit {
 
 		[Export ("noteFocusRingMaskChanged")]
 		void NoteFocusRingMaskChanged ();
+		
+		[Export ("dataWithEPSInsideRect:")]
+		NSData DataWithEpsInsideRect (RectangleF rect);
+	
+		[Export ("dataWithPDFInsideRect:")]
+		NSData DataWithPdfInsideRect (RectangleF rect);
+	
+		[Export ("print:")]
+		void Print (NSObject sender);
+		
+		[Export ("printJobTitle")]
+		string PrintJobTitle { get; }
+		
+		[Export ("pageHeader")]
+		NSAttributedString PageHeader { get; }
+
+		[Export ("pageFooter")]
+		NSAttributedString PageFooter { get; }
+
+		[Export ("writeEPSInsideRect:toPasteboard:")]
+		void WriteEpsInsideRect (RectangleF rect, NSPasteboard pboard);
+
+		[Export ("writePDFInsideRect:toPasteboard:")]
+		void WritePdfInsideRect (RectangleF rect, NSPasteboard pboard);
+		
+		[Export ("drawPageBorderWithSize:")]
+		void DrawPageBorder (SizeF borderSize);
+		
+		[Export ("drawSheetBorderWithSize:")]
+		void DrawSheetBorder (SizeF borderSize);
+		
+		[Export ("heightAdjustLimit")]
+		float HeightAdjustLimit { get; }
+		
+		[Export ("widthAdjustLimit")]
+		float WidthAdjustLimit { get; }
+		
+		[Export ("adjustPageWidthNew:left:right:limit:")]
+		void AdjustPageWidthNew (float newRight, float left, float proposedRight, float rightLimit);
+		
+		[Export ("adjustPageHeightNew:top:bottom:limit:")]
+		void AdjustPageHeightNew (float newBottom, float top, float proposedBottom, float bottomLimit);
+		
+		[Export ("knowsPageRange:")]
+		bool KnowsPageRange (NSRange aRange);
+		
+		[Export ("rectForPage:")]
+		RectangleF RectForPage (int pageNumber);
+		
+		[Export ("locationOfPrintRect:")]
+		PointF LocationOfPrintRect (RectangleF aRect);
 	}
 
 	[BaseType (typeof (NSAnimation))]
