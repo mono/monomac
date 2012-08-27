@@ -6177,7 +6177,7 @@ namespace MonoMac.AppKit {
 		//[Export ("outlineView:toolTipForCell:rect:tableColumn:item:mouseLocation:")]
 		//string ToolTipForCell (NSOutlineView outlineView, NSCell cell, NSRectPointer rect, NSTableColumn tableColumn, NSObject item, PointF mouseLocation);
 	
-		[Export ("outlineView:heightOfRowByItem:")]
+		[Export ("outlineView:heightOfRowByItem:"), NoDefaultValue]
 		float GetRowHeight (NSOutlineView outlineView, NSObject item);
 	
 		[Export ("outlineView:typeSelectStringForTableColumn:item:")]
@@ -6195,10 +6195,10 @@ namespace MonoMac.AppKit {
 		[Export ("outlineView:shouldTrackCell:forTableColumn:item:")]
 		bool ShouldTrackCell (NSOutlineView outlineView, NSCell cell, NSTableColumn tableColumn, NSObject item);
 	
-		[Export ("outlineView:dataCellForTableColumn:item:")]
+		[Export ("outlineView:dataCellForTableColumn:item:"), NoDefaultValue]
 		NSCell GetCell (NSOutlineView outlineView, NSTableColumn tableColumn, NSObject item);
 
-		[Export ("outlineView:viewForTableColumn:item:")]
+		[Export ("outlineView:viewForTableColumn:item:"), NoDefaultValue]
 		NSView GetView (NSOutlineView outlineView, NSTableColumn tableColumn, NSObject item);
 	
 		[Export ("outlineView:isGroupItem:")]
@@ -6213,7 +6213,7 @@ namespace MonoMac.AppKit {
 		[Export ("outlineView:willDisplayOutlineCell:forTableColumn:item:")]
 		void WillDisplayOutlineCell (NSOutlineView outlineView, NSObject cell, NSTableColumn tableColumn, NSObject item);
 	
-		[Export ("outlineView:sizeToFitWidthOfColumn:")]
+		[Export ("outlineView:sizeToFitWidthOfColumn:"), NoDefaultValue]
 		float GetSizeToFitColumnWidth (NSOutlineView outlineView, int column);
 	
 		[Export ("outlineView:shouldReorderColumn:toColumn:")]
@@ -11382,7 +11382,7 @@ namespace MonoMac.AppKit {
 		//[Export ("tableView:toolTipForCell:rect:tableColumn:row:mouseLocation:")]
 		//string TableViewtoolTipForCellrecttableColumnrowmouseLocation (NSTableView tableView, NSCell cell, NSRectPointer rect, NSTableColumn tableColumn, int row, PointF mouseLocation);
 	
-		[Export ("tableView:heightOfRow:"), DelegateName ("NSTableViewRowHeight"), DefaultValue (16f)]
+		[Export ("tableView:heightOfRow:"), DelegateName ("NSTableViewRowHeight"), NoDefaultValue]
 		float GetRowHeight (NSTableView tableView, int row );
 	
 		[Export ("tableView:typeSelectStringForTableColumn:row:"), DelegateName ("NSTableViewColumnRowString"), DefaultValue ("String.Empty")]
@@ -11400,7 +11400,7 @@ namespace MonoMac.AppKit {
 		[Export ("tableView:shouldTrackCell:forTableColumn:row:"), DelegateName ("NSTableViewCell"), DefaultValue (false)]
 		bool ShouldTrackCell (NSTableView tableView, NSCell cell, NSTableColumn tableColumn, int row );
 	
-		[Export ("tableView:dataCellForTableColumn:row:"), DelegateName ("NSTableViewCellGetter"), DefaultValue (null)]
+		[Export ("tableView:dataCellForTableColumn:row:"), DelegateName ("NSTableViewCellGetter"), NoDefaultValue]
 		NSCell GetDataCell (NSTableView tableView, NSTableColumn tableColumn, int row );
 	
 		[Export ("tableView:isGroupRow:"), DelegateName ("NSTableViewRowPredicate"), DefaultValue (false)]
@@ -11425,7 +11425,7 @@ namespace MonoMac.AppKit {
 		void SelectionIsChanging (NSNotification notification);
 
 		[Lion]
-                [Export ("tableView:viewForTableColumn:row:"), DelegateName ("NSTableViewViewGetter"), DefaultValue (null)]
+                [Export ("tableView:viewForTableColumn:row:"), DelegateName ("NSTableViewViewGetter"), NoDefaultValue]
                 NSView GetViewForItem (NSTableView tableView, NSTableColumn tableColumn, int row);
 
 		[Lion]
