@@ -527,6 +527,7 @@ namespace MonoMac.Foundation {
 		NSObject TransformedValue (NSObject value);
 	}
 
+	[MountainLion]
 	[BaseType (typeof (NSObject))]
 	public interface NSUserNotification 
 	{
@@ -579,6 +580,7 @@ namespace MonoMac.Foundation {
 		NSString NSUserNotificationDefaultSoundName { get; }
 	}
 	
+	[MountainLion]
 	[BaseType (typeof (NSObject),
 	           Delegates=new string [] {"WeakDelegate"},
 	Events=new Type [] { typeof (NSUserNotificationCenterDelegate) })]
@@ -596,25 +598,26 @@ namespace MonoMac.Foundation {
 		[Export ("scheduledNotifications")]
 		NSUserNotification [] ScheduledNotifications { get; set; }
 		
-		[Export ("scheduleNotification:")]
+		[Export ("scheduleNotification:")][PostGet ("ScheduledNotifications")]
 		void ScheduleNotification (NSUserNotification notification);
 		
-		[Export ("removeScheduledNotification:")]
+		[Export ("removeScheduledNotification:")][PostGet ("ScheduledNotifications")]
 		void RemoveScheduledNotification (NSUserNotification notification);
 		
 		[Export ("deliveredNotifications")]
 		NSUserNotification [] DeliveredNotifications { get; }
 		
-		[Export ("deliverNotification:")]
+		[Export ("deliverNotification:")][PostGet ("DeliveredNotifications")]
 		void DeliverNotification (NSUserNotification notification);
 		
-		[Export ("removeDeliveredNotification:")]
+		[Export ("removeDeliveredNotification:")][PostGet ("DeliveredNotifications")]
 		void RemoveDeliveredNotification (NSUserNotification notification);
 		
-		[Export ("removeAllDeliveredNotifications")]
+		[Export ("removeAllDeliveredNotifications")][PostGet ("DeliveredNotifications")]
 		void RemoveAllDeliveredNotifications ();
 	}
 	
+	[MountainLion]
 	[BaseType (typeof (NSObject))]
 	[Model]
 	public interface NSUserNotificationCenterDelegate 
