@@ -79,4 +79,11 @@ namespace MonoMac.Foundation {
 		AppleEvent = 1634039412, // 'aevt'
 		Internet = 1196773964, // 'GURL'
 	}
+
+	// Added from NSUserNotification.h
+	public enum NSUserNotificationActivationType {
+		None = 0,
+		ContentsClicked = 1,
+		ActionButtonClicked = 2
+	}
 }
