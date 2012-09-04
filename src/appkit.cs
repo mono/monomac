@@ -14821,4 +14821,152 @@ namespace MonoMac.AppKit {
 		NSPredicateEditorRowTemplate[] RowTemplates { get; set; }
 
 	} 	
+
+	// Start of NSSharingService.h
+	
+	[MountainLion]
+	public delegate void NSSharingServiceHandler ();
+	
+	[MountainLion]
+	[BaseType (typeof (NSObject),
+	           Delegates=new string [] {"WeakDelegate"},
+	Events=new Type [] { typeof (NSSharingServiceDelegate) })]
+	public interface NSSharingService 
+	{
+		
+		[Export ("delegate")][NullAllowed]
+		NSObject WeakDelegate { get; set; }
+		
+		[Wrap ("WeakDelegate")][NullAllowed]
+		NSSharingServiceDelegate Delegate { get; set; }
+		
+		[Export ("title")]
+		string Title { get; }
+		
+		[Export ("image")]
+		NSImage Image { get; }
+		
+		[Export ("alternateImage")]
+		NSImage AlternateImage { get; }
+		
+		[Export ("sharingServicesForItems:")][Static]
+		NSSharingService [] SharingServicesForItems (NSObject [] items);
+		
+		[Export ("sharingServiceNamed:")][Static]
+		NSSharingService SharingServiceNamed (string serviceName);
+		
+		[Export ("initWithTitle:image:alternateImage:handler:")]
+		IntPtr Constructor (string title, NSImage image, NSImage alternateImage, NSSharingServiceHandler handler);
+		
+		[Export ("canPerformWithItems")]
+		bool CanPerformWithItems ([NullAllowed] NSObject [] items);
+
+		[Export ("performWithItems")]
+		void PerformWithItems (NSObject [] items);
+		
+		// Constants
+
+		[Field ("NSSharingServiceNamePostOnFacebook")]
+		NSString NSSharingServiceNamePostOnFacebook { get; }
+		
+		[Field ("NSSharingServiceNamePostOnTwitter")]
+		NSString NSSharingServiceNamePostOnTwitter { get; }
+		
+		[Field ("NSSharingServiceNamePostOnSinaWeibo")]
+		NSString NSSharingServiceNamePostOnSinaWeibo { get; }
+		
+		[Field ("NSSharingServiceNameComposeEmail")]
+		NSString NSSharingServiceNameComposeEmail { get; }
+		
+		[Field ("NSSharingServiceNameComposeMessage")]
+		NSString NSSharingServiceNameComposeMessage { get; }
+		
+		[Field ("NSSharingServiceNameSendViaAirDrop")]
+		NSString NSSharingServiceNameSendViaAirDrop { get; }
+		
+		[Field ("NSSharingServiceNameAddToSafariReadingList")]
+		NSString NSSharingServiceNameAddToSafariReadingList { get; }
+		
+		[Field ("NSSharingServiceNameAddToIPhoto")]
+		NSString NSSharingServiceNameAddToIPhoto { get; }
+		
+		[Field ("NSSharingServiceNameAddToAperture")]
+		NSString NSSharingServiceNameAddToAperture { get; }
+		
+		[Field ("NSSharingServiceNameUseAsTwitterProfileImage")]
+		NSString NSSharingServiceNameUseAsTwitterProfileImage { get; }
+		
+		[Field ("NSSharingServiceNameUseAsDesktopPicture")]
+		NSString NSSharingServiceNameUseAsDesktopPicture { get; }
+		
+		[Field ("NSSharingServiceNamePostImageOnFlickr")]
+		NSString NSSharingServiceNamePostImageOnFlickr { get; }
+		
+		[Field ("NSSharingServiceNamePostVideoOnVimeo")]
+		NSString NSSharingServiceNamePostVideoOnVimeo { get; }
+		
+		[Field ("NSSharingServiceNamePostVideoOnYouku")]
+		NSString NSSharingServiceNamePostVideoOnYouku { get; }
+		
+		[Field ("NSSharingServiceNamePostVideoOnTudou")]
+		NSString NSSharingServiceNamePostVideoOnTudou { get; }
+	}
+	
+	[MountainLion]
+	[BaseType (typeof (NSObject))]
+	[Model]
+	public interface NSSharingServiceDelegate 
+	{
+		[Export ("sharingService:willShareItems:"), EventArgs ("SharingServiceWillShareItems")]
+		void WillShareItems (NSSharingService sharingService, NSObject [] items);
+		
+		[Export ("sharingService:didFailToShareItems:error:"), EventArgs ("SharingServiceDidFailToShareItems")]
+		void DidFailToShareItems (NSSharingService sharingService, NSObject [] items, NSError error);
+		
+		[Export ("sharingService:didShareItems:"), EventArgs ("SharingServiceDidShareItems")]
+		void DidShareItems (NSSharingService sharingService, NSObject [] items);
+		
+		[Export ("sharingService:sourceFrameOnScreenForShareItem:"), DelegateName ("SharingServiceSourceFrameOnScreenForShareItem"), DefaultValue (null)]
+		RectangleF SourceFrameOnScreenForShareItem (NSSharingService sharingService, NSPasteboardWriting item);
+		
+		[Export ("sharingService:transitionImageForShareItem:contentRect:"), DelegateName ("SharingServiceTransitionImageForShareItem"), DefaultValue (null)]
+		NSImage TransitionImageForShareItem (NSSharingService sharingService, NSPasteboardWriting item, RectangleF contentRect);
+		
+		[Export ("sharingService:sourceWindowForShareItems:sharingContentScope:"), DelegateName ("SharingServiceSourceWindowForShareItems"), DefaultValue (null)]
+		NSWindow SourceWindowForShareItems (NSSharingService sharingService, NSObject [] items, NSSharingContentScope sharingContentScope);
+	}
+	
+	[MountainLion]
+	[BaseType (typeof (NSObject),
+	           Delegates=new string [] {"WeakDelegate"},
+	Events=new Type [] { typeof (NSSharingServicePickerDelegate) })]
+	public interface NSSharingServicePicker 
+	{
+		[Export ("delegate")][NullAllowed]
+		NSObject WeakDelegate { get; set; }
+		
+		[Wrap ("WeakDelegate")][NullAllowed]
+		NSSharingServicePickerDelegate Delegate { get; set; }
+		
+		[Export ("initWithItems:")]
+		IntPtr Constructor (NSObject [] items);
+		
+		[Export ("showRelativeToRect:ofView:preferredEdge:")]
+		void ShowRelativeToRect (RectangleF rect, NSView view, NSRectEdge preferredEdge);
+	}
+	
+	[MountainLion]
+	[BaseType (typeof (NSObject))]
+	[Model]
+	public interface NSSharingServicePickerDelegate 
+	{
+		[Export ("sharingServicePicker:sharingServicesForItems:proposedSharingServices:"), DelegateName ("SharingServicePickerSharingServicesForItems"), DefaultValueFromArgument ("proposedServices")]
+		NSSharingService [] SharingServicesForItems (NSSharingServicePicker sharingServicePicker, NSObject [] items, NSSharingService [] proposedServices);
+		
+		[Export ("sharingServicePicker:delegateForSharingService:"), DelegateName ("SharingServicePickerDelegateForSharingService"), DefaultValue (null)]
+		NSSharingServiceDelegate DelegateForSharingService (NSSharingServicePicker sharingServicePicker, NSSharingService sharingService);
+		
+		[Export ("sharingServicePicker:didChooseSharingService:"), EventArgs ("sharingServicePickerDidChooseSharingService")]
+		void DidChooseSharingService (NSSharingServicePicker sharingServicePicker, NSSharingService service);
+	}
 }

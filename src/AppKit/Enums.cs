@@ -1710,4 +1710,10 @@ namespace MonoMac.AppKit {
 		User = 1 << 1,
 		Computer = 1 << 2,
 	}
+
+	public enum NSSharingContentScope {
+		Item,
+		Partial,
+		Full
+	}
 }
