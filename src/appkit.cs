@@ -10849,7 +10849,7 @@ namespace MonoMac.AppKit {
 		void AdjustPageHeightNew (float newBottom, float top, float proposedBottom, float bottomLimit);
 		
 		[Export ("knowsPageRange:")]
-		bool KnowsPageRange (NSRange aRange);
+		bool KnowsPageRange (ref NSRange aRange);
 		
 		[Export ("rectForPage:")]
 		RectangleF RectForPage (int pageNumber);
