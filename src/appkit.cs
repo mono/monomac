@@ -14853,7 +14853,7 @@ namespace MonoMac.AppKit {
 		NSSharingService [] SharingServicesForItems (NSObject [] items);
 		
 		[Export ("sharingServiceNamed:")][Static]
-		NSSharingService SharingServiceNamed (string serviceName);
+		NSSharingService GetSharingService (NSString serviceName);
 		
 		[Export ("initWithTitle:image:alternateImage:handler:")]
 		IntPtr Constructor (string title, NSImage image, NSImage alternateImage, NSSharingServiceHandler handler);
@@ -14866,49 +14866,49 @@ namespace MonoMac.AppKit {
 		
 		// Constants
 
-		[Field ("NSSharingServiceNamePostOnFacebook")]
+		[Field ("NSSharingServiceNamePostOnFacebook")][Internal]
 		NSString NSSharingServiceNamePostOnFacebook { get; }
 		
-		[Field ("NSSharingServiceNamePostOnTwitter")]
+		[Field ("NSSharingServiceNamePostOnTwitter")][Internal]
 		NSString NSSharingServiceNamePostOnTwitter { get; }
 		
-		[Field ("NSSharingServiceNamePostOnSinaWeibo")]
+		[Field ("NSSharingServiceNamePostOnSinaWeibo")][Internal]
 		NSString NSSharingServiceNamePostOnSinaWeibo { get; }
 		
-		[Field ("NSSharingServiceNameComposeEmail")]
+		[Field ("NSSharingServiceNameComposeEmail")][Internal]
 		NSString NSSharingServiceNameComposeEmail { get; }
 		
-		[Field ("NSSharingServiceNameComposeMessage")]
+		[Field ("NSSharingServiceNameComposeMessage")][Internal]
 		NSString NSSharingServiceNameComposeMessage { get; }
 		
-		[Field ("NSSharingServiceNameSendViaAirDrop")]
+		[Field ("NSSharingServiceNameSendViaAirDrop")][Internal]
 		NSString NSSharingServiceNameSendViaAirDrop { get; }
 		
-		[Field ("NSSharingServiceNameAddToSafariReadingList")]
+		[Field ("NSSharingServiceNameAddToSafariReadingList")][Internal]
 		NSString NSSharingServiceNameAddToSafariReadingList { get; }
 		
-		[Field ("NSSharingServiceNameAddToIPhoto")]
+		[Field ("NSSharingServiceNameAddToIPhoto")][Internal]
 		NSString NSSharingServiceNameAddToIPhoto { get; }
 		
-		[Field ("NSSharingServiceNameAddToAperture")]
+		[Field ("NSSharingServiceNameAddToAperture")][Internal]
 		NSString NSSharingServiceNameAddToAperture { get; }
 		
-		[Field ("NSSharingServiceNameUseAsTwitterProfileImage")]
+		[Field ("NSSharingServiceNameUseAsTwitterProfileImage")][Internal]
 		NSString NSSharingServiceNameUseAsTwitterProfileImage { get; }
 		
-		[Field ("NSSharingServiceNameUseAsDesktopPicture")]
+		[Field ("NSSharingServiceNameUseAsDesktopPicture")][Internal]
 		NSString NSSharingServiceNameUseAsDesktopPicture { get; }
 		
-		[Field ("NSSharingServiceNamePostImageOnFlickr")]
+		[Field ("NSSharingServiceNamePostImageOnFlickr")][Internal]
 		NSString NSSharingServiceNamePostImageOnFlickr { get; }
 		
-		[Field ("NSSharingServiceNamePostVideoOnVimeo")]
+		[Field ("NSSharingServiceNamePostVideoOnVimeo")][Internal]
 		NSString NSSharingServiceNamePostVideoOnVimeo { get; }
 		
-		[Field ("NSSharingServiceNamePostVideoOnYouku")]
+		[Field ("NSSharingServiceNamePostVideoOnYouku")][Internal]
 		NSString NSSharingServiceNamePostVideoOnYouku { get; }
 		
-		[Field ("NSSharingServiceNamePostVideoOnTudou")]
+		[Field ("NSSharingServiceNamePostVideoOnTudou")][Internal]
 		NSString NSSharingServiceNamePostVideoOnTudou { get; }
 	}
 	
@@ -14917,22 +14917,22 @@ namespace MonoMac.AppKit {
 	[Model]
 	public interface NSSharingServiceDelegate 
 	{
-		[Export ("sharingService:willShareItems:"), EventArgs ("SharingServiceWillShareItems")]
+		[Export ("sharingService:willShareItems:"), EventArgs ("NSSharingServiceItems")]
 		void WillShareItems (NSSharingService sharingService, NSObject [] items);
 		
-		[Export ("sharingService:didFailToShareItems:error:"), EventArgs ("SharingServiceDidFailToShareItems")]
+		[Export ("sharingService:didFailToShareItems:error:"), EventArgs ("NSSharingServiceDidFailToShareItems")]
 		void DidFailToShareItems (NSSharingService sharingService, NSObject [] items, NSError error);
 		
-		[Export ("sharingService:didShareItems:"), EventArgs ("SharingServiceDidShareItems")]
+		[Export ("sharingService:didShareItems:"), EventArgs ("NSSharingServiceItems")]
 		void DidShareItems (NSSharingService sharingService, NSObject [] items);
 		
-		[Export ("sharingService:sourceFrameOnScreenForShareItem:"), DelegateName ("SharingServiceSourceFrameOnScreenForShareItem"), DefaultValue (null)]
+		[Export ("sharingService:sourceFrameOnScreenForShareItem:"), DelegateName ("NSSharingServiceSourceFrameOnScreenForShareItem"), DefaultValue (null)]
 		RectangleF SourceFrameOnScreenForShareItem (NSSharingService sharingService, NSPasteboardWriting item);
 		
-		[Export ("sharingService:transitionImageForShareItem:contentRect:"), DelegateName ("SharingServiceTransitionImageForShareItem"), DefaultValue (null)]
+		[Export ("sharingService:transitionImageForShareItem:contentRect:"), DelegateName ("NSSharingServiceTransitionImageForShareItem"), DefaultValue (null)]
 		NSImage TransitionImageForShareItem (NSSharingService sharingService, NSPasteboardWriting item, RectangleF contentRect);
 		
-		[Export ("sharingService:sourceWindowForShareItems:sharingContentScope:"), DelegateName ("SharingServiceSourceWindowForShareItems"), DefaultValue (null)]
+		[Export ("sharingService:sourceWindowForShareItems:sharingContentScope:"), DelegateName ("NSSharingServiceSourceWindowForShareItems"), DefaultValue (null)]
 		NSWindow SourceWindowForShareItems (NSSharingService sharingService, NSObject [] items, NSSharingContentScope sharingContentScope);
 	}
 	
@@ -14960,13 +14960,13 @@ namespace MonoMac.AppKit {
 	[Model]
 	public interface NSSharingServicePickerDelegate 
 	{
-		[Export ("sharingServicePicker:sharingServicesForItems:proposedSharingServices:"), DelegateName ("SharingServicePickerSharingServicesForItems"), DefaultValueFromArgument ("proposedServices")]
+		[Export ("sharingServicePicker:sharingServicesForItems:proposedSharingServices:"), DelegateName ("NSSharingServicePickerSharingServicesForItems"), DefaultValueFromArgument ("proposedServices")]
 		NSSharingService [] SharingServicesForItems (NSSharingServicePicker sharingServicePicker, NSObject [] items, NSSharingService [] proposedServices);
 		
-		[Export ("sharingServicePicker:delegateForSharingService:"), DelegateName ("SharingServicePickerDelegateForSharingService"), DefaultValue (null)]
+		[Export ("sharingServicePicker:delegateForSharingService:"), DelegateName ("NSSharingServicePickerDelegateForSharingService"), DefaultValue (null)]
 		NSSharingServiceDelegate DelegateForSharingService (NSSharingServicePicker sharingServicePicker, NSSharingService sharingService);
 		
-		[Export ("sharingServicePicker:didChooseSharingService:"), EventArgs ("sharingServicePickerDidChooseSharingService")]
+		[Export ("sharingServicePicker:didChooseSharingService:"), EventArgs ("NSSharingServicePickerDidChooseSharingService")]
 		void DidChooseSharingService (NSSharingServicePicker sharingServicePicker, NSSharingService service);
 	}
 }
