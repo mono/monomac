@@ -1710,4 +1710,28 @@ namespace MonoMac.AppKit {
 		User = 1 << 1,
 		Computer = 1 << 2,
 	}
+
+	public enum NSSharingContentScope {
+		Item,
+		Partial,
+		Full
+	}
+
+	public enum NSSharingServiceName {
+		PostOnFacebook,
+		PostOnTwitter,
+		PostOnSinaWeibo,
+		ComposeEmail,
+		ComposeMessage,
+		SendViaAirDrop,
+		AddToSafariReadingList,
+		AddToIPhoto,
+		AddToAperture,
+		UseAsTwitterProfileImage,
+		UseAsDesktopPicture,
+		PostImageOnFlickr,
+		PostVideoOnVimeo,
+		PostVideoOnYouku,
+		PostVideoOnTudou
+	}
 }

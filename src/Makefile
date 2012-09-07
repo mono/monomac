@@ -67,6 +67,7 @@ MONOMAC_SOURCES = \
 	./AppKit/NSOpenGLPixelFormat.cs			\
 	./AppKit/NSPopUpButton.cs			\
 	./AppKit/NSPopUpButtonCell.cs			\
+	./AppKit/NSSharingService.cs			\
 	./AppKit/NSSegmentedControl.cs			\
 	./AppKit/NSTableView.cs				\
 	./AppKit/NSWindow.cs				\
