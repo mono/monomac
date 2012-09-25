@@ -178,7 +178,7 @@ APIS = \
 all: $(TARGETS)
 
 parse.exe: parse.cs $(MACCORE_DIR)/src/Options.cs
-	gmcs -g parse.cs $(MACCORE_DIR)/src/Options.cs
+	gmcs -debug parse.cs $(MACCORE_DIR)/src/Options.cs
 
 core.dll: $(CORE_SOURCES) $(SHARED_CORE_SOURCES) Makefile
 	gmcs -target:library -debug -unsafe -out:core.dll -define:MONOMAC,MONOMAC_BOOTSTRAP,COREBUILD $(CORE_SOURCES) $(SHARED_CORE_SOURCES) -r:System.Drawing

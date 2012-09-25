@@ -116,35 +116,6 @@ namespace MonoMac.Foundation {
 
 	}
 
-
-	[BaseType (typeof (NSObject))]
-	public interface NSOrthography {
-		[Export ("dominantScript")]
-		NSString DominantScript { get;  }
-
-		[Export ("languageMap")]
-		NSDictionary LanguageMap { get;  }
-
-		[Export ("dominantLanguage")]
-		string DominantLanguage { get;  }
-
-		[Export ("allScripts")]
-		string [] AllScripts { get;  }
-
-		[Export ("allLanguages")]
-		string [] AllLanguages { get;  }
-
-		[Export ("languagesForScript:")]
-		string [] LanguagesForScript (string script);
-
-		[Export ("dominantLanguageForScript:")]
-		string GetDominantLanguageForScript (string forScript);
-
-		[Export ("initWithDominantScript:languageMap:")]
-		IntPtr Constructor (string script, NSDictionary map);
-
-	}
-
 	[BaseType (typeof (NSObject))]
 	public interface NSTextCheckingResult {
 		[Export ("resultType")]
