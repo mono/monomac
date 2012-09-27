@@ -45,6 +45,7 @@ namespace MonoMac.Foundation {
 		static IntPtr pk = Dlfcn.dlopen (Constants.PdfKitLibrary, 1);
 		static IntPtr ik = Dlfcn.dlopen (Constants.ImageKitLibrary, 1);
 		static IntPtr sb = Dlfcn.dlopen (Constants.ScriptingBridgeLibrary, 1);
+		static IntPtr av = Dlfcn.dlopen (Constants.AVFoundationLibrary, 1);
 	}
 }
 
