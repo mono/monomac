@@ -3119,6 +3119,9 @@ namespace MonoMac.AppKit {
 		[Export ("stringValue")]
 		string StringValue { get; set; }
 
+		[Export ("attributedStringValue")]
+		NSAttributedString AttributedStringValue { get; set; }
+
 		[Export ("intValue")]
 		int IntValue { get; set; }
 
