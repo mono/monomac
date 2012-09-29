@@ -156,6 +156,7 @@ SHARED_API = \
 	./coreimage.cs		\
 	./coremidi.cs		\
 	./corelocation.cs	\
+	./imageio.cs		\
 	./quicklook.cs
 
 SHARED_SOURCES = $(patsubst %,$(MACCORE_DIR)/src/%,$(SHARED_SOURCE))
