@@ -91,6 +91,8 @@ namespace MonoMac.OpenGL {
 		extern static CGLErrorCode CGLChoosePixelFormat (CGLPixelFormatAttribute[] attributes, IntPtr pix, IntPtr npix);
 		public CGLPixelFormat (CGLPixelFormatAttribute[] attributes, out int npix)
 		{
+			if (attributes == null)
+				throw new ArgumentNullException ("attributes");
 			var pixelFormatOut = Marshal.AllocHGlobal (Marshal.SizeOf (typeof (IntPtr)));
 			var npixOut = Marshal.AllocHGlobal (Marshal.SizeOf (typeof (IntPtr)));
 			var marshalAttribs = new CGLPixelFormatAttribute [attributes.Length + 1];

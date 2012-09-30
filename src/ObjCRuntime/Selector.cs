@@ -25,9 +25,9 @@ using System.Runtime.InteropServices;
 
 namespace MonoMac.ObjCRuntime {
 	[StructLayout(LayoutKind.Sequential)]
-	public class Selector {
-		public static IntPtr Init = Selector.GetHandle ("init");
-		public static IntPtr InitWithCoder = Selector.GetHandle ("initWithCoder:");
+	public class Selector : IEquatable<Selector>{
+		public static readonly IntPtr Init = Selector.GetHandle ("init");
+		public static readonly IntPtr InitWithCoder = Selector.GetHandle ("initWithCoder:");
 		static IntPtr MethodSignatureForSelector = Selector.GetHandle ("methodSignatureForSelector:");
 		static IntPtr FrameLength = Selector.GetHandle ("frameLength");
 		internal static IntPtr Alloc = Selector.GetHandle ("alloc");
@@ -97,9 +97,16 @@ namespace MonoMac.ObjCRuntime {
 				return false;
 
 			if (right is Selector)
-				return sel_isEqual (handle, ((Selector) right).handle);
+				return Equals ((Selector) right);
 
 			return false;
+		}
+
+		public bool Equals (Selector right) {
+			if (right == null)
+				return false;
+
+			return sel_isEqual (handle, right.handle);
 		}
 
 		public override int GetHashCode () {

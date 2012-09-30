@@ -29,10 +29,10 @@ using MonoMac;
 
 namespace MonoMac.AppKit {
 	public static class NSGraphics {
-		public const float White = 1;
-		public const float Black = 0;
-		public const float LightGray = (float) 2/3.0f;
-		public const float DarkGray = (float) 1/3.0f;
+		public static readonly float White = 1;
+		public static readonly float Black = 0;
+		public static readonly float LightGray = (float) 2/3.0f;
+		public static readonly float DarkGray = (float) 1/3.0f;
 		
 		[DllImport (Constants.AppKitLibrary)]
 		extern static NSWindowDepth NSBestDepth (IntPtr colorspaceHandle, int bitsPerSample, int bitsPerPixel, bool planar, ref bool exactMatch);
@@ -40,7 +40,7 @@ namespace MonoMac.AppKit {
 		public static NSWindowDepth BestDepth (NSString colorspace, int bitsPerSample, int bitsPerPixel, bool planar, ref bool exactMatch)
 		{
 			if (colorspace == null)
-				throw new ArgumentNullException ("colorpsace");
+				throw new ArgumentNullException ("colorspace");
 			
 			return NSBestDepth (colorspace.Handle, bitsPerSample, bitsPerPixel, planar, ref exactMatch);
 		}
