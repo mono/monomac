@@ -27,8 +27,8 @@ namespace MonoMac.QTKit {
 	
 	[StructLayout (LayoutKind.Sequential)]
 	public partial struct QTTime {
-		public static QTTime Zero = new QTTime (0, 1, 0);
-		public static QTTime IndefiniteTime = new QTTime (0, 1, TimeFlags.TimeIsIndefinite);
+		public static readonly QTTime Zero = new QTTime (0, 1, 0);
+		public static readonly QTTime IndefiniteTime = new QTTime (0, 1, TimeFlags.TimeIsIndefinite);
 		public long TimeValue;
 		public int  TimeScale;
 		public TimeFlags Flags;

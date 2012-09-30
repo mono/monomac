@@ -24,6 +24,7 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 //
+using System;
 using MonoMac.Foundation;
 using MonoMac.CoreGraphics;
 
@@ -31,6 +32,8 @@ namespace MonoMac.AppKit {
 	public partial class NSGraphicsContext {
 		public static NSGraphicsContext FromGraphicsPort (CGContext context, bool initialFlippedState)
 		{
+			if (context == null)
+				throw new ArgumentNullException ("context");
 			return FromGraphicsPort (context.Handle, initialFlippedState);
 		}
 	}
