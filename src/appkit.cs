@@ -10859,6 +10859,46 @@ namespace MonoMac.AppKit {
 		
 		[Export ("locationOfPrintRect:")]
 		PointF LocationOfPrintRect (RectangleF aRect);
+		
+		[Lion, Export ("backingAlignedRect:options:")]
+		RectangleF BackingAlignedRect (RectangleF aRect, NSAlignmentOptions options);
+
+		[Lion, Export ("convertRectFromBacking:")]
+		RectangleF ConvertRectFromBacking (RectangleF aRect);
+
+		[Lion, Export ("convertRectToBacking:")]
+		RectangleF ConvertRectToBacking (RectangleF aRect);
+
+		[Lion, Export ("convertRectFromLayer:")]
+		RectangleF ConvertRectFromLayer (RectangleF aRect);
+
+		[Lion, Export ("convertRectToLayer:")]
+		RectangleF ConvertRectToLayer (RectangleF aRect);
+
+		[Lion, Export ("convertPointFromBacking:")]
+		PointF ConvertPointFromBacking (PointF aPoint);
+
+		[Lion, Export ("convertPointToBacking:")]
+		PointF ConvertPointToBacking (PointF aPoint);
+
+		[Lion, Export ("convertPointFromLayer:")]
+		PointF ConvertPointFromLayer (PointF aPoint);
+
+		[Lion, Export ("convertPointToLayer:")]
+		PointF ConvertPointToLayer (PointF aPoint);
+
+		[Lion, Export ("convertSizeFromBacking:")]
+		SizeF ConvertSizeFromBacking (SizeF aSize);
+
+		[Lion, Export ("convertSizeToBacking:")]
+		SizeF ConvertSizeToBacking (SizeF aSize);
+
+		[Lion, Export ("convertSizeFromLayer:")]
+		SizeF ConvertSizeFromLayer (SizeF aSize);
+
+		[Lion, Export ("convertSizeToLayer:")]
+		SizeF ConvertSizeToLayer (SizeF aSize);
+
 	}
 
 	[BaseType (typeof (NSAnimation))]
