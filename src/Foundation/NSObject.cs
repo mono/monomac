@@ -260,8 +260,6 @@ namespace MonoMac.Foundation {
 		public virtual void PerformSelector (Selector sel, NSObject obj, double delay) {
 			if (sel == null)
 				throw new ArgumentNullException ("sel");
-			if (obj == null)
-				throw new ArgumentNullException ("obj");
 			if (IsDirectBinding) {
 				Messaging.void_objc_msgSend_intptr_intptr_double (this.Handle, selPerformSelectorWithObjectAfterDelay, sel.Handle, obj == null ? IntPtr.Zero : obj.Handle, delay);
 			} else {
