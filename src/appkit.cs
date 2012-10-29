@@ -1113,6 +1113,48 @@ namespace MonoMac.AppKit {
 		
 		[Export ("representationUsingType:properties:")]
 		NSData RepresentationUsingTypeProperties(NSBitmapImageFileType storageType, NSDictionary properties);
+
+		[Field ("NSImageCompressionMethod")]
+		NSString CompressionMethod { get; }
+
+		[Field ("NSImageCompressionFactor")]
+		NSString CompressionFactor { get; }
+
+		[Field ("NSImageDitherTransparency")]
+		NSString DitherTransparency { get; }
+
+		[Field ("NSImageRGBColorTable")]
+		NSString RGBColorTable { get; }
+
+		[Field ("NSImageInterlaced")]
+		NSString Interlaced { get; }
+
+		[Field ("NSImageColorSyncProfileData")]
+		NSString ColorSyncProfileData { get; }
+
+		[Field ("NSImageFrameCount")]
+		NSString FrameCount { get; }
+
+		[Field ("NSImageCurrentFrame")]
+		NSString CurrentFrame { get; }
+
+		[Field ("NSImageCurrentFrameDuration")]
+		NSString CurrentFrameDuration { get; }
+
+		[Field ("NSImageLoopCount")]
+		NSString LoopCount { get; }
+
+		[Field ("NSImageGamma")]
+		NSString Gamma { get; }
+
+		[Field ("NSImageProgressive")]
+		NSString Progressive { get; }
+
+		[Field ("NSImageEXIFData")]
+		NSString EXIFData { get; }
+
+		[Field ("NSImageFallbackBackgroundColor")]
+		NSString FallbackBackgroundColor { get; }
 	}
 
 	[BaseType (typeof (NSView))]
