@@ -408,7 +408,7 @@ namespace macdoc
 			}
 		}
 
-		void HandleWebViewDecidePolicyForNavigation (object sender, WebNavigatioPolicyEventArgs e)
+		void HandleWebViewDecidePolicyForNavigation (object sender, WebNavigationPolicyEventArgs e)
 		{
 			if (LoadingFromString){
 				WebView.DecideUse (e.DecisionToken);

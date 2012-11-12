@@ -36,7 +36,7 @@ namespace MonoMac.ObjCRuntime {
 #if !MONOMAC_BOOTSTRAP
 		private static MethodInfo convertarray = typeof (NSArray).GetMethod ("ArrayFromHandle", new Type [] { typeof (IntPtr) });
 		private static MethodInfo convertsarray = typeof (NSArray).GetMethod ("StringArrayFromHandle", new Type [] { typeof (IntPtr) });
-		private static MethodInfo convertstring = typeof (NSString).GetMethod ("ToString", new Type [] {});
+		private static MethodInfo convertstring = typeof (NSString).GetMethod ("ToString", Type.EmptyTypes);
 		private static MethodInfo getobject = typeof (Runtime).GetMethod ("GetNSObject", BindingFlags.Static | BindingFlags.Public);
 		private static MethodInfo gethandle = typeof (NSObject).GetMethod ("get_Handle", BindingFlags.Instance | BindingFlags.Public);
 		private static FieldInfo intptrzero = typeof (IntPtr).GetField ("Zero", BindingFlags.Static | BindingFlags.Public);
@@ -175,6 +175,7 @@ namespace MonoMac.ObjCRuntime {
 		}
 
 		protected void DeclareLocals (ILGenerator il) {
+			// Keep in sync with UpdateByRefArguments()
 			for (int i = 0; i < Parameters.Length; i++) {
 				if (Parameters [i].ParameterType.IsByRef && IsWrappedType (Parameters [i].ParameterType.GetElementType ())) {
 					il.DeclareLocal (Parameters [i].ParameterType.GetElementType ());
@@ -191,22 +192,46 @@ namespace MonoMac.ObjCRuntime {
 #if !MONOMAC_BOOTSTRAP
 			for (int i = ArgumentOffset, j = 0; i < ParameterTypes.Length; i++) {
 				if (Parameters [i-ArgumentOffset].ParameterType.IsByRef && (Attribute.GetCustomAttribute (Parameters [i-ArgumentOffset], typeof (OutAttribute)) == null) && IsWrappedType (Parameters[i-ArgumentOffset].ParameterType.GetElementType ())) {
+					var nullout = il.DefineLabel ();
+					var done = il.DefineLabel ();
+					il.Emit (OpCodes.Ldarg, i);
+					il.Emit (OpCodes.Brfalse, nullout);
 					il.Emit (OpCodes.Ldarg, i);
 					il.Emit (OpCodes.Ldind_I);
 					il.Emit (OpCodes.Call, getobject);
+					il.Emit (OpCodes.Br, done);
+					il.MarkLabel (nullout);
+					il.Emit (OpCodes.Ldnull);
+					il.MarkLabel (done);
 					il.Emit (OpCodes.Stloc, j+locoffset);
 					j++;
 				} else if (Parameters [i-ArgumentOffset].ParameterType.IsArray && IsWrappedType (Parameters [i-ArgumentOffset].ParameterType.GetElementType ())) {
+					var nullout = il.DefineLabel ();
+					var done = il.DefineLabel ();
+					il.Emit (OpCodes.Ldarg, i);
+					il.Emit (OpCodes.Brfalse, nullout);
 					il.Emit (OpCodes.Ldarg, i);
 					if (Parameters [i-ArgumentOffset].ParameterType.GetElementType () == typeof (string))
 						il.Emit (OpCodes.Call, convertsarray);
 					else
 						il.Emit (OpCodes.Call, convertarray.MakeGenericMethod (Parameters [i-ArgumentOffset].ParameterType.GetElementType ()));
+					il.Emit (OpCodes.Br, done);
+					il.MarkLabel (nullout);
+					il.Emit (OpCodes.Ldnull);
+					il.MarkLabel (done);
 					il.Emit (OpCodes.Stloc, j+locoffset);
 					j++;
 				} else if (Parameters [i-ArgumentOffset].ParameterType == typeof (string)) {
+					var nullout = il.DefineLabel ();
+					var done = il.DefineLabel ();
+					il.Emit (OpCodes.Ldarg, i);
+					il.Emit (OpCodes.Brfalse, nullout);
 					il.Emit (OpCodes.Ldarg, i);
 					il.Emit (OpCodes.Call, convertstring);
+					il.Emit (OpCodes.Br, done);
+					il.MarkLabel (nullout);
+					il.Emit (OpCodes.Ldnull);
+					il.MarkLabel (done);
 					il.Emit (OpCodes.Stloc, j+locoffset);
 					j++;
 				}
@@ -236,6 +261,7 @@ namespace MonoMac.ObjCRuntime {
 
 		protected void UpdateByRefArguments (ILGenerator il, int locoffset) {
 #if !MONOMAC_BOOTSTRAP
+			// Keep in sync with DeclareLocals()
 			for (int i = ArgumentOffset, j = 0; i < ParameterTypes.Length; i++) {
 				if (Parameters [i-ArgumentOffset].ParameterType.IsByRef && IsWrappedType (Parameters[i-ArgumentOffset].ParameterType.GetElementType ())) {
 					Label nullout = il.DefineLabel ();
@@ -252,6 +278,10 @@ namespace MonoMac.ObjCRuntime {
 					il.Emit (OpCodes.Ldsfld, intptrzero);
 					il.Emit (OpCodes.Stind_I);
 					il.MarkLabel (done);
+					j++;
+				} else if (Parameters [i-ArgumentOffset].ParameterType.IsArray && IsWrappedType (Parameters [i-ArgumentOffset].ParameterType.GetElementType ())) {
+					j++;
+				} else if (Parameters [i-ArgumentOffset].ParameterType == typeof (string)) {
 					j++;
 				}
 			}

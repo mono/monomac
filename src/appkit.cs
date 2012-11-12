@@ -32,6 +32,7 @@
 
 using System;
 using System.Drawing;
+using System.Diagnostics;
 using MonoMac.Foundation;
 using MonoMac.ObjCRuntime;
 using MonoMac.CoreGraphics;
@@ -1112,6 +1113,48 @@ namespace MonoMac.AppKit {
 		
 		[Export ("representationUsingType:properties:")]
 		NSData RepresentationUsingTypeProperties(NSBitmapImageFileType storageType, NSDictionary properties);
+
+		[Field ("NSImageCompressionMethod")]
+		NSString CompressionMethod { get; }
+
+		[Field ("NSImageCompressionFactor")]
+		NSString CompressionFactor { get; }
+
+		[Field ("NSImageDitherTransparency")]
+		NSString DitherTransparency { get; }
+
+		[Field ("NSImageRGBColorTable")]
+		NSString RGBColorTable { get; }
+
+		[Field ("NSImageInterlaced")]
+		NSString Interlaced { get; }
+
+		[Field ("NSImageColorSyncProfileData")]
+		NSString ColorSyncProfileData { get; }
+
+		[Field ("NSImageFrameCount")]
+		NSString FrameCount { get; }
+
+		[Field ("NSImageCurrentFrame")]
+		NSString CurrentFrame { get; }
+
+		[Field ("NSImageCurrentFrameDuration")]
+		NSString CurrentFrameDuration { get; }
+
+		[Field ("NSImageLoopCount")]
+		NSString LoopCount { get; }
+
+		[Field ("NSImageGamma")]
+		NSString Gamma { get; }
+
+		[Field ("NSImageProgressive")]
+		NSString Progressive { get; }
+
+		[Field ("NSImageEXIFData")]
+		NSString EXIFData { get; }
+
+		[Field ("NSImageFallbackBackgroundColor")]
+		NSString FallbackBackgroundColor { get; }
 	}
 
 	[BaseType (typeof (NSView))]
@@ -3118,6 +3161,9 @@ namespace MonoMac.AppKit {
 		[Export ("stringValue")]
 		string StringValue { get; set; }
 
+		[Export ("attributedStringValue")]
+		NSAttributedString AttributedStringValue { get; set; }
+
 		[Export ("intValue")]
 		int IntValue { get; set; }
 
@@ -4184,7 +4230,7 @@ namespace MonoMac.AppKit {
 
 		[Static]
 		[Export ("fontWithDescriptor:textTransform:")]
-		NSFont FromDescription (NSFontDescriptor fontDescriptor, NSAffineTransform textTransform);
+		NSFont FromDescription (NSFontDescriptor fontDescriptor, [NullAllowed] NSAffineTransform textTransform);
 
 		[Static]
 		[Export ("userFontOfSize:")]
@@ -4998,60 +5044,79 @@ namespace MonoMac.AppKit {
 		int WindowNumber { get; }
 
 		[Export ("context")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		NSGraphicsContext Context { get; }
 
 		[Export ("clickCount")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		int ClickCount { get; }
 
 		[Export ("buttonNumber")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		int ButtonNumber { get; }
 
 		[Export ("eventNumber")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		int EventNumber { get; }
 
 		[Export ("pressure")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		float Pressure { get; }
 
 		[Export ("locationInWindow")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		PointF LocationInWindow { get; }
 
 		[Export ("deltaX")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		float DeltaX { get; }
 
 		[Export ("deltaY")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		float DeltaY { get; }
 
 		[Export ("deltaZ")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		float DeltaZ { get; }
 
 		[Export ("characters")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		string Characters { get; }
 
 		[Export ("charactersIgnoringModifiers")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		string CharactersIgnoringModifiers { get; }
 
 		[Export ("isARepeat")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		bool IsARepeat { get; }
 
 		[Export ("keyCode")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		ushort KeyCode { get; }
 
 		[Export ("trackingNumber")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		int TrackingNumber { get; }
 
 		[Export ("userData")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		IntPtr UserData { get; }
 
 		[Export ("trackingArea")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		NSTrackingArea TrackingArea { get; }
 
 		[Export ("subtype")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		short Subtype { get; }
 
 		[Export ("data1")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		int Data1 { get; }
 
 		[Export ("data2")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		int Data2 { get; }
 
 		//[Export ("eventRef")]
@@ -5069,64 +5134,83 @@ namespace MonoMac.AppKit {
 		NSEvent EventWithCGEvent (IntPtr cgEventPtr);
 
 		[Export ("magnification")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		float Magnification { get; }
 
 		[Export ("deviceID")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		uint DeviceID { get; }
 
 		[Export ("rotation")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		float Rotation { get; }
 
 		[Export ("absoluteX")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		int AbsoluteX { get; }
 
 		[Export ("absoluteY")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		int AbsoluteY { get; }
 
 		[Export ("absoluteZ")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		int AbsoluteZ { get; }
 
 		// TODO: What is the type?
 		[Export ("buttonMask")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		uint ButtonMask { get; }
 
 		[Export ("tilt")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		PointF Tilt { get; }
 
 		[Export ("tangentialPressure")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		float TangentialPressure { get; }
 
 		[Export ("vendorDefined")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		NSObject VendorDefined { get; }
 
 		[Export ("vendorID")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		uint VendorID { get; }
 
 		[Export ("tabletID")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		uint TabletID { get; }
 
 		[Export ("pointingDeviceID")]
 		uint PointingDeviceID ();
 
 		[Export ("systemTabletID")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		uint SystemTabletID { get; }
 
 		[Export ("vendorPointingDeviceType")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		uint VendorPointingDeviceType { get; }
 
 		[Export ("pointingDeviceSerialNumber")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		uint PointingDeviceSerialNumber { get; }
 
 		[Export ("uniqueID")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		long UniqueID { get; }
 
 		[Export ("capabilityMask")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		uint CapabilityMask { get; }
 
 		[Export ("pointingDeviceType")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		NSPointingDeviceType PointingDeviceType { get; }
 
 		[Export ("isEnteringProximity")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		bool IsEnteringProximity { get; }
 
 		[Export ("touchesMatchingPhase:inView:")]
@@ -5199,26 +5283,32 @@ namespace MonoMac.AppKit {
 
 		[Lion]
 		[Export ("hasPreciseScrollingDeltas")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		bool HasPreciseScrollingDeltas { get; }
 
 		[Lion]
 		[Export ("scrollingDeltaX")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		float ScrollingDeltaX { get; }
 
 		[Lion]
 		[Export ("scrollingDeltaY")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		float ScrollingDeltaY { get; }
 
 		[Lion]
 		[Export ("momentumPhase")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		NSEventPhase MomentumPhase { get; }
 
 		[Lion]
 		[Export ("isDirectionInvertedFromDevice")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		bool IsDirectionInvertedFromDevice { get; }
 
 		[Lion]
 		[Export ("phase")]
+		[DebuggerBrowsable (DebuggerBrowsableState.Never)]
 		NSEventPhase Phase { get; }
 
 		[Lion]
@@ -6132,7 +6222,7 @@ namespace MonoMac.AppKit {
 		//[Export ("outlineView:toolTipForCell:rect:tableColumn:item:mouseLocation:")]
 		//string ToolTipForCell (NSOutlineView outlineView, NSCell cell, NSRectPointer rect, NSTableColumn tableColumn, NSObject item, PointF mouseLocation);
 	
-		[Export ("outlineView:heightOfRowByItem:")]
+		[Export ("outlineView:heightOfRowByItem:"), NoDefaultValue]
 		float GetRowHeight (NSOutlineView outlineView, NSObject item);
 	
 		[Export ("outlineView:typeSelectStringForTableColumn:item:")]
@@ -6150,8 +6240,11 @@ namespace MonoMac.AppKit {
 		[Export ("outlineView:shouldTrackCell:forTableColumn:item:")]
 		bool ShouldTrackCell (NSOutlineView outlineView, NSCell cell, NSTableColumn tableColumn, NSObject item);
 	
-		[Export ("outlineView:dataCellForTableColumn:item:")]
+		[Export ("outlineView:dataCellForTableColumn:item:"), NoDefaultValue]
 		NSCell GetCell (NSOutlineView outlineView, NSTableColumn tableColumn, NSObject item);
+
+		[Export ("outlineView:viewForTableColumn:item:"), NoDefaultValue]
+		NSView GetView (NSOutlineView outlineView, NSTableColumn tableColumn, NSObject item);
 	
 		[Export ("outlineView:isGroupItem:")]
 		bool IsGroupItem (NSOutlineView outlineView, NSObject item);
@@ -6165,7 +6258,7 @@ namespace MonoMac.AppKit {
 		[Export ("outlineView:willDisplayOutlineCell:forTableColumn:item:")]
 		void WillDisplayOutlineCell (NSOutlineView outlineView, NSObject cell, NSTableColumn tableColumn, NSObject item);
 	
-		[Export ("outlineView:sizeToFitWidthOfColumn:")]
+		[Export ("outlineView:sizeToFitWidthOfColumn:"), NoDefaultValue]
 		float GetSizeToFitColumnWidth (NSOutlineView outlineView, int column);
 	
 		[Export ("outlineView:shouldReorderColumn:toColumn:")]
@@ -10757,6 +10850,57 @@ namespace MonoMac.AppKit {
 
 		[Export ("noteFocusRingMaskChanged")]
 		void NoteFocusRingMaskChanged ();
+		
+		[Export ("dataWithEPSInsideRect:")]
+		NSData DataWithEpsInsideRect (RectangleF rect);
+	
+		[Export ("dataWithPDFInsideRect:")]
+		NSData DataWithPdfInsideRect (RectangleF rect);
+	
+		[Export ("print:")]
+		void Print (NSObject sender);
+		
+		[Export ("printJobTitle")]
+		string PrintJobTitle { get; }
+		
+		[Export ("pageHeader")]
+		NSAttributedString PageHeader { get; }
+
+		[Export ("pageFooter")]
+		NSAttributedString PageFooter { get; }
+
+		[Export ("writeEPSInsideRect:toPasteboard:")]
+		void WriteEpsInsideRect (RectangleF rect, NSPasteboard pboard);
+
+		[Export ("writePDFInsideRect:toPasteboard:")]
+		void WritePdfInsideRect (RectangleF rect, NSPasteboard pboard);
+		
+		[Export ("drawPageBorderWithSize:")]
+		void DrawPageBorder (SizeF borderSize);
+		
+		[Export ("drawSheetBorderWithSize:")]
+		void DrawSheetBorder (SizeF borderSize);
+		
+		[Export ("heightAdjustLimit")]
+		float HeightAdjustLimit { get; }
+		
+		[Export ("widthAdjustLimit")]
+		float WidthAdjustLimit { get; }
+		
+		[Export ("adjustPageWidthNew:left:right:limit:")]
+		void AdjustPageWidthNew (float newRight, float left, float proposedRight, float rightLimit);
+		
+		[Export ("adjustPageHeightNew:top:bottom:limit:")]
+		void AdjustPageHeightNew (float newBottom, float top, float proposedBottom, float bottomLimit);
+		
+		[Export ("knowsPageRange:")]
+		bool KnowsPageRange (ref NSRange aRange);
+		
+		[Export ("rectForPage:")]
+		RectangleF RectForPage (int pageNumber);
+		
+		[Export ("locationOfPrintRect:")]
+		PointF LocationOfPrintRect (RectangleF aRect);
 	}
 
 	[BaseType (typeof (NSAnimation))]
@@ -10933,6 +11077,35 @@ namespace MonoMac.AppKit {
 
 		[Export ("viewAtColumn:")]
 		NSView ViewAtColumn (int column);
+	}
+
+	[Lion]
+	[BaseType (typeof (NSView))]
+	public interface NSTableCellView {
+		[Export ("backgroundStyle")]
+		NSBackgroundStyle BackgroundStyle {
+			get; set;
+		}
+
+		[Export ("imageView", ArgumentSemantic.Assign)]
+		NSImageView ImageView {
+			get; set;
+		}
+
+		[Export ("objectValue", ArgumentSemantic.Retain)]
+		NSObject ObjectValue {
+			get; set;
+		}
+
+		[Export ("rowSizeStyle")]
+		NSTableViewRowSizeStyle RowSizeStyle {
+			get; set;
+		}
+
+		[Export ("textField", ArgumentSemantic.Assign)]
+		NSTextField TextField {
+			get; set;
+		}
 	}
 
 	public delegate void NSTableViewRowHandler (NSTableRowView rowView, int row);
@@ -11293,7 +11466,7 @@ namespace MonoMac.AppKit {
 		bool ShouldSelectTableColumn (NSTableView tableView, NSTableColumn tableColumn);
 	
 		[Export ("tableView:mouseDownInHeaderOfTableColumn:"), EventArgs ("NSTableViewTable")]
-		void MouseDown (NSTableView tableView, NSTableColumn tableColumn);
+		void MouseDownInHeaderOfTableColumn (NSTableView tableView, NSTableColumn tableColumn);
 	
 		[Export ("tableView:didClickTableColumn:"), EventArgs ("NSTableViewTable")]
 		void DidClickTableColumn (NSTableView tableView, NSTableColumn tableColumn);
@@ -11305,7 +11478,7 @@ namespace MonoMac.AppKit {
 		//[Export ("tableView:toolTipForCell:rect:tableColumn:row:mouseLocation:")]
 		//string TableViewtoolTipForCellrecttableColumnrowmouseLocation (NSTableView tableView, NSCell cell, NSRectPointer rect, NSTableColumn tableColumn, int row, PointF mouseLocation);
 	
-		[Export ("tableView:heightOfRow:"), DelegateName ("NSTableViewRowHeight"), DefaultValue (16f)]
+		[Export ("tableView:heightOfRow:"), DelegateName ("NSTableViewRowHeight"), NoDefaultValue]
 		float GetRowHeight (NSTableView tableView, int row );
 	
 		[Export ("tableView:typeSelectStringForTableColumn:row:"), DelegateName ("NSTableViewColumnRowString"), DefaultValue ("String.Empty")]
@@ -11323,7 +11496,7 @@ namespace MonoMac.AppKit {
 		[Export ("tableView:shouldTrackCell:forTableColumn:row:"), DelegateName ("NSTableViewCell"), DefaultValue (false)]
 		bool ShouldTrackCell (NSTableView tableView, NSCell cell, NSTableColumn tableColumn, int row );
 	
-		[Export ("tableView:dataCellForTableColumn:row:"), DelegateName ("NSTableViewCellGetter"), DefaultValue (null)]
+		[Export ("tableView:dataCellForTableColumn:row:"), DelegateName ("NSTableViewCellGetter"), NoDefaultValue]
 		NSCell GetDataCell (NSTableView tableView, NSTableColumn tableColumn, int row );
 	
 		[Export ("tableView:isGroupRow:"), DelegateName ("NSTableViewRowPredicate"), DefaultValue (false)]
@@ -11348,7 +11521,7 @@ namespace MonoMac.AppKit {
 		void SelectionIsChanging (NSNotification notification);
 
 		[Lion]
-                [Export ("tableView:viewForTableColumn:row:"), DelegateName ("NSTableViewViewGetter"), DefaultValue (null)]
+                [Export ("tableView:viewForTableColumn:row:"), DelegateName ("NSTableViewViewGetter"), NoDefaultValue]
                 NSView GetViewForItem (NSTableView tableView, NSTableColumn tableColumn, int row);
 
 		[Lion]
@@ -13845,7 +14018,8 @@ namespace MonoMac.AppKit {
 	
 		[Export ("attachedSheet")]
 		NSWindow AttachedSheet { get; }
-	
+
+		[Static]
 		[Export ("standardWindowButton:forStyleMask:")]
 		NSButton StandardWindowButton (NSWindowButton b, NSWindowStyle styleMask);
 	
@@ -14743,4 +14917,152 @@ namespace MonoMac.AppKit {
 		NSPredicateEditorRowTemplate[] RowTemplates { get; set; }
 
 	} 	
+
+	// Start of NSSharingService.h
+	
+	[MountainLion]
+	public delegate void NSSharingServiceHandler ();
+	
+	[MountainLion]
+	[BaseType (typeof (NSObject),
+	           Delegates=new string [] {"WeakDelegate"},
+	Events=new Type [] { typeof (NSSharingServiceDelegate) })]
+	public interface NSSharingService 
+	{
+		
+		[Export ("delegate")][NullAllowed]
+		NSObject WeakDelegate { get; set; }
+		
+		[Wrap ("WeakDelegate")][NullAllowed]
+		NSSharingServiceDelegate Delegate { get; set; }
+		
+		[Export ("title")]
+		string Title { get; }
+		
+		[Export ("image")]
+		NSImage Image { get; }
+		
+		[Export ("alternateImage")]
+		NSImage AlternateImage { get; }
+		
+		[Export ("sharingServicesForItems:")][Static]
+		NSSharingService [] SharingServicesForItems (NSObject [] items);
+		
+		[Export ("sharingServiceNamed:")][Static]
+		NSSharingService GetSharingService (NSString serviceName);
+		
+		[Export ("initWithTitle:image:alternateImage:handler:")]
+		IntPtr Constructor (string title, NSImage image, NSImage alternateImage, NSSharingServiceHandler handler);
+		
+		[Export ("canPerformWithItems")]
+		bool CanPerformWithItems ([NullAllowed] NSObject [] items);
+
+		[Export ("performWithItems")]
+		void PerformWithItems (NSObject [] items);
+		
+		// Constants
+
+		[Field ("NSSharingServiceNamePostOnFacebook")][Internal]
+		NSString NSSharingServiceNamePostOnFacebook { get; }
+		
+		[Field ("NSSharingServiceNamePostOnTwitter")][Internal]
+		NSString NSSharingServiceNamePostOnTwitter { get; }
+		
+		[Field ("NSSharingServiceNamePostOnSinaWeibo")][Internal]
+		NSString NSSharingServiceNamePostOnSinaWeibo { get; }
+		
+		[Field ("NSSharingServiceNameComposeEmail")][Internal]
+		NSString NSSharingServiceNameComposeEmail { get; }
+		
+		[Field ("NSSharingServiceNameComposeMessage")][Internal]
+		NSString NSSharingServiceNameComposeMessage { get; }
+		
+		[Field ("NSSharingServiceNameSendViaAirDrop")][Internal]
+		NSString NSSharingServiceNameSendViaAirDrop { get; }
+		
+		[Field ("NSSharingServiceNameAddToSafariReadingList")][Internal]
+		NSString NSSharingServiceNameAddToSafariReadingList { get; }
+		
+		[Field ("NSSharingServiceNameAddToIPhoto")][Internal]
+		NSString NSSharingServiceNameAddToIPhoto { get; }
+		
+		[Field ("NSSharingServiceNameAddToAperture")][Internal]
+		NSString NSSharingServiceNameAddToAperture { get; }
+		
+		[Field ("NSSharingServiceNameUseAsTwitterProfileImage")][Internal]
+		NSString NSSharingServiceNameUseAsTwitterProfileImage { get; }
+		
+		[Field ("NSSharingServiceNameUseAsDesktopPicture")][Internal]
+		NSString NSSharingServiceNameUseAsDesktopPicture { get; }
+		
+		[Field ("NSSharingServiceNamePostImageOnFlickr")][Internal]
+		NSString NSSharingServiceNamePostImageOnFlickr { get; }
+		
+		[Field ("NSSharingServiceNamePostVideoOnVimeo")][Internal]
+		NSString NSSharingServiceNamePostVideoOnVimeo { get; }
+		
+		[Field ("NSSharingServiceNamePostVideoOnYouku")][Internal]
+		NSString NSSharingServiceNamePostVideoOnYouku { get; }
+		
+		[Field ("NSSharingServiceNamePostVideoOnTudou")][Internal]
+		NSString NSSharingServiceNamePostVideoOnTudou { get; }
+	}
+	
+	[MountainLion]
+	[BaseType (typeof (NSObject))]
+	[Model]
+	public interface NSSharingServiceDelegate 
+	{
+		[Export ("sharingService:willShareItems:"), EventArgs ("NSSharingServiceItems")]
+		void WillShareItems (NSSharingService sharingService, NSObject [] items);
+		
+		[Export ("sharingService:didFailToShareItems:error:"), EventArgs ("NSSharingServiceDidFailToShareItems")]
+		void DidFailToShareItems (NSSharingService sharingService, NSObject [] items, NSError error);
+		
+		[Export ("sharingService:didShareItems:"), EventArgs ("NSSharingServiceItems")]
+		void DidShareItems (NSSharingService sharingService, NSObject [] items);
+		
+		[Export ("sharingService:sourceFrameOnScreenForShareItem:"), DelegateName ("NSSharingServiceSourceFrameOnScreenForShareItem"), DefaultValue (null)]
+		RectangleF SourceFrameOnScreenForShareItem (NSSharingService sharingService, NSPasteboardWriting item);
+		
+		[Export ("sharingService:transitionImageForShareItem:contentRect:"), DelegateName ("NSSharingServiceTransitionImageForShareItem"), DefaultValue (null)]
+		NSImage TransitionImageForShareItem (NSSharingService sharingService, NSPasteboardWriting item, RectangleF contentRect);
+		
+		[Export ("sharingService:sourceWindowForShareItems:sharingContentScope:"), DelegateName ("NSSharingServiceSourceWindowForShareItems"), DefaultValue (null)]
+		NSWindow SourceWindowForShareItems (NSSharingService sharingService, NSObject [] items, NSSharingContentScope sharingContentScope);
+	}
+	
+	[MountainLion]
+	[BaseType (typeof (NSObject),
+	           Delegates=new string [] {"WeakDelegate"},
+	Events=new Type [] { typeof (NSSharingServicePickerDelegate) })]
+	public interface NSSharingServicePicker 
+	{
+		[Export ("delegate")][NullAllowed]
+		NSObject WeakDelegate { get; set; }
+		
+		[Wrap ("WeakDelegate")][NullAllowed]
+		NSSharingServicePickerDelegate Delegate { get; set; }
+		
+		[Export ("initWithItems:")]
+		IntPtr Constructor (NSObject [] items);
+		
+		[Export ("showRelativeToRect:ofView:preferredEdge:")]
+		void ShowRelativeToRect (RectangleF rect, NSView view, NSRectEdge preferredEdge);
+	}
+	
+	[MountainLion]
+	[BaseType (typeof (NSObject))]
+	[Model]
+	public interface NSSharingServicePickerDelegate 
+	{
+		[Export ("sharingServicePicker:sharingServicesForItems:proposedSharingServices:"), DelegateName ("NSSharingServicePickerSharingServicesForItems"), DefaultValueFromArgument ("proposedServices")]
+		NSSharingService [] SharingServicesForItems (NSSharingServicePicker sharingServicePicker, NSObject [] items, NSSharingService [] proposedServices);
+		
+		[Export ("sharingServicePicker:delegateForSharingService:"), DelegateName ("NSSharingServicePickerDelegateForSharingService"), DefaultValue (null)]
+		NSSharingServiceDelegate DelegateForSharingService (NSSharingServicePicker sharingServicePicker, NSSharingService sharingService);
+		
+		[Export ("sharingServicePicker:didChooseSharingService:"), EventArgs ("NSSharingServicePickerDidChooseSharingService")]
+		void DidChooseSharingService (NSSharingServicePicker sharingServicePicker, NSSharingService service);
+	}
 }

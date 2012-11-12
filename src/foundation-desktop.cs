@@ -116,35 +116,6 @@ namespace MonoMac.Foundation {
 
 	}
 
-
-	[BaseType (typeof (NSObject))]
-	public interface NSOrthography {
-		[Export ("dominantScript")]
-		NSString DominantScript { get;  }
-
-		[Export ("languageMap")]
-		NSDictionary LanguageMap { get;  }
-
-		[Export ("dominantLanguage")]
-		string DominantLanguage { get;  }
-
-		[Export ("allScripts")]
-		string [] AllScripts { get;  }
-
-		[Export ("allLanguages")]
-		string [] AllLanguages { get;  }
-
-		[Export ("languagesForScript:")]
-		string [] LanguagesForScript (string script);
-
-		[Export ("dominantLanguageForScript:")]
-		string GetDominantLanguageForScript (string forScript);
-
-		[Export ("initWithDominantScript:languageMap:")]
-		IntPtr Constructor (string script, NSDictionary map);
-
-	}
-
 	[BaseType (typeof (NSObject))]
 	public interface NSTextCheckingResult {
 		[Export ("resultType")]
@@ -516,6 +487,120 @@ namespace MonoMac.Foundation {
 		[Static]
 		[Export ("pipe")]
 		NSPipe Create ();
+	}
+
+	[BaseType (typeof (NSObject))]
+	public interface NSValueTransformer {
+		[Export ("reverseTransformedValue:")]
+		NSObject ReverseTransformedValue (NSObject value);
+
+		[Export ("transformedValue:")]
+		NSObject TransformedValue (NSObject value);
+	}
+
+	[MountainLion]
+	[BaseType (typeof (NSObject))]
+	public interface NSUserNotification 
+	{
+		[Export ("title")]
+		string Title { get; set; }
+		
+		[Export ("subtitle")]
+		string Subtitle { get; set; }
+		
+		[Export ("informativeText")]
+		string InformativeText { get; set; }
+		
+		[Export ("actionButtonTitle")]
+		string ActionButtonTitle { get; set; }
+		
+		[Export ("userInfo")]
+		NSDictionary UserInfo { get; set; }
+		
+		[Export ("deliveryDate")]
+		NSDate DeliveryDate { get; set; }
+		
+		[Export ("deliveryTimeZone")]
+		NSTimeZone DeliveryTimeZone { get; set; }
+		
+		[Export ("deliveryRepeatInterval")]
+		NSDateComponents DeliveryRepeatInterval { get; set; }
+		
+		[Export ("actualDeliveryDate")]
+		NSDate ActualDeliveryDate { get; }
+		
+		[Export ("presented")]
+		bool Presented { [Bind("isPresented")] get; }
+		
+		[Export ("remote")]
+		bool Remote { [Bind("isRemote")] get; }
+		
+		[Export ("soundName")]
+		string SoundName { get; set; }
+		
+		[Export ("hasActionButton")]
+		bool HasActionButton { get; set; }
+		
+		[Export ("activationType")]
+		NSUserNotificationActivationType ActivationType { get; }
+		
+		[Export ("otherButtonTitle")]
+		string OtherButtonTitle { get; set; }
+		
+		[Field ("NSUserNotificationDefaultSoundName")]
+		NSString NSUserNotificationDefaultSoundName { get; }
+	}
+	
+	[MountainLion]
+	[BaseType (typeof (NSObject),
+	           Delegates=new string [] {"WeakDelegate"},
+	Events=new Type [] { typeof (NSUserNotificationCenterDelegate) })]
+	public interface NSUserNotificationCenter 
+	{
+		[Export ("defaultUserNotificationCenter")][Static]
+		NSUserNotificationCenter DefaultUserNotificationCenter { get; }
+		
+		[Export ("delegate")][NullAllowed]
+		NSObject WeakDelegate { get; set; }
+		
+		[Wrap ("WeakDelegate")][NullAllowed]
+		NSUserNotificationCenterDelegate Delegate { get; set; }
+		
+		[Export ("scheduledNotifications")]
+		NSUserNotification [] ScheduledNotifications { get; set; }
+		
+		[Export ("scheduleNotification:")][PostGet ("ScheduledNotifications")]
+		void ScheduleNotification (NSUserNotification notification);
+		
+		[Export ("removeScheduledNotification:")][PostGet ("ScheduledNotifications")]
+		void RemoveScheduledNotification (NSUserNotification notification);
+		
+		[Export ("deliveredNotifications")]
+		NSUserNotification [] DeliveredNotifications { get; }
+		
+		[Export ("deliverNotification:")][PostGet ("DeliveredNotifications")]
+		void DeliverNotification (NSUserNotification notification);
+		
+		[Export ("removeDeliveredNotification:")][PostGet ("DeliveredNotifications")]
+		void RemoveDeliveredNotification (NSUserNotification notification);
+		
+		[Export ("removeAllDeliveredNotifications")][PostGet ("DeliveredNotifications")]
+		void RemoveAllDeliveredNotifications ();
+	}
+	
+	[MountainLion]
+	[BaseType (typeof (NSObject))]
+	[Model]
+	public interface NSUserNotificationCenterDelegate 
+	{
+		[Export ("userNotificationCenter:didDeliverNotification:"), EventArgs ("UNCDidDeliverNotification")]
+		void DidDeliverNotification (NSUserNotificationCenter center, NSUserNotification notification);
+		
+		[Export ("userNotificationCenter:didActivateNotification:"), EventArgs ("UNCDidActivateNotification")]
+		void DidActivateNotification (NSUserNotificationCenter center, NSUserNotification notification);
+		
+		[Export ("userNotificationCenter:shouldPresentNotification:"), DelegateName ("UNCShouldPresentNotification"), DefaultValue (false)]
+		bool ShouldPresentNotification (NSUserNotificationCenter center, NSUserNotification notification);
 	}
 
 }

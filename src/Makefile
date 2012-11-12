@@ -2,7 +2,8 @@
 # Figure out if I want to use [New] or remove from contract
 #
 WARNINGS_I_SHOULD_FIX=114,108
-
+TARGET = MonoMac.dll
+PEER=false
 MACCORE_DIR ?= ../../maccore
 
 #
@@ -10,7 +11,7 @@ MACCORE_DIR ?= ../../maccore
 # and are linked with the generator
 #
 
-CORE_SOURCES =					\
+CORE_SOURCES =	$(EXTRA_CORE_SOURCES)			\
 	Constants.cs					\
 	./AppKit/Enums.cs				\
 	./AppKit/Defs.cs				\
@@ -38,7 +39,7 @@ CORE_SOURCES =					\
 	./WebKit/Enums.cs
 
 # Sources that are not part of CORE_SOURCES or the generated templates
-MONOMAC_SOURCES = \
+MONOMAC_SOURCES = $(EXTRA_MONOMAC_SOURCES) \
 	./Foundation/NSObjectMac.cs			\
 	./Foundation/NSSearchPath.cs		\
 	./AppKit/AppKitSynchronizationContext.cs	\
@@ -54,6 +55,7 @@ MONOMAC_SOURCES = \
 	./AppKit/NSBezierPath.cs			\
 	./AppKit/NSColor.cs				\
 	./AppKit/NSControl.cs				\
+	./AppKit/NSEvent.cs				\
 	./AppKit/NSGradient.cs				\
 	./AppKit/NSGraphics.cs				\
 	./AppKit/NSGraphicsContext.cs			\
@@ -66,6 +68,7 @@ MONOMAC_SOURCES = \
 	./AppKit/NSOpenGLPixelFormat.cs			\
 	./AppKit/NSPopUpButton.cs			\
 	./AppKit/NSPopUpButtonCell.cs			\
+	./AppKit/NSSharingService.cs			\
 	./AppKit/NSSegmentedControl.cs			\
 	./AppKit/NSTableView.cs				\
         ./AppKit/NSToolbarItem.cs                       \
@@ -77,6 +80,7 @@ MONOMAC_SOURCES = \
 	./WebKit/DomNode.cs				\
 	./WebKit/Enumerators.cs				\
 	./WebKit/Indexers.cs				\
+	./WebKit/WebPolicyDelegate.cs			\
 	./WebKit/WebKit.cs				\
 	./WebKit/WebView.cs				\
 	./OpenGL/FrameEventArgs.cs			\
@@ -116,6 +120,13 @@ OPENTK_SOURCES = \
 	./OpenGL/OpenTK/Math/Vector4d.cs		\
 	./OpenGL/OpenTK/Math/Vector4h.cs
 
+CFNETWORK_SOURCES = \
+	$(MACCORE_DIR)/src/CFNetwork/Content.cs			\
+	$(MACCORE_DIR)/src/CFNetwork/MessageHandler.cs		\
+	$(MACCORE_DIR)/src/CFNetwork/WebRequestStream.cs	\
+	$(MACCORE_DIR)/src/CFNetwork/WebResponseStream.cs	\
+	$(MACCORE_DIR)/src/CFNetwork/WorkerThread.cs
+
 GENERATOR_SOURCES = \
 	$(MACCORE_DIR)/src/error.cs				\
 	$(MACCORE_DIR)/src/generator.cs			\
@@ -127,7 +138,13 @@ SOURCES = \
 
 DEFINES = -define:NET_2_0
 
-TARGETS = _bmac.exe MonoMac.dll  parse.exe bmac.exe
+HAVE_ASYNC=`if pkg-config --atleast-version=2.11 mono; then echo true; else echo false; fi`
+
+ifeq ($(HAVE_ASYNC),true)
+	ASYNC_TARGETS = MonoMac.CFNetwork.dll
+endif
+
+TARGETS = _bmac.exe $(TARGET) parse.exe bmac.exe $(ASYNC_TARGETS)
 
 include Make.shared
 
@@ -139,11 +156,16 @@ SHARED_API = \
 	./coreimage.cs		\
 	./coremidi.cs		\
 	./corelocation.cs	\
+	./imageio.cs		\
 	./quicklook.cs
 
 SHARED_SOURCES = $(patsubst %,$(MACCORE_DIR)/src/%,$(SHARED_SOURCE))
 SHARED_CORE_SOURCES = $(patsubst %,$(MACCORE_DIR)/src/%,$(SHARED_CORE_SOURCE))
 SHARED_APIS = $(patsubst %,$(MACCORE_DIR)/src/%,$(SHARED_API))
+
+ifneq ($(PEER),false)
+include $(PEER)/Make.extra
+endif
 
 APIS = \
 	appkit.cs		\
@@ -155,13 +177,13 @@ APIS = \
 	pdfkit.cs		\
 	webkit.cs		\
 	composer.cs		\
-	scriptingbridge.cs		\
-	$(SHARED_APIS)
+	scriptingbridge.cs	\
+	$(SHARED_APIS) $(EXTRA_APIS)
 
 all: $(TARGETS)
 
 parse.exe: parse.cs $(MACCORE_DIR)/src/Options.cs
-	gmcs -g parse.cs $(MACCORE_DIR)/src/Options.cs
+	gmcs -debug parse.cs $(MACCORE_DIR)/src/Options.cs
 
 core.dll: $(CORE_SOURCES) $(SHARED_CORE_SOURCES) Makefile
 	gmcs -target:library -debug -unsafe -out:core.dll -define:MONOMAC,MONOMAC_BOOTSTRAP,COREBUILD $(CORE_SOURCES) $(SHARED_CORE_SOURCES) -r:System.Drawing
@@ -172,8 +194,8 @@ _bmac.exe: $(APIS) core.dll $(GENERATOR_SOURCES)
 generated_sources: _bmac.exe $(APIS) 
 	mono --debug _bmac.exe -a -d=MONOMAC --core --sourceonly=generated_sources -v -tmpdir=. $(APIS) --baselib=core.dll --ns=MonoMac.ObjCRuntime -r=System.Drawing
 
-bmac.exe: MonoMac.dll $(GENERATOR_SOURCES)
-	gmcs -unsafe -out:bmac.exe -debug $(DEFINES) -define:GENERATOR,MONOMAC,MONOMAC_BOOTSTRAP $(GENERATOR_SOURCES) -r:MonoMac.dll -r:System.Drawing
+bmac.exe: $(TARGET) $(GENERATOR_SOURCES)
+	gmcs -unsafe -out:bmac.exe -debug $(DEFINES) -define:GENERATOR,MONOMAC,MONOMAC_BOOTSTRAP $(GENERATOR_SOURCES) -r:$(TARGET) -r:System.Drawing
 
 count: 
 	make pass | wc -l
@@ -181,13 +203,16 @@ count:
 counts:
 	make pass | grep 'could not be' | sed 's/.*`//' | sed "s/'.*//" | sort | uniq -c | sort -n
 
-MonoMac.dll: $(SOURCES) generated_sources $(MONOMAC_SOURCES) $(SHARED_SOURCES) $(SHARED_CORE_SOURCES) $(OPENTK_SOURCES)
-	gmcs -define:OBJECT_REF_TRACKING -nowarn:3021,0219,0414,$(WARNINGS_I_SHOULD_FIX) -debug -unsafe $(SOURCES) @generated_sources $(MONOMAC_SOURCES) $(SHARED_SOURCES) $(SHARED_CORE_SOURCES) $(OPENTK_SOURCES) -target:library -define:MONOMAC -out:MonoMac.dll -r:System.Drawing
+$(TARGET): $(SOURCES) generated_sources $(MONOMAC_SOURCES) $(SHARED_SOURCES) $(SHARED_CORE_SOURCES) $(OPENTK_SOURCES)
+	gmcs -define:OBJECT_REF_TRACKING -nowarn:3021,0219,0414,$(WARNINGS_I_SHOULD_FIX) -debug -unsafe $(SOURCES) @generated_sources $(MONOMAC_SOURCES) $(SHARED_SOURCES) $(SHARED_CORE_SOURCES) $(OPENTK_SOURCES) -target:library -define:MONOMAC -out:$(TARGET) -r:System.Drawing
+
+MonoMac.CFNetwork.dll: $(CFNETWORK_SOURCES)
+	mcs -debug -target:library -define:MONOMAC -r:System.Net.Http -r:$(TARGET) -out:MonoMac.CFNetwork.dll $(CFNETWORK_SOURCES)
 
 clean:
 	rm -f $(TARGETS) core.dll
 
-all: MonoMac.dll
+all: $(TARGET)
 
 update: MonoMac.dll
 	cp MonoMac.dll* /Applications/MonoDevelop.app/Contents/MacOS/lib/monodevelop/Addins

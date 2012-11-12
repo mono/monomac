@@ -33,8 +33,8 @@ namespace MonoMac.ObjCRuntime {
 		private static ConstructorInfo newnsstring = typeof (NSString).GetConstructor (new Type [] { typeof (string) });
 #if !MONOMAC_BOOTSTRAP
 		private static MethodInfo convertstruct = typeof (Marshal).GetMethod ("StructureToPtr", new Type [] { typeof (object), typeof (IntPtr), typeof (bool) });
-		private static MethodInfo buildarray = typeof (NSArray).GetMethod ("FromNSObjects", BindingFlags.Static | BindingFlags.Public);
-		private static MethodInfo buildsarray = typeof (NSArray).GetMethod ("FromStrings", BindingFlags.Static | BindingFlags.Public);
+		private static MethodInfo buildarray = typeof (NSArray).GetMethod ("FromNSObjects", new Type [] { typeof (NSObject []) });
+		private static MethodInfo buildsarray = typeof (NSArray).GetMethod ("FromStrings", new Type [] { typeof (string[]) });
 #endif
 
 		private MethodInfo minfo;
@@ -57,7 +57,7 @@ namespace MonoMac.ObjCRuntime {
 
 			// FIXME: We should detect if this is in a bound assembly or not and only alloc if needed
 			Selector = new Selector (ea.Selector ?? minfo.Name, true).Handle;
-			Signature = string.Format ("{0}@:", TypeConverter.ToNative (rettype));
+			Signature = string.Format ("{0}@:", TypeConverter.ToNative (minfo.ReturnType));
 
 			ConvertParameters (Parameters, minfo.IsStatic, isstret);
 			

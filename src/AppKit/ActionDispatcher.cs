@@ -44,15 +44,17 @@ namespace MonoMac.AppKit
 		[Preserve, Export (skey)]
 		public void OnActivated (NSObject sender)
 		{
-			if (Activated != null)
-				Activated (sender, EventArgs.Empty);
+			EventHandler handler = Activated;
+			if (handler != null)
+				handler (sender, EventArgs.Empty);
 		}
 
 		[Preserve, Export (dkey)]
 		public void OnActivated2 (NSObject sender)
 		{
-			if (DoubleActivated != null)
-				DoubleActivated (sender, EventArgs.Empty);
+			EventHandler handler = DoubleActivated;
+			if (handler != null)
+				handler (sender, EventArgs.Empty);
 		}
 		
 		public ActionDispatcher (EventHandler handler)

@@ -1477,9 +1477,9 @@ namespace MonoMac.AppKit {
 	}
 
 	public static class NSFileTypeForHFSTypeCode {
-		public static string ComputerIcon = "root";
-		public static string DesktopIcon = "desk";
-		public static string FinderIcon = "FNDR";
+		public static readonly string ComputerIcon = "root";
+		public static readonly string DesktopIcon = "desk";
+		public static readonly string FinderIcon = "FNDR";
 	}
 	
 	// These constants specify the possible states of a drawer.
@@ -1709,5 +1709,29 @@ namespace MonoMac.AppKit {
 		Process = 1 << 0,
 		User = 1 << 1,
 		Computer = 1 << 2,
+	}
+
+	public enum NSSharingContentScope {
+		Item,
+		Partial,
+		Full
+	}
+
+	public enum NSSharingServiceName {
+		PostOnFacebook,
+		PostOnTwitter,
+		PostOnSinaWeibo,
+		ComposeEmail,
+		ComposeMessage,
+		SendViaAirDrop,
+		AddToSafariReadingList,
+		AddToIPhoto,
+		AddToAperture,
+		UseAsTwitterProfileImage,
+		UseAsDesktopPicture,
+		PostImageOnFlickr,
+		PostVideoOnVimeo,
+		PostVideoOnYouku,
+		PostVideoOnTudou
 	}
 }

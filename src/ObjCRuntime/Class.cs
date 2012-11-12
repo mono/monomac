@@ -49,7 +49,7 @@ namespace MonoMac.ObjCRuntime {
 			this.handle = objc_getClass (name);
 
 			if (this.handle == IntPtr.Zero)
-				throw new ArgumentException ("name is an unknown class", name);
+				throw new ArgumentException (String.Format ("name {0} is an unknown class", name), "name");
 		}
 
 		public Class (Type type) {
@@ -105,6 +105,13 @@ namespace MonoMac.ObjCRuntime {
 				if (type_map.TryGetValue (kls, out type)) {
 					type_map [orig_klass] = type;
 					return type;
+				}
+
+				if ( kls == IntPtr.Zero ) {
+					var message = "Could not find a valid superclass for type " + new Class(orig_klass).Name 
+					+  ". Did you forget to register the bindings at " + typeof(Class).FullName
+					+  ".Register() or call NSApplication.Init()?";
+					throw new ArgumentException(message);
 				}
 
 				klass = kls;

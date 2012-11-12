@@ -10,7 +10,6 @@ SHARED_SOURCE = \
 	./AudioToolbox/AudioServices.cs			\
 	./AudioToolbox/AudioSession.cs			\
 	./AudioToolbox/AudioSessions.cs			\
-	./AudioToolbox/AudioType.cs			\
 	./AudioToolbox/SystemSound.cs			\
 	./AudioUnit/AUGraph.cs				\
 	./AudioUnit/AudioComponent.cs			\
@@ -35,6 +34,7 @@ SHARED_SOURCE = \
 	./AVFoundation/AVCaptureConnection.cs		\
 	./AVFoundation/AVCaptureDeviceInput.cs		\
 	./AVFoundation/AVCaptureVideoDataOutput.cs	\
+	./AVFoundation/AVLayerVideoGravity.cs		\
 	./AVFoundation/AVAssetReaderVideoCompositionOutput.cs	\
 	./CoreAnimation/CADefs.cs			\
 	./CoreAnimation/CALayer.cs			\
@@ -43,7 +43,10 @@ SHARED_SOURCE = \
 	./CoreFoundation/CFBoolean.cs                   \
 	./CoreFoundation/CFDictionary.cs                \
 	./CoreFoundation/CFException.cs                 \
-	./CoreFoundation/CFStream.cs					\
+	./CoreFoundation/CFSocket.cs			\
+	./CoreFoundation/CFStream.cs			\
+	./CoreFoundation/CFReadStream.cs		\
+	./CoreFoundation/CFWriteStream.cs		\
 	./CoreFoundation/CFType.cs			\
 	./CoreGraphics/CGContextPDF.cs			\
 	./CoreGraphics/CGDataProvider-2.cs		\
@@ -59,6 +62,7 @@ SHARED_SOURCE = \
 	./CoreLocation/CoreLocation2.cs			\
 	./CoreLocation/CLLocationManager.cs		\
 	./CoreText/Adapter.cs				\
+	./CoreText/CTBaselineClass.cs 			\
 	./CoreText/CTFont.Generator.cs			\
 	./CoreText/CTFont.cs				\
 	./CoreText/CTFontCollection.cs			\
@@ -77,6 +81,10 @@ SHARED_SOURCE = \
 	./CoreText/CTTextTab.cs				\
 	./CoreText/CTTypesetter.cs			\
 	./CoreText/ConstructorError.cs			\
+	./CoreServices/CFHTTPAuthentication.cs		\
+	./CoreServices/CFHTTPMessage.cs			\
+	./CoreServices/CFHTTPStream.cs			\
+	./CoreServices/CFHost.cs			\
 	./Foundation/ModelNotImplementedException.cs	\
 	./Foundation/NSAutoreleasePool.cs		\
 	./Foundation/NSArray.cs				\
@@ -123,17 +131,27 @@ SHARED_SOURCE = \
 	./Security/Certificate.cs			\
 	./Security/Items.cs				\
 	./Security/Policy.cs				\
-	./Security/Trust.cs
+	./Security/Trust.cs				\
+	./Darwin/KernelNotification.cs			\
+	./Darwin/SystemLog.cs
 
 SHARED_CORE_SOURCE = \
 	./AVFoundation/Enums.cs				\
+	./AVFoundation/AVAudioSettings.cs			\
+	./AVFoundation/AVUrlAssetOptions.cs	\
+	./AVFoundation/AVVideoSettings.cs			\
+	./AudioToolbox/AudioType.cs			\
 	./CoreAnimation/CATransform3D.cs		\
 	./CoreAnimation/CAEnums.cs			\
 	./CoreData/Enums.cs				\
+	./CoreFoundation/CFAllocator.cs			\
 	./CoreFoundation/CFString.cs                    \
 	./CoreFoundation/CFUrl.cs                       \
 	./CoreFoundation/CFRunLoop.cs                   \
 	./CoreFoundation/Dispatch.cs                    \
+	./CoreFoundation/CFData.cs			\
+	./CoreFoundation/CFDataBuffer.cs		\
+	./CoreFoundation/CFIndex.cs			\
 	./CoreGraphics/CGAffineTransform.cs             \
 	./CoreGraphics/CGBitmapContext.cs               \
 	./CoreGraphics/CGColor.cs                       \
@@ -144,6 +162,7 @@ SHARED_CORE_SOURCE = \
 	./CoreGraphics/CGGeometry.cs                    \
 	./CoreGraphics/CGGradient.cs                    \
 	./CoreGraphics/CGImage.cs                       \
+	./CoreGraphics/CGImageProperties.cs			\
 	./CoreGraphics/CGLayer.cs			\
 	./CoreGraphics/CGPDFDocument.cs                 \
 	./CoreGraphics/CGPDFPage-2.cs                   \
@@ -152,10 +171,15 @@ SHARED_CORE_SOURCE = \
 	./CoreGraphics/CGPattern.cs                     \
 	./CoreImage/Enums.cs				\
 	./CoreLocation/CLEnums.cs			\
+	./CoreImage/CIImageInitializationOptions.cs	\
 	./CoreLocation/CoreLocation.cs			\
 	./CoreMedia/CMBlockBuffer.cs			\
 	./CoreMedia/CMFormatDescription.cs		\
 	./CoreMedia/CMSampleBuffer.cs			\
+	./CoreMedia/CMMemoryPool.cs				\
+	./CoreMedia/CMTextMarkupAttributes.cs	\
+	./CoreMedia/CMTime.cs					\
+	./CoreMedia/CMSync.cs					\
 	./CoreMedia/CoreMedia.cs			\
 	./CoreMidi/MidiServices.cs			\
 	./CoreVideo/CVBuffer.cs				\
@@ -164,9 +188,12 @@ SHARED_CORE_SOURCE = \
 	./CoreVideo/CoreVideo.cs			\
 	./CoreVideo/CVPixelBuffer.cs			\
 	./CoreVideo/CVPixelBufferPool.cs		\
+	./CoreVideo/CVPixelBufferPoolSettings.cs	\
 	./CoreVideo/CVPixelFormatDescription.cs		\
+	./CoreVideo/CVPixelBufferAttributes.cs	\
 	./Foundation/ConnectAttribute.cs		\
 	./Foundation/Enum.cs 				\
+	./Foundation/DictionaryContainer.cs		\
 	./Foundation/ExportAttribute.cs			\
 	./Foundation/ModelAttribute.cs			\
 	./Foundation/NSAction.cs			\

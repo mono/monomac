@@ -12,8 +12,10 @@ endif
 MONO_MAC_DLL = ../../src/MonoMac.dll
 APPLEDOCWIZARD_APP = AppleDocWizard/bin/Debug/AppleDocWizard.app
 MACDOC_APP = bin/Debug/macdoc.app
-MONODOC_APP = $(dir $(MACDOC_APP))/MonoDoc.app
+MONODOC_APP = $(dir $(MACDOC_APP))MonoDoc.app
 MONODOC_ARCHIVE = MonoDoc.tar.bz2
+XCODE_43_RESOURCE_RULES=/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/ResourceRules.plist
+XCODE_42_RESOURCE_RULES=/Developer/Platforms/MacOSX.platform/ResourceRules.plist
 
 all: monomac macdoc monodoc
 
@@ -27,6 +29,13 @@ macdoc: monomac
 monodoc: macdoc
 	rm -Rf $(MONODOC_APP)
 	cp -R $(MACDOC_APP) $(MONODOC_APP)
+	@if test -f $(XCODE_43_RESOURCE_RULES); then \
+		echo "cp $(XCODE_43_RESOURCE_RULES) $(MONODOC_APP)/Contents"; \
+		cp $(XCODE_43_RESOURCE_RULES) $(MONODOC_APP)/Contents; \
+	elif test -f $(XCODE_42_RESOURCE_RULES); then \
+		echo "cp $(XCODE_42_RESOURCE_RULES) $(MONODOC_APP)/Contents"; \
+		cp $(XCODE_42_RESOURCE_RULES) $(MONODOC_APP)/Contents; \
+	fi;
 
 dist: monodoc
 	(cd $(dir $(MONODOC_APP)) && rm -f $(MONODOC_ARCHIVE) && tar -cjf $(MONODOC_ARCHIVE) $(notdir $(MONODOC_APP)))

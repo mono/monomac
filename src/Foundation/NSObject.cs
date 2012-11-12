@@ -29,14 +29,14 @@ using MonoMac.ObjCRuntime;
 
 namespace MonoMac.Foundation {
 	public class NSObjectFlag {
-		public static NSObjectFlag Empty = null;
+		public static readonly NSObjectFlag Empty = null;
 
 		NSObjectFlag () {}
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
 	public partial class NSObject : INativeObject, IDisposable {
-		public static Assembly MonoMacAssembly = typeof (NSObject).Assembly;
+		public static readonly Assembly MonoMacAssembly = typeof (NSObject).Assembly;
 
 		static IntPtr selAlloc = Selector.GetHandle ("alloc");
 		static IntPtr selAwakeFromNib = Selector.GetHandle ("awakeFromNib");
@@ -70,10 +70,8 @@ namespace MonoMac.Foundation {
 
 		// This is just here as a constructor chain that can will
 		// only do Init at the most derived class.
-		public NSObject (NSObjectFlag x)
+		public NSObject (NSObjectFlag x) : this ()
 		{
-			AllocIfNeeded ();
-			InitializeObject ();
 		}
 
 		public NSObject (IntPtr handle) {
@@ -93,6 +91,8 @@ namespace MonoMac.Foundation {
 
 		[Export ("respondsToSelector:")]
 		public virtual bool RespondsToSelector (Selector sel) {
+			if (sel == null)
+				throw new ArgumentNullException ("sel");
 			if (IsDirectBinding) {
 				return Messaging.bool_objc_msgSend_intptr (Handle, selRespondsToSelector, sel.Handle);
 			} else {
@@ -102,6 +102,8 @@ namespace MonoMac.Foundation {
 
 		[Export ("doesNotRecognizeSelector:")]
 		public virtual void DoesNotRecognizeSelector (Selector sel) {
+			if (sel == null)
+				throw new ArgumentNullException ("sel");
 			Console.WriteLine ("CRITICAL WARNING: [{0} {1}] is not recognized", this.GetType (), sel.Name);
 
 			Messaging.void_objc_msgSendSuper_intptr (SuperHandle, selDoesNotRecognizeSelector, sel.Handle);
@@ -126,7 +128,7 @@ namespace MonoMac.Foundation {
 						Messaging.void_objc_msgSend (handle, selRelease);
 
 					Marshal.FreeHGlobal (SuperHandle);
-				} else {
+				} else if (disposer != null) {
 					bool calldrain = false;
 
 					if (Class.IsCustomType (this.GetType ()))
@@ -255,11 +257,15 @@ namespace MonoMac.Foundation {
 		}
 
 		[Export ("performSelector:withObject:afterDelay:")]
-		public virtual void PerformSelector (Selector sel, NSObject obj, float delay) {
+		public virtual void PerformSelector (Selector sel, NSObject obj, double delay) {
+			if (sel == null)
+				throw new ArgumentNullException ("sel");
+			if (obj == null)
+				throw new ArgumentNullException ("obj");
 			if (IsDirectBinding) {
-				Messaging.void_objc_msgSend_intptr_intptr_float (this.Handle, selPerformSelectorWithObjectAfterDelay, sel.Handle, obj == null ? IntPtr.Zero : obj.Handle, delay);
+				Messaging.void_objc_msgSend_intptr_intptr_double (this.Handle, selPerformSelectorWithObjectAfterDelay, sel.Handle, obj == null ? IntPtr.Zero : obj.Handle, delay);
 			} else {
-				Messaging.void_objc_msgSendSuper_intptr_intptr_float (this.SuperHandle, selPerformSelectorWithObjectAfterDelay, sel.Handle, obj == null ? IntPtr.Zero : obj.Handle, delay);
+				Messaging.void_objc_msgSendSuper_intptr_intptr_double (this.SuperHandle, selPerformSelectorWithObjectAfterDelay, sel.Handle, obj == null ? IntPtr.Zero : obj.Handle, delay);
 			}
 		}
 
@@ -360,6 +366,12 @@ namespace MonoMac.Foundation {
 					}
 					direct_handles.Clear ();
 				}
+			}
+
+			protected override void Dispose (bool disposing)
+			{
+				NSObject.disposer = null;
+				base.Dispose (disposing);
 			}
 		}
 	}

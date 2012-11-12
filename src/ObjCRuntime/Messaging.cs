@@ -70,6 +70,8 @@ namespace MonoMac.ObjCRuntime {
 		public extern static void void_objc_msgSend_intptr_intptr_bool (IntPtr receiver, IntPtr selector, IntPtr arg1, IntPtr arg2, bool arg3);
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSend")]
 		public extern static void void_objc_msgSend_intptr_intptr_float (IntPtr receiver, IntPtr selector, IntPtr arg1, IntPtr arg2, float arg3);
+		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSend")]
+		public extern static void void_objc_msgSend_intptr_intptr_double (IntPtr receiver, IntPtr selector, IntPtr arg1, IntPtr arg2, double arg3);
 
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSendSuper")]
 		public extern static void void_objc_msgSendSuper (IntPtr [] super, IntPtr selector);
@@ -85,6 +87,8 @@ namespace MonoMac.ObjCRuntime {
 		public extern static void void_objc_msgSendSuper_intptr_intptr_bool (IntPtr receiver, IntPtr selector, IntPtr arg1, IntPtr arg2, bool arg3);
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSendSuper")]
 		public extern static void void_objc_msgSendSuper_intptr_intptr_float (IntPtr receiver, IntPtr selector, IntPtr arg1, IntPtr arg2, float arg3);
+		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSendSuper")]
+		public extern static void void_objc_msgSendSuper_intptr_intptr_double (IntPtr receiver, IntPtr selector, IntPtr arg1, IntPtr arg2, double arg3);
 
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSend_stret")]
 		public extern static void void_objc_msgSend_stret_rcgsize (ref SizeF stret, IntPtr receiver, IntPtr selector);

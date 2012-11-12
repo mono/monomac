@@ -31,7 +31,7 @@ namespace MonoMac.WebKit {
 		static IntPtr selDownload = Selector.GetHandle ("download");
 		static IntPtr selIgnore = Selector.GetHandle ("ignore");
 		
-		public static void DecisionUse (NSObject decisionToken)
+		public static void DecideUse (NSObject decisionToken)
 		{
 			if (decisionToken == null)
 				throw new ArgumentNullException ("token");

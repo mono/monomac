@@ -142,6 +142,10 @@ namespace MonoMac.ObjCRuntime {
 		}
 
 		public static void ConnectMethod (MethodInfo method, Selector selector) {
+			if (method == null)
+				throw new ArgumentNullException ("method");
+			if (selector == null)
+				throw new ArgumentNullException ("selector");
 			var type = method.DeclaringType;
 
 			if (!Class.IsCustomType (type))
