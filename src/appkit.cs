@@ -11179,7 +11179,7 @@ namespace MonoMac.AppKit {
 		int ClickedRow { get; }
 	
 		[Export ("setIndicatorImage:inTableColumn:")]
-		void SetIndicatorImage (NSImage anImage, NSTableColumn tableColumn);
+		void SetIndicatorImage ([NullAllowed] NSImage anImage, NSTableColumn tableColumn);
 	
 		[Export ("indicatorImageInTableColumn:")]
 		NSImage GetIndicatorImage (NSTableColumn tableColumn);
