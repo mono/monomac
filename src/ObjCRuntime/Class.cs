@@ -444,6 +444,7 @@ retl    $0x4                   */  0xc2, 0x04, 0x00,                            
 		[DllImport ("/usr/lib/libobjc.dylib")]
 		extern static IntPtr class_getSuperclass (IntPtr cls);
 
+		[MonoNativeFunctionWrapper]
 		delegate IntPtr addPropertyDelegate (IntPtr cls, string name, objc_attribute_prop [] attributes, int count);
 		static addPropertyDelegate addProperty;
 		static bool addPropertyInitialized;
