@@ -29,8 +29,11 @@ namespace MonoMac.AppKit {
 	public partial class NSBitmapImageRep {
 		static IntPtr selInitForIncrementalLoad = Selector.GetHandle ("initForIncrementalLoad");
 
-		[Export ("initForIncrementalLoad")]
-		public NSBitmapImageRep (NSObjectFlag a, NSObjectFlag b) : base (a)
+		// Do not actually export because NSObjectFlag is not exportable.
+		// The Objective C method already exists. This is just to allow
+		// access on the managed side via the static method.
+		//[Export ("initForIncrementalLoad")]
+		private NSBitmapImageRep (NSObjectFlag a, NSObjectFlag b) : base (a)
 		{
 			if (IsDirectBinding) {
 				Handle = MonoMac.ObjCRuntime.Messaging.IntPtr_objc_msgSend (this.Handle, selInitForIncrementalLoad);
