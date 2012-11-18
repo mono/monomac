@@ -303,7 +303,8 @@ namespace MonoMac.ObjCRuntime {
 
 			return false;
 		}
-		
+
+		[MonoNativeFunctionWrapper]
 		delegate int getFrameLengthDelegate (IntPtr @this, IntPtr sel);
 		static getFrameLengthDelegate getFrameLength = Selector.GetFrameLength;
 		static IntPtr getFrameLengthPtr = Marshal.GetFunctionPointerForDelegate (getFrameLength);
