@@ -13524,8 +13524,8 @@ namespace MonoMac.AppKit {
 	}
 
 	[BaseType (typeof (NSObject))]
-	public interface NSTypesetter {
-		// Must bound
+	public partial interface NSTypesetter {
+
 	}
 	
 	[BaseType (typeof (NSResponder), Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (NSWindowDelegate)})]

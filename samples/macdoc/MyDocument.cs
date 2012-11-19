@@ -46,6 +46,16 @@ namespace macdoc
 				return "Mono Documentation Browser";
 			}
 		}
+
+		public void LoadWithSearch (string searchTerm)
+		{
+			if (!string.IsNullOrEmpty (searchTerm)) {
+				toolbarSearchEntry.StringValue = searchTerm;
+				tabSelector.SelectAt (2);
+				Search (searchTerm);
+				Console.WriteLine ("Searched: '{0}'", searchTerm);
+			}
+		}
 		
 		public override bool ReadFromUrl (NSUrl url, string typeName, out NSError outError)
 		{

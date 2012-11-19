@@ -113,6 +113,16 @@ namespace macdoc
 		
 		public override void FinishedLaunching (NSObject notification)
 		{
+			// Check if we are loaded with a search term and load a document for it
+			var args = Environment.GetCommandLineArgs ();
+			NSError error;
+			var searchArgIdx = Array.IndexOf<string> (args, "--search");
+			if (searchArgIdx != -1 && args.Length > searchArgIdx + 1 && !string.IsNullOrEmpty (args [searchArgIdx + 1])) {
+				var document = controller.OpenUntitledDocument (true, out error);
+				if (document != null)
+					((MyDocument)document).LoadWithSearch (args[searchArgIdx + 1]);
+			}
+
 			var indexManager = IndexUpdateManager;
 			indexManager.CheckIndexIsFresh ().ContinueWith (t => {
 				if (t.IsFaulted)

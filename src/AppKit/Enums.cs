@@ -1734,4 +1734,14 @@ namespace MonoMac.AppKit {
 		PostVideoOnYouku,
 		PostVideoOnTudou
 	}
+
+	[Flags]
+	public enum NSTypesetterControlCharacterAction {
+		ZeroAdvancement = 1 << 0,
+		Whitespace = 1 << 1,
+		HorizontalTab = 1 << 2,
+		LineBreak = 1 << 3,
+		ParagraphBreak = 1 << 4,
+		ContainerBreak = 1 << 5,
+	}
 }
