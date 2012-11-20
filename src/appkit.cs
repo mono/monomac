@@ -8128,7 +8128,7 @@ namespace MonoMac.AppKit {
 		NSMenuItem LastItem { get; }
 
 		[Export ("selectItem:")]
-		void SelectItem (NSMenuItem item);
+		void SelectItem ([NullAllowed] NSMenuItem item);
 
 		[Export ("selectItemAtIndex:")]
 		void SelectItem (int index);
@@ -11179,7 +11179,7 @@ namespace MonoMac.AppKit {
 		int ClickedRow { get; }
 	
 		[Export ("setIndicatorImage:inTableColumn:")]
-		void SetIndicatorImage (NSImage anImage, NSTableColumn tableColumn);
+		void SetIndicatorImage ([NullAllowed] NSImage anImage, NSTableColumn tableColumn);
 	
 		[Export ("indicatorImageInTableColumn:")]
 		NSImage GetIndicatorImage (NSTableColumn tableColumn);
@@ -13215,7 +13215,7 @@ namespace MonoMac.AppKit {
 		[Export ("displayMode")]
 		NSToolbarDisplayMode DisplayMode { get; set; }
 
-		[Export ("selectedItemIdentifier")]
+		[Export ("selectedItemIdentifier"), NullAllowed]
 		string SelectedItemIdentifier { get; set; }
 
 		[Export ("sizeMode")]

@@ -71,7 +71,8 @@ MONOMAC_SOURCES = $(EXTRA_MONOMAC_SOURCES) \
 	./AppKit/NSSharingService.cs			\
 	./AppKit/NSSegmentedControl.cs			\
 	./AppKit/NSTableView.cs				\
-	./AppKit/NSWindow.cs				\
+        ./AppKit/NSToolbarItem.cs                       \
+        ./AppKit/NSWindow.cs				\
 	./CoreVideo/CVDisplayLink.cs			\
 	./Growl/Constants.cs				\
 	./QTKit/QTCaptureDevice.cs			\
