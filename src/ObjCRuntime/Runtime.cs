@@ -36,25 +36,13 @@ namespace MonoMac.ObjCRuntime {
 		static Dictionary <IntPtr, WeakReference> object_map = new Dictionary <IntPtr, WeakReference> ();
 		static object lock_obj = new object ();
 		static IntPtr selClass = Selector.GetHandle ("class");
-		static string frameworksPath;
-		static string resourcesPath;
 
 		public static string FrameworksPath {
-			get {
-				return frameworksPath;
-			}
-			set {
-				frameworksPath = value;
-			}
+			get; set;
 		}
 
 		public static string ResourcesPath {
-			get {
-				return resourcesPath;
-			}
-			set {
-				resourcesPath = value;
-			}
+			get; set;
 		}
 
 		static Runtime() {
@@ -62,7 +50,7 @@ namespace MonoMac.ObjCRuntime {
 			// so try some reasonable fallbacks in these cases.
 			string basePath = AppDomain.CurrentDomain.BaseDirectory;
 			if(!string.IsNullOrEmpty(basePath))
-				basePath = Path.Combine (AppDomain.CurrentDomain.BaseDirectory, "..");
+				basePath = Path.Combine (basePath, "..");
 			else {
 				basePath = Assembly.GetExecutingAssembly().Location;
 				if(!string.IsNullOrEmpty(basePath)) {
@@ -75,8 +63,8 @@ namespace MonoMac.ObjCRuntime {
 				}
 			}
 
-			resourcesPath = Path.Combine (basePath, "Resources");
-			frameworksPath = Path.Combine (basePath, "Frameworks");
+			ResourcesPath = Path.Combine (basePath, "Resources");
+			FrameworksPath = Path.Combine (basePath, "Frameworks");
 		}
 		
 		public static void RegisterAssembly (Assembly a) {
@@ -88,10 +76,10 @@ namespace MonoMac.ObjCRuntime {
 				string libName = requiredFramework.Name;
 				
 				if (libName.Contains (".dylib")) {
-					libPath = resourcesPath;
+					libPath = ResourcesPath;
 				}
 				else {
-					libPath = frameworksPath;
+					libPath = FrameworksPath;
 					libPath = Path.Combine (libPath, libName);
 					libName = libName.Replace (".frameworks", "");
 				}
