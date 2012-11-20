@@ -1,20 +1,24 @@
 using System;
+using System.IO;
 using System.Linq;
 using System.Drawing;
+using System.Threading;
+using System.Diagnostics;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
+
 using MonoMac.Foundation;
 using MonoMac.AppKit;
 using MonoMac.ObjCRuntime;
+
 using Monodoc;
-using System.IO;
-using System.Threading.Tasks;
-using System.Runtime.InteropServices;
-using System.Collections.Generic;
 
 namespace macdoc
 {
 	public partial class AppDelegate : NSApplicationDelegate
 	{
-		const string mergeToolPath = "/Developer/MonoTouch/usr/share/doc/MonoTouch/apple-doc-wizard.sh";
+		const string MergeToolPath = "/Developer/MonoTouch/usr/share/doc/MonoTouch/apple-doc-wizard";
 		
 		static public RootTree Root;
 		static public string MonodocDir;
@@ -135,7 +139,7 @@ namespace macdoc
 			
 			// Check if there is a MonoTouch documentation installed and launch accordingly
 			if (Root.HelpSources.Cast<HelpSource> ().Any (hs => hs != null && hs.Name != null && hs.Name.StartsWith ("MonoTouch", StringComparison.InvariantCultureIgnoreCase))
-			    && File.Exists (mergeToolPath)) {
+			    && File.Exists (MergeToolPath)) {
 				Task.Factory.StartNew (() => {
 					AppleDocHandler.AppleDocInformation infos;
 					bool mergeOutdated = false;
@@ -171,6 +175,11 @@ namespace macdoc
 			get {
 				return isOnLion;
 			}
+		}
+
+		public static bool RestartRequested {
+			get;
+			set;
 		}
 		
 		public override void WillFinishLaunching (NSNotification notification)
@@ -231,6 +240,12 @@ namespace macdoc
 		public override void WillTerminate (NSNotification notification)
 		{
 			BookmarkManager.SaveBookmarks ();
+			// Relaunch ourselves if it was requested
+			if (RestartRequested)
+				NSWorkspace.SharedWorkspace.LaunchApp (NSBundle.MainBundle.BundleIdentifier,
+				                                       NSWorkspaceLaunchOptions.NewInstance | NSWorkspaceLaunchOptions.Async,
+				                                       NSAppleEventDescriptor.NullDescriptor,
+				                                       IntPtr.Zero);
 		}
 		
 		void LaunchDocumentationUpdate (bool docOutdated, bool mergeOutdated)
@@ -252,17 +267,20 @@ namespace macdoc
 				return;
 			
 			// Launching AppleDocWizard as root
-			// First get the directory
-			try {
-				RootLauncher.LaunchExternalTool (mergeToolPath, docOutdated ? new string[] { "--force-download" } : (string[])null);
-			} catch (RootLauncherException ex) {
-				var alertDialog = new NSAlert {
-					AlertStyle = NSAlertStyle.Critical,
-					MessageText = "Documentation updater error",
-					InformativeText = string.Format ("There was an error launching the documentation updater: {0}{1}{2}", ex.ResultCode.ToString (), Environment.NewLine, ex.Message)
-				};
-				alertDialog.RunModal ();
-			}
+			var mergerTask = Task.Factory.StartNew (() => {
+				// If the script has its setuid bit on and user as root, then we launch it directly otherwise we first restore it
+				if (!RootLauncher.IsRootEnabled (MergeToolPath)) {
+					RootLauncher.LaunchExternalTool (MergeToolPath, docOutdated ? new string[] { "--self-repair" } : (string[])null);
+					// No good way to know when the process will finish, so wait a bit. Not ideal but since this is an unlikely codepath, shouldn't matter.
+					System.Threading.Thread.Sleep (1000);
+				}
+				return ProcessUtils.StartProcess (new System.Diagnostics.ProcessStartInfo (MergeToolPath, "--force-download"), null, null, CancellationToken.None);
+			}).Unwrap ();
+
+			var mergeController = new AppleDocMergeWindowController ();
+			mergeController.TrackProcessTask (mergerTask);
+			mergeController.ShowWindow (this);
+			mergeController.Window.Center ();
 		}
 		
 		// We use a working OpenDocument method that doesn't return anything because of MonoMac bug#3380

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Diagnostics;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using Mono.Unix;
 
 namespace macdoc
 {
@@ -40,6 +41,12 @@ namespace macdoc
 	public static class RootLauncher
 	{
 		const string SecurityFramework = "/System/Library/Frameworks/Security.framework/Versions/Current/Security";
+
+		public static bool IsRootEnabled (string toolPath)
+		{
+			var stat = new UnixFileInfo (toolPath);
+			return stat.IsSetUser && stat.IsSetGroup && stat.OwnerUserId == 0;
+		}
 		
 		public static void LaunchExternalTool (string toolPath, string[] args)
 		{
