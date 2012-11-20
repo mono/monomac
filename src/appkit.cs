@@ -6444,7 +6444,7 @@ namespace MonoMac.AppKit {
 		void UnlockFocus ();
 
 		[Export ("bestRepresentationForDevice:")]
-		NSImageRep BestRepresentationForDevice (NSDictionary deviceDescription);
+		NSImageRep BestRepresentationForDevice ([NullAllowed] NSDictionary deviceDescription);
 
 		[Static]
 		[Export ("imageUnfilteredFileTypes")]
@@ -10376,10 +10376,10 @@ namespace MonoMac.AppKit {
 		SizeF ConvertSizeToView (SizeF aSize, [NullAllowed] NSView aView);
 
 		[Export ("convertRect:fromView:")]
-		RectangleF ConvertRectFromView (RectangleF aRect, NSView aView);
+		RectangleF ConvertRectFromView (RectangleF aRect, [NullAllowed] NSView aView);
 
 		[Export ("convertRect:toView:")]
-		RectangleF ConvertRectToView (RectangleF aRect, NSView aView);
+		RectangleF ConvertRectToView (RectangleF aRect, [NullAllowed] NSView aView);
 
 		[Export ("centerScanRect:")]
 		RectangleF CenterScanRect (RectangleF aRect);
@@ -10836,7 +10836,7 @@ namespace MonoMac.AppKit {
 		[Export ("setKeyboardFocusRingNeedsDisplayInRect:")]
 		void SetKeyboardFocusRingNeedsDisplay (RectangleF rect);
 
-		[Export ("setFocusRingType:")]
+		[Export ("focusRingType")]
 		NSFocusRingType FocusRingType { get; set; }
 
 		[Static, Export ("defaultFocusRingType")]
