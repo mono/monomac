@@ -385,10 +385,12 @@ namespace macdoc
 		partial void StartSearch (NSSearchField sender)
 		{
 			var contents = sender.StringValue;
-			if (contents == null || contents == "")
+			if (string.IsNullOrEmpty (contents))
 				return;
 			tabSelector.SelectAt (2);
 			Search (contents);
+			// Unselect the search term in case user is typing slowly
+			sender.CurrentEditor.SelectedRange = new NSRange (contents.Length, 0);
 		}
 		
 		// Typing in the index panel
