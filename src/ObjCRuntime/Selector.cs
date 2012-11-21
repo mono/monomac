@@ -56,6 +56,10 @@ namespace MonoMac.ObjCRuntime {
 
 		public Selector (string name) : this (name, false) {}
 
+		[MonoNativeFunctionWrapper]
+		delegate int getFrameLengthDelegate (IntPtr @this, IntPtr sel);
+
+		[MonoPInvokeCallbackAttribute(typeof(getFrameLengthDelegate))]
 		public static int GetFrameLength (IntPtr @this, IntPtr sel)
 		{
 			IntPtr sig = Messaging.IntPtr_objc_msgSend_IntPtr (@this, MethodSignatureForSelector, sel);
