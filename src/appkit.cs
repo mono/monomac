@@ -14580,10 +14580,10 @@ namespace MonoMac.AppKit {
 		NSColor[] FileLabelColors { get; }
 		
 		[Export ("recycleURLs:completionHandler:")]
-		void RecycleUrls (NSDictionary urls, NSWorkspaceUrlHandler completionHandler);
+		void RecycleUrls (NSArray urls, NSWorkspaceUrlHandler completionHandler);
 		
 		[Export ("duplicateURLs:completionHandler:")]
-		void DuplicateUrls (NSDictionary urls, NSWorkspaceUrlHandler completionHandler);
+		void DuplicateUrls (NSArray urls, NSWorkspaceUrlHandler completionHandler);
 		
 		[Export ("getFileSystemInfoForPath:isRemovable:isWritable:isUnmountable:description:type:")]
 		bool GetFileSystemInfo (string fullPath, out bool removableFlag, out bool writableFlag, out bool unmountableFlag, out string description, out string fileSystemType);
