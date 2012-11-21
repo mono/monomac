@@ -66,35 +66,6 @@ namespace macdoc
 				return;
 			
 			FireSwipeEvent (theEvent.DeltaX > 0 ? SwipeSide.Left : SwipeSide.Right);
-			
-			// The following scroll event to swipe event translation is mostly inspired from the following Firefox patch
-			// https://bugzilla.mozilla.org/attachment.cgi?id=553654&action=diff
-			// Although it's not working fine for us, let's do our own sauce
-			/*
-			// We only take pure swipe event into account that is only
-			// when the swipe is initiated at the beginning of the touch process
-			// (put differently a swipe can't happen after a normal scroll and user need,
-			// to first stop whatever scroll he was doing before attempting a swipe)
-			if (theEvent.Phase != NSEventPhase.Began)
-				return;
-			
-			// Bit of heuristic to avoid triggering accidental swipes
-			if (theEvent.DeltaX == 0 || Math.Abs (theEvent.DeltaX) <= Math.Abs (theEvent.DeltaY) * 8)
-				return;
-			
-			NSEventTrackHandler swipeBlock = delegate (float gestureAmount, NSEventPhase eventPhase, bool isComplete, ref bool stop) {
-				Console.WriteLine ("[{0}] {1} {2} {3}", theEvent.Timestamp, gestureAmount, eventPhase, isComplete);
-				if (isComplete && gestureAmount != 0) {
-					FireSwipeEvent (gestureAmount > 0 ? SwipeSide.Left : SwipeSide.Right);
-				}
-			};
-			
-			Console.WriteLine ("Tracking {0}", theEvent.Timestamp.ToString ());
-			theEvent.TrackSwipeEvent ((NSEventSwipeTrackingOptions)0,
-			                          -1,
-			                           1,
-			                          swipeBlock);
-			*/
 		}
 
 		public override void SwipeWithEvent (NSEvent theEvent)
