@@ -22,7 +22,7 @@ namespace macdoc
 		
 		public IndexUpdateManager (IEnumerable<string> sourceFiles, string baseUserDir)
 		{
-			Console.WriteLine ("Going to verify [{0}]", sourceFiles.Aggregate ((e1, e2) => e1 + ", " + e2));
+			Logger.Log ("Going to verify [{0}]", sourceFiles.Aggregate ((e1, e2) => e1 + ", " + e2));
 			this.baseUserDir = baseUserDir;
 			this.sourceFiles = sourceFiles;
 		}
@@ -61,7 +61,7 @@ namespace macdoc
 					md5sums[source] = hash;
 				}
 				
-				Console.WriteLine ("We have a {0} fresh index", isFresh);
+				Logger.Log ("Index fresh? {0}", isFresh ? "yes" : "no");
 				
 				return IsFresh = isFresh;
 			});

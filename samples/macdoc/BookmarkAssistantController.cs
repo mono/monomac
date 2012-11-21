@@ -32,7 +32,7 @@ namespace macdoc
 		{
 			var entry = entries[row];
 			AppDelegate.BookmarkManager.DeleteBookmark (entry);
-			Console.WriteLine ("Removed entry {0}", entry.Name);
+			Logger.Log ("Removed entry {0}", entry.Name);
 			View.TableView.ReloadData ();
 		}
 

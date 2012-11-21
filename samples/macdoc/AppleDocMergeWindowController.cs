@@ -41,7 +41,7 @@ namespace macdoc
 				var faulted = t.IsFaulted;
 
 				if (faulted)
-					Console.WriteLine ("Merger exception: " + t.Exception.ToString ());
+					Logger.LogError ("Merger exception", t.Exception);
 
 				BeginInvokeOnMainThread (() => Finish (faulted || t.Result > 0, faulted ? 99 : t.Result));
 			});

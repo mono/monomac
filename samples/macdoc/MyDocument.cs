@@ -53,13 +53,13 @@ namespace macdoc
 				toolbarSearchEntry.StringValue = searchTerm;
 				tabSelector.SelectAt (2);
 				Search (searchTerm);
-				Console.WriteLine ("Searched: '{0}'", searchTerm);
+				Logger.Log ("Searched: '{0}'", searchTerm);
 			}
 		}
 		
 		public override bool ReadFromUrl (NSUrl url, string typeName, out NSError outError)
 		{
-			Console.WriteLine ("ReadFromUrl : {0}", url.ToString ());
+			Logger.Log ("ReadFromUrl: {0}", url.ToString ());
 			outError = null;
 
 			// if scheme is not right, we ignore the url
@@ -242,16 +242,14 @@ namespace macdoc
 		
 		internal void LoadUrl (string url, bool syncTreeView = false, HelpSource source = null, bool addToHistory = true)
 		{
-			if (url.StartsWith ("#")) {
-				Console.WriteLine ("FIXME: Anchor jump");
+			if (url.StartsWith ("#"))
 				return;
-			}
 			// In case user click on an external link e.g. [Android documentation] link at bottom of MonoDroid docs
 			if (url.StartsWith ("http://")) {
 				UrlLauncher.Launch (url);
 				return;
 			}
-			Console.WriteLine ("Loading {0}", url);
+			Logger.Log ("Loading {0}", url);
 			var ts = Interlocked.Increment (ref loadUrlTimestamp);
 			Task.Factory.StartNew (() => {
 				Node node;

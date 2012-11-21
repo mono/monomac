@@ -130,12 +130,12 @@ namespace macdoc
 			var indexManager = IndexUpdateManager;
 			indexManager.CheckIndexIsFresh ().ContinueWith (t => {
 				if (t.IsFaulted)
-					Console.WriteLine ("Error while checking indexes: {0}", t.Exception);
+					Logger.LogError ("Error while checking indexes", t.Exception);
 				else if (!t.Result)
 					indexManager.PerformSearchIndexCreation ();
 				else
 					indexManager.AdvertiseFreshIndex ();
-			}).ContinueWith (t => Console.WriteLine ("Error while creating indexes: {0}", t.Exception), TaskContinuationOptions.OnlyOnFaulted);
+			}).ContinueWith (t => Logger.LogError ("Error while creating indexes", t.Exception), TaskContinuationOptions.OnlyOnFaulted);
 			
 			// Check if there is a MonoTouch documentation installed and launch accordingly
 			if (Root.HelpSources.Cast<HelpSource> ().Any (hs => hs != null && hs.Name != null && hs.Name.StartsWith ("MonoTouch", StringComparison.InvariantCultureIgnoreCase))
@@ -148,7 +148,7 @@ namespace macdoc
 						mergeOutdated = AppleDocHandler.CheckMergedDocumentationFreshness (infos);
 					return Tuple.Create (docOutdated || mergeOutdated, docOutdated, mergeOutdated);
 				}).ContinueWith (t => {
-					Console.WriteLine ("Merged status {0}", t.Result);
+					Logger.Log ("Merged status {0}", t.Result);
 					if (!t.Result.Item1)
 						return;
 					BeginInvokeOnMainThread (() => LaunchDocumentationUpdate (t.Result.Item2, t.Result.Item3));
