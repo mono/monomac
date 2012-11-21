@@ -138,9 +138,20 @@ namespace MonoMac.ObjCRuntime {
 				return handle;
 			}
 
+			// If this type wraps a native Objective-C class, we must avoid registering the type
+			// in the case that the native class is not found. If the type were to be registered,
+			// invoking a method would result in an eventual crash due to the recursion of calling
+			// out to Objective-C which would then call back into the managed method that just
+			// called out.
+			//
+			// We cannot throw an exception here without more detailed knowledge of API availability
+			// and executing platform version. Because a wrapped API may not be available on all
+			// OS versions we cannot assume we should throw because it's not there. Adding 
+			// "Platform" to the Since attribute would be one way to pass along information for
+			// more detailed checks or messages to the caller: [Since(Platform.OSX, 10, 9)].
 			if (is_wrapper) {
-				if (!Attribute.IsDefined (type, typeof(ModelAttribute), false))
-					throw new Exception (string.Format ("Wrapper type '{0}' is missing its native ObjectiveC class '{1}'.", type.FullName, name));
+				Console.Out.WriteLine(string.Format ("WARNING: Wrapper type '{0}' is missing its native ObjectiveC class '{1}'.", type.FullName, name));
+				return IntPtr.Zero;
 			}
 
 			if (objc_getProtocol (name) != IntPtr.Zero)
