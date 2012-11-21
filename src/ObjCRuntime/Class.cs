@@ -121,10 +121,11 @@ namespace MonoMac.ObjCRuntime {
 		internal static IntPtr Register (Type type) { 
 			RegisterAttribute attr = (RegisterAttribute) Attribute.GetCustomAttribute (type, typeof (RegisterAttribute), false);
 			string name = attr == null ? type.FullName : attr.Name ?? type.FullName;
-			return Class.Register (type, name);
+			bool is_wrapper = attr != null && attr.IsWrapper;
+			return Class.Register (type, name, is_wrapper);
 		}
 
-		internal unsafe static IntPtr Register (Type type, string name) {
+		internal unsafe static IntPtr Register (Type type, string name, bool is_wrapper) {
 			IntPtr parent = IntPtr.Zero;
 			IntPtr handle = IntPtr.Zero;
 
@@ -135,6 +136,11 @@ namespace MonoMac.ObjCRuntime {
 					type_map [handle] = type;
 				}
 				return handle;
+			}
+
+			if (is_wrapper) {
+				if (!Attribute.IsDefined (type, typeof(ModelAttribute), false))
+					throw new Exception (string.Format ("Wrapper type '{0}' is missing its native ObjectiveC class '{1}'.", type.FullName, name));
 			}
 
 			if (objc_getProtocol (name) != IntPtr.Zero)
@@ -149,7 +155,8 @@ namespace MonoMac.ObjCRuntime {
 			parent = objc_getClass (parent_name);
 			if (parent == IntPtr.Zero && parent_type.Assembly != NSObject.MonoMacAssembly) {
 				// Its possible as we scan that we might be derived from a type that isn't reigstered yet.
-				Class.Register (parent_type, parent_name);
+				bool parent_is_wrapper = parent_attr != null && parent_attr.IsWrapper;
+				Class.Register (parent_type, parent_name, parent_is_wrapper);
 				parent = objc_getClass (parent_name);
 			}
 			if (parent == IntPtr.Zero) {
