@@ -163,6 +163,33 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="AutomaticallyEnablesLowLightBoostWhenAvailable">
+      <MemberSignature Language="C#" Value="public virtual bool AutomaticallyEnablesLowLightBoostWhenAvailable { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool AutomaticallyEnablesLowLightBoostWhenAvailable" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.ObjCRuntime.Since(6, 0)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("automaticallyEnablesLowLightBoostWhenAvailable")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: MonoMac.Foundation.Export("setAutomaticallyEnablesLowLightBoostWhenAvailable:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="ClassHandle">
       <MemberSignature Language="C#" Value="public override IntPtr ClassHandle { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance native int ClassHandle" />
@@ -374,6 +401,9 @@ public class MyClass : BaseClass {
       </AssemblyInfo>
       <Attributes>
         <Attribute>
+          <AttributeName>MonoMac.ObjCRuntime.Since(5, 0)</AttributeName>
+        </Attribute>
+        <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("isFlashActive")</AttributeName>
         </Attribute>
       </Attributes>
@@ -394,6 +424,9 @@ public class MyClass : BaseClass {
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.ObjCRuntime.Since(5, 0)</AttributeName>
+        </Attribute>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("isFlashAvailable")</AttributeName>
         </Attribute>
@@ -520,6 +553,31 @@ public class MyClass : BaseClass {
       </Parameters>
       <Docs>
         <param name="mediaType">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsExposureModeSupported">
+      <MemberSignature Language="C#" Value="public virtual bool IsExposureModeSupported (MonoMac.AVFoundation.AVCaptureExposureMode exposureMode);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool IsExposureModeSupported(valuetype MonoMac.AVFoundation.AVCaptureExposureMode exposureMode) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("isExposureModeSupported:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="exposureMode" Type="MonoMac.AVFoundation.AVCaptureExposureMode" />
+      </Parameters>
+      <Docs>
+        <param name="exposureMode">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -671,6 +729,70 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="LowLightBoostEnabled">
+      <MemberSignature Language="C#" Value="public virtual bool LowLightBoostEnabled { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool LowLightBoostEnabled" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.ObjCRuntime.Since(6, 0)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("isLowLightBoostEnabled")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LowLightBoostSupported">
+      <MemberSignature Language="C#" Value="public virtual bool LowLightBoostSupported { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool LowLightBoostSupported" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.ObjCRuntime.Since(6, 0)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("isLowLightBoostSupported")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxAvailableTorchLevel">
+      <MemberSignature Language="C#" Value="public static float MaxAvailableTorchLevel { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property float32 MaxAvailableTorchLevel" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="ModelID">
       <MemberSignature Language="C#" Value="public virtual string ModelID { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string ModelID" />
@@ -710,6 +832,33 @@ public class MyClass : BaseClass {
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetTorchModeLevel">
+      <MemberSignature Language="C#" Value="public virtual bool SetTorchModeLevel (float torchLevel, out MonoMac.Foundation.NSError outError);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool SetTorchModeLevel(float32 torchLevel, class MonoMac.Foundation.NSError outError) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("setTorchModeOnWithLevel:error:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="torchLevel" Type="System.Single" />
+        <Parameter Name="outError" Type="MonoMac.Foundation.NSError&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="torchLevel">To be added.</param>
+        <param name="outError">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -813,6 +962,30 @@ void Setup ()
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="TorchActive">
+      <MemberSignature Language="C#" Value="public virtual bool TorchActive { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool TorchActive" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.ObjCRuntime.Since(6, 0)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("isTorchActive")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="TorchAvailable">
       <MemberSignature Language="C#" Value="public virtual bool TorchAvailable { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool TorchAvailable" />
@@ -821,6 +994,9 @@ void Setup ()
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.ObjCRuntime.Since(5, 0)</AttributeName>
+        </Attribute>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("isTorchAvailable")</AttributeName>
         </Attribute>
@@ -842,6 +1018,9 @@ void Setup ()
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.ObjCRuntime.Since(5, 0)</AttributeName>
+        </Attribute>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("torchLevel")</AttributeName>
         </Attribute>

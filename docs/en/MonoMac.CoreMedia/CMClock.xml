@@ -1,0 +1,189 @@
+<Type Name="CMClock" FullName="MonoMac.CoreMedia.CMClock">
+  <TypeSignature Language="C#" Value="public class CMClock : MonoMac.CoreMedia.CMClockOrTimebase" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CMClock extends MonoMac.CoreMedia.CMClockOrTimebase" />
+  <AssemblyInfo>
+    <AssemblyName>MonoMac</AssemblyName>
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>MonoMac.CoreMedia.CMClockOrTimebase</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Attributes>
+    <Attribute>
+      <AttributeName>MonoMac.ObjCRuntime.Since(6, 0)</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CMClock (IntPtr handle);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(native int handle) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="handle" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="handle">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ConvertHostTimeToSystemUnits">
+      <MemberSignature Language="C#" Value="public static ulong ConvertHostTimeToSystemUnits (MonoMac.CoreMedia.CMTime hostTime);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig pinvokeimpl (&quot;/System/Library/PrivateFrameworks/CoreMedia.framework/Versions/A/CoreMedia&quot; as &quot;CMClockConvertHostTimeToSystemUnits&quot; winapi)unsigned int64 ConvertHostTimeToSystemUnits(valuetype MonoMac.CoreMedia.CMTime hostTime) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt64</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="hostTime" Type="MonoMac.CoreMedia.CMTime" />
+      </Parameters>
+      <Docs>
+        <param name="hostTime">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateAudioClock">
+      <MemberSignature Language="C#" Value="public static MonoMac.CoreMedia.CMClock CreateAudioClock (out MonoMac.CoreMedia.CMClockError clockError);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.CoreMedia.CMClock CreateAudioClock(valuetype MonoMac.CoreMedia.CMClockError clockError) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreMedia.CMClock</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="clockError" Type="MonoMac.CoreMedia.CMClockError&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="clockError">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateHostTimeFromSystemUnits">
+      <MemberSignature Language="C#" Value="public static MonoMac.CoreMedia.CMTime CreateHostTimeFromSystemUnits (ulong hostTime);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig pinvokeimpl (&quot;/System/Library/PrivateFrameworks/CoreMedia.framework/Versions/A/CoreMedia&quot; as &quot;CMClockMakeHostTimeFromSystemUnits&quot; winapi)valuetype MonoMac.CoreMedia.CMTime CreateHostTimeFromSystemUnits(unsigned int64 hostTime) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreMedia.CMTime</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="hostTime" Type="System.UInt64" />
+      </Parameters>
+      <Docs>
+        <param name="hostTime">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CurrentTime">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreMedia.CMTime CurrentTime { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.CoreMedia.CMTime CurrentTime" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreMedia.CMTime</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetAnchorTime">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreMedia.CMClockError GetAnchorTime (out MonoMac.CoreMedia.CMTime clockTime, out MonoMac.CoreMedia.CMTime referenceClockTime);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype MonoMac.CoreMedia.CMClockError GetAnchorTime(valuetype MonoMac.CoreMedia.CMTime clockTime, valuetype MonoMac.CoreMedia.CMTime referenceClockTime) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreMedia.CMClockError</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="clockTime" Type="MonoMac.CoreMedia.CMTime&amp;" RefType="out" />
+        <Parameter Name="referenceClockTime" Type="MonoMac.CoreMedia.CMTime&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="clockTime">To be added.</param>
+        <param name="referenceClockTime">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="HostTimeClock">
+      <MemberSignature Language="C#" Value="public static MonoMac.CoreMedia.CMClock HostTimeClock { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.CoreMedia.CMClock HostTimeClock" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreMedia.CMClock</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Invalidate">
+      <MemberSignature Language="C#" Value="public void Invalidate ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Invalidate() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MightDrift">
+      <MemberSignature Language="C#" Value="public bool MightDrift (MonoMac.CoreMedia.CMClock otherClock);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool MightDrift(class MonoMac.CoreMedia.CMClock otherClock) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="otherClock" Type="MonoMac.CoreMedia.CMClock" />
+      </Parameters>
+      <Docs>
+        <param name="otherClock">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

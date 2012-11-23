@@ -27,14 +27,14 @@
   </Docs>
   <Members>
     <Member MemberName="CopyDataBytes">
-      <MemberSignature Language="C#" Value="public int CopyDataBytes (uint offsetToData, uint dataLength, IntPtr destination);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 CopyDataBytes(unsigned int32 offsetToData, unsigned int32 dataLength, native int destination) cil managed" />
+      <MemberSignature Language="C#" Value="public MonoMac.CoreMedia.CMBlockBufferError CopyDataBytes (uint offsetToData, uint dataLength, IntPtr destination);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype MonoMac.CoreMedia.CMBlockBufferError CopyDataBytes(unsigned int32 offsetToData, unsigned int32 dataLength, native int destination) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
+        <ReturnType>MonoMac.CoreMedia.CMBlockBufferError</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="offsetToData" Type="System.UInt32" />
@@ -45,6 +45,30 @@
         <param name="offsetToData">To be added.</param>
         <param name="dataLength">To be added.</param>
         <param name="destination">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateEmpty">
+      <MemberSignature Language="C#" Value="public static MonoMac.CoreMedia.CMBlockBuffer CreateEmpty (uint subBlockCapacity, MonoMac.CoreMedia.CMBlockBufferFlags flags, out MonoMac.CoreMedia.CMBlockBufferError error);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.CoreMedia.CMBlockBuffer CreateEmpty(unsigned int32 subBlockCapacity, valuetype MonoMac.CoreMedia.CMBlockBufferFlags flags, valuetype MonoMac.CoreMedia.CMBlockBufferError error) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreMedia.CMBlockBuffer</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="subBlockCapacity" Type="System.UInt32" />
+        <Parameter Name="flags" Type="MonoMac.CoreMedia.CMBlockBufferFlags" />
+        <Parameter Name="error" Type="MonoMac.CoreMedia.CMBlockBufferError&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="subBlockCapacity">To be added.</param>
+        <param name="flags">To be added.</param>
+        <param name="error">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>

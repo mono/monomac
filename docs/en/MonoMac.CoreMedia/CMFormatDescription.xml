@@ -124,6 +124,46 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="ClosedCaptionFormatType">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreMedia.CMClosedCaptionFormatType ClosedCaptionFormatType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.CoreMedia.CMClosedCaptionFormatType ClosedCaptionFormatType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreMedia.CMClosedCaptionFormatType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Create">
+      <MemberSignature Language="C#" Value="public static MonoMac.CoreMedia.CMFormatDescription Create (MonoMac.CoreMedia.CMMediaType mediaType, uint mediaSubtype, out MonoMac.CoreMedia.CMFormatDescriptionError error);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.CoreMedia.CMFormatDescription Create(valuetype MonoMac.CoreMedia.CMMediaType mediaType, unsigned int32 mediaSubtype, valuetype MonoMac.CoreMedia.CMFormatDescriptionError error) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreMedia.CMFormatDescription</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="mediaType" Type="MonoMac.CoreMedia.CMMediaType" />
+        <Parameter Name="mediaSubtype" Type="System.UInt32" />
+        <Parameter Name="error" Type="MonoMac.CoreMedia.CMFormatDescriptionError&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="mediaType">To be added.</param>
+        <param name="mediaSubtype">To be added.</param>
+        <param name="error">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Dispose">
       <MemberSignature Language="C#" Value="public void Dispose ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Dispose() cil managed" />
@@ -244,6 +284,11 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use CMVideoFormatDescription")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Drawing.RectangleF</ReturnType>
       </ReturnValue>
@@ -264,6 +309,11 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use CMVideoFormatDescription")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Drawing.SizeF</ReturnType>
       </ReturnValue>
@@ -302,6 +352,11 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use specific SubType property")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
@@ -327,6 +382,86 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="MetadataFormatType">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreMedia.CMMetadataFormatType MetadataFormatType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.CoreMedia.CMMetadataFormatType MetadataFormatType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreMedia.CMMetadataFormatType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MuxedStreamType">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreMedia.CMMuxedStreamType MuxedStreamType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.CoreMedia.CMMuxedStreamType MuxedStreamType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreMedia.CMMuxedStreamType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SubtitleFormatType">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreMedia.CMSubtitleFormatType SubtitleFormatType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.CoreMedia.CMSubtitleFormatType SubtitleFormatType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreMedia.CMSubtitleFormatType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TimeCodeFormatType">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreMedia.CMTimeCodeFormatType TimeCodeFormatType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.CoreMedia.CMTimeCodeFormatType TimeCodeFormatType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreMedia.CMTimeCodeFormatType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="VideoCodecType">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreMedia.CMVideoCodecType VideoCodecType { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.CoreMedia.CMVideoCodecType VideoCodecType" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreMedia.CMVideoCodecType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="VideoDimensions">
       <MemberSignature Language="C#" Value="public System.Drawing.Size VideoDimensions { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Drawing.Size VideoDimensions" />
@@ -334,6 +469,11 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use CMVideoFormatDescription")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Drawing.Size</ReturnType>
       </ReturnValue>

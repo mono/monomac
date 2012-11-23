@@ -204,6 +204,22 @@ public class MyClass : BaseClass {
         <remarks>Each MonoMac class mirrors an unmanaged Objective-C class.   This value contains the pointer to the Objective-C class, it is similar to calling objc_getClass with the object name.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="CompressedVideoSetting">
+      <MemberSignature Language="C#" Value="public MonoMac.AVFoundation.AVVideoSettingsCompressed CompressedVideoSetting { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AVFoundation.AVVideoSettingsCompressed CompressedVideoSetting" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.AVFoundation.AVVideoSettingsCompressed</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Dispose">
       <MemberSignature Language="C#" Value="protected override void Dispose (bool disposing);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Dispose(bool disposing) cil managed" />
@@ -349,6 +365,22 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="UncompressedVideoSetting">
+      <MemberSignature Language="C#" Value="public MonoMac.AVFoundation.AVVideoSettingsUncompressed UncompressedVideoSetting { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AVFoundation.AVVideoSettingsUncompressed UncompressedVideoSetting" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.AVFoundation.AVVideoSettingsUncompressed</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="VideoSettings">
       <MemberSignature Language="C#" Value="public MonoMac.AVFoundation.AVVideoSettings VideoSettings { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AVFoundation.AVVideoSettings VideoSettings" />
@@ -356,6 +388,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use Compressed or Uncompressed property")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.AVFoundation.AVVideoSettings</ReturnType>
       </ReturnValue>

@@ -206,6 +206,46 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="CategoryMultiRoute">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString CategoryMultiRoute { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString CategoryMultiRoute" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CategoryOptions">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AVFoundation.AVAudioSessionCategoryOptions CategoryOptions { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.AVFoundation.AVAudioSessionCategoryOptions CategoryOptions" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.ObjCRuntime.Since(6, 0)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("categoryOptions")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AVFoundation.AVAudioSessionCategoryOptions</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="CategoryPlayAndRecord">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString CategoryPlayAndRecord { get; }" />
       <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString CategoryPlayAndRecord" />
@@ -290,14 +330,17 @@ public class MyClass : BaseClass {
         <remarks>Each MonoMac class mirrors an unmanaged Objective-C class.   This value contains the pointer to the Objective-C class, it is similar to calling objc_getClass with the object name.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="currentHardwareInputNumberOfChannels">
-      <MemberSignature Language="C#" Value="public virtual int currentHardwareInputNumberOfChannels { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance int32 currentHardwareInputNumberOfChannels" />
+    <Member MemberName="CurrentHardwareInputNumberOfChannels">
+      <MemberSignature Language="C#" Value="public virtual int CurrentHardwareInputNumberOfChannels { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 CurrentHardwareInputNumberOfChannels" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Deprecated in iOS 6.0, use InputNumberOfChannels instead", false)</AttributeName>
+        </Attribute>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("currentHardwareInputNumberOfChannels")</AttributeName>
         </Attribute>
@@ -320,6 +363,9 @@ public class MyClass : BaseClass {
       </AssemblyInfo>
       <Attributes>
         <Attribute>
+          <AttributeName>System.Obsolete("Deprecated in iOS 6.0, use OutputNumberOfChannels instead", false)</AttributeName>
+        </Attribute>
+        <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("currentHardwareOutputNumberOfChannels")</AttributeName>
         </Attribute>
       </Attributes>
@@ -341,11 +387,38 @@ public class MyClass : BaseClass {
       </AssemblyInfo>
       <Attributes>
         <Attribute>
+          <AttributeName>System.Obsolete("Deprecated in iOS 6.0, use SampleRate instead", false)</AttributeName>
+        </Attribute>
+        <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("currentHardwareSampleRate")</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
         <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CurrentRoute">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AVFoundation.AVAudioSessionRouteDescription CurrentRoute { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AVFoundation.AVAudioSessionRouteDescription CurrentRoute" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.ObjCRuntime.Since(6, 0)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("currentRoute")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AVFoundation.AVAudioSessionRouteDescription</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -360,6 +433,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("AVAudioSession.Delegate is deprecated on iOS 6.0, use AVAudioSession.Notification.Observe* methods instead", false)</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.AVFoundation.AVAudioSessionDelegate</ReturnType>
       </ReturnValue>
@@ -429,6 +507,30 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="InputAvailable">
+      <MemberSignature Language="C#" Value="public virtual bool InputAvailable { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool InputAvailable" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.ObjCRuntime.Since(6, 0)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("isInputAvailable")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="InputChannelsChanged">
       <MemberSignature Language="C#" Value="public event EventHandler&lt;MonoMac.AVFoundation.AVChannelsEventArgs&gt; InputChannelsChanged;" />
       <MemberSignature Language="ILAsm" Value=".event class System.EventHandler`1&lt;class MonoMac.AVFoundation.AVChannelsEventArgs&gt; InputChannelsChanged" />
@@ -444,6 +546,102 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="InputDataSource">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AVFoundation.AVAudioSessionDataSourceDescription InputDataSource { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AVFoundation.AVAudioSessionDataSourceDescription InputDataSource" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.ObjCRuntime.Since(6, 0)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("inputDataSource")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AVFoundation.AVAudioSessionDataSourceDescription</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InputDataSources">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AVFoundation.AVAudioSessionDataSourceDescription[] InputDataSources { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AVFoundation.AVAudioSessionDataSourceDescription[] InputDataSources" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.ObjCRuntime.Since(6, 0)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("inputDataSources")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AVFoundation.AVAudioSessionDataSourceDescription[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InputGain">
+      <MemberSignature Language="C#" Value="public virtual float InputGain { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 InputGain" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.ObjCRuntime.Since(6, 0)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("inputGain")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InputGainSettable">
+      <MemberSignature Language="C#" Value="public virtual bool InputGainSettable { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool InputGainSettable" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.ObjCRuntime.Since(6, 0)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("isInputGainSettable")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="InputIsAvailable">
       <MemberSignature Language="C#" Value="public virtual bool InputIsAvailable { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool InputIsAvailable" />
@@ -453,11 +651,118 @@ public class MyClass : BaseClass {
       </AssemblyInfo>
       <Attributes>
         <Attribute>
+          <AttributeName>System.Obsolete("Deprecated in iOS 6.0", false)</AttributeName>
+        </Attribute>
+        <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("inputIsAvailable")</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InputLatency">
+      <MemberSignature Language="C#" Value="public virtual double InputLatency { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64 InputLatency" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.ObjCRuntime.Since(6, 0)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("inputLatency")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InputNumberOfChannels">
+      <MemberSignature Language="C#" Value="public virtual int InputNumberOfChannels { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 InputNumberOfChannels" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.ObjCRuntime.Since(6, 0)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("inputNumberOfChannels")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InterruptionNotification">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString InterruptionNotification { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString InterruptionNotification" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IOBufferDuration">
+      <MemberSignature Language="C#" Value="public virtual double IOBufferDuration { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64 IOBufferDuration" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.ObjCRuntime.Since(6, 0)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("IOBufferDuration")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MediaServicesWereResetNotification">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString MediaServicesWereResetNotification { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString MediaServicesWereResetNotification" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -537,6 +842,22 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="ModeMoviePlayback">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString ModeMoviePlayback { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString ModeMoviePlayback" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="ModeVideoRecording">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString ModeVideoRecording { get; }" />
       <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString ModeVideoRecording" />
@@ -571,6 +892,30 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="OtherAudioPlaying">
+      <MemberSignature Language="C#" Value="public virtual bool OtherAudioPlaying { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool OtherAudioPlaying" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.ObjCRuntime.Since(6, 0)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("isOtherAudioPlaying")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="OutputChannelsChanged">
       <MemberSignature Language="C#" Value="public event EventHandler&lt;MonoMac.AVFoundation.AVChannelsEventArgs&gt; OutputChannelsChanged;" />
       <MemberSignature Language="ILAsm" Value=".event class System.EventHandler`1&lt;class MonoMac.AVFoundation.AVChannelsEventArgs&gt; OutputChannelsChanged" />
@@ -586,6 +931,345 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="OutputDataSource">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AVFoundation.AVAudioSessionDataSourceDescription OutputDataSource { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AVFoundation.AVAudioSessionDataSourceDescription OutputDataSource" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.ObjCRuntime.Since(6, 0)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("outputDataSource")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AVFoundation.AVAudioSessionDataSourceDescription</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OutputDataSources">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AVFoundation.AVAudioSessionDataSourceDescription[] OutputDataSources { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AVFoundation.AVAudioSessionDataSourceDescription[] OutputDataSources" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.ObjCRuntime.Since(6, 0)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("outputDataSources")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AVFoundation.AVAudioSessionDataSourceDescription[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OutputLatency">
+      <MemberSignature Language="C#" Value="public virtual double OutputLatency { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64 OutputLatency" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.ObjCRuntime.Since(6, 0)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("outputLatency")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OutputNumberOfChannels">
+      <MemberSignature Language="C#" Value="public virtual int OutputNumberOfChannels { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 OutputNumberOfChannels" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.ObjCRuntime.Since(6, 0)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("outputNumberOfChannels")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OutputVolume">
+      <MemberSignature Language="C#" Value="public virtual float OutputVolume { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 OutputVolume" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.ObjCRuntime.Since(6, 0)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("outputVolume")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OverrideOutputAudioPort">
+      <MemberSignature Language="C#" Value="public virtual bool OverrideOutputAudioPort (MonoMac.AVFoundation.AVAudioSessionPortOverride portOverride, out MonoMac.Foundation.NSError outError);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool OverrideOutputAudioPort(valuetype MonoMac.AVFoundation.AVAudioSessionPortOverride portOverride, class MonoMac.Foundation.NSError outError) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("overrideOutputAudioPort:error:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="portOverride" Type="MonoMac.AVFoundation.AVAudioSessionPortOverride" />
+        <Parameter Name="outError" Type="MonoMac.Foundation.NSError&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="portOverride">To be added.</param>
+        <param name="outError">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PortAirPlay">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString PortAirPlay { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString PortAirPlay" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PortBluetoothA2DP">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString PortBluetoothA2DP { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString PortBluetoothA2DP" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PortBluetoothHfp">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString PortBluetoothHfp { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString PortBluetoothHfp" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PortBuiltInMic">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString PortBuiltInMic { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString PortBuiltInMic" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PortBuiltInReceiver">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString PortBuiltInReceiver { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString PortBuiltInReceiver" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PortBuiltInSpeaker">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString PortBuiltInSpeaker { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString PortBuiltInSpeaker" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PortHdmi">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString PortHdmi { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString PortHdmi" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PortHeadphones">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString PortHeadphones { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString PortHeadphones" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PortHeadsetMic">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString PortHeadsetMic { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString PortHeadsetMic" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PortLineIn">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString PortLineIn { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString PortLineIn" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PortLineOut">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString PortLineOut { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString PortLineOut" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PortUsbAudio">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString PortUsbAudio { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString PortUsbAudio" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="PreferredHardwareSampleRate">
       <MemberSignature Language="C#" Value="public virtual double PreferredHardwareSampleRate { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float64 PreferredHardwareSampleRate" />
@@ -594,6 +1278,9 @@ public class MyClass : BaseClass {
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Deprecated in iOS 6.0", false)</AttributeName>
+        </Attribute>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("preferredHardwareSampleRate")</AttributeName>
         </Attribute>
@@ -617,6 +1304,70 @@ public class MyClass : BaseClass {
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("preferredIOBufferDuration")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PreferredSampleRate">
+      <MemberSignature Language="C#" Value="public virtual double PreferredSampleRate { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64 PreferredSampleRate" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.ObjCRuntime.Since(6, 0)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("preferredSampleRate")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RouteChangeNotification">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString RouteChangeNotification { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString RouteChangeNotification" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SampleRate">
+      <MemberSignature Language="C#" Value="public virtual double SampleRate { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64 SampleRate" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.ObjCRuntime.Since(6, 0)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("sampleRate")</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
@@ -671,12 +1422,17 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="SetActive">
-      <MemberSignature Language="C#" Value="public bool SetActive (bool beActive, out MonoMac.Foundation.NSError outError);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool SetActive(bool beActive, class MonoMac.Foundation.NSError outError) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual bool SetActive (bool beActive, out MonoMac.Foundation.NSError outError);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool SetActive(bool beActive, class MonoMac.Foundation.NSError outError) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("setActive:error:")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -693,15 +1449,18 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="SetActive">
-      <MemberSignature Language="C#" Value="public bool SetActive (bool beActive, MonoMac.AVFoundation.AVAudioSessionFlags flags, out MonoMac.Foundation.NSError outError);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool SetActive(bool beActive, valuetype MonoMac.AVFoundation.AVAudioSessionFlags flags, class MonoMac.Foundation.NSError outError) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual bool SetActive (bool beActive, MonoMac.AVFoundation.AVAudioSessionFlags flags, out MonoMac.Foundation.NSError outError);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool SetActive(bool beActive, valuetype MonoMac.AVFoundation.AVAudioSessionFlags flags, class MonoMac.Foundation.NSError outError) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>MonoMac.ObjCRuntime.Since(4, 0)</AttributeName>
+          <AttributeName>MonoMac.Foundation.Export("setActive:withFlags:error:")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Obsolete("Obsolete in iOS 6.0, use SetActive (bool, AVAudioSessionSetActiveOptions, out NSError) instead", false)</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
@@ -715,6 +1474,35 @@ public class MyClass : BaseClass {
       <Docs>
         <param name="beActive">To be added.</param>
         <param name="flags">To be added.</param>
+        <param name="outError">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetActive">
+      <MemberSignature Language="C#" Value="public virtual bool SetActive (bool active, MonoMac.AVFoundation.AVAudioSessionSetActiveOptions options, out MonoMac.Foundation.NSError outError);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool SetActive(bool active, valuetype MonoMac.AVFoundation.AVAudioSessionSetActiveOptions options, class MonoMac.Foundation.NSError outError) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("setActive:withOptions:error:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="active" Type="System.Boolean" />
+        <Parameter Name="options" Type="MonoMac.AVFoundation.AVAudioSessionSetActiveOptions" />
+        <Parameter Name="outError" Type="MonoMac.Foundation.NSError&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="active">To be added.</param>
+        <param name="options">To be added.</param>
         <param name="outError">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
@@ -749,12 +1537,17 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="SetCategory">
-      <MemberSignature Language="C#" Value="public bool SetCategory (MonoMac.Foundation.NSString theCategory, out MonoMac.Foundation.NSError outError);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool SetCategory(class MonoMac.Foundation.NSString theCategory, class MonoMac.Foundation.NSError outError) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual bool SetCategory (MonoMac.Foundation.NSString theCategory, out MonoMac.Foundation.NSError outError);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool SetCategory(class MonoMac.Foundation.NSString theCategory, class MonoMac.Foundation.NSError outError) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("setCategory:error:")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -764,6 +1557,89 @@ public class MyClass : BaseClass {
       </Parameters>
       <Docs>
         <param name="theCategory">To be added.</param>
+        <param name="outError">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetCategory">
+      <MemberSignature Language="C#" Value="public virtual bool SetCategory (string category, MonoMac.AVFoundation.AVAudioSessionCategoryOptions options, out MonoMac.Foundation.NSError outError);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool SetCategory(string category, valuetype MonoMac.AVFoundation.AVAudioSessionCategoryOptions options, class MonoMac.Foundation.NSError outError) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("setCategory:withOptions:error:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="category" Type="System.String" />
+        <Parameter Name="options" Type="MonoMac.AVFoundation.AVAudioSessionCategoryOptions" />
+        <Parameter Name="outError" Type="MonoMac.Foundation.NSError&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="category">To be added.</param>
+        <param name="options">To be added.</param>
+        <param name="outError">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetInputDataSource">
+      <MemberSignature Language="C#" Value="public virtual bool SetInputDataSource (MonoMac.AVFoundation.AVAudioSessionDataSourceDescription dataSource, out MonoMac.Foundation.NSError outError);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool SetInputDataSource(class MonoMac.AVFoundation.AVAudioSessionDataSourceDescription dataSource, class MonoMac.Foundation.NSError outError) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("setInputDataSource:error:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="dataSource" Type="MonoMac.AVFoundation.AVAudioSessionDataSourceDescription" />
+        <Parameter Name="outError" Type="MonoMac.Foundation.NSError&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="dataSource">To be added.</param>
+        <param name="outError">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetInputGain">
+      <MemberSignature Language="C#" Value="public virtual bool SetInputGain (float gain, out MonoMac.Foundation.NSError outError);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool SetInputGain(float32 gain, class MonoMac.Foundation.NSError outError) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("setInputGain:error:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="gain" Type="System.Single" />
+        <Parameter Name="outError" Type="MonoMac.Foundation.NSError&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="gain">To be added.</param>
         <param name="outError">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
@@ -797,6 +1673,33 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="SetOutputDataSource">
+      <MemberSignature Language="C#" Value="public virtual bool SetOutputDataSource (MonoMac.AVFoundation.AVAudioSessionDataSourceDescription dataSource, out MonoMac.Foundation.NSError outError);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool SetOutputDataSource(class MonoMac.AVFoundation.AVAudioSessionDataSourceDescription dataSource, class MonoMac.Foundation.NSError outError) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("setOutputDataSource:error:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="dataSource" Type="MonoMac.AVFoundation.AVAudioSessionDataSourceDescription" />
+        <Parameter Name="outError" Type="MonoMac.Foundation.NSError&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="dataSource">To be added.</param>
+        <param name="outError">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="SetPreferredHardwareSampleRate">
       <MemberSignature Language="C#" Value="public bool SetPreferredHardwareSampleRate (double sampleRate, MonoMac.Foundation.NSError outError);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool SetPreferredHardwareSampleRate(float64 sampleRate, class MonoMac.Foundation.NSError outError) cil managed" />
@@ -806,7 +1709,7 @@ public class MyClass : BaseClass {
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>System.Obsolete("Use SetPreferredHardwareSampleRate(bool, out NSError) instead")</AttributeName>
+          <AttributeName>System.Obsolete("Use SetPreferredSampleRate(bool, out NSError) on iOS 6.0 instead")</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
@@ -825,12 +1728,20 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="SetPreferredHardwareSampleRate">
-      <MemberSignature Language="C#" Value="public bool SetPreferredHardwareSampleRate (double sampleRate, out MonoMac.Foundation.NSError outError);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool SetPreferredHardwareSampleRate(float64 sampleRate, class MonoMac.Foundation.NSError outError) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual bool SetPreferredHardwareSampleRate (double sampleRate, out MonoMac.Foundation.NSError outError);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool SetPreferredHardwareSampleRate(float64 sampleRate, class MonoMac.Foundation.NSError outError) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("setPreferredHardwareSampleRate:error:")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Obsolete("Obsoleted in iOS 6.0, use SetPreferredSampleRate", false)</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -874,12 +1785,17 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="SetPreferredIOBufferDuration">
-      <MemberSignature Language="C#" Value="public bool SetPreferredIOBufferDuration (double duration, out MonoMac.Foundation.NSError outError);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool SetPreferredIOBufferDuration(float64 duration, class MonoMac.Foundation.NSError outError) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual bool SetPreferredIOBufferDuration (double duration, out MonoMac.Foundation.NSError outError);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool SetPreferredIOBufferDuration(float64 duration, class MonoMac.Foundation.NSError outError) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("setPreferredIOBufferDuration:error:")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -890,6 +1806,33 @@ public class MyClass : BaseClass {
       <Docs>
         <param name="duration">To be added.</param>
         <param name="outError">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetPreferredSampleRate">
+      <MemberSignature Language="C#" Value="public virtual bool SetPreferredSampleRate (double sampleRate, out MonoMac.Foundation.NSError error);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool SetPreferredSampleRate(float64 sampleRate, class MonoMac.Foundation.NSError error) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("setPreferredSampleRate:error:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="sampleRate" Type="System.Double" />
+        <Parameter Name="error" Type="MonoMac.Foundation.NSError&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="sampleRate">To be added.</param>
+        <param name="error">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>

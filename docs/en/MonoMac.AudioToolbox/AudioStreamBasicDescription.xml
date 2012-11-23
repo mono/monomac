@@ -14,6 +14,38 @@
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public AudioStreamBasicDescription (MonoMac.AudioToolbox.AudioFormatType formatType);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype MonoMac.AudioToolbox.AudioFormatType formatType) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="formatType" Type="MonoMac.AudioToolbox.AudioFormatType" />
+      </Parameters>
+      <Docs>
+        <param name="formatType">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AudioStreamAnyRate">
+      <MemberSignature Language="C#" Value="public const double AudioStreamAnyRate = 0;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal float64 AudioStreamAnyRate = (0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <MemberValue>0</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="BitsPerChannel">
       <MemberSignature Language="C#" Value="public int BitsPerChannel;" />
       <MemberSignature Language="ILAsm" Value=".field public int32 BitsPerChannel" />
@@ -74,6 +106,30 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="CreateLinearPCM">
+      <MemberSignature Language="C#" Value="public static MonoMac.AudioToolbox.AudioStreamBasicDescription CreateLinearPCM (double sampleRate = 441000, uint channelsPerFrame = 2, uint bitsPerChannel = 16);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype MonoMac.AudioToolbox.AudioStreamBasicDescription CreateLinearPCM(float64 sampleRate, unsigned int32 channelsPerFrame, unsigned int32 bitsPerChannel) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.AudioToolbox.AudioStreamBasicDescription</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="sampleRate" Type="System.Double" />
+        <Parameter Name="channelsPerFrame" Type="System.UInt32" />
+        <Parameter Name="bitsPerChannel" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="sampleRate">To be added.</param>
+        <param name="channelsPerFrame">To be added.</param>
+        <param name="bitsPerChannel">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Format">
       <MemberSignature Language="C#" Value="public MonoMac.AudioToolbox.AudioFormatType Format;" />
       <MemberSignature Language="ILAsm" Value=".field public valuetype MonoMac.AudioToolbox.AudioFormatType Format" />
@@ -101,27 +157,6 @@
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="FormatID">
-      <MemberSignature Language="C#" Value="public int FormatID { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance int32 FormatID" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>System.Obsolete("Use the strongly-typed Format property instead")</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

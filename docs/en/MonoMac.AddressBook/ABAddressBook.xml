@@ -76,6 +76,11 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use static Create method in iOS 6.0")</AttributeName>
+        </Attribute>
+      </Attributes>
       <Parameters />
       <Docs>
         <summary>
@@ -118,6 +123,31 @@
         <exception cref="T:MonoMac.CoreFoundation.CFException">
           The record couldn't be added to the address book.
         </exception>
+      </Docs>
+    </Member>
+    <Member MemberName="Create">
+      <MemberSignature Language="C#" Value="public static MonoMac.AddressBook.ABAddressBook Create (out MonoMac.Foundation.NSError error);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.AddressBook.ABAddressBook Create(class MonoMac.Foundation.NSError error) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.ObjCRuntime.Since(6, 0)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AddressBook.ABAddressBook</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="error" Type="MonoMac.Foundation.NSError&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="error">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Dispose">
@@ -240,6 +270,28 @@
         </returns>
         <remarks>
         </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetAuthorizationStatus">
+      <MemberSignature Language="C#" Value="public static MonoMac.AddressBook.ABAuthorizationStatus GetAuthorizationStatus ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype MonoMac.AddressBook.ABAuthorizationStatus GetAuthorizationStatus() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.ObjCRuntime.Since(6, 0)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AddressBook.ABAuthorizationStatus</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="GetDefaultSource">
@@ -705,6 +757,30 @@
         <exception cref="T:MonoMac.CoreFoundation.CFException">
           The record couldn't be removed from the address book.
         </exception>
+      </Docs>
+    </Member>
+    <Member MemberName="RequestAccess">
+      <MemberSignature Language="C#" Value="public void RequestAccess (Action&lt;bool,MonoMac.Foundation.NSError&gt; onCompleted);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RequestAccess(class System.Action`2&lt;bool, class MonoMac.Foundation.NSError&gt; onCompleted) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.ObjCRuntime.Since(6, 0)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="onCompleted" Type="System.Action&lt;System.Boolean,MonoMac.Foundation.NSError&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="onCompleted">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Revert">

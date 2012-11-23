@@ -20,27 +20,6 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public NSOrthography ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>MonoMac.Foundation.Export("init")</AttributeName>
-        </Attribute>
-        <Attribute>
-          <AttributeName>System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Advanced)</AttributeName>
-        </Attribute>
-      </Attributes>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSOrthography (MonoMac.Foundation.NSCoder coder);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSCoder coder) cil managed" />
       <MemberType>Constructor</MemberType>
@@ -121,8 +100,8 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public NSOrthography (string script, MonoMac.Foundation.NSDictionary map);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string script, class MonoMac.Foundation.NSDictionary map) cil managed" />
+      <MemberSignature Language="C#" Value="public NSOrthography (string dominantScript, MonoMac.Foundation.NSDictionary languageMap);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string dominantScript, class MonoMac.Foundation.NSDictionary languageMap) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -133,12 +112,12 @@ public class MyClass : BaseClass {
         </Attribute>
       </Attributes>
       <Parameters>
-        <Parameter Name="script" Type="System.String" />
-        <Parameter Name="map" Type="MonoMac.Foundation.NSDictionary" />
+        <Parameter Name="dominantScript" Type="System.String" />
+        <Parameter Name="languageMap" Type="MonoMac.Foundation.NSDictionary" />
       </Parameters>
       <Docs>
-        <param name="script">To be added.</param>
-        <param name="map">To be added.</param>
+        <param name="dominantScript">To be added.</param>
+        <param name="languageMap">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -248,30 +227,9 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="DominantScript">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSString DominantScript { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSString DominantScript" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>0.0.0.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>get: MonoMac.Foundation.Export("dominantScript")</AttributeName>
-        </Attribute>
-      </Attributes>
-      <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="GetDominantLanguageForScript">
-      <MemberSignature Language="C#" Value="public virtual string GetDominantLanguageForScript (string forScript);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string GetDominantLanguageForScript(string forScript) cil managed" />
+    <Member MemberName="DominantLanguageForScript">
+      <MemberSignature Language="C#" Value="public virtual string DominantLanguageForScript (string script);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string DominantLanguageForScript(string script) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -285,12 +243,33 @@ public class MyClass : BaseClass {
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="forScript" Type="System.String" />
+        <Parameter Name="script" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="forScript">To be added.</param>
+        <param name="script">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DominantScript">
+      <MemberSignature Language="C#" Value="public virtual string DominantScript { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string DominantScript" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("dominantScript")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

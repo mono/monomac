@@ -151,6 +151,32 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="DeferredUpdatesFinished">
+      <MemberSignature Language="C#" Value="public virtual void DeferredUpdatesFinished (MonoMac.CoreLocation.CLLocationManager manager, MonoMac.Foundation.NSError error);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void DeferredUpdatesFinished(class MonoMac.CoreLocation.CLLocationManager manager, class MonoMac.Foundation.NSError error) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("locationManager:didFinishDeferredUpdatesWithError:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="manager" Type="MonoMac.CoreLocation.CLLocationManager" />
+        <Parameter Name="error" Type="MonoMac.Foundation.NSError" />
+      </Parameters>
+      <Docs>
+        <param name="manager">To be added.</param>
+        <param name="error">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Failed">
       <MemberSignature Language="C#" Value="public virtual void Failed (MonoMac.CoreLocation.CLLocationManager manager, MonoMac.Foundation.NSError error);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Failed(class MonoMac.CoreLocation.CLLocationManager manager, class MonoMac.Foundation.NSError error) cil managed" />
@@ -173,6 +199,80 @@ public class MyClass : BaseClass {
       <Docs>
         <param name="manager">To be added.</param>
         <param name="error">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LocationsUpdated">
+      <MemberSignature Language="C#" Value="public virtual void LocationsUpdated (MonoMac.CoreLocation.CLLocationManager manager, MonoMac.CoreLocation.CLLocation[] locations);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void LocationsUpdated(class MonoMac.CoreLocation.CLLocationManager manager, class MonoMac.CoreLocation.CLLocation[] locations) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("locationManager:didUpdateLocations:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="manager" Type="MonoMac.CoreLocation.CLLocationManager" />
+        <Parameter Name="locations" Type="MonoMac.CoreLocation.CLLocation[]" />
+      </Parameters>
+      <Docs>
+        <param name="manager">To be added.</param>
+        <param name="locations">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LocationUpdatesPaused">
+      <MemberSignature Language="C#" Value="public virtual void LocationUpdatesPaused (MonoMac.CoreLocation.CLLocationManager manager);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void LocationUpdatesPaused(class MonoMac.CoreLocation.CLLocationManager manager) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("locationManagerDidPauseLocationUpdates:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="manager" Type="MonoMac.CoreLocation.CLLocationManager" />
+      </Parameters>
+      <Docs>
+        <param name="manager">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LocationUpdatesResumed">
+      <MemberSignature Language="C#" Value="public virtual void LocationUpdatesResumed (MonoMac.CoreLocation.CLLocationManager manager);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void LocationUpdatesResumed(class MonoMac.CoreLocation.CLLocationManager manager) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("locationManagerDidResumeLocationUpdates:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="manager" Type="MonoMac.CoreLocation.CLLocationManager" />
+      </Parameters>
+      <Docs>
+        <param name="manager">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -212,6 +312,9 @@ public class MyClass : BaseClass {
       <Attributes>
         <Attribute>
           <AttributeName>MonoMac.Foundation.Export("locationManager:didUpdateToLocation:fromLocation:")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Obsolete("Deprecated in iOS 6.0", false)</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>

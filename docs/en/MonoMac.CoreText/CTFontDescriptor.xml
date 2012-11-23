@@ -374,6 +374,35 @@ var fontDescriptor = new CTFontDescriptor (attributes);
         <remarks>This IntPtr is a handle to the underlying unmanaged representation for this object.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="MatchFontDescriptors">
+      <MemberSignature Language="C#" Value="public static bool MatchFontDescriptors (MonoMac.CoreText.CTFontDescriptor[] descriptors, MonoMac.Foundation.NSSet mandatoryAttributes, Func&lt;MonoMac.CoreText.CTFontDescriptorMatchingState,IntPtr,bool&gt; progressHandler);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool MatchFontDescriptors(class MonoMac.CoreText.CTFontDescriptor[] descriptors, class MonoMac.Foundation.NSSet mandatoryAttributes, class System.Func`3&lt;valuetype MonoMac.CoreText.CTFontDescriptorMatchingState, native int, bool&gt; progressHandler) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.ObjCRuntime.Since(6, 0)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="descriptors" Type="MonoMac.CoreText.CTFontDescriptor[]" />
+        <Parameter Name="mandatoryAttributes" Type="MonoMac.Foundation.NSSet" />
+        <Parameter Name="progressHandler" Type="System.Func&lt;MonoMac.CoreText.CTFontDescriptorMatchingState,System.IntPtr,System.Boolean&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="descriptors">To be added.</param>
+        <param name="mandatoryAttributes">To be added.</param>
+        <param name="progressHandler">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="WithAttributes">
       <MemberSignature Language="C#" Value="public MonoMac.CoreText.CTFontDescriptor WithAttributes (MonoMac.CoreText.CTFontDescriptorAttributes attributes);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.CoreText.CTFontDescriptor WithAttributes(class MonoMac.CoreText.CTFontDescriptorAttributes attributes) cil managed" />
@@ -425,12 +454,777 @@ var newFontDescriptor = myDescriptor.WithAttributes (attributes);
       </Docs>
     </Member>
     <Member MemberName="WithFeature">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreText.CTFontDescriptor WithFeature (MonoMac.CoreText.CTFontFeatureAllTypographicFeatures.Selector featureSelector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.CoreText.CTFontDescriptor WithFeature(valuetype MonoMac.CoreText.CTFontFeatureAllTypographicFeatures/Selector featureSelector) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreText.CTFontDescriptor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="featureSelector" Type="MonoMac.CoreText.CTFontFeatureAllTypographicFeatures+Selector" />
+      </Parameters>
+      <Docs>
+        <param name="featureSelector">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WithFeature">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreText.CTFontDescriptor WithFeature (MonoMac.CoreText.CTFontFeatureAlternateKana.Selector featureSelector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.CoreText.CTFontDescriptor WithFeature(valuetype MonoMac.CoreText.CTFontFeatureAlternateKana/Selector featureSelector) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreText.CTFontDescriptor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="featureSelector" Type="MonoMac.CoreText.CTFontFeatureAlternateKana+Selector" />
+      </Parameters>
+      <Docs>
+        <param name="featureSelector">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WithFeature">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreText.CTFontDescriptor WithFeature (MonoMac.CoreText.CTFontFeatureAnnotation.Selector featureSelector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.CoreText.CTFontDescriptor WithFeature(valuetype MonoMac.CoreText.CTFontFeatureAnnotation/Selector featureSelector) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreText.CTFontDescriptor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="featureSelector" Type="MonoMac.CoreText.CTFontFeatureAnnotation+Selector" />
+      </Parameters>
+      <Docs>
+        <param name="featureSelector">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WithFeature">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreText.CTFontDescriptor WithFeature (MonoMac.CoreText.CTFontFeatureCaseSensitiveLayout.Selector featureSelector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.CoreText.CTFontDescriptor WithFeature(valuetype MonoMac.CoreText.CTFontFeatureCaseSensitiveLayout/Selector featureSelector) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreText.CTFontDescriptor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="featureSelector" Type="MonoMac.CoreText.CTFontFeatureCaseSensitiveLayout+Selector" />
+      </Parameters>
+      <Docs>
+        <param name="featureSelector">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WithFeature">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreText.CTFontDescriptor WithFeature (MonoMac.CoreText.CTFontFeatureCharacterAlternatives.Selector featureSelector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.CoreText.CTFontDescriptor WithFeature(valuetype MonoMac.CoreText.CTFontFeatureCharacterAlternatives/Selector featureSelector) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreText.CTFontDescriptor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="featureSelector" Type="MonoMac.CoreText.CTFontFeatureCharacterAlternatives+Selector" />
+      </Parameters>
+      <Docs>
+        <param name="featureSelector">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WithFeature">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreText.CTFontDescriptor WithFeature (MonoMac.CoreText.CTFontFeatureCharacterShape.Selector featureSelector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.CoreText.CTFontDescriptor WithFeature(valuetype MonoMac.CoreText.CTFontFeatureCharacterShape/Selector featureSelector) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreText.CTFontDescriptor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="featureSelector" Type="MonoMac.CoreText.CTFontFeatureCharacterShape+Selector" />
+      </Parameters>
+      <Docs>
+        <param name="featureSelector">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WithFeature">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreText.CTFontDescriptor WithFeature (MonoMac.CoreText.CTFontFeatureCJKRomanSpacing.Selector featureSelector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.CoreText.CTFontDescriptor WithFeature(valuetype MonoMac.CoreText.CTFontFeatureCJKRomanSpacing/Selector featureSelector) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreText.CTFontDescriptor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="featureSelector" Type="MonoMac.CoreText.CTFontFeatureCJKRomanSpacing+Selector" />
+      </Parameters>
+      <Docs>
+        <param name="featureSelector">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WithFeature">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreText.CTFontDescriptor WithFeature (MonoMac.CoreText.CTFontFeatureCJKSymbolAlternatives.Selector featureSelector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.CoreText.CTFontDescriptor WithFeature(valuetype MonoMac.CoreText.CTFontFeatureCJKSymbolAlternatives/Selector featureSelector) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreText.CTFontDescriptor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="featureSelector" Type="MonoMac.CoreText.CTFontFeatureCJKSymbolAlternatives+Selector" />
+      </Parameters>
+      <Docs>
+        <param name="featureSelector">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WithFeature">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreText.CTFontDescriptor WithFeature (MonoMac.CoreText.CTFontFeatureCJKVerticalRomanPlacement.Selector featureSelector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.CoreText.CTFontDescriptor WithFeature(valuetype MonoMac.CoreText.CTFontFeatureCJKVerticalRomanPlacement/Selector featureSelector) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreText.CTFontDescriptor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="featureSelector" Type="MonoMac.CoreText.CTFontFeatureCJKVerticalRomanPlacement+Selector" />
+      </Parameters>
+      <Docs>
+        <param name="featureSelector">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WithFeature">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreText.CTFontDescriptor WithFeature (MonoMac.CoreText.CTFontFeatureContextualAlternates.Selector featureSelector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.CoreText.CTFontDescriptor WithFeature(valuetype MonoMac.CoreText.CTFontFeatureContextualAlternates/Selector featureSelector) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreText.CTFontDescriptor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="featureSelector" Type="MonoMac.CoreText.CTFontFeatureContextualAlternates+Selector" />
+      </Parameters>
+      <Docs>
+        <param name="featureSelector">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WithFeature">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreText.CTFontDescriptor WithFeature (MonoMac.CoreText.CTFontFeatureCursiveConnection.Selector featureSelector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.CoreText.CTFontDescriptor WithFeature(valuetype MonoMac.CoreText.CTFontFeatureCursiveConnection/Selector featureSelector) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreText.CTFontDescriptor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="featureSelector" Type="MonoMac.CoreText.CTFontFeatureCursiveConnection+Selector" />
+      </Parameters>
+      <Docs>
+        <param name="featureSelector">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WithFeature">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreText.CTFontDescriptor WithFeature (MonoMac.CoreText.CTFontFeatureDesignComplexity.Selector featureSelector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.CoreText.CTFontDescriptor WithFeature(valuetype MonoMac.CoreText.CTFontFeatureDesignComplexity/Selector featureSelector) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreText.CTFontDescriptor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="featureSelector" Type="MonoMac.CoreText.CTFontFeatureDesignComplexity+Selector" />
+      </Parameters>
+      <Docs>
+        <param name="featureSelector">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WithFeature">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreText.CTFontDescriptor WithFeature (MonoMac.CoreText.CTFontFeatureDiacritics.Selector featureSelector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.CoreText.CTFontDescriptor WithFeature(valuetype MonoMac.CoreText.CTFontFeatureDiacritics/Selector featureSelector) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreText.CTFontDescriptor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="featureSelector" Type="MonoMac.CoreText.CTFontFeatureDiacritics+Selector" />
+      </Parameters>
+      <Docs>
+        <param name="featureSelector">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WithFeature">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreText.CTFontDescriptor WithFeature (MonoMac.CoreText.CTFontFeatureFractions.Selector featureSelector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.CoreText.CTFontDescriptor WithFeature(valuetype MonoMac.CoreText.CTFontFeatureFractions/Selector featureSelector) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreText.CTFontDescriptor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="featureSelector" Type="MonoMac.CoreText.CTFontFeatureFractions+Selector" />
+      </Parameters>
+      <Docs>
+        <param name="featureSelector">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WithFeature">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreText.CTFontDescriptor WithFeature (MonoMac.CoreText.CTFontFeatureIdeographicAlternatives.Selector featureSelector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.CoreText.CTFontDescriptor WithFeature(valuetype MonoMac.CoreText.CTFontFeatureIdeographicAlternatives/Selector featureSelector) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreText.CTFontDescriptor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="featureSelector" Type="MonoMac.CoreText.CTFontFeatureIdeographicAlternatives+Selector" />
+      </Parameters>
+      <Docs>
+        <param name="featureSelector">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WithFeature">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreText.CTFontDescriptor WithFeature (MonoMac.CoreText.CTFontFeatureIdeographicSpacing.Selector featureSelector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.CoreText.CTFontDescriptor WithFeature(valuetype MonoMac.CoreText.CTFontFeatureIdeographicSpacing/Selector featureSelector) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreText.CTFontDescriptor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="featureSelector" Type="MonoMac.CoreText.CTFontFeatureIdeographicSpacing+Selector" />
+      </Parameters>
+      <Docs>
+        <param name="featureSelector">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WithFeature">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreText.CTFontDescriptor WithFeature (MonoMac.CoreText.CTFontFeatureItalicCJKRoman.Selector featureSelector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.CoreText.CTFontDescriptor WithFeature(valuetype MonoMac.CoreText.CTFontFeatureItalicCJKRoman/Selector featureSelector) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreText.CTFontDescriptor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="featureSelector" Type="MonoMac.CoreText.CTFontFeatureItalicCJKRoman+Selector" />
+      </Parameters>
+      <Docs>
+        <param name="featureSelector">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WithFeature">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreText.CTFontDescriptor WithFeature (MonoMac.CoreText.CTFontFeatureKanaSpacing.Selector featureSelector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.CoreText.CTFontDescriptor WithFeature(valuetype MonoMac.CoreText.CTFontFeatureKanaSpacing/Selector featureSelector) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreText.CTFontDescriptor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="featureSelector" Type="MonoMac.CoreText.CTFontFeatureKanaSpacing+Selector" />
+      </Parameters>
+      <Docs>
+        <param name="featureSelector">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WithFeature">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreText.CTFontDescriptor WithFeature (MonoMac.CoreText.CTFontFeatureLetterCase.Selector featureSelector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.CoreText.CTFontDescriptor WithFeature(valuetype MonoMac.CoreText.CTFontFeatureLetterCase/Selector featureSelector) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreText.CTFontDescriptor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="featureSelector" Type="MonoMac.CoreText.CTFontFeatureLetterCase+Selector" />
+      </Parameters>
+      <Docs>
+        <param name="featureSelector">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WithFeature">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreText.CTFontDescriptor WithFeature (MonoMac.CoreText.CTFontFeatureLigatures.Selector featureSelector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.CoreText.CTFontDescriptor WithFeature(valuetype MonoMac.CoreText.CTFontFeatureLigatures/Selector featureSelector) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreText.CTFontDescriptor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="featureSelector" Type="MonoMac.CoreText.CTFontFeatureLigatures+Selector" />
+      </Parameters>
+      <Docs>
+        <param name="featureSelector">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WithFeature">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreText.CTFontDescriptor WithFeature (MonoMac.CoreText.CTFontFeatureLinguisticRearrangementConnection.Selector featureSelector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.CoreText.CTFontDescriptor WithFeature(valuetype MonoMac.CoreText.CTFontFeatureLinguisticRearrangementConnection/Selector featureSelector) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreText.CTFontDescriptor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="featureSelector" Type="MonoMac.CoreText.CTFontFeatureLinguisticRearrangementConnection+Selector" />
+      </Parameters>
+      <Docs>
+        <param name="featureSelector">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WithFeature">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreText.CTFontDescriptor WithFeature (MonoMac.CoreText.CTFontFeatureLowerCase.Selector featureSelector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.CoreText.CTFontDescriptor WithFeature(valuetype MonoMac.CoreText.CTFontFeatureLowerCase/Selector featureSelector) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreText.CTFontDescriptor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="featureSelector" Type="MonoMac.CoreText.CTFontFeatureLowerCase+Selector" />
+      </Parameters>
+      <Docs>
+        <param name="featureSelector">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WithFeature">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreText.CTFontDescriptor WithFeature (MonoMac.CoreText.CTFontFeatureMathematicalExtras.Selector featureSelector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.CoreText.CTFontDescriptor WithFeature(valuetype MonoMac.CoreText.CTFontFeatureMathematicalExtras/Selector featureSelector) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreText.CTFontDescriptor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="featureSelector" Type="MonoMac.CoreText.CTFontFeatureMathematicalExtras+Selector" />
+      </Parameters>
+      <Docs>
+        <param name="featureSelector">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WithFeature">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreText.CTFontDescriptor WithFeature (MonoMac.CoreText.CTFontFeatureNumberCase.Selector featureSelector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.CoreText.CTFontDescriptor WithFeature(valuetype MonoMac.CoreText.CTFontFeatureNumberCase/Selector featureSelector) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreText.CTFontDescriptor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="featureSelector" Type="MonoMac.CoreText.CTFontFeatureNumberCase+Selector" />
+      </Parameters>
+      <Docs>
+        <param name="featureSelector">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WithFeature">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreText.CTFontDescriptor WithFeature (MonoMac.CoreText.CTFontFeatureNumberSpacing.Selector featureSelector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.CoreText.CTFontDescriptor WithFeature(valuetype MonoMac.CoreText.CTFontFeatureNumberSpacing/Selector featureSelector) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreText.CTFontDescriptor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="featureSelector" Type="MonoMac.CoreText.CTFontFeatureNumberSpacing+Selector" />
+      </Parameters>
+      <Docs>
+        <param name="featureSelector">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WithFeature">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreText.CTFontDescriptor WithFeature (MonoMac.CoreText.CTFontFeatureOrnamentSets.Selector featureSelector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.CoreText.CTFontDescriptor WithFeature(valuetype MonoMac.CoreText.CTFontFeatureOrnamentSets/Selector featureSelector) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreText.CTFontDescriptor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="featureSelector" Type="MonoMac.CoreText.CTFontFeatureOrnamentSets+Selector" />
+      </Parameters>
+      <Docs>
+        <param name="featureSelector">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WithFeature">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreText.CTFontDescriptor WithFeature (MonoMac.CoreText.CTFontFeatureOverlappingCharacters.Selector featureSelector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.CoreText.CTFontDescriptor WithFeature(valuetype MonoMac.CoreText.CTFontFeatureOverlappingCharacters/Selector featureSelector) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreText.CTFontDescriptor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="featureSelector" Type="MonoMac.CoreText.CTFontFeatureOverlappingCharacters+Selector" />
+      </Parameters>
+      <Docs>
+        <param name="featureSelector">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WithFeature">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreText.CTFontDescriptor WithFeature (MonoMac.CoreText.CTFontFeatureRubyKana.Selector featureSelector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.CoreText.CTFontDescriptor WithFeature(valuetype MonoMac.CoreText.CTFontFeatureRubyKana/Selector featureSelector) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreText.CTFontDescriptor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="featureSelector" Type="MonoMac.CoreText.CTFontFeatureRubyKana+Selector" />
+      </Parameters>
+      <Docs>
+        <param name="featureSelector">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WithFeature">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreText.CTFontDescriptor WithFeature (MonoMac.CoreText.CTFontFeatureSmartSwash.Selector featureSelector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.CoreText.CTFontDescriptor WithFeature(valuetype MonoMac.CoreText.CTFontFeatureSmartSwash/Selector featureSelector) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreText.CTFontDescriptor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="featureSelector" Type="MonoMac.CoreText.CTFontFeatureSmartSwash+Selector" />
+      </Parameters>
+      <Docs>
+        <param name="featureSelector">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WithFeature">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreText.CTFontDescriptor WithFeature (MonoMac.CoreText.CTFontFeatureStyleOptions.Selector featureSelector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.CoreText.CTFontDescriptor WithFeature(valuetype MonoMac.CoreText.CTFontFeatureStyleOptions/Selector featureSelector) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreText.CTFontDescriptor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="featureSelector" Type="MonoMac.CoreText.CTFontFeatureStyleOptions+Selector" />
+      </Parameters>
+      <Docs>
+        <param name="featureSelector">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WithFeature">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreText.CTFontDescriptor WithFeature (MonoMac.CoreText.CTFontFeatureStylisticAlternatives.Selector featureSelector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.CoreText.CTFontDescriptor WithFeature(valuetype MonoMac.CoreText.CTFontFeatureStylisticAlternatives/Selector featureSelector) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreText.CTFontDescriptor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="featureSelector" Type="MonoMac.CoreText.CTFontFeatureStylisticAlternatives+Selector" />
+      </Parameters>
+      <Docs>
+        <param name="featureSelector">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WithFeature">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreText.CTFontDescriptor WithFeature (MonoMac.CoreText.CTFontFeatureTextSpacing.Selector featureSelector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.CoreText.CTFontDescriptor WithFeature(valuetype MonoMac.CoreText.CTFontFeatureTextSpacing/Selector featureSelector) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreText.CTFontDescriptor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="featureSelector" Type="MonoMac.CoreText.CTFontFeatureTextSpacing+Selector" />
+      </Parameters>
+      <Docs>
+        <param name="featureSelector">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WithFeature">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreText.CTFontDescriptor WithFeature (MonoMac.CoreText.CTFontFeatureTransliteration.Selector featureSelector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.CoreText.CTFontDescriptor WithFeature(valuetype MonoMac.CoreText.CTFontFeatureTransliteration/Selector featureSelector) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreText.CTFontDescriptor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="featureSelector" Type="MonoMac.CoreText.CTFontFeatureTransliteration+Selector" />
+      </Parameters>
+      <Docs>
+        <param name="featureSelector">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WithFeature">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreText.CTFontDescriptor WithFeature (MonoMac.CoreText.CTFontFeatureTypographicExtras.Selector featureSelector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.CoreText.CTFontDescriptor WithFeature(valuetype MonoMac.CoreText.CTFontFeatureTypographicExtras/Selector featureSelector) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreText.CTFontDescriptor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="featureSelector" Type="MonoMac.CoreText.CTFontFeatureTypographicExtras+Selector" />
+      </Parameters>
+      <Docs>
+        <param name="featureSelector">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WithFeature">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreText.CTFontDescriptor WithFeature (MonoMac.CoreText.CTFontFeatureUnicodeDecomposition.Selector featureSelector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.CoreText.CTFontDescriptor WithFeature(valuetype MonoMac.CoreText.CTFontFeatureUnicodeDecomposition/Selector featureSelector) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreText.CTFontDescriptor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="featureSelector" Type="MonoMac.CoreText.CTFontFeatureUnicodeDecomposition+Selector" />
+      </Parameters>
+      <Docs>
+        <param name="featureSelector">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WithFeature">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreText.CTFontDescriptor WithFeature (MonoMac.CoreText.CTFontFeatureUpperCase.Selector featureSelector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.CoreText.CTFontDescriptor WithFeature(valuetype MonoMac.CoreText.CTFontFeatureUpperCase/Selector featureSelector) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreText.CTFontDescriptor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="featureSelector" Type="MonoMac.CoreText.CTFontFeatureUpperCase+Selector" />
+      </Parameters>
+      <Docs>
+        <param name="featureSelector">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WithFeature">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreText.CTFontDescriptor WithFeature (MonoMac.CoreText.CTFontFeatureVerticalPosition.Selector featureSelector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.CoreText.CTFontDescriptor WithFeature(valuetype MonoMac.CoreText.CTFontFeatureVerticalPosition/Selector featureSelector) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreText.CTFontDescriptor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="featureSelector" Type="MonoMac.CoreText.CTFontFeatureVerticalPosition+Selector" />
+      </Parameters>
+      <Docs>
+        <param name="featureSelector">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WithFeature">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreText.CTFontDescriptor WithFeature (MonoMac.CoreText.CTFontFeatureVerticalSubstitutionConnection.Selector featureSelector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.CoreText.CTFontDescriptor WithFeature(valuetype MonoMac.CoreText.CTFontFeatureVerticalSubstitutionConnection/Selector featureSelector) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreText.CTFontDescriptor</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="featureSelector" Type="MonoMac.CoreText.CTFontFeatureVerticalSubstitutionConnection+Selector" />
+      </Parameters>
+      <Docs>
+        <param name="featureSelector">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WithFeature">
       <MemberSignature Language="C#" Value="public MonoMac.CoreText.CTFontDescriptor WithFeature (MonoMac.Foundation.NSNumber featureTypeIdentifier, MonoMac.Foundation.NSNumber featureSelectorIdentifier);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.CoreText.CTFontDescriptor WithFeature(class MonoMac.Foundation.NSNumber featureTypeIdentifier, class MonoMac.Foundation.NSNumber featureSelectorIdentifier) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.CoreText.CTFontDescriptor</ReturnType>
       </ReturnValue>

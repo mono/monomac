@@ -163,6 +163,33 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="AutomaticallyAdjustsVideoMirroring">
+      <MemberSignature Language="C#" Value="public virtual bool AutomaticallyAdjustsVideoMirroring { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool AutomaticallyAdjustsVideoMirroring" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.ObjCRuntime.Since(6, 0)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("automaticallyAdjustsVideoMirroring")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: MonoMac.Foundation.Export("setAutomaticallyAdjustsVideoMirroring:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="ClassHandle">
       <MemberSignature Language="C#" Value="public override IntPtr ClassHandle { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance native int ClassHandle" />
@@ -229,9 +256,57 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="EnablesVideoStabilizationWhenAvailable">
+      <MemberSignature Language="C#" Value="public virtual bool EnablesVideoStabilizationWhenAvailable { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool EnablesVideoStabilizationWhenAvailable" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.ObjCRuntime.Since(6, 0)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("enablesVideoStabilizationWhenAvailable")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>set: MonoMac.Foundation.Export("setEnablesVideoStabilizationWhenAvailable:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="inputPorts">
-      <MemberSignature Language="C#" Value="public virtual MonoMac.AVFoundation.AVCaptureInputPort[] inputPorts { get; }" />
+      <MemberSignature Language="C#" Value="public MonoMac.AVFoundation.AVCaptureInputPort[] inputPorts { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AVFoundation.AVCaptureInputPort[] inputPorts" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use InputPorts")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AVFoundation.AVCaptureInputPort[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InputPorts">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AVFoundation.AVCaptureInputPort[] InputPorts { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AVFoundation.AVCaptureInputPort[] InputPorts" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -334,6 +409,30 @@ public class MyClass : BaseClass {
       <Attributes>
         <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("isVideoOrientationSupported")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SupportsVideoStabilization">
+      <MemberSignature Language="C#" Value="public virtual bool SupportsVideoStabilization { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool SupportsVideoStabilization" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.ObjCRuntime.Since(6, 0)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("isVideoStabilizationSupported")</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
@@ -462,6 +561,30 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="VideoPreviewLayer">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AVFoundation.AVCaptureVideoPreviewLayer VideoPreviewLayer { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AVFoundation.AVCaptureVideoPreviewLayer VideoPreviewLayer" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.ObjCRuntime.Since(6, 0)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("videoPreviewLayer")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AVFoundation.AVCaptureVideoPreviewLayer</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="VideoScaleAndCropFactor">
       <MemberSignature Language="C#" Value="public virtual float VideoScaleAndCropFactor { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 VideoScaleAndCropFactor" />
@@ -479,6 +602,30 @@ public class MyClass : BaseClass {
       </Attributes>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="VideoStabilizationEnabled">
+      <MemberSignature Language="C#" Value="public virtual bool VideoStabilizationEnabled { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool VideoStabilizationEnabled" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.ObjCRuntime.Since(6, 0)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("isVideoStabilizationEnabled")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

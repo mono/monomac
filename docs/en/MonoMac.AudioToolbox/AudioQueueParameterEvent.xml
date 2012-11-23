@@ -1,6 +1,6 @@
 <Type Name="AudioQueueParameterEvent" FullName="MonoMac.AudioToolbox.AudioQueueParameterEvent">
   <TypeSignature Language="C#" Value="public struct AudioQueueParameterEvent" />
-  <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit AudioQueueParameterEvent extends System.ValueType" />
+  <TypeSignature Language="ILAsm" Value=".class public ansi sealed beforefieldinit AudioQueueParameterEvent extends System.ValueType" />
   <AssemblyInfo>
     <AssemblyName>MonoMac</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -14,6 +14,24 @@
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public AudioQueueParameterEvent (MonoMac.AudioToolbox.AudioQueueParameter parameter, float value);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype MonoMac.AudioToolbox.AudioQueueParameter parameter, float32 value) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="parameter" Type="MonoMac.AudioToolbox.AudioQueueParameter" />
+        <Parameter Name="value" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="parameter">To be added.</param>
+        <param name="value">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="ID">
       <MemberSignature Language="C#" Value="public uint ID;" />
       <MemberSignature Language="ILAsm" Value=".field public unsigned int32 ID" />
@@ -21,8 +39,28 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use Parameter")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Parameter">
+      <MemberSignature Language="C#" Value="public MonoMac.AudioToolbox.AudioQueueParameter Parameter;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype MonoMac.AudioToolbox.AudioQueueParameter Parameter" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.AudioToolbox.AudioQueueParameter</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

@@ -121,6 +121,29 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public NSUrl (string path, MonoMac.Foundation.NSUrl relativeToUrl);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string path, class MonoMac.Foundation.NSUrl relativeToUrl) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("initWithString:relativeToURL:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <Parameters>
+        <Parameter Name="path" Type="System.String" />
+        <Parameter Name="relativeToUrl" Type="MonoMac.Foundation.NSUrl" />
+      </Parameters>
+      <Docs>
+        <param name="path">To be added.</param>
+        <param name="relativeToUrl">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public NSUrl (string path, bool isDir);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string path, bool isDir) cil managed" />
       <MemberType>Constructor</MemberType>
@@ -150,11 +173,6 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
-      <Attributes>
-        <Attribute>
-          <AttributeName>MonoMac.Foundation.Export("initWithString:relativeToURL:")</AttributeName>
-        </Attribute>
-      </Attributes>
       <Parameters>
         <Parameter Name="path" Type="System.String" />
         <Parameter Name="relativeToUrl" Type="System.String" />
@@ -187,6 +205,35 @@ public class MyClass : BaseClass {
         <param name="scheme">To be added.</param>
         <param name="host">To be added.</param>
         <param name="path">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public NSUrl (MonoMac.Foundation.NSData bookmarkData, MonoMac.Foundation.NSUrlBookmarkResolutionOptions resolutionOptions, MonoMac.Foundation.NSUrl relativeUrl, out bool bookmarkIsStale, out MonoMac.Foundation.NSError error);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSData bookmarkData, valuetype MonoMac.Foundation.NSUrlBookmarkResolutionOptions resolutionOptions, class MonoMac.Foundation.NSUrl relativeUrl, bool bookmarkIsStale, class MonoMac.Foundation.NSError error) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("initByResolvingBookmarkData:options:relativeToURL:bookmarkDataIsStale:error:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <Parameters>
+        <Parameter Name="bookmarkData" Type="MonoMac.Foundation.NSData" />
+        <Parameter Name="resolutionOptions" Type="MonoMac.Foundation.NSUrlBookmarkResolutionOptions" />
+        <Parameter Name="relativeUrl" Type="MonoMac.Foundation.NSUrl" />
+        <Parameter Name="bookmarkIsStale" Type="System.Boolean&amp;" RefType="out" />
+        <Parameter Name="error" Type="MonoMac.Foundation.NSError&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="bookmarkData">To be added.</param>
+        <param name="resolutionOptions">To be added.</param>
+        <param name="relativeUrl">To be added.</param>
+        <param name="bookmarkIsStale">To be added.</param>
+        <param name="error">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -345,6 +392,37 @@ public class MyClass : BaseClass {
         <summary>Represents the value associated with the constant NSURLContentModificationDateKey</summary>
         <value>
         </value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateBookmarkData">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.Foundation.NSData CreateBookmarkData (MonoMac.Foundation.NSUrlBookmarkCreationOptions options, string[] resourceValues, MonoMac.Foundation.NSUrl relativeUrl, out MonoMac.Foundation.NSError error);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class MonoMac.Foundation.NSData CreateBookmarkData(valuetype MonoMac.Foundation.NSUrlBookmarkCreationOptions options, string[] resourceValues, class MonoMac.Foundation.NSUrl relativeUrl, class MonoMac.Foundation.NSError error) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("bookmarkDataWithOptions:includingResourceValuesForKeys:relativeToURL:error:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSData</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="options" Type="MonoMac.Foundation.NSUrlBookmarkCreationOptions" />
+        <Parameter Name="resourceValues" Type="System.String[]" />
+        <Parameter Name="relativeUrl" Type="MonoMac.Foundation.NSUrl" />
+        <Parameter Name="error" Type="MonoMac.Foundation.NSError&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="options">To be added.</param>
+        <param name="resourceValues">To be added.</param>
+        <param name="relativeUrl">To be added.</param>
+        <param name="error">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1409,6 +1487,22 @@ public class MyClass : BaseClass {
       </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PathKey">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString PathKey { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString PathKey" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

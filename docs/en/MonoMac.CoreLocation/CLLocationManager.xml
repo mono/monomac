@@ -123,14 +123,14 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="AuthorizationChanged">
-      <MemberSignature Language="C#" Value="public event EventHandler&lt;MonoMac.CoreLocation.CLAuthroziationChangedEventArgs&gt; AuthorizationChanged;" />
-      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler`1&lt;class MonoMac.CoreLocation.CLAuthroziationChangedEventArgs&gt; AuthorizationChanged" />
+      <MemberSignature Language="C#" Value="public event EventHandler&lt;MonoMac.CoreLocation.CLAuthorizationChangedEventArgs&gt; AuthorizationChanged;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler`1&lt;class MonoMac.CoreLocation.CLAuthorizationChangedEventArgs&gt; AuthorizationChanged" />
       <MemberType>Event</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.EventHandler&lt;MonoMac.CoreLocation.CLAuthroziationChangedEventArgs&gt;</ReturnType>
+        <ReturnType>System.EventHandler&lt;MonoMac.CoreLocation.CLAuthorizationChangedEventArgs&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Event raised by the object.</summary>
@@ -151,6 +151,21 @@ public class MyClass : BaseClass {
         <summary>The handle for this class.</summary>
         <value>The pointer to the Objective-C class.</value>
         <remarks>Each MonoMac class mirrors an unmanaged Objective-C class.   This value contains the pointer to the Objective-C class, it is similar to calling objc_getClass with the object name.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DeferredUpdatesFinished">
+      <MemberSignature Language="C#" Value="public event EventHandler&lt;MonoMac.Foundation.NSErrorEventArgs&gt; DeferredUpdatesFinished;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler`1&lt;class MonoMac.Foundation.NSErrorEventArgs&gt; DeferredUpdatesFinished" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.EventHandler&lt;MonoMac.Foundation.NSErrorEventArgs&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Delegate">
@@ -302,6 +317,51 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="LocationsUpdated">
+      <MemberSignature Language="C#" Value="public event EventHandler&lt;MonoMac.CoreLocation.CLLocationsUpdatedEventArgs&gt; LocationsUpdated;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler`1&lt;class MonoMac.CoreLocation.CLLocationsUpdatedEventArgs&gt; LocationsUpdated" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.EventHandler&lt;MonoMac.CoreLocation.CLLocationsUpdatedEventArgs&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LocationUpdatesPaused">
+      <MemberSignature Language="C#" Value="public event EventHandler LocationUpdatesPaused;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler LocationUpdatesPaused" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LocationUpdatesResumed">
+      <MemberSignature Language="C#" Value="public event EventHandler LocationUpdatesResumed;" />
+      <MemberSignature Language="ILAsm" Value=".event class System.EventHandler LocationUpdatesResumed" />
+      <MemberType>Event</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.EventHandler</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="ShouldDisplayHeadingCalibration">
       <MemberSignature Language="C#" Value="public MonoMac.CoreLocation.CLLocationManagerEventArgs ShouldDisplayHeadingCalibration { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.CoreLocation.CLLocationManagerEventArgs ShouldDisplayHeadingCalibration" />
@@ -367,6 +427,11 @@ public class MyClass : BaseClass {
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Deprecated in iOS 6.0", false)</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>System.EventHandler&lt;MonoMac.CoreLocation.CLLocationUpdatedEventArgs&gt;</ReturnType>
       </ReturnValue>

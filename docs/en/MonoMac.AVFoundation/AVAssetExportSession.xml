@@ -225,6 +225,60 @@ public class MyClass : BaseClass {
         <remarks>Each MonoMac class mirrors an unmanaged Objective-C class.   This value contains the pointer to the Objective-C class, it is similar to calling objc_getClass with the object name.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="DetermineCompatibilityOfExportPreset">
+      <MemberSignature Language="C#" Value="public static void DetermineCompatibilityOfExportPreset (string presetName, MonoMac.AVFoundation.AVAsset asset, string outputFileType, Action&lt;bool&gt; isCompatibleResult);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DetermineCompatibilityOfExportPreset(string presetName, class MonoMac.AVFoundation.AVAsset asset, string outputFileType, class System.Action`1&lt;bool&gt; isCompatibleResult) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("determineCompatibilityOfExportPreset:withAsset:outputFileType:completionHandler:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="presetName" Type="System.String" />
+        <Parameter Name="asset" Type="MonoMac.AVFoundation.AVAsset" />
+        <Parameter Name="outputFileType" Type="System.String" />
+        <Parameter Name="isCompatibleResult" Type="System.Action&lt;System.Boolean&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="presetName">To be added.</param>
+        <param name="asset">To be added.</param>
+        <param name="outputFileType">To be added.</param>
+        <param name="isCompatibleResult">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DetermineCompatibleFileTypes">
+      <MemberSignature Language="C#" Value="public virtual void DetermineCompatibleFileTypes (Action&lt;string[]&gt; compatibleFileTypesHandler);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void DetermineCompatibleFileTypes(class System.Action`1&lt;string[]&gt; compatibleFileTypesHandler) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("determineCompatibleFileTypesWithCompletionHandler:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="compatibleFileTypesHandler" Type="System.Action&lt;System.String[]&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="compatibleFileTypesHandler">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Dispose">
       <MemberSignature Language="C#" Value="protected override void Dispose (bool disposing);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Dispose(bool disposing) cil managed" />
@@ -363,6 +417,33 @@ public class MyClass : BaseClass {
       <Docs>
         <summary>File limit</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FromAsset">
+      <MemberSignature Language="C#" Value="public static MonoMac.AVFoundation.AVAssetExportSession FromAsset (MonoMac.AVFoundation.AVAsset asset, string presetName);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.AVFoundation.AVAssetExportSession FromAsset(class MonoMac.AVFoundation.AVAsset asset, string presetName) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("exportSessionWithAsset:presetName:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AVFoundation.AVAssetExportSession</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="asset" Type="MonoMac.AVFoundation.AVAsset" />
+        <Parameter Name="presetName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="asset">To be added.</param>
+        <param name="presetName">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

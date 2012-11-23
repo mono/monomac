@@ -174,8 +174,52 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName="CanApplyOutputSettings">
-      <MemberSignature Language="C#" Value="public virtual bool CanApplyOutputSettings (MonoMac.Foundation.NSDictionary outputSettings, string toMediaType);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool CanApplyOutputSettings(class MonoMac.Foundation.NSDictionary outputSettings, string toMediaType) cil managed" />
+      <MemberSignature Language="C#" Value="public bool CanApplyOutputSettings (MonoMac.AVFoundation.AudioSettings outputSettings, string mediaType);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool CanApplyOutputSettings(class MonoMac.AVFoundation.AudioSettings outputSettings, string mediaType) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="outputSettings" Type="MonoMac.AVFoundation.AudioSettings" />
+        <Parameter Name="mediaType" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="outputSettings">To be added.</param>
+        <param name="mediaType">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CanApplyOutputSettings">
+      <MemberSignature Language="C#" Value="public bool CanApplyOutputSettings (MonoMac.AVFoundation.AVVideoSettingsCompressed outputSettings, string mediaType);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool CanApplyOutputSettings(class MonoMac.AVFoundation.AVVideoSettingsCompressed outputSettings, string mediaType) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="outputSettings" Type="MonoMac.AVFoundation.AVVideoSettingsCompressed" />
+        <Parameter Name="mediaType" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="outputSettings">To be added.</param>
+        <param name="mediaType">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CanApplyOutputSettings">
+      <MemberSignature Language="C#" Value="public virtual bool CanApplyOutputSettings (MonoMac.Foundation.NSDictionary outputSettings, string mediaType);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool CanApplyOutputSettings(class MonoMac.Foundation.NSDictionary outputSettings, string mediaType) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -190,11 +234,11 @@ public class MyClass : BaseClass {
       </ReturnValue>
       <Parameters>
         <Parameter Name="outputSettings" Type="MonoMac.Foundation.NSDictionary" />
-        <Parameter Name="toMediaType" Type="System.String" />
+        <Parameter Name="mediaType" Type="System.String" />
       </Parameters>
       <Docs>
         <param name="outputSettings">To be added.</param>
-        <param name="toMediaType">To be added.</param>
+        <param name="mediaType">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -319,6 +363,9 @@ public class MyClass : BaseClass {
         <Attribute>
           <AttributeName>MonoMac.Foundation.Export("finishWriting")</AttributeName>
         </Attribute>
+        <Attribute>
+          <AttributeName>System.Obsolete("This is a synchronous methods, use the asynchronous FinishWriting(NSAction completionHandler) instead", false)</AttributeName>
+        </Attribute>
       </Attributes>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -327,6 +374,30 @@ public class MyClass : BaseClass {
       <Docs>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FinishWriting">
+      <MemberSignature Language="C#" Value="public virtual void FinishWriting (MonoMac.Foundation.NSAction completionHandler);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void FinishWriting(class MonoMac.Foundation.NSAction completionHandler) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("finishWritingWithCompletionHandler:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="completionHandler" Type="MonoMac.Foundation.NSAction" />
+      </Parameters>
+      <Docs>
+        <param name="completionHandler">To be added.</param>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

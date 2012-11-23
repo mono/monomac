@@ -100,6 +100,24 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public AVUrlAsset (MonoMac.Foundation.NSUrl url, MonoMac.AVFoundation.AVUrlAssetOptions options);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSUrl url, class MonoMac.AVFoundation.AVUrlAssetOptions options) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="url" Type="MonoMac.Foundation.NSUrl" />
+        <Parameter Name="options" Type="MonoMac.AVFoundation.AVUrlAssetOptions" />
+      </Parameters>
+      <Docs>
+        <param name="url">To be added.</param>
+        <param name="options">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public AVUrlAsset (MonoMac.Foundation.NSUrl URL, MonoMac.Foundation.NSDictionary options);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.Foundation.NSUrl URL, class MonoMac.Foundation.NSDictionary options) cil managed" />
       <MemberType>Constructor</MemberType>
@@ -214,6 +232,28 @@ public class MyClass : BaseClass {
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Create">
+      <MemberSignature Language="C#" Value="public static MonoMac.AVFoundation.AVUrlAsset Create (MonoMac.Foundation.NSUrl url, MonoMac.AVFoundation.AVUrlAssetOptions options);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.AVFoundation.AVUrlAsset Create(class MonoMac.Foundation.NSUrl url, class MonoMac.AVFoundation.AVUrlAssetOptions options) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.AVFoundation.AVUrlAsset</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="url" Type="MonoMac.Foundation.NSUrl" />
+        <Parameter Name="options" Type="MonoMac.AVFoundation.AVUrlAssetOptions" />
+      </Parameters>
+      <Docs>
+        <param name="url">To be added.</param>
+        <param name="options">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Dispose">
       <MemberSignature Language="C#" Value="protected override void Dispose (bool disposing);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Dispose(bool disposing) cil managed" />
@@ -250,6 +290,9 @@ public class MyClass : BaseClass {
       <Attributes>
         <Attribute>
           <AttributeName>MonoMac.Foundation.Export("URLAssetWithURL:options:")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use Create or constructor", false)</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
@@ -309,6 +352,46 @@ public class MyClass : BaseClass {
         <summary>Represents the value associated with the constant AVURLAssetPreferPreciseDurationAndTimingKey</summary>
         <value>
         </value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ReferenceRestrictionsKey">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString ReferenceRestrictionsKey { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString ReferenceRestrictionsKey" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ResourceLoader">
+      <MemberSignature Language="C#" Value="public virtual MonoMac.AVFoundation.AVAssetResourceLoader ResourceLoader { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AVFoundation.AVAssetResourceLoader ResourceLoader" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.ObjCRuntime.Since(6, 0)</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>get: MonoMac.Foundation.Export("resourceLoader")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AVFoundation.AVAssetResourceLoader</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

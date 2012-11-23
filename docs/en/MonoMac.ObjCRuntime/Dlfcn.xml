@@ -205,6 +205,28 @@
         <remarks>This routine silently fails and returns zero.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="GetInt64">
+      <MemberSignature Language="C#" Value="public static long GetInt64 (IntPtr handle, string symbol);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig int64 GetInt64(native int handle, string symbol) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int64</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="handle" Type="System.IntPtr" />
+        <Parameter Name="symbol" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="handle">To be added.</param>
+        <param name="symbol">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="GetIntPtr">
       <MemberSignature Language="C#" Value="public static IntPtr GetIntPtr (IntPtr handle, string symbol);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig native int GetIntPtr(native int handle, string symbol) cil managed" />
@@ -250,6 +272,28 @@
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName="GetSizeF">
+      <MemberSignature Language="C#" Value="public static System.Drawing.SizeF GetSizeF (IntPtr handle, string symbol);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype System.Drawing.SizeF GetSizeF(native int handle, string symbol) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Drawing.SizeF</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="handle" Type="System.IntPtr" />
+        <Parameter Name="symbol" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="handle">To be added.</param>
+        <param name="symbol">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="GetStringConstant">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString GetStringConstant (IntPtr handle, string symbol);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSString GetStringConstant(native int handle, string symbol) cil managed" />
@@ -270,6 +314,144 @@
         <summary>Gets the NSString value exposed with the given symbol from the dynamic library.</summary>
         <returns>The value from the library, or null on error.</returns>
         <remarks>This routine silently fails and returns the default value for stringconstant.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetDouble">
+      <MemberSignature Language="C#" Value="public static void SetDouble (IntPtr handle, string symbol, double value);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void SetDouble(native int handle, string symbol, float64 value) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="handle" Type="System.IntPtr" />
+        <Parameter Name="symbol" Type="System.String" />
+        <Parameter Name="value" Type="System.Double" />
+      </Parameters>
+      <Docs>
+        <param name="handle">To be added.</param>
+        <param name="symbol">To be added.</param>
+        <param name="value">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetFloat">
+      <MemberSignature Language="C#" Value="public static void SetFloat (IntPtr handle, string symbol, float value);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void SetFloat(native int handle, string symbol, float32 value) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="handle" Type="System.IntPtr" />
+        <Parameter Name="symbol" Type="System.String" />
+        <Parameter Name="value" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="handle">To be added.</param>
+        <param name="symbol">To be added.</param>
+        <param name="value">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetInt32">
+      <MemberSignature Language="C#" Value="public static void SetInt32 (IntPtr handle, string symbol, int value);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void SetInt32(native int handle, string symbol, int32 value) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="handle" Type="System.IntPtr" />
+        <Parameter Name="symbol" Type="System.String" />
+        <Parameter Name="value" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="handle">To be added.</param>
+        <param name="symbol">To be added.</param>
+        <param name="value">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetInt64">
+      <MemberSignature Language="C#" Value="public static void SetInt64 (IntPtr handle, string symbol, long value);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void SetInt64(native int handle, string symbol, int64 value) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="handle" Type="System.IntPtr" />
+        <Parameter Name="symbol" Type="System.String" />
+        <Parameter Name="value" Type="System.Int64" />
+      </Parameters>
+      <Docs>
+        <param name="handle">To be added.</param>
+        <param name="symbol">To be added.</param>
+        <param name="value">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetIntPtr">
+      <MemberSignature Language="C#" Value="public static void SetIntPtr (IntPtr handle, string symbol, IntPtr value);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void SetIntPtr(native int handle, string symbol, native int value) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="handle" Type="System.IntPtr" />
+        <Parameter Name="symbol" Type="System.String" />
+        <Parameter Name="value" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="handle">To be added.</param>
+        <param name="symbol">To be added.</param>
+        <param name="value">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetSizeF">
+      <MemberSignature Language="C#" Value="public static void SetSizeF (IntPtr handle, string symbol, System.Drawing.SizeF value);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void SetSizeF(native int handle, string symbol, valuetype System.Drawing.SizeF value) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="handle" Type="System.IntPtr" />
+        <Parameter Name="symbol" Type="System.String" />
+        <Parameter Name="value" Type="System.Drawing.SizeF" />
+      </Parameters>
+      <Docs>
+        <param name="handle">To be added.</param>
+        <param name="symbol">To be added.</param>
+        <param name="value">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>

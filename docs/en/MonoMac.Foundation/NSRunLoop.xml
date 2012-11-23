@@ -155,7 +155,7 @@ public class MyClass : BaseClass {
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>System.Obsolete("Use AcceptInputForMode (NSString, NSDate)")</AttributeName>
+          <AttributeName>System.Obsolete("Use AcceptInputForMode (NSRunLoopMode, NSDate)")</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
@@ -228,7 +228,7 @@ public class MyClass : BaseClass {
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>System.Obsolete("Use AddTimer (NSTimer, NSString)")</AttributeName>
+          <AttributeName>System.Obsolete("Use AddTimer (NSTimer, NSRunLoopMode)")</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
@@ -296,6 +296,22 @@ public class MyClass : BaseClass {
       </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CurrentRunLoopMode">
+      <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSRunLoopMode CurrentRunLoopMode { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.Foundation.NSRunLoopMode CurrentRunLoopMode" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSRunLoopMode</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -405,7 +421,7 @@ public class MyClass : BaseClass {
       </AssemblyInfo>
       <Attributes>
         <Attribute>
-          <AttributeName>System.Obsolete("Use LimitDateForMode (NSString) instead")</AttributeName>
+          <AttributeName>System.Obsolete("Use LimitDateForMode (NSRunLoopMode) instead")</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
@@ -566,6 +582,28 @@ public class MyClass : BaseClass {
       <Docs>
         <param name="date">To be added.</param>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RunUntil">
+      <MemberSignature Language="C#" Value="public bool RunUntil (MonoMac.Foundation.NSRunLoopMode mode, MonoMac.Foundation.NSDate limitDate);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool RunUntil(valuetype MonoMac.Foundation.NSRunLoopMode mode, class MonoMac.Foundation.NSDate limitDate) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="mode" Type="MonoMac.Foundation.NSRunLoopMode" />
+        <Parameter Name="limitDate" Type="MonoMac.Foundation.NSDate" />
+      </Parameters>
+      <Docs>
+        <param name="mode">To be added.</param>
+        <param name="limitDate">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

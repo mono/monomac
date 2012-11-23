@@ -27,6 +27,64 @@
     <related type="sample" href="http://samples.xamarin.com/Samples/ByGuid?guid=9fa28988-64fe-4365-b2b7-95542daf4f9b">avcaptureframes</related>
   </Docs>
   <Members>
+    <Member MemberName="CreateForImageBuffer">
+      <MemberSignature Language="C#" Value="public static MonoMac.CoreMedia.CMSampleBuffer CreateForImageBuffer (MonoMac.CoreVideo.CVImageBuffer imageBuffer, bool dataReady, MonoMac.CoreMedia.CMVideoFormatDescription formatDescription, MonoMac.CoreMedia.CMSampleTimingInfo sampleTiming, out MonoMac.CoreMedia.CMSampleBufferError error);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.CoreMedia.CMSampleBuffer CreateForImageBuffer(class MonoMac.CoreVideo.CVImageBuffer imageBuffer, bool dataReady, class MonoMac.CoreMedia.CMVideoFormatDescription formatDescription, valuetype MonoMac.CoreMedia.CMSampleTimingInfo sampleTiming, valuetype MonoMac.CoreMedia.CMSampleBufferError error) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreMedia.CMSampleBuffer</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="imageBuffer" Type="MonoMac.CoreVideo.CVImageBuffer" />
+        <Parameter Name="dataReady" Type="System.Boolean" />
+        <Parameter Name="formatDescription" Type="MonoMac.CoreMedia.CMVideoFormatDescription" />
+        <Parameter Name="sampleTiming" Type="MonoMac.CoreMedia.CMSampleTimingInfo" />
+        <Parameter Name="error" Type="MonoMac.CoreMedia.CMSampleBufferError&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="imageBuffer">To be added.</param>
+        <param name="dataReady">To be added.</param>
+        <param name="formatDescription">To be added.</param>
+        <param name="sampleTiming">To be added.</param>
+        <param name="error">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateWithPacketDescriptions">
+      <MemberSignature Language="C#" Value="public static MonoMac.CoreMedia.CMSampleBuffer CreateWithPacketDescriptions (MonoMac.CoreMedia.CMBlockBuffer dataBuffer, MonoMac.CoreMedia.CMFormatDescription formatDescription, int samplesCount, MonoMac.CoreMedia.CMTime sampleTimestamp, MonoMac.AudioToolbox.AudioStreamPacketDescription[] packetDescriptions, out MonoMac.CoreMedia.CMSampleBufferError error);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.CoreMedia.CMSampleBuffer CreateWithPacketDescriptions(class MonoMac.CoreMedia.CMBlockBuffer dataBuffer, class MonoMac.CoreMedia.CMFormatDescription formatDescription, int32 samplesCount, valuetype MonoMac.CoreMedia.CMTime sampleTimestamp, valuetype MonoMac.AudioToolbox.AudioStreamPacketDescription[] packetDescriptions, valuetype MonoMac.CoreMedia.CMSampleBufferError error) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreMedia.CMSampleBuffer</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="dataBuffer" Type="MonoMac.CoreMedia.CMBlockBuffer" />
+        <Parameter Name="formatDescription" Type="MonoMac.CoreMedia.CMFormatDescription" />
+        <Parameter Name="samplesCount" Type="System.Int32" />
+        <Parameter Name="sampleTimestamp" Type="MonoMac.CoreMedia.CMTime" />
+        <Parameter Name="packetDescriptions" Type="MonoMac.AudioToolbox.AudioStreamPacketDescription[]" />
+        <Parameter Name="error" Type="MonoMac.CoreMedia.CMSampleBufferError&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="dataBuffer">To be added.</param>
+        <param name="formatDescription">To be added.</param>
+        <param name="samplesCount">To be added.</param>
+        <param name="sampleTimestamp">To be added.</param>
+        <param name="packetDescriptions">To be added.</param>
+        <param name="error">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="DataIsReady">
       <MemberSignature Language="C#" Value="public bool DataIsReady { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool DataIsReady" />
@@ -137,6 +195,23 @@
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName="GetAudioFormatDescription">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreMedia.CMAudioFormatDescription GetAudioFormatDescription ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.CoreMedia.CMAudioFormatDescription GetAudioFormatDescription() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreMedia.CMAudioFormatDescription</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="GetDataBuffer">
       <MemberSignature Language="C#" Value="public MonoMac.CoreMedia.CMBlockBuffer GetDataBuffer ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.CoreMedia.CMBlockBuffer GetDataBuffer() cil managed" />
@@ -161,6 +236,11 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use GetAudioFormatDescription or GetVideoFormatDescription")</AttributeName>
+        </Attribute>
+      </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.CoreMedia.CMFormatDescription</ReturnType>
       </ReturnValue>
@@ -189,14 +269,14 @@
       </Docs>
     </Member>
     <Member MemberName="GetSampleAttachments">
-      <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSMutableDictionary[] GetSampleAttachments (bool createIfNecessary);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.Foundation.NSMutableDictionary[] GetSampleAttachments(bool createIfNecessary) cil managed" />
+      <MemberSignature Language="C#" Value="public MonoMac.CoreMedia.CMSampleBufferAttachmentSettings[] GetSampleAttachments (bool createIfNecessary);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.CoreMedia.CMSampleBufferAttachmentSettings[] GetSampleAttachments(bool createIfNecessary) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>MonoMac.Foundation.NSMutableDictionary[]</ReturnType>
+        <ReturnType>MonoMac.CoreMedia.CMSampleBufferAttachmentSettings[]</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="createIfNecessary" Type="System.Boolean" />
@@ -237,6 +317,23 @@
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetVideoFormatDescription">
+      <MemberSignature Language="C#" Value="public MonoMac.CoreMedia.CMVideoFormatDescription GetVideoFormatDescription ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.CoreMedia.CMVideoFormatDescription GetVideoFormatDescription() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.CoreMedia.CMVideoFormatDescription</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>

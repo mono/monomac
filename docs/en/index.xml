@@ -22,6 +22,7 @@
     <Namespace Name="MonoMac.AddressBook">
       <Type Name="ABAddressBook" Kind="Class" />
       <Type Name="ABAddressBookError" Kind="Enumeration" />
+      <Type Name="ABAuthorizationStatus" Kind="Enumeration" />
       <Type Name="ABGroup" Kind="Class" />
       <Type Name="ABLabel" Kind="Class" />
       <Type Name="ABMultiValue`1" DisplayName="ABMultiValue&lt;T&gt;" Kind="Class" />
@@ -41,7 +42,7 @@
       <Type Name="ABPersonPhoneLabel" Kind="Class" />
       <Type Name="ABPersonProperty" Kind="Enumeration" />
       <Type Name="ABPersonRelatedNamesLabel" Kind="Class" />
-      <Type Name="ABPersonSocialProfile" Kind="Class" />
+      <Type Name="ABPersonSocialProfileService" Kind="Class" />
       <Type Name="ABPersonSortBy" Kind="Enumeration" />
       <Type Name="ABPersonUrlLabel" Kind="Class" />
       <Type Name="ABPropertyType" Kind="Enumeration" />
@@ -51,6 +52,9 @@
       <Type Name="ABSourceProperty" Kind="Enumeration" />
       <Type Name="ABSourceType" Kind="Enumeration" />
       <Type Name="ExternalChangeEventArgs" Kind="Class" />
+      <Type Name="InstantMessageService" Kind="Class" />
+      <Type Name="PersonAddress" Kind="Class" />
+      <Type Name="SocialProfile" Kind="Class" />
     </Namespace>
     <Namespace Name="MonoMac.AppKit">
       <Type Name="AppKitFramework" Kind="Class" />
@@ -535,6 +539,7 @@
       <Type Name="NSType" Kind="Enumeration" />
       <Type Name="NSTypesetter" Kind="Class" />
       <Type Name="NSTypesetterBehavior" Kind="Enumeration" />
+      <Type Name="NSTypesetterControlCharacterAction" Kind="Enumeration" />
       <Type Name="NSUnderlinePattern" Kind="Enumeration" />
       <Type Name="NSUnderlineStyle" Kind="Enumeration" />
       <Type Name="NSUsableScrollerParts" Kind="Enumeration" />
@@ -583,6 +588,7 @@
       <Type Name="OpenDocumentCompletionHandler" Kind="Delegate" />
     </Namespace>
     <Namespace Name="MonoMac.AudioToolbox">
+      <Type Name="AccessoryInfo" Kind="Class" />
       <Type Name="AudioBuffer" Kind="Structure" />
       <Type Name="AudioBufferList" Kind="Class" />
       <Type Name="AudioChannelDescription" Kind="Class" />
@@ -606,17 +612,23 @@
       <Type Name="AudioQueue" Kind="Class" />
       <Type Name="AudioQueue+AudioQueuePropertyChanged" Kind="Delegate" />
       <Type Name="AudioQueueBuffer" Kind="Structure" />
+      <Type Name="AudioQueueChannelAssignment" Kind="Structure" />
       <Type Name="AudioQueueDeviceProperty" Kind="Enumeration" />
       <Type Name="AudioQueueException" Kind="Class" />
       <Type Name="AudioQueueHardwareCodecPolicy" Kind="Enumeration" />
       <Type Name="AudioQueueLevelMeterState" Kind="Structure" />
       <Type Name="AudioQueueParameter" Kind="Enumeration" />
       <Type Name="AudioQueueParameterEvent" Kind="Structure" />
+      <Type Name="AudioQueueProcessingTap" Kind="Class" />
+      <Type Name="AudioQueueProcessingTapCallback" Kind="Delegate" />
+      <Type Name="AudioQueueProcessingTapFlags" Kind="Enumeration" />
       <Type Name="AudioQueueProperty" Kind="Enumeration" />
       <Type Name="AudioQueueStatus" Kind="Enumeration" />
       <Type Name="AudioQueueTimeline" Kind="Class" />
+      <Type Name="AudioServicesError" Kind="Enumeration" />
       <Type Name="AudioSession" Kind="Class" />
       <Type Name="AudioSession+PropertyListener" Kind="Delegate" />
+      <Type Name="AudioSessionActiveFlags" Kind="Enumeration" />
       <Type Name="AudioSessionCategory" Kind="Enumeration" />
       <Type Name="AudioSessionErrors" Kind="Enumeration" />
       <Type Name="AudioSessionException" Kind="Class" />
@@ -673,6 +685,7 @@
       <Type Name="_AudioConverterEventArgs" Kind="Class" />
     </Namespace>
     <Namespace Name="MonoMac.AVFoundation">
+      <Type Name="AudioSettings" Kind="Class" />
       <Type Name="AVAsset" Kind="Class" />
       <Type Name="AVAssetExportSession" Kind="Class" />
       <Type Name="AVAssetExportSessionStatus" Kind="Enumeration" />
@@ -686,6 +699,9 @@
       <Type Name="AVAssetReaderTrackOutput" Kind="Class" />
       <Type Name="AVAssetReaderVideoCompositionOutput" Kind="Class" />
       <Type Name="AVAssetReferenceRestrictions" Kind="Enumeration" />
+      <Type Name="AVAssetResourceLoader" Kind="Class" />
+      <Type Name="AVAssetResourceLoaderDelegate" Kind="Class" />
+      <Type Name="AVAssetResourceLoadingRequest" Kind="Class" />
       <Type Name="AVAssetTrack" Kind="Class" />
       <Type Name="AVAssetTrackSegment" Kind="Class" />
       <Type Name="AVAssetWriter" Kind="Class" />
@@ -703,9 +719,22 @@
       <Type Name="AVAudioRecorderDelegate" Kind="Class" />
       <Type Name="AVAudioRecorderSettings" Kind="Class" />
       <Type Name="AVAudioSession" Kind="Class" />
+      <Type Name="AVAudioSession+Notifications" Kind="Class" />
+      <Type Name="AVAudioSessionCategoryOptions" Kind="Enumeration" />
+      <Type Name="AVAudioSessionChannelDescription" Kind="Class" />
+      <Type Name="AVAudioSessionDataSourceDescription" Kind="Class" />
       <Type Name="AVAudioSessionDelegate" Kind="Class" />
       <Type Name="AVAudioSessionFlags" Kind="Enumeration" />
+      <Type Name="AVAudioSessionInterruptionEventArgs" Kind="Class" />
       <Type Name="AVAudioSessionInterruptionFlags" Kind="Enumeration" />
+      <Type Name="AVAudioSessionInterruptionOptions" Kind="Enumeration" />
+      <Type Name="AVAudioSessionInterruptionType" Kind="Enumeration" />
+      <Type Name="AVAudioSessionPortDescription" Kind="Class" />
+      <Type Name="AVAudioSessionPortOverride" Kind="Enumeration" />
+      <Type Name="AVAudioSessionRouteChangeEventArgs" Kind="Class" />
+      <Type Name="AVAudioSessionRouteChangeReason" Kind="Enumeration" />
+      <Type Name="AVAudioSessionRouteDescription" Kind="Class" />
+      <Type Name="AVAudioSessionSetActiveOptions" Kind="Enumeration" />
       <Type Name="AVAudioSettings" Kind="Class" />
       <Type Name="AVCaptureAudioChannel" Kind="Class" />
       <Type Name="AVCaptureAudioDataOutput" Kind="Class" />
@@ -716,6 +745,7 @@
       <Type Name="AVCaptureDevice+Notifications" Kind="Class" />
       <Type Name="AVCaptureDeviceInput" Kind="Class" />
       <Type Name="AVCaptureDevicePosition" Kind="Enumeration" />
+      <Type Name="AVCaptureDeviceTransportControlsPlaybackMode" Kind="Enumeration" />
       <Type Name="AVCaptureExposureMode" Kind="Enumeration" />
       <Type Name="AVCaptureFileOutput" Kind="Class" />
       <Type Name="AVCaptureFileOutputRecordingDelegate" Kind="Class" />
@@ -747,12 +777,15 @@
       <Type Name="AVErrorEventArgs" Kind="Class" />
       <Type Name="AVFileType" Kind="Class" />
       <Type Name="AVKeyValueStatus" Kind="Enumeration" />
+      <Type Name="AVLayerVideoGravity" Kind="Enumeration" />
       <Type Name="AVMediaCharacteristic" Kind="Class" />
       <Type Name="AVMediaSelectionGroup" Kind="Class" />
       <Type Name="AVMediaSelectionOption" Kind="Class" />
       <Type Name="AVMediaType" Kind="Class" />
       <Type Name="AVMetadata" Kind="Class" />
+      <Type Name="AVMetadataFaceObject" Kind="Class" />
       <Type Name="AVMetadataItem" Kind="Class" />
+      <Type Name="AVMetadataObject" Kind="Class" />
       <Type Name="AVMutableAudioMix" Kind="Class" />
       <Type Name="AVMutableAudioMixInputParameters" Kind="Class" />
       <Type Name="AVMutableComposition" Kind="Class" />
@@ -771,23 +804,38 @@
       <Type Name="AVPlayerItemErrorEventArgs" Kind="Class" />
       <Type Name="AVPlayerItemErrorLog" Kind="Class" />
       <Type Name="AVPlayerItemErrorLogEvent" Kind="Class" />
+      <Type Name="AVPlayerItemOutput" Kind="Class" />
+      <Type Name="AVPlayerItemOutputPullDelegate" Kind="Class" />
       <Type Name="AVPlayerItemStatus" Kind="Enumeration" />
       <Type Name="AVPlayerItemTrack" Kind="Class" />
+      <Type Name="AVPlayerItemVideoOutput" Kind="Class" />
       <Type Name="AVPlayerLayer" Kind="Class" />
       <Type Name="AVPlayerStatus" Kind="Enumeration" />
       <Type Name="AVQueuePlayer" Kind="Class" />
       <Type Name="AVSampleRateEventArgs" Kind="Class" />
       <Type Name="AVStatusEventArgs" Kind="Class" />
+      <Type Name="AVTextStyleRule" Kind="Class" />
       <Type Name="AVTimedMetadataGroup" Kind="Class" />
       <Type Name="AVTimeHandler" Kind="Delegate" />
       <Type Name="AVUrlAsset" Kind="Class" />
+      <Type Name="AVUrlAssetOptions" Kind="Class" />
       <Type Name="AVVideo" Kind="Class" />
+      <Type Name="AVVideoCleanApertureSettings" Kind="Class" />
+      <Type Name="AVVideoCodec" Kind="Enumeration" />
+      <Type Name="AVVideoCodecSettings" Kind="Class" />
       <Type Name="AVVideoComposition" Kind="Class" />
       <Type Name="AVVideoCompositionCoreAnimationTool" Kind="Class" />
       <Type Name="AVVideoCompositionInstruction" Kind="Class" />
       <Type Name="AVVideoCompositionLayerInstruction" Kind="Class" />
       <Type Name="AVVideoCompositionValidationHandling" Kind="Class" />
+      <Type Name="AVVideoFieldMode" Kind="Enumeration" />
+      <Type Name="AVVideoPixelAspectRatioSettings" Kind="Class" />
+      <Type Name="AVVideoProfileLevelH264" Kind="Enumeration" />
+      <Type Name="AVVideoScalingMode" Kind="Enumeration" />
+      <Type Name="AVVideoScalingModeKey" Kind="Class" />
       <Type Name="AVVideoSettings" Kind="Class" />
+      <Type Name="AVVideoSettingsCompressed" Kind="Class" />
+      <Type Name="AVVideoSettingsUncompressed" Kind="Class" />
     </Namespace>
     <Namespace Name="MonoMac.CoreAnimation">
       <Type Name="CAAction" Kind="Class" />
@@ -796,6 +844,7 @@
       <Type Name="CAAnimationGroup" Kind="Class" />
       <Type Name="CAAnimationStateEventArgs" Kind="Class" />
       <Type Name="CAAutoresizingMask" Kind="Enumeration" />
+      <Type Name="CABarBeatTime" Kind="Structure" />
       <Type Name="CABasicAnimation" Kind="Class" />
       <Type Name="CAConstraint" Kind="Class" />
       <Type Name="CAConstraintAttribute" Kind="Enumeration" />
@@ -833,6 +882,10 @@
       <Type Name="NSEntityMappingType" Kind="Enumeration" />
       <Type Name="NSEntityMigrationPolicy" Kind="Class" />
       <Type Name="NSFetchedPropertyDescription" Kind="Class" />
+      <Type Name="NSFetchedResultsChangeType" Kind="Enumeration" />
+      <Type Name="NSFetchedResultsController" Kind="Class" />
+      <Type Name="NSFetchedResultsControllerDelegate" Kind="Class" />
+      <Type Name="NSFetchedResultsSectionInfo" Kind="Class" />
       <Type Name="NSFetchRequest" Kind="Class" />
       <Type Name="NSFetchRequestResultType" Kind="Enumeration" />
       <Type Name="NSIncrementalStore" Kind="Class" />
@@ -858,6 +911,8 @@
       <Type Name="NSSaveChangesRequest" Kind="Class" />
     </Namespace>
     <Namespace Name="MonoMac.CoreFoundation">
+      <Type Name="CFAllocator" Kind="Class" />
+      <Type Name="CFAllocatorFlags" Kind="Enumeration" />
       <Type Name="CFErrorDomain" Kind="Class" />
       <Type Name="CFException" Kind="Class" />
       <Type Name="CFExceptionDataKey" Kind="Class" />
@@ -912,6 +967,14 @@
       <Type Name="CGGradientDrawingOptions" Kind="Enumeration" />
       <Type Name="CGImage" Kind="Class" />
       <Type Name="CGImageAlphaInfo" Kind="Enumeration" />
+      <Type Name="CGImageColorModel" Kind="Enumeration" />
+      <Type Name="CGImageProperties" Kind="Class" />
+      <Type Name="CGImagePropertiesExif" Kind="Class" />
+      <Type Name="CGImagePropertiesGps" Kind="Class" />
+      <Type Name="CGImagePropertiesIptc" Kind="Class" />
+      <Type Name="CGImagePropertiesJfif" Kind="Class" />
+      <Type Name="CGImagePropertiesPng" Kind="Class" />
+      <Type Name="CGImagePropertiesTiff" Kind="Class" />
       <Type Name="CGInterpolationQuality" Kind="Enumeration" />
       <Type Name="CGLayer" Kind="Class" />
       <Type Name="CGLineCap" Kind="Enumeration" />
@@ -941,11 +1004,50 @@
       <Type Name="RectangleFExtensions" Kind="Class" />
     </Namespace>
     <Namespace Name="MonoMac.CoreImage">
+      <Type Name="CIAdditionCompositing" Kind="Class" />
+      <Type Name="CIAffineClamp" Kind="Class" />
+      <Type Name="CIAffineFilter" Kind="Class" />
+      <Type Name="CIAffineTile" Kind="Class" />
+      <Type Name="CIAffineTransform" Kind="Class" />
+      <Type Name="CIAutoAdjustmentFilterOptions" Kind="Class" />
+      <Type Name="CIBarsSwipeTransition" Kind="Class" />
+      <Type Name="CIBlendFilter" Kind="Class" />
+      <Type Name="CIBlendWithMask" Kind="Class" />
+      <Type Name="CIBloom" Kind="Class" />
+      <Type Name="CICheckerboardGenerator" Kind="Class" />
+      <Type Name="CICircleSplashDistortion" Kind="Class" />
+      <Type Name="CICircularScreen" Kind="Class" />
       <Type Name="CIColor" Kind="Class" />
+      <Type Name="CIColorBlendMode" Kind="Class" />
+      <Type Name="CIColorBurnBlendMode" Kind="Class" />
+      <Type Name="CIColorControls" Kind="Class" />
+      <Type Name="CIColorCube" Kind="Class" />
+      <Type Name="CIColorDodgeBlendMode" Kind="Class" />
+      <Type Name="CIColorInvert" Kind="Class" />
+      <Type Name="CIColorMap" Kind="Class" />
+      <Type Name="CIColorMatrix" Kind="Class" />
+      <Type Name="CIColorMonochrome" Kind="Class" />
+      <Type Name="CIColorPosterize" Kind="Class" />
+      <Type Name="CICompositingFilter" Kind="Class" />
+      <Type Name="CIConstantColorGenerator" Kind="Class" />
       <Type Name="CIContext" Kind="Class" />
       <Type Name="CIContextOptions" Kind="Class" />
+      <Type Name="CICopyMachineTransition" Kind="Class" />
+      <Type Name="CICrop" Kind="Class" />
+      <Type Name="CIDarkenBlendMode" Kind="Class" />
+      <Type Name="CIDepthOfField" Kind="Class" />
       <Type Name="CIDetector" Kind="Class" />
+      <Type Name="CIDifferenceBlendMode" Kind="Class" />
+      <Type Name="CIDisintegrateWithMaskTransition" Kind="Class" />
+      <Type Name="CIDissolveTransition" Kind="Class" />
+      <Type Name="CIDistortionFilter" Kind="Class" />
+      <Type Name="CIDotScreen" Kind="Class" />
+      <Type Name="CIEightfoldReflectedTile" Kind="Class" />
+      <Type Name="CIExclusionBlendMode" Kind="Class" />
+      <Type Name="CIExposureAdjust" Kind="Class" />
+      <Type Name="CIFaceBalance" Kind="Class" />
       <Type Name="CIFaceFeature" Kind="Class" />
+      <Type Name="CIFalseColor" Kind="Class" />
       <Type Name="CIFeature" Kind="Class" />
       <Type Name="CIFilter" Kind="Class" />
       <Type Name="CIFilterApply" Kind="Class" />
@@ -956,18 +1058,87 @@
       <Type Name="CIFilterMode" Kind="Enumeration" />
       <Type Name="CIFilterOutputKey" Kind="Class" />
       <Type Name="CIFilterShape" Kind="Class" />
+      <Type Name="CIFlashTransition" Kind="Class" />
+      <Type Name="CIFormat" Kind="Enumeration" />
+      <Type Name="CIFourfoldReflectedTile" Kind="Class" />
+      <Type Name="CIFourfoldRotatedTile" Kind="Class" />
+      <Type Name="CIFourfoldTranslatedTile" Kind="Class" />
+      <Type Name="CIGammaAdjust" Kind="Class" />
+      <Type Name="CIGaussianBlur" Kind="Class" />
+      <Type Name="CIGaussianGradient" Kind="Class" />
+      <Type Name="CIGlideReflectedTile" Kind="Class" />
+      <Type Name="CIGloom" Kind="Class" />
+      <Type Name="CIHardLightBlendMode" Kind="Class" />
+      <Type Name="CIHatchedScreen" Kind="Class" />
+      <Type Name="CIHighlightShadowAdjust" Kind="Class" />
+      <Type Name="CIHoleDistortion" Kind="Class" />
+      <Type Name="CIHueAdjust" Kind="Class" />
+      <Type Name="CIHueBlendMode" Kind="Class" />
       <Type Name="CIImage" Kind="Class" />
       <Type Name="CIImageAccumulator" Kind="Class" />
+      <Type Name="CIImageInitializationOptions" Kind="Class" />
+      <Type Name="CIImageInitializationOptionsWithMetadata" Kind="Class" />
       <Type Name="CIImageOrientation" Kind="Enumeration" />
       <Type Name="CIKernel" Kind="Class" />
+      <Type Name="CILanczosScaleTransform" Kind="Class" />
+      <Type Name="CILightenBlendMode" Kind="Class" />
+      <Type Name="CILinearGradient" Kind="Class" />
+      <Type Name="CILineScreen" Kind="Class" />
+      <Type Name="CILuminosityBlendMode" Kind="Class" />
+      <Type Name="CIMaskToAlpha" Kind="Class" />
+      <Type Name="CIMaximumComponent" Kind="Class" />
+      <Type Name="CIMaximumCompositing" Kind="Class" />
+      <Type Name="CIMinimumComponent" Kind="Class" />
+      <Type Name="CIMinimumCompositing" Kind="Class" />
+      <Type Name="CIModTransition" Kind="Class" />
+      <Type Name="CIMultiplyBlendMode" Kind="Class" />
+      <Type Name="CIMultiplyCompositing" Kind="Class" />
+      <Type Name="CIOverlayBlendMode" Kind="Class" />
+      <Type Name="CIPageCurlTransition" Kind="Class" />
+      <Type Name="CIPerspectiveTile" Kind="Class" />
+      <Type Name="CIPerspectiveTransform" Kind="Class" />
+      <Type Name="CIPinchDistortion" Kind="Class" />
+      <Type Name="CIPixellate" Kind="Class" />
       <Type Name="CIPlugIn" Kind="Class" />
+      <Type Name="CIRadialGradient" Kind="Class" />
+      <Type Name="CIRandomGenerator" Kind="Class" />
+      <Type Name="CIRippleTransition" Kind="Class" />
       <Type Name="CISampler" Kind="Class" />
       <Type Name="CISamplerOptions" Kind="Class" />
+      <Type Name="CISaturationBlendMode" Kind="Class" />
+      <Type Name="CIScreenBlendMode" Kind="Class" />
+      <Type Name="CIScreenFilter" Kind="Class" />
+      <Type Name="CISepiaTone" Kind="Class" />
+      <Type Name="CISharpenLuminance" Kind="Class" />
+      <Type Name="CISixfoldReflectedTile" Kind="Class" />
+      <Type Name="CISixfoldRotatedTile" Kind="Class" />
+      <Type Name="CISoftLightBlendMode" Kind="Class" />
+      <Type Name="CISourceAtopCompositing" Kind="Class" />
+      <Type Name="CISourceInCompositing" Kind="Class" />
+      <Type Name="CISourceOutCompositing" Kind="Class" />
+      <Type Name="CISourceOverCompositing" Kind="Class" />
+      <Type Name="CIStarShineGenerator" Kind="Class" />
+      <Type Name="CIStraightenFilter" Kind="Class" />
+      <Type Name="CIStripesGenerator" Kind="Class" />
+      <Type Name="CISwipeTransition" Kind="Class" />
+      <Type Name="CITemperatureAndTint" Kind="Class" />
+      <Type Name="CITileFilter" Kind="Class" />
+      <Type Name="CIToneCurve" Kind="Class" />
+      <Type Name="CITransitionFilter" Kind="Class" />
+      <Type Name="CITwelvefoldReflectedTile" Kind="Class" />
+      <Type Name="CITwirlDistortion" Kind="Class" />
       <Type Name="CIUIParameterSet" Kind="Class" />
+      <Type Name="CIUnsharpMask" Kind="Class" />
       <Type Name="CIVector" Kind="Class" />
+      <Type Name="CIVibrance" Kind="Class" />
+      <Type Name="CIVignette" Kind="Class" />
+      <Type Name="CIVortexDistortion" Kind="Class" />
+      <Type Name="CIWhitePointAdjust" Kind="Class" />
       <Type Name="CIWrapMode" Kind="Enumeration" />
     </Namespace>
     <Namespace Name="MonoMac.CoreLocation">
+      <Type Name="CLActivityType" Kind="Enumeration" />
+      <Type Name="CLAuthorizationChangedEventArgs" Kind="Class" />
       <Type Name="CLAuthorizationStatus" Kind="Enumeration" />
       <Type Name="CLAuthroziationChangedEventArgs" Kind="Class" />
       <Type Name="CLDeviceOrientation" Kind="Enumeration" />
@@ -977,19 +1148,43 @@
       <Type Name="CLLocationManager" Kind="Class" />
       <Type Name="CLLocationManagerDelegate" Kind="Class" />
       <Type Name="CLLocationManagerEventArgs" Kind="Delegate" />
+      <Type Name="CLLocationsUpdatedEventArgs" Kind="Class" />
       <Type Name="CLLocationUpdatedEventArgs" Kind="Class" />
     </Namespace>
     <Namespace Name="MonoMac.CoreMedia">
+      <Type Name="CMAudioFormatDescription" Kind="Class" />
       <Type Name="CMBlockBuffer" Kind="Class" />
+      <Type Name="CMBlockBufferError" Kind="Enumeration" />
+      <Type Name="CMBlockBufferFlags" Kind="Enumeration" />
+      <Type Name="CMClock" Kind="Class" />
+      <Type Name="CMClockError" Kind="Enumeration" />
+      <Type Name="CMClockOrTimebase" Kind="Class" />
+      <Type Name="CMClosedCaptionFormatType" Kind="Enumeration" />
       <Type Name="CMFormatDescription" Kind="Class" />
+      <Type Name="CMFormatDescriptionError" Kind="Enumeration" />
       <Type Name="CMMediaType" Kind="Enumeration" />
+      <Type Name="CMMemoryPool" Kind="Class" />
+      <Type Name="CMMetadataFormatType" Kind="Enumeration" />
+      <Type Name="CMMuxedStreamType" Kind="Enumeration" />
       <Type Name="CMSampleBuffer" Kind="Class" />
+      <Type Name="CMSampleBufferAttachmentSettings" Kind="Class" />
+      <Type Name="CMSampleBufferError" Kind="Enumeration" />
+      <Type Name="CMSampleTimingInfo" Kind="Structure" />
+      <Type Name="CMSubtitleFormatType" Kind="Enumeration" />
+      <Type Name="CMSyncError" Kind="Enumeration" />
+      <Type Name="CMTextMarkupAttributes" Kind="Class" />
       <Type Name="CMTime" Kind="Structure" />
       <Type Name="CMTime+Flags" Kind="Enumeration" />
+      <Type Name="CMTimebase" Kind="Class" />
+      <Type Name="CMTimebaseError" Kind="Enumeration" />
+      <Type Name="CMTimeCodeFormatType" Kind="Enumeration" />
       <Type Name="CMTimeMapping" Kind="Structure" />
       <Type Name="CMTimeRange" Kind="Structure" />
       <Type Name="CMTimeRoundingMethod" Kind="Enumeration" />
+      <Type Name="CMTimeScale" Kind="Structure" />
       <Type Name="CMVideoCodecType" Kind="Enumeration" />
+      <Type Name="CMVideoFormatDescription" Kind="Class" />
+      <Type Name="TextMarkupColor" Kind="Structure" />
     </Namespace>
     <Namespace Name="MonoMac.CoreMidi">
       <Type Name="IOErrorEventArgs" Kind="Class" />
@@ -1019,6 +1214,8 @@
       <Type Name="CFHTTPStream" Kind="Class" />
     </Namespace>
     <Namespace Name="MonoMac.CoreText">
+      <Type Name="CTBaselineClass" Kind="Enumeration" />
+      <Type Name="CTBaselineFont" Kind="Enumeration" />
       <Type Name="CTCharacterCollection" Kind="Enumeration" />
       <Type Name="CTFont" Kind="Class" />
       <Type Name="CTFontCollection" Kind="Class" />
@@ -1027,11 +1224,88 @@
       <Type Name="CTFontDescriptor" Kind="Class" />
       <Type Name="CTFontDescriptorAttributeKey" Kind="Class" />
       <Type Name="CTFontDescriptorAttributes" Kind="Class" />
+      <Type Name="CTFontDescriptorMatchingState" Kind="Enumeration" />
+      <Type Name="CTFontFeatureAllTypographicFeatures" Kind="Class" />
+      <Type Name="CTFontFeatureAllTypographicFeatures+Selector" Kind="Enumeration" />
+      <Type Name="CTFontFeatureAlternateKana" Kind="Class" />
+      <Type Name="CTFontFeatureAlternateKana+Selector" Kind="Enumeration" />
+      <Type Name="CTFontFeatureAnnotation" Kind="Class" />
+      <Type Name="CTFontFeatureAnnotation+Selector" Kind="Enumeration" />
+      <Type Name="CTFontFeatureCaseSensitiveLayout" Kind="Class" />
+      <Type Name="CTFontFeatureCaseSensitiveLayout+Selector" Kind="Enumeration" />
+      <Type Name="CTFontFeatureCharacterAlternatives" Kind="Class" />
+      <Type Name="CTFontFeatureCharacterAlternatives+Selector" Kind="Enumeration" />
+      <Type Name="CTFontFeatureCharacterShape" Kind="Class" />
+      <Type Name="CTFontFeatureCharacterShape+Selector" Kind="Enumeration" />
+      <Type Name="CTFontFeatureCJKRomanSpacing" Kind="Class" />
+      <Type Name="CTFontFeatureCJKRomanSpacing+Selector" Kind="Enumeration" />
+      <Type Name="CTFontFeatureCJKSymbolAlternatives" Kind="Class" />
+      <Type Name="CTFontFeatureCJKSymbolAlternatives+Selector" Kind="Enumeration" />
+      <Type Name="CTFontFeatureCJKVerticalRomanPlacement" Kind="Class" />
+      <Type Name="CTFontFeatureCJKVerticalRomanPlacement+Selector" Kind="Enumeration" />
+      <Type Name="CTFontFeatureContextualAlternates" Kind="Class" />
+      <Type Name="CTFontFeatureContextualAlternates+Selector" Kind="Enumeration" />
+      <Type Name="CTFontFeatureCursiveConnection" Kind="Class" />
+      <Type Name="CTFontFeatureCursiveConnection+Selector" Kind="Enumeration" />
+      <Type Name="CTFontFeatureDesignComplexity" Kind="Class" />
+      <Type Name="CTFontFeatureDesignComplexity+Selector" Kind="Enumeration" />
+      <Type Name="CTFontFeatureDiacritics" Kind="Class" />
+      <Type Name="CTFontFeatureDiacritics+Selector" Kind="Enumeration" />
+      <Type Name="CTFontFeatureFractions" Kind="Class" />
+      <Type Name="CTFontFeatureFractions+Selector" Kind="Enumeration" />
+      <Type Name="CTFontFeatureIdeographicAlternatives" Kind="Class" />
+      <Type Name="CTFontFeatureIdeographicAlternatives+Selector" Kind="Enumeration" />
+      <Type Name="CTFontFeatureIdeographicSpacing" Kind="Class" />
+      <Type Name="CTFontFeatureIdeographicSpacing+Selector" Kind="Enumeration" />
+      <Type Name="CTFontFeatureItalicCJKRoman" Kind="Class" />
+      <Type Name="CTFontFeatureItalicCJKRoman+Selector" Kind="Enumeration" />
+      <Type Name="CTFontFeatureKanaSpacing" Kind="Class" />
+      <Type Name="CTFontFeatureKanaSpacing+Selector" Kind="Enumeration" />
       <Type Name="CTFontFeatureKey" Kind="Class" />
+      <Type Name="CTFontFeatureLetterCase" Kind="Class" />
+      <Type Name="CTFontFeatureLetterCase+Selector" Kind="Enumeration" />
+      <Type Name="CTFontFeatureLigatures" Kind="Class" />
+      <Type Name="CTFontFeatureLigatures+Selector" Kind="Enumeration" />
+      <Type Name="CTFontFeatureLinguisticRearrangementConnection" Kind="Class" />
+      <Type Name="CTFontFeatureLinguisticRearrangementConnection+Selector" Kind="Enumeration" />
+      <Type Name="CTFontFeatureLowerCase" Kind="Class" />
+      <Type Name="CTFontFeatureLowerCase+Selector" Kind="Enumeration" />
+      <Type Name="CTFontFeatureMathematicalExtras" Kind="Class" />
+      <Type Name="CTFontFeatureMathematicalExtras+Selector" Kind="Enumeration" />
+      <Type Name="CTFontFeatureNumberCase" Kind="Class" />
+      <Type Name="CTFontFeatureNumberCase+Selector" Kind="Enumeration" />
+      <Type Name="CTFontFeatureNumberSpacing" Kind="Class" />
+      <Type Name="CTFontFeatureNumberSpacing+Selector" Kind="Enumeration" />
+      <Type Name="CTFontFeatureOrnamentSets" Kind="Class" />
+      <Type Name="CTFontFeatureOrnamentSets+Selector" Kind="Enumeration" />
+      <Type Name="CTFontFeatureOverlappingCharacters" Kind="Class" />
+      <Type Name="CTFontFeatureOverlappingCharacters+Selector" Kind="Enumeration" />
+      <Type Name="CTFontFeatureRubyKana" Kind="Class" />
+      <Type Name="CTFontFeatureRubyKana+Selector" Kind="Enumeration" />
       <Type Name="CTFontFeatures" Kind="Class" />
       <Type Name="CTFontFeatureSelectorKey" Kind="Class" />
       <Type Name="CTFontFeatureSelectors" Kind="Class" />
       <Type Name="CTFontFeatureSettings" Kind="Class" />
+      <Type Name="CTFontFeatureSmartSwash" Kind="Class" />
+      <Type Name="CTFontFeatureSmartSwash+Selector" Kind="Enumeration" />
+      <Type Name="CTFontFeatureStyleOptions" Kind="Class" />
+      <Type Name="CTFontFeatureStyleOptions+Selector" Kind="Enumeration" />
+      <Type Name="CTFontFeatureStylisticAlternatives" Kind="Class" />
+      <Type Name="CTFontFeatureStylisticAlternatives+Selector" Kind="Enumeration" />
+      <Type Name="CTFontFeatureTextSpacing" Kind="Class" />
+      <Type Name="CTFontFeatureTextSpacing+Selector" Kind="Enumeration" />
+      <Type Name="CTFontFeatureTransliteration" Kind="Class" />
+      <Type Name="CTFontFeatureTransliteration+Selector" Kind="Enumeration" />
+      <Type Name="CTFontFeatureTypographicExtras" Kind="Class" />
+      <Type Name="CTFontFeatureTypographicExtras+Selector" Kind="Enumeration" />
+      <Type Name="CTFontFeatureUnicodeDecomposition" Kind="Class" />
+      <Type Name="CTFontFeatureUnicodeDecomposition+Selector" Kind="Enumeration" />
+      <Type Name="CTFontFeatureUpperCase" Kind="Class" />
+      <Type Name="CTFontFeatureUpperCase+Selector" Kind="Enumeration" />
+      <Type Name="CTFontFeatureVerticalPosition" Kind="Class" />
+      <Type Name="CTFontFeatureVerticalPosition+Selector" Kind="Enumeration" />
+      <Type Name="CTFontFeatureVerticalSubstitutionConnection" Kind="Class" />
+      <Type Name="CTFontFeatureVerticalSubstitutionConnection+Selector" Kind="Enumeration" />
       <Type Name="CTFontFormat" Kind="Enumeration" />
       <Type Name="CTFontManager" Kind="Class" />
       <Type Name="CTFontManagerAutoActivation" Kind="Enumeration" />
@@ -1060,6 +1334,7 @@
       <Type Name="CTGlyphInfo" Kind="Class" />
       <Type Name="CTLigatureFormation" Kind="Enumeration" />
       <Type Name="CTLine" Kind="Class" />
+      <Type Name="CTLineBoundsOptions" Kind="Enumeration" />
       <Type Name="CTLineBreakMode" Kind="Enumeration" />
       <Type Name="CTLineTruncation" Kind="Enumeration" />
       <Type Name="CTParagraphStyle" Kind="Class" />
@@ -1081,6 +1356,7 @@
       <Type Name="CTUnderlineStyle" Kind="Enumeration" />
       <Type Name="CTUnderlineStyleModifiers" Kind="Enumeration" />
       <Type Name="CTWritingDirection" Kind="Enumeration" />
+      <Type Name="FontFeatureGroup" Kind="Enumeration" />
     </Namespace>
     <Namespace Name="MonoMac.CoreVideo">
       <Type Name="CVAttachmentMode" Kind="Enumeration" />
@@ -1092,8 +1368,11 @@
       <Type Name="CVImageBuffer" Kind="Class" />
       <Type Name="CVOptionFlags" Kind="Enumeration" />
       <Type Name="CVPixelBuffer" Kind="Class" />
+      <Type Name="CVPixelBufferAttributes" Kind="Class" />
       <Type Name="CVPixelBufferLock" Kind="Enumeration" />
       <Type Name="CVPixelBufferPool" Kind="Class" />
+      <Type Name="CVPixelBufferPoolAllocationSettings" Kind="Class" />
+      <Type Name="CVPixelBufferPoolSettings" Kind="Class" />
       <Type Name="CVPixelFormatDescription" Kind="Class" />
       <Type Name="CVPixelFormatType" Kind="Enumeration" />
       <Type Name="CVPlanarComponentInfo" Kind="Structure" />
@@ -1116,12 +1395,24 @@
       <Type Name="CWWirelessProfile" Kind="Class" />
     </Namespace>
     <Namespace Name="MonoMac.Darwin">
+      <Type Name="EventFilter" Kind="Enumeration" />
+      <Type Name="EventFlags" Kind="Enumeration" />
+      <Type Name="FilterFlags" Kind="Enumeration" />
+      <Type Name="KernelEvent" Kind="Structure" />
+      <Type Name="KernelQueue" Kind="Class" />
+      <Type Name="Message" Kind="Class" />
+      <Type Name="Message+Kind" Kind="Enumeration" />
+      <Type Name="Message+Op" Kind="Enumeration" />
+      <Type Name="SystemLog" Kind="Class" />
+      <Type Name="SystemLog+Option" Kind="Enumeration" />
+      <Type Name="TimeSpec" Kind="Structure" />
     </Namespace>
     <Namespace Name="MonoMac.Foundation">
       <Type Name="ActionAttribute" Kind="Class" />
       <Type Name="AEEventClass" Kind="Enumeration" />
       <Type Name="AEEventID" Kind="Enumeration" />
       <Type Name="ConnectAttribute" Kind="Class" />
+      <Type Name="DictionaryContainer" Kind="Class" />
       <Type Name="ExportAttribute" Kind="Class" />
       <Type Name="ModelAttribute" Kind="Class" />
       <Type Name="ModelNotImplementedException" Kind="Class" />
@@ -1140,11 +1431,15 @@
       <Type Name="NSBlockOperation" Kind="Class" />
       <Type Name="NSBundle" Kind="Class" />
       <Type Name="NSBundleExecutableArchitecture" Kind="Enumeration" />
+      <Type Name="NSByteCountFormatter" Kind="Class" />
+      <Type Name="NSByteCountFormatterCountStyle" Kind="Enumeration" />
+      <Type Name="NSByteCountFormatterUnits" Kind="Enumeration" />
       <Type Name="NSCache" Kind="Class" />
       <Type Name="NSCacheDelegate" Kind="Class" />
       <Type Name="NSCachedUrlResponse" Kind="Class" />
       <Type Name="NSCalculationError" Kind="Enumeration" />
       <Type Name="NSCalendar" Kind="Class" />
+      <Type Name="NSCalendarType" Kind="Enumeration" />
       <Type Name="NSCalendarUnit" Kind="Enumeration" />
       <Type Name="NSCharacterSet" Kind="Class" />
       <Type Name="NSCoder" Kind="Class" />
@@ -1182,14 +1477,20 @@
       <Type Name="NSExpressionHandler" Kind="Delegate" />
       <Type Name="NSExpressionType" Kind="Enumeration" />
       <Type Name="NSFileAttributes" Kind="Class" />
+      <Type Name="NSFileCoordinator" Kind="Class" />
       <Type Name="NSFileCoordinatorReadingOptions" Kind="Enumeration" />
+      <Type Name="NSFileCoordinatorWorker" Kind="Delegate" />
+      <Type Name="NSFileCoordinatorWorkerRW" Kind="Delegate" />
       <Type Name="NSFileCoordinatorWritingOptions" Kind="Enumeration" />
       <Type Name="NSFileHandle" Kind="Class" />
       <Type Name="NSFileManager" Kind="Class" />
+      <Type Name="NSFileManager+Notifications" Kind="Class" />
       <Type Name="NSFileManagerDelegate" Kind="Class" />
       <Type Name="NSFileManagerItemReplacementOptions" Kind="Enumeration" />
+      <Type Name="NSFilePresenter" Kind="Class" />
       <Type Name="NSFileSystemAttributes" Kind="Class" />
       <Type Name="NSFileType" Kind="Enumeration" />
+      <Type Name="NSFileVersion" Kind="Class" />
       <Type Name="NSFileVersionAddingOptions" Kind="Enumeration" />
       <Type Name="NSFileVersionReplacingOptions" Kind="Enumeration" />
       <Type Name="NSFileWrapper" Kind="Class" />
@@ -1213,6 +1514,7 @@
       <Type Name="NSKeyValueChange" Kind="Enumeration" />
       <Type Name="NSKeyValueObservingOptions" Kind="Enumeration" />
       <Type Name="NSKeyValueSetMutationKind" Kind="Enumeration" />
+      <Type Name="NSLigatureType" Kind="Enumeration" />
       <Type Name="NSLinguisticTag" Kind="Class" />
       <Type Name="NSLinguisticTagger" Kind="Class" />
       <Type Name="NSLinguisticTaggerOptions" Kind="Enumeration" />
@@ -1295,6 +1597,7 @@
       <Type Name="NSStreamStatus" Kind="Enumeration" />
       <Type Name="NSString" Kind="Class" />
       <Type Name="NSStringCompareOptions" Kind="Enumeration" />
+      <Type Name="NSStringDrawingContext" Kind="Class" />
       <Type Name="NSStringDrawingOptions" Kind="Enumeration" />
       <Type Name="NSStringEncoding" Kind="Enumeration" />
       <Type Name="NSTask" Kind="Class" />
@@ -1305,12 +1608,18 @@
       <Type Name="NSThread" Kind="Class" />
       <Type Name="NSTimer" Kind="Class" />
       <Type Name="NSTimeZone" Kind="Class" />
+      <Type Name="NSUbiquitousKeyValueStore" Kind="Class" />
+      <Type Name="NSUbiquitousKeyValueStore+Notifications" Kind="Class" />
+      <Type Name="NSUbiquitousKeyValueStoreChangeEventArgs" Kind="Class" />
       <Type Name="NSUbiquitousKeyValueStoreChangeReason" Kind="Enumeration" />
+      <Type Name="NSUnderlineStyle" Kind="Enumeration" />
       <Type Name="NSUndoManager" Kind="Class" />
       <Type Name="NSUndoManager+Notifications" Kind="Class" />
       <Type Name="NSUndoManagerCloseUndoGroupEventArgs" Kind="Class" />
       <Type Name="NSUrl" Kind="Class" />
       <Type Name="NSUrlAuthenticationChallenge" Kind="Class" />
+      <Type Name="NSUrlBookmarkCreationOptions" Kind="Enumeration" />
+      <Type Name="NSUrlBookmarkResolutionOptions" Kind="Enumeration" />
       <Type Name="NSUrlCache" Kind="Class" />
       <Type Name="NSUrlCacheStoragePolicy" Kind="Enumeration" />
       <Type Name="NSUrlConnection" Kind="Class" />
@@ -1334,9 +1643,11 @@
       <Type Name="NSUserNotificationActivationType" Kind="Enumeration" />
       <Type Name="NSUserNotificationCenter" Kind="Class" />
       <Type Name="NSUserNotificationCenterDelegate" Kind="Class" />
+      <Type Name="NSUuid" Kind="Class" />
       <Type Name="NSValue" Kind="Class" />
       <Type Name="NSValueTransformer" Kind="Class" />
       <Type Name="NSVolumeEnumerationOptions" Kind="Enumeration" />
+      <Type Name="NSWritingDirection" Kind="Enumeration" />
       <Type Name="OutletAttribute" Kind="Class" />
       <Type Name="PreserveAttribute" Kind="Class" />
       <Type Name="RegisterAttribute" Kind="Class" />
@@ -1358,6 +1669,7 @@
       <Type Name="CGImageDestination" Kind="Class" />
       <Type Name="CGImageDestinationOptions" Kind="Class" />
       <Type Name="CGImageOptions" Kind="Class" />
+      <Type Name="CGImageProperties" Kind="Class" />
       <Type Name="CGImageSource" Kind="Class" />
       <Type Name="CGImageSourceStatus" Kind="Enumeration" />
       <Type Name="CGImageThumbnailOptions" Kind="Class" />
@@ -2297,16 +2609,12 @@
       <Type Name="SecRecord" Kind="Class" />
       <Type Name="SecStatusCode" Kind="Enumeration" />
       <Type Name="SecTrust" Kind="Class" />
+      <Type Name="SecTrustResult" Kind="Enumeration" />
       <Type Name="SecurityException" Kind="Class" />
     </Namespace>
     <Namespace Name="MonoMac.Social">
     </Namespace>
     <Namespace Name="MonoMac.Sys">
-      <Type Name="Message" Kind="Class" />
-      <Type Name="Message+Kind" Kind="Enumeration" />
-      <Type Name="Message+Op" Kind="Enumeration" />
-      <Type Name="SystemLog" Kind="Class" />
-      <Type Name="SystemLog+Option" Kind="Enumeration" />
     </Namespace>
     <Namespace Name="MonoMac.WebKit">
       <Type Name="CreateWebViewFromRequest" Kind="Delegate" />

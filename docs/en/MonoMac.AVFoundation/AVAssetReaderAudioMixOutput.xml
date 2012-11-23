@@ -100,6 +100,24 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public AVAssetReaderAudioMixOutput (MonoMac.AVFoundation.AVAssetTrack[] audioTracks, MonoMac.AVFoundation.AudioSettings settings);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.AVFoundation.AVAssetTrack[] audioTracks, class MonoMac.AVFoundation.AudioSettings settings) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="audioTracks" Type="MonoMac.AVFoundation.AVAssetTrack[]" />
+        <Parameter Name="settings" Type="MonoMac.AVFoundation.AudioSettings" />
+      </Parameters>
+      <Docs>
+        <param name="audioTracks">To be added.</param>
+        <param name="settings">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public AVAssetReaderAudioMixOutput (MonoMac.AVFoundation.AVAssetTrack[] audioTracks, MonoMac.Foundation.NSDictionary audioSettings);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.AVFoundation.AVAssetTrack[] audioTracks, class MonoMac.Foundation.NSDictionary audioSettings) cil managed" />
       <MemberType>Constructor</MemberType>
@@ -158,6 +176,9 @@ public class MyClass : BaseClass {
       </AssemblyInfo>
       <Attributes>
         <Attribute>
+          <AttributeName>System.Obsolete("Use Settings property", false)</AttributeName>
+        </Attribute>
+        <Attribute>
           <AttributeName>get: MonoMac.Foundation.Export("audioSettings")</AttributeName>
         </Attribute>
       </Attributes>
@@ -207,6 +228,28 @@ public class MyClass : BaseClass {
         <remarks>Each MonoMac class mirrors an unmanaged Objective-C class.   This value contains the pointer to the Objective-C class, it is similar to calling objc_getClass with the object name.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Create">
+      <MemberSignature Language="C#" Value="public MonoMac.AVFoundation.AVAssetReaderAudioMixOutput Create (MonoMac.AVFoundation.AVAssetTrack[] audioTracks, MonoMac.AVFoundation.AudioSettings settings);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.AVFoundation.AVAssetReaderAudioMixOutput Create(class MonoMac.AVFoundation.AVAssetTrack[] audioTracks, class MonoMac.AVFoundation.AudioSettings settings) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.AVFoundation.AVAssetReaderAudioMixOutput</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="audioTracks" Type="MonoMac.AVFoundation.AVAssetTrack[]" />
+        <Parameter Name="settings" Type="MonoMac.AVFoundation.AudioSettings" />
+      </Parameters>
+      <Docs>
+        <param name="audioTracks">To be added.</param>
+        <param name="settings">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Dispose">
       <MemberSignature Language="C#" Value="protected override void Dispose (bool disposing);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Dispose(bool disposing) cil managed" />
@@ -244,6 +287,9 @@ public class MyClass : BaseClass {
         <Attribute>
           <AttributeName>MonoMac.Foundation.Export("assetReaderAudioMixOutputWithAudioTracks:audioSettings:")</AttributeName>
         </Attribute>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use Create method", false)</AttributeName>
+        </Attribute>
       </Attributes>
       <ReturnValue>
         <ReturnType>MonoMac.AVFoundation.AVAssetReaderAudioMixOutput</ReturnType>
@@ -260,6 +306,22 @@ public class MyClass : BaseClass {
         </param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Settings">
+      <MemberSignature Language="C#" Value="public MonoMac.AVFoundation.AudioSettings Settings { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AVFoundation.AudioSettings Settings" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.AVFoundation.AudioSettings</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

@@ -100,6 +100,42 @@ public class MyClass : BaseClass {
       </Docs>
     </Member>
     <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public AVAssetReaderTrackOutput (MonoMac.AVFoundation.AVAssetTrack track, MonoMac.AVFoundation.AudioSettings settings);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.AVFoundation.AVAssetTrack track, class MonoMac.AVFoundation.AudioSettings settings) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="track" Type="MonoMac.AVFoundation.AVAssetTrack" />
+        <Parameter Name="settings" Type="MonoMac.AVFoundation.AudioSettings" />
+      </Parameters>
+      <Docs>
+        <param name="track">To be added.</param>
+        <param name="settings">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public AVAssetReaderTrackOutput (MonoMac.AVFoundation.AVAssetTrack track, MonoMac.AVFoundation.AVVideoSettingsUncompressed settings);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.AVFoundation.AVAssetTrack track, class MonoMac.AVFoundation.AVVideoSettingsUncompressed settings) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="track" Type="MonoMac.AVFoundation.AVAssetTrack" />
+        <Parameter Name="settings" Type="MonoMac.AVFoundation.AVVideoSettingsUncompressed" />
+      </Parameters>
+      <Docs>
+        <param name="track">To be added.</param>
+        <param name="settings">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public AVAssetReaderTrackOutput (MonoMac.AVFoundation.AVAssetTrack track, MonoMac.Foundation.NSDictionary outputSettings);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.AVFoundation.AVAssetTrack track, class MonoMac.Foundation.NSDictionary outputSettings) cil managed" />
       <MemberType>Constructor</MemberType>
@@ -142,6 +178,50 @@ public class MyClass : BaseClass {
         <remarks>Each MonoMac class mirrors an unmanaged Objective-C class.   This value contains the pointer to the Objective-C class, it is similar to calling objc_getClass with the object name.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Create">
+      <MemberSignature Language="C#" Value="public static MonoMac.AVFoundation.AVAssetReaderTrackOutput Create (MonoMac.AVFoundation.AVAssetTrack track, MonoMac.AVFoundation.AudioSettings settings);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.AVFoundation.AVAssetReaderTrackOutput Create(class MonoMac.AVFoundation.AVAssetTrack track, class MonoMac.AVFoundation.AudioSettings settings) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.AVFoundation.AVAssetReaderTrackOutput</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="track" Type="MonoMac.AVFoundation.AVAssetTrack" />
+        <Parameter Name="settings" Type="MonoMac.AVFoundation.AudioSettings" />
+      </Parameters>
+      <Docs>
+        <param name="track">To be added.</param>
+        <param name="settings">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Create">
+      <MemberSignature Language="C#" Value="public static MonoMac.AVFoundation.AVAssetReaderTrackOutput Create (MonoMac.AVFoundation.AVAssetTrack track, MonoMac.AVFoundation.AVVideoSettingsUncompressed settings);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.AVFoundation.AVAssetReaderTrackOutput Create(class MonoMac.AVFoundation.AVAssetTrack track, class MonoMac.AVFoundation.AVVideoSettingsUncompressed settings) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.AVFoundation.AVAssetReaderTrackOutput</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="track" Type="MonoMac.AVFoundation.AVAssetTrack" />
+        <Parameter Name="settings" Type="MonoMac.AVFoundation.AVVideoSettingsUncompressed" />
+      </Parameters>
+      <Docs>
+        <param name="track">To be added.</param>
+        <param name="settings">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Dispose">
       <MemberSignature Language="C#" Value="protected override void Dispose (bool disposing);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Dispose(bool disposing) cil managed" />
@@ -178,6 +258,9 @@ public class MyClass : BaseClass {
       <Attributes>
         <Attribute>
           <AttributeName>MonoMac.Foundation.Export("assetReaderTrackOutputWithTrack:outputSettings:")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use Create method", false)</AttributeName>
         </Attribute>
       </Attributes>
       <ReturnValue>
