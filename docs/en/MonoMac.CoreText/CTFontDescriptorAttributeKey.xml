@@ -45,8 +45,35 @@
         <ReturnType>MonoMac.Foundation.NSString</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Augment the list of cascading fonts to try out when a font is needed.</summary>
+        <remarks>
+          <para>
+
+	    Since fonts do not cover the entire Unicode space, you can
+	    provide a list of fallback fonts that will be tried for
+	    glyphs that are not available for a certain codepoint in
+	    the main selected font.
+
+	  </para>
+          <para>
+
+	    By default the system has a built-in cascade list that the
+	    system uses to satisfy the font.  By setting this property
+	    is to set a list that is consulted before the system
+	    cascade list is looked up.
+
+	  </para>
+          <para>
+
+	    If you want to prevent the system cascade list from being
+	    consulted, you can use the special font name "LastResort",
+	    this is a special font that contains glyphs for every
+	    unicode code point.  You can learn more about it at the
+	    Unicode web site:
+	    http://unicode.org/policies/lastresortfont_eula.html
+
+	  </para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CharacterSet">

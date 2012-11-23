@@ -53,6 +53,22 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="AudioFormats">
+      <MemberSignature Language="C#" Value="public MonoMac.AudioToolbox.AudioFormat[] AudioFormats { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.AudioToolbox.AudioFormat[] AudioFormats" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.AudioToolbox.AudioFormat[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Returns a list of the supported audio formats.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="BitRate">
       <MemberSignature Language="C#" Value="public int BitRate { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance int32 BitRate" />
@@ -898,12 +914,42 @@
         <Parameter Name="buffer" Type="System.Byte[]" />
       </Parameters>
       <Docs>
-        <param name="inStartingPacket">To be added.</param>
-        <param name="nPackets">To be added.</param>
-        <param name="buffer">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="inStartingPacket">The index of the first packet to read.</param>
+        <param name="nPackets">The number of packets to read.</param>
+        <param name="buffer">The output buffer where packets are written.</param>
+        <summary>Reads packets of audio data from an audio file.</summary>
+        <returns>Array of packet descriptors for the packets that were read.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ReadPacketData">
+      <MemberSignature Language="C#" Value="public MonoMac.AudioToolbox.AudioStreamPacketDescription[] ReadPacketData (bool useCache, long inStartingPacket, ref int nPackets, IntPtr buffer, ref int count);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype MonoMac.AudioToolbox.AudioStreamPacketDescription[] ReadPacketData(bool useCache, int64 inStartingPacket, int32 nPackets, native int buffer, int32 count) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.AudioToolbox.AudioStreamPacketDescription[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="useCache" Type="System.Boolean" />
+        <Parameter Name="inStartingPacket" Type="System.Int64" />
+        <Parameter Name="nPackets" Type="System.Int32&amp;" RefType="ref" />
+        <Parameter Name="buffer" Type="System.IntPtr" />
+        <Parameter Name="count" Type="System.Int32&amp;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <param name="useCache">If the data should be cached.</param>
+        <param name="inStartingPacket">The index of the first packet to read.</param>
+        <param name="nPackets">The number of packets to read.</param>
+        <param name="buffer">The output buffer where packets are written.</param>
+        <param name="count">On input the size of the output buffer (in bytes), upon return the actual number of bytes read.</param>
+        <summary>Reads packets of audio data from an audio file.</summary>
+        <returns>Array of packet descriptors for the packets that were read.</returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="ReadPacketData">
@@ -925,15 +971,47 @@
         <Parameter Name="count" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="useCache">To be added.</param>
-        <param name="inStartingPacket">To be added.</param>
-        <param name="nPackets">To be added.</param>
-        <param name="buffer">To be added.</param>
-        <param name="offset">To be added.</param>
-        <param name="count">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="useCache">If the data should be cached.</param>
+        <param name="inStartingPacket">The index of the first packet to read.</param>
+        <param name="nPackets">The number of packets to read.</param>
+        <param name="buffer">The output buffer where packets are written.</param>
+        <param name="offset">The offset in the output buffer where to start writing packets to.</param>
+        <param name="count">The size of the output buffer (in bytes).</param>
+        <summary>Reads packets of audio data from an audio file.</summary>
+        <returns>Array of packet descriptors for the packets that were read.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ReadPacketData">
+      <MemberSignature Language="C#" Value="public MonoMac.AudioToolbox.AudioStreamPacketDescription[] ReadPacketData (bool useCache, long inStartingPacket, ref int nPackets, byte[] buffer, int offset, ref int count);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype MonoMac.AudioToolbox.AudioStreamPacketDescription[] ReadPacketData(bool useCache, int64 inStartingPacket, int32 nPackets, unsigned int8[] buffer, int32 offset, int32 count) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.AudioToolbox.AudioStreamPacketDescription[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="useCache" Type="System.Boolean" />
+        <Parameter Name="inStartingPacket" Type="System.Int64" />
+        <Parameter Name="nPackets" Type="System.Int32&amp;" RefType="ref" />
+        <Parameter Name="buffer" Type="System.Byte[]" />
+        <Parameter Name="offset" Type="System.Int32" />
+        <Parameter Name="count" Type="System.Int32&amp;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <param name="useCache">If the data should be cached.</param>
+        <param name="inStartingPacket">The index of the first packet to read.</param>
+        <param name="nPackets">On input the number of packets to read, upon return the number of packets actually read.</param>
+        <param name="buffer">The output buffer where packets are written.</param>
+        <param name="offset">The offset in the output buffer where to start writing packets to.</param>
+        <param name="count">On input the size of the output buffer (in bytes), upon return the actual number of bytes read.</param>
+        <summary>Reads packets of audio data from an audio file.</summary>
+        <returns>Array of packet descriptors for the packets that were read.</returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="RemoveUserData">

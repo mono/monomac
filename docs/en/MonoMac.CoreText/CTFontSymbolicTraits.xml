@@ -17,8 +17,32 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Describes the style of a font.</summary>
+    <remarks>
+      <para>
+	You can use this to query trait information about a font.
+      </para>
+      <example>
+        <code lang="c#">
+void ShowInfo (CTFont font)
+{
+    var traits = font.GetTraits ();
+    if (traits.Bold)
+	Console.WriteLine ("Bold font, weight={0}", traits.Weight);
+    if (traits.Italic)
+	Console.WriteLine ("Italic font, slant={0}", traits.Slant);
+    if (traits.Condensed || traits.Expanded)
+	Console.WriteLine ("Condensed/Expanded font, width={0}", traits.Width);
+    if (traits.ColorGlyphs)
+	Console.WriteLine ("Font has colored glyphs");
+    if (traits.MonoSpace)
+	Console.WriteLine ("Font is monospaced");
+    if (traits.Vertical)
+	Console.WriteLine ("Font contains vertical metrics");
+}
+	</code>
+      </example>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName="Bold">
@@ -32,7 +56,10 @@
         <ReturnType>MonoMac.CoreText.CTFontSymbolicTraits</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+	  This is a bold font.  If querying <see cref="T:MonoMac.CoreText.CTFontTraits" /> you can get more
+	  information about the weight from the <see cref="P:MonoMac.CoreText.CTFontTraits.Weight" /> property.
+	</summary>
       </Docs>
     </Member>
     <Member MemberName="ColorGlyphs">
@@ -46,7 +73,7 @@
         <ReturnType>MonoMac.CoreText.CTFontSymbolicTraits</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>This font contains glyphs with colors (for example, some Emoji fonts).</summary>
       </Docs>
     </Member>
     <Member MemberName="Condensed">
@@ -60,7 +87,8 @@
         <ReturnType>MonoMac.CoreText.CTFontSymbolicTraits</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>This is a condensed font.  If querying <see cref="T:MonoMac.CoreText.CTFontTraits" /> you can get more
+	  information about the width from the <see cref="P:MonoMac.CoreText.CTFontTraits.Width" /> property.</summary>
       </Docs>
     </Member>
     <Member MemberName="Expanded">
@@ -74,7 +102,7 @@
         <ReturnType>MonoMac.CoreText.CTFontSymbolicTraits</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>This is an expanded font.</summary>
       </Docs>
     </Member>
     <Member MemberName="Italic">
@@ -88,7 +116,8 @@
         <ReturnType>MonoMac.CoreText.CTFontSymbolicTraits</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>This is an italic font.  If querying <see cref="T:MonoMac.CoreText.CTFontTraits" /> you can get more
+	  information about the slant from the <see cref="P:MonoMac.CoreText.CTFontTraits.Slant" /> property.</summary>
       </Docs>
     </Member>
     <Member MemberName="MonoSpace">
@@ -102,7 +131,7 @@
         <ReturnType>MonoMac.CoreText.CTFontSymbolicTraits</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Use fixed fonts if available.</summary>
       </Docs>
     </Member>
     <Member MemberName="None">
@@ -116,7 +145,7 @@
         <ReturnType>MonoMac.CoreText.CTFontSymbolicTraits</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Used when no values are set.</summary>
       </Docs>
     </Member>
     <Member MemberName="UIOptimized">
@@ -130,7 +159,7 @@
         <ReturnType>MonoMac.CoreText.CTFontSymbolicTraits</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The font is optimized for UI rendering.</summary>
       </Docs>
     </Member>
     <Member MemberName="Vertical">
@@ -144,7 +173,7 @@
         <ReturnType>MonoMac.CoreText.CTFontSymbolicTraits</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The font has vertical information for rendering.</summary>
       </Docs>
     </Member>
   </Members>

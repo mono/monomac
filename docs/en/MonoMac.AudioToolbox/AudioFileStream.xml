@@ -23,6 +23,7 @@ You use AudioFileStream when you want to decode audio content that does not live
 This can be used to parse audio files when you are streaming audio from the network for example.
 </para>
     </remarks>
+    <related type="sample" href="http://samples.xamarin.com/Samples/ByGuid?guid=26d904c2-c44a-46f2-883a-a01bb5657309">StreamingAudio</related>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -52,9 +53,11 @@ This can be used to parse audio files when you are streaming audio from the netw
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Average bytes per packet.   This value is precise for audio files with constant bit rates or audio files that have a packet index, otherwise it is a computed average.</summary>
+        <value>
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="BitRate">
@@ -251,7 +254,8 @@ This can be used to parse audio files when you are streaming audio from the netw
       <Parameters />
       <Docs>
         <summary>Finalizer for the AudioFileStream object</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="FrameToPacket">
@@ -269,11 +273,12 @@ This can be used to parse audio files when you are streaming audio from the netw
         <Parameter Name="frameOffsetInPacket" Type="System.Int32&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="frame">To be added.</param>
-        <param name="frameOffsetInPacket">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="frame">The audio frame number.</param>
+        <param name="frameOffsetInPacket">The frame offset in the packet.</param>
+        <summary>Returns the packet number and the frame offset in the packet (on the out parameter) corresponding to the requested audio frame.</summary>
+        <returns>The packet number that corresponds to the specified frame.</returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="GetProperty">

@@ -1,0 +1,503 @@
+<Type Name="NSUndoManager+Notifications" FullName="MonoMac.Foundation.NSUndoManager+Notifications">
+  <TypeSignature Language="C#" Value="public static class NSUndoManager.Notifications" />
+  <TypeSignature Language="ILAsm" Value=".class nested public auto ansi abstract sealed beforefieldinit NSUndoManager/Notifications extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>MonoMac</AssemblyName>
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+      <para>Notification posted by the <see cref="T:MonoMac.Foundation.NSUndoManager" /> class.</para>
+    </summary>
+    <remarks>
+      <para>This is a static class which contains various helper methods that allow developers to observe events posted in the iOS notification hub (<see cref="T:MonoTouch.Foundation.NSNotificationCenter" />).</para>
+      <para>The methods defined in this class post events invoke the provided method or lambda with a <see cref="T:MonoTouch.Foundation.NSNotificationEventArgs" /> parameter which contains strongly typed properties for the notification arguments.</para>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="ObserveCheckpoint">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSObject ObserveCheckpoint (EventHandler&lt;MonoMac.Foundation.NSNotificationEventArgs&gt; handler);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSObject ObserveCheckpoint(class System.EventHandler`1&lt;class MonoMac.Foundation.NSNotificationEventArgs&gt; handler) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="handler" Type="System.EventHandler&lt;MonoMac.Foundation.NSNotificationEventArgs&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="handler">Method to invoke when the notification is posted.</param>
+        <summary>Registers a method to be notified when the NSUndoManagerCheckpointNotification notification is posted.</summary>
+        <returns>
+          <para>The returned NSObject represents the registered notification.   Either call Dispose on the object to stop receiving notifications, or pass it to <see cref="M:MonoTouch.Foundation.NSNotification.RemoveObserver" /></para>
+        </returns>
+        <remarks>
+          <para>The following example shows how you can use this method in your code</para>
+          <example>
+            <code lang="c#">
+//
+// Lambda style
+//
+
+// listening
+notification = NSUndoManager.Notifications.ObserveObserveCheckpoint ((sender, args) =&gt; {
+    /* Access strongly typed args */
+    Console.WriteLine ("Notification: {0}", args.Notification);
+});
+
+// To stop listening:
+notification.Dispose ();
+
+//
+//Method style
+//
+NSObject notification;
+void Callback (object sender, ObserveCheckpoint args)
+{
+    // Access strongly typed args
+    Console.WriteLine ("Notification: {0}", args.Notification);
+}
+
+void Setup ()
+{
+    notification = NSUndoManager.Notifications.ObserveObserveCheckpoint (Callback);
+}
+
+void Teardown ()
+{
+    notification.Dispose ();
+}</code>
+          </example>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ObserveDidCloseUndoGroup">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSObject ObserveDidCloseUndoGroup (EventHandler&lt;MonoMac.Foundation.NSUndoManagerCloseUndoGroupEventArgs&gt; handler);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSObject ObserveDidCloseUndoGroup(class System.EventHandler`1&lt;class MonoMac.Foundation.NSUndoManagerCloseUndoGroupEventArgs&gt; handler) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="handler" Type="System.EventHandler&lt;MonoMac.Foundation.NSUndoManagerCloseUndoGroupEventArgs&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="handler">Method to invoke when the notification is posted.</param>
+        <summary>Registers a method to be notified when the NSUndoManagerDidCloseUndoGroupNotification notification is posted.</summary>
+        <returns>
+          <para>The returned NSObject represents the registered notification.   Either call Dispose on the object to stop receiving notifications, or pass it to <see cref="M:MonoTouch.Foundation.NSNotification.RemoveObserver" /></para>
+        </returns>
+        <remarks>
+          <para>The following example shows how you can use this method in your code</para>
+          <example>
+            <code lang="c#">
+//
+// Lambda style
+//
+
+// listening
+notification = NSUndoManager.Notifications.ObserveObserveDidCloseUndoGroup ((sender, args) =&gt; {
+    /* Access strongly typed args */
+    Console.WriteLine ("Notification: {0}", args.Notification);
+
+    Console.WriteLine ("Discardable", args.Discardable);
+});
+
+// To stop listening:
+notification.Dispose ();
+
+//
+//Method style
+//
+NSObject notification;
+void Callback (object sender, ObserveDidCloseUndoGroup args)
+{
+    // Access strongly typed args
+    Console.WriteLine ("Notification: {0}", args.Notification);
+
+    Console.WriteLine ("Discardable", args.Discardable);
+}
+
+void Setup ()
+{
+    notification = NSUndoManager.Notifications.ObserveObserveDidCloseUndoGroup (Callback);
+}
+
+void Teardown ()
+{
+    notification.Dispose ();
+}</code>
+          </example>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ObserveDidOpenUndoGroup">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSObject ObserveDidOpenUndoGroup (EventHandler&lt;MonoMac.Foundation.NSNotificationEventArgs&gt; handler);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSObject ObserveDidOpenUndoGroup(class System.EventHandler`1&lt;class MonoMac.Foundation.NSNotificationEventArgs&gt; handler) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="handler" Type="System.EventHandler&lt;MonoMac.Foundation.NSNotificationEventArgs&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="handler">Method to invoke when the notification is posted.</param>
+        <summary>Registers a method to be notified when the NSUndoManagerDidOpenUndoGroupNotification notification is posted.</summary>
+        <returns>
+          <para>The returned NSObject represents the registered notification.   Either call Dispose on the object to stop receiving notifications, or pass it to <see cref="M:MonoTouch.Foundation.NSNotification.RemoveObserver" /></para>
+        </returns>
+        <remarks>
+          <para>The following example shows how you can use this method in your code</para>
+          <example>
+            <code lang="c#">
+//
+// Lambda style
+//
+
+// listening
+notification = NSUndoManager.Notifications.ObserveObserveDidOpenUndoGroup ((sender, args) =&gt; {
+    /* Access strongly typed args */
+    Console.WriteLine ("Notification: {0}", args.Notification);
+});
+
+// To stop listening:
+notification.Dispose ();
+
+//
+//Method style
+//
+NSObject notification;
+void Callback (object sender, ObserveDidOpenUndoGroup args)
+{
+    // Access strongly typed args
+    Console.WriteLine ("Notification: {0}", args.Notification);
+}
+
+void Setup ()
+{
+    notification = NSUndoManager.Notifications.ObserveObserveDidOpenUndoGroup (Callback);
+}
+
+void Teardown ()
+{
+    notification.Dispose ();
+}</code>
+          </example>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ObserveDidRedoChange">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSObject ObserveDidRedoChange (EventHandler&lt;MonoMac.Foundation.NSNotificationEventArgs&gt; handler);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSObject ObserveDidRedoChange(class System.EventHandler`1&lt;class MonoMac.Foundation.NSNotificationEventArgs&gt; handler) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="handler" Type="System.EventHandler&lt;MonoMac.Foundation.NSNotificationEventArgs&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="handler">Method to invoke when the notification is posted.</param>
+        <summary>Registers a method to be notified when the NSUndoManagerDidRedoChangeNotification notification is posted.</summary>
+        <returns>
+          <para>The returned NSObject represents the registered notification.   Either call Dispose on the object to stop receiving notifications, or pass it to <see cref="M:MonoTouch.Foundation.NSNotification.RemoveObserver" /></para>
+        </returns>
+        <remarks>
+          <para>The following example shows how you can use this method in your code</para>
+          <example>
+            <code lang="c#">
+//
+// Lambda style
+//
+
+// listening
+notification = NSUndoManager.Notifications.ObserveObserveDidRedoChange ((sender, args) =&gt; {
+    /* Access strongly typed args */
+    Console.WriteLine ("Notification: {0}", args.Notification);
+});
+
+// To stop listening:
+notification.Dispose ();
+
+//
+//Method style
+//
+NSObject notification;
+void Callback (object sender, ObserveDidRedoChange args)
+{
+    // Access strongly typed args
+    Console.WriteLine ("Notification: {0}", args.Notification);
+}
+
+void Setup ()
+{
+    notification = NSUndoManager.Notifications.ObserveObserveDidRedoChange (Callback);
+}
+
+void Teardown ()
+{
+    notification.Dispose ();
+}</code>
+          </example>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ObserveDidUndoChange">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSObject ObserveDidUndoChange (EventHandler&lt;MonoMac.Foundation.NSNotificationEventArgs&gt; handler);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSObject ObserveDidUndoChange(class System.EventHandler`1&lt;class MonoMac.Foundation.NSNotificationEventArgs&gt; handler) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="handler" Type="System.EventHandler&lt;MonoMac.Foundation.NSNotificationEventArgs&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="handler">Method to invoke when the notification is posted.</param>
+        <summary>Registers a method to be notified when the NSUndoManagerDidUndoChangeNotification notification is posted.</summary>
+        <returns>
+          <para>The returned NSObject represents the registered notification.   Either call Dispose on the object to stop receiving notifications, or pass it to <see cref="M:MonoTouch.Foundation.NSNotification.RemoveObserver" /></para>
+        </returns>
+        <remarks>
+          <para>The following example shows how you can use this method in your code</para>
+          <example>
+            <code lang="c#">
+//
+// Lambda style
+//
+
+// listening
+notification = NSUndoManager.Notifications.ObserveObserveDidUndoChange ((sender, args) =&gt; {
+    /* Access strongly typed args */
+    Console.WriteLine ("Notification: {0}", args.Notification);
+});
+
+// To stop listening:
+notification.Dispose ();
+
+//
+//Method style
+//
+NSObject notification;
+void Callback (object sender, ObserveDidUndoChange args)
+{
+    // Access strongly typed args
+    Console.WriteLine ("Notification: {0}", args.Notification);
+}
+
+void Setup ()
+{
+    notification = NSUndoManager.Notifications.ObserveObserveDidUndoChange (Callback);
+}
+
+void Teardown ()
+{
+    notification.Dispose ();
+}</code>
+          </example>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ObserveWillCloseUndoGroup">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSObject ObserveWillCloseUndoGroup (EventHandler&lt;MonoMac.Foundation.NSUndoManagerCloseUndoGroupEventArgs&gt; handler);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSObject ObserveWillCloseUndoGroup(class System.EventHandler`1&lt;class MonoMac.Foundation.NSUndoManagerCloseUndoGroupEventArgs&gt; handler) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="handler" Type="System.EventHandler&lt;MonoMac.Foundation.NSUndoManagerCloseUndoGroupEventArgs&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="handler">Method to invoke when the notification is posted.</param>
+        <summary>Registers a method to be notified when the NSUndoManagerWillCloseUndoGroupNotification notification is posted.</summary>
+        <returns>
+          <para>The returned NSObject represents the registered notification.   Either call Dispose on the object to stop receiving notifications, or pass it to <see cref="M:MonoTouch.Foundation.NSNotification.RemoveObserver" /></para>
+        </returns>
+        <remarks>
+          <para>The following example shows how you can use this method in your code</para>
+          <example>
+            <code lang="c#">
+//
+// Lambda style
+//
+
+// listening
+notification = NSUndoManager.Notifications.ObserveObserveWillCloseUndoGroup ((sender, args) =&gt; {
+    /* Access strongly typed args */
+    Console.WriteLine ("Notification: {0}", args.Notification);
+
+    Console.WriteLine ("Discardable", args.Discardable);
+});
+
+// To stop listening:
+notification.Dispose ();
+
+//
+//Method style
+//
+NSObject notification;
+void Callback (object sender, ObserveWillCloseUndoGroup args)
+{
+    // Access strongly typed args
+    Console.WriteLine ("Notification: {0}", args.Notification);
+
+    Console.WriteLine ("Discardable", args.Discardable);
+}
+
+void Setup ()
+{
+    notification = NSUndoManager.Notifications.ObserveObserveWillCloseUndoGroup (Callback);
+}
+
+void Teardown ()
+{
+    notification.Dispose ();
+}</code>
+          </example>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ObserveWillRedoChange">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSObject ObserveWillRedoChange (EventHandler&lt;MonoMac.Foundation.NSNotificationEventArgs&gt; handler);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSObject ObserveWillRedoChange(class System.EventHandler`1&lt;class MonoMac.Foundation.NSNotificationEventArgs&gt; handler) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="handler" Type="System.EventHandler&lt;MonoMac.Foundation.NSNotificationEventArgs&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="handler">Method to invoke when the notification is posted.</param>
+        <summary>Registers a method to be notified when the NSUndoManagerWillRedoChangeNotification notification is posted.</summary>
+        <returns>
+          <para>The returned NSObject represents the registered notification.   Either call Dispose on the object to stop receiving notifications, or pass it to <see cref="M:MonoTouch.Foundation.NSNotification.RemoveObserver" /></para>
+        </returns>
+        <remarks>
+          <para>The following example shows how you can use this method in your code</para>
+          <example>
+            <code lang="c#">
+//
+// Lambda style
+//
+
+// listening
+notification = NSUndoManager.Notifications.ObserveObserveWillRedoChange ((sender, args) =&gt; {
+    /* Access strongly typed args */
+    Console.WriteLine ("Notification: {0}", args.Notification);
+});
+
+// To stop listening:
+notification.Dispose ();
+
+//
+//Method style
+//
+NSObject notification;
+void Callback (object sender, ObserveWillRedoChange args)
+{
+    // Access strongly typed args
+    Console.WriteLine ("Notification: {0}", args.Notification);
+}
+
+void Setup ()
+{
+    notification = NSUndoManager.Notifications.ObserveObserveWillRedoChange (Callback);
+}
+
+void Teardown ()
+{
+    notification.Dispose ();
+}</code>
+          </example>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ObserveWillUndoChange">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSObject ObserveWillUndoChange (EventHandler&lt;MonoMac.Foundation.NSNotificationEventArgs&gt; handler);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSObject ObserveWillUndoChange(class System.EventHandler`1&lt;class MonoMac.Foundation.NSNotificationEventArgs&gt; handler) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="handler" Type="System.EventHandler&lt;MonoMac.Foundation.NSNotificationEventArgs&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="handler">Method to invoke when the notification is posted.</param>
+        <summary>Registers a method to be notified when the NSUndoManagerWillUndoChangeNotification notification is posted.</summary>
+        <returns>
+          <para>The returned NSObject represents the registered notification.   Either call Dispose on the object to stop receiving notifications, or pass it to <see cref="M:MonoTouch.Foundation.NSNotification.RemoveObserver" /></para>
+        </returns>
+        <remarks>
+          <para>The following example shows how you can use this method in your code</para>
+          <example>
+            <code lang="c#">
+//
+// Lambda style
+//
+
+// listening
+notification = NSUndoManager.Notifications.ObserveObserveWillUndoChange ((sender, args) =&gt; {
+    /* Access strongly typed args */
+    Console.WriteLine ("Notification: {0}", args.Notification);
+});
+
+// To stop listening:
+notification.Dispose ();
+
+//
+//Method style
+//
+NSObject notification;
+void Callback (object sender, ObserveWillUndoChange args)
+{
+    // Access strongly typed args
+    Console.WriteLine ("Notification: {0}", args.Notification);
+}
+
+void Setup ()
+{
+    notification = NSUndoManager.Notifications.ObserveObserveWillUndoChange (Callback);
+}
+
+void Teardown ()
+{
+    notification.Dispose ();
+}</code>
+          </example>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

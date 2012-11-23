@@ -14,8 +14,26 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Flags that determine how NSData loads files.</summary>
+    <remarks>
+      <para>
+	By default NSData will loads the contents of the file in memory
+	by allocating a block of memory and then reading the contents of
+	the file into it.
+      </para>
+      <para>
+
+	The Mapped and MappedAlways parameter instruct NSData to use
+	the kernel's interface to map the file into the process
+	address space.  This has a few advantages: instead of
+	allocating read/write memory for the process, that becomes
+	real memory usage, the mapped versions map the file into
+	memory which means that the data is loaded on demand instead
+	of being loaded upfront.  This also allows the kernel to
+	discard the data loaded from memory when the system is running
+	low on memory. 
+      </para>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName="Coordinated">
@@ -48,7 +66,7 @@
         <ReturnType>MonoMac.Foundation.NSDataReadingOptions</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Use the kernel's virtual memory map to load the file, if possible. If sucessful, this replaces read/write memory that can be very expensive with discardable memory that is backed by a file.</summary>
       </Docs>
     </Member>
     <Member MemberName="MappedAlways">
@@ -67,7 +85,7 @@
         <ReturnType>MonoMac.Foundation.NSDataReadingOptions</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Force NSData to try to use the kernel's mapping support to load the file.   If sucessful, this replaces read/write memory that can be very expensive with discardable memory that is backed by a file.</summary>
       </Docs>
     </Member>
     <Member MemberName="Uncached">
@@ -81,7 +99,7 @@
         <ReturnType>MonoMac.Foundation.NSDataReadingOptions</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>Notify the kernel that it should not try to cache the contents of this file in its buffer cache.</summary>
       </Docs>
     </Member>
   </Members>

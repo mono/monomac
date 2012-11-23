@@ -24,6 +24,7 @@
   <Docs>
     <summary>To be added.</summary>
     <remarks>To be added.</remarks>
+    <related type="sample" href="http://samples.xamarin.com/Samples/ByGuid?guid=cb71419a-f5de-4239-aa70-260ce1813e55">SimpleTextInput</related>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -302,9 +303,16 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>Returns the typorgraphic width of the line.</summary>
+        <returns>The width of the line, or zero if there are any errors.</returns>
+        <remarks>
+          <para>
+	    Use the <see cref="M:MonoMac.CoreText.CTLine.GetTypographicBounds(out float, out float, out float)" /> method to retrieve more information about the typographical features of the line.
+	  </para>
+          <para>
+	    Starting with iOS 6.0, the <see cref="M:MonoMac.CoreText.CTLine.GetBounds(MonoMac.CoreText.CTLineBoundsOptions)" /> provides finer typorgraphical information than this method.
+	  </para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="GetTypographicBounds">
@@ -323,12 +331,16 @@
         <Parameter Name="leading" Type="System.Single&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="ascent">To be added.</param>
-        <param name="descent">To be added.</param>
-        <param name="leading">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="ascent">Returns the ascent of the line.</param>
+        <param name="descent">Returns the descent of the line.</param>
+        <param name="leading">Returns the leading of the line.</param>
+        <summary>Returns the typographic information about the line.</summary>
+        <returns>The width of the line, or zero if there are any errors.</returns>
+        <remarks>
+          <para>
+	    Starting with iOS 6.0, the <see cref="M:MonoMac.CoreText.CTLine.GetBounds(MonoMac.CoreText.CTLineBoundsOptions)" /> provides finer typorgraphical information than this method.
+	  </para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="GlyphCount">

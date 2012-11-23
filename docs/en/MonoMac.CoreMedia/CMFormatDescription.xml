@@ -22,10 +22,108 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Describes media data for audio, video, text and time codes </summary>
+    <remarks>Some properties apply to all media types, while some others only apply to specific media types.   They are prefixed with Audio or Video in those cases.</remarks>
   </Docs>
   <Members>
+    <Member MemberName="AudioChannelLayout">
+      <MemberSignature Language="C#" Value="public MonoMac.AudioToolbox.AudioChannelLayout AudioChannelLayout { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AudioToolbox.AudioChannelLayout AudioChannelLayout" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.AudioToolbox.AudioChannelLayout</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Audio-media only: describe the channel layout.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AudioFormats">
+      <MemberSignature Language="C#" Value="public MonoMac.AudioToolbox.AudioFormat[] AudioFormats { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.AudioToolbox.AudioFormat[] AudioFormats" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.AudioToolbox.AudioFormat[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Audio-media only: the supported audio formats, sorted from most rich to less.</summary>
+        <value>
+        </value>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AudioMagicCookie">
+      <MemberSignature Language="C#" Value="public byte[] AudioMagicCookie { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int8[] AudioMagicCookie" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Byte[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Audio-media only: magic cookie that might need to be passed to some backends.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AudioMostCompatibleFormat">
+      <MemberSignature Language="C#" Value="public MonoMac.AudioToolbox.AudioFormat AudioMostCompatibleFormat { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.AudioToolbox.AudioFormat AudioMostCompatibleFormat" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.AudioToolbox.AudioFormat</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Audio-media only: returns the most compaible audio format.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AudioRichestDecodableFormat">
+      <MemberSignature Language="C#" Value="public MonoMac.AudioToolbox.AudioFormat AudioRichestDecodableFormat { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.AudioToolbox.AudioFormat AudioRichestDecodableFormat" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.AudioToolbox.AudioFormat</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Audio-media only: Returns the richest decodable format.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AudioStreamBasicDescription">
+      <MemberSignature Language="C#" Value="public Nullable&lt;MonoMac.AudioToolbox.AudioStreamBasicDescription&gt; AudioStreamBasicDescription { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Nullable`1&lt;valuetype MonoMac.AudioToolbox.AudioStreamBasicDescription&gt; AudioStreamBasicDescription" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Nullable&lt;MonoMac.AudioToolbox.AudioStreamBasicDescription&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Audio-media only: Returns the AudioStreamBasicDescritpion object for the audio.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Dispose">
       <MemberSignature Language="C#" Value="public void Dispose ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Dispose() cil managed" />
@@ -88,6 +186,23 @@
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName="GetExtensionKeysCommonWithImageBuffers">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSObject[] GetExtensionKeysCommonWithImageBuffers ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSObject[] GetExtensionKeysCommonWithImageBuffers() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSObject[]</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Returns the Extension Keys that are common with CVImageBuffer objects.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="GetExtensions">
       <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSDictionary GetExtensions ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.Foundation.NSDictionary GetExtensions() cil managed" />
@@ -117,6 +232,48 @@
       </ReturnValue>
       <Parameters />
       <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetVideoCleanAperture">
+      <MemberSignature Language="C#" Value="public System.Drawing.RectangleF GetVideoCleanAperture (bool originIsAtTopLeft);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype System.Drawing.RectangleF GetVideoCleanAperture(bool originIsAtTopLeft) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Drawing.RectangleF</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="originIsAtTopLeft" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="originIsAtTopLeft">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetVideoPresentationDimensions">
+      <MemberSignature Language="C#" Value="public System.Drawing.SizeF GetVideoPresentationDimensions (bool usePixelAspectRatio, bool useCleanAperture);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype System.Drawing.SizeF GetVideoPresentationDimensions(bool usePixelAspectRatio, bool useCleanAperture) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Drawing.SizeF</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="usePixelAspectRatio" Type="System.Boolean" />
+        <Parameter Name="useCleanAperture" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="usePixelAspectRatio">To be added.</param>
+        <param name="useCleanAperture">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -167,6 +324,42 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="VideoDimensions">
+      <MemberSignature Language="C#" Value="public System.Drawing.Size VideoDimensions { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Drawing.Size VideoDimensions" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Drawing.Size</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Video-media only: the video dimensions.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="VideoMatchesImageBuffer">
+      <MemberSignature Language="C#" Value="public bool VideoMatchesImageBuffer (MonoMac.CoreVideo.CVImageBuffer imageBuffer);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool VideoMatchesImageBuffer(class MonoMac.CoreVideo.CVImageBuffer imageBuffer) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="imageBuffer" Type="MonoMac.CoreVideo.CVImageBuffer" />
+      </Parameters>
+      <Docs>
+        <param name="imageBuffer">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

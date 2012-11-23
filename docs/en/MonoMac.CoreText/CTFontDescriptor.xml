@@ -22,8 +22,25 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Font Descriptors contain a description of font features that can identify a font.</summary>
+    <remarks>
+      <para>
+	Font Descriptors contain a description of font features and can
+	completely identify a font.  Sometimes the description is not
+	complete enough, and the system will pick a font that matches
+	the specified parameters.
+      </para>
+      <example>
+        <code lang="c#">
+var attributes = new CTFontDescriptorAttributes () {
+	FamilyName = "Times New Roman",
+	Size = 18
+};
+
+var fontDescriptor = new CTFontDescriptor (attributes);
+</code>
+      </example>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -37,9 +54,19 @@
         <Parameter Name="attributes" Type="MonoMac.CoreText.CTFontDescriptorAttributes" />
       </Parameters>
       <Docs>
-        <param name="attributes">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="attributes">Font attributes to use for the font descriptor.</param>
+        <summary>Creates a font descriptor from a set of attributes.</summary>
+        <remarks>
+          <example>
+            <code lang="c#">
+var attributes = new CTFontDescriptorAttributes () {
+	FamilyName = "Times New Roman"
+};
+
+var fontDescriptor = new CTFontDescriptor (attributes);
+</code>
+          </example>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -54,10 +81,11 @@
         <Parameter Name="size" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="name">To be added.</param>
-        <param name="size">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="name">PostScript name for the font to create.</param>
+        <param name="size">The desired size. If the size is zero, the font is treated as if the size had not been specified.</param>
+        <summary>Creates a font descriptor from a PostScript name (and optional size).</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Dispose">
@@ -136,10 +164,10 @@
         <Parameter Name="attribute" Type="MonoMac.Foundation.NSString" />
       </Parameters>
       <Docs>
-        <param name="attribute">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="attribute">An NSString representing a CTFontDescriptor attribute, one of the keys in <see cref="T:MonoMac.CoreText.CTFontDescriptorAttributeKey" />.</param>
+        <summary>Fetches a CTFontDescriptorAttribute from the descriptor.</summary>
+        <returns>The attribute as an NSObject.</returns>
+        <remarks>You can use <see cref="M:MonoMac.CoreText.CTFontDescriptor.GetAttributes" /> method to get all the attributes at once with a strongly typed set of properties.</remarks>
       </Docs>
     </Member>
     <Member MemberName="GetAttributes">
@@ -154,9 +182,10 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>Retrieves the attributes from this CTFontDescriptor.</summary>
+        <returns>Strongly typed CTFontDescriptorAttributes.</returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="GetLocalizedAttribute">
@@ -173,10 +202,11 @@
         <Parameter Name="attribute" Type="MonoMac.Foundation.NSString" />
       </Parameters>
       <Docs>
-        <param name="attribute">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="attribute">An NSString representing a CTFontDescriptor attribute, one of the keys in <see cref="T:MonoMac.CoreText.CTFontDescriptorAttributeKey" />.</param>
+        <summary>Returns an attribute that has been localized.</summary>
+        <returns>The attribute as an NSObject, or null if not available.</returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="GetLocalizedAttribute">
@@ -194,11 +224,12 @@
         <Parameter Name="language" Type="MonoMac.Foundation.NSString&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="attribute">To be added.</param>
-        <param name="language">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="attribute">An NSString representing a CTFontDescriptor attribute, one of the keys in <see cref="T:MonoMac.CoreText.CTFontDescriptorAttributeKey" />.</param>
+        <param name="language">On output, the language code that matched (if available).</param>
+        <summary>Returns an attribute that has been localized.</summary>
+        <returns>The attribute as an NSObject or null if not available.</returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="GetMatchingFontDescriptor">
@@ -360,7 +391,17 @@
         <param name="attributes">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <example>
+            <code lang="c#">
+var attributes = new CTFontDescriptorAttributes () {
+	FamilyName = "Times New Roman"
+};
+
+var newFontDescriptor = myDescriptor.WithAttributes (attributes);
+	</code>
+          </example>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="WithAttributes">
@@ -398,11 +439,11 @@
         <Parameter Name="featureSelectorIdentifier" Type="MonoMac.Foundation.NSNumber" />
       </Parameters>
       <Docs>
-        <param name="featureTypeIdentifier">To be added.</param>
+        <param name="featureTypeIdentifier">the feature to create.</param>
         <param name="featureSelectorIdentifier">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>Creates a font descriptor from this font descriptor, with the specified feature set.</summary>
+        <returns>A new CTFontDescriptor representing the specified feature.</returns>
+        <remarks>This is a convenience method that creates new CTFontDescriptors with a single feature altered.</remarks>
       </Docs>
     </Member>
     <Member MemberName="WithVariation">

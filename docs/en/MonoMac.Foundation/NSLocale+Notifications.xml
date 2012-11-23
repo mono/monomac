@@ -1,0 +1,82 @@
+<Type Name="NSLocale+Notifications" FullName="MonoMac.Foundation.NSLocale+Notifications">
+  <TypeSignature Language="C#" Value="public static class NSLocale.Notifications" />
+  <TypeSignature Language="ILAsm" Value=".class nested public auto ansi abstract sealed beforefieldinit NSLocale/Notifications extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>MonoMac</AssemblyName>
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+      <para>Notification posted by the <see cref="T:MonoMac.Foundation.NSLocale" /> class.</para>
+    </summary>
+    <remarks>
+      <para>This is a static class which contains various helper methods that allow developers to observe events posted in the iOS notification hub (<see cref="T:MonoTouch.Foundation.NSNotificationCenter" />).</para>
+      <para>The methods defined in this class post events invoke the provided method or lambda with a <see cref="T:MonoTouch.Foundation.NSNotificationEventArgs" /> parameter which contains strongly typed properties for the notification arguments.</para>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="ObserveCurrentLocaleDidChange">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSObject ObserveCurrentLocaleDidChange (EventHandler&lt;MonoMac.Foundation.NSNotificationEventArgs&gt; handler);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSObject ObserveCurrentLocaleDidChange(class System.EventHandler`1&lt;class MonoMac.Foundation.NSNotificationEventArgs&gt; handler) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="handler" Type="System.EventHandler&lt;MonoMac.Foundation.NSNotificationEventArgs&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="handler">Method to invoke when the notification is posted.</param>
+        <summary>Registers a method to be notified when the NSCurrentLocaleDidChangeNotification notification is posted.</summary>
+        <returns>
+          <para>The returned NSObject represents the registered notification.   Either call Dispose on the object to stop receiving notifications, or pass it to <see cref="M:MonoTouch.Foundation.NSNotification.RemoveObserver" /></para>
+        </returns>
+        <remarks>
+          <para>The following example shows how you can use this method in your code</para>
+          <example>
+            <code lang="c#">
+//
+// Lambda style
+//
+
+// listening
+notification = NSLocale.Notifications.ObserveObserveCurrentLocaleDidChange ((sender, args) =&gt; {
+    /* Access strongly typed args */
+    Console.WriteLine ("Notification: {0}", args.Notification);
+});
+
+// To stop listening:
+notification.Dispose ();
+
+//
+//Method style
+//
+NSObject notification;
+void Callback (object sender, ObserveCurrentLocaleDidChange args)
+{
+    // Access strongly typed args
+    Console.WriteLine ("Notification: {0}", args.Notification);
+}
+
+void Setup ()
+{
+    notification = NSLocale.Notifications.ObserveObserveCurrentLocaleDidChange (Callback);
+}
+
+void Teardown ()
+{
+    notification.Dispose ();
+}</code>
+          </example>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

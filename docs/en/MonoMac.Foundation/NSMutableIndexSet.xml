@@ -15,117 +15,8 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>
-      <format type="text/html">
-        <h2 class="jump">Overview</h2>
-      </format>
-      <para>The <c>NSMutableIndexSet</c> class represents a mutable collection of unique unsigned integers, known as <i>indexes</i> because of the way they are used. This collection is referred to as a <i>mutable index set</i>.</para>
-      <para>The values in a mutable index set are always sorted, so the order in which values are added is irrelevant.</para>
-      <para>You must not subclass the <c>NSMutableIndexSet</c> class.</para>
-      <format type="text/html">
-        <h2 class="jump">Tasks</h2>
-      </format>
-      <format type="text/html">
-        <h3 class="tasks">Adding Indexes</h3>
-      </format>
-      <list type="bullet">
-        <item>
-          <term>
-            <c>
-              <see cref="M:MonoMac.Foundation.NSMutableIndexSet.Add(System.UInt32)" />
-            </c>
-            <format type="text/html">
-              <img data-abstract="Adds an index  to the receiver." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
-            </format>
-          </term>
-        </item>
-        <item>
-          <term>
-            <c>
-              <see cref="M:MonoMac.Foundation.NSMutableIndexSet.Add(MonoMac.Foundation.NSIndexSet)" />
-            </c>
-            <format type="text/html">
-              <img data-abstract="Adds the indexes in an index set to the receiver." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
-            </format>
-          </term>
-        </item>
-        <item>
-          <term>
-            <c>
-              <format type="text/html">
-                <a href="Reference.html#//apple_ref/occ/instm/NSMutableIndexSet/addIndexesInRange:">- addIndexesInRange:</a>
-              </format>
-            </c>
-            <format type="text/html">
-              <img data-abstract="Adds the indexes in an index range to the receiver." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
-            </format>
-          </term>
-        </item>
-      </list>
-      <format type="text/html">
-        <h3 class="tasks">Removing Indexes</h3>
-      </format>
-      <list type="bullet">
-        <item>
-          <term>
-            <c>
-              <see cref="M:MonoMac.Foundation.NSMutableIndexSet.Remove(System.UInt32)" />
-            </c>
-            <format type="text/html">
-              <img data-abstract="Removes an index from the receiver." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
-            </format>
-          </term>
-        </item>
-        <item>
-          <term>
-            <c>
-              <see cref="M:MonoMac.Foundation.NSMutableIndexSet.Remove(MonoMac.Foundation.NSIndexSet)" />
-            </c>
-            <format type="text/html">
-              <img data-abstract="Removes the indexes in an index set from the receiver." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
-            </format>
-          </term>
-        </item>
-        <item>
-          <term>
-            <c>
-              <see cref="M:MonoMac.Foundation.NSMutableIndexSet.Clear" />
-            </c>
-            <format type="text/html">
-              <img data-abstract="Removes the receiver’s indexes." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
-            </format>
-          </term>
-        </item>
-        <item>
-          <term>
-            <c>
-              <format type="text/html">
-                <a href="Reference.html#//apple_ref/occ/instm/NSMutableIndexSet/removeIndexesInRange:">- removeIndexesInRange:</a>
-              </format>
-            </c>
-            <format type="text/html">
-              <img data-abstract="Removes the indexes in an index range from the receiver." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
-            </format>
-          </term>
-        </item>
-      </list>
-      <format type="text/html">
-        <h3 class="tasks">Shifting Index Groups</h3>
-      </format>
-      <list type="bullet">
-        <item>
-          <term>
-            <c>
-              <see cref="M:MonoMac.Foundation.NSMutableIndexSet.ShiftIndexes(System.UInt32,System.UInt32)" />
-            </c>
-            <format type="text/html">
-              <img data-abstract="Shifts a group of indexes to the left or the right within the receiver." src="../../../../../../Resources/Images/info_icon.jpg" class="tooltipicon" width="10" border="0" height="10" />
-            </format>
-          </term>
-        </item>
-      </list>
-    </remarks>
+    <summary>Represents a mutable collection of unique, unsigned integers (<see cref="T:System.UInt32" />). These integers are also known as indexes. </summary>
+    <remarks>NSMutableIndexSet sorts the integers as they are added, therefore the order in which integers are added is irrelevant.</remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -139,10 +30,13 @@
         <Attribute>
           <AttributeName>MonoMac.Foundation.Export("init")</AttributeName>
         </Attribute>
+        <Attribute>
+          <AttributeName>System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Advanced)</AttributeName>
+        </Attribute>
       </Attributes>
       <Parameters />
       <Docs>
-        <summary>Default constructor that initializes a new instance of this class with no parameters.</summary>
+        <summary>Default constructor, initializes a new instance of this class.</summary>
         <remarks>
         </remarks>
       </Docs>
@@ -157,6 +51,9 @@
       <Attributes>
         <Attribute>
           <AttributeName>MonoMac.Foundation.Export("initWithCoder:")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Advanced)</AttributeName>
         </Attribute>
       </Attributes>
       <Parameters>
@@ -185,20 +82,8 @@
       </Parameters>
       <Docs>
         <param name="other">To be added.</param>
-        <summary>
-          <para>Initializes an allocated <c><format type="text/html"><a href="Reference.html#//apple_ref/doc/uid/20002197-SW1">NSIndexSet</a></format></c> object with an index set.</para>
-        </summary>
-        <remarks>
-          <para>This method is a designated initializer for <c><format type="text/html"><a href="Reference.html#//apple_ref/doc/uid/20002197-SW1">NSIndexSet</a></format></c>.</para>
-          <format type="text/html">
-            <h5 class="tight">Availability</h5>
-          </format>
-          <list type="bullet">
-            <item>
-              <term>Available in iPhone OS 2.0 and later.</term>
-            </item>
-          </list>
-        </remarks>
+        <summary>Creates a new MSMutableIndexSet from an existing set.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -208,37 +93,27 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Advanced)</AttributeName>
+        </Attribute>
+      </Attributes>
       <Parameters>
         <Parameter Name="t" Type="MonoMac.Foundation.NSObjectFlag" />
       </Parameters>
       <Docs>
         <param name="t">Unused sentinel value, pass NSObjectFlag.Empty.</param>
-        <summary>Constructor to call on derived classes to skip initialization and merely allocate the object.</summary>
+        <summary>Constructor to call on derived classes when the derived class has an [Export] constructor.</summary>
         <remarks>
-          <para>This constructor should be called by derived classes when they completely construct the object in managed code and merely want the runtime to allocate and initialize the NSObject.   This is required to implement the two-step initialization process that Objective-C uses, the first step is to perform the object allocation, the second step is to initialize the object.   When you invoke the constructor that takes the NSObjectFlag.Empty you taking advatnage of a direct path that goes all the way up to NSObject to merely allocate the object's memory and bind the Objective-C and C# objects together.    The actual initialization of the object is up to you.</para>
-          <para>This constructor is typically used by the binding generator to allocate the object, but prevent the actual initialization to take place.   Once the allocation has taken place, the constructor has to initialize the object.   With constructors generated by the binding generator this means that it manually invokes one of the "init" methods to initialize the object.</para>
-          <para>It is your responsability to completely initialize the object if you chain up using the NSObjectFlag.Empty path.</para>
-          <para>In general, if your constructors invokes the NSObjectFlag.Empty base implementation, then it should be calling an Objective-C init method.   If this is not the case, you should instead chain to the proper constructor in your class. </para>
-          <para>The argument value is ignored and merely ensures that the only code that is executed is the construction phase is the basic NSObject allocation and runtime type registration.  Typically the chaining would look like this:</para>
+          <para>This constructor should be called by derived classes when they are initialized using an [Export] attribute. The argument value is ignore, typically the chaining would look like this:</para>
           <example>
             <code lang="C#">
-//
-// The NSObjectFlag merely allocates the object and registers the
-// C# class with the Objective-C runtime if necessary, but no actual
-// initXxx method is invoked, that is done later in the constructor
-//
-// This is taken from MonoMac's source code:
-//
-[Export ("initWithFrame:")]
-public UIView (System.Drawing.RectangleF frame) : base (NSObjectFlag.Empty)
-{
-// Invoke the init method now.
-	var initWithFrame = new Selector ("initWithFrame:").Handle;
-	if (IsDirectBinding)
-		Handle = MonoMac.ObjCRuntime.Messaging.IntPtr_objc_msgSend_RectangleF (this.Handle, initWithFrame, frame);
-	else
-		Handle = MonoMac.ObjCRuntime.Messaging.IntPtr_objc_msgSendSuper_RectangleF (this.SuperHandle, initWithFrame, frame);
-}
+public class MyClass : BaseClass {
+    [Export ("initWithFoo:")]
+    public MyClass (string foo) : base (NSObjectFlag.Empty)
+    {
+        ...
+    }
 </code>
           </example>
         </remarks>
@@ -251,6 +126,11 @@ public UIView (System.Drawing.RectangleF frame) : base (NSObjectFlag.Empty)
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Advanced)</AttributeName>
+        </Attribute>
+      </Attributes>
       <Parameters>
         <Parameter Name="handle" Type="System.IntPtr" />
       </Parameters>
@@ -279,11 +159,8 @@ public UIView (System.Drawing.RectangleF frame) : base (NSObjectFlag.Empty)
       </Parameters>
       <Docs>
         <param name="index">To be added.</param>
-        <summary>
-          <para>Initializes an allocated <c><format type="text/html"><a href="Reference.html#//apple_ref/doc/uid/20002197-SW1">NSIndexSet</a></format></c> object with an index.</para>
-        </summary>
-        <remarks>
-        </remarks>
+        <summary>Initializes a new index set from an existing unsigned integer.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Add">
@@ -305,12 +182,9 @@ public UIView (System.Drawing.RectangleF frame) : base (NSObjectFlag.Empty)
         <Parameter Name="other" Type="MonoMac.Foundation.NSIndexSet" />
       </Parameters>
       <Docs>
-        <param name="other">To be added.</param>
-        <summary>
-          <para>Adds the indexes in an index set to the receiver.</para>
-        </summary>
-        <remarks>
-        </remarks>
+        <param name="other">The existing set of indexes to add.</param>
+        <summary>Adds an existing set of indexes to this set.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Add">
@@ -332,12 +206,9 @@ public UIView (System.Drawing.RectangleF frame) : base (NSObjectFlag.Empty)
         <Parameter Name="index" Type="System.UInt32" />
       </Parameters>
       <Docs>
-        <param name="index">To be added.</param>
-        <summary>
-          <para>Adds an index  to the receiver.</para>
-        </summary>
-        <remarks>
-        </remarks>
+        <param name="index">The index to add.</param>
+        <summary>Adds a single index to the existing set.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ClassHandle">
@@ -373,11 +244,8 @@ public UIView (System.Drawing.RectangleF frame) : base (NSObjectFlag.Empty)
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>
-          <para>Removes the receiver’s indexes.</para>
-        </summary>
-        <remarks>
-        </remarks>
+        <summary>Removes all indexes from this set.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Remove">
@@ -399,12 +267,9 @@ public UIView (System.Drawing.RectangleF frame) : base (NSObjectFlag.Empty)
         <Parameter Name="other" Type="MonoMac.Foundation.NSIndexSet" />
       </Parameters>
       <Docs>
-        <param name="other">To be added.</param>
-        <summary>
-          <para>Removes the indexes in an index set from the receiver.</para>
-        </summary>
-        <remarks>
-        </remarks>
+        <param name="other">The set of indexes to remove.</param>
+        <summary>Removes the indexes specified in <paramref name="other" /> that exist in this set.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Remove">
@@ -426,12 +291,9 @@ public UIView (System.Drawing.RectangleF frame) : base (NSObjectFlag.Empty)
         <Parameter Name="index" Type="System.UInt32" />
       </Parameters>
       <Docs>
-        <param name="index">To be added.</param>
-        <summary>
-          <para>Removes an index from the receiver.</para>
-        </summary>
-        <remarks>
-        </remarks>
+        <param name="index">The index to remove.</param>
+        <summary>Removes a single index from the collection.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ShiftIndexes">
@@ -454,24 +316,10 @@ public UIView (System.Drawing.RectangleF frame) : base (NSObjectFlag.Empty)
         <Parameter Name="delta" Type="System.UInt32" />
       </Parameters>
       <Docs>
-        <param name="startIndex">To be added.</param>
-        <param name="delta">To be added.</param>
-        <summary>
-          <para>Shifts a group of indexes to the left or the right within the receiver.</para>
-        </summary>
-        <remarks>
-          <para>The group of indexes shifted is made up by <i>startIndex</i> and the indexes that follow it in the receiver.</para>
-          <para>A left shift deletes the indexes in the range <c>(</c><i>startIndex</i><c>-</c><i>delta</i><c>,</c><i>delta</i><c>)</c> from the receiver.</para>
-          <para>A right shift inserts empty space in the range <c>(</c><i>indexStart</i><c>,</c><i>delta</i><c>)</c> in the receiver.</para>
-          <format type="text/html">
-            <h5 class="tight">Availability</h5>
-          </format>
-          <list type="bullet">
-            <item>
-              <term>Available in iPhone OS 2.0 and later.</term>
-            </item>
-          </list>
-        </remarks>
+        <param name="startIndex">The staring index in which to begin the shift.</param>
+        <param name="delta">The amount and direction to move the indexes. A positive number will shift the indexes to the right, and a negative number will shift them to the left.</param>
+        <summary>Shifts a subset of indexes either left or right starting at the <paramref name="startIndex" /> by the amount specified in <paramref name="delta" />.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>

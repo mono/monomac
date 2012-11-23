@@ -1,0 +1,84 @@
+<Type Name="AVVideoSettings" FullName="MonoMac.AVFoundation.AVVideoSettings">
+  <TypeSignature Language="C#" Value="public class AVVideoSettings" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit AVVideoSettings extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>MonoMac</AssemblyName>
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Settings used for configuring the AVCaptureVideoDataOutput object.</summary>
+    <remarks>Users will typically create an instance of the AVVideoSettings class and set the parameters for video capture there.   These can then be aassigned to the <see cref="P:MonoMac.AVFoundation.AVCaptureVideoDataOutput.VideoSettings" /> property in <see cref="T:MonoMac.AVFoundation.AVCaptureVideoDataOutput" />.</remarks>
+    <related type="sample" href="http://samples.xamarin.com/Samples/ByGuid?guid=9fa28988-64fe-4365-b2b7-95542daf4f9b">avcaptureframes</related>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public AVVideoSettings ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>Initializes an empty instance.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public AVVideoSettings (MonoMac.CoreVideo.CVPixelFormatType formatType);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype MonoMac.CoreVideo.CVPixelFormatType formatType) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="formatType" Type="MonoMac.CoreVideo.CVPixelFormatType" />
+      </Parameters>
+      <Docs>
+        <param name="formatType">To be added.</param>
+        <summary>Initializes the settings with the specified pixel format type.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PixelFormat">
+      <MemberSignature Language="C#" Value="public Nullable&lt;MonoMac.CoreVideo.CVPixelFormatType&gt; PixelFormat { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype System.Nullable`1&lt;valuetype MonoMac.CoreVideo.CVPixelFormatType&gt; PixelFormat" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Nullable&lt;MonoMac.CoreVideo.CVPixelFormatType&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The desired video pixel format to use..</summary>
+        <value>If null, this means that the setting was not set, otherwise the desired pixel format.</value>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ToDictionary">
+      <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSDictionary ToDictionary ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.Foundation.NSDictionary ToDictionary() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSDictionary</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Converts the AVVideoSettings to an NSDictionary that can be used to pass to the <see cref="P:MonoMac.AVFoundation.AVCaptureVideoDataOutput.WeakVideoSettings" />.</summary>
+        <returns>The NSDictionary with the keys and values that would typically be passed to the <see cref="P:MonoMac.AVFoundation.AVCaptureVideoDataOutput.WeakVideoSettings" />WeakVideoSettings in <see cref="T:MonoMac.AVFoundation.AVCaptureVideoDataOutput" />.</returns>
+        <remarks>You can use the resulting dictionary to debug, inspect the settings or even add features that were not initially supported by MonoMac.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

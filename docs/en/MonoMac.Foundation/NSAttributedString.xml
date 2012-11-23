@@ -15,8 +15,135 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Strings that can be annotated with a set of attributes.</summary>
+    <remarks>
+      <para>
+	The NSAttributedString type represents a string that has a
+	series of attributes applied uniformly.  
+      </para>
+      <para>
+        <img href="NSAttributedString.png" />
+      </para>
+      <para> The companion <see cref="T:MonoMac.Foundation.NSMutableAttributedString" /> type
+	can be used to create attributed strings that have overlapping
+	attributes and whose contents can be modified after creation.
+      </para>
+      <para> 
+	These types typically are used to attach information to
+	elements of the string that dictate the font and colors to use
+	as well as rendering attributes like kerning or how to render
+	ligatures on a specific run of code.
+      </para>
+      <para> These classes do not dictate the meaning or behavior of
+	the attributes on a string, they merely keep track of the
+	attributes.  The actual meaning of these attributes is
+	interpreted by the consumer of these objects.   
+      </para>
+      <para> 
+	NSAttributedStrings are created with a string and a set
+	of attributes.  The default constructor takes a string and an
+	NSDictionary object where the keys represent the attributes
+	and the values on each element represent the value of that
+	attribute. 
+      </para>
+      <para>To simplify many common scenarios, MonoMac
+	provides constructors with strong-types to easily create
+	attributed strings for use with CoreText or UIKit.   These
+	constructors provide type-safety and eliminate programming
+	errors caused by accidentally creating attributes that are not
+	recognized by a backend. 
+      </para>
+      <para>
+	To create NSAttributedStrings that you can use with CoreText's
+	rendering, you create an instance of the <see cref="T:MonoMac.CoreText.CTStringAttributes" /> class, set its
+	properties to the attributes that you desire, and then invoke
+	the NSAttributedString constructor with it.   
+      </para>
+      <para>
+	To create NSAttributedStrings that you can use with UIKit's
+	rendering, you create an instance of the <see cref="T:MonoMac.UIKit.UIStringAttributes" /> class, set its
+	properties to the attributes that you desire, and then invoke
+	the NSAttributedString constructor with it.   
+      </para>
+      <para>
+	The examples below show how to use the C# object initializer
+	syntax to initialize the CTStringAttributes and the
+	UIStringAttributes to setup your attributes.   You can later
+	use these attributes multiple times with different attributed
+	strings: 
+      </para>
+      <example>
+        <code lang="c#">
+// 
+// Using NSAttributedString with CoreText
+//
+var attributedString = new NSAttributedString ("Hello, world",
+       new CTStringAttributes () {
+              ForegroundColorFromContext =  true,
+              Font = new CTFont ("Arial", 24)
+       });
+
+// Pass the NSAttributedString to a CTLine and draw the CTLine.
+using (var textLine = new CTLine (attributedString)) {
+       textLine.Draw (gctx);
+}
+
+// 
+// Using NSAttributedString with UIKit
+//
+var myText = new NSAttributedString ("Hello, world",
+       new UIStringAttributes () {
+              ForegroundColor =  UIColor.Red,
+	      KerningAdjustment = 3
+       });
+label.AttributedText = myText;
+	</code>
+      </example>
+      <para>
+	While both <see cref="T:MonoMac.CoreText.CTStringAttributes" /> and <see cref="T:MonoMac.UIKit.UIStringAttributes" /> are useful to
+	create attributes that can later be used with attributed
+	strings, it is also possible to use the <see cref="C:MonoMac.Foundation.NSAttributedString(string str, MonoMac.UIKit.UIFont font, MonoMac.UIKit.UIColor foregroundColor, MonoMac.UIKit.UIColor backgroundColor, MonoMac.UIKit.UIColor strokeColor, MonoMac.UIKit.NSParagraphStyle paragraphStyle, MonoMac.Foundation.NSLigatureType ligatures, float kerning, MonoMac.Foundation.NSUnderlineStyle underlineStyle, MonoMac.UIKit.NSShadow shadow, float strokeWidth, MonoMac.Foundation.NSUnderlineStyle strikethroughStyle" /> constructor
+	with C# named parameters for quickly creating attributed
+	strings inline.
+      </para>
+      <example>
+        <code lang="c#">
+//
+// This example shows how to create an NSAttributedString for
+// use with UIKit without creating the attributes separately
+//
+var text = new NSAttributedString (
+    "Hello, World",
+    font: UIFont.FromName ("HoeflerText-Regular", 24.0f),
+    foregroundColor: UIColor.Red,
+    strokeWidth: 4
+);
+	</code>
+      </example>
+      <para>
+	It is also possible to create NSAttributedStrings with the
+	NSDictionary API, although that does not offer any type safety
+	nor prevents common errors.   To use it, you typically use
+	the various NSString properties that end in "AttributedName"
+	that are part of this class.
+      </para>
+      <example>
+        <code lang="c#">
+//
+// This example shows how to create an NSAttributedString for
+// use with UIKit using NSDictionaries
+//
+var dict = new NSMutableDictionary () {
+    { NSAttributedString.FontAttributeName, UIFont.FromName ("HoeflerText-Regular", 24.0f), },
+    { NSAttributedString.ForegroundColorAttributeName, UIColor.Black }
+};
+
+var text = new NSAttributedString (
+	"Hello, World", dict);
+	</code>
+      </example>
+    </remarks>
+    <related type="sample" href="http://samples.xamarin.com/Samples/ByGuid?guid=cb71419a-f5de-4239-aa70-260ce1813e55">SimpleTextInput</related>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -29,6 +156,9 @@
       <Attributes>
         <Attribute>
           <AttributeName>MonoMac.Foundation.Export("init")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Advanced)</AttributeName>
         </Attribute>
       </Attributes>
       <Parameters />
@@ -70,6 +200,9 @@
         <Attribute>
           <AttributeName>MonoMac.Foundation.Export("initWithCoder:")</AttributeName>
         </Attribute>
+        <Attribute>
+          <AttributeName>System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Advanced)</AttributeName>
+        </Attribute>
       </Attributes>
       <Parameters>
         <Parameter Name="coder" Type="MonoMac.Foundation.NSCoder" />
@@ -87,37 +220,27 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Advanced)</AttributeName>
+        </Attribute>
+      </Attributes>
       <Parameters>
         <Parameter Name="t" Type="MonoMac.Foundation.NSObjectFlag" />
       </Parameters>
       <Docs>
         <param name="t">Unused sentinel value, pass NSObjectFlag.Empty.</param>
-        <summary>Constructor to call on derived classes to skip initialization and merely allocate the object.</summary>
+        <summary>Constructor to call on derived classes when the derived class has an [Export] constructor.</summary>
         <remarks>
-          <para>This constructor should be called by derived classes when they completely construct the object in managed code and merely want the runtime to allocate and initialize the NSObject.   This is required to implement the two-step initialization process that Objective-C uses, the first step is to perform the object allocation, the second step is to initialize the object.   When you invoke the constructor that takes the NSObjectFlag.Empty you taking advatnage of a direct path that goes all the way up to NSObject to merely allocate the object's memory and bind the Objective-C and C# objects together.    The actual initialization of the object is up to you.</para>
-          <para>This constructor is typically used by the binding generator to allocate the object, but prevent the actual initialization to take place.   Once the allocation has taken place, the constructor has to initialize the object.   With constructors generated by the binding generator this means that it manually invokes one of the "init" methods to initialize the object.</para>
-          <para>It is your responsability to completely initialize the object if you chain up using the NSObjectFlag.Empty path.</para>
-          <para>In general, if your constructors invokes the NSObjectFlag.Empty base implementation, then it should be calling an Objective-C init method.   If this is not the case, you should instead chain to the proper constructor in your class. </para>
-          <para>The argument value is ignored and merely ensures that the only code that is executed is the construction phase is the basic NSObject allocation and runtime type registration.  Typically the chaining would look like this:</para>
+          <para>This constructor should be called by derived classes when they are initialized using an [Export] attribute. The argument value is ignore, typically the chaining would look like this:</para>
           <example>
             <code lang="C#">
-//
-// The NSObjectFlag merely allocates the object and registers the
-// C# class with the Objective-C runtime if necessary, but no actual
-// initXxx method is invoked, that is done later in the constructor
-//
-// This is taken from MonoMac's source code:
-//
-[Export ("initWithFrame:")]
-public UIView (System.Drawing.RectangleF frame) : base (NSObjectFlag.Empty)
-{
-// Invoke the init method now.
-	var initWithFrame = new Selector ("initWithFrame:").Handle;
-	if (IsDirectBinding)
-		Handle = MonoMac.ObjCRuntime.Messaging.IntPtr_objc_msgSend_RectangleF (this.Handle, initWithFrame, frame);
-	else
-		Handle = MonoMac.ObjCRuntime.Messaging.IntPtr_objc_msgSendSuper_RectangleF (this.SuperHandle, initWithFrame, frame);
-}
+public class MyClass : BaseClass {
+    [Export ("initWithFoo:")]
+    public MyClass (string foo) : base (NSObjectFlag.Empty)
+    {
+        ...
+    }
 </code>
           </example>
         </remarks>
@@ -130,6 +253,11 @@ public UIView (System.Drawing.RectangleF frame) : base (NSObjectFlag.Empty)
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Advanced)</AttributeName>
+        </Attribute>
+      </Attributes>
       <Parameters>
         <Parameter Name="handle" Type="System.IntPtr" />
       </Parameters>
@@ -202,10 +330,28 @@ public UIView (System.Drawing.RectangleF frame) : base (NSObjectFlag.Empty)
         <Parameter Name="attributes" Type="MonoMac.Foundation.NSDictionary" />
       </Parameters>
       <Docs>
-        <param name="str">To be added.</param>
-        <param name="attributes">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="str">Strings</param>
+        <param name="attributes">Dictionary containing the attributes
+	(keys) and their values attached to the strings.</param>
+        <summary>Creates an NSAttributedString with user defined
+	attributes specified in a dictionary.</summary>
+        <remarks>
+          <example>
+            <code lang="c#">
+//
+// This example shows how to create an NSAttributedString for
+// use with UIKit using NSDictionaries
+//
+var dict = new NSMutableDictionary () {
+    { NSAttributedString.FontAttributeName, UIFont.FromName ("HoeflerText-Regular", 24.0f), },
+    { NSAttributedString.ForegroundColorAttributeName, UIColor.Black }
+};
+
+var text = new NSAttributedString (
+	"Hello, World", dict);
+	</code>
+          </example>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -260,9 +406,41 @@ public UIView (System.Drawing.RectangleF frame) : base (NSObjectFlag.Empty)
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="AttachmentAttributeName">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString AttachmentAttributeName { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString AttachmentAttributeName" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="BackgroundColorAttributeName">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString BackgroundColorAttributeName { get; }" />
       <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString BackgroundColorAttributeName" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BaselineOffsetAttributeName">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString BaselineOffsetAttributeName { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString BaselineOffsetAttributeName" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -290,6 +468,22 @@ public UIView (System.Drawing.RectangleF frame) : base (NSObjectFlag.Empty)
         <summary>The handle for this class.</summary>
         <value>The pointer to the Objective-C class.</value>
         <remarks>Each MonoMac class mirrors an unmanaged Objective-C class.   This value contains the pointer to the Objective-C class, it is similar to calling objc_getClass with the object name.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CursorAttributeName">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString CursorAttributeName { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString CursorAttributeName" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="DrawString">
@@ -363,6 +557,80 @@ public UIView (System.Drawing.RectangleF frame) : base (NSObjectFlag.Empty)
         <param name="rect">To be added.</param>
         <param name="options">To be added.</param>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EnumerateAttribute">
+      <MemberSignature Language="C#" Value="public virtual void EnumerateAttribute (MonoMac.Foundation.NSString attributeName, MonoMac.Foundation.NSRange inRange, MonoMac.Foundation.NSAttributedStringEnumeration options, MonoMac.Foundation.NSAttributedStringCallback callback);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void EnumerateAttribute(class MonoMac.Foundation.NSString attributeName, valuetype MonoMac.Foundation.NSRange inRange, valuetype MonoMac.Foundation.NSAttributedStringEnumeration options, class MonoMac.Foundation.NSAttributedStringCallback callback) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("enumerateAttribute:inRange:options:usingBlock:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="attributeName" Type="MonoMac.Foundation.NSString" />
+        <Parameter Name="inRange" Type="MonoMac.Foundation.NSRange" />
+        <Parameter Name="options" Type="MonoMac.Foundation.NSAttributedStringEnumeration" />
+        <Parameter Name="callback" Type="MonoMac.Foundation.NSAttributedStringCallback" />
+      </Parameters>
+      <Docs>
+        <param name="attributeName">To be added.</param>
+        <param name="inRange">To be added.</param>
+        <param name="options">To be added.</param>
+        <param name="callback">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EnumerateAttributes">
+      <MemberSignature Language="C#" Value="public virtual void EnumerateAttributes (MonoMac.Foundation.NSRange range, MonoMac.Foundation.NSAttributedStringEnumeration options, MonoMac.Foundation.NSAttributedRangeCallback callback);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void EnumerateAttributes(valuetype MonoMac.Foundation.NSRange range, valuetype MonoMac.Foundation.NSAttributedStringEnumeration options, class MonoMac.Foundation.NSAttributedRangeCallback callback) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("enumerateAttributesInRange:options:usingBlock:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="range" Type="MonoMac.Foundation.NSRange" />
+        <Parameter Name="options" Type="MonoMac.Foundation.NSAttributedStringEnumeration" />
+        <Parameter Name="callback" Type="MonoMac.Foundation.NSAttributedRangeCallback" />
+      </Parameters>
+      <Docs>
+        <param name="range">To be added.</param>
+        <param name="options">To be added.</param>
+        <param name="callback">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ExpansionAttributeName">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString ExpansionAttributeName { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString ExpansionAttributeName" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -539,6 +807,22 @@ public UIView (System.Drawing.RectangleF frame) : base (NSObjectFlag.Empty)
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="KernAttributeName">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString KernAttributeName { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString KernAttributeName" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Length">
       <MemberSignature Language="C#" Value="public virtual int Length { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance int32 Length" />
@@ -592,9 +876,57 @@ public UIView (System.Drawing.RectangleF frame) : base (NSObjectFlag.Empty)
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="MarkedClauseSegmentAttributeName">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString MarkedClauseSegmentAttributeName { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString MarkedClauseSegmentAttributeName" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ObliquenessAttributeName">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString ObliquenessAttributeName { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString ObliquenessAttributeName" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="ParagraphStyleAttributeName">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString ParagraphStyleAttributeName { get; }" />
       <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString ParagraphStyleAttributeName" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ShadowAttributeName">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString ShadowAttributeName { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString ShadowAttributeName" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -629,6 +961,22 @@ public UIView (System.Drawing.RectangleF frame) : base (NSObjectFlag.Empty)
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="StrikethroughColorAttributeName">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString StrikethroughColorAttributeName { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString StrikethroughColorAttributeName" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="StrikethroughStyleAttributeName">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString StrikethroughStyleAttributeName { get; }" />
       <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString StrikethroughStyleAttributeName" />
@@ -645,9 +993,73 @@ public UIView (System.Drawing.RectangleF frame) : base (NSObjectFlag.Empty)
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="StrokeColorAttributeName">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString StrokeColorAttributeName { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString StrokeColorAttributeName" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="StrokeWidthAttributeName">
       <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString StrokeWidthAttributeName { get; }" />
       <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString StrokeWidthAttributeName" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SuperscriptAttributeName">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString SuperscriptAttributeName { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString SuperscriptAttributeName" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ToolTipAttributeName">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString ToolTipAttributeName { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString ToolTipAttributeName" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UnderlineColorAttributeName">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString UnderlineColorAttributeName { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString UnderlineColorAttributeName" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -691,6 +1103,38 @@ public UIView (System.Drawing.RectangleF frame) : base (NSObjectFlag.Empty)
       </Attributes>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="VerticalGlyphFormAttributeName">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString VerticalGlyphFormAttributeName { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString VerticalGlyphFormAttributeName" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WritingDirectionAttributeName">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSString WritingDirectionAttributeName { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class MonoMac.Foundation.NSString WritingDirectionAttributeName" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSString</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

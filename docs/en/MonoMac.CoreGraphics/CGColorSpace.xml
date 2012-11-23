@@ -19,6 +19,7 @@
   <Docs>
     <summary>Colorspace, determines how Quartz interprets color information.</summary>
     <remarks />
+    <related type="sample" href="http://samples.xamarin.com/Samples/ByGuid?guid=064a9ab4-1e58-4cf6-a1c2-aab04997aa57">Example_Drawing</related>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -315,6 +316,23 @@
         <summary>Tthe base colorspace.</summary>
         <returns />
         <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="GetColorTable">
+      <MemberSignature Language="C#" Value="public byte[] GetColorTable ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance unsigned int8[] GetColorTable() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Byte[]</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Return the entries of the color table used in an indexed color space</summary>
+        <returns>An array of bytes with the same format that was provided to the CreateIndexed method</returns>
+        <remarks>An empty array is returned if the Model is not CGColorSpaceModel.Indexed</remarks>
       </Docs>
     </Member>
     <Member MemberName="Handle">

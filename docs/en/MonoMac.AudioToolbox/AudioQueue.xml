@@ -36,7 +36,7 @@
       <para>
 
 	When you use AudioQueues, you must allocate buffers for
-	playback or recording.  You use the <see cref="M:MonoMac.AudioToolBox.AllocateBuffer" /> method or the
+	playback or recording.  You use the <see cref=" M:MonoMac.AudioToolBox.AllocateBuffer" /> method or the
 	<see cref="M:MonoMac.AudioToolBox.AllocateBufferWithPacketDescriptors" />
 	to allocate them and you use the <see cref="M:MonoMac.AudioToolBox.FreeBuffer" /> to release them.
 	You keep a collection of buffers around that the underlying
@@ -68,8 +68,11 @@
 	method to remove the listener.
 
       </para>
-      <para> You can see the <a href="https://github.com/xamarin/monotouch-samples/tree/master/StreamingAudio">StreamingAudio</a>
-	to see how to use AudioBuffers. 
+      <para>
+        <format type="text/html">
+          <span>You can see the <a href="https://github.com/xamarin/monotouch-samples/tree/master/StreamingAudio">StreamingAudio</a>
+	to see how to use AudioBuffers. </span>
+        </format>
       </para>
       <para>
 
@@ -83,6 +86,7 @@
 	
       </para>
     </remarks>
+    <related type="sample" href="http://samples.xamarin.com/Samples/ByGuid?guid=26d904c2-c44a-46f2-883a-a01bb5657309">StreamingAudio</related>
   </Docs>
   <Members>
     <Member MemberName="AddListener">
@@ -107,6 +111,29 @@
       </Docs>
     </Member>
     <Member MemberName="AllocateBuffer">
+      <MemberSignature Language="C#" Value="public MonoMac.AudioToolbox.AudioQueueStatus AllocateBuffer (int bufferSize, out MonoMac.AudioToolbox.AudioQueueBuffer* audioQueueBuffer);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype MonoMac.AudioToolbox.AudioQueueStatus AllocateBuffer(int32 bufferSize, valuetype MonoMac.AudioToolbox.AudioQueueBuffer* audioQueueBuffer) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.AudioToolbox.AudioQueueStatus</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="bufferSize" Type="System.Int32" />
+        <Parameter Name="audioQueueBuffer" Type="MonoMac.AudioToolbox.AudioQueueBuffer*&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="bufferSize">The audio buffer size to allocate (in bytes).</param>
+        <param name="audioQueueBuffer">Returns the allocated buffer as an unsafe AudioQueueBuffer pointer.</param>
+        <summary>Allocates an audio buffer associated with this AudioQueue</summary>
+        <returns>AudioQueueStatus.Ok on success, otherwise the error. </returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AllocateBuffer">
       <MemberSignature Language="C#" Value="public MonoMac.AudioToolbox.AudioQueueStatus AllocateBuffer (int bufferSize, out IntPtr audioQueueBuffer);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype MonoMac.AudioToolbox.AudioQueueStatus AllocateBuffer(int32 bufferSize, native int audioQueueBuffer) cil managed" />
       <MemberType>Method</MemberType>
@@ -121,11 +148,16 @@
         <Parameter Name="audioQueueBuffer" Type="System.IntPtr&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="bufferSize">The audio buffer size in bytes.</param>
+        <param name="bufferSize">The audio buffer size to allocate (in bytes).</param>
         <param name="audioQueueBuffer">Returns the pointer to the allocated buffer as an IntPtr.</param>
-        <summary>Allocates an audio buffer associated with this AudioQueue</summary>
+        <summary>Allocates an audio buffer associated with this AudioQueue, used for fixed bit rate buffers.</summary>
         <returns>AudioQueueStatus.Ok on success, otherwise the error. </returns>
-        <remarks>To be added.</remarks>
+        <remarks>
+
+	  Use the <see cref="M:MonoMac.AudioToolBox.AllocateBufferWithPacketDescriptors" /> to allocate buffers that will be used with variable bit
+	  rate encodings.
+
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="AllocateBufferWithPacketDescriptors">
@@ -144,23 +176,26 @@
         <Parameter Name="audioQueueBuffer" Type="System.IntPtr&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="bufferSize">To be added.</param>
-        <param name="nPackets">To be added.</param>
-        <param name="audioQueueBuffer">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="bufferSize">Size of the buffer to allocate.</param>
+        <param name="nPackets">Number of packets descriptors in the audio queue buffer.</param>
+        <param name="audioQueueBuffer">The allocated buffer on return</param>
+        <summary>Allocates an audio queue object for variable-bit-rate buffers.</summary>
         <returns>AudioQueueStatus.Ok on success and the audioQueueBuffer pointing to the buffer, otherwise the error.</returns>
-        <remarks>To be added.</remarks>
+        <remarks>
+	  Use the <see cref="M:MonoMac.AudioToolBox.AllocateBuffer" /> to allocate buffers that will be used with fixed bit
+	  rate encodings.
+	</remarks>
       </Docs>
     </Member>
     <Member MemberName="AudioStreamPacketDescription">
-      <MemberSignature Language="C#" Value="public MonoMac.AudioToolbox.AudioStreamPacketDescription AudioStreamPacketDescription { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.AudioToolbox.AudioStreamPacketDescription AudioStreamPacketDescription" />
+      <MemberSignature Language="C#" Value="public MonoMac.AudioToolbox.AudioStreamBasicDescription AudioStreamPacketDescription { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype MonoMac.AudioToolbox.AudioStreamBasicDescription AudioStreamPacketDescription" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>MonoMac.AudioToolbox.AudioStreamPacketDescription</ReturnType>
+        <ReturnType>MonoMac.AudioToolbox.AudioStreamBasicDescription</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -179,7 +214,7 @@
         <ReturnType>MonoMac.AudioToolbox.AudioChannelLayout</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The audio layout.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
@@ -377,6 +412,29 @@
       </Docs>
     </Member>
     <Member MemberName="EnqueueBuffer">
+      <MemberSignature Language="C#" Value="public MonoMac.AudioToolbox.AudioQueueStatus EnqueueBuffer (MonoMac.AudioToolbox.AudioQueueBuffer* audioQueueBuffer, MonoMac.AudioToolbox.AudioStreamPacketDescription[] desc);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype MonoMac.AudioToolbox.AudioQueueStatus EnqueueBuffer(valuetype MonoMac.AudioToolbox.AudioQueueBuffer* audioQueueBuffer, valuetype MonoMac.AudioToolbox.AudioStreamPacketDescription[] desc) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.AudioToolbox.AudioQueueStatus</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="audioQueueBuffer" Type="MonoMac.AudioToolbox.AudioQueueBuffer*" />
+        <Parameter Name="desc" Type="MonoMac.AudioToolbox.AudioStreamPacketDescription[]" />
+      </Parameters>
+      <Docs>
+        <param name="audioQueueBuffer">The audio queue buffer to add to the buffer queue.</param>
+        <param name="desc">An array of packet descriptors for the packets that will be added to the queue.</param>
+        <summary>Adds a buffer to the buffer queue of an audio queue.</summary>
+        <returns>AudioQueueStatus.Ok on success, otherwise the error.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EnqueueBuffer">
       <MemberSignature Language="C#" Value="public MonoMac.AudioToolbox.AudioQueueStatus EnqueueBuffer (IntPtr audioQueueBuffer, int bytes, MonoMac.AudioToolbox.AudioStreamPacketDescription[] desc);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype MonoMac.AudioToolbox.AudioQueueStatus EnqueueBuffer(native int audioQueueBuffer, int32 bytes, valuetype MonoMac.AudioToolbox.AudioStreamPacketDescription[] desc) cil managed" />
       <MemberType>Method</MemberType>
@@ -392,12 +450,13 @@
         <Parameter Name="desc" Type="MonoMac.AudioToolbox.AudioStreamPacketDescription[]" />
       </Parameters>
       <Docs>
-        <param name="audioQueueBuffer">To be added.</param>
-        <param name="bytes">To be added.</param>
-        <param name="desc">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>wAudioQueueStatus.Ok on success, otherwise the error.</returns>
-        <remarks>To be added.</remarks>
+        <param name="audioQueueBuffer">The audio queue buffer to add to the buffer queue.</param>
+        <param name="bytes">The number of bytes from the queue buffer to add to the buffer queue. The audioQueueBuffer parameter will be updated with this value.</param>
+        <param name="desc">An array of packet descriptors for the packets that will be added to the queue.</param>
+        <summary>Adds a buffer to the buffer queue of an audio queue.</summary>
+        <returns>AudioQueueStatus.Ok on success, otherwise the error.</returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="FillAudioData">
@@ -418,12 +477,15 @@
         <Parameter Name="size" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="audioQueueBuffer">To be added.</param>
-        <param name="offset">To be added.</param>
-        <param name="source">To be added.</param>
-        <param name="sourceOffset">To be added.</param>
-        <param name="size">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="audioQueueBuffer">An audio buffer allocated with either the <see cref=" M:MonoMac.AudioToolBox.AllocateBuffer" /> method or the
+	<see cref="M:MonoMac.AudioToolBox.AllocateBufferWithPacketDescriptors" /> methods.</param>
+        <param name="offset">Offset into the audio queue buffer to copy the data to.</param>
+        <param name="source">Pointer to the data source to copy into the audio queue buffer.</param>
+        <param name="sourceOffset">Offset inside the source.</param>
+        <param name="size">Number of bytes to copy into the audio queue buffer.</param>
+        <summary>
+	  Copies raw audio data contained at the location pointed to by source+sourceOffset at the specified offset into the AudioQueueBuffer.
+	</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

@@ -48,7 +48,7 @@ These transformation can be used to rotate, scale, shear and translate points an
 Defines an affine transformation matrix with the following components:
 </para>
           <para>
-| xx yx  0 |
+| xx yx 0 |
 </para>
           <para>
 | xy yy 0 |
@@ -76,10 +76,10 @@ The third column always has the values 0, 0, 1 so only six values need to be pro
         <Parameter Name="t" Type="MonoMac.CoreGraphics.CGAffineTransform" />
       </Parameters>
       <Docs>
-        <param name="t">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="t">Affine transformation to invert.</param>
+        <summary>Inverts the affine transformation matrix.</summary>
+        <returns>If the affine transformation can not be inverted, the same matrix is returned.</returns>
+        <remarks>You can use the inversion matrix to map points in the target coordinate space that had been mapped to the original coordinate space.</remarks>
       </Docs>
     </Member>
     <Member MemberName="CGRectApplyAffineTransform">
@@ -154,9 +154,9 @@ The third column always has the values 0, 0, 1 so only six values need to be pro
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>Inverts this affine transformation.</summary>
+        <returns>If the affine transformation can not be inverted, the matrix does not change.</returns>
+        <remarks>You can use the inversion matrix to map points in the target coordinate space that had been mapped to the original coordinate space.</remarks>
       </Docs>
     </Member>
     <Member MemberName="IsIdentity">
@@ -189,7 +189,20 @@ The third column always has the values 0, 0, 1 so only six values need to be pro
       <Docs>
         <summary>Returns the identity affine transformation.</summary>
         <returns>The identity matrix.</returns>
-        <remarks />
+        <remarks>
+          <para>
+Sets up an identity transformation, like this:
+</para>
+          <para>
+| 1 0 0 |
+</para>
+          <para>
+| 0 1 0 |
+</para>
+          <para>
+| 0 0 1 |
+</para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="MakeRotation">
@@ -358,11 +371,12 @@ The third column always has the values 0, 0, 1 so only six values need to be pro
         <Parameter Name="b" Type="MonoMac.CoreGraphics.CGAffineTransform" />
       </Parameters>
       <Docs>
-        <param name="a">To be added.</param>
-        <param name="b">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="a">First affine transform.</param>
+        <param name="b">Second affine transform.</param>
+        <summary>Multiplies the two affine transformations and returns a new affine with the result.</summary>
+        <returns>New affine transformation with the result.</returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Rotate">

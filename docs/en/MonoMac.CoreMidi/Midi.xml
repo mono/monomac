@@ -13,6 +13,7 @@
     <summary>Global methods and constants for using CoreMidi.</summary>
     <remarks>
     </remarks>
+    <related type="sample" href="http://samples.xamarin.com/Samples/ByGuid?guid=C30005F2-43D7-4242-85C8-5C13BFE7BBA5">CoreMidiSample</related>
   </Docs>
   <Members>
     <Member MemberName="DestinationCount">
@@ -120,7 +121,7 @@
         <ReturnType>MonoMac.Foundation.NSString</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Constant that defines the Bonjour service type for MIDI devices.</summary>
+        <summary>Represents the value associated with the constant MIDINetworkBonjourServiceType</summary>
         <value>
         </value>
         <remarks>You can pass this type to <see cref="M:MonoMac.Foundation.NSNetServiceBrowser.SearchForServices(System.String type, System.String domain)" /> to find MIDI devices available
@@ -142,6 +143,64 @@
         <value>
         </value>
         <remarks>
+          <para id="tool-remark">This constant can be used with the <see cref="T:MonoTouch.Foundation.NSNotificationCenter" /> to register a listener for this notification.   This is an NSString instead of a string, because these values can be used as tokens in some native libraries instead of being used purely for their actual string content.    The 'notification' parameter to the callback contains extra information that is specific to the notification type.</para>
+          <para id="tool-remark">If you want to subscribe to this notification, you can use the convenience <see cref="T:Midi+Notifications" />.<see cref="M:Midi+Notifications.ObserveNetworkNotificationConta" /> method which offers strongly typed access to the parameters of the notification.</para>
+          <para>The following example shows how to use the strongly typed Notifications class, to take the guesswork out of the available properties in the notification:</para>
+          <example>
+            <code lang="c#">
+//
+// Lambda style
+//
+
+// listening
+notification = Midi.Notifications.ObserveNetworkNotificationConta ((sender, args) =&gt; {
+    /* Access strongly typed args */
+    Console.WriteLine ("Notification: {0}", args.Notification);
+});
+
+// To stop listening:
+notification.Dispose ();
+
+//
+// Method style
+//
+NSObject notification;
+void Callback (object sender, NetworkNotificationConta args)
+{
+    // Access strongly typed args
+    Console.WriteLine ("Notification: {0}", args.Notification);
+}
+
+void Setup ()
+{
+    notification = Midi.Notifications.ObserveNetworkNotificationConta (Callback);
+}
+
+void Teardown ()
+{
+    notification.Dispose ();
+}</code>
+          </example>
+          <para>The following example shows how to use the notification with the DefaultCenter API:</para>
+          <example>
+            <code lang="c#">
+// Lambda style
+NSNotificationCenter.DefaultCenter.AddObserver (
+        Midi.NetworkNotificationContactsDidChange, (notification) =&gt; {Console.WriteLine ("Received the notification Midi", notification); }
+
+
+// Method style
+void Callback (NSNotification notification)
+{
+    Console.WriteLine ("Received a notification Midi", notification);
+}
+
+void Setup ()
+{
+    NSNotificationCenter.DefaultCenter.AddObserver (Midi.NetworkNotificationContactsDidChange, Callback);
+}
+</code>
+          </example>
         </remarks>
       </Docs>
     </Member>
@@ -160,6 +219,64 @@
         <value>
         </value>
         <remarks>
+          <para id="tool-remark">This constant can be used with the <see cref="T:MonoTouch.Foundation.NSNotificationCenter" /> to register a listener for this notification.   This is an NSString instead of a string, because these values can be used as tokens in some native libraries instead of being used purely for their actual string content.    The 'notification' parameter to the callback contains extra information that is specific to the notification type.</para>
+          <para id="tool-remark">If you want to subscribe to this notification, you can use the convenience <see cref="T:Midi+Notifications" />.<see cref="M:Midi+Notifications.ObserveNetworkNotificationSess" /> method which offers strongly typed access to the parameters of the notification.</para>
+          <para>The following example shows how to use the strongly typed Notifications class, to take the guesswork out of the available properties in the notification:</para>
+          <example>
+            <code lang="c#">
+//
+// Lambda style
+//
+
+// listening
+notification = Midi.Notifications.ObserveNetworkNotificationSess ((sender, args) =&gt; {
+    /* Access strongly typed args */
+    Console.WriteLine ("Notification: {0}", args.Notification);
+});
+
+// To stop listening:
+notification.Dispose ();
+
+//
+// Method style
+//
+NSObject notification;
+void Callback (object sender, NetworkNotificationSess args)
+{
+    // Access strongly typed args
+    Console.WriteLine ("Notification: {0}", args.Notification);
+}
+
+void Setup ()
+{
+    notification = Midi.Notifications.ObserveNetworkNotificationSess (Callback);
+}
+
+void Teardown ()
+{
+    notification.Dispose ();
+}</code>
+          </example>
+          <para>The following example shows how to use the notification with the DefaultCenter API:</para>
+          <example>
+            <code lang="c#">
+// Lambda style
+NSNotificationCenter.DefaultCenter.AddObserver (
+        Midi.NetworkNotificationSessionDidChange, (notification) =&gt; {Console.WriteLine ("Received the notification Midi", notification); }
+
+
+// Method style
+void Callback (NSNotification notification)
+{
+    Console.WriteLine ("Received a notification Midi", notification);
+}
+
+void Setup ()
+{
+    NSNotificationCenter.DefaultCenter.AddObserver (Midi.NetworkNotificationSessionDidChange, Callback);
+}
+</code>
+          </example>
         </remarks>
       </Docs>
     </Member>

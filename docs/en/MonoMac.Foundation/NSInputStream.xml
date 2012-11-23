@@ -16,7 +16,60 @@
   </Attributes>
   <Docs>
     <summary>A read-only input NSStream.</summary>
-    <remarks>To be added.</remarks>
+    <remarks>
+      <para>
+        <format type="text/html">
+          <h3>Subclassing NSInputStream.</h3>
+        </format>
+		
+		NSInputStream is a concrete subclass of NSStream you can use to give read-only 
+		access to stream data. For most cases this is sufficient, however if you want
+		more control over the data, you can subclass NSInputStream. If you subclass NSInputStream
+		you must provide an implementation of the following methods:
+		<list type="bullet"><item><term><see cref="M:MonoMac.Foundation.NSInputStream.Read(IntPtr,uint)" />: In this
+					method you must write bytes to the provided buffer. You can use
+					<see cref="M:System.Runtime.InteropServices.Marshal.Copy(byte[],int,IntPtr,int)" />
+					to write from a byte array to the provided buffer. Return the number of bytes
+					actually written.
+				</term></item><item><term><see cref="M:MonoMac.Foundation.NSInputStream.GetBuffer(byte,uint)" />: Return
+					a pointer to a buffer where bytes can be read. You can return false from this
+					method and just implement <see cref="M:MonoMac.Foundation.NSInputStream.Read(IntPtr,uint)" />.
+				</term></item><item><term><see cref="M:MonoMac.Foundation.NSInputStream.HasBytesAvailable()" />: Use
+					this method to indicate when your stream has data to be read.
+				</term></item></list></para>
+      <format type="text/html">
+        <h3>Providing a toll-free bridged NSInputStream subclass.</h3>
+      </format>
+      <para>
+        <format type="text/html">
+          <b>The methods required to provide a toll-free bridged NSInputStream subclass are considered private API,
+			and may cause Apple to reject your app from the App Store.</b>
+        </format>
+      </para>
+      <para>
+
+		An simple NSInputStream subclass will not work for all API that takes an NSInputStream.
+		This is the case with <see cref="T:MonoMac.Foundation.NSMutableUrlRequest" /> for
+		instance, which actually expects an instance of a CFReadStream object. For this to work
+		our NSInputStream subclass needs to be toll-free bridged to CFReadStream. This is
+		done by overriding the following methods:
+		<list type="bullet"><item><term><see cref="M:MonoMac.Foundation.NSInputStream.SetCFClientFlags(MonoMac.CoreFoundation.CFStreamEventType,IntPtr,IntPtr)" />: 
+					This method is called to register a client to notify of events in your
+					stream. You must call the base implementation, with the exact arguments passed
+					in.
+				</term></item><item><term><see cref="M:MonoMac.Foundation.NSInputStream.ScheduleInCFRunLoop(IntPtr,string)" />:
+					Depending on what you're doing to provide the data, you will need to schedule
+					in a run loop when this method is called. You should not call the base
+					implementation for this method.
+				</term></item><item><term><see cref="M:MonoMac.Foundation.NSInputStream.UnscheduleInCFRunLoop(IntPtr,string)" />:
+					This is called when you need to unschedule from a run loop. You should not call
+					the base implementation for this method.
+				</term></item></list>
+		You must call also <see cref="M:MonoMac.Foundation.NSInputStream.Notify((valuetype MonoMac.CoreFoundation.CFStreamEventType)" />
+		to inform the client when you have data available (or when you have any other relevant
+		event), otherwise your input stream won't be read from.
+	</para>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -29,6 +82,9 @@
       <Attributes>
         <Attribute>
           <AttributeName>MonoMac.Foundation.Export("init")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Advanced)</AttributeName>
         </Attribute>
       </Attributes>
       <Parameters />
@@ -49,6 +105,9 @@
         <Attribute>
           <AttributeName>MonoMac.Foundation.Export("initWithCoder:")</AttributeName>
         </Attribute>
+        <Attribute>
+          <AttributeName>System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Advanced)</AttributeName>
+        </Attribute>
       </Attributes>
       <Parameters>
         <Parameter Name="coder" Type="MonoMac.Foundation.NSCoder" />
@@ -66,37 +125,27 @@
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Advanced)</AttributeName>
+        </Attribute>
+      </Attributes>
       <Parameters>
         <Parameter Name="t" Type="MonoMac.Foundation.NSObjectFlag" />
       </Parameters>
       <Docs>
         <param name="t">Unused sentinel value, pass NSObjectFlag.Empty.</param>
-        <summary>Constructor to call on derived classes to skip initialization and merely allocate the object.</summary>
+        <summary>Constructor to call on derived classes when the derived class has an [Export] constructor.</summary>
         <remarks>
-          <para>This constructor should be called by derived classes when they completely construct the object in managed code and merely want the runtime to allocate and initialize the NSObject.   This is required to implement the two-step initialization process that Objective-C uses, the first step is to perform the object allocation, the second step is to initialize the object.   When you invoke the constructor that takes the NSObjectFlag.Empty you taking advatnage of a direct path that goes all the way up to NSObject to merely allocate the object's memory and bind the Objective-C and C# objects together.    The actual initialization of the object is up to you.</para>
-          <para>This constructor is typically used by the binding generator to allocate the object, but prevent the actual initialization to take place.   Once the allocation has taken place, the constructor has to initialize the object.   With constructors generated by the binding generator this means that it manually invokes one of the "init" methods to initialize the object.</para>
-          <para>It is your responsability to completely initialize the object if you chain up using the NSObjectFlag.Empty path.</para>
-          <para>In general, if your constructors invokes the NSObjectFlag.Empty base implementation, then it should be calling an Objective-C init method.   If this is not the case, you should instead chain to the proper constructor in your class. </para>
-          <para>The argument value is ignored and merely ensures that the only code that is executed is the construction phase is the basic NSObject allocation and runtime type registration.  Typically the chaining would look like this:</para>
+          <para>This constructor should be called by derived classes when they are initialized using an [Export] attribute. The argument value is ignore, typically the chaining would look like this:</para>
           <example>
             <code lang="C#">
-//
-// The NSObjectFlag merely allocates the object and registers the
-// C# class with the Objective-C runtime if necessary, but no actual
-// initXxx method is invoked, that is done later in the constructor
-//
-// This is taken from MonoMac's source code:
-//
-[Export ("initWithFrame:")]
-public UIView (System.Drawing.RectangleF frame) : base (NSObjectFlag.Empty)
-{
-// Invoke the init method now.
-	var initWithFrame = new Selector ("initWithFrame:").Handle;
-	if (IsDirectBinding)
-		Handle = MonoMac.ObjCRuntime.Messaging.IntPtr_objc_msgSend_RectangleF (this.Handle, initWithFrame, frame);
-	else
-		Handle = MonoMac.ObjCRuntime.Messaging.IntPtr_objc_msgSendSuper_RectangleF (this.SuperHandle, initWithFrame, frame);
-}
+public class MyClass : BaseClass {
+    [Export ("initWithFoo:")]
+    public MyClass (string foo) : base (NSObjectFlag.Empty)
+    {
+        ...
+    }
 </code>
           </example>
         </remarks>
@@ -109,6 +158,11 @@ public UIView (System.Drawing.RectangleF frame) : base (NSObjectFlag.Empty)
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
       </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Advanced)</AttributeName>
+        </Attribute>
+      </Attributes>
       <Parameters>
         <Parameter Name="handle" Type="System.IntPtr" />
       </Parameters>
@@ -155,6 +209,32 @@ public UIView (System.Drawing.RectangleF frame) : base (NSObjectFlag.Empty)
         <summary>The handle for this class.</summary>
         <value>The pointer to the Objective-C class.</value>
         <remarks>Each MonoMac class mirrors an unmanaged Objective-C class.   This value contains the pointer to the Objective-C class, it is similar to calling objc_getClass with the object name.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Dispose">
+      <MemberSignature Language="C#" Value="protected override void Dispose (bool disposing);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Dispose(bool disposing) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="disposing" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="disposing">
+          <para>If set to <see langword="true" />, the method is invoked directly and will dispose manage and unmanaged resources;   If set to <see langword="false" /> the method is being called by the garbage collector finalizer and should only release unmanaged resources.</para>
+        </param>
+        <summary>Releases the resourced used by the NSInputStream object.</summary>
+        <remarks>
+          <para>This Dispose method releases the resources used by the NSInputStream class.</para>
+          <para>This method is called by both the Dispose() method and the object finalizer (Finalize).    When invoked by the Dispose method, the parameter disposting <paramref name="disposing" /> is set to <see langword="true" /> and any managed object references that this object holds are also disposed or released;  when invoked by the object finalizer, on the finalizer thread the value is set to <see langword="false" />. </para>
+          <para>Calling the Dispose method when you are finished using the NSInputStream ensures that all external resources used by this managed object are released as soon as possible.  Once you have invoked the Dispose method, the object is no longer useful and you should no longer make any calls to it.</para>
+          <para>  For more information on how to override this method and on the Dispose/IDisposable pattern, read the ``Implementing a Dispose Method'' document at http://msdn.microsoft.com/en-us/library/fs2xkftw.aspx</para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="FromData">
@@ -207,6 +287,33 @@ public UIView (System.Drawing.RectangleF frame) : base (NSObjectFlag.Empty)
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="GetBuffer">
+      <MemberSignature Language="C#" Value="protected virtual bool GetBuffer (out IntPtr buffer, out uint len);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool GetBuffer(native int buffer, unsigned int32 len) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("getBuffer:length:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="buffer" Type="System.IntPtr&amp;" RefType="out" />
+        <Parameter Name="len" Type="System.UInt32&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="buffer">Upon return points to the first of an array of bytes where the caller can read bytes from. The buffer is only valid until the next stream operation.</param>
+        <param name="len">Upon return specifies how many bytes can be written to the buffer.</param>
+        <summary>This method can return a pointer to a buffer the caller can read data from.</summary>
+        <returns>A boolean value indicating whether the returned buffer is valid or not.</returns>
+        <remarks>It is recommended to just return false from this method. An implementation must ensure that the returned byte pointer is not moved or collected by the garbage collector until the next stream operation is performed. One way of accomplishing this is with a pinned byte array (pinned with a GCHandle).</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="HasBytesAvailable">
       <MemberSignature Language="C#" Value="public virtual bool HasBytesAvailable ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool HasBytesAvailable() cil managed" />
@@ -224,9 +331,29 @@ public UIView (System.Drawing.RectangleF frame) : base (NSObjectFlag.Empty)
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>Returna a boolean value indicating whether the stream has bytes available to be read.</summary>
+        <returns>A boolean value indicating whether the stream has bytes available to be read.</returns>
+        <remarks>This method should return true if it does not know if there are available bytes or not.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Notify">
+      <MemberSignature Language="C#" Value="public void Notify (MonoMac.CoreFoundation.CFStreamEventType eventType);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Notify(valuetype MonoMac.CoreFoundation.CFStreamEventType eventType) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="eventType" Type="MonoMac.CoreFoundation.CFStreamEventType" />
+      </Parameters>
+      <Docs>
+        <param name="eventType">The events to notify.</param>
+        <summary>Notifies consumers of events in the stream.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Read">
@@ -244,11 +371,125 @@ public UIView (System.Drawing.RectangleF frame) : base (NSObjectFlag.Empty)
         <Parameter Name="len" Type="System.UInt32" />
       </Parameters>
       <Docs>
-        <param name="buffer">To be added.</param>
-        <param name="len">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="buffer">The buffer where data should be put.</param>
+        <param name="len">The size of the buffer (in bytes).</param>
+        <summary>Reads data from the stream into the provided buffer.</summary>
+        <returns>The number of bytes actually written.</returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Read">
+      <MemberSignature Language="C#" Value="public virtual int Read (IntPtr buffer, uint len);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance int32 Read(native int buffer, unsigned int32 len) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("read:maxLength:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="buffer" Type="System.IntPtr" />
+        <Parameter Name="len" Type="System.UInt32" />
+      </Parameters>
+      <Docs>
+        <param name="buffer">The buffer where data should be put.</param>
+        <param name="len">The size of the buffer (in bytes).</param>
+        <summary>Reads data from the stream into the provided buffer. You should not call this method directly, you should call <see cref="M:MonoMac.Foundation.NSInputStream.Read(byte[],uint)" /> 
+        instead. This method is for NSInputStream subclasses to implement.</summary>
+        <returns>The number of bytes actually written.</returns>
+        <remarks>You can use methods in <see cref="T:System.Runtime.InteropServices.Marshal" /> to write to the buffer (for instance: <see cref="M:System.Runtime.InteropServices.Marshal.Copy(byte[],int,IntPtr,int)" /> to write from a byte array).</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ScheduleInCFRunLoop">
+      <MemberSignature Language="C#" Value="public virtual void ScheduleInCFRunLoop (MonoMac.CoreFoundation.CFRunLoop runloop, MonoMac.Foundation.NSString mode);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void ScheduleInCFRunLoop(class MonoMac.CoreFoundation.CFRunLoop runloop, class MonoMac.Foundation.NSString mode) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("_scheduleInCFRunLoop:forMode:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="runloop" Type="MonoMac.CoreFoundation.CFRunLoop" />
+        <Parameter Name="mode" Type="MonoMac.Foundation.NSString" />
+      </Parameters>
+      <Docs>
+        <param name="runloop">The RunLoop to schedule in.</param>
+        <param name="mode">The RunLoop mode to schedule in.</param>
+        <summary>Schedules the stream in a RunLoop.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetCFClientFlags">
+      <MemberSignature Language="C#" Value="protected virtual bool SetCFClientFlags (MonoMac.CoreFoundation.CFStreamEventType inFlags, IntPtr inCallback, IntPtr inContextPtr);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool SetCFClientFlags(valuetype MonoMac.CoreFoundation.CFStreamEventType inFlags, native int inCallback, native int inContextPtr) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("_setCFClientFlags:callback:context:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="inFlags" Type="MonoMac.CoreFoundation.CFStreamEventType" />
+        <Parameter Name="inCallback" Type="System.IntPtr" />
+        <Parameter Name="inContextPtr" Type="System.IntPtr" />
+      </Parameters>
+      <Docs>
+        <param name="inFlags">Flags.</param>
+        <param name="inCallback">The callbacks to call when events occur.</param>
+        <param name="inContextPtr">User-defined data for the callback.</param>
+        <summary>Adds a client for the stream. This method is not supposed to be called by managed code, it will be called by consumers of the straem. When overriding it make sure to call the base implementation.</summary>
+        <returns>
+        </returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UnscheduleInCFRunLoop">
+      <MemberSignature Language="C#" Value="public virtual void UnscheduleInCFRunLoop (MonoMac.CoreFoundation.CFRunLoop runloop, MonoMac.Foundation.NSString mode);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void UnscheduleInCFRunLoop(class MonoMac.CoreFoundation.CFRunLoop runloop, class MonoMac.Foundation.NSString mode) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.Foundation.Export("_unscheduleFromCFRunLoop:forMode:")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="runloop" Type="MonoMac.CoreFoundation.CFRunLoop" />
+        <Parameter Name="mode" Type="MonoMac.Foundation.NSString" />
+      </Parameters>
+      <Docs>
+        <param name="runloop">The RunLoop to unschedule.</param>
+        <param name="mode">The mode to unschedule.</param>
+        <summary>Unschedules the stream from a RunLoop.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
   </Members>

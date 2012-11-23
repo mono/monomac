@@ -94,6 +94,10 @@
         </item>
       </list>
     </remarks>
+    <related type="sample" href="http://samples.xamarin.com/Samples/ByGuid?guid=23a2571b-45eb-4889-bb67-d88937cb68c1">monocatalog</related>
+    <related type="recipe" href="http://docs.xamarin.com/ios/Recipes/Shared_Resources/Contacts/Choose_a_Contact">Choose a Contact</related>
+    <related type="recipe" href="http://docs.xamarin.com/ios/Recipes/Shared_Resources/Contacts/Create_a_new_Contact">Create a New Contact</related>
+    <related type="recipe" href="http://docs.xamarin.com/ios/Recipes/Shared_Resources/Contacts/Find_a_Contact">Find a Contact</related>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -111,6 +115,27 @@
         </summary>
         <remarks>
         </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public ABPerson (MonoMac.AddressBook.ABRecord source);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class MonoMac.AddressBook.ABRecord source) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.ObjCRuntime.Since(4, 0)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <Parameters>
+        <Parameter Name="source" Type="MonoMac.AddressBook.ABRecord" />
+      </Parameters>
+      <Docs>
+        <param name="source">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Birthday">
@@ -289,6 +314,33 @@
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName="CreateFromVCard">
+      <MemberSignature Language="C#" Value="public static MonoMac.AddressBook.ABPerson[] CreateFromVCard (MonoMac.AddressBook.ABRecord source, MonoMac.Foundation.NSData vCardData);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.AddressBook.ABPerson[] CreateFromVCard(class MonoMac.AddressBook.ABRecord source, class MonoMac.Foundation.NSData vCardData) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.ObjCRuntime.Since(5, 0)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AddressBook.ABPerson[]</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="source" Type="MonoMac.AddressBook.ABRecord" />
+        <Parameter Name="vCardData" Type="MonoMac.Foundation.NSData" />
+      </Parameters>
+      <Docs>
+        <param name="source">To be added.</param>
+        <param name="vCardData">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="CreationDate">
       <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSDate CreationDate { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.Foundation.NSDate CreationDate" />
@@ -453,6 +505,31 @@
         <altmember cref="M:MonoMac.AddressBook.ABPerson.SetEmails(MonoMac.AddressBook.ABMultiValue{System.String})" />
       </Docs>
     </Member>
+    <Member MemberName="GetImage">
+      <MemberSignature Language="C#" Value="public MonoMac.Foundation.NSData GetImage (MonoMac.AddressBook.ABPersonImageFormat format);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.Foundation.NSData GetImage(valuetype MonoMac.AddressBook.ABPersonImageFormat format) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.ObjCRuntime.Since(4, 1)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSData</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="format" Type="MonoMac.AddressBook.ABPersonImageFormat" />
+      </Parameters>
+      <Docs>
+        <param name="format">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="GetInstantMessages">
       <MemberSignature Language="C#" Value="public MonoMac.AddressBook.ABMultiValue&lt;MonoMac.Foundation.NSDictionary&gt; GetInstantMessages ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.AddressBook.ABMultiValue`1&lt;class MonoMac.Foundation.NSDictionary&gt; GetInstantMessages() cil managed" />
@@ -476,6 +553,28 @@
         </remarks>
         <altmember cref="T:MonoMac.AddressBook.ABPersonInstantMessageKey" />
         <altmember cref="M:MonoMac.AddressBook.ABPerson.SetInstantMessages(MonoMac.AddressBook.ABMultiValue{MonoMac.Foundation.NSDictionary})" />
+      </Docs>
+    </Member>
+    <Member MemberName="GetLinkedPeople">
+      <MemberSignature Language="C#" Value="public MonoMac.AddressBook.ABPerson[] GetLinkedPeople ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class MonoMac.AddressBook.ABPerson[] GetLinkedPeople() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.ObjCRuntime.Since(4, 0)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AddressBook.ABPerson[]</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="GetPhones">
@@ -622,6 +721,37 @@
         <remarks>
         </remarks>
         <altmember cref="M:MonoMac.AddressBook.ABPerson.SetUrls(MonoMac.AddressBook.ABMultiValue{System.String})" />
+      </Docs>
+    </Member>
+    <Member MemberName="GetVCards">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSData GetVCards (MonoMac.AddressBook.ABPerson[] people);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSData GetVCards(class MonoMac.AddressBook.ABPerson[] people) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.ObjCRuntime.Since(5, 0)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSData</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="people" Type="MonoMac.AddressBook.ABPerson[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.ParamArray</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
+      </Parameters>
+      <Docs>
+        <param name="people">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="HasImage">
@@ -1200,6 +1330,27 @@
         </value>
         <remarks>
         </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Source">
+      <MemberSignature Language="C#" Value="public MonoMac.AddressBook.ABRecord Source { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class MonoMac.AddressBook.ABRecord Source" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>MonoMac.ObjCRuntime.Since(4, 0)</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>MonoMac.AddressBook.ABRecord</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Suffix">

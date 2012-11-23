@@ -9,8 +9,9 @@
     <BaseTypeName>System.Enum</BaseTypeName>
   </Base>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Categories for your audio session.</summary>
+    <remarks>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName="AmbientSound">
@@ -24,7 +25,26 @@
         <ReturnType>MonoMac.AudioToolbox.AudioSessionCategory</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+          <para>
+	    Use this category if playing audio is not your
+	    application's main use and if your application can be used
+	    with the sound off.  This allows background music to be
+	    mixed with the audio your application produces.
+	  </para>
+          <para>
+	    Audio playback: when your application produces it.
+	  </para>
+          <para>
+	    Audio recording: possible.
+	  </para>
+          <para>
+	    Background music mixing: yes.
+	  </para>
+          <para>
+	    Audio Silenced: when the display is locked, or the silent switch is activated.
+	  </para>
+        </summary>
       </Docs>
     </Member>
     <Member MemberName="AudioProcessing">
@@ -38,7 +58,17 @@
         <ReturnType>MonoMac.AudioToolbox.AudioSessionCategory</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+          <para>
+	    Use this category when you want to use the hardware accelerated audio support to perform audio conversions.   
+	  </para>
+          <para>
+	    Audio playback: disabled.
+	  </para>
+          <para>
+	    Audio recording: disabled.
+	  </para>
+        </summary>
       </Docs>
     </Member>
     <Member MemberName="MediaPlayback">
@@ -52,7 +82,23 @@
         <ReturnType>MonoMac.AudioToolbox.AudioSessionCategory</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+          <para>
+	    Use this if the main use of your application is to play back music.
+	  </para>
+          <para>
+	    Audio playback: when your application produces it.
+	  </para>
+          <para>
+	    Audio recording: disabled.
+	  </para>
+          <para>
+	    Background music mixing: stopped by default, can be enabled if you set the <see cref="P:MonoMac.AudioToolbox.AudioSession.OverrideCategoryMixWithOthers" />.
+	  </para>
+          <para>
+	    Audio Silenced: not affected by mute switch or screen lock.
+	  </para>
+        </summary>
       </Docs>
     </Member>
     <Member MemberName="PlayAndRecord">
@@ -66,7 +112,23 @@
         <ReturnType>MonoMac.AudioToolbox.AudioSessionCategory</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+          <para>
+	    Used to perform both playback and recording at the same time, for example for live chat applications.   
+	  </para>
+          <para>
+	    Audio playback: when your application produces it.
+	  </para>
+          <para>
+	    Audio recording: disabled.
+	  </para>
+          <para>
+	    Background music mixing: stopped by default, can be enabled if you set the <see cref="P:MonoMac.AudioToolbox.AudioSession.OverrideCategoryMixWithOthers" />.
+	  </para>
+          <para>
+	    Audio Silenced: not affected by mute switch or screen lock.
+	  </para>
+        </summary>
       </Docs>
     </Member>
     <Member MemberName="RecordAudio">
@@ -80,7 +142,23 @@
         <ReturnType>MonoMac.AudioToolbox.AudioSessionCategory</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+          <para>
+	    Used to record audio.   This will prevent background audio and messages from playing back.
+	  </para>
+          <para>
+	    Audio playback: disabled.
+	  </para>
+          <para>
+	    Audio recording: enabled, even if the screen lock is activated.
+	  </para>
+          <para>
+	    Background music mixing: background music is disabled.
+	  </para>
+          <para>
+	    Audio Silenced: does not apply.
+	  </para>
+        </summary>
       </Docs>
     </Member>
     <Member MemberName="SoloAmbientSound">
@@ -94,7 +172,23 @@
         <ReturnType>MonoMac.AudioToolbox.AudioSessionCategory</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>
+          <para>
+	    This is the default audio session category.
+	  </para>
+          <para>
+	    Audio playback: when your application produces sound.
+	  </para>
+          <para>
+	    Audio recording: disabled.
+	  </para>
+          <para>
+	    Background music mixing: disabled.
+	  </para>
+          <para>
+	    Audio Silenced: when the device is locked, or when the mute switch is set.
+	  </para>
+        </summary>
       </Docs>
     </Member>
   </Members>

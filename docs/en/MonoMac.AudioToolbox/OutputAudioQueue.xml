@@ -20,6 +20,7 @@ You will usually create an OutputAudioQueue instance and allocate a number of bu
 See the StreamingAudio sample program in monotouch-samples for an example program.
 </para>
     </remarks>
+    <related type="sample" href="http://samples.xamarin.com/Samples/ByGuid?guid=26d904c2-c44a-46f2-883a-a01bb5657309">StreamingAudio</related>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -36,6 +37,26 @@ See the StreamingAudio sample program in monotouch-samples for an example progra
         <param name="desc">Stream description.</param>
         <summary>Creates an OutputAudioQueue.</summary>
         <remarks>Usually the stream description is fetched from an AudioFile or an AudioStreamFile</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public OutputAudioQueue (MonoMac.AudioToolbox.AudioStreamBasicDescription desc, MonoMac.CoreFoundation.CFRunLoop runLoop, MonoMac.CoreFoundation.CFString runMode);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype MonoMac.AudioToolbox.AudioStreamBasicDescription desc, class MonoMac.CoreFoundation.CFRunLoop runLoop, class MonoMac.CoreFoundation.CFString runMode) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="desc" Type="MonoMac.AudioToolbox.AudioStreamBasicDescription" />
+        <Parameter Name="runLoop" Type="MonoMac.CoreFoundation.CFRunLoop" />
+        <Parameter Name="runMode" Type="MonoMac.CoreFoundation.CFString" />
+      </Parameters>
+      <Docs>
+        <param name="desc">Stream description.</param>
+        <param name="runLoop">The run loop in which the OnOutputCompleted method and the OutputCompleted event are raised, if you pass null, this uses an internal thread.</param>
+        <param name="runMode">The run mode for the run loop.</param>
+        <summary>Creates an OutputAudioQueue, specifying on which run loop events are delivered.</summary>
+        <remarks>Usually the stream description is fetched from an AudioFile or an AudioStreamFile.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -56,6 +77,24 @@ See the StreamingAudio sample program in monotouch-samples for an example progra
         <param name="runMode">The run mode for the run loop.</param>
         <summary>Creates an OutputAudioQueue, specifying on which run loop events are delivered.</summary>
         <remarks>Usually the stream description is fetched from an AudioFile or an AudioStreamFile.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DisableOfflineRender">
+      <MemberSignature Language="C#" Value="public MonoMac.AudioToolbox.AudioQueueStatus DisableOfflineRender ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype MonoMac.AudioToolbox.AudioQueueStatus DisableOfflineRender() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.AudioToolbox.AudioQueueStatus</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Disables the offline renderer.</summary>
+        <returns>AudioQueueStatus.Ok on success, otherwise the error. </returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="OnOutputCompleted">
@@ -101,6 +140,54 @@ See the StreamingAudio sample program in monotouch-samples for an example progra
       </ReturnValue>
       <Docs>
         <summary>Event raised when an audio buffer has completed playing.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RenderOffline">
+      <MemberSignature Language="C#" Value="public MonoMac.AudioToolbox.AudioQueueStatus RenderOffline (double timeStamp, MonoMac.AudioToolbox.AudioQueueBuffer* audioQueueBuffer, int frameCount);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype MonoMac.AudioToolbox.AudioQueueStatus RenderOffline(float64 timeStamp, valuetype MonoMac.AudioToolbox.AudioQueueBuffer* audioQueueBuffer, int32 frameCount) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.AudioToolbox.AudioQueueStatus</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="timeStamp" Type="System.Double" />
+        <Parameter Name="audioQueueBuffer" Type="MonoMac.AudioToolbox.AudioQueueBuffer*" />
+        <Parameter Name="frameCount" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="timeStamp">The timestamp of the first frame to render.</param>
+        <param name="audioQueueBuffer">The audio queue buffer to render to.</param>
+        <param name="frameCount">The number of frames to render.</param>
+        <summary>Writes audio data to an audio buffer, instead of to a device.</summary>
+        <returns>AudioQueueStatus.Ok on success, otherwise the error. </returns>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetOfflineRenderFormat">
+      <MemberSignature Language="C#" Value="public MonoMac.AudioToolbox.AudioQueueStatus SetOfflineRenderFormat (MonoMac.AudioToolbox.AudioStreamBasicDescription desc, MonoMac.AudioToolbox.AudioChannelLayout layout);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype MonoMac.AudioToolbox.AudioQueueStatus SetOfflineRenderFormat(valuetype MonoMac.AudioToolbox.AudioStreamBasicDescription desc, class MonoMac.AudioToolbox.AudioChannelLayout layout) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.AudioToolbox.AudioQueueStatus</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="desc" Type="MonoMac.AudioToolbox.AudioStreamBasicDescription" />
+        <Parameter Name="layout" Type="MonoMac.AudioToolbox.AudioChannelLayout" />
+      </Parameters>
+      <Docs>
+        <param name="desc">The audio format to use for offline rendering.</param>
+        <param name="layout">The channel layout to use for offline rendering. Optional.</param>
+        <summary>Enables offline rendering by setting the audio format and optionally the channel layout to use when rendering.</summary>
+        <returns>AudioQueueStatus.Ok on success, otherwise the error. </returns>
         <remarks>
         </remarks>
       </Docs>

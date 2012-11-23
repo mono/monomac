@@ -67,10 +67,30 @@
         <Parameter Name="provider" Type="MonoMac.CoreGraphics.CGDataProvider" />
       </Parameters>
       <Docs>
-        <param name="provider">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="provider">Data provider that wraps the font.</param>
+        <summary>Creates a font from a data provider.</summary>
+        <returns>The constructed font.</returns>
+        <remarks>
+          <para>
+
+	    You can use this method to create CGFonts from an
+	    in-memory representation of the font (for example, to
+	    embed binary fonts into your application to prevent easy
+	    copying of licensed fonts, or when you fetch the font from
+	    a streaming source and do not want to store it on disk).
+
+	  </para>
+          <example>
+            <code lang="c#">
+// 
+// Load font into byte array from a file.
+//
+byte [] myBuffer = File.ReadAllBytes ("demo.ttf"); 
+CGFont font = CGFont.CreateFromProvider (new CGDataProvider (myBuffer, 0, myBuffer.Count));
+
+</code>
+          </example>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CreateWithFontName">

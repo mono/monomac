@@ -1,0 +1,251 @@
+<Type Name="AVAudioRecorderSettings" FullName="MonoMac.AVFoundation.AVAudioRecorderSettings">
+  <TypeSignature Language="C#" Value="public class AVAudioRecorderSettings" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit AVAudioRecorderSettings extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>MonoMac</AssemblyName>
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>Used to describe the recording options for an AVAudioRecoder.</summary>
+    <remarks>
+      <para>
+	Instance of this class are created to configure the recording
+	parameters for AVAudioRecorder instances.  The configured
+	instance is passed to the <see cref="M:MonoMac.AVFoundation.AVAudioRecorder.ToUrl" /> method
+	to create a new instance of the audio recorder.
+      </para>
+      <example>
+        <code lang="C#">
+var settings = new AVAudioRecorderSettings () {
+	AudioFormat = AudioFormatType.LinearPCM,
+	AudioQuality = AVAudioQuality.High,
+	SampleRate = 44100f,
+	NumberChannels = 1
+};
+var recorder = AVAudioRecorder.ToUrl (url, settings, out error);
+if (recorder == null){
+    Console.WriteLine (error);
+    return;
+}
+recorder.PrepareToRecord ();            
+recorder.Record ();
+</code>
+      </example>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public AVAudioRecorderSettings ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>Initializes a AVAudioRecoderSettings with the basic configuration.</summary>
+        <remarks>
+
+	  New instances will be configured to record in LinearPCM
+	  format at a sample rate of 44100 samples per second with one
+	  audio channel at high quality.
+
+	</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AudioFormat">
+      <MemberSignature Language="C#" Value="public MonoMac.AudioToolbox.AudioFormatType AudioFormat;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype MonoMac.AudioToolbox.AudioFormatType AudioFormat" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.AudioToolbox.AudioFormatType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Specified the audio format to record to.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AudioQuality">
+      <MemberSignature Language="C#" Value="public MonoMac.AVFoundation.AVAudioQuality AudioQuality;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype MonoMac.AVFoundation.AVAudioQuality AudioQuality" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.AVFoundation.AVAudioQuality</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The audio quality level for the recording</summary>
+        <remarks>Defaults to AVAudioQuality.High</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EncoderBitDepthHint">
+      <MemberSignature Language="C#" Value="public Nullable&lt;int&gt; EncoderBitDepthHint;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype System.Nullable`1&lt;int32&gt; EncoderBitDepthHint" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Nullable&lt;System.Int32&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The Encoder's bit depth</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EncoderBitRate">
+      <MemberSignature Language="C#" Value="public Nullable&lt;int&gt; EncoderBitRate;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype System.Nullable`1&lt;int32&gt; EncoderBitRate" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Nullable&lt;System.Int32&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The Encoder's bit rate.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EncoderBitRatePerChannel">
+      <MemberSignature Language="C#" Value="public Nullable&lt;int&gt; EncoderBitRatePerChannel;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype System.Nullable`1&lt;int32&gt; EncoderBitRatePerChannel" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Nullable&lt;System.Int32&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The Encoder's bit rate per channel.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LinearPcmBigEndian">
+      <MemberSignature Language="C#" Value="public bool LinearPcmBigEndian;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool LinearPcmBigEndian" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>For PCM-only: whether the data is encoded in BigEndian Format (defaults to no)</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LinearPcmBitDepth">
+      <MemberSignature Language="C#" Value="public int LinearPcmBitDepth;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 LinearPcmBitDepth" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>For PCM-only: whether the data is encoded in BigEndian Format (defaults to no).</summary>
+        <remarks>Must be 8, 16, 24 or 32.   If the value is not provided, the encoder decides</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LinearPcmFloat">
+      <MemberSignature Language="C#" Value="public bool LinearPcmFloat;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool LinearPcmFloat" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>For PCM-only: whether the data is encoded using floats or integers (defaults to false)</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LinearPcmNonInterleaved">
+      <MemberSignature Language="C#" Value="public bool LinearPcmNonInterleaved;" />
+      <MemberSignature Language="ILAsm" Value=".field public bool LinearPcmNonInterleaved" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>For PCM-only: whether the data is non-interleaved (defaults to false)</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NumberChannels">
+      <MemberSignature Language="C#" Value="public int NumberChannels;" />
+      <MemberSignature Language="ILAsm" Value=".field public int32 NumberChannels" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The number of channels to record.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SampleRate">
+      <MemberSignature Language="C#" Value="public float SampleRate;" />
+      <MemberSignature Language="ILAsm" Value=".field public float32 SampleRate" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The sample rate to use for the recording.</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SampleRateConverterAudioQuality">
+      <MemberSignature Language="C#" Value="public Nullable&lt;MonoMac.AVFoundation.AVAudioQuality&gt; SampleRateConverterAudioQuality;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype System.Nullable`1&lt;valuetype MonoMac.AVFoundation.AVAudioQuality&gt; SampleRateConverterAudioQuality" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Nullable&lt;MonoMac.AVFoundation.AVAudioQuality&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The audio quality for the converter's sample rate</summary>
+        <remarks>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

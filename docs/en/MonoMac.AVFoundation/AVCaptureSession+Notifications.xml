@@ -1,0 +1,322 @@
+<Type Name="AVCaptureSession+Notifications" FullName="MonoMac.AVFoundation.AVCaptureSession+Notifications">
+  <TypeSignature Language="C#" Value="public static class AVCaptureSession.Notifications" />
+  <TypeSignature Language="ILAsm" Value=".class nested public auto ansi abstract sealed beforefieldinit AVCaptureSession/Notifications extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>MonoMac</AssemblyName>
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+      <para>Notification posted by the <see cref="T:MonoMac.AVFoundation.AVCaptureSession" /> class.</para>
+    </summary>
+    <remarks>
+      <para>This is a static class which contains various helper methods that allow developers to observe events posted in the iOS notification hub (<see cref="T:MonoTouch.Foundation.NSNotificationCenter" />).</para>
+      <para>The methods defined in this class post events invoke the provided method or lambda with a <see cref="T:MonoTouch.Foundation.NSNotificationEventArgs" /> parameter which contains strongly typed properties for the notification arguments.</para>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="ObserveDidStartRunning">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSObject ObserveDidStartRunning (EventHandler&lt;MonoMac.Foundation.NSNotificationEventArgs&gt; handler);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSObject ObserveDidStartRunning(class System.EventHandler`1&lt;class MonoMac.Foundation.NSNotificationEventArgs&gt; handler) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="handler" Type="System.EventHandler&lt;MonoMac.Foundation.NSNotificationEventArgs&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="handler">Method to invoke when the notification is posted.</param>
+        <summary>Registers a method to be notified when the AVCaptureSessionDidStartRunningNotification notification is posted.</summary>
+        <returns>
+          <para>The returned NSObject represents the registered notification.   Either call Dispose on the object to stop receiving notifications, or pass it to <see cref="M:MonoTouch.Foundation.NSNotification.RemoveObserver" /></para>
+        </returns>
+        <remarks>
+          <para>The following example shows how you can use this method in your code</para>
+          <example>
+            <code lang="c#">
+//
+// Lambda style
+//
+
+// listening
+notification = AVCaptureSession.Notifications.ObserveObserveDidStartRunning ((sender, args) =&gt; {
+    /* Access strongly typed args */
+    Console.WriteLine ("Notification: {0}", args.Notification);
+});
+
+// To stop listening:
+notification.Dispose ();
+
+//
+//Method style
+//
+NSObject notification;
+void Callback (object sender, ObserveDidStartRunning args)
+{
+    // Access strongly typed args
+    Console.WriteLine ("Notification: {0}", args.Notification);
+}
+
+void Setup ()
+{
+    notification = AVCaptureSession.Notifications.ObserveObserveDidStartRunning (Callback);
+}
+
+void Teardown ()
+{
+    notification.Dispose ();
+}</code>
+          </example>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ObserveDidStopRunning">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSObject ObserveDidStopRunning (EventHandler&lt;MonoMac.Foundation.NSNotificationEventArgs&gt; handler);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSObject ObserveDidStopRunning(class System.EventHandler`1&lt;class MonoMac.Foundation.NSNotificationEventArgs&gt; handler) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="handler" Type="System.EventHandler&lt;MonoMac.Foundation.NSNotificationEventArgs&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="handler">Method to invoke when the notification is posted.</param>
+        <summary>Registers a method to be notified when the AVCaptureSessionDidStopRunningNotification notification is posted.</summary>
+        <returns>
+          <para>The returned NSObject represents the registered notification.   Either call Dispose on the object to stop receiving notifications, or pass it to <see cref="M:MonoTouch.Foundation.NSNotification.RemoveObserver" /></para>
+        </returns>
+        <remarks>
+          <para>The following example shows how you can use this method in your code</para>
+          <example>
+            <code lang="c#">
+//
+// Lambda style
+//
+
+// listening
+notification = AVCaptureSession.Notifications.ObserveObserveDidStopRunning ((sender, args) =&gt; {
+    /* Access strongly typed args */
+    Console.WriteLine ("Notification: {0}", args.Notification);
+});
+
+// To stop listening:
+notification.Dispose ();
+
+//
+//Method style
+//
+NSObject notification;
+void Callback (object sender, ObserveDidStopRunning args)
+{
+    // Access strongly typed args
+    Console.WriteLine ("Notification: {0}", args.Notification);
+}
+
+void Setup ()
+{
+    notification = AVCaptureSession.Notifications.ObserveObserveDidStopRunning (Callback);
+}
+
+void Teardown ()
+{
+    notification.Dispose ();
+}</code>
+          </example>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ObserveInterruptionEnded">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSObject ObserveInterruptionEnded (EventHandler&lt;MonoMac.Foundation.NSNotificationEventArgs&gt; handler);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSObject ObserveInterruptionEnded(class System.EventHandler`1&lt;class MonoMac.Foundation.NSNotificationEventArgs&gt; handler) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="handler" Type="System.EventHandler&lt;MonoMac.Foundation.NSNotificationEventArgs&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="handler">Method to invoke when the notification is posted.</param>
+        <summary>Registers a method to be notified when the AVCaptureSessionInterruptionEndedNotification notification is posted.</summary>
+        <returns>
+          <para>The returned NSObject represents the registered notification.   Either call Dispose on the object to stop receiving notifications, or pass it to <see cref="M:MonoTouch.Foundation.NSNotification.RemoveObserver" /></para>
+        </returns>
+        <remarks>
+          <para>The following example shows how you can use this method in your code</para>
+          <example>
+            <code lang="c#">
+//
+// Lambda style
+//
+
+// listening
+notification = AVCaptureSession.Notifications.ObserveObserveInterruptionEnded ((sender, args) =&gt; {
+    /* Access strongly typed args */
+    Console.WriteLine ("Notification: {0}", args.Notification);
+});
+
+// To stop listening:
+notification.Dispose ();
+
+//
+//Method style
+//
+NSObject notification;
+void Callback (object sender, ObserveInterruptionEnded args)
+{
+    // Access strongly typed args
+    Console.WriteLine ("Notification: {0}", args.Notification);
+}
+
+void Setup ()
+{
+    notification = AVCaptureSession.Notifications.ObserveObserveInterruptionEnded (Callback);
+}
+
+void Teardown ()
+{
+    notification.Dispose ();
+}</code>
+          </example>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ObserveRuntimeError">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSObject ObserveRuntimeError (EventHandler&lt;MonoMac.AVFoundation.AVCaptureSessionRuntimeErrorEventArgs&gt; handler);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSObject ObserveRuntimeError(class System.EventHandler`1&lt;class MonoMac.AVFoundation.AVCaptureSessionRuntimeErrorEventArgs&gt; handler) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="handler" Type="System.EventHandler&lt;MonoMac.AVFoundation.AVCaptureSessionRuntimeErrorEventArgs&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="handler">Method to invoke when the notification is posted.</param>
+        <summary>Registers a method to be notified when the AVCaptureSessionRuntimeErrorNotification notification is posted.</summary>
+        <returns>
+          <para>The returned NSObject represents the registered notification.   Either call Dispose on the object to stop receiving notifications, or pass it to <see cref="M:MonoTouch.Foundation.NSNotification.RemoveObserver" /></para>
+        </returns>
+        <remarks>
+          <para>The following example shows how you can use this method in your code</para>
+          <example>
+            <code lang="c#">
+//
+// Lambda style
+//
+
+// listening
+notification = AVCaptureSession.Notifications.ObserveObserveRuntimeError ((sender, args) =&gt; {
+    /* Access strongly typed args */
+    Console.WriteLine ("Notification: {0}", args.Notification);
+
+    Console.WriteLine ("Error", args.Error);
+});
+
+// To stop listening:
+notification.Dispose ();
+
+//
+//Method style
+//
+NSObject notification;
+void Callback (object sender, ObserveRuntimeError args)
+{
+    // Access strongly typed args
+    Console.WriteLine ("Notification: {0}", args.Notification);
+
+    Console.WriteLine ("Error", args.Error);
+}
+
+void Setup ()
+{
+    notification = AVCaptureSession.Notifications.ObserveObserveRuntimeError (Callback);
+}
+
+void Teardown ()
+{
+    notification.Dispose ();
+}</code>
+          </example>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ObserveWasInterrupted">
+      <MemberSignature Language="C#" Value="public static MonoMac.Foundation.NSObject ObserveWasInterrupted (EventHandler&lt;MonoMac.Foundation.NSNotificationEventArgs&gt; handler);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class MonoMac.Foundation.NSObject ObserveWasInterrupted(class System.EventHandler`1&lt;class MonoMac.Foundation.NSNotificationEventArgs&gt; handler) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>MonoMac.Foundation.NSObject</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="handler" Type="System.EventHandler&lt;MonoMac.Foundation.NSNotificationEventArgs&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="handler">Method to invoke when the notification is posted.</param>
+        <summary>Registers a method to be notified when the AVCaptureSessionWasInterruptedNotification notification is posted.</summary>
+        <returns>
+          <para>The returned NSObject represents the registered notification.   Either call Dispose on the object to stop receiving notifications, or pass it to <see cref="M:MonoTouch.Foundation.NSNotification.RemoveObserver" /></para>
+        </returns>
+        <remarks>
+          <para>The following example shows how you can use this method in your code</para>
+          <example>
+            <code lang="c#">
+//
+// Lambda style
+//
+
+// listening
+notification = AVCaptureSession.Notifications.ObserveObserveWasInterrupted ((sender, args) =&gt; {
+    /* Access strongly typed args */
+    Console.WriteLine ("Notification: {0}", args.Notification);
+});
+
+// To stop listening:
+notification.Dispose ();
+
+//
+//Method style
+//
+NSObject notification;
+void Callback (object sender, ObserveWasInterrupted args)
+{
+    // Access strongly typed args
+    Console.WriteLine ("Notification: {0}", args.Notification);
+}
+
+void Setup ()
+{
+    notification = AVCaptureSession.Notifications.ObserveObserveWasInterrupted (Callback);
+}
+
+void Teardown ()
+{
+    notification.Dispose ();
+}</code>
+          </example>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

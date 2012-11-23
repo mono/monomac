@@ -22,8 +22,23 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Represents a CoreText Font.</summary>
+    <remarks>
+      <para>
+
+	CoreText does not synthesize font styles (italic and bold).
+	This means that if you pick a font that has neither a Bolded
+	or Italicized versions available, CoreText will not create a
+	dynamic font that is merely a slanted version of the font for
+	italic, or a boldened version from the original font.  In
+	those cases, if you want to synthesize the font, you could
+	apply a Matrix transformation to slant the font (it will still
+	be wrong, but will look slanted).  For bolding, you could
+	stroke the font twice, or manually extend the glyph path.
+
+      </para>
+    </remarks>
+    <related type="sample" href="http://samples.xamarin.com/Samples/ByGuid?guid=cb71419a-f5de-4239-aa70-260ce1813e55">SimpleTextInput</related>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -38,8 +53,8 @@
         <Parameter Name="size" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="descriptor">To be added.</param>
-        <param name="size">To be added.</param>
+        <param name="descriptor">Font descriptor to use to create the font.</param>
+        <param name="size">The desired font size.  If you specify zero, it will use the system default.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -56,10 +71,25 @@
         <Parameter Name="size" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="name">To be added.</param>
-        <param name="size">To be added.</param>
+        <param name="name">The name of the font.   Use PostScript names (for example "HelveticaNeue").</param>
+        <param name="size">The desired font size.  If you specify zero, it will use the system default.</param>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <para>
+
+	    Although currently iOS this allows the "name" parameter to
+	    use aliases to the font, in addition to the Postscript
+	    name, use of non-Postscript names for this parameter has
+	    been deprecated, due to the slow and expensive fallback
+	    scan.   
+
+	  </para>
+          <para>
+
+	    If you want to create fonts from other names (like the fullname "Helvetica Neue" instead of the PostScript name "HelveticaNeue") you can use <see cref="C:MonoMac.CoreText.CTFontDescriptor(MonoMac.CoreText.CTFontDescriptorAttributes)" />. 
+
+	  </para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -76,8 +106,8 @@
       </Parameters>
       <Docs>
         <param name="font">To be added.</param>
-        <param name="size">To be added.</param>
-        <param name="transform">To be added.</param>
+        <param name="size">The desired font size.  If you specify zero, it will use the system default.</param>
+        <param name="transform">Transformation matrix for the font, if null, it uses the identity matrix.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -95,10 +125,10 @@
         <Parameter Name="descriptor" Type="MonoMac.CoreText.CTFontDescriptor" />
       </Parameters>
       <Docs>
-        <param name="font">To be added.</param>
-        <param name="size">To be added.</param>
-        <param name="descriptor">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="font">The CoreGraphics CGFont.</param>
+        <param name="size">The desired font size.  If you specify zero, it will use the system default.</param>
+        <param name="descriptor">Font descriptor to use to create the font.</param>
+        <summary>Creates a CTFont from a CoreGraphics CGFont.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -115,11 +145,12 @@
         <Parameter Name="matrix" Type="MonoMac.CoreGraphics.CGAffineTransform&amp;" RefType="ref" />
       </Parameters>
       <Docs>
-        <param name="descriptor">To be added.</param>
-        <param name="size">To be added.</param>
-        <param name="matrix">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="descriptor">Font descriptor to use to create the font.</param>
+        <param name="size">The desired font size.  If you specify zero, it will use the system default.</param>
+        <param name="matrix">Transformation matrix for the font, if null, it uses the identity matrix.</param>
+        <summary>Creates a CTFont from a CTFontDescriptor.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -135,9 +166,9 @@
         <Parameter Name="options" Type="MonoMac.CoreText.CTFontOptions" />
       </Parameters>
       <Docs>
-        <param name="descriptor">To be added.</param>
-        <param name="size">To be added.</param>
-        <param name="options">To be added.</param>
+        <param name="descriptor">Font descriptor to use to create the font.</param>
+        <param name="size">The desired font size.  If you specify zero, it will use the system default.</param>
+        <param name="options">Configuration options for the font creation.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -156,7 +187,7 @@
       </Parameters>
       <Docs>
         <param name="uiType">To be added.</param>
-        <param name="size">To be added.</param>
+        <param name="size">The desired font size.  If you specify zero, it will use the system default.</param>
         <param name="language">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
@@ -175,9 +206,9 @@
         <Parameter Name="matrix" Type="MonoMac.CoreGraphics.CGAffineTransform&amp;" RefType="ref" />
       </Parameters>
       <Docs>
-        <param name="name">To be added.</param>
-        <param name="size">To be added.</param>
-        <param name="matrix">To be added.</param>
+        <param name="name">The name of the font.   Use PostScript names (for example "HelveticaNeue").</param>
+        <param name="size">The desired font size.  If you specify zero, it will use the system default.</param>
+        <param name="matrix">Transformation matrix for the font, if null, it uses the identity matrix.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -195,9 +226,9 @@
         <Parameter Name="options" Type="MonoMac.CoreText.CTFontOptions" />
       </Parameters>
       <Docs>
-        <param name="name">To be added.</param>
-        <param name="size">To be added.</param>
-        <param name="options">To be added.</param>
+        <param name="name">The name of the font.   Use PostScript names (for example "HelveticaNeue").</param>
+        <param name="size">The desired font size.  If you specify zero, it will use the system default.</param>
+        <param name="options">Configuration options for the font creation.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -217,9 +248,9 @@
       </Parameters>
       <Docs>
         <param name="font">To be added.</param>
-        <param name="size">To be added.</param>
-        <param name="transform">To be added.</param>
-        <param name="descriptor">To be added.</param>
+        <param name="size">The desired font size.  If you specify zero, it will use the system default.</param>
+        <param name="transform">Transformation matrix for the font, if null, it uses the identity matrix.</param>
+        <param name="descriptor">Font descriptor to use to create the font.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -238,10 +269,10 @@
         <Parameter Name="matrix" Type="MonoMac.CoreGraphics.CGAffineTransform&amp;" RefType="ref" />
       </Parameters>
       <Docs>
-        <param name="descriptor">To be added.</param>
-        <param name="size">To be added.</param>
-        <param name="options">To be added.</param>
-        <param name="matrix">To be added.</param>
+        <param name="descriptor">Font descriptor to use to create the font.</param>
+        <param name="size">The desired font size.  If you specify zero, it will use the system default.</param>
+        <param name="options">Configuration options for the font creation.</param>
+        <param name="matrix">Transformation matrix for the font, if null, it uses the identity matrix.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -260,10 +291,10 @@
         <Parameter Name="options" Type="MonoMac.CoreText.CTFontOptions" />
       </Parameters>
       <Docs>
-        <param name="name">To be added.</param>
-        <param name="size">To be added.</param>
-        <param name="matrix">To be added.</param>
-        <param name="options">To be added.</param>
+        <param name="name">The name of the font.   Use PostScript names (for example "HelveticaNeue").</param>
+        <param name="size">The desired font size.  If you specify zero, it will use the system default.</param>
+        <param name="matrix">Transformation matrix for the font, if null, it uses the identity matrix.</param>
+        <param name="options">Configuration options for the font creation.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -1059,9 +1090,11 @@
         <ReturnType>MonoMac.CoreGraphics.CGAffineTransform</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>The transformation matrix used when this font was created.</summary>
+        <value>
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="PostScriptName">
@@ -1091,9 +1124,10 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>The font size.</summary>
+        <value>
+        </value>
+        <remarks>This is the size that was used when the font was constructed.</remarks>
       </Docs>
     </Member>
     <Member MemberName="SlantAngle">
@@ -1261,7 +1295,7 @@
         <Parameter Name="attributes" Type="MonoMac.CoreText.CTFontDescriptor" />
       </Parameters>
       <Docs>
-        <param name="size">To be added.</param>
+        <param name="size">The desired font size.  If you specify zero, it will use the system default.</param>
         <param name="attributes">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
@@ -1284,7 +1318,7 @@
         <Parameter Name="matrix" Type="MonoMac.CoreGraphics.CGAffineTransform&amp;" RefType="ref" />
       </Parameters>
       <Docs>
-        <param name="size">To be added.</param>
+        <param name="size">The desired font size.  If you specify zero, it will use the system default.</param>
         <param name="attributes">To be added.</param>
         <param name="matrix">To be added.</param>
         <summary>To be added.</summary>
@@ -1307,7 +1341,7 @@
         <Parameter Name="family" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="size">To be added.</param>
+        <param name="size">The desired font size.  If you specify zero, it will use the system default.</param>
         <param name="family">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
@@ -1330,7 +1364,7 @@
         <Parameter Name="matrix" Type="MonoMac.CoreGraphics.CGAffineTransform&amp;" RefType="ref" />
       </Parameters>
       <Docs>
-        <param name="size">To be added.</param>
+        <param name="size">The desired font size.  If you specify zero, it will use the system default.</param>
         <param name="family">To be added.</param>
         <param name="matrix">To be added.</param>
         <summary>To be added.</summary>
@@ -1354,7 +1388,7 @@
         <Parameter Name="symTraitMask" Type="MonoMac.CoreText.CTFontSymbolicTraits" />
       </Parameters>
       <Docs>
-        <param name="size">To be added.</param>
+        <param name="size">The desired font size.  If you specify zero, it will use the system default.</param>
         <param name="symTraitValue">To be added.</param>
         <param name="symTraitMask">To be added.</param>
         <summary>To be added.</summary>
@@ -1379,7 +1413,7 @@
         <Parameter Name="matrix" Type="MonoMac.CoreGraphics.CGAffineTransform&amp;" RefType="ref" />
       </Parameters>
       <Docs>
-        <param name="size">To be added.</param>
+        <param name="size">The desired font size.  If you specify zero, it will use the system default.</param>
         <param name="symTraitValue">To be added.</param>
         <param name="symTraitMask">To be added.</param>
         <param name="matrix">To be added.</param>

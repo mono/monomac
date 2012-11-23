@@ -11,7 +11,30 @@
   <Interfaces />
   <Docs>
     <summary>Interface to to control the audio context of your application</summary>
-    <remarks>To be added.</remarks>
+    <remarks>
+      <para>
+
+	You use the various AudioSession methods to control how the
+	input and output are handled by the operating system,
+	configure the recorder and speakers, control where the audio
+	is played to, and where the audio is recorded from.
+	AudioSession also provides a mechanism to start and stop using
+	the audio system and to monitor changes to the audio system.
+
+      </para>
+      <para>
+	Both the initialization sequence and the use of some
+	properties on AudioSession can throw an <see cref="T:MonoMac.AudioToolbox.AudioSessionException" />.
+      </para>
+      <para>
+
+	Your application can use the <see cref="M:MonoMac.AudioToolbox.AudioSession.AddListener(MonoMac.AudioToolbox.AudioSessionProperty, MonoMac.AudioToolbox.AudioSession.PropertyListener)" />
+	method with the AudioInputAvailable value to monitor when the microphone becomes available. 
+ 
+      </para>
+    </remarks>
+    <related type="sample" href="http://samples.xamarin.com/Samples/ByGuid?guid=26d904c2-c44a-46f2-883a-a01bb5657309">StreamingAudio</related>
+    <related type="sample" href="http://samples.xamarin.com/Samples/ByGuid?guid=133bdad4-776a-454d-a265-889d009d0335">SysSound</related>
   </Docs>
   <Members>
     <Member MemberName="AddListener">
@@ -29,10 +52,10 @@
         <Parameter Name="listener" Type="MonoMac.AudioToolbox.AudioSession+PropertyListener" />
       </Parameters>
       <Docs>
-        <param name="property">To be added.</param>
-        <param name="listener">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="property">The property to monitor.</param>
+        <param name="listener">Callback to invoke when the property changes.</param>
+        <summary>Registers a method to be invoked when an audio session property changes.</summary>
+        <remarks>Use the RemoveListener method to stop receiving property change notifications.</remarks>
       </Docs>
     </Member>
     <Member MemberName="AudioInputAvailable">
@@ -46,9 +69,23 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Determines whether audio input is available.</summary>
+        <value>
+        </value>
+        <remarks>
+          <para>
+
+	    This property determines whether input is available.
+	    Phones always have input available, while iPod Touch
+	    devices only have input available if a microphone or a
+	    headset with a microphone is plugged.
+
+	  </para>
+          <para>
+	    If there is an error reading or setting the property,
+	    this will raise an <see cref="T:MonoMac.AudioToolbox.AudioSessionException" />.
+	  </para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="AudioRoute">
@@ -62,9 +99,15 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Obsolete method.</summary>
+        <value>
+        </value>
+        <remarks>
+          <para>
+	    If there is an error reading or setting the property,
+	    this will raise an <see cref="T:MonoMac.AudioToolbox.AudioSessionException" />.
+	  </para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="AudioShouldDuck">
@@ -78,9 +121,25 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Controls audio ducking for your application.</summary>
+        <value>
+        </value>
+        <remarks>
+          <para>
+	    When this property is set to true, if there is background
+	    music playing and you have configured this session to
+	    allow audio mixing, when your application produces sound,
+	    the background music volume is reduced.  After you play
+	    your sound, you should reset the value to false.
+	  </para>
+          <para>
+	    By default, this property is set to false, and no audio ducking takes place.
+	  </para>
+          <para>
+	    If there is an error reading or setting the property,
+	    this will raise an <see cref="T:MonoMac.AudioToolbox.AudioSessionException" />.
+	  </para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Category">
@@ -94,9 +153,24 @@
         <ReturnType>MonoMac.AudioToolbox.AudioSessionCategory</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Controls how the operating system treats the audio from your application.</summary>
+        <value>
+        </value>
+        <remarks>
+          <para>
+
+	    This property is used to control how the operating system
+	    treat your audio.  It can be used to control whether your
+	    application needs exclusive access to the microphones or
+	    speakers or to configure if the audio can be mixed with
+	    background music.
+
+	  </para>
+          <para>
+	    If there is an error reading or setting the property,
+	    this will raise an <see cref="T:MonoMac.AudioToolbox.AudioSessionException" />.
+	  </para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CurrentHardwareInputLatency">
@@ -110,9 +184,15 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>The current hardware input latency in seconds.</summary>
+        <value>
+        </value>
+        <remarks>
+          <para>
+	    If there is an error reading or setting the property,
+	    this will raise an <see cref="T:MonoMac.AudioToolbox.AudioSessionException" />.
+	  </para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CurrentHardwareInputNumberChannels">
@@ -126,9 +206,15 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>The number of hardware input channels.</summary>
+        <value>
+        </value>
+        <remarks>
+          <para>
+	    If there is an error reading or setting the property,
+	    this will raise an <see cref="T:MonoMac.AudioToolbox.AudioSessionException" />.
+	  </para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CurrentHardwareIOBufferDuration">
@@ -142,9 +228,15 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>The size in seconds of the hardware input and output buffer.</summary>
+        <value>
+        </value>
+        <remarks>
+          <para>
+	    If there is an error reading or setting the property,
+	    this will raise an <see cref="T:MonoMac.AudioToolbox.AudioSessionException" />.
+	  </para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CurrentHardwareOutputLatency">
@@ -158,9 +250,15 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>The current hardware output latency in seconds.</summary>
+        <value>
+        </value>
+        <remarks>
+          <para>
+	    If there is an error reading or setting the property,
+	    this will raise an <see cref="T:MonoMac.AudioToolbox.AudioSessionException" />.
+	  </para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CurrentHardwareOutputNumberChannels">
@@ -174,9 +272,15 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Number of hardware output channels.</summary>
+        <value>
+        </value>
+        <remarks>
+          <para>
+	    If there is an error reading or setting the property,
+	    this will raise an <see cref="T:MonoMac.AudioToolbox.AudioSessionException" />.
+	  </para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CurrentHardwareOutputVolume">
@@ -190,9 +294,14 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Your application volume, from 0 to 1.</summary>
+        <value>Floating point value between 0 and 1.</value>
+        <remarks>
+          <para>
+	    If there is an error reading or setting the property,
+	    this will raise an <see cref="T:MonoMac.AudioToolbox.AudioSessionException" />.
+	  </para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="CurrentHardwareSampleRate">
@@ -206,9 +315,15 @@
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>The current hardware sample rate.</summary>
+        <value>
+        </value>
+        <remarks>
+          <para>
+	    If there is an error reading or setting the property,
+	    this will raise an <see cref="T:MonoMac.AudioToolbox.AudioSessionException" />.
+	  </para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Initialize">
@@ -223,8 +338,39 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Initializes the Audio Session.</summary>
+        <remarks>
+          <para>
+
+	    In addition to calling the Initialize method on
+	    AudioSession, you will want to set the <see cref="P:MonoMac.AudioToolbox.AudioSession.Category" />
+	    and the <see cref="P:MonoMac.AudioToolbox.AudioSession.Mode" />
+	    properties to control the priority of your audio and the
+	    rules for mixing your audio with other audio playing on
+	    the device.
+
+	  </para>
+          <para>
+
+	    When you call this variation of Initialize, both the <see cref="E:MonoMac.AudioToolbox.AudioSession.Interrupted" />
+	    and <see cref="E:MonoMac.AudioToolbox.AudioSession.Resumed" />
+	    events are raised on the main loop.  Use the <see cref="P:MonoMac.AudioToolbox.AudioSession.Initialize(MonoMac.CoreFoundation.CFRunLoop&#xA;	    runLoop, System.String runMode)" /> if you want to specify
+	    a different runloop.
+
+	  </para>
+          <para>
+	    If there is an error initializing the AudioSession, this will raise an <see cref="T:MonoMac.AudioToolbox.AudioSessionException" />.
+	  </para>
+          <example>
+            <code lang="c#">
+//
+// Initialize the audio session for audio playback
+//
+AudioSession.Initialize ();
+AudioSession.Category = AudioSessionCategory.MediaPlayback;
+</code>
+          </example>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Initialize">
@@ -242,10 +388,39 @@
         <Parameter Name="runMode" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="runLoop">To be added.</param>
-        <param name="runMode">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="runLoop">The runloop to execute on.</param>
+        <param name="runMode">Run loop mode (see NSRunLoop for the various modes).</param>
+        <summary>Initializes the Audio Session.</summary>
+        <remarks>
+          <para>
+
+	    In addition to calling the Initialize method on
+	    AudioSession, you will want to set the <see cref="P:MonoMac.AudioToolbox.AudioSession.Category" />
+	    and the <see cref="P:MonoMac.AudioToolbox.AudioSession.Mode" />
+	    properties to control the priority of your audio and the
+	    rules for mixing your audio with other audio playing on
+	    the device.
+
+	  </para>
+          <para>
+
+	    When you call this variation of Initialize, both the <see cref="E:MonoMac.AudioToolbox.AudioSession.Interrupted" />
+	    and <see cref="E:MonoMac.AudioToolbox.AudioSession.Resumed" />
+	    events are raised on the specified run loop with the
+	    specified run loop mode.  Use the <see cref="P:MonoMac.AudioToolbox.AudioSession.Initialize()" />
+	    if you want those events to be raised on the main thread.
+
+	  </para>
+          <example>
+            <code lang="c#">
+//
+// Initialize the audio session for audio playback
+//
+AudioSession.Initialize (myRunLoop, myRunMode);
+AudioSession.Category = AudioSessionCategory.MediaPlayback;
+</code>
+          </example>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="InputRoute">
@@ -259,9 +434,11 @@
         <ReturnType>MonoMac.AudioToolbox.AudioSessionInputRouteKind</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Controls the source for audio input.</summary>
+        <value>
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Interrupted">
@@ -275,8 +452,17 @@
         <ReturnType>System.EventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Event raised when the audio session has been interrupted.</summary>
+        <remarks>
+          <para>
+
+	    You can use the <see cref="P:MonoMac.AudioToolbox.AudioSession.InterruptionType" /> property to determine the cause of the interruption.
+
+	  </para>
+          <para>
+	    In addition, the Resumed event is raised when the audio session is resumed.
+	  </para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="InterruptionType">
@@ -295,9 +481,12 @@
         <ReturnType>MonoMac.AudioToolbox.AudioSessionInterruptionType</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>The type of interruption, used to determine the appropriate course of action when the AudioSession is interrupted.</summary>
+        <value>
+        </value>
+        <remarks>
+	  The value of this property is only valid when called from the <see cref="E:MonoMac.AudioToolbox.AudioSession.Interrupted" /> event handler.
+	</remarks>
       </Docs>
     </Member>
     <Member MemberName="Mode">
@@ -341,9 +530,11 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Whether another application is currently playing back audio.</summary>
+        <value>
+        </value>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="OutputRoutes">
@@ -357,9 +548,15 @@
         <ReturnType>MonoMac.AudioToolbox.AudioSessionOutputRouteKind[]</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Retrives information about the available audio output routes.</summary>
+        <value>
+        </value>
+        <remarks>
+          <para>
+	    If there is an error reading or setting the property,
+	    this will raise an <see cref="T:MonoMac.AudioToolbox.AudioSessionException" />.
+	  </para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="OverrideCategoryDefaultToSpeaker">
@@ -375,7 +572,12 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>
+          <para>
+	    If there is an error reading or setting the property,
+	    this will raise an <see cref="T:MonoMac.AudioToolbox.AudioSessionException" />.
+	  </para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="OverrideCategoryEnableBluetoothInput">
@@ -390,8 +592,14 @@
       </ReturnValue>
       <Docs>
         <summary>If input is coming from a bluetooth headset, it routes the audio output to the headset.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <value>
+        </value>
+        <remarks>
+          <para>
+	    If there is an error reading or setting the property,
+	    this will raise an <see cref="T:MonoMac.AudioToolbox.AudioSessionException" />.
+	  </para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="OverrideCategoryMixWithOthers">
@@ -405,9 +613,18 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Mixes the background audio with the audio generated by the application, regardless of the default <see cref="P:MonoMac.AudioToolbox.AudioSession.Category" /> setting.</summary>
+        <value>
+        </value>
+        <remarks>
+          <para>
+	    This setting can be used when the <see cref="P:MonoMac.AudioToolbox.AudioSession.Category" /> session is set to either MediaPlayback or PlayAndRecord.
+	  </para>
+          <para>
+	    If there is an error reading or setting the property,
+	    this will raise an <see cref="T:MonoMac.AudioToolbox.AudioSessionException" />.
+	  </para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="PreferredHardwareIOBufferDuration">
@@ -421,9 +638,18 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Your application desired buffer size in seconds. </summary>
+        <value>
+        </value>
+        <remarks>
+          <para>
+	    There is no guarantee that you will get the number of requested seconds, you can determine the actual number of seconds by reading the <see cref="P:MonoMac.AudioToolbox.AudioSession.CurrentHardwareIOBufferDuration" /> property.
+	  </para>
+          <para>
+	    If there is an error reading or setting the property,
+	    this will raise an <see cref="T:MonoMac.AudioToolbox.AudioSessionException" />.
+	  </para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="PreferredHardwareSampleRate">
@@ -437,9 +663,18 @@
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Your desired audio sample rate.</summary>
+        <value>
+        </value>
+        <remarks>
+          <para>
+	    There is no guarantee that you will get the requested sample rate, you can determine the actual number by reading the <see cref="P:MonoMac.AudioToolbox.AudioSession.CurrentHardwareSampleRate" /> property.
+	  </para>
+          <para>
+	    If there is an error reading or setting the property,
+	    this will raise an <see cref="T:MonoMac.AudioToolbox.AudioSessionException" />.
+	  </para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="RemoveListener">
@@ -457,10 +692,10 @@
         <Parameter Name="listener" Type="MonoMac.AudioToolbox.AudioSession+PropertyListener" />
       </Parameters>
       <Docs>
-        <param name="property">To be added.</param>
-        <param name="listener">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="property">The monitored property.</param>
+        <param name="listener">The Callback that was specified in the call to AddListener.</param>
+        <summary>Removes the specified listener from the list of monitored audio session properties.</summary>
+        <remarks>Properties to monitor are registered with the AddListener method.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Resumed">
@@ -474,8 +709,8 @@
         <ReturnType>System.EventHandler</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Event raised when the audio session has resumed.</summary>
+        <remarks>In addition, the Interrupted event is raised when the audio session is interrupted.</remarks>
       </Docs>
     </Member>
     <Member MemberName="RoutingOverride">
@@ -489,9 +724,26 @@
         <ReturnType>MonoMac.AudioToolbox.AudioSessionRoutingOverride</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Controls the output route, overriding the default set by the <see cref="P:MonoMac.AudioToolbox.AudioSession.Category" />.</summary>
+        <value>
+        </value>
+        <remarks>
+          <para>
+	    This property is only valid if the Category is set to PlayAndRecord.
+	  </para>
+          <para>
+	    If this property is set to Speaker when a headset is
+	    plugged, this will also switch the input to use the system
+	    microphone, and not the one on the headset.
+	  </para>
+          <para>
+	    The setting of this variable is reset when a headset are plugged or unplugged.
+	  </para>
+          <para>
+	    If there is an error reading or setting the property,
+	    this will raise an <see cref="T:MonoMac.AudioToolbox.AudioSessionException" />.
+	  </para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="SetActive">
@@ -508,9 +760,18 @@
         <Parameter Name="active" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="active">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="active">Whether to enable the audio session.</param>
+        <summary>Enables or Disables the audio session.</summary>
+        <remarks>
+          <para>
+	    This method is used to enable and disable the audio session.
+	  </para>
+          <para>
+	    This method can throw an AudioSessionException if another
+	    application is currently using the AudioSession in the
+	    foreground and does not support audio mixing.
+	  </para>
+        </remarks>
       </Docs>
     </Member>
   </Members>

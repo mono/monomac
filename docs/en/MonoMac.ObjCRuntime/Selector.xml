@@ -8,7 +8,8 @@
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
-  <Interfaces />
+  <Interfaces>
+  </Interfaces>
   <Docs>
     <summary>Represents an Objective-C selector in managed code.</summary>
     <remarks />
@@ -111,7 +112,7 @@
     </Member>
     <Member MemberName="GetHandle">
       <MemberSignature Language="C#" Value="public static IntPtr GetHandle (string name);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig native int GetHandle(string name) cil managed" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig pinvokeimpl (&quot;/usr/lib/libobjc.dylib&quot; as &quot;sel_registerName&quot; winapi)native int GetHandle(string name) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.0.0</AssemblyVersion>
@@ -123,10 +124,11 @@
         <Parameter Name="name" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="name">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="name">Name of an Objective-C class</param>
+        <summary>Returns a handle to the specified Objective-C class.</summary>
+        <returns>IntPtr.Zero if the class does not exist or has not been registered with the Objective-C runtime, or a token pointing to the Objective-C Class object otherwise.</returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="GetHashCode">
@@ -141,9 +143,11 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>Returns the Selector's hashcode.</summary>
+        <returns>
+        </returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Handle">
@@ -223,11 +227,13 @@
         <Parameter Name="right" Type="MonoMac.ObjCRuntime.Selector" />
       </Parameters>
       <Docs>
-        <param name="left">To be added.</param>
-        <param name="right">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="left">First selector to compare.</param>
+        <param name="right">Second selector to compare.</param>
+        <summary>Determines if two Selector objects are equal by comparing their native handles.</summary>
+        <returns>
+        </returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="op_Inequality">
@@ -245,11 +251,13 @@
         <Parameter Name="right" Type="MonoMac.ObjCRuntime.Selector" />
       </Parameters>
       <Docs>
-        <param name="left">To be added.</param>
-        <param name="right">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="left">First selector to compare.</param>
+        <param name="right">Second selector to compare.</param>
+        <summary>Determines if two Selector objects are different by comparing their native handles.</summary>
+        <returns>
+        </returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Register">

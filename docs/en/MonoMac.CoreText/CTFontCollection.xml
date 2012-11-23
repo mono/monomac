@@ -22,7 +22,7 @@
     </Attribute>
   </Attributes>
   <Docs>
-    <summary>To be added.</summary>
+    <summary>Font collections are the standard mechanism used to enumerate fonts descriptors.</summary>
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
@@ -37,9 +37,10 @@
         <Parameter Name="options" Type="MonoMac.CoreText.CTFontCollectionOptions" />
       </Parameters>
       <Docs>
-        <param name="options">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="options">Configuration options for creating the font collection, can be null.</param>
+        <summary>Creates a CTFontCollection that contains all of the available font descriptors.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -54,10 +55,11 @@
         <Parameter Name="options" Type="MonoMac.CoreText.CTFontCollectionOptions" />
       </Parameters>
       <Docs>
-        <param name="queryDescriptors">To be added.</param>
+        <param name="queryDescriptors">An array of font descriptors, can be null.</param>
         <param name="options">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Creates a CTFontCollection from the specified set of queryDescriptors.</summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Dispose">
@@ -134,9 +136,10 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>Gets the mathching font descriptors from this collection.</summary>
+        <returns>An array of font descriptors.</returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="GetMatchingFontDescriptors">
@@ -153,10 +156,11 @@
         <Parameter Name="comparer" Type="System.Comparison&lt;MonoMac.CoreText.CTFontDescriptor&gt;" />
       </Parameters>
       <Docs>
-        <param name="comparer">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="comparer">Sorting method.</param>
+        <summary>Gets an array of font descriptors sorted by the specified sorting function.</summary>
+        <returns>An array of font descriptors.</returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Handle">
@@ -190,11 +194,13 @@
         <Parameter Name="options" Type="MonoMac.CoreText.CTFontCollectionOptions" />
       </Parameters>
       <Docs>
-        <param name="queryDescriptors">To be added.</param>
-        <param name="options">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="queryDescriptors">The font descriptors to add.</param>
+        <param name="options">Configuration options for creating the font collection, can be null.</param>
+        <summary>Creates a copy of the CTFontCollection while adding the specified font descriptors.</summary>
+        <returns>
+        </returns>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
   </Members>
