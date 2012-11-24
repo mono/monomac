@@ -275,6 +275,7 @@ namespace MonoMac.AppKit {
 	}
 
 	[BaseType (typeof (NSResponder), Delegates=new string [] { "WeakDelegate" }, Events=new Type [] { typeof (NSApplicationDelegate) })]
+	[DisableDefaultCtor] // An uncaught exception was raised: Creating more than one Application
 	public interface NSApplication : NSWindowRestoration {
 		[Export ("sharedApplication"), Static]
 		NSApplication SharedApplication { get; }
@@ -556,12 +557,6 @@ namespace MonoMac.AppKit {
 
 		[Field ("NSApplicationDidChangeScreenParametersNotification")]
 		NSString DidChangeScreenParametersNotification { get; }
-
-		[Lion, Field ("NSApplicationLaunchRemoteNotificationKe")]
-		NSString LaunchRemoteNotificationKe { get; }
-
-		[Lion, Field ("NSApplicationLaunchIsDefaultLaunchKe")]
-		NSString LaunchIsDefaultLaunchKe { get; }
 
 		[Lion, Field ("NSApplicationLaunchIsDefaultLaunchKey")]
 		NSString LaunchIsDefaultLaunchKey  { get; }
@@ -994,6 +989,7 @@ namespace MonoMac.AppKit {
 
 
 	[BaseType (typeof (NSImageRep))]
+	[DisableDefaultCtor] // An uncaught exception was raised: -[NSBitmapImageRep init]: unrecognized selector sent to instance 0x686880
 	public interface NSBitmapImageRep {
 		[Export ("initWithFocusedViewRect:")]
 		IntPtr Constructor (RectangleF rect);
@@ -1201,7 +1197,7 @@ namespace MonoMac.AppKit {
 		[Export ("transparent")]
 		bool Transparent { [Bind ("isTransparent")] get; set; }
 
-		[Export ("setTitleWithMnemonic")]
+		[Export ("setTitleWithMnemonic:")]
 		void SetTitleWithMnemonic (string stringWithMnemonic);
 
 		[Export ("borderWidth")]
@@ -1433,6 +1429,7 @@ namespace MonoMac.AppKit {
 		[Export ("matrixClass")]
 		Class MatrixClass { get; set; }
 
+		[Static]
 		[Export ("cellClass")]
 		Class CellClass { get; set; }
 
@@ -1819,19 +1816,23 @@ namespace MonoMac.AppKit {
 	}
 	
 	[BaseType (typeof (NSImageRep))]
+	[DisableDefaultCtor] // An uncaught exception was raised: -[NSCachedImageRep init]: unrecognized selector sent to instance 0x14890e0
 	public interface NSCachedImageRep {
+		[Obsolete ("Deprecated in OSX 10.6")]
 		[Export ("initWithIdentifier:")]
 	   	IntPtr Constructor (NSWindow win, RectangleF rect);
 		
+		[Obsolete ("Deprecated in OSX 10.6")]
 		[Export ("initWithSize:depth:separate:alpha:")]
 		IntPtr Constructor (SizeF size, NSWindowDepth depth, bool separate, bool alpha);
 
+		[Obsolete ("Deprecated in OSX 10.6")]
 		[Export ("window")]
 		NSWindow Window { get; }
 
+		[Obsolete ("Deprecated in OSX 10.6")]
 		[Export ("rect")]
 		RectangleF Rectangle { get; }
-
 	}
 	
 	[BaseType (typeof (NSObject))]
@@ -2153,6 +2154,7 @@ namespace MonoMac.AppKit {
 	}
 
 	[BaseType (typeof (NSImageRep))]
+	[DisableDefaultCtor] // An uncaught exception was raised: -[NSCIImageRep init]: unrecognized selector sent to instance 0x1b682a0
 	public interface NSCIImageRep {
 		[Static]
 		[Export ("imageRepWithCIImage:")]
@@ -2322,6 +2324,7 @@ namespace MonoMac.AppKit {
 	}
 	
 	[BaseType (typeof (NSObject))]
+	[DisableDefaultCtor] // -colorSpaceName not valid for the NSColor <NSColor: 0x1b94780>; need to first convert colorspace.
 	public interface NSColor {
 		[Static]
 		[Export ("colorWithCalibratedWhite:alpha:")]
@@ -2962,7 +2965,7 @@ namespace MonoMac.AppKit {
 		[Export ("numberOfVisibleItems")]
 		int VisibleItems { get; set; }
 
-		[Export ("buttonBordered:")]
+		[Export ("buttonBordered")]
 		bool ButtonBordered { [Bind ("isButtonBordered")] get; set; }
 
 		[Export ("reloadData")]
@@ -3348,6 +3351,7 @@ namespace MonoMac.AppKit {
 	}
 
 	[BaseType (typeof (NSImageRep))]
+	[DisableDefaultCtor] // An uncaught exception was raised: -[NSCustomImageRep init]: unrecognized selector sent to instance 0x54a870
 	public interface NSCustomImageRep {
 		[Export ("initWithDrawSelector:delegate:")]
 		IntPtr Constructor (Selector drawSelectorMethod, NSObject delegateObject);
@@ -3528,6 +3532,7 @@ namespace MonoMac.AppKit {
 		[Export ("initWithType:error:")]
 		IntPtr Constructor (string typeName, out NSError outError);
 
+		[Static]
 		[Export ("canConcurrentlyReadDocumentsOfType:")]
 		bool CanConcurrentlyReadDocumentsOfType (string typeName);
 
@@ -3777,6 +3782,7 @@ namespace MonoMac.AppKit {
 		[Lion, Export ("autosaveWithImplicitCancellability:completionHandler:")]
 		void Autosave (bool autosavingIsImplicitlyCancellable, NSDocumentCompletionHandler completionHandler);
 
+		[Static]
 		[Lion, Export ("autosavesInPlace")]
 		bool AutosavesInPlace ();
 
@@ -4225,6 +4231,7 @@ namespace MonoMac.AppKit {
 		//[Export ("fontWithName:matrix:")]
 		//NSFont FromFontName (string fontName, float [] fontMatrix);
 
+		[Static]
 		[Export ("fontWithDescriptor:size:")]
 		NSFont FromDescription (NSFontDescriptor fontDescriptor, float fontSize);
 
@@ -4300,6 +4307,7 @@ namespace MonoMac.AppKit {
 		[Export ("labelFontSize")]
 		float LabelFontSize { get; }
 
+		[Static]
 		[Export ("systemFontSizeForControlSize:")]
 		float SystemFontSizeForControlSize (NSControlSize controlSize);
 
@@ -4565,6 +4573,7 @@ namespace MonoMac.AppKit {
 		[Export ("fontDescriptorWithName:size:")]
 		NSFontDescriptor FromNameSize (string fontName, float size);
 
+		[Static]
 		[Export ("fontDescriptorWithName:matrix:")]
 		NSFontDescriptor FromNameMatrix (string fontName, NSAffineTransform matrix);
 
@@ -5004,6 +5013,7 @@ namespace MonoMac.AppKit {
 	}
 
 	[BaseType (typeof (NSImageRep))]
+	[DisableDefaultCtor] // An uncaught exception was raised: -[NSEPSImageRep init]: unrecognized selector sent to instance 0x1db2d90
 	public interface NSEPSImageRep {
 		[Static]
 		[Export ("imageRepWithData:")]
@@ -6051,7 +6061,7 @@ namespace MonoMac.AppKit {
 		// Deprecated methods, but needed to run on pre 10.6 systems
 		[Obsolete ("On 10.6 and newer, use Uris")]
 		[Export ("filenames")]
-		string [] Filenames { get; set; }
+		string [] Filenames { get; }
 
 		//runModalForWindows:Completeion
 		[Obsolete ("On 10.6 and newer use runModalForWindow:")]
@@ -6335,6 +6345,7 @@ namespace MonoMac.AppKit {
 
 	[BaseType (typeof (NSObject))]
 	public interface NSHelpManager {
+		[Static]
 		[Export ("sharedHelpManager")]
 		NSHelpManager SharedHelpManager ();
 
@@ -6611,12 +6622,15 @@ namespace MonoMac.AppKit {
 		[Export ("imageRepClassForPasteboardType:")]
 		Class ImageRepClassForPasteboardType (string type);
 
+		[Static]
 		[Export ("imageRepClassForType:")]
 		Class ImageRepClassForType (string type);
 
+		[Static]
 		[Export ("imageRepClassForData:")]
 		Class ImageRepClassForData (NSData data);
 
+		[Static]
 		[Export ("canInitWithData:")]
 		bool CanInitWithData (NSData data);
 
@@ -6636,6 +6650,7 @@ namespace MonoMac.AppKit {
 		[Export ("imagePasteboardTypes")]
 		string [] ImagePasteboardTypes { get; }
 
+		[Static]
 		[Export ("imageUnfilteredTypes")]
 		string []ImageUnfilteredTypes { get; }
 
@@ -6643,6 +6658,7 @@ namespace MonoMac.AppKit {
 		[Export ("imageTypes")]
 		string [] ImageTypes { get; }
 
+		[Static]
 		[Export ("canInitWithPasteboard:")]
 		bool CanInitWithPasteboard (NSPasteboard pasteboard);
 
@@ -7503,6 +7519,7 @@ namespace MonoMac.AppKit {
 		[Export ("defaultParagraphStyle")]
 		NSParagraphStyle DefaultParagraphStyle { get; }
 
+		[Static]
 		[Export ("defaultWritingDirectionForLanguage:")]
 		NSWritingDirection DefaultWritingDirection (string languageName);
 
@@ -7632,6 +7649,7 @@ namespace MonoMac.AppKit {
 	}
 
 	[BaseType (typeof (NSObject))]
+	[DisableDefaultCtor] // An uncaught exception was raised: +[NSPasteboard alloc]: unrecognized selector sent to class 0xac3dcbf0
 	public interface NSPasteboard {
 		[Static]
 		[Export ("generalPasteboard")]
@@ -8382,6 +8400,7 @@ namespace MonoMac.AppKit {
 		[Export ("localizedPaperName")]
 		string LocalizedPaperName { get; }
 
+		[Static]
 		[Export ("defaultPrinter")]
 		NSPrinter DefaultPrinter { get; }
 
@@ -9262,7 +9281,7 @@ namespace MonoMac.AppKit {
         	void FlashScrollers ();
         
 		[Static]
-		[Lion, Export ("frameSizeForContentSize:horizontalScrollerClass:verticalScrollerClass:borderType:controlSize:scrollerStyle")]
+		[Lion, Export ("frameSizeForContentSize:horizontalScrollerClass:verticalScrollerClass:borderType:controlSize:scrollerStyle:")]
 		SizeF GetFrameSizeForContent (SizeF contentSize, Class horizontalScrollerClass, Class verticalScrollerClass, NSBorderType borderType, NSControlSize controlSize, NSScrollerStyle scrollerStyle);
 		
 		[Lion, Export ("horizontalScrollElasticity")]
@@ -9560,6 +9579,7 @@ namespace MonoMac.AppKit {
 		[Export ("initImageCell:")]
 		IntPtr Constructor (NSImage  image);
 
+		[Static]
 		[Export ("prefersTrackingUntilMouseUp")]
 		bool PrefersTrackingUntilMouseUp ();
 
@@ -9706,6 +9726,7 @@ namespace MonoMac.AppKit {
 		[Export ("setObject:forProperty:error:")]
 		bool SetObjectforProperty (NSObject theObject, string property, out NSError outError);
 
+		[Static]
 		[Export ("isAnyApplicationSpeaking")]
 		bool IsAnyApplicationSpeaking { get; }
 
@@ -12375,6 +12396,7 @@ namespace MonoMac.AppKit {
 
 	[BaseType (typeof (NSObject))]
 	public interface NSTextInputContext {
+		[Static]
 		[Export ("currentInputContext")]
 		NSTextInputContext CurrentInputContext { get; }
 
@@ -12778,6 +12800,7 @@ namespace MonoMac.AppKit {
 		[Export ("readSelectionFromPasteboard:")]
 		bool ReadSelectionFromPasteboard (NSPasteboard pboard);
 
+		[Static]
 		[Export ("registerForServices")]
 		void RegisterForServices ();
 
@@ -13131,14 +13154,14 @@ namespace MonoMac.AppKit {
 		[Export ("initWithFrame:")]
 		IntPtr Constructor (RectangleF frameRect);
 
-		[Export ("setTokenStyle:style")]
-		void SetTokenStylestyle (NSTokenStyle style );
+		[Export ("setTokenStyle:")]
+		void SetTokenStylestyle (NSTokenStyle style);
 
 		[Export ("tokenStyle")]
 		NSTokenStyle TokenStyle { get; }
 
-		[Export ("setCompletionDelay:delay")]
-		void SetCompletionDelaydelay (double delay );
+		[Export ("setCompletionDelay:")]
+		void SetCompletionDelaydelay (double delay);
 
 		[Export ("completionDelay")]
 		double CompletionDelay { get; }
@@ -13824,10 +13847,10 @@ namespace MonoMac.AppKit {
 		bool IsVisible  { get; set; }
 	
 		[Export ("isKeyWindow")]
-		bool IsKeyWindow  { get; set; }
+		bool IsKeyWindow { get; }
 	
 		[Export ("isMainWindow")]
-		bool IsMainWindow  { get; set; }
+		bool IsMainWindow { get; }
 		
 		[Export ("canBecomeKeyWindow")]
 		bool CanBecomeKeyWindow { get; }
@@ -14250,7 +14273,7 @@ namespace MonoMac.AppKit {
 		[Field ("NSWindowDidEndSheetNotification")]
 		NSString DidEndSheetNotification { get; }
 
-		[Field ("NSWindowDidChangeScreenProfileNotification ")]
+		[Field ("NSWindowDidChangeScreenProfileNotification")]
 		NSString DidChangeScreenProfileNotification { get; }
 
 		[Field ("NSWindowWillStartLiveResizeNotification")]
@@ -14347,7 +14370,7 @@ namespace MonoMac.AppKit {
 		void ShowWindow (NSObject sender);
 	
 		[Export ("isWindowLoaded")]
-		bool IsWindowLoaded  { get; set; }
+		bool IsWindowLoaded  { get; }
 	
 		[Export ("windowWillLoad")]
 		void WindowWillLoad ();
@@ -14770,7 +14793,7 @@ namespace MonoMac.AppKit {
 		NSObject[] TemplateViews { get; }
 
 		[Export ("setPredicate:")]
-		NSPredicate Predicate { set; }
+		void SetPredicate (NSPredicate predicate);
 
 		[Export ("predicateWithSubpredicates:")]
 		NSPredicate PredicateWithSubpredicates (NSPredicate[] subpredicates);

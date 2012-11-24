@@ -149,6 +149,7 @@ namespace MonoMac.QTKit
 	}
 
 	[BaseType (typeof (NSObject))]
+	[DisableDefaultCtor] // An uncaught exception was raised: Cannot instantiate a QTCaptureDevice directly.
 	interface QTCaptureDevice {
 		[Static]
 		[Export ("inputDevices")]
@@ -262,6 +263,7 @@ namespace MonoMac.QTKit
 	}
 
 	[BaseType (typeof (QTCaptureInput))]
+	[DisableDefaultCtor] // crash without warning
 	interface QTCaptureDeviceInput {
 		[Export ("deviceInputWithDevice:")]
 		QTCaptureDeviceInput FromDevice (QTCaptureDevice device);
@@ -274,6 +276,7 @@ namespace MonoMac.QTKit
 	}
 
 	[BaseType (typeof (QTCaptureOutput), Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (QTCaptureFileOutputDelegate)})]
+	[DisableDefaultCtor] // crash without warning
 	interface QTCaptureFileOutput {
 		[Export ("outputFileURL")]
 		NSUrl OutputFileUrl { get; }
@@ -358,6 +361,7 @@ namespace MonoMac.QTKit
 	}
 
 	[BaseType (typeof (NSObject))]
+	[DisableDefaultCtor] // An uncaught exception was raised: Cannot instantiate QTCaptureInput because it is an abstract superclass.
 	interface QTCaptureInput {
 		[Export ("connections")]
 		QTCaptureConnection [] Connections { get; }
@@ -382,6 +386,7 @@ namespace MonoMac.QTKit
 	}
 
 	[BaseType (typeof (NSObject))]
+	[DisableDefaultCtor] // An uncaught exception was raised: Cannot instantiate QTCaptureOutput because it is an abstract superclass.
 	interface QTCaptureOutput {
 		[Export ("connections")]
 		QTCaptureConnection [] Connections { get; }
@@ -460,6 +465,7 @@ namespace MonoMac.QTKit
 
 	[BaseType (typeof (NSObject))]
 	interface QTCompressionOptions {
+		[Static]
 		[Export ("compressionOptionsIdentifiersForMediaType:")]
 		string [] GetCompressionOptionsIdentifiers (string forMediaType);
 
@@ -904,8 +910,9 @@ namespace MonoMac.QTKit
 		[Export ("initWithAttributes:error:")]
 		IntPtr Constructor (NSDictionary attributes, out NSError error);
 
-		[Static, Export ("movieWithTimeRange:error:")]
-		QTMovie FromTimeRange (QTTimeRange range, out NSError error);
+		// non-static, it's a ctor that does not start with `init`
+		[Export ("movieWithTimeRange:error:")]
+		IntPtr Constructor (QTTimeRange range, out NSError error);
 
 //		[Export ("initToWritableFile:error:")]
 //		IntPtr Constructor (string filename, out NSError error);

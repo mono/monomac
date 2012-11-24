@@ -30,7 +30,9 @@ using MonoMac.CoreGraphics;
 using MonoMac.ObjCRuntime;
 
 namespace MonoMac.WebKit {
+
 	[BaseType (typeof (WebScriptObject), Name="DOMObject")]
+	[DisableDefaultCtor] // An uncaught exception was raised: +[DOMObject init]: should never be used
 	interface DomObject {
 	}
 
@@ -38,12 +40,14 @@ namespace MonoMac.WebKit {
 	// DomObject subclasses
 
 	[BaseType (typeof (DomObject), Name="DOMAbstractView")]
+	[DisableDefaultCtor] // An uncaught exception was raised: +[DOMAbstractView init]: should never be used
 	interface DomAbstractView {
 		[Export ("document")]
 		DomDocument Document { get; }
 	}
 
 	[BaseType (typeof (DomObject), Name="DOMCSSRule")]
+	[DisableDefaultCtor] // An uncaught exception was raised: +[DOMCSSRule init]: should never be used
 	interface DomCssRule {
 		[Export ("type")]
 		DomCssRuleType Type { get; }
@@ -59,6 +63,7 @@ namespace MonoMac.WebKit {
 	}
 
 	[BaseType (typeof (DomObject), Name="DOMCSSRuleList")]
+	[DisableDefaultCtor] // An uncaught exception was raised: +[DOMCSSRuleList init]: should never be used
 	interface DomCssRuleList {
 		[Export ("length")]
 		int Count { get; }
@@ -68,6 +73,7 @@ namespace MonoMac.WebKit {
 	}
 
 	[BaseType (typeof (DomObject), Name="DOMCSSStyleDeclaration")]
+	[DisableDefaultCtor] // An uncaught exception was raised: +[DOMCSSStyleDeclaration init]: should never be used
 	interface DomCssStyleDeclaration {
 		[Export ("cssText")]
 		string CssText { get; }
@@ -104,6 +110,7 @@ namespace MonoMac.WebKit {
 	}
 
 	[BaseType (typeof (DomStyleSheet), Name="DOMCSSStyleSheet")]
+	[DisableDefaultCtor] // An uncaught exception was raised: +[DOMCSSStyleSheet init]: should never be used
 	interface DomCssStyleSheet {
 		[Export ("ownerRule")]
 		DomCssRule OwnerRule { get; }
@@ -128,6 +135,7 @@ namespace MonoMac.WebKit {
 	}
 
 	[BaseType (typeof (DomObject), Name="DOMCSSValue")]
+	[DisableDefaultCtor] // An uncaught exception was raised: +[DOMCSSValue init]: should never be used
 	interface DomCssValue {
 		[Export ("cssText")]
 		string CssText { get; }
@@ -137,6 +145,7 @@ namespace MonoMac.WebKit {
 	}
 
 	[BaseType (typeof (DomObject), Name="DOMHTMLCollection")]
+	[DisableDefaultCtor] // An uncaught exception was raised: +[DOMHTMLCollection init]: should never be used
 	interface DomHtmlCollection {
 		[Export ("length")]
 		int Count { get; }
@@ -152,6 +161,7 @@ namespace MonoMac.WebKit {
 	}
 
 	[BaseType (typeof (DomObject), Name="DOMImplementation")]
+	[DisableDefaultCtor] // An uncaught exception was raised: +[DOMImplementation init]: should never be used
 	interface DomImplementation {
 		[Export ("hasFeature:version:")]
 		bool HasFeature (string feature, string version);
@@ -170,6 +180,7 @@ namespace MonoMac.WebKit {
 	}
 
 	[BaseType (typeof (DomObject), Name="DOMMediaList")]
+	[DisableDefaultCtor] // An uncaught exception was raised: +[DOMMediaList init]: should never be used
 	interface DomMediaList {
 		[Export ("mediaText")]
 		string MediaText { get; set; }
@@ -188,6 +199,7 @@ namespace MonoMac.WebKit {
 	}
 
 	[BaseType (typeof (DomObject), Name="DOMNamedNodeMap")]
+	[DisableDefaultCtor] // An uncaught exception was raised: +[DOMNamedNodeMap init]: should never be used
 	interface DomNamedNodeMap {
 		[Export ("length")]
 		int Count { get; }
@@ -215,6 +227,7 @@ namespace MonoMac.WebKit {
 	}
 
 	[BaseType (typeof (DomObject), Name="DOMNode")]
+	[DisableDefaultCtor] // An uncaught exception was raised: +[DOMNode init]: should never be used
 	interface DomNode {
 		[Export ("nodeName")]
 		string Name { get; }
@@ -329,6 +342,7 @@ namespace MonoMac.WebKit {
 	}
 
 	[BaseType (typeof (DomObject), Name="DOMNodeList")]
+	[DisableDefaultCtor] // An uncaught exception was raised: +[DOMNodeList init]: should never be used
 	interface DomNodeList {
 		[Export ("length")]
 		int Count { get; }
@@ -338,6 +352,7 @@ namespace MonoMac.WebKit {
 	}
 
 	[BaseType (typeof (DomObject), Name="DOMRange")]
+	[DisableDefaultCtor] // An uncaught exception was raised: +[DOMRange init]: should never be used
 	interface DomRange {
 		[Export ("startContainer")]
 		DomNode StartContainer { get;  }
@@ -431,6 +446,7 @@ namespace MonoMac.WebKit {
 	}
 
 	[BaseType (typeof (DomObject), Name="DOMStyleSheet")]
+	[DisableDefaultCtor] // An uncaught exception was raised: +[DOMStyleSheet init]: should never be used
 	interface DomStyleSheet {
 		[Export ("type")]
 		string Type { get; }
@@ -455,6 +471,7 @@ namespace MonoMac.WebKit {
 	}
 
 	[BaseType (typeof (DomObject), Name="DOMStyleSheetList")]
+	[DisableDefaultCtor] // An uncaught exception was raised: +[DOMStyleSheetList init]: should never be used
 	interface DomStyleSheetList {
 		[Export ("length")]
 		int Count { get; }
@@ -467,6 +484,7 @@ namespace MonoMac.WebKit {
 	// DomNode subclasses
 
 	[BaseType (typeof (DomNode), Name="DOMAttr")]
+	[DisableDefaultCtor] // An uncaught exception was raised: +[DOMAttr init]: should never be used
 	interface DomAttr {
 		[Export ("name")]
 		string Name { get; }
@@ -485,6 +503,7 @@ namespace MonoMac.WebKit {
 	}
 
 	[BaseType (typeof (DomNode), Name="DOMCharacterData")]
+	[DisableDefaultCtor] // An uncaught exception was raised: +[DOMCharacterData init]: should never be used
 	interface DomCharacterData {
 		[Export ("data")]
 		string Data { get; }
@@ -509,6 +528,7 @@ namespace MonoMac.WebKit {
 	}
 
 	[BaseType (typeof (DomNode), Name="DOMDocument")]
+	[DisableDefaultCtor] // An uncaught exception was raised: +[DOMDocument init]: should never be used
 	interface DomDocument {
 		[Export ("doctype")]
 		DomDocumentType DocumentType { get; }
@@ -718,10 +738,12 @@ namespace MonoMac.WebKit {
 	}
 
 	[BaseType (typeof (DomNode), Name="DOMDocumentFragment")]
+	[DisableDefaultCtor] // An uncaught exception was raised: +[DOMDocumentFragment init]: should never be used
 	interface DomDocumentFragment {
 	}
 
 	[BaseType (typeof (DomNode), Name="DOMDocumentType")]
+	[DisableDefaultCtor] // An uncaught exception was raised: +[DOMDocumentType init]: should never be used
 	interface DomDocumentType {
 		[Export ("name")]
 		string Name { get;  }
@@ -744,6 +766,7 @@ namespace MonoMac.WebKit {
 	}
 	
 	[BaseType (typeof (DomNode), Name="DOMElement")]
+	[DisableDefaultCtor] // An uncaught exception was raised: +[DOMElement init]: should never be used
 	interface DomElement {
 		[Export ("offsetLeft")]
 		int OffsetLeft { get;  }
@@ -879,10 +902,12 @@ namespace MonoMac.WebKit {
 	}
 
 	[BaseType (typeof (DomNode), Name="DOMEntityReference")]
+	[DisableDefaultCtor] // An uncaught exception was raised: +[DOMEntityReference init]: should never be used
 	interface DomEntityReference {
 	}
 
 	[BaseType (typeof (DomObject), Name="DOMEvent")]
+	[DisableDefaultCtor] // An uncaught exception was raised: +[DOMEvent init]: should never be used
 	interface DomEvent {
 		[Export ("type")]
 		string Type { get; }
@@ -933,6 +958,7 @@ namespace MonoMac.WebKit {
 	}
 	
 	[BaseType (typeof (DomNode), Name="DOMProcessingInstruction")]
+	[DisableDefaultCtor] // An uncaught exception was raised: +[DOMProcessingInstruction init]: should never be used
 	interface DomProcessingInstruction {
 		[Export ("target")]
 		string Target { get; }
@@ -948,6 +974,7 @@ namespace MonoMac.WebKit {
 	// DomCharacterData subclasses
 
 	[BaseType (typeof (DomCharacterData), Name="DOMText")]
+	[DisableDefaultCtor] // An uncaught exception was raised: +[DOMText init]: should never be used
 	interface DomText {
 		[Export("wholeText")]
 		string WholeText { get; }
@@ -960,6 +987,7 @@ namespace MonoMac.WebKit {
 	}
 
 	[BaseType (typeof (DomCharacterData), Name="DOMComment")]
+	[DisableDefaultCtor] // An uncaught exception was raised: +[DOMComment init]: should never be used
 	interface DomComment {
 	}
 
@@ -967,6 +995,7 @@ namespace MonoMac.WebKit {
 	// DomText subclasses
 
 	[BaseType (typeof (DomText), Name="DOMCDATASection")]
+	[DisableDefaultCtor] // An uncaught exception was raised: +[DOMCDATASection init]: should never be used
 	interface DomCDataSection {
 	}
 
@@ -974,6 +1003,7 @@ namespace MonoMac.WebKit {
 	// DomDocument subclasses
 
 	[BaseType (typeof (DomDocument), Name="DOMHTMLDocument")]
+	[DisableDefaultCtor] // An uncaught exception was raised: +[DOMHTMLDocument init]: should never be used
 	interface DomHtmlDocument {
 		[Export ("embeds")]
 		DomHtmlCollection Embeds { get;  }
@@ -1046,6 +1076,7 @@ namespace MonoMac.WebKit {
 	// DomElement subclasses
 
 	[BaseType (typeof (DomElement), Name="DOMHTMLElement")]
+	[DisableDefaultCtor] // An uncaught exception was raised: +[DOMHTMLElement init]: should never be used
 	interface DomHtmlElement {
 		[Export ("idName")]
 		string IdName { get; set;  }
@@ -1495,6 +1526,7 @@ namespace MonoMac.WebKit {
 	
 	[BaseType (typeof (NSObject))]
 	interface WebPreferences {
+		[Static]
 		[Export ("standardPreferences")]
 		WebPreferences StandardPreferences { get; }
 
@@ -1505,7 +1537,7 @@ namespace MonoMac.WebKit {
 		string Identifier { get; }
 
 		[Export ("arePlugInsEnabled")]
-		bool PlugInsEnabled { get; set; }
+		bool PlugInsEnabled { get; [Bind ("setPlugInsEnabled:")] set; }
 
 		//Detected properties
 		[Export ("standardFontFamily")]
@@ -1811,6 +1843,7 @@ namespace MonoMac.WebKit {
 			   "WeakPolicyDelegate" }
 		   )]
 	interface WebView {
+		[Static]
 		[Export ("canShowMIMEType:")]
 		bool CanShowMimeType (string MimeType);
 
@@ -1877,8 +1910,8 @@ namespace MonoMac.WebKit {
 		bool Search (string forString, bool forward, bool caseSensitive, bool wrap);
 
 		[Static]
-		[Export ("registerViewClass:representationClass:forMimeType:")]
-		void RegisterViewClass (Class viewClass, Class representationClass, string MimeType);
+		[Export ("registerViewClass:representationClass:forMIMEType:")]
+		void RegisterViewClass (Class viewClass, Class representationClass, string mimeType);
 
 		[Export ("estimatedProgress")]
 		double EstimatedProgress { get; }

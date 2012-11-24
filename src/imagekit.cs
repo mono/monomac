@@ -263,7 +263,7 @@ namespace MonoMac.ImageKit {
 
 		//This is an extension to CIFilter
 		[Export ("viewForUIConfiguration:excludedKeys:")]
-		IKFilterUIView GetFilterUIView ([Target] CIFilter filter, NSDictionary configurationOptions, NSArray excludedKeys);
+		IKFilterUIView GetFilterUIView ([Target] CIFilter filter, NSDictionary configurationOptions, [NullAllowed] NSArray excludedKeys);
 
 		[Export ("filter")]
 		CIFilter Filter { get; }
@@ -969,46 +969,46 @@ namespace MonoMac.ImageKit {
 		[Export ("exportSlideshowItem:toApplication:")]
 		void ExportSlideshowItemtoApplication (NSObject item, string applicationBundleIdentifier);
 
-		[Export ("IKSlideshowModeImages")]
+		[Field ("IKSlideshowModeImages")]
 		NSString ModeImages { get; }
 
-		[Export ("IKSlideshowModePDF")]
+		[Field ("IKSlideshowModePDF")]
 		NSString ModePDF { get; }
 
-		[Export ("IKSlideshowModeOther")]
+		[Field ("IKSlideshowModeOther")]
 		NSString ModeOther { get; }
 		
-		[Export ("IKSlideshowWrapAround")]
+		[Field ("IKSlideshowWrapAround")]
 		NSString WrapAround { get; }
 
-		[Export ("IKSlideshowStartPaused")]
+		[Field ("IKSlideshowStartPaused")]
 		NSString StartPaused { get; }
 
-		[Export ("IKSlideshowStartIndex")]
+		[Field ("IKSlideshowStartIndex")]
 		NSString StartIndex { get; }
 
-		[Export ("IKSlideshowScreen")]
+		[Field ("IKSlideshowScreen")]
 		NSString Screen { get; }
 
-		[Export ("IKSlideshowAudioFile")]
+		[Field ("IKSlideshowAudioFile")]
 		NSString AudioFile { get; }
 
-		[Export ("IKSlideshowPDFDisplayBox")]
+		[Field ("IKSlideshowPDFDisplayBox")]
 		NSString PDFDisplayBox { get; }
 
-		[Export ("IKSlideshowPDFDisplayMode")]
+		[Field ("IKSlideshowPDFDisplayMode")]
 		NSString PDFDisplayMode { get; }
 
-		[Export ("IKSlideshowPDFDisplaysAsBook")]
+		[Field ("IKSlideshowPDFDisplaysAsBook")]
 		NSString PDFDisplaysAsBook { get; }
 
-		[Export ("IK_iPhotoBundleIdentifier")]
+		[Field ("IK_iPhotoBundleIdentifier")]
 		NSString IPhotoBundleIdentifier { get; }
 
-		[Export ("IK_ApertureBundleIdentifier")]
+		[Field ("IK_ApertureBundleIdentifier")]
 		NSString ApertureBundleIdentifier { get; }
 
-		[Export ("IK_MailBundleIdentifier")]
+		[Field ("IK_MailBundleIdentifier")]
 		NSString MailBundleIdentifier { get; }
 	}
 

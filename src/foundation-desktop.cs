@@ -117,6 +117,7 @@ namespace MonoMac.Foundation {
 	}
 
 	[BaseType (typeof (NSObject))]
+	[DisableDefaultCtor] // An uncaught exception was raised: *** -range cannot be sent to an abstract object of class NSTextCheckingResult: Create a concrete instance!
 	public interface NSTextCheckingResult {
 		[Export ("resultType")]
 		NSTextCheckingType ResultType { get;  }
@@ -546,7 +547,7 @@ namespace MonoMac.Foundation {
 		
 		[Export ("otherButtonTitle")]
 		string OtherButtonTitle { get; set; }
-		
+
 		[Field ("NSUserNotificationDefaultSoundName")]
 		NSString NSUserNotificationDefaultSoundName { get; }
 	}

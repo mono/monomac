@@ -37,6 +37,7 @@ namespace MonoMac.QuartzComposer {
 
 	[BaseType (typeof (NSObject))]
 	interface QCComposition {
+		[Static]
 		[Export ("compositionWithFile:")]
 		QCComposition GetComposition (string path);
 
@@ -140,17 +141,11 @@ namespace MonoMac.QuartzComposer {
 		[Field ("QCCompositionInputPaceKey")]
 		NSString InputPaceKey { get; }
 
-		[Field ("QCCompositionInputMeshKey")]
-		NSString InputMeshKey { get; }
-
 		[Field ("QCCompositionOutputImageKey")]
 		NSString OutputImageKey { get; }
 
 		[Field ("QCCompositionOutputWebPageURLKey")]
 		NSString OutputWebPageURLKey { get; }
-
-		[Field ("QCCompositionOutputMeshKey")]
-		NSString OutputMeshKey { get; }
 
 		[Field ("QCCompositionProtocolGraphicAnimation")]
 		NSString ProtocolGraphicAnimation { get; }
@@ -169,9 +164,6 @@ namespace MonoMac.QuartzComposer {
 
 		[Field ("QCCompositionProtocolMusicVisualizer")]
 		NSString ProtocolMusicVisualizer { get; }
-
-		[Field ("QCCompositionProtocolMeshFilter")]
-		NSString ProtocolMeshFilter { get; }
 	}
 
 
