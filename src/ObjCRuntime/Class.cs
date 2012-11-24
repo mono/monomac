@@ -84,14 +84,18 @@ namespace MonoMac.ObjCRuntime {
 		}
 
 		public static bool IsCustomType (Type type) {
-			return custom_types.Contains (type);
+			lock (custom_types) {
+				return custom_types.Contains (type);
+			}
 		}
 
 		internal static Type Lookup (IntPtr klass) {
 			// FAST PATH
 			Type type;
-			if (type_map.TryGetValue (klass, out type))
-				return type;
+			lock (type_map) {
+				if (type_map.TryGetValue (klass, out type))
+					return type;
+			}
 
 			// TODO:  When we type walk we currently populate the type map
 			// from the walk point with the target, we should gather some 
@@ -102,9 +106,11 @@ namespace MonoMac.ObjCRuntime {
 			do {
 				IntPtr kls = class_getSuperclass (klass);
 
-				if (type_map.TryGetValue (kls, out type)) {
-					type_map [orig_klass] = type;
-					return type;
+				lock(type_map) {
+					if (type_map.TryGetValue (kls, out type)) {
+						type_map [orig_klass] = type;
+						return type;
+					}
 				}
 
 				if ( kls == IntPtr.Zero ) {
@@ -131,8 +137,10 @@ namespace MonoMac.ObjCRuntime {
 			handle = objc_getClass (name);
 
 			if (handle != IntPtr.Zero) {
-				if (!type_map.ContainsKey (handle)) {
-					type_map [handle] = type;
+				lock(type_map) {
+					if (!type_map.ContainsKey (handle)) {
+						type_map [handle] = type;
+					}
 				}
 				return handle;
 			}
@@ -182,7 +190,9 @@ namespace MonoMac.ObjCRuntime {
 				NativeConstructorBuilder builder = new NativeConstructorBuilder (default_ctor);
 
 				class_addMethod (handle, builder.Selector, builder.Delegate, builder.Signature);
-				method_wrappers.Add (builder.Delegate);
+				lock (method_wrappers) {
+					method_wrappers.Add (builder.Delegate);
+				}
 #if DEBUG
 				Console.WriteLine ("[CTOR] Registering {0}[0x{1:x}|{2}] on {3} -> ({4})", "init", (int) builder.Selector, builder.Signature, type, default_ctor);
 #endif
@@ -195,7 +205,9 @@ namespace MonoMac.ObjCRuntime {
 				NativeConstructorBuilder builder = new NativeConstructorBuilder (cinfo);
 
 				class_addMethod (handle, builder.Selector, builder.Delegate, builder.Signature);
-				method_wrappers.Add (builder.Delegate);
+				lock (method_wrappers) {
+					method_wrappers.Add (builder.Delegate);
+				}
 #if DEBUG
 				Console.WriteLine ("[CTOR] Registering {0}[0x{1:x}|{2}] on {3} -> ({4})", ea.Selector, (int) builder.Selector, builder.Signature, type, cinfo);
 #endif
@@ -203,8 +215,12 @@ namespace MonoMac.ObjCRuntime {
 
 			objc_registerClassPair (handle);
 
-			type_map [handle] = type;
-			custom_types.Add (type);
+			lock (type_map) {
+				type_map [handle] = type;
+			}
+			lock (custom_types) {
+				custom_types.Add (type);
+			}
 
 			return handle;
 		}
@@ -414,7 +430,9 @@ retl    $0x4                   */  0xc2, 0x04, 0x00,                            
 			NativeMethodBuilder builder = new NativeMethodBuilder (minfo, type, ea);
 
 			class_addMethod (minfo.IsStatic ? ((objc_class *) handle)->isa : handle, builder.Selector, GetFunctionPointer (minfo, builder.Delegate), builder.Signature);
-			method_wrappers.Add (builder.Delegate);
+			lock (method_wrappers) {
+				method_wrappers.Add (builder.Delegate);
+			}
 #if DEBUG
 			Console.WriteLine ("[METHOD] Registering {0}[0x{1:x}|{2}] on {3} -> ({4})", ea.Selector, (int) builder.Selector, builder.Signature, type, minfo);
 #endif
