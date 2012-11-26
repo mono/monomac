@@ -15017,10 +15017,10 @@ namespace MonoMac.AppKit {
 		[Export ("initWithTitle:image:alternateImage:handler:")]
 		IntPtr Constructor (string title, NSImage image, NSImage alternateImage, NSSharingServiceHandler handler);
 		
-		[Export ("canPerformWithItems")]
+		[Export ("canPerformWithItems:")]
 		bool CanPerformWithItems ([NullAllowed] NSObject [] items);
 
-		[Export ("performWithItems")]
+		[Export ("performWithItems:")]
 		void PerformWithItems (NSObject [] items);
 		
 		// Constants

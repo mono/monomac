@@ -556,6 +556,7 @@ namespace MonoMac.Foundation {
 	[BaseType (typeof (NSObject),
 	           Delegates=new string [] {"WeakDelegate"},
 	Events=new Type [] { typeof (NSUserNotificationCenterDelegate) })]
+	[DisableDefaultCtor] // crash with: NSUserNotificationCenter designitated initializer is _centerForBundleIdentifier
 	public interface NSUserNotificationCenter 
 	{
 		[Export ("defaultUserNotificationCenter")][Static]
