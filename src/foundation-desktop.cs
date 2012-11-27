@@ -370,6 +370,7 @@ namespace MonoMac.Foundation {
 	}
 
 	[BaseType (typeof (NSObject))]
+	[DisableDefaultCtor] // return invalid handle
 	public interface NSFileHandle 
 	{
 		[Export ("availableData")]

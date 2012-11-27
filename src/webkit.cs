@@ -1319,6 +1319,7 @@ namespace MonoMac.WebKit {
 	}
 	
 	[BaseType (typeof (NSObject))]
+	[DisableDefaultCtor] // invalid handle returned
 	interface WebFrame {
 		[Export ("initWithName:webFrameView:webView:")]
 		IntPtr Constructor (string name, WebFrameView view, WebView webView);
@@ -1799,6 +1800,7 @@ namespace MonoMac.WebKit {
 	}
 
 	[BaseType (typeof (NSObject))]
+	[DisableDefaultCtor] // crash on dispose, documented as "You can not create a WebScriptObject object directly."
 	interface WebScriptObject {
 		[Static, Export ("throwException:")]
 		bool ThrowException (string exceptionMessage);

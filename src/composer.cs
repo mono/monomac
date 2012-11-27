@@ -168,6 +168,7 @@ namespace MonoMac.QuartzComposer {
 
 
 	[BaseType (typeof (CAOpenGLLayer))]
+	[DisableDefaultCtor] // return invalid handle
 	interface QCCompositionLayer {
 		
 		[Static]
@@ -190,6 +191,7 @@ namespace MonoMac.QuartzComposer {
 	}
 
 	[BaseType (typeof (NSObject))]
+	[DisableDefaultCtor] // crash when used (e.g. description) meant to be used thru sharedCompositionRepository
 	interface QCCompositionRepository {
 		[Static]
 		[Export ("sharedCompositionRepository")]

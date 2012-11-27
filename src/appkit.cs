@@ -4085,6 +4085,7 @@ namespace MonoMac.AppKit {
 
 	public delegate void NSDraggingEnumerator (NSDraggingItem draggingItem, int idx, ref bool stop);
 	[BaseType (typeof (NSObject))]
+	[DisableDefaultCtor] // warning on dispose - created using NSView.BeginDraggingSession
 	public interface NSDraggingSession {
 		[Export ("draggingFormation")]
 		NSDraggingFormation DraggingFormation { get; set;  }
@@ -4222,6 +4223,7 @@ namespace MonoMac.AppKit {
 	}
 	
 	[BaseType (typeof (NSObject))]
+	[DisableDefaultCtor] // crash at runtime (e.g. description). Documentation state: "You don’t create NSFont objects using the alloc and init methods."
 	public interface NSFont {
 		[Static]
 		[Export ("fontWithName:size:")]
@@ -5930,6 +5932,7 @@ namespace MonoMac.AppKit {
 	}
 
 	[BaseType (typeof (NSObject))]
+	[DisableDefaultCtor] // warns with "invalid context" at runtime
 	public interface NSOpenGLContext {
 		[Export ("initWithFormat:shareContext:")]
 		IntPtr Constructor (NSOpenGLPixelFormat format, [NullAllowed] NSOpenGLContext shareContext);
@@ -9889,6 +9892,7 @@ namespace MonoMac.AppKit {
 	}
 
 	[BaseType (typeof (NSObject), Delegates=new string [] { "WeakDelegate" }, Events=new Type [] { typeof (NSSoundDelegate) })]
+	[DisableDefaultCtor] // no valid handle is returned
 	public interface NSSound {
 		[Static]
 		[Export ("soundNamed:")]
@@ -10706,7 +10710,10 @@ namespace MonoMac.AppKit {
 		
 		[Export ("registeredDraggedTypes")]
 		string[] RegisteredDragTypes();
-        
+
+		[Export ("beginDraggingSessionWithItems:event:source:")]
+		NSDraggingSession BeginDraggingSession (NSDraggingItem [] itmes, NSEvent evnt, NSDraggingSource source);
+
 		[Export ("dragImage:at:offset:event:pasteboard:source:slideBack:")]
 		void DragImage (NSImage anImage, PointF viewLocation, SizeF initialOffset, NSEvent theEvent, NSPasteboard pboard, NSObject sourceObj, bool slideFlag);
 

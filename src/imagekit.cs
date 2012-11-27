@@ -618,6 +618,7 @@ namespace MonoMac.ImageKit {
 	}
 
 	[BaseType (typeof (NSPanel))]
+	[DisableDefaultCtor] // crash when disposed, sharedImageEditPanel must be used
 	public interface IKImageEditPanel {
 		[Static]
 		[Export ("sharedImageEditPanel")]

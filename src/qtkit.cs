@@ -1360,6 +1360,7 @@ namespace MonoMac.QTKit
 
 	
 	[BaseType (typeof (NSObject))]
+	[DisableDefaultCtor] // invalid handle returned
 	interface QTSampleBuffer {
 		[Export ("bytesForAllSamples")]
 		IntPtr BytesForAllSamples { get; }
