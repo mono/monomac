@@ -940,7 +940,7 @@ namespace MonoMac.QTKit
 		bool Muted { get; set; }
 		
 		[Export ("movieAttributes")]
-		NSDictionary MovieAttributes { get; }
+		NSDictionary MovieAttributes { get; set; }
 
 		[Export ("attributeForKey:")]
 		NSObject GetAttribute (string attributeKey);
