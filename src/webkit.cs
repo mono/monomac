@@ -1481,6 +1481,10 @@ namespace MonoMac.WebKit {
 		//Detected properties
 		[Export ("alternateTitle")]
 		string AlternateTitle { get; set; }
+
+		[Field ("WebHistoryItemChangedNotification")]
+		[Notification]
+		NSString ChangedNotification { get; }
 	}
 
 	[BaseType (typeof (NSObject))]
