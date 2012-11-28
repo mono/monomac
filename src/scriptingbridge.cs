@@ -46,6 +46,7 @@ namespace MonoMac.ScriptingBridge {
 		[Export ("get")]
 		NSObject Get { get; }
 
+		// part of SBObject.h include file, not in the official documentation
 		[Export ("lastError")]
 		NSError LastError { get; }
 
