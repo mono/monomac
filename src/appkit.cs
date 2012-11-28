@@ -1376,7 +1376,7 @@ namespace MonoMac.AppKit {
 		void SetColumnResizingType (NSBrowserColumnResizingType columnResizingType);
 
 		[Export ("columnResizingType")]
-		NSBrowserColumnResizingType ColumnResizingType { get; }
+		NSBrowserColumnResizingType ColumnResizingType { get; set; }
 
 		[Export ("prefersAllColumnUserResizing")]
 		bool PrefersAllColumnUserResizing { get; set; }
@@ -2104,7 +2104,7 @@ namespace MonoMac.AppKit {
 		NSFocusRingType DefaultFocusRingType { get; }
 	
 		[Export ("wantsNotificationForMarkedText")]
-		bool WantsNotificationForMarkedText { get; }
+		bool WantsNotificationForMarkedText { get; [NotImplemented] set; }
 	
 		// NSCell(NSCellAttributedStringMethods)
 		[Export ("attributedStringValue")]
@@ -2118,7 +2118,7 @@ namespace MonoMac.AppKit {
        
 		// NSCell(NSCellMixedState) {
 		[Export ("allowsMixedState")]
-		bool AllowsMixedState { get; }
+		bool AllowsMixedState { get; set; }
 	
 		[Export ("nextState")]
 		int NextState { get; }
@@ -3389,7 +3389,7 @@ namespace MonoMac.AppKit {
 		NSColor BackgroundColor { get; set; }
 
 		[Export ("cell")]
-		NSDatePickerCell Cell { get; }
+		NSDatePickerCell Cell { get; set; }
 
 		[Export ("textColor")]
 		NSColor TextColor { get; set; }
@@ -3696,7 +3696,7 @@ namespace MonoMac.AppKit {
 		void ShouldCloseWindowController (NSWindowController windowController, NSObject delegateObject, Selector shouldCloseSelector, IntPtr contextInfo);
 
 		[Export ("displayName")]
-		string DisplayName { get; }
+		string DisplayName { get; [Lion][NullAllowed] set; }
 
 		[Export ("windowForSheet")]
 		NSWindow WindowForSheet { get; }
@@ -7520,95 +7520,72 @@ namespace MonoMac.AppKit {
 	public interface NSParagraphStyle {
 		[Static]
 		[Export ("defaultParagraphStyle")]
-		NSParagraphStyle DefaultParagraphStyle { get; }
+		NSParagraphStyle DefaultParagraphStyle { get; [NotImplemented] set; }
 
 		[Static]
 		[Export ("defaultWritingDirectionForLanguage:")]
 		NSWritingDirection DefaultWritingDirection (string languageName);
 
 		[Export ("lineSpacing")]
-		float LineSpacing { get; }
+		float LineSpacing { get; [NotImplemented] set; }
 
 		[Export ("paragraphSpacing")]
-		float ParagraphSpacing { get; }
+		float ParagraphSpacing { get; [NotImplemented] set; }
 
 		[Export ("alignment")]
-		NSTextAlignment Alignment ();
+		NSTextAlignment Alignment { get; [NotImplemented] set; }
 
 		[Export ("headIndent")]
-		float HeadIndent { get; }
+		float HeadIndent { get; [NotImplemented] set; }
 
 		[Export ("tailIndent")]
-		float TailIndent { get; }
+		float TailIndent { get; [NotImplemented] set; }
 
 		[Export ("firstLineHeadIndent")]
-		float FirstLineHeadIndent { get; }
+		float FirstLineHeadIndent { get; [NotImplemented] set; }
 
 		[Export ("tabStops")]
-		NSTextTab [] TabStops ();
+		NSTextTab [] TabStops { get; [NotImplemented] set; }
 
 		[Export ("minimumLineHeight")]
-		float MinimumLineHeight { get; }
+		float MinimumLineHeight { get; [NotImplemented] set; }
 
 		[Export ("maximumLineHeight")]
-		float MaximumLineHeight { get; }
+		float MaximumLineHeight { get; [NotImplemented] set; }
 
 		[Export ("lineBreakMode")]
-		NSLineBreakMode LineBreakMode { get; }
+		NSLineBreakMode LineBreakMode { get; [NotImplemented] set; }
 
 		[Export ("baseWritingDirection")]
-		NSWritingDirection BaseWritingDirection { get; }
+		NSWritingDirection BaseWritingDirection { get; [NotImplemented] set; }
 
 		[Export ("lineHeightMultiple")]
-		float LineHeightMultiple { get; }
+		float LineHeightMultiple { get; [NotImplemented] set; }
 
 		[Export ("paragraphSpacingBefore")]
-		float ParagraphSpacingBefore { get; }
+		float ParagraphSpacingBefore { get; [NotImplemented] set; }
 
 		[Export ("defaultTabInterval")]
-		float DefaultTabInterval { get; }
+		float DefaultTabInterval { get; [NotImplemented] set; }
 
 		[Export ("textBlocks")]
-		NSTextTableBlock [] TextBlocks { get; }
+		NSTextTableBlock [] TextBlocks { get; [NotImplemented] set; }
 
 		[Export ("textLists")]
-		NSTextList[] TextLists { get; }
+		NSTextList[] TextLists { get; [NotImplemented] set; }
 
 		[Export ("hyphenationFactor")]
-		float HyphenationFactor { get; }
+		float HyphenationFactor { get; [NotImplemented] set; }
 
 		[Export ("tighteningFactorForTruncation")]
-		float TighteningFactorForTruncation { get; }
+		float TighteningFactorForTruncation { get; [NotImplemented] set; }
 
 		[Export ("headerLevel")]
-		int HeaderLevel { get; }
+		int HeaderLevel { get; [NotImplemented] set; }
 	}
 
 	[BaseType (typeof (NSParagraphStyle))]
 	public interface NSMutableParagraphStyle {
-		[Export ("setParagraphSpacing:")]
-		void SetParagraphSpacing (float aFloat);
-
-		[Export ("setAlignment:")]
-		void SetAlignment (NSTextAlignment alignment);
-
-		[Export ("setFirstLineHeadIndent:")]
-		void SetFirstLineHeadIndent (float aFloat);
-
-		[Export ("setHeadIndent:")]
-		void SetHeadIndent (float aFloat);
-
-		[Export ("setTailIndent:")]
-		void SetTailIndent (float aFloat);
-
-		[Export ("setLineBreakMode:")]
-		void SetLineBreakMode (NSLineBreakMode mode);
-
-		[Export ("setMinimumLineHeight:")]
-		void SetMinimumLineHeight (float aFloat);
-
-		[Export ("setMaximumLineHeight:")]
-		void SetMaximumLineHeight (float aFloat);
 
 		[Export ("addTabStop:")]
 		void AddTabStop (NSTextTab anObject);
@@ -7616,23 +7593,16 @@ namespace MonoMac.AppKit {
 		[Export ("removeTabStop:")]
 		void RemoveTabStop (NSTextTab anObject);
 
-		[Export ("setTabStops:")]
-		void SetTabStops (NSTextTab [] array);
+		[Export ("tabStops")]
+		[Override]
+		NSTextTab [] TabStops { get; set; }
 
 		[Export ("setParagraphStyle:")]
 		void SetParagraphStyle (NSParagraphStyle obj);
 
-		[Export ("setBaseWritingDirection:")]
-		void SetBaseWritingDirection (NSWritingDirection writingDirection);
-
-		[Export ("setLineHeightMultiple:")]
-		void SetLineHeightMultiple (float aFloat);
-
-		[Export ("setParagraphSpacingBefore:")]
-		void SetParagraphSpacingBefore (float aFloat);
-
-		[Export ("setDefaultTabInterval:")]
-		void SetDefaultTabInterval (float aFloat);
+		[Export ("defaultTabInterval")]
+		[Override]
+		float DefaultTabInterval { get; set; }
 
 		[Export ("setTextBlocks:")]
 		void SetTextBlocks (NSTextBlock [] array);
@@ -7640,15 +7610,65 @@ namespace MonoMac.AppKit {
 		[Export ("setTextLists:")]
 		void SetTextLists (NSTextList [] array);
 
-		[Export ("setHyphenationFactor:")]
-		void SetHyphenationFactor (float aFactor);
+		[Export ("tighteningFactorForTruncation")]
+		[Override]
+		float TighteningFactorForTruncation { get; set; }
 
-		[Export ("setTighteningFactorForTruncation:")]
-		void SetTighteningFactorForTruncation (float aFactor);
+		[Export ("headerLevel")]
+		[Override]
+		int HeaderLevel { get; set; }
 
-		[Export ("setHeaderLevel:")]
-		void SetHeaderLevel (int level);
+		[Export ("lineSpacing")]
+		[Override]
+		float LineSpacing { get; set; }
 
+		[Export ("alignment")]
+		[Override]
+		NSTextAlignment Alignment { get; set; }
+
+		[Export ("headIndent")]
+		[Override]
+		float HeadIndent { get; set; }
+
+		[Export ("tailIndent")]
+		[Override]
+		float TailIndent { get; set; }
+
+		[Export ("firstLineHeadIndent")]
+		[Override]
+		float FirstLineHeadIndent { get; set; }
+
+		[Export ("minimumLineHeight")]
+		[Override]
+		float MinimumLineHeight { get; set; }
+
+		[Export ("maximumLineHeight")]
+		[Override]
+		float MaximumLineHeight { get; set; }
+
+		[Export ("lineBreakMode")]
+		[Override]
+		NSLineBreakMode LineBreakMode { get; set; }
+
+		[Export ("baseWritingDirection")]
+		[Override]
+		NSWritingDirection BaseWritingDirection { get; set; }
+
+		[Export ("lineHeightMultiple")]
+		[Override]
+		float LineHeightMultiple { get; set; }
+
+		[Export ("paragraphSpacing")]
+		[Override]
+		float ParagraphSpacing { get; set; }
+
+		[Export ("paragraphSpacingBefore")]
+		[Override]
+		float ParagraphSpacingBefore { get; set; }
+
+		[Export ("hyphenationFactor")]
+		[Override]
+		float HyphenationFactor { get; set; }
 	}
 
 	[BaseType (typeof (NSObject))]
@@ -10154,7 +10174,7 @@ namespace MonoMac.AppKit {
 	//
 	public interface NSUserInterfaceItemIdentification {
 		[Lion, Export ("identifier")]
-		string Identifier { get; }
+		string Identifier { get; set; }
 	}
 
 	[Lion]
@@ -12369,9 +12389,6 @@ namespace MonoMac.AppKit {
 		[Export ("setUpFieldEditorAttributes:")]
 		NSText SetUpFieldEditorAttributes (NSText textObj);
 	
-		[Export ("setWantsNotificationForMarkedText:")]
-		void SetWantsNotificationForMarkedText (bool flag);
-	
 		//Detected properties
 		[Export ("backgroundColor")]
 		NSColor BackgroundColor { get; set; }
@@ -12393,6 +12410,10 @@ namespace MonoMac.AppKit {
 	
 		[Export ("allowedInputSourceLocales")]
 		string [] AllowedInputSourceLocales { get; set; }
+
+		[Export ("wantsNotificationForMarkedText")]
+		[Override]
+		bool WantsNotificationForMarkedText { get; set; }
 	}
 
 	[BaseType (typeof (NSTextFieldCell))]
@@ -13161,17 +13182,11 @@ namespace MonoMac.AppKit {
 		[Export ("initWithFrame:")]
 		IntPtr Constructor (RectangleF frameRect);
 
-		[Export ("setTokenStyle:")]
-		void SetTokenStylestyle (NSTokenStyle style);
-
 		[Export ("tokenStyle")]
-		NSTokenStyle TokenStyle { get; }
-
-		[Export ("setCompletionDelay:")]
-		void SetCompletionDelaydelay (double delay);
+		NSTokenStyle TokenStyle { get; set; }
 
 		[Export ("completionDelay")]
-		double CompletionDelay { get; }
+		double CompletionDelay { get; set; }
 
 		[Static]
 		[Export ("defaultCompletionDelay")]
@@ -13559,6 +13574,7 @@ namespace MonoMac.AppKit {
 		[Export ("selectedObjects")]
 		NSObject [] SelectedObjects { get; }
 
+		// note: signature differs as it returns a bool
 		[Export ("setSelectionIndexPaths:")]
 		bool SetSelectionIndexPaths (NSArray indexPaths);
 
@@ -13776,13 +13792,13 @@ namespace MonoMac.AppKit {
 		void Deminiaturize (NSObject sender);
 	
 		[Export ("isZoomed")]
-		bool IsZoomed { get; }
+		bool IsZoomed { get; set; }
 	
 		[Export ("zoom:")]
 		void Zoom (NSObject sender);
 	
 		[Export ("isMiniaturized")]
-		bool IsMiniaturized { get; }
+		bool IsMiniaturized { get; set; }
 	
 		[Export ("tryToPerform:with:")]
 		bool TryToPerform (Selector anAction, NSObject anObject);
@@ -14126,7 +14142,7 @@ namespace MonoMac.AppKit {
 		int WindowNumberAtPoint (PointF point, int windowNumber);
 	
 		[Export ("initialFirstResponder")]
-		NSView InitialFirstResponder { get; }
+		NSView InitialFirstResponder { get; set; }
 	
 		[Export ("selectNextKeyView:")]
 		void SelectNextKeyView (NSObject sender);
