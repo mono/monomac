@@ -260,10 +260,10 @@ namespace MonoMac.AppKit {
 		int RunModal ();
 	
 		[Export ("beginSheetModalForWindow:modalDelegate:didEndSelector:contextInfo:")]
-		void BeginSheet (NSWindow  window, [NullAllowed] NSObject modalDelegate, [NullAllowed] Selector didEndSelector, IntPtr contextInfo);
+		void BeginSheet ([NullAllowed] NSWindow  window, [NullAllowed] NSObject modalDelegate, [NullAllowed] Selector didEndSelector, IntPtr contextInfo);
 	
 		[Export ("window")]
-		NSObject Window  { get; }
+		NSPanel Window  { get; }
 	
 	}
 	

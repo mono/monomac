@@ -61,19 +61,6 @@ namespace MonoMac.AppKit {
 			}
 		}
 	}
-	
-	public partial class NSAlert {
-		public void BeginSheet (NSWindow window)
-		{
-			BeginSheet (window, null, null, IntPtr.Zero);
-		}
-		
-		public void BeginSheet (NSWindow window, NSAction onEnded)
-		{
-			var obj = OneShotTracker.Create (onEnded);
-			BeginSheet (window, obj, NSActionDispatcher.Selector, IntPtr.Zero);
-		}
-	}
 
 	public partial class NSApplication {
 		public void BeginSheet (NSWindow sheet, NSWindow docWindow)

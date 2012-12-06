@@ -47,6 +47,7 @@ MONOMAC_SOURCES = $(EXTRA_MONOMAC_SOURCES) \
 	./AppKit/BeginSheet.cs				\
 	./AppKit/DoubleWrapper.cs			\
 	./AppKit/Functions.cs				\
+	./AppKit/NSAlert.cs				\
 	./AppKit/NSActionCell.cs			\
 	./AppKit/NSApplication.cs			\
 	./AppKit/NSApplicationDelegate.cs		\
