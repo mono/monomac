@@ -84,6 +84,7 @@ namespace MonoMac.OpenGL
 			notificationProxy = NSNotificationCenter.DefaultCenter.AddObserver (NSView.NSViewGlobalFrameDidChangeNotification, HandleReshape);
 		}
 
+		[Preserve (Conditional=true)]
 		public override void DrawRect (RectangleF dirtyRect)
 		{
 			if (animating) {
@@ -97,6 +98,7 @@ namespace MonoMac.OpenGL
 			}
 		}
 
+		[Preserve (Conditional=true)]
 		public override void LockFocus ()
 		{
 			base.LockFocus ();
