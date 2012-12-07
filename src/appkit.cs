@@ -3725,7 +3725,7 @@ namespace MonoMac.AppKit {
 		[Export ("fileType")]
 		string FileType { get; set; }
 
-		[Export ("fileURL")]
+		[Export ("fileURL"), NullAllowed]
 		NSUrl FileUrl { get; set; }
 
 		[Export ("fileModificationDate")]
