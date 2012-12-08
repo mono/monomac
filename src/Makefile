@@ -29,6 +29,12 @@ CORE_SOURCES =	$(EXTRA_CORE_SOURCES)			\
 	./ObjCRuntime/Runtime.cs			\
 	./ObjCRuntime/RequiredFrameworkAttribute.cs	\
 	./ObjCRuntime/Selector.cs			\
+	./OpenGL/OpenTK/Math/Quaternion.cs		\
+	./OpenGL/OpenTK/Math/MathHelper.cs		\
+	./OpenGL/OpenTK/Math/Matrix4.cs			\
+	./OpenGL/OpenTK/Math/Vector2.cs			\
+	./OpenGL/OpenTK/Math/Vector3.cs			\
+	./OpenGL/OpenTK/Math/Vector4.cs			\
 	./PdfKit/Enums.cs				\
 	./QTKit/Defs.cs					\
 	./QTKit/Enums.cs				\
@@ -105,19 +111,13 @@ OPENTK_SOURCES = \
 	./OpenGL/OpenTK/Audio/OpenAL/Alc/AlcEnums.cs	\
 	./OpenGL/OpenTK/Audio/OpenAL/Alc/Alc.cs	\
 	./OpenGL/OpenTK/Math/Half.cs			\
-	./OpenGL/OpenTK/Math/MathHelper.cs		\
 	./OpenGL/OpenTK/Math/Matrix3d.cs		\
-	./OpenGL/OpenTK/Math/Matrix4.cs			\
 	./OpenGL/OpenTK/Math/Matrix4d.cs		\
-	./OpenGL/OpenTK/Math/Quaternion.cs		\
 	./OpenGL/OpenTK/Math/Quaterniond.cs		\
-	./OpenGL/OpenTK/Math/Vector2.cs			\
 	./OpenGL/OpenTK/Math/Vector2d.cs		\
 	./OpenGL/OpenTK/Math/Vector2h.cs		\
-	./OpenGL/OpenTK/Math/Vector3.cs			\
 	./OpenGL/OpenTK/Math/Vector3d.cs		\
 	./OpenGL/OpenTK/Math/Vector3h.cs		\
-	./OpenGL/OpenTK/Math/Vector4.cs			\
 	./OpenGL/OpenTK/Math/Vector4d.cs		\
 	./OpenGL/OpenTK/Math/Vector4h.cs
 
