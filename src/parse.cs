@@ -420,6 +420,10 @@ class TrivialParser {
 			return "double";
 		case "dispatch_queue_t":
 			return "DispatchQueue";
+		case "SCNVector4":
+			return "Vector4";
+		case "SCNVector3":
+			return "Vector3";
 		}
 		return type;
 	}
