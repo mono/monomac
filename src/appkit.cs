@@ -6084,7 +6084,8 @@ namespace MonoMac.AppKit {
 		int RunModal (string [] types);
 	}
 
-	[BaseType(typeof(NSOpenPanel))]
+	[BaseType (typeof (NSOpenPanel))]
+	[DisableDefaultCtor] // should not be created by (only returned to) user code
 	public interface NSRemoteOpenPanel {}
 
 	[BaseType (typeof (NSObject))]
@@ -9064,7 +9065,8 @@ namespace MonoMac.AppKit {
 		int RunModal ([NullAllowed] string directory, [NullAllowed]  string filename);
 	}
 
-	[BaseType(typeof(NSSavePanel))]
+	[BaseType (typeof (NSSavePanel))]
+	[DisableDefaultCtor] // should not be created by (only returned to) user code
 	public interface NSRemoteSavePanel {}
 
 	[BaseType (typeof (NSObject))]
