@@ -60,6 +60,7 @@ MONOMAC_SOURCES = $(EXTRA_MONOMAC_SOURCES) \
 	./AppKit/NSBitmapImageRep.cs			\
 	./AppKit/NSButton.cs				\
 	./AppKit/NSBezierPath.cs			\
+	./AppKit/NSCell.cs				\
 	./AppKit/NSColor.cs				\
 	./AppKit/NSControl.cs				\
 	./AppKit/NSEvent.cs				\
