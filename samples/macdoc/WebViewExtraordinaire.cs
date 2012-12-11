@@ -43,7 +43,7 @@ namespace macdoc
 		void Initialize ()
 		{
 			// The initializations we do here are Lion-specific
-			if (!AppDelegate.IsOnLion)
+			if (!AppDelegate.IsOnLionOrBetter)
 				return;
 			findBarController = new FindBarExtraordinaireController ();
 			IsSwipeEnabled = NSEvent.IsSwipeTrackingFromScrollEventsEnabled;
@@ -83,7 +83,7 @@ namespace macdoc
 	
 		public override bool AcceptsFirstResponder ()
 		{
-			return AppDelegate.IsOnLion;
+			return AppDelegate.IsOnLionOrBetter;
 		}
 		
 		void FireSwipeEvent (SwipeSide side)
@@ -102,7 +102,7 @@ namespace macdoc
 		
 		public override void PerformFindPanelAction (NSObject sender)
 		{
-			if (!AppDelegate.IsOnLion)
+			if (!AppDelegate.IsOnLionOrBetter)
 				return;
 
 			var ctrl = sender as NSMenuItem;

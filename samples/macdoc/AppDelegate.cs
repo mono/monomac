@@ -65,10 +65,11 @@ namespace macdoc
 			ExtractImages ();
 			controller = new MonodocDocumentController ();
 			
-			// Some UI feature we use rely on Lion, so special case it
+			// Some UI feature we use rely on Lion or better, so special case it
 			try {
 				var version = new NSDictionary ("/System/Library/CoreServices/SystemVersion.plist");
-				isOnLion = version.ObjectForKey (new NSString ("ProductVersion")).ToString ().StartsWith ("10.7");
+				var osxVersion = Version.Parse (version.ObjectForKey (new NSString ("ProductVersion")).ToString ());
+				isOnLion = osxVersion.Major == 10 && osxVersion.Minor >= 7;
 			} catch {}
 			
 			// Load documentation
@@ -171,7 +172,7 @@ namespace macdoc
 			private set;
 		}
 		
-		public static bool IsOnLion {
+		public static bool IsOnLionOrBetter {
 			get {
 				return isOnLion;
 			}
