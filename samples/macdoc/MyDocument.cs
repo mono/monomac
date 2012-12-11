@@ -123,7 +123,7 @@ namespace macdoc
 		{
 			outlineView.DataSource = new DocTreeDataSource (this);
 			outlineView.Delegate = new OutlineDelegate (this);
-			if (AppDelegate.IsOnLion)
+			if (AppDelegate.IsOnLionOrBetter)
 				outlineView.EnclosingScrollView.HorizontalScrollElasticity = outlineView.EnclosingScrollView.VerticalScrollElasticity = NSScrollElasticity.None;
 		}
 		
@@ -155,7 +155,7 @@ namespace macdoc
 		
 		void SetupBookmarks ()
 		{
-			if (!AppDelegate.IsOnLion){
+			if (!AppDelegate.IsOnLionOrBetter){
 				addBookmarkBtn.Hidden = true;
 				
 				viewBookmarksBtn.Hidden = true;
@@ -263,7 +263,7 @@ namespace macdoc
 						if (ts < loadUrlTimestamp)
 							return;
 						currentUrl = node == null ? url : node.PublicUrl;
-						if (AppDelegate.IsOnLion)
+						if (AppDelegate.IsOnLionOrBetter)
 							InvalidateRestorableState ();
 						if (addToHistory)
 							history.AppendHistory (new LinkPageVisit (this, currentUrl));
