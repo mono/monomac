@@ -73,13 +73,13 @@ namespace MonoMac.AppKit
 
 		public void BeginSheet (NSWindow window, NSAction onEnded)
 		{
-			BeginSheet (window, r => {
+			BeginSheetForResponse (window, r => {
 				if (onEnded != null)
 					onEnded ();
 			});
 		}
 
-		public void BeginSheet (NSWindow window, Action<int> onEnded)
+		public void BeginSheetForResponse (NSWindow window, Action<int> onEnded)
 		{
 			BeginSheet (window, new NSAlertDidEndDispatcher (onEnded), NSAlertDidEndDispatcher.Selector, IntPtr.Zero);
 		}
@@ -100,7 +100,7 @@ namespace MonoMac.AppKit
 
 			int returnCode = -1000;
 
-			BeginSheet (window, r => {
+			BeginSheetForResponse (window, r => {
 				returnCode = r;
 				application.StopModal ();
 			});
