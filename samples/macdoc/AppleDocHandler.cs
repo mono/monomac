@@ -24,8 +24,10 @@ namespace macdoc
 		const string MonodocLibPath = "/Library/Frameworks/Mono.framework/External/monodoc/";
 		const string MonoTouchLibPath = "/Developer/MonoTouch/usr/lib/mono/2.1/monotouch.dll";
 
-		public const string IosAtomFeed = "https://developer.apple.com/rss/com.apple.adc.documentation.AppleiPhone5_0.atom";
+		public const string Ios5AtomFeed = "https://developer.apple.com/rss/com.apple.adc.documentation.AppleiPhone5_0.atom";
+		public const string Ios6AtomFeed = "https://developer.apple.com/rss/com.apple.adc.documentation.AppleiPhone6.0.atom";
 		public const string MacLionAtomFeed = "http://developer.apple.com/rss/com.apple.adc.documentation.AppleLion.atom";
+		public const string MacMountainLionFeed = "https://developer.apple.com/rss/com.apple.adc.documentation.AppleOSX10_8.atom";
 
 		readonly XNamespace docsetNamespace = "http://developer.apple.com/rss/docset_extensions";
 		readonly XNamespace atomNamespace = "http://www.w3.org/2005/Atom";

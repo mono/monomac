@@ -18,8 +18,6 @@ namespace macdoc
 {
 	public partial class AppDelegate : NSApplicationDelegate
 	{
-		const string MergeToolPath = "/Developer/MonoTouch/usr/share/doc/MonoTouch/apple-doc-wizard";
-		
 		static public RootTree Root;
 		static public string MonodocDir;
 		static public NSUrl MonodocBaseUrl;
@@ -137,22 +135,26 @@ namespace macdoc
 				else
 					indexManager.AdvertiseFreshIndex ();
 			}).ContinueWith (t => Logger.LogError ("Error while creating indexes", t.Exception), TaskContinuationOptions.OnlyOnFaulted);
-			
-			// Check if there is a MonoTouch documentation installed and launch accordingly
-			if (Root.HelpSources.Cast<HelpSource> ().Any (hs => hs != null && hs.Name != null && hs.Name.StartsWith ("MonoTouch", StringComparison.InvariantCultureIgnoreCase))
-			    && File.Exists (MergeToolPath)) {
+
+			// Check if there is a MonoTouch/MonoMac documentation installed and launch accordingly
+			var products = Root.HelpSources.Cast<HelpSource> ().Where (hs => hs != null && hs.Name != null).ToProducts ();
+			if (products.Where (p => File.Exists (ProductUtils.GetMergeToolForProduct (p))).Any ()) {
 				Task.Factory.StartNew (() => {
-					AppleDocHandler.AppleDocInformation infos;
-					bool mergeOutdated = false;
-					bool docOutdated = AppleDocHandler.CheckAppleDocFreshness (AppleDocHandler.IosAtomFeed, out infos);
-					if (!docOutdated)
-						mergeOutdated = AppleDocHandler.CheckMergedDocumentationFreshness (infos);
-					return Tuple.Create (docOutdated || mergeOutdated, docOutdated, mergeOutdated);
+					return products.ToDictionary (p => p,
+					                              p => {
+						AppleDocHandler.AppleDocInformation infos;
+						bool mergeOutdated = false;
+						bool docOutdated = AppleDocHandler.CheckAppleDocFreshness (ProductUtils.GetDocFeedForProduct (p),
+						                                                           out infos);
+						if (!docOutdated)
+							mergeOutdated = AppleDocHandler.CheckMergedDocumentationFreshness (infos);
+						return Tuple.Create (docOutdated, mergeOutdated);
+					});
 				}).ContinueWith (t => {
-					Logger.Log ("Merged status {0}", t.Result);
-					if (!t.Result.Item1)
+					Logger.Log ("Merged status {0}", string.Join (", ", t.Result.Select (kvp => kvp.ToString ())));
+					if (!t.Result.Any (kvp => kvp.Value.Item1 || kvp.Value.Item2))
 						return;
-					BeginInvokeOnMainThread (() => LaunchDocumentationUpdate (t.Result.Item2, t.Result.Item3));
+					BeginInvokeOnMainThread (() => LaunchDocumentationUpdate (t.Result));
 				});
 			}
 		}
@@ -249,15 +251,16 @@ namespace macdoc
 				                                       IntPtr.Zero);
 		}
 		
-		void LaunchDocumentationUpdate (bool docOutdated, bool mergeOutdated)
+		void LaunchDocumentationUpdate (Dictionary<Product, Tuple<bool, bool>> toUpdate)
 		{
+			var informative = "We have detected your " + string.Join (" and ", toUpdate.Keys.Select (ProductUtils.GetFriendlyName)) +
+				" documentation can be upgraded with Apple documentation." +
+				Environment.NewLine + Environment.NewLine +
+				"Would you like to update the documentation now? You can continue to browse the documentation while the update is performed.";
 			var infoDialog = new NSAlert {
 				AlertStyle = NSAlertStyle.Informational,
 				MessageText = "Documentation update available",
-				InformativeText = "We have detected your MonoTouch documentation can be upgraded with Apple documentation."
-					+ Environment.NewLine
-					+ Environment.NewLine
-					+ "Would you like to update the documentation now? You can continue to browse the documentation while the update is performed."
+				InformativeText = informative
 			};
 			
 			infoDialog.AddButton ("Update now");
@@ -268,18 +271,32 @@ namespace macdoc
 				return;
 			
 			// Launching AppleDocWizard as root
-			var mergerTask = Task.Factory.StartNew (() => {
-				// If the script has its setuid bit on and user as root, then we launch it directly otherwise we first restore it
-				if (!RootLauncher.IsRootEnabled (MergeToolPath)) {
-					RootLauncher.LaunchExternalTool (MergeToolPath, docOutdated ? new string[] { "--self-repair" } : (string[])null);
-					// No good way to know when the process will finish, so wait a bit. Not ideal but since this is an unlikely codepath, shouldn't matter.
-					System.Threading.Thread.Sleep (1000);
-				}
-				return ProcessUtils.StartProcess (new System.Diagnostics.ProcessStartInfo (MergeToolPath, "--force-download"), null, null, CancellationToken.None);
-			}).Unwrap ();
+			var mergerTasks = toUpdate
+				.Where (kvp => kvp.Value.Item1 || kvp.Value.Item2)
+				.Select (kvp => Task.Factory.StartNew (() => {
+						var mergeToolPath = ProductUtils.GetMergeToolForProduct (kvp.Key);
+						var docOutdated = kvp.Value.Item1;
+						// If the script has its setuid bit on and user as root, then we launch it directly otherwise we first restore it
+						if (!RootLauncher.IsRootEnabled (mergeToolPath)) {
+							RootLauncher.LaunchExternalTool (mergeToolPath, new string[] { "--self-repair" });
+							// No good way to know when the process will finish, so wait a bit. Not ideal but since this is an unlikely codepath, shouldn't matter.
+							System.Threading.Thread.Sleep (1000);
+						}
+						var psi = new System.Diagnostics.ProcessStartInfo (mergeToolPath, docOutdated ? "--force-download" : null);
+						return ProcessUtils.StartProcess (psi, null, null, CancellationToken.None);
+					}).Unwrap ());
+			// No Task.WhenAll yet
+			var tcs = new TaskCompletionSource<int> ();
+			Task.Factory.ContinueWhenAll (mergerTasks.ToArray (), ts => {
+				var faulteds = ts.Where (t => t.IsFaulted);
+				if (faulteds.Any ())
+					tcs.SetException (faulteds.Select (t => t.Exception));
+				else
+					tcs.SetResult (ts.Select (t => t.Result).FirstOrDefault (r => r != 0));
+			});
 
 			var mergeController = new AppleDocMergeWindowController ();
-			mergeController.TrackProcessTask (mergerTask);
+			mergeController.TrackProcessTask (tcs.Task);
 			mergeController.ShowWindow (this);
 			mergeController.Window.Center ();
 		}
