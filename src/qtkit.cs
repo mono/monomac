@@ -140,6 +140,7 @@ namespace MonoMac.QTKit
 	}
 
 	[BaseType (typeof (NSObject), Name="QTCaptureDecompressedVideoOutput_Delegate")]
+	[Model]
 	interface QTCaptureDecompressedVideoOutputDelegate {
 		[Export ("captureOutput:didOutputVideoFrame:withSampleBuffer:fromConnection:"), EventArgs ("QTCaptureVideoFrame")]
 		void DidOutputVideoFrame (QTCaptureOutput captureOutput, CVImageBuffer videoFrame, QTSampleBuffer sampleBuffer, QTCaptureConnection connection);
