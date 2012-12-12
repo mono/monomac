@@ -146,7 +146,7 @@ ifeq ($(HAVE_ASYNC),true)
 	ASYNC_TARGETS = MonoMac.CFNetwork.dll
 	UPDATE_FILES = MonoMac.dll* MonoMac.CFNetwork.dll*
 else
-	ASYNC_TARGETS = FUCK
+	ASYNC_TARGETS = 
 	UPDATE_FILES = MonoMac.dll*
 endif
 
