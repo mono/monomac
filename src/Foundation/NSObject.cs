@@ -123,18 +123,23 @@ namespace MonoMac.Foundation {
 						Messaging.void_objc_msgSendSuper (SuperHandle, selRelease);
 					else
 						Messaging.void_objc_msgSend (handle, selRelease);
+					
+					if (super != IntPtr.Zero) {
+						Marshal.FreeHGlobal (super);
+						super = IntPtr.Zero;
+					}
 				} else {
-					if (Class.IsCustomType (this.GetType ()))
+					if (Class.IsCustomType (this.GetType ())) {
 						MonoMac_Disposer.AddSuper (SuperHandle);
-					else
+					} else {
 						MonoMac_Disposer.AddDirect (handle);
+						if (super != IntPtr.Zero) {
+							Marshal.FreeHGlobal (super);
+							super = IntPtr.Zero;
+						}
+					}
 				}
 				handle = IntPtr.Zero;
-			}
-
-			if (super != IntPtr.Zero) {
-				Marshal.FreeHGlobal (super);
-				super = IntPtr.Zero;
 			}
 		}
 
@@ -361,8 +366,10 @@ namespace MonoMac.Foundation {
 				}
 
 				if (super != null)
-					foreach (IntPtr x in super)
+					foreach (IntPtr x in super) {
 						Messaging.void_objc_msgSendSuper (x, selRelease);
+						Marshal.FreeHGlobal (x);
+					}
 				if (direct != null)
 					foreach (IntPtr x in direct)
 						Messaging.void_objc_msgSend (x, selRelease);
