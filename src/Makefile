@@ -140,10 +140,14 @@ SOURCES = \
 
 DEFINES = -define:NET_2_0
 
-HAVE_ASYNC=`if pkg-config --atleast-version=2.11 mono; then echo true; else echo false; fi`
+HAVE_ASYNC := $(shell if pkg-config --atleast-version=2.11 mono; then echo true; else echo false; fi)
 
 ifeq ($(HAVE_ASYNC),true)
 	ASYNC_TARGETS = MonoMac.CFNetwork.dll
+	UPDATE_FILES = MonoMac.dll* MonoMac.CFNetwork.dll*
+else
+	ASYNC_TARGETS = FUCK
+	UPDATE_FILES = MonoMac.dll*
 endif
 
 TARGETS = _bmac.exe $(TARGET) parse.exe bmac.exe $(ASYNC_TARGETS)
@@ -214,20 +218,20 @@ MonoMac.CFNetwork.dll: $(CFNETWORK_SOURCES)
 clean:
 	rm -f $(TARGETS) core.dll
 
-all: $(TARGET)
-
-update: MonoMac.dll
-	cp MonoMac.dll* /Applications/MonoDevelop.app/Contents/MacOS/lib/monodevelop/Addins
-	cp MonoMac.dll* /Applications/MonoDevelop.app/Contents/MacOS/lib/monodevelop/Addins/MonoDevelop.MonoMac
+all: $(TARGET) $(ASYNC_TARGETS)
+	
+update: MonoMac.dll $(ASYNC_TARGETS)
+	cp $(UPDATE_FILES) /Applications/MonoDevelop.app/Contents/MacOS/lib/monodevelop/Addins
+	cp $(UPDATE_FILES) /Applications/MonoDevelop.app/Contents/MacOS/lib/monodevelop/Addins/MonoDevelop.MonoMac
 
 #
 # Pushes this to the MonoDevelop source code repo
 #
 push-to-monodevelop: MonoMac.dll
-	cp MonoMac.dll* /cvs/md/monodevelop/extras/MonoDevelop.MonoMac/MonoDevelop.MonoMac
+	cp $(UPDATE_FILES) /cvs/md/monodevelop/extras/MonoDevelop.MonoMac/MonoDevelop.MonoMac
 
 #
 # Pushes the assembly to the system MonoDevelop, for testing
 #
 upgrade-monodevelop: MonoMac.dll
-	cp MonoMac.dll* /Applications/MonoDevelop.app/Contents/MacOS//lib/monodevelop/AddIns/MonoDevelop.MonoMac/
+	cp $(UPDATE_FILES) /Applications/MonoDevelop.app/Contents/MacOS//lib/monodevelop/AddIns/MonoDevelop.MonoMac/
