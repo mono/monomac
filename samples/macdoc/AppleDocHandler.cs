@@ -18,6 +18,7 @@ namespace macdoc
 		}
 		
 		readonly string[] searchPaths = new[] {
+			"/Applications/Xcode.app/Contents/Developer/Documentation/DocSets/",
 			"/Library/Developer/Shared/Documentation/DocSets/",
 			"/Developer/Platforms/iPhoneOS.platform/Developer/Documentation/DocSets/"
 		};
@@ -112,7 +113,7 @@ namespace macdoc
 			return needRefresh;
 		}
 		
-		public bool CheckMergedDocumentationFreshness (AppleDocInformation infos)
+		public bool CheckMergedDocumentationFreshness (AppleDocInformation infos, Product product)
 		{
 			var statusFile = Path.Combine (baseApplicationPath, "macdoc");
 			if (!Directory.Exists (statusFile)) {
@@ -121,14 +122,13 @@ namespace macdoc
 				} catch {}
 				return true;
 			}
-			statusFile = Path.Combine (statusFile, "merge.status");
+			statusFile = Path.Combine (statusFile, product == Product.MonoMac ? "merge.mac.status" : "merge.status");
 			if (!File.Exists (statusFile))
 				return true;
 			if (!string.IsNullOrEmpty (Environment.GetEnvironmentVariable ("APPLEDOCWIZARD_FORCE_MERGE")))
 				return true;
 			
 			var mergedVersion = CloneFillWithZeros (new Version (File.ReadAllText (statusFile)));
-			
 			return mergedVersion != infos.Version;
 		}
 		

@@ -147,7 +147,7 @@ namespace macdoc
 						bool docOutdated = AppleDocHandler.CheckAppleDocFreshness (ProductUtils.GetDocFeedForProduct (p),
 						                                                           out infos);
 						if (!docOutdated)
-							mergeOutdated = AppleDocHandler.CheckMergedDocumentationFreshness (infos);
+							mergeOutdated = AppleDocHandler.CheckMergedDocumentationFreshness (infos, p);
 						return Tuple.Create (docOutdated, mergeOutdated);
 					});
 				}).ContinueWith (t => {
@@ -276,6 +276,7 @@ namespace macdoc
 				.Select (kvp => Task.Factory.StartNew (() => {
 						var mergeToolPath = ProductUtils.GetMergeToolForProduct (kvp.Key);
 						var docOutdated = kvp.Value.Item1;
+
 						// If the script has its setuid bit on and user as root, then we launch it directly otherwise we first restore it
 						if (!RootLauncher.IsRootEnabled (mergeToolPath)) {
 							RootLauncher.LaunchExternalTool (mergeToolPath, new string[] { "--self-repair" });
