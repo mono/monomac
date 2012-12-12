@@ -41,15 +41,12 @@ namespace MonoMac.Foundation {
 		static IntPtr selAlloc = Selector.GetHandle ("alloc");
 		static IntPtr selAwakeFromNib = Selector.GetHandle ("awakeFromNib");
 		static IntPtr selDoesNotRecognizeSelector = Selector.GetHandle ("doesNotRecognizeSelector:");
-		static IntPtr selDrain = Selector.GetHandle ("drain:");
 		static IntPtr selPerformSelectorOnMainThreadWithObjectWaitUntilDone = Selector.GetHandle ("performSelectorOnMainThread:withObject:waitUntilDone:");
 		static IntPtr selPerformSelectorWithObjectAfterDelay = Selector.GetHandle ("performSelector:withObject:afterDelay:");
 		static IntPtr selRelease = Selector.GetHandle ("release");
 		static IntPtr selRespondsToSelector = Selector.GetHandle ("respondsToSelector:");
 		static IntPtr selRetain = Selector.GetHandle ("retain");
 		static IntPtr selRetainCount = Selector.GetHandle ("retainCount");
-
-		static MonoMac_Disposer disposer = new MonoMac_Disposer ();
 
 		private IntPtr handle;
 		private IntPtr super;
@@ -126,20 +123,17 @@ namespace MonoMac.Foundation {
 						Messaging.void_objc_msgSendSuper (SuperHandle, selRelease);
 					else
 						Messaging.void_objc_msgSend (handle, selRelease);
-
-					Marshal.FreeHGlobal (SuperHandle);
-				} else if (disposer != null) {
-					bool calldrain = false;
-
+				} else {
 					if (Class.IsCustomType (this.GetType ()))
-						calldrain = disposer.AddSuper (SuperHandle);
+						MonoMac_Disposer.AddSuper (SuperHandle);
 					else
-						calldrain = disposer.AddDirect (handle);
-
-					if (calldrain)
-						Messaging.void_objc_msgSend_intptr_intptr_bool (disposer.Handle, selPerformSelectorOnMainThreadWithObjectWaitUntilDone, selDrain, IntPtr.Zero, false);
+						MonoMac_Disposer.AddDirect (handle);
 				}
 				handle = IntPtr.Zero;
+			}
+
+			if (super != IntPtr.Zero) {
+				Marshal.FreeHGlobal (super);
 				super = IntPtr.Zero;
 			}
 		}
@@ -320,56 +314,58 @@ namespace MonoMac.Foundation {
 
 		[Register ("__MonoMac_Disposer")][Preserve (AllMembers=true)]
 		internal class MonoMac_Disposer : NSObject {
-			List <IntPtr> direct_handles;
-			List <IntPtr> super_handles;
-			object lock_obj;
+			static readonly List <IntPtr> direct_handles = new List<IntPtr> ();
+			static readonly List <IntPtr> super_handles = new List<IntPtr> ();
+			static readonly object lock_obj = new object ();
+			static readonly IntPtr class_ptr = Class.GetHandle ("__MonoMac_Disposer");
+			static readonly IntPtr selDrain = Selector.sel_registerName ("drain:");
 	
-
-			internal MonoMac_Disposer () {
-				super_handles = new List <IntPtr> ();
-				direct_handles = new List <IntPtr> ();
-				lock_obj = new object ();
-			}
+			private MonoMac_Disposer () { }
 	
-			internal bool AddDirect (IntPtr handle) {
-				if (this.handle == handle)
-					return false;
-
-				lock (lock_obj) {
-					direct_handles.Add (handle);
-					return direct_handles.Count == 1;
-				}
+			internal static void AddDirect (IntPtr handle) {
+				Add (direct_handles, handle);
 			}
 
-			internal bool AddSuper (IntPtr handle) {
-				if (this.handle == handle)
-					return false;
+			internal static void AddSuper (IntPtr handle) {
+				Add (super_handles, handle);
+			}
 
+			static void Add (List<IntPtr> list, IntPtr handle)
+			{
+				bool call_drain;
 				lock (lock_obj) {
-					super_handles.Add (handle);
-					return super_handles.Count == 1;
+					list.Add (handle);
+					call_drain = list.Count == 1;
 				}
+				if (!call_drain)
+					return;
+
+				Messaging.void_objc_msgSend_intptr_intptr_bool (class_ptr, NSObject.selPerformSelectorOnMainThreadWithObjectWaitUntilDone, selDrain, IntPtr.Zero, false);
 			}
 	
 			[Export ("drain:")]
-			internal void Drain (NSObject ctx) {
-				lock (lock_obj) {
-					foreach (IntPtr x in super_handles) {
-						Messaging.void_objc_msgSendSuper (x, selRelease);
-						Marshal.FreeHGlobal (x);
-					}
-					super_handles.Clear ();
-					foreach (IntPtr x in direct_handles) {
-						Messaging.void_objc_msgSend (x, selRelease);
-					}
-					direct_handles.Clear ();
-				}
-			}
+			internal static void Drain (NSObject ctx) {
+				List<IntPtr> direct = null;
+				List<IntPtr> super = null;
 
-			protected override void Dispose (bool disposing)
-			{
-				NSObject.disposer = null;
-				base.Dispose (disposing);
+				lock (lock_obj) {
+					if (direct_handles.Count > 0) {
+						direct = new List<IntPtr> (direct_handles);
+						direct_handles.Clear ();
+					}
+
+					if (super_handles.Count > 0) {
+						super = new List<IntPtr> (super_handles);
+						super_handles.Clear ();
+					}
+				}
+
+				if (super != null)
+					foreach (IntPtr x in super)
+						Messaging.void_objc_msgSendSuper (x, selRelease);
+				if (direct != null)
+					foreach (IntPtr x in direct)
+						Messaging.void_objc_msgSend (x, selRelease);
 			}
 		}
 	}
