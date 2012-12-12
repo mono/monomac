@@ -254,9 +254,12 @@ namespace macdoc
 		void LaunchDocumentationUpdate (Dictionary<Product, Tuple<bool, bool>> toUpdate)
 		{
 			var informative = "We have detected your " + string.Join (" and ", toUpdate.Keys.Select (ProductUtils.GetFriendlyName)) +
-				" documentation can be upgraded with Apple documentation." +
-				Environment.NewLine + Environment.NewLine +
-				"Would you like to update the documentation now? You can continue to browse the documentation while the update is performed.";
+				" documentation can be upgraded with Apple documentation.";
+			// Check if we are going to be downloading stuff
+			if (toUpdate.Any (kvp => kvp.Value.Item1))
+				informative += Environment.NewLine + Environment.NewLine + "Warning: we are going to download documentation from Apple servers which can take a long time depending on your Internet connection.";
+			informative += Environment.NewLine + Environment.NewLine + "Would you like to update the documentation now?";
+
 			var infoDialog = new NSAlert {
 				AlertStyle = NSAlertStyle.Informational,
 				MessageText = "Documentation update available",
