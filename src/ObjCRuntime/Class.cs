@@ -121,10 +121,11 @@ namespace MonoMac.ObjCRuntime {
 		internal static IntPtr Register (Type type) { 
 			RegisterAttribute attr = (RegisterAttribute) Attribute.GetCustomAttribute (type, typeof (RegisterAttribute), false);
 			string name = attr == null ? type.FullName : attr.Name ?? type.FullName;
-			return Class.Register (type, name);
+			bool is_wrapper = attr != null && attr.IsWrapper;
+			return Class.Register (type, name, is_wrapper);
 		}
 
-		internal unsafe static IntPtr Register (Type type, string name) {
+		internal unsafe static IntPtr Register (Type type, string name, bool is_wrapper) {
 			IntPtr parent = IntPtr.Zero;
 			IntPtr handle = IntPtr.Zero;
 
@@ -135,6 +136,22 @@ namespace MonoMac.ObjCRuntime {
 					type_map [handle] = type;
 				}
 				return handle;
+			}
+
+			// If this type wraps a native Objective-C class, we must avoid registering the type
+			// in the case that the native class is not found. If the type were to be registered,
+			// invoking a method would result in an eventual crash due to the recursion of calling
+			// out to Objective-C which would then call back into the managed method that just
+			// called out.
+			//
+			// We cannot throw an exception here without more detailed knowledge of API availability
+			// and executing platform version. Because a wrapped API may not be available on all
+			// OS versions we cannot assume we should throw because it's not there. Adding 
+			// "Platform" to the Since attribute would be one way to pass along information for
+			// more detailed checks or messages to the caller: [Since(Platform.OSX, 10, 9)].
+			if (is_wrapper) {
+				Console.Out.WriteLine(string.Format ("WARNING: Wrapper type '{0}' is missing its native ObjectiveC class '{1}'.", type.FullName, name));
+				return IntPtr.Zero;
 			}
 
 			if (objc_getProtocol (name) != IntPtr.Zero)
@@ -149,7 +166,8 @@ namespace MonoMac.ObjCRuntime {
 			parent = objc_getClass (parent_name);
 			if (parent == IntPtr.Zero && parent_type.Assembly != NSObject.MonoMacAssembly) {
 				// Its possible as we scan that we might be derived from a type that isn't reigstered yet.
-				Class.Register (parent_type, parent_name);
+				bool parent_is_wrapper = parent_attr != null && parent_attr.IsWrapper;
+				Class.Register (parent_type, parent_name, parent_is_wrapper);
 				parent = objc_getClass (parent_name);
 			}
 			if (parent == IntPtr.Zero) {
