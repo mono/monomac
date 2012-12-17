@@ -410,13 +410,14 @@ namespace MonoMac.AppKit {
 		void UpdateWindows ();
 	
 		[Export ("setMainMenu:")]
+		[Obsolete ("Use MainMenu property")]
 		void SetMainMenu (NSMenu  aMenu);
 	
 		[Export ("mainMenu")]
-		NSMenu MainMenu { get; }
+		NSMenu MainMenu { get; set; }
 	
-		[Export ("setHelpMenu:")]
-		NSMenu HelpMenu { get; set; }
+		[Export ("helpMenu")]
+		NSMenu HelpMenu { get; [NullAllowed] set; }
 	
 		[Export ("applicationIconImage")]
 		NSImage ApplicationIconImage { get; set; }
@@ -510,7 +511,7 @@ namespace MonoMac.AppKit {
 		[Lion, Export ("enabledRemoteNotificationTypes")]
 		NSRemoteNotificationType EnabledRemoteNotificationTypes ();
 
-		[Lion, Export ("registerForRemoteNotificationTypes")]
+		[Lion, Export ("registerForRemoteNotificationTypes:")]
 		void RegisterForRemoteNotificationTypes (NSRemoteNotificationType types);
 
 		[Lion, Export ("unregisterForRemoteNotifications")]
