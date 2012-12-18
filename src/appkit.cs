@@ -10087,7 +10087,7 @@ namespace MonoMac.AppKit {
 	}
 
 	[BaseType (typeof (NSObject))]
-	public interface NSStatusBar {
+	public partial interface NSStatusBar {
 		[Static, Export ("systemStatusBar")]
 		NSStatusBar SystemStatusBar { get; }
 
