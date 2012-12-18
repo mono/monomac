@@ -324,7 +324,8 @@ namespace MonoMac.Foundation {
 			static readonly object lock_obj = new object ();
 			static readonly IntPtr class_ptr = Class.GetHandle ("__MonoMac_Disposer");
 			static readonly IntPtr selDrain = Selector.sel_registerName ("drain:");
-	
+			static readonly IntPtr selPerformSelectorOnMainThreadWithObjectWaitUntilDone = Selector.sel_registerName ("performSelectorOnMainThread:withObject:waitUntilDone:");
+			
 			private MonoMac_Disposer () { }
 	
 			internal static void AddDirect (IntPtr handle) {
@@ -345,7 +346,7 @@ namespace MonoMac.Foundation {
 				if (!call_drain)
 					return;
 
-				Messaging.void_objc_msgSend_intptr_intptr_bool (class_ptr, NSObject.selPerformSelectorOnMainThreadWithObjectWaitUntilDone, selDrain, IntPtr.Zero, false);
+				Messaging.void_objc_msgSend_intptr_intptr_bool (class_ptr, selPerformSelectorOnMainThreadWithObjectWaitUntilDone, selDrain, IntPtr.Zero, false);
 			}
 	
 			[Export ("drain:")]
