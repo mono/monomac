@@ -82,7 +82,10 @@ namespace MonoMac.ScriptingBridge {
 
 		[Export ("initWithProcessIdentifier:")]
 		IntPtr Constructor (int pid);
-		
+
+		[Export ("initWithBundleIdentifier:")]
+		IntPtr Constructor (string ident);
+
 		[Static]
 		[Export ("applicationWithBundleIdentifier:")]
 		SBApplication FromBundleIdentifier (string ident );
@@ -95,7 +98,7 @@ namespace MonoMac.ScriptingBridge {
 		[Export ("applicationWithProcessIdentifier:")]
 		SBApplication FromProcessIdentifier (int pid );
 
-		[Export ("classForScriptingClass")]
+		[Export ("classForScriptingClass:")]
 		Class ClassForScripting (string className );
 
 		[Export ("isRunning")]

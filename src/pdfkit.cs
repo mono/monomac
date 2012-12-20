@@ -669,7 +669,7 @@ namespace MonoMac.PdfKit {
 		[Export ("attributedString")]
 		NSAttributedString AttributedString { get; }
 
-		[Export ("boundsForPage:page")]
+		[Export ("boundsForPage:")]
 		RectangleF GetBoundsForPage (PdfPage page);
 	
 		//verify NSArray

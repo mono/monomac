@@ -474,7 +474,7 @@ namespace MonoMac.Foundation {
 		IntPtr Constructor (int fd);
 
 		[Export ("fileDescriptor")]
-		int FileDescriptor { get; set; }
+		int FileDescriptor { get; }
 	}
 	
 	[BaseType (typeof (NSObject))]

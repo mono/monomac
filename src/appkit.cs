@@ -3360,12 +3360,8 @@ namespace MonoMac.AppKit {
 		[Export ("drawSelector")]
 		Selector DrawSelector { get; }
 		
-		[Export ("delegate", ArgumentSemantic.Assign)][NullAllowed]  
-		NSObject WeakDelegate { get; set; }  
-		
-		[Wrap ("WeakDelegate")][NullAllowed]  
-		NSObject Delegate { get; set; }  
-
+		[Export ("delegate", ArgumentSemantic.Assign)]  
+		NSObject Delegate { get; }  
 	}	
 
 	[BaseType (typeof (NSControl), Delegates=new string [] {"WeakDelegate"}, Events=new Type [] {typeof (NSDatePickerCellDelegate)})]
