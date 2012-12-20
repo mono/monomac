@@ -4218,7 +4218,7 @@ namespace MonoMac.AppKit {
 		SizeF DrawerWillResizeContents (NSDrawer sender, SizeF toSize);
 
 	}
-	
+
 	[BaseType (typeof (NSObject))]
 	[DisableDefaultCtor] // crash at runtime (e.g. description). Documentation state: "You don’t create NSFont objects using the alloc and init methods."
 	public interface NSFont {
@@ -14556,6 +14556,38 @@ namespace MonoMac.AppKit {
 		
 	}
 
+	interface NSWorkspaceRenamedEventArgs {
+		[Export ("NSWorkspaceVolumeLocalizedNameKey")]
+		string VolumeLocalizedName { get; }
+		
+		[Export ("NSWorkspaceVolumeURLKey")]
+		NSUrl VolumeUrl { get; }
+
+		[Export ("NSWorkspaceVolumeOldLocalizedNameKey")]
+		string OldVolumeLocalizedName { get; }
+
+		[Export ("NSWorkspaceVolumeOldURLKey")]
+		NSUrl OldVolumeUrl { get; }
+	}
+
+	interface NSWorkspaceMountEventArgs {
+		[Export ("NSWorkspaceVolumeLocalizedNameKey")]
+		string VolumeLocalizedName { get; }
+		
+		[Export ("NSWorkspaceVolumeURLKey")]
+		NSUrl VolumeUrl { get; }
+	}
+
+	interface NSWorkspaceApplicationEventArgs {
+		[Export ("NSWorkspaceApplicationKey")]
+		NSRunningApplication Application { get; }
+	}
+
+	interface NSWorkspaceFileOperationEventArgs {
+		[Export ("NSOperationNumber")]
+		int FileType { get; }
+	}
+	
 	public delegate void NSWorkspaceUrlHandler (NSDictionary newUrls, NSError error);
 	
 	[BaseType (typeof (NSObject))]
@@ -14607,7 +14639,7 @@ namespace MonoMac.AppKit {
 		void NoteFileSystemChanged (string path);
 		
 		[Export ("getInfoForFile:application:type:")]
-		bool GetInfo (string fullPath, string appName, string type);
+		bool GetInfo (string fullPath, out string appName, out string fileType);
 		
 		[Export ("isFilePackageAtPath:")]
 		bool IsFilePackage (string fullPath);
@@ -14640,7 +14672,7 @@ namespace MonoMac.AppKit {
 		bool GetFileSystemInfo (string fullPath, out bool removableFlag, out bool writableFlag, out bool unmountableFlag, out string description, out string fileSystemType);
 		
 		[Export ("performFileOperation:source:destination:files:tag:")]
-		bool PerformFileOperation (string operation, string source, string destination, string[] files, int tag);
+		bool PerformFileOperation (NSString workspaceOperation, string source, string destination, string[] files, int tag);
 		
 		[Export ("unmountAndEjectDeviceAtPath:")]
 		bool UnmountAndEjectDevice(string path);
@@ -14715,6 +14747,113 @@ namespace MonoMac.AppKit {
 		[Lion]
 		[Export ("menuBarOwningApplication")]
 		NSRunningApplication MenuBarOwningApplication { get; }
+
+		[Field ("NSWorkspaceWillPowerOffNotification")]
+		[Notification ("SharedWorkspace.NotificationCenter")]
+		NSString WillPowerOffNotification { get; }
+
+		[Field ("NSWorkspaceWillSleepNotification")]
+		[Notification ("SharedWorkspace.NotificationCenter")]
+		NSString WillSleepNotification { get; }
+		
+		[Field ("NSWorkspaceDidWakeNotification")]
+		[Notification ("SharedWorkspace.NotificationCenter")]
+		NSString DidWakeNotification { get; }
+		
+		[Field ("NSWorkspaceScreensDidSleepNotification")]
+		[Notification ("SharedWorkspace.NotificationCenter")]
+		NSString ScreensDidSleepNotification { get; }
+		
+		[Field ("NSWorkspaceScreensDidWakeNotification")]
+		[Notification ("SharedWorkspace.NotificationCenter")]
+		NSString ScreensDidWakeNotification { get; }
+		
+		[Field ("NSWorkspaceSessionDidBecomeActiveNotification")]
+		[Notification ("SharedWorkspace.NotificationCenter")]
+		NSString SessionDidBecomeActiveNotification { get; }
+		
+		[Field ("NSWorkspaceSessionDidResignActiveNotification")]
+		[Notification ("SharedWorkspace.NotificationCenter")]
+		NSString SessionDidResignActiveNotification { get; }
+
+		[Field ("NSWorkspaceDidRenameVolumeNotification")]
+		[Notification (typeof (NSWorkspaceRenamedEventArgs), "SharedWorkspace.NotificationCenter")]
+		NSString DidRenameVolumeNotification { get; }
+
+		[Field ("NSWorkspaceDidMountNotification")]
+		[Notification (typeof (NSWorkspaceMountEventArgs), "SharedWorkspace.NotificationCenter")]
+		NSString DidMountNotification { get; }
+		
+		[Field ("NSWorkspaceDidUnmountNotification")]
+		[Notification (typeof (NSWorkspaceMountEventArgs), "SharedWorkspace.NotificationCenter")]
+		NSString DidUnmountNotification { get; }
+		
+		[Field ("NSWorkspaceWillUnmountNotification")]
+		[Notification (typeof (NSWorkspaceMountEventArgs), "SharedWorkspace.NotificationCenter")]
+		NSString WillUnmountNotification { get; }
+
+		[Field ("NSWorkspaceWillLaunchApplicationNotification")]
+		[Notification (typeof (NSWorkspaceApplicationEventArgs), "SharedWorkspace.NotificationCenter")]
+		NSString WillLaunchApplication { get; }
+
+		[Field ("NSWorkspaceDidLaunchApplicationNotification")]
+		[Notification (typeof (NSWorkspaceApplicationEventArgs), "SharedWorkspace.NotificationCenter")]
+		NSString DidLaunchApplicationNotification { get; }
+		
+		[Field ("NSWorkspaceDidTerminateApplicationNotification")]
+		[Notification (typeof (NSWorkspaceApplicationEventArgs), "SharedWorkspace.NotificationCenter")]
+		NSString DidTerminateApplicationNotification { get; }
+		
+		[Field ("NSWorkspaceDidHideApplicationNotification")]
+		[Notification (typeof (NSWorkspaceApplicationEventArgs), "SharedWorkspace.NotificationCenter")]
+		NSString DidHideApplicationNotification { get; }
+		
+		[Field ("NSWorkspaceDidUnhideApplicationNotification")]
+		[Notification (typeof (NSWorkspaceApplicationEventArgs), "SharedWorkspace.NotificationCenter")]
+		NSString DidUnhideApplicationNotification { get; }
+		
+		[Field ("NSWorkspaceDidActivateApplicationNotification")]
+		[Notification (typeof (NSWorkspaceApplicationEventArgs), "SharedWorkspace.NotificationCenter")]
+		NSString DidActivateApplicationNotification { get; }
+		
+		[Field ("NSWorkspaceDidDeactivateApplicationNotification")]
+		[Notification (typeof (NSWorkspaceApplicationEventArgs), "SharedWorkspace.NotificationCenter")]
+		NSString DidDeactivateApplicationNotification { get; }
+		
+		[Field ("NSWorkspaceDidPerformFileOperationNotification")]
+		[Notification (typeof (NSWorkspaceFileOperationEventArgs), "SharedWorkspace.NotificationCenter")]
+		NSString DidPerformFileOperationNotification { get; }
+		
+		[Field ("NSWorkspaceDidChangeFileLabelsNotification")]
+		[Notification ("SharedWorkspace.NotificationCenter")]
+		NSString DidChangeFileLabelsNotification { get; }
+
+		[Field ("NSWorkspaceActiveSpaceDidChangeNotification")]
+		[Notification ("SharedWorkspace.NotificationCenter")]
+		NSString ActiveSpaceDidChangeNotification { get; }
+		
+		//
+		// File operations
+		//
+		// Those not listed are not here, because they are documented as returing an error
+		//
+		[Field ("NSWorkspaceRecycleOperation")]
+		NSString OperationRecycle { get; }
+
+		[Field ("NSWorkspaceDuplicateOperation")]
+		NSString OperationDuplicate { get; }
+
+		[Field ("NSWorkspaceMoveOperation")]
+		NSString OperationMove { get; }
+		
+		[Field ("NSWorkspaceCopyOperation")]
+		NSString OperationCopy { get; }
+		
+		[Field ("NSWorkspaceLinkOperation")]
+		NSString OperationLink { get; }
+		
+		[Field ("NSWorkspaceDestroyOperation")]
+		NSString OperationDestroy { get; }
 	}
 	
 	
