@@ -1600,6 +1600,8 @@ namespace MonoMac.AppKit {
 	}
 
 	public enum NSLayoutFormatOptions {
+		None = 0,
+
 		AlignAllLeft = (1 << NSLayoutAttribute.Left),
 		AlignAllRight = (1 << NSLayoutAttribute.Right),
 		AlignAllTop = (1 << NSLayoutAttribute.Top),
