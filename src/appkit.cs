@@ -3809,7 +3809,7 @@ namespace MonoMac.AppKit {
 		void WillNotPresentError (NSError error);
 
 		[Lion, Export ("setDisplayName:")]
-		void SetDisplayName ([NullAllowed] string displayNameOrNull);
+		void SetDisplayName ([NullAllowed] NSString displayNameOrNull);
 
 		[Lion, Export ("restoreDocumentWindowWithIdentifier:state:completionHandler:")]
 		void RestoreDocumentWindow (string identifier, NSCoder state, NSWindowCompletionHandler completionHandler);
