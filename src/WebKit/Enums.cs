@@ -2,7 +2,7 @@ using System;
 
 namespace MonoMac.WebKit {
 
-	public enum DomCssRuleType {
+	public enum DomCssRuleType : ushort {
 		Unknown = 0,
 		Style = 1,
 		Charset = 2,
@@ -15,7 +15,7 @@ namespace MonoMac.WebKit {
 		WebKitKeyFrame = 9
 	}
 
-	public enum DomCssValueType {
+	public enum DomCssValueType : ushort {
 		Inherit = 0,
 		PrimitiveValue = 1,
 		ValueList = 2,
@@ -32,7 +32,7 @@ namespace MonoMac.WebKit {
 		ImplementationSpecific = 0x20
 	}
 
-	public enum DomNodeType {
+	public enum DomNodeType : ushort {
 		Element = 1,
 		Attribute = 2,
 		Text = 3,
@@ -47,7 +47,7 @@ namespace MonoMac.WebKit {
 		Notation = 12
 	}
 
-	public enum DomRangeCompareHow {
+	public enum DomRangeCompareHow : ushort {
 		StartToStart = 0, 
 		StartToEnd = 1, 
 		EndToEnd = 2, 
@@ -58,7 +58,7 @@ namespace MonoMac.WebKit {
 		DocumentViewer, DocumentBrowser, PrimaryWebBrowser
 	}
 
-	public enum DomEventPhase {
+	public enum DomEventPhase : ushort {
 		Capturing = 1, AtTarget, Bubbling
 	}
 
