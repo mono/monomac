@@ -1,5 +1,6 @@
 //
 // Copyright 2010, Novell, Inc.
+// Copyright 2012 Xamarin Inc.
 //
 // Permission is hereby granted, free of charge, to any person obtaining
 // a copy of this software and associated documentation files (the
@@ -21,7 +22,7 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 namespace MonoMac.Foundation {
-	public enum NSTextCheckingType {
+	public enum NSTextCheckingType : ulong {
 		Orthography   = 1 << 0,
 		Spelling      = 1 << 1,
 		Grammar       = 1 << 2,
@@ -46,7 +47,7 @@ namespace MonoMac.Foundation {
 	}
 
 	// The following constants where taken from MonoDevelop Carbon.cs MacInterop file
-	public enum AEEventID {
+	public enum AEEventID : uint {
 		OpenApplication = 1868656752, // 'oapp'
 		ReopenApplication = 1918988400, //'rapp'
 		OpenDocuments = 1868853091, // 'odoc'
@@ -58,7 +59,7 @@ namespace MonoMac.Foundation {
 		GetUrl = 1196773964, // 'GURL'
 	}
 
-	public enum AEEventClass {
+	public enum AEEventClass : uint {
 		Mouse = 1836021107, // 'mous'
 		Keyboard = 1801812322, // 'keyb'
 		TextInput = 1952807028, // 'text'
