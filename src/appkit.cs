@@ -1,5 +1,5 @@
 ///
-// Copyright 2011, Xamarin, Inc.
+// Copyright 2011-2012 Xamarin, Inc.
 // Copyright 2010, 2011, Novell, Inc.
 // Copyright 2010, Kenneth Pouncey
 // Coprightt 2010, James Clancey
@@ -203,7 +203,7 @@ namespace MonoMac.AppKit {
 
 		[Static]
 		[Lion, Export ("runAnimationGroup:completionHandler:")]
-		void RunAnimation (NSAnimationContext context, NSAction completionHandler);
+		void RunAnimation (Action<NSAnimationContext> changes, NSAction completionHandler);
     
 		[Lion, Export ("timingFunction")]
 		CAMediaTimingFunction TimingFunction { get; set; }		
@@ -379,11 +379,11 @@ namespace MonoMac.AppKit {
 		[Export ("endSheet:returnCode:")]
 		void EndSheet (NSWindow  sheet, int returnCode);
 	
-		[Export ("nextEventMatchingMask:untilDate:inMode:dequeue:")]
-		NSEvent NextEvent (NSEventMask mask, NSDate expiration, string mode, bool deqFlag);
+		[Export ("nextEventMatchingMask:untilDate:inMode:dequeue:"), Protected]
+		NSEvent NextEvent (uint mask, NSDate expiration, string mode, bool deqFlag);
 	
-		[Export ("discardEventsMatchingMask:beforeEvent:")]
-		void DiscardEvents (NSEventMask mask, NSEvent lastEvent);
+		[Export ("discardEventsMatchingMask:beforeEvent:"), Protected]
+		void DiscardEvents (uint mask, NSEvent lastEvent);
 	
 		[Export ("postEvent:atStart:")]
 		void PostEvent (NSEvent theEvent, bool atStart);
@@ -422,9 +422,12 @@ namespace MonoMac.AppKit {
 		[Export ("applicationIconImage")]
 		NSImage ApplicationIconImage { get; set; }
 	
-		[Export ("activationPolicy")]
-		NSApplicationActivationPolicy ActivationPolicy { get; set; }
-	
+		[Export ("activationPolicy"), Protected]
+		NSApplicationActivationPolicy GetActivationPolicy ();
+
+		[Export ("setActivationPolicy:"), Protected]
+		bool SetActivationPolicy (NSApplicationActivationPolicy activationPolicy);
+
 		[Export ("dockTile")]
 		NSDockTile DockTile { get; }
 	
@@ -786,14 +789,23 @@ namespace MonoMac.AppKit {
 		[Export ("alwaysUsesMultipleValuesMarker")]
 		bool AlwaysUsesMultipleValuesMarker { get; set; }
 
-		[Export ("selectionIndexes")]
-		NSIndexSet SelectionIndexes { get; set; }
+		[Export ("selectionIndexes"), Protected]
+		NSIndexSet GetSelectionIndexes ();
 
-		[Export ("selectionIndex")]
-		int SelectionIndex { get; set; }
+		[Export ("setSelectionIndexes:"), Protected]
+		bool SetSelectionIndexes (NSIndexSet indexes);
 
-		[Export ("selectedObjects")]
-		NSObject [] SelectedObjects { get; set; }
+		[Export ("selectionIndex"), Protected]
+		uint GetSelectionIndex ();
+
+		[Export ("setSelectionIndex:"), Protected]
+		bool SetSelectionIndex (uint index);
+
+		[Export ("selectedObjects"), Protected]
+		NSObject [] GetSelectedObjects ();
+
+		[Export ("setSelectedObjects:"), Protected]
+		bool SetSelectedObjects (NSObject [] objects);
 	}
 	
 	[BaseType (typeof (NSObject))]
@@ -1047,7 +1059,7 @@ namespace MonoMac.AppKit {
 		NSBitmapFormat BitmapFormat { get; }
 
 		[Export ("getCompression:factor:")]
-		void GetCompressionfactor (NSTiffCompression compression, float factor);
+		void GetCompressionfactor (out NSTiffCompression compression, out float factor);
 
 		[Export ("setCompression:factor:")]
 		void SetCompressionfactor (NSTiffCompression compression, float factor);
@@ -1365,7 +1377,7 @@ namespace MonoMac.AppKit {
 		RectangleF RowFrame (int row, int column);
 
 		[Export ("getRow:column:forPoint:")]
-		bool GetRowColumnforPoint (out int row, out int column, PointF point);
+		bool GetRowColumnForPoint (out int row, out int column, PointF point);
 
 		[Export ("columnWidthForColumnContentWidth:")]
 		float ColumnWidthForColumnContentWidth (float columnContentWidth);
@@ -1479,8 +1491,11 @@ namespace MonoMac.AppKit {
 		[Export ("pathSeparator")]
 		string PathSeparator { get; set; }
 
-		[Export ("path")]
-		string Path { get; set; }
+		[Export ("path"), Protected]
+		string GetPath ();
+
+		[Export ("setPath:"), Protected]
+		bool SetPath (string path);
 
 		[Export ("lastColumn")]
 		int LastColumn { get; set; }
@@ -1875,7 +1890,7 @@ namespace MonoMac.AppKit {
 		bool Enabled { [Bind ("isEnabled")] get; set; }
 	
 		[Export ("sendActionOn:")]
-		int SendActionOn (int mask);
+		int SendActionOn (NSEventType mask);
 	
 		[Export ("continuous")]
 		bool IsContinuous { [Bind ("isContinuous")] get; set; }
@@ -3071,7 +3086,7 @@ namespace MonoMac.AppKit {
 		int SelectedTag { get; }
 
 		[Export ("sendActionOn:")]
-		int SendActionOn (int mask);
+		int SendActionOn (NSEventType mask);
 
 		[Export ("setNeedsDisplay")]
 		void SetNeedsDisplay ();
@@ -4893,7 +4908,7 @@ namespace MonoMac.AppKit {
 	[BaseType (typeof (NSObject))]
 	public interface NSGlyphGenerator {
 		[Export ("generateGlyphsForGlyphStorage:desiredNumberOfCharacters:glyphIndex:characterIndex:")]
-		void GenerateGlyphs (NSObject nsGlyphStorageOrNSLayoutManager, int nchars, int glyphIndex, int charIndex);
+		void GenerateGlyphs (NSObject nsGlyphStorageOrNSLayoutManager, uint nchars, ref uint glyphIndex, ref uint charIndex);
 
 		[Static, Export ("sharedGlyphGenerator")]
 		NSGlyphGenerator SharedGlyphGenerator { get; }
@@ -4985,9 +5000,10 @@ namespace MonoMac.AppKit {
 	
 		[Export ("flushGraphics")]
 		void FlushGraphics ();
-	
+
+		// keep signature in sync with 'graphicsContextWithGraphicsPort:flipped:'
 		[Export ("graphicsPort")]
-		CGContext GraphicsPort {get; }
+		IntPtr GraphicsPort {get; }
 	
 		[Export ("isFlipped")]
 		bool IsFlipped { get; }
@@ -5817,7 +5833,7 @@ namespace MonoMac.AppKit {
 		NSObjectController Selection { get; }
 
 		[Export ("selectedObjects")]
-		NSObject [] SelectedObjects { get; }
+		NSObject [] SelectedObjects { get; [NotImplemented] set; }
 
 		[Export ("automaticallyPreparesContent")]
 		bool AutomaticallyPreparesContent { get; set; }
@@ -5891,7 +5907,7 @@ namespace MonoMac.AppKit {
 		//IntPtr Constructor (IntPtr cglContextHandle);
 
 		[Export ("getValues:forAttribute:forVirtualScreen:")]
-		IntPtr GetValue (ref int vals, NSOpenGLPixelFormatAttribute attrib, int screen);
+		void GetValue (ref int vals, NSOpenGLPixelFormatAttribute attrib, int screen);
 
 		[Export ("numberOfVirtualScreens")]
 		int NumberOfVirtualScreens { get; }
@@ -6499,7 +6515,7 @@ namespace MonoMac.AppKit {
 		IntPtr Constructor (CGImage cgImage, SizeF size);
 
 		[Export ("CGImageForProposedRect:context:hints:")]
-		CGImage AsCGImage (RectangleF proposedDestRect, [NullAllowed] NSGraphicsContext referenceContext, [NullAllowed] NSDictionary hints);
+		CGImage AsCGImage (ref RectangleF proposedDestRect, [NullAllowed] NSGraphicsContext referenceContext, [NullAllowed] NSDictionary hints);
 
 		[Export ("bestRepresentationForRect:context:hints:")]
 		NSImageRep BestRepresentation (RectangleF rect, [NullAllowed] NSGraphicsContext referenceContext, [NullAllowed] NSDictionary hints);
@@ -6511,8 +6527,11 @@ namespace MonoMac.AppKit {
 		[Export ("size")]
 		SizeF Size { get; set; }
 
-		[Export ("name")]
-		string Name { get; set; }
+		[Export ("name"), Internal]
+		string GetName ();
+
+		[Export ("setName:"), Internal]
+		bool SetName (string aString);
 
 		[Export ("backgroundColor")]
 		NSColor BackgroundColor { get; set; }
@@ -6691,7 +6710,7 @@ namespace MonoMac.AppKit {
 		NSImageRep ImageRepFromPasteboard (NSPasteboard pasteboard);
 
 		[Export ("CGImageForProposedRect:context:hints:")]
-		CGImage AsCGImage (RectangleF proposedDestRect, [NullAllowed] NSGraphicsContext context, [NullAllowed] NSDictionary hints);
+		CGImage AsCGImage (ref RectangleF proposedDestRect, [NullAllowed] NSGraphicsContext context, [NullAllowed] NSDictionary hints);
 
 		//Detected properties
 		[Export ("size")]
@@ -7075,7 +7094,7 @@ namespace MonoMac.AppKit {
 		NSLayoutConstraint Create (NSObject view1, NSLayoutAttribute attribute1, NSLayoutRelation relation, NSObject view2, NSLayoutAttribute attribute2, float multiplier, float constant);
 		
 		[Export ("priority")]
-		NSLayoutPriority Priority { get; set;  }
+		float Priority { get; set;  }
 
 		[Export ("shouldBeArchived")]
 		bool ShouldBeArchived { get; set;  }
@@ -7195,7 +7214,7 @@ namespace MonoMac.AppKit {
 		int NumberOfGlyphs { get; }
 
 		[Export ("glyphAtIndex:isValidIndex:")]
-		uint GlyphAtIndexisValidIndex (int glyphIndex, bool isValidIndex);
+		uint GlyphAtIndexisValidIndex (uint glyphIndex, ref bool isValidIndex);
 
 		[Export ("glyphAtIndex:")]
 		uint GlyphCount (int glyphIndex);
@@ -7214,11 +7233,11 @@ namespace MonoMac.AppKit {
 
 		// TODO: bind this with a safe version
 		[Export ("getGlyphsInRange:glyphs:characterIndexes:glyphInscriptions:elasticBits:"), Internal]
-		int GetGlyphs (NSRange glyphRange, IntPtr glyphBuffer, uint charIndexBuffer, NSGlyphInscription inscribeBuffer, bool elasticBuffer);
+		int GetGlyphs (NSRange glyphRange, IntPtr glyphBuffer, IntPtr charIndexBuffer, IntPtr inscribeBuffer, IntPtr elasticBuffer);
 
 		// TODO: bind this with a safe version
 		[Internal, Export ("getGlyphsInRange:glyphs:characterIndexes:glyphInscriptions:elasticBits:bidiLevels:")]
-		int GetGlyphs (NSRange glyphRange, IntPtr glyphBuffer, uint charIndexBuffer, NSGlyphInscription inscribeBuffer, bool elasticBuffer, ushort bidiLevelBuffer);
+		int GetGlyphs (NSRange glyphRange, IntPtr glyphBuffer, IntPtr charIndexBuffer, IntPtr inscribeBuffer, IntPtr elasticBuffer, IntPtr bidiLevelBuffer);
 
 		// TODO: bidn this with a safe version
 		[Internal, Export ("getGlyphs:range:")]
@@ -7249,7 +7268,7 @@ namespace MonoMac.AppKit {
 		void SetAttachmentSize (SizeF attachmentSize, NSRange glyphRange);
 
 		[Export ("getFirstUnlaidCharacterIndex:glyphIndex:")]
-		void GetFirstUnlaidCharacterIndex (int charIndex, int glyphIndex);
+		void GetFirstUnlaidCharacterIndex (ref uint charIndex, ref uint glyphIndex);
 
 		[Export ("firstUnlaidCharacterIndex")]
 		int FirstUnlaidCharacterIndex { get; }
@@ -7345,7 +7364,7 @@ namespace MonoMac.AppKit {
 		NSRange GlyphRangeForBoundingRectWithoutAdditionalLayout (RectangleF bounds, NSTextContainer container);
 
 		[Export ("glyphIndexForPoint:inTextContainer:fractionOfDistanceThroughGlyph:")]
-		uint GlyphIndexForPointInTextContainer (PointF point, NSTextContainer container, float fractionOfDistanceThroughGlyph);
+		uint GlyphIndexForPointInTextContainer (PointF point, NSTextContainer container, ref float fractionOfDistanceThroughGlyph);
 
 		[Export ("glyphIndexForPoint:inTextContainer:")]
 		uint GlyphIndexForPoint (PointF point, NSTextContainer container);
@@ -7354,10 +7373,10 @@ namespace MonoMac.AppKit {
 		float FractionOfDistanceThroughGlyphForPoint (PointF point, NSTextContainer container);
 
 		[Export ("characterIndexForPoint:inTextContainer:fractionOfDistanceBetweenInsertionPoints:")]
-		uint CharacterIndexForPoint (PointF point, NSTextContainer container, float fractionOfDistanceBetweenInsertionPoints);
+		uint CharacterIndexForPoint (PointF point, NSTextContainer container, ref float fractionOfDistanceBetweenInsertionPoints);
 
 		[Export ("getLineFragmentInsertionPointsForCharacterAtIndex:alternatePositions:inDisplayOrder:positions:characterIndexes:")]
-		uint GetLineFragmentInsertionPoints (int charIndex, bool aFlag, bool dFlag, float positions, uint charIndexes);
+		uint GetLineFragmentInsertionPoints (uint charIndex, bool aFlag, bool dFlag, IntPtr positions, IntPtr charIndexes);
 
 		//[Export ("temporaryAttributesAtCharacterIndex:effectiveRange:")]
 		//NSDictionary GetTemporaryAttributes (int charIndex, NSRangePointer effectiveCharRange);
@@ -8432,13 +8451,13 @@ namespace MonoMac.AppKit {
 		NSMutableDictionary PrintSettings { get; }
 
 		[Export ("PMPrintSession")]
-		void PMPrintSession ();
+		IntPtr GetPMPrintSession ();
 
 		[Export ("PMPageFormat")]
-		void PMPageFormat ();
+		IntPtr GetPMPageFormat ();
 
 		[Export ("PMPrintSettings")]
-		void PMPrintSettings ();
+		IntPtr GetPMPrintSettings ();
 
 		[Export ("updateFromPMPageFormat")]
 		void UpdateFromPMPageFormat ();
@@ -9095,8 +9114,8 @@ namespace MonoMac.AppKit {
 		[Export ("colorSpace")]
 		NSColorSpace ColorSpace { get; }
 
-		[Export ("supportedWindowDepths")]
-		NSWindowDepth SupportedWindowDepths { get; }
+		[Export ("supportedWindowDepths"), Internal]
+		IntPtr GetSupportedWindowDepths ();
 
 		[Export ("userSpaceScaleFactor"), Obsolete ("On Lion")]
 		float UserSpaceScaleFactor { get; }
@@ -9617,7 +9636,7 @@ namespace MonoMac.AppKit {
 		[Export ("knobRectFlipped:")]
 		RectangleF KnobRectFlipped (bool flipped);
 
-		[Export ("drawKnob")]
+		[Export ("drawKnob:")]
 		void DrawKnob (RectangleF knobRect);
 
 		[Export ("drawKnob")]
@@ -9777,8 +9796,11 @@ namespace MonoMac.AppKit {
 		[Wrap ("WeakDelegate")]
 		NSSpeechSynthesizerDelegate Delegate { get; set; }
 
-		[Export ("voice")]
-		string Voice { get; set; }
+		[Export ("voice"), Protected]
+		string GetVoice ();
+
+		[Export ("setVoice:"), Protected]
+		bool SetVoice (string voice);
 
 		[Export ("rate")]
 		float Rate { get; set; }
@@ -9824,7 +9846,7 @@ namespace MonoMac.AppKit {
 		int UniqueSpellDocumentTag { get; }
 
 		[Export ("checkSpellingOfString:startingAt:language:wrap:inSpellDocumentWithTag:wordCount:")]
-		NSRange CheckSpelling (string stringToCheck, int startingOffset, string language, bool wrapFlag, int documentTag, int wordCount);
+		NSRange CheckSpelling (string stringToCheck, int startingOffset, string language, bool wrapFlag, int documentTag, out int wordCount);
 
 		[Export ("checkSpellingOfString:startingAt:")]
 		NSRange CheckSpelling (string stringToCheck, int startingOffset);
@@ -9836,7 +9858,7 @@ namespace MonoMac.AppKit {
 		NSRange CheckGrammar (string stringToCheck, int startingOffset, string language, bool wrapFlag, int documentTag, NSDictionary[] details );
 
 		[Export ("checkString:range:types:options:inSpellDocumentWithTag:orthography:wordCount:")]
-		NSTextCheckingResult [] CheckString (string stringToCheck, NSRange range, NSTextCheckingTypes checkingTypes, NSDictionary options, int documentTag, NSOrthography orthography, int wordCount);
+		NSTextCheckingResult [] CheckString (string stringToCheck, NSRange range, NSTextCheckingTypes checkingTypes, NSDictionary options, int tag, out NSOrthography orthography, out int wordCount);
 
 		//FIXME:
 		//[Export ("requestCheckingOfString:range:types:options:inSpellDocumentWithTag:completionHandler:NSIntegersequenceNumber,NSArray*results,NSOrthography*orthography,NSIntegerwordCount))completionHandler")]
@@ -9912,8 +9934,11 @@ namespace MonoMac.AppKit {
 		[Export ("automaticallyIdentifiesLanguages")]
 		bool AutomaticallyIdentifiesLanguages { get; set; }
 
-		[Export ("language")]
-		string Language { get; set; }
+		[Export ("language"), Protected]
+		string GetLanguage ();
+
+		[Export ("setLanguage:"), Protected]
+		bool SetLanguage (string language);
 	}
 
 	[BaseType (typeof (NSObject), Delegates=new string [] { "WeakDelegate" }, Events=new Type [] { typeof (NSSoundDelegate) })]
@@ -9964,8 +9989,11 @@ namespace MonoMac.AppKit {
 		double Duration ();
 
 		//Detected properties
-		[Export ("name")]
-		string Name { get; set; }
+		[Export ("name"), Protected]
+		string GetName ();
+
+		[Export ("setName:"), Protected]
+		bool SetName (string name);
 
 		[Export ("delegate"), NullAllowed]
 		NSObject WeakDelegate { get; set; }
@@ -10113,7 +10141,7 @@ namespace MonoMac.AppKit {
 		Selector Action { get; set; }
 
 		[Export ("sendActionOn:")]
-		int SendActionOn (NSEventMask mask);
+		int SendActionOn (NSTouchPhase mask);
 
 		[Export ("popUpStatusItemMenu:")]
 		void PopUpStatusItemMenu (NSMenu menu);
@@ -10752,7 +10780,7 @@ namespace MonoMac.AppKit {
 		void ExitFullscreenModeWithOptions(NSDictionary options);
 		
 		[Export ("enterFullScreenMode:withOptions:")]
-		void EnterFullscreenModeWithOptions(NSScreen screen, NSDictionary options);
+		bool EnterFullscreenModeWithOptions(NSScreen screen, NSDictionary options);
 		
 		[Export ("isInFullScreenMode")]
 		bool IsInFullscreenMode { get; }
@@ -10845,16 +10873,16 @@ namespace MonoMac.AppKit {
 		void InvalidateIntrinsicContentSize ();
 
 		[Lion, Export ("contentHuggingPriorityForOrientation:")]
-		NSLayoutPriority GetContentHuggingPriorityForOrientation (NSLayoutConstraintOrientation orientation);
+		float GetContentHuggingPriorityForOrientation (NSLayoutConstraintOrientation orientation);
 
 		[Lion, Export ("setContentHuggingPriority:forOrientation:")]
-		void SetContentHuggingPriorityforOrientation (NSLayoutPriority priority, NSLayoutConstraintOrientation orientation);
+		void SetContentHuggingPriorityforOrientation (float priority, NSLayoutConstraintOrientation orientation);
 
 		[Lion, Export ("contentCompressionResistancePriorityForOrientation:")]
-		NSLayoutPriority GetContentCompressionResistancePriority (NSLayoutConstraintOrientation orientation);
+		float GetContentCompressionResistancePriority (NSLayoutConstraintOrientation orientation);
 
 		[Lion, Export ("setContentCompressionResistancePriority:forOrientation:")]
-		void SetContentCompressionResistancePriority (NSLayoutPriority priority, NSLayoutConstraintOrientation orientation);
+		void SetContentCompressionResistancePriority (float priority, NSLayoutConstraintOrientation orientation);
 
 		[Lion, Export ("fittingSize")]
 		SizeF FittingSize { get; }
@@ -10868,8 +10896,9 @@ namespace MonoMac.AppKit {
 		[Lion, Export ("exerciseAmbiguityInLayout")]
 		void ExerciseAmbiguityInLayout ();
 
+		[Obsolete ("Deprecated in 10.8")]
 		[Export ("performMnemonic:")]
-		void PerformMnemonic (string mnemonic);
+		bool PerformMnemonic (string mnemonic);
 
 		[Export ("nextKeyView")]
 		NSView NextKeyView { get; set; }
@@ -10941,10 +10970,10 @@ namespace MonoMac.AppKit {
 		float WidthAdjustLimit { get; }
 		
 		[Export ("adjustPageWidthNew:left:right:limit:")]
-		void AdjustPageWidthNew (float newRight, float left, float proposedRight, float rightLimit);
+		void AdjustPageWidthNew (ref float newRight, float left, float proposedRight, float rightLimit);
 		
 		[Export ("adjustPageHeightNew:top:bottom:limit:")]
-		void AdjustPageHeightNew (float newBottom, float top, float proposedBottom, float bottomLimit);
+		void AdjustPageHeightNew (ref float newBottom, float top, float proposedBottom, float bottomLimit);
 		
 		[Export ("knowsPageRange:")]
 		bool KnowsPageRange (ref NSRange aRange);
@@ -12806,7 +12835,7 @@ namespace MonoMac.AppKit {
 		NSRange RangeForUserCompletion ();
 
 		[Export ("completionsForPartialWordRange:indexOfSelectedItem:")]
-		string [] CompletionsForPartialWord (NSRange charRange, int index);
+		string [] CompletionsForPartialWord (NSRange charRange, out int index);
 
 		[Export ("insertCompletion:forPartialWordRange:movement:isFinal:")]
 		void InsertCompletionforPartialWord (string word, NSRange charRange, int movement, bool isFinal);
@@ -13579,15 +13608,17 @@ namespace MonoMac.AppKit {
 		[Export ("selectedObjects")]
 		NSObject [] SelectedObjects { get; }
 
-		// note: signature differs as it returns a bool
-		[Export ("setSelectionIndexPaths:")]
-		bool SetSelectionIndexPaths (NSArray indexPaths);
+		[Export ("selectionIndexPaths"), Protected]
+		NSIndexPath [] GetSelectionIndexPaths ();
 
-		[Export ("selectionIndexPaths")]
-		NSIndexPath [] SelectionIndexPaths { get; }
+		[Export ("setSelectionIndexPaths:"), Protected]
+		bool SetSelectionIndexPaths (NSIndexPath [] indexPaths);
 
-		[Export ("selectionIndexPath")]
-		NSIndexPath SelectionIndexPath { get; set; }
+		[Export ("selectionIndexPath"), Protected]
+		NSIndexPath GetSelectionIndexPath ();
+
+		[Export ("setSelectionIndexPath:"), Protected]
+		bool SetSelectionIndexPath (NSIndexPath index);
 
 		[Export ("addSelectionIndexPaths:")]
 		bool AddSelectionIndexPaths (NSIndexPath [] indexPaths);
@@ -14039,9 +14070,12 @@ namespace MonoMac.AppKit {
 		[Export ("setFrameUsingName:")]
 		bool SetFrameUsingName (string  name);
 	
-		[Export ("frameAutosaveName")]
-		string FrameAutosaveName  { get; set; }
-	
+		[Export ("frameAutosaveName"), Protected]
+		string GetFrameAutosaveName ();
+
+		[Export ("setFrameAutosaveName:"), Protected]
+		bool SetFrameAutosaveName (string frameName);
+
 		[Static]
 		[Export ("removeFrameUsingName:")]
 		void RemoveFrameUsingName (string  name);
@@ -14067,15 +14101,15 @@ namespace MonoMac.AppKit {
 		[Export ("contentMaxSize")]
 		SizeF ContentMaxSize  { get; set; }
 	
-		[Export ("nextEventMatchingMask:")]
-		NSEvent NextEventMatchingMask (NSEventMask mask);
+		[Export ("nextEventMatchingMask:"), Protected]
+		NSEvent NextEventMatchingMask (uint mask);
+
+		[Export ("nextEventMatchingMask:untilDate:inMode:dequeue:"), Protected]
+		NSEvent NextEventMatchingMask (uint mask, NSDate  expiration, string  mode, bool deqFlag);
 	
-		[Export ("nextEventMatchingMask:untilDate:inMode:dequeue:")]
-		NSEvent NextEventMatchingMask (NSEventMask mask, NSDate  expiration, string  mode, bool deqFlag);
-	
-		[Export ("discardEventsMatchingMask:beforeEvent:")]
-		void DiscardEventsMatchingMask (NSEventMask mask, NSEvent beforeLastEvent);
-	
+		[Export ("discardEventsMatchingMask:beforeEvent:"), Protected]
+		void DiscardEventsMatchingMask (uint mask, NSEvent beforeLastEvent);
+
 		[Export ("postEvent:atStart:")]
 		void PostEvent (NSEvent theEvent, bool atStart);
 	
@@ -14211,7 +14245,7 @@ namespace MonoMac.AppKit {
 		bool Restorable { [Bind ("isRestorable")]get; set; }
 
 		[Lion, Export ("restorationClass")]
-		NSWindowRestoration RestorationClass { get; set; }
+		Class RestorationClass { get; set; }
 
 		[Lion, Export ("updateConstraintsIfNeeded")]
 		void UpdateConstraintsIfNeeded ();
@@ -14672,7 +14706,7 @@ namespace MonoMac.AppKit {
 		bool GetFileSystemInfo (string fullPath, out bool removableFlag, out bool writableFlag, out bool unmountableFlag, out string description, out string fileSystemType);
 		
 		[Export ("performFileOperation:source:destination:files:tag:")]
-		bool PerformFileOperation (NSString workspaceOperation, string source, string destination, string[] files, int tag);
+		bool PerformFileOperation (NSString workspaceOperation, string source, string destination, string[] files, out int tag);
 		
 		[Export ("unmountAndEjectDeviceAtPath:")]
 		bool UnmountAndEjectDevice(string path);

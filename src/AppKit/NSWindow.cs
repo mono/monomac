@@ -66,7 +66,29 @@ namespace MonoMac.AppKit {
 			} else
 				_Close ();
 		}
+
+		// note: if needed override the protected Get|Set methods
+		public string FrameAutosaveName { 
+			get { return GetFrameAutosaveName (); }
+			// ignore return value (bool)
+			set { SetFrameAutosaveName (value); }
+		}
+
+		public NSEvent NextEventMatchingMask (NSEventMask mask)
+		{
+			return NextEventMatchingMask ((uint) mask);
+		}
 		
+		public NSEvent NextEventMatchingMask (NSEventMask mask, NSDate expiration, string mode, bool deqFlag)
+		{
+			return NextEventMatchingMask ((uint) mask, expiration, mode, deqFlag);
+		}
+
+		public void DiscardEventsMatchingMask (NSEventMask mask, NSEvent beforeLastEvent)
+		{
+			DiscardEventsMatchingMask ((uint) mask, beforeLastEvent);
+		}
+
 // NSString NSWindowDidBecomeKeyNotification;
 // NSString NSWindowDidBecomeMainNotification;
 // NSString NSWindowDidChangeScreenNotification;

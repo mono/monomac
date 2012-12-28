@@ -1,5 +1,6 @@
 //
 // Copyright 2010, Novell, Inc.
+// Copyright 2012 Xamarin Inc.
 //
 // Permission is hereby granted, free of charge, to any person obtaining
 // a copy of this software and associated documentation files (the
@@ -75,6 +76,25 @@ namespace MonoMac.AppKit {
 			SynchronizationContext.SetSynchronizationContext (new AppKitSynchronizationContext ());
 			
 			NSApplicationMain (args.Length, args);
+		}
+
+		// NSEventMask is a superset (64 bits) of the mask that can be used (32 bits)
+		// NSEventMaskFromType is often used to convert from NSEventType to the mask
+		public NSEvent NextEvent (NSEventMask mask, NSDate expiration, string mode, bool deqFlag)
+		{
+			return NextEvent ((uint) mask, expiration, mode, deqFlag);
+		}
+
+		public void DiscardEvents (NSEventMask mask, NSEvent lastEvent)
+		{
+			DiscardEvents ((uint) mask, lastEvent);
+		}
+
+		// note: if needed override the protected Get|Set methods
+		public NSApplicationActivationPolicy ActivationPolicy { 
+			get { return GetActivationPolicy (); }
+			// ignore return value (bool)
+			set { SetActivationPolicy (value); }
 		}
 	}
 }

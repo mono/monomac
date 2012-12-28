@@ -57,9 +57,11 @@ MONOMAC_SOURCES = $(EXTRA_MONOMAC_SOURCES) \
 	./AppKit/NSActionCell.cs			\
 	./AppKit/NSApplication.cs			\
 	./AppKit/NSApplicationDelegate.cs		\
-	./AppKit/NSBitmapImageRep.cs			\
-	./AppKit/NSButton.cs				\
+	./AppKit/NSArrayController.cs			\
 	./AppKit/NSBezierPath.cs			\
+	./AppKit/NSBitmapImageRep.cs			\
+	./AppKit/NSBrowser.cs				\
+	./AppKit/NSButton.cs				\
 	./AppKit/NSCell.cs				\
 	./AppKit/NSColor.cs				\
 	./AppKit/NSControl.cs				\
@@ -76,10 +78,15 @@ MONOMAC_SOURCES = $(EXTRA_MONOMAC_SOURCES) \
 	./AppKit/NSOpenGLPixelFormat.cs			\
 	./AppKit/NSPopUpButton.cs			\
 	./AppKit/NSPopUpButtonCell.cs			\
+	./AppKit/NSScreen.cs				\
 	./AppKit/NSSharingService.cs			\
 	./AppKit/NSSegmentedControl.cs			\
+	./AppKit/NSSpeechSynthesizer.cs			\
+	./AppKit/NSSpellChecker.cs			\
+	./AppKit/NSSound.cs				\
 	./AppKit/NSTableView.cs				\
         ./AppKit/NSToolbarItem.cs                       \
+	./AppKit/NSTreeController.cs			\
         ./AppKit/NSWindow.cs				\
 	./CoreVideo/CVDisplayLink.cs			\
 	./Growl/Constants.cs				\

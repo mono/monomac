@@ -1,5 +1,4 @@
 //
-// Copyright 2011, Novell, Inc.
 // Copyright 2012 Xamarin Inc.
 //
 // Permission is hereby granted, free of charge, to any person obtaining
@@ -23,24 +22,16 @@
 //
 
 using System;
-using MonoMac.Foundation;
 
 namespace MonoMac.AppKit {
-
-	public partial class NSImage {
-
-		public static NSImage FromStream (System.IO.Stream stream)
-		{
-			using (NSData data = NSData.FromStream (stream)) {
-				return new NSImage (data);
-			}
-		}
-
+	
+	public partial class NSBrowser {
+		
 		// note: if needed override the protected Get|Set methods
-		public string Name { 
-			get { return GetName (); }
+		public string Path { 
+			get { return GetPath (); }
 			// ignore return value (bool)
-			set { SetName (value); }
+			set { SetPath (value); }
 		}
 	}
 }
