@@ -857,7 +857,7 @@ namespace MonoMac.QTKit
 		string[] MovieUnfilteredPasteboardTypes ();
 
 		[Static, Export ("movieTypesWithOptions:")]
-		string[] MovieTypesWithOptions ([Target] QTMovie qTMovieInitialization, QTMovieFileTypeOptions types);
+		string[] MovieTypesWithOptions (QTMovieFileTypeOptions types);
 
 		[Static, Export ("movie")]
 		QTMovie Movie { get; }
