@@ -120,8 +120,7 @@ namespace MonoMac.ScriptingBridge {
 		AESendMode SendMode { get; set; }
 
 		[Export ("timeout")]
-		long Timeout { get; set; }
-
+		int Timeout { get; set; }
 	}
 
 	[BaseType (typeof (NSObject))]
