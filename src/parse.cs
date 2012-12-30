@@ -518,11 +518,16 @@ class TrivialParser {
 		if (cols.Length >= 4)
 			gencs.WriteLine ("\n\t[BaseType (typeof ({0}))]", cols [3]);
 		gencs.WriteLine ("\t{0}interface {1} {{", limit == null ? "" : "public partial ", cols [1]);
-		
-		while ((line = r.ReadLine ()) != null && (need_close && !line.StartsWith ("}"))){
-			if (line == "{")
-				need_close = true;
-		}
+
+		//while ((line = r.ReadLine ()) != null && (need_close && !line.StartsWith ("}"))){
+		//	if (line == "{")
+		//		need_close = true;
+		//}
+		line = r.ReadLine ();
+		if (line == "{")
+			need_close = true;
+		while (line != null && (need_close && line != "}"))
+			line = r.ReadLine ();
 
 		var decl = new Declarations (gencs);
 		while ((line = r.ReadLine ()) != null && !line.StartsWith ("@end")){
