@@ -310,6 +310,9 @@ class TrivialParser {
 				for (; i < sig.Length; i++){
 					c = sig [i];
 					if (c == ')'){
+						for (++i; i < sig.Length && Char.IsWhiteSpace (sig [i]); i++)
+							;
+
 						for (++i; i < sig.Length; i++){
 							if (!Char.IsLetterOrDigit (sig [i]))
 								break;
