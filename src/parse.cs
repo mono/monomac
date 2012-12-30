@@ -329,8 +329,8 @@ class TrivialParser {
 	enum State {
 		SkipToType,
 		EndOfType,
+		SkipToParameter,
 		Parameter,
-			
 	}
 	
 	string MakeParameters (string sig)
@@ -356,7 +356,7 @@ class TrivialParser {
 				break;
 			case State.EndOfType:
 				if (c == ')'){
-					state = State.Parameter;
+					state = State.SkipToParameter;
 					sb.Append (RemapType (tsb.ToString ()));
 					sb.Append (' ');
 				} else {
@@ -364,7 +364,13 @@ class TrivialParser {
 						tsb.Append (c);
 				}
 				break;
-				
+
+			case State.SkipToParameter:
+				if (!Char.IsWhiteSpace (c)){
+					state = State.Parameter;
+					sb.Append (c);
+				}
+				break;
 			case State.Parameter:
 				if (Char.IsWhiteSpace (c)){
 					state = State.SkipToType;
