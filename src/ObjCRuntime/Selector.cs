@@ -1,5 +1,6 @@
 //
 // Copyright 2010, Novell, Inc.
+// Copyright 2013, Xamarin Inc.
 //
 // Permission is hereby granted, free of charge, to any person obtaining
 // a copy of this software and associated documentation files (the
@@ -43,15 +44,7 @@ namespace MonoMac.ObjCRuntime {
 		}
 
 		public Selector (string name, bool alloc) {
-			if (alloc) {
-				IntPtr selstr_ptr = Marshal.StringToHGlobalAuto (name);
-				handle = sel_registerName (selstr_ptr);
-
-				if (selstr_ptr != sel_getName (handle))
-					Marshal.FreeHGlobal (selstr_ptr);
-			} else {
-				handle = sel_registerName (name);
-			}
+			handle = GetHandle (name);
 		}
 
 		public Selector (string name) : this (name, false) {}
@@ -79,12 +72,7 @@ namespace MonoMac.ObjCRuntime {
 		}
 
 		public static bool operator!= (Selector left, Selector right) {
-			if (((object)left) == null)
-				return (((object)right) != null);
-			if (((object)right) == null)
-				return true;
-
-			return !sel_isEqual (left.handle, right.handle);
+			return !(left == right);
 		}
 
 		public static bool operator== (Selector left, Selector right) {
@@ -93,24 +81,18 @@ namespace MonoMac.ObjCRuntime {
 			if (((object)right) == null)
 				return false;
 
-			return sel_isEqual (left.handle, right.handle);
+			return left.handle == right.handle;
 		}
 
 		public override bool Equals (object right) {
-			if (right == null)
-				return false;
-
-			if (right is Selector)
-				return Equals ((Selector) right);
-
-			return false;
+			return Equals (right as Selector);
 		}
 
 		public bool Equals (Selector right) {
 			if (right == null)
 				return false;
 
-			return sel_isEqual (handle, right.handle);
+			return handle == right.handle;
 		}
 
 		public override int GetHashCode () {
@@ -119,15 +101,9 @@ namespace MonoMac.ObjCRuntime {
 		
 		[DllImport ("/usr/lib/libobjc.dylib")]
 		extern static IntPtr sel_getName (IntPtr sel);
-		[DllImport ("/usr/lib/libobjc.dylib")]
-		extern static IntPtr sel_registerName (IntPtr name);
-		[DllImport ("/usr/lib/libobjc.dylib")]
-		internal extern static IntPtr sel_registerName (string name);
 		[DllImport ("/usr/lib/libobjc.dylib", EntryPoint="sel_registerName")]
 		public extern static IntPtr GetHandle (string name);
 		[DllImport ("/usr/lib/libobjc.dylib")]
 		extern static bool sel_isMapped (IntPtr sel);
-		[DllImport ("/usr/lib/libobjc.dylib")]
-		extern static bool sel_isEqual (IntPtr lhs, IntPtr rhs);
 	}
 }

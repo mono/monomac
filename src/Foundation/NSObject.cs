@@ -323,8 +323,8 @@ namespace MonoMac.Foundation {
 			static readonly List <IntPtr> super_handles = new List<IntPtr> ();
 			static readonly object lock_obj = new object ();
 			static readonly IntPtr class_ptr = Class.GetHandle ("__MonoMac_Disposer");
-			static readonly IntPtr selDrain = Selector.sel_registerName ("drain:");
-			static readonly IntPtr selPerformSelectorOnMainThreadWithObjectWaitUntilDone = Selector.sel_registerName ("performSelectorOnMainThread:withObject:waitUntilDone:");
+			static readonly IntPtr selDrain = Selector.GetHandle ("drain:");
+			static readonly IntPtr selPerformSelectorOnMainThreadWithObjectWaitUntilDone = Selector.GetHandle ("performSelectorOnMainThread:withObject:waitUntilDone:");
 			
 			private MonoMac_Disposer () { }
 	
