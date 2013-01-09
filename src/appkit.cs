@@ -1767,10 +1767,10 @@ namespace MonoMac.AppKit {
 		[Export ("alternateTitle")]
 		string AlternateTitle { get; set; }
 	
-		[Export ("image")]
+		[Export ("image"), NullAllowed]
 		NSImage Image { get; set; }
 	
-		[Export ("alternateImage")]
+		[Export ("alternateImage"), NullAllowed]
 		NSImage AlternateImage  { get; set; }
 	
 		[Export ("imagePosition")]
@@ -5578,7 +5578,7 @@ namespace MonoMac.AppKit {
 		[Export ("keyEquivalentModifierMask")]
 		NSEventModifierMask KeyEquivalentModifierMask { get; set; }
 
-		[Export ("image")]
+		[Export ("image"), NullAllowed]
 		NSImage Image { get; set; }
 
 		[Export ("state")]
@@ -13442,7 +13442,7 @@ namespace MonoMac.AppKit {
 		[Export ("enabled")]
 		bool Enabled { [Bind ("isEnabled")]get; set; }
 
-		[Export ("image")]
+		[Export ("image"), NullAllowed]
 		NSImage Image { get; set; }
 
 		[Export ("view")]
