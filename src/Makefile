@@ -89,7 +89,6 @@ MONOMAC_SOURCES = $(EXTRA_MONOMAC_SOURCES) \
 	./AppKit/NSTreeController.cs			\
         ./AppKit/NSWindow.cs				\
 	./CoreVideo/CVDisplayLink.cs			\
-	./Growl/Constants.cs				\
 	./QTKit/QTCaptureDevice.cs			\
 	./QTKit/QTMovie.cs				\
 	./WebKit/DomNode.cs				\
@@ -184,7 +183,6 @@ APIS = \
 	appkit.cs		\
 	corewlan.cs		\
 	foundation-desktop.cs 	\
-	growl.cs		\
 	imagekit.cs		\
 	qtkit.cs		\
 	pdfkit.cs		\
