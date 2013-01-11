@@ -2317,7 +2317,7 @@ namespace MonoMac.AppKit {
 
 	[BaseType (typeof (NSObject))]
 	[Model]
-	public interface NSCollectionViewDelegate {
+	public partial interface NSCollectionViewDelegate {
 		[Export ("collectionView:canDragItemsAtIndexes:withEvent:")]
 		bool CanDragItems (NSCollectionView collectionView, NSIndexSet indexes, NSEvent evt);
 
@@ -2336,12 +2336,11 @@ namespace MonoMac.AppKit {
 
 		[Export ("collectionView:acceptDrop:index:dropOperation:")]
 		bool AcceptDrop (NSCollectionView collectionView, NSDraggingInfo draggingInfo, int index, NSCollectionViewDropOperation dropOperation);
-
 	}
 	
 	[BaseType (typeof (NSObject))]
 	[DisableDefaultCtor] // -colorSpaceName not valid for the NSColor <NSColor: 0x1b94780>; need to first convert colorspace.
-	public interface NSColor {
+	public partial interface NSColor {
 		[Static]
 		[Export ("colorWithCalibratedWhite:alpha:")]
 		NSColor FromCalibratedWhite (float white, float alpha);
@@ -3846,7 +3845,7 @@ namespace MonoMac.AppKit {
 	public delegate void OpenDocumentCompletionHandler (NSDocument document, bool documentWasAlreadyOpen, NSError error);
 
 	[BaseType (typeof (NSObject))]
-	public interface NSDocumentController : NSWindowRestoration {
+	public partial interface NSDocumentController : NSWindowRestoration {
 		[Static, Export ("sharedDocumentController")]
 		NSObject SharedDocumentController { get; }
 
@@ -6021,7 +6020,7 @@ namespace MonoMac.AppKit {
 	}
 
 	[BaseType (typeof (NSView))]
-	public interface NSOpenGLView {
+	public partial interface NSOpenGLView {
 		[Static]
 		[Export ("defaultPixelFormat")]
 		NSOpenGLPixelFormat DefaultPixelFormat { get; }
@@ -6141,7 +6140,7 @@ namespace MonoMac.AppKit {
 
 	
 	[BaseType (typeof (NSTableView))]
-	public interface NSOutlineView {
+	public partial interface NSOutlineView {
 		[Export ("outlineTableColumn"), NullAllowed]
 		NSTableColumn OutlineTableColumn { get; set; }
 
@@ -6397,7 +6396,7 @@ namespace MonoMac.AppKit {
 	}
 
 	[BaseType (typeof (NSObject), Delegates=new string [] { "WeakDelegate" }, Events=new Type [] { typeof (NSImageDelegate)})]
-	public interface NSImage {
+	public partial interface NSImage {
 		[Static]
 		[Export ("imageNamed:")]
 		NSImage ImageNamed (string name);
@@ -7122,7 +7121,7 @@ namespace MonoMac.AppKit {
 	}
 	
 	[BaseType (typeof (NSObject))]
-	public interface NSLayoutManager {
+	public partial interface NSLayoutManager {
 		[Export ("attributedString")]
 		NSAttributedString AttributedString { get; }
 
@@ -7693,7 +7692,7 @@ namespace MonoMac.AppKit {
 
 	[BaseType (typeof (NSObject))]
 	[DisableDefaultCtor] // An uncaught exception was raised: +[NSPasteboard alloc]: unrecognized selector sent to class 0xac3dcbf0
-	public interface NSPasteboard {
+	public partial interface NSPasteboard {
 		[Static]
 		[Export ("generalPasteboard")]
 		NSPasteboard GeneralPasteboard { get; }
@@ -8519,7 +8518,7 @@ namespace MonoMac.AppKit {
 
 
 	[BaseType (typeof (NSObject))]
-	public interface NSPrintOperation {
+	public partial interface NSPrintOperation {
 		[Static]
 		[Export ("printOperationWithView:printInfo:")]
 		NSPrintOperation FromView (NSView view, NSPrintInfo printInfo);
@@ -8715,7 +8714,7 @@ namespace MonoMac.AppKit {
 	}
 
 	[BaseType (typeof (NSObject))]
-	public interface NSResponder {
+	public partial interface NSResponder {
 		[Export ("tryToPerform:with:")]
 		bool TryToPerformwith (Selector anAction, NSObject anObject);
 
@@ -8906,7 +8905,7 @@ namespace MonoMac.AppKit {
 	}
 
 	[BaseType (typeof (NSView))]
-	public interface NSRulerView {
+	public partial interface NSRulerView {
 		[Export ("initWithFrame:")]
 		IntPtr Constructor (RectangleF frameRect);
 
@@ -9220,7 +9219,7 @@ namespace MonoMac.AppKit {
 	}
 
 	[BaseType (typeof (NSView))]
-	public interface NSScrollView : NSTextFinderBarContainer {
+	public partial interface NSScrollView : NSTextFinderBarContainer {
 		[Static]
 		[Export ("frameSizeForContentSize:hasHorizontalScroller:hasVerticalScroller:borderType:")]
 		SizeF FrameSizeForContentSize (SizeF cSize, bool hFlag, bool vFlag, NSBorderType aType);
@@ -9832,7 +9831,7 @@ namespace MonoMac.AppKit {
 	}
 
 	[BaseType (typeof (NSObject))]
-	public interface NSSpellChecker {
+	public partial interface NSSpellChecker {
 		[Static]
 		[Export ("sharedSpellChecker")]
 		NSSpellChecker SharedSpellChecker { get; }
@@ -10294,7 +10293,7 @@ namespace MonoMac.AppKit {
 	}
 
 	[Lion]
-	interface NSTextFinder {
+	partial interface NSTextFinder {
 		[Export ("client")]
 		NSTextFinderClient Client { set; }
 
@@ -10328,7 +10327,7 @@ namespace MonoMac.AppKit {
 	}
 
 	[BaseType (typeof (NSResponder))]
-	public interface NSView : NSDraggingDestination, NSAnimatablePropertyContainer, NSUserInterfaceItemIdentification  {
+	public partial interface NSView : NSDraggingDestination, NSAnimatablePropertyContainer, NSUserInterfaceItemIdentification  {
 		[Export ("initWithFrame:")]
 		IntPtr Constructor (RectangleF frameRect);
 
@@ -11101,7 +11100,7 @@ namespace MonoMac.AppKit {
 	}
 
 	[BaseType (typeof (NSObject))]
-	public interface NSTableColumn {
+	public partial interface NSTableColumn {
 		[Export ("initWithIdentifier:")]
 		IntPtr Constructor (NSObject identifier);
 	
@@ -11203,7 +11202,7 @@ namespace MonoMac.AppKit {
 
 	[Lion]
 	[BaseType (typeof (NSView))]
-	public interface NSTableCellView {
+	public partial interface NSTableCellView {
 		[Export ("backgroundStyle")]
 		NSBackgroundStyle BackgroundStyle {
 			get; set;
@@ -11879,7 +11878,7 @@ namespace MonoMac.AppKit {
 	}
 		
 	[BaseType (typeof (NSView), Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (NSTabViewDelegate)})]
-	public interface NSTabView {
+	public partial interface NSTabView {
 		[Export ("initWithFrame:")]
 		IntPtr Constructor (RectangleF frameRect);
 
@@ -12549,7 +12548,7 @@ namespace MonoMac.AppKit {
 	}
 
 	[BaseType (typeof (NSObject))]
-	public interface NSTextContainer {
+	public partial interface NSTextContainer {
 		[Export ("initWithContainerSize:")]
 		IntPtr Constructor (SizeF size);
 
@@ -12661,7 +12660,7 @@ namespace MonoMac.AppKit {
 	}
 
 	[BaseType (typeof (NSText), Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (NSTextViewDelegate)})]
-	public interface NSTextView : NSDraggingSource {
+	public partial interface NSTextView : NSDraggingSource {
 		[Export ("initWithFrame:textContainer:")]
 		IntPtr Constructor (RectangleF frameRect, NSTextContainer container);
 
@@ -14374,7 +14373,7 @@ namespace MonoMac.AppKit {
 	[BaseType (typeof (NSObject))]
 	[Model]
 	[Lion]
-	public interface NSWindowRestoration {
+	public partial interface NSWindowRestoration {
 		[Static]
 		[Export ("restoreWindowWithIdentifier:state:completionHandler:")]
 		void RestoreWindow (string identifier, NSCoder state, NSWindowCompletionHandler onCompletion);
@@ -14892,7 +14891,7 @@ namespace MonoMac.AppKit {
 	
 	
 	[BaseType (typeof (NSObject))]
-	public interface NSRunningApplication {
+	public partial interface NSRunningApplication {
 		[Export ("terminated")]
 		bool Terminated { [Bind ("isTerminated")] get;  }
 		
