@@ -6219,7 +6219,7 @@ namespace MonoMac.AppKit {
 
 	[BaseType (typeof (NSObject))]
 	[Model]
-	public interface NSOutlineViewDelegate {
+	public partial interface NSOutlineViewDelegate {
 		[Export ("outlineView:willDisplayCell:forTableColumn:item:")]
 		void WillDisplayCell (NSOutlineView outlineView, NSObject cell, NSTableColumn tableColumn, NSObject item);
 	
@@ -6323,7 +6323,7 @@ namespace MonoMac.AppKit {
 	
 	[BaseType (typeof (NSObject))]
 	[Model]
-	public interface NSOutlineViewDataSource {
+	public partial interface NSOutlineViewDataSource {
 		[Export ("outlineView:child:ofItem:")]
 		NSObject GetChild (NSOutlineView outlineView, int childIndex, NSObject ofItem);
 	
