@@ -25,6 +25,7 @@
 // Class.cs
 //
 // Copyright 2009 Novell, Inc
+// Copyright 2013 Xamarin Inc
 //
 using System;
 using System.Reflection;
@@ -40,7 +41,7 @@ namespace MonoMac.ObjCRuntime {
 		static NativeMethodBuilder retain_builder = new NativeMethodBuilder (typeof (NSObject).GetMethod ("NativeRetain", BindingFlags.NonPublic | BindingFlags.Instance));
 #endif
 		static Dictionary <IntPtr, Type> type_map = new Dictionary <IntPtr, Type> ();
-		static List <Type> custom_types = new List <Type> ();
+		static Dictionary <Type, Type> custom_types = new Dictionary <Type, Type> ();
 		static List <Delegate> method_wrappers = new List <Delegate> ();
 
 		internal IntPtr handle;
@@ -84,7 +85,7 @@ namespace MonoMac.ObjCRuntime {
 		}
 
 		public static bool IsCustomType (Type type) {
-			return custom_types.Contains (type);
+			return custom_types.ContainsKey (type);
 		}
 
 		internal static Type Lookup (IntPtr klass) {
@@ -204,7 +205,7 @@ namespace MonoMac.ObjCRuntime {
 			objc_registerClassPair (handle);
 
 			type_map [handle] = type;
-			custom_types.Add (type);
+			custom_types.Add (type, type);
 
 			return handle;
 		}
