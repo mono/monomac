@@ -1488,7 +1488,6 @@ namespace MonoMac.WebKit {
 	}
 
 	[BaseType (typeof (NSObject))]
-	[Model]
 	interface WebOpenPanelResultListener {
 		[Export ("chooseFilename:")]
 		void ChooseFilename (string filename);
