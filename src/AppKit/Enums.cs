@@ -22,6 +22,7 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 using System;
+using MonoMac.ObjCRuntime;
 
 namespace MonoMac.AppKit {
 
@@ -1356,13 +1357,23 @@ namespace MonoMac.AppKit {
 	}
 
 	public enum NSOpenGLContextParameter {
-		SwapRectangle = 200,
-		SwapRectangleEnable = 201,
-		RasterizationEnable = 221,
+		[Obsolete] SwapRectangle = 200,
+		[Obsolete] SwapRectangleEnable = 201,
+		[Obsolete] RasterizationEnable = 221,
+		[Obsolete] StateValidation = 301,
+		[Obsolete] SurfaceSurfaceVolatile = 306,
+
 		SwapInterval = 222,
 		SurfaceOrder = 235,
 		SurfaceOpacity = 236,
-		StateValidation = 301,
+
+		[Lion] SurfaceBackingSize = 304,
+		[Lion] ReclaimResources = 308,
+		[Lion] CurrentRendererID = 309,
+		[Lion] GpuVertexProcessing = 310,
+		[Lion] GpuFragmentProcessing = 311,
+		[Lion] HasDrawable = 314,
+		[Lion] MpsSwapsInFlight = 315
 	}
 	
 	public enum NSSurfaceOrder {
@@ -1373,6 +1384,7 @@ namespace MonoMac.AppKit {
 	public enum NSOpenGLPixelFormatAttribute {
 		AllRenderers       =   1,
 		DoubleBuffer       =   5,
+		[Lion] TrippleBuffer = 3,
 		Stereo             =   6,
 		AuxBuffers         =   7,
 		ColorSize          =   8,
@@ -1396,11 +1408,8 @@ namespace MonoMac.AppKit {
 		NoRecovery         =  72,
 		Accelerated        =  73,
 		ClosestPolicy      =  74,
-		Robust             =  75,
 		BackingStore       =  76,
-		MPSafe             =  78,
 		Window             =  80,
-		MultiScreen        =  81,
 		Compliant          =  83,
 		ScreenMask         =  84,
 		PixelBuffer        =  90,
@@ -1409,8 +1418,12 @@ namespace MonoMac.AppKit {
 		AcceleratedCompute =  97,
 
 		// Specify the profile
-	        OpenGLProfile = 99,
+		[Lion] OpenGLProfile = 99,
 		VirtualScreenCount = 128,
+
+		[Obsolete] Robust  =  75,
+		[Obsolete] MPSafe  =  78,
+		[Obsolete] MultiScreen =  81
 	}
 
 	public enum NSOpenGLProfile {
@@ -1427,8 +1440,9 @@ namespace MonoMac.AppKit {
 	public enum NSOpenGLGlobalOption {
 		FormatCacheSize = 501,
 		ClearFormatCache = 502,
-		RetainRenderers  = 503,
-		ResetLibrary     = 504
+		RetainRenderers = 503,
+		[Lion] UseBuildCache = 506,
+		[Obsolete] ResetLibrary = 504
 	}
 
 	public enum NSGLTextureTarget {
