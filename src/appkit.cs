@@ -10931,6 +10931,9 @@ namespace MonoMac.AppKit {
 
 		[Export ("noteFocusRingMaskChanged")]
 		void NoteFocusRingMaskChanged ();
+
+		[Lion, Export ("isDrawingFindIndicator")]
+		bool IsDrawingFindIndicator { get; }
 		
 		[Export ("dataWithEPSInsideRect:")]
 		NSData DataWithEpsInsideRect (RectangleF rect);
@@ -10982,7 +10985,10 @@ namespace MonoMac.AppKit {
 		
 		[Export ("locationOfPrintRect:")]
 		PointF LocationOfPrintRect (RectangleF aRect);
-		
+
+		[Lion, Export ("wantsBestResolutionOpenGLSurface")]
+		bool WantsBestResolutionOpenGLSurface { get; set; }
+
 		[Lion, Export ("backingAlignedRect:options:")]
 		RectangleF BackingAlignedRect (RectangleF aRect, NSAlignmentOptions options);
 
