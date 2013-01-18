@@ -126,10 +126,11 @@ namespace MonoMac.ObjCRuntime {
 		internal static IntPtr Register (Type type) { 
 			RegisterAttribute attr = (RegisterAttribute) Attribute.GetCustomAttribute (type, typeof (RegisterAttribute), false);
 			string name = attr == null ? type.FullName : attr.Name ?? type.FullName;
-			return Class.Register (type, name);
+			bool is_wrapper = attr == null ? false : attr.IsWrapper;
+			return Register (type, name, is_wrapper);
 		}
 
-		internal unsafe static IntPtr Register (Type type, string name) {
+		static IntPtr Register (Type type, string name, bool is_wrapper) {
 			IntPtr parent = IntPtr.Zero;
 			IntPtr handle = IntPtr.Zero;
 
@@ -145,6 +146,9 @@ namespace MonoMac.ObjCRuntime {
 
 				if (objc_getProtocol (name) != IntPtr.Zero)
 					throw new ArgumentException ("Attempting to register a class named: " + name + " which is a valid protocol");
+				
+				if (is_wrapper)
+					return IntPtr.Zero;
 
 				Type parent_type = type.BaseType;
 				string parent_name = null;
@@ -154,8 +158,9 @@ namespace MonoMac.ObjCRuntime {
 				parent_name = parent_attr == null ? parent_type.FullName : parent_attr.Name ?? parent_type.FullName;
 				parent = objc_getClass (parent_name);
 				if (parent == IntPtr.Zero && parent_type.Assembly != NSObject.MonoMacAssembly) {
+					bool parent_is_wrapper = parent_attr == null ? false : parent_attr.IsWrapper;
 					// Its possible as we scan that we might be derived from a type that isn't reigstered yet.
-					Class.Register (parent_type, parent_name);
+					Register (parent_type, parent_name, parent_is_wrapper);
 					parent = objc_getClass (parent_name);
 				}
 				if (parent == IntPtr.Zero) {
