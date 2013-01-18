@@ -32,11 +32,6 @@ using MonoMac.ObjCRuntime;
 
 namespace MonoMac.AppKit {
 	public partial class NSApplication : NSResponder {
-		static NSApplication () {
-			System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(typeof (NSObject).TypeHandle);
-			class_ptr = Class.GetHandle ("NSApplication");
-		}
-
 		[DllImport (Constants.AppKitLibrary)]
 		extern static void NSApplicationMain (int argc, string [] argv);
 
