@@ -5002,7 +5002,7 @@ namespace MonoMac.AppKit {
 
 		// keep signature in sync with 'graphicsContextWithGraphicsPort:flipped:'
 		[Export ("graphicsPort")]
-		IntPtr GraphicsPort {get; }
+		IntPtr GraphicsPortHandle {get; }
 	
 		[Export ("isFlipped")]
 		bool IsFlipped { get; }
