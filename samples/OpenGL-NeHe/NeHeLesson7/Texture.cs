@@ -69,10 +69,11 @@ namespace NeHeLesson7
 			NSImage src;
 			CGImage image;
 			CGContext context = null;
+			RectangleF rect = RectangleF.Empty;
 
 			src = new NSImage (path);
 
-			image = src.AsCGImage (RectangleF.Empty, null, null);
+			image = src.AsCGImage (ref rect, null, null);
 			width = image.Width;
 			height = image.Height;
 
