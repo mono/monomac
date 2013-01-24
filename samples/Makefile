@@ -49,7 +49,6 @@ XDIRS = \
 	SearchField 				\
 	SkinnableApp				\
 	StillMotion				\
-	TwoMinuteGrowler			\
 	VillainTracker 				\
 	WhereIsMyMac
 
