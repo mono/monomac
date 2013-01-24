@@ -13656,7 +13656,7 @@ namespace MonoMac.AppKit {
 	}
 	
 	[BaseType (typeof (NSResponder), Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (NSWindowDelegate)})]
-	public interface NSWindow : NSAnimatablePropertyContainer, NSUserInterfaceItemIdentification {
+	public partial interface NSWindow : NSAnimatablePropertyContainer, NSUserInterfaceItemIdentification {
 		[Static, Export ("frameRectForContentRect:styleMask:")]
 		RectangleF FrameRectFor (RectangleF contectRect, NSWindowStyle styleMask);
 	
@@ -14289,6 +14289,7 @@ namespace MonoMac.AppKit {
                 [Export ("animationBehavior")]
                 NSWindowAnimationBehavior AnimationBehavior { get; set; }
 
+#if !XAMARIN_MAC
 		//
 		// Fields
 		//
@@ -14372,6 +14373,7 @@ namespace MonoMac.AppKit {
 
 		[Lion, Field ("NSWindowDidExitVersionBrowserNotification")]
 		NSString DidExitVersionBrowserNotification { get; }
+#endif
 	}
 
 	public delegate void NSWindowCompletionHandler (NSWindow window, NSError error);
