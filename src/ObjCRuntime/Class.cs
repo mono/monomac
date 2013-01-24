@@ -227,6 +227,9 @@ namespace MonoMac.ObjCRuntime {
 			if (ea == null)
 				return;
 			
+			if (prop.PropertyType.IsGenericType || prop.PropertyType.IsGenericTypeDefinition)
+				throw new ArgumentException (string.Format ("Cannot export the property '{0}.{1}': it is generic.", prop.DeclaringType.FullName, prop.Name));
+
 			var m = prop.GetGetMethod (true);
 			if (m != null)
 				RegisterMethod (m, ea.ToGetter (prop), type, handle);
