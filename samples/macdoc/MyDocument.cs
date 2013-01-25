@@ -538,7 +538,7 @@ namespace macdoc
 					return;
 				
 				var node = WrapNode.FromObject (parent.outlineView.ItemAtRow ((int) indexes.FirstIndex));
-				parent.LoadUrl (node.PublicUrl, false, node.tree.HelpSource);
+				parent.LoadUrl (node.PublicUrl, false, node.Tree.HelpSource);
 			}
 		}
 
