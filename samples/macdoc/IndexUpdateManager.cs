@@ -91,8 +91,16 @@ namespace macdoc
 		public void PerformSearchIndexCreation ()
 		{
 			FireSearchIndexCreationEvent (true);
-			RootTree.MakeSearchIndex ();
-			RootTree.MakeIndex ();
+			try {
+				RootTree.MakeSearchIndex ();
+			} catch (Exception e) {
+				Logger.LogError ("Error making search index", e);
+			}
+			try {
+				RootTree.MakeIndex ();
+			} catch (Exception e) {
+				Logger.LogError ("Error making normal index", e);
+			}
 			IsFresh = true;
 			FireSearchIndexCreationEvent (false);
 			if (md5sums != null)
