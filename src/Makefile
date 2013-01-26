@@ -64,6 +64,7 @@ MONOMAC_SOURCES = $(EXTRA_MONOMAC_SOURCES) \
 	./AppKit/NSCell.cs				\
 	./AppKit/NSColor.cs				\
 	./AppKit/NSControl.cs				\
+	./AppKit/NSDocument.cs				\
 	./AppKit/NSEvent.cs				\
 	./AppKit/NSGradient.cs				\
 	./AppKit/NSGraphics.cs				\
