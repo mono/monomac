@@ -1021,6 +1021,7 @@ namespace MonoMac.AppKit {
 		[Export ("initWithCIImage:")]
 		IntPtr Constructor (MonoMac.CoreImage.CIImage ciImage);
 
+		[Static]
 		[Export ("imageRepsWithData:")]
 		NSImageRep [] ImageRepsWithData (NSData data);
 
@@ -9960,6 +9961,7 @@ namespace MonoMac.AppKit {
 		[Export ("canInitWithPasteboard:")]
 		bool CanCreateFromPasteboard (NSPasteboard pasteboard);
 
+		[Static]
 		[Export ("soundUnfilteredTypes")]
 		string [] SoundUnfilteredTypes ();
 
