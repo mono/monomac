@@ -51,7 +51,9 @@ namespace MonoMac.Foundation {
 		private IntPtr handle;
 		private IntPtr super;
 		private IntPtr gchandle;
+#if OBJECT_REF_TRACKING
 		private object lock_obj = new object ();
+#endif
 		
 #if COREBUILD
 		static IntPtr class_ptr = Class.GetHandle ("NSObject");
