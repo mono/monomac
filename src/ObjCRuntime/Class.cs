@@ -36,6 +36,8 @@ using MonoMac.Foundation;
 
 namespace MonoMac.ObjCRuntime {
 	 public class Class : INativeObject {
+		public static bool ThrowOnInitFailure = true;
+
 #if OBJECT_REF_TRACKING
 		static NativeMethodBuilder release_builder = new NativeMethodBuilder (typeof (NSObject).GetMethod ("NativeRelease", BindingFlags.NonPublic | BindingFlags.Instance));
 		static NativeMethodBuilder retain_builder = new NativeMethodBuilder (typeof (NSObject).GetMethod ("NativeRetain", BindingFlags.NonPublic | BindingFlags.Instance));

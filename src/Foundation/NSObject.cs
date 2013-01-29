@@ -113,6 +113,16 @@ namespace MonoMac.Foundation {
 		}
 
 		private void InitializeObject (bool alloced) {			
+			if (alloced && handle == IntPtr.Zero && Class.ThrowOnInitFailure) {
+				if (ClassHandle == IntPtr.Zero)
+					throw new Exception (string.Format ("Could not create an native instance of the type '{0}': the native class hasn't been loaded.\n" +
+					                                    "It is possible to ignore this condition by setting Class.ThrowOnInitFailure to false.",
+					                                    GetType ().FullName));
+				throw new Exception (string.Format ("Failed to create a instance of the native type '{0}'.\n" +
+				                                    "It is possible to ignore this condition by setting Class.ThrowOnInitFailure to false.",
+				                                    new Class (ClassHandle).Name));
+			}
+
 			IsDirectBinding = (this.GetType ().Assembly == NSObject.MonoMacAssembly);
 			Runtime.RegisterNSObject (this, handle);
 
