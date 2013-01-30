@@ -86,6 +86,18 @@ namespace MonoMac.ObjCRuntime {
 		public static IntPtr GetHandle (string name) {
 			return objc_getClass (name);
 		}
+		
+		public static IntPtr GetHandle (Type type) {
+			RegisterAttribute attr = (RegisterAttribute) Attribute.GetCustomAttribute (type, typeof (RegisterAttribute), false);
+			string name = attr == null ? type.FullName : attr.Name ?? type.FullName;
+			bool is_wrapper = attr == null ? false : attr.IsWrapper;
+			var handle = objc_getClass (name);
+			
+			if (handle == IntPtr.Zero)
+				handle = Class.Register (type, name, is_wrapper);
+			
+			return handle;
+		}
 
 		public static bool IsCustomType (Type type) {
 			lock (lock_obj)
