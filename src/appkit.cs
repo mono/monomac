@@ -11235,6 +11235,11 @@ namespace MonoMac.AppKit {
 		NSTextField TextField {
 			get; set;
 		}
+
+		[Export ("draggingImageComponents", ArgumentSemantic.Retain)]
+		NSArray DraggingImageComponents {
+			get;
+		}
 	}
 
 	public delegate void NSTableViewRowHandler (NSTableRowView rowView, int row);
