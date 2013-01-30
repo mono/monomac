@@ -11108,8 +11108,11 @@ namespace MonoMac.AppKit {
 	}
 
 	[BaseType (typeof (NSObject))]
-	public partial interface NSTableColumn {
-		[Export ("initWithIdentifier:")]
+	public partial interface NSTableColumn : NSUserInterfaceItemIdentification {
+		[Lion, Export ("initWithIdentifier:")]
+		IntPtr Constructor (string identifier);
+
+		[Obsolete, Export ("initWithIdentifier:")]
 		IntPtr Constructor (NSObject identifier);
 	
 		[Export ("dataCellForRow:")]
@@ -11117,10 +11120,6 @@ namespace MonoMac.AppKit {
 		
 		[Export ("sizeToFit")]
 		void SizeToFit ();
-
-		//Detected properties
-		[Export ("identifier")]
-		NSObject Identifier { get; set; }
 		
 		[Export ("tableView")]
 		NSTableView TableView { get; set; }
