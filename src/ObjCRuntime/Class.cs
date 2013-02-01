@@ -38,10 +38,6 @@ namespace MonoMac.ObjCRuntime {
 	 public class Class : INativeObject {
 		public static bool ThrowOnInitFailure = true;
 
-#if OBJECT_REF_TRACKING
-		static NativeMethodBuilder release_builder = new NativeMethodBuilder (typeof (NSObject).GetMethod ("NativeRelease", BindingFlags.NonPublic | BindingFlags.Instance));
-		static NativeMethodBuilder retain_builder = new NativeMethodBuilder (typeof (NSObject).GetMethod ("NativeRetain", BindingFlags.NonPublic | BindingFlags.Instance));
-#endif
 		static Dictionary <IntPtr, Type> type_map = new Dictionary <IntPtr, Type> ();
 		static Dictionary <Type, Type> custom_types = new Dictionary <Type, Type> ();
 		static List <Delegate> method_wrappers = new List <Delegate> ();
@@ -81,6 +77,11 @@ namespace MonoMac.ObjCRuntime {
 				IntPtr ptr = class_getName (this.handle);
 				return Marshal.PtrToStringAuto (ptr);
 			}
+		}
+		
+		internal static string GetName (IntPtr @class)
+		{
+			return Marshal.PtrToStringAuto (class_getName (@class));
 		}
 
 		public static IntPtr GetHandle (string name) {
@@ -194,10 +195,7 @@ namespace MonoMac.ObjCRuntime {
 					RegisterProperty (prop, type, handle);
 				}
 	
-#if OBJECT_REF_TRACKING
-				class_addMethod (handle, release_builder.Selector, release_builder.Delegate, release_builder.Signature);
-				class_addMethod (handle, retain_builder.Selector, retain_builder.Delegate, retain_builder.Signature);
-#endif
+				NSObject.OverrideRetainAndRelease (handle);
 
 				foreach (MethodInfo minfo in type.GetMethods (BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static))
 					RegisterMethod (minfo, type, handle);
@@ -467,13 +465,17 @@ retl    $0x4                   */  0xc2, 0x04, 0x00,                            
 		[DllImport ("/usr/lib/libobjc.dylib")]
 		extern static bool class_addIvar (IntPtr cls, string name, IntPtr size, ushort alignment, string types);
 		[DllImport ("/usr/lib/libobjc.dylib")]
-		extern static bool class_addMethod (IntPtr cls, IntPtr name, Delegate imp, string types);
+		internal extern static bool class_addMethod (IntPtr cls, IntPtr name, Delegate imp, string types);
 		[DllImport ("/usr/lib/libobjc.dylib")]
-		extern static bool class_addMethod (IntPtr cls, IntPtr name, IntPtr imp, string types);
+		internal extern static bool class_addMethod (IntPtr cls, IntPtr name, IntPtr imp, string types);
 		[DllImport ("/usr/lib/libobjc.dylib")]
 		extern static IntPtr class_getName (IntPtr cls);
 		[DllImport ("/usr/lib/libobjc.dylib")]
-		extern static IntPtr class_getSuperclass (IntPtr cls);
+		internal extern static IntPtr class_getSuperclass (IntPtr cls);
+		[DllImport ("/usr/lib/libobjc.dylib")]
+		internal extern static IntPtr class_getMethodImplementation (IntPtr cls, IntPtr sel);
+		[DllImport ("/usr/lib/libobjc.dylib")]
+		internal extern static IntPtr class_getInstanceVariable (IntPtr cls, string name);
 
 		[MonoNativeFunctionWrapper]
 		delegate IntPtr addPropertyDelegate (IntPtr cls, string name, objc_attribute_prop [] attributes, int count);

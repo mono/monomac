@@ -105,6 +105,20 @@ namespace MonoMac.ObjCRuntime {
 			}
 		}
 
+		internal static void NativeObjectHasDied (IntPtr ptr)
+		{
+			lock (lock_obj) {
+				WeakReference wr;
+				if (object_map.TryGetValue (ptr, out wr)) {
+					object_map.Remove (ptr);
+					
+					var obj = (NSObject) wr.Target;
+					if (obj != null)
+						obj.ClearHandle ();
+				}
+			}
+		}
+
 		public static NSObject TryGetNSObject (IntPtr ptr) {
 			lock (lock_obj) {
 				WeakReference reference;
