@@ -105,7 +105,12 @@ namespace MonoMac.ObjCRuntime {
 				return custom_types.ContainsKey (type);
 		}
 
-		internal static Type Lookup (IntPtr klass) {
+		internal static Type Lookup (IntPtr klass)
+		{
+			return Lookup (klass, true);
+		}
+
+		internal static Type Lookup (IntPtr klass, bool throw_on_error) {
 			// FAST PATH
 			lock (lock_obj) {
 				Type type;
@@ -127,6 +132,9 @@ namespace MonoMac.ObjCRuntime {
 					}
 
 					if (kls == IntPtr.Zero) {
+						if (!throw_on_error)
+							return null;
+
 						var message = "Could not find a valid superclass for type " + new Class (orig_klass).Name 
 							+ ". Did you forget to register the bindings at " + typeof(Class).FullName
 							+ ".Register() or call NSApplication.Init()?";

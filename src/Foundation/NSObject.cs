@@ -150,7 +150,8 @@ namespace MonoMac.Foundation {
 			// TODO: Compare performance with the retain trampoline check above.
 			//
 
-			return Class.IsCustomType (Class.Lookup (cls));
+			var type = Class.Lookup (cls, false);
+			return type != null && Class.IsCustomType (type);
 		}
 		
 		void CreateGCHandle (bool force_weak)
