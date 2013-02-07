@@ -6149,7 +6149,7 @@ namespace MonoMac.AppKit {
 		bool IsExpandable (NSObject item);
 
 		[Export ("expandItem:expandChildren:")]
-		void ExpandItem (NSObject item, bool expandChildren);
+		void ExpandItem ([NullAllowed] NSObject item, bool expandChildren);
 
 		[Export ("expandItem:")]
 		void ExpandItem (NSObject item);
