@@ -53,7 +53,7 @@ namespace MonoMac.WebKit {
 		DomCssRuleType Type { get; }
 
 		[Export ("cssText")]
-		string CssText { get; }
+		string CssText { get; set; }
 
 		[Export ("parentStyleSheet")]
 		DomCssStyleSheet ParentStyleSheet { get;  }
@@ -76,7 +76,7 @@ namespace MonoMac.WebKit {
 	[DisableDefaultCtor] // An uncaught exception was raised: +[DOMCSSStyleDeclaration init]: should never be used
 	interface DomCssStyleDeclaration {
 		[Export ("cssText")]
-		string CssText { get; }
+		string CssText { get; set; }
 
 		[Export ("length")]
 		int Count { get; }
@@ -138,7 +138,7 @@ namespace MonoMac.WebKit {
 	[DisableDefaultCtor] // An uncaught exception was raised: +[DOMCSSValue init]: should never be used
 	interface DomCssValue {
 		[Export ("cssText")]
-		string CssText { get; }
+		string CssText { get; set; }
 
 		[Export ("cssValueType")]
 		DomCssValueType Type { get; }
@@ -233,7 +233,7 @@ namespace MonoMac.WebKit {
 		string Name { get; }
 
 		[Export ("nodeValue")]
-		string Value { get; }
+		string Value { get; set; }
 
 		[Export ("nodeType")]
 		DomNodeType NodeType { get;  }
@@ -325,7 +325,7 @@ namespace MonoMac.WebKit {
 		[Export ("lookupNamespaceURI:")]
 		string LookupNamespace (string prefix);
 
-		[Export ("compareDocumentPosition")]
+		[Export ("compareDocumentPosition:")]
 		DomDocumentPosition CompareDocumentPosition (DomNode other);
 
 		//
@@ -506,7 +506,7 @@ namespace MonoMac.WebKit {
 	[DisableDefaultCtor] // An uncaught exception was raised: +[DOMCharacterData init]: should never be used
 	interface DomCharacterData {
 		[Export ("data")]
-		string Data { get; }
+		string Data { get; set; }
 
 		[Export ("length")]
 		int Count { get; }
@@ -546,7 +546,7 @@ namespace MonoMac.WebKit {
 		string XmlEncoding { get;  }
 
 		[Export ("xmlVersion")]
-		string XmlVersion { get;  }
+		string XmlVersion { get; set; }
 
 		[Export ("xmlStandalone")]
 		bool XmlStandalone { get; set;  }
@@ -1062,7 +1062,7 @@ namespace MonoMac.WebKit {
 		[Export ("clear")]
 		void Clear ();
 
-		[Export ("captureEvent")]
+		[Export ("captureEvents")]
 		void CaptureEvents ();
 
 		[Export ("releaseEvents")]

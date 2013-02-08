@@ -37,10 +37,10 @@ namespace MonoMac.AppKit {
 		}
 
 		// note: if needed override the protected Get|Set methods
-		public uint SelectionIndex { 
-			get { return GetSelectionIndex (); }
+		public int SelectionIndex { 
+			get { return (int) GetSelectionIndex (); }
 			// ignore return value (bool)
-			set { SetSelectionIndex (value); }
+			set { SetSelectionIndex ((uint) value); }
 		}
 
 		// note: if needed override the protected Get|Set methods

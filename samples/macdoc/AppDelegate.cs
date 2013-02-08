@@ -87,9 +87,9 @@ namespace macdoc
 
 			if (extraUncompiledDocs != null)
 				foreach (var dir in extraUncompiledDocs)
-					RootTree.UncompiledHelpSources.Add (dir);
+					RootTree.AddUncompiledSource (dir);
 
-			Root = RootTree.LoadTree (null);
+			Root = RootTree.LoadTree ();
 
 			if (extraDocs != null)
 				foreach (var dir in extraDocs)
@@ -107,11 +107,6 @@ namespace macdoc
 			                                             macDocPath);
 			BookmarkManager = new BookmarkManager (macDocPath);
 			AppleDocHandler = new AppleDocHandler ("/Library/Frameworks/Mono.framework/Versions/Current/etc/");
-			
-			// Configure the documentation rendering.
-			SettingsHandler.Settings.EnableEditing = false;
-			SettingsHandler.Settings.preferred_font_size = 200;
-			HelpSource.use_css = true;
 		}
 		
 		public override void FinishedLaunching (NSObject notification)

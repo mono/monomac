@@ -64,7 +64,7 @@ namespace macdoc
 		public override NSObject GetChild (NSOutlineView outlineView, int index, NSObject item)
 		{
 			WrapNode wrap;
-			Node n = (Node) (item == null ? Root : (Node) GetNode (item)).Nodes [index];
+			Node n = (Node) (item == null ? Root.RootNode : (Node) GetNode (item)).Nodes [index];
 
 			if (nodeToWrapper.ContainsKey (n))
 				return nodeToWrapper [n];
@@ -83,7 +83,7 @@ namespace macdoc
 		public override int GetChildrenCount (NSOutlineView outlineView, NSObject item)
 		{
 			if (item == null)
-				return Root.Nodes.Count;
+				return Root.RootNode.Nodes.Count;
 			return GetNode (item).Nodes.Count;
 		}
 		

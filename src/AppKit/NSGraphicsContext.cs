@@ -1,5 +1,5 @@
-///
-// Copyright 2012, Xamarin, Inc.
+//
+// Copyright 2012-2013 Xamarin Inc.
 //
 // Authors:
 //   Miguel de Icaza (miguel@gnome.org)
@@ -35,6 +35,10 @@ namespace MonoMac.AppKit {
 			if (context == null)
 				throw new ArgumentNullException ("context");
 			return FromGraphicsPort (context.Handle, initialFlippedState);
+		}
+
+		public virtual CGContext GraphicsPort {
+			get { return new CGContext (GraphicsPortHandle); }
 		}
 	}
 }

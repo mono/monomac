@@ -35,12 +35,13 @@ namespace GLFullScreen
                         NSImage src;
                         CGImage image;
                         CGContext context = null;
+                        RectangleF rect = RectangleF.Empty;
                         
                         data = new byte[TEXTURE_WIDTH * TEXTURE_HEIGHT * 4];
                         
                         src = new NSImage (path);
                         
-                        image = src.AsCGImage (RectangleF.Empty, null, null);
+                        image = src.AsCGImage (ref rect, null, null);
                         width = image.Width;
                         height = image.Height;
                         

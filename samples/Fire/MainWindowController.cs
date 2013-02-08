@@ -70,9 +70,10 @@ namespace Fire
 			fire.AccelerationY = 200;
 			fire.ScaleSpeed = 0.3f;
 
+			RectangleF rect = RectangleF.Empty;
 			CGColor color = new CGColor (0.8f,0.4f,0.2f,0.10f);
 			fire.Color = color;
-			fire.Contents = NSImage.ImageNamed ("fire.png").AsCGImage (RectangleF.Empty, null, null);
+			fire.Contents = NSImage.ImageNamed ("fire.png").AsCGImage (ref rect, null, null);
 
 			// Name the cell so that it can be animated later using keypaths
 			fire.Name = "fire";
@@ -94,7 +95,7 @@ namespace Fire
 			smoke.Scale = 0.1f;
 			smoke.AlphaSpeed = -0.12f;
 			smoke.ScaleSpeed = 0.7f;
-			smoke.Contents = NSImage.ImageNamed ("smoke.png").AsCGImage (RectangleF.Empty, null, null);
+			smoke.Contents = NSImage.ImageNamed ("smoke.png").AsCGImage (ref rect, null, null);
 			//Name the cell so that it can be animated later using keypaths
 			smoke.Name = "smoke";
 

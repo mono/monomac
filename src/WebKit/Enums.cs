@@ -23,7 +23,7 @@ namespace MonoMac.WebKit {
 	}
 
 	[Flags]
-	public enum DomDocumentPosition {
+	public enum DomDocumentPosition : ushort {
 		Disconnected = 0x01,
 		Preceeding = 0x02,
 		Following = 0x04,

@@ -36,10 +36,8 @@ using MonoMac.Foundation;
 
 namespace MonoMac.ObjCRuntime {
 	 public class Class : INativeObject {
-#if OBJECT_REF_TRACKING
-		static NativeMethodBuilder release_builder = new NativeMethodBuilder (typeof (NSObject).GetMethod ("NativeRelease", BindingFlags.NonPublic | BindingFlags.Instance));
-		static NativeMethodBuilder retain_builder = new NativeMethodBuilder (typeof (NSObject).GetMethod ("NativeRetain", BindingFlags.NonPublic | BindingFlags.Instance));
-#endif
+		public static bool ThrowOnInitFailure = true;
+
 		static Dictionary <IntPtr, Type> type_map = new Dictionary <IntPtr, Type> ();
 		static Dictionary <Type, Type> custom_types = new Dictionary <Type, Type> ();
 		static List <Delegate> method_wrappers = new List <Delegate> ();
@@ -80,9 +78,26 @@ namespace MonoMac.ObjCRuntime {
 				return Marshal.PtrToStringAuto (ptr);
 			}
 		}
+		
+		internal static string GetName (IntPtr @class)
+		{
+			return Marshal.PtrToStringAuto (class_getName (@class));
+		}
 
 		public static IntPtr GetHandle (string name) {
 			return objc_getClass (name);
+		}
+		
+		public static IntPtr GetHandle (Type type) {
+			RegisterAttribute attr = (RegisterAttribute) Attribute.GetCustomAttribute (type, typeof (RegisterAttribute), false);
+			string name = attr == null ? type.FullName : attr.Name ?? type.FullName;
+			bool is_wrapper = attr == null ? false : attr.IsWrapper;
+			var handle = objc_getClass (name);
+			
+			if (handle == IntPtr.Zero)
+				handle = Class.Register (type, name, is_wrapper);
+			
+			return handle;
 		}
 
 		public static bool IsCustomType (Type type) {
@@ -126,10 +141,11 @@ namespace MonoMac.ObjCRuntime {
 		internal static IntPtr Register (Type type) { 
 			RegisterAttribute attr = (RegisterAttribute) Attribute.GetCustomAttribute (type, typeof (RegisterAttribute), false);
 			string name = attr == null ? type.FullName : attr.Name ?? type.FullName;
-			return Class.Register (type, name);
+			bool is_wrapper = attr == null ? false : attr.IsWrapper;
+			return Register (type, name, is_wrapper);
 		}
 
-		internal unsafe static IntPtr Register (Type type, string name) {
+		static IntPtr Register (Type type, string name, bool is_wrapper) {
 			IntPtr parent = IntPtr.Zero;
 			IntPtr handle = IntPtr.Zero;
 
@@ -145,6 +161,9 @@ namespace MonoMac.ObjCRuntime {
 
 				if (objc_getProtocol (name) != IntPtr.Zero)
 					throw new ArgumentException ("Attempting to register a class named: " + name + " which is a valid protocol");
+				
+				if (is_wrapper)
+					return IntPtr.Zero;
 
 				Type parent_type = type.BaseType;
 				string parent_name = null;
@@ -154,8 +173,9 @@ namespace MonoMac.ObjCRuntime {
 				parent_name = parent_attr == null ? parent_type.FullName : parent_attr.Name ?? parent_type.FullName;
 				parent = objc_getClass (parent_name);
 				if (parent == IntPtr.Zero && parent_type.Assembly != NSObject.MonoMacAssembly) {
+					bool parent_is_wrapper = parent_attr == null ? false : parent_attr.IsWrapper;
 					// Its possible as we scan that we might be derived from a type that isn't reigstered yet.
-					Class.Register (parent_type, parent_name);
+					Register (parent_type, parent_name, parent_is_wrapper);
 					parent = objc_getClass (parent_name);
 				}
 				if (parent == IntPtr.Zero) {
@@ -175,10 +195,7 @@ namespace MonoMac.ObjCRuntime {
 					RegisterProperty (prop, type, handle);
 				}
 	
-#if OBJECT_REF_TRACKING
-				class_addMethod (handle, release_builder.Selector, release_builder.Delegate, release_builder.Signature);
-				class_addMethod (handle, retain_builder.Selector, retain_builder.Delegate, retain_builder.Signature);
-#endif
+				NSObject.OverrideRetainAndRelease (handle);
 
 				foreach (MethodInfo minfo in type.GetMethods (BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static))
 					RegisterMethod (minfo, type, handle);
@@ -222,6 +239,9 @@ namespace MonoMac.ObjCRuntime {
 			if (ea == null)
 				return;
 			
+			if (prop.PropertyType.IsGenericType || prop.PropertyType.IsGenericTypeDefinition)
+				throw new ArgumentException (string.Format ("Cannot export the property '{0}.{1}': it is generic.", prop.DeclaringType.FullName, prop.Name));
+
 			var m = prop.GetGetMethod (true);
 			if (m != null)
 				RegisterMethod (m, ea.ToGetter (prop), type, handle);
@@ -445,13 +465,17 @@ retl    $0x4                   */  0xc2, 0x04, 0x00,                            
 		[DllImport ("/usr/lib/libobjc.dylib")]
 		extern static bool class_addIvar (IntPtr cls, string name, IntPtr size, ushort alignment, string types);
 		[DllImport ("/usr/lib/libobjc.dylib")]
-		extern static bool class_addMethod (IntPtr cls, IntPtr name, Delegate imp, string types);
+		internal extern static bool class_addMethod (IntPtr cls, IntPtr name, Delegate imp, string types);
 		[DllImport ("/usr/lib/libobjc.dylib")]
-		extern static bool class_addMethod (IntPtr cls, IntPtr name, IntPtr imp, string types);
+		internal extern static bool class_addMethod (IntPtr cls, IntPtr name, IntPtr imp, string types);
 		[DllImport ("/usr/lib/libobjc.dylib")]
 		extern static IntPtr class_getName (IntPtr cls);
 		[DllImport ("/usr/lib/libobjc.dylib")]
-		extern static IntPtr class_getSuperclass (IntPtr cls);
+		internal extern static IntPtr class_getSuperclass (IntPtr cls);
+		[DllImport ("/usr/lib/libobjc.dylib")]
+		internal extern static IntPtr class_getMethodImplementation (IntPtr cls, IntPtr sel);
+		[DllImport ("/usr/lib/libobjc.dylib")]
+		internal extern static IntPtr class_getInstanceVariable (IntPtr cls, string name);
 
 		[MonoNativeFunctionWrapper]
 		delegate IntPtr addPropertyDelegate (IntPtr cls, string name, objc_attribute_prop [] attributes, int count);

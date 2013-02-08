@@ -1689,6 +1689,7 @@ namespace MonoMac.AppKit {
 		Default = 0, None = 2, DocumentWindow, UtilityWindow, AlertPanel
 	}
 
+	[Lion]
 	public enum NSTextFinderAction {
 		ShowFindInterface = 1,
 		NextMatch = 2,

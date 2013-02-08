@@ -1021,6 +1021,7 @@ namespace MonoMac.AppKit {
 		[Export ("initWithCIImage:")]
 		IntPtr Constructor (MonoMac.CoreImage.CIImage ciImage);
 
+		[Static]
 		[Export ("imageRepsWithData:")]
 		NSImageRep [] ImageRepsWithData (NSData data);
 
@@ -3539,7 +3540,7 @@ namespace MonoMac.AppKit {
 	public delegate void NSDocumentCompletionHandler (IntPtr nsErrorPointerOrZero);
 	
 	[BaseType (typeof (NSObject))]
-	public interface NSDocument {
+	public partial interface NSDocument {
 		[Export ("initWithType:error:")]
 		IntPtr Constructor (string typeName, out NSError outError);
 
@@ -3859,7 +3860,7 @@ namespace MonoMac.AppKit {
 		string CurrentDirectory { get; }
 
 		[Export ("documentForURL:")]
-		NSDocument DocumentForUrl (NSUrl absoluteUrl);
+		NSDocument DocumentForUrl (NSUrl url);
 
 		[Export ("documentForWindow:")]
 		NSDocument DocumentForWindow (NSWindow window);
@@ -3889,20 +3890,20 @@ namespace MonoMac.AppKit {
 		int RunModalOpenPanelforTypes (NSOpenPanel openPanel, string [] types);
 
 		[Export ("openDocumentWithContentsOfURL:display:error:")]
-		NSObject OpenDocument (NSUrl absoluteUrl, bool displayDocument, out NSError outError);
+		NSObject OpenDocument (NSUrl url, bool displayDocument, out NSError outError);
 
 		[Lion]
 		[Export ("openDocumentWithContentsOfURL:display:completionHandler:")]
 		void OpenDocument (NSUrl url, bool display, OpenDocumentCompletionHandler completionHandler);
 
 		[Export ("makeDocumentWithContentsOfURL:ofType:error:")]
-		NSObject MakeDocument (NSUrl absoluteUrl, string typeName, out NSError outError);
+		NSObject MakeDocument (NSUrl url, string typeName, out NSError outError);
 
 		[Export ("reopenDocumentForURL:withContentsOfURL:error:")]
-		bool ReopenDocument (NSUrl absoluteDocumentUrl, NSUrl absoluteDocumentContentsUrl, out NSError outError);
+		bool ReopenDocument (NSUrl url, NSUrl contentsUrl, out NSError outError);
 
 		[Export ("makeDocumentForURL:withContentsOfURL:ofType:error:")]
-		NSObject MakeDocument (NSUrl absoluteDocumentUrl, NSUrl absoluteDocumentContentsUrl, string typeName, out NSError outError);
+		NSObject MakeDocument ([NullAllowed] NSUrl urlOrNil, NSUrl contentsUrl, string typeName, out NSError outError);
 
 		[Export ("saveAllDocuments:")]
 		void SaveAllDocuments ([NullAllowed] NSObject sender);
@@ -3935,7 +3936,7 @@ namespace MonoMac.AppKit {
 		void NoteNewRecentDocument (NSDocument document);
 
 		[Export ("noteNewRecentDocumentURL:")]
-		void NoteNewRecentDocumentURL (NSUrl absoluteUrl);
+		void NoteNewRecentDocumentURL (NSUrl url);
 
 		[Export ("recentDocumentURLs")]
 		NSUrl [] RecentDocumentUrls { get; }
@@ -3944,7 +3945,7 @@ namespace MonoMac.AppKit {
 		string DefaultType { get; }
 
 		[Export ("typeForContentsOfURL:error:")]
-		string TypeForUrl (NSUrl inAbsoluteUrl, out NSError outError);
+		string TypeForUrl (NSUrl url, out NSError outError);
 
 		[Export ("documentClassNames")]
 		string [] DocumentClassNames  {get; }
@@ -5002,7 +5003,7 @@ namespace MonoMac.AppKit {
 
 		// keep signature in sync with 'graphicsContextWithGraphicsPort:flipped:'
 		[Export ("graphicsPort")]
-		IntPtr GraphicsPort {get; }
+		IntPtr GraphicsPortHandle {get; }
 	
 		[Export ("isFlipped")]
 		bool IsFlipped { get; }
@@ -9960,6 +9961,7 @@ namespace MonoMac.AppKit {
 		[Export ("canInitWithPasteboard:")]
 		bool CanCreateFromPasteboard (NSPasteboard pasteboard);
 
+		[Static]
 		[Export ("soundUnfilteredTypes")]
 		string [] SoundUnfilteredTypes ();
 
@@ -10211,7 +10213,7 @@ namespace MonoMac.AppKit {
 
 	[Lion]
 	[Model]
-	interface NSTextFinderClient {
+	partial interface NSTextFinderClient {
 		[Abstract]
 		[Export ("allowsMultipleSelection")]
 		bool AllowsMultipleSelection { get;  }
@@ -10277,7 +10279,7 @@ namespace MonoMac.AppKit {
 		void DrawCharactersInRangeforContentView (NSRange range, NSView view);
 	}
 
- 	public interface NSTextFinderBarContainer {
+ 	public partial interface NSTextFinderBarContainer {
 		[Abstract, Export ("findBarVisible"), Lion]
 		bool FindBarVisible { [Bind ("isFindBarVisible")] get; set;  }
 
@@ -11106,8 +11108,11 @@ namespace MonoMac.AppKit {
 	}
 
 	[BaseType (typeof (NSObject))]
-	public partial interface NSTableColumn {
-		[Export ("initWithIdentifier:")]
+	public partial interface NSTableColumn : NSUserInterfaceItemIdentification {
+		[Lion, Export ("initWithIdentifier:")]
+		IntPtr Constructor (string identifier);
+
+		[Obsolete, Export ("initWithIdentifier:")]
 		IntPtr Constructor (NSObject identifier);
 	
 		[Export ("dataCellForRow:")]
@@ -11115,10 +11120,6 @@ namespace MonoMac.AppKit {
 		
 		[Export ("sizeToFit")]
 		void SizeToFit ();
-
-		//Detected properties
-		[Export ("identifier")]
-		NSObject Identifier { get; set; }
 		
 		[Export ("tableView")]
 		NSTableView TableView { get; set; }
@@ -11232,6 +11233,11 @@ namespace MonoMac.AppKit {
 		[Export ("textField", ArgumentSemantic.Assign)]
 		NSTextField TextField {
 			get; set;
+		}
+
+		[Export ("draggingImageComponents", ArgumentSemantic.Retain)]
+		NSArray DraggingImageComponents {
+			get;
 		}
 	}
 
@@ -13149,7 +13155,7 @@ namespace MonoMac.AppKit {
 
 	[BaseType (typeof (NSTextDelegate))]
 	[Model]
-	public interface NSTextViewDelegate {
+	public partial interface NSTextViewDelegate {
 		[Export ("textView:clickedOnLink:atIndex:"), DelegateName ("NSTextViewLink"), DefaultValue (false)]
 		bool LinkClicked (NSTextView textView, NSObject link, uint charIndex);
 
@@ -13656,7 +13662,7 @@ namespace MonoMac.AppKit {
 	}
 	
 	[BaseType (typeof (NSResponder), Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (NSWindowDelegate)})]
-	public interface NSWindow : NSAnimatablePropertyContainer, NSUserInterfaceItemIdentification {
+	public partial interface NSWindow : NSAnimatablePropertyContainer, NSUserInterfaceItemIdentification {
 		[Static, Export ("frameRectForContentRect:styleMask:")]
 		RectangleF FrameRectFor (RectangleF contectRect, NSWindowStyle styleMask);
 	
@@ -14289,6 +14295,7 @@ namespace MonoMac.AppKit {
                 [Export ("animationBehavior")]
                 NSWindowAnimationBehavior AnimationBehavior { get; set; }
 
+#if !XAMARIN_MAC
 		//
 		// Fields
 		//
@@ -14372,6 +14379,7 @@ namespace MonoMac.AppKit {
 
 		[Lion, Field ("NSWindowDidExitVersionBrowserNotification")]
 		NSString DidExitVersionBrowserNotification { get; }
+#endif
 	}
 
 	public delegate void NSWindowCompletionHandler (NSWindow window, NSError error);
