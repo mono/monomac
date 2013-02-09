@@ -36,10 +36,39 @@ namespace MonoMac.ObjCRuntime {
 		static Dictionary <IntPtr, WeakReference> object_map = new Dictionary <IntPtr, WeakReference> ();
 		static object lock_obj = new object ();
 		static IntPtr selClass = Selector.GetHandle ("class");
+
+		public static string FrameworksPath {
+			get; set;
+		}
+
+		public static string ResourcesPath {
+			get; set;
+		}
+
+		static Runtime() {
+			// BaseDirectory may not be set in some Mono embedded environments
+			// so try some reasonable fallbacks in these cases.
+			string basePath = AppDomain.CurrentDomain.BaseDirectory;
+			if(!string.IsNullOrEmpty(basePath))
+				basePath = Path.Combine (basePath, "..");
+			else {
+				basePath = Assembly.GetExecutingAssembly().Location;
+				if(!string.IsNullOrEmpty(basePath)) {
+					basePath = Path.Combine (Path.GetDirectoryName(basePath), "..");
+				}
+				else {
+					// The executing assembly location may be null if loaded from
+					// memory so the final fallback is the current directory
+					basePath = Path.Combine (Environment.CurrentDirectory, "..");
+				}
+			}
+
+			ResourcesPath = Path.Combine (basePath, "Resources");
+			FrameworksPath = Path.Combine (basePath, "Frameworks");
+		}
 		
 		public static void RegisterAssembly (Assembly a) {
 			var attributes = a.GetCustomAttributes (typeof (RequiredFrameworkAttribute), false);
-			string basePath = Path.Combine (AppDomain.CurrentDomain.BaseDirectory, "..");
 
 			foreach (var attribute in attributes) {
 				var requiredFramework = (RequiredFrameworkAttribute)attribute;
@@ -47,10 +76,10 @@ namespace MonoMac.ObjCRuntime {
 				string libName = requiredFramework.Name;
 				
 				if (libName.Contains (".dylib")) {
-					libPath = Path.Combine (basePath, "Resources");
+					libPath = ResourcesPath;
 				}
 				else {
-					libPath = Path.Combine (basePath, "Frameworks");
+					libPath = FrameworksPath;
 					libPath = Path.Combine (libPath, libName);
 					libName = libName.Replace (".frameworks", "");
 				}
