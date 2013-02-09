@@ -120,7 +120,14 @@ namespace MonoMac.AppKit {
 		public extern static void FrameRect (RectangleF rect);		
 
 		[DllImport (Constants.AppKitLibrary, EntryPoint="NSFrameRectWithWidth")]
+		public extern static void FrameRect (RectangleF rect, float frameWidth);		
+
+		// Bad naming, added the overload above
+		[DllImport (Constants.AppKitLibrary, EntryPoint="NSFrameRectWithWidth")]
 		public extern static void FrameRectWithWidth (RectangleF rect, float frameWidth);		
+
+		[DllImport (Constants.AppKitLibrary, EntryPoint="NSFrameRectWithWidthUsingOperation")]
+		public extern static void FrameRect (RectangleF rect, float frameWidth, NSCompositingOperation operation);		
 		
 		[DllImport (Constants.AppKitLibrary, EntryPoint="NSShowAnimationEffect")]
 		public extern static void ShowAnimationEffect (NSAnimationEffect animationEffect, PointF centerLocation, SizeF size, NSObject animationDelegate, Selector didEndSelector, IntPtr contextInfo);

@@ -6149,19 +6149,19 @@ namespace MonoMac.AppKit {
 		bool IsExpandable (NSObject item);
 
 		[Export ("expandItem:expandChildren:")]
-		void ExpandItem (NSObject item, bool expandChildren);
+		void ExpandItem ([NullAllowed] NSObject item, bool expandChildren);
 
 		[Export ("expandItem:")]
 		void ExpandItem (NSObject item);
 
 		[Export ("collapseItem:collapseChildren:")]
-		void CollapseItem (NSObject item, bool collapseChildren);
+		void CollapseItem ([NullAllowed] NSObject item, bool collapseChildren);
 
 		[Export ("collapseItem:")]
 		void CollapseItem (NSObject item);
 
 		[Export ("reloadItem:reloadChildren:")]
-		void ReloadItem (NSObject item, bool reloadChildren);
+		void ReloadItem ([NullAllowed] NSObject item, bool reloadChildren);
 
 		[Export ("reloadItem:")]
 		void ReloadItem (NSObject item);
@@ -6176,7 +6176,7 @@ namespace MonoMac.AppKit {
 		int RowForItem (NSObject item);
 
 		[Export ("levelForItem:")]
-		int LevelForItem (NSObject item);
+		int LevelForItem ([NullAllowed] NSObject item);
 
 		[Export ("levelForRow:")]
 		int LevelForRow (int row);
