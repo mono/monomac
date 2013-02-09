@@ -48,6 +48,7 @@ CORE_SOURCES =	$(EXTRA_CORE_SOURCES)			\
 MONOMAC_SOURCES = $(EXTRA_MONOMAC_SOURCES) \
 	./Foundation/NSObjectMac.cs			\
 	./AppKit/AppKitSynchronizationContext.cs	\
+	./AppKit/AppKitThreadAccessException.cs	\
 	./AppKit/ActionDispatcher.cs			\
 	./AppKit/BeginSheet.cs				\
 	./AppKit/DoubleWrapper.cs			\
