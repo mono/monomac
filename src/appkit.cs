@@ -13496,7 +13496,7 @@ namespace MonoMac.AppKit {
 	[BaseType (typeof (NSObject))]
 	public interface NSTrackingArea {
 		[Export ("initWithRect:options:owner:userInfo:")]
-		IntPtr Constructor (RectangleF rect, NSTrackingAreaOptions options, NSObject owner, NSDictionary userInfo);
+		IntPtr Constructor (RectangleF rect, NSTrackingAreaOptions options, NSObject owner, [NullAllowed] NSDictionary userInfo);
 		
 		[Export ("rect")]
 		RectangleF Rect { get; }
