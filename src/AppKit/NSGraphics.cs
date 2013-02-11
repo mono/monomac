@@ -129,9 +129,6 @@ namespace MonoMac.AppKit {
 		[DllImport (Constants.AppKitLibrary, EntryPoint="NSFrameRectWithWidthUsingOperation")]
 		public extern static void FrameRect (RectangleF rect, float frameWidth, NSCompositingOperation operation);		
 		
-		[DllImport (Constants.AppKitLibrary, EntryPoint="NSFrameRectWithWidthUsingOperation")]
-		public extern static void FrameRectWithWidthUsingOperation (RectangleF rect, float frameWidth, int op);
-		
 		[DllImport (Constants.AppKitLibrary, EntryPoint="NSShowAnimationEffect")]
 		public extern static void ShowAnimationEffect (NSAnimationEffect animationEffect, PointF centerLocation, SizeF size, NSObject animationDelegate, Selector didEndSelector, IntPtr contextInfo);
 
