@@ -233,7 +233,7 @@ namespace MonoMac.WebKit {
 		string Name { get; }
 
 		[Export ("nodeValue")]
-		string Value { get; set; }
+		string NodeValue { get; set; }
 
 		[Export ("nodeType")]
 		DomNodeType NodeType { get;  }
@@ -1075,6 +1075,97 @@ namespace MonoMac.WebKit {
 	//////////////////////////
 	// DomElement subclasses
 
+	[BaseType (typeof (DomHtmlElement), Name="DOMHTMLInputElement")]
+	[DisableDefaultCtor] // An uncaught exception was raised: +[DOMHTMLElement init]: should never be used
+	interface DomHtmlInputElement {
+		[Export ("accept")]
+		string Accept { get; set; }
+
+		[Export ("alt")]
+		string Alt { get; set; }
+
+		[Export ("autofocus")]
+		bool Autofocus { get; set; }
+
+		[Export ("defaultChecked")]
+		bool defaultChecked { get; set; }
+
+		[Export ("checked")]
+		bool Checked { get; set; }
+
+		[Export ("disabled")]
+		bool Disabled { get; set; }
+
+//		[Export ("form")]
+//		DomHtmlFormElement Form { get; }
+
+//		[Export ("files")]
+//		DomFileList Files { get; }
+
+		[Export ("indeterminate")]
+		bool Indeterminate { get; set; }
+
+		[Export ("maxLength")]
+		int MaxLength { get; set; }
+
+		[Export ("multiple")]
+		bool Multiple { get; set; }
+
+		[Export ("name")]
+		string Name { get; set; }
+
+		[Export ("readOnly")]
+		bool ReadOnly { get; set; }
+
+		[Export ("size")]
+		string Size { get; set; }
+
+		[Export ("src")]
+		string Src { get; set; }
+
+		[Export ("type")]
+		string Type { get; set; }
+
+		[Export ("defaultValue")]
+		string DefaultValue { get; set; }
+
+		[Export ("value")]
+		string Value { get; set; }
+
+		[Export ("willValidate")]
+		bool WillValidate { get; }
+
+		[Export ("selectionStart")]
+		int SelectionStart { get; set; }
+
+		[Export ("selectionEnd")]
+		int SelectionEnd { get; set; }
+
+		[Export ("align")]
+		string Align { get; set; }
+
+		[Export ("useMap")]
+		string UseMap { get; set; }
+	
+		[Export ("accessKey")]
+		string AccessKey { get; set; }
+	
+		[Export ("altDisplayString")]
+		string AltDisplayString { get; }
+	
+		[Export ("absoluteImageURL")]
+		NSUrl AbsoluteImageURL { get; }
+
+		[Export ("select")]
+		void Select ();
+
+		[Export ("setSelectionRange:end:")]
+		void SetSelectionRange (int start, int end);
+
+		[Export ("click")]
+		void Click ();
+	}
+	
 	[BaseType (typeof (DomElement), Name="DOMHTMLElement")]
 	[DisableDefaultCtor] // An uncaught exception was raised: +[DOMHTMLElement init]: should never be used
 	interface DomHtmlElement {
