@@ -130,15 +130,15 @@ namespace MonoMac.Foundation {
 					ReleaseTrampolineFunctionPointer = Marshal.GetFunctionPointerForDelegate (releaseTrampoline);
 				}
 			}
-			Class.class_addMethod (@class, Selector.Retain, RetainTrampolineFunctionPointer, "@@:");
-			Class.class_addMethod (@class, Selector.Release, ReleaseTrampolineFunctionPointer, "v@:");
+			Class.class_addMethod (@class, Selector.GetHandle (Selector.Retain), RetainTrampolineFunctionPointer, "@@:");
+			Class.class_addMethod (@class, Selector.GetHandle (Selector.Release), ReleaseTrampolineFunctionPointer, "v@:");
 		}
 
 		static bool IsUserType (IntPtr @this)
 		{
 			IntPtr cls = object_getClass (@this);
 			
-			if (Class.class_getMethodImplementation (cls, Selector.Retain) == RetainTrampolineFunctionPointer)
+			if (Class.class_getMethodImplementation (cls, Selector.GetHandle (Selector.Retain)) == RetainTrampolineFunctionPointer)
 				return true;
 			
 			// Unfortunately just checking if the retain trampoline is ours does not always work.
@@ -192,7 +192,7 @@ namespace MonoMac.Foundation {
 			}
 			
 			if (retain)
-				Messaging.void_objc_msgSend (handle, Selector.Retain);
+				Messaging.void_objc_msgSend (handle, Selector.GetHandle (Selector.Retain));
 		}
 		
 		void ReleaseManagedRef ()
@@ -211,7 +211,7 @@ namespace MonoMac.Foundation {
 				UnregisterObject ();
 			}
 			
-			Messaging.void_objc_msgSend (handle, Selector.Release);
+			Messaging.void_objc_msgSend (handle, Selector.GetHandle (Selector.Release));
 		}
 
 		[DllImport ("/usr/lib/libobjc.dylib")]

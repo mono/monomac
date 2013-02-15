@@ -31,13 +31,13 @@ namespace MonoMac.ObjCRuntime {
 		public static readonly IntPtr InitWithCoder = Selector.GetHandle ("initWithCoder:");
 		static IntPtr MethodSignatureForSelector = Selector.GetHandle ("methodSignatureForSelector:");
 		static IntPtr FrameLength = Selector.GetHandle ("frameLength");
-		internal static IntPtr Alloc = Selector.GetHandle ("alloc");
-		internal static IntPtr Release = Selector.GetHandle ("release");
-		internal static IntPtr Retain = Selector.GetHandle ("retain");
 		internal static IntPtr RetainCount = Selector.GetHandle ("retainCount");
-		internal static IntPtr DoesNotRecognizeSelector = Selector.GetHandle ("doesNotRecognizeSelector:");
-		internal static IntPtr PerformSelectorWithObjectAfterDelay = Selector.GetHandle ("performSelector:withObject:afterDelay:");
-		internal static IntPtr PerformSelectorOnMainThreadWithObjectWaitUntilDone = Selector.GetHandle ("performSelectorOnMainThread:withObject:waitUntilDone:");
+		internal const string Alloc = "alloc";
+		internal const string Release = "release";
+		internal const string Retain = "Retain";
+		internal const string DoesNotRecognizeSelector = "doesNotRecognizeSelector:";
+		internal const string PerformSelectorOnMainThreadWithObjectWaitUntilDone = "performSelectorOnMainThread:withObject:waitUntilDone:";
+		internal const string PerformSelectorWithObjectAfterDelay = "performSelector:withObject:afterDelay:";
 
 		internal IntPtr handle;
 
