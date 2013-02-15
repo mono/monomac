@@ -34,7 +34,7 @@ namespace MonoMac.ObjCRuntime {
 		internal static IntPtr RetainCount = Selector.GetHandle ("retainCount");
 		internal const string Alloc = "alloc";
 		internal const string Release = "release";
-		internal const string Retain = "Retain";
+		internal const string Retain = "retain";
 		internal const string DoesNotRecognizeSelector = "doesNotRecognizeSelector:";
 		internal const string PerformSelectorOnMainThreadWithObjectWaitUntilDone = "performSelectorOnMainThread:withObject:waitUntilDone:";
 		internal const string PerformSelectorWithObjectAfterDelay = "performSelector:withObject:afterDelay:";
