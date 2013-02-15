@@ -1593,7 +1593,7 @@ namespace MonoMac.WebKit {
 
 	[BaseType (typeof (NSObject))]
 	[Model]
-	interface WebPolicyDelegate  {
+	partial interface WebPolicyDelegate  {
 		[Export ("webView:decidePolicyForNavigationAction:request:frame:decisionListener:"), EventArgs ("WebNavigationPolicy")]
 		void DecidePolicyForNavigation (WebView webView, NSDictionary actionInformation, NSUrlRequest request, WebFrame frame, NSObject decisionToken);
 
