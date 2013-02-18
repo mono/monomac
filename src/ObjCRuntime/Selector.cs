@@ -39,6 +39,13 @@ namespace MonoMac.ObjCRuntime {
 		internal const string PerformSelectorOnMainThreadWithObjectWaitUntilDone = "performSelectorOnMainThread:withObject:waitUntilDone:";
 		internal const string PerformSelectorWithObjectAfterDelay = "performSelector:withObject:afterDelay:";
 
+		internal static IntPtr AllocHandle = Selector.GetHandle (Alloc);
+		internal static IntPtr ReleaseHandle = Selector.GetHandle (Release);
+		internal static IntPtr RetainHandle = Selector.GetHandle (Retain);
+		internal static IntPtr DoesNotRecognizeSelectorHandle = Selector.GetHandle (DoesNotRecognizeSelector);
+		internal static IntPtr PerformSelectorOnMainThreadWithObjectWaitUntilDoneHandle = GetHandle (PerformSelectorOnMainThreadWithObjectWaitUntilDone);
+		internal static IntPtr PerformSelectorWithObjectAfterDelayHandle = GetHandle (PerformSelectorWithObjectAfterDelay);
+
 		internal IntPtr handle;
 
 		public Selector (IntPtr sel) {
