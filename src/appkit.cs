@@ -181,7 +181,7 @@ namespace MonoMac.AppKit {
 	}
 
 	[BaseType (typeof (NSObject))]
-	public interface NSAnimationContext {
+	public partial interface NSAnimationContext {
 		[Static]
 		[Export ("beginGrouping")]
 		void BeginGrouping ();
@@ -3069,7 +3069,7 @@ namespace MonoMac.AppKit {
 	}
 	
 	[BaseType (typeof (NSView))]
-	public interface NSControl {
+	public partial interface NSControl {
 		[Export ("initWithFrame:")]
 		IntPtr Constructor (RectangleF frameRect);
 
@@ -3368,7 +3368,7 @@ namespace MonoMac.AppKit {
 
 	[BaseType (typeof (NSImageRep))]
 	[DisableDefaultCtor] // An uncaught exception was raised: -[NSCustomImageRep init]: unrecognized selector sent to instance 0x54a870
-	public interface NSCustomImageRep {
+	public partial interface NSCustomImageRep {
 		[Export ("initWithDrawSelector:delegate:")]
 		IntPtr Constructor (Selector drawSelectorMethod, NSObject delegateObject);
 
@@ -4794,7 +4794,7 @@ namespace MonoMac.AppKit {
 	}
 	
 	[BaseType (typeof (NSMatrix))]
-	public interface NSForm  {
+	public partial interface NSForm  {
 		[Export ("initWithFrame:")]
 		IntPtr Constructor (RectangleF frameRect);
 
@@ -4863,7 +4863,7 @@ namespace MonoMac.AppKit {
 	}
 	
 	[BaseType (typeof (NSActionCell))]
-	public interface NSFormCell {
+	public partial interface NSFormCell {
 		[Export ("initTextCell:")]
 		IntPtr Constructor (string aString);
 	
@@ -5806,7 +5806,7 @@ namespace MonoMac.AppKit {
 	}
 
 	[BaseType (typeof (NSObject))]
-	public interface NSNib {
+	public partial interface NSNib {
 		[Export ("initWithContentsOfURL:")]
 		IntPtr Constructor (NSUrl nibFileUrl);
 
@@ -10026,7 +10026,7 @@ namespace MonoMac.AppKit {
 	}
 
 	[BaseType (typeof (NSView))]
-	public interface NSSplitView {
+	public partial interface NSSplitView {
 		[Export ("initWithFrame:")]
 		IntPtr Constructor (RectangleF frameRect);
 
@@ -12320,7 +12320,7 @@ namespace MonoMac.AppKit {
 	}
 
 	[BaseType (typeof (NSControl), Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (NSTextFieldDelegate)})]
-	public interface NSTextField {
+	public partial interface NSTextField {
 		[Export ("initWithFrame:")]
 		IntPtr Constructor (RectangleF frameRect);
 		
