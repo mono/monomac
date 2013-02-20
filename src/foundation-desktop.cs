@@ -382,28 +382,28 @@ namespace MonoMac.Foundation {
 	[BaseType (typeof (NSObject))]
 	public interface NSUserNotification 
 	{
-		[Export ("title")]
+		[Export ("title", ArgumentSemantic.Copy)]
 		string Title { get; set; }
 		
-		[Export ("subtitle")]
+		[Export ("subtitle", ArgumentSemantic.Copy)]
 		string Subtitle { get; set; }
 		
-		[Export ("informativeText")]
+		[Export ("informativeText", ArgumentSemantic.Copy)]
 		string InformativeText { get; set; }
 		
-		[Export ("actionButtonTitle")]
+		[Export ("actionButtonTitle", ArgumentSemantic.Copy)]
 		string ActionButtonTitle { get; set; }
 		
-		[Export ("userInfo")]
+		[Export ("userInfo", ArgumentSemantic.Copy)]
 		NSDictionary UserInfo { get; set; }
 		
-		[Export ("deliveryDate")]
+		[Export ("deliveryDate", ArgumentSemantic.Copy)]
 		NSDate DeliveryDate { get; set; }
 		
-		[Export ("deliveryTimeZone")]
+		[Export ("deliveryTimeZone", ArgumentSemantic.Copy)]
 		NSTimeZone DeliveryTimeZone { get; set; }
 		
-		[Export ("deliveryRepeatInterval")]
+		[Export ("deliveryRepeatInterval", ArgumentSemantic.Copy)]
 		NSDateComponents DeliveryRepeatInterval { get; set; }
 		
 		[Export ("actualDeliveryDate")]
@@ -424,7 +424,7 @@ namespace MonoMac.Foundation {
 		[Export ("activationType")]
 		NSUserNotificationActivationType ActivationType { get; }
 		
-		[Export ("otherButtonTitle")]
+		[Export ("otherButtonTitle", ArgumentSemantic.Copy)]
 		string OtherButtonTitle { get; set; }
 
 		[Field ("NSUserNotificationDefaultSoundName")]
