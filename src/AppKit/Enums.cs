@@ -329,7 +329,10 @@ namespace MonoMac.AppKit {
 		Swipe = 31,
 		Rotate = 18,
 		BeginGesture = 19,
-		EndGesture = 20
+		EndGesture = 20,
+
+		SmartMagnify = 32,
+		QuickLook = 33
 	}
 
 	[Flags]
@@ -831,7 +834,8 @@ namespace MonoMac.AppKit {
 		Save, SaveAs, SaveTo,
 		Autosave = 3,	/* Deprecated name in Lion */
 		Elsewhere = 3,	/* New Lion name */
-		InPlace = 4	/* New in Lion */
+		InPlace = 4,	/* New in Lion */
+		AutoSaveAs = 5	/* New in Mountain Lion */
 	}
 
 #endregion
