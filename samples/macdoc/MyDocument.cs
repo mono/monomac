@@ -348,13 +348,13 @@ namespace macdoc
 		
 		void HideMultipleMatches ()
 		{
-			splitView.SetPositionofDivider (splitView.MaxPositionOfDivider (0), 0);
+			splitView.SetPositionOfDivider (splitView.MaxPositionOfDivider (0), 0);
 		}
 		
 		void ShowMultipleMatches ()
 		{
 			float middle = (splitView.MaxPositionOfDivider (0) - splitView.MinPositionOfDivider (0))/2;
-			splitView.SetPositionofDivider (middle, 0);
+			splitView.SetPositionOfDivider (middle, 0);
 		}
 		
 		// Action: when the user clicks on the index table view
@@ -455,11 +455,11 @@ namespace macdoc
 			
 			// Process embedded images coming from doc source
 			// Because WebView doesn't let me answer a NSUrlRequest myself I have to resort to this piece of crap of a solution
-			var imgs = dom.GetElementsByTagName ("img").Where (node => node.Attributes["src"].Value.StartsWith ("source-id"));
+			var imgs = dom.GetElementsByTagName ("img").Where (node => node.Attributes["src"].NodeValue.StartsWith ("source-id"));
 			byte[] buffer = new byte[4096];
 			
 			foreach (var img in imgs) {
-				var src = img.Attributes["src"].Value;
+				var src = img.Attributes["src"].NodeValue;
 				var imgStream = AppDelegate.Root.GetImage (src);
 				if (imgStream == null)
 					continue;
