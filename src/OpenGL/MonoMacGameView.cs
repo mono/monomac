@@ -543,7 +543,7 @@ namespace MonoMac.OpenGL
 			// It's important to create one or you will leak objects
 			using (NSAutoreleasePool pool = new NSAutoreleasePool ()) {
 				// Update the animation
-				RenderScene ();
+				BeginInvokeOnMainThread (RenderScene);
 				result = CVReturn.Success;
 			}
 
