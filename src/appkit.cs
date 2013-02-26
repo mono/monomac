@@ -14944,10 +14944,10 @@ namespace MonoMac.AppKit {
 		int ExecutableArchitecture { get;  }
 		
 		[Export ("hide")]
-		bool Hide { get; }
+		bool Hide ();
 		
 		[Export ("unhide")]
-		bool Unhide { get; }
+		bool Unhide ();
 		
 		[Export ("activateWithOptions:")]
 		bool Activate (NSApplicationActivationOptions options);
