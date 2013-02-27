@@ -2690,6 +2690,10 @@ namespace MonoMac.AppKit {
 		[Export ("patternImage")]
 		NSImage PatternImage { get; }
 
+		[MountainLion]
+		[Export ("CGColor")]
+		CGColor CGColor { get; }
+
 		[Export ("drawSwatchInRect:")]
 		void DrawSwatchInRect (RectangleF rect);
 
