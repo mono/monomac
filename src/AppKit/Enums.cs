@@ -45,7 +45,11 @@ namespace MonoMac.AppKit {
 		Regular, Accessory, Prohibited
 	}
 	
+#if MAC64
+	public enum NSApplicationPresentationOptions : ulong {
+#else
 	public enum NSApplicationPresentationOptions {
+#endif
 		Default                    = 0,
 		AutoHideDock               = (1 <<  0),
 		HideDock                   = (1 <<  1),

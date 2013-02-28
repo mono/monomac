@@ -14843,6 +14843,7 @@ namespace MonoMac.AppKit {
 		void LoadWindow ();
 	}
 
+	//64 bit reviewed
 	[BaseType (typeof (NSObject))]
 	[Model]
 	public interface NSWindowDelegate {
@@ -14853,26 +14854,46 @@ namespace MonoMac.AppKit {
 		NSObject WillReturnFieldEditor (NSWindow  sender, NSObject client);
 	
 		[Export ("windowWillResize:toSize:"), DelegateName ("NSWindowResize"), DefaultValueFromArgument ("toFrameSize")]
+#if MAC64
+		NSSize WillResize (NSWindow sender, NSSize toFrameSize);
+#else
 		SizeF WillResize (NSWindow sender, SizeF toFrameSize);
+#endif
 	
 		[Export ("windowWillUseStandardFrame:defaultFrame:"), DelegateName ("NSWindowFrame"), DefaultValueFromArgument ("newFrame")]
+#if MAC64
+		NSRect WillUseStandardFrame (NSWindow window, NSRect newFrame);
+#else
 		RectangleF WillUseStandardFrame (NSWindow window, RectangleF newFrame);
+#endif
 	
 		[Export ("windowShouldZoom:toFrame:"), DelegateName ("NSWindowFramePredicate"), DefaultValue (true)]
+#if MAC64
+		bool ShouldZoom (NSWindow  window, NSRect newFrame);
+#else
 		bool ShouldZoom (NSWindow  window, RectangleF newFrame);
-	
+#endif
+
 		[Export ("windowWillReturnUndoManager:"), DelegateName ("NSWindowUndoManager"), DefaultValue (null)]
 		NSUndoManager WillReturnUndoManager (NSWindow  window);
 	
 		[Export ("window:willPositionSheet:usingRect:"), DelegateName ("NSWindowSheetRect"), DefaultValueFromArgument ("usingRect")]
+#if MAC64
+		NSRect WillPositionSheet (NSWindow  window, NSWindow  sheet, NSRect usingRect);
+#else
 		RectangleF WillPositionSheet (NSWindow  window, NSWindow  sheet, RectangleF usingRect);
-	
+#endif
+
 		[Export ("window:shouldPopUpDocumentPathMenu:"), DelegateName ("NSWindowMenu"), DefaultValue (true)]
 		bool ShouldPopUpDocumentPathMenu (NSWindow  window, NSMenu  menu);
 	
 		[Export ("window:shouldDragDocumentWithEvent:from:withPasteboard:"), DelegateName ("NSWindowDocumentDrag"), DefaultValue (true)]
+#if MAC64
+		bool ShouldDragDocumentWithEvent (NSWindow  window, NSEvent theEvent, NSPoint dragImageLocation, NSPasteboard  withPasteboard);
+#else
 		bool ShouldDragDocumentWithEvent (NSWindow  window, NSEvent theEvent, PointF dragImageLocation, NSPasteboard  withPasteboard);
-	
+#endif
+
 		[Export ("windowDidResize:"), EventArgs ("NSNotification")]
 		void DidResize (NSNotification  notification);
 	
@@ -14949,8 +14970,12 @@ namespace MonoMac.AppKit {
 		void DidFailToExitFullScreen (NSWindow window);
 		
 		[Lion, Export ("window:willUseFullScreenContentSize:"), DelegateName ("NSWindowSize"), DefaultValueFromArgument ("proposedSize")]
+#if MAC64
+		NSSize WillUseFullScreenContentSize (NSWindow  window, NSSize proposedSize);
+#else
 		SizeF WillUseFullScreenContentSize (NSWindow  window, SizeF proposedSize);
-		
+#endif
+
 		[Lion, Export ("window:willUseFullScreenPresentationOptions:"), DelegateName ("NSWindowApplicationPresentationOptions"), DefaultValueFromArgument ("proposedOptions")]
 		NSApplicationPresentationOptions WillUseFullScreenPresentationOptions (NSWindow  window, NSApplicationPresentationOptions proposedOptions);
 		
@@ -14973,7 +14998,11 @@ namespace MonoMac.AppKit {
 		void DidDecodeRestorableState(NSWindow window, NSCoder coder);
 		
 		[Lion, Export ("window:willResizeForVersionBrowserWithMaxPreferredSize:maxAllowedSize:"), DelegateName ("NSWindowSizeSize"), DefaultValueFromArgument ("maxPreferredSize")]
+#if MAC64
+		NSSize WillResizeForVersionBrowser(NSWindow window, NSSize maxPreferredSize, NSSize maxAllowedSize);
+#else
 		SizeF WillResizeForVersionBrowser(NSWindow window, SizeF maxPreferredSize, SizeF maxAllowedSize);
+#endif
 		
 		[Lion, Export ("windowWillEnterVersionBrowser:"), EventArgs ("NSNotification")]
 		void WillEnterVersionBrowser (NSNotification notification);
