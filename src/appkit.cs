@@ -15383,7 +15383,8 @@ namespace MonoMac.AppKit {
 		bool Autorepeat { get; set; }
 
 	}
-	
+
+	//64 bit reviewed
 	[BaseType (typeof (NSObject))]
 	public interface NSPredicateEditorRowTemplate {
 	        [Export ("matchForPredicate:")]
