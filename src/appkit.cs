@@ -8732,6 +8732,7 @@ namespace MonoMac.AppKit {
 		bool UsesThreadedAnimation { get; set; }
 	}
 
+	//64 bit reviewed
 	[BaseType (typeof (NSObject))]
 	public partial interface NSResponder {
 		[Export ("tryToPerform:with:")]
@@ -10346,6 +10347,7 @@ namespace MonoMac.AppKit {
 		void NoteClientStringWillChange ();
 	}
 
+	//64 bit reviewed
 	[BaseType (typeof (NSResponder))]
 	public partial interface NSView : NSDraggingDestination, NSAnimatablePropertyContainer, NSUserInterfaceItemIdentification  {
 		[Export ("initWithFrame:")]

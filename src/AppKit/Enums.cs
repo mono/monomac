@@ -1641,7 +1641,12 @@ namespace MonoMac.AppKit {
 		ClampGestureAmount = 2
 	}
 
+
+#if MAC64
+	public enum NSEventGestureAxis : long {
+#else
 	public enum NSEventGestureAxis {
+#endif
 		None, Horizontal, Vertical
 	}
 
