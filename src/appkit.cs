@@ -15440,6 +15440,7 @@ namespace MonoMac.AppKit {
 
 	}
    
+	//64 bit reviewed
 	[BaseType (typeof (NSControl), Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (NSRuleEditorDelegate)})]
 	public interface NSRuleEditor {
 		[Export ("reloadCriteria")]
@@ -15452,40 +15453,84 @@ namespace MonoMac.AppKit {
 		void ReloadPredicate ();
 
 		[Export ("predicateForRow:")]
+#if MAC64
+		NSPredicate GetPredicate (long row);
+#else
 		NSPredicate GetPredicate (int row);
+#endif
 
 		[Export ("numberOfRows")]
+#if MAC64
+		long NumberOfRows { get; }
+#else
 		int NumberOfRows { get; }
+#endif
 
 		[Export ("subrowIndexesForRow:")]
+#if MAC64
+		NSIndexSet SubrowIndexes (long rowIndex);
+#else
 		NSIndexSet SubrowIndexes (int rowIndex);
+#endif
 
 		[Export ("criteriaForRow:")]
+#if MAC64
+		NSArray Criteria (long row);
+#else
 		NSArray Criteria (int row);
+#endif
 
 		[Export ("displayValuesForRow:")]
+#if MAC64
+		NSObject[] DisplayValues (long row);
+#else
 		NSObject[] DisplayValues (int row);
+#endif
 
 		[Export ("rowForDisplayValue:")]
+#if MAC64
+		long Row (NSObject displayValue);
+#else
 		int Row (NSObject displayValue);
+#endif
 
 		[Export ("rowTypeForRow:")]
+#if MAC64
+		NSRuleEditorRowType RowType (long rowIndex);
+#else
 		NSRuleEditorRowType RowType (int rowIndex);
+#endif
 
 		[Export ("parentRowForRow:")]
+#if MAC64
+		long ParentRow (long rowIndex);
+#else
 		int ParentRow (int rowIndex);
+#endif
 
 		[Export ("addRow:")]
 		void AddRow (NSObject sender);
 
 		[Export ("insertRowAtIndex:withType:asSubrowOfRow:animate:")]
+#if MAC64
+		void InsertRowAtIndex (long rowIndex, NSRuleEditorRowType rowType, long parentRow, bool shouldAnimate);
+#else
 		void InsertRowAtIndex (int rowIndex, NSRuleEditorRowType rowType, int parentRow, bool shouldAnimate);
+#endif
 
 		[Export ("setCriteria:andDisplayValues:forRowAtIndex:")]
+#if MAC64
+		void SetCriteria (NSArray criteria, NSArray values, long rowIndex);
+#else
 		void SetCriteria (NSArray criteria, NSArray values, int rowIndex);
+#endif
 
 		[Export ("removeRowAtIndex:")]
+#if MAC64
+		void RemoveRowAtIndex (long rowIndex);
+#else
 		void RemoveRowAtIndex (int rowIndex);
+#endif
 
 		[Export ("removeRowsAtIndexes:includeSubrows:")]
 		void RemoveRowsAtIndexes (NSIndexSet rowIndexes, bool includeSubrows);
@@ -15515,7 +15560,11 @@ namespace MonoMac.AppKit {
 		NSRuleEditorNestingMode NestingMode { get; set; }
 
 		[Export ("rowHeight")]
+#if MAC64
+		double RowHeight { get; set; }
+#else
 		float RowHeight { get; set; }
+#endif
 
 		[Export ("editable")]
 		bool Editable { [Bind ("isEditable")]get; set; }

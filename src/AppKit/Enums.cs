@@ -1580,6 +1580,7 @@ namespace MonoMac.AppKit {
 		Compound
 	}
    
+	//TODO: figure out size for 64 bit
 	public enum NSRuleEditorNestingMode {
 		Single,
 		List,
