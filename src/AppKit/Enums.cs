@@ -37,7 +37,11 @@ namespace MonoMac.AppKit {
 		ActivateIgnoringOtherWindows = 2
 	}
 
+#if MAC64
+	public enum NSApplicationActivationPolicy : long {
+#else
 	public enum NSApplicationActivationPolicy {
+#endif
 		Regular, Accessory, Prohibited
 	}
 	

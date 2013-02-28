@@ -15289,7 +15289,7 @@ namespace MonoMac.AppKit {
 		NSString OperationDestroy { get; }
 	}
 	
-	
+	//64 bit reviewed
 	[BaseType (typeof (NSObject))]
 	public partial interface NSRunningApplication {
 		[Export ("terminated")]
@@ -15350,7 +15350,7 @@ namespace MonoMac.AppKit {
 		[Static]
 		[Export ("runningApplicationsWithBundleIdentifier:")]
 		NSRunningApplication[] GetRunningApplications (string bundleIdentifier);
-		
+
 		[Static]
 		[Export ("runningApplicationWithProcessIdentifier:")]
 		NSRunningApplication GetRunningApplication (int pid);
@@ -15361,10 +15361,15 @@ namespace MonoMac.AppKit {
 	
 	}	
 
+	//64 bit reviewed
 	[BaseType (typeof (NSControl))]
 	public interface NSStepper {
 		[Export ("initWithFrame:")]
+#if MAC64
+		IntPtr Constructor (NSRect frameRect);
+#else
 		IntPtr Constructor (RectangleF frameRect);
+#endif
 
 		//Detected properties
 		[Export ("minValue")]
