@@ -109,7 +109,11 @@ namespace MonoMac.AppKit {
 		Retained, Nonretained, Buffered
 	}
 
+#if MAC64
+	public enum NSWindowOrderingMode : long {
+#else
 	public enum NSWindowOrderingMode {
+#endif
 		Below = -1, Out, Above,
 	}
 
@@ -117,6 +121,7 @@ namespace MonoMac.AppKit {
 		RingOnly, RingBelow, RingAbove,
 	}
 
+	// TODO: Figure out the base type for MAC64
 	public enum NSFocusRingType {
 		Default, None, Exterior
 	}
@@ -211,8 +216,12 @@ namespace MonoMac.AppKit {
 		CellIsInsetButton,
 		CellAllowsMixedState,
 	}
-	
+
+#if MAC64
+	public enum NSCellImagePosition : ulong {
+#else
 	public enum NSCellImagePosition {
+#endif
 		NoImage,
 		ImageOnly,
 		ImageLeft,
@@ -229,7 +238,11 @@ namespace MonoMac.AppKit {
 		ProportionallyUpOrDown
 	}
 	
+#if MAC64
+	public enum NSCellStateValue : long{
+#else
 	public enum NSCellStateValue {
+#endif
 		Mixed = -1,
 		Off,
 		On
@@ -296,7 +309,11 @@ namespace MonoMac.AppKit {
 #endregion
 
 #region NSEvent
+#if MAC64
+	public enum NSEventType : ulong{
+#else
 	public enum NSEventType {
+#endif
 		LeftMouseDown = 1,            
 		LeftMouseUp = 2,
 		RightMouseDown = 3,
@@ -337,40 +354,44 @@ namespace MonoMac.AppKit {
 
 	[Flags]
 	public enum NSEventMask : ulong {
-		LeftMouseDown         = 1 << NSEventType.LeftMouseDown,
-		LeftMouseUp           = 1 << NSEventType.LeftMouseUp,
-		RightMouseDown        = 1 << NSEventType.RightMouseDown,
-		RightMouseUp          = 1 << NSEventType.RightMouseUp,
-		MouseMoved            = 1 << NSEventType.MouseMoved,
-		LeftMouseDragged      = 1 << NSEventType.LeftMouseDragged,
-		RightMouseDragged     = 1 << NSEventType.RightMouseDragged,
-		MouseEntered          = 1 << NSEventType.MouseEntered,
-		MouseExited           = 1 << NSEventType.MouseExited,
-		KeyDown               = 1 << NSEventType.KeyDown,
-		KeyUp                 = 1 << NSEventType.KeyUp,
-		FlagsChanged          = 1 << NSEventType.FlagsChanged,
-		AppKitDefined         = 1 << NSEventType.AppKitDefined,
-		SystemDefined         = 1 << NSEventType.SystemDefined,
-		ApplicationDefined    = 1 << NSEventType.ApplicationDefined,
-		Periodic              = 1 << NSEventType.Periodic,
-		CursorUpdate          = 1 << NSEventType.CursorUpdate,
-		ScrollWheel           = 1 << NSEventType.ScrollWheel,
-		TabletPoint           = 1 << NSEventType.TabletPoint,
-		TabletProximity       = 1 << NSEventType.TabletProximity,
-		OtherMouseDown        = 1 << NSEventType.OtherMouseDown,
-		OtherMouseUp          = 1 << NSEventType.OtherMouseUp,
-		OtherMouseDragged     = 1 << NSEventType.OtherMouseDragged,
-		EventGesture          = 1 << NSEventType.Gesture,
-		EventMagnify          = (uint)1 << NSEventType.Magnify,
-		EventSwipe            = (uint)1 << NSEventType.Swipe,
-		EventRotate           = (uint)1 << NSEventType.Rotate,
-		EventBeginGesture     = (uint)1 << NSEventType.BeginGesture,
-		EventEndGesture       = (uint)1 << NSEventType.EndGesture,
+		LeftMouseDown         = 1 << (int)NSEventType.LeftMouseDown,
+		LeftMouseUp           = 1 << (int)NSEventType.LeftMouseUp,
+		RightMouseDown        = 1 << (int)NSEventType.RightMouseDown,
+		RightMouseUp          = 1 << (int)NSEventType.RightMouseUp,
+		MouseMoved            = 1 << (int)NSEventType.MouseMoved,
+		LeftMouseDragged      = 1 << (int)NSEventType.LeftMouseDragged,
+		RightMouseDragged     = 1 << (int)NSEventType.RightMouseDragged,
+		MouseEntered          = 1 << (int)NSEventType.MouseEntered,
+		MouseExited           = 1 << (int)NSEventType.MouseExited,
+		KeyDown               = 1 << (int)NSEventType.KeyDown,
+		KeyUp                 = 1 << (int)NSEventType.KeyUp,
+		FlagsChanged          = 1 << (int)NSEventType.FlagsChanged,
+		AppKitDefined         = 1 << (int)NSEventType.AppKitDefined,
+		SystemDefined         = 1 << (int)NSEventType.SystemDefined,
+		ApplicationDefined    = 1 << (int)NSEventType.ApplicationDefined,
+		Periodic              = 1 << (int)NSEventType.Periodic,
+		CursorUpdate          = 1 << (int)NSEventType.CursorUpdate,
+		ScrollWheel           = 1 << (int)NSEventType.ScrollWheel,
+		TabletPoint           = 1 << (int)NSEventType.TabletPoint,
+		TabletProximity       = 1 << (int)NSEventType.TabletProximity,
+		OtherMouseDown        = 1 << (int)NSEventType.OtherMouseDown,
+		OtherMouseUp          = 1 << (int)NSEventType.OtherMouseUp,
+		OtherMouseDragged     = 1 << (int)NSEventType.OtherMouseDragged,
+		EventGesture          = 1 << (int)NSEventType.Gesture,
+		EventMagnify          = (uint)1 << (int)NSEventType.Magnify,
+		EventSwipe            = (uint)1 << (int)NSEventType.Swipe,
+		EventRotate           = (uint)1 << (int)NSEventType.Rotate,
+		EventBeginGesture     = (uint)1 << (int)NSEventType.BeginGesture,
+		EventEndGesture       = (uint)1 << (int)NSEventType.EndGesture,
 		AnyEvent              = UInt32.MaxValue
 	}
 
 	[Flags]
+#if MAC64
+	public enum NSEventModifierMask : ulong {
+#else
 	public enum NSEventModifierMask : uint {
+#endif
 		AlphaShiftKeyMask         = 1 << 16,
 		ShiftKeyMask              = 1 << 17,
 		ControlKeyMask            = 1 << 18,
@@ -569,7 +590,11 @@ namespace MonoMac.AppKit {
 
 #region NSView
 	[Flags]
+#if MAC64
+	public enum NSViewResizingMask : ulong {
+#else
 	public enum NSViewResizingMask {
+#endif
 		NotSizable		=  0,
 		MinXMargin		=  1,
 		WidthSizable		=  2,
@@ -587,11 +612,19 @@ namespace MonoMac.AppKit {
 		Square, Rounded
 	}
 	
+#if MAC64
+	public enum NSViewLayerContentsRedrawPolicy : long {
+#else
 	public enum NSViewLayerContentsRedrawPolicy {
+#endif
 		Never, OnSetNeedsDisplay, DuringViewResize, BeforeViewResize
 	}
 
+#if MAC64
+	public enum NSViewLayerContentsPlacement : long {
+#else
 	public enum NSViewLayerContentsPlacement {
+#endif
 		ScaleAxesIndependently,
 		ScaleProportionallyToFit,
 		ScaleProportionallyToFill,
@@ -713,7 +746,11 @@ namespace MonoMac.AppKit {
 #endregion
 
 #region NSButtonCell
+#if MAC64
+	public enum NSButtonType : ulong {
+#else
 	public enum NSButtonType {
+#endif
 		MomentaryLightButton,
 		PushOnPushOff,
 		Toggle,
@@ -724,7 +761,11 @@ namespace MonoMac.AppKit {
 		MomentaryPushIn
 	}
 	
+#if MAC64
+	public enum NSBezelStyle : ulong {
+#else
 	public enum NSBezelStyle {
+#endif
 		Rounded = 1,
 		RegularSquare,
 		ThickSquare,
@@ -878,12 +919,20 @@ namespace MonoMac.AppKit {
 		All = UInt32.MaxValue
 	}
 
+#if MAC64
+	public enum NSTextAlignment : long {
+#else
 	public enum NSTextAlignment {
+#endif
 		Left, Right, Center, Justified, Natural
 	}
 
 	[Flags]
+#if MAC64
+	public enum NSWritingDirection : long {
+#else
 	public enum NSWritingDirection {
+#endif
 		Natural = -1, LeftToRight, RightToLeft,
 		Embedding = 0,
 		Override = 2,
@@ -1641,7 +1690,11 @@ namespace MonoMac.AppKit {
 		DirectionMask = 0x3 << 16,
 	}
 
+#if MAC64
+	public enum NSLayoutConstraintOrientation : long {
+#else
 	public enum NSLayoutConstraintOrientation {
+#endif
 		Horizontal, Vertical
 	}
 

@@ -1756,7 +1756,8 @@ namespace MonoMac.AppKit {
 		NSSound Sound { get; set; }
 	
 	}
-	
+
+	// 64 Bit reviewed
 	[BaseType (typeof (NSControl))]
 	public interface NSButton {
 		[Export ("initWithFrame:")]
@@ -3067,11 +3068,16 @@ namespace MonoMac.AppKit {
 		[Export ("comboBox:indexOfItemWithStringValue:")]
 		int IndexOfItem (NSComboBox comboBox, string value);
 	}
-	
+
+	//64bit reviewed
 	[BaseType (typeof (NSView))]
 	public partial interface NSControl {
 		[Export ("initWithFrame:")]
+#if MAC64
+		IntPtr Constructor (NSRect frameRect);
+#else
 		IntPtr Constructor (RectangleF frameRect);
+#endif
 
 		[Export ("sizeToFit")]
 		void SizeToFit ();
@@ -3083,10 +3089,18 @@ namespace MonoMac.AppKit {
 		NSCell SelectedCell { get; }
 
 		[Export ("selectedTag")]
+#if MAC64
+		long SelectedTag { get; }
+#else
 		int SelectedTag { get; }
+#endif
 
 		[Export ("sendActionOn:")]
+#if MAC64
+		long SendActionOn (NSEventType mask);
+#else
 		int SendActionOn (NSEventType mask);
+#endif
 
 		[Export ("setNeedsDisplay")]
 		void SetNeedsDisplay ();
@@ -3154,7 +3168,11 @@ namespace MonoMac.AppKit {
 		Selector Action { get; set; }
 
 		[Export ("tag")]
+#if MAC64
+		long Tag { get; set; }
+#else
 		int Tag { get; set; }
+#endif
 
 		[Export ("ignoresMultiClick")]
 		bool IgnoresMultiClick { get; set; }
@@ -10331,7 +10349,11 @@ namespace MonoMac.AppKit {
 	[BaseType (typeof (NSResponder))]
 	public partial interface NSView : NSDraggingDestination, NSAnimatablePropertyContainer, NSUserInterfaceItemIdentification  {
 		[Export ("initWithFrame:")]
+#if MAC64
+		IntPtr Constructor (NSRect frameRect);
+#else
 		IntPtr Constructor (RectangleF frameRect);
+#endif
 
 		[Export ("window")]
 		NSWindow Window { get; }
@@ -10355,7 +10377,11 @@ namespace MonoMac.AppKit {
 		// void GetRectsBeingDrawn
 
 		[Export ("needsToDrawRect:")]
+#if MAC64
+		bool NeedsToDraw (NSRect aRect);
+#else
 		bool NeedsToDraw (RectangleF aRect);
+#endif
 
 		[Export ("wantsDefaultClipping")]
 		bool WantsDefaultClipping { get; }
@@ -10404,31 +10430,67 @@ namespace MonoMac.AppKit {
 		void RemoveFromSuperviewWithoutNeedingDisplay ();
 
 		[Export ("resizeSubviewsWithOldSize:")]
+#if MAC64
+		void ResizeSubviewsWithOldSize (NSSize oldSize);
+#else
 		void ResizeSubviewsWithOldSize (SizeF oldSize);
+#endif
 
 		[Export ("resizeWithOldSuperviewSize:")]
+#if MAC64
+		void ResizeWithOldSuperviewSize (NSSize oldSize);
+#else
 		void ResizeWithOldSuperviewSize (SizeF oldSize);
+#endif
 
 		[Export ("setFrameOrigin:")]
+#if MAC64
+		void SetFrameOrigin (NSPoint newOrigin);
+#else
 		void SetFrameOrigin (PointF newOrigin);
+#endif
 
 		[Export ("setFrameSize:")]
+#if MAC64
+		void SetFrameSize (NSSize newSize);
+#else
 		void SetFrameSize (SizeF newSize);
+#endif
 
 		[Export ("setBoundsOrigin:")]
+#if MAC64
+		void SetBoundsOrigin (NSPoint newOrigin);
+#else
 		void SetBoundsOrigin (PointF newOrigin);
+#endif
 
 		[Export ("setBoundsSize:")]
+#if MAC64
+		void SetBoundsSize (NSSize newSize);
+#else
 		void SetBoundsSize (SizeF newSize);
+#endif
 
 		[Export ("translateOriginToPoint:")]
+#if MAC64
+		void TranslateOriginToPoint (NSPoint translation);
+#else
 		void TranslateOriginToPoint (PointF translation);
+#endif
 
 		[Export ("scaleUnitSquareToSize:")]
+#if MAC64
+		void ScaleUnitSquareToSize (NSSize newUnitSize);
+#else
 		void ScaleUnitSquareToSize (SizeF newUnitSize);
+#endif
 
 		[Export ("rotateByAngle:")]
+#if MAC64
+		void RotateByAngle (double angle);
+#else
 		void RotateByAngle (float angle);
+#endif
 
 		[Export ("isFlipped")]
 		bool IsFlipped { get; }
@@ -10443,49 +10505,105 @@ namespace MonoMac.AppKit {
 		bool IsOpaque { get; }
 
 		[Export ("convertPoint:fromView:")]
+#if MAC64
+		NSPoint ConvertPointFromView (NSPoint aPoint, [NullAllowed] NSView aView);
+#else
 		PointF ConvertPointFromView (PointF aPoint, [NullAllowed] NSView aView);
+#endif
 
 		[Export ("convertPoint:toView:")]
+#if MAC64
+		NSPoint ConvertPointToView (NSPoint aPoint, [NullAllowed] NSView aView);
+#else
 		PointF ConvertPointToView (PointF aPoint, [NullAllowed] NSView aView);
+#endif
 
 		[Export ("convertSize:fromView:")]
+#if MAC64
+		NSSize ConvertSizeFromView (NSSize aSize, [NullAllowed] NSView aView);
+#else
 		SizeF ConvertSizeFromView (SizeF aSize, [NullAllowed] NSView aView);
+#endif
 
 		[Export ("convertSize:toView:")]
+#if MAC64
+		NSSize ConvertSizeToView (NSSize aSize, [NullAllowed] NSView aView);
+#else
 		SizeF ConvertSizeToView (SizeF aSize, [NullAllowed] NSView aView);
+#endif
 
 		[Export ("convertRect:fromView:")]
+#if MAC64
+		NSRect ConvertRectFromView (NSRect aRect, [NullAllowed] NSView aView);
+#else
 		RectangleF ConvertRectFromView (RectangleF aRect, [NullAllowed] NSView aView);
+#endif
 
 		[Export ("convertRect:toView:")]
+#if MAC64
+		NSRect ConvertRectToView (NSRect aRect, [NullAllowed] NSView aView);
+#else
 		RectangleF ConvertRectToView (RectangleF aRect, [NullAllowed] NSView aView);
+#endif
 
 		[Export ("centerScanRect:")]
+#if MAC64
+		NSRect CenterScanRect (NSRect aRect);
+#else
 		RectangleF CenterScanRect (RectangleF aRect);
+#endif
 
 		[Export ("convertPointToBase:")]
+#if MAC64
+		NSPoint ConvertPointToBase (NSPoint aPoint);
+#else
 		PointF ConvertPointToBase (PointF aPoint);
+#endif
 
 		[Export ("convertPointFromBase:")]
+#if MAC64
+		NSPoint ConvertPointFromBase (NSPoint aPoint);
+#else
 		PointF ConvertPointFromBase (PointF aPoint);
+#endif
 
 		[Export ("convertSizeToBase:")]
+#if MAC64
+		NSSize ConvertSizeToBase (NSSize aSize);
+#else
 		SizeF ConvertSizeToBase (SizeF aSize);
+#endif
 
 		[Export ("convertSizeFromBase:")]
+#if MAC64
+		NSSize ConvertSizeFromBase (NSSize aSize);
+#else
 		SizeF ConvertSizeFromBase (SizeF aSize);
+#endif
 
 		[Export ("convertRectToBase:")]
+#if MAC64
+		NSRect ConvertRectToBase (NSRect aRect);
+#else
 		RectangleF ConvertRectToBase (RectangleF aRect);
+#endif
 
 		[Export ("convertRectFromBase:")]
+#if MAC64
+		NSRect ConvertRectFromBase (NSRect aRect);
+#else
 		RectangleF ConvertRectFromBase (RectangleF aRect);
+#endif
 
 		[Export ("canDraw")]
 		bool CanDraw ();
 
 		[Export ("setNeedsDisplayInRect:")]
+#if MAC64
+		void SetNeedsDisplayInRect (NSRect invalidRect);
+#else
 		void SetNeedsDisplayInRect (RectangleF invalidRect);
+#endif
 
 		//[Export ("setNeedsDisplay:")]
 		//void SetNeedsDisplay (bool flag);
@@ -10506,7 +10624,11 @@ namespace MonoMac.AppKit {
 		NSView FocusView ();
 
 		[Export ("visibleRect")]
+#if MAC64
+		NSRect VisibleRect ();
+#else
 		RectangleF VisibleRect ();
+#endif
 
 		[Export ("display")]
 		void Display ();
@@ -10518,34 +10640,70 @@ namespace MonoMac.AppKit {
 		void DisplayIfNeededIgnoringOpacity ();
 
 		[Export ("displayRect:")]
+#if MAC64
+		void DisplayRect (NSRect rect);
+#else
 		void DisplayRect (RectangleF rect);
+#endif
 
 		[Export ("displayIfNeededInRect:")]
+#if MAC64
+		void DisplayIfNeededInRect (NSRect rect);
+#else
 		void DisplayIfNeededInRect (RectangleF rect);
+#endif
 
 		[Export ("displayRectIgnoringOpacity:")]
+#if MAC64
+		void DisplayRectIgnoringOpacity (NSRect rect);
+#else
 		void DisplayRectIgnoringOpacity (RectangleF rect);
+#endif
 
 		[Export ("displayIfNeededInRectIgnoringOpacity:")]
+#if MAC64
+		void DisplayIfNeededInRectIgnoringOpacity (NSRect rect);
+#else
 		void DisplayIfNeededInRectIgnoringOpacity (RectangleF rect);
+#endif
 
 		[Export ("drawRect:")]
+#if MAC64
+		void DrawRect (NSRect dirtyRect);
+#else
 		void DrawRect (RectangleF dirtyRect);
+#endif
 
 		[Export ("displayRectIgnoringOpacity:inContext:")]
+#if MAC64
+		void DisplayRectIgnoringOpacity (NSRect aRect, NSGraphicsContext context);
+#else
 		void DisplayRectIgnoringOpacity (RectangleF aRect, NSGraphicsContext context);
+#endif
 
 		[Export ("bitmapImageRepForCachingDisplayInRect:")]
+#if MAC64
+		NSBitmapImageRep BitmapImageRepForCachingDisplayInRect (NSRect rect);
+#else
 		NSBitmapImageRep BitmapImageRepForCachingDisplayInRect (RectangleF rect);
+#endif
 
 		[Export ("cacheDisplayInRect:toBitmapImageRep:")]
+#if MAC64
+		void CacheDisplay (NSRect rect, NSBitmapImageRep bitmapImageRep);
+#else
 		void CacheDisplay (RectangleF rect, NSBitmapImageRep bitmapImageRep);
+#endif
 
 		[Export ("viewWillDraw")]
 		void ViewWillDraw ();
 
 		[Export ("gState")]
+#if MAC64
+		long GState ();
+#else
 		int GState ();
+#endif
 
 		[Export ("allocateGState")]
 		void AllocateGState ();
@@ -10560,34 +10718,70 @@ namespace MonoMac.AppKit {
 		void RenewGState ();
 
 		[Export ("scrollPoint:")]
+#if MAC64
+		void ScrollPoint (NSPoint aPoint);
+#else
 		void ScrollPoint (PointF aPoint);
+#endif
 
 		[Export ("scrollRectToVisible:")]
+#if MAC64
+		bool ScrollRectToVisible (NSRect aRect);
+#else
 		bool ScrollRectToVisible (RectangleF aRect);
+#endif
 
 		[Export ("autoscroll:")]
 		bool Autoscroll (NSEvent theEvent);
 
 		[Export ("adjustScroll:")]
+#if MAC64
+		NSRect AdjustScroll (NSRect newVisible);
+#else
 		RectangleF AdjustScroll (RectangleF newVisible);
+#endif
 
 		[Export ("scrollRect:by:")]
+#if MAC64
+		void ScrollRect (NSRect aRect, NSSize delta);
+#else
 		void ScrollRect (RectangleF aRect, SizeF delta);
+#endif
 
 		[Export ("translateRectsNeedingDisplayInRect:by:")]
+#if MAC64
+		void TranslateRectsNeedingDisplay (NSRect clipRect, NSSize delta);
+#else
 		void TranslateRectsNeedingDisplay (RectangleF clipRect, SizeF delta);
+#endif
 
 		[Export ("hitTest:")]
+#if MAC64
+		NSView HitTest (NSPoint aPoint);
+#else
 		NSView HitTest (PointF aPoint);
+#endif
 
 		[Export ("mouse:inRect:")]
+#if MAC64
+		bool IsMouseInRect (NSPoint aPoint, NSRect aRect);
+#else
 		bool IsMouseInRect (PointF aPoint, RectangleF aRect);
+#endif
 
 		[Export ("viewWithTag:")]
+#if MAC64
+		NSObject ViewWithTag (long aTag);
+#else
 		NSObject ViewWithTag (int aTag);
+#endif
 
 		[Export ("tag")]
+#if MAC64
+		long Tag { get; }
+#else
 		int Tag { get; }
+#endif
 
 		[Export ("performKeyEquivalent:")]
 		bool PerformKeyEquivalent (NSEvent theEvent);
@@ -10605,10 +10799,18 @@ namespace MonoMac.AppKit {
 		bool MouseDownCanMoveWindow { get; }
 
 		[Export ("addCursorRect:cursor:")]
+#if MAC64
+		void AddCursorRect (NSRect aRect, NSCursor cursor);
+#else
 		void AddCursorRect (RectangleF aRect, NSCursor cursor);
+#endif
 
 		[Export ("removeCursorRect:cursor:")]
+#if MAC64
+		void RemoveCursorRect (NSRect aRect, NSCursor cursor);
+#else
 		void RemoveCursorRect (RectangleF aRect, NSCursor cursor);
+#endif
 
 		[Export ("discardCursorRects")]
 		void DiscardCursorRects ();
@@ -10617,10 +10819,18 @@ namespace MonoMac.AppKit {
 		void ResetCursorRects ();
 
 		[Export ("addTrackingRect:owner:userData:assumeInside:")]
+#if MAC64
+		long AddTrackingRect( NSRect aRect, NSObject aObject, IntPtr data, bool assumeInside);
+#else
 		int AddTrackingRect (RectangleF aRect, NSObject anObject, IntPtr data, bool assumeInside);
+#endif
 
 		[Export ("removeTrackingRect:")]
+#if MAC64
+		void RemoveTrackingRect (long tag);
+#else
 		void RemoveTrackingRect (int tag);
+#endif
 
 		[Export ("makeBackingLayer")]
 		CALayer MakeBackingLayer ();
@@ -10651,10 +10861,18 @@ namespace MonoMac.AppKit {
 		NSMenu DefaultMenu ();
 
 		[Export ("addToolTipRect:owner:userData:")]
+#if MAC64
+		long AddToolTip (NSRect aRect, NSObject aObject, IntPtr data);
+#else
 		int AddToolTip (RectangleF aRect, NSObject anObject, IntPtr data);
+#endif
 
 		[Export ("removeToolTip:")]
+#if MAC64
+		void RemoveToolTip(long tag);
+#else
 		void RemoveToolTip (int tag);
+#endif
 
 		[Export ("removeAllToolTips")]
 		void RemoveAllToolTips ();
@@ -10672,7 +10890,11 @@ namespace MonoMac.AppKit {
 		bool PreservesContentDuringLiveResize { get; }
 
 		[Export ("rectPreservedDuringLiveResize")]
+#if MAC64
+		NSRect RectPreservedDuringLiveResize { get; }
+#else
 		RectangleF RectPreservedDuringLiveResize { get; }
+#endif
 
 		//[Export ("getRectsExposedDuringLiveResize:count:")]
 		// void GetRectsExposedDuringLiveResizecount
@@ -10697,19 +10919,39 @@ namespace MonoMac.AppKit {
 		NSViewResizingMask AutoresizingMask { get; set; }
 
 		[Export ("frame")]
+#if MAC64
+		NSRect Frame { get; set; }
+#else
 		RectangleF Frame { get; set; }
+#endif
 
 		[Export ("frameRotation")]
+#if MAC64
+		double FrameRotation { get; set; }
+#else
 		float FrameRotation { get; set; }
+#endif
 
 		[Export ("frameCenterRotation")]
+#if MAC64
+		double FrameCenterRotation { get; set; }
+#else
 		float FrameCenterRotation { get; set; }
+#endif
 
 		[Export ("boundsRotation")]
+#if MAC64
+		double BoundsRotation { get; set; }
+#else
 		float BoundsRotation { get; set; }
+#endif
 
 		[Export ("bounds")]
+#if MAC64
+		NSRect Bounds { get; set; }
+#else
 		RectangleF Bounds { get; set; }
+#endif
 
 		[Export ("canDrawConcurrently")]
 		bool CanDrawConcurrently { get; set; }
@@ -10736,7 +10978,11 @@ namespace MonoMac.AppKit {
 		CALayer Layer { get; set; }
 
 		[Export ("alphaValue")]
+#if MAC64
+		double AlphaValue { get; set; }
+#else
 		float AlphaValue { get; set; }
+#endif
 
 		[Export ("backgroundFilters"), NullAllowed]
 		CIFilter [] BackgroundFilters { get; set; }
@@ -10769,14 +11015,26 @@ namespace MonoMac.AppKit {
 		NSDraggingSession BeginDraggingSession (NSDraggingItem [] itmes, NSEvent evnt, NSDraggingSource source);
 
 		[Export ("dragImage:at:offset:event:pasteboard:source:slideBack:")]
+#if MAC64
+		void DragImage (NSImage anImage, NSPoint viewLocation, NSSize initialOffset, NSEvent theEvent, NSPasteboard pboard, NSObject sourceObj, bool slideFlag);
+#else
 		void DragImage (NSImage anImage, PointF viewLocation, SizeF initialOffset, NSEvent theEvent, NSPasteboard pboard, NSObject sourceObj, bool slideFlag);
+#endif
 
 		[Export ("dragFile:fromRect:slideBack:event:")]
+#if MAC64
+		bool DragFile (string filename, NSRect aRect, bool slideBack, NSEvent theEvent);
+#else
 		bool DragFile (string filename, RectangleF aRect, bool slideBack, NSEvent theEvent);
+#endif
 		
 		[Export ("dragPromisedFilesOfTypes:fromRect:source:slideBack:event:")]
+#if MAC64
+		bool DragPromisedFilesOfTypes (string[] typeArray, NSRect aRect, NSObject sourceObject, bool slideBack, NSEvent theEvent);
+#else
 		bool DragPromisedFilesOfTypes (string[] typeArray, RectangleF aRect, NSObject sourceObject, bool slideBack, NSEvent theEvent);
-		
+#endif
+
 		[Export ("exitFullScreenModeWithOptions:")]
 		void ExitFullscreenModeWithOptions(NSDictionary options);
 		
@@ -10856,19 +11114,35 @@ namespace MonoMac.AppKit {
 		bool TranslatesAutoresizingMaskIntoConstraints { get; set; }
 
 		[Lion, Export ("alignmentRectForFrame:")]
+#if MAC64
+		NSRect GetAlignmentRectForFrame( NSRect frame );
+#else
 		RectangleF GetAlignmentRectForFrame (RectangleF frame);
+#endif
 
 		[Lion, Export ("frameForAlignmentRect:")]
+#if MAC64
+		NSRect GetFrameForAlignmentRect (NSRect alignmentRect);
+#else
 		RectangleF GetFrameForAlignmentRect (RectangleF alignmentRect);
+#endif
 
 		[Lion, Export ("alignmentRectInsets")]
 		NSEdgeInsets AlignmentRectInsets { get; }
 
 		[Lion, Export ("baselineOffsetFromBottom")]
+#if MAC64
+		double BaselineOffsetFromBottom { get; }
+#else
 		float BaselineOffsetFromBottom { get; }
+#endif
 
 		[Lion, Export ("intrinsicContentSize")]
+#if MAC64
+		NSSize IntrinsicContentSize { get; }
+#else
 		SizeF IntrinsicContentSize { get; }
+#endif
 
 		[Lion, Export ("invalidateIntrinsicContentSize")]
 		void InvalidateIntrinsicContentSize ();
@@ -10886,7 +11160,11 @@ namespace MonoMac.AppKit {
 		void SetContentCompressionResistancePriority (float priority, NSLayoutConstraintOrientation orientation);
 
 		[Lion, Export ("fittingSize")]
+#if MAC64
+		NSSize FittingSize { get; }
+#else
 		SizeF FittingSize { get; }
+#endif
 
 		[Lion, Export ("constraintsAffectingLayoutForOrientation:")]
 		NSLayoutConstraint [] GetConstraintsAffectingLayout (NSLayoutConstraintOrientation orientation);
@@ -10917,7 +11195,11 @@ namespace MonoMac.AppKit {
 		bool CanBecomeKeyView { get; }
 
 		[Export ("setKeyboardFocusRingNeedsDisplayInRect:")]
+#if MAC64
+		void SetKeyboardFocusRingNeedsDisplay (NSRect rect);
+#else
 		void SetKeyboardFocusRingNeedsDisplay (RectangleF rect);
+#endif
 
 		[Export ("focusRingType")]
 		NSFocusRingType FocusRingType { get; set; }
@@ -10929,7 +11211,11 @@ namespace MonoMac.AppKit {
 		void DrawFocusRingMask ();
 
 		[Export ("focusRingMaskBounds")]
+#if MAC64
+		NSRect FocusRingMaskBounds { get; }
+#else
 		RectangleF FocusRingMaskBounds { get; }
+#endif
 
 		[Export ("noteFocusRingMaskChanged")]
 		void NoteFocusRingMaskChanged ();
@@ -10938,10 +11224,18 @@ namespace MonoMac.AppKit {
 		bool IsDrawingFindIndicator { get; }
 		
 		[Export ("dataWithEPSInsideRect:")]
+#if MAC64
+		NSData DataWithEpsInsideRect (NSRect rect);
+#else
 		NSData DataWithEpsInsideRect (RectangleF rect);
+#endif
 	
 		[Export ("dataWithPDFInsideRect:")]
+#if MAC64
+		NSData DataWithPdfInsideRect (NSRect rect);
+#else
 		NSData DataWithPdfInsideRect (RectangleF rect);
+#endif
 	
 		[Export ("print:")]
 		void Print (NSObject sender);
@@ -10956,79 +11250,172 @@ namespace MonoMac.AppKit {
 		NSAttributedString PageFooter { get; }
 
 		[Export ("writeEPSInsideRect:toPasteboard:")]
+#if MAC64
+		void WriteEpsInsideRect (NSRect rect, NSPasteboard pboard);
+#else
 		void WriteEpsInsideRect (RectangleF rect, NSPasteboard pboard);
+#endif
 
 		[Export ("writePDFInsideRect:toPasteboard:")]
+#if MAC64
+		void WritePdfInsideRect (NSRect rect, NSPasteboard pboard);
+#else
 		void WritePdfInsideRect (RectangleF rect, NSPasteboard pboard);
+#endif
 		
 		[Export ("drawPageBorderWithSize:")]
+#if MAC64
+		void DrawPageBorder (NSSize borderSize);
+#else
 		void DrawPageBorder (SizeF borderSize);
+#endif
 		
 		[Export ("drawSheetBorderWithSize:")]
+#if MAC64
+		void DrawSheetBorder (NSSize borderSize);
+#else
 		void DrawSheetBorder (SizeF borderSize);
-		
+#endif
+
 		[Export ("heightAdjustLimit")]
+#if MAC64
+		double HeightAdjustLimit { get; }
+#else
 		float HeightAdjustLimit { get; }
+#endif
 		
 		[Export ("widthAdjustLimit")]
+#if MAC64
+		double WidthAdjustLimit { get; }
+#else
 		float WidthAdjustLimit { get; }
-		
+#endif
+
 		[Export ("adjustPageWidthNew:left:right:limit:")]
+#if MAC64
+		void AdjustPageWidthNew (ref double newRight, double left, double proposedRight, double rightLimit);
+#else
 		void AdjustPageWidthNew (ref float newRight, float left, float proposedRight, float rightLimit);
+#endif
 		
 		[Export ("adjustPageHeightNew:top:bottom:limit:")]
+#if MAC64
+		void AdjustPageHeightNew (ref double newBottom, double top, double proposedBottom, double bottomLimit);
+#else
 		void AdjustPageHeightNew (ref float newBottom, float top, float proposedBottom, float bottomLimit);
+#endif
 		
 		[Export ("knowsPageRange:")]
 		bool KnowsPageRange (ref NSRange aRange);
 		
 		[Export ("rectForPage:")]
+#if MAC64
+		//TODO: figure out size of NSIndex - assuming NSInteger
+		NSRect RectForPage(long pageNumber);
+#else
 		RectangleF RectForPage (int pageNumber);
+#endif
 		
 		[Export ("locationOfPrintRect:")]
+#if MAC64
+		NSPoint LocationOfPrintRect (NSRect aRect);
+#else
 		PointF LocationOfPrintRect (RectangleF aRect);
+#endif
 
 		[Lion, Export ("wantsBestResolutionOpenGLSurface")]
 		bool WantsBestResolutionOpenGLSurface { get; set; }
 
 		[Lion, Export ("backingAlignedRect:options:")]
+#if MAC64
+		NSRect BackingAlignedRect (NSRect aRect, NSAlignmentOptions options);
+#else
 		RectangleF BackingAlignedRect (RectangleF aRect, NSAlignmentOptions options);
+#endif
 
 		[Lion, Export ("convertRectFromBacking:")]
+#if MAC64
+		NSRect ConvertRectFromBacking (NSRect aRect);
+#else
 		RectangleF ConvertRectFromBacking (RectangleF aRect);
+#endif
 
 		[Lion, Export ("convertRectToBacking:")]
+#if MAC64
+		NSRect ConvertRectToBacking (NSRect aRect);
+#else
 		RectangleF ConvertRectToBacking (RectangleF aRect);
+#endif
 
 		[Lion, Export ("convertRectFromLayer:")]
+#if MAC64
+		NSRect ConvertRectFromLayer (NSRect aRect);
+#else
 		RectangleF ConvertRectFromLayer (RectangleF aRect);
+#endif
 
 		[Lion, Export ("convertRectToLayer:")]
+#if MAC64
+		NSRect ConvertRectToLayer (NSRect aRect);
+#else
 		RectangleF ConvertRectToLayer (RectangleF aRect);
+#endif
 
 		[Lion, Export ("convertPointFromBacking:")]
+#if MAC64
+		NSPoint ConvertPointFromBacking (NSPoint aPoint);
+#else
 		PointF ConvertPointFromBacking (PointF aPoint);
+#endif
 
 		[Lion, Export ("convertPointToBacking:")]
+#if MAC64
+		NSPoint ConvertPointToBacking (NSPoint aPoint);
+#else
 		PointF ConvertPointToBacking (PointF aPoint);
+#endif
 
 		[Lion, Export ("convertPointFromLayer:")]
+#if MAC64
+		NSPoint ConvertPointFromLayer (NSPoint aPoint);
+#else
 		PointF ConvertPointFromLayer (PointF aPoint);
+#endif
 
 		[Lion, Export ("convertPointToLayer:")]
+#if MAC64
+		NSPoint ConvertPointToLayer (NSPoint aPoint);
+#else
 		PointF ConvertPointToLayer (PointF aPoint);
+#endif
 
 		[Lion, Export ("convertSizeFromBacking:")]
+#if MAC64
+		NSSize ConvertSizeFromBacking (NSSize aSize);
+#else
 		SizeF ConvertSizeFromBacking (SizeF aSize);
+#endif
 
 		[Lion, Export ("convertSizeToBacking:")]
+#if MAC64
+		NSSize ConvertSizeToBacking (NSSize aSize);
+#else
 		SizeF ConvertSizeToBacking (SizeF aSize);
+#endif
 
 		[Lion, Export ("convertSizeFromLayer:")]
+#if MAC64
+		NSSize ConvertSizeFromLayer (NSSize aSize);
+#else
 		SizeF ConvertSizeFromLayer (SizeF aSize);
+#endif
 
 		[Lion, Export ("convertSizeToLayer:")]
+#if MAC64
+		NSSize ConvertSizeToLayer (NSSize aSize);
+#else
 		SizeF ConvertSizeToLayer (SizeF aSize);
+#endif
 
 	}
 
