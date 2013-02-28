@@ -135,6 +135,7 @@ namespace MonoMac.AppKit {
 		
 	}
 
+	//TODO: review size for 64 bit
 	public enum NSRectEdge {
 		MinXEdge, MinYEdge, MaxXEdge, MaxYEdge
 	}
@@ -1569,8 +1570,12 @@ namespace MonoMac.AppKit {
 		Submenu = 3,
 		TornOffMenu = 3
 	}
-	
+
+#if MAC64
+	public enum NSRuleEditorRowType : ulong {
+#else
 	public enum NSRuleEditorRowType{
+#endif
 		Simple = 0,
 		Compound
 	}
@@ -1790,7 +1795,11 @@ namespace MonoMac.AppKit {
 		Computer = 1 << 2,
 	}
 
+#if MAC64
+	public enum NSSharingContentScope : long {
+#else
 	public enum NSSharingContentScope {
+#endif
 		Item,
 		Partial,
 		Full

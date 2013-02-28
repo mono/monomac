@@ -15539,24 +15539,41 @@ namespace MonoMac.AppKit {
 		string DisplayValuesKeyPath { get; set; }
 	}
 
+	//64 bit reviewed
 	[BaseType (typeof (NSObject))]
 	[Model]
 	public interface NSRuleEditorDelegate {
 		[Abstract]
 		[Export ("ruleEditor:numberOfChildrenForCriterion:withRowType:"), DelegateName ("NSRuleEditorNumberOfChildren"), DefaultValue(0)]
+#if MAC64
+		long NumberOfChildren (NSRuleEditor editor, NSObject criterion, NSRuleEditorRowType rowType);
+#else
 		int NumberOfChildren (NSRuleEditor editor, NSObject criterion, NSRuleEditorRowType rowType);
+#endif
 
 		[Abstract]
 		[Export ("ruleEditor:child:forCriterion:withRowType:"), DelegateName ("NSRulerEditorChildCriterion"), DefaultValue(null)]
+#if MAC64
+		NSObject ChildForCriterion (NSRuleEditor editor, long index, NSObject criterion, NSRuleEditorRowType rowType);
+#else
 		NSObject ChildForCriterion (NSRuleEditor editor, int index, NSObject criterion, NSRuleEditorRowType rowType);
+#endif
 
 		[Abstract]
 		[Export ("ruleEditor:displayValueForCriterion:inRow:"), DelegateName ("NSRulerEditorDisplayValue"), DefaultValue(null)]
+#if MAC64
+		NSObject DisplayValue (NSRuleEditor editor, NSObject criterion, long row);
+#else
 		NSObject DisplayValue (NSRuleEditor editor, NSObject criterion, int row);
+#endif
 
 		[Abstract]
 		[Export ("ruleEditor:predicatePartsForCriterion:withDisplayValue:inRow:"), DelegateName ("NSRulerEditorPredicateParts"), DefaultValue(null)]
+#if MAC64
+		NSDictionary PredicateParts (NSRuleEditor editor, NSObject criterion, NSObject value, long row);
+#else
 		NSDictionary PredicateParts (NSRuleEditor editor, NSObject criterion, NSObject value, int row);
+#endif
 
 		[Abstract]
 		[Export ("ruleEditorRowsDidChange:"), EventArgs ("NSNotification")]
@@ -15573,6 +15590,7 @@ namespace MonoMac.AppKit {
 
 	}
    
+	//64 bit reviewed
 	[BaseType (typeof (NSRuleEditor))]
 	public interface NSPredicateEditor {
 		//Detected properties
@@ -15585,7 +15603,8 @@ namespace MonoMac.AppKit {
 	
 	[MountainLion]
 	public delegate void NSSharingServiceHandler ();
-	
+
+	//64 bit reviewed
 	[MountainLion]
 	[BaseType (typeof (NSObject),
 	           Delegates=new string [] {"WeakDelegate"},
@@ -15670,7 +15689,8 @@ namespace MonoMac.AppKit {
 		[Field ("NSSharingServiceNamePostVideoOnTudou")][Internal]
 		NSString NSSharingServiceNamePostVideoOnTudou { get; }
 	}
-	
+
+	//64 bit reviewed
 	[MountainLion]
 	[BaseType (typeof (NSObject))]
 	[Model]
@@ -15686,11 +15706,19 @@ namespace MonoMac.AppKit {
 		void DidShareItems (NSSharingService sharingService, NSObject [] items);
 		
 		[Export ("sharingService:sourceFrameOnScreenForShareItem:"), DelegateName ("NSSharingServiceSourceFrameOnScreenForShareItem"), DefaultValue (null)]
+#if MAC64
+		NSRect SourceFrameOnScreenForShareItem (NSSharingService sharingService, NSPasteboardWriting item);
+#else
 		RectangleF SourceFrameOnScreenForShareItem (NSSharingService sharingService, NSPasteboardWriting item);
+#endif
 		
 		[Export ("sharingService:transitionImageForShareItem:contentRect:"), DelegateName ("NSSharingServiceTransitionImageForShareItem"), DefaultValue (null)]
+#if MAC64
+		NSImage TransitionImageForShareItem (NSSharingService sharingService, NSPasteboardWriting item, NSRect contentRect);
+#else
 		NSImage TransitionImageForShareItem (NSSharingService sharingService, NSPasteboardWriting item, RectangleF contentRect);
-		
+#endif
+
 		[Export ("sharingService:sourceWindowForShareItems:sharingContentScope:"), DelegateName ("NSSharingServiceSourceWindowForShareItems"), DefaultValue (null)]
 		NSWindow SourceWindowForShareItems (NSSharingService sharingService, NSObject [] items, NSSharingContentScope sharingContentScope);
 	}
@@ -15711,9 +15739,14 @@ namespace MonoMac.AppKit {
 		IntPtr Constructor (NSObject [] items);
 		
 		[Export ("showRelativeToRect:ofView:preferredEdge:")]
+#if MAC64
+		void ShowRelativeToRect (NSRect rect, NSView view, NSRectEdge preferredEdge);
+#else
 		void ShowRelativeToRect (RectangleF rect, NSView view, NSRectEdge preferredEdge);
+#endif
 	}
-	
+
+	// 64bit reviewed
 	[MountainLion]
 	[BaseType (typeof (NSObject))]
 	[Model]
