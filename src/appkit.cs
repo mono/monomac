@@ -1760,7 +1760,7 @@ namespace MonoMac.AppKit {
 	[BaseType (typeof (NSControl))]
 	public interface NSButton {
 		[Export ("initWithFrame:")]
-		IntPtr Constructor (RectangleF frameRect);
+		IntPtr Constructor (NSRect frameRect);
 
 		[Export ("title")]
 		string Title { get; set; } 
