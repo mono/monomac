@@ -1340,7 +1340,11 @@ namespace MonoMac.AppKit {
 	}
 
 	[Flags]
+#if MAC64
+	public enum NSWorkspaceLaunchOptions : ulong {
+#else
 	public enum NSWorkspaceLaunchOptions {
+#endif
 		Print = 2,
 		InhibitingBackgroundOnly = 0x80,
 		WithoutAddingToRecents = 0x100,
@@ -1355,7 +1359,11 @@ namespace MonoMac.AppKit {
 	}
 
 	[Flags]
+#if MAC64
+	public enum NSWorkspaceIconCreationOptions : ulong {
+#else
 	public enum NSWorkspaceIconCreationOptions {
+#endif
 		NSExcludeQuickDrawElements   = 1 << 1,
 		NSExclude10_4Elements       = 1 << 2
 	}

@@ -15022,7 +15022,8 @@ namespace MonoMac.AppKit {
 	}
 	
 	public delegate void NSWorkspaceUrlHandler (NSDictionary newUrls, NSError error);
-	
+
+	//64 bit reviewed
 	[BaseType (typeof (NSObject))]
 	public interface NSWorkspace {
 		[Static]
@@ -15042,7 +15043,11 @@ namespace MonoMac.AppKit {
 		bool OpenFile (string fullPath, string appName, bool deactivate);
 		
 		[Export ("openFile:fromImage:at:inView:")]
+#if MAC64
+		bool OpenFile (string fullPath, NSImage anImage, NSPoint point, NSView aView);
+#else
 		bool OpenFile (string fullPath, NSImage anImage, PointF point, NSView aView);
+#endif
 		
 		[Export ("openURL:")]
 		bool OpenUrl (NSUrl url);
@@ -15105,8 +15110,12 @@ namespace MonoMac.AppKit {
 		bool GetFileSystemInfo (string fullPath, out bool removableFlag, out bool writableFlag, out bool unmountableFlag, out string description, out string fileSystemType);
 		
 		[Export ("performFileOperation:source:destination:files:tag:")]
+#if MAC64
+		bool PerformFileOperation (NSString workspaceOperation, string source, string destination, string[] files, out long tag);
+#else
 		bool PerformFileOperation (NSString workspaceOperation, string source, string destination, string[] files, out int tag);
-		
+#endif
+
 		[Export ("unmountAndEjectDeviceAtPath:")]
 		bool UnmountAndEjectDevice(string path);
 
@@ -15114,8 +15123,12 @@ namespace MonoMac.AppKit {
 		bool UnmountAndEjectDevice (NSUrl url, out NSError error);
 		
 		[Export ("extendPowerOffBy:")]
+#if MAC64
+		long ExtendPowerOffBy (long requested);
+#else
 		int ExtendPowerOffBy (int requested);
-		
+#endif
+
 		[Export ("hideOtherApplications")]
 		void HideOtherApplications ();
 		
