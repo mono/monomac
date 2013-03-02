@@ -739,7 +739,7 @@ namespace MonoMac.AppKit {
 
 	[Flags]
 #if MAC64
-	public enum NSTouchPhase : ulong{
+	public enum NSTouchPhase : long{
 #else
 	public enum NSTouchPhase {
 #endif
