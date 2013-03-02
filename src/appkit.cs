@@ -13683,16 +13683,25 @@ namespace MonoMac.AppKit {
 
 	}
 
+	// 64 bit reviewed
 	[BaseType (typeof (NSObject), Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (NSToolbarDelegate)})]
 	public interface NSToolbar {
 		[Export ("initWithIdentifier:")]
 		IntPtr Constructor (string identifier);
 
 		[Export ("insertItemWithItemIdentifier:atIndex:")]
+#if MAC64
+		void InsertItem (string itemIdentifier, long index);
+#else
 		void InsertItem (string itemIdentifier, int index);
+#endif
 
 		[Export ("removeItemAtIndex:")]
+#if MAC64
+		void RemoveItem (long index);
+#else
 		void RemoveItem (int index);
+#endif
 
 		[Export ("runCustomizationPalette:")]
 		void RunCustomizationPalette (NSObject sender);
@@ -13768,6 +13777,7 @@ namespace MonoMac.AppKit {
 		NSString NSToolbarPrintItemIdentifier { get; }
 	}
 
+	//64 bit reviewed
 	[BaseType (typeof (NSObject))]
 	[Model]
 	public interface NSToolbarDelegate {
@@ -13796,7 +13806,7 @@ namespace MonoMac.AppKit {
 		void DidRemoveItem (NSNotification notification);
 	}
 
-
+	//64 bit reviewed
 	[BaseType (typeof (NSObject))]
 	public interface NSToolbarItem {
 		[Export ("initWithItemIdentifier:")]
@@ -13828,7 +13838,11 @@ namespace MonoMac.AppKit {
 		NSMenuItem MenuFormRepresentation { get; set; }
 
 		[Export ("tag")]
+#if MAC64
+		long Tag { get; set; }
+#else
 		int Tag { get; set; }
+#endif
 
 		[Export ("target"), NullAllowed]
 		NSObject Target { get; set; }
@@ -13846,18 +13860,31 @@ namespace MonoMac.AppKit {
 		NSView View { get; set; }
 
 		[Export ("minSize")]
+#if MAC64
+		NSSize MinSize { get; set; }
+#else
 		SizeF MinSize { get; set; }
+#endif
 
 		[Export ("maxSize")]
+#if MAC64
+		NSSize MaxSize { get; set; }
+#else
 		SizeF MaxSize { get; set; }
+#endif
 
 		[Export ("visibilityPriority")]
+#if MAC64
+		long VisibilityPriority { get; set; }
+#else
 		int VisibilityPriority { get; set; }
+#endif
 
 		[Export ("autovalidates")]
 		bool Autovalidates { get; set; }
 	}
 
+	//64 bit reviewed
 	[BaseType (typeof (NSObject))]
 	public interface NSTouch {
 		[Export ("identity", ArgumentSemantic.Retain)]
@@ -13867,7 +13894,11 @@ namespace MonoMac.AppKit {
 		NSTouchPhase Phase { get; }
 
 		[Export ("normalizedPosition")]
+#if MAC64
+		NSPoint NormalizedPosition { get; }
+#else
 		PointF NormalizedPosition { get; }
+#endif
 
 		[Export ("isResting")]
 		bool IsResting { get; }
@@ -13876,7 +13907,11 @@ namespace MonoMac.AppKit {
 		NSObject Device { get; }
 
 		[Export ("deviceSize")]
+#if MAC64
+		NSSize DeviceSize { get; }
+#else
 		SizeF DeviceSize { get; }
+#endif
 	}
 
 	//64 bit reviewed

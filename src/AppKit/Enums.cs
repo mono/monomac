@@ -738,7 +738,11 @@ namespace MonoMac.AppKit {
 	}
 
 	[Flags]
+#if MAC64
+	public enum NSTouchPhase : ulong{
+#else
 	public enum NSTouchPhase {
+#endif
 		Began           = 1 << 0,
 		Moved           = 1 << 1,
 		Stationary      = 1 << 2,
@@ -1239,11 +1243,19 @@ namespace MonoMac.AppKit {
 	}
 
 
+#if MAC64
+	public enum NSToolbarDisplayMode : ulong {
+#else
 	public enum NSToolbarDisplayMode {
+#endif
 		Default, IconAndLabel, Icon, Label
 	}
 
+#if MAC64
+	public enum NSToolbarSizeMode : ulong {
+#else
 	public enum NSToolbarSizeMode {
+#endif
 		Default, Regular, Small
 	}
 
