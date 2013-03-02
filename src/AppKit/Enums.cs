@@ -1038,7 +1038,11 @@ namespace MonoMac.AppKit {
 
 #region NSTrackingArea
 	[Flags]
+#if MAC64
+	public enum NSTrackingAreaOptions : ulong {
+#else
 	public enum NSTrackingAreaOptions {
+#endif
 		MouseEnteredAndExited     = 0x01,
 		MouseMoved                = 0x02,
 		CursorUpdate 		  = 0x04,

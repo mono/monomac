@@ -13879,13 +13879,22 @@ namespace MonoMac.AppKit {
 		SizeF DeviceSize { get; }
 	}
 
+	//64 bit reviewed
 	[BaseType (typeof (NSObject))]
 	public interface NSTrackingArea {
 		[Export ("initWithRect:options:owner:userInfo:")]
+#if MAC64
+		IntPtr Constructor (NSRect rect, NSTrackingAreaOptions options, NSObject owner, [NullAllowed] NSDictionary userInfo);
+#else
 		IntPtr Constructor (RectangleF rect, NSTrackingAreaOptions options, NSObject owner, [NullAllowed] NSDictionary userInfo);
+#endif
 		
 		[Export ("rect")]
+#if MAC64
+		NSRect Rect { get; }
+#else
 		RectangleF Rect { get; }
+#endif
 
 		[Export ("options")]
 		NSTrackingAreaOptions Options { get; }
@@ -13896,7 +13905,8 @@ namespace MonoMac.AppKit {
 		[Export ("userInfo")]
 		NSDictionary UserInfo { get; }
 	}
-	
+
+	//64 bit reviewed
 	[BaseType (typeof (NSObject))]
 	public interface NSTreeNode {
 		[Static, Export ("treeNodeWithRepresentedObject:")]
@@ -13931,6 +13941,7 @@ namespace MonoMac.AppKit {
 
 	}
 
+	// 64 bit reviewed
 	[BaseType (typeof (NSObjectController))]
 	public interface NSTreeController {
 		[Export ("rearrangeObjects")]
