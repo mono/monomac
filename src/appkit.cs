@@ -14046,35 +14046,64 @@ namespace MonoMac.AppKit {
 	public partial interface NSTypesetter {
 
 	}
-	
+
+	//64 bit reviewed
 	[BaseType (typeof (NSResponder), Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (NSWindowDelegate)})]
 	public partial interface NSWindow : NSAnimatablePropertyContainer, NSUserInterfaceItemIdentification {
 		[Static, Export ("frameRectForContentRect:styleMask:")]
+#if MAC64
+		NSRect FrameRectFor (NSRect contectRect, NSWindowStyle styleMask);
+#else
 		RectangleF FrameRectFor (RectangleF contectRect, NSWindowStyle styleMask);
+#endif
 	
 		[Static]
 		[Export ("contentRectForFrameRect:styleMask:")]
+#if MAC64
+		NSRect ContentRectFor (NSRect forFrameRect, NSWindowStyle styleMask);
+#else
 		RectangleF ContentRectFor (RectangleF forFrameRect, NSWindowStyle styleMask);
+#endif
 	
 		[Static]
 		[Export ("minFrameWidthWithTitle:styleMask:")]
+#if MAC64
+		double MinFrameWidthWithTitle (string aTitle, NSWindowStyle aStyle);
+#else
 		float MinFrameWidthWithTitle (string aTitle, NSWindowStyle aStyle);
+#endif
 	
 		[Static]
 		[Export ("defaultDepthLimit")]
 		NSWindowDepth DefaultDepthLimit { get; }
 	
 		[Export ("frameRectForContentRect:")]
+#if MAC64
+		NSRect FrameRectFor (NSRect contentRect);
+#else
 		RectangleF FrameRectFor (RectangleF contentRect);
+#endif
 	
 		[Export ("contentRectForFrameRect:")]
+#if MAC64
+		NSRect ContentRectFor (NSRect frameRect);
+#else
 		RectangleF ContentRectFor (RectangleF frameRect);
+#endif
 	
 		[Export ("initWithContentRect:styleMask:backing:defer:")]
+#if MAC64
+		IntPtr Constructor (NSRect contentRect, NSWindowStyle aStyle, NSBackingStore bufferingType, bool deferCreation);
+#else
 		IntPtr Constructor (RectangleF contentRect, NSWindowStyle aStyle, NSBackingStore bufferingType, bool deferCreation);
+#endif
 	
 		[Export ("initWithContentRect:styleMask:backing:defer:screen:")]
+#if MAC64
+		IntPtr Constructor (NSRect contentRect, NSWindowStyle aStyle, NSBackingStore bufferingType, bool deferCreation, NSScreen  screen);
+#else
 		IntPtr Constructor (RectangleF contentRect, NSWindowStyle aStyle, NSBackingStore bufferingType, bool deferCreation, NSScreen  screen);
+#endif
 	
 		[Export ("title")]
 		string Title  { get; set; }
@@ -14104,7 +14133,11 @@ namespace MonoMac.AppKit {
 		NSWindowDelegate Delegate { get; set; }
 	
 		[Export ("windowNumber")]
+#if MAC64
+		long WindowNumber { get; }
+#else
 		int WindowNumber { get; }
+#endif
 	
 		[Export ("styleMask")]
 		NSWindowStyle StyleMask { get; set; }
@@ -14116,31 +14149,67 @@ namespace MonoMac.AppKit {
 		void EndEditingFor ([NullAllowed] NSObject anObject);
 	
 		[Export ("constrainFrameRect:toScreen:")]
+#if MAC64
+		NSRect ConstrainFrameRect (NSRect frameRect, NSScreen screen);
+#else
 		RectangleF ConstrainFrameRect (RectangleF frameRect, NSScreen screen);
+#endif
 	
 		[Export ("setFrame:display:")]
+#if MAC64
+		void SetFrame (NSRect frameRect, bool display);
+#else
 		void SetFrame (RectangleF frameRect, bool display);
+#endif
 	
 		[Export ("setContentSize:")]
+#if MAC64
+		void SetContentSize (NSSize aSize);
+#else
 		void SetContentSize (SizeF aSize);
+#endif
 	
 		[Export ("setFrameOrigin:")]
+#if MAC64
+		void SetFrameOrigin (NSPoint aPoint);
+#else
 		void SetFrameOrigin (PointF aPoint);
+#endif
 	
 		[Export ("setFrameTopLeftPoint:")]
+#if MAC64
+		void SetFrameTopLeftPoint (NSPoint aPoint);
+#else
 		void SetFrameTopLeftPoint (PointF aPoint);
+#endif
 	
 		[Export ("cascadeTopLeftFromPoint:")]
+#if MAC64
+		NSPoint CascadeTopLeftFromPoint (NSPoint topLeftPoint);
+#else
 		PointF CascadeTopLeftFromPoint (PointF topLeftPoint);
+#endif
 	
 		[Export ("frame")]
+#if MAC64
+		NSRect Frame { get; }
+#else
 		RectangleF Frame { get; }
+#endif
 	
 		[Export ("animationResizeTime:")]
+#if MAC64
+		double AnimationResizeTime (NSRect newFrame);
+#else
 		double AnimationResizeTime (RectangleF newFrame);
+#endif
 	
 		[Export ("setFrame:display:animate:")]
+#if MAC64
+		void SetFrame (NSRect frameRect, bool display, bool animate);
+#else
 		void SetFrame (RectangleF frameRect, bool display, bool animate);
+#endif
 	
 		[Export ("inLiveResize")]
 		bool InLiveResize { get; } 
@@ -14149,16 +14218,32 @@ namespace MonoMac.AppKit {
 		bool ShowsResizeIndicator { get; set; }
 	
 		[Export ("resizeIncrements")]
+#if MAC64
+		NSSize ResizeIncrements  { get; set; }
+#else
 		SizeF ResizeIncrements  { get; set; }
+#endif
 	
 		[Export ("aspectRatio")]
+#if MAC64
+		NSSize AspectRatio  { get; set; }
+#else
 		SizeF AspectRatio  { get; set; }
+#endif
 	
 		[Export ("contentResizeIncrements")]
+#if MAC64
+		NSSize ContentResizeIncrements  { get; set; }
+#else
 		SizeF ContentResizeIncrements  { get; set; }
+#endif
 	
 		[Export ("contentAspectRatio")]
+#if MAC64
+		NSSize ContentAspectRatio  { get; set; }
+#else
 		SizeF ContentAspectRatio  { get; set; }
+#endif
 	
 		[Export ("useOptimizedDrawing:")]
 		void UseOptimizedDrawing (bool flag);
@@ -14203,7 +14288,11 @@ namespace MonoMac.AppKit {
 		NSResponder FirstResponder { get; }
 	
 		[Export ("resizeFlags")]
+#if MAC64
+		long ResizeFlags { get; }
+#else
 		int ResizeFlags { get; }
+#endif
 	
 		[Export ("keyDown:")]
 		void KeyDown (NSEvent  theEvent);
@@ -14243,10 +14332,18 @@ namespace MonoMac.AppKit {
 		NSColor BackgroundColor  { get; set; }
 	
 		[Export ("setContentBorderThickness:forEdge:")]
+#if MAC64
+		void SetContentBorderThickness (double thickness, NSRectEdge edge);
+#else
 		void SetContentBorderThickness (float thickness, NSRectEdge edge);
+#endif
 	
 		[Export ("contentBorderThicknessForEdge:")]
+#if MAC64
+		double ContentBorderThicknessForEdge (NSRectEdge edge);
+#else
 		float ContentBorderThicknessForEdge (NSRectEdge edge);
+#endif
 	
 		[Export ("setAutorecalculatesContentBorderThickness:forEdge:")]
 		void SetAutorecalculatesContentBorderThickness (bool flag, NSRectEdge forEdge);
@@ -14282,7 +14379,11 @@ namespace MonoMac.AppKit {
 		void OrderOut ([NullAllowed] NSObject sender);
 	
 		[Export ("orderWindow:relativeTo:")]
+#if MAC64
+		void OrderWindow (NSWindowOrderingMode place, long relativeTo);
+#else
 		void OrderWindow (NSWindowOrderingMode place, int relativeTo);
+#endif
 	
 		[Export ("orderFrontRegardless")]
 		void OrderFrontRegardless ();
@@ -14339,10 +14440,18 @@ namespace MonoMac.AppKit {
 		bool PreventsApplicationTerminationWhenModal  { get; set; }
 	
 		[Export ("convertBaseToScreen:")]
+#if MAC64
+		NSPoint ConvertBaseToScreen (NSPoint aPoint);
+#else
 		PointF ConvertBaseToScreen (PointF aPoint);
+#endif
 	
 		[Export ("convertScreenToBase:")]
+#if MAC64
+		NSPoint ConvertScreenToBase (NSPoint aPoint);
+#else
 		PointF ConvertScreenToBase (PointF aPoint);
+#endif
 	
 		[Export ("performClose:")]
 		void PerformClose (NSObject sender);
@@ -14354,7 +14463,11 @@ namespace MonoMac.AppKit {
 		void PerformZoom (NSObject sender);
 	
 		[Export ("gState")]
+#if MAC64
+		long GState();
+#else
 		int GState ();
+#endif
 	
 		[Export ("setOneShot:")]
 		void SetOneShot (bool flag);
@@ -14363,11 +14476,19 @@ namespace MonoMac.AppKit {
 		bool IsOneShot { get; }
 	
 		[Export ("dataWithEPSInsideRect:")]
+#if MAC64
+		NSData DataWithEpsInsideRect (NSRect rect);
+#else
 		NSData DataWithEpsInsideRect (RectangleF rect);
+#endif
 	
 		[Export ("dataWithPDFInsideRect:")]
+#if MAC64
+		NSData DataWithPdfInsideRect (NSRect rect);
+#else
 		NSData DataWithPdfInsideRect (RectangleF rect);
-	
+#endif
+
 		[Export ("print:")]
 		void Print (NSObject sender);
 	
@@ -14420,7 +14541,11 @@ namespace MonoMac.AppKit {
 		void InvalidateShadow ();
 	
 		[Export ("alphaValue")]
+#if MAC64
+		double AlphaValue  { get; set; }
+#else
 		float AlphaValue  { get; set; }
+#endif
 	
 		[Export ("opaque")]
 		bool IsOpaque  { [Bind ("isOpaque")]get; set; }
@@ -14478,7 +14603,11 @@ namespace MonoMac.AppKit {
 		void RemoveFrameUsingName (string  name);
 	
 		[Export ("cacheImageInRect:")]
+#if MAC64
+		void CacheImageInRect (NSRect aRect);
+#else
 		void CacheImageInRect (RectangleF aRect);
+#endif
 	
 		[Export ("restoreCachedImage")]
 		void RestoreCachedImage ();
@@ -14487,25 +14616,53 @@ namespace MonoMac.AppKit {
 		void DiscardCachedImage ();
 	
 		[Export ("minSize")]
+#if MAC64
+		NSSize MinSize  { get; set; }
+#else
 		SizeF MinSize  { get; set; }
+#endif
 	
 		[Export ("maxSize")]
+#if MAC64
+		NSSize MaxSize  { get; set; }
+#else
 		SizeF MaxSize  { get; set; }
+#endif
 	
 		[Export ("contentMinSize")]
+#if MAC64
+		NSSize ContentMinSize  { get; set; }
+#else
 		SizeF ContentMinSize  { get; set; }
+#endif
 	
 		[Export ("contentMaxSize")]
+#if MAC64
+		NSSize ContentMaxSize  { get; set; }
+#else
 		SizeF ContentMaxSize  { get; set; }
+#endif
 	
 		[Export ("nextEventMatchingMask:"), Protected]
+#if MAC64
+		NSEvent NextEventMatchingMask (ulong mask);
+#else
 		NSEvent NextEventMatchingMask (uint mask);
+#endif
 
 		[Export ("nextEventMatchingMask:untilDate:inMode:dequeue:"), Protected]
+#if MAC64
+		NSEvent NextEventMatchingMask (ulong mask, NSDate  expiration, string  mode, bool deqFlag);
+#else
 		NSEvent NextEventMatchingMask (uint mask, NSDate  expiration, string  mode, bool deqFlag);
+#endif
 	
 		[Export ("discardEventsMatchingMask:beforeEvent:"), Protected]
+#if MAC64
+		void DiscardEventsMatchingMask (ulong mask, NSEvent beforeLastEvent);
+#else
 		void DiscardEventsMatchingMask (uint mask, NSEvent beforeLastEvent);
+#endif
 
 		[Export ("postEvent:atStart:")]
 		void PostEvent (NSEvent theEvent, bool atStart);
@@ -14526,7 +14683,11 @@ namespace MonoMac.AppKit {
 		void SendEvent (NSEvent  theEvent);
 	
 		[Export ("mouseLocationOutsideOfEventStream")]
+#if MAC64
+		NSPoint MouseLocationOutsideOfEventStream { get; }
+#else
 		PointF MouseLocationOutsideOfEventStream { get; }
+#endif
 	
 		[Static]
 		[Export ("menuChanged:")]
@@ -14564,7 +14725,11 @@ namespace MonoMac.AppKit {
 		NSGraphicsContext GraphicsContext { get; }
 	
 		[Export ("userSpaceScaleFactor")]
+#if MAC64
+		double UserSpaceScaleFactor { get; }
+#else
 		float UserSpaceScaleFactor { get; }
+#endif
 	
 		[Export ("colorSpace")]
 		NSColorSpace ColorSpace  { get; set; }
@@ -14575,7 +14740,11 @@ namespace MonoMac.AppKit {
 	
 		[Static]
 		[Export ("windowNumberAtPoint:belowWindowWithWindowNumber:")]
+#if MAC64
+		long WindowNumberAtPoint (NSPoint point, long windowNumber);
+#else
 		int WindowNumberAtPoint (PointF point, int windowNumber);
+#endif
 	
 		[Export ("initialFirstResponder")]
 		NSView InitialFirstResponder { get; set; }
@@ -14657,22 +14826,46 @@ namespace MonoMac.AppKit {
 		void VisualizeConstraints (NSLayoutConstraint [] constraints);
 
                 [Lion, Export ("convertRectToScreen:")]
+#if MAC64
+		NSRect ConvertRectToScreen (NSRect aRect);
+#else
                 RectangleF ConvertRectToScreen (RectangleF aRect);
+#endif
 
                 [Lion, Export ("convertRectFromScreen:")]
+#if MAC64
+		NSRect ConvertRectFromScreen (NSRect aRect);
+#else
                 RectangleF ConvertRectFromScreen (RectangleF aRect);
+#endif
 
                 [Lion, Export ("convertRectToBacking:")]
+#if MAC64
+		NSRect ConvertRectToBacking (NSRect aRect);
+#else
                 RectangleF ConvertRectToBacking (RectangleF aRect);
+#endif
 
                 [Lion, Export ("convertRectFromBacking:")]
+#if MAC64
+		NSRect ConvertRectFromBacking (NSRect aRect);
+#else
                 RectangleF ConvertRectFromBacking (RectangleF aRect);
+#endif
 
                 [Lion, Export ("backingAlignedRect:options:")]
+#if MAC64
+		NSRect BackingAlignedRect (NSRect aRect, NSAlignmentOptions options);
+#else
                 RectangleF BackingAlignedRect (RectangleF aRect, NSAlignmentOptions options);
+#endif
 
                 [Lion, Export ("backingScaleFactor")]
+#if MAC64
+		double BackingScaleFactor { get; }
+#else
                 float BackingScaleFactor { get; }
+#endif
 
                 [Lion, Export ("toggleFullScreen:")]
                 void ToggleFullScreen (NSObject sender);
@@ -14769,7 +14962,8 @@ namespace MonoMac.AppKit {
 	}
 
 	public delegate void NSWindowCompletionHandler (NSWindow window, NSError error);
-	
+
+	//64 bit reviewed
 	[BaseType (typeof (NSObject))]
 	[Model]
 	[Lion]
@@ -14780,6 +14974,7 @@ namespace MonoMac.AppKit {
 
 	}
 
+	//64 bit reviewed
 	[BaseType (typeof (NSResponder))]
 	public interface NSWindowController {
 		[Export ("initWithWindow:")]

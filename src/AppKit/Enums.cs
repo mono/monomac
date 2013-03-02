@@ -113,7 +113,11 @@ namespace MonoMac.AppKit {
 		PlusLighter,
 	}
 
+#if MAC64
+	public enum NSBackingStore : ulong {
+#else
 	public enum NSBackingStore {
+#endif
 		Retained, Nonretained, Buffered
 	}
 
@@ -652,7 +656,11 @@ namespace MonoMac.AppKit {
 	
 #region NSWindow
 	[Flags]
+#if MAC64
+	public enum NSWindowStyle : ulong {
+#else
 	public enum NSWindowStyle {
+#endif
 		Borderless	       = 0,
 		Titled		       = 1 << 0,
 		Closable	       = 1 << 1,
@@ -668,16 +676,28 @@ namespace MonoMac.AppKit {
 		FullScreenWindow       = 1 << 14
 	}
 
+#if MAC64
+	public enum NSWindowSharingType : ulong {
+#else
 	public enum NSWindowSharingType {
+#endif
 		None, ReadOnly, ReadWrite
 	}
 
+#if MAC64
+	public enum NSWindowBackingLocation : ulong {
+#else
 	public enum NSWindowBackingLocation {
+#endif
 		Default, VideoMemory, MainMemory,
 	}
 
 	[Flags]
+#if MAC64
+	public enum NSWindowCollectionBehavior : ulong {
+#else
 	public enum NSWindowCollectionBehavior {
+#endif
 		Default = 0,
 		CanJoinAllSpaces = 1 << 0,
 		MoveToActiveSpace = 1 << 1,
@@ -690,18 +710,30 @@ namespace MonoMac.AppKit {
 		FullScreenAuxiliary = 1 << 8
 	}
 
+#if MAC64
+	public enum NSWindowNumberListOptions : ulong {
+#else
 	public enum NSWindowNumberListOptions {
+#endif
 		AllApplication = 1 << 0,
 		AllSpaces = 1 << 4
 	}
 
+#if MAC64
+	public enum NSSelectionDirection : ulong {
+#else
 	public enum NSSelectionDirection {
+#endif
 		Direct = 0,
 		Next,
 		Previous
 	}
 
+#if MAC64
+	public enum NSWindowButton : ulong {
+#else
 	public enum NSWindowButton {
+#endif
 		CloseButton, MiniaturizeButton, ZoomButton, ToolbarButton, DocumentIconButton, DocumentVersionsButton = 6, FullScreenButton
 	}
 
@@ -1574,7 +1606,11 @@ namespace MonoMac.AppKit {
 		Closing = 3
 	}
 
+#if MAC64
+	public enum NSWindowLevel : long {
+#else
 	public enum NSWindowLevel {
+#endif
 		Normal = 0,
 		Dock = 20,
 		Floating = 3,
@@ -1678,7 +1714,11 @@ namespace MonoMac.AppKit {
 		GreaterThanOrEqual = 1
 	}
 
+#if MAC64
+	public enum NSLayoutAttribute : long {
+#else
 	public enum NSLayoutAttribute {
+#endif
 		NoAttribute = 0,
 		Left = 1,
 		Right,
@@ -1696,15 +1736,15 @@ namespace MonoMac.AppKit {
 	public enum NSLayoutFormatOptions {
 		None = 0,
 
-		AlignAllLeft = (1 << NSLayoutAttribute.Left),
-		AlignAllRight = (1 << NSLayoutAttribute.Right),
-		AlignAllTop = (1 << NSLayoutAttribute.Top),
-		AlignAllBottom = (1 << NSLayoutAttribute.Bottom),
-		AlignAllLeading = (1 << NSLayoutAttribute.Leading),
-		AlignAllTrailing = (1 << NSLayoutAttribute.Trailing),
-		AlignAllCenterX = (1 << NSLayoutAttribute.CenterX),
-		AlignAllCenterY = (1 << NSLayoutAttribute.CenterY),
-		AlignAllBaseline = (1 << NSLayoutAttribute.Baseline),
+		AlignAllLeft = (1 << (int)NSLayoutAttribute.Left),
+		AlignAllRight = (1 << (int)NSLayoutAttribute.Right),
+		AlignAllTop = (1 << (int)NSLayoutAttribute.Top),
+		AlignAllBottom = (1 << (int)NSLayoutAttribute.Bottom),
+		AlignAllLeading = (1 << (int)NSLayoutAttribute.Leading),
+		AlignAllTrailing = (1 << (int)NSLayoutAttribute.Trailing),
+		AlignAllCenterX = (1 << (int)NSLayoutAttribute.CenterX),
+		AlignAllCenterY = (1 << (int)NSLayoutAttribute.CenterY),
+		AlignAllBaseline = (1 << (int)NSLayoutAttribute.Baseline),
 		
 		AlignmentMask = 0xFFFF,
 		
@@ -1769,7 +1809,11 @@ namespace MonoMac.AppKit {
 		OutsideApplication, WithinApplication
 	}
 
+#if MAC64
+	public enum NSWindowAnimationBehavior : long {
+#else
 	public enum NSWindowAnimationBehavior {
+#endif
 		Default = 0, None = 2, DocumentWindow, UtilityWindow, AlertPanel
 	}
 
