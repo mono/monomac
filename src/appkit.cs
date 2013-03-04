@@ -6326,7 +6326,7 @@ namespace MonoMac.AppKit {
 	[Model]
 	public partial interface NSOutlineViewDataSource {
 		[Export ("outlineView:child:ofItem:")]
-		NSObject GetChild (NSOutlineView outlineView, int childIndex, NSObject ofItem);
+		NSObject GetChild (NSOutlineView outlineView, int childIndex, NSObject item);
 	
 		[Export ("outlineView:isItemExpandable:")]
 		bool ItemExpandable (NSOutlineView outlineView, NSObject item);
@@ -6335,7 +6335,7 @@ namespace MonoMac.AppKit {
 		int GetChildrenCount (NSOutlineView outlineView, NSObject item);
 	
 		[Export ("outlineView:objectValueForTableColumn:byItem:")]
-		NSObject GetObjectValue (NSOutlineView outlineView, NSTableColumn forTableColumn, NSObject byItem);
+		NSObject GetObjectValue (NSOutlineView outlineView, NSTableColumn tableColumn, NSObject item);
 	
 		[Export ("outlineView:setObjectValue:forTableColumn:byItem:")]
 		void SetObjectValue (NSOutlineView outlineView, NSObject theObject, NSTableColumn tableColumn, NSObject item);
