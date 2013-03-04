@@ -1385,7 +1385,11 @@ namespace MonoMac.AppKit {
 		Circular = 1
 	}
 	
+#if MAC64
+	public enum NSTokenStyle : ulong {
+#else
 	public enum NSTokenStyle {
+#endif
 		Default,
 		PlainText,
 		Rounded

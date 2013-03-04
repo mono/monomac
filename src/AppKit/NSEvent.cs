@@ -4,6 +4,20 @@ using System.Diagnostics;
 using MonoMac.Foundation;
 using MonoMac.CoreGraphics;
 
+#if MAC64
+using NSInteger = System.Int64;
+using NSUInteger = System.UInt64;
+using CGFloat = System.Double;
+#else
+using NSInteger = System.Int32;
+using NSUInteger = System.UInt32;
+using NSPoint = System.Drawing.PointF;
+using NSSize = System.Drawing.SizeF;
+using NSRect = System.Drawing.RectangleF;
+using CGFloat = System.Single;
+#endif
+
+
 namespace MonoMac.AppKit {
 
 	[DebuggerTypeProxy (typeof(NSEvent.NSEventDebuggerProxy))]
@@ -26,7 +40,7 @@ namespace MonoMac.AppKit {
 				}
 			}
 
-			public PointF LocationInWindow {
+			public NSPoint LocationInWindow {
 				get {
 					return target.LocationInWindow;
 				}
@@ -202,7 +216,7 @@ namespace MonoMac.AppKit {
 				}
 			}
 
-			public PointF Tilt {
+			public NSPoint Tilt {
 				get {
 					CheckTabletPointingEvent ();
 					return target.Tilt;
