@@ -161,8 +161,7 @@ namespace MonoMac.OpenGL
 		
         public static void ClearColor(MonoMac.AppKit.NSColor color)
         {
-            GL.ClearColor(color.RedComponent, color.GreenComponent, color.BlueComponent, color.AlphaComponent);
-			
+            GL.ClearColor((float)color.RedComponent, (float)color.GreenComponent, (float)color.BlueComponent, (float)color.AlphaComponent);		
         }
 
         public static void ClearColor(Color4 color)
@@ -181,8 +180,7 @@ namespace MonoMac.OpenGL
 		
         public static void BlendColor(MonoMac.AppKit.NSColor color)
         {
-
-            GL.BlendColor(color.RedComponent, color.GreenComponent, color.BlueComponent, color.AlphaComponent);			
+            GL.BlendColor((float)color.RedComponent, (float)color.GreenComponent, (float)color.BlueComponent, (float)color.AlphaComponent);			
         }
 
         public static void BlendColor(Color4 color)

@@ -70,7 +70,7 @@ namespace MonoMac.AppKit {
 				}
 			}
 			
-			public int WindowNumber {
+			public NSInteger WindowNumber {
 				get {
 					return target.WindowNumber;
 				}
@@ -174,42 +174,42 @@ namespace MonoMac.AppKit {
 				throw new InvalidOperationException ("Not a tablet pointing event.");
 			}
 			
-			public int AbsoluteX {
+			public NSInteger AbsoluteX {
 				get {
 					CheckTabletPointingEvent ();
 					return target.AbsoluteX;
 				}
 			}
 			
-			public int AbsoluteY {
+			public NSInteger AbsoluteY {
 				get {
 					CheckTabletPointingEvent ();
 					return target.AbsoluteY;
 				}
 			}
 			
-			public int AbsoluteZ {
+			public NSInteger AbsoluteZ {
 				get {
 					CheckTabletPointingEvent ();
 					return target.AbsoluteZ;
 				}
 			}
 
-			public uint ButtonMask {
+			public NSUInteger ButtonMask {
 				get {
 					CheckTabletPointingEvent ();
 					return target.ButtonMask;
 				}
 			}
 
-			public float Rotation {
+			public CGFloat Rotation {
 				get {
 					CheckTabletPointingEvent ();
 					return target.Rotation;
 				}
 			}
 
-			public float TangentialPressure {
+			public CGFloat TangentialPressure {
 				get {
 					CheckTabletPointingEvent ();
 					return target.TangentialPressure;
@@ -241,21 +241,21 @@ namespace MonoMac.AppKit {
 				throw new InvalidOperationException ("Not a mouse event.");
 			}
 
-			public int ButtonNumber {
+			public NSInteger ButtonNumber {
 				get {
 					CheckMouseEvent ();
 					return target.ButtonNumber;
 				}
 			}
 			
-			public int ClickCount {
+			public NSInteger ClickCount {
 				get {
 					CheckMouseEvent ();
 					return target.ClickCount;
 				}
 			}
 
-			public float Pressure {
+			public CGFloat Pressure {
 				get {
 					CheckMouseEvent ();
 					return target.Pressure;
@@ -279,14 +279,14 @@ namespace MonoMac.AppKit {
 				throw new InvalidOperationException ("Not a mouse tracking event.");
 			}
 			
-			internal int EventNumber {
+			internal NSInteger EventNumber {
 				get {
 					CheckMouseTrackingEvent ();
 					return target.EventNumber;
 				}
 			}
 
-			internal int TrackingNumber {
+			internal NSInteger TrackingNumber {
 				get {
 					CheckMouseTrackingEvent ();
 					return target.TrackingNumber;
@@ -338,14 +338,14 @@ namespace MonoMac.AppKit {
 				}
 			}
 
-			public int Data1 {
+			public NSInteger Data1 {
 				get {
 					CheckCustomEvent ();
 					return target.Data1;
 				}
 			}
 
-			public int Data2 {
+			public NSInteger Data2 {
 				get {
 					CheckCustomEvent ();
 					return target.Data1;
@@ -373,21 +373,21 @@ namespace MonoMac.AppKit {
 				throw new InvalidOperationException ("Not a scroll wheel event.");
 			}
 			
-			public float DeltaX {
+			public CGFloat DeltaX {
 				get {
 					CheckScrollWheelEvent ();
 					return target.Data1;
 				}
 			}
 
-			public float DeltaY {
+			public CGFloat DeltaY {
 				get {
 					CheckScrollWheelEvent ();
 					return target.Data1;
 				}
 			}
 
-			public float DeltaZ {
+			public CGFloat DeltaZ {
 				get {
 					CheckScrollWheelEvent ();
 					return target.Data1;
@@ -412,14 +412,14 @@ namespace MonoMac.AppKit {
 				throw new InvalidOperationException ("Not a tablet proximity event.");
 			}
 
-			public uint CapabilityMask {
+			public NSUInteger CapabilityMask {
 				get {
 					CheckTabletProximityEvent ();
 					return target.CapabilityMask;
 				}
 			}
 
-			public uint DeviceID {
+			public NSUInteger DeviceID {
 				get {
 					CheckTabletProximityEvent ();
 					return target.DeviceID;
@@ -433,14 +433,14 @@ namespace MonoMac.AppKit {
 				}
 			}
 
-			public uint PointingDeviceSerialNumber {
+			public NSUInteger PointingDeviceSerialNumber {
 				get {
 					CheckTabletProximityEvent ();
 					return target.PointingDeviceSerialNumber;
 				}
 			}
 
-			public uint PointingDeviceID {
+			public NSUInteger PointingDeviceID {
 				get {
 					CheckTabletProximityEvent ();
 					return target.PointingDeviceID ();
@@ -454,14 +454,14 @@ namespace MonoMac.AppKit {
 				}
 			}
 
-			public uint SystemTabletID {
+			public NSUInteger SystemTabletID {
 				get {
 					CheckTabletProximityEvent ();
 					return target.SystemTabletID;
 				}
 			}
 
-			public uint TabletID {
+			public NSUInteger TabletID {
 				get {
 					CheckTabletProximityEvent ();
 					return target.TabletID;
@@ -475,14 +475,14 @@ namespace MonoMac.AppKit {
 				}
 			}
 
-			public uint VendorID {
+			public NSUInteger VendorID {
 				get {
 					CheckTabletProximityEvent ();
 					return target.VendorID;
 				}
 			}
 
-			public uint VendorPointingDeviceType {
+			public NSUInteger VendorPointingDeviceType {
 				get {
 					CheckTabletProximityEvent ();
 					return target.VendorPointingDeviceType;
@@ -506,7 +506,7 @@ namespace MonoMac.AppKit {
 				throw new InvalidOperationException ("Not a touch or gesture event.");
 			}
 
-			internal float Magnification {
+			internal CGFloat Magnification {
 				get {
 					CheckTouchOrGestureEvent ();
 					return target.Magnification;
@@ -538,14 +538,14 @@ namespace MonoMac.AppKit {
 				}
 			}
 			
-			public float ScrollingDeltaX {
+			public CGFloat ScrollingDeltaX {
 				get {
 					CheckScrollWheelOrFlickEvent ();
 					return target.ScrollingDeltaX;
 				}
 			}
 
-			public float ScrollingDeltaY {
+			public CGFloat ScrollingDeltaY {
 				get {
 					CheckScrollWheelOrFlickEvent ();
 					return target.ScrollingDeltaY;

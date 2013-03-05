@@ -4,6 +4,19 @@ using MonoMac.Foundation;
 using MonoMac.ObjCRuntime;
 using System.Runtime.InteropServices;
 
+#if MAC64
+using NSInteger = System.Int64;
+using NSUInteger = System.UInt64;
+using CGFloat = System.Double;
+#else
+using NSInteger = System.Int32;
+using NSUInteger = System.UInt32;
+using NSPoint = System.Drawing.PointF;
+using NSSize = System.Drawing.SizeF;
+using NSRect = System.Drawing.RectangleF;
+using CGFloat = System.Single;
+#endif
+
 namespace MonoMac.AppKit {
 	public partial class NSColor {
 
@@ -23,10 +36,10 @@ namespace MonoMac.AppKit {
 			return color;
 		}
 		
-		public void GetComponents(out float[] components)
+		public void GetComponents(out CGFloat[] components)
 		{
-			int count = this.ComponentCount;
-			float[] managedFloatArray = new float[count];
+			int count = (int)this.ComponentCount;
+			CGFloat[] managedFloatArray = new CGFloat[count];
 			int size = Marshal.SizeOf(managedFloatArray[0]) * count;
 			IntPtr pNativeFloatArray = Marshal.AllocHGlobal(size);
 
@@ -47,7 +60,7 @@ namespace MonoMac.AppKit {
 					return "Pattern Color: " + this.PatternImage.Name;
 				
 				StringBuilder sb = new StringBuilder (this.ColorSpace.LocalizedName);
-				float[] components;
+				CGFloat[] components;
 				this.GetComponents (out components);
 				if (components.Length > 0)
 					sb.Append ("(" + components [0]);
