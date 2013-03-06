@@ -6330,7 +6330,7 @@ namespace MonoMac.AppKit {
 	[Model]
 	public partial interface NSOutlineViewDataSource {
 		[Export ("outlineView:child:ofItem:")]
-		NSObject GetChild (NSOutlineView outlineView, int childIndex, NSObject ofItem);
+		NSObject GetChild (NSOutlineView outlineView, int childIndex, NSObject item);
 	
 		[Export ("outlineView:isItemExpandable:")]
 		bool ItemExpandable (NSOutlineView outlineView, NSObject item);
@@ -6339,7 +6339,7 @@ namespace MonoMac.AppKit {
 		int GetChildrenCount (NSOutlineView outlineView, NSObject item);
 	
 		[Export ("outlineView:objectValueForTableColumn:byItem:")]
-		NSObject GetObjectValue (NSOutlineView outlineView, NSTableColumn forTableColumn, NSObject byItem);
+		NSObject GetObjectValue (NSOutlineView outlineView, NSTableColumn tableColumn, NSObject item);
 	
 		[Export ("outlineView:setObjectValue:forTableColumn:byItem:")]
 		void SetObjectValue (NSOutlineView outlineView, NSObject theObject, NSTableColumn tableColumn, NSObject item);
@@ -11583,7 +11583,7 @@ namespace MonoMac.AppKit {
 	
 	[BaseType (typeof (NSObject))]
 	[Model]
-	public interface NSTableViewDelegate {
+	public partial interface NSTableViewDelegate {
 		[Export ("tableView:willDisplayCell:forTableColumn:row:"), EventArgs ("NSTableViewCell")]
 		void WillDisplayCell (NSTableView tableView, NSObject cell, NSTableColumn tableColumn, int row);
 	
@@ -11610,10 +11610,6 @@ namespace MonoMac.AppKit {
 	
 		[Export ("tableView:didDragTableColumn:"), EventArgs ("NSTableViewTable")]
 		void DidDragTableColumn (NSTableView tableView, NSTableColumn tableColumn);
-	
-		//FIXME: Binding NSRectPointer
-		//[Export ("tableView:toolTipForCell:rect:tableColumn:row:mouseLocation:")]
-		//string TableViewtoolTipForCellrecttableColumnrowmouseLocation (NSTableView tableView, NSCell cell, NSRectPointer rect, NSTableColumn tableColumn, int row, PointF mouseLocation);
 	
 		[Export ("tableView:heightOfRow:"), DelegateName ("NSTableViewRowHeight"), NoDefaultValue]
 		float GetRowHeight (NSTableView tableView, int row );
