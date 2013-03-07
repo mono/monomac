@@ -6340,7 +6340,7 @@ namespace MonoMac.AppKit {
 	[Model]
 	public partial interface NSOutlineViewDataSource {
 		[Export ("outlineView:child:ofItem:")]
-		NSObject GetChild (NSOutlineView outlineView, NSInteger childIndex, NSObject ofItem);
+		NSObject GetChild (NSOutlineView outlineView, NSInteger childIndex, NSObject item);
 	
 		[Export ("outlineView:isItemExpandable:")]
 		bool ItemExpandable (NSOutlineView outlineView, NSObject item);
@@ -6349,7 +6349,7 @@ namespace MonoMac.AppKit {
 		NSInteger GetChildrenCount (NSOutlineView outlineView, NSObject item);
 	
 		[Export ("outlineView:objectValueForTableColumn:byItem:")]
-		NSObject GetObjectValue (NSOutlineView outlineView, NSTableColumn forTableColumn, NSObject byItem);
+		NSObject GetObjectValue (NSOutlineView outlineView, NSTableColumn tableColumn, NSObject item);
 	
 		[Export ("outlineView:setObjectValue:forTableColumn:byItem:")]
 		void SetObjectValue (NSOutlineView outlineView, NSObject theObject, NSTableColumn tableColumn, NSObject item);
@@ -11596,7 +11596,7 @@ namespace MonoMac.AppKit {
 	//64 bit reviewed
 	[BaseType (typeof (NSObject))]
 	[Model]
-	public interface NSTableViewDelegate {
+	public partial interface NSTableViewDelegate {
 		[Export ("tableView:willDisplayCell:forTableColumn:row:"), EventArgs ("NSTableViewCell")]
 		void WillDisplayCell (NSTableView tableView, NSObject cell, NSTableColumn tableColumn, NSInteger row);
 	
@@ -11623,10 +11623,6 @@ namespace MonoMac.AppKit {
 	
 		[Export ("tableView:didDragTableColumn:"), EventArgs ("NSTableViewTable")]
 		void DidDragTableColumn (NSTableView tableView, NSTableColumn tableColumn);
-	
-		//FIXME: Binding NSRectPointer
-		//[Export ("tableView:toolTipForCell:rect:tableColumn:row:mouseLocation:")]
-		//string TableViewtoolTipForCellrecttableColumnrowmouseLocation (NSTableView tableView, NSCell cell, NSRectPointer rect, NSTableColumn tableColumn, int row, NSPoint mouseLocation);
 	
 		[Export ("tableView:heightOfRow:"), DelegateName ("NSTableViewRowHeight"), NoDefaultValue]
 		CGFloat GetRowHeight (NSTableView tableView, NSInteger row );
