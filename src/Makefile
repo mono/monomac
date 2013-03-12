@@ -46,9 +46,10 @@ CORE_SOURCES =	$(EXTRA_CORE_SOURCES)			\
 
 # Sources that are not part of CORE_SOURCES or the generated templates
 MONOMAC_SOURCES = $(EXTRA_MONOMAC_SOURCES) \
+	./Compat.cs					\
 	./Foundation/NSObjectMac.cs			\
 	./AppKit/AppKitSynchronizationContext.cs	\
-	./AppKit/AppKitThreadAccessException.cs	\
+	./AppKit/AppKitThreadAccessException.cs		\
 	./AppKit/ActionDispatcher.cs			\
 	./AppKit/BeginSheet.cs				\
 	./AppKit/DoubleWrapper.cs			\
