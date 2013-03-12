@@ -503,8 +503,8 @@ namespace macdoc
 			outlineView.ExpandItem (item);
 			
 			// Focus the last child, then this child to ensure we show as much as possible
-			if (n.Nodes.Count > 0)
-				ScrollToVisible ((Node) n.Nodes [n.Nodes.Count-1]);
+			if (n.ChildNodes.Count > 0)
+				ScrollToVisible ((Node) n.ChildNodes [n.ChildNodes.Count-1]);
 			var row = ScrollToVisible (n);
 			ignoreSelect = true;
 			if (row > 0)
