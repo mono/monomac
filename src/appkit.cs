@@ -385,6 +385,7 @@ namespace MonoMac.AppKit {
 		[Export ("discardEventsMatchingMask:beforeEvent:"), Protected]
 		void DiscardEvents (uint mask, NSEvent lastEvent);
 	
+                [ThreadSafe]
 		[Export ("postEvent:atStart:")]
 		void PostEvent (NSEvent theEvent, bool atStart);
 	
@@ -5969,6 +5970,7 @@ namespace MonoMac.AppKit {
 		[Export ("flushBuffer")]
 		void FlushBuffer ();
 
+                [ThreadSafe]
 		[Export ("makeCurrentContext")]
 		void MakeCurrentContext ();
 
