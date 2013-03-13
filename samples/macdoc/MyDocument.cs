@@ -90,8 +90,7 @@ namespace macdoc
 					navigationCells.SetSelected (true, 1);
 			};
 			HideMultipleMatches ();
-			if (!string.IsNullOrEmpty (initialLoadFromUrl))
-				LoadUrl (initialLoadFromUrl);
+			LoadUrl (string.IsNullOrEmpty (initialLoadFromUrl) ? "root:" : initialLoadFromUrl);
 		}
 
 		void HandleAddBookmarkBtnActivated (object sender, EventArgs e)
