@@ -2563,6 +2563,11 @@ namespace MonoMac.AppKit {
 		[Export ("alternateSelectedControlTextColor")]
 		NSColor AlternateSelectedControlText { get; }
 
+		[MountainLion]
+		[Static]
+		[Export ("underPageBackgroundColor")]
+		NSColor UnderPageBackground { get; }
+
 		[Static]
 		[Export ("controlAlternatingRowBackgroundColors")]
 		NSColor [] ControlAlternatingRowBackgroundColors ();
@@ -2690,6 +2695,10 @@ namespace MonoMac.AppKit {
 
 		[Export ("patternImage")]
 		NSImage PatternImage { get; }
+
+		[MountainLion]
+		[Export ("CGColor")]
+		CGColor CGColor { get; }
 
 		[Export ("drawSwatchInRect:")]
 		void DrawSwatchInRect (RectangleF rect);
