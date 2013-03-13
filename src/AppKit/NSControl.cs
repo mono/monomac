@@ -32,7 +32,14 @@ using MonoMac.Foundation;
 namespace MonoMac.AppKit {
 
 	public partial class NSControl {
-		
+#if MAC64
+		[Export ("initWithFrame:")]
+		public NSControl (System.Drawing.RectangleF frameRect)
+			: this (new NSRect(frameRect))
+		{
+		}
+#endif
+
 		public event EventHandler Activated {
 			add {
 				Target = ActionDispatcher.SetupAction (Target, value);

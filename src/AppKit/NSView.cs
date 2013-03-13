@@ -1,5 +1,10 @@
 //
-// Copyright 2011, Xamarin, Inc.
+// NSView.cs: Support for the NSView class
+//
+// Author:
+//   Miguel de Icaza (miguel@gnome.org)
+//
+// Copyright 2010, Novell, Inc.
 //
 // Permission is hereby granted, free of charge, to any person obtaining
 // a copy of this software and associated documentation files (the
@@ -21,23 +26,20 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 using System;
-using System.Runtime.InteropServices;
+using MonoMac.ObjCRuntime;
+using MonoMac.Foundation;
+using System.Drawing;
+
 namespace MonoMac.AppKit {
-	[StructLayout (LayoutKind.Sequential)]
-	public struct NSEdgeInsets {
+
+	public partial class NSView {
 #if MAC64
-		public double Top, Left, Bottom, Right;
-#else
-		public float Top, Left, Bottom, Right;
-#endif
-
-		public NSEdgeInsets (float top, float left, float bottom, float right)
+		[Export ("initWithFrame:")]
+		public NSView (RectangleF frameRect)
+			: this (new NSRect(frameRect))
 		{
-			Top = top;
-			Left = left;
-			Bottom = bottom;
-			Right = right;
 		}
-	}
 
+#endif
+	}
 }

@@ -85,7 +85,11 @@ namespace MonoMac.OpenGL
 		}
 
 		[Preserve (Conditional=true)]
+#if MAC64
+		public override void DrawRect (NSRect dirtyRect)
+#else
 		public override void DrawRect (RectangleF dirtyRect)
+#endif
 		{
 			if (animating) {
 				if (displayLinkSupported) {

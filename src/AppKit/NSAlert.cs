@@ -31,6 +31,20 @@ using System.Collections.Generic;
 
 using MonoMac.Foundation;
 
+#if MAC64
+using NSInteger = System.Int64;
+using NSUInteger = System.UInt64;
+using CGFloat = System.Double;
+#else
+using NSInteger = System.Int32;
+using NSUInteger = System.UInt32;
+using NSPoint = System.Drawing.PointF;
+using NSSize = System.Drawing.SizeF;
+using NSRect = System.Drawing.RectangleF;
+using CGFloat = System.Single;
+#endif
+
+
 namespace MonoMac.AppKit
 {
 	[Register ("__MonoMac_NSAlertDidEndDispatcher")]
@@ -84,12 +98,12 @@ namespace MonoMac.AppKit
 			BeginSheet (window, new NSAlertDidEndDispatcher (onEnded), NSAlertDidEndDispatcher.Selector, IntPtr.Zero);
 		}
 
-		public int RunSheetModal (NSWindow window)
+		public NSInteger RunSheetModal (NSWindow window)
 		{
 			return RunSheetModal (window, NSApplication.SharedApplication);
 		}
 
-		public int RunSheetModal (NSWindow window, NSApplication application)
+		public NSInteger RunSheetModal (NSWindow window, NSApplication application)
 		{
 			if (application == null)
 				throw new ArgumentNullException ("application");
@@ -98,7 +112,7 @@ namespace MonoMac.AppKit
 			if (window == null)
 				return RunModal ();
 
-			int returnCode = -1000;
+			NSInteger returnCode = -1000;
 
 			BeginSheetForResponse (window, r => {
 				returnCode = r;

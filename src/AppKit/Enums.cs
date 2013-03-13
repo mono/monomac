@@ -37,11 +37,19 @@ namespace MonoMac.AppKit {
 		ActivateIgnoringOtherWindows = 2
 	}
 
+#if MAC64
+	public enum NSApplicationActivationPolicy : long {
+#else
 	public enum NSApplicationActivationPolicy {
+#endif
 		Regular, Accessory, Prohibited
 	}
 	
+#if MAC64
+	public enum NSApplicationPresentationOptions : ulong {
+#else
 	public enum NSApplicationPresentationOptions {
+#endif
 		Default                    = 0,
 		AutoHideDock               = (1 <<  0),
 		HideDock                   = (1 <<  1),
@@ -105,11 +113,19 @@ namespace MonoMac.AppKit {
 		PlusLighter,
 	}
 
+#if MAC64
+	public enum NSBackingStore : ulong {
+#else
 	public enum NSBackingStore {
+#endif
 		Retained, Nonretained, Buffered
 	}
 
+#if MAC64
+	public enum NSWindowOrderingMode : long {
+#else
 	public enum NSWindowOrderingMode {
+#endif
 		Below = -1, Out, Above,
 	}
 
@@ -117,6 +133,7 @@ namespace MonoMac.AppKit {
 		RingOnly, RingBelow, RingAbove,
 	}
 
+	// TODO: Figure out the base type for MAC64
 	public enum NSFocusRingType {
 		Default, None, Exterior
 	}
@@ -130,6 +147,7 @@ namespace MonoMac.AppKit {
 		
 	}
 
+	//TODO: review size for 64 bit
 	public enum NSRectEdge {
 		MinXEdge, MinYEdge, MaxXEdge, MaxYEdge
 	}
@@ -211,8 +229,12 @@ namespace MonoMac.AppKit {
 		CellIsInsetButton,
 		CellAllowsMixedState,
 	}
-	
+
+#if MAC64
+	public enum NSCellImagePosition : ulong {
+#else
 	public enum NSCellImagePosition {
+#endif
 		NoImage,
 		ImageOnly,
 		ImageLeft,
@@ -229,7 +251,11 @@ namespace MonoMac.AppKit {
 		ProportionallyUpOrDown
 	}
 	
+#if MAC64
+	public enum NSCellStateValue : long{
+#else
 	public enum NSCellStateValue {
+#endif
 		Mixed = -1,
 		Off,
 		On
@@ -296,7 +322,11 @@ namespace MonoMac.AppKit {
 #endregion
 
 #region NSEvent
+#if MAC64
+	public enum NSEventType : ulong{
+#else
 	public enum NSEventType {
+#endif
 		LeftMouseDown = 1,            
 		LeftMouseUp = 2,
 		RightMouseDown = 3,
@@ -337,40 +367,44 @@ namespace MonoMac.AppKit {
 
 	[Flags]
 	public enum NSEventMask : ulong {
-		LeftMouseDown         = 1 << NSEventType.LeftMouseDown,
-		LeftMouseUp           = 1 << NSEventType.LeftMouseUp,
-		RightMouseDown        = 1 << NSEventType.RightMouseDown,
-		RightMouseUp          = 1 << NSEventType.RightMouseUp,
-		MouseMoved            = 1 << NSEventType.MouseMoved,
-		LeftMouseDragged      = 1 << NSEventType.LeftMouseDragged,
-		RightMouseDragged     = 1 << NSEventType.RightMouseDragged,
-		MouseEntered          = 1 << NSEventType.MouseEntered,
-		MouseExited           = 1 << NSEventType.MouseExited,
-		KeyDown               = 1 << NSEventType.KeyDown,
-		KeyUp                 = 1 << NSEventType.KeyUp,
-		FlagsChanged          = 1 << NSEventType.FlagsChanged,
-		AppKitDefined         = 1 << NSEventType.AppKitDefined,
-		SystemDefined         = 1 << NSEventType.SystemDefined,
-		ApplicationDefined    = 1 << NSEventType.ApplicationDefined,
-		Periodic              = 1 << NSEventType.Periodic,
-		CursorUpdate          = 1 << NSEventType.CursorUpdate,
-		ScrollWheel           = 1 << NSEventType.ScrollWheel,
-		TabletPoint           = 1 << NSEventType.TabletPoint,
-		TabletProximity       = 1 << NSEventType.TabletProximity,
-		OtherMouseDown        = 1 << NSEventType.OtherMouseDown,
-		OtherMouseUp          = 1 << NSEventType.OtherMouseUp,
-		OtherMouseDragged     = 1 << NSEventType.OtherMouseDragged,
-		EventGesture          = 1 << NSEventType.Gesture,
-		EventMagnify          = (uint)1 << NSEventType.Magnify,
-		EventSwipe            = (uint)1 << NSEventType.Swipe,
-		EventRotate           = (uint)1 << NSEventType.Rotate,
-		EventBeginGesture     = (uint)1 << NSEventType.BeginGesture,
-		EventEndGesture       = (uint)1 << NSEventType.EndGesture,
+		LeftMouseDown         = 1 << (int)NSEventType.LeftMouseDown,
+		LeftMouseUp           = 1 << (int)NSEventType.LeftMouseUp,
+		RightMouseDown        = 1 << (int)NSEventType.RightMouseDown,
+		RightMouseUp          = 1 << (int)NSEventType.RightMouseUp,
+		MouseMoved            = 1 << (int)NSEventType.MouseMoved,
+		LeftMouseDragged      = 1 << (int)NSEventType.LeftMouseDragged,
+		RightMouseDragged     = 1 << (int)NSEventType.RightMouseDragged,
+		MouseEntered          = 1 << (int)NSEventType.MouseEntered,
+		MouseExited           = 1 << (int)NSEventType.MouseExited,
+		KeyDown               = 1 << (int)NSEventType.KeyDown,
+		KeyUp                 = 1 << (int)NSEventType.KeyUp,
+		FlagsChanged          = 1 << (int)NSEventType.FlagsChanged,
+		AppKitDefined         = 1 << (int)NSEventType.AppKitDefined,
+		SystemDefined         = 1 << (int)NSEventType.SystemDefined,
+		ApplicationDefined    = 1 << (int)NSEventType.ApplicationDefined,
+		Periodic              = 1 << (int)NSEventType.Periodic,
+		CursorUpdate          = 1 << (int)NSEventType.CursorUpdate,
+		ScrollWheel           = 1 << (int)NSEventType.ScrollWheel,
+		TabletPoint           = 1 << (int)NSEventType.TabletPoint,
+		TabletProximity       = 1 << (int)NSEventType.TabletProximity,
+		OtherMouseDown        = 1 << (int)NSEventType.OtherMouseDown,
+		OtherMouseUp          = 1 << (int)NSEventType.OtherMouseUp,
+		OtherMouseDragged     = 1 << (int)NSEventType.OtherMouseDragged,
+		EventGesture          = 1 << (int)NSEventType.Gesture,
+		EventMagnify          = (uint)1 << (int)NSEventType.Magnify,
+		EventSwipe            = (uint)1 << (int)NSEventType.Swipe,
+		EventRotate           = (uint)1 << (int)NSEventType.Rotate,
+		EventBeginGesture     = (uint)1 << (int)NSEventType.BeginGesture,
+		EventEndGesture       = (uint)1 << (int)NSEventType.EndGesture,
 		AnyEvent              = UInt32.MaxValue
 	}
 
 	[Flags]
+#if MAC64
+	public enum NSEventModifierMask : ulong {
+#else
 	public enum NSEventModifierMask : uint {
+#endif
 		AlphaShiftKeyMask         = 1 << 16,
 		ShiftKeyMask              = 1 << 17,
 		ControlKeyMask            = 1 << 18,
@@ -569,7 +603,11 @@ namespace MonoMac.AppKit {
 
 #region NSView
 	[Flags]
+#if MAC64
+	public enum NSViewResizingMask : ulong {
+#else
 	public enum NSViewResizingMask {
+#endif
 		NotSizable		=  0,
 		MinXMargin		=  1,
 		WidthSizable		=  2,
@@ -587,11 +625,19 @@ namespace MonoMac.AppKit {
 		Square, Rounded
 	}
 	
+#if MAC64
+	public enum NSViewLayerContentsRedrawPolicy : long {
+#else
 	public enum NSViewLayerContentsRedrawPolicy {
+#endif
 		Never, OnSetNeedsDisplay, DuringViewResize, BeforeViewResize
 	}
 
+#if MAC64
+	public enum NSViewLayerContentsPlacement : long {
+#else
 	public enum NSViewLayerContentsPlacement {
+#endif
 		ScaleAxesIndependently,
 		ScaleProportionallyToFit,
 		ScaleProportionallyToFill,
@@ -610,7 +656,11 @@ namespace MonoMac.AppKit {
 	
 #region NSWindow
 	[Flags]
+#if MAC64
+	public enum NSWindowStyle : ulong {
+#else
 	public enum NSWindowStyle {
+#endif
 		Borderless	       = 0,
 		Titled		       = 1 << 0,
 		Closable	       = 1 << 1,
@@ -626,16 +676,28 @@ namespace MonoMac.AppKit {
 		FullScreenWindow       = 1 << 14
 	}
 
+#if MAC64
+	public enum NSWindowSharingType : ulong {
+#else
 	public enum NSWindowSharingType {
+#endif
 		None, ReadOnly, ReadWrite
 	}
 
+#if MAC64
+	public enum NSWindowBackingLocation : ulong {
+#else
 	public enum NSWindowBackingLocation {
+#endif
 		Default, VideoMemory, MainMemory,
 	}
 
 	[Flags]
+#if MAC64
+	public enum NSWindowCollectionBehavior : ulong {
+#else
 	public enum NSWindowCollectionBehavior {
+#endif
 		Default = 0,
 		CanJoinAllSpaces = 1 << 0,
 		MoveToActiveSpace = 1 << 1,
@@ -648,23 +710,39 @@ namespace MonoMac.AppKit {
 		FullScreenAuxiliary = 1 << 8
 	}
 
+#if MAC64
+	public enum NSWindowNumberListOptions : ulong {
+#else
 	public enum NSWindowNumberListOptions {
+#endif
 		AllApplication = 1 << 0,
 		AllSpaces = 1 << 4
 	}
 
+#if MAC64
+	public enum NSSelectionDirection : ulong {
+#else
 	public enum NSSelectionDirection {
+#endif
 		Direct = 0,
 		Next,
 		Previous
 	}
 
+#if MAC64
+	public enum NSWindowButton : ulong {
+#else
 	public enum NSWindowButton {
+#endif
 		CloseButton, MiniaturizeButton, ZoomButton, ToolbarButton, DocumentIconButton, DocumentVersionsButton = 6, FullScreenButton
 	}
 
 	[Flags]
+#if MAC64
+	public enum NSTouchPhase : long{
+#else
 	public enum NSTouchPhase {
+#endif
 		Began           = 1 << 0,
 		Moved           = 1 << 1,
 		Stationary      = 1 << 2,
@@ -713,7 +791,11 @@ namespace MonoMac.AppKit {
 #endregion
 
 #region NSButtonCell
+#if MAC64
+	public enum NSButtonType : ulong {
+#else
 	public enum NSButtonType {
+#endif
 		MomentaryLightButton,
 		PushOnPushOff,
 		Toggle,
@@ -724,7 +806,11 @@ namespace MonoMac.AppKit {
 		MomentaryPushIn
 	}
 	
+#if MAC64
+	public enum NSBezelStyle : ulong {
+#else
 	public enum NSBezelStyle {
+#endif
 		Rounded = 1,
 		RegularSquare,
 		ThickSquare,
@@ -878,12 +964,20 @@ namespace MonoMac.AppKit {
 		All = UInt32.MaxValue
 	}
 
+#if MAC64
+	public enum NSTextAlignment : long {
+#else
 	public enum NSTextAlignment {
+#endif
 		Left, Right, Center, Justified, Natural
 	}
 
 	[Flags]
+#if MAC64
+	public enum NSWritingDirection : long {
+#else
 	public enum NSWritingDirection {
+#endif
 		Natural = -1, LeftToRight, RightToLeft,
 		Embedding = 0,
 		Override = 2,
@@ -948,7 +1042,11 @@ namespace MonoMac.AppKit {
 
 #region NSTrackingArea
 	[Flags]
+#if MAC64
+	public enum NSTrackingAreaOptions : ulong {
+#else
 	public enum NSTrackingAreaOptions {
+#endif
 		MouseEnteredAndExited     = 0x01,
 		MouseMoved                = 0x02,
 		CursorUpdate 		  = 0x04,
@@ -1145,11 +1243,19 @@ namespace MonoMac.AppKit {
 	}
 
 
+#if MAC64
+	public enum NSToolbarDisplayMode : ulong {
+#else
 	public enum NSToolbarDisplayMode {
+#endif
 		Default, IconAndLabel, Icon, Label
 	}
 
+#if MAC64
+	public enum NSToolbarSizeMode : ulong {
+#else
 	public enum NSToolbarSizeMode {
+#endif
 		Default, Regular, Small
 	}
 
@@ -1279,14 +1385,22 @@ namespace MonoMac.AppKit {
 		Circular = 1
 	}
 	
+#if MAC64
+	public enum NSTokenStyle : ulong {
+#else
 	public enum NSTokenStyle {
+#endif
 		Default,
 		PlainText,
 		Rounded
 	}
 
 	[Flags]
+#if MAC64
+	public enum NSWorkspaceLaunchOptions : ulong {
+#else
 	public enum NSWorkspaceLaunchOptions {
+#endif
 		Print = 2,
 		InhibitingBackgroundOnly = 0x80,
 		WithoutAddingToRecents = 0x100,
@@ -1301,7 +1415,11 @@ namespace MonoMac.AppKit {
 	}
 
 	[Flags]
+#if MAC64
+	public enum NSWorkspaceIconCreationOptions : ulong {
+#else
 	public enum NSWorkspaceIconCreationOptions {
+#endif
 		NSExcludeQuickDrawElements   = 1 << 1,
 		NSExclude10_4Elements       = 1 << 2
 	}
@@ -1508,7 +1626,11 @@ namespace MonoMac.AppKit {
 		Closing = 3
 	}
 
+#if MAC64
+	public enum NSWindowLevel : long {
+#else
 	public enum NSWindowLevel {
+#endif
 		Normal = 0,
 		Dock = 20,
 		Floating = 3,
@@ -1520,12 +1642,17 @@ namespace MonoMac.AppKit {
 		Submenu = 3,
 		TornOffMenu = 3
 	}
-	
+
+#if MAC64
+	public enum NSRuleEditorRowType : ulong {
+#else
 	public enum NSRuleEditorRowType{
+#endif
 		Simple = 0,
 		Compound
 	}
    
+	//TODO: figure out size for 64 bit
 	public enum NSRuleEditorNestingMode {
 		Single,
 		List,
@@ -1592,7 +1719,12 @@ namespace MonoMac.AppKit {
 		ClampGestureAmount = 2
 	}
 
+
+#if MAC64
+	public enum NSEventGestureAxis : long {
+#else
 	public enum NSEventGestureAxis {
+#endif
 		None, Horizontal, Vertical
 	}
 
@@ -1602,7 +1734,11 @@ namespace MonoMac.AppKit {
 		GreaterThanOrEqual = 1
 	}
 
+#if MAC64
+	public enum NSLayoutAttribute : long {
+#else
 	public enum NSLayoutAttribute {
+#endif
 		NoAttribute = 0,
 		Left = 1,
 		Right,
@@ -1620,15 +1756,15 @@ namespace MonoMac.AppKit {
 	public enum NSLayoutFormatOptions {
 		None = 0,
 
-		AlignAllLeft = (1 << NSLayoutAttribute.Left),
-		AlignAllRight = (1 << NSLayoutAttribute.Right),
-		AlignAllTop = (1 << NSLayoutAttribute.Top),
-		AlignAllBottom = (1 << NSLayoutAttribute.Bottom),
-		AlignAllLeading = (1 << NSLayoutAttribute.Leading),
-		AlignAllTrailing = (1 << NSLayoutAttribute.Trailing),
-		AlignAllCenterX = (1 << NSLayoutAttribute.CenterX),
-		AlignAllCenterY = (1 << NSLayoutAttribute.CenterY),
-		AlignAllBaseline = (1 << NSLayoutAttribute.Baseline),
+		AlignAllLeft = (1 << (int)NSLayoutAttribute.Left),
+		AlignAllRight = (1 << (int)NSLayoutAttribute.Right),
+		AlignAllTop = (1 << (int)NSLayoutAttribute.Top),
+		AlignAllBottom = (1 << (int)NSLayoutAttribute.Bottom),
+		AlignAllLeading = (1 << (int)NSLayoutAttribute.Leading),
+		AlignAllTrailing = (1 << (int)NSLayoutAttribute.Trailing),
+		AlignAllCenterX = (1 << (int)NSLayoutAttribute.CenterX),
+		AlignAllCenterY = (1 << (int)NSLayoutAttribute.CenterY),
+		AlignAllBaseline = (1 << (int)NSLayoutAttribute.Baseline),
 		
 		AlignmentMask = 0xFFFF,
 		
@@ -1641,7 +1777,11 @@ namespace MonoMac.AppKit {
 		DirectionMask = 0x3 << 16,
 	}
 
+#if MAC64
+	public enum NSLayoutConstraintOrientation : long {
+#else
 	public enum NSLayoutConstraintOrientation {
+#endif
 		Horizontal, Vertical
 	}
 
@@ -1689,7 +1829,11 @@ namespace MonoMac.AppKit {
 		OutsideApplication, WithinApplication
 	}
 
+#if MAC64
+	public enum NSWindowAnimationBehavior : long {
+#else
 	public enum NSWindowAnimationBehavior {
+#endif
 		Default = 0, None = 2, DocumentWindow, UtilityWindow, AlertPanel
 	}
 
@@ -1732,7 +1876,11 @@ namespace MonoMac.AppKit {
 		Computer = 1 << 2,
 	}
 
+#if MAC64
+	public enum NSSharingContentScope : long {
+#else
 	public enum NSSharingContentScope {
+#endif
 		Item,
 		Partial,
 		Full
