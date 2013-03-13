@@ -90,8 +90,7 @@ namespace macdoc
 					navigationCells.SetSelected (true, 1);
 			};
 			HideMultipleMatches ();
-			if (!string.IsNullOrEmpty (initialLoadFromUrl))
-				LoadUrl (initialLoadFromUrl);
+			LoadUrl (string.IsNullOrEmpty (initialLoadFromUrl) ? "root:" : initialLoadFromUrl);
 		}
 
 		void HandleAddBookmarkBtnActivated (object sender, EventArgs e)
@@ -503,8 +502,8 @@ namespace macdoc
 			outlineView.ExpandItem (item);
 			
 			// Focus the last child, then this child to ensure we show as much as possible
-			if (n.Nodes.Count > 0)
-				ScrollToVisible ((Node) n.Nodes [n.Nodes.Count-1]);
+			if (n.ChildNodes.Count > 0)
+				ScrollToVisible ((Node) n.ChildNodes [n.ChildNodes.Count-1]);
 			var row = ScrollToVisible (n);
 			ignoreSelect = true;
 			if (row > 0)

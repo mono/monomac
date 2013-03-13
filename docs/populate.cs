@@ -294,7 +294,7 @@ class CtorUpdater {
 		
 		foreach (var d in dispose){
 			var e = d.XPathSelectElement ("Docs/summary");
-			e.Value = "Releases the resourced used by the " + t.Name + " object.";
+			e.Value = "Releases the resources used by the " + t.Name + " object.";
 
 			e = d.XPathSelectElement ("Docs/remarks");
 			e.RemoveAll ();
@@ -305,7 +305,7 @@ class CtorUpdater {
 
 		foreach (var d in disposevirt){
 			var e = d.XPathSelectElement ("Docs/summary");
-			e.Value = "Releases the resourced used by the " + t.Name + " object.";
+			e.Value = "Releases the resources used by the " + t.Name + " object.";
 
 			e = d.XPathSelectElement ("Docs/param[@name='disposing']");
 			//e = d.XPathSelectElement ("Docs/param");

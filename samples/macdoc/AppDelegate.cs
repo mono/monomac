@@ -132,7 +132,7 @@ namespace macdoc
 			}).ContinueWith (t => Logger.LogError ("Error while creating indexes", t.Exception), TaskContinuationOptions.OnlyOnFaulted);
 
 			// Check if there is a MonoTouch/MonoMac documentation installed and launch accordingly
-			var products = Root.HelpSources.Cast<HelpSource> ().Where (hs => hs != null && hs.Name != null).ToProducts ();
+			var products = Root.HelpSources.Where (hs => hs != null && hs.Name != null).ToProducts ();
 			if (products.Where (p => File.Exists (ProductUtils.GetMergeToolForProduct (p))).Any ()) {
 				Task.Factory.StartNew (() => {
 					return products.ToDictionary (p => p,
