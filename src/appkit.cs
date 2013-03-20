@@ -88,6 +88,11 @@ namespace MonoMac.AppKit {
 		NSObject DefaultAnimationFor (NSString key);
 	}
 	
+	public interface NSAnimationProgressMarkEventArgs {
+		[Export ("NSAnimationProgressMark")]
+		float Progress { get; }
+	}
+
 	[BaseType (typeof (NSObject), Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (NSAnimationDelegate)})]
 	public interface NSAnimation {
 		[Export ("initWithDuration:animationCurve:")]
@@ -148,7 +153,7 @@ namespace MonoMac.AppKit {
 		//[Export ("runLoopModesForAnimating")]
 		//NSArray* runLoopModesForAnimating ();
 
-		[Field ("NSAnimationProgressMarkNotification")]
+		[Notification (typeof (NSAnimationProgressMarkEventArgs)), Field ("NSAnimationProgressMarkNotification")]
 		NSString ProgressMarkNotification { get; }
 
 		[Field ("NSAnimationProgressMark")]
@@ -272,6 +277,14 @@ namespace MonoMac.AppKit {
 	public interface NSAlertDelegate {
 		[Export ("alertShowHelp:"), DelegateName ("NSAlertPredicate"), DefaultValue (false)]
 		bool ShowHelp (NSAlert  alert);
+	}
+
+	public interface NSApplicationDidFinishLaunchingEventArgs {
+		[Export ("NSApplicationLaunchIsDefaultLaunchKey")]
+		bool IsLaunchDefault { get; }
+
+		[ProbePresence, Export ("NSApplicationLaunchUserNotificationKey")]
+		bool IsLaunchFromUserNotification { get; }
 	}
 
 	[BaseType (typeof (NSResponder), Delegates=new string [] { "WeakDelegate" }, Events=new Type [] { typeof (NSApplicationDelegate) })]
@@ -521,46 +534,46 @@ namespace MonoMac.AppKit {
 		[Lion, Export ("unregisterForRemoteNotifications")]
 		void UnregisterForRemoteNotifications ();
 
-		[Field ("NSApplicationDidBecomeActiveNotification")]
+		[Notification, Field ("NSApplicationDidBecomeActiveNotification")]
 		NSString DidBecomeActiveNotification { get; }
 
-		[Field ("NSApplicationDidHideNotification")]
+		[Notification, Field ("NSApplicationDidHideNotification")]
 		NSString DidHideNotification { get; }
 
-		[Field ("NSApplicationDidFinishLaunchingNotification")]
+		[Notification (typeof (NSApplicationDidFinishLaunchingEventArgs)), Field ("NSApplicationDidFinishLaunchingNotification")]
 		NSString DidFinishLaunchingNotification { get; }
 
-		[Field ("NSApplicationDidResignActiveNotification")]
+		[Notification, Field ("NSApplicationDidResignActiveNotification")]
 		NSString DidResignActiveNotification { get; }
 
-		[Field ("NSApplicationDidUnhideNotification")]
+		[Notification, Field ("NSApplicationDidUnhideNotification")]
 		NSString DidUnhideNotification { get; }
 
-		[Field ("NSApplicationDidUpdateNotification")]
+		[Notification, Field ("NSApplicationDidUpdateNotification")]
 		NSString DidUpdateNotification { get; }
 
-		[Field ("NSApplicationWillBecomeActiveNotification")]
+		[Notification, Field ("NSApplicationWillBecomeActiveNotification")]
 		NSString WillBecomeActiveNotification { get; }
 
-		[Field ("NSApplicationWillHideNotification")]
+		[Notification, Field ("NSApplicationWillHideNotification")]
 		NSString WillHideNotification { get; }
 
-		[Field ("NSApplicationWillFinishLaunchingNotification")]
+		[Notification, Field ("NSApplicationWillFinishLaunchingNotification")]
 		NSString WillFinishLaunchingNotification { get; }
 
-		[Field ("NSApplicationWillResignActiveNotification")]
+		[Notification, Field ("NSApplicationWillResignActiveNotification")]
 		NSString WillResignActiveNotification { get; }
 
-		[Field ("NSApplicationWillUnhideNotification")]
+		[Notification, Field ("NSApplicationWillUnhideNotification")]
 		NSString WillUnhideNotification { get; }
 
-		[Field ("NSApplicationWillUpdateNotification")]
+		[Notification, Field ("NSApplicationWillUpdateNotification")]
 		NSString WillUpdateNotification { get; }
 
-		[Field ("NSApplicationWillTerminateNotification")]
+		[Notification, Field ("NSApplicationWillTerminateNotification")]
 		NSString WillTerminateNotification { get; }
 
-		[Field ("NSApplicationDidChangeScreenParametersNotification")]
+		[Notification, Field ("NSApplicationDidChangeScreenParametersNotification")]
 		NSString DidChangeScreenParametersNotification { get; }
 
 		[Lion, Field ("NSApplicationLaunchIsDefaultLaunchKey")]
@@ -569,7 +582,7 @@ namespace MonoMac.AppKit {
 		[Lion, Field ("NSApplicationLaunchRemoteNotificationKey")]
 		NSString LaunchRemoteNotificationKey { get; }
 
-		[Field ("NSApplicationDidFinishRestoringWindowsNotification")]
+		[Notification, Field ("NSApplicationDidFinishRestoringWindowsNotification")]
 		NSString DidFinishRestoringWindowsNotification { get; }
 	}
 	
@@ -1974,7 +1987,10 @@ namespace MonoMac.AppKit {
 	
 		[Export ("controlTint")]
 		NSControlTint ControlTint { get; set; }
-	
+
+		[Notification, Field ("NSControlTintDidChangeNotification")]
+		NSString ControlTintChanged { get; }
+
 		[Export ("controlSize")]
 		NSControlSize ControlSize { get; set; }
 	
@@ -2748,7 +2764,7 @@ namespace MonoMac.AppKit {
 	}
 
 	[BaseType (typeof (NSPanel))]
-	public interface NSColorPanel {
+	public partial interface NSColorPanel {
 		[Static, Export ("sharedColorPanel")]
 		NSColorPanel SharedColorPanel { get; }
 
@@ -2966,7 +2982,7 @@ namespace MonoMac.AppKit {
 
 
 	[BaseType (typeof (NSTextField))]
-	public interface NSComboBox {
+	public partial interface NSComboBox {
 		[Export ("initWithFrame:")]
 		IntPtr Constructor (RectangleF frameRect);
 		
@@ -4440,6 +4456,21 @@ namespace MonoMac.AppKit {
 	}
 
 	[Lion]
+	public interface NSFontCollectionChangedEventArgs {
+		[Internal, Export ("NSFontCollectionActionKey")]
+		NSString _Action { get; }
+
+		[Export ("NSFontCollectionNameKey")]
+		string Name { get; }
+
+		[Export ("NSFontCollectionOldNameKey")]
+		string OldName { get; }
+
+		[Internal, Export ("NSFontCollectionVisibilityKey")]
+		NSNumber _Visibility { get; }
+	}
+
+	[Lion]
 	[BaseType (typeof (NSObject))]
 	interface NSFontCollection {
 		[Static]
@@ -4505,8 +4536,8 @@ namespace MonoMac.AppKit {
 		[Field ("NSFontCollectionDisallowAutoActivationOption")]
 		NSString DisallowAutoActivationOption { get; }
 		
-		[Field ("NSFontCollectionDidChangeNotification")]
-		NSString DidChangeNotification { get; }
+		[Notification (typeof (NSFontCollectionChangedEventArgs)), Field ("NSFontCollectionDidChangeNotification")]
+		NSString ChangedNotification { get; }
 		
 		[Field ("NSFontCollectionActionKey")]
 		NSString ActionKey { get; }
@@ -8102,19 +8133,24 @@ namespace MonoMac.AppKit {
 		[Field ("NSPopoverCloseReasonDetachToWindow")]
 		NSString CloseReasonDetachToWindow { get; }
 		
-		[Field ("NSPopoverWillShowNotification")]
+		[Notification, Field ("NSPopoverWillShowNotification")]
 		NSString WillShowNotification { get; }
 		
-		[Field ("NSPopoverDidShowNotification")]
+		[Notification, Field ("NSPopoverDidShowNotification")]
 		NSString DidShowNotification { get; }
 		
-		[Field ("NSPopoverWillCloseNotification")]
+		[Notification (typeof (NSPopoverCloseEventArgs)), Field ("NSPopoverWillCloseNotification")]
 		NSString WillCloseNotification { get; }
 		
-		[Field ("NSPopoverDidCloseNotification")]
+		[Notification (typeof (NSPopoverCloseEventArgs)), Field ("NSPopoverDidCloseNotification")]
 		NSString DidCloseNotification { get; }
 	}
-	
+
+	public partial interface NSPopoverCloseEventArgs {
+		[Internal, Export ("NSPopoverCloseReasonKey")]
+		NSString _Reason { get; }
+	}
+
 	[BaseType (typeof (NSObject))]
 	[Model]
 	interface NSPopoverDelegate {
