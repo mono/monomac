@@ -4166,7 +4166,7 @@ namespace MonoMac.AppKit {
 	}
 	
 	[BaseType (typeof (NSResponder), Delegates=new string [] { "WeakDelegate" }, Events=new Type [] { typeof (NSDrawerDelegate)})]
-	public interface NSDrawer {
+	public partial interface NSDrawer {
 		[Export ("initWithContentSize:preferredEdge:")]
 		IntPtr Constructor (SizeF contentSize, NSRectEdge edge);
 
@@ -4253,7 +4253,7 @@ namespace MonoMac.AppKit {
 
 	[BaseType (typeof (NSObject))]
 	[DisableDefaultCtor] // crash at runtime (e.g. description). Documentation state: "You don’t create NSFont objects using the alloc and init methods."
-	public interface NSFont {
+	public partial interface NSFont {
 		[Static]
 		[Export ("fontWithName:size:")]
 		NSFont FromFontName (string fontName, float fontSize);
@@ -5379,7 +5379,7 @@ namespace MonoMac.AppKit {
 	}
 
 	[BaseType (typeof (NSObject))]
-	public interface NSMenu {
+	public partial interface NSMenu {
 		[Export ("initWithTitle:")]
 		IntPtr Constructor (string aTitle);
 
@@ -6397,7 +6397,7 @@ namespace MonoMac.AppKit {
 	
 
 	[BaseType (typeof (NSObject))]
-	public interface NSHelpManager {
+	public partial interface NSHelpManager {
 		[Static]
 		[Export ("sharedHelpManager")]
 		NSHelpManager SharedHelpManager ();
@@ -6639,7 +6639,7 @@ namespace MonoMac.AppKit {
 	}
 
 	[BaseType (typeof (NSObject))]
-	public interface NSImageRep {
+	public partial interface NSImageRep {
 		[Export ("draw")]
 		bool Draw ();
 
@@ -8174,7 +8174,7 @@ namespace MonoMac.AppKit {
 	}
 
 	[BaseType (typeof (NSButton))]
-	public interface NSPopUpButton {
+	public partial interface NSPopUpButton {
 		[Export ("initWithFrame:pullsDown:")]
 		IntPtr Constructor (RectangleF buttonFrame, bool pullsDown);
 
@@ -8276,7 +8276,7 @@ namespace MonoMac.AppKit {
 
 
 	[BaseType (typeof (NSMenuItemCell))]
-	public interface NSPopUpButtonCell {
+	public partial interface NSPopUpButtonCell {
 		[Export ("initTextCell:")]
 		IntPtr Constructor (string aString);
 	
@@ -9124,7 +9124,7 @@ namespace MonoMac.AppKit {
 	public interface NSRemoteSavePanel {}
 
 	[BaseType (typeof (NSObject))]
-	public interface NSScreen {
+	public partial interface NSScreen {
 		[Static]
 		[Export ("screens")]
 		NSScreen [] Screens { get; }
@@ -11282,7 +11282,7 @@ namespace MonoMac.AppKit {
 	public delegate void NSTableViewRowHandler (NSTableRowView rowView, int row);
 	
 	[BaseType (typeof (NSControl), Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (NSTableViewDelegate)})]
-	public interface NSTableView : NSDraggingSource {
+	public partial interface NSTableView : NSDraggingSource {
 		[Export ("initWithFrame:")]
 		IntPtr Constructor (RectangleF frameRect);
 
@@ -12060,7 +12060,7 @@ namespace MonoMac.AppKit {
 	}
 	
 	[BaseType (typeof (NSView), Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (NSTextDelegate)})]
-	public interface NSText {
+	public partial interface NSText {
 		[Export ("initWithFrame:")]
 		IntPtr Constructor (RectangleF frameRect);
 
@@ -12502,7 +12502,7 @@ namespace MonoMac.AppKit {
 	}  
 
 	[BaseType (typeof (NSObject))]
-	public interface NSTextInputContext {
+	public partial interface NSTextInputContext {
 		[Static]
 		[Export ("currentInputContext")]
 		NSTextInputContext CurrentInputContext { get; }
@@ -12632,7 +12632,7 @@ namespace MonoMac.AppKit {
 	}
 
 	[BaseType (typeof (NSMutableAttributedString), Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (NSTextStorageDelegate)})]
-	public interface NSTextStorage {
+	public partial interface NSTextStorage {
 		[Export ("addLayoutManager:")]
 		void AddLayoutManager (NSLayoutManager obj);
 
@@ -13329,7 +13329,7 @@ namespace MonoMac.AppKit {
 	}
 
 	[BaseType (typeof (NSObject), Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (NSToolbarDelegate)})]
-	public interface NSToolbar {
+	public partial interface NSToolbar {
 		[Export ("initWithIdentifier:")]
 		IntPtr Constructor (string identifier);
 
@@ -15086,7 +15086,7 @@ namespace MonoMac.AppKit {
 	}
    
 	[BaseType (typeof (NSControl), Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (NSRuleEditorDelegate)})]
-	public interface NSRuleEditor {
+	public partial interface NSRuleEditor {
 		[Export ("reloadCriteria")]
 		void ReloadCriteria ();
 
