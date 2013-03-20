@@ -1989,7 +1989,7 @@ namespace MonoMac.AppKit {
 		NSControlTint ControlTint { get; set; }
 
 		[Notification, Field ("NSControlTintDidChangeNotification")]
-		NSString ControlTintChanged { get; }
+		NSString ControlTintChangedNotification { get; }
 
 		[Export ("controlSize")]
 		NSControlSize ControlSize { get; set; }
@@ -9252,8 +9252,8 @@ namespace MonoMac.AppKit {
 		[Lion, Export ("scrollerWidthForControlSize:scrollerStyle:")]
 		float GetScrollerWidth (NSControlSize forControlSize, NSScrollerStyle scrollerStyle);
 		
-		[Field ("NSPreferredScrollerStyleDidChangeNotification")]
-		NSString NSPreferredScrollerStyleDidChangeNotification { get; }
+		[Notification, Field ("NSPreferredScrollerStyleDidChangeNotification")]
+		NSString PreferredStyleChangedNotification { get; }
 
 	}
 
@@ -10837,20 +10837,20 @@ namespace MonoMac.AppKit {
 		[Field ("NSFullScreenModeWindowLevel")]
 		NSString NSFullScreenModeWindowLevel { get; }
 
-		[Field ("NSViewFrameDidChangeNotification")]
-		NSString NSViewFrameDidChangeNotification { get; }
+		[Notification, Field ("NSViewFrameDidChangeNotification")]
+		NSString FrameChangedNotification { get; }
  
-		[Field ("NSViewFocusDidChangeNotification")]
-		NSString NSViewFocusDidChangeNotification { get; }
+		[Notification, Field ("NSViewFocusDidChangeNotification")]
+		NSString FocusChangedNotification { get; }
 
-		[Field ("NSViewBoundsDidChangeNotification")]
-		NSString NSViewBoundsDidChangeNotification { get; }
+		[Notification, Field ("NSViewBoundsDidChangeNotification")]
+		NSString BoundsChangedNotification { get; }
 
-		[Field ("NSViewGlobalFrameDidChangeNotification")]
-		NSString NSViewGlobalFrameDidChangeNotification { get; }
+		[Notification, Field ("NSViewGlobalFrameDidChangeNotification")]
+		NSString GlobalFrameChangedNotification { get; }
 
-		[Field ("NSViewDidUpdateTrackingAreasNotification")]
-		NSString NSViewDidUpdateTrackingAreasNotification { get; }
+		[Notification, Field ("NSViewDidUpdateTrackingAreasNotification")]
+		NSString UpdatedTrackingAreasNotification { get; }
 
 		[Lion, Export ("constraints")]
 		NSLayoutConstraint [] Constraints { get; }
