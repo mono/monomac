@@ -81,7 +81,7 @@ namespace MonoMac.OpenGL
 
 			// Look for changes in view size
 			// Note, -reshape will not be called automatically on size changes because NSView does not export it to override 
-			notificationProxy = NSNotificationCenter.DefaultCenter.AddObserver (NSView.NSViewGlobalFrameDidChangeNotification, HandleReshape);
+			notificationProxy = NSNotificationCenter.DefaultCenter.AddObserver (NSView.GlobalFrameChangedNotification, HandleReshape);
 		}
 
 		[Preserve (Conditional=true)]
