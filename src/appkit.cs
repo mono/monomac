@@ -11150,6 +11150,9 @@ namespace MonoMac.AppKit {
 		[Lion, Export ("initWithIdentifier:")]
 		IntPtr Constructor (string identifier);
 
+		[Lion, Export ("initWithIdentifier:")]
+		IntPtr Constructor (NSString identifier);
+
 		[Obsolete, Export ("initWithIdentifier:")]
 		IntPtr Constructor (NSObject identifier);
 	
