@@ -23,11 +23,21 @@
 //
 
 using System;
+using System.Drawing;
+
 using MonoMac.Foundation;
+using MonoMac.CoreGraphics;
 
 namespace MonoMac.AppKit {
 
 	public partial class NSImage {
+
+		public CGImage CGImage {
+			get {
+				var rect = RectangleF.Empty;
+				return AsCGImage (ref rect, null, null);
+			}
+		}
 
 		public static NSImage FromStream (System.IO.Stream stream)
 		{
@@ -41,6 +51,16 @@ namespace MonoMac.AppKit {
 			get { return GetName (); }
 			// ignore return value (bool)
 			set { SetName (value); }
+		}
+	}
+
+	public partial class NSImageRep {
+
+		public CGImage CGImage {
+			get {
+				var rect = RectangleF.Empty;
+				return AsCGImage (ref rect, null, null);
+			}
 		}
 	}
 }
