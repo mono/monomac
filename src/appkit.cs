@@ -5733,8 +5733,9 @@ namespace MonoMac.AppKit {
 		[Export ("initWithFrame:")]
 		IntPtr Constructor (RectangleF frame);
 
-		[Export ("initAsTearOff")]
-		IntPtr Constructor (int tokenInitAsTearOff);
+		// <quote>Deprecated. Tear-off menus are not supported in OS X.</quote>
+		//[Export ("initAsTearOff")]
+		//IntPtr Constructor (int tokenInitAsTearOff);
 
 		[Export ("itemChanged:")]
 		void ItemChanged (NSNotification notification);
