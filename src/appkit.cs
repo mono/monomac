@@ -7121,11 +7121,11 @@ namespace MonoMac.AppKit {
 	public interface NSLayoutConstraint : NSAnimatablePropertyContainer {
 		[Static]
 		[Export ("constraintsWithVisualFormat:options:metrics:views:")]
-		NSLayoutConstraint [] FromVisualFormat (string format, NSLayoutFormatOptions formatOptions, NSDictionary metrics, NSDictionary views);
+		NSLayoutConstraint [] FromVisualFormat (string format, NSLayoutFormatOptions formatOptions, [NullAllowed] NSDictionary metrics, NSDictionary views);
 
 		[Static]
 		[Export ("constraintWithItem:attribute:relatedBy:toItem:attribute:multiplier:constant:")]
-		NSLayoutConstraint Create (NSObject view1, NSLayoutAttribute attribute1, NSLayoutRelation relation, NSObject view2, NSLayoutAttribute attribute2, float multiplier, float constant);
+		NSLayoutConstraint Create (NSObject view1, NSLayoutAttribute attribute1, NSLayoutRelation relation, [NullAllowed] NSObject view2, NSLayoutAttribute attribute2, float multiplier, float constant);
 		
 		[Export ("priority")]
 		float Priority { get; set;  }
