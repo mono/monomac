@@ -4989,6 +4989,7 @@ namespace MonoMac.AppKit {
 		NSColor GetInterpolatedColor(float location);
 	}
 
+	[ThreadSafe] // CurrentContext returns a context that can be used from the current thread
 	[BaseType (typeof (NSObject))]
 	public interface NSGraphicsContext {
 		[Static, Export ("graphicsContextWithAttributes:")]
@@ -5057,6 +5058,11 @@ namespace MonoMac.AppKit {
 
 		[Export ("CIContext")]
 		MonoMac.CoreImage.CIContext CIContext { get; } 
+	}
+
+	[BaseType (typeof (NSGraphicsContext))]
+	[DisableDefaultCtor]
+	public interface NSPrintPreviewGraphicsContext {
 	}
 
 	[BaseType (typeof (NSImageRep))]
