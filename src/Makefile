@@ -154,11 +154,11 @@ HAVE_ASYNC := $(shell if $(PKG_CONFIG) --atleast-version=2.11 mono; then echo tr
 ifeq ($(HAVE_ASYNC),true)
 	ASYNC_TARGETS = MonoMac.CFNetwork.dll
 	UPDATE_FILES = MonoMac.dll* MonoMac.CFNetwork.dll*
-	MCS = mcs
+	MCS ?= mcs
 else
 	ASYNC_TARGETS = 
 	UPDATE_FILES = MonoMac.dll*
-	MCS = gmcs
+	MCS ?= gmcs
 endif
 
 TARGETS = _bmac.exe $(TARGET) parse.exe bmac.exe $(ASYNC_TARGETS)
