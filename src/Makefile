@@ -150,8 +150,8 @@ SOURCES = \
 DEFINES = -define:NET_2_0
 
 # Uncomment the following two lines to build targetting 64 bit
-#DEFINES64 = -define:MAC64
-#BMAC_DEFINES64 = -d=MAC64
+DEFINES64 = -define:MAC64
+BMAC_DEFINES64 = -d=MAC64
 
 HAVE_ASYNC := $(shell if pkg-config --atleast-version=2.11 mono; then echo true; else echo false; fi)
 
