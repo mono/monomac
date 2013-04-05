@@ -10460,13 +10460,13 @@ namespace MonoMac.AppKit {
 		bool IsOpaque { get; }
 
 		[Export ("convertPoint:fromView:")]
-		NSPoint ConvertNSPointromView (NSPoint aPoint, [NullAllowed] NSView aView);
+		NSPoint ConvertPointFromView (NSPoint aPoint, [NullAllowed] NSView aView);
 
 		[Export ("convertPoint:toView:")]
 		NSPoint ConvertPointToView (NSPoint aPoint, [NullAllowed] NSView aView);
 
 		[Export ("convertSize:fromView:")]
-		NSSize ConvertNSSizeromView (NSSize aSize, [NullAllowed] NSView aView);
+		NSSize ConvertSizeFromView (NSSize aSize, [NullAllowed] NSView aView);
 
 		[Export ("convertSize:toView:")]
 		NSSize ConvertSizeToView (NSSize aSize, [NullAllowed] NSView aView);
@@ -10483,14 +10483,14 @@ namespace MonoMac.AppKit {
 		[Export ("convertPointToBase:")]
 		NSPoint ConvertPointToBase (NSPoint aPoint);
 
-		[Export ("convertNSPointromBase:")]
-		NSPoint ConvertNSPointromBase (NSPoint aPoint);
+		[Export ("convertPointFromBase:")]
+		NSPoint ConvertPointFromBase (NSPoint aPoint);
 
 		[Export ("convertSizeToBase:")]
 		NSSize ConvertSizeToBase (NSSize aSize);
 
-		[Export ("convertNSSizeromBase:")]
-		NSSize ConvertNSSizeromBase (NSSize aSize);
+		[Export ("convertSizeFromBase:")]
+		NSSize ConvertSizeFromBase (NSSize aSize);
 
 		[Export ("convertRectToBase:")]
 		NSRect ConvertRectToBase (NSRect aRect);
