@@ -4,9 +4,9 @@ This is a sample **MonoMac** application that implements the preferences window 
 
 How preferences windows work in Mac:
 * Window uses NSToolbar as a tab bar
-* Window title is title of the currently selected tab
-* When user changes the tab, then the preferences window is resized with an animation
-* Every tab (view) should have a same width, but a height may vary
+* Window title is the title of the currently selected tab
+* Window is resize with animation when the tab is changed
+* Every tab (view) should have same width, but height may vary
 
 ##How to use
 You can copy the code to your own project if you will. Creating a new tab to preferences window is easy.
