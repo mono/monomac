@@ -14,7 +14,6 @@ namespace MonoTouch.AssetsLibrary { internal class x {} }
 namespace MonoTouch.AudioToolbox { internal class x {} }
 namespace MonoTouch.AudioUnit { internal class x {} }
 namespace MonoTouch.AudioUnitWrapper { internal class x {} }
-namespace MonoTouch.Constants { internal class x {} }
 namespace MonoTouch.CoreAnimation { internal class x {} }
 namespace MonoTouch.CoreBluetooth { internal class x {} }
 namespace MonoTouch.CoreData { internal class x {} }
@@ -42,7 +41,6 @@ namespace MonoTouch.MediaPlayer { internal class x {} }
 namespace MonoTouch.MediaToolbox { internal class x {} }
 namespace MonoTouch.MessageUI { internal class x {} }
 namespace MonoTouch.MobileCoreServices { internal class x {} }
-namespace MonoTouch.MonoTouchException { internal class x {} }
 namespace MonoTouch.NewsstandKit { internal class x {} }
 namespace MonoTouch.ObjCRuntime { internal class x {} }
 namespace MonoTouch.OpenGLES { internal class x {} }
