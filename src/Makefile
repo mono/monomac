@@ -149,9 +149,11 @@ SOURCES = \
 
 DEFINES = -define:NET_2_0
 PKG_CONFIG=/Library/Frameworks/Mono.framework/Commands/pkg-config
-HAVE_ASYNC := $(shell if $(PKG_CONFIG) --atleast-version=2.11 mono; then echo true; else echo false; fi)
+ifeq ($(HAVE_ASYNC),)
+HAVE_ASYNC := $(shell if $(PKG_CONFIG) --atleast-version=2.11 mono; then echo 1; else echo 0; fi)
+endif
 
-ifeq ($(HAVE_ASYNC),true)
+ifeq ($(HAVE_ASYNC),1)
 	ASYNC_TARGETS = MonoMac.CFNetwork.dll
 	UPDATE_FILES = MonoMac.dll* MonoMac.CFNetwork.dll*
 	MCS ?= mcs
@@ -229,7 +231,7 @@ clean:
 	rm -f $(TARGETS) core.dll
 
 all: $(TARGET) $(ASYNC_TARGETS)
-	
+
 update: MonoMac.dll $(ASYNC_TARGETS)
 	cp $(UPDATE_FILES) /Applications/MonoDevelop.app/Contents/MacOS/lib/monodevelop/Addins
 	cp $(UPDATE_FILES) /Applications/MonoDevelop.app/Contents/MacOS/lib/monodevelop/Addins/MonoDevelop.MonoMac
