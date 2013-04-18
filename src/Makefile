@@ -160,7 +160,7 @@ ifeq ($(HAVE_ASYNC),1)
 else
 	ASYNC_TARGETS = 
 	UPDATE_FILES = MonoMac.dll*
-	MCS ?= dmcs
+	MCS ?= gmcs
 endif
 
 TARGETS = _bmac.exe $(TARGET) parse.exe bmac.exe $(ASYNC_TARGETS)
