@@ -2676,7 +2676,7 @@ namespace MonoMac.AppKit {
 		float YellowComponent { get; }
 
 		[Export ("blackComponent")]
-		float BlackComponent { get; }
+		float BlackComponent { [MarshalNativeExceptions] get; }
 
 		[Export ("getCyan:magenta:yellow:black:alpha:")]
 		void GetCmyka (out float cyan, out float magenta, out float yellow, out float black, out float alpha);
