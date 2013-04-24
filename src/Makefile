@@ -92,7 +92,7 @@ MONOMAC_SOURCES = $(EXTRA_MONOMAC_SOURCES) \
 	./AppKit/NSTreeController.cs			\
         ./AppKit/NSWindow.cs				\
 	./CoreVideo/CVDisplayLink.cs			\
-	./Foundation/MonoMacException.cs		\
+	./Foundation/ObjCException.cs			\
 	./QTKit/QTCaptureDevice.cs			\
 	./QTKit/QTMovie.cs				\
 	./WebKit/DomNode.cs				\

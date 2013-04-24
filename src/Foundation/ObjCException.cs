@@ -24,15 +24,15 @@
 using System;
 
 namespace MonoMac.Foundation {
-	public class MonoMacException : Exception {
+	public class ObjCException : Exception {
 		NSException native_exc;
 
-		public MonoMacException () : base ()
+		public ObjCException () : base ()
 		{
 			native_exc = new NSException ("default", String.Empty, null);
 		}
 
-		public MonoMacException (NSException exc) : base ()
+		public ObjCException (NSException exc) : base ()
 		{
 			native_exc = exc;
 		}
@@ -40,7 +40,7 @@ namespace MonoMac.Foundation {
 		[Preserve]
 		internal static void Throw (IntPtr handle)
 		{
-			throw new MonoMacException (new NSException (handle));
+			throw new ObjCException (new NSException (handle));
 		}
 
 		public NSException NSException {
@@ -63,7 +63,7 @@ namespace MonoMac.Foundation {
 
 		public override string Message {
 			get {
-				return string.Format ("Objective-C exception thrown.  Name: {0} Reason: {1}", Name, Reason);
+				return string.Format ("{0}: {1}", Name, Reason);
 			}
 		}
 	}
