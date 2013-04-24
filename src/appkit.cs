@@ -2637,43 +2637,43 @@ namespace MonoMac.AppKit {
 		string LocalizedColorNameComponent { get; }
 
 		[Export ("redComponent")]
-		float RedComponent { get; }
+		float RedComponent { [MarshalNativeExceptions] get; }
 
 		[Export ("greenComponent")]
-		float GreenComponent { get; }
+		float GreenComponent { [MarshalNativeExceptions] get; }
 
 		[Export ("blueComponent")]
-		float BlueComponent { get; }
+		float BlueComponent { [MarshalNativeExceptions] get; }
 
 		[Export ("getRed:green:blue:alpha:")]
 		void GetRgba (out float red, out float green, out float blue, out float alpha);
 
 		[Export ("hueComponent")]
-		float HueComponent { get; }
+		float HueComponent { [MarshalNativeExceptions] get; }
 
 		[Export ("saturationComponent")]
-		float SaturationComponent { get; }
+		float SaturationComponent { [MarshalNativeExceptions] get; }
 
 		[Export ("brightnessComponent")]
-		float BrightnessComponent { get; }
+		float BrightnessComponent { [MarshalNativeExceptions] get; }
 
 		[Export ("getHue:saturation:brightness:alpha:")]
 		void GetHsba (out float hue, out float saturation, out float brightness, out float alpha);
 
 		[Export ("whiteComponent")]
-		float WhiteComponent { get; }
+		float WhiteComponent { [MarshalNativeExceptions] get; }
 
 		[Export ("getWhite:alpha:")]
 		void GetWhiteAlpha (out float white, out float alpha);
 
 		[Export ("cyanComponent")]
-		float CyanComponent { get; }
+		float CyanComponent { [MarshalNativeExceptions] get; }
 
 		[Export ("magentaComponent")]
-		float MagentaComponent { get; }
+		float MagentaComponent { [MarshalNativeExceptions] get; }
 
 		[Export ("yellowComponent")]
-		float YellowComponent { get; }
+		float YellowComponent { [MarshalNativeExceptions] get; }
 
 		[Export ("blackComponent")]
 		float BlackComponent { [MarshalNativeExceptions] get; }
