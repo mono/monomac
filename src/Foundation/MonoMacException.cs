@@ -37,6 +37,7 @@ namespace MonoMac.Foundation {
 			native_exc = exc;
 		}
 
+		[Preserve]
 		internal static void Throw (IntPtr handle)
 		{
 			throw new MonoMacException (new NSException (handle));
