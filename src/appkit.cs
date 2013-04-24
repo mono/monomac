@@ -2691,7 +2691,7 @@ namespace MonoMac.AppKit {
 		void _GetComponents (IntPtr components);
 
 		[Export ("alphaComponent")]
-		float AlphaComponent { get; }
+		float AlphaComponent { [MarshalNativeExceptions] get; }
 
 		[Static]
 		[Export ("colorFromPasteboard:")]
