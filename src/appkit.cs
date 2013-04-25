@@ -55,7 +55,18 @@ using CGFloat = System.Single;
 #endif
 
 namespace MonoMac.AppKit {
-		
+	[AttributeUsage( AttributeTargets.All, AllowMultiple=true )]
+	sealed class VerifyAttribute : System.Attribute
+	{
+		readonly string m_description;
+		public VerifyAttribute(string description)
+		{
+			Description = description;
+		}
+		public string Description { get; private set; }
+		public int Line { get; set; }
+	}
+
 	//[BaseType (typeof (NSObject))]
 	//interface CIImage {
 	//	[Export ("drawInRect:fromRect:operation:fraction:")]
@@ -2013,8 +2024,8 @@ namespace MonoMac.AppKit {
 		[Export ("cellSize")]
 		NSSize CellSize { get; }
 	
-		[Export ("cellNSSizeorBounds:")]
-		NSSize CellNSSizeorBounds (NSRect bounds);
+		[Export ("cellSizeForBounds:")]
+		NSSize CellSizeForBounds (NSRect bounds);
 	
 		[Export ("highlightColorWithFrame:inView:")]
 		NSColor HighlightColor (NSRect cellFrame, NSView controlView);
@@ -4971,7 +4982,7 @@ namespace MonoMac.AppKit {
 		[Export ("interpolatedColorAtLocation:")]
 		NSColor GetInterpolatedColor(float location);
 	}
-
+	/*
 	[BaseType (typeof (NSObject))]
 	public interface NSGraphicsContext {
 		[Static, Export ("graphicsContextWithAttributes:")]
@@ -5041,6 +5052,59 @@ namespace MonoMac.AppKit {
 		[Export ("CIContext")]
 		MonoMac.CoreImage.CIContext CIContext { get; } 
 	}
+	*/
+	[BaseType (typeof (NSObject))]
+	public partial interface NSGraphicsContext {
+		
+		[Static, Export ("graphicsContextWithAttributes:")]
+		NSGraphicsContext GraphicsContextWithAttributes (NSDictionary attributes);
+		
+		[Static, Export ("graphicsContextWithWindow:")]
+		NSGraphicsContext GraphicsContextWithWindow (NSWindow window);
+		
+		[Static, Export ("graphicsContextWithBitmapImageRep:")]
+		NSGraphicsContext GraphicsContextWithBitmapImageRep (NSBitmapImageRep bitmapRep);
+		
+		[Static, Export ("graphicsContextWithGraphicsPort:flipped:")]
+		NSGraphicsContext FromGraphicsPort (IntPtr graphicsPort, bool initialFlippedState);
+		
+		[Static, Export ("currentContext"), Verify ("/System/Library/Frameworks/AppKit.framework/Headers/NSGraphicsContext.h", Line = 57), Verify ("/System/Library/Frameworks/AppKit.framework/Headers/NSGraphicsContext.h", Line = 58)]
+		NSGraphicsContext CurrentContext { get; set; }
+		
+		[Export ("currentContextDrawingToScreen"), Verify ("/System/Library/Frameworks/AppKit.framework/Headers/NSGraphicsContext.h", Line = 61)]
+		bool CurrentContextDrawingToScreen { get; }
+		
+		[Static, Export ("saveGraphicsState")]
+		void StaticSaveGraphicsState ();
+		
+		[Static, Export ("restoreGraphicsState")]
+		void StaticRestoreGraphicsState ();
+		
+		[Export ("graphicsState"), Verify ("/System/Library/Frameworks/AppKit.framework/Headers/NSGraphicsContext.h", Line = 69)]
+		NSInteger GraphicsState { set; }
+		
+		[Export ("attributes"), Verify ("/System/Library/Frameworks/AppKit.framework/Headers/NSGraphicsContext.h", Line = 72)]
+		NSDictionary Attributes { get; }
+		
+		[Export ("isDrawingToScreen"), Verify ("/System/Library/Frameworks/AppKit.framework/Headers/NSGraphicsContext.h", Line = 75)]
+		bool IsDrawingToScreen { get; }
+		
+		[Export ("saveGraphicsState")]
+		void SaveGraphicsState ();
+		
+		[Export ("restoreGraphicsState")]
+		void RestoreGraphicsState ();
+		
+		[Export ("flushGraphics")]
+		void FlushGraphics ();
+		
+		[Export ("graphicsPort"), Verify ("/System/Library/Frameworks/AppKit.framework/Headers/NSGraphicsContext.h", Line = 84)]
+		IntPtr GraphicsPortHandle { get; }
+		
+		[Export ("isFlipped"), Verify ("/System/Library/Frameworks/AppKit.framework/Headers/NSGraphicsContext.h", Line = 88)]
+		bool IsFlipped { get; }
+	}
+
 
 	[BaseType (typeof (NSImageRep))]
 	[DisableDefaultCtor] // An uncaught exception was raised: -[NSEPSImageRep init]: unrecognized selector sent to instance 0x1db2d90
