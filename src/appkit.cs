@@ -5807,18 +5807,26 @@ namespace MonoMac.AppKit {
 
 	[BaseType (typeof (NSObject))]
 	public partial interface NSNib {
+		[Obsolete ("Deprecated in OSX 10.8")]
 		[Export ("initWithContentsOfURL:")]
 		IntPtr Constructor (NSUrl nibFileUrl);
 
 		[Export ("initWithNibNamed:bundle:")]
 		IntPtr Constructor (string nibName, NSBundle bundle);
+	
+		[Export ("initWithNibData:bundle:"), MountainLion]
+		IntPtr Constructor (NSData data, NSBundle bundle);
 
+		[Export ("instantiateWithOwner:topLevelObjects:"), MountainLion]
+		bool Instantiate (NSObject owner, out NSArray topLevelObjects);
+
+		[Obsolete ("Deprecated in OSX 10.8")]
 		[Export ("instantiateNibWithExternalNameTable:")]
 		bool InstantiateNib (NSDictionary externalNameTable);
 
-		// This requires an "out NSArray"
-		//[Export ("instantiateNibWithOwner:topLevelObjects:")]
-		//bool InstantiateNib (NSObject owner, NSArray topLevelObjects);
+		[Obsolete ("Deprecated in OSX 10.8")]
+		[Export ("instantiateNibWithOwner:topLevelObjects:")]
+		bool InstantiateNib (NSObject owner, out NSArray topLevelObjects);
 	}	
 
 	[BaseType (typeof (NSController))]
