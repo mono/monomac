@@ -14402,7 +14402,7 @@ namespace MonoMac.AppKit {
 	[BaseType (typeof (NSResponder))]
 	public interface NSWindowController {
 		[Export ("initWithWindow:")]
-		IntPtr Constructor (NSWindow  window);
+		IntPtr Constructor ([NullAllowed] NSWindow  window);
 	
 		[Export ("initWithWindowNibName:")]
 		IntPtr Constructor (string  windowNibName);
