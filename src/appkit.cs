@@ -5812,10 +5812,10 @@ namespace MonoMac.AppKit {
 		IntPtr Constructor (NSUrl nibFileUrl);
 
 		[Export ("initWithNibNamed:bundle:")]
-		IntPtr Constructor (string nibName, NSBundle bundle);
+		IntPtr Constructor (string nibName, [NullAllowed] NSBundle bundle);
 	
 		[Export ("initWithNibData:bundle:"), MountainLion]
-		IntPtr Constructor (NSData data, NSBundle bundle);
+		IntPtr Constructor (NSData data, [NullAllowed] NSBundle bundle);
 
 		[Export ("instantiateWithOwner:topLevelObjects:"), MountainLion]
 		bool Instantiate (NSObject owner, out NSArray topLevelObjects);
