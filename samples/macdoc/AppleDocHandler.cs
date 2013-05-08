@@ -58,7 +58,7 @@ namespace macdoc
 		// This method transforms the Atom XML data into a POCO for the the most recent item of the feed
 		AppleDocInformation GetLatestAppleDocInformation (XDocument feed)
 		{
-			var latestEntry = feed.Descendants (atomNamespace + "entry").LastOrDefault ();
+			var latestEntry = feed.Descendants (atomNamespace + "entry").FirstOrDefault ();
 			if (latestEntry == null)
 				return null;
 			
