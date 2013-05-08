@@ -4,6 +4,7 @@ using System.Net;
 using System.Linq;
 using System.Threading;
 using System.Xml.Linq;
+using System.Collections.Generic;
 
 namespace macdoc
 {
@@ -35,7 +36,7 @@ namespace macdoc
 		readonly XNamespace atomNamespace = "http://www.w3.org/2005/Atom";
 		readonly string baseApplicationPath;
 
-		XDocument appleFeed;
+		Dictionary<string, XDocument> appleFeeds = new Dictionary<string, XDocument> ();
 		
 		public AppleDocHandler (string baseApplicationPath)
 		{
@@ -45,12 +46,13 @@ namespace macdoc
 		// We load the atom field that contains a timeline of the modifications down to documentation by Apple
 		XDocument LoadAppleFeed (string feedUrl)
 		{
-			if (appleFeed != null)
+			XDocument appleFeed;
+			if (appleFeeds.TryGetValue (feedUrl, out appleFeed))
 				return appleFeed;
-			
+
 			WebClient wc = new WebClient ();
 			var feed = wc.DownloadString (feedUrl);
-			return appleFeed = XDocument.Parse (feed);
+			return appleFeeds[feedUrl] = XDocument.Parse (feed);
 		}
 
 		// This method transforms the Atom XML data into a POCO for the the most recent item of the feed
