@@ -248,8 +248,8 @@ namespace macdoc
 		
 		void LaunchDocumentationUpdate (Dictionary<Product, Tuple<bool, bool>> toUpdate)
 		{
-			var informative = "We have detected your " + string.Join (" and ", toUpdate.Keys.Select (ProductUtils.GetFriendlyName)) +
-				" documentation can be upgraded with Apple documentation.";
+			var outdatedProducts = string.Join (" and ", toUpdate.Where (kvp => kvp.Value.Item1 || kvp.Value.Item2).Select (kvp => ProductUtils.GetFriendlyName (kvp.Key)));
+			var informative = "We have detected your " + outdatedProducts + " documentation can be upgraded with Apple documentation.";
 			// Check if we are going to be downloading stuff
 			if (toUpdate.Any (kvp => kvp.Value.Item1))
 				informative += Environment.NewLine + Environment.NewLine + "Warning: we are going to download documentation from Apple servers which can take a long time depending on your Internet connection.";
