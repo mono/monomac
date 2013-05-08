@@ -101,6 +101,7 @@ namespace macdoc
 				return false;
 
 			var installedVersion = GetAppleDocVersion (path);
+			Logger.Log ("Installed doc version {0}, compared to remote {1}", installedVersion.ToString (), infos.Version.ToString ());
 			return installedVersion >= infos.Version;
 		}
 
@@ -109,6 +110,7 @@ namespace macdoc
 		// is given the completion percentage
 		public bool CheckAppleDocFreshness (string atomFeed, out AppleDocInformation infos)
 		{
+			Logger.Log ("Downloading Apple feed at {0}", atomFeed);
 			var feed = LoadAppleFeed (atomFeed);
 			infos = GetLatestAppleDocInformation (feed);
 			var needRefresh = !CheckAppleDocAvailabilityAndFreshness (infos);
@@ -132,6 +134,7 @@ namespace macdoc
 				return true;
 			
 			var mergedVersion = CloneFillWithZeros (new Version (File.ReadAllText (statusFile)));
+			Logger.Log ("Comparing merged {0} with downloaded {1}", mergedVersion.ToString (), infos.Version.ToString ());
 			return mergedVersion != infos.Version;
 		}
 		
