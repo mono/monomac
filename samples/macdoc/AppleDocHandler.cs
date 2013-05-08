@@ -18,6 +18,7 @@ namespace macdoc
 		}
 		
 		readonly string[] searchPaths = new[] {
+			"/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/Documentation/DocSets",
 			"/Applications/Xcode.app/Contents/Developer/Documentation/DocSets/",
 			"/Library/Developer/Shared/Documentation/DocSets/",
 			"/Developer/Platforms/iPhoneOS.platform/Developer/Documentation/DocSets/"
