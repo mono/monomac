@@ -389,7 +389,8 @@ namespace macdoc
 			tabSelector.SelectAt (2);
 			Search (contents);
 			// Unselect the search term in case user is typing slowly
-			sender.CurrentEditor.SelectedRange = new NSRange (contents.Length, 0);
+			if (sender.CurrentEditor != null)
+				sender.CurrentEditor.SelectedRange = new NSRange (contents.Length, 0);
 		}
 		
 		// Typing in the index panel
