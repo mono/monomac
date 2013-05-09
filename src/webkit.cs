@@ -1198,7 +1198,7 @@ namespace MonoMac.WebKit {
 		int TabIndex { get; set; }
 
 		[Export ("type")]
-		string Type { get; set; }
+		string Type { get; }
 
 		[Export ("value")]
 		string Value { get; set; }
