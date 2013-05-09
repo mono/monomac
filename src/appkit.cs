@@ -290,7 +290,7 @@ namespace MonoMac.AppKit {
 	[BaseType (typeof (NSResponder), Delegates=new string [] { "WeakDelegate" }, Events=new Type [] { typeof (NSApplicationDelegate) })]
 	[DisableDefaultCtor] // An uncaught exception was raised: Creating more than one Application
 	public interface NSApplication : NSWindowRestoration {
-		[Export ("sharedApplication"), Static]
+		[Export ("sharedApplication"), Static, ThreadSafe]
 		NSApplication SharedApplication { get; }
 	
 		[Export ("delegate", ArgumentSemantic.Assign), NullAllowed]
@@ -359,7 +359,7 @@ namespace MonoMac.AppKit {
 		[Export ("stopModalWithCode:")]
 		void StopModalWithCode (int returnCode);
 	
-		[Export ("abortModal")]
+		[Export ("abortModal"), ThreadSafe]
 		void AbortModal ();
 	
 		[Export ("modalWindow")]
@@ -519,10 +519,10 @@ namespace MonoMac.AppKit {
 		[Export ("orderFrontColorPanel:")]
 		void OrderFrontColorPanel (NSObject sender);
 
-		[Lion, Export ("disableRelaunchOnLogin")]
+		[Lion, Export ("disableRelaunchOnLogin"), ThreadSafe]
 		void DisableRelaunchOnLogin ();
 
-		[Lion, Export ("enableRelaunchOnLogin")]
+		[Lion, Export ("enableRelaunchOnLogin"), ThreadSafe]
 		void EnableRelaunchOnLogin ();
 
 		[Lion, Export ("enabledRemoteNotificationTypes")]
@@ -14681,7 +14681,7 @@ namespace MonoMac.AppKit {
 	[BaseType (typeof (NSObject))]
 	public interface NSWorkspace {
 		[Static]
-		[Export ("sharedWorkspace")]
+		[Export ("sharedWorkspace"), ThreadSafe]
 		NSWorkspace SharedWorkspace { get; }
 		
 		[Export ("notificationCenter")]
@@ -14825,7 +14825,7 @@ namespace MonoMac.AppKit {
 		[Export ("desktopImageOptionsForScreen:")]
 		NSDictionary DesktopImageOptions (NSScreen screen);		
 		
-		[Export ("runningApplications")]
+		[Export ("runningApplications"), ThreadSafe]
 		NSRunningApplication [] RunningApplications { get; }
 
 		[Lion]
