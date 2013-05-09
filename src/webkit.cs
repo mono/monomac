@@ -1165,6 +1165,53 @@ namespace MonoMac.WebKit {
 		[Export ("click")]
 		void Click ();
 	}
+
+	[BaseType (typeof (DomHtmlElement), Name="DOMHTMLTextAreaElement")]
+	[DisableDefaultCtor] // An uncaught exception was raised: +[DOMHTMLElement init]: should never be used
+	interface DomHtmlTextAreaElement {
+	
+		[Export ("accessKey")]
+		string AccessKey { get; set; }
+
+		[Export ("cols")]
+		int Cols { get; set; }
+
+		[Export ("defaultValue")]
+		string DefaultValue { get; set; }
+
+		[Export ("disabled")]
+		bool Disabled { get; set; }
+
+//		[Export ("form")]
+//		DomHtmlFormElement Form { get; }
+
+		[Export ("name")]
+		string Name { get; set; }
+
+		[Export ("readOnly")]
+		bool ReadOnly { get; set; }
+
+		[Export ("rows")]
+		int Rows { get; set; }
+
+		[Export ("tabIndex")]
+		int TabIndex { get; set; }
+
+		[Export ("type")]
+		string Type { get; set; }
+
+		[Export ("value")]
+		string Value { get; set; }
+
+		[Export ("blur")]
+		void Blur ();
+
+		[Export ("focus")]
+		void Focus ();
+
+		[Export ("select")]
+		void Select ();
+	}
 	
 	[BaseType (typeof (DomElement), Name="DOMHTMLElement")]
 	[DisableDefaultCtor] // An uncaught exception was raised: +[DOMHTMLElement init]: should never be used
