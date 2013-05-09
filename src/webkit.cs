@@ -1174,7 +1174,7 @@ namespace MonoMac.WebKit {
 		string AccessKey { get; set; }
 
 		[Export ("cols")]
-		int Cols { get; set; }
+		int Columns { get; set; }
 
 		[Export ("defaultValue")]
 		string DefaultValue { get; set; }
