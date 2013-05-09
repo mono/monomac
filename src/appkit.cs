@@ -13925,13 +13925,13 @@ namespace MonoMac.AppKit {
 		void Center ();
 	
 		[Export ("makeKeyAndOrderFront:")]
-		void MakeKeyAndOrderFront (NSObject sender);
+		void MakeKeyAndOrderFront ([NullAllowed] NSObject sender);
 	
 		[Export ("orderFront:")]
-		void OrderFront (NSObject sender);
+		void OrderFront ([NullAllowed] NSObject sender);
 		
 		[Export ("orderBack:")]
-		void OrderBack (NSObject sender);
+		void OrderBack ([NullAllowed] NSObject sender);
 	
 		[Export ("orderOut:")]
 		void OrderOut ([NullAllowed] NSObject sender);
