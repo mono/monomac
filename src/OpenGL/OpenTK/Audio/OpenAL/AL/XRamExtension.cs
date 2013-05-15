@@ -1,4 +1,4 @@
-#region --- OpenTK.OpenAL License ---
+﻿#region --- OpenTK.OpenAL License ---
 /* XRamExtension.cs
  * C header: \OpenAL 1.1 SDK\include\xram.h
  * Spec: ?
