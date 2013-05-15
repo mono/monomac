@@ -15008,7 +15008,7 @@ namespace MonoMac.AppKit {
 		[Export ("runningApplicationWithProcessIdentifier:")]
 		NSRunningApplication GetRunningApplication (int pid);
 		
-		[Static]
+		[Static][ThreadSafe]
 		[Export ("currentApplication")]
 		NSRunningApplication CurrentApplication { get ; }
 	
