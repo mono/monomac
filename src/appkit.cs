@@ -14328,7 +14328,7 @@ namespace MonoMac.AppKit {
                 float BackingScaleFactor { get; }
 
                 [Lion, Export ("toggleFullScreen:")]
-                void ToggleFullScreen (NSObject sender);
+                void ToggleFullScreen ([NullAllowed] NSObject sender);
 
                 //Detected properties
                 [Export ("animationBehavior")]
