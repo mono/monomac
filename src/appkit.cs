@@ -13305,43 +13305,33 @@ namespace MonoMac.AppKit {
 	[BaseType (typeof (NSObject))]
 	[Model]
 	public interface NSTokenFieldDelegate {
-		[Abstract]
 		[Export ("tokenField:completionsForSubstring:indexOfToken:indexOfSelectedItem:")]
 		string [] GetCompletionStrings (NSTokenField tokenField, string substring, int tokenIndex, int selectedIndex);
 
-		[Abstract]
 		[Export ("tokenField:shouldAddObjects:atIndex:")]
 		NSTokenField [] ShouldAddObjects (NSTokenField tokenField, NSTokenField [] tokens, uint index);
 
-		[Abstract]
 		[Export ("tokenField:displayStringForRepresentedObject:")]
 		string GetDisplayString (NSTokenField tokenField, NSObject representedObject);
 
-		[Abstract]
 		[Export ("tokenField:editingStringForRepresentedObject:")]
 		string GetEditingString (NSTokenField tokenField, NSObject representedObject);
 
-		[Abstract]
 		[Export ("tokenField:representedObjectForEditingString:")]
 		NSObject GetRepresentedObject (NSTokenField tokenField, string editingString);
 
-		[Abstract]
 		[Export ("tokenField:writeRepresentedObjects:toPasteboard:")]
 		bool WriteRepresented (NSTokenField tokenField, NSArray objects, NSPasteboard pboard);
 
-		[Abstract]
 		[Export ("tokenField:readFromPasteboard:")]
 		NSObject [] Read (NSTokenField tokenField, NSPasteboard pboard);
 
-		[Abstract]
 		[Export ("tokenField:menuForRepresentedObject:")]
 		NSMenu GetMenu (NSTokenField tokenField, NSObject representedObject);
 
-		[Abstract]
 		[Export ("tokenField:hasMenuForRepresentedObject:")]
 		bool HasMenu (NSTokenField tokenField, NSObject representedObject);
 
-		[Abstract]
 		[Export ("tokenField:styleForRepresentedObject:")]
 		NSTokenStyle GetStyle (NSTokenField tokenField, NSObject representedObject);
 
