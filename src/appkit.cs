@@ -6297,9 +6297,8 @@ namespace MonoMac.AppKit {
 		[Export ("outlineView:didDragTableColumn:")]
 		void DidDragTableColumn (NSOutlineView outlineView, NSTableColumn tableColumn);
 		
-		//FIXME: Binding NSRectPointer	
-		//[Export ("outlineView:toolTipForCell:rect:tableColumn:item:mouseLocation:")]
-		//string ToolTipForCell (NSOutlineView outlineView, NSCell cell, NSRectPointer rect, NSTableColumn tableColumn, NSObject item, PointF mouseLocation);
+		[Export ("outlineView:toolTipForCell:rect:tableColumn:item:mouseLocation:")]
+		string ToolTipForCell (NSOutlineView outlineView, NSCell cell, ref RectangleF rect, NSTableColumn tableColumn, NSObject item, PointF mouseLocation);
 	
 		[Export ("outlineView:heightOfRowByItem:"), NoDefaultValue]
 		float GetRowHeight (NSOutlineView outlineView, NSObject item);
