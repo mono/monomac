@@ -3076,6 +3076,18 @@ namespace MonoMac.AppKit {
 
 		[Export ("objectValues")]
 		NSObject [] Values { get; }
+
+		[Notification, Field ("NSComboBoxSelectionDidChangeNotification")]
+		NSString SelectionDidChangeNotification { get; }
+
+		[Notification, Field ("NSComboBoxSelectionIsChangingNotification")]
+		NSString SelectionIsChangingNotification { get; }
+
+		[Notification, Field ("NSComboBoxWillDismissNotification")]
+		NSString WillDismissNotification { get; }
+
+		[Notification, Field ("NSComboBoxWillPopUpNotification")]
+		NSString WillPopUpNotification { get; }
 	}
 
 	[BaseType (typeof (NSObject))]
