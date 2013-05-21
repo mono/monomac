@@ -1459,7 +1459,10 @@ namespace MonoMac.AppKit {
 
 		[Static]
 		[Export ("cellClass")]
-		Class CellClass { get; set; }
+		Class CellClass { get; }
+
+		[Export ("setCellClass:")]
+		void SetCellClass (Class factoryId);
 
 		[Export ("cellPrototype")]
 		NSObject CellPrototype { get; set; }
