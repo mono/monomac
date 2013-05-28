@@ -6634,6 +6634,123 @@ namespace MonoMac.AppKit {
 		
 		[Obsolete ("On 10.6 and newer use DrawInRect with respectContextIsFlipped instead"), Export ("flipped")]
 		bool Flipped { [Bind ("isFlipped")] get; set; }
+
+		[Field ("NSImageNameQuickLookTemplate")]
+		NSString QuickLookTemplate { get; }
+
+		[Field ("NSImageNameBluetoothTemplate")]
+		NSString BluetoothTemplate { get; }
+
+		[Field ("NSImageNameIChatTheaterTemplate")]
+		NSString IChatTheaterTemplate { get; }
+
+		[Field ("NSImageNameSlideshowTemplate")]
+		NSString SlideshowTemplate { get; }
+
+		[Field ("NSImageNameActionTemplate")]
+		NSString ActionTemplate { get; }
+
+		[Field ("NSImageNameSmartBadgeTemplate")]
+		NSString SmartBadgeTemplate { get; }
+
+		[Field ("NSImageNamePathTemplate")]
+		NSString PathTemplate { get; }
+
+		[Field ("NSImageNameInvalidDataFreestandingTemplate")]
+		NSString InvalidDataFreestandingTemplate { get; }
+
+		[Field ("NSImageNameLockLockedTemplate")]
+		NSString LockLockedTemplate { get; }
+
+		[Field ("NSImageNameLockUnlockedTemplate")]
+		NSString LockUnlockedTemplate { get; }
+
+		[Field ("NSImageNameGoRightTemplate")]
+		NSString GoRightTemplate { get; }
+
+		[Field ("NSImageNameGoLeftTemplate")]
+		NSString GoLeftTemplate { get; }
+
+		[Field ("NSImageNameRightFacingTriangleTemplate")]
+		NSString RightFacingTriangleTemplate { get; }
+
+		[Field ("NSImageNameLeftFacingTriangleTemplate")]
+		NSString LeftFacingTriangleTemplate { get; }
+
+		[Field ("NSImageNameAddTemplate")]
+		NSString AddTemplate { get; }
+
+		[Field ("NSImageNameRemoveTemplate")]
+		NSString RemoveTemplate { get; }
+
+		[Field ("NSImageNameRevealFreestandingTemplate")]
+		NSString RevealFreestandingTemplate { get; }
+
+		[Field ("NSImageNameFollowLinkFreestandingTemplate")]
+		NSString FollowLinkFreestandingTemplate { get; }
+
+		[Field ("NSImageNameEnterFullScreenTemplate")]
+		NSString EnterFullScreenTemplate { get; }
+
+		[Field ("NSImageNameExitFullScreenTemplate")]
+		NSString ExitFullScreenTemplate { get; }
+
+		[Field ("NSImageNameStopProgressTemplate")]
+		NSString StopProgressTemplate { get; }
+
+		[Field ("NSImageNameStopProgressFreestandingTemplate")]
+		NSString StopProgressFreestandingTemplate { get; }
+
+		[Field ("NSImageNameRefreshTemplate")]
+		NSString RefreshTemplate { get; }
+
+		[Field ("NSImageNameRefreshFreestandingTemplate")]
+		NSString RefreshFreestandingTemplate { get; }
+
+		[Field ("NSImageNameFolder")]
+		NSString Folder { get; }
+
+		[Field ("NSImageNameTrashEmpty")]
+		NSString TrashEmpty { get; }
+
+		[Field ("NSImageNameTrashFull")]
+		NSString TrashFull { get; }
+
+		[Field ("NSImageNameHomeTemplate")]
+		NSString HomeTemplate { get; }
+
+		[Field ("NSImageNameBookmarksTemplate")]
+		NSString BookmarksTemplate { get; }
+
+		[Field ("NSImageNameCaution")]
+		NSString Caution { get; }
+
+		[Field ("NSImageNameStatusAvailable")]
+		NSString StatusAvailable { get; }
+
+		[Field ("NSImageNameStatusPartiallyAvailable")]
+		NSString StatusPartiallyAvailable { get; }
+
+		[Field ("NSImageNameStatusUnavailable")]
+		NSString StatusUnavailable { get; }
+
+		[Field ("NSImageNameStatusNone")]
+		NSString StatusNone { get; }
+
+		[Field ("NSImageNameApplicationIcon")]
+		NSString ApplicationIcon { get; }
+
+		[Field ("NSImageNameMenuOnStateTemplate")]
+		NSString MenuOnStateTemplate { get; }
+
+		[Field ("NSImageNameMenuMixedStateTemplate")]
+		NSString MenuMixedStateTemplate { get; }
+
+		[Field ("NSImageNameUserGuest")]
+		NSString UserGuest { get; }
+
+		[Field ("NSImageNameMobileMe")]
+		NSString MobileMe { get; }
 	}
 
 	[BaseType (typeof (NSObject))]
