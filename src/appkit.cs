@@ -6635,122 +6635,122 @@ namespace MonoMac.AppKit {
 		[Obsolete ("On 10.6 and newer use DrawInRect with respectContextIsFlipped instead"), Export ("flipped")]
 		bool Flipped { [Bind ("isFlipped")] get; set; }
 
-		[Field ("NSImageNameQuickLookTemplate")]
-		NSString QuickLookTemplate { get; }
+		[Internal, Field ("NSImageNameQuickLookTemplate")]
+		NSString NSImageNameQuickLookTemplate { get; }
 
-		[Field ("NSImageNameBluetoothTemplate")]
-		NSString BluetoothTemplate { get; }
+		[Internal, Field ("NSImageNameBluetoothTemplate")]
+		NSString NSImageNameBluetoothTemplate { get; }
 
-		[Field ("NSImageNameIChatTheaterTemplate")]
-		NSString IChatTheaterTemplate { get; }
+		[Internal, Field ("NSImageNameIChatTheaterTemplate")]
+		NSString NSImageNameIChatTheaterTemplate { get; }
 
-		[Field ("NSImageNameSlideshowTemplate")]
-		NSString SlideshowTemplate { get; }
+		[Internal, Field ("NSImageNameSlideshowTemplate")]
+		NSString NSImageNameSlideshowTemplate { get; }
 
-		[Field ("NSImageNameActionTemplate")]
-		NSString ActionTemplate { get; }
+		[Internal, Field ("NSImageNameActionTemplate")]
+		NSString NSImageNameActionTemplate { get; }
 
-		[Field ("NSImageNameSmartBadgeTemplate")]
-		NSString SmartBadgeTemplate { get; }
+		[Internal, Field ("NSImageNameSmartBadgeTemplate")]
+		NSString NSImageNameSmartBadgeTemplate { get; }
 
-		[Field ("NSImageNamePathTemplate")]
-		NSString PathTemplate { get; }
+		[Internal, Field ("NSImageNamePathTemplate")]
+		NSString NSImageNamePathTemplate { get; }
 
-		[Field ("NSImageNameInvalidDataFreestandingTemplate")]
-		NSString InvalidDataFreestandingTemplate { get; }
+		[Internal, Field ("NSImageNameInvalidDataFreestandingTemplate")]
+		NSString NSImageNameInvalidDataFreestandingTemplate { get; }
 
-		[Field ("NSImageNameLockLockedTemplate")]
-		NSString LockLockedTemplate { get; }
+		[Internal, Field ("NSImageNameLockLockedTemplate")]
+		NSString NSImageNameLockLockedTemplate { get; }
 
-		[Field ("NSImageNameLockUnlockedTemplate")]
-		NSString LockUnlockedTemplate { get; }
+		[Internal, Field ("NSImageNameLockUnlockedTemplate")]
+		NSString NSImageNameLockUnlockedTemplate { get; }
 
-		[Field ("NSImageNameGoRightTemplate")]
-		NSString GoRightTemplate { get; }
+		[Internal, Field ("NSImageNameGoRightTemplate")]
+		NSString NSImageNameGoRightTemplate { get; }
 
-		[Field ("NSImageNameGoLeftTemplate")]
-		NSString GoLeftTemplate { get; }
+		[Internal, Field ("NSImageNameGoLeftTemplate")]
+		NSString NSImageNameGoLeftTemplate { get; }
 
-		[Field ("NSImageNameRightFacingTriangleTemplate")]
-		NSString RightFacingTriangleTemplate { get; }
+		[Internal, Field ("NSImageNameRightFacingTriangleTemplate")]
+		NSString NSImageNameRightFacingTriangleTemplate { get; }
 
-		[Field ("NSImageNameLeftFacingTriangleTemplate")]
-		NSString LeftFacingTriangleTemplate { get; }
+		[Internal, Field ("NSImageNameLeftFacingTriangleTemplate")]
+		NSString NSImageNameLeftFacingTriangleTemplate { get; }
 
-		[Field ("NSImageNameAddTemplate")]
-		NSString AddTemplate { get; }
+		[Internal, Field ("NSImageNameAddTemplate")]
+		NSString NSImageNameAddTemplate { get; }
 
-		[Field ("NSImageNameRemoveTemplate")]
-		NSString RemoveTemplate { get; }
+		[Internal, Field ("NSImageNameRemoveTemplate")]
+		NSString NSImageNameRemoveTemplate { get; }
 
-		[Field ("NSImageNameRevealFreestandingTemplate")]
-		NSString RevealFreestandingTemplate { get; }
+		[Internal, Field ("NSImageNameRevealFreestandingTemplate")]
+		NSString NSImageNameRevealFreestandingTemplate { get; }
 
-		[Field ("NSImageNameFollowLinkFreestandingTemplate")]
-		NSString FollowLinkFreestandingTemplate { get; }
+		[Internal, Field ("NSImageNameFollowLinkFreestandingTemplate")]
+		NSString NSImageNameFollowLinkFreestandingTemplate { get; }
 
-		[Field ("NSImageNameEnterFullScreenTemplate")]
-		NSString EnterFullScreenTemplate { get; }
+		[Internal, Field ("NSImageNameEnterFullScreenTemplate")]
+		NSString NSImageNameEnterFullScreenTemplate { get; }
 
-		[Field ("NSImageNameExitFullScreenTemplate")]
-		NSString ExitFullScreenTemplate { get; }
+		[Internal, Field ("NSImageNameExitFullScreenTemplate")]
+		NSString NSImageNameExitFullScreenTemplate { get; }
 
-		[Field ("NSImageNameStopProgressTemplate")]
-		NSString StopProgressTemplate { get; }
+		[Internal, Field ("NSImageNameStopProgressTemplate")]
+		NSString NSImageNameStopProgressTemplate { get; }
 
-		[Field ("NSImageNameStopProgressFreestandingTemplate")]
-		NSString StopProgressFreestandingTemplate { get; }
+		[Internal, Field ("NSImageNameStopProgressFreestandingTemplate")]
+		NSString NSImageNameStopProgressFreestandingTemplate { get; }
 
-		[Field ("NSImageNameRefreshTemplate")]
-		NSString RefreshTemplate { get; }
+		[Internal, Field ("NSImageNameRefreshTemplate")]
+		NSString NSImageNameRefreshTemplate { get; }
 
-		[Field ("NSImageNameRefreshFreestandingTemplate")]
-		NSString RefreshFreestandingTemplate { get; }
+		[Internal, Field ("NSImageNameRefreshFreestandingTemplate")]
+		NSString NSImageNameRefreshFreestandingTemplate { get; }
 
-		[Field ("NSImageNameFolder")]
-		NSString Folder { get; }
+		[Internal, Field ("NSImageNameFolder")]
+		NSString NSImageNameFolder { get; }
 
-		[Field ("NSImageNameTrashEmpty")]
-		NSString TrashEmpty { get; }
+		[Internal, Field ("NSImageNameTrashEmpty")]
+		NSString NSImageNameTrashEmpty { get; }
 
-		[Field ("NSImageNameTrashFull")]
-		NSString TrashFull { get; }
+		[Internal, Field ("NSImageNameTrashFull")]
+		NSString NSImageNameTrashFull { get; }
 
-		[Field ("NSImageNameHomeTemplate")]
-		NSString HomeTemplate { get; }
+		[Internal, Field ("NSImageNameHomeTemplate")]
+		NSString NSImageNameHomeTemplate { get; }
 
-		[Field ("NSImageNameBookmarksTemplate")]
-		NSString BookmarksTemplate { get; }
+		[Internal, Field ("NSImageNameBookmarksTemplate")]
+		NSString NSImageNameBookmarksTemplate { get; }
 
-		[Field ("NSImageNameCaution")]
-		NSString Caution { get; }
+		[Internal, Field ("NSImageNameCaution")]
+		NSString NSImageNameCaution { get; }
 
-		[Field ("NSImageNameStatusAvailable")]
-		NSString StatusAvailable { get; }
+		[Internal, Field ("NSImageNameStatusAvailable")]
+		NSString NSImageNameStatusAvailable { get; }
 
-		[Field ("NSImageNameStatusPartiallyAvailable")]
-		NSString StatusPartiallyAvailable { get; }
+		[Internal, Field ("NSImageNameStatusPartiallyAvailable")]
+		NSString NSImageNameStatusPartiallyAvailable { get; }
 
-		[Field ("NSImageNameStatusUnavailable")]
-		NSString StatusUnavailable { get; }
+		[Internal, Field ("NSImageNameStatusUnavailable")]
+		NSString NSImageNameStatusUnavailable { get; }
 
-		[Field ("NSImageNameStatusNone")]
-		NSString StatusNone { get; }
+		[Internal, Field ("NSImageNameStatusNone")]
+		NSString NSImageNameStatusNone { get; }
 
-		[Field ("NSImageNameApplicationIcon")]
-		NSString ApplicationIcon { get; }
+		[Internal, Field ("NSImageNameApplicationIcon")]
+		NSString NSImageNameApplicationIcon { get; }
 
-		[Field ("NSImageNameMenuOnStateTemplate")]
-		NSString MenuOnStateTemplate { get; }
+		[Internal, Field ("NSImageNameMenuOnStateTemplate")]
+		NSString NSImageNameMenuOnStateTemplate { get; }
 
-		[Field ("NSImageNameMenuMixedStateTemplate")]
-		NSString MenuMixedStateTemplate { get; }
+		[Internal, Field ("NSImageNameMenuMixedStateTemplate")]
+		NSString NSImageNameMenuMixedStateTemplate { get; }
 
-		[Field ("NSImageNameUserGuest")]
-		NSString UserGuest { get; }
+		[Internal, Field ("NSImageNameUserGuest")]
+		NSString NSImageNameUserGuest { get; }
 
-		[Field ("NSImageNameMobileMe")]
-		NSString MobileMe { get; }
+		[Internal, Field ("NSImageNameMobileMe")]
+		NSString NSImageNameMobileMe { get; }
 	}
 
 	[BaseType (typeof (NSObject))]
