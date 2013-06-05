@@ -3051,18 +3051,23 @@ namespace MonoMac.AppKit {
 		void Add (NSObject object1);
 
 		[Export ("addItemsWithObjectValues:")]
+		[PostGet ("Values")]
 		void Add (NSObject [] items);
 
 		[Export ("insertItemWithObjectValue:atIndex:")]
+		[PostGet ("Values")]
 		void Insert (NSObject object1, int index);
 
 		[Export ("removeItemWithObjectValue:")]
+		[PostGet ("Values")]
 		void Remove (NSObject object1);
 
 		[Export ("removeItemAtIndex:")]
+		[PostGet ("Values")]
 		void RemoveAt (int index);
 
 		[Export ("removeAllItems")]
+		[PostGet ("Values")]
 		void RemoveAll ();
 
 		[Export ("selectItemWithObjectValue:")]
@@ -3734,9 +3739,11 @@ namespace MonoMac.AppKit {
 		void SetWindow (NSWindow window);
 
 		[Export ("addWindowController:")]
+		[PostGet ("WindowControllers")]
 		void AddWindowController (NSWindowController windowController);
 
 		[Export ("removeWindowController:")]
+		[PostGet ("WindowControllers")]
 		void RemoveWindowController (NSWindowController windowController);
 
 		[Export ("showWindows")]
@@ -3907,9 +3914,11 @@ namespace MonoMac.AppKit {
 		NSDocument DocumentForWindow (NSWindow window);
 
 		[Export ("addDocument:")]
+		[PostGet ("Documents")]
 		void AddDocument (NSDocument document);
 
 		[Export ("removeDocument:")]
+		[PostGet ("Documents")]
 		void RemoveDocument (NSDocument document);
 
 		[Export ("newDocument:")]
@@ -5425,27 +5434,34 @@ namespace MonoMac.AppKit {
 		bool PopUpMenu ([NullAllowed] NSMenuItem item, PointF location, [NullAllowed] NSView view);
 
 		[Export ("insertItem:atIndex:")]
+		[PostGet ("ItemArray()")]
 		void InsertItem (NSMenuItem newItem, int index);
 
 		[Export ("addItem:")]
+		[PostGet ("ItemArray()")]
 		void AddItem (NSMenuItem newItem);
 
 		[Export ("insertItemWithTitle:action:keyEquivalent:atIndex:")]
+		[PostGet ("ItemArray()")]
 		NSMenuItem InsertItem (string title, [NullAllowed] Selector action, string charCode, int index);
 
 		[Export ("addItemWithTitle:action:keyEquivalent:")]
+		[PostGet ("ItemArray()")]
 		NSMenuItem AddItem (string title, [NullAllowed] Selector action, string charCode);
 
 		[Export ("removeItemAtIndex:")]
+		[PostGet ("ItemArray()")]
 		void RemoveItemAt (int index);
 
 		[Export ("removeItem:")]
+		[PostGet ("ItemArray()")]
 		void RemoveItem (NSMenuItem item);
 
 		[Export ("setSubmenu:forItem:")]
 		void SetSubmenu (NSMenu aMenu, NSMenuItem anItem);
 
 		[Export ("removeAllItems")]
+		[PostGet ("ItemArray()")]
 		void RemoveAllItems ();
 
 		[Export ("itemArray")]
@@ -6517,12 +6533,15 @@ namespace MonoMac.AppKit {
 		NSImageRep [] Representations ();
 
 		[Export ("addRepresentations:")]
+		[PostGet ("Representations()")]
 		void AddRepresentations (NSImageRep [] imageReps);
 
 		[Export ("addRepresentation:")]
+		[PostGet ("Representations()")]
 		void AddRepresentation (NSImageRep imageRep);
 
 		[Export ("removeRepresentation:")]
+		[PostGet ("Representations()")]
 		void RemoveRepresentation (NSImageRep imageRep);
 
 		[Export ("isValid")]
@@ -7313,12 +7332,15 @@ namespace MonoMac.AppKit {
 		NSTextContainer [] TextContainers { get; }
 
 		[Export ("addTextContainer:")]
+		[PostGet ("TextContainers")]
 		void AddTextContainer (NSTextContainer container);
 
 		[Export ("insertTextContainer:atIndex:")]
+		[PostGet ("TextContainers")]
 		void InsertTextContainer (NSTextContainer container, int index);
 
 		[Export ("removeTextContainerAtIndex:")]
+		[PostGet ("TextContainers")]
 		void RemoveTextContainer (int index);
 
 		[Export ("textContainerChangedGeometry:")]
@@ -7681,9 +7703,11 @@ namespace MonoMac.AppKit {
 		NSPageLayout PageLayout { get; }
 
 		[Export ("addAccessoryController:")]
+		[PostGet ("AccessoryControllers()")]
 		void AddAccessoryController (NSViewController accessoryController);
 
 		[Export ("removeAccessoryController:")]
+		[PostGet ("AccessoryControllers()")]
 		void RemoveAccessoryController (NSViewController accessoryController);
 
 		[Export ("accessoryControllers")]
@@ -7788,9 +7812,11 @@ namespace MonoMac.AppKit {
 	public interface NSMutableParagraphStyle {
 
 		[Export ("addTabStop:")]
+		[PostGet ("TabStops")]
 		void AddTabStop (NSTextTab anObject);
 
 		[Export ("removeTabStop:")]
+		[PostGet ("TabStops")]
 		void RemoveTabStop (NSTextTab anObject);
 
 		[Export ("tabStops")]
@@ -8816,9 +8842,11 @@ namespace MonoMac.AppKit {
 		NSPrintPanel PrintPanel { get; }
 
 		[Export ("addAccessoryController:")]
+		[PostGet ("AccessoryControllers()")]
 		void AddAccessoryController (NSViewController accessoryController);
 
 		[Export ("removeAccessoryController:")]
+		[PostGet ("AccessoryControllers()")]
 		void RemoveAccessoryController (NSViewController accessoryController);
 
 		[Export ("accessoryControllers")]
@@ -9109,9 +9137,11 @@ namespace MonoMac.AppKit {
 		float RequiredThickness { get; }
 
 		[Export ("addMarker:")]
+		[PostGet ("Markers")]
 		void AddMarker (NSRulerMarker marker);
 
 		[Export ("removeMarker:")]
+		[PostGet ("Markers")]
 		void RemoveMarker (NSRulerMarker marker);
 
 		[Export ("trackMarker:withMouseEvent:")]
@@ -12129,13 +12159,13 @@ namespace MonoMac.AppKit {
 		[Export ("controlSize")]
 		NSControlSize ControlSize { get; set; }
 
-		[Export ("addTabViewItem:")]
+		[Export ("addTabViewItem:")][PostGet ("Items")]
 		void Add (NSTabViewItem tabViewItem);
 
-		[Export ("insertTabViewItem:atIndex:")]
+		[Export ("insertTabViewItem:atIndex:")][PostGet ("Items")]
 		void Insert (NSTabViewItem tabViewItem, int index);
 
-		[Export ("removeTabViewItem:")]
+		[Export ("removeTabViewItem:")][PostGet ("Items")]
 		void Remove (NSTabViewItem tabViewItem);
 
 		[Export ("delegate"), NullAllowed]
@@ -12783,10 +12813,10 @@ namespace MonoMac.AppKit {
 
 	[BaseType (typeof (NSMutableAttributedString), Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (NSTextStorageDelegate)})]
 	public partial interface NSTextStorage {
-		[Export ("addLayoutManager:")]
+		[Export ("addLayoutManager:")][PostGet ("LayoutManagers")]
 		void AddLayoutManager (NSLayoutManager obj);
 
-		[Export ("removeLayoutManager:")]
+		[Export ("removeLayoutManager:")][PostGet ("LayoutManagers")]
 		void RemoveLayoutManager (NSLayoutManager obj);
 
 		[Export ("layoutManagers")]
@@ -14333,10 +14363,10 @@ namespace MonoMac.AppKit {
 		[Export ("standardWindowButton:")]
 		NSButton StandardWindowButton (NSWindowButton b);
 	
-		[Export ("addChildWindow:ordered:")]
+		[Export ("addChildWindow:ordered:")][PostGet ("ChildWindows")]
 		void AddChildWindow (NSWindow  childWin, NSWindowOrderingMode place);
 	
-		[Export ("removeChildWindow:")]
+		[Export ("removeChildWindow:")][PostGet ("ChildWindows")]
 		void RemoveChildWindow (NSWindow  childWin);
 	
 		[Export ("childWindows")]
