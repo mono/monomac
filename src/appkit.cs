@@ -5418,6 +5418,7 @@ namespace MonoMac.AppKit {
 	}
 
 	[BaseType (typeof (NSObject))]
+	[Dispose ("__mt_items_var = null;")]
 	public partial interface NSMenu {
 		[Export ("initWithTitle:")]
 		IntPtr Constructor (string aTitle);
@@ -5434,34 +5435,34 @@ namespace MonoMac.AppKit {
 		bool PopUpMenu ([NullAllowed] NSMenuItem item, PointF location, [NullAllowed] NSView view);
 
 		[Export ("insertItem:atIndex:")]
-		[PostGet ("ItemArray()")]
+		[PostSnippet ("__mt_items_var = ItemArray();")]
 		void InsertItem (NSMenuItem newItem, int index);
 
 		[Export ("addItem:")]
-		[PostGet ("ItemArray()")]
+		[PostSnippet ("__mt_items_var = ItemArray();")]
 		void AddItem (NSMenuItem newItem);
 
 		[Export ("insertItemWithTitle:action:keyEquivalent:atIndex:")]
-		[PostGet ("ItemArray()")]
+		[PostSnippet ("__mt_items_var = ItemArray();")]
 		NSMenuItem InsertItem (string title, [NullAllowed] Selector action, string charCode, int index);
 
 		[Export ("addItemWithTitle:action:keyEquivalent:")]
-		[PostGet ("ItemArray()")]
+		[PostSnippet ("__mt_items_var = ItemArray();")]
 		NSMenuItem AddItem (string title, [NullAllowed] Selector action, string charCode);
 
 		[Export ("removeItemAtIndex:")]
-		[PostGet ("ItemArray()")]
+		[PostSnippet ("__mt_items_var = ItemArray();")]
 		void RemoveItemAt (int index);
 
 		[Export ("removeItem:")]
-		[PostGet ("ItemArray()")]
+		[PostSnippet ("__mt_items_var = ItemArray();")]
 		void RemoveItem (NSMenuItem item);
 
 		[Export ("setSubmenu:forItem:")]
 		void SetSubmenu (NSMenu aMenu, NSMenuItem anItem);
 
 		[Export ("removeAllItems")]
-		[PostGet ("ItemArray()")]
+		[PostSnippet ("__mt_items_var = ItemArray();")]
 		void RemoveAllItems ();
 
 		[Export ("itemArray")]
@@ -6476,6 +6477,7 @@ namespace MonoMac.AppKit {
 	}
 
 	[BaseType (typeof (NSObject), Delegates=new string [] { "WeakDelegate" }, Events=new Type [] { typeof (NSImageDelegate)})]
+	[Dispose ("__mt_reps_var = null;")]
 	public partial interface NSImage {
 		[Static]
 		[Export ("imageNamed:")]
@@ -6533,15 +6535,15 @@ namespace MonoMac.AppKit {
 		NSImageRep [] Representations ();
 
 		[Export ("addRepresentations:")]
-		[PostGet ("Representations()")]
+		[PostSnippet ("__mt_reps_var = Representations();")]
 		void AddRepresentations (NSImageRep [] imageReps);
 
 		[Export ("addRepresentation:")]
-		[PostGet ("Representations()")]
+		[PostSnippet ("__mt_reps_var = Representations();")]
 		void AddRepresentation (NSImageRep imageRep);
 
 		[Export ("removeRepresentation:")]
-		[PostGet ("Representations()")]
+		[PostSnippet ("__mt_reps_var = Representations();")]
 		void RemoveRepresentation (NSImageRep imageRep);
 
 		[Export ("isValid")]
@@ -7697,17 +7699,18 @@ namespace MonoMac.AppKit {
 	}
 
 	[BaseType (typeof (NSObject))]
+	[Dispose ("__mt_accessory_var = null;")]
 	public interface NSPageLayout {
 		[Static]
 		[Export ("pageLayout")]
 		NSPageLayout PageLayout { get; }
 
 		[Export ("addAccessoryController:")]
-		[PostGet ("AccessoryControllers()")]
+		[PostSnippet ("__mt_accessory_var = AccessoryControllers();")]
 		void AddAccessoryController (NSViewController accessoryController);
 
 		[Export ("removeAccessoryController:")]
-		[PostGet ("AccessoryControllers()")]
+		[PostSnippet ("__mt_accessory_var = AccessoryControllers();")]
 		void RemoveAccessoryController (NSViewController accessoryController);
 
 		[Export ("accessoryControllers")]
@@ -8836,17 +8839,18 @@ namespace MonoMac.AppKit {
 	}
 
 	[BaseType (typeof (NSObject))]
+	[Dispose ("__mt_accessory_var = null;")] 
 	public interface NSPrintPanel {
 		[Static]
 		[Export ("printPanel")]
 		NSPrintPanel PrintPanel { get; }
 
 		[Export ("addAccessoryController:")]
-		[PostGet ("AccessoryControllers()")]
+		[PostSnippet ("__mt_accessory_var = AccessoryControllers();")]
 		void AddAccessoryController (NSViewController accessoryController);
 
 		[Export ("removeAccessoryController:")]
-		[PostGet ("AccessoryControllers()")]
+		[PostSnippet ("__mt_accessory_var = AccessoryControllers();")]
 		void RemoveAccessoryController (NSViewController accessoryController);
 
 		[Export ("accessoryControllers")]
@@ -10544,6 +10548,7 @@ namespace MonoMac.AppKit {
 	}
 
 	[BaseType (typeof (NSResponder))]
+	[Dispose ("__mt_tracking_var = null;")]
 	public partial interface NSView : NSDraggingDestination, NSAnimatablePropertyContainer, NSUserInterfaceItemIdentification  {
 		[Export ("initWithFrame:")]
 		IntPtr Constructor (RectangleF frameRect);
@@ -10840,10 +10845,10 @@ namespace MonoMac.AppKit {
 		[Export ("makeBackingLayer")]
 		CALayer MakeBackingLayer ();
 
-		[Export ("addTrackingArea:")][PostGet ("TrackingAreas ()")]
+		[Export ("addTrackingArea:")][PostSnippet ("__mt_tracking_var = TrackingAreas ();")]
 		void AddTrackingArea (NSTrackingArea trackingArea);
 
-		[Export ("removeTrackingArea:")][PostGet ("TrackingAreas ()")]
+		[Export ("removeTrackingArea:")][PostSnippet ("__mt_tracking_var = TrackingAreas ();")]
 		void RemoveTrackingArea (NSTrackingArea trackingArea);
 
 		[Export ("trackingAreas")]

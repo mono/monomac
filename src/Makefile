@@ -79,8 +79,10 @@ MONOMAC_SOURCES = $(EXTRA_MONOMAC_SOURCES) \
 	./AppKit/NSMenuItem.cs				\
 	./AppKit/NSOpenGLContext.cs			\
 	./AppKit/NSOpenGLPixelFormat.cs			\
+	./AppKit/NSPageLayout.cs			\
 	./AppKit/NSPopUpButton.cs			\
 	./AppKit/NSPopUpButtonCell.cs			\
+	./AppKit/NSPrintPanel.cs			\
 	./AppKit/NSScreen.cs				\
 	./AppKit/NSSharingService.cs			\
 	./AppKit/NSSegmentedControl.cs			\
@@ -90,6 +92,7 @@ MONOMAC_SOURCES = $(EXTRA_MONOMAC_SOURCES) \
 	./AppKit/NSTableView.cs				\
         ./AppKit/NSToolbarItem.cs                       \
 	./AppKit/NSTreeController.cs			\
+	./AppKit/NSView.cs				\
         ./AppKit/NSWindow.cs				\
 	./CoreVideo/CVDisplayLink.cs			\
 	./Foundation/ObjCException.cs			\

@@ -73,7 +73,8 @@ namespace MonoMac.AppKit {
 	}
 
 	public partial class NSImage {
-
+		object __mt_reps_var;
+		
 		public CGImage CGImage {
 			get {
 				var rect = RectangleF.Empty;
