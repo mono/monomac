@@ -12600,6 +12600,9 @@ namespace MonoMac.AppKit {
 
 		[Export ("importsGraphics")]
 		bool ImportsGraphics { get; set; }
+
+		[MoutainLion, Export ("preferredMaxLayoutWidth")]
+		float PreferredMaxLayoutWidth { get; set; }
 	}
 
 	[BaseType (typeof (NSTextField))]
