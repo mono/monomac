@@ -12601,7 +12601,7 @@ namespace MonoMac.AppKit {
 		[Export ("importsGraphics")]
 		bool ImportsGraphics { get; set; }
 
-		[MoutainLion, Export ("preferredMaxLayoutWidth")]
+		[MountainLion, Export ("preferredMaxLayoutWidth")]
 		float PreferredMaxLayoutWidth { get; set; }
 	}
 
