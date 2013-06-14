@@ -2995,6 +2995,7 @@ namespace MonoMac.AppKit {
 
 	[BaseType (typeof (NSTextField))]
 	public partial interface NSComboBox {
+
 		[Export ("initWithFrame:")]
 		IntPtr Constructor (RectangleF frameRect);
 		
@@ -3034,7 +3035,6 @@ namespace MonoMac.AppKit {
 		[Export ("deselectItemAtIndex:")]
 		void DeselectItem (int itemIndex);
 
-		//- (NSInteger)indexOfSelectedItem;
 		[Export ("indexOfSelectedItem")]
 		int SelectedIndex { get; }
 
@@ -3112,6 +3112,115 @@ namespace MonoMac.AppKit {
 		
 		[Export ("comboBox:indexOfItemWithStringValue:")]
 		int IndexOfItem (NSComboBox comboBox, string value);
+	}
+
+	[BaseType (typeof (NSTextFieldCell))]
+	public partial interface NSComboBoxCell {
+
+		[Export ("initWithFrame:")]
+		IntPtr Constructor (RectangleF frameRect);
+
+		[Export ("hasVerticalScroller")]
+		bool HasVerticalScroller { get; set; }
+
+		[Export ("intercellSpacing")]
+		SizeF IntercellSpacing { get; set; }
+
+		[Export ("itemHeight")]
+		float ItemHeight { get; set; }
+
+		[Export ("numberOfVisibleItems")]
+		int VisibleItems { get; set; }
+
+		[Export ("buttonBordered")]
+		bool ButtonBordered { [Bind ("isButtonBordered")] get; set; }
+
+		[Export ("reloadData")]
+		void ReloadData ();
+
+		[Export ("noteNumberOfItemsChanged")]
+		void NoteNumberOfItemsChanged ();
+
+		[Export ("usesDataSource")]
+		bool UsesDataSource { get; set; }
+
+		[Export ("scrollItemAtIndexToTop:")]
+		void ScrollItemAtIndexToTop (int scrollItemIndex);
+
+		[Export ("scrollItemAtIndexToVisible:")]
+		void ScrollItemAtIndexToVisible (int scrollItemIndex);
+
+		[Export ("selectItemAtIndex:")]
+		void SelectItem (int itemIndex);
+
+		[Export ("deselectItemAtIndex:")]
+		void DeselectItem (int itemIndex);
+
+		[Export ("indexOfSelectedItem")]
+		int SelectedIndex { get; }
+
+		[Export ("numberOfItems")]
+		int Count { get; }
+
+		[Export ("completes")]
+		bool Completes { get; set; }
+
+		[Export ("dataSource")]
+		NSComboBoxDataSource DataSource { get; set; }
+
+		[Export ("addItemWithObjectValue:")]
+		void Add (NSObject object1);
+
+		[Export ("addItemsWithObjectValues:")]
+		[PostGet ("Values")]
+		void Add (NSObject [] items);
+
+		[Export ("insertItemWithObjectValue:atIndex:")]
+		[PostGet ("Values")]
+		void Insert (NSObject object1, int index);
+
+		[Export ("removeItemWithObjectValue:")]
+		[PostGet ("Values")]
+		void Remove (NSObject object1);
+
+		[Export ("removeItemAtIndex:")]
+		[PostGet ("Values")]
+		void RemoveAt (int index);
+
+		[Export ("removeAllItems")]
+		[PostGet ("Values")]
+		void RemoveAll ();
+
+		[Export ("selectItemWithObjectValue:")]
+		void Select (NSObject object1);
+
+		[Export ("itemObjectValueAtIndex:")]
+		NSComboBox GetItem (int index);
+
+		[Export ("objectValueOfSelectedItem")]
+		NSObject SelectedValue { get; }
+
+		[Export ("indexOfItemWithObjectValue:")]
+		int IndexOf (NSObject object1);
+
+		[Export ("objectValues")]
+		NSObject [] Values { get; }
+	}
+
+	[BaseType (typeof (NSObject))]
+	[Model]
+	public partial interface NSComboBoxCellDataSource {
+		[Export ("comboBox:objectValueForItemAtIndex:")]
+		NSObject ObjectValueForItem (NSComboBox comboBox, int index);
+
+		[Export ("numberOfItemsInComboBox:")]
+		int ItemCount (NSComboBox comboBox);
+
+		[Export ("comboBox:completedString:")]
+		string CompletedString (NSComboBox comboBox, string uncompletedString);
+
+		[Export ("comboBox:indexOfItemWithStringValue:")]
+		uint IndexOfItem (NSComboBox comboBox, string value);
 	}
 	
 	[BaseType (typeof (NSView))]
