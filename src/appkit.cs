@@ -3211,16 +3211,16 @@ namespace MonoMac.AppKit {
 	[Model]
 	public partial interface NSComboBoxCellDataSource {
 		[Export ("comboBoxCell:objectValueForItemAtIndex:")]
-		NSObject ObjectValueForItem (NSComboBox comboBox, int index);
+		NSObject ObjectValueForItem (NSComboBoxCell comboBox, int index);
 
 		[Export ("numberOfItemsInComboBoxCell:")]
-		int ItemCount (NSComboBox comboBox);
+		int ItemCount (NSComboBoxCell comboBox);
 
 		[Export ("comboBoxCell:completedString:")]
-		string CompletedString (NSComboBox comboBox, string uncompletedString);
+		string CompletedString (NSComboBoxCell comboBox, string uncompletedString);
 
 		[Export ("comboBoxCell:indexOfItemWithStringValue:")]
-		uint IndexOfItem (NSComboBox comboBox, string value);
+		uint IndexOfItem (NSComboBoxCell comboBox, string value);
 	}
 	
 	[BaseType (typeof (NSView))]
