@@ -3166,7 +3166,7 @@ namespace MonoMac.AppKit {
 		bool Completes { get; set; }
 
 		[Export ("dataSource")]
-		NSComboBoxDataSource DataSource { get; set; }
+		NSComboBoxCellDataSource DataSource { get; set; }
 
 		[Export ("addItemWithObjectValue:")]
 		void Add (NSObject object1);
@@ -3210,16 +3210,16 @@ namespace MonoMac.AppKit {
 	[BaseType (typeof (NSObject))]
 	[Model]
 	public partial interface NSComboBoxCellDataSource {
-		[Export ("comboBox:objectValueForItemAtIndex:")]
+		[Export ("comboBoxCell:objectValueForItemAtIndex:")]
 		NSObject ObjectValueForItem (NSComboBox comboBox, int index);
 
-		[Export ("numberOfItemsInComboBox:")]
+		[Export ("numberOfItemsInComboBoxCell:")]
 		int ItemCount (NSComboBox comboBox);
 
-		[Export ("comboBox:completedString:")]
+		[Export ("comboBoxCell:completedString:")]
 		string CompletedString (NSComboBox comboBox, string uncompletedString);
 
-		[Export ("comboBox:indexOfItemWithStringValue:")]
+		[Export ("comboBoxCell:indexOfItemWithStringValue:")]
 		uint IndexOfItem (NSComboBox comboBox, string value);
 	}
 	
