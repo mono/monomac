@@ -211,7 +211,10 @@ namespace MonoMac.AppKit {
 		void RunAnimation (Action<NSAnimationContext> changes, NSAction completionHandler);
     
 		[Lion, Export ("timingFunction")]
-		CAMediaTimingFunction TimingFunction { get; set; }		
+		CAMediaTimingFunction TimingFunction { get; set; }
+
+		[MountainLion, Export ("allowsImplicitAnimation")]
+		bool AllowsImplicitAnimation { get; set; }
 	}
 	
 	[BaseType (typeof (NSObject), Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (NSAlertDelegate)})]
