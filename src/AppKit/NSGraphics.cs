@@ -100,7 +100,7 @@ namespace MonoMac.AppKit {
 		[DllImport (Constants.AppKitLibrary, EntryPoint="NSRectFill")]
 		public extern static void RectFill (RectangleF rect);
 		
-		[DllImport (Constants.AppKitLibrary)]
+		[DllImport (Constants.AppKitLibrary, EntryPoint="NSRectFillList")]
 		unsafe extern static void RectFillList (RectangleF *rects, int count);
 
 		public static void RectFill (RectangleF [] rects)
