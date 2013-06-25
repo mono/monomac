@@ -165,5 +165,20 @@ namespace MonoMac.AppKit {
 		[DllImport (Constants.AppKitLibrary)]
 		public extern static ;
 #endif
+
+		[DllImport (Constants.AppKitLibrary, EntryPoint="NSDrawWhiteBezel")]
+		public extern static void DrawWhiteBezel (RectangleF aRect, RectangleF clipRect);
+
+		[DllImport (Constants.AppKitLibrary, EntryPoint="NSDrawLightBezel")]
+		public extern static void DrawLightBezel (RectangleF aRect, RectangleF clipRect);
+
+		[DllImport (Constants.AppKitLibrary, EntryPoint="NSDrawGrayBezel")]
+		public extern static void DrawGrayBezel (RectangleF aRect, RectangleF clipRect);
+
+		[DllImport (Constants.AppKitLibrary, EntryPoint="NSDrawDarkBezel")]
+		public extern static void DrawDarkBezel (RectangleF aRect, RectangleF clipRect);
+
+		[DllImport (Constants.AppKitLibrary, EntryPoint="NSDrawGroove")]
+		public extern static void DrawGroove (RectangleF aRect, RectangleF clipRect);
 	}
 }
