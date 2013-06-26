@@ -180,5 +180,23 @@ namespace MonoMac.AppKit {
 
 		[DllImport (Constants.AppKitLibrary, EntryPoint="NSDrawGroove")]
 		public extern static void DrawGroove (RectangleF aRect, RectangleF clipRect);
+
+		[DllImport (Constants.AppKitLibrary, EntryPoint="NSDrawTiledRects")]
+		unsafe extern static RectangleF DrawTiledRects (RectangleF aRect, RectangleF clipRect, NSRectEdge* sides, float* grays, int count);
+
+		public static RectangleF DrawTiledRects (RectangleF aRect, RectangleF clipRect, NSRectEdge[] sides, float[] grays)
+		{
+			if (sides == null)
+				throw new ArgumentNullException ("sides");
+			if (grays == null)
+				throw new ArgumentNullException ("grays");
+			if (sides.Length != grays.Length)
+				throw new ArgumentOutOfRangeException ("grays", "Both array parameters must have the same length");
+			unsafe {
+				fixed (NSRectEdge *ptr = &sides [0])
+				fixed (float *ptr2 = &grays [0])
+					return DrawTiledRects (aRect, clipRect, ptr, ptr2, sides.Length);
+			}
+		}
 	}
 }
