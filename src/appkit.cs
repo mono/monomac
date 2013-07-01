@@ -3297,6 +3297,9 @@ namespace MonoMac.AppKit {
 		[Export ("takeIntegerValueFrom:")]
 		void TakeIntegerValueFrom (NSObject sender);
 
+		[Export ("invalidateIntrinsicContentSizeForCell:"), Lion]
+		void InvalidateIntrinsicContentSizeForCell (NSCell cell);
+
 		//Detected properties
 		[Static]
 		[Export ("cellClass")]
