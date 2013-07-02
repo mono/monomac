@@ -214,7 +214,7 @@ _bmac.exe: $(APIS) core.dll $(GENERATOR_SOURCES)
 	$(MCS) -unsafe -out:_bmac.exe -debug $(DEFINES) -define:GENERATOR,MONOMAC,MONOMAC_BOOTSTRAP $(GENERATOR_SOURCES) -r:core.dll -r:System.Drawing
 
 generated_sources: _bmac.exe $(APIS) 
-	mono --debug _bmac.exe -a -d=MONOMAC $(BMAC_DEFINES) --core --sourceonly=generated_sources -v -tmpdir=. $(APIS) --baselib=core.dll --ns=MonoMac.ObjCRuntime -r=System.Drawing
+	mono --debug _bmac.exe -a -d=MONOMAC $(BMAC_DEFINES) --core --sourceonly=generated_sources -v -tmpdir=. $(APIS) --baselib=core.dll --ns=MonoMac.ObjCRuntime -r=System.Drawing $(BMAC_OPTIONS)
 
 bmac.exe: $(TARGET) $(GENERATOR_SOURCES)
 	$(MCS) -unsafe -out:bmac.exe -debug $(DEFINES) -define:GENERATOR,MONOMAC,MONOMAC_BOOTSTRAP $(GENERATOR_SOURCES) -r:$(TARGET) -r:System.Drawing
