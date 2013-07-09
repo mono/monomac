@@ -160,7 +160,7 @@ endif
 ifeq ($(HAVE_ASYNC),1)
 	ASYNC_TARGETS = MonoMac.CFNetwork.dll
 	UPDATE_FILES = MonoMac.dll* MonoMac.CFNetwork.dll*
-	MCS ?= mcs
+	MCS ?= mcs -sdk:4
 else
 	ASYNC_TARGETS = 
 	UPDATE_FILES = MonoMac.dll*
