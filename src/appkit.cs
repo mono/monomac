@@ -7055,7 +7055,7 @@ namespace MonoMac.AppKit {
 
 		//Detected properties
 		[Export ("image")]
-		NSImage Image { get; set; }
+		NSImage Image { get; [NullAllowed] set; }
 
 		[Export ("imageAlignment")]
 		NSImageAlignment ImageAlignment { get; set; }
