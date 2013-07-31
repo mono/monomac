@@ -35,6 +35,7 @@ namespace MonoMac.ObjCRuntime {
 		internal const string Alloc = "alloc";
 		internal const string Release = "release";
 		internal const string Retain = "retain";
+		internal const string Autorelease = "autorelease";
 		internal const string DoesNotRecognizeSelector = "doesNotRecognizeSelector:";
 		internal const string PerformSelectorOnMainThreadWithObjectWaitUntilDone = "performSelectorOnMainThread:withObject:waitUntilDone:";
 		internal const string PerformSelectorWithObjectAfterDelay = "performSelector:withObject:afterDelay:";
@@ -42,6 +43,7 @@ namespace MonoMac.ObjCRuntime {
 		internal static IntPtr AllocHandle = Selector.GetHandle (Alloc);
 		internal static IntPtr ReleaseHandle = Selector.GetHandle (Release);
 		internal static IntPtr RetainHandle = Selector.GetHandle (Retain);
+		internal static IntPtr AutoreleaseHandle = Selector.GetHandle (Autorelease);
 		internal static IntPtr DoesNotRecognizeSelectorHandle = Selector.GetHandle (DoesNotRecognizeSelector);
 		internal static IntPtr PerformSelectorOnMainThreadWithObjectWaitUntilDoneHandle = GetHandle (PerformSelectorOnMainThreadWithObjectWaitUntilDone);
 		internal static IntPtr PerformSelectorWithObjectAfterDelayHandle = GetHandle (PerformSelectorWithObjectAfterDelay);
