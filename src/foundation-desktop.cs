@@ -128,14 +128,14 @@ namespace MonoMac.Foundation {
 		[Static, Export ("connectionWithRegisteredName:host:usingNameServer:")]
 		NSConnection LookupService (string name, [NullAllowed] string hostName, NSPortNameServer server);
 
-		[Export ("rootProxy")]
-		NSObject GetRootProxy ();
+		[Internal, Export ("rootProxy")]
+		IntPtr _GetRootProxy ();
 
-		[Static, Export ("rootProxyForConnectionWithRegisteredName:host:")]
-		NSObject GetRootProxy (string name, [NullAllowed] string hostName);
+		[Internal, Static, Export ("rootProxyForConnectionWithRegisteredName:host:")]
+		IntPtr _GetRootProxy (string name, [NullAllowed] string hostName);
 
-		[Static, Export ("rootProxyForConnectionWithRegisteredName:host:usingNameServer:")]
-		NSObject GetRootProxy (string name, [NullAllowed] string hostName, NSPortNameServer server);
+		[Internal, Static, Export ("rootProxyForConnectionWithRegisteredName:host:usingNameServer:")]
+		IntPtr _GetRootProxy (string name, [NullAllowed] string hostName, NSPortNameServer server);
 
 		[Export ("remoteObjects")]
 		NSObject [] RemoteObjects { get; }
