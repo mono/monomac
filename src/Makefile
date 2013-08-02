@@ -91,6 +91,7 @@ MONOMAC_SOURCES = $(EXTRA_MONOMAC_SOURCES) \
 	./AppKit/NSSpellChecker.cs			\
 	./AppKit/NSSound.cs				\
 	./AppKit/NSTableView.cs				\
+	./AppKit/NSTextField.cs				\
         ./AppKit/NSToolbarItem.cs                       \
 	./AppKit/NSTreeController.cs			\
 	./AppKit/NSView.cs				\
