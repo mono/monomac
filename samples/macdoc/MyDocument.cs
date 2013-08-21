@@ -514,6 +514,9 @@ namespace macdoc
 		
 		int ScrollToVisible (Node n)
 		{
+			if (!nodeToWrapper.ContainsKey (n))
+				return 0;
+
 			var item = nodeToWrapper [n];
 			var row = outlineView.RowForItem (item);
 			outlineView.ScrollRowToVisible (row);
