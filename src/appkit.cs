@@ -12543,6 +12543,9 @@ namespace MonoMac.AppKit {
 
 	[BaseType (typeof (NSCell))]
 	public interface NSTextAttachmentCell {
+		[Export ("initImageCell:")]
+		IntPtr Constructor (NSImage  image);
+
 		[Export ("wantsToTrackMouse")]
 		bool WantsToTrackMouse ();
 
@@ -12561,11 +12564,9 @@ namespace MonoMac.AppKit {
 		[Export ("drawWithFrame:inView:characterIndex:")]
 		void DrawWithFrame (RectangleF cellFrame, NSView controlView, uint charIndex);
 
-		[Abstract]
 		[Export ("drawWithFrame:inView:characterIndex:layoutManager:")]
 		void DrawWithFrame (RectangleF cellFrame, NSView controlView, uint charIndex, NSLayoutManager layoutManager);
 
-		[Abstract]
 		[Export ("wantsToTrackMouseForEvent:inRect:ofView:atCharacterIndex:")]
 		bool WantsToTrackMouse (NSEvent theEvent, RectangleF cellFrame, NSView controlView, uint charIndex);
 
