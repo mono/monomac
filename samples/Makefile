@@ -1,4 +1,5 @@
-MDTOOL=/Applications/MonoDevelop.app/Contents/MacOS/mdtool
+MDROOT = $(shell stat -f%N "/Applications/Xamarin Studio.app" 2>/dev/null || echo "/Applications/MonoDevelop.app")
+MDTOOL="$(MDROOT)/Contents/MacOS/mdtool"
 
 XDIRS = \
 	NSAlert					\
