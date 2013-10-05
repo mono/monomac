@@ -233,7 +233,9 @@ MonoMac.CFNetwork.dll: $(CFNETWORK_SOURCES) $(TARGET)
 	mcs -debug -target:library -define:MONOMAC -r:System.Net.Http -r:$(TARGET) -out:MonoMac.CFNetwork.dll $(CFNETWORK_SOURCES)
 
 clean:
-	rm -f $(TARGETS) core.dll
+	rm -f $(foreach t,$(TARGETS) core.dll temp.dll,$(t) $(t).mdb)
+	rm -f generated_sources
+	rm -f SupportDelegates.g.cs
 
 all: $(TARGET) $(ASYNC_TARGETS)
 
