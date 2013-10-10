@@ -13,6 +13,7 @@ using MonoMac.AppKit;
 using MonoMac.ObjCRuntime;
 
 using Monodoc;
+using System.Text;
 
 namespace macdoc
 {
@@ -106,9 +107,21 @@ namespace macdoc
 			IndexUpdateManager = new IndexUpdateManager (helpSources,
 			                                             macDocPath);
 			BookmarkManager = new BookmarkManager (macDocPath);
-			AppleDocHandler = new AppleDocHandler ("/Library/Frameworks/Mono.framework/Versions/Current/etc/");
 		}
-		
+
+		int Run (string command)
+		{
+			var psi = new System.Diagnostics.ProcessStartInfo (command, " --need-update");
+			var t = ProcessUtils.StartProcess (psi, null, null, CancellationToken.None);
+			t.Wait ();
+
+			try {
+				return t.Result;
+			} catch {
+				return 1;
+			}
+		}
+
 		public override void FinishedLaunching (NSObject notification)
 		{
 			// Check if we are loaded with a search term and load a document for it
@@ -133,25 +146,23 @@ namespace macdoc
 
 			// Check if there is a MonoTouch/MonoMac documentation installed and launch accordingly
 			var products = Root.HelpSources.Where (hs => hs != null && hs.Name != null).ToProducts ().Distinct ().ToArray ();
-			if (products.Where (p => File.Exists (ProductUtils.GetMergeToolForProduct (p))).Any ()) {
-				Task.Factory.StartNew (() => {
-					return products.ToDictionary (p => p,
-					                              p => {
-						AppleDocHandler.AppleDocInformation infos;
-						bool mergeOutdated = false;
-						bool docOutdated = AppleDocHandler.CheckAppleDocFreshness (ProductUtils.GetDocFeedForProduct (p),
-						                                                           out infos);
-						if (!docOutdated)
-							mergeOutdated = AppleDocHandler.CheckMergedDocumentationFreshness (infos, p);
-						return Tuple.Create (docOutdated, mergeOutdated);
-					});
-				}).ContinueWith (t => {
-					Logger.Log ("Merged status {0}", string.Join (", ", t.Result.Select (kvp => kvp.ToString ())));
-					if (!t.Result.Any (kvp => kvp.Value.Item1 || kvp.Value.Item2))
-						return;
-					BeginInvokeOnMainThread (() => LaunchDocumentationUpdate (t.Result));
-				});
+			var message = new StringBuilder ("We have detected that your documentation for the following products can be improved by merging the Apple documentation:\n");
+			var toUpdate = new List<Product> ();
+			foreach (var p in products) {
+				bool needUpdate = false;
+				var tool = ProductUtils.GetMergeToolForProduct (p);
+
+				if (!File.Exists (tool))
+					continue;
+
+				if (Run (tool) == 0) {
+					toUpdate.Add (p);
+					message.AppendFormat ("{0}\n", ProductUtils.GetFriendlyName (p));
+				}
 			}
+
+			if (toUpdate.Count > 0)
+				LaunchDocumentationUpdate (toUpdate.ToArray (), message.ToString ());
 		}
 		
 		public static IndexUpdateManager IndexUpdateManager {
@@ -163,12 +174,7 @@ namespace macdoc
 			get;
 			private set;
 		}
-		
-		public static AppleDocHandler AppleDocHandler {
-			get;
-			private set;
-		}
-		
+
 		public static bool IsOnLionOrBetter {
 			get {
 				return isOnLion;
@@ -246,19 +252,12 @@ namespace macdoc
 				                                       IntPtr.Zero);
 		}
 		
-		void LaunchDocumentationUpdate (Dictionary<Product, Tuple<bool, bool>> toUpdate)
+		void LaunchDocumentationUpdate (Product [] products, string informative)
 		{
-			var outdatedProducts = string.Join (" and ", toUpdate.Where (kvp => kvp.Value.Item1 || kvp.Value.Item2).Select (kvp => ProductUtils.GetFriendlyName (kvp.Key)));
-			var informative = "We have detected your " + outdatedProducts + " documentation can be upgraded with Apple documentation.";
-			// Check if we are going to be downloading stuff
-			if (toUpdate.Any (kvp => kvp.Value.Item1))
-				informative += Environment.NewLine + Environment.NewLine + "Warning: we are going to download documentation from Apple servers which can take a long time depending on your Internet connection.";
-			informative += Environment.NewLine + Environment.NewLine + "Would you like to update the documentation now?";
-
 			var infoDialog = new NSAlert {
 				AlertStyle = NSAlertStyle.Informational,
 				MessageText = "Documentation update available",
-				InformativeText = informative
+				InformativeText = informative + "\n\nWarning: If you have not downloaded the documentation with Xcode, this program will download the documentation from Apple servers which can take a long time.\n\nWould you like to update the documentation now?"
 			};
 			
 			infoDialog.AddButton ("Update now");
@@ -267,23 +266,14 @@ namespace macdoc
 			// If Cancel was clicked, just return
 			if (dialogResult == (int)NSAlertButtonReturn.Second)
 				return;
-			
-			// Launching AppleDocWizard as root
-			var mergerTasks = toUpdate
-				.Where (kvp => kvp.Value.Item1 || kvp.Value.Item2)
-				.Select (kvp => Task.Factory.StartNew (() => {
-						var mergeToolPath = ProductUtils.GetMergeToolForProduct (kvp.Key);
-						var docOutdated = kvp.Value.Item1;
 
-						// If the script has its setuid bit on and user as root, then we launch it directly otherwise we first restore it
-						if (!RootLauncher.IsRootEnabled (mergeToolPath)) {
-							RootLauncher.LaunchExternalTool (mergeToolPath, new string[] { "--self-repair" });
-							// No good way to know when the process will finish, so wait a bit. Not ideal but since this is an unlikely codepath, shouldn't matter.
-							System.Threading.Thread.Sleep (1000);
-						}
-						var psi = new System.Diagnostics.ProcessStartInfo (mergeToolPath, docOutdated ? "--force-download" : null);
-						return ProcessUtils.StartProcess (psi, null, null, CancellationToken.None);
-					}).Unwrap ());
+			var mergerTasks = products.Select (p => Task.Factory.StartNew (() => {
+				var mergeToolPath = ProductUtils.GetMergeToolForProduct (p);
+
+				var psi = new System.Diagnostics.ProcessStartInfo (mergeToolPath, null);
+				return ProcessUtils.StartProcess (psi, null, null, CancellationToken.None);
+			}).Unwrap ());
+
 			// No Task.WhenAll yet
 			var tcs = new TaskCompletionSource<int> ();
 			Task.Factory.ContinueWhenAll (mergerTasks.ToArray (), ts => {
