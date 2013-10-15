@@ -4,7 +4,7 @@
 WARNINGS_I_SHOULD_FIX=114,108
 TARGET = MonoMac.dll
 PEER=false
-MACCORE_DIR ?= ../../maccore
+MACCORE_DIR ?= ../maccore
 
 #
 # CORE_SOURCES are source files that are written by hand
@@ -229,11 +229,13 @@ counts:
 $(TARGET): $(SOURCES) generated_sources $(MONOMAC_SOURCES) $(SHARED_SOURCES) $(SHARED_CORE_SOURCES) $(OPENTK_SOURCES)
 	$(MCS) -define:OBJECT_REF_TRACKING -nowarn:3021,0219,0414,$(WARNINGS_I_SHOULD_FIX) -debug -unsafe $(SOURCES) @generated_sources $(MONOMAC_SOURCES) $(SHARED_SOURCES) $(SHARED_CORE_SOURCES) $(OPENTK_SOURCES) -target:library -define:MONOMAC -out:$(TARGET) -r:System.Drawing
 
-MonoMac.CFNetwork.dll: $(CFNETWORK_SOURCES)
+MonoMac.CFNetwork.dll: $(CFNETWORK_SOURCES) $(TARGET)
 	mcs -debug -target:library -define:MONOMAC -r:System.Net.Http -r:$(TARGET) -out:MonoMac.CFNetwork.dll $(CFNETWORK_SOURCES)
 
 clean:
-	rm -f $(TARGETS) core.dll
+	rm -f $(foreach t,$(TARGETS) core.dll temp.dll,$(t) $(t).mdb)
+	rm -f generated_sources
+	rm -f SupportDelegates.g.cs
 
 all: $(TARGET) $(ASYNC_TARGETS)
 

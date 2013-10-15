@@ -35,18 +35,6 @@ namespace macdoc
 			}
 		}
 
-		public static string GetDocFeedForProduct (Product product)
-		{
-			switch (product) {
-			case Product.MonoTouch:
-				return AppleDocHandler.Ios6AtomFeed;
-			case Product.MonoMac:
-				return AppleDocHandler.MacMountainLionFeed;
-			default:
-				return null;
-			}
-		}
-
 		public static string GetMergeToolForProduct (Product product)
 		{
 			switch (product) {
