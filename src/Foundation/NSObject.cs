@@ -197,6 +197,7 @@ namespace MonoMac.Foundation {
 		
 		void ReleaseManagedRef ()
 		{
+			var handle = this.handle;
 			bool user_type = IsUserType (handle);
 			
 #if DEBUG_REF_COUNTING
