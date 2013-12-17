@@ -4,7 +4,7 @@
 WARNINGS_I_SHOULD_FIX=114,108
 TARGET = MonoMac.dll
 PEER=false
-MACCORE_DIR ?= ../maccore
+MACCORE_DIR ?= ../../maccore
 
 #
 # CORE_SOURCES are source files that are written by hand
