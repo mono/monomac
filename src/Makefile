@@ -18,6 +18,7 @@ CORE_SOURCES =	$(EXTRA_CORE_SOURCES)			\
 	./Foundation/EnumDesktop.cs			\
 	./Foundation/NSObject.cs			\
 	./ImageKit/Enums.cs				\
+	./CoreWlan/Enums.cs				\
 	./ObjCRuntime/Class.cs				\
 	./ObjCRuntime/Messaging.cs			\
 	./ObjCRuntime/NativeConstructorBuilder.cs	\

@@ -26,262 +26,292 @@ using MonoMac.Foundation;
 using MonoMac.CoreFoundation;
 using System;
 
-namespace MonoMac.CoreWlan {
+namespace MonoMac.CoreWlan
+{
+    [BaseType(typeof(NSObject))]
+    interface CW8021XProfile
+    {
+    }
 
-	[BaseType (typeof (NSObject))]
-	interface CW8021XProfile {
-		[Export ("userDefinedName")]
-		string UserDefinedName { get; set;  }
+    [BaseType(typeof(NSObject))]
+    interface CWChannel
+    {
+        [Export("channelNumber")]
+        uint ChannelNumber { [Bind("channelNumber")] get; }
 
-		[Export ("ssid")]
-		string Ssid { get; set;  }
+        [Export("channelWidth")]
+        CWChannelWidth ChannelWidth { [Bind("channelWidth")] get; }
 
-		[Export ("username")]
-		string Username { get; set;  }
+        [Export("channelBand")]
+        CWChannelBand ChannelBand { [Bind("channelBand")] get; }
 
-		[Export ("password")]
-		string Password { get; set;  }
+        [Export("isEqualToChannel:")]
+        bool IsEqualToChannel(CWChannel channel);
+    }
 
-		[Export ("alwaysPromptForPassword")]
-		bool AlwaysPromptForPassword{ get; set;  }
+    [BaseType(typeof(NSObject))]
+    interface CWConfiguration
+    {
+        [Export("networkProfiles")]
+        NSOrderedSet NetworkProfiles { [Bind("networkProfiles")] get; }
 
-		[Static]
-		[Export ("profile")]
-		CW8021XProfile Profile { get; }
+        [Export("requireAdministratorForAssociation")]
+        bool RequireAdministratorForAssociation { [Bind ("requireAdministratorForAssociation")] get; }
 
-		[Export ("isEqualToProfile:")]
-		bool IsEqualToProfile (CW8021XProfile profile);
+        [Export("requireAdministratorForPower")]
+        bool RequireAdministratorForPower { [Bind ("requireAdministratorForPower")] get; }
 
-		[Static]
-		[Export ("allUser8021XProfiles")]
-		CW8021XProfile[] AllUser8021XProfiles { get; }
-	}
+        [Export("requireAdministratorForIBSSMode")]
+        bool RequireAdministratorForIBSSMode { [Bind ("requireAdministratorForIBSSMode")] get; }
 
-	[BaseType (typeof (NSObject))]
-	interface CWConfiguration {
-		[Export ("rememberedNetworks")]
-		NSSet RememberedNetworks { get; set;  }
+        [Export("rememberJoinedNetworks")]
+        bool RememberJoinedNetworks { [Bind ("rememberJoinedNetworks")] get; }
 
-		[Export ("preferredNetworks")]
-		CWWirelessProfile[] PreferredNetworks { get; set;  }
+        [Static]
+        [Export("configuration")]
+        NSObject Configuration();
 
-		[Export ("alwaysRememberNetworks")]
-		bool AlwaysRememberNetworks{ get; set;  }
+        [Export("init")]
+        NSObject Init();
 
-		[Export ("disconnectOnLogout")]
-		bool DisconnectOnLogout{ get; set;  }
+        [Export("initWithConfiguration:")]
+        NSObject InitWithConfiguration(CWConfiguration configuration);
 
-		[Export ("requireAdminForNetworkChange")]
-		bool RequireAdminForNetworkChange { get; set;  }
+        [Static]
+        [Export("configurationWithConfiguration:")]
+        NSObject ConfigurationWithConfiguration(CWConfiguration configuration);
 
-		[Export ("requireAdminForPowerChange")]
-		bool RequireAdminForPowerChange { get; set;  }
+        [Export("isEqualToConfiguration:")]
+        bool IsEqualToConfiguration(CWConfiguration configuration);
+    }
 
-		[Export ("requireAdminForIBSSCreation")]
-		bool RequireAdminForIBSSCreation { get; set;  }
+    [BaseType(typeof(CWConfiguration))]
+    interface CWMutableConfiguration
+    {
+        [Export("requireAdministratorForPower")]
+        bool RequireAdministratorForPower { get; set; }
 
-		[Export ("isEqualToConfiguration:")]
-		bool IsEqualToConfiguration (CWConfiguration configuration);
-	}
+        [Export("requireAdministratorForIBSSMode")]
+        bool RequireAdministratorForIBSSMode { get; set; }
 
-	[BaseType (typeof (NSObject))]
-	interface CWInterface {
-		[Export ("supportsWoW")]
-		bool SupportsWow { get;  }
+        [Export("rememberJoinedNetworks")]
+        bool RememberJoinedNetworks { get; set; }
+    }
 
-		[Export ("supportsWEP")]
-		bool SupportsWep { get;  }
+    [BaseType(typeof(NSObject))]
+    interface CWInterface
+    {
+        [Export("powerOn")]
+        bool PowerOn { [Bind ("powerOn")] get; }
 
-		[Export ("supportsAES_CCM")]
-		bool SupportsAesCcm { get;  }
+        [Export("interfaceName")]
+        string InterfaceName { [Bind ("interfaceName")] get; }
 
-		[Export ("supportsIBSS")]
-		bool SupportsIbss { get;  }
+        [Export("supportedWLANChannels")]
+        NSSet SupportedWLANChannels { [Bind ("supportedWLANChannels")] get; }
 
-		[Export ("supportsTKIP")]
-		bool SupportsTkip { get;  }
+        [Export("wlanChannel")]
+        CWChannel WlanChannel { [Bind ("wlanChannel")] get; }
 
-		[Export ("supportsPMGT")]
-		bool SupportsPmgt { get;  }
+        [Export("activePHYMode")]
+        CWPHYMode ActivePHYMode { [Bind ("activePHYMode")] get; }
 
-		[Export ("supportsHostAP")]
-		bool SupportsHostAP { get;  }
+        [Export("ssid")]
+        string Ssid { [Bind ("ssid")] get; }
 
-		[Export ("supportsMonitorMode")]
-		bool SupportsMonitorMode { get;  }
+        [Export("ssidData")]
+        NSData SsidData { [Bind ("ssidData")] get; }
 
-		[Export ("supportsWPA")]
-		bool SupportsWpa { get;  }
+        [Export("bssid")]
+        string Bssid { [Bind ("bssid")] get; }
 
-		[Export ("supportsWPA2")]
-		bool SupportsWpa2 { get;  }
+        [Export("rssiValue")]
+        int RssiValue { [Bind ("rssiValue")] get; }
 
-		[Export ("supportsWME")]
-		bool SupportsWme { get;  }
+        [Export("noiseMeasurement")]
+        int NoiseMeasurement { [Bind ("noiseMeasurement")] get; }
 
-		[Export ("supportsShortGI40MHz")]
-		bool SupportsShortGI40MHz { get;  }
+        [Export("security")]
+        CWSecurity Security { [Bind ("security")] get; }
 
-		[Export ("supportsShortGI20MHz")]
-		bool SupportsShortGI20MHz { get;  }
+        [Export("transmitRate")]
+        double TransmitRate { [Bind ("transmitRate")] get; }
 
-		[Export ("supportsTSN")]
-		bool SupportsTsn { get;  }
+        [Export("countryCode")]
+        string CountryCode { [Bind ("countryCode")] get; }
 
-		[Export ("power")]
-		bool Power { get;  }
+        [Export("interfaceMode")]
+        CWInterfaceMode InterfaceMode { [Bind ("interfaceMode")] get; }
 
-		[Export ("powerSave")]
-		bool PowerSave { get;  }
+        [Export("transmitPower")]
+        uint TransmitPower { [Bind ("transmitPower")] get; }
 
-		[Export ("name")]
-		string Name { get;  }
+        [Export("hardwareAddress")]
+        string HardwareAddress { [Bind ("hardwareAddress")] get; }
 
-		[Export ("supportedChannels")]
-		NSNumber[] SupportedChannels { get;  }
+        [Export("deviceAttached")]
+        bool DeviceAttached { [Bind ("deviceAttached")] get; }
 
-		[Export ("supportedPHYModes")]
-		NSNumber[] SupportedPhyModes { get;  }
+        [Export("serviceActive")]
+        bool ServiceActive { [Bind ("serviceActive")] get; }
 
-		[Export ("channel")]
-		NSNumber Channel { get;  }
+        [Export("cachedScanResults")]
+        NSSet CachedScanResults { [Bind ("cachedScanResults")] get; }
 
-		[Export ("phyMode")]
-		NSNumber PhyMode { get;  }
+        [Export("configuration")]
+        CWConfiguration Configuration { [Bind ("configuration")] get; }
 
-		[Export ("ssid")]
-		string Ssid { get;  }
+        [Static]
+        [Export("interfaceNames")]
+        NSSet InterfaceNames();
 
-		[Export ("bssid")]
-		string Bssid { get;  }
+        [Static]
+        [Export("interface")]
+        CWInterface Interface();
 
-		[Export ("bssidData")]
-		NSData BssidData { get;  }
+        [Static]
+        [Export("interfaceWithName:")]
+        CWInterface InterfaceWithName(string name);
 
-		[Export ("rssi")]
-		NSNumber Rssi { get;  }
+        [Export("initWithInterfaceName:")]
+        NSObject InitWithInterfaceName(string name);
 
-		[Export ("noise")]
-		NSNumber Noise { get;  }
+        [Export("setPower:error:")]
+        bool SetPowererror(bool power, out NSError error);
 
-		[Export ("txRate")]
-		NSNumber TxRate { get;  }
+        [Export("setWLANChannel:error:")]
+        bool SetWLANChannelerror(CWChannel channel, out NSError error);
 
-		[Export ("securityMode")]
-		NSNumber SecurityMode { get;  }
+        [Export("setPairwiseMasterKey:error:")]
+        bool SetPairwiseMasterKey(NSData key, out NSError error);
 
-		[Export ("interfaceState")]
-		NSNumber InterfaceState { get;  }
+        [Export("setWEPKey:flags:index:error:")]
+        bool SetWEPKey(NSData key, CWCipherKeyFlags flags, uint index, out NSError error);
 
-		[Export ("countryCode")]
-		string CountryCode { get;  }
+        [Export("scanForNetworksWithSSID:error:")]
+        NSSet ScanForNetworksWithSSID([NullAllowed] NSData ssid, out NSError error);
 
-		[Export ("opMode")]
-		NSNumber OpMode { get;  }
+        [Export("scanForNetworksWithName:error:")]
+        NSSet ScanForNetworksWithName([NullAllowed] string networkName, out NSError error);
 
-		[Export ("txPower")]
-		NSNumber TxPower { get;  }
+        [Export("associateToNetwork:password:error:")]
+        bool AssociateToNetwork(CWNetwork network, string password, out NSError error);
 
-		[Export ("configuration")]
-		CWConfiguration Configuration { get;  }
+        [Export("associateToEnterpriseNetwork:identity:username:password:error:")]
+        bool AssociateToEnterpriseNetwork(CWNetwork network, NSObject identity, string username, string password, out NSError error);
 
-		[Static]
-		[Export ("supportedInterfaces")]
-		string[] SupportedInterfaces { get; }
+        [Export("startIBSSModeWithSSID:security:channel:password:error:")]
+        bool StartIBSSModeWithSSID(NSData ssidData, CWIBSSModeSecurity security, uint channel, string password, out NSError error);
 
-		[Static]
-		[Export ("interface")]
-		CWInterface MainInterface { get; }
+        [Export("disassociate")]
+        void Disassociate();
 
-		[Static]
-		[Export ("interfaceWithName:")]
-		CWInterface FromName (string name);
+        [Export("commitConfiguration:authorization:error:")]
+        bool CommitConfiguration(CWConfiguration configuration, NSObject authorization, out NSError error);
+    }
 
-		[Export ("initWithInterfaceName:")]
-		IntPtr Constructor (string name);
+    [BaseType(typeof(NSObject))]
+    interface CWNetwork
+    {
+        [Export("ssid")]
+        string Ssid { [Bind ("ssid")] get; }
 
-		[Export ("isEqualToInterface:")]
-		bool IsEqualToInterface (CWInterface intface);
+        [Export("ssidData")]
+        NSData SsidData { [Bind ("ssidData")] get; }
 
-		[Export ("setPower:error:")]
-		bool SetPower (bool power, out NSError error);
+        [Export("bssid")]
+        string Bssid { [Bind ("bssid")] get; }
 
-		[Export ("setChannel:error:")]
-		bool SetChannel (uint channel, out NSError error);
+        [Export("wlanChannel")]
+        CWChannel WlanChannel { [Bind ("wlanChannel")] get; }
 
-		[Export ("scanForNetworksWithParameters:error:")]
-		CWNetwork[] ScanForNetworksWithParameters([NullAllowed] NSDictionary parameters, out NSError error);
+        [Export("rssiValue")]
+        int RssiValue { [Bind ("rssiValue")] get; }
 
-		[Export ("associateToNetwork:parameters:error:")]
-		bool AssociateToNetwork(CWNetwork network, [NullAllowed] NSDictionary parameters, out NSError error);
+        [Export("noiseMeasurement")]
+        int NoiseMeasurement { [Bind ("noiseMeasurement")] get; }
 
-		[Export ("disassociate")]
-		void Disassociate ();
+        [Export("informationElementData")]
+        NSData InformationElementData { [Bind ("informationElementData")] get; }
 
-		[Export ("enableIBSSWithParameters:error:")]
-		bool EnableIBSSWithParameters([NullAllowed] NSDictionary parameters, out NSError error);
+        [Export("countryCode")]
+        string CountryCode { [Bind ("countryCode")] get; }
 
-		[Export ("commitConfiguration:error:")]
-		bool CommitConfiguration (CWConfiguration config, out NSError error);
+        [Export("beaconInterval")]
+        uint BeaconInterval { [Bind ("beaconInterval")] get; }
 
-	}
+        [Export("ibss")]
+        bool Ibss { [Bind ("ibss")] get; }
 
-	[BaseType (typeof (NSObject))]
-	interface CWWirelessProfile {
-		[Export ("ssid")]
-		string Ssid { get; set;  }
+        [Export("isEqualToNetwork:")]
+        bool IsEqualToNetwork(CWNetwork network);
 
-		[Export ("securityMode")]
-		NSNumber SecurityMode { get; set;  }
+        [Export("supportsSecurity:")]
+        bool SupportsSecurity(CWSecurity security);
 
-		[Export ("passphrase")]
-		string Passphrase { get; set;  }
+        [Export("supportsPHYMode:")]
+        bool SupportsPHYMode(CWPHYMode phyMode);
+    }
 
-		[Export ("user8021XProfile")]
-		CW8021XProfile User8021XProfile { get; set;  }
+    [BaseType(typeof(NSObject))]
+    interface CWNetworkProfile
+    {
+        [Export("ssid")]
+        string Ssid { [Bind ("ssid")] get; }
 
-		[Export ("isEqualToProfile:")]
-		bool IsEqualToProfile (CWWirelessProfile profile);
-	}
+        [Export("ssidData")]
+        NSData SsidData { [Bind ("ssidData")] get; }
 
-	[BaseType (typeof (NSObject))]
-	interface CWNetwork {
-		[Export ("ssid")]
-		string Ssid { get;  }
+        [Export("security")]
+        CWSecurity Security { [Bind ("security")] get; }
 
-		[Export ("bssid")]
-		string Bssid { get;  }
+        [Static]
+        [Export("networkProfile")]
+        NSObject NetworkProfile();
 
-		[Export ("bssidData")]
-		NSData BssidData { get;  }
+        [Export("init")]
+        NSObject Init();
 
-		[Export ("securityMode")]
-		NSNumber SecurityMode { get;  }
+        [Export("initWithNetworkProfile:")]
+        NSObject InitWithNetworkProfile(CWNetworkProfile networkProfile);
 
-		[Export ("phyMode")]
-		NSNumber PhyMode { get;  }
+        [Static]
+        [Export("networkProfileWithNetworkProfile:")]
+        NSObject NetworkProfileWithNetworkProfile(CWNetworkProfile networkProfile);
 
-		[Export ("channel")]
-		NSNumber Channel { get;  }
+        [Export("isEqualToNetworkProfile:")]
+        bool IsEqualToNetworkProfile(CWNetworkProfile networkProfile);
+    }
 
-		[Export ("rssi")]
-		NSNumber Rssi { get;  }
+    [BaseType(typeof(CWNetworkProfile))]
+    interface CWMutableNetworkProfile
+    {
+    }
 
-		[Export ("noise")]
-		NSNumber Noise { get;  }
+    [BaseType(typeof(NSObject))]
+    interface CWWirelessProfile
+    {
+        [Export("ssid")]
+        string Ssid { get; set; }
 
-		[Export ("ieData")]
-		NSData IeData { get;  }
+        [Export("securityMode")]
+        NSNumber SecurityMode { get; set; }
 
-		[Export ("isIBSS")]
-		bool IsIBSS { get;  }
+        [Export("passphrase")]
+        string Passphrase { get; set; }
 
-		[Export ("wirelessProfile")]
-		CWWirelessProfile WirelessProfile { get;  }
+        [Export("user8021XProfile")]
+        CW8021XProfile User8021XProfile { get; set; }
 
-		[Export ("isEqualToNetwork:")]
-		bool IsEqualToNetwork (CWNetwork network);
-	}
+        [Export("init")]
+        CWWirelessProfile Init();
 
+        [Static]
+        [Export("profile")]
+        CWWirelessProfile Profile();
+
+        [Export("isEqualToProfile:")]
+        bool IsEqualToProfile(CWWirelessProfile profile);
+    }
 }
 
