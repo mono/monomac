@@ -31,11 +31,38 @@ namespace MonoMac.CoreWlan
     [BaseType(typeof(NSObject))]
     interface CW8021XProfile
     {
+        // Old APIs
+        [Export("userDefinedName")]
+        string UserDefinedName { get; set; }
+
+        [Export("ssid")]
+        string Ssid { get; set; }
+
+        [Export("username")]
+        string Username { get; set; }
+
+        [Export("password")]
+        string Password { get; set; }
+
+        [Export("alwaysPromptForPassword")]
+        bool AlwaysPromptForPassword{ get; set; }
+
+        [Static]
+        [Export("profile")]
+        CW8021XProfile Profile { get; }
+
+        [Export("isEqualToProfile:")]
+        bool IsEqualToProfile(CW8021XProfile profile);
+
+        [Static]
+        [Export("allUser8021XProfiles")]
+        CW8021XProfile[] AllUser8021XProfiles { get; }
     }
 
     [BaseType(typeof(NSObject))]
     interface CWChannel
     {
+        // New APIs
         [Export("channelNumber")]
         uint ChannelNumber { [Bind("channelNumber")] get; }
 
@@ -52,6 +79,7 @@ namespace MonoMac.CoreWlan
     [BaseType(typeof(NSObject))]
     interface CWConfiguration
     {
+        // New APIs
         [Export("networkProfiles")]
         NSOrderedSet NetworkProfiles { [Bind("networkProfiles")] get; }
 
@@ -80,6 +108,27 @@ namespace MonoMac.CoreWlan
         [Static]
         [Export("configurationWithConfiguration:")]
         NSObject ConfigurationWithConfiguration(CWConfiguration configuration);
+        // Old APIs
+        [Export("rememberedNetworks")]
+        NSSet RememberedNetworks { get; set; }
+
+        [Export("preferredNetworks")]
+        CWWirelessProfile[] PreferredNetworks { get; set; }
+
+        [Export("alwaysRememberNetworks")]
+        bool AlwaysRememberNetworks{ get; set; }
+
+        [Export("disconnectOnLogout")]
+        bool DisconnectOnLogout{ get; set; }
+
+        [Export("requireAdminForNetworkChange")]
+        bool RequireAdminForNetworkChange { get; set; }
+
+        [Export("requireAdminForPowerChange")]
+        bool RequireAdminForPowerChange { get; set; }
+
+        [Export("requireAdminForIBSSCreation")]
+        bool RequireAdminForIBSSCreation { get; set; }
 
         [Export("isEqualToConfiguration:")]
         bool IsEqualToConfiguration(CWConfiguration configuration);
@@ -101,6 +150,130 @@ namespace MonoMac.CoreWlan
     [BaseType(typeof(NSObject))]
     interface CWInterface
     {
+        // New APIs
+        [Export("supportsWoW")]
+        bool SupportsWow { get; }
+
+        [Export("supportsWEP")]
+        bool SupportsWep { get; }
+
+        [Export("supportsAES_CCM")]
+        bool SupportsAesCcm { get; }
+
+        [Export("supportsIBSS")]
+        bool SupportsIbss { get; }
+
+        [Export("supportsTKIP")]
+        bool SupportsTkip { get; }
+
+        [Export("supportsPMGT")]
+        bool SupportsPmgt { get; }
+
+        [Export("supportsHostAP")]
+        bool SupportsHostAP { get; }
+
+        [Export("supportsMonitorMode")]
+        bool SupportsMonitorMode { get; }
+
+        [Export("supportsWPA")]
+        bool SupportsWpa { get; }
+
+        [Export("supportsWPA2")]
+        bool SupportsWpa2 { get; }
+
+        [Export("supportsWME")]
+        bool SupportsWme { get; }
+
+        [Export("supportsShortGI40MHz")]
+        bool SupportsShortGI40MHz { get; }
+
+        [Export("supportsShortGI20MHz")]
+        bool SupportsShortGI20MHz { get; }
+
+        [Export("supportsTSN")]
+        bool SupportsTsn { get; }
+
+        [Export("power")]
+        bool Power { get; }
+
+        [Export("powerSave")]
+        bool PowerSave { get; }
+
+        [Export("name")]
+        string Name { get; }
+
+        [Export("supportedChannels")]
+        NSNumber[] SupportedChannels { get; }
+
+        [Export("supportedPHYModes")]
+        NSNumber[] SupportedPhyModes { get; }
+
+        [Export("channel")]
+        NSNumber Channel { get; }
+
+        [Export("phyMode")]
+        NSNumber PhyMode { get; }
+
+        [Export("bssidData")]
+        NSData BssidData { get; }
+
+        [Export("rssi")]
+        NSNumber Rssi { get; }
+
+        [Export("noise")]
+        NSNumber Noise { get; }
+
+        [Export("txRate")]
+        NSNumber TxRate { get; }
+
+        [Export("securityMode")]
+        NSNumber SecurityMode { get; }
+
+        [Export("interfaceState")]
+        NSNumber InterfaceState { get; }
+
+        [Export("opMode")]
+        NSNumber OpMode { get; }
+
+        [Export("txPower")]
+        NSNumber TxPower { get; }
+
+        [Static]
+        [Export("supportedInterfaces")]
+        string[] SupportedInterfaces { get; }
+
+        [Static]
+        [Export("interface")]
+        CWInterface MainInterface { get; }
+
+        [Static]
+        [Export("interfaceWithName:")]
+        CWInterface FromName(string name);
+
+        [Export("initWithInterfaceName:")]
+        IntPtr Constructor(string name);
+
+        [Export("isEqualToInterface:")]
+        bool IsEqualToInterface(CWInterface intface);
+
+        [Export("setPower:error:")]
+        bool SetPower(bool power, out NSError error);
+
+        [Export("setChannel:error:")]
+        bool SetChannel(uint channel, out NSError error);
+
+        [Export("scanForNetworksWithParameters:error:")]
+        CWNetwork[] ScanForNetworksWithParameters([NullAllowed] NSDictionary parameters, out NSError error);
+
+        [Export("associateToNetwork:parameters:error:")]
+        bool AssociateToNetwork(CWNetwork network, [NullAllowed] NSDictionary parameters, out NSError error);
+
+        [Export("enableIBSSWithParameters:error:")]
+        bool EnableIBSSWithParameters([NullAllowed] NSDictionary parameters, out NSError error);
+
+        [Export("commitConfiguration:error:")]
+        bool CommitConfiguration(CWConfiguration config, out NSError error);
+        // Old APIs
         [Export("powerOn")]
         bool PowerOn { [Bind ("powerOn")] get; }
 
@@ -213,6 +386,35 @@ namespace MonoMac.CoreWlan
     [BaseType(typeof(NSObject))]
     interface CWNetwork
     {
+        // New APIs
+        [Export("bssidData")]
+        NSData BssidData { get; }
+
+        [Export("securityMode")]
+        NSNumber SecurityMode { get; }
+
+        [Export("phyMode")]
+        NSNumber PhyMode { get; }
+
+        [Export("channel")]
+        NSNumber Channel { get; }
+
+        [Export("rssi")]
+        NSNumber Rssi { get; }
+
+        [Export("noise")]
+        NSNumber Noise { get; }
+
+        [Export("ieData")]
+        NSData IeData { get; }
+
+        [Export("isIBSS")]
+        bool IsIBSS { get; }
+
+        [Export("wirelessProfile")]
+        CWWirelessProfile WirelessProfile { get; }
+
+        // Old APIs
         [Export("ssid")]
         string Ssid { [Bind ("ssid")] get; }
 
@@ -291,6 +493,7 @@ namespace MonoMac.CoreWlan
     [BaseType(typeof(NSObject))]
     interface CWWirelessProfile
     {
+        // Old APIs
         [Export("ssid")]
         string Ssid { get; set; }
 
