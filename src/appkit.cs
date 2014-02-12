@@ -13845,7 +13845,7 @@ namespace MonoMac.AppKit {
 		IntPtr Constructor (NSObject modelObject);
 
 		[Export ("representedObject")]
-		NSTreeNode RepresentedObject { get; }
+		NSObject RepresentedObject { get; }
 
 		[Export ("indexPath")]
 		NSIndexPath IndexPath { get; }
