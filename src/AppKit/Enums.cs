@@ -827,7 +827,8 @@ namespace MonoMac.AppKit {
 #region NSDocument
 
 	public enum NSDocumentChangeType  {
-		Done, Undone, Cleared, Redone, ReadOtherContents, Autosaved
+		Done, Undone, Cleared, ReadOtherContents, Autosaved, Redone,
+		Discardable = 256 /* New in Lion */
 	}
 
 	public enum NSSaveOperationType  {
