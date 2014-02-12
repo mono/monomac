@@ -13891,7 +13891,7 @@ namespace MonoMac.AppKit {
 		NSSortDescriptor [] SortDescriptors { get; set; }
 
 		[Export ("content")]
-		NSTreeController Content { get; set; }
+		NSObject Content { get; set; }
 
 		[Export ("add:")]
 		void Add (NSObject sender);
