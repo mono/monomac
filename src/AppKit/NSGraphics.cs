@@ -198,5 +198,17 @@ namespace MonoMac.AppKit {
 					return DrawTiledRects (aRect, clipRect, ptr, ptr2, sides.Length);
 			}
 		}
+
+        [DllImport (Constants.AppKitLibrary, EntryPoint="NSDrawWindowBackground")]
+        public extern static void DrawWindowBackground (RectangleF aRect);
+
+        [DllImport (Constants.AppKitLibrary, EntryPoint="NSSetFocusRingStyle")]
+        public extern static void SetFocusRingStyle (NSFocusRingPlacement placement);
+
+        [DllImport (Constants.AppKitLibrary, EntryPoint="NSDisableScreenUpdates")]
+        public extern static void DisableScreenUpdates ();
+
+        [DllImport (Constants.AppKitLibrary, EntryPoint="NSEnableScreenUpdates")]
+        public extern static void EnableScreenUpdates ();
 	}
 }
