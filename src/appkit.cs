@@ -4011,7 +4011,7 @@ namespace MonoMac.AppKit {
 	[BaseType (typeof (NSObject))]
 	public partial interface NSDocumentController : NSWindowRestoration {
 		[Static, Export ("sharedDocumentController")]
-		NSObject SharedDocumentController { get; }
+		NSDocumentController SharedDocumentController { get; }
 
 		[Export ("documents")]
 		NSDocument [] Documents { get; }
