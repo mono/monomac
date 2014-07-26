@@ -33,7 +33,7 @@ namespace MonoMac.ObjCRuntime {
 		private static MethodInfo trygetnsobject = typeof (Runtime).GetMethod ("TryGetNSObject", BindingFlags.Public | BindingFlags.Static);
 		private static MethodInfo newobject = typeof (System.Runtime.Serialization.FormatterServices).GetMethod ("GetUninitializedObject", BindingFlags.Public | BindingFlags.Static);
 		private static MethodInfo gettype = typeof (System.Type).GetMethod ("GetTypeFromHandle", BindingFlags.Public | BindingFlags.Static);
-		private static MethodInfo retain = typeof (NSObject).GetMethod ("Retain", BindingFlags.NonPublic | BindingFlags.Instance);
+		private static MethodInfo retain = typeof (NSObject).GetMethod ("Retain", BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance);
 		private static FieldInfo handlefld = typeof (NSObject).GetField ("handle", BindingFlags.NonPublic | BindingFlags.Instance);
 		private static FieldInfo valuefld = typeof (RuntimeTypeHandle).GetField ("value", BindingFlags.NonPublic | BindingFlags.Instance);
 		static IntPtr selInit = MonoMac.ObjCRuntime.Selector.GetHandle ("init");
@@ -99,6 +99,7 @@ namespace MonoMac.ObjCRuntime {
 
 			il.Emit (OpCodes.Ldloc_0);
 			il.Emit (OpCodes.Call, retain);
+			il.Emit (OpCodes.Pop);
 
 			il.MarkLabel (done);
 			il.Emit (OpCodes.Ldarg_0);

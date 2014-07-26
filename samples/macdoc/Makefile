@@ -1,12 +1,14 @@
 
 MDTOOL_MASTER = $(MONODEVELOP_DIR)/main/build/bin/mdtool.exe
-MDTOOL_SYSTEM = /Applications/MonoDevelop.app/Contents/MacOS/mdtool
+
+MDROOT = $(shell stat -f%N "/Applications/Xamarin Studio.app" 2>/dev/null || echo "/Applications/MonoDevelop.app")
+MDTOOL_SYSTEM ?= $(MDROOT)/Contents/MacOS/mdtool
 
 # If invoked from CI, we pass the just built MonoDevelop as mdtool
 ifeq ($(wildcard $(MDTOOL_MASTER)),)
-    MDTOOL_BUILD = $(MDTOOL_SYSTEM) build
+    MDTOOL_BUILD = "$(MDTOOL_SYSTEM)" build
 else
-    MDTOOL_BUILD = mono $(MDTOOL_MASTER) setup reg-build && mono $(MDTOOL_MASTER) build
+    MDTOOL_BUILD = mono "$(MDTOOL_MASTER)" setup reg-build && mono "$(MDTOOL_MASTER)" build
 endif
 
 MONO_MAC_DLL = ../../src/MonoMac.dll
@@ -22,7 +24,7 @@ all: monomac macdoc monodoc
 monomac: $(MONO_MAC_DLL)
 
 macdoc: monomac
-	@echo "MDTOOL_BUILD: " $(MDTOOL_BUILD)
+	@echo "MDTOOL_BUILD: \"$(MDTOOL_BUILD)"\"
 	rm -Rf $(MACDOC_APP)
 	$(MDTOOL_BUILD)
 

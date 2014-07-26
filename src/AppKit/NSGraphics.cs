@@ -100,7 +100,7 @@ namespace MonoMac.AppKit {
 		[DllImport (Constants.AppKitLibrary, EntryPoint="NSRectFill")]
 		public extern static void RectFill (RectangleF rect);
 		
-		[DllImport (Constants.AppKitLibrary)]
+		[DllImport (Constants.AppKitLibrary, EntryPoint="NSRectFillList")]
 		unsafe extern static void RectFillList (RectangleF *rects, int count);
 
 		public static void RectFill (RectangleF [] rects)
@@ -165,5 +165,38 @@ namespace MonoMac.AppKit {
 		[DllImport (Constants.AppKitLibrary)]
 		public extern static ;
 #endif
+
+		[DllImport (Constants.AppKitLibrary, EntryPoint="NSDrawWhiteBezel")]
+		public extern static void DrawWhiteBezel (RectangleF aRect, RectangleF clipRect);
+
+		[DllImport (Constants.AppKitLibrary, EntryPoint="NSDrawLightBezel")]
+		public extern static void DrawLightBezel (RectangleF aRect, RectangleF clipRect);
+
+		[DllImport (Constants.AppKitLibrary, EntryPoint="NSDrawGrayBezel")]
+		public extern static void DrawGrayBezel (RectangleF aRect, RectangleF clipRect);
+
+		[DllImport (Constants.AppKitLibrary, EntryPoint="NSDrawDarkBezel")]
+		public extern static void DrawDarkBezel (RectangleF aRect, RectangleF clipRect);
+
+		[DllImport (Constants.AppKitLibrary, EntryPoint="NSDrawGroove")]
+		public extern static void DrawGroove (RectangleF aRect, RectangleF clipRect);
+
+		[DllImport (Constants.AppKitLibrary, EntryPoint="NSDrawTiledRects")]
+		unsafe extern static RectangleF DrawTiledRects (RectangleF aRect, RectangleF clipRect, NSRectEdge* sides, float* grays, int count);
+
+		public static RectangleF DrawTiledRects (RectangleF aRect, RectangleF clipRect, NSRectEdge[] sides, float[] grays)
+		{
+			if (sides == null)
+				throw new ArgumentNullException ("sides");
+			if (grays == null)
+				throw new ArgumentNullException ("grays");
+			if (sides.Length != grays.Length)
+				throw new ArgumentOutOfRangeException ("grays", "Both array parameters must have the same length");
+			unsafe {
+				fixed (NSRectEdge *ptr = &sides [0])
+				fixed (float *ptr2 = &grays [0])
+					return DrawTiledRects (aRect, clipRect, ptr, ptr2, sides.Length);
+			}
+		}
 	}
 }

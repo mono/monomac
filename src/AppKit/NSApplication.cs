@@ -43,8 +43,16 @@ namespace MonoMac.AppKit {
 		[DllImport (Constants.AppKitLibrary)]
 		extern static void NSApplicationMain (int argc, string [] argv);
 
+		static bool initialized;
+
 		public static void Init ()
 		{
+			if (initialized) {
+				throw new InvalidOperationException ("Init has already be be invoked; it can only be invoke once");
+			}
+
+			initialized = true;
+
 			var monomac = Assembly.GetExecutingAssembly ();
 			Runtime.RegisterAssembly (monomac);
 

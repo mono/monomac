@@ -35,6 +35,7 @@ namespace MonoMac.ObjCRuntime {
 		internal const string Alloc = "alloc";
 		internal const string Release = "release";
 		internal const string Retain = "retain";
+		internal const string Autorelease = "autorelease";
 		internal const string DoesNotRecognizeSelector = "doesNotRecognizeSelector:";
 		internal const string PerformSelectorOnMainThreadWithObjectWaitUntilDone = "performSelectorOnMainThread:withObject:waitUntilDone:";
 		internal const string PerformSelectorWithObjectAfterDelay = "performSelector:withObject:afterDelay:";
@@ -42,14 +43,21 @@ namespace MonoMac.ObjCRuntime {
 		internal static IntPtr AllocHandle = Selector.GetHandle (Alloc);
 		internal static IntPtr ReleaseHandle = Selector.GetHandle (Release);
 		internal static IntPtr RetainHandle = Selector.GetHandle (Retain);
+		internal static IntPtr AutoreleaseHandle = Selector.GetHandle (Autorelease);
 		internal static IntPtr DoesNotRecognizeSelectorHandle = Selector.GetHandle (DoesNotRecognizeSelector);
 		internal static IntPtr PerformSelectorOnMainThreadWithObjectWaitUntilDoneHandle = GetHandle (PerformSelectorOnMainThreadWithObjectWaitUntilDone);
 		internal static IntPtr PerformSelectorWithObjectAfterDelayHandle = GetHandle (PerformSelectorWithObjectAfterDelay);
 
 		internal IntPtr handle;
 
-		public Selector (IntPtr sel) {
-			if (!sel_isMapped (sel))
+		public Selector (IntPtr sel) :
+			this (sel, true)
+		{
+		}
+
+		internal Selector (IntPtr sel, bool check)
+		{
+			if (check && !sel_isMapped (sel))
 				throw new ArgumentException ("sel is not a selector handle.");
 
 			this.handle = sel;
@@ -110,7 +118,17 @@ namespace MonoMac.ObjCRuntime {
 		public override int GetHashCode () {
 			return (int) handle;
 		}
-		
+
+		// return null, instead of throwing, if an invalid pointer is used (e.g. IntPtr.Zero)
+		// so this looks better in the debugger watch when no selector is assigned (ref: #10876)
+		public static Selector FromHandle (IntPtr sel)
+		{
+			if (!sel_isMapped (sel))
+				return null;
+			// create the selector without duplicating the sel_isMapped check
+			return new Selector (sel, false);
+		}
+
 		[DllImport ("/usr/lib/libobjc.dylib")]
 		extern static IntPtr sel_getName (IntPtr sel);
 		[DllImport ("/usr/lib/libobjc.dylib", EntryPoint="sel_registerName")]

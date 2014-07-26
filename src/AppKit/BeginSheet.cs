@@ -49,7 +49,7 @@ namespace MonoMac.AppKit {
 				this.action = action;
 			}
 
-			[Export ("apply")]
+			[Export (NSActionDispatcher.SelectorName)]
 			[Preserve (Conditional = true)]
 			public void Apply ()
 			{

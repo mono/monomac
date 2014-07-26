@@ -1,4 +1,6 @@
-MDTOOL=/Applications/MonoDevelop.app/Contents/MacOS/mdtool
+MDROOT = $(shell stat -f%N "/Applications/Xamarin Studio.app" 2>/dev/null || echo "/Applications/MonoDevelop.app")
+MDROOT_ESCAPED = $(shell echo "$(MDROOT)" | sed 's| |\\ |g')
+MDTOOL = $(MDROOT)/Contents/MacOS/mdtool
 
 XDIRS = \
 	NSAlert					\
@@ -53,10 +55,9 @@ XDIRS = \
 	WhereIsMyMac
 
 all:
-	for i in $(XDIRS); do (cd $$i; $(MDTOOL) build); done
-	(cd MicroSamples; make)
+	-for i in $(XDIRS); do (cd $$i && "$(MDTOOL)" build) || exit $$?; done
+	$(MAKE) -C MicroSamples
 
 clean:
-	-for i in $(DIRS); do (cd $$i; make clean); done
-	-for i in $(XDIRS); do (cd $$i; rm -rf bin); done
-	-(cd MicroSamples; rm -rf *.exe *.mdb)
+	-for i in $(XDIRS); do (cd $$i && rm -rf bin) || exit $$?; done
+	$(MAKE) -C MicroSamples clean

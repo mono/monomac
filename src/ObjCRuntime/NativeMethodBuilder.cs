@@ -30,7 +30,7 @@ using MonoMac.Foundation;
 
 namespace MonoMac.ObjCRuntime {
 	internal class NativeMethodBuilder : NativeImplementationBuilder {
-		private static ConstructorInfo newnsstring = typeof (NSString).GetConstructor (new Type [] { typeof (string) });
+		private static MethodInfo creatensstring = typeof (NSString).GetMethod ("op_Explicit", new Type [] { typeof (string) });
 #if !MONOMAC_BOOTSTRAP
 		private static MethodInfo convertstruct = typeof (Marshal).GetMethod ("StructureToPtr", new Type [] { typeof (object), typeof (IntPtr), typeof (bool) });
 		private static MethodInfo buildarray = typeof (NSArray).GetMethod ("FromNSObjects", new Type [] { typeof (NSObject []) });
@@ -93,7 +93,7 @@ namespace MonoMac.ObjCRuntime {
 			UpdateByRefArguments (il, 0);
 
 			if (minfo.ReturnType == typeof (string)) {
-				il.Emit (OpCodes.Newobj, newnsstring);
+				il.Emit (OpCodes.Call, creatensstring);
 #if !MONOMAC_BOOTSTRAP
 			} else if (minfo.ReturnType.IsArray && IsWrappedType (minfo.ReturnType.GetElementType ())) {
 				if (minfo.ReturnType.GetElementType () == typeof (string))
