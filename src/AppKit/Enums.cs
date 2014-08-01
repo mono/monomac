@@ -115,13 +115,13 @@ namespace MonoMac.AppKit {
 	}
 
 	public enum NSTouchPhase : ulong { // NSUInteger
-		NSTouchPhaseBegan = 1,
-		NSTouchPhaseMoved = 2,
-		NSTouchPhaseStationary = 4,
-		NSTouchPhaseEnded = 8,
-		NSTouchPhaseCancelled = 16,
-		NSTouchPhaseTouching = 7,
-		NSTouchPhaseAny = ulong.MaxValue
+		Began = 1,
+		Moved = 2,
+		Stationary = 4,
+		Ended = 8,
+		Cancelled = 16,
+		Touching = 7,
+		Any = ulong.MaxValue
 	}
 
 	public enum NSEventType : ulong { // NSUInteger
@@ -159,29 +159,29 @@ namespace MonoMac.AppKit {
 	}
 	
 	public enum NSEventMask : ulong {
-		LeftMouseDownMask = 2,
-		LeftMouseUpMask = 4,
-		RightMouseDownMask = 8,
-		RightMouseUpMask = 16,
-		MouseMovedMask = 32,
-		LeftMouseDraggedMask = 64,
-		RightMouseDraggedMask = 128,
-		MouseEnteredMask = 256,
-		MouseExitedMask = 512,
-		KeyDownMask = 1024,
-		KeyUpMask = 2048,
-		FlagsChangedMask = 4096,
-		AppKitDefinedMask = 8192,
-		SystemDefinedMask = 16384,
-		ApplicationDefinedMask = 32768,
-		PeriodicMask = 65536,
-		CursorUpdateMask = 131072,
-		ScrollWheelMask = 4194304,
-		TabletPointMask = 8388608,
-		TabletProximityMask = 16777216,
-		OtherMouseDownMask = 33554432,
-		OtherMouseUpMask = 67108864,
-		OtherMouseDraggedMask = 134217728,
+		LeftMouseDown = 2,
+		LeftMouseUp = 4,
+		RightMouseDown = 8,
+		RightMouseUp = 16,
+		MouseMoved = 32,
+		LeftMouseDragged = 64,
+		RightMouseDragged = 128,
+		MouseEntered = 256,
+		MouseExited = 512,
+		KeyDown = 1024,
+		KeyUp = 2048,
+		FlagsChanged = 4096,
+		AppKitDefined = 8192,
+		SystemDefined = 16384,
+		ApplicationDefined = 32768,
+		Periodic = 65536,
+		CursorUpdate = 131072,
+		ScrollWheel = 4194304,
+		TabletPoint = 8388608,
+		TabletProximity = 16777216,
+		OtherMouseDown = 33554432,
+		OtherMouseUp = 67108864,
+		OtherMouseDragged = 134217728,
 		EventMaskGesture = 536870912,
 		EventMaskMagnify = 1073741824,
 		EventMaskSwipe = 2147483648,
@@ -193,22 +193,22 @@ namespace MonoMac.AppKit {
 	}
 	
 	public enum NSEventModifierMask : ulong { // NSUInteger
-		AlphaShift = 65536,
-		Shift = 131072,
-		Control = 262144,
-		Alternate = 524288,
-		Command = 1048576,
-		NumericPad = 2097152,
-		Help = 4194304,
-		Function = 8388608,
-		DeviceIndependentModifierFlags = 0xffff0000
+		AlphaShiftKeyMask = 65536,
+		ShiftKeyMask = 131072,
+		ControlKeyMask = 262144,
+		AlternateKeyMask = 524288,
+		CommandKeyMask = 1048576,
+		NumericPadKeyMask = 2097152,
+		HelpKeyMask = 4194304,
+		FunctionKeyMask = 8388608,
+		DeviceIndependentModifierFlagsMask = 0xffff0000
 	}
 	
 	public enum NSPointingDeviceType : ulong { // NSUInteger
-		NSUnknownPointingDevice = 0,
-		NSPenPointingDevice = 1,
-		NSCursorPointingDevice = 2,
-		NSEraserPointingDevice = 3
+		Unknown = 0,
+		Pen = 1,
+		Cursor = 2,
+		Eraser = 3
 	}
 	
 	public enum NSButtonMask : ulong { // NSUInteger
@@ -218,24 +218,24 @@ namespace MonoMac.AppKit {
 	}
 	
 	public enum NSEventPhase : ulong { // NSUInteger
-		NSEventPhaseNone = 0,
-		NSEventPhaseBegan = 1,
-		NSEventPhaseStationary = 2,
-		NSEventPhaseChanged = 4,
-		NSEventPhaseEnded = 8,
-		NSEventPhaseCancelled = 16,
-		NSEventPhaseMayBegin = 32
+		None = 0,
+		Began = 1,
+		Stationary = 2,
+		Changed = 4,
+		Ended = 8,
+		Cancelled = 16,
+		MayBegin = 32
 	}
 	
 	public enum NSEventGestureAxis : long { // NSInteger
-		NSEventGestureAxisNone = 0,
-		NSEventGestureAxisHorizontal = 1,
-		NSEventGestureAxisVertical = 2
+		None = 0,
+		Horizontal = 1,
+		Vertical = 2
 	}
 	
 	public enum NSEventSwipeTrackingOptions : ulong { // NSUInteger
-		NSEventSwipeTrackingLockDirection = 1,
-		NSEventSwipeTrackingClampGestureAmount = 2
+		LockDirection = 1,
+		ClampGestureAmount = 2
 	}
 
 	public enum NSKey : ulong { // NSUInteger
@@ -416,10 +416,10 @@ public enum  : ulong { // NSUInteger
 }
 				 */
 	public enum NSAnimationCurve : ulong { // NSUInteger
-		NSAnimationEaseInOut = 0,
-		NSAnimationEaseIn = 1,
-		NSAnimationEaseOut = 2,
-		NSAnimationLinear = 3
+		EaseInOut = 0,
+		EaseIn = 1,
+		EaseOut = 2,
+		Linear = 3
 	}
 	
 	public enum NSAnimationBlockingMode : ulong { // NSUInteger
@@ -441,21 +441,21 @@ public enum  : ulong { // NSUInteger
 	}
 	
 	public enum NSDraggingFormation : long { // NSInteger
-		NSDraggingFormationDefault = 0,
-		NSDraggingFormationNone = 1,
-		NSDraggingFormationPile = 2,
-		NSDraggingFormationList = 3,
-		NSDraggingFormationStack = 4
+		Default = 0,
+		None = 1,
+		Pile = 2,
+		List = 3,
+		Stack = 4
 	}
 	
 	public enum NSDraggingContext : long { // NSInteger
-		NSDraggingContextOutsideApplication = 0,
-		NSDraggingContextWithinApplication = 1
+		OutsideApplication = 0,
+		WithinApplication = 1
 	}
 	
 	public enum NSDraggingItemEnumerationOptions : ulong { // NSUInteger
-		NSDraggingItemEnumerationConcurrent = 1,
-		NSDraggingItemEnumerationClearNonenumeratedImages = 65536
+		Concurrent = 1,
+		ClearNonenumeratedImages = 65536
 	}
 
 	[Flags]
@@ -477,25 +477,25 @@ public enum  : ulong { // NSUInteger
 	}
 	
 	public enum NSViewLayerContentsRedrawPolicy : long { // NSInteger
-		NSViewLayerContentsRedrawNever = 0,
-		NSViewLayerContentsRedrawOnSetNeedsDisplay = 1,
-		NSViewLayerContentsRedrawDuringViewResize = 2,
-		NSViewLayerContentsRedrawBeforeViewResize = 3
+		Never = 0,
+		OnSetNeedsDisplay = 1,
+		DuringViewResize = 2,
+		BeforeViewResize = 3
 	}
 	
 	public enum NSViewLayerContentsPlacement : long { // NSInteger
-		NSViewLayerContentsPlacementScaleAxesIndependently = 0,
-		NSViewLayerContentsPlacementScaleProportionallyToFit = 1,
-		NSViewLayerContentsPlacementScaleProportionallyToFill = 2,
-		NSViewLayerContentsPlacementCenter = 3,
-		NSViewLayerContentsPlacementTop = 4,
-		NSViewLayerContentsPlacementTopRight = 5,
-		NSViewLayerContentsPlacementRight = 6,
-		NSViewLayerContentsPlacementBottomRight = 7,
-		NSViewLayerContentsPlacementBottom = 8,
-		NSViewLayerContentsPlacementBottomLeft = 9,
-		NSViewLayerContentsPlacementLeft = 10,
-		NSViewLayerContentsPlacementTopLeft = 11
+		ScaleAxesIndependently = 0,
+		ScaleProportionallyToFit = 1,
+		ScaleProportionallyToFill = 2,
+		Center = 3,
+		Top = 4,
+		TopRight = 5,
+		Right = 6,
+		BottomRight = 7,
+		Bottom = 8,
+		BottomLeft = 9,
+		Left = 10,
+		TopLeft = 11
 	}
 
 /*
@@ -535,23 +535,23 @@ public enum  : ulong { // NSUInteger
 	}*/
 	
 	public enum NSTextMovement : ulong { // NSUInteger
-		NSIllegalTextMovement = 0,
-		NSReturnTextMovement = 16,
-		NSTabTextMovement = 17,
-		NSBacktabTextMovement = 18,
-		NSLeftTextMovement = 19,
-		NSRightTextMovement = 20,
-		NSUpTextMovement = 21,
-		NSDownTextMovement = 22,
-		NSCancelTextMovement = 23,
-		NSOtherTextMovement = 0
+		//NSIllegalTextMovement = 0,
+		Return = 16,
+		Tab = 17,
+		Backtab = 18,
+		Left = 19,
+		Right = 20,
+		Up = 21,
+		Down = 22,
+		Cancel = 23,
+		Other = 0
 	}
 
 	public enum NSTextTabType : ulong { // NSUInteger
-		NSLeftTabStopType = 0,
-		NSRightTabStopType = 1,
-		NSCenterTabStopType = 2,
-		NSDecimalTabStopType = 3
+		Left = 0,
+		Right = 1,
+		Center = 2,
+		Decimal = 3
 	}
 
 	public enum NSLineBreakMode : ulong { // NSUInteger
@@ -583,20 +583,20 @@ public enum  : ulong { // NSUInteger
 	}*/
 
 	public enum NSApplicationActivationOptions : ulong { // NSUInteger
-		NSApplicationActivateAllWindows = 1,
-		NSApplicationActivateIgnoringOtherApps = 2
+		ActivateAllWindows = 1,
+		ActivateIgnoringOtherWindows = 2
 	}
 	
 	public enum NSApplicationActivationPolicy : long { // NSInteger
-		NSApplicationActivationPolicyRegular = 0,
-		NSApplicationActivationPolicyAccessory = 1,
-		NSApplicationActivationPolicyProhibited = 2
+		Regular = 0,
+		Accessory = 1,
+		Prohibited = 2
 	}
 
 	public enum NSRunResponse : long { // NSInteger
-		NSRunStoppedResponse = -1000,
-		NSRunAbortedResponse = -1001,
-		NSRunContinuesResponse = -1002
+		Stopped = -1000,
+		Aborted = -1001,
+		Continues = -1002
 	}
 	
 				/*
@@ -605,27 +605,27 @@ public enum  : ulong { // NSUInteger
 	}*/
 	
 	public enum NSApplicationPresentationOptions : ulong { // NSUInteger
-		NSApplicationPresentationDefault = 0,
-		NSApplicationPresentationAutoHideDock = 1,
-		NSApplicationPresentationHideDock = 2,
-		NSApplicationPresentationAutoHideMenuBar = 4,
-		NSApplicationPresentationHideMenuBar = 8,
-		NSApplicationPresentationDisableAppleMenu = 16,
-		NSApplicationPresentationDisableProcessSwitching = 32,
-		NSApplicationPresentationDisableForceQuit = 64,
-		NSApplicationPresentationDisableSessionTermination = 128,
-		NSApplicationPresentationDisableHideApplication = 256,
-		NSApplicationPresentationDisableMenuBarTransparency = 512,
+		Default = 0,
+		AutoHideDock = 1,
+		HideDock = 2,
+		AutoHideMenuBar = 4,
+		HideMenuBar = 8,
+		DisableAppleMenu = 16,
+		DisableProcessSwitching = 32,
+		DisableForceQuit = 64,
+		DisableSessionTermination = 128,
+		DisableHideApplication = 256,
+		DisableMenuBarTransparency = 512,
 	/*}
 	
 	public enum NSApplicationPresentationOptions : ulong { // NSUInteger*/
-		NSApplicationPresentationFullScreen = 1024,
-		NSApplicationPresentationAutoHideToolbar = 2048
+		FullScreen = 1024,
+		AutoHideToolbar = 2048
 	}
 	
 	public enum NSRequestUserAttentionType : ulong { // NSUInteger
-		NSCriticalRequest = 0,
-		NSInformationalRequest = 10
+		CriticalRequest = 0,
+		InformationalRequest = 10
 	}
 	
 	public enum NSApplicationDelegateReply : ulong { // NSUInteger
@@ -676,23 +676,23 @@ public enum  : ulong { // NSUInteger
 	}
 	
 	public enum NSCellAttribute : ulong { // NSUInteger
-		NSCellDisabled = 0,
-		NSCellState = 1,
-		NSPushInCell = 2,
-		NSCellEditable = 3,
-		NSChangeGrayCell = 4,
-		NSCellHighlighted = 5,
-		NSCellLightsByContents = 6,
-		NSCellLightsByGray = 7,
-		NSChangeBackgroundCell = 8,
-		NSCellLightsByBackground = 9,
-		NSCellIsBordered = 10,
-		NSCellHasOverlappingImage = 11,
-		NSCellHasImageHorizontal = 12,
-		NSCellHasImageOnLeftOrBottom = 13,
-		NSCellChangesContents = 14,
-		NSCellIsInsetButton = 15,
-		NSCellAllowsMixedState = 16
+		CellDisabled = 0,
+		CellState = 1,
+		PushInCell = 2,
+		CellEditable = 3,
+		ChangeGrayCell = 4,
+		CellHighlighted = 5,
+		CellLightsByContents = 6,
+		CellLightsByGray = 7,
+		ChangeBackgroundCell = 8,
+		CellLightsByBackground = 9,
+		CellIsBordered = 10,
+		CellHasOverlappingImage = 11,
+		CellHasImageHorizontal = 12,
+		CellHasImageOnLeftOrBottom = 13,
+		CellChangesContents = 14,
+		CellIsInsetButton = 15,
+		CellAllowsMixedState = 16
 	}
 	
 	public enum NSCellImagePosition : ulong { // NSUInteger
