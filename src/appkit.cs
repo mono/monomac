@@ -5177,10 +5177,10 @@ namespace MonoMac.AppKit {
 		[Static, Export ("graphicsContextWithGraphicsPort:flipped:")]
 		NSGraphicsContext FromGraphicsPort (IntPtr graphicsPort, bool initialFlippedState);
 	
-		[Static, Export ("currentContext"), Verify ("/System/Library/Frameworks/AppKit.framework/Headers/NSGraphicsContext.h", Line = 57), Verify ("/System/Library/Frameworks/AppKit.framework/Headers/NSGraphicsContext.h", Line = 58)]
+		[Static, Export ("currentContext")]
 		NSGraphicsContext CurrentContext { get; set; }
 	
-		[Static, Export ("currentContextDrawingToScreen"), Verify ("/System/Library/Frameworks/AppKit.framework/Headers/NSGraphicsContext.h", Line = 61)]
+		[Static, Export ("currentContextDrawingToScreen")]
 		bool IsCurrentContextDrawingToScreen { get; }
 	
 		[Static, Export ("saveGraphicsState")]
@@ -5189,13 +5189,13 @@ namespace MonoMac.AppKit {
 		[Static, Export ("restoreGraphicsState")]
 		void GlobalRestoreGraphicsState ();
 	
-		[Static, Export ("setGraphicsState:"), Verify ("/System/Library/Frameworks/AppKit.framework/Headers/NSGraphicsContext.h", Line = 69)]
+		[Static, Export ("setGraphicsState:")]
 		void SetGraphicsState (NSInteger gState);
 	
-		[Export ("attributes"), Verify ("/System/Library/Frameworks/AppKit.framework/Headers/NSGraphicsContext.h", Line = 72)]
+		[Export ("attributes")]
 		NSDictionary Attributes { get; } 
 	
-		[Export ("isDrawingToScreen"), Verify ("/System/Library/Frameworks/AppKit.framework/Headers/NSGraphicsContext.h", Line = 75)]
+		[Export ("isDrawingToScreen")]
 		bool IsDrawingToScreen { get; }
 	
 		[Export ("saveGraphicsState")]
@@ -5208,10 +5208,10 @@ namespace MonoMac.AppKit {
 		void FlushGraphics ();
 
 		// keep signature in sync with 'graphicsContextWithGraphicsPort:flipped:'
-		[Export ("graphicsPort"), Verify ("/System/Library/Frameworks/AppKit.framework/Headers/NSGraphicsContext.h", Line = 84)]
+		[Export ("graphicsPort")]
 		IntPtr GraphicsPortHandle {get; }
 	
-		[Export ("isFlipped"), Verify ("/System/Library/Frameworks/AppKit.framework/Headers/NSGraphicsContext.h", Line = 88)]
+		[Export ("isFlipped")]
 		bool IsFlipped { get; }
 	
 		[Export ("shouldAntialias")]

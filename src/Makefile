@@ -216,29 +216,16 @@ parse.exe: parse.cs $(MACCORE_DIR)/src/Options.cs
 	$(MCS) -debug parse.cs $(MACCORE_DIR)/src/Options.cs
 
 core.dll: $(CORE_SOURCES) $(SHARED_CORE_SOURCES) Makefile
-<<<<<<< HEAD
-	gmcs -target:library -debug -unsafe -out:core.dll $(DEFINES64) -define:MONOMAC,MONOMAC_BOOTSTRAP,COREBUILD$(CORE_DLL_DEFINES) $(CORE_SOURCES) $(SHARED_CORE_SOURCES) -r:System.Drawing
+	$(MCS) -target:library -debug -unsafe -out:core.dll $(DEFINES64) -define:MONOMAC,MONOMAC_BOOTSTRAP,COREBUILD$(CORE_DLL_DEFINES) $(CORE_SOURCES) $(SHARED_CORE_SOURCES) -r:System.Drawing
 
 _bmac.exe: $(APIS) core.dll $(GENERATOR_SOURCES)
-	gmcs -unsafe -out:_bmac.exe -debug $(DEFINES) $(DEFINES64) -define:GENERATOR,MONOMAC,MONOMAC_BOOTSTRAP $(GENERATOR_SOURCES) -r:core.dll -r:System.Drawing
+	$(MCS) -unsafe -out:_bmac.exe -debug $(DEFINES) $(DEFINES64) -define:GENERATOR,MONOMAC,MONOMAC_BOOTSTRAP $(GENERATOR_SOURCES) -r:core.dll -r:System.Drawing
 
 generated_sources: _bmac.exe $(APIS) 
-	mono --debug _bmac.exe -a -d=MONOMAC $(BMAC_DEFINES64) $(BMAC_DEFINES) --core --sourceonly=generated_sources -v -tmpdir=. $(APIS) --baselib=core.dll --ns=MonoMac.ObjCRuntime -r=System.Drawing
+	mono --debug _bmac.exe -a -d=MONOMAC $(BMAC_DEFINES64) $(BMAC_DEFINES) --core --sourceonly=generated_sources -v -tmpdir=. $(APIS) --baselib=core.dll --ns=MonoMac.ObjCRuntime -r=System.Drawing $(BMAC_OPTIONS)
 
 bmac.exe: $(TARGET) $(GENERATOR_SOURCES)
-	gmcs -unsafe -out:bmac.exe -debug $(DEFINES) $(DEFINES64) -define:GENERATOR,MONOMAC,MONOMAC_BOOTSTRAP $(GENERATOR_SOURCES) -r:$(TARGET) -r:System.Drawing
-=======
-	$(MCS) -target:library -debug -unsafe -out:core.dll -define:MONOMAC,MONOMAC_BOOTSTRAP,COREBUILD$(CORE_DLL_DEFINES) $(CORE_SOURCES) $(SHARED_CORE_SOURCES) -r:System.Drawing
-
-_bmac.exe: $(APIS) core.dll $(GENERATOR_SOURCES)
-	$(MCS) -unsafe -out:_bmac.exe -debug $(DEFINES) -define:GENERATOR,MONOMAC,MONOMAC_BOOTSTRAP $(GENERATOR_SOURCES) -r:core.dll -r:System.Drawing
-
-generated_sources: _bmac.exe $(APIS) 
-	mono --debug _bmac.exe -a -d=MONOMAC $(BMAC_DEFINES) --core --sourceonly=generated_sources -v -tmpdir=. $(APIS) --baselib=core.dll --ns=MonoMac.ObjCRuntime -r=System.Drawing $(BMAC_OPTIONS)
-
-bmac.exe: $(TARGET) $(GENERATOR_SOURCES)
-	$(MCS) -unsafe -out:bmac.exe -debug $(DEFINES) -define:GENERATOR,MONOMAC,MONOMAC_BOOTSTRAP $(GENERATOR_SOURCES) -r:$(TARGET) -r:System.Drawing
->>>>>>> 99fc8d74c5357325c42de4bc5eb4594bf792c392
+	$(MCS) -unsafe -out:bmac.exe -debug $(DEFINES) $(DEFINES64) -define:GENERATOR,MONOMAC,MONOMAC_BOOTSTRAP $(GENERATOR_SOURCES) -r:$(TARGET) -r:System.Drawing
 
 count: 
 	make pass | wc -l
@@ -247,17 +234,10 @@ counts:
 	make pass | grep 'could not be' | sed 's/.*`//' | sed "s/'.*//" | sort | uniq -c | sort -n
 
 $(TARGET): $(SOURCES) generated_sources $(MONOMAC_SOURCES) $(SHARED_SOURCES) $(SHARED_CORE_SOURCES) $(OPENTK_SOURCES)
-<<<<<<< HEAD
-	gmcs -define:OBJECT_REF_TRACKING $(DEFINES64) -nowarn:3021,0219,0414,$(WARNINGS_I_SHOULD_FIX) -debug -unsafe $(SOURCES) @generated_sources $(MONOMAC_SOURCES) $(SHARED_SOURCES) $(SHARED_CORE_SOURCES) $(OPENTK_SOURCES) -target:library -define:MONOMAC -out:$(TARGET) -r:System.Drawing
-
-MonoMac.CFNetwork.dll: $(CFNETWORK_SOURCES)
-	mcs -debug -target:library -define:MONOMAC $(DEFINES64) -r:System.Net.Http -r:$(TARGET) -out:MonoMac.CFNetwork.dll $(CFNETWORK_SOURCES)
-=======
-	$(MCS) -define:OBJECT_REF_TRACKING -nowarn:3021,0219,0414,$(WARNINGS_I_SHOULD_FIX) -debug -unsafe $(SOURCES) @generated_sources $(MONOMAC_SOURCES) $(SHARED_SOURCES) $(SHARED_CORE_SOURCES) $(OPENTK_SOURCES) -target:library -define:MONOMAC -out:$(TARGET) -r:System.Drawing
+	$(MCS) -define:OBJECT_REF_TRACKING $(DEFINES64) -nowarn:3021,0219,0414,$(WARNINGS_I_SHOULD_FIX) -debug -unsafe $(SOURCES) @generated_sources $(MONOMAC_SOURCES) $(SHARED_SOURCES) $(SHARED_CORE_SOURCES) $(OPENTK_SOURCES) -target:library -define:MONOMAC -out:$(TARGET) -r:System.Drawing
 
 MonoMac.CFNetwork.dll: $(CFNETWORK_SOURCES) $(TARGET)
-	mcs -debug -target:library -define:MONOMAC -r:System.Net.Http -r:$(TARGET) -out:MonoMac.CFNetwork.dll $(CFNETWORK_SOURCES)
->>>>>>> 99fc8d74c5357325c42de4bc5eb4594bf792c392
+	mcs -debug -target:library -define:MONOMAC $(DEFINES64) -r:System.Net.Http -r:$(TARGET) -out:MonoMac.CFNetwork.dll $(CFNETWORK_SOURCES)
 
 clean:
 	rm -f $(foreach t,$(TARGETS) core.dll temp.dll,$(t) $(t).mdb)
