@@ -28,6 +28,10 @@ using System.Drawing;
 using MonoMac.Foundation;
 using MonoMac.CoreGraphics;
 
+#if !MAC64
+using NSRect = System.Drawing.RectangleF;
+#endif
+
 namespace MonoMac.AppKit {
 
 	public enum NSImageName {
@@ -77,7 +81,7 @@ namespace MonoMac.AppKit {
 		
 		public CGImage CGImage {
 			get {
-				var rect = RectangleF.Empty;
+				var rect = NSRect.Empty;
 				return AsCGImage (ref rect, null, null);
 			}
 		}
@@ -187,7 +191,7 @@ namespace MonoMac.AppKit {
 
 		public CGImage CGImage {
 			get {
-				var rect = RectangleF.Empty;
+				var rect = NSRect.Empty;
 				return AsCGImage (ref rect, null, null);
 			}
 		}
