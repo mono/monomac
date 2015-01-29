@@ -14849,10 +14849,8 @@ namespace MonoMac.AppKit {
 		[Export ("windowWillReturnFieldEditor:toObject:"), DelegateName ("NSWindowClient"), DefaultValue (null)]
 		NSObject WillReturnFieldEditor (NSWindow  sender, NSObject client);
 	
-		// 25 April 2013, S. Baer
-		//?? The following delegate function does not work in the 64bit build and I haven't figured out why yet
-		//[Export ("windowWillResize:toSize:"), DelegateName ("NSWindowResize"), DefaultValueFromArgument ("toFrameSize")]
-		//NSSize WillResize (NSWindow sender, NSSize toFrameSize);
+		[Export ("windowWillResize:toSize:"), DelegateName ("NSWindowResize"), DefaultValueFromArgument ("toFrameSize")]
+		NSSize WillResize (NSWindow sender, NSSize toFrameSize);
 	
 		[Export ("windowWillUseStandardFrame:defaultFrame:"), DelegateName ("NSWindowFrame"), DefaultValueFromArgument ("newFrame")]
 		NSRect WillUseStandardFrame (NSWindow window, NSRect newFrame);
