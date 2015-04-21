@@ -24,107 +24,290 @@
 using System;
 using MonoMac.ObjCRuntime;
 
-#if !MAC64
-#error this file is specifically for a 64 bit build
-#endif
+#if MAC64
+using nuint = System.UInt64;
+using nint = System.Int64;
+using nnuint = System.UInt64;
+#else
+// on 32-bit, all enums are signed int
+using nulong = System.Int32;
+using nint = System.Int32;
+using nnuint = System.UInt32;
+#end if
 
 namespace MonoMac.AppKit {
-	/*
-	public enum  : ulong { // NSUInteger
-		NSTextReadInapplicableDocumentTypeError = 65806,
-		NSTextWriteInapplicableDocumentTypeError = 66062,
-		NSTextReadWriteErrorMinimum = 65792,
-		NSTextReadWriteErrorMaximum = 66303,
-		NSServiceApplicationNotFoundError = 66560,
-		NSServiceApplicationLaunchFailedError = 66561,
-		NSServiceRequestTimedOutError = 66562,
-		NSServiceInvalidPasteboardDataError = 66563,
-		NSServiceMalformedServiceDictionaryError = 66564,
-		NSServiceMiscellaneousError = 66800,
-		NSServiceErrorMinimum = 66560,
-		NSServiceErrorMaximum = 66817
-	}*/
 	
-	public enum NSCompositingOperation : ulong { // NSUInteger
-		Clear = 0,
-		Copy = 1,
-		SourceOver = 2,
-		SourceIn = 3,
-		SourceOut = 4,
-		SourceAtop = 5,
-		DestinationOver = 6,
-		DestinationIn = 7,
-		DestinationOut = 8,
-		DestinationAtop = 9,
-		XOR = 10,
-		PlusDarker = 11,
-		Highlight = 12,
-		PlusLighter = 13
+	public enum NSRunResponse : nint {
+		Stopped = -1000,
+		Aborted = -1001,
+		Continues = -1002
 	}
 
-	
-	public enum NSBackingStoreType : ulong { // NSUInteger
-		Retained = 0,
-		Nonretained = 1,
-		Buffered = 2
+	public enum NSApplicationActivationOptions : nuint {
+		ActivateAllWindows = 1,
+		ActivateIgnoringOtherWindows = 2
 	}
 	
-	public enum NSWindowOrderingMode : long { // NSInteger
-		Above = 1,
-		Below = -1,
-		Out = 0
+	public enum NSApplicationActivationPolicy : nint {
+		Regular, Accessory, Prohibited
 	}
 	
-	public enum NSFocusRingPlacement : ulong { // NSUInteger
-		RingOnly = 0,
-		RingBelow = 1,
-		RingAbove = 2
+	public enum NSApplicationPresentationOptions : nuint {
+		Default                    = 0,
+		AutoHideDock               = (1 <<  0),
+		HideDock                   = (1 <<  1),
+
+		AutoHideMenuBar            = (1 <<  2),
+		HideMenuBar                = (1 <<  3),
+
+		DisableAppleMenu           = (1 <<  4),
+		DisableProcessSwitching    = (1 <<  5),
+		DisableForceQuit           = (1 <<  6),
+		DisableSessionTermination  = (1 <<  7),
+		DisableHideApplication     = (1 <<  8),
+		DisableMenuBarTransparency = (1 <<  9),
+
+		FullScreen                 = (1 << 10),
+		AutoHideToolbar            = (1 << 11)
 	}
 
-	public enum NSFocusRingType : ulong { //NSUInteger
-		Default = 0,
-		None = 1,
-		Exterior = 2
+	public enum NSApplicationDelegateReply : nuint {
+		Success,
+		Cancel,
+		Failure
 	}
 
-	public enum NSColorRenderingIntent : long { // NSInteger
-		Default = 0,
-		AbsoluteColorimetric = 1,
-		RelativeColorimetric = 2,
-		Perceptual = 3,
-		Saturation = 4
+	public enum NSRequestUserAttentionType : nuint {
+		CriticalRequest = 0,
+		InformationalRequest = 10
+	}
+
+	public enum NSApplicationTerminateReply : nuint {
+		Cancel, Now, Later
+	}
+
+	public enum NSApplicationPrintReply : nuint {
+		Cancelled, Success, Failure, ReplyLater
+	}
+
+	public enum NSApplicationLayoutDirection : nint {
+		LeftToRight = 0,
+		RightToLeft = 1
+	}
+
+	public enum NSImageInterpolation : nuint {
+		Default, None, Low, Medium, High
+	}
+
+	public enum NSComposite : nuint {
+		Clear,
+		Copy,
+		SourceOver,
+		SourceIn,
+		SourceOut,
+		SourceAtop,
+		DestinationOver,
+		DestinationIn,
+		DestinationOut,
+		DestinationAtop,
+		XOR,
+		PlusDarker,
+		Highlight,
+		PlusLighter,
+	}
+
+	public enum NSBackingStore : nuint {
+		Retained, Nonretained, Buffered
+	}
+
+	public enum NSWindowOrderingMode : nint {
+		Below = -1, Out, Above
+	}
+
+	public enum NSFocusRingPlacement : nuint {
+		RingOnly, RingBelow, RingAbove,
+	}
+
+	public enum NSFocusRingType : nuint {
+		Default, None, Exterior
 	}
 	
-	public enum NSWindowDepth : long { // NSInteger
-		TwentyfourBitRGB = 520,
-		SixtyfourBitRGB = 528,
-		OnehundredtwentyeightBitRGB = 544
+	public enum NSColorRenderingIntent : nint {
+		Default,
+		AbsoluteColorimetric,
+		RelativeColorimetric,
+		Perceptual,
+		Saturation
+		
 	}
 
-	public enum NSAnimationEffect : ulong { // NSUInteger
-		DisappearingItemDefault = 0,
-		Poof = 10
+	public enum NSRectEdge {
+		MinXEdge, MinYEdge, MaxXEdge, MaxYEdge
+	}
+
+	public enum NSUserInterfaceLayoutDirection : nint {
+		LeftToRight, RightToLeft
+	}
+
+#region NSColorSpace
+	public enum NSColorSpaceModel : nint {
+		Unknown = -1,
+		Gray,
+		RGB,
+		CMYK,
+		LAB,
+		DeviceN,
+		Indexed,
+		Pattern
+    }
+#endregion
+
+#region NSFileWrapper
+	[Flags]
+	public enum NSFileWrapperReadingOptions : nuint {
+		Immediate = 1, WithoutMapping = 2
+	}
+#endregion
+	
+#region NSParagraphStyle
+	public enum NSTextTabType : nuint {
+		Left, Right, Center, Decimal
+	}
+
+	public enum NSLineBreakMode : nuint {
+		ByWordWrapping,
+		CharWrapping,
+		Clipping,
+		TruncatingHead,
+		TruncatingTail,
+		TruncatingMiddle
 	}
 	
-	public enum NSImageInterpolation : ulong { // NSUInteger
-		Default = 0,
-		None = 1,
-		Low = 2,
-		Medium = 4,
-		High = 3
+#endregion
+	
+#region NSCell Defines 
+
+	public enum NSType : nuint {
+	    Any			= 0,
+	    Int			= 1,
+	    PositiveInt		= 2,
+	    Float		= 3,
+	    PositiveFloat	= 4,
+	    Double		= 6,
+	    PositiveDouble	= 7
+	}
+	
+	public enum NSCellType : nuint {
+	    Null,
+	    Text,
+	    Image
+	}
+	
+	public enum NSCellAttribute : nuint {
+		CellDisabled,
+		CellState,
+		PushInCell,
+		CellEditable,
+		ChangeGrayCell,
+		CellHighlighted,
+		CellLightsByContents,
+		CellLightsByGray,
+		ChangeBackgroundCell,
+		CellLightsByBackground,
+		CellIsBordered,
+		CellHasOverlappingImage,
+		CellHasImageHorizontal,
+		CellHasImageOnLeftOrBottom,
+		CellChangesContents,
+		CellIsInsetButton,
+		CellAllowsMixedState,
+	}
+	
+	public enum NSCellImagePosition : nuint {
+		NoImage,
+		ImageOnly,
+		ImageLeft,
+		ImageRight,
+		ImageBelow,
+		ImageAbove,
+		ImageOverlaps,
+	}
+	
+	public enum NSImageScaling : nuint {
+		ProportionallyDown = 0,
+		AxesIndependently,     
+		None,                 
+		ProportionallyUpOrDown
+	}
+	
+	public enum NSCellStateValue : nint {
+		Mixed = -1,
+		Off,
+		On
+	}
+	
+	[Flags]
+	public enum NSCellMask : nuint {
+		NoCell = 0,
+		ContentsCell = 1 << 0,
+		PushInCell = 1 << 1, 
+		ChangeGrayCell = 1 << 2,
+		ChangeBackgroundCell = 1 << 3
+	}
+	
+	[Flags]
+	public enum NSCellHit : nuint {
+		None,
+		ContentArea = 1,
+		EditableTextArea = 2,
+		TrackableArae = 4
+	}
+	
+	public enum NSControlTint : nuint {
+		Default  = 0,	// system 'default'
+		Blue     = 1,
+		Graphite = 6,
+		Clear    = 7
+	}
+	
+	public enum NSControlSize : nuint {
+		Regular, 
+		Small,
+		Mini
 	}
 
-	public enum NSTouchPhase : ulong { // NSUInteger
-		Began = 1,
-		Moved = 2,
-		Stationary = 4,
-		Ended = 8,
-		Cancelled = 16,
-		Touching = 7,
-		Any = ulong.MaxValue
+	public enum NSBackgroundStyle : nint {
+		Light, Dark, Raised, Lowered
 	}
+#endregion
 
-	public enum NSEventType : ulong { // NSUInteger
+#region NSImage
+	
+	public enum NSImageLoadStatus : nuint {
+	    		Completed,
+	    		Cancelled,
+	    		InvalidData,
+	    		UnexpectedEOF,
+	    		ReadError
+	}
+	
+	public enum NSImageCacheMode : nuint {
+		Default, 
+		Always,  
+		BySize,  
+		Never    
+	}
+		
+#endregion
+	
+#region NSAlert
+	public enum NSAlertStyle : nuint {
+		Warning, Informational, Critical
+	}
+#endregion
+
+#region NSEvent
+	public enum NSEventType : nuint {
 		LeftMouseDown = 1,
 		LeftMouseUp = 2,
 		RightMouseDown = 3,
@@ -142,103 +325,84 @@ namespace MonoMac.AppKit {
 		ApplicationDefined = 15,
 		Periodic = 16,
 		CursorUpdate = 17,
+
 		ScrollWheel = 22,
+
 		TabletPoint = 23,
 		TabletProximity = 24,
+
 		OtherMouseDown = 25,
 		OtherMouseUp = 26,
 		OtherMouseDragged = 27,
-		EventTypeGesture = 29,
-		EventTypeMagnify = 30,
-		EventTypeSwipe = 31,
-		EventTypeRotate = 18,
-		EventTypeBeginGesture = 19,
-		EventTypeEndGesture = 20,
-		EventTypeSmartMagnify = 32,
-		EventTypeQuickLook = 33
-	}
-	
-	public enum NSEventMask : ulong {
-		LeftMouseDown = 2,
-		LeftMouseUp = 4,
-		RightMouseDown = 8,
-		RightMouseUp = 16,
-		MouseMoved = 32,
-		LeftMouseDragged = 64,
-		RightMouseDragged = 128,
-		MouseEntered = 256,
-		MouseExited = 512,
-		KeyDown = 1024,
-		KeyUp = 2048,
-		FlagsChanged = 4096,
-		AppKitDefined = 8192,
-		SystemDefined = 16384,
-		ApplicationDefined = 32768,
-		Periodic = 65536,
-		CursorUpdate = 131072,
-		ScrollWheel = 4194304,
-		TabletPoint = 8388608,
-		TabletProximity = 16777216,
-		OtherMouseDown = 33554432,
-		OtherMouseUp = 67108864,
-		OtherMouseDragged = 134217728,
-		EventMaskGesture = 536870912,
-		EventMaskMagnify = 1073741824,
-		EventMaskSwipe = 2147483648,
-		EventMaskRotate = 262144,
-		EventMaskBeginGesture = 524288,
-		EventMaskEndGesture = 1048576,
-		EventMaskSmartMagnify = 4294967296,
-		AnyEvent = ulong.MaxValue
-	}
-	
-	public enum NSEventModifierMask : ulong { // NSUInteger
-		AlphaShiftKeyMask = 65536,
-		ShiftKeyMask = 131072,
-		ControlKeyMask = 262144,
-		AlternateKeyMask = 524288,
-		CommandKeyMask = 1048576,
-		NumericPadKeyMask = 2097152,
-		HelpKeyMask = 4194304,
-		FunctionKeyMask = 8388608,
-		DeviceIndependentModifierFlagsMask = 0xffff0000
-	}
-	
-	public enum NSPointingDeviceType : ulong { // NSUInteger
-		Unknown = 0,
-		Pen = 1,
-		Cursor = 2,
-		Eraser = 3
-	}
-	
-	public enum NSButtonMask : ulong { // NSUInteger
-		NSPenTipMask = 1,
-		NSPenLowerSideMask = 2,
-		NSPenUpperSideMask = 4
-	}
-	
-	public enum NSEventPhase : ulong { // NSUInteger
-		None = 0,
-		Began = 1,
-		Stationary = 2,
-		Changed = 4,
-		Ended = 8,
-		Cancelled = 16,
-		MayBegin = 32
-	}
-	
-	public enum NSEventGestureAxis : long { // NSInteger
-		None = 0,
-		Horizontal = 1,
-		Vertical = 2
-	}
-	
-	public enum NSEventSwipeTrackingOptions : ulong { // NSUInteger
-		LockDirection = 1,
-		ClampGestureAmount = 2
+
+		Gesture = 29,
+		Magnify = 30,
+		Swipe = 31,
+		Rotate = 18,
+		BeginGesture = 19,
+		EndGesture = 20,
+
+		SmartMagnify = 32,
+		QuickLook = 33
 	}
 
-	public enum NSKey : ulong { // NSUInteger
+	[Flags]
+	public enum NSEventMask : ulong {
+		LeftMouseDown         = 1 << NSEventType.LeftMouseDown,
+		LeftMouseUp           = 1 << NSEventType.LeftMouseUp,
+		RightMouseDown        = 1 << NSEventType.RightMouseDown,
+		RightMouseUp          = 1 << NSEventType.RightMouseUp,
+		MouseMoved            = 1 << NSEventType.MouseMoved,
+		LeftMouseDragged      = 1 << NSEventType.LeftMouseDragged,
+		RightMouseDragged     = 1 << NSEventType.RightMouseDragged,
+		MouseEntered          = 1 << NSEventType.MouseEntered,
+		MouseExited           = 1 << NSEventType.MouseExited,
+		KeyDown               = 1 << NSEventType.KeyDown,
+		KeyUp                 = 1 << NSEventType.KeyUp,
+		FlagsChanged          = 1 << NSEventType.FlagsChanged,
+		AppKitDefined         = 1 << NSEventType.AppKitDefined,
+		SystemDefined         = 1 << NSEventType.SystemDefined,
+		ApplicationDefined    = 1 << NSEventType.ApplicationDefined,
+		Periodic              = 1 << NSEventType.Periodic,
+		CursorUpdate          = 1 << NSEventType.CursorUpdate,
+		ScrollWheel           = 1 << NSEventType.ScrollWheel,
+		TabletPoint           = 1 << NSEventType.TabletPoint,
+		TabletProximity       = 1 << NSEventType.TabletProximity,
+		OtherMouseDown        = 1 << NSEventType.OtherMouseDown,
+		OtherMouseUp          = 1 << NSEventType.OtherMouseUp,
+		OtherMouseDragged     = 1 << NSEventType.OtherMouseDragged,
+		EventGesture          = 1 << NSEventType.Gesture,
+		EventMagnify          = (uint)1 << NSEventType.Magnify,
+		EventSwipe            = (uint)1 << NSEventType.Swipe,
+		EventRotate           = (uint)1 << NSEventType.Rotate,
+		EventBeginGesture     = (uint)1 << NSEventType.BeginGesture,
+		EventEndGesture       = (uint)1 << NSEventType.EndGesture,
+		AnyEvent              = UInt32.MaxValue
+	}
+
+	[Flags]
+	public enum NSEventModifierMask : nuint {
+		AlphaShiftKeyMask         = 1 << 16,
+		ShiftKeyMask              = 1 << 17,
+		ControlKeyMask            = 1 << 18,
+		AlternateKeyMask          = 1 << 19,
+		CommandKeyMask            = 1 << 20,
+		NumericPadKeyMask         = 1 << 21,
+		HelpKeyMask               = 1 << 22,
+		FunctionKeyMask           = 1 << 23,
+		DeviceIndependentModifierFlagsMask    = 0xffff0000
+	}
+
+	public enum NSPointingDeviceType : nuint {
+		Unknown, Pen, Cursor, Eraser
+	}
+
+	[Flags]
+	public enum NSPointingDeviceMask {
+		Pen = 1, PenLower = 2, PenUpper = 4
+	}
+
+	public enum NSKey : nuint {
 		A              = 0x00,
 		S              = 0x01,
 		D              = 0x02,
@@ -395,7 +559,7 @@ namespace MonoMac.AppKit {
 		ModeSwitch     = 0xF747
 	}
 
-	public enum NSEventSubtype : ulong { // NSUInteger
+	public enum NSEventSubtype : nuint {
 		WindowExposed = 0,
 		ApplicationActivated = 1,
 		ApplicationDeactivated = 2,
@@ -404,481 +568,9 @@ namespace MonoMac.AppKit {
 		AWT = 16
 	}
 
-	public enum NSSystemDefinedEvents : ulong { // NSUInteger
+	public enum NSSystemDefinedEvents : nuint {
 		NSPowerOffEventType = 1
 	}
-/*
-public enum  : ulong { // NSUInteger
-	NSMouseEventSubtype = 0,
-	NSTabletPointEventSubtype = 1,
-	NSTabletProximityEventSubtype = 2,
-	NSTouchEventSubtype = 3
-}
-				 */
-	public enum NSAnimationCurve : ulong { // NSUInteger
-		EaseInOut = 0,
-		EaseIn = 1,
-		EaseOut = 2,
-		Linear = 3
-	}
-	
-	public enum NSAnimationBlockingMode : ulong { // NSUInteger
-		Blocking = 0,
-		Nonblocking = 1,
-		NonblockingThreaded = 2
-	}
-
-	public enum NSDragOperation : ulong { // NSUInteger
-		None = 0,
-		Copy = 1,
-		Link = 2,
-		Generic = 4,
-		Private = 8,
-		AllObsolete = 15,
-		Move = 16,
-		Delete = 32,
-		Every = ulong.MaxValue
-	}
-	
-	public enum NSDraggingFormation : long { // NSInteger
-		Default = 0,
-		None = 1,
-		Pile = 2,
-		List = 3,
-		Stack = 4
-	}
-	
-	public enum NSDraggingContext : long { // NSInteger
-		OutsideApplication = 0,
-		WithinApplication = 1
-	}
-	
-	public enum NSDraggingItemEnumerationOptions : ulong { // NSUInteger
-		Concurrent = 1,
-		ClearNonenumeratedImages = 65536
-	}
-
-	[Flags]
-	public enum NSViewResizingMask : ulong { // NSUInteger
-		NotSizable = 0,
-		MinXMargin = 1,
-		WidthSizable = 2,
-		MaxXMargin = 4,
-		MinYMargin = 8,
-		HeightSizable = 16,
-		MaxYMargin = 32
-	}
-
-	public enum NSBorderType : ulong { // NSUInteger
-		NoBorder = 0,
-		LineBorder = 1,
-		BezelBorder = 2,
-		GrooveBorder = 3
-	}
-	
-	public enum NSViewLayerContentsRedrawPolicy : long { // NSInteger
-		Never = 0,
-		OnSetNeedsDisplay = 1,
-		DuringViewResize = 2,
-		BeforeViewResize = 3
-	}
-	
-	public enum NSViewLayerContentsPlacement : long { // NSInteger
-		ScaleAxesIndependently = 0,
-		ScaleProportionallyToFit = 1,
-		ScaleProportionallyToFill = 2,
-		Center = 3,
-		Top = 4,
-		TopRight = 5,
-		Right = 6,
-		BottomRight = 7,
-		Bottom = 8,
-		BottomLeft = 9,
-		Left = 10,
-		TopLeft = 11
-	}
-
-/*
-	public enum  : ulong { // NSUInteger
-		NSEnterCharacter = 3,
-		NSBackspaceCharacter = 8,
-		NSTabCharacter = 9,
-		NSNewlineCharacter = 10,
-		NSFormFeedCharacter = 12,
-		NSCarriageReturnCharacter = 13,
-		NSBackTabCharacter = 25,
-		NSDeleteCharacter = 127,
-		NSLineSeparatorCharacter = 8232,
-		NSParagraphSeparatorCharacter = 8233
-	}
-	*/
-	public enum NSTextAlignment : ulong { // NSUInteger
-		Left = 0,
-		Right = 1,
-		Center = 2,
-		Justified = 3,
-		Natural = 4
-	}
-	
-	public enum NSWritingDirection : long { // NSInteger
-		Natural = -1,
-		LeftToRight = 0,
-		RightToLeft = 1,
-
-		Embedding = 0,
-		Override = 2
-	}
-	/*
-	public enum NSWritingDirection : ulong { // NSUInteger
-		NSTextWritingDirectionEmbedding = 0,
-		NSTextWritingDirectionOverride = 2
-	}*/
-	
-	public enum NSTextMovement : ulong { // NSUInteger
-		//NSIllegalTextMovement = 0,
-		Return = 16,
-		Tab = 17,
-		Backtab = 18,
-		Left = 19,
-		Right = 20,
-		Up = 21,
-		Down = 22,
-		Cancel = 23,
-		Other = 0
-	}
-
-	public enum NSTextTabType : ulong { // NSUInteger
-		Left = 0,
-		Right = 1,
-		Center = 2,
-		Decimal = 3
-	}
-
-	public enum NSLineBreakMode : ulong { // NSUInteger
-		ByWordWrapping = 0,
-		CharWrapping = 1,
-		Clipping = 2,
-		TruncatingHead = 3,
-		TruncatingTail = 4,
-		TruncatingMiddle = 5
-	}
-
-	public enum NSWorkspaceIconCreationOptions : ulong { // NSUInteger
-		NSWorkspaceLaunchAndPrint = 2,
-		NSWorkspaceLaunchInhibitingBackgroundOnly = 128,
-		NSWorkspaceLaunchWithoutAddingToRecents = 256,
-		NSWorkspaceLaunchWithoutActivation = 512,
-		NSWorkspaceLaunchAsync = 65536,
-		NSWorkspaceLaunchAllowingClassicStartup = 131072,
-		NSWorkspaceLaunchPreferringClassic = 262144,
-		NSWorkspaceLaunchNewInstance = 524288,
-		NSWorkspaceLaunchAndHide = 1048576,
-		NSWorkspaceLaunchAndHideOthers = 2097152,
-		NSWorkspaceLaunchDefault = 196608
-	}
-	/*
-	public enum NSWorkspaceIconCreationOptions : ulong { // NSUInteger
-		NSExcludeQuickDrawElementsIconCreationOption = 2,
-		NSExclude10_4ElementsIconCreationOption = 4
-	}*/
-
-	public enum NSApplicationActivationOptions : ulong { // NSUInteger
-		ActivateAllWindows = 1,
-		ActivateIgnoringOtherWindows = 2
-	}
-	
-	public enum NSApplicationActivationPolicy : long { // NSInteger
-		Regular = 0,
-		Accessory = 1,
-		Prohibited = 2
-	}
-
-	public enum NSRunResponse : long { // NSInteger
-		Stopped = -1000,
-		Aborted = -1001,
-		Continues = -1002
-	}
-	
-				/*
-	public enum  : ulong { // NSUInteger
-		NSUpdateWindowsRunLoopOrdering = 500000
-	}*/
-	
-	public enum NSApplicationPresentationOptions : ulong { // NSUInteger
-		Default = 0,
-		AutoHideDock = 1,
-		HideDock = 2,
-		AutoHideMenuBar = 4,
-		HideMenuBar = 8,
-		DisableAppleMenu = 16,
-		DisableProcessSwitching = 32,
-		DisableForceQuit = 64,
-		DisableSessionTermination = 128,
-		DisableHideApplication = 256,
-		DisableMenuBarTransparency = 512,
-	/*}
-	
-	public enum NSApplicationPresentationOptions : ulong { // NSUInteger*/
-		FullScreen = 1024,
-		AutoHideToolbar = 2048
-	}
-	
-	public enum NSRequestUserAttentionType : ulong { // NSUInteger
-		CriticalRequest = 0,
-		InformationalRequest = 10
-	}
-	
-	public enum NSApplicationDelegateReply : ulong { // NSUInteger
-		Success = 0,
-		Cancel = 1,
-		Failure = 2
-	}
-
-	public enum NSApplicationTerminateReply : ulong { // NSUInteger
-		Cancel = 0,
-		Now = 1,
-		Later = 2
-	}
-	
-	public enum NSApplicationPrintReply : ulong { // NSUInteger
-		Cancelled = 0,
-		Success = 1,
-		Failure = 3,
-		ReplyLater = 2
-	}
-
-	public enum NSUserInterfaceLayoutDirection : long { // NSInteger
-		LeftToRight = 0,
-		RightToLeft = 1
-	}
-
-	public enum NSRemoteNotificationType : ulong { // NSUInteger
-		None = 0,
-		Badge = 1,
-		Sound = 2,
-		Alert = 4
-	}
-
-	public enum NSType : ulong { // NSUInteger
-		Any = 0,
-		Int = 1,
-		PositiveInt = 2,
-		Float = 3,
-		PositiveFloat = 4,
-		Double = 6,
-		PositiveDouble = 7
-	}
-	
-	public enum NSCellType : ulong { // NSUInteger
-		Null = 0,
-		Text = 1,
-		Image = 2
-	}
-	
-	public enum NSCellAttribute : ulong { // NSUInteger
-		CellDisabled = 0,
-		CellState = 1,
-		PushInCell = 2,
-		CellEditable = 3,
-		ChangeGrayCell = 4,
-		CellHighlighted = 5,
-		CellLightsByContents = 6,
-		CellLightsByGray = 7,
-		ChangeBackgroundCell = 8,
-		CellLightsByBackground = 9,
-		CellIsBordered = 10,
-		CellHasOverlappingImage = 11,
-		CellHasImageHorizontal = 12,
-		CellHasImageOnLeftOrBottom = 13,
-		CellChangesContents = 14,
-		CellIsInsetButton = 15,
-		CellAllowsMixedState = 16
-	}
-	
-	public enum NSCellImagePosition : ulong { // NSUInteger
-		NoImage = 0,
-		ImageOnly = 1,
-		ImageLeft = 2,
-		ImageRight = 3,
-		ImageBelow = 4,
-		ImageAbove = 5,
-		ImageOverlaps = 6
-	}
-	
-	public enum NSImageScaling : ulong { // NSUInteger
-		ProportionallyDown = 0,
-		AxesIndependently = 1,
-		None = 2,
-		ProportionallyUpOrDown = 3
-	}
-	
-	public enum NSCellStateValue : long { // NSInteger
-		Mixed = -1,
-		Off = 0,
-		On = 1
-	}
-	
-	[Flags]
-	public enum NSCellMask : ulong { // NSUInteger
-		None = 0,
-		Contents = 1,
-		PushIn = 2,
-		ChangeGray = 4,
-		ChangeBackground = 8
-	}
-
-	public enum NSControlTint : ulong { // NSUInteger
-		Default = 0,
-		Blue = 1,
-		Graphite = 6,
-		Clear = 7
-	}
-	
-	public enum NSControlSize : ulong { // NSUInteger
-		Regular = 0,
-		Small = 1,
-		Mini = 2
-	}
-
-	public enum NSCellHit : ulong { // NSUInteger
-		None = 0,
-		ContentArea = 1,
-		EditableTextArea = 2,
-		TrackableArea = 4
-	}
-
-	public enum NSBackgroundStyle : long { // NSInteger
-		Light = 0,
-		Dark = 1,
-		Raised = 2,
-		Lowered = 3
-	}
-				/*
-	public enum  : ulong { // NSUInteger
-		NSScaleProportionally = 0,
-		NSScaleToFit = 1,
-		NSScaleNone = 2
-	}
-*/
-
-	public enum NSAlertStyle : ulong { // NSUInteger
-		Warning = 0,
-		Informational = 1,
-		Critical = 2
-	}
-	/*
-	public enum  : ulong { // NSUInteger
-		NSAlertFirstButtonReturn = 1000,
-		NSAlertSecondButtonReturn = 1001,
-		NSAlertThirdButtonReturn = 1002
-	}
-*/
-
-
-
-
-
-
-
-	public enum NSApplicationLayoutDirection {
-		LeftToRight = 0,
-		RightToLeft = 1
-	}
-
-	public enum NSComposite {
-		Clear,
-		Copy,
-		SourceOver,
-		SourceIn,
-		SourceOut,
-		SourceAtop,
-		DestinationOver,
-		DestinationIn,
-		DestinationOut,
-		DestinationAtop,
-		XOR,
-		PlusDarker,
-		Highlight,
-		PlusLighter,
-	}
-
-#if MAC64
-	public enum NSBackingStore : ulong {
-#else
-	public enum NSBackingStore {
-#endif
-		Retained, Nonretained, Buffered
-	}
-
-
-	
-
-	//TODO: review size for 64 bit
-	public enum NSRectEdge {
-		MinXEdge, MinYEdge, MaxXEdge, MaxYEdge
-	}
-
-
-#region NSColorSpace
-	public enum NSColorSpaceModel {
-		Unknown = -1,
-		Gray,
-		RGB,
-		CMYK,
-		LAB,
-		DeviceN,
-		Indexed,
-		Pattern
-    }
-#endregion
-
-#region NSFileWrapper
-	[Flags]
-	public enum NSFileWrapperReadingOptions {
-		Immediate = 1, WithoutMapping = 2
-	}
-#endregion
-	
-	
-#region NSCell Defines 
-
-	public enum NSImageScale {
-		ProportionallyDown = 0,
-		AxesIndependently,     
-		None,                 
-		ProportionallyUpOrDown
-	}
-#endregion
-
-#region NSImage
-	
-	public enum NSImageLoadStatus {
-	    		Completed,
-	    		Cancelled,
-	    		InvalidData,
-	    		UnexpectedEOF,
-	    		ReadError
-	}
-	
-	public enum NSImageCacheMode {
-		Default, 
-		Always,  
-		BySize,  
-		Never    
-	}
-		
-#endregion
-	
-
-#region NSEvent
-
-	[Flags]
-	public enum NSPointingDeviceMask {
-		Pen = 1, PenLower = 2, PenUpper = 4
-	}
-
-
-
 
 	public enum NSEventMouseSubtype {
 		Mouse, TablePoint, TabletProximity, Touch
@@ -887,23 +579,49 @@ public enum  : ulong { // NSUInteger
 #endregion
 
 #region NSView
+	[Flags]
+	public enum NSViewResizingMask : nuint {
+		NotSizable		=  0,
+		MinXMargin		=  1,
+		WidthSizable		=  2,
+		MaxXMargin		=  4,
+		MinYMargin		=  8,
+		HeightSizable		= 16,
+		MaxYMargin		= 32
+	}
 	
+	public enum NSBorderType : nuint {
+		NoBorder, LineBorder, BezelBorder, GrooveBorder
+	}
 
 	public enum NSTextFieldBezelStyle {
 		Square, Rounded
 	}
 	
+	public enum NSViewLayerContentsRedrawPolicy : nint {
+		Never, OnSetNeedsDisplay, DuringViewResize, BeforeViewResize
+	}
 
+	public enum NSViewLayerContentsPlacement : nint {
+		ScaleAxesIndependently,
+		ScaleProportionallyToFit,
+		ScaleProportionallyToFill,
+		Center,
+		Top,
+		TopRight,
+		Right,
+		BottomRight,
+		Bottom,
+		BottomLeft,
+		Left,
+		TopLeft,
+	}
 
 #endregion
 	
 #region NSWindow
 	[Flags]
-#if MAC64
-	public enum NSWindowStyle : ulong {
-#else
-	public enum NSWindowStyle {
-#endif
+	public enum NSWindowStyle : nuint {
 		Borderless	       = 0,
 		Titled		       = 1 << 0,
 		Closable	       = 1 << 1,
@@ -919,28 +637,16 @@ public enum  : ulong { // NSUInteger
 		FullScreenWindow       = 1 << 14
 	}
 
-#if MAC64
-	public enum NSWindowSharingType : ulong {
-#else
-	public enum NSWindowSharingType {
-#endif
+	public enum NSWindowSharingType : nuint {
 		None, ReadOnly, ReadWrite
 	}
 
-#if MAC64
-	public enum NSWindowBackingLocation : ulong {
-#else
-	public enum NSWindowBackingLocation {
-#endif
+	public enum NSWindowBackingLocation : nuint {
 		Default, VideoMemory, MainMemory,
 	}
 
 	[Flags]
-#if MAC64
-	public enum NSWindowCollectionBehavior : ulong {
-#else
-	public enum NSWindowCollectionBehavior {
-#endif
+	public enum NSWindowCollectionBehavior : nuint {
 		Default = 0,
 		CanJoinAllSpaces = 1 << 0,
 		MoveToActiveSpace = 1 << 1,
@@ -953,33 +659,46 @@ public enum  : ulong { // NSUInteger
 		FullScreenAuxiliary = 1 << 8
 	}
 
-#if MAC64
-	public enum NSWindowNumberListOptions : ulong {
-#else
-	public enum NSWindowNumberListOptions {
-#endif
+	public enum NSWindowNumberListOptions : nuint {
 		AllApplication = 1 << 0,
 		AllSpaces = 1 << 4
 	}
 
-#if MAC64
-	public enum NSSelectionDirection : ulong {
-#else
-	public enum NSSelectionDirection {
-#endif
+	public enum NSSelectionDirection : nuint {
 		Direct = 0,
 		Next,
 		Previous
 	}
 
-#if MAC64
-	public enum NSWindowButton : ulong {
-#else
-	public enum NSWindowButton {
-#endif
+	public enum NSWindowButton : nuint {
 		CloseButton, MiniaturizeButton, ZoomButton, ToolbarButton, DocumentIconButton, DocumentVersionsButton = 6, FullScreenButton
 	}
 
+	public enum NSTouchPhase : nuint {
+		Began           = 1 << 0,
+		Moved           = 1 << 1,
+		Stationary      = 1 << 2,
+		Ended           = 1 << 3,
+		Cancelled       = 1 << 4,
+		
+		Touching        = Began | Moved | Stationary,
+		Any             = nuint.MaxValue
+	}
+#endregion
+#region NSAnimation
+	
+	public enum NSAnimationCurve : nuint {
+		EaseInOut,
+		EaseIn,
+		EaseOut,
+		Linear
+	};
+	
+	public enum NSAnimationBlockingMode : nuint {
+		Blocking,
+		Nonblocking,
+		NonblockingThreaded
+	};
 #endregion
 
 #region NSBox
@@ -1004,11 +723,7 @@ public enum  : ulong { // NSUInteger
 #endregion
 
 #region NSButtonCell
-#if MAC64
-	public enum NSButtonType : ulong {
-#else
-	public enum NSButtonType {
-#endif
+	public enum NSButtonType : nuint {
 		MomentaryLightButton,
 		PushOnPushOff,
 		Toggle,
@@ -1019,11 +734,7 @@ public enum  : ulong { // NSUInteger
 		MomentaryPushIn
 	}
 	
-#if MAC64
-	public enum NSBezelStyle : ulong {
-#else
-	public enum NSBezelStyle {
-#endif
+	public enum NSBezelStyle : nuint {
 		Rounded = 1,
 		RegularSquare,
 		ThickSquare,
@@ -1041,7 +752,7 @@ public enum  : ulong { // NSUInteger
 		Inline
 	}
 
-	public enum NSGradientType {
+	public enum NSGradientType : nuint {
 		None,
 		ConcaveWeak,
 		ConcaveStrong,
@@ -1051,6 +762,36 @@ public enum  : ulong { // NSUInteger
 	
 #endregion
 
+#region NSGraphics
+	public enum NSWindowDepth : nint {
+		TwentyfourBitRgb = 0x208,
+		SixtyfourBitRgb = 0x210,
+		OneHundredTwentyEightBitRgb = 0x220	
+	}
+
+	public enum NSCompositingOperation : nuint {
+		Clear,
+		Copy,
+		SourceOver,
+		SourceIn,
+		SourceOut,
+		SourceAtop,
+		DestinationOver,
+		DestinationIn,
+		DestinationOut,
+		DestinationAtop,
+		Xor,
+		PlusDarker,
+		Highlight,
+		PlusLighter,
+	}
+
+	public enum NSAnimationEffect : nuint {
+		DissapearingItemDefault = 0,
+		EffectPoof = 10
+	}
+#endregion
+
 #region NSMatrix
 	public enum NSMatrixMode {
 		Radio, Highlight, List, Track
@@ -1058,17 +799,17 @@ public enum  : ulong { // NSUInteger
 #endregion
 
 #region NSBrowser
-	public enum NSBrowserColumnResizingType {
+	public enum NSBrowserColumnResizingType : nuint {
 		None, Auto, User
 	}
 
-	public enum NSBrowserDropOperation {
+	public enum NSBrowserDropOperation : nuint {
 		On, Above
 	}
 #endregion
 
 #region NSColorPanel
-	public enum NSColorPanelMode {
+	public enum NSColorPanelMode : nint {
 		None = -1,
 		Gray = 0,
 		RGB,
@@ -1095,12 +836,12 @@ public enum  : ulong { // NSUInteger
 #endregion
 #region NSDocument
 
-	public enum NSDocumentChangeType  {
+	public enum NSDocumentChangeType : nuint {
 		Done, Undone, Cleared, ReadOtherContents, Autosaved, Redone,
 		Discardable = 256 /* New in Lion */
 	}
 
-	public enum NSSaveOperationType  {
+	public enum NSSaveOperationType : nuint  {
 		Save, SaveAs, SaveTo,
 		Autosave = 3,	/* Deprecated name in Lion */
 		Elsewhere = 3,	/* New Lion name */
@@ -1135,11 +876,44 @@ public enum  : ulong { // NSUInteger
 	}
 #endregion
 	
+	[Flags]
+	public enum NSDragOperation : nnuint {
+		None,
+		Copy = 1,
+		Link = 2,
+		Generic = 4,
+		Private = 8,
+		AllObsolete = 15,
+		Move = 16,
+		Delete = 32,
+		All = nnuint.MaxValue
+	}
 
-
+	public enum NSTextAlignment : nuint {
+		Left, Right, Center, Justified, Natural
+	}
 	
 	[Flags]
-	public enum NSMenuProperty {
+	public enum NSWritingDirection : nint {
+		Natural = -1, LeftToRight, RightToLeft,
+		Embedding = 0,
+		Override = 2,
+	}
+
+	public enum NSTextMovement : nuint {
+		Other = 0,
+		Return = 0x10,
+		Tab = 0x11,
+		Backtab = 0x12,
+		Left = 0x13,
+		Right = 0x14,
+		Up = 0x15,
+		Down = 0x16,
+		Cancel = 0x17
+	}
+	
+	[Flags]
+	public enum NSMenuProperty : nuint {
 		Title = 1 << 0,
 		AttributedTitle = 1 << 1,
 		KeyEquivalent = 1 << 2,
@@ -1148,12 +922,12 @@ public enum  : ulong { // NSUInteger
 		AccessibilityDescription = 1 << 5
 	}
 
-	public enum NSFontRenderingMode {
+	public enum NSFontRenderingMode : nuint {
 		Default, Antialiased, IntegerAdvancements, AntialiasedIntegerAdvancements
 	}
 
 	[Flags]
-	public enum NSPasteboardReadingOptions {
+	public enum NSPasteboardReadingOptions : nuint {
 		AsData = 0,
 		AsString = 1,
 		AsPropertyList = 2,
@@ -1175,21 +949,17 @@ public enum  : ulong { // NSUInteger
 		DashDotDot        = 0x0400
 	}
 
-	public enum NSSelectionAffinity {
+	public enum NSSelectionAffinity : nuint {
 		Upstream, Downstream
 	}
 
-	public enum NSSelectionGranularity {
+	public enum NSSelectionGranularity : nuint {
 		Character, Word, Paragraph
 	}
 
 #region NSTrackingArea
 	[Flags]
-#if MAC64
-	public enum NSTrackingAreaOptions : ulong {
-#else
-	public enum NSTrackingAreaOptions {
-#endif
+	public enum NSTrackingAreaOptions : nuint {
 		MouseEnteredAndExited     = 0x01,
 		MouseMoved                = 0x02,
 		CursorUpdate 		  = 0x04,
@@ -1203,18 +973,18 @@ public enum  : ulong { // NSUInteger
 	}
 #endregion
 
-	public enum NSLineSweepDirection {
+	public enum NSLineSweepDirection : nuint {
 		NSLineSweepLeft,
 		NSLineSweepRight,
 		NSLineSweepDown,
 		NSLineSweepUp
 	}
 
-	public enum NSLineMovementDirection {
+	public enum NSLineMovementDirection : nuint {
 		None, Left, Right, Down, Up
 	}
 
-	public enum  NSTiffCompression {
+	public enum  NSTiffCompression : nuint {
 		None = 1,
 		CcittFax3 = 3,
 		CcittFax4 = 4,
@@ -1229,7 +999,7 @@ public enum  : ulong { // NSUInteger
 		OldJpeg		= 32865
 	}
 
-	public enum NSBitmapImageFileType {
+	public enum NSBitmapImageFileType : nuint {
 		Tiff,
 		Bmp,
 		Gif,
@@ -1238,7 +1008,7 @@ public enum  : ulong { // NSUInteger
 		Jpeg2000
 	}
 
-	public enum NSImageRepLoadStatus {
+	public enum NSImageRepLoadStatus : nint {
 		UnknownType     = -1,
 		ReadingHeader   = -2,
 		WillNeedAllData = -3,
@@ -1248,54 +1018,59 @@ public enum  : ulong { // NSUInteger
 	}
 
 	[Flags]
-	public enum NSBitmapFormat {
-		AlphaFirst = 1,
-		AlphaNonpremultiplied = 2,
-		FloatingPointSamples = 4
-	}
+	public enum NSBitmapFormat : nuint {
+        AlphaFirst                  = 1 << 0,
+        AlphaNonpremultiplied       = 1 << 1,
+        FloatingPointSamples        = 1 << 2,
+   
+        16BitLittleEndian           = 1 << 8,
+        32BitLittleEndian           = 1 << 9,
+        16BitBigEndian              = 1 << 10,
+        32BitBigEndian              = 1 << 11
+    }
 
-	public enum NSPrintingOrientation {
+	public enum NSPrintingOrientation : nuint {
 		Portrait, Landscape
 	}
 	
-	public enum NSPrintingPaginationMode {
+	public enum NSPrintingPaginationMode : nuint {
 		Auto, Fit, Clip
 	}
 
 	[Flags]
-	public enum NSGlyphStorageOptions {
+	public enum NSGlyphStorageOptions : nuint {
 		ShowControlGlyphs = 1,
 		ShowInvisibleGlyphs = 2,
 		WantsBidiLevels = 4
 	}
 
 	[Flags]
-	public enum NSTextStorageEditedFlags {
+	public enum NSTextStorageEditedFlags : nuint {
 		EditedAttributed = 1,
 		EditedCharacters = 2
 	}
 
-	public enum NSPrinterTableStatus {
+	public enum NSPrinterTableStatus : nuint {
 		Ok, NotFound, Error
 	}
 
-	public enum NSScrollArrowPosition {
+	public enum NSScrollArrowPosition : nuint {
 		MaxEnd, MinEnd, DefaultSetting, None
 	}
 
-	public enum NSUsableScrollerParts {
+	public enum NSUsableScrollerParts : nuint {
 		NoScroller, OnlyArrows, All
 	}
 
-	public enum NSScrollerPart {
+	public enum NSScrollerPart : nuint {
 		None, DecrementPage, Knob, IncrementPage, DecrementLine, IncrementLine, KnobSlot
 	}
 
-	public enum NSScrollerArrow {
+	public enum NSScrollerArrow : nuint {
 		IncrementArrow, DecrementArrow
 	}
 
-	public enum NSPrintingPageOrder {
+	public enum NSPrintingPageOrder : nint {
 		Descending = -1,
 		Special,
 		Ascending,
@@ -1303,7 +1078,7 @@ public enum  : ulong { // NSUInteger
 	}
 
 	[Flags]
-	public enum NSPrintPanelOptions {
+	public enum NSPrintPanelOptions : nuint {
 		ShowsCopies = 1,
 		ShowsPageRange = 2,
 		ShowsPaperSize = 4,
@@ -1314,28 +1089,28 @@ public enum  : ulong { // NSUInteger
 		ShowsPreview = 131072
 	}
 
-	public enum NSTextBlockValueType {
+	public enum NSTextBlockValueType : nuint {
 		Absolute, Percentage
 	}
 
-	public enum NSTextBlockDimension {
+	public enum NSTextBlockDimension : nuint {
 		Width, MinimumWidth, MaximumWidth, Height, MinimumHeight, MaximumHeight
 	}
 	
-	public enum NSTextBlockLayer {
+	public enum NSTextBlockLayer : nint {
 		Padding = -1, Border, Margin
 	}
 
-	public enum NSTextBlockVerticalAlignment {
+	public enum NSTextBlockVerticalAlignment : nuint {
 		Top, Middle, Bottom, Baseline
 	}
 
-	public enum NSTextTableLayoutAlgorithm {
+	public enum NSTextTableLayoutAlgorithm : nuint {
 		Automatic, Fixed
 	}
 
 	[Flags]
-	public enum NSTextListOptions {
+	public enum NSTextListOptions : nuint {
 		PrependEnclosingMarker = 1
 	}
 
@@ -1365,7 +1140,7 @@ public enum  : ulong { // NSUInteger
 	}
 
 	[Flags]
-	public enum NSFontTraitMask {
+	public enum NSFontTraitMask : nuint {
 		Italic = 1,
 		Bold = 2,
 		Unbold = 4,
@@ -1381,24 +1156,15 @@ public enum  : ulong { // NSUInteger
 	}
 	
 	[Flags]
-	public enum NSPasteboardWritingOptions	 {
+	public enum NSPasteboardWritingOptions : nuint {
 		WritingPromised = 1 << 9
 	}
 
-
-#if MAC64
-	public enum NSToolbarDisplayMode : ulong {
-#else
-	public enum NSToolbarDisplayMode {
-#endif
+	public enum NSToolbarDisplayMode : nuint {
 		Default, IconAndLabel, Icon, Label
 	}
 
-#if MAC64
-	public enum NSToolbarSizeMode : ulong {
-#else
-	public enum NSToolbarSizeMode {
-#endif
+	public enum NSToolbarSizeMode : nuint {
 		Default, Regular, Small
 	}
 
@@ -1413,7 +1179,7 @@ public enum  : ulong { // NSUInteger
 		Cancel, Ok
 	}
 
-	public enum NSTableViewColumnAutoresizingStyle {
+	public enum NSTableViewColumnAutoresizingStyle : nuint {
 		None = 0,
 		Uniform,
 		Sequential,
@@ -1422,32 +1188,32 @@ public enum  : ulong { // NSUInteger
 		FirstColumnOnly
 	}
 
-	public enum NSTableViewSelectionHighlightStyle {
+	public enum NSTableViewSelectionHighlightStyle : nint {
 		None = -1,
 		Regular = 0,
 		SourceList = 1
 	}
 
-	public enum NSTableViewDraggingDestinationFeedbackStyle {
+	public enum NSTableViewDraggingDestinationFeedbackStyle : nint {
 		None = -1,
 		Regular = 0,
 		SourceList = 1
 	}
 
-	public enum NSTableViewDropOperation {
+	public enum NSTableViewDropOperation : nuint {
 		On,
 		Above
 	}
 
 	[Flags]
-	public enum NSTableColumnResizing {
+	public enum NSTableColumnResizing : nuint {
 		None = -1,
 		Autoresizing = ( 1 << 0 ),
 		UserResizingMask = ( 1 << 1 )
 	} 
 
 	[Flags]
-	public enum NSTableViewGridStyle {
+	public enum NSTableViewGridStyle : nuint {
 		None = 0,
 		SolidVerticalLine   = 1 << 0,
 		SolidHorizontalLine = 1 << 1,
@@ -1455,13 +1221,13 @@ public enum  : ulong { // NSUInteger
 	}
 
 	[Flags]
-	public enum NSGradientDrawingOptions {
+	public enum NSGradientDrawingOptions : nuint {
 		None = 0,
 		BeforeStartingLocation =   (1 << 0),
 		AfterEndingLocation =    (1 << 1)
 	}
 	
-	public enum NSImageAlignment {
+	public enum NSImageAlignment : nuint {
 		Center = 0,
 		Top,
 		TopLeft,
@@ -1473,7 +1239,7 @@ public enum  : ulong { // NSUInteger
 		Right
 	}
 	
-	public enum NSImageFrameStyle {
+	public enum NSImageFrameStyle : nuint {
 		None = 0,
 		Photo,
 		GrayBezel,
@@ -1481,20 +1247,26 @@ public enum  : ulong { // NSUInteger
 		Button
 	}
 	
-	public enum NSSpeechBoundary {
+	public enum NSSpeechBoundary : nuint {
 		Immediate =  0,
 		hWord,
 		Sentence
 	}
 
-	public enum NSSplitViewDividerStyle {
+	public enum NSSplitViewDividerStyle : nint {
 		Thick = 1,
 		Thin = 2,
 		PaneSplitter = 3
 	}
 	
+	public enum NSImageScaling : nuint {
+		ProportionallyDown = 0,
+		AxesIndependently,
+		None,
+		ProportionallyUpOrDown
+	}
 	
-	public enum NSSegmentStyle {
+	public enum NSSegmentStyle : nint {
 		Automatic = 0,
 		Rounded = 1,
 		TexturedRounded = 2,
@@ -1504,40 +1276,32 @@ public enum  : ulong { // NSUInteger
 		SmallSquare = 6
 	}
 	
-	public enum NSSegmentSwitchTracking {
+	public enum NSSegmentSwitchTracking : nuint {
 		SelectOne = 0,
 		SelectAny = 1,
 		Momentary = 2
 	}
 	
-	public enum NSTickMarkPosition {
+	public enum NSTickMarkPosition : nuint {
 		Below,
 		Above,
-		Left,
-		Right
+		Left = Above,
+		Right = Below
 	}
 	
-	public enum NSSliderType {
+	public enum NSSliderType : nuint {
 		Linear   = 0,
 		Circular = 1
 	}
 	
-#if MAC64
-	public enum NSTokenStyle : ulong {
-#else
-	public enum NSTokenStyle {
-#endif
+	public enum NSTokenStyle : nuint {
 		Default,
 		PlainText,
 		Rounded
 	}
 
 	[Flags]
-#if MAC64
-	public enum NSWorkspaceLaunchOptions : ulong {
-#else
-	public enum NSWorkspaceLaunchOptions {
-#endif
+	public enum NSWorkspaceLaunchOptions : nuint {
 		Print = 2,
 		InhibitingBackgroundOnly = 0x80,
 		WithoutAddingToRecents = 0x100,
@@ -1551,14 +1315,19 @@ public enum  : ulong { // NSUInteger
 		Default = Async | AllowingClassicStartup
 	}
 
+	[Flags]
+	public enum NSWorkspaceIconCreationOptions : nuint {
+		NSExcludeQuickDrawElements   = 1 << 1,
+		NSExclude10_4Elements       = 1 << 2
+	}
 
-	public enum NSPathStyle {
+	public enum NSPathStyle : nint {
 		NSPathStyleStandard,
 		NSPathStyleNavigationBar,
 		NSPathStylePopUp
 	}
 
-	public enum NSTabViewType {
+	public enum NSTabViewType : nuint {
 		NSTopTabsBezelBorder,
 		NSLeftTabsBezelBorder,
 		NSBottomTabsBezelBorder,
@@ -1568,35 +1337,35 @@ public enum  : ulong { // NSUInteger
 		NSNoTabsNoBorder,
 	}
 
-	public enum NSTabState {
+	public enum NSTabState : nuint {
 		Selected, Background, Pressed
 	}
 
-	public enum NSLevelIndicatorStyle {
+	public enum NSLevelIndicatorStyle : nuint {
 		Relevancy, ContinuousCapacity, DiscreteCapacity, RatingLevel
 	}
 
 	[Flags]
-	public enum NSFontCollectionOptions {
+	public enum NSFontCollectionOptions : nuint {
 		ApplicationOnlyMask = 1
 	}
 
-	public enum NSCollectionViewDropOperation {
+	public enum NSCollectionViewDropOperation : nint {
 		On = 0, Before = 1
 	}
 
-	public enum NSDatePickerStyle {
+	public enum NSDatePickerStyle : nuint {
 		TextFieldAndStepper,
 		ClockAndCalendar,
 		TextField
 	}
 
-	public enum NSDatePickerMode {
+	public enum NSDatePickerMode : nuint {
 		Single, Range
 	}
 
 	[Flags]
-	public enum NSDatePickerElementFlags {
+	public enum NSDatePickerElementFlags : nuint {
 		HourMinute = 0xc,
 		HourMinuteSecond = 0xe,
 		TimeZone = 0x10,
@@ -1606,7 +1375,7 @@ public enum  : ulong { // NSUInteger
 		Era = 0x100
 	}
 
-	public enum NSOpenGLContextParameter {
+	public enum NSOpenGLContextParameter : nint {
 		[Obsolete] SwapRectangle = 200,
 		[Obsolete] SwapRectangleEnable = 201,
 		[Obsolete] RasterizationEnable = 221,
@@ -1723,18 +1492,18 @@ public enum  : ulong { // NSUInteger
 		Aux0 = 0x0409
 	}
 
-	public enum NSProgressIndicatorThickness {
+	public enum NSProgressIndicatorThickness : nuint {
 		Small = 10,
 		Regular = 14,
 		Aqua = 12,
 		Large = 18
 	}
 
-	public enum NSProgressIndicatorStyle {
+	public enum NSProgressIndicatorStyle : nuint {
 		Bar, Spinning
 	}
 
-	public enum NSPopUpArrowPosition {
+	public enum NSPopUpArrowPosition : nuint {
 		None,
 		Center,
 		Bottom
@@ -1747,18 +1516,14 @@ public enum  : ulong { // NSUInteger
 	}
 	
 	// These constants specify the possible states of a drawer.
-	public enum NSDrawerState {
+	public enum NSDrawerState : nuint {
 		Closed = 0,
 		Opening = 1,
 		Open = 2,
 		Closing = 3
 	}
 
-#if MAC64
-	public enum NSWindowLevel : long {
-#else
-	public enum NSWindowLevel {
-#endif
+	public enum NSWindowLevel : nint {
 		Normal = 0,
 		Dock = 20,
 		Floating = 3,
@@ -1770,29 +1535,24 @@ public enum  : ulong { // NSUInteger
 		Submenu = 3,
 		TornOffMenu = 3
 	}
-
-#if MAC64
-	public enum NSRuleEditorRowType : ulong {
-#else
-	public enum NSRuleEditorRowType{
-#endif
+	
+	public enum NSRuleEditorRowType : nuint {
 		Simple = 0,
 		Compound
 	}
    
-	//TODO: figure out size for 64 bit
-	public enum NSRuleEditorNestingMode {
+	public enum NSRuleEditorNestingMode : nuint {
 		Single,
 		List,
 		Compound,
 		Simple
 	}
 
-	public enum NSGlyphInscription {
+	public enum NSGlyphInscription : nuint {
 		Base, Below, Above, Overstrike, OverBelow
 	}
 
-	public enum NSTypesetterBehavior {
+	public enum NSTypesetterBehavior : nint {
 		Latest = -1,
 		Original = 0,
 		Specific_10_2_WithCompatibility = 1,
@@ -1801,42 +1561,66 @@ public enum  : ulong { // NSUInteger
 		Specific_10_4 = 4,
 			
 	}
-																			
-	public enum NSScrollViewFindBarPosition {
+
+	[Flags]
+	public enum NSRemoteNotificationType : nuint {
+		None = 0,
+		Badge = 1,
+		Sound = 2,
+		Alert = 4
+	}
+	
+	public enum NSScrollViewFindBarPosition : nint {
 		AboveHorizontalRuler = 0,
 		AboveContent,
 		BelowContent
 	}
 	
-	public enum NSScrollerStyle {
+	public enum NSScrollerStyle : nint {
    		Legacy = 0,
 		Overlay
 	}
 	
-	public enum  NSScrollElasticity {
+	public enum  NSScrollElasticity : nint {
 		Automatic = 0,
    		None,
 		Allowed
 	}
 	
-	public enum  NSScrollerKnobStyle {
+	public enum  NSScrollerKnobStyle : nint {
 		Default  = 0,
 		Dark     = 1,
 		Light    = 2
 	}
 
+	[Flags]
+	public enum NSEventPhase : nuint {
+        None        = 0,
+        Began       = 1 << 0,
+        Stationary  = 1 << 1,
+        Changed     = 1 << 2,
+        Ended       = 1 << 3,
+        Cancelled   = 1 << 4,
+        MayBegin    = 1 << 5,
+	}
 
-	public enum NSLayoutRelation {
+	[Flags]
+	public enum NSEventSwipeTrackingOptions : nuint {
+		LockDirection = 1,
+		ClampGestureAmount = 2
+	}
+
+	public enum NSEventGestureAxis : nint {
+		None, Horizontal, Vertical
+	}
+
+	public enum NSLayoutRelation : nint {
 		LessThanOrEqual = -1,
 		Equal = 0,
 		GreaterThanOrEqual = 1
 	}
 
-#if MAC64
-	public enum NSLayoutAttribute : long {
-#else
-	public enum NSLayoutAttribute {
-#endif
+	public enum NSLayoutAttribute : nint {
 		NoAttribute = 0,
 		Left = 1,
 		Right,
@@ -1851,7 +1635,7 @@ public enum  : ulong { // NSUInteger
 		Baseline
 	}
 
-	public enum NSLayoutFormatOptions {
+	public enum NSLayoutFormatOptions : nuint {
 		None = 0,
 
 		AlignAllLeft = (1 << (int)NSLayoutAttribute.Left),
@@ -1875,11 +1659,7 @@ public enum  : ulong { // NSUInteger
 		DirectionMask = 0x3 << 16,
 	}
 
-#if MAC64
-	public enum NSLayoutConstraintOrientation : long {
-#else
-	public enum NSLayoutConstraintOrientation {
-#endif
+	public enum NSLayoutConstraintOrientation : nint {
 		Horizontal, Vertical
 	}
 
@@ -1893,36 +1673,46 @@ public enum  : ulong { // NSUInteger
 		FittingSizeCompression = 50,
 	}
 
-	public enum NSPopoverAppearance {
+	public enum NSPopoverAppearance : nint {
 		Minimal, HUD
 	}
 
-	public enum NSPopoverBehavior {
+	public enum NSPopoverBehavior : nint {
 		ApplicationDefined, Transient, Semitransient
 	}
 
-	public enum NSTableViewRowSizeStyle {
+	public enum NSTableViewRowSizeStyle : nint {
 		Default = -1,
 		Custom = 0,
 		Small, Medium, Large
 	}
 
 	[Flags]
-	public enum NSTableViewAnimation {
+	public enum NSTableViewAnimation : nuint {
 		None, Fade = 1, Gap = 2,
 		SlideUp = 0x10, SlideDown = 0x20, SlideLeft = 0x30, SlideRight = 0x40
 	}
 
-#if MAC64
-	public enum NSWindowAnimationBehavior : long {
-#else
-	public enum NSWindowAnimationBehavior {
-#endif
+	[Flags]
+	public enum NSDraggingItemEnumerationOptions : nuint {
+		Concurrent = 1 << 0,
+		ClearNonenumeratedImages = 1 << 16
+	}
+
+	public enum NSDraggingFormation : nint {
+		Default, None, Pile, List, Stack
+	}
+
+	public enum NSDraggingContext : nint {
+		OutsideApplication, WithinApplication
+	}
+
+	public enum NSWindowAnimationBehavior : nint {
 		Default = 0, None = 2, DocumentWindow, UtilityWindow, AlertPanel
 	}
 
 	[Lion]
-	public enum NSTextFinderAction {
+	public enum NSTextFinderAction : nint {
 		ShowFindInterface = 1,
 		NextMatch = 2,
 		PreviousMatch = 3,
@@ -1954,17 +1744,13 @@ public enum  : ulong { // NSUInteger
 	}
 
 	[Flags]
-	public enum NSFontCollectionVisibility {
+	public enum NSFontCollectionVisibility : nuint {
 		Process = 1 << 0,
 		User = 1 << 1,
 		Computer = 1 << 2,
 	}
 
-#if MAC64
-	public enum NSSharingContentScope : long {
-#else
-	public enum NSSharingContentScope {
-#endif
+	public enum NSSharingContentScope : nint {
 		Item,
 		Partial,
 		Full
@@ -1989,7 +1775,7 @@ public enum  : ulong { // NSUInteger
 	}
 
 	[Flags]
-	public enum NSTypesetterControlCharacterAction {
+	public enum NSTypesetterControlCharacterAction : nuint {
 		ZeroAdvancement = 1 << 0,
 		Whitespace = 1 << 1,
 		HorizontalTab = 1 << 2,

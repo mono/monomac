@@ -30,15 +30,8 @@ using MonoMac.ObjCRuntime;
 using MonoMac.Foundation;
 
 namespace MonoMac.AppKit {
-	public partial class NSButton {
-#if MAC64
-		[Export ("initWithFrame:")]
-		public NSButton (System.Drawing.RectangleF frameRect)
-			: this (new NSRect(frameRect))
-		{
-		}
-#endif
 
+	public partial class NSButton {
 		public new NSButtonCell Cell {
 			get { return (NSButtonCell)base.Cell; }
 			set { base.Cell = value; }
