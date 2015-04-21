@@ -27,35 +27,38 @@
 //
 using System;
 using System.Drawing;
+using MonoMac.CoreGraphics;
 using MonoMac.Foundation;
 using MonoMac.ObjCRuntime;
 using System.Runtime.InteropServices;
 
 #if MAC64
-using NSInteger = System.Int64;
-using NSUInteger = System.UInt64;
-using CGFloat = System.Double;
+using nint = System.Int64;
+using nuint = System.UInt64;
+using nfloat = System.Double;
 #else
-using NSInteger = System.Int32;
-using NSUInteger = System.UInt32;
-using NSPoint = System.Drawing.PointF;
-using NSSize = System.Drawing.SizeF;
-using NSRect = System.Drawing.RectangleF;
-using CGFloat = System.Single;
+using nint = System.Int32;
+using nuint = System.UInt32;
+using nfloat = System.Single;
+#if SDCOMPAT
+using CGPoint = System.Drawing.PointF;
+using CGSize = System.Drawing.SizeF;
+using CGRect = System.Drawing.RectangleF;
+#endif
 #endif
 
 namespace MonoMac.AppKit {
 	public partial class NSBezierPath {
 
-		public void GetLineDash (out CGFloat[] pattern, out CGFloat phase)
+		public void GetLineDash (out nfloat[] pattern, out nfloat phase)
 		{
 			//Call the internal method with null to get the length of the pattern array
-			NSInteger _length;
+			nint _length;
 			_GetLineDash ((IntPtr)null, out _length, out phase);
 			int length = (int)_length;
 			
 			//Allocate space for the C-array
-			CGFloat[] managedArray = new CGFloat[length];
+			nfloat[] managedArray = new nfloat[length];
 			int size = Marshal.SizeOf(managedArray[0]) * length;
 			IntPtr pNativeArray = Marshal.AllocHGlobal(size);
 			
@@ -69,7 +72,7 @@ namespace MonoMac.AppKit {
 			pattern = managedArray;
 		}
 
-		public void SetLineDash (CGFloat[] pattern, CGFloat phase)
+		public void SetLineDash (nfloat[] pattern, nfloat phase)
 		{
 			if (pattern == null)
 				throw new ArgumentNullException ("pattern");
@@ -83,10 +86,10 @@ namespace MonoMac.AppKit {
 			Marshal.FreeHGlobal(pNativeArray);
 		}
 
-		public NSBezierPathElement ElementAt (NSInteger index, out NSPoint[] points)
+		public NSBezierPathElement ElementAt (nint index, out CGPoint[] points)
 		{
 			//return array will be 1 or 3 points, depending on type.
-			int size = Marshal.SizeOf(typeof(NSPoint)) * 3;
+			int size = Marshal.SizeOf(typeof(CGPoint)) * 3;
 			IntPtr pNativeArray = Marshal.AllocHGlobal(size);
 
 			NSBezierPathElement bpe = _ElementAt (index, pNativeArray);
@@ -94,12 +97,12 @@ namespace MonoMac.AppKit {
 			int length = 1;
 			if (bpe == NSBezierPathElement.CurveTo)
 				length = 3;
-			points = new NSPoint[length];
+			points = new CGPoint[length];
 
 			IntPtr currentPtr = pNativeArray;
 			for (int i = 0; i < length; i++)
 			{
-            			points[i] = (NSPoint)Marshal.PtrToStructure(currentPtr, typeof(NSPoint));
+            			points[i] = (CGPoint)Marshal.PtrToStructure(currentPtr, typeof(CGPoint));
 				currentPtr = (IntPtr)((long)currentPtr + Marshal.SizeOf(points[i]));
 			}
 
@@ -108,7 +111,7 @@ namespace MonoMac.AppKit {
 			return bpe;
 		}
 
-		public void SetAssociatedPointsAtIndex (NSPoint[] points, NSInteger index)
+		public void SetAssociatedPointsAtIndex (CGPoint[] points, nint index)
 		{
 		    if (points == null)
 		        throw new ArgumentNullException ("points");
@@ -129,7 +132,7 @@ namespace MonoMac.AppKit {
 			Marshal.FreeHGlobal(pNativeArray);
 		}
 
-		public void AppendPathWithPoints (NSPoint[] points)
+		public void AppendPathWithPoints (CGPoint[] points)
 		{
 			if (points == null)
 				throw new ArgumentNullException ("points");

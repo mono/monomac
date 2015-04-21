@@ -28,9 +28,18 @@ using MonoMac.Foundation;
 using MonoMac.CoreGraphics;
 
 #if MAC64
+using nint = System.Int64;
 using nuint = System.UInt64;
+using nfloat = System.Double;
 #else
+using nint = System.Int32;
 using nuint = System.UInt32;
+using nfloat = System.Single;
+#if SDCOMPAT
+using CGPoint = System.Drawing.PointF;
+using CGSize = System.Drawing.SizeF;
+using CGRect = System.Drawing.RectangleF;
+#endif
 #endif
 
 namespace MonoMac.ObjCRuntime {
@@ -61,17 +70,17 @@ namespace MonoMac.ObjCRuntime {
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSend")]
 		public extern static void void_objc_msgSend_rintptr (IntPtr receiver, IntPtr selector, ref IntPtr arg1);
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSend")]
-		public extern static void void_objc_msgSend_cgsize (IntPtr receiver, IntPtr selector, SizeF arg1);
+		public extern static void void_objc_msgSend_cgsize (IntPtr receiver, IntPtr selector, CGSize arg1);
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSend")]
-		public extern static void void_objc_msgSend_cgpoint (IntPtr receiver, IntPtr selector, PointF arg1);
+		public extern static void void_objc_msgSend_cgpoint (IntPtr receiver, IntPtr selector, CGPoint arg1);
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSend")]
-		public extern static void void_objc_msgSend_cgrect (IntPtr receiver, IntPtr selector, RectangleF arg1);
+		public extern static void void_objc_msgSend_cgrect (IntPtr receiver, IntPtr selector, CGRect arg1);
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSend")]
 		public extern static void void_objc_msgSend_nsrange (IntPtr receiver, IntPtr selector, NSRange arg1);
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSend")]
 		public extern static void void_objc_msgSend_intptr_int (IntPtr receiver, IntPtr selector, IntPtr arg1, int arg2);
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSend")]
-		public extern static void void_objc_msgSend_cgpoint_intptr (IntPtr receiver, IntPtr selector, PointF arg1, IntPtr arg2);
+		public extern static void void_objc_msgSend_cgpoint_intptr (IntPtr receiver, IntPtr selector, CGPoint arg1, IntPtr arg2);
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSend")]
 		public extern static void void_objc_msgSend_intptr_intptr_bool (IntPtr receiver, IntPtr selector, IntPtr arg1, IntPtr arg2, bool arg3);
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSend")]
@@ -88,9 +97,9 @@ namespace MonoMac.ObjCRuntime {
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSendSuper")]
 		public extern static void void_objc_msgSendSuper_intptr (IntPtr receiver, IntPtr selector, IntPtr arg1);
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSendSuper")]
-		public extern static void void_objc_msgSendSuper_cgsize (IntPtr receiver, IntPtr selector, SizeF arg1);
+		public extern static void void_objc_msgSendSuper_cgsize (IntPtr receiver, IntPtr selector, CGSize arg1);
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSendSuper")]
-		public extern static void void_objc_msgSendSuper_cgrect (IntPtr receiver, IntPtr selector, RectangleF arg1);
+		public extern static void void_objc_msgSendSuper_cgrect (IntPtr receiver, IntPtr selector, CGRect arg1);
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSendSuper")]
 		public extern static void void_objc_msgSendSuper_intptr_intptr_bool (IntPtr receiver, IntPtr selector, IntPtr arg1, IntPtr arg2, bool arg3);
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSendSuper")]
@@ -99,16 +108,16 @@ namespace MonoMac.ObjCRuntime {
 		public extern static void void_objc_msgSendSuper_intptr_intptr_double (IntPtr receiver, IntPtr selector, IntPtr arg1, IntPtr arg2, double arg3);
 
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSend_stret")]
-		public extern static void void_objc_msgSend_stret_rcgsize (ref SizeF stret, IntPtr receiver, IntPtr selector);
+		public extern static void void_objc_msgSend_stret_rcgsize (ref CGSize stret, IntPtr receiver, IntPtr selector);
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSend_stret")]
-		public extern static void void_objc_msgSend_stret_rcgrect (ref RectangleF stret, IntPtr receiver, IntPtr selector);
+		public extern static void void_objc_msgSend_stret_rcgrect (ref CGRect stret, IntPtr receiver, IntPtr selector);
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSend_stret")]
 		public extern static void void_objc_msgSend_stret_rnsrange (ref NSRange stret, IntPtr receiver, IntPtr selector);
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSend_stret")]
-		public extern static void void_objc_msgSend_stret_rcgsize_cgpoint_intptr (ref SizeF stret, IntPtr receiver, IntPtr selector, PointF arg1, IntPtr arg2);
+		public extern static void void_objc_msgSend_stret_rcgsize_cgpoint_intptr (ref SizeF stret, IntPtr receiver, IntPtr selector, CGPoint arg1, IntPtr arg2);
 
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSendSuper_stret")]
-		public extern static void void_objc_msgSendSuper_stret_rcgrect (ref RectangleF stret, IntPtr receiver, IntPtr selector);
+		public extern static void void_objc_msgSendSuper_stret_rcgrect (ref CGRect stret, IntPtr receiver, IntPtr selector);
 
 		/* intptr returns */
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSend")]
@@ -123,12 +132,12 @@ namespace MonoMac.ObjCRuntime {
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSend")]
 		public extern static IntPtr intptr_objc_msgSend_float (IntPtr receiver, IntPtr selector, float arg1);
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSend")]
-		public extern static IntPtr intptr_objc_msgSend_cgrect (IntPtr receiver, IntPtr selector, RectangleF arg1);
+		public extern static IntPtr intptr_objc_msgSend_cgrect (IntPtr receiver, IntPtr selector, CGRect arg1);
 		
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSendSuper")]
 		public extern static IntPtr intptr_objc_msgSendSuper (IntPtr receiver, IntPtr selector);
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSendSuper")]
-		public extern static IntPtr intptr_objc_msgSendSuper_cgrect (IntPtr receiver, IntPtr selector, RectangleF arg1);
+		public extern static IntPtr intptr_objc_msgSendSuper_cgrect (IntPtr receiver, IntPtr selector, CGRect arg1);
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSendSuper")]
 		public extern static IntPtr intptr_objc_msgSendSuper_intptr (IntPtr receiver, IntPtr selector, IntPtr arg1);
 
@@ -141,7 +150,7 @@ namespace MonoMac.ObjCRuntime {
 		public extern static bool bool_objc_msgSendSuper_intptr (IntPtr receiver, IntPtr selector, IntPtr arg1);
 
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSend")]
-		public extern static SizeF cgsize_objc_msgSend_cgpoint_intptr (IntPtr receiver, IntPtr selector, PointF arg1, IntPtr arg2);
+		public extern static SizeF cgsize_objc_msgSend_cgpoint_intptr (IntPtr receiver, IntPtr selector, CGPoint arg1, IntPtr arg2);
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSend")]
 		public extern static SizeF cgsize_objc_msgSend (IntPtr receiver, IntPtr selector);
 

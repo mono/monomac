@@ -5,22 +5,24 @@ using MonoMac.ObjCRuntime;
 using System.Runtime.InteropServices;
 
 #if MAC64
-using NSInteger = System.Int64;
-using NSUInteger = System.UInt64;
-using CGFloat = System.Double;
+using nint = System.Int64;
+using nuint = System.UInt64;
+using nfloat = System.Double;
 #else
-using NSInteger = System.Int32;
-using NSUInteger = System.UInt32;
-using NSPoint = System.Drawing.PointF;
-using NSSize = System.Drawing.SizeF;
-using NSRect = System.Drawing.RectangleF;
-using CGFloat = System.Single;
+using nint = System.Int32;
+using nuint = System.UInt32;
+using nfloat = System.Single;
+#if SDCOMPAT
+using CGPoint = System.Drawing.PointF;
+using CGSize = System.Drawing.SizeF;
+using CGRect = System.Drawing.RectangleF;
+#endif
 #endif
 
 namespace MonoMac.AppKit {
 	public partial class NSColor {
 
-		public static NSColor FromColorSpace (NSColorSpace space, float[] components)
+		public static NSColor FromColorSpace (NSColorSpace space, nfloat[] components)
 		{
 			if (components == null)
 				throw new ArgumentNullException ("components");
@@ -36,10 +38,10 @@ namespace MonoMac.AppKit {
 			return color;
 		}
 		
-		public void GetComponents(out CGFloat[] components)
+		public void GetComponents(out nfloat[] components)
 		{
 			int count = (int)this.ComponentCount;
-			CGFloat[] managedFloatArray = new CGFloat[count];
+			nfloat[] managedFloatArray = new nfloat[count];
 			int size = Marshal.SizeOf(managedFloatArray[0]) * count;
 			IntPtr pNativeFloatArray = Marshal.AllocHGlobal(size);
 
@@ -60,7 +62,7 @@ namespace MonoMac.AppKit {
 					return "Pattern Color: " + this.PatternImage.Name;
 				
 				StringBuilder sb = new StringBuilder (this.ColorSpace.LocalizedName);
-				CGFloat[] components;
+				nfloat[] components;
 				this.GetComponents (out components);
 				if (components.Length > 0)
 					sb.Append ("(" + components [0]);

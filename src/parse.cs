@@ -394,26 +394,42 @@ class TrivialParser {
 			type = type.Substring (0, type.Length-1);
 		type = type.Trim ();
 		switch (type){
-		case "NSInteger":
-			return "int";
-		case "CGFloat":
-		case "GLfloat":
-			return "float";
 		case "NSTextAlignment":
 			return "uint";
 			
 		case "NSString":
 		case "NSString *":
 			return "string";
+#if MAC64
+		case "NSInteger":
+			return "long";
+		case "NSUInteger":
+			return "ulong";
+		case "nfloat":
+		case "GLfloat":
+			return "double";
+		case "NSSize":
+			return "CGSize";
+		case "NSRect":
+			return "CGRect";
+		case "NSPoint":
+			return "CGPoint";
+#else
+		case "NSInteger":
+			return "int";
+		case "NSUInteger":
+			return "uint";
+		case "nfloat":
+		case "GLfloat":
+			return "float";
 		case "NSSize": case "CGSize":
 			return "SizeF";
 		case "NSRect": case "CGRect":
 			return "RectangleF";
 		case "NSPoint": case "CGPoint":
 			return "PointF";
+#endif
 		case "NSGlyph":
-			return "uint";
-		case "NSUInteger":
 			return "uint";
 		case "instancetype":
 		case "id":

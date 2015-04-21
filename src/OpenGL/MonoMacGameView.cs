@@ -33,6 +33,21 @@ using MonoMac.CoreVideo;
 using MonoMac.CoreGraphics;
 using MonoMac.OpenGL;
 
+#if MAC64
+using nint = System.Int64;
+using nuint = System.UInt64;
+using nfloat = System.Double;
+#else
+using nint = System.Int32;
+using nuint = System.UInt32;
+using nfloat = System.Single;
+#if SDCOMPAT
+using CGPoint = System.Drawing.PointF;
+using CGSize = System.Drawing.SizeF;
+using CGRect = System.Drawing.RectangleF;
+#endif
+#endif
+
 namespace MonoMac.OpenGL
 {
 	public class MonoMacGameView : MonoMac.AppKit.NSView, IGameWindow
@@ -52,11 +67,11 @@ namespace MonoMac.OpenGL
 		FrameEventArgs renderEventArgs = new FrameEventArgs ();
 
 		[Export("initWithFrame:")]
-		public MonoMacGameView (RectangleF frame) : this(frame, null)
+		public MonoMacGameView (CGRect frame) : this(frame, null)
 		{
 		}
 
-		public MonoMacGameView (RectangleF frame, NSOpenGLContext context) : base(frame)
+		public MonoMacGameView (CGRect frame, NSOpenGLContext context) : base(frame)
 		{
 			var attribs = new object [] {
 				NSOpenGLPixelFormatAttribute.Accelerated,
@@ -85,11 +100,7 @@ namespace MonoMac.OpenGL
 		}
 
 		[Preserve (Conditional=true)]
-#if MAC64
-		public override void DrawRect (NSRect dirtyRect)
-#else
-		public override void DrawRect (RectangleF dirtyRect)
-#endif
+		public override void DrawRect (CGRect dirtyRect)
 		{
 			if (animating) {
 				if (displayLinkSupported) {

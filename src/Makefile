@@ -5,6 +5,14 @@ WARNINGS_I_SHOULD_FIX=114,108
 TARGET = MonoMac.dll
 PEER=false
 MACCORE_DIR ?= ../maccore
+ifndef 64BIT
+# Build 64-bit, forces the use of CGRect/CGSize/CGPoint
+64BIT=0
+endif
+ifndef SDCOMPAT
+# Use System.Drawing structs, off to use CGRect/CGSize/CGPoint
+SDCOMPAT=1
+endif
 
 #
 # CORE_SOURCES are source files that are written by hand
@@ -161,8 +169,13 @@ endif
 
 # Pass 64BIT=1 to make to build for 64-bit
 ifeq ($(64BIT),1)
-	DEFINES64 = -define:MAC64
-	BMAC_DEFINES64 = -d=MAC64
+	DEFINES64 := -define:MAC64
+	BMAC_DEFINES64 := -d=MAC64
+	SDCOMPAT=0
+endif
+ifeq ($(SDCOMPAT),1)
+	DEFINES64 += -define:SDCOMPAT
+	BMAC_DEFINES64 += -d=SDCOMPAT
 endif
 
 ifeq ($(HAVE_ASYNC),1)
@@ -218,6 +231,9 @@ ifeq ($(64BIT),1)
 else
 	@echo "BUILDING 32-bit...";
 endif
+ifeq ($(SDCOMPAT),1)
+	@echo "- Using System.Drawing structs";
+endif
 	@sleep 1
 
 parse.exe: parse.cs $(MACCORE_DIR)/src/Options.cs
@@ -249,8 +265,8 @@ MonoMac.CFNetwork.dll: $(CFNETWORK_SOURCES) $(TARGET)
 
 clean:
 	rm -f $(foreach t,$(TARGETS) core.dll temp.dll,$(t) $(t).mdb)
+	if [ -a generated_sources ] ; then  xargs rm < generated_sources; fi
 	rm -f generated_sources
-	rm -f SupportDelegates.g.cs
 
 all: $(TARGET) $(ASYNC_TARGETS)
 

@@ -31,12 +31,28 @@ using System.Drawing;
 using MonoMac.AppKit;
 using MonoMac.Foundation;
 using MonoMac.ObjCRuntime;
+using MonoMac.CoreGraphics;
 
 // Verify/Test Delegate Models
 // Check for missing NullAllowed on all object properties
 // Test methods returning typed arrays in lieu of NSArray
 // Check classes with no public inits - Should I make the constructors private?
 // Check the few abnormal properties
+
+#if MAC64
+using nint = System.Int64;
+using nuint = System.UInt64;
+using nfloat = System.Double;
+#else
+using nint = System.Int32;
+using nuint = System.UInt32;
+using nfloat = System.Single;
+#if SDCOMPAT
+using CGPoint = System.Drawing.PointF;
+using CGSize = System.Drawing.SizeF;
+using CGRect = System.Drawing.RectangleF;
+#endif
+#endif
 
 namespace MonoMac.PdfKit {
 
@@ -71,13 +87,13 @@ namespace MonoMac.PdfKit {
 	[BaseType (typeof (PdfAction), Name="PDFActionRemoteGoTo")]
 	public interface PdfActionRemoteGoTo {
 		[Export ("initWithPageIndex:atPoint:fileURL:")]
-		IntPtr Constructor (int pageIndex, PointF point, NSUrl fileUrl);
+		IntPtr Constructor (int pageIndex, CGPoint point, NSUrl fileUrl);
 
 		[Export ("pageIndex")]
 		int PageIndex { get; set; }
 
 		[Export ("point")]
-		PointF Point { get; set; }
+		CGPoint Point { get; set; }
 
 		[Export ("URL")]
 		NSUrl Url { get; set; }
@@ -107,7 +123,7 @@ namespace MonoMac.PdfKit {
 	[BaseType (typeof (NSObject), Name="PDFAnnotation")]
 	public interface PdfAnnotation {
 		[Export ("initWithBounds:")]
-		IntPtr Constructor (RectangleF bounds);
+		IntPtr Constructor (CGRect bounds);
 
 		[Export ("page")]
 		PdfPage Page { get; }
@@ -116,7 +132,7 @@ namespace MonoMac.PdfKit {
 		string Type { get; }
 
 		[Export ("bounds")]
-		RectangleF Bounds { get; set; }
+		CGRect Bounds { get; set; }
 		
 		[Export ("modificationDate")]
 		NSDate ModificationDate { get; set; }
@@ -249,10 +265,10 @@ namespace MonoMac.PdfKit {
 	[BaseType (typeof (PdfAnnotation), Name="PDFAnnotationLine")]
 	public interface PdfAnnotationLine {
 		[Export ("startPoint")]
-		PointF StartPoint { get; set; }
+		CGPoint StartPoint { get; set; }
 
 		[Export ("endPoint")]
-		PointF EndPoint { get; set; }
+		CGPoint EndPoint { get; set; }
 
 		[Export ("startLineStyle")]
 		PdfLineStyle StartLineStyle { get; set; }
@@ -278,7 +294,7 @@ namespace MonoMac.PdfKit {
 
 	[BaseType (typeof (PdfAnnotation), Name="PDFAnnotationMarkup")]
 	public interface PdfAnnotationMarkup {
-		//bindings cannot box PointF[] to NSArray
+		//bindings cannot box CGPoint[] to NSArray
 		[Export ("quadrilateralPoints")]
 		NSArray QuadrilateralPoints { get; set; }
 		//PointF [] QuadrilateralPoints { get; set; }
@@ -359,19 +375,19 @@ namespace MonoMac.PdfKit {
 		//float [] DashPattern { get; set; }
 
 		[Export ("drawInRect:")]
-		void Draw (RectangleF rect);
+		void Draw (CGRect rect);
 	}
 
 	[BaseType (typeof (NSObject), Name="PDFDestination")]
 	public interface PdfDestination {
 		[Export ("initWithPage:atPoint:")]
-		IntPtr Constructor (PdfPage page, PointF point);
+		IntPtr Constructor (PdfPage page, CGPoint point);
 
 		[Export ("page")]
 		PdfPage Page { get; }
 
 		[Export ("point")]
-		PointF Point { get; }
+		CGPoint Point { get; }
 		
 		//Should Compare be more more .Net ified ?
 		[Export ("compare:")]
@@ -498,7 +514,7 @@ namespace MonoMac.PdfKit {
 		PdfSelection SelectEntireDocument ();
 
 		[Export ("selectionFromPage:atPoint:toPage:atPoint:")]
-		PdfSelection GetSelection (PdfPage startPage, PointF startPoint, PdfPage endPage, PointF endPoint);
+		PdfSelection GetSelection (PdfPage startPage, CGPoint startPoint, PdfPage endPage, CGPoint endPoint);
 
 		[Export ("selectionFromPage:atCharacterIndex:toPage:atCharacterIndex:")]
 		PdfSelection GetSelection (PdfPage startPage, int startCharIndex, PdfPage endPage, int endCharIndex);
@@ -584,13 +600,13 @@ namespace MonoMac.PdfKit {
 		string Label { get; }
 
 		[Export ("boundsForBox:")]
-		RectangleF GetBoundsForBox (PdfDisplayBox box);
+		CGRect GetBoundsForBox (PdfDisplayBox box);
 
 		[Export ("setBounds:forBox:")]
-		void SetBoundsForBox (RectangleF bounds, PdfDisplayBox box);
+		void SetBoundsForBox (CGRect bounds, PdfDisplayBox box);
 
 		[Export ("rotation")]
-		int Rotation { get; set; }
+		nint Rotation { get; set; }
 	
 		//Check  Docs say: "array will _most likely_ be typed to subclasses of the PdfAnnotation class"
 		//do they mean that if it isn't a subclass it is the base class ??
@@ -608,7 +624,7 @@ namespace MonoMac.PdfKit {
 		void RemoveAnnotation (PdfAnnotation annotation);
 
 		[Export ("annotationAtPoint:")]
-		PdfAnnotation GetAnnotation (PointF point);
+		PdfAnnotation GetAnnotation (CGPoint point);
 
 		[Export ("drawWithBox:")]
 		void Draw (PdfDisplayBox box);
@@ -617,7 +633,7 @@ namespace MonoMac.PdfKit {
 		void TransformContext (PdfDisplayBox box);
 
 		[Export ("numberOfCharacters")]
-		int CharacterCount { get; }
+		nuint CharacterCount { get; }
 
 		[Export ("string")]
 		string Text { get; }
@@ -626,22 +642,22 @@ namespace MonoMac.PdfKit {
 		NSAttributedString AttributedString { get; }
 
 		[Export ("characterBoundsAtIndex:")]
-		RectangleF GetCharacterBounds (int index);
+		CGRect GetCharacterBounds (nint index);
 
 		[Export ("characterIndexAtPoint:")]
-		int GetCharacterIndex (PointF point);
+		nint GetCharacterIndex (CGPoint point);
 
 		[Export ("selectionForRect:")]
-		PdfSelection GetSelection (RectangleF rect);
+		PdfSelection GetSelection (CGRect rect);
 
 		[Export ("selectionForWordAtPoint:")]
-		PdfSelection SelectWord (PointF point);
+		PdfSelection SelectWord (CGPoint point);
 
 		[Export ("selectionForLineAtPoint:")]
-		PdfSelection SelectLine (PointF point);
+		PdfSelection SelectLine (CGPoint point);
 
 		[Export ("selectionFromPoint:toPoint:")]
-		PdfSelection GetSelection (PointF startPoint, PointF endPoint);
+		PdfSelection GetSelection (CGPoint startPoint, CGPoint endPoint);
 
 		[Export ("selectionForRange:")]
 		PdfSelection GetSelection (NSRange range);
@@ -670,7 +686,7 @@ namespace MonoMac.PdfKit {
 		NSAttributedString AttributedString { get; }
 
 		[Export ("boundsForPage:")]
-		RectangleF GetBoundsForPage (PdfPage page);
+		CGRect GetBoundsForPage (PdfPage page);
 	
 		//verify NSArray
 		[Export ("selectionsByLine")]
@@ -701,7 +717,7 @@ namespace MonoMac.PdfKit {
 		PdfView PdfView { get; set; }
 
 		[Export ("thumbnailSize")]
-		SizeF ThumbnailSize { get; set; }
+		CGSize ThumbnailSize { get; set; }
 
 		[Export ("maximumNumberOfColumns")]
 		int MaximumNumberOfColumns { get; set; }
@@ -781,7 +797,7 @@ namespace MonoMac.PdfKit {
 		void GoToSelection (PdfSelection selection);
 
 		[Export ("goToRect:onPage:")]
-		void GoToRectangle (RectangleF rect, PdfPage page);
+		void GoToRectangle (CGRect rect, PdfPage page);
 
 		[Export ("displayMode")]
 		PdfDisplayMode DisplayMode { get; set; }
@@ -878,19 +894,19 @@ namespace MonoMac.PdfKit {
 		void Print (NSPrintInfo printInfo, bool doRotate, PdfPrintScalingMode scaleMode);
 
 		[Export ("pageForPoint:nearest:")]
-		PdfPage GetPage (PointF point, bool nearest);
+		PdfPage GetPage (CGPoint point, bool nearest);
 
 		[Export ("convertPoint:toPage:")]
-		PointF ConvertPointToPage (PointF point, PdfPage page);
+		CGPoint ConvertPointToPage (CGPoint point, PdfPage page);
 
 		[Export ("convertRect:toPage:")]
-		RectangleF ConvertRectangleToPage (RectangleF rect, PdfPage page);
+		CGRect ConvertRectangleToPage (CGRect rect, PdfPage page);
 
 		[Export ("convertPoint:fromPage:")]
-		PointF ConvertPointFromPage (PointF point, PdfPage page);
+		CGPoint ConvertPointFromPage (CGPoint point, PdfPage page);
 
 		[Export ("convertRect:fromPage:")]
-		RectangleF ConvertRectangleFromPage (RectangleF rect, PdfPage page);
+		CGRect ConvertRectangleFromPage (CGRect rect, PdfPage page);
 
 		[Export ("documentView")]
 		NSView DocumentView { get; }
@@ -902,7 +918,7 @@ namespace MonoMac.PdfKit {
 		void AnnotationsChanged (PdfPage page);
 
 		[Export ("rowSizeForPage:")]
-		SizeF RowSize (PdfPage page);
+		CGSize RowSize (PdfPage page);
 
 		[Export ("allowsDragging")]
 		bool AllowsDragging { get; set; }

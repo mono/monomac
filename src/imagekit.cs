@@ -36,6 +36,21 @@ using MonoMac.CoreImage;
 using MonoMac.CoreGraphics;
 using MonoMac.CoreAnimation;
 
+#if MAC64
+using nint = System.Int64;
+using nuint = System.UInt64;
+using nfloat = System.Double;
+#else
+using nint = System.Int32;
+using nuint = System.UInt32;
+using nfloat = System.Single;
+#if SDCOMPAT
+using CGPoint = System.Drawing.PointF;
+using CGSize = System.Drawing.SizeF;
+using CGRect = System.Drawing.RectangleF;
+#endif
+#endif
+
 namespace MonoMac.ImageKit {
 
 	[BaseType (typeof (NSView), Delegates=new string [] { "WeakDelegate" }, Events=new Type [] { typeof (IKCameraDeviceViewDelegate)})]
@@ -259,7 +274,7 @@ namespace MonoMac.ImageKit {
 	[BaseType (typeof (NSView))]
 	public interface IKFilterUIView {
 		[Export ("initWithFrame:filter:")]
-		IntPtr Constructor (RectangleF frame, CIFilter filter);
+		IntPtr Constructor (CGRect frame, CIFilter filter);
 
 		//This is an extension to CIFilter
 		[Export ("viewForUIConfiguration:excludedKeys:")]
@@ -284,22 +299,22 @@ namespace MonoMac.ImageKit {
 		int IndexOfRepresentedItem  { get; }
 
 		[Export ("frame")]
-		RectangleF Frame  { get; }
+		CGRect Frame  { get; }
 
 		[Export ("imageContainerFrame")]
-		RectangleF ImageContainerFrame  { get; }
+		CGRect ImageContainerFrame  { get; }
 
 		[Export ("imageFrame")]
-		RectangleF ImageFrame  { get; }
+		CGRect ImageFrame  { get; }
 
 		[Export ("selectionFrame")]
-		RectangleF SelectionFrame  { get; }
+		CGRect SelectionFrame  { get; }
 
 		[Export ("titleFrame")]
-		RectangleF TitleFrame  { get; }
+		CGRect TitleFrame  { get; }
 
 		[Export ("subtitleFrame")]
-		RectangleF SubtitleFrame  { get; }
+		CGRect SubtitleFrame  { get; }
 
 		[Export ("imageAlignment")]
 		NSImageAlignment ImageAlignment  { get; }
@@ -311,7 +326,7 @@ namespace MonoMac.ImageKit {
 		IKImageBrowserCellState CellState  { get; }
 
 		[Export ("opacity")]
-		float Opacity  { get; }
+		nfloat Opacity  { get; }
 
 		[Export ("layerForType:")]
 		CALayer Layer (string layerType);
@@ -334,7 +349,7 @@ namespace MonoMac.ImageKit {
 	public interface IKImageBrowserView {
 		//@category IKImageBrowserView (IKMainMethods)
 		[Export ("initWithFrame:")]
-		IntPtr Constructor (RectangleF frame);
+		IntPtr Constructor (CGRect frame);
 
 		//Having a weak and strong datasource seems to work.
 		[Export ("dataSource", ArgumentSemantic.Assign), NullAllowed]
@@ -373,7 +388,7 @@ namespace MonoMac.ImageKit {
 
 		//@category IKImageBrowserView (IKBrowsing)
 		[Export ("zoomValue")]
-		float ZoomValue { get; set; }
+		float ZoomValue { get; set; } // 32-bit
 
 		[Export ("contentResizingMask")]
 		NSViewResizingMask ContentResizingMask  { get; set; }
@@ -382,37 +397,37 @@ namespace MonoMac.ImageKit {
 		void ScrollIndexToVisible (int index);
 
 		[Export ("cellSize")]
-		SizeF CellSize  { get; set; }
+		CGSize CellSize  { get; set; }
 
 		[Export ("intercellSpacing")]
-		SizeF IntercellSpacing { get; set; }
+		CGSize IntercellSpacing { get; set; }
 
 		[Export ("indexOfItemAtPoint:")]
-		int GetIndexOfItem (PointF point);
+		nint GetIndexOfItem (CGPoint point);
 
 		[Export ("itemFrameAtIndex:")]
-		RectangleF GetItemFrame (int index);
+		CGRect GetItemFrame (nint index);
 
 		[Export ("visibleItemIndexes")]
 		NSIndexSet GetVisibleItemIndexes ();
 
 		[Export ("rowIndexesInRect:")]
-		NSIndexSet GetRowIndexes (RectangleF rect);
+		NSIndexSet GetRowIndexes (CGRect rect);
 
 		[Export ("columnIndexesInRect:")]
-		NSIndexSet GetColumnIndexes (RectangleF rect);
+		NSIndexSet GetColumnIndexes (CGRect rect);
 
 		[Export ("rectOfColumn:")]
-		RectangleF GetRectOfColumn (int columnIndex);
+		CGRect GetRectOfColumn (nuint columnIndex);
 
 		[Export ("rectOfRow:")]
-		RectangleF GetRectOfRow (int rowIndex);
+		CGRect GetRectOfRow (nuint rowIndex);
 
 		[Export ("numberOfRows")]
-		int RowCount { get; }
+		nuint RowCount { get; }
 
 		[Export ("numberOfColumns")]
-		int ColumnCount { get; }
+		nuint ColumnCount { get; }
 
 		[Export ("canControlQuickLookPanel")]
 		bool CanControlQuickLookPanel { get; set; }
@@ -646,7 +661,7 @@ namespace MonoMac.ImageKit {
 		void SetImageAndProperties (CGImage image, NSDictionary metaData);
 
 		[Export ("thumbnailWithMaximumSize:")]
-		CGImage GetThumbnail (SizeF maximumSize);
+		CGImage GetThumbnail (CGSize maximumSize);
 
 		[Export ("imageProperties")]
 		NSDictionary ImageProperties { get; }
@@ -668,10 +683,10 @@ namespace MonoMac.ImageKit {
 		NSObject Delegate { get; set; }
 
 		[Export ("zoomFactor")]
-		float ZoomFactor { get; set; }
+		nfloat ZoomFactor { get; set; }
 
 		[Export ("rotationAngle")]
-		float RotationAngle { get; set; }
+		nfloat RotationAngle { get; set; }
 
 		[Export ("currentToolMode")]
 		string CurrentToolMode { get; set; }
@@ -713,13 +728,13 @@ namespace MonoMac.ImageKit {
 		CGImage Image { get; }
 
 		[Export ("imageSize")]
-		SizeF ImageSize { get; }
+		CGSize ImageSize { get; }
 
 		[Export ("imageProperties")]
 		NSDictionary ImageProperties { get; }
 
 		[Export ("setRotationAngle:centerPoint:")]
-		void SetRotation (float rotationAngle, PointF centerPoint);
+		void SetRotation (nfloat rotationAngle, CGPoint centerPoint);
 
 		[Export ("rotateImageLeft:")]
 		void RotateImageLeft (NSObject sender);
@@ -728,10 +743,10 @@ namespace MonoMac.ImageKit {
 		void RotateImageRight (NSObject sender);
 
 		[Export ("setImageZoomFactor:centerPoint:")]
-		void SetImageZoomFactor (float zoomFactor, PointF centerPoint);
+		void SetImageZoomFactor (nfloat zoomFactor, CGPoint centerPoint);
 
 		[Export ("zoomImageToRect:")]
-		void ZoomImageToRect (RectangleF rect);
+		void ZoomImageToRect (CGRect rect);
 
 		[Export ("zoomImageToFit:")]
 		void ZoomImageToFit (NSObject sender);
@@ -761,22 +776,22 @@ namespace MonoMac.ImageKit {
 		CALayer GetOverlay (string layerType);
 
 		[Export ("scrollToPoint:")]
-		void ScrollTo (PointF point);
+		void ScrollTo (CGPoint point);
 
 		[Export ("scrollToRect:")]
-		void ScrollTo (RectangleF rect);
+		void ScrollTo (CGRect rect);
 
 		[Export ("convertViewPointToImagePoint:")]
-		PointF ConvertViewPointToImagePoint (PointF viewPoint);
+		CGPoint ConvertViewPointToImagePoint (CGPoint viewPoint);
 
 		[Export ("convertViewRectToImageRect:")]
-		RectangleF ConvertViewRectToImageRect (RectangleF viewRect);
+		CGRect ConvertViewRectToImageRect (CGRect viewRect);
 
 		[Export ("convertImagePointToViewPoint:")]
-		PointF ConvertImagePointToViewPoint (PointF imagePoint);
+		CGPoint ConvertImagePointToViewPoint (CGPoint imagePoint);
 
 		[Export ("convertImageRectToViewRect:")]
-		RectangleF ConvertImageRectToViewRect (RectangleF imageRect);
+		CGRect ConvertImageRectToViewRect (CGRect imageRect);
 	}
 
 	[BaseType (typeof (NSPanel))]

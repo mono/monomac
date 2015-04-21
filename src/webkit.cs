@@ -29,6 +29,21 @@ using MonoMac.AppKit;
 using MonoMac.CoreGraphics;
 using MonoMac.ObjCRuntime;
 
+#if MAC64
+using nint = System.Int64;
+using nuint = System.UInt64;
+using nfloat = System.Double;
+#else
+using nint = System.Int32;
+using nuint = System.UInt32;
+using nfloat = System.Single;
+#if SDCOMPAT
+using CGPoint = System.Drawing.PointF;
+using CGSize = System.Drawing.SizeF;
+using CGRect = System.Drawing.RectangleF;
+#endif
+#endif
+
 namespace MonoMac.WebKit {
 
 	[BaseType (typeof (WebScriptObject), Name="DOMObject")]
@@ -1865,10 +1880,10 @@ namespace MonoMac.WebKit {
 		void UISetResizable (WebView sender, bool resizable);
 
 		[Export ("webView:setFrame:"), EventArgs("WebViewFrame")]
-		void UISetFrame (WebView sender, RectangleF newFrame);
+		void UISetFrame (WebView sender, CGRect newFrame);
 
 		[Export ("webViewFrame:"), DelegateName("WebViewGetRectangle"), DefaultValue (null)]
-		RectangleF UIGetFrame (WebView sender);
+		CGRect UIGetFrame (WebView sender);
 
 		[Export ("webView:runJavaScriptAlertPanelWithMessage:initiatedByFrame:"), EventArgs("WebViewJavaScriptFrame")]
 		void UIRunJavaScriptAlertPanelMessage (WebView sender, string withMessage, WebFrame initiatedByFrame);
@@ -1904,10 +1919,10 @@ namespace MonoMac.WebKit {
 		void UIWillPerformDragDestination (WebView webView, WebDragDestinationAction action, NSDraggingInfo draggingInfo);
 
 		[Export ("webView:dragSourceActionMaskForPoint:"), DelegateName ("DragSourceGetActionMask"), DefaultValue (0)]
-		NSEventModifierMask UIDragSourceActionMask (WebView webView, PointF point);
+		NSEventModifierMask UIDragSourceActionMask (WebView webView, CGPoint point);
 
 		[Export ("webView:willPerformDragSourceAction:fromPoint:withPasteboard:"), EventArgs ("WebViewPerformDrag")]
-		void UIWillPerformDragSource (WebView webView, WebDragSourceAction action, PointF sourcePoint, NSPasteboard pasteboard);
+		void UIWillPerformDragSource (WebView webView, WebDragSourceAction action, CGPoint sourcePoint, NSPasteboard pasteboard);
 
 		[Export ("webView:printFrameView:"), EventArgs("WebViewPrint")]
 		void UIPrintFrameView (WebView sender, WebFrameView frameView);
@@ -1919,10 +1934,10 @@ namespace MonoMac.WebKit {
 		float UIGetFooterHeight (WebView sender);
 
 		[Export ("webView:drawHeaderInRect:"), EventArgs ("WebViewHeader")]
-		void UIDrawHeaderInRect (WebView sender, RectangleF rect);
+		void UIDrawHeaderInRect (WebView sender, CGRect rect);
 
 		[Export ("webView:drawFooterInRect:"), EventArgs ("WebViewFooter")]
-		void UIDrawFooterInRect (WebView sender, RectangleF rect);
+		void UIDrawFooterInRect (WebView sender, CGRect rect);
 
 		[Export ("webView:runJavaScriptAlertPanelWithMessage:"), EventArgs("WebViewJavaScript")]
 		void UIRunJavaScriptAlertPanel (WebView sender, string message);
@@ -1934,10 +1949,10 @@ namespace MonoMac.WebKit {
 		string UIRunJavaScriptTextInputPanel (WebView sender, string prompt, string defaultText);
 
 		[Export ("webView:setContentRect:"), EventArgs("WebViewContent")]
-		void UISetContentRect (WebView sender, RectangleF frame);
+		void UISetContentRect (WebView sender, CGRect frame);
 
 		[Export ("webViewContentRect:"), DelegateName("WebViewGetRectangle"), DefaultValue (null)]
-		RectangleF UIGetContentRect (WebView sender);
+		CGRect UIGetContentRect (WebView sender);
 	}
 
 	[BaseType (typeof (NSObject))]
@@ -2011,7 +2026,7 @@ namespace MonoMac.WebKit {
 		void RegisterUrlSchemeAsLocal (string scheme);
 
 		[Export ("initWithFrame:frameName:groupName:")]
-		IntPtr Constructor (RectangleF frame, string frameName, string groupName);
+		IntPtr Constructor (CGRect frame, string frameName, string groupName);
 
 		[Export ("close")]
 		void Close ();
@@ -2063,7 +2078,7 @@ namespace MonoMac.WebKit {
 		bool IsLoading { get; }
 
 		[Export ("elementAtPoint:")]
-		NSDictionary ElementAtPoint (PointF point);
+		NSDictionary ElementAtPoint (CGPoint point);
 
 		[Export ("pasteboardTypesForSelection")]
 		NSPasteboard [] PasteboardTypesForSelection { get; }
@@ -2078,7 +2093,7 @@ namespace MonoMac.WebKit {
 		void WriteElement (NSDictionary element, NSObject [] pasteboardTypes, NSPasteboard toPasteboard);
 
 		[Export ("moveDragCaretToPoint:")]
-		void MoveDragCaretToPoint (PointF point);
+		void MoveDragCaretToPoint (CGPoint point);
 
 		[Export ("removeDragCaret")]
 		void RemoveDragCaret ();

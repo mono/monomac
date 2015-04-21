@@ -28,26 +28,42 @@
 using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
+using MonoMac.CoreGraphics;
+
+#if MAC64
+using nint = System.Int64;
+using nuint = System.UInt64;
+using nfloat = System.Double;
+#else
+using nint = System.Int32;
+using nuint = System.UInt32;
+using nfloat = System.Single;
+#if SDCOMPAT
+using CGPoint = System.Drawing.PointF;
+using CGSize = System.Drawing.SizeF;
+using CGRect = System.Drawing.RectangleF;
+#endif
+#endif
 
 namespace MonoMac.AppKit {
 	public partial class NSCell {
 
 		[DllImport (Constants.AppKitLibrary)]
-		extern static void NSDrawThreePartImage (RectangleF rect, IntPtr startCap, IntPtr centerFill, IntPtr endCap, bool vertial, int op, float alphaFraction, bool flipped);
+		extern static void NSDrawThreePartImage (CGRect rect, IntPtr startCap, IntPtr centerFill, IntPtr endCap, bool vertial, nuint op, nfloat alphaFraction, bool flipped);
 		
-		public void DrawThreePartImage (RectangleF frame, NSImage startCap, NSImage centerFill, NSImage endCap, bool vertical, NSCompositingOperation op, float alphaFraction, bool flipped)
+		public void DrawThreePartImage (CGRect frame, NSImage startCap, NSImage centerFill, NSImage endCap, bool vertical, NSCompositingOperation op, nfloat alphaFraction, bool flipped)
 		{
 			NSDrawThreePartImage (
 				frame, startCap != null ? startCap.Handle : IntPtr.Zero,
 				centerFill != null ? centerFill.Handle : IntPtr.Zero,
 				endCap != null ? endCap.Handle : IntPtr.Zero,
-				vertical, (int)op, alphaFraction, flipped);
+				vertical, (nuint)op, alphaFraction, flipped);
 		}
 
 		[DllImport (Constants.AppKitLibrary)]
-		extern static void NSDrawNinePartImage (RectangleF frame, IntPtr topLeftCorner, IntPtr topEdgeFill, IntPtr topRightCorner, IntPtr leftEdgeFill, IntPtr centerFill, IntPtr rightEdgeFill, IntPtr bottomLeftCorner, IntPtr bottomEdgeFill, IntPtr bottomRightCorner, int op, float alphaFraction, bool flipped);
+		extern static void NSDrawNinePartImage (CGRect frame, IntPtr topLeftCorner, IntPtr topEdgeFill, IntPtr topRightCorner, IntPtr leftEdgeFill, IntPtr centerFill, IntPtr rightEdgeFill, IntPtr bottomLeftCorner, IntPtr bottomEdgeFill, IntPtr bottomRightCorner, nuint op, nfloat alphaFraction, bool flipped);
 
-		public void DrawNinePartImage (RectangleF frame, NSImage topLeftCorner, NSImage topEdgeFill, NSImage topRightCorner, NSImage leftEdgeFill, NSImage centerFill, NSImage rightEdgeFill, NSImage bottomLeftCorner, NSImage bottomEdgeFill, NSImage bottomRightCorner, NSCompositingOperation op, float alphaFraction, bool flipped)
+		public void DrawNinePartImage (CGRect frame, NSImage topLeftCorner, NSImage topEdgeFill, NSImage topRightCorner, NSImage leftEdgeFill, NSImage centerFill, NSImage rightEdgeFill, NSImage bottomLeftCorner, NSImage bottomEdgeFill, NSImage bottomRightCorner, NSCompositingOperation op, nfloat alphaFraction, bool flipped)
 		{
 			NSDrawNinePartImage (
 				frame, topLeftCorner != null ? topLeftCorner.Handle : IntPtr.Zero,
@@ -59,7 +75,7 @@ namespace MonoMac.AppKit {
 				bottomLeftCorner != null ? bottomLeftCorner.Handle : IntPtr.Zero,
 				bottomEdgeFill != null ? bottomEdgeFill.Handle : IntPtr.Zero,
 				bottomRightCorner != null ? bottomRightCorner.Handle : IntPtr.Zero,
-				(int)op, alphaFraction, flipped);
+				(nuint)op, alphaFraction, flipped);
  		}
 	}
 }

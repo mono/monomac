@@ -40,6 +40,21 @@ using OSType = System.UInt32;
 // typedef double NSTimeInterval;
 using NSTimeInterval = System.Double;
 
+#if MAC64
+using nint = System.Int64;
+using nuint = System.UInt64;
+using nfloat = System.Double;
+#else
+using nint = System.Int32;
+using nuint = System.UInt32;
+using nfloat = System.Single;
+#if SDCOMPAT
+using CGPoint = System.Drawing.PointF;
+using CGSize = System.Drawing.SizeF;
+using CGRect = System.Drawing.RectangleF;
+#endif
+#endif
+
 namespace MonoMac.Foundation {
 	
 	[BaseType (typeof (NSObject))]
@@ -48,19 +63,19 @@ namespace MonoMac.Foundation {
 		IntPtr Constructor (NSAffineTransform transform);
 
 		[Export ("translateXBy:yBy:")]
-		void Translate (float deltaX, float deltaY);
+		void Translate (nfloat deltaX, nfloat deltaY);
 
 		[Export ("rotateByDegrees:")]
-		void RotateByDegrees (float angle);
+		void RotateByDegrees (nfloat angle);
 
 		[Export ("rotateByRadians:")]
-		void RotateByRadians (float angle);
+		void RotateByRadians (nfloat angle);
 
 		[Export ("scaleBy:")]
-		void Scale (float scale);
+		void Scale (nfloat scale);
 
 		[Export ("scaleXBy:yBy:")]
-		void Scale (float scaleX, float scaleY);
+		void Scale (nfloat scaleX, nfloat scaleY);
 
 		[Export ("invert")]
 		void Invert ();
@@ -72,10 +87,10 @@ namespace MonoMac.Foundation {
 		void PrependTransform (NSAffineTransform transform);
 
 		[Export ("transformPoint:")]
-		PointF TransformPoint (PointF aPoint);
+		CGPoint TransformPoint (CGPoint aPoint);
 
 		[Export ("transformSize:")]
-		SizeF TransformSize (SizeF aSize);
+		CGSize TransformSize (CGSize aSize);
 		
 		[Export ("transformBezierPath:")]
 		NSBezierPath TransformBezierPath (NSBezierPath path);

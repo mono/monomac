@@ -21,6 +21,21 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
+#if MAC64
+using nint = System.Int64;
+using nuint = System.UInt64;
+using nfloat = System.Double;
+#else
+using nint = System.Int32;
+using nuint = System.UInt32;
+using nfloat = System.Single;
+#if SDCOMPAT
+using CGPoint = System.Drawing.PointF;
+using CGSize = System.Drawing.SizeF;
+using CGRect = System.Drawing.RectangleF;
+#endif
+#endif
+
 	[BaseType (typeof (NSObject))]
 	interface NSLayoutManager {
 		[Export ("init")]
@@ -39,10 +54,10 @@
 		void AddTextContainer (NSTextContainer container);
 
 		[Export ("insertTextContainer:atIndex:")]
-		void InsertTextContainer (NSTextContainer container, int index);
+		void InsertTextContainer (NSTextContainer container, nuint index);
 
 		[Export ("removeTextContainerAtIndex:")]
-		void RemoveTextContainer (int index);
+		void RemoveTextContainer (nuint index);
 
 		[Export ("textContainerChangedGeometry:")]
 		void TextContainerChangedGeometry (NSTextContainer container);
@@ -58,7 +73,7 @@
 
 		// FIXME: binding
 		//[Export ("invalidateGlyphsForCharacterRange:changeInLength:actualCharacterRange:")]
-		//void InvalidateGlyphs (NSRange charRange, int delta, NSRangePointer actualCharRange);
+		//void InvalidateGlyphs (NSRange charRange, nint delta, NSRangePointer actualCharRange);
 		//
 		//[Export ("invalidateLayoutForCharacterRange:actualCharacterRange:")]
 		//void InvalidateLayout (NSRange charRange, NSRangePointer actualCharRange);
@@ -73,7 +88,7 @@
 		void InvalidateDisplayForGlyphRange (NSRange glyphRange);
 
 		[Export ("textStorage:edited:range:changeInLength:invalidatedRange:")]
-		void TextStorageEdited (NSTextStorage str, NSTextStorageEditedFlags editedMask, NSRange newCharRange, int delta, NSRange invalidatedCharRange);
+		void TextStorageEdited (NSTextStorage str, NSTextStorageEditedFlags editedMask, NSRange newCharRange, nint delta, NSRange invalidatedCharRange);
 
 		[Export ("ensureGlyphsForCharacterRange:")]
 		void EnsureGlyphsForCharacterRange (NSRange charRange);
@@ -91,38 +106,38 @@
 		void EnsureLayoutForTextContainer (NSTextContainer container);
 
 		[Export ("ensureLayoutForBoundingRect:inTextContainer:")]
-		void EnsureLayout (RectangleF bounds, NSTextContainer container);
+		void EnsureLayout (CGRect bounds, NSTextContainer container);
 
 		// FIXME: binding
 		//[Export ("insertGlyphs:length:forStartingGlyphAtIndex:characterIndex:")]
-		//void InsertGlyphs (const NSGlyph glyphs, uint length, uint glyphIndex, uint charIndex);
+		//void InsertGlyphs (const NSGlyph glyphs, nuint length, nuint glyphIndex, nuint charIndex);
 
 		[Export ("insertGlyph:atGlyphIndex:characterIndex:")]
-		void InsertGlyph (uint glyph, uint glyphIndex, uint charIndex);
+		void InsertGlyph (uint glyph, nuint glyphIndex, nuint charIndex); // 32-bit
 
 		[Export ("replaceGlyphAtIndex:withGlyph:")]
-		void ReplaceGlyph (uint glyphIndex, uint newGlyph);
+		void ReplaceGlyph (nuint glyphIndex, uint newGlyph); // 32-bit
 
 		[Export ("deleteGlyphsInRange:")]
 		void DeleteGlyphs (NSRange glyphRange);
 
 		[Export ("setCharacterIndex:forGlyphAtIndex:")]
-		void SetCharacter (uint charIndex, uint glyphIndex);
+		void SetCharacter (nuint charIndex, nuint glyphIndex);
 
 		[Export ("setIntAttribute:value:forGlyphAtIndex:")]
-		void SetIntAttribute (int attributeTag, int val, uint glyphIndex);
+		void SetIntAttribute (nint attributeTag, nint val, nuint glyphIndex);
 
 		[Export ("invalidateGlyphsOnLayoutInvalidationForGlyphRange:")]
 		void InvalidateGlyphsOnLayout (NSRange glyphRange);
 
 		[Export ("numberOfGlyphs")]
-		int NumberOfGlyphs { get; }
+		nuint NumberOfGlyphs { get; }
 
 		[Export ("glyphAtIndex:isValidIndex:")]
-		uint GlyphAtIndex (uint glyphIndex, bool isValidIndex);
+		uint GlyphAtIndex (nuint glyphIndex, bool isValidIndex); // 32-bit
 
 		[Export ("glyphAtIndex:")]
-		uint GlyphAtIndex (uint glyphIndex);
+		uint GlyphAtIndex (nuint glyphIndex); // 32-bit
 
 		[Export ("isValidGlyphIndex:")]
 		bool IsValidGlyphIndex (uint glyphIndex);
@@ -151,13 +166,13 @@
 		void SetTextContainer (NSTextContainer container, NSRange glyphRange);
 
 		[Export ("setLineFragmentRect:forGlyphRange:usedRect:")]
-		void SetLineFragmentRect (RectangleF fragmentRect, NSRange glyphRange, RectangleF usedRect);
+		void SetLineFragmentRect (CGRect fragmentRect, NSRange glyphRange, CGRect usedRect);
 
 		[Export ("setExtraLineFragmentRect:usedRect:textContainer:")]
-		void SetExtraLineFragment (RectangleF fragmentRect, RectangleF usedRect, NSTextContainer container);
+		void SetExtraLineFragment (CGRect fragmentRect, CGRect usedRect, NSTextContainer container);
 
 		[Export ("setLocation:forStartOfGlyphRange:")]
-		void SetLocationforStartOfGlyphRange (PointF location, NSRange glyphRange);
+		void SetLocationforStartOfGlyphRange (CGPoint location, NSRange glyphRange);
 
 		// FIXME: binding
 		//[Export ("setLocations:startingGlyphIndexes:count:forGlyphRange:")]
@@ -170,7 +185,7 @@
 		void SetDrawsOutsideLineFragment (bool flag, uint glyphIndex);
 
 		[Export ("setAttachmentSize:forGlyphRange:")]
-		void SetAttachmentSizeforGlyphRange (SizeF attachmentSize, NSRange glyphRange);
+		void SetAttachmentSizeforGlyphRange (CGSize attachmentSize, NSRange glyphRange);
 
 		[Export ("getFirstUnlaidCharacterIndex:glyphIndex:")]
 		void GetFirstUnlaidCharacterIndex (uint charIndex, uint glyphIndex);
@@ -185,61 +200,61 @@
 		NSTextContainer TextContainerForGlyph (uint glyphIndex, NSRangePointer effectiveGlyphRange);
 
 		[Export ("usedRectForTextContainer:")]
-		RectangleF UsedRectForTextContainer (NSTextContainer container);
+		CGRect UsedRectForTextContainer (NSTextContainer container);
 
 		[Export ("lineFragmentRectForGlyphAtIndex:effectiveRange:")]
-		RectangleF LineFragmentRectForGlyph (uint glyphIndex, NSRangePointer effectiveGlyphRange);
+		CGRect LineFragmentRectForGlyph (uint glyphIndex, NSRangePointer effectiveGlyphRange);
 
 		[Export ("lineFragmentUsedRectForGlyphAtIndex:effectiveRange:")]
-		RectangleF LineFragmentUsedRectForGlyph (uint glyphIndex, NSRangePointer effectiveGlyphRange);
+		CGRect LineFragmentUsedRectForGlyph (uint glyphIndex, NSRangePointer effectiveGlyphRange);
 
 		[Export ("lineFragmentRectForGlyphAtIndex:effectiveRange:withoutAdditionalLayout:")]
-		RectangleF LineFragmentRectForGlyph (uint glyphIndex, NSRangePointer effectiveGlyphRange, bool flag);
+		CGRect LineFragmentRectForGlyph (uint glyphIndex, NSRangePointer effectiveGlyphRange, bool flag);
 
 		[Export ("lineFragmentUsedRectForGlyphAtIndex:effectiveRange:withoutAdditionalLayout:")]
-		RectangleF LineFragmentUsedRectForGlyph (uint glyphIndex, NSRangePointer effectiveGlyphRange, bool flag);
+		CGRect LineFragmentUsedRectForGlyph (uint glyphIndex, NSRangePointer effectiveGlyphRange, bool flag);
 
 		[Export ("textContainerForGlyphAtIndex:effectiveRange:withoutAdditionalLayout:")]
 		NSTextContainer TextContainerForGlyph (uint glyphIndex, NSRangePointer effectiveGlyphRange, bool flag);
 
 		[Export ("extraLineFragmentRect")]
-		RectangleF ExtraLineFragmentRect { get; }
+		CGRect ExtraLineFragmentRect { get; }
 
 		[Export ("extraLineFragmentUsedRect")]
-		RectangleF ExtraLineFragmentUsedRect { get; }
+		CGRect ExtraLineFragmentUsedRect { get; }
 
 		[Export ("extraLineFragmentTextContainer")]
 		NSTextContainer ExtraLineFragmentTextContainer { get; }
 
 		[Export ("locationForGlyphAtIndex:")]
-		PointF LocationForGlyph (uint glyphIndex);
+		CGPoint LocationForGlyph (nuint glyphIndex);
 
 		[Export ("notShownAttributeForGlyphAtIndex:")]
-		bool NotShownAttributeForGlyph (uint glyphIndex);
+		bool NotShownAttributeForGlyph (nuint glyphIndex);
 
 		[Export ("drawsOutsideLineFragmentForGlyphAtIndex:")]
-		bool DrawsOutsideLineFragmentForGlyph (uint glyphIndex);
+		bool DrawsOutsideLineFragmentForGlyph (nuint glyphIndex);
 
 		[Export ("attachmentSizeForGlyphAtIndex:")]
-		SizeF AttachmentSizeForGlyph (uint glyphIndex);
+		CGSize AttachmentSizeForGlyph (nuint glyphIndex);
 
 		[Export ("setLayoutRect:forTextBlock:glyphRange:")]
-		void SetLayoutRectforTextBlock (RectangleF rect, NSTextBlock block, NSRange glyphRange);
+		void SetLayoutRectforTextBlock (CGRect rect, NSTextBlock block, NSRange glyphRange);
 
 		[Export ("setBoundsRect:forTextBlock:glyphRange:")]
-		void SetBoundsRectforTextBlock (RectangleF rect, NSTextBlock block, NSRange glyphRange);
+		void SetBoundsRectforTextBlock (CGRect rect, NSTextBlock block, NSRange glyphRange);
 
 		[Export ("layoutRectForTextBlock:glyphRange:")]
-		RectangleF LayoutRectForTextBlock (NSTextBlock block, NSRange glyphRange);
+		CGRect LayoutRectForTextBlock (NSTextBlock block, NSRange glyphRange);
 
 		[Export ("boundsRectForTextBlock:glyphRange:")]
-		RectangleF BoundsRectForTextBlock (NSTextBlock block, NSRange glyphRange);
+		CGRect BoundsRectForTextBlock (NSTextBlock block, NSRange glyphRange);
 
 		[Export ("layoutRectForTextBlock:atIndex:effectiveRange:")]
-		RectangleF LayoutRectForTextBlock (NSTextBlock block, uint glyphIndex, NSRangePointer effectiveGlyphRange);
+		CGRect LayoutRectForTextBlock (NSTextBlock block, nuint glyphIndex, NSRangePointer effectiveGlyphRange);
 
 		[Export ("boundsRectForTextBlock:atIndex:effectiveRange:")]
-		RectangleF BoundsRectForTextBlock (NSTextBlock block, uint glyphIndex, NSRangePointer effectiveGlyphRange);
+		CGRect BoundsRectForTextBlock (NSTextBlock block, uint glyphIndex, NSRangePointer effectiveGlyphRange);
 
 		[Export ("glyphRangeForCharacterRange:actualCharacterRange:")]
 		NSRange GlyphRangeForCharacterRange (NSRange charRange, NSRangePointer actualCharRange);
@@ -251,7 +266,7 @@
 		NSRange GlyphRangeForTextContainer (NSTextContainer container);
 
 		[Export ("rangeOfNominallySpacedGlyphsContainingIndex:")]
-		NSRange RangeOfNominallySpacedGlyphsContainingIndex (uint glyphIndex);
+		NSRange RangeOfNominallySpacedGlyphsContainingIndex (nuint glyphIndex);
 
 		// FIXME: binding
 		//[Export ("rectArrayForCharacterRange:withinSelectedCharacterRange:inTextContainer:rectCount:")]
@@ -261,31 +276,32 @@
 		//NSRectArray RectArrayForGlyphRangewithinSelectedGlyphRangeinTextContainerrectCount (NSRange glyphRange, NSRange selGlyphRange, NSTextContainer container, uint rectCount);
 
 		[Export ("boundingRectForGlyphRange:inTextContainer:")]
-		RectangleF BoundingRectForGlyphRange (NSRange glyphRange, NSTextContainer container);
+		CGRect BoundingRectForGlyphRange (NSRange glyphRange, NSTextContainer container);
 
 		[Export ("glyphRangeForBoundingRect:inTextContainer:")]
-		NSRange GlyphRangeForBoundingRect (RectangleF bounds, NSTextContainer container);
+		NSRange GlyphRangeForBoundingRect (CGRect bounds, NSTextContainer container);
 
 		[Export ("glyphRangeForBoundingRectWithoutAdditionalLayout:inTextContainer:")]
-		NSRange GlyphRangeForBoundingRectWithoutAdditionalLayout (RectangleF bounds, NSTextContainer container);
+		NSRange GlyphRangeForBoundingRectWithoutAdditionalLayout (CGRect bounds, NSTextContainer container);
 
 		[Export ("glyphIndexForPoint:inTextContainer:fractionOfDistanceThroughGlyph:")]
-		uint GlyphIndexForPoint (PointF point, NSTextContainer container, float partialFraction);
+		nuint GlyphIndexForPoint (CGPoint point, NSTextContainer container, nfloat partialFraction);
 
 		[Export ("glyphIndexForPoint:inTextContainer:")]
-		uint GlyphIndexForPoint (PointF point, NSTextContainer container);
+		nuint GlyphIndexForPoint (CGPoint point, NSTextContainer container);
 
 		[Export ("fractionOfDistanceThroughGlyphForPoint:inTextContainer:")]
-		float FractionOfDistance (PointF point, NSTextContainer container);
+		nfloat FractionOfDistance (CGPoint point, NSTextContainer container);
 
 		[Export ("characterIndexForPoint:inTextContainer:fractionOfDistanceBetweenInsertionPoints:")]
-		uint CharacterIndexForPoint (PointF point, NSTextContainer container, float partialFraction);
+		nuint CharacterIndexForPoint (CGPoint point, NSTextContainer container, nfloat partialFraction);
 
-		[Export ("getLineFragmentInsertionPointsForCharacterAtIndex:alternatePositions:inDisplayOrder:positions:characterIndexes:")]
-		uint GetLineFragmentInsertionPoints (uint charIndex, bool aFlag, bool dFlag, float positions, uint charIndexes);
+		// FIXME: binding
+		//[Export ("getLineFragmentInsertionPointsForCharacterAtIndex:alternatePositions:inDisplayOrder:positions:characterIndexes:")]
+		//nuint GetLineFragmentInsertionPoints (nuint charIndex, bool aFlag, bool dFlag, nfloat positions, ref nuint[] charIndexes);
 
 		[Export ("temporaryAttributesAtCharacterIndex:effectiveRange:")]
-		NSDictionary TemporaryAttributes (uint charIndex, NSRangePointer effectiveCharRange);
+		NSDictionary TemporaryAttributes (nuint charIndex, NSRangePointer effectiveCharRange);
 
 		[Export ("setTemporaryAttributes:forCharacterRange:")]
 		void SetTemporaryAttributes (NSDictionary attrs, NSRange charRange);
@@ -298,13 +314,13 @@
 
 		// FIXME: binding
 		//[Export ("temporaryAttribute:atCharacterIndex:effectiveRange:")]
-		//NSObject TemporaryAttributeatCharacterIndexeffectiveRange (string attrName, uint location, NSRangePointer range);
+		//NSObject TemporaryAttributeatCharacterIndexeffectiveRange (string attrName, nuint location, NSRangePointer range);
 		//
 		//[Export ("temporaryAttribute:atCharacterIndex:longestEffectiveRange:inRange:")]
-		//NSObject TemporaryAttributeatCharacterIndexlongestEffectiveRangeinRange (string attrName, uint location, NSRangePointer range, NSRange rangeLimit);
+		//NSObject TemporaryAttributeatCharacterIndexlongestEffectiveRangeinRange (string attrName, nuint location, NSRangePointer range, NSRange rangeLimit);
 
 		[Export ("temporaryAttributesAtCharacterIndex:longestEffectiveRange:inRange:")]
-		NSDictionary TemporaryAttributes (uint location, NSRangePointer range, NSRange rangeLimit);
+		NSDictionary TemporaryAttributes (nuint location, NSRangePointer range, NSRange rangeLimit);
 
 		[Export ("addTemporaryAttribute:value:forCharacterRange:")]
 		void AddTemporaryAttribute (string attrName, NSObject value, NSRange charRange);
@@ -313,10 +329,10 @@
 		NSFont SubstituteFontForFont (NSFont originalFont);
 
 		[Export ("defaultLineHeightForFont:")]
-		float DefaultLineHeightForFont (NSFont theFont);
+		nfloat DefaultLineHeightForFont (NSFont theFont);
 
 		[Export ("defaultBaselineOffsetForFont:")]
-		float DefaultBaselineOffsetForFont (NSFont theFont);
+		nfloat DefaultBaselineOffsetForFont (NSFont theFont);
 
 		//Detected properties
 		[Export ("textStorage")]
@@ -347,7 +363,7 @@
 		bool ShowsControlCharacters { get; set; }
 
 		[Export ("hyphenationFactor")]
-		float HyphenationFactor { get; set; }
+		float HyphenationFactor { get; set; } // 32-bit
 
 		[Export ("defaultAttachmentScaling")]
 		NSImageScaling DefaultAttachmentScaling { get; set; }
