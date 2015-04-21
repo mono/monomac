@@ -159,11 +159,11 @@ ifeq ($(HAVE_ASYNC),)
 HAVE_ASYNC := $(shell if $(PKG_CONFIG) --atleast-version=2.11 mono; then echo 1; else echo 0; fi)
 endif
 
-# Uncomment the following two lines to build targetting 64 bit
-DEFINES64 = -define:MAC64
-BMAC_DEFINES64 = -d=MAC64
-
-HAVE_ASYNC := $(shell if pkg-config --atleast-version=2.11 mono; then echo true; else echo false; fi)
+# Pass 64BIT=1 to make to build for 64-bit
+ifeq ($(64BIT),1)
+	DEFINES64 = -define:MAC64
+	BMAC_DEFINES64 = -d=MAC64
+endif
 
 ifeq ($(HAVE_ASYNC),1)
 	ASYNC_TARGETS = MonoMac.CFNetwork.dll
@@ -210,7 +210,15 @@ APIS = \
 	scriptingbridge.cs	\
 	$(SHARED_APIS) $(EXTRA_APIS)
 
-all: $(TARGETS)
+all: info $(TARGETS)
+
+info:
+ifeq ($(64BIT),1)
+	@echo "BUILDING 64-bit...";
+else
+	@echo "BUILDING 32-bit...";
+endif
+	@sleep 1
 
 parse.exe: parse.cs $(MACCORE_DIR)/src/Options.cs
 	$(MCS) -debug parse.cs $(MACCORE_DIR)/src/Options.cs

@@ -27,6 +27,12 @@ using System.Runtime.InteropServices;
 using MonoMac.Foundation;
 using MonoMac.CoreGraphics;
 
+#if MAC64
+using nuint = System.UInt64;
+#else
+using nuint = System.UInt32;
+#endif
+
 namespace MonoMac.ObjCRuntime {
 	public static partial class Messaging {
 		const string LIBOBJC_DYLIB = "/usr/lib/libobjc.dylib";
@@ -72,6 +78,8 @@ namespace MonoMac.ObjCRuntime {
 		public extern static void void_objc_msgSend_intptr_intptr_float (IntPtr receiver, IntPtr selector, IntPtr arg1, IntPtr arg2, float arg3);
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSend")]
 		public extern static void void_objc_msgSend_intptr_intptr_double (IntPtr receiver, IntPtr selector, IntPtr arg1, IntPtr arg2, double arg3);
+		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSend")]
+		public extern static void void_objc_msgSend_intptr_intptr_nuint (IntPtr receiver, IntPtr selector, IntPtr arg1, IntPtr arg2, nuint arg3);
 
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSendSuper")]
 		public extern static void void_objc_msgSendSuper (IntPtr [] super, IntPtr selector);

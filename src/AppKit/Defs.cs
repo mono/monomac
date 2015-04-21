@@ -22,16 +22,19 @@
 //
 using System;
 using System.Runtime.InteropServices;
+
+#if MAC64
+using nfloat = System.Double;
+#else
+using nfloat = System.Single;
+#endif
+
 namespace MonoMac.AppKit {
 	[StructLayout (LayoutKind.Sequential)]
 	public struct NSEdgeInsets {
-#if MAC64
-		public double Top, Left, Bottom, Right;
-#else
-		public float Top, Left, Bottom, Right;
-#endif
+		public nfloat Top, Left, Bottom, Right;
 
-		public NSEdgeInsets (float top, float left, float bottom, float right)
+		public NSEdgeInsets (nfloat top, nfloat left, nfloat bottom, nfloat right)
 		{
 			Top = top;
 			Left = left;

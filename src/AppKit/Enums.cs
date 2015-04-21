@@ -27,13 +27,10 @@ using MonoMac.ObjCRuntime;
 #if MAC64
 using nuint = System.UInt64;
 using nint = System.Int64;
-using nnuint = System.UInt64;
 #else
-// on 32-bit, all enums are signed int
-using nulong = System.Int32;
+using nuint = System.UInt32;
 using nint = System.Int32;
-using nnuint = System.UInt32;
-#end if
+#endif
 
 namespace MonoMac.AppKit {
 	
@@ -233,7 +230,7 @@ namespace MonoMac.AppKit {
 		ImageOverlaps,
 	}
 	
-	public enum NSImageScaling : nuint {
+	public enum NSImageScale : nuint {
 		ProportionallyDown = 0,
 		AxesIndependently,     
 		None,                 
@@ -348,35 +345,35 @@ namespace MonoMac.AppKit {
 
 	[Flags]
 	public enum NSEventMask : ulong {
-		LeftMouseDown         = 1 << NSEventType.LeftMouseDown,
-		LeftMouseUp           = 1 << NSEventType.LeftMouseUp,
-		RightMouseDown        = 1 << NSEventType.RightMouseDown,
-		RightMouseUp          = 1 << NSEventType.RightMouseUp,
-		MouseMoved            = 1 << NSEventType.MouseMoved,
-		LeftMouseDragged      = 1 << NSEventType.LeftMouseDragged,
-		RightMouseDragged     = 1 << NSEventType.RightMouseDragged,
-		MouseEntered          = 1 << NSEventType.MouseEntered,
-		MouseExited           = 1 << NSEventType.MouseExited,
-		KeyDown               = 1 << NSEventType.KeyDown,
-		KeyUp                 = 1 << NSEventType.KeyUp,
-		FlagsChanged          = 1 << NSEventType.FlagsChanged,
-		AppKitDefined         = 1 << NSEventType.AppKitDefined,
-		SystemDefined         = 1 << NSEventType.SystemDefined,
-		ApplicationDefined    = 1 << NSEventType.ApplicationDefined,
-		Periodic              = 1 << NSEventType.Periodic,
-		CursorUpdate          = 1 << NSEventType.CursorUpdate,
-		ScrollWheel           = 1 << NSEventType.ScrollWheel,
-		TabletPoint           = 1 << NSEventType.TabletPoint,
-		TabletProximity       = 1 << NSEventType.TabletProximity,
-		OtherMouseDown        = 1 << NSEventType.OtherMouseDown,
-		OtherMouseUp          = 1 << NSEventType.OtherMouseUp,
-		OtherMouseDragged     = 1 << NSEventType.OtherMouseDragged,
-		EventGesture          = 1 << NSEventType.Gesture,
-		EventMagnify          = (uint)1 << NSEventType.Magnify,
-		EventSwipe            = (uint)1 << NSEventType.Swipe,
-		EventRotate           = (uint)1 << NSEventType.Rotate,
-		EventBeginGesture     = (uint)1 << NSEventType.BeginGesture,
-		EventEndGesture       = (uint)1 << NSEventType.EndGesture,
+		LeftMouseDown         = 1 << (int)NSEventType.LeftMouseDown,
+		LeftMouseUp           = 1 << (int)NSEventType.LeftMouseUp,
+		RightMouseDown        = 1 << (int)NSEventType.RightMouseDown,
+		RightMouseUp          = 1 << (int)NSEventType.RightMouseUp,
+		MouseMoved            = 1 << (int)NSEventType.MouseMoved,
+		LeftMouseDragged      = 1 << (int)NSEventType.LeftMouseDragged,
+		RightMouseDragged     = 1 << (int)NSEventType.RightMouseDragged,
+		MouseEntered          = 1 << (int)NSEventType.MouseEntered,
+		MouseExited           = 1 << (int)NSEventType.MouseExited,
+		KeyDown               = 1 << (int)NSEventType.KeyDown,
+		KeyUp                 = 1 << (int)NSEventType.KeyUp,
+		FlagsChanged          = 1 << (int)NSEventType.FlagsChanged,
+		AppKitDefined         = 1 << (int)NSEventType.AppKitDefined,
+		SystemDefined         = 1 << (int)NSEventType.SystemDefined,
+		ApplicationDefined    = 1 << (int)NSEventType.ApplicationDefined,
+		Periodic              = 1 << (int)NSEventType.Periodic,
+		CursorUpdate          = 1 << (int)NSEventType.CursorUpdate,
+		ScrollWheel           = 1 << (int)NSEventType.ScrollWheel,
+		TabletPoint           = 1 << (int)NSEventType.TabletPoint,
+		TabletProximity       = 1 << (int)NSEventType.TabletProximity,
+		OtherMouseDown        = 1 << (int)NSEventType.OtherMouseDown,
+		OtherMouseUp          = 1 << (int)NSEventType.OtherMouseUp,
+		OtherMouseDragged     = 1 << (int)NSEventType.OtherMouseDragged,
+		EventGesture          = 1 << (int)NSEventType.Gesture,
+		EventMagnify          = (uint)1 << (int)NSEventType.Magnify,
+		EventSwipe            = (uint)1 << (int)NSEventType.Swipe,
+		EventRotate           = (uint)1 << (int)NSEventType.Rotate,
+		EventBeginGesture     = (uint)1 << (int)NSEventType.BeginGesture,
+		EventEndGesture       = (uint)1 << (int)NSEventType.EndGesture,
 		AnyEvent              = UInt32.MaxValue
 	}
 
@@ -877,7 +874,7 @@ namespace MonoMac.AppKit {
 #endregion
 	
 	[Flags]
-	public enum NSDragOperation : nnuint {
+	public enum NSDragOperation : nuint {
 		None,
 		Copy = 1,
 		Link = 2,
@@ -886,7 +883,7 @@ namespace MonoMac.AppKit {
 		AllObsolete = 15,
 		Move = 16,
 		Delete = 32,
-		All = nnuint.MaxValue
+		All = nuint.MaxValue
 	}
 
 	public enum NSTextAlignment : nuint {
@@ -1023,10 +1020,10 @@ namespace MonoMac.AppKit {
         AlphaNonpremultiplied       = 1 << 1,
         FloatingPointSamples        = 1 << 2,
    
-        16BitLittleEndian           = 1 << 8,
-        32BitLittleEndian           = 1 << 9,
-        16BitBigEndian              = 1 << 10,
-        32BitBigEndian              = 1 << 11
+        LittleEndian16Bit           = 1 << 8,
+        LittleEndian32Bit           = 1 << 9,
+        BigEndian16Bit              = 1 << 10,
+        BigEndian32Bit              = 1 << 11
     }
 
 	public enum NSPrintingOrientation : nuint {
@@ -1207,7 +1204,7 @@ namespace MonoMac.AppKit {
 
 	[Flags]
 	public enum NSTableColumnResizing : nuint {
-		None = -1,
+		None = 0,
 		Autoresizing = ( 1 << 0 ),
 		UserResizingMask = ( 1 << 1 )
 	} 
