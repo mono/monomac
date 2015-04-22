@@ -104,6 +104,7 @@ MONOMAC_SOURCES = $(EXTRA_MONOMAC_SOURCES) \
 	./AppKit/NSTreeController.cs			\
 	./AppKit/NSView.cs				\
         ./AppKit/NSWindow.cs				\
+	./CoreAnimation/CAEmitterCell.cs		\
 	./CoreVideo/CVDisplayLink.cs			\
 	./Foundation/ObjCException.cs			\
 	./QTKit/QTCaptureDevice.cs			\
