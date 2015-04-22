@@ -110,7 +110,7 @@ namespace NeHeLesson13
 			attribDict.SetValueForKey (NSColor.White, NSAttributedString.ForegroundColorAttributeName);
 			attribDict.SetValueForKey (blackColor, NSAttributedString.BackgroundColorAttributeName);
 
-			charRect.Location.X = charRect.Location.Y = 0;
+			charRect = RectangleF.Empty;
 
 			theImage = new NSImage (new SizeF (0,0));
 			retval = true;

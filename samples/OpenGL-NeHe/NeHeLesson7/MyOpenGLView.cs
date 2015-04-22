@@ -83,7 +83,7 @@ namespace NeHeLesson7
 
 			// Look for changes in view size
 			// Note, -reshape will not be called automatically on size changes because NSView does not export it to override 
-			notificationProxy = NSNotificationCenter.DefaultCenter.AddObserver (NSView.NSViewGlobalFrameDidChangeNotification, HandleReshape);
+			notificationProxy = NSNotificationCenter.DefaultCenter.AddObserver (NSView.GlobalFrameChangedNotification, HandleReshape);
 		}
 
 		public override void DrawRect (RectangleF dirtyRect)
@@ -160,6 +160,7 @@ namespace NeHeLesson7
 			// This method will be called on both the main thread (through -drawRect:) and a secondary thread (through the display link rendering loop)
 			// Also, when resizing the view, -reshape is called on the main thread, but we may be drawing on a secondary thread
 			// Add a mutex around to avoid the threads accessing the context simultaneously 
+			NSApplication.CheckForIllegalCrossThreadCalls = false;
 			openGLContext.CGLContext.Lock ();
 
 			// Make sure we draw to the right context
@@ -171,6 +172,7 @@ namespace NeHeLesson7
 			openGLContext.FlushBuffer ();
 
 			openGLContext.CGLContext.Unlock ();
+			NSApplication.CheckForIllegalCrossThreadCalls = true;
 		}
 
 		private void SetupDisplayLink ()

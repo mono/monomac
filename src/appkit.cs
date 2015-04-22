@@ -6188,6 +6188,7 @@ namespace MonoMac.AppKit {
 		[Export ("update")]
 		void Update ();
 
+		[ThreadSafe]
 		[Export ("flushBuffer")]
 		void FlushBuffer ();
 
@@ -6215,6 +6216,7 @@ namespace MonoMac.AppKit {
 		[Export ("createTexture:fromView:internalFormat:")]
 		void CreateTexture (int targetIdentifier, NSView view, int format);
 
+		[ThreadSafe]
 		[Export ("CGLContextObj")]
 		CGLContext CGLContext { get; }
 

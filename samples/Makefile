@@ -43,7 +43,10 @@ XDIRS = \
 	OpenGL-NeHe/NeHeLesson7			\
 	OpenGL-NeHe/NeHeLesson8			\
 	OpenGL-NeHe/NeHeLesson9			\
+	OpenGL-NeHe/NeHeLesson13		\
+	OpenGL-NeHe/NeHeLesson17		\
 	PredicateEditorSample 			\
+	Preferences						\
 	PopupBindings 				\
 	QTRecorder				\
 	RoundedTransparentWindow		\
@@ -51,6 +54,7 @@ XDIRS = \
 	SearchField 				\
 	SkinnableApp				\
 	StillMotion				\
+	UserNotificationExample			\
 	VillainTracker 				\
 	WhereIsMyMac
 
@@ -60,4 +64,5 @@ all:
 
 clean:
 	-for i in $(XDIRS); do (cd $$i && rm -rf bin) || exit $$?; done
+	-for i in $(XDIRS); do (cd $$i && rm -rf obj) || exit $$?; done
 	$(MAKE) -C MicroSamples clean

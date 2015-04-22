@@ -315,7 +315,7 @@ namespace macdoc
 		void IndexSearch (string text)
 		{
 			int targetRow = mdocSearch.FindClosest (text);
-			indexResults.SelectRow (targetRow, false);
+			indexResults.SelectRow ((uint)targetRow, false);
 
 			OnIndexRowSelected (targetRow);
 			indexResults.ScrollRowToVisible (targetRow);

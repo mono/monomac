@@ -61,7 +61,8 @@ namespace NeHeLesson17
 
 			src = new NSImage (path);
 
-			image = src.AsCGImage (RectangleF.Empty, null, null);
+			var proposedRect = RectangleF.Empty;
+			image = src.AsCGImage (ref proposedRect, null, null);
 			width = image.Width;
 			height = image.Height;
 

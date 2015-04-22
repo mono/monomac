@@ -33,7 +33,7 @@ namespace CoreWLANWirelessManager
 					case "CHANNEL":
 						return (NSString)dataRow.Channel.StringValue;
 					case "PHY_MODE":
-						return (NSString)dataRow.PhyMode.StringValue;
+						return (NSString)(dataRow.PhyMode != null ? dataRow.PhyMode.StringValue : "");
 					case "NETWORK_MODE":
 						return (NSString)(dataRow.IsIBSS?"Yes":"No");
 					case "RSSI":

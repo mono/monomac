@@ -137,7 +137,7 @@ namespace VillainTracker
 			villains.Add (new Villain ());
 			
 			villainsTableView.ReloadData ();
-			villainsTableView.SelectRow (villains.Count - 1, false);
+			villainsTableView.SelectRow ((uint)(villains.Count - 1), false);
 		}
 		
 		partial void deleteVillain (NSObject sender)
@@ -155,7 +155,7 @@ namespace VillainTracker
 			// deselect all rows to ensure that the table view see the selection
 			// as "changed", even though it might still have the same row index
 			villainsTableView.DeselectAll (null);
-			villainsTableView.SelectRow (selectedRow, false);
+			villainsTableView.SelectRow ((uint)selectedRow, false);
 			UpdateDetailViews ();
 		}
 		

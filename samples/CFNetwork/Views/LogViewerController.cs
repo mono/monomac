@@ -135,14 +135,14 @@ namespace MonoMac.CFNetwork.Test.Views {
 		{
 			var pos = Storage.Length;
 			Storage.Append (new NSAttributedString (text));
-			Text.SetFont (font, new NSRange (pos, text.Length));
+			Text.SetFont (font, new NSRange (pos, (uint)text.Length));
 		}
 
 		void DoAppend (NSColor color, string text)
 		{
 			var pos = Storage.Length;
 			Storage.Append (new NSAttributedString (text));
-			var range = new NSRange (pos, text.Length);
+			var range = new NSRange (pos, (uint)text.Length);
 			Text.SetFont (font, range);
 			Text.SetTextColor (color, range);
 		}
