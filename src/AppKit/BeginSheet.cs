@@ -25,13 +25,13 @@
 //
 using System;
 using MonoMac.Foundation;
-using System.Collections;
+using System.Collections.Generic;
 
 namespace MonoMac.AppKit {
 
 	// Keeps references to the taerget objects alive until the method is invoked
 	internal static class OneShotTracker {
-		static ArrayList pendingInvokes = new ArrayList ();
+		static List<NSObject> pendingInvokes = new List<NSObject> ();
 
 		public static NSObject Create (NSAction action)
 		{

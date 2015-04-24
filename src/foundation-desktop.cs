@@ -26,7 +26,6 @@
 // Foundation APIs
 // 
 using System;
-using System.Drawing;
 using MonoMac.ObjCRuntime;
 using MonoMac.CoreFoundation;
 using MonoMac.CoreGraphics;

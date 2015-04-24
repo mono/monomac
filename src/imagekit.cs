@@ -27,7 +27,6 @@
 // imagekit.cs: Bindings for the Image Kit API
 //
 using System;
-using System.Drawing;
 using MonoMac.AppKit;
 using MonoMac.Foundation;
 using MonoMac.ObjCRuntime;

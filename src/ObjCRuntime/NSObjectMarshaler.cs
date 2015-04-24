@@ -26,6 +26,7 @@ using System.Runtime.InteropServices;
 using MonoMac.Foundation;
 
 namespace MonoMac.ObjCRuntime {
+
 	public class NSObjectMarshaler<T> : ICustomMarshaler where T : NSObject {
 		static NSObjectMarshaler<T> marshaler;
 

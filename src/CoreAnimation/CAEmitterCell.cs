@@ -30,6 +30,7 @@ using System;
 using System.Collections.Generic;
 
 using MonoMac.Foundation;
+using MonoMac.CoreGraphics;
 
 #if MAC64
 using nint = System.Int64;
@@ -45,25 +46,6 @@ using CGSize = System.Drawing.SizeF;
 using CGRect = System.Drawing.RectangleF;
 #endif
 #endif
-
-using System;
-using System.Drawing;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-using System.Diagnostics;
-using System.ComponentModel;
-using System.Threading.Tasks;
-using MonoMac;
-using MonoMac.CoreFoundation;
-using MonoMac.Foundation;
-using MonoMac.ObjCRuntime;
-using MonoMac.CoreGraphics;
-using MonoMac.CoreAnimation;
-using MonoMac.CoreLocation;
-using MonoMac.QTKit;
-using MonoMac.CoreVideo;
-using MonoMac.CoreMedia;
-using MonoMac.OpenGL;
 
 namespace MonoMac.CoreAnimation {
 	

@@ -1,6 +1,5 @@
 using MonoMac.Foundation;
 using MonoMac;
-using System.Drawing;
 using System;
 
 namespace MonoMac.AppKit {
@@ -22,9 +21,10 @@ namespace MonoMac.AppKit {
 			return ret;
 		}
 		
-		unsafe public Rectangle SwapRectangle {
+		#if !COREFX
+		unsafe public System.Drawing.Rectangle SwapRectangle {
 			get {
-				Rectangle ret;
+				System.Drawing.Rectangle ret;
 				GetValues ((IntPtr) (&ret), NSOpenGLContextParameter.SwapRectangle);
 				return ret;
 			}
@@ -32,6 +32,7 @@ namespace MonoMac.AppKit {
 				SetValues ((IntPtr) (&value), NSOpenGLContextParameter.SwapRectangle);
 			}
 		}
+		#endif
 
 		public bool SwapRectangleEnabled {
 			get {

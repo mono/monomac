@@ -24,7 +24,6 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using System.Drawing;
 using MonoMac.Foundation;
 using MonoMac.ObjCRuntime;
 using MonoMac.CoreGraphics;

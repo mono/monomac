@@ -30,7 +30,9 @@ namespace MonoMac.OpenGL
     /// <summary>
     /// Represents a 4x4 Matrix
     /// </summary>
+#if !COREFX
     [Serializable]
+#endif
     [StructLayout(LayoutKind.Sequential)]
     public struct Matrix4 : IEquatable<Matrix4>
     {

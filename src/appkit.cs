@@ -31,7 +31,6 @@
 // TODO: turn NSAnimatablePropertyCOntainer into a system similar to UIAppearance
 
 using System;
-using System.Drawing;
 using System.Diagnostics;
 using MonoMac.Foundation;
 using MonoMac.ObjCRuntime;

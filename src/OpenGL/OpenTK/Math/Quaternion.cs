@@ -32,7 +32,9 @@ namespace MonoMac.OpenGL
     /// <summary>
     /// Represents a Quaternion.
     /// </summary>
+#if !COREFX
     [Serializable]
+#endif
     [StructLayout(LayoutKind.Sequential)]
     public struct Quaternion : IEquatable<Quaternion>
     {
@@ -78,7 +80,7 @@ namespace MonoMac.OpenGL
         /// </summary>
         [Obsolete("Use Xyz property instead.")]
         [CLSCompliant(false)]
-        [EditorBrowsable(EditorBrowsableState.Never)]
+        //[EditorBrowsable(EditorBrowsableState.Never)]
         [XmlIgnore]
         public Vector3 XYZ { get { return Xyz; } set { Xyz = value; } }
 

@@ -26,7 +26,6 @@
 // scriptingbridge.cs: Bindings for the ScriptingBridge.Framework API
 //
 using System;
-using System.Drawing;
 using MonoMac.AppKit;
 using MonoMac.Foundation;
 using MonoMac.ObjCRuntime;

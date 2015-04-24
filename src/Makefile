@@ -5,14 +5,12 @@ WARNINGS_I_SHOULD_FIX=114,108
 TARGET = MonoMac.dll
 PEER=false
 MACCORE_DIR ?= ../maccore
-ifndef 64BIT
 # Build 64-bit, forces the use of CGRect/CGSize/CGPoint
-64BIT=0
-endif
-ifndef SDCOMPAT
-# Use System.Drawing structs, off to use CGRect/CGSize/CGPoint
-SDCOMPAT=1
-endif
+64BIT ?= 0
+# Build 64-bit and for COREFX. Must specify COREFX_LIB path.
+COREFX ?= 0
+# Use System.Drawing structs, '0' to use CGRect/CGSize/CGPoint
+SDCOMPAT ?= 1
 
 #
 # CORE_SOURCES are source files that are written by hand
@@ -53,7 +51,7 @@ CORE_SOURCES =	$(EXTRA_CORE_SOURCES)			\
 	./WebKit/Enums.cs
 
 # Sources that are not part of CORE_SOURCES or the generated templates
-MONOMAC_SOURCES = $(EXTRA_MONOMAC_SOURCES) \
+BASE_SOURCES = $(EXTRA_MONOMAC_SOURCES) \
 	./Compat.cs					\
 	./Foundation/NSObjectMac.cs			\
 	./Foundation/NSConnection.cs			\
@@ -115,13 +113,15 @@ MONOMAC_SOURCES = $(EXTRA_MONOMAC_SOURCES) \
 	./WebKit/WebPolicyDelegate.cs			\
 	./WebKit/WebKit.cs				\
 	./WebKit/WebView.cs				\
+	./Security/Authorization.cs
+
+MONOMAC_SOURCES = $(BASE_SOURCES)		\
 	./OpenGL/FrameEventArgs.cs			\
 	./OpenGL/IGameWindow.cs				\
 	./OpenGL/INativeWindow.cs			\
 	./OpenGL/WindowBorder.cs			\
 	./OpenGL/WindowState.cs				\
-	./OpenGL/MonoMacGameView.cs			\
-	./Security/Authorization.cs
+	./OpenGL/MonoMacGameView.cs			
 
 OPENTK_SOURCES = \
 	./OpenGL/OpenTK/Graphics/Color4.cs		\
@@ -168,17 +168,6 @@ ifeq ($(HAVE_ASYNC),)
 HAVE_ASYNC := $(shell if $(PKG_CONFIG) --atleast-version=2.11 mono; then echo 1; else echo 0; fi)
 endif
 
-# Pass 64BIT=1 to make to build for 64-bit
-ifeq ($(64BIT),1)
-	DEFINES64 := -define:MAC64
-	BMAC_DEFINES64 := -d=MAC64
-	SDCOMPAT=0
-endif
-ifeq ($(SDCOMPAT),1)
-	DEFINES64 += -define:SDCOMPAT
-	BMAC_DEFINES64 += -d=SDCOMPAT
-endif
-
 ifeq ($(HAVE_ASYNC),1)
 	ASYNC_TARGETS = MonoMac.CFNetwork.dll
 	UPDATE_FILES = MonoMac.dll* MonoMac.CFNetwork.dll*
@@ -187,6 +176,33 @@ else
 	ASYNC_TARGETS = 
 	UPDATE_FILES = MonoMac.dll*
 	MCS ?= dmcs
+endif
+
+ifeq ($(COREFX),1)
+	64BIT=1
+	DEFINES64 += -define:COREFX
+	BMAC_DEFINES64 += -d=COREFX
+	MONOMAC_SOURCES = $(BASE_SOURCES)
+	MONOMAC_DEFINES = -nostdlib -define:COREFX -lib:$(COREFX_LIB) -r:mscorlib -r:System.Xml.XmlDocument -r:System.Xml.XmlSerializer -r:System.ComponentModel -r:System.Linq -r:System.Runtime -r:System.Runtime.InteropServices -r:System.Net.Sockets -r:System.Security.Cryptography.X509Certificates -r:System.Reflection -r:System.Diagnostics.Debug -r:System.Net.Http -r:System.Collections
+	CFNETWORK_DEFINES = $(MONOMAC_DEFINES) -r:System.Text.RegularExpressions -r:System.Collections.Concurrent -r:System.IO
+	OPENTK_SOURCES =
+	# skip MonoMac.CFNetwork for now, seems System.Uri is private, but needed for HttpContentHeaders.ContentLocation, among other things.
+	ASYNC_TARGETS =
+	UPDATE_FILES = MonoMac.dll*
+else
+	MONOMAC_DEFINES = -r:System.Drawing
+	CFNETWORK_DEFINES = -r:System.Net.Http
+endif
+
+# Pass 64BIT=1 to make to build for 64-bit
+ifeq ($(64BIT),1)
+	DEFINES64 += -define:MAC64
+	BMAC_DEFINES64 += -d=MAC64
+	SDCOMPAT=0
+endif
+ifeq ($(SDCOMPAT),1)
+	DEFINES64 += -define:SDCOMPAT
+	BMAC_DEFINES64 += -d=SDCOMPAT
 endif
 
 TARGETS = _bmac.exe $(TARGET) parse.exe bmac.exe $(ASYNC_TARGETS)
@@ -224,16 +240,25 @@ APIS = \
 	scriptingbridge.cs	\
 	$(SHARED_APIS) $(EXTRA_APIS)
 
+
 all: info $(TARGETS)
 
 info:
-ifeq ($(64BIT),1)
+ifeq ($(COREFX),1)
+ifeq ($(COREFX_LIB),)
+	@echo "Error: You must set the COREFX_LIB variable to the CoreFX library path"
+	@exit 1
+endif
+	@echo "BUILDING 64-bit, CoreFX...";
+else ifeq ($(64BIT),1)
 	@echo "BUILDING 64-bit...";
 else
 	@echo "BUILDING 32-bit...";
 endif
 ifeq ($(SDCOMPAT),1)
-	@echo "- Using System.Drawing structs";
+	@echo "> Using System.Drawing structs";
+else
+	@echo "> Using CG structs";
 endif
 	@sleep 1
 
@@ -259,10 +284,10 @@ counts:
 	make pass | grep 'could not be' | sed 's/.*`//' | sed "s/'.*//" | sort | uniq -c | sort -n
 
 $(TARGET): $(SOURCES) generated_sources $(MONOMAC_SOURCES) $(SHARED_SOURCES) $(SHARED_CORE_SOURCES) $(OPENTK_SOURCES)
-	$(MCS) -define:OBJECT_REF_TRACKING $(DEFINES64) -nowarn:3021,0219,0414,$(WARNINGS_I_SHOULD_FIX) -debug -unsafe $(SOURCES) @generated_sources $(MONOMAC_SOURCES) $(SHARED_SOURCES) $(SHARED_CORE_SOURCES) $(OPENTK_SOURCES) -target:library -define:MONOMAC -out:$(TARGET) -r:System.Drawing
+	$(MCS) -define:OBJECT_REF_TRACKING $(DEFINES64) $(MONOMAC_DEFINES) -nowarn:3021,0219,0414,$(WARNINGS_I_SHOULD_FIX) -debug -unsafe $(SOURCES) @generated_sources $(MONOMAC_SOURCES) $(SHARED_SOURCES) $(SHARED_CORE_SOURCES) $(OPENTK_SOURCES) -target:library -define:MONOMAC -out:$(TARGET) 
 
 MonoMac.CFNetwork.dll: $(CFNETWORK_SOURCES) $(TARGET)
-	mcs -debug -target:library -define:MONOMAC $(DEFINES64) -r:System.Net.Http -r:$(TARGET) -out:MonoMac.CFNetwork.dll $(CFNETWORK_SOURCES)
+	mcs -debug -target:library -define:MONOMAC $(DEFINES64) $(CFNETWORK_DEFINES) -r:$(TARGET) -out:MonoMac.CFNetwork.dll $(CFNETWORK_SOURCES)
 
 clean:
 	rm -f $(foreach t,$(TARGETS) core.dll temp.dll,$(t) $(t).mdb)

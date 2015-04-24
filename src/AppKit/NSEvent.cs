@@ -1,5 +1,4 @@
 using System;
-using System.Drawing;
 using System.Diagnostics;
 using MonoMac.Foundation;
 using MonoMac.CoreGraphics;

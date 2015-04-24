@@ -45,7 +45,11 @@ namespace MonoMac.ObjCRuntime {
 		private Delegate del;
 				
 		static NativeImplementationBuilder () {
+#if COREFX
+			builder = AppDomain.CurrentDomain.DefineDynamicAssembly (new AssemblyName {Name = "ObjCImplementations"}, AssemblyBuilderAccess.Run);
+#else		
 			builder = AppDomain.CurrentDomain.DefineDynamicAssembly (new AssemblyName {Name = "ObjCImplementations"}, AssemblyBuilderAccess.Run, null, null, null,  null, null, true);
+#endif
 			module = builder.DefineDynamicModule ("Implementations", false);
 		}
 
@@ -86,7 +90,9 @@ namespace MonoMac.ObjCRuntime {
 
 		protected Type CreateDelegateType (Type return_type, Type [] argument_types) {
 			TypeBuilder type = module.DefineType (Guid.NewGuid ().ToString (), TypeAttributes.Class | TypeAttributes.Public | TypeAttributes.Sealed | TypeAttributes.AnsiClass | TypeAttributes.AutoClass, typeof (MulticastDelegate));
+#if !COREFX
 			type.SetCustomAttribute (new CustomAttributeBuilder (typeof (MarshalAsAttribute).GetConstructor (new Type [] { typeof (UnmanagedType) }), new object [] { UnmanagedType.FunctionPtr }));
+#endif
 
 			ConstructorBuilder constructor = type.DefineConstructor (MethodAttributes.Public, CallingConventions.Standard, new Type [] { typeof (object), typeof (int) });
 

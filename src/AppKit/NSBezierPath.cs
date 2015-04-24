@@ -26,7 +26,6 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 using System;
-using System.Drawing;
 using MonoMac.CoreGraphics;
 using MonoMac.Foundation;
 using MonoMac.ObjCRuntime;

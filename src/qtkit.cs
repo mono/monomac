@@ -43,7 +43,6 @@ using System;
 using MonoMac.Foundation;
 using MonoMac.ObjCRuntime;
 using MonoMac.AppKit;
-using System.Drawing;
 using MonoMac.CoreAnimation;
 using MonoMac.CoreVideo;
 using MonoMac.CoreImage;

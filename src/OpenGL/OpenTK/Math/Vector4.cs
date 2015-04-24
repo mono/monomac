@@ -31,7 +31,9 @@ namespace MonoMac.OpenGL
     /// <remarks>
     /// The Vector4 structure is suitable for interoperation with unmanaged code requiring four consecutive floats.
     /// </remarks>
+#if !COREFX
     [Serializable]
+#endif
     [StructLayout(LayoutKind.Sequential)]
     public struct Vector4 : IEquatable<Vector4>
     {

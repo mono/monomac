@@ -30,7 +30,9 @@ namespace MonoMac.OpenGL
     /// <remarks>
     /// The Vector2 structure is suitable for interoperation with unmanaged code requiring two consecutive floats.
     /// </remarks>
+#if !COREFX
     [Serializable]
+#endif
     [StructLayout(LayoutKind.Sequential)]
     public struct Vector2 : IEquatable<Vector2>
     {

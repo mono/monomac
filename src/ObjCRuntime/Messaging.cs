@@ -21,7 +21,6 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 using System;
-using System.Drawing;
 using System.Runtime.InteropServices;
 
 using MonoMac.Foundation;
@@ -114,7 +113,7 @@ namespace MonoMac.ObjCRuntime {
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSend_stret")]
 		public extern static void void_objc_msgSend_stret_rnsrange (ref NSRange stret, IntPtr receiver, IntPtr selector);
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSend_stret")]
-		public extern static void void_objc_msgSend_stret_rcgsize_cgpoint_intptr (ref SizeF stret, IntPtr receiver, IntPtr selector, CGPoint arg1, IntPtr arg2);
+		public extern static void void_objc_msgSend_stret_rcgsize_cgpoint_intptr (ref CGSize stret, IntPtr receiver, IntPtr selector, CGPoint arg1, IntPtr arg2);
 
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSendSuper_stret")]
 		public extern static void void_objc_msgSendSuper_stret_rcgrect (ref CGRect stret, IntPtr receiver, IntPtr selector);
@@ -150,13 +149,33 @@ namespace MonoMac.ObjCRuntime {
 		public extern static bool bool_objc_msgSendSuper_intptr (IntPtr receiver, IntPtr selector, IntPtr arg1);
 
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSend")]
-		public extern static SizeF cgsize_objc_msgSend_cgpoint_intptr (IntPtr receiver, IntPtr selector, CGPoint arg1, IntPtr arg2);
+		public extern static CGSize cgsize_objc_msgSend_cgpoint_intptr (IntPtr receiver, IntPtr selector, CGPoint arg1, IntPtr arg2);
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSend")]
-		public extern static SizeF cgsize_objc_msgSend (IntPtr receiver, IntPtr selector);
+		public extern static CGSize cgsize_objc_msgSend (IntPtr receiver, IntPtr selector);
 
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSend")]
 		public extern static Boolean Boolean_objc_msgSend_IntPtr_Double_IntPtr (IntPtr receiver, IntPtr selector, IntPtr arg1, Double arg2, IntPtr arg3);
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSendSuper")]
 		public extern static Boolean Boolean_objc_msgSendSuper_IntPtr_Double_IntPtr (IntPtr receiver, IntPtr selector, IntPtr arg1, Double arg2, IntPtr arg3);
+		
+		#if COREFX
+		// from http://stackoverflow.com/a/10773988/981187
+		internal static IntPtr NativeUtf8FromString(string managedString) {
+			int len = System.Text.Encoding.UTF8.GetByteCount(managedString);
+			byte[] buffer = new byte[len + 1];
+			System.Text.Encoding.UTF8.GetBytes(managedString, 0, managedString.Length, buffer, 0);
+			IntPtr nativeUtf8 = Marshal.AllocHGlobal(buffer.Length);
+			Marshal.Copy(buffer, 0, nativeUtf8, buffer.Length);
+			return nativeUtf8;
+		}
+
+		internal static string StringFromNativeUtf8(IntPtr nativeUtf8) {
+			int len = 0;
+			while (Marshal.ReadByte(nativeUtf8, len) != 0) ++len;
+			byte[] buffer = new byte[len];
+			Marshal.Copy(nativeUtf8, buffer, 0, buffer.Length);
+			return System.Text.Encoding.UTF8.GetString(buffer);
+		}
+		#endif
 	}
 }
