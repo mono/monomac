@@ -24,7 +24,9 @@ SOFTWARE.
 
 using System;
 using System.Runtime.InteropServices;
+#if !COREFX
 using System.Xml.Serialization;
+#endif
 namespace MonoMac.OpenGL
 {
     /// <summary>
@@ -1200,7 +1202,9 @@ namespace MonoMac.OpenGL
         /// <summary>
         /// Gets or sets an OpenTK.Vector2 with the X and Y components of this instance.
         /// </summary>
+#if !COREFX        
         [XmlIgnore]
+#endif
         public Vector2 Xy { get { return new Vector2(X, Y); } set { X = value.X; Y = value.Y; } }
 
         #endregion

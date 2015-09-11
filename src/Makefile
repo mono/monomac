@@ -11,6 +11,7 @@ MACCORE_DIR ?= ../maccore
 COREFX ?= 0
 # Use System.Drawing structs, '0' to use CGRect/CGSize/CGPoint
 SDCOMPAT ?= 1
+DEBUG=0
 
 #
 # CORE_SOURCES are source files that are written by hand
@@ -98,10 +99,10 @@ BASE_SOURCES = $(EXTRA_MONOMAC_SOURCES) \
 	./AppKit/NSSound.cs				\
 	./AppKit/NSTableView.cs				\
 	./AppKit/NSTextField.cs				\
-        ./AppKit/NSToolbarItem.cs                       \
+	./AppKit/NSToolbarItem.cs                       \
 	./AppKit/NSTreeController.cs			\
 	./AppKit/NSView.cs				\
-        ./AppKit/NSWindow.cs				\
+	./AppKit/NSWindow.cs				\
 	./CoreAnimation/CAEmitterCell.cs		\
 	./CoreVideo/CVDisplayLink.cs			\
 	./Foundation/ObjCException.cs			\
@@ -180,10 +181,10 @@ endif
 
 ifeq ($(COREFX),1)
 	64BIT=1
-	DEFINES64 += -define:COREFX
-	BMAC_DEFINES64 += -d=COREFX
+	COMMON_DEFINES += -define:COREFX
+	BMAC_DEFINES += -d=COREFX
 	MONOMAC_SOURCES = $(BASE_SOURCES)
-	MONOMAC_DEFINES = -nostdlib -define:COREFX -lib:$(COREFX_LIB) -r:mscorlib -r:System.Xml.XmlDocument -r:System.Xml.XmlSerializer -r:System.ComponentModel -r:System.Linq -r:System.Runtime -r:System.Runtime.InteropServices -r:System.Net.Sockets -r:System.Security.Cryptography.X509Certificates -r:System.Reflection -r:System.Diagnostics.Debug -r:System.Net.Http -r:System.Collections
+	MONOMAC_DEFINES = -nostdlib -define:COREFX -lib:$(COREFX_LIB) -r:mscorlib -r:System.Xml.XmlDocument -r:System.ComponentModel -r:System.Linq -r:System.Runtime -r:System.Runtime.InteropServices -r:System.Net.Sockets -r:System.Security.Cryptography.X509Certificates -r:System.Reflection -r:System.Diagnostics.Debug -r:System.Collections
 	CFNETWORK_DEFINES = $(MONOMAC_DEFINES) -r:System.Text.RegularExpressions -r:System.Collections.Concurrent -r:System.IO
 	OPENTK_SOURCES =
 	# skip MonoMac.CFNetwork for now, seems System.Uri is private, but needed for HttpContentHeaders.ContentLocation, among other things.
@@ -196,13 +197,16 @@ endif
 
 # Pass 64BIT=1 to make to build for 64-bit
 ifeq ($(64BIT),1)
-	DEFINES64 += -define:MAC64
-	BMAC_DEFINES64 += -d=MAC64
+	COMMON_DEFINES += -define:MAC64
+	BMAC_DEFINES += -d=MAC64
 	SDCOMPAT=0
 endif
 ifeq ($(SDCOMPAT),1)
-	DEFINES64 += -define:SDCOMPAT
-	BMAC_DEFINES64 += -d=SDCOMPAT
+	COMMON_DEFINES += -define:SDCOMPAT
+	BMAC_DEFINES += -d=SDCOMPAT
+endif
+ifeq ($(DEBUG),1)
+	COMMON_DEFINES += -debug
 endif
 
 TARGETS = _bmac.exe $(TARGET) parse.exe bmac.exe $(ASYNC_TARGETS)
@@ -266,16 +270,16 @@ parse.exe: parse.cs $(MACCORE_DIR)/src/Options.cs
 	$(MCS) -debug parse.cs $(MACCORE_DIR)/src/Options.cs
 
 core.dll: $(CORE_SOURCES) $(SHARED_CORE_SOURCES) Makefile
-	$(MCS) -target:library -debug -unsafe -out:core.dll $(DEFINES64) -define:MONOMAC,MONOMAC_BOOTSTRAP,COREBUILD$(CORE_DLL_DEFINES) $(CORE_SOURCES) $(SHARED_CORE_SOURCES) -r:System.Drawing
+	$(MCS) -target:library -unsafe -out:core.dll $(COMMON_DEFINES) -define:MONOMAC,MONOMAC_BOOTSTRAP,COREBUILD$(CORE_DLL_DEFINES) $(CORE_SOURCES) $(SHARED_CORE_SOURCES) -r:System.Drawing
 
 _bmac.exe: $(APIS) core.dll $(GENERATOR_SOURCES)
-	$(MCS) -unsafe -out:_bmac.exe -debug $(DEFINES) $(DEFINES64) -define:GENERATOR,MONOMAC,MONOMAC_BOOTSTRAP $(GENERATOR_SOURCES) -r:core.dll -r:System.Drawing
+	$(MCS) -unsafe -out:_bmac.exe $(DEFINES) $(COMMON_DEFINES) -define:GENERATOR,MONOMAC,MONOMAC_BOOTSTRAP $(GENERATOR_SOURCES) -r:core.dll -r:System.Drawing
 
 generated_sources: _bmac.exe $(APIS) 
-	mono --debug _bmac.exe -a -d=MONOMAC $(BMAC_DEFINES64) $(BMAC_DEFINES) --core --sourceonly=generated_sources -v -tmpdir=. $(APIS) --baselib=core.dll --ns=MonoMac.ObjCRuntime -r=System.Drawing $(BMAC_OPTIONS)
+	mono --debug _bmac.exe -a -d=MONOMAC $(BMAC_DEFINES) --core --sourceonly=generated_sources -v -tmpdir=. $(APIS) --baselib=core.dll --ns=MonoMac.ObjCRuntime -r=System.Drawing $(BMAC_OPTIONS)
 
 bmac.exe: $(TARGET) $(GENERATOR_SOURCES)
-	$(MCS) -unsafe -out:bmac.exe -debug $(DEFINES) $(DEFINES64) -define:GENERATOR,MONOMAC,MONOMAC_BOOTSTRAP $(GENERATOR_SOURCES) -r:$(TARGET) -r:System.Drawing
+	$(MCS) -unsafe -out:bmac.exe -debug $(DEFINES) $(COMMON_DEFINES) -define:GENERATOR,MONOMAC,MONOMAC_BOOTSTRAP $(GENERATOR_SOURCES) -r:$(TARGET) -r:System.Drawing
 
 count: 
 	make pass | wc -l
@@ -284,10 +288,10 @@ counts:
 	make pass | grep 'could not be' | sed 's/.*`//' | sed "s/'.*//" | sort | uniq -c | sort -n
 
 $(TARGET): $(SOURCES) generated_sources $(MONOMAC_SOURCES) $(SHARED_SOURCES) $(SHARED_CORE_SOURCES) $(OPENTK_SOURCES)
-	$(MCS) -define:OBJECT_REF_TRACKING $(DEFINES64) $(MONOMAC_DEFINES) -nowarn:3021,0219,0414,$(WARNINGS_I_SHOULD_FIX) -debug -unsafe $(SOURCES) @generated_sources $(MONOMAC_SOURCES) $(SHARED_SOURCES) $(SHARED_CORE_SOURCES) $(OPENTK_SOURCES) -target:library -define:MONOMAC -out:$(TARGET) 
+	$(MCS) -define:OBJECT_REF_TRACKING $(COMMON_DEFINES) $(MONOMAC_DEFINES) -nowarn:3021,0219,0414,$(WARNINGS_I_SHOULD_FIX) -unsafe $(SOURCES) @generated_sources $(MONOMAC_SOURCES) $(SHARED_SOURCES) $(SHARED_CORE_SOURCES) $(OPENTK_SOURCES) -target:library -define:MONOMAC -out:$(TARGET) 
 
 MonoMac.CFNetwork.dll: $(CFNETWORK_SOURCES) $(TARGET)
-	mcs -debug -target:library -define:MONOMAC $(DEFINES64) $(CFNETWORK_DEFINES) -r:$(TARGET) -out:MonoMac.CFNetwork.dll $(CFNETWORK_SOURCES)
+	mcs -target:library -define:MONOMAC $(COMMON_DEFINES) $(CFNETWORK_DEFINES) -r:$(TARGET) -out:MonoMac.CFNetwork.dll $(CFNETWORK_SOURCES)
 
 clean:
 	rm -f $(foreach t,$(TARGETS) core.dll temp.dll,$(t) $(t).mdb)
