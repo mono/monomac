@@ -3358,7 +3358,7 @@ namespace MonoMac.AppKit {
 		[Export ("font")]
 		NSFont Font { get; set; }
 
-		[Export ("formatter")]
+		[Export ("formatter"), NullAllowed]
 		NSObject Formatter { get; set; }
 
 		[Export ("objectValue")]
@@ -14555,7 +14555,7 @@ namespace MonoMac.AppKit {
 		[Export ("childWindows")]
 		NSWindow [] ChildWindows { get; }
 	
-		[Export ("parentWindow")]
+		[Export ("parentWindow"), NullAllowed]
 		NSWindow ParentWindow { get; set; }
 	
 		[Export ("graphicsContext")]
