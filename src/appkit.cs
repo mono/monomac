@@ -5834,7 +5834,7 @@ namespace MonoMac.AppKit {
 		[Export ("representedObject")]
 		NSObject RepresentedObject { get; set; }
 
-		[Export ("view")]
+		[Export ("view"), NullAllowed]
 		NSView View { get; set; }
 
 		[Export ("hidden")]
@@ -9377,7 +9377,7 @@ namespace MonoMac.AppKit {
 		[Export ("directoryURL")]
 		NSUrl DirectoryUrl { get; set; }
 
-		[Export ("allowedFileTypes")]
+		[Export ("allowedFileTypes"), NullAllowed]
 		string [] AllowedFileTypes { get; set; }
 
 		[Export ("allowsOtherFileTypes")]
