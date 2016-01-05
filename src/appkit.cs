@@ -14764,6 +14764,14 @@ namespace MonoMac.AppKit {
 		[Lion, Field ("NSWindowDidExitVersionBrowserNotification")]
 		NSString DidExitVersionBrowserNotification { get; }
 #endif
+
+		[Mavericks]
+		[Export ("effectiveAppearance")]
+		NSAppearance EffectiveAppearance { get; }
+		
+		[Mavericks]
+		[Export ("appearance")]
+		NSAppearance Appearance { get; [Export ("setAppearance:")] set; }
 	}
 
 	public delegate void NSWindowCompletionHandler (NSWindow window, NSError error);
@@ -15736,5 +15744,39 @@ namespace MonoMac.AppKit {
 		
 		[Export ("sharingServicePicker:didChooseSharingService:"), EventArgs ("NSSharingServicePickerDidChooseSharingService")]
 		void DidChooseSharingService (NSSharingServicePicker sharingServicePicker, NSSharingService service);
+	}
+	
+	[Mavericks]
+	[BaseType (typeof (NSObject))]
+	public interface NSAppearance
+	{
+		[Static]
+		[Export ("currentAppearance")]
+		NSAppearance CurrentAppearance { get; [Bind ("setCurrentAppearance:")] set; }
+
+		[Static]
+		[Export ("appearanceNamed:")]
+		NSAppearance GetAppearance(NSString name);
+		
+		[Field ("NSAppearanceNameAqua")]
+		NSString NameAqua { get; }
+
+		[Field ("NSAppearanceNameLightContent")]
+		NSString NameLightContent { get; }
+		
+		[Field ("NSAppearanceNameVibrantDark")]
+		NSString NameVibrantDark { get; }
+		
+		[Field ("NSAppearanceNameVibrantLight")]
+		NSString NameVibrantLight { get; }
+		
+		[Export ("initWithAppearanceNamed:bundle:")]
+		IntPtr Constructor (NSString name, NSBundle bundle);
+		
+		[Export ("name")]
+		NSString Name { get; }
+	
+		[Export ("allowsVibrancy")]
+		bool AllowsVibrancy { get; }
 	}
 }
