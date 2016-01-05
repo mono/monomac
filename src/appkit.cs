@@ -15060,7 +15060,7 @@ namespace MonoMac.AppKit {
 		bool LaunchApplication (string appName);
 		
 		[Export ("launchApplicationAtURL:options:configuration:error:")]
-		NSRunningApplication LaunchApplication (NSUrl url, NSWorkspaceLaunchOptions options, NSDictionary configuration, NSError error );
+		NSRunningApplication LaunchApplication (NSUrl url, NSWorkspaceLaunchOptions options, NSDictionary configuration, out NSError error );
 		
 		[Export ("launchApplication:showIcon:autolaunch:")]
 		bool LaunchApplication (string appName, bool showIcon, bool autolaunch);

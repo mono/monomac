@@ -463,7 +463,7 @@ retl    $0x4                   */  0xc2, 0x04, 0x00,                            
 		internal unsafe static void RegisterMethod (MethodInfo minfo, ExportAttribute ea, Type type, IntPtr handle) {
 			NativeMethodBuilder builder = new NativeMethodBuilder (minfo, type, ea);
 
-			class_addMethod (minfo.IsStatic ? ((objc_class *) handle)->isa : handle, builder.Selector, GetFunctionPointer (minfo, builder.Delegate), builder.Signature);
+			class_addMethod (minfo.IsStatic ? object_getClass (handle) : handle, builder.Selector, GetFunctionPointer (minfo, builder.Delegate), builder.Signature);
 			lock (lock_obj)
 				method_wrappers.Add (builder.Delegate);
 #if DEBUG
@@ -494,6 +494,8 @@ retl    $0x4                   */  0xc2, 0x04, 0x00,                            
 		extern static IntPtr class_getName (IntPtr cls);
 		[DllImport ("/usr/lib/libobjc.dylib")]
 		internal extern static IntPtr class_getSuperclass (IntPtr cls);
+		[DllImport ("/usr/lib/libobjc.dylib")]
+		internal extern static IntPtr object_getClass (IntPtr obj);
 		[DllImport ("/usr/lib/libobjc.dylib")]
 		internal extern static IntPtr class_getMethodImplementation (IntPtr cls, IntPtr sel);
 		[DllImport ("/usr/lib/libobjc.dylib")]
@@ -526,10 +528,6 @@ retl    $0x4                   */  0xc2, 0x04, 0x00,                            
 		private struct objc_attribute_prop {
 			[MarshalAs (UnmanagedType.LPStr)] internal string name;
 			[MarshalAs (UnmanagedType.LPStr)] internal string value;
-		}
-		
-		internal struct objc_class {
-			internal IntPtr isa;
 		}
 	}
 }

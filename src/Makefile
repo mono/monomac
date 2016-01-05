@@ -169,14 +169,16 @@ ifeq ($(HAVE_ASYNC),)
 HAVE_ASYNC := $(shell if $(PKG_CONFIG) --atleast-version=2.11 mono; then echo 1; else echo 0; fi)
 endif
 
+MONO ?= /Library/Frameworks/Mono.framework/Commands/mono
+
 ifeq ($(HAVE_ASYNC),1)
 	ASYNC_TARGETS = MonoMac.CFNetwork.dll
 	UPDATE_FILES = MonoMac.dll* MonoMac.CFNetwork.dll*
-	MCS ?= mcs -sdk:4
+	MCS ?= /Library/Frameworks/Mono.framework/Commands/mcs -sdk:4
 else
 	ASYNC_TARGETS = 
 	UPDATE_FILES = MonoMac.dll*
-	MCS ?= dmcs
+	MCS ?= gmcs
 endif
 
 ifeq ($(COREFX),1)
@@ -276,7 +278,7 @@ _bmac.exe: $(APIS) core.dll $(GENERATOR_SOURCES)
 	$(MCS) -unsafe -out:_bmac.exe $(DEFINES) $(COMMON_DEFINES) -define:GENERATOR,MONOMAC,MONOMAC_BOOTSTRAP $(GENERATOR_SOURCES) -r:core.dll -r:System.Drawing
 
 generated_sources: _bmac.exe $(APIS) 
-	mono --debug _bmac.exe -a -d=MONOMAC $(BMAC_DEFINES) --core --sourceonly=generated_sources -v -tmpdir=. $(APIS) --baselib=core.dll --ns=MonoMac.ObjCRuntime -r=System.Drawing $(BMAC_OPTIONS)
+	$(MONO) --debug _bmac.exe --compiler=$(MCS) -a -d=MONOMAC $(BMAC_DEFINES) --core --sourceonly=generated_sources -v -tmpdir=. $(APIS) --baselib=core.dll --ns=MonoMac.ObjCRuntime -r=System.Drawing $(BMAC_OPTIONS)
 
 bmac.exe: $(TARGET) $(GENERATOR_SOURCES)
 	$(MCS) -unsafe -out:bmac.exe -debug $(DEFINES) $(COMMON_DEFINES) -define:GENERATOR,MONOMAC,MONOMAC_BOOTSTRAP $(GENERATOR_SOURCES) -r:$(TARGET) -r:System.Drawing
@@ -291,7 +293,7 @@ $(TARGET): $(SOURCES) generated_sources $(MONOMAC_SOURCES) $(SHARED_SOURCES) $(S
 	$(MCS) -define:OBJECT_REF_TRACKING $(COMMON_DEFINES) $(MONOMAC_DEFINES) -nowarn:3021,0219,0414,$(WARNINGS_I_SHOULD_FIX) -unsafe $(SOURCES) @generated_sources $(MONOMAC_SOURCES) $(SHARED_SOURCES) $(SHARED_CORE_SOURCES) $(OPENTK_SOURCES) -target:library -define:MONOMAC -out:$(TARGET) 
 
 MonoMac.CFNetwork.dll: $(CFNETWORK_SOURCES) $(TARGET)
-	mcs -target:library -define:MONOMAC $(COMMON_DEFINES) $(CFNETWORK_DEFINES) -r:$(TARGET) -out:MonoMac.CFNetwork.dll $(CFNETWORK_SOURCES)
+	/Library/Frameworks/Mono.framework/Commands/mcs -target:library -define:MONOMAC $(COMMON_DEFINES) $(CFNETWORK_DEFINES) -r:$(TARGET) -out:MonoMac.CFNetwork.dll $(CFNETWORK_SOURCES)
 
 clean:
 	rm -f $(foreach t,$(TARGETS) core.dll temp.dll,$(t) $(t).mdb)
