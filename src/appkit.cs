@@ -1164,7 +1164,7 @@ namespace MonoMac.AppKit {
 		NSBitmapImageRep RetaggedWithColorSpace (NSColorSpace newSpace);
 		
 		[Export ("representationUsingType:properties:")]
-		NSData RepresentationUsingTypeProperties(NSBitmapImageFileType storageType, NSDictionary properties);
+		NSData RepresentationUsingTypeProperties(NSBitmapImageFileType storageType, [NullAllowed] NSDictionary properties);
 
 		[Field ("NSImageCompressionMethod")]
 		NSString CompressionMethod { get; }
