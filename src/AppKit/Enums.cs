@@ -660,7 +660,12 @@ namespace MonoMac.AppKit {
 		ParticipatesInCycle = 1 << 5,
 		IgnoresCycle = 1 << 6,
 		FullScreenPrimary = 1 << 7,
-		FullScreenAuxiliary = 1 << 8
+		FullScreenAuxiliary = 1 << 8,
+		
+		[ElCapitan]
+		FullScreenAllowsTiling = 1 << 11,
+		[ElCapitan]
+		FullScreenDisallowsTiling = 1 << 12
 	}
 
 	public enum NSWindowNumberListOptions : nuint {
