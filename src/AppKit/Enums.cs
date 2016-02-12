@@ -1288,7 +1288,8 @@ namespace MonoMac.AppKit {
 	public enum NSSegmentSwitchTracking : nuint {
 		SelectOne = 0,
 		SelectAny = 1,
-		Momentary = 2
+		Momentary = 2,
+		MomentaryAccelerator = 3
 	}
 	
 	public enum NSTickMarkPosition : nuint {

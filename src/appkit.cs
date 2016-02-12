@@ -9826,6 +9826,8 @@ namespace MonoMac.AppKit {
 		[Export ("segmentStyle")]
 		NSSegmentStyle SegmentStyle { get; set; }
 
+		[Export ("trackingMode")]
+		NSSegmentSwitchTracking TrackingMode { get; set; }
 	}
 	
 	[BaseType (typeof (NSActionCell))]
