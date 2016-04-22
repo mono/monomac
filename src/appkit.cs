@@ -2758,6 +2758,11 @@ namespace MonoMac.AppKit {
 		[Static]
 		[Export ("colorWithCIColor:")]
 		NSColor FromCIColor (CIColor color);
+
+		[Static]
+		[Export ("colorWithCGColor:")]
+		[MountainLion]
+		NSColor FromCGColor (CGColor color);
 	}
 
 	[BaseType (typeof (NSObject))]
