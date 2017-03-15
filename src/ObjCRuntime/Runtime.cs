@@ -34,7 +34,7 @@ namespace MonoMac.ObjCRuntime {
 
 	public static class Runtime {
 		static List <Assembly> assemblies;
-		static Dictionary <IntPtr, WeakReference> object_map = new Dictionary <IntPtr, WeakReference> ();
+		static Dictionary <IntPtr, WeakReference> object_map = new Dictionary <IntPtr, WeakReference> (new IntPtrComparer());
 		static object lock_obj = new object ();
 		static IntPtr selClass = Selector.GetHandle ("class");
 

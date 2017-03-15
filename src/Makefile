@@ -26,6 +26,7 @@ CORE_SOURCES =	$(EXTRA_CORE_SOURCES)			\
 	./Foundation/NSObject.cs			\
 	./ImageKit/Enums.cs				\
 	./ObjCRuntime/Class.cs				\
+	./ObjCRuntime/IntPtrComparer.cs		\
 	./ObjCRuntime/Messaging.cs			\
 	./ObjCRuntime/NativeConstructorBuilder.cs	\
 	./ObjCRuntime/NativeImplementationBuilder.cs	\
@@ -250,23 +251,25 @@ APIS = \
 all: info $(TARGETS)
 
 info:
+	@echo "Options:"
 ifeq ($(COREFX),1)
 ifeq ($(COREFX_LIB),)
 	@echo "Error: You must set the COREFX_LIB variable to the CoreFX library path"
 	@exit 1
 endif
-	@echo "BUILDING 64-bit, CoreFX...";
-else ifeq ($(64BIT),1)
-	@echo "BUILDING 64-bit...";
+	@echo "COREFX=1 > .NET Core";
+endif
+ifeq ($(64BIT),1)
+	@echo "64BIT=1 > BUILDING 64-bit...";
 else
-	@echo "BUILDING 32-bit...";
+	@echo "64BIT=0 > BUILDING 32-bit...";
 endif
 ifeq ($(SDCOMPAT),1)
-	@echo "> Using System.Drawing structs";
+	@echo "SDCOMPAT=1 > Using System.Drawing structs";
 else
-	@echo "> Using CG structs";
+	@echo "SDCOMPAT=0 > Using CG structs";
 endif
-	@sleep 1
+	@sleep 2
 
 parse.exe: parse.cs $(MACCORE_DIR)/src/Options.cs
 	$(MCS) -debug parse.cs $(MACCORE_DIR)/src/Options.cs

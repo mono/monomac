@@ -38,7 +38,7 @@ namespace MonoMac.ObjCRuntime {
 	 public class Class : INativeObject {
 		public static bool ThrowOnInitFailure = true;
 
-		static Dictionary <IntPtr, Type> type_map = new Dictionary <IntPtr, Type> ();
+		static Dictionary <IntPtr, Type> type_map = new Dictionary <IntPtr, Type> (new IntPtrComparer());
 		static Dictionary <Type, Type> custom_types = new Dictionary <Type, Type> ();
 		static List <Delegate> method_wrappers = new List <Delegate> ();
 		static object lock_obj = new object ();
@@ -102,15 +102,22 @@ namespace MonoMac.ObjCRuntime {
 			return objc_getClass (name);
 		}
 		
+		static Dictionary<Type, IntPtr> class_lookup = new Dictionary<Type, IntPtr>();
+		
 		public static IntPtr GetHandle (Type type) {
+			IntPtr handle;
+			if (class_lookup.TryGetValue(type, out handle))
+				return handle;
+		
 			RegisterAttribute attr = (RegisterAttribute) Attribute.GetCustomAttribute (type, typeof (RegisterAttribute), false);
 			string name = attr == null ? type.FullName : attr.Name ?? type.FullName;
 			bool is_wrapper = attr == null ? false : attr.IsWrapper;
-			var handle = objc_getClass (name);
+			handle = objc_getClass (name);
 			
 			if (handle == IntPtr.Zero)
 				handle = Class.Register (type, name, is_wrapper);
 			
+			class_lookup.Add(type, handle);
 			return handle;
 		}
 
