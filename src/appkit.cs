@@ -229,11 +229,11 @@ namespace MonoMac.AppKit {
 		double Duration { get; set; }
 
 		[Lion, Export ("completionHandler")]
-		NSAction CompletionHandler { get; set; }
+		Action CompletionHandler { get; set; }
 
 		[Static]
 		[Lion, Export ("runAnimationGroup:completionHandler:")]
-		void RunAnimation (Action<NSAnimationContext> changes, NSAction completionHandler);
+		void RunAnimation (Action<NSAnimationContext> changes, Action completionHandler);
     
 		[Lion, Export ("timingFunction")]
 		CAMediaTimingFunction TimingFunction { get; set; }
@@ -3950,19 +3950,19 @@ namespace MonoMac.AppKit {
 		bool HasUndoManager { get; set; }
 
 		[Lion, Export ("performActivityWithSynchronousWaiting:usingBlock:")]
-		void PerformActivity (bool waitSynchronously, NSAction activityCompletionHandler);
+		void PerformActivity (bool waitSynchronously, Action activityCompletionHandler);
 
 		[Lion, Export ("continueActivityUsingBlock:")]
-		void ContinueActivity (NSAction resume);
+		void ContinueActivity (Action resume);
 
 		[Lion, Export ("continueAsynchronousWorkOnMainThreadUsingBlock:")]
-		void ContinueAsynchronousWorkOnMainThread (NSAction work);
+		void ContinueAsynchronousWorkOnMainThread (Action work);
 
 		[Lion, Export ("performSynchronousFileAccessUsingBlock:")]
-		void PerformSynchronousFileAccess (NSAction fileAccessCallback);
+		void PerformSynchronousFileAccess (Action fileAccessCallback);
 
 		[Lion, Export ("performAsynchronousFileAccessUsingBlock:")]
-		void PerformAsynchronousFileAccess (NSAction ioCode);
+		void PerformAsynchronousFileAccess (Action ioCode);
 
 		[Lion, Export ("isEntireFileLoaded")]
 		bool IsEntireFileLoaded { get; }
