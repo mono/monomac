@@ -154,12 +154,12 @@ namespace MonoMac.ObjCRuntime {
 				ParameterTypes = new Type [ArgumentOffset + parms.Length];
 				ParameterTypes [0] = typeof (IntPtr);
 				ParameterTypes [1] = isstatic ? typeof (IntPtr) : typeof (NSObject);
-				ParameterTypes [2] = typeof (Selector);
+				ParameterTypes [2] = typeof (IntPtr);
 			} else {
 				ArgumentOffset = 2;
 				ParameterTypes = new Type [ArgumentOffset + parms.Length];
 				ParameterTypes [0] = isstatic ? typeof (IntPtr) : typeof (NSObject);
-				ParameterTypes [1] = typeof (Selector);
+				ParameterTypes [1] = typeof (IntPtr);
 			}
 
 			for (int i = 0; i < Parameters.Length; i++) {
