@@ -31,7 +31,7 @@ namespace MonoMac.ObjCRuntime {
 		static NSObjectMarshaler<T> marshaler;
 
 		public object MarshalNativeToManaged (IntPtr handle) {
-			return (T) Runtime.GetNSObject (handle);
+			return Runtime.GetNSObject<T> (handle);
 		}
 
 		public IntPtr MarshalManagedToNative (object obj) {

@@ -30,6 +30,7 @@ using System;
 using System.Collections.Generic;
 
 using MonoMac.Foundation;
+using MonoMac.ObjCRuntime;
 
 #if MAC64
 using nint = System.Int64;

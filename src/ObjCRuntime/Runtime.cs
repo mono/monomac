@@ -167,6 +167,28 @@ namespace MonoMac.ObjCRuntime {
 
 			return null;
 		}
+		
+		public static T GetNSObject<T> (IntPtr ptr)
+			where T: NSObject
+		{
+			if (ptr == IntPtr.Zero)
+				return null;
+
+			var obj = GetNSObject(ptr);
+			
+			var result = obj as T;
+			
+			if (obj != null && result == null)
+			{
+				// type does not match what we expect, so we clear it out and get it again with the correct type.
+				// this seems to happen when the lookup isn't updated correctly when an object dies
+				// not ideal, but this prevents crashes due to mismatches of the lookup and native objects.
+				UnregisterNSObject(ptr);
+				result = GetNSObject(ptr) as T;
+			}
+			
+			return result;
+		}
 
 		public static NSObject GetNSObject (IntPtr ptr) {
 			Type type;
