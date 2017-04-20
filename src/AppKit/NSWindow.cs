@@ -59,7 +59,7 @@ namespace MonoMac.AppKit {
 			if (WindowController == null){
 				bool released_when_closed = ReleasedWhenClosed;
 				if (released_when_closed)
-					CFObject.CFRetain (Handle);
+					CFType.Retain (Handle);
 				_Close ();
 				if (released_when_closed)
 					Dispose ();
