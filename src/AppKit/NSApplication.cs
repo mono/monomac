@@ -45,6 +45,12 @@ namespace MonoMac.AppKit {
 
 		static bool initialized;
 
+		public static bool Initialized {
+			get {
+				return initialized;
+			}
+		}
+
 		public static void Init ()
 		{
 			if (initialized) {
