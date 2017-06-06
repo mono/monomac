@@ -65,6 +65,9 @@ namespace MonoMac.ObjCRuntime {
 
 			this.minfo = minfo;
 			this.type = type;
+#if DUMP_CALLS
+			Console.WriteLine(string.Format("Creating method {0} with signature {1}", minfo, Signature));
+#endif
 		}
 
 		internal override Delegate CreateDelegate () {

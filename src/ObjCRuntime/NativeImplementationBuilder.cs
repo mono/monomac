@@ -47,11 +47,12 @@ namespace MonoMac.ObjCRuntime {
 				
 		static NativeImplementationBuilder () {
 #if COREFX
-			builder = AppDomain.CurrentDomain.DefineDynamicAssembly (new AssemblyName {Name = "ObjCImplementations"}, AssemblyBuilderAccess.Run);
+			builder = AssemblyBuilder.DefineDynamicAssembly (new AssemblyName {Name = "ObjCImplementations"}, AssemblyBuilderAccess.Run);
+			module = builder.DefineDynamicModule ("Implementations");
 #else		
 			builder = AppDomain.CurrentDomain.DefineDynamicAssembly (new AssemblyName {Name = "ObjCImplementations"}, AssemblyBuilderAccess.Run, null, null, null,  null, null, true);
-#endif
 			module = builder.DefineDynamicModule ("Implementations", false);
+#endif
 		}
 
 		internal abstract Delegate CreateDelegate ();

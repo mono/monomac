@@ -11272,7 +11272,7 @@ namespace MonoMac.AppKit {
 		[Export ("performMnemonic:")]
 		bool PerformMnemonic (string mnemonic);
 
-		[Export ("nextKeyView")]
+		[Export ("nextKeyView"), NullAllowed]
 		NSView NextKeyView { get; set; }
 
 		[Export ("previousKeyView")]
@@ -11401,6 +11401,9 @@ namespace MonoMac.AppKit {
 
 		[Lion, Export ("convertSizeToLayer:")]
 		CGSize ConvertSizeToLayer (CGSize aSize);
+		
+		[Mavericks, Export ("canDrawSubviewsIntoLayer:")]
+		bool CanDrawSubviewsIntoLayer { get; set; }
 	}
 
 	//64 bit reviewed
