@@ -4911,7 +4911,7 @@ namespace MonoMac.AppKit {
 		NSObject WeakDelegate { get; set; } 
 
 		[Export ("localizedNameForFamily:face:")]
-		string LocalizedNameForFamily (string family, string faceKey);
+		string LocalizedNameForFamily (string family, [NullAllowed] string faceKey);
 
 		[Export ("setSelectedAttributes:isMultiple:")]
 		void SetSelectedAttributes (NSDictionary attributes, bool isMultiple);
