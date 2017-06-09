@@ -157,6 +157,27 @@ namespace MonoMac.ObjCRuntime {
 				}
 			}
 		}
+		
+		public static T GetNSObject<T> (IntPtr ptr)
+			where T: NSObject
+		{
+			var obj = GetNSObject(ptr);
+			var result = obj as T;
+			if (result == null && ptr != IntPtr.Zero)
+			{
+			  // native object is dead as we are passed a known handle but it is a different type
+			  // this should theoretically not happen, but it does quite often so this is done
+			  // for resiliency.
+			  Console.WriteLine("Object of type {0} has died but not cleaned up. New type is {1}. Handle: {2}", obj?.GetType(), typeof(T), ptr);
+		  
+			  // kill object in .NET
+			  NativeObjectHasDied (ptr);
+		  
+			  // re-wrap native handle in a new .NET object of the correct type
+			  result = (T)GetNSObject (ptr);
+			}
+			return result;
+		}
 
 		public static NSObject TryGetNSObject (IntPtr ptr) {
 			lock (lock_obj) {
@@ -166,28 +187,6 @@ namespace MonoMac.ObjCRuntime {
 			}
 
 			return null;
-		}
-		
-		public static T GetNSObject<T> (IntPtr ptr)
-			where T: NSObject
-		{
-			if (ptr == IntPtr.Zero)
-				return null;
-
-			var obj = GetNSObject(ptr);
-			
-			var result = obj as T;
-			
-			if (obj != null && result == null)
-			{
-				// type does not match what we expect, so we clear it out and get it again with the correct type.
-				// this seems to happen when the lookup isn't updated correctly when an object dies
-				// not ideal, but this prevents crashes due to mismatches of the lookup and native objects.
-				UnregisterNSObject(ptr);
-				result = GetNSObject(ptr) as T;
-			}
-			
-			return result;
 		}
 
 		public static NSObject GetNSObject (IntPtr ptr) {

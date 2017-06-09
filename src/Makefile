@@ -164,6 +164,7 @@ GENERATOR_SOURCES = \
 SOURCES = \
 	$(CORE_SOURCES)
 
+COMMON_DEFINES = -optimize -debug -debug:pdbonly
 DEFINES = -define:NET_2_0
 PKG_CONFIG=/Library/Frameworks/Mono.framework/Commands/pkg-config
 ifeq ($(HAVE_ASYNC),)
