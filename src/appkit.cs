@@ -5788,7 +5788,7 @@ namespace MonoMac.AppKit {
 		[Export ("menu")]
 		NSMenu Menu { get; set; }
 
-		[Export ("submenu")]
+		[Export ("submenu"), NullAllowed]
 		NSMenu Submenu { get; set; }
 
 		[Export ("title")]
