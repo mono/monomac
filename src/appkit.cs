@@ -4314,7 +4314,7 @@ namespace MonoMac.AppKit {
 		CGPoint DraggingLocation { get;  }
 
 		[Export ("enumerateDraggingItemsWithOptions:forView:classes:searchOptions:usingBlock:")]
-		void EnumerateDraggingItems (NSDraggingItemEnumerationOptions enumOpts, NSView view, NSPasteboardReading [] classArray, NSDictionary searchOptions, NSDraggingEnumerator enumerator);
+		void EnumerateDraggingItems (NSDraggingItemEnumerationOptions enumOpts, NSView view, Class [] classArray, NSDictionary searchOptions, NSDraggingEnumerator enumerator);
 
 	}
 
@@ -8079,7 +8079,7 @@ namespace MonoMac.AppKit {
 		bool WriteObjects (NSPasteboardReading [] objects);
 
 		[Export ("readObjectsForClasses:options:")]
-		NSObject [] ReadObjectsForClasses (NSPasteboardReading [] classArray, NSDictionary options);
+		NSObject [] ReadObjectsForClasses (Class [] classArray, [NullAllowed] NSDictionary options);
 
 		[Export ("pasteboardItems")]
 		NSPasteboardItem [] PasteboardItems { get; }
@@ -8091,7 +8091,7 @@ namespace MonoMac.AppKit {
 		bool CanReadItemWithDataConformingToTypes (string [] utiTypes);
 
 		[Export ("canReadObjectForClasses:options:")]
-		bool CanReadObjectForClasses (NSObject [] classArray, NSDictionary options);
+		bool CanReadObjectForClasses (Class [] classArray, [NullAllowed] NSDictionary options);
 
 		[Export ("declareTypes:owner:")]
 		nint DeclareTypes (string [] newTypes, [NullAllowed] NSObject newOwner);
@@ -8123,61 +8123,137 @@ namespace MonoMac.AppKit {
 		[Export ("stringForType:")]
 		string GetStringForType (string dataType);
 
-		// Pasteboard data types
+		// Pasteboard data types for 10.5 (deprecated)
 
 		[Field ("NSStringPboardType")]
+		[Deprecated (10, 6)]
 		NSString NSStringType{ get; }
 		
 		[Field ("NSFilenamesPboardType")]
+		[Deprecated (10, 6)]
 		NSString NSFilenamesType{ get; }
 		
 		[Field ("NSPostScriptPboardType")]
+		[Deprecated (10, 6)]
 		NSString NSPostScriptType{ get; }
         
 		[Field ("NSTIFFPboardType")]
+		[Deprecated (10, 6)]
 		NSString NSTiffType{ get; }
 		
 		[Field ("NSRTFPboardType")]
+		[Deprecated (10, 6)]
 		NSString NSRtfType{ get; }
 		
 		[Field ("NSTabularTextPboardType")]
+		[Deprecated (10, 6)]
 		NSString NSTabularTextType{ get; }
 		
 		[Field ("NSFontPboardType")]
+		[Deprecated (10, 6)]
 		NSString NSFontType{ get; }
 		
 		[Field ("NSRulerPboardType")]
+		[Deprecated (10, 6)]
 		NSString NSRulerType{ get; }
 		
 		[Field ("NSFileContentsPboardType")]
+		[Deprecated (10, 6)]
 		NSString NSFileContentsType{ get; }
 		
 		[Field ("NSColorPboardType")]
+		[Deprecated (10, 6)]
 		NSString NSColorType{ get; }
 		
 		[Field ("NSRTFDPboardType")]
+		[Deprecated (10, 6)]
 		NSString NSRtfdType{ get; }
 		
 		[Field ("NSHTMLPboardType")]
+		[Deprecated (10, 6)]
 		NSString NSHtmlType{ get; }
 		
 		[Field ("NSPICTPboardType")]
+		[Deprecated (10, 6)]
 		NSString NSPictType{ get; }
 		
 		[Field ("NSURLPboardType")]
+		[Deprecated (10, 6)]
 		NSString NSUrlType{ get; }
 		
 		[Field ("NSPDFPboardType")]
+		[Deprecated (10, 6)]
 		NSString NSPdfType{ get; }
 		
 		[Field ("NSVCardPboardType")]
+		[Deprecated (10, 6)]
 		NSString NSVCardType{ get; }
 		
 		[Field ("NSFilesPromisePboardType")]
+		[Deprecated (10, 6)]
 		NSString NSFilesPromiseType{ get; }
 		
 		[Field ("NSMultipleTextSelectionPboardType")]
+		[Deprecated (10, 6)]
 		NSString NSMultipleTextSelectionType{ get; }
+		
+		// Pasteboard data types 10.6+
+		[Field ("NSPasteboardTypeString")]
+		[Introduced (10, 6)]
+		NSString NSPasteboardTypeString { get; }
+		
+		[Field ("NSPasteboardTypePDF")]
+		[Introduced (10, 6)]
+		NSString NSPasteboardTypePDF { get; }
+		
+		[Field ("NSPasteboardTypeTIFF")]
+		[Introduced (10, 6)]
+		NSString NSPasteboardTypeTIFF { get; }
+		
+		[Field ("NSPasteboardTypePNG")]
+		[Introduced (10, 6)]
+		NSString NSPasteboardTypePNG { get; }
+		
+		[Field ("NSPasteboardTypeRTF")]
+		[Introduced (10, 6)]
+		NSString NSPasteboardTypeRTF { get; }
+		
+		[Field ("NSPasteboardTypeRTFD")]
+		[Introduced (10, 6)]
+		NSString NSPasteboardTypeRTFD { get; }
+
+		[Field ("NSPasteboardTypeHTML")]
+		[Introduced (10, 6)]
+		NSString NSPasteboardTypeHTML { get; }
+
+		[Field ("NSPasteboardTypeTabularText")]
+		[Introduced (10, 6)]
+		NSString NSPasteboardTypeTabularText { get; }
+
+		[Field ("NSPasteboardTypeFont")]
+		[Introduced (10, 6)]
+		NSString NSPasteboardTypeFont { get; }
+
+		[Field ("NSPasteboardTypeRuler")]
+		[Introduced (10, 6)]
+		NSString NSPasteboardTypeRuler { get; }
+
+		[Field ("NSPasteboardTypeColor")]
+		[Introduced (10, 6)]
+		NSString NSPasteboardTypeColor { get; }
+
+		[Field ("NSPasteboardTypeSound")]
+		[Introduced (10, 6)]
+		NSString NSPasteboardTypeSound { get; }
+
+		[Field ("NSPasteboardTypeMultipleTextSelection")]
+		[Introduced (10, 6)]
+		NSString NSPasteboardTypeMultipleTextSelection { get; }
+
+		[Field ("NSPasteboardTypeFindPanelSearchOptions")]
+		[Introduced (10, 6)]
+		NSString NSPasteboardTypeFindPanelSearchOptions { get; }
+		
 
 		// Pasteboard names: for NSPasteboard.FromName()
 
