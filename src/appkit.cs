@@ -10503,56 +10503,83 @@ namespace MonoMac.AppKit {
 	public partial interface NSStatusItem {
 		[Export ("statusBar")]
 		NSStatusBar StatusBar { get; }
+	
+		// Since 12.10
+		[Export("button")]
+		NSStatusBarButton Button { get; }
+		
+		// Since 12.12
+		[Export ("isVisible")]
+		bool Visible { get; set; }
 
 		[Export ("length")]
 		nfloat Length { get; set; }
 
+		[Obsolete("Since 10.10. Use Button instead")]
 		[Export ("action"), NullAllowed]
 		Selector Action { get; set; }
 
+		[Obsolete("Since 10.10. Use Button instead")]
 		[Export ("sendActionOn:")]
 		nint SendActionOn (NSTouchPhase mask);
 
 		[Export ("popUpStatusItemMenu:")]
 		void PopUpStatusItemMenu (NSMenu menu);
 
+		[Obsolete("Since 10.10. Use Button instead")]
 		[Export ("drawStatusBarBackgroundInRect:withHighlight:")]
 		void DrawStatusBarBackground (CGRect rect, bool highlight);
 
 		//Detected properties
+		[Obsolete("Since 10.10. Use Button instead")]
 		[Export ("doubleAction")]
 		Selector DoubleAction { get; set; }
 
 		[Export ("target"), NullAllowed]
 		NSObject Target { get; set; }
 
+		[Obsolete("Since 10.10. Use Button instead")]
 		[Export ("title")]
 		string Title { get; set; }
 
+		[Obsolete("Since 10.10. Use Button instead")]
 		[Export ("attributedTitle")]
 		NSAttributedString AttributedTitle { get; set; }
 
+		[Obsolete("Since 10.10. Use Button instead")]
 		[Export ("image")]
 		NSImage Image { get; set; }
 
+		[Obsolete("Since 10.10. Use Button instead")]
 		[Export ("alternateImage")]
 		NSImage AlternateImage { get; set; }
 
 		[Export ("menu")]
 		NSMenu Menu { get; set; }
 
+		[Obsolete("Since 10.10. Use Button instead")]
 		[Export ("enabled")]
 		bool Enabled { [Bind ("isEnabled")]get; set; }
 
+		[Obsolete("Since 10.10. Use Button instead")]
 		[Export ("toolTip")]
 		string ToolTip { get; set; }
 
+		[Obsolete("Since 10.10. Use Button instead")]
 		[Export ("highlightMode")]
 		bool HighlightMode { get; set; }
 
+		[Obsolete("Since 10.10. Use Button instead")]
 		[Export ("view")]
 		NSView View { get; set; }
 
+	}
+
+	[BaseType(typeof(NSButton))]
+	public interface NSStatusBarButton
+	{
+		[Export("appearsDisabled")]
+		bool AppearsDisabled { get; set; }
 	}
 
 	[BaseType (typeof (NSObject))]
