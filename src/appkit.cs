@@ -6426,7 +6426,7 @@ namespace MonoMac.AppKit {
 		CGRect FrameOfOutlineCellAtRow (nint row);
 
 		[Export ("setDropItem:dropChildIndex:")]
-		void SetDropItem (NSObject item, nint index);
+		void SetDropItem ([NullAllowed] NSObject item, nint index);
 
 		[Export ("shouldCollapseAutoExpandedItemsForDeposited:")]
 		bool ShouldCollapseAutoExpandedItems (bool forDeposited);
@@ -8076,7 +8076,7 @@ namespace MonoMac.AppKit {
 		nint ClearContents ();
 
 		[Export ("writeObjects:")]
-		bool WriteObjects (NSPasteboardReading [] objects);
+		bool WriteObjects (NSObject [] objects);
 
 		[Export ("readObjectsForClasses:options:")]
 		NSObject [] ReadObjectsForClasses (Class [] classArray, [NullAllowed] NSDictionary options);
