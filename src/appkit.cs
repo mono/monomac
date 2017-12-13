@@ -5563,6 +5563,178 @@ namespace MonoMac.AppKit {
 		void TrackSwipeEvent (NSEventSwipeTrackingOptions options, nfloat minDampenThreshold, nfloat maxDampenThreshold, NSEventTrackHandler trackingHandler);
 	}
 
+	//[Mac (10,10)]
+	[BaseType (typeof (NSObject), Delegates=new string [] {"WeakDelegate"}, Events=new Type[] {typeof (NSGestureRecognizerDelegate)})]
+	public interface NSGestureRecognizer { //: NSCoding {
+		[Export ("initWithTarget:action:")]
+		IntPtr Constructor ([NullAllowed] NSObject target, [NullAllowed] Selector action);
+
+		//[Export ("target", ArgumentSemantic.Weak), NullAllowed]
+		[Export ("target"), NullAllowed]
+		NSObject Target { get; set; }
+
+		[Export ("action")]
+		Selector Action { get; set; }
+
+		//[Export ("state")]
+		//NSGestureRecognizerState State { get; }
+
+		[Export ("delegate")]//, ArgumentSemantic.Weak)]
+		[NullAllowed]
+		NSObject WeakDelegate { get; set; }
+
+		[Wrap ("WeakDelegate")]
+		//[Protocolize]
+		NSGestureRecognizerDelegate Delegate { get; set; }
+
+		[Export ("enabled")]
+		bool Enabled { [Bind ("isEnabled")] get; set; }
+
+		[Export ("view")]
+		NSView View { get; }
+
+		[Export ("delaysPrimaryMouseButtonEvents")]
+		bool DelaysPrimaryMouseButtonEvents { get; set; }
+
+		[Export ("delaysSecondaryMouseButtonEvents")]
+		bool DelaysSecondaryMouseButtonEvents { get; set; }
+
+		[Export ("delaysOtherMouseButtonEvents")]
+		bool DelaysOtherMouseButtonEvents { get; set; }
+
+		[Export ("delaysKeyEvents")]
+		bool DelaysKeyEvents { get; set; }
+
+		[Export ("delaysMagnificationEvents")]
+		bool DelaysMagnificationEvents { get; set; }
+
+		[Export ("delaysRotationEvents")]
+		bool DelaysRotationEvents { get; set; }
+
+		[Export ("locationInView:")]
+		CGPoint LocationInView (NSView view);
+
+		[Export ("reset")]
+		void Reset ();
+
+		[Export ("canPreventGestureRecognizer:")]
+		bool CanPrevent (NSGestureRecognizer preventedGestureRecognizer);
+
+		[Export ("canBePreventedByGestureRecognizer:")]
+		bool CanBePrevented (NSGestureRecognizer preventingGestureRecognizer);
+
+		[Export ("shouldRequireFailureOfGestureRecognizer:")]
+		bool ShouldRequireFailureOfGestureRecognizer (NSGestureRecognizer otherGestureRecognizer);
+
+		[Export ("shouldBeRequiredToFailByGestureRecognizer:")]
+		bool ShouldBeRequiredToFailByGestureRecognizer (NSGestureRecognizer otherGestureRecognizer);
+
+		[Export ("mouseDown:")]
+		void MouseDown (NSEvent mouseEvent);
+
+		[Export ("rightMouseDown:")]
+		void RightMouseDown (NSEvent mouseEvent);
+
+		[Export ("otherMouseDown:")]
+		void OtherMouseDown (NSEvent mouseEvent);
+
+		[Export ("mouseUp:")]
+		void MouseUp (NSEvent mouseEvent);
+
+		[Export ("rightMouseUp:")]
+		void RightMouseUp (NSEvent mouseEvent);
+
+		[Export ("otherMouseUp:")]
+		void OtherMouseUp (NSEvent mouseEvent);
+
+		[Export ("mouseDragged:")]
+		void MouseDragged (NSEvent mouseEvent);
+
+		[Export ("rightMouseDragged:")]
+		void RightMouseDragged (NSEvent mouseEvent);
+
+		[Export ("otherMouseDragged:")]
+		void OtherMouseDragged (NSEvent mouseEvent);
+
+		[Export ("keyDown:")]
+		void KeyDown (NSEvent keyEvent);
+
+		[Export ("keyUp:")]
+		void KeyUp (NSEvent keyEvent);
+
+		[Export ("flagsChanged:")]
+		void FlagsChanged (NSEvent flagEvent);
+
+		[Export ("tabletPoint:")]
+		void TabletPoint (NSEvent tabletEvent);
+
+		[Export ("magnifyWithEvent:")]
+		void Magnify (NSEvent magnifyEvent);
+
+		[Export ("rotateWithEvent:")]
+		void Rotate (NSEvent rotateEvent);
+/* 
+#if XAMCORE_2_0
+		[Mac (10,10,3, onlyOn64 : true)]
+		[Export ("pressureChangeWithEvent:")]
+		void PressureChange (NSEvent pressureChangeEvent);
+#endif
+
+		[Mac (10,11)]
+		[Export ("pressureConfiguration", ArgumentSemantic.Strong)]
+		NSPressureConfiguration PressureConfiguration { get; set; }
+
+		[Mac (10,12,2)]
+		[Export ("touchesBeganWithEvent:")]
+		void TouchesBegan (NSEvent touchEvent);
+
+		[Mac (10,12,2)]
+		[Export ("touchesMovedWithEvent:")]
+		void TouchesMoved (NSEvent touchEvent);
+
+		[Mac (10,12,2)]
+		[Export ("touchesEndedWithEvent:")]
+		void TouchesEnded (NSEvent touchEvent);
+
+		[Mac (10,12,2)]
+		[Export ("touchesCancelledWithEvent:")]
+		void TouchesCancelled (NSEvent touchEvent);
+		*/
+	}
+
+	//[Mac (10,10)]
+	[Protocol, Model]
+	[BaseType (typeof (NSObject))]
+	public interface NSGestureRecognizerDelegate {
+		[Export ("gestureRecognizerShouldBegin:"), DelegateName ("NSGestureProbe"), DefaultValue (true)]
+		bool ShouldBegin (NSGestureRecognizer gestureRecognizer);
+
+		[Export ("gestureRecognizer:shouldRecognizeSimultaneouslyWithGestureRecognizer:"), DelegateName ("NSGesturesProbe"), DefaultValue (false)]
+		bool ShouldRecognizeSimultaneously (NSGestureRecognizer gestureRecognizer, NSGestureRecognizer otherGestureRecognizer);
+
+		[Export ("gestureRecognizer:shouldRequireFailureOfGestureRecognizer:"), DelegateName ("NSGesturesProbe"), DefaultValue (false)]
+		bool ShouldRequireFailure (NSGestureRecognizer gestureRecognizer, NSGestureRecognizer otherGestureRecognizer);
+
+		[Export ("gestureRecognizer:shouldBeRequiredToFailByGestureRecognizer:"), DelegateName ("NSGesturesProbe"), DefaultValue (false)]
+		bool ShouldBeRequiredToFail (NSGestureRecognizer gestureRecognizer, NSGestureRecognizer otherGestureRecognizer);
+/*
+#if !XAMCORE_4_0
+		[Export ("xamarinselector:removed:"), DelegateName ("NSGestureEvent"), DefaultValue (true)]
+		[Obsolete ("It will never be called.")]
+		bool ShouldReceiveEvent (NSGestureRecognizer gestureRecognizer, NSEvent gestureEvent);
+#endif
+
+		[Mac (10,11)]
+		[Export ("gestureRecognizer:shouldAttemptToRecognizeWithEvent:"), DelegateName ("NSGestureEvent"), DefaultValue (true)]
+		bool ShouldAttemptToRecognize (NSGestureRecognizer gestureRecognizer, NSEvent theEvent);
+
+		[Mac (10,12,2)]
+		[Export ("gestureRecognizer:shouldReceiveTouch:"), DelegateName ("NSTouchEvent"), DefaultValue (true)]
+		bool ShouldReceiveTouch (NSGestureRecognizer gestureRecognizer, NSTouch touch);
+		*/
+	}
+
+
 	[BaseType (typeof (NSObject))]
 	[Dispose ("__mt_items_var = null;")]
 	public partial interface NSMenu {
@@ -7821,6 +7993,17 @@ namespace MonoMac.AppKit {
 
 	}
 
+	//[Mac (10,10)]
+	[BaseType (typeof (NSGestureRecognizer))]
+	public interface NSMagnificationGestureRecognizer {
+		[Export ("initWithTarget:action:")]
+		IntPtr Constructor (NSObject target, Selector action);
+
+		[Export ("magnification")]
+		nfloat Magnification { get; set; }
+	}
+
+
 	[Model]
 	[BaseType (typeof (NSObject))]
 	public interface NSMatrixDelegate {
@@ -8196,7 +8379,7 @@ namespace MonoMac.AppKit {
 		[Field ("NSMultipleTextSelectionPboardType")]
 		[Deprecated (10, 6)]
 		NSString NSMultipleTextSelectionType{ get; }
-		
+
 		// Pasteboard data types 10.6+
 		[Field ("NSPasteboardTypeString")]
 		[Introduced (10, 6)]
@@ -10579,7 +10762,7 @@ namespace MonoMac.AppKit {
 	public partial interface NSStatusItem {
 		[Export ("statusBar")]
 		NSStatusBar StatusBar { get; }
-	
+
 		// Since 12.10
 		[Export("button")]
 		NSStatusBarButton Button { get; }
@@ -11507,6 +11690,18 @@ namespace MonoMac.AppKit {
 		
 		[Mavericks, Export ("canDrawSubviewsIntoLayer:")]
 		bool CanDrawSubviewsIntoLayer { get; set; }
+
+		//[Mac (10,10)]
+		[Export ("gestureRecognizers")]//, ArgumentSemantic.Copy)]
+		NSGestureRecognizer [] GestureRecognizers { get; set; }
+
+		//[Mac (10,10)]
+		[Export ("addGestureRecognizer:")][PostGet("GestureRecognizers")]
+		void AddGestureRecognizer (NSGestureRecognizer gestureRecognizer);
+
+		//[Mac (10,10)]
+		[Export ("removeGestureRecognizer:")][PostGet("GestureRecognizers")]
+		void RemoveGestureRecognizer (NSGestureRecognizer gestureRecognizer);
 	}
 
 	//64 bit reviewed
