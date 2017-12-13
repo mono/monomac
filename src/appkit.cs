@@ -6617,6 +6617,26 @@ namespace MonoMac.AppKit {
 
 		[Wrap ("WeakDataSource")]
 		NSOutlineViewDataSource DataSource  { get; set; }
+		
+		[Introduced (10,7)]
+		[Export ("userInterfaceLayoutDirection")]
+		NSUserInterfaceLayoutDirection UserInterfaceLayoutDirection { get; set; }
+
+		[Introduced (10, 10)]
+		[Export ("numberOfChildrenOfItem:")]
+		nint NumberOfChildren ([NullAllowed] NSObject item);
+
+		[Introduced (10,10)]
+		[Export ("child:ofItem:")]
+		NSObject GetChild (nint index, [NullAllowed] NSObject parentItem);
+
+		[Introduced (10,11)]
+		[Export ("childIndexForItem:")]
+		nint GetChildIndex (NSObject item);
+
+		[Introduced (10, 12)]
+		[Export ("stronglyReferencesItems")]
+		bool StronglyReferencesItems { get; set; }		
 	}
 
 	[BaseType (typeof (NSObject))]
