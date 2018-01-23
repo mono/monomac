@@ -604,6 +604,9 @@ namespace MonoMac.Foundation {
 
 		[Field ("NSUserNotificationDefaultSoundName")]
 		NSString NSUserNotificationDefaultSoundName { get; }
+		
+		[Export ("contentImage")]
+		NSImage ContentImage { get; set; }
 	}
 	
 	[MountainLion]

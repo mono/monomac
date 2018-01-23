@@ -1881,19 +1881,19 @@ namespace MonoMac.AppKit {
 	[BaseType (typeof (NSImageRep))]
 	[DisableDefaultCtor] // An uncaught exception was raised: -[NSCachedImageRep init]: unrecognized selector sent to instance 0x14890e0
 	public interface NSCachedImageRep {
-		[Obsolete ("Deprecated in OSX 10.6")]
+		[Deprecated (10, 6)]
 		[Export ("initWithIdentifier:")]
 	   	IntPtr Constructor (NSWindow win, CGRect rect);
 		
-		[Obsolete ("Deprecated in OSX 10.6")]
+		[Deprecated (10, 6)]
 		[Export ("initWithSize:depth:separate:alpha:")]
 		IntPtr Constructor (CGSize size, NSWindowDepth depth, bool separate, bool alpha);
 
-		[Obsolete ("Deprecated in OSX 10.6")]
+		[Deprecated (10, 6)]
 		[Export ("window")]
 		NSWindow Window { get; }
 
-		[Obsolete ("Deprecated in OSX 10.6")]
+		[Deprecated (10, 6)]
 		[Export ("rect")]
 		CGRect Rectangle { get; }
 	}
@@ -4339,7 +4339,7 @@ namespace MonoMac.AppKit {
 		[Export ("ignoreModifierKeysWhileDragging"), DefaultValue (false)]
 		bool IgnoreModifierKeysWhileDragging { get; }
 
-		[Obsolete ("On 10.1 and newer, use DraggedImageEndedAtOperation() instead")]
+		[Deprecated (10, 1, "use DraggedImageEndedAtOperation() instead")]
 		[Export ("draggedImage:endedAt:deposited:")]
 		void DraggedImageEndedAtDeposited (NSImage image, CGPoint screenPoint, bool deposited);
 	}
@@ -6476,24 +6476,24 @@ namespace MonoMac.AppKit {
 		bool CanChooseFiles { get; set; }
 
 		// Deprecated methods, but needed to run on pre 10.6 systems
-		[Obsolete ("On 10.6 and newer, use Uris")]
+		[Deprecated (10, 6, "use Uris")]
 		[Export ("filenames")]
 		string [] Filenames { get; }
 
 		//runModalForWindows:Completeion
-		[Obsolete ("On 10.6 and newer use runModalForWindow:")]
+		[Deprecated (10, 6, "use runModalForWindow:")]
 		[Export ("beginSheetForDirectory:file:types:modalForWindow:modalDelegate:didEndSelector:contextInfo:")]
 		void BeginSheet ([NullAllowed] string directory, [NullAllowed] string fileName, [NullAllowed] string [] fileTypes, [NullAllowed] NSWindow modalForWindow, [NullAllowed] NSObject modalDelegate, [NullAllowed] Selector didEndSelector, IntPtr contextInfo);
 
-		[Obsolete ("On 10.6 and newer use runWithCompletionHandler:")]
+		[Deprecated (10, 6, "use runWithCompletionHandler:")]
 		[Export ("beginForDirectory:file:types:modelessDelegate:didEndSelector:contextInfo:")]
 		void Begin ([NullAllowed] string directory, [NullAllowed] string fileName, [NullAllowed] string [] fileTypes, [NullAllowed] NSObject modelessDelegate, [NullAllowed] Selector didEndSelector, IntPtr contextInfo);
 		
-		[Obsolete ("On 10.6 and newer use runModal:")]
+		[Deprecated (10, 6, "use runModal:")]
 		[Export ("runModalForDirectory:file:types:")]
 		nint RunModal ([NullAllowed] string directory, [NullAllowed] string fileName, [NullAllowed] string [] types);
 
-		[Obsolete ("On 10.6 and newer use runModal:")]
+		[Deprecated (10, 6, "use runModal:")]
 		[Export ("runModalForTypes:")]
 		nint RunModal (string [] types);
 	}
@@ -6523,19 +6523,19 @@ namespace MonoMac.AppKit {
 		[Export ("panelSelectionDidChange:"), EventArgs ("NSOpenSaveSelectionChanged")]
 		void SelectionDidChange (NSSavePanel panel);
 
-		[Obsolete ("On 10.6 and newer use ValidateUrlError")]
+		[Deprecated (10, 6, "use ValidateUrlError")]
 		[Export ("panel:isValidFilename:"), DelegateName ("NSOpenSaveFilename"), DefaultValue (true)]
 		bool IsValidFilename (NSSavePanel panel, string fileName);
 
-		[Obsolete ("On 10.6 and newer Use DidChangeToDirectoryUrl instead")]
+		[Deprecated (10, 6, "Use DidChangeToDirectoryUrl instead")]
 		[Export ("panel:directoryDidChange:"), EventArgs ("NSOpenSaveFilename")]
 		void DirectoryDidChange (NSSavePanel panel, string path);
 
-		[Obsolete ("After 10.6, this method is obsolete and does not control sorting order")]
+		[Deprecated (10, 6, "this method is obsolete and does not control sorting order")]
 		[Export ("panel:compareFilename:with:caseSensitive"), DelegateName ("NSOpenSaveCompare"), DefaultValue (NSComparisonResult.Same)]
 		NSComparisonResult CompareFilenames (NSSavePanel panel, string name1, string name2, bool caseSensitive);
 
-		[Obsolete ("On 10.6 and newer use ShouldEnableUrl")]
+		[Deprecated (10, 6, "use ShouldEnableUrl")]
 		[Export ("panel:shouldShowFilename:"), DelegateName ("NSOpenSaveFilename"), DefaultValue (true)]
 		bool ShouldShowFilename (NSSavePanel panel, string filename);
 	}
@@ -6993,7 +6993,7 @@ namespace MonoMac.AppKit {
 		[Export ("drawInRect:fromRect:operation:fraction:")]
 		void DrawInRect (CGRect dstRect, CGRect srcRect, NSCompositingOperation operation, nfloat delta);
 		
-		[Obsolete ("On 10.6 and newer use DrawInRect with respectContextIsFlipped instead"), Export ("flipped")]
+		[Deprecated (10, 6, "use DrawInRect with respectContextIsFlipped instead"), Export ("flipped")]
 		bool Flipped { [Bind ("isFlipped")] get; set; }
 
 		[Internal, Field ("NSImageNameQuickLookTemplate")]
@@ -9706,23 +9706,23 @@ namespace MonoMac.AppKit {
 		[Export ("showsHiddenFiles")]
 		bool ShowsHiddenFiles { get; set; }
 
-		[Obsolete ("On 10.6 and newer use Url instead")]
+		[Deprecated (10, 6, "use Url instead")]
 		[Export ("filename")]
 		string Filename { get; }
 
-		[Obsolete ("On 10.6 and newer use DirectoryUrl instead")]
+		[Deprecated (10, 6, "use DirectoryUrl instead")]
 		[Export ("directory")]
 		string Directory { get; set; }
 
-		[Obsolete ("On 10.6 and newer use AllowedFileTypes instead")]
+		[Deprecated (10, 6, "use AllowedFileTypes instead")]
 		[Export ("requiredFileType")]
 		string RequiredFileType { get; set; }
 
-		[Obsolete ("On 10.6 and newer use Begin with the callback")]
+		[Deprecated (10, 6, "use Begin with the callback")]
 		[Export ("beginSheetForDirectory:file:modalForWindow:modalDelegate:didEndSelector:contextInfo:")]
 		void Begin (string directory, string filename, NSWindow docWindow, NSObject modalDelegate, Selector selector, IntPtr context);
 
-		[Obsolete ("On 10.6 and newer use RunModal without parameters instead")]
+		[Deprecated (10, 6, "use RunModal without parameters instead")]
 		[Export ("runModalForDirectory:file:")]
 		nint RunModal ([NullAllowed] string directory, [NullAllowed]  string filename);
 	}
@@ -10794,61 +10794,61 @@ namespace MonoMac.AppKit {
 		[Export ("length")]
 		nfloat Length { get; set; }
 
-		[Obsolete("Since 10.10. Use Button instead")]
+		[Deprecated (10, 10, "Use Button instead")]
 		[Export ("action"), NullAllowed]
 		Selector Action { get; set; }
 
-		[Obsolete("Since 10.10. Use Button instead")]
+		[Deprecated (10, 10, "Use Button instead")]
 		[Export ("sendActionOn:")]
 		nint SendActionOn (NSTouchPhase mask);
 
 		[Export ("popUpStatusItemMenu:")]
 		void PopUpStatusItemMenu (NSMenu menu);
 
-		[Obsolete("Since 10.10. Use Button instead")]
+		[Deprecated (10, 10, "Use Button instead")]
 		[Export ("drawStatusBarBackgroundInRect:withHighlight:")]
 		void DrawStatusBarBackground (CGRect rect, bool highlight);
 
 		//Detected properties
-		[Obsolete("Since 10.10. Use Button instead")]
+		[Deprecated (10, 10, "Use Button instead")]
 		[Export ("doubleAction")]
 		Selector DoubleAction { get; set; }
 
 		[Export ("target"), NullAllowed]
 		NSObject Target { get; set; }
 
-		[Obsolete("Since 10.10. Use Button instead")]
+		[Deprecated (10, 10, "Use Button instead")]
 		[Export ("title")]
 		string Title { get; set; }
 
-		[Obsolete("Since 10.10. Use Button instead")]
+		[Deprecated (10, 10, "Use Button instead")]
 		[Export ("attributedTitle")]
 		NSAttributedString AttributedTitle { get; set; }
 
-		[Obsolete("Since 10.10. Use Button instead")]
+		[Deprecated (10, 10, "Use Button instead")]
 		[Export ("image")]
 		NSImage Image { get; set; }
 
-		[Obsolete("Since 10.10. Use Button instead")]
+		[Deprecated (10, 10, "Use Button instead")]
 		[Export ("alternateImage")]
 		NSImage AlternateImage { get; set; }
 
 		[Export ("menu")]
 		NSMenu Menu { get; set; }
 
-		[Obsolete("Since 10.10. Use Button instead")]
+		[Deprecated (10, 10, "Use Button instead")]
 		[Export ("enabled")]
 		bool Enabled { [Bind ("isEnabled")]get; set; }
 
-		[Obsolete("Since 10.10. Use Button instead")]
+		[Deprecated (10, 10, "Use Button instead")]
 		[Export ("toolTip")]
 		string ToolTip { get; set; }
 
-		[Obsolete("Since 10.10. Use Button instead")]
+		[Deprecated (10, 10, "Use Button instead")]
 		[Export ("highlightMode")]
 		bool HighlightMode { get; set; }
 
-		[Obsolete("Since 10.10. Use Button instead")]
+		[Deprecated (10, 10, "Use Button instead")]
 		[Export ("view")]
 		NSView View { get; set; }
 
@@ -11574,7 +11574,7 @@ namespace MonoMac.AppKit {
 		[Lion, Export ("exerciseAmbiguityInLayout")]
 		void ExerciseAmbiguityInLayout ();
 
-		[Obsolete ("Deprecated in 10.8")]
+		[Deprecated (10, 8)]
 		[Export ("performMnemonic:")]
 		bool PerformMnemonic (string mnemonic);
 

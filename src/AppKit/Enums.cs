@@ -1793,4 +1793,9 @@ namespace MonoMac.AppKit {
 		ParagraphBreak = 1 << 4,
 		ContainerBreak = 1 << 5,
 	}
+	
+	public enum NSStatusItemLength {
+		Variable = -1,
+		Square = -2
+	}
 }

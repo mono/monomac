@@ -97,6 +97,7 @@ BASE_SOURCES = $(EXTRA_MONOMAC_SOURCES) \
 	./AppKit/NSSegmentedControl.cs			\
 	./AppKit/NSSpeechSynthesizer.cs			\
 	./AppKit/NSSpellChecker.cs			\
+	./AppKit/NSStatusBar.cs			\
 	./AppKit/NSSound.cs				\
 	./AppKit/NSTableView.cs				\
 	./AppKit/NSTextField.cs				\
