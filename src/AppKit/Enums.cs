@@ -1798,4 +1798,22 @@ namespace MonoMac.AppKit {
 		Variable = -1,
 		Square = -2
 	}
+	
+	[Mac (10,12)]
+	//[Native]
+	public enum NSWindowTabbingMode : nint
+	{
+		Automatic,
+		Preferred,
+		Disallowed
+	}
+
+	[Mac (10,12)]
+	//[Native]
+	public enum NSWindowUserTabbingPreference : nint
+	{
+		Manual,
+		Always,
+		InFullScreen
+	}
 }

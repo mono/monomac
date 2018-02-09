@@ -11711,17 +11711,21 @@ namespace MonoMac.AppKit {
 		[Mavericks, Export ("canDrawSubviewsIntoLayer:")]
 		bool CanDrawSubviewsIntoLayer { get; set; }
 
-		//[Mac (10,10)]
+		[Mac (10,10)]
 		[Export ("gestureRecognizers")]//, ArgumentSemantic.Copy)]
 		NSGestureRecognizer [] GestureRecognizers { get; set; }
 
-		//[Mac (10,10)]
+		[Mac (10,10)]
 		[Export ("addGestureRecognizer:")][PostGet("GestureRecognizers")]
 		void AddGestureRecognizer (NSGestureRecognizer gestureRecognizer);
 
-		//[Mac (10,10)]
+		[Mac (10,10)]
 		[Export ("removeGestureRecognizer:")][PostGet("GestureRecognizers")]
 		void RemoveGestureRecognizer (NSGestureRecognizer gestureRecognizer);
+		
+		[Mac (10, 7)]
+		[Export ("viewDidChangeBackingProperties")]
+		void DidChangeBackingProperties ();
 	}
 
 	//64 bit reviewed
@@ -14372,6 +14376,14 @@ namespace MonoMac.AppKit {
 
 	}
 
+	interface NSWindowBackingPropertiesEventArgs {
+		[Export ("NSBackingPropertyOldScaleFactorKey")]
+		nint OldScaleFactor { get; }
+
+		[Export ("NSBackingPropertyOldColorSpaceKey")]
+		NSColorSpace OldColorSpace { get; }
+	}
+	
 	//64 bit reviewed
 	[BaseType (typeof (NSResponder), Delegates=new string [] { "Delegate" }, Events=new Type [] { typeof (NSWindowDelegate)})]
 	public partial interface NSWindow : NSAnimatablePropertyContainer, NSUserInterfaceItemIdentification {
@@ -15071,26 +15083,88 @@ namespace MonoMac.AppKit {
 		[Field ("NSWindowWillEnterFullScreenNotification")]
 		NSString WillEnterFullScreenNotification { get; }
 
-		[Lion, Field ("NSWindowDidEnterFullScreenNotification")]
+		[Mac (10, 7), Field ("NSWindowDidEnterFullScreenNotification")]
+		[Notification]
 		NSString DidEnterFullScreenNotification { get; }
 
-		[Lion, Field ("NSWindowWillExitFullScreenNotification")]
+		[Mac (10, 7), Field ("NSWindowWillExitFullScreenNotification")]
+		[Notification]
 		NSString WillExitFullScreenNotification { get; }
 
-		[Lion, Field ("NSWindowDidExitFullScreenNotification")]
+		[Mac (10, 7), Field ("NSWindowDidExitFullScreenNotification")]
+		[Notification]
 		NSString DidExitFullScreenNotification { get; }
 
-		[Lion, Field ("NSWindowWillEnterVersionBrowserNotification")]
+		[Mac (10, 7), Field ("NSWindowWillEnterVersionBrowserNotification")]
+		[Notification]
 		NSString WillEnterVersionBrowserNotification { get; }
 
-		[Lion, Field ("NSWindowDidEnterVersionBrowserNotification")]
+		[Mac (10, 7), Field ("NSWindowDidEnterVersionBrowserNotification")]
+		[Notification]
 		NSString DidEnterVersionBrowserNotification { get; }
 
-		[Lion, Field ("NSWindowWillExitVersionBrowserNotification")]
+		[Mac (10, 7), Field ("NSWindowWillExitVersionBrowserNotification")]
+		[Notification]
 		NSString WillExitVersionBrowserNotification { get; }
 
-		[Lion, Field ("NSWindowDidExitVersionBrowserNotification")]
+		[Mac (10, 7), Field ("NSWindowDidExitVersionBrowserNotification")]
+		[Notification]
 		NSString DidExitVersionBrowserNotification { get; }
+
+		[Mac (10, 7), Field ("NSWindowDidChangeBackingPropertiesNotification")]
+		[Notification (typeof (NSWindowBackingPropertiesEventArgs))]
+		NSString DidChangeBackingPropertiesNotification { get; }
+
+		[Mac (10, 12)]
+		[Static]
+		[Export ("allowsAutomaticWindowTabbing")]
+		bool AllowsAutomaticWindowTabbing { get; set; }
+
+		[Mac (10, 12)]
+		[Static]
+		[Export ("userTabbingPreference")]
+		NSWindowUserTabbingPreference UserTabbingPreference { get; }
+
+		[Mac (10, 12)]
+		[Export ("tabbingMode", ArgumentSemantic.Assign)]
+		NSWindowTabbingMode TabbingMode { get; set; }
+
+		[Mac (10, 12)]
+		[Export ("tabbingIdentifier")]
+		string TabbingIdentifier { get; set; }
+
+		[Mac (10,12)]
+		[Export ("selectNextTab:")]
+		void SelectNextTab ([NullAllowed] NSObject sender);
+
+		[Mac (10,12)]
+		[Export ("selectPreviousTab:")]
+		void SelectPreviousTab ([NullAllowed] NSObject sender);
+
+		[Mac (10,12)]
+		[Export ("moveTabToNewWindow:")]
+		void MoveTabToNewWindow ([NullAllowed] NSObject sender);
+
+		[Mac (10,12)]
+		[Export ("mergeAllWindows:")]
+		void MergeAllWindows ([NullAllowed] NSObject sender);
+
+		[Mac (10,12)]
+		[Export ("toggleTabBar:")]
+		void ToggleTabBar ([NullAllowed] NSObject sender);
+
+		[Mac (10, 12)]
+		[NullAllowed, Export ("tabbedWindows", ArgumentSemantic.Copy)]
+		NSWindow[] TabbedWindows { get; }
+
+		[Mac (10,12)]
+		[Export ("addTabbedWindow:ordered:")]
+		void AddTabbedWindow (NSWindow window, NSWindowOrderingMode ordered);
+
+		[Mac (10, 12)]
+		[Export ("windowTitlebarLayoutDirection")]
+		NSUserInterfaceLayoutDirection WindowTitlebarLayoutDirection { get; }
+
 #endif
 
 		[Mavericks]
@@ -15323,6 +15397,8 @@ namespace MonoMac.AppKit {
 		[Lion, Export ("windowDidExitVersionBrowser:"), EventArgs ("NSNotification")]
 		void DidExitVersionBrowser (NSNotification notification);
 		
+		[Mac (10, 7), Export ("windowDidChangeBackingProperties:"), EventArgs ("NSNotification")]
+		void DidChangeBackingProperties (NSNotification notification);
 	}
 
 	interface NSWorkspaceRenamedEventArgs {
