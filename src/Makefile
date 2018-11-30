@@ -4,7 +4,7 @@
 WARNINGS_I_SHOULD_FIX=114,108
 TARGET = MonoMac.dll
 PEER=false
-MACCORE_DIR ?= ../maccore
+MACCORE_DIR ?= ..
 # Build 64-bit, forces the use of CGRect/CGSize/CGPoint
 64BIT ?= 0
 # Build 64-bit and for COREFX. Must specify COREFX_LIB path.

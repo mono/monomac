@@ -1,10 +1,15 @@
 //
-// CAEmitterCell.cs
+// CAEmitterCell.cs: Non-generated API for CAEmitterCell.
 //
-// Author:
-//   Curtis Wensley <curtis.wensley@gmail.com>
+// Authors:
+//   Rolf Bjarne Kvinge (rolf@xamarin.com)
 //
-// Copyright 2012 Xamarin Inc. (http://xamarin.com)
+// Copyright 2013, Xamarin, Inc
+//
+// The class can be either constructed from a string (from user code)
+// or from a handle (from iphone-sharp.dll internal calls).  This
+// delays the creation of the actual managed string until actually
+// required
 //
 // Permission is hereby granted, free of charge, to any person obtaining
 // a copy of this software and associated documentation files (the
@@ -13,10 +18,10 @@
 // distribute, sublicense, and/or sell copies of the Software, and to
 // permit persons to whom the Software is furnished to do so, subject to
 // the following conditions:
-//
+// 
 // The above copyright notice and this permission notice shall be
 // included in all copies or substantial portions of the Software.
-//
+// 
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
 // EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
 // MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
@@ -25,45 +30,20 @@
 // OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
-
 using System;
-using System.Collections.Generic;
-
 using MonoMac.Foundation;
+using MonoMac.ObjCRuntime;
 using MonoMac.CoreGraphics;
 
-#if MAC64
-using nint = System.Int64;
-using nuint = System.UInt64;
-using nfloat = System.Double;
-#else
-using nint = System.Int32;
-using nuint = System.UInt32;
-using nfloat = System.Single;
-#if SDCOMPAT
-using CGPoint = System.Drawing.PointF;
-using CGSize = System.Drawing.SizeF;
-using CGRect = System.Drawing.RectangleF;
-#endif
-#endif
-
 namespace MonoMac.CoreAnimation {
-	
-	partial class CAEmitterCell {
-		CGImage contents;
-	
-		public CGImage Contents
-		{
+	public partial class CAEmitterCell {
+		public CGImage Contents {
 			get {
-				if (contents != null)
-					return contents;
-				var ptr = _Contents;
-				return ptr != IntPtr.Zero ? (contents = new CGImage(ptr)) : null; 
+				return new CGImage (_Contents);
 			}
-			set { 
-				_Contents = value != null ? value.Handle : IntPtr.Zero;
-				contents = value;
+			set {
+				_Contents = value.Handle;
 			}
 		}
-	} 
+	}
 }
