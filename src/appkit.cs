@@ -4907,7 +4907,7 @@ namespace MonoMac.AppKit {
 		[Export ("sendAction")]
 		bool SendAction { get; }
 
-		[Export ("delegate")]
+		[Export ("delegate")][NullAllowed]
 		NSObject WeakDelegate { get; set; } 
 
 		[Export ("localizedNameForFamily:face:")]
