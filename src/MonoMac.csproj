@@ -1,22 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PlatformTarget>x64</PlatformTarget>
-    <DefineConstants>MONOMAC;MAC64</DefineConstants>
+    <DefineConstants>MONOMAC;MAC64;OBJECT_REF_TRACKING</DefineConstants>
     <Version>0.0.1</Version>
     <EnableDefaultItems>False</EnableDefaultItems>
+    <NoWarn>3021,0219,0414,114,108</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-      <PackageReference Include="System.Reflection.Emit" Version="4.3.0" />
-      <PackageReference Include="System.Reflection.Emit.Lightweight" Version="4.3.0" />
+    <PackageReference Include="System.Reflection.Emit" Version="4.3.0" />
+    <PackageReference Include="System.Reflection.Emit.Lightweight" Version="4.3.0" />
   </ItemGroup>
-  
   <ItemGroup>
+    <Compile Include="@(CoreSource)" />
+    <Compile Include="@(SharedSource)" />
+    <Compile Include="@(SharedCoreSource)" />
     <Compile Include="@(BaseSource)" />
     <Compile Include="@(OpenGlSource)" />
-    <Compile Include="**\*.g.cs" />
-    
+    <Compile Include="$(ArtifactsDir)**\*.cs" AutoGen="True" />
   </ItemGroup>
+  <PropertyGroup>
+    <CoreCompileDependsOn>IncludeGenerated;$(CoreCompileDependsOn)</CoreCompileDependsOn>
+  </PropertyGroup>
+  <Target Name="IncludeGenerated">
+    <ItemGroup>
+    </ItemGroup>
+  </Target>
 </Project>

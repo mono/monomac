@@ -32,15 +32,12 @@
     <Compile Include="btouch.cs" />
   </ItemGroup>
   
-  <ItemGroup>
-    <ProjectReference Include="generator.csproj" ReferenceOutputAssembly="False" />
-    
-  </ItemGroup>
-  
   <Target Name="GenerateSources" AfterTargets="AfterBuild">
     
     <PropertyGroup>
-      <GeneratorParameters>$(GeneratorParameters) --compiler=csc -a --core --sourceonly=generated_sources -v -tmpdir=.</GeneratorParameters> 
+      <GeneratorParameters>$(GeneratorParameters) --compiler=csc -a --core --sourceonly=generated_sources -v</GeneratorParameters> 
+      <GeneratorParameters>$(GeneratorParameters) -outdir=$(ArtifactsDir)generated</GeneratorParameters> 
+      <GeneratorParameters>$(GeneratorParameters) "-tmpdir=$(IntermediateOutputPath)"</GeneratorParameters> 
       <GeneratorParameters>$(GeneratorParameters) @(Apis->'%(Identity)', ' ')</GeneratorParameters> 
       <GeneratorParameters>$(GeneratorParameters) @(SharedApis->'%(Identity)', ' ')</GeneratorParameters> 
       <GeneratorParameters>$(GeneratorParameters) -d=MONOMAC -d=MAC64</GeneratorParameters> 
