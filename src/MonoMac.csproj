@@ -22,11 +22,9 @@
     <Compile Include="@(OpenGlSource)" />
     <Compile Include="$(ArtifactsDir)generated\**\*.cs" Visible="False" />
   </ItemGroup>
-  <PropertyGroup>
-    <CoreCompileDependsOn>IncludeGenerated;$(CoreCompileDependsOn)</CoreCompileDependsOn>
-  </PropertyGroup>
-  <Target Name="IncludeGenerated">
-    <ItemGroup>
-    </ItemGroup>
-  </Target>
+  <ItemGroup>
+    <!--
+    <ProjectReference Include="generator.csproj" Condition="$(Blar) == 'True'" IncludeAssets="none" ExcludeAssets="all" PrivateAssets="none" TreatAsPackageReference="False" ReferenceOutputAssembly="False" />
+    -->
+  </ItemGroup>
 </Project>
