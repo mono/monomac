@@ -6,83 +6,17 @@
     <PlatformTarget>x64</PlatformTarget>
     <DefineConstants>MONOMAC;MAC64</DefineConstants>
     <Version>0.0.1</Version>
+    <EnableDefaultItems>False</EnableDefaultItems>
   </PropertyGroup>
   <ItemGroup>
       <PackageReference Include="System.Reflection.Emit" Version="4.3.0" />
       <PackageReference Include="System.Reflection.Emit.Lightweight" Version="4.3.0" />
   </ItemGroup>
+  
   <ItemGroup>
-    <Compile Remove="appkit.cs" />
-    <Compile Remove="avfoundation.cs" />
-    <Compile Remove="btouch.cs" />
-    <Compile Remove="composer.cs" />
-    <Compile Remove="coreanimation.cs" />
-    <Compile Remove="coredata.cs" />
-    <Compile Remove="coreimage.cs" />
-    <Compile Remove="corelocation.cs" />
-    <Compile Remove="coremidi.cs" />
-    <Compile Remove="corewlan.cs" />
-    <Compile Remove="error.cs" />
-    <Compile Remove="foundation.cs" />
-    <Compile Remove="foundation-desktop.cs" />
-    <Compile Remove="generator.cs" />
-    <Compile Remove="growl.cs" />
-    <Compile Remove="imageio.cs" />
-    <Compile Remove="imagekit.cs" />
-    <Compile Remove="nslayoutmanager.cs" />
-    <Compile Remove="Options.cs" />
-    <Compile Remove="parse.cs" />
-    <Compile Remove="pdfkit.cs" />
-    <Compile Remove="qtkit.cs" />
-    <Compile Remove="quicklook.cs" />
-    <Compile Remove="scriptingbridge.cs" />
-    <Compile Remove="webkit.cs" />
-    <Compile Remove="OpenGL\OpenTK\Audio\OpenAL\AL\EffectsExtension.cs" />
-    <Compile Remove="OpenGL\OpenTK\Audio\OpenAL\AL\EffectsExtensionEnums.cs" />
-    <Compile Remove="OpenGL\OpenTK\Audio\OpenAL\AL\EffectsExtensionPresets.cs" />
-    <Compile Remove="OpenGL\OpenTK\Audio\OpenAL\AL\XRamExtension.cs" />
-    <Compile Remove="Carbon\HIToolbox.cs" />
-    <Compile Remove="OpenGL\INativeWindow.cs" />
-    <Compile Remove="Foundation\NSDistributedNotificationCenter.cs" />
-    <Compile Remove="OpenGL\IGameWindow.cs" />
-    <Compile Remove="OpenGL\MonoMacGameView.cs" />
-    <Compile Remove="CoreLocation\CLLocationManagerDelegate.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="appkit.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <None Include="avfoundation.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <None Include="btouch.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <None Include="composer.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <None Include="coreanimation.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <None Include="coredata.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <None Include="coreimage.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <None Include="corelocation.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <None Include="coremidi.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <None Include="corewlan.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <None Include="error.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <None Include="foundation.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <None Include="foundation-desktop.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <None Include="generator.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <None Include="growl.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <None Include="imageio.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <None Include="imagekit.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <None Include="nslayoutmanager.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <None Include="Options.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <None Include="parse.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <None Include="pdfkit.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <None Include="qtkit.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <None Include="quicklook.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <None Include="scriptingbridge.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <None Include="webkit.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <None Include="OpenGL\OpenTK\Audio\OpenAL\AL\EffectsExtension.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <None Include="OpenGL\OpenTK\Audio\OpenAL\AL\EffectsExtensionEnums.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <None Include="OpenGL\OpenTK\Audio\OpenAL\AL\EffectsExtensionPresets.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <None Include="OpenGL\OpenTK\Audio\OpenAL\AL\XRamExtension.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <None Include="Carbon\HIToolbox.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <None Include="OpenGL\INativeWindow.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <None Include="Foundation\NSDistributedNotificationCenter.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <None Include="OpenGL\IGameWindow.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <None Include="OpenGL\MonoMacGameView.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <None Include="CoreLocation\CLLocationManagerDelegate.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
+    <Compile Include="@(BaseSource)" />
+    <Compile Include="@(OpenGlSource)" />
+    <Compile Include="**\*.g.cs" />
+    
   </ItemGroup>
 </Project>

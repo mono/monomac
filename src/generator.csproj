@@ -1,55 +1,55 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProductVersion>10.0.0</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{5FC1B67F-2F54-478D-8C76-2BD21AF8E3C7}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>maccoregenerator</RootNamespace>
-    <AssemblyName>maccore-generator</AssemblyName>
+    <TargetFramework>net461</TargetFramework>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <EnableDefaultItems>False</EnableDefaultItems>
+    <DefineConstants>GENERATOR;MONOMAC;MONOMAC_BOOTSTRAP</DefineConstants>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <DebugSymbols>True</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>False</Optimize>
-    <OutputPath>bin\Debug</OutputPath>
-    <DefineConstants>DEBUG;MONOMAC;NET_2_0;MAC64;MONOMAC_BOOTSTRAP</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <PlatformTarget>x86</PlatformTarget>
-    <Externalconsole>True</Externalconsole>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <DebugType>none</DebugType>
-    <Optimize>True</Optimize>
-    <OutputPath>bin\Release</OutputPath>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <PlatformTarget>x86</PlatformTarget>
-    <Externalconsole>True</Externalconsole>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="core">
-      <HintPath>..\..\monomac\src\core.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="core.csproj" />
   </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <Compile Include="error.cs">
-      <Link>error.cs</Link>
-    </Compile>
-    <Compile Include="generator.cs">
-      <Link>generator.cs</Link>
-    </Compile>
-    <Compile Include="btouch.cs">
-      <Link>btouch.cs</Link>
-    </Compile>
-    <Compile Include="Options.cs">
-      <Link>Options.cs</Link>
-    </Compile>
+    <Apis Include="@(SharedApis)" />
+    <Apis Include="appkit.cs" />
+    <Apis Include="corewlan.cs" />
+    <Apis Include="foundation-desktop.cs" />
+    <Apis Include="imagekit.cs" />
+    <Apis Include="qtkit.cs" />
+    <Apis Include="pdfkit.cs" />
+    <Apis Include="webkit.cs" />
+    <Apis Include="composer.cs" />
+    <Apis Include="scriptingbridge.cs" />
+    
   </ItemGroup>
+  
+  <ItemGroup>
+    <Compile Include="generator.cs" />
+    <Compile Include="error.cs" />
+    <Compile Include="Options.cs" />
+    <Compile Include="btouch.cs" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="generator.csproj" ReferenceOutputAssembly="False" />
+    
+  </ItemGroup>
+  
+  <Target Name="GenerateSources" AfterTargets="AfterBuild">
+    
+    <PropertyGroup>
+      <GeneratorParameters>$(GeneratorParameters) --compiler=csc -a --core --sourceonly=generated_sources -v -tmpdir=.</GeneratorParameters> 
+      <GeneratorParameters>$(GeneratorParameters) @(Apis->'%(Identity)', ' ')</GeneratorParameters> 
+      <GeneratorParameters>$(GeneratorParameters) @(SharedApis->'%(Identity)', ' ')</GeneratorParameters> 
+      <GeneratorParameters>$(GeneratorParameters) -d=MONOMAC -d=MAC64</GeneratorParameters> 
+      <GeneratorParameters>$(GeneratorParameters) "--baselib=$(TargetDir)core.dll" --ns=MonoMac.ObjCRuntime</GeneratorParameters>
+      
+    </PropertyGroup>
+    <Exec Command="$(TargetPath) $(GeneratorParameters)" />
+    <!-- $(MONO) - -debug _bmac.exe - -compiler=$(MCS) -a -d=MONOMAC $(BMAC_DEFINES) - -core - -sourceonly=generated_sources -v -tmpdir=. $(APIS) - -baselib=core.dll - -ns=MonoMac.ObjCRuntime -r=System.Drawing.dll $(BMAC_OPTIONS) -->
+    
+    
+  </Target>
 </Project>
