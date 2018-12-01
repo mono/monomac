@@ -20,7 +20,7 @@
     <Compile Include="@(SharedCoreSource)" />
     <Compile Include="@(BaseSource)" />
     <Compile Include="@(OpenGlSource)" />
-    <Compile Include="$(ArtifactsDir)**\*.cs" AutoGen="True" />
+    <Compile Include="$(ArtifactsDir)generated\**\*.cs" Visible="False" />
   </ItemGroup>
   <PropertyGroup>
     <CoreCompileDependsOn>IncludeGenerated;$(CoreCompileDependsOn)</CoreCompileDependsOn>
