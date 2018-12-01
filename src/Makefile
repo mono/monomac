@@ -6,7 +6,7 @@ TARGET = MonoMac.dll
 PEER=false
 MACCORE_DIR ?= ..
 # Build 64-bit, forces the use of CGRect/CGSize/CGPoint
-64BIT ?= 0
+64BIT ?= 1
 # Build 64-bit and for COREFX. Must specify COREFX_LIB path.
 COREFX ?= 0
 # Use System.Drawing structs, '0' to use CGRect/CGSize/CGPoint
@@ -292,7 +292,7 @@ MonoMac.CFNetwork.dll: $(CFNETWORK_SOURCES) $(TARGET)
 	$(MCS) -target:library -define:MONOMAC $(COMMON_DEFINES) $(CFNETWORK_DEFINES) -r:$(TARGET) -out:MonoMac.CFNetwork.dll $(CFNETWORK_SOURCES)
 
 clean:
-	rm -f $(foreach t,$(TARGETS) core.dll temp.dll,$(t) $(t).mdb)
+	rm -f $(foreach t,$(TARGETS) core.dll temp.dll,$(t) $(t).mdb $(basename -- $t).pdb)
 	if [ -a generated_sources ] ; then  xargs rm < generated_sources; fi
 	rm -f generated_sources
 

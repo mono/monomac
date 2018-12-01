@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <BaseDir>$(MSBuildThisFileDirectory)..\</BaseDir>
+    <ArtifactsDir>$(BaseDir)artifacts\</ArtifactsDir>
+    <OSPlatform Condition="$(OS) == 'Unix' and Exists('/usr/lib/libc.dylib') ">Mac</OSPlatform>
+    <OSPlatform Condition="$(OSPlatform) == ''">$(OS)</OSPlatform>
+    
+    <Configuration Condition="$(Configuration) == ''">Debug</Configuration>
+    <BaseIntermediateOutputPath Condition="$(BaseIntermediateOutputPath) == ''">$(ArtifactsDir)obj\$(OSPlatform)\$(MSBuildProjectName)\</BaseIntermediateOutputPath>
+    <BaseOutputPath Condition="$(OutputPath) == ''">$(ArtifactsDir)bin\</BaseOutputPath>
+    
+  </PropertyGroup>
+</Project>
