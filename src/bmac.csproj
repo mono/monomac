@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net461</TargetFramework>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <EnableDefaultItems>False</EnableDefaultItems>
+    <DefineConstants>GENERATOR;MONOMAC;MONOMAC_BOOTSTRAP</DefineConstants>
+    <GeneratedOutputDir>$(ArtifactsDir)generated\</GeneratedOutputDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="MonoMac.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Compile Include="generator.cs" />
+    <Compile Include="error.cs" />
+    <Compile Include="Options.cs" />
+    <Compile Include="btouch.cs" />
+  </ItemGroup>
+  
+</Project>
