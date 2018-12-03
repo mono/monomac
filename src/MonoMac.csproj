@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -20,11 +20,13 @@
     <Compile Include="@(SharedCoreSource)" />
     <Compile Include="@(BaseSource)" />
     <Compile Include="@(OpenGlSource)" />
-    <Compile Include="$(ArtifactsDir)generated\**\*.cs" Visible="False" />
+    <Compile Include="@(CFNetworkSource)" />
   </ItemGroup>
-  <ItemGroup>
-    <!--
-    <ProjectReference Include="generator.csproj" Condition="$(Blar) == 'True'" IncludeAssets="none" ExcludeAssets="all" PrivateAssets="none" TreatAsPackageReference="False" ReferenceOutputAssembly="False" />
-    -->
-  </ItemGroup>
+  <Target Name="GenerateSource" BeforeTargets="BeforeBuild">
+    <MSBuild Projects="core.csproj" Targets="Build" />
+    <MSBuild Projects="generator.csproj" Targets="Build" />
+    <ItemGroup>
+	    <Compile Include="$(ArtifactsDir)generated\**\*.cs" Visible="False" />
+    </ItemGroup>
+  </Target>
 </Project>
