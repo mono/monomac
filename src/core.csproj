@@ -3,10 +3,18 @@
   <PropertyGroup>
     <TargetFramework>net461</TargetFramework>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <EnableDefaultItems>False</EnableDefaultItems>
+  </PropertyGroup>
+  <PropertyGroup Condition="$(Platform) == 'x64'">
     <PlatformTarget>x64</PlatformTarget>
     <BaseDefines Condition="$(BaseDefines) == ''">MONOMAC;MAC64</BaseDefines>
+  </PropertyGroup>
+  <PropertyGroup Condition="$(Platform) == 'x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <BaseDefines Condition="$(BaseDefines) == ''">MONOMAC</BaseDefines>
+  </PropertyGroup>
+  <PropertyGroup>
     <DefineConstants>$(BaseDefines);GENERATOR;MONOMAC_BOOTSTRAP;COREBUILD</DefineConstants>
-    <EnableDefaultItems>False</EnableDefaultItems>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="System.Reflection.Emit" Version="4.3.0" />

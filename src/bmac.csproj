@@ -5,11 +5,22 @@
     <TargetFramework>net461</TargetFramework>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <EnableDefaultItems>False</EnableDefaultItems>
-    <BaseDefines Condition="$(BaseDefines) == ''">MONOMAC;MAC64</BaseDefines>
-    <DefineConstants>$(BaseDefines);GENERATOR;MONOMAC_BOOTSTRAP</DefineConstants>
     <GeneratedOutputDir>$(ArtifactsDir)generated\</GeneratedOutputDir>
   </PropertyGroup>
 
+  <PropertyGroup Condition="$(Platform) == 'x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <BaseDefines Condition="$(BaseDefines) == ''">MONOMAC;MAC64</BaseDefines>
+  </PropertyGroup>
+  <PropertyGroup Condition="$(Platform) == 'x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <BaseDefines Condition="$(BaseDefines) == ''">MONOMAC</BaseDefines>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+    <DefineConstants>$(BaseDefines);GENERATOR;MONOMAC_BOOTSTRAP</DefineConstants>
+  </PropertyGroup>
+  
   <ItemGroup>
     <ProjectReference Include="MonoMac.csproj" />
   </ItemGroup>

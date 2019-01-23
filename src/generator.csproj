@@ -6,9 +6,16 @@
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <EnableDefaultItems>False</EnableDefaultItems>
     <BaseNamespace Condition="$(BaseNamespace) == ''">MonoMac.ObjCRuntime</BaseNamespace>
-    <BaseDefines Condition="$(BaseDefines) == ''">MONOMAC;MAC64</BaseDefines>
     <DefineConstants>$(BaseDefines);GENERATOR;MONOMAC_BOOTSTRAP</DefineConstants>
-    <GeneratedOutputDir Condition="$(GeneratedOutputDir) == ''">$(ArtifactsDir)generated\</GeneratedOutputDir>
+    <GeneratedOutputDir Condition="$(GeneratedOutputDir) == ''">$(ArtifactsDir)generated\$(Platform)\</GeneratedOutputDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="$(Platform) == 'x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <BaseDefines Condition="$(BaseDefines) == ''">MONOMAC;MAC64</BaseDefines>
+  </PropertyGroup>
+  <PropertyGroup Condition="$(Platform) == 'x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <BaseDefines Condition="$(BaseDefines) == ''">MONOMAC</BaseDefines>
   </PropertyGroup>
 
   <ItemGroup>
@@ -26,7 +33,7 @@
     <Apis Include="composer.cs" />
     <Apis Include="scriptingbridge.cs" />
     
-    <CurrentOutputs Include="$(GeneratedOutputDir)\**\*" />
+    <CurrentOutputs Include="$(GeneratedOutputDir)**\*" />
     
   </ItemGroup>
   
