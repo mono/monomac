@@ -38,7 +38,7 @@ using nfloat = System.Single;
 #endif
 
 namespace MonoMac.CoreGraphics {
-	[StructLayout(LayoutKind.Sequential, Pack = 8)]
+	[StructLayout(LayoutKind.Sequential)]
 	public struct CGPoint {
 		
 		public static readonly CGPoint Empty;
@@ -73,8 +73,8 @@ namespace MonoMac.CoreGraphics {
 			return string.Format(CultureInfo.CurrentCulture, "{{X={0},Y={1}}}", X, Y);
 		}
 
-#if !COREFX
-		public CGPoint(System.Drawing.PointF point)
+#if SDCONVERT
+        public CGPoint(System.Drawing.PointF point)
 		{
 			X = point.X;
 			Y = point.Y;

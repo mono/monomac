@@ -2175,11 +2175,19 @@ public class Generator {
 			var sb = new StringBuilder();
 			sb.Append("[");
 			sb.Append(attr is IntroducedAttribute ? "Introduced" : "Deprecated");
-			sb.Append("(");
+			sb.Append("(PlatformName.");
+            sb.Append(attr.Platform);
 			var ver = attr.Version;
-			sb.Append(ver.Build > 0 ? $"{ver.Major}, {ver.Minor}, {ver.Build}" : $"{ver.Major}, {ver.Minor}");
-			if (!string.IsNullOrEmpty(attr.Message))
-			sb.Append($", \"{attr.Message.Replace("\"", "\\\"")}\"");
+            if (ver != null)
+            {
+                sb.Append(", ");
+                sb.Append(ver.Build > 0 ? $"{ver.Major}, {ver.Minor}, {ver.Build}" : $"{ver.Major}, {ver.Minor}");
+            }
+            if (!string.IsNullOrEmpty(attr.Message))
+            {
+                sb.Append(", ");
+                sb.Append($"message: \"{attr.Message.Replace("\"", "\\\"")}\"");
+            }
 			sb.Append(")]");
 			print (sb.ToString());
 		}
@@ -2319,7 +2327,7 @@ public class Generator {
 
 	string [] implicit_ns = new string [] {
 		"System", 
-#if !COREFX
+#if SDCOMPAT
 		"System.Drawing", 
 #endif
 		"System.Linq",
@@ -2969,10 +2977,8 @@ public class Generator {
 		foreach (ObsoleteAttribute oa in pi.GetCustomAttributes (typeof (ObsoleteAttribute), false)) 
 			print ("[Obsolete (\"{0}\", {1})]", oa.Message, oa.IsError ? "true" : "false");
 
-#if !COREFX
 		foreach (DebuggerBrowsableAttribute ba in pi.GetCustomAttributes (typeof (DebuggerBrowsableAttribute), false)) 
 			print ("[DebuggerBrowsable (DebuggerBrowsableState.{0})]", ba.State);
-#endif
 
 		foreach (DebuggerDisplayAttribute da in pi.GetCustomAttributes (typeof (DebuggerDisplayAttribute), false)) {
 			var narg = da.Name != null ? string.Format (", Name = \"{0}\"", da.Name) : string.Empty;
@@ -3331,7 +3337,6 @@ public class Generator {
 		foreach (ThreadSafeAttribute sa in mi.GetCustomAttributes (typeof (ThreadSafeAttribute), false)) 
 			print ("[ThreadSafe]");
 		
-#if !COREFX
 		foreach (EditorBrowsableAttribute ea in mi.GetCustomAttributes (typeof (EditorBrowsableAttribute), false)) {
 			if (ea.State == EditorBrowsableState.Always) {
 				print ("[EditorBrowsable]");
@@ -3339,7 +3344,6 @@ public class Generator {
 				print ("[EditorBrowsable (EditorBrowsableState.{0})]", ea.State);
 			}
 		}
-#endif
 	}
 
 	void GenerateMethod (Type type, MethodInfo mi, bool is_model, Type category_extension_type, bool is_appearance)
@@ -3572,9 +3576,7 @@ public class Generator {
 					if (external) {
 						if (!disable_default_ctor) {
 							GeneratedCode (sw, 2);
-#if !COREFX
 							sw.WriteLine ("\t\t[EditorBrowsable (EditorBrowsableState.Advanced)]");
-#endif
 							sw.WriteLine ("\t\t[Export (\"init\")]");
 							sw.WriteLine ("\t\t{1} {0} () : base (NSObjectFlag.Empty)", TypeName, ctor_visibility);
 							sw.WriteLine ("\t\t{");
@@ -3587,9 +3589,7 @@ public class Generator {
 					} else {
 						if (!disable_default_ctor) {
 							GeneratedCode (sw, 2);
-#if !COREFX
 							sw.WriteLine ("\t\t[EditorBrowsable (EditorBrowsableState.Advanced)]");
-#endif
 							sw.WriteLine ("\t\t[Export (\"init\")]");
 							sw.WriteLine ("\t\t{1} {0} () : base (NSObjectFlag.Empty)", TypeName, ctor_visibility);
 							sw.WriteLine ("\t\t{");
@@ -3606,9 +3606,7 @@ public class Generator {
 							sw.WriteLine ();
 						}
 						GeneratedCode (sw, 2);
-#if !COREFX
 						sw.WriteLine ("\t\t[EditorBrowsable (EditorBrowsableState.Advanced)]");
-#endif
 						sw.WriteLine ("\t\t[Export (\"initWithCoder:\")]");
 						sw.WriteLine ("\t\tpublic {0} (NSCoder coder) : base (NSObjectFlag.Empty)", TypeName);
 						sw.WriteLine ("\t\t{");
@@ -3625,9 +3623,7 @@ public class Generator {
 						sw.WriteLine ();
 					}
 					GeneratedCode (sw, 2);
-#if !COREFX
 					sw.WriteLine ("\t\t[EditorBrowsable (EditorBrowsableState.Advanced)]");
-#endif
 					sw.WriteLine ("\t\tpublic {0} (NSObjectFlag t) : base (t)", TypeName);
 					sw.WriteLine ("\t\t{");
 					if (BindThirdPartyLibrary)
@@ -3635,9 +3631,7 @@ public class Generator {
 					sw.WriteLine ("\t\t}");
 					sw.WriteLine ();
 					GeneratedCode (sw, 2);
-#if !COREFX
 					sw.WriteLine ("\t\t[EditorBrowsable (EditorBrowsableState.Advanced)]");
-#endif
 					sw.WriteLine ("\t\tpublic {0} (IntPtr handle) : base (handle)", TypeName);
 					sw.WriteLine ("\t\t{");
 					if (BindThirdPartyLibrary)

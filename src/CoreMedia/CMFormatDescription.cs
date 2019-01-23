@@ -35,13 +35,13 @@ using CGRect = System.Drawing.RectangleF;
 #endif
 #endif
 
-#if !COREFX
+#if SDCONVERT
 using CMVideoDimensions = System.Drawing.Size;
 #endif
 
 namespace MonoMac.CoreMedia {
 
-	#if COREFX
+#if !SDCOMPAT
 	[StructLayout(LayoutKind.Sequential)]
 	public struct CMVideoDimensions
 	{
@@ -49,9 +49,9 @@ namespace MonoMac.CoreMedia {
 		public int Height;
 	}
 	
-	#endif
+#endif
 
-	public enum CMFormatDescriptionError {
+    public enum CMFormatDescriptionError {
 		None				= 0,
 		InvalidParameter	= -12710,
 		AllocationFailed	= -12711,

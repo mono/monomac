@@ -46,7 +46,6 @@ namespace MonoMac.Foundation {
 			return (int) Handle;
 		}
 
-#if !COREFX
 		// Converts from an NSURL to a System.Uri
 		public static implicit operator Uri (NSUrl url)
 		{
@@ -63,7 +62,6 @@ namespace MonoMac.Foundation {
 			else
 				return new NSUrl (uri.PathAndQuery);
 		}
-#endif
 
 		public static NSUrl FromFilename (string url)
 		{

@@ -34,19 +34,8 @@ using MonoMac.Foundation;
 using MonoMac.CoreFoundation;
 using MonoMac.ObjCRuntime;
 
-#if COREFX
-using AuthenticationException = System.InvalidOperationException;
-using InvalidCredentialException = System.InvalidOperationException;
-
-static class HttpVersion
-{
-	public static Version Version10 = new Version(1, 0);
-	public static Version Version11 = new Version(1, 1);
-}
-#else
 using AuthenticationException = System.Security.Authentication.AuthenticationException;
 using InvalidCredentialException = System.Security.Authentication.InvalidCredentialException;
-#endif
 
 namespace MonoMac.CoreServices {
 
@@ -185,7 +174,6 @@ namespace MonoMac.CoreServices {
 			return new CFHTTPMessage (handle);
 		}
 
-#if !COREFX
 		public static CFHTTPMessage CreateRequest (Uri uri, string method)
 		{
 			return CreateRequest (uri, method, null);
@@ -216,7 +204,6 @@ namespace MonoMac.CoreServices {
 					methodRef.Dispose ();
 			}
 		}
-#endif
 
 		[DllImport (Constants.CFNetworkLibrary)]
 		extern static bool CFHTTPMessageIsRequest (IntPtr handle);
@@ -231,15 +218,6 @@ namespace MonoMac.CoreServices {
 		[DllImport (Constants.CFNetworkLibrary)]
 		extern static CFIndex CFHTTPMessageGetResponseStatusCode (IntPtr handle);
 
-#if COREFX
-		public CFIndex ResponseStatusCode {
-			get {
-				if (IsRequest)
-					throw new InvalidOperationException ();
-				return CFHTTPMessageGetResponseStatusCode (Handle);
-			}
-		}
-#else
 		public HttpStatusCode ResponseStatusCode {
 			get {
 				if (IsRequest)
@@ -248,7 +226,6 @@ namespace MonoMac.CoreServices {
 				return (HttpStatusCode)status;
 			}
 		}
-#endif
 
 		[DllImport (Constants.CFNetworkLibrary)]
 		extern static IntPtr CFHTTPMessageCopyResponseStatusLine (IntPtr handle);
@@ -357,31 +334,6 @@ namespace MonoMac.CoreServices {
 		                                                  IntPtr user, IntPtr pass,
 		                                                  out CFStreamError error);
 
-#if COREFX
-		public void ApplyCredentials (CFHTTPAuthentication auth, string userName, string password, string domain = null)
-		{
-			if (auth.RequiresAccountDomain) {
-				ApplyCredentialDictionary (auth, userName, password, domain);
-				return;
-			}
-
-			var cfusername = new CFString (userName);
-			var cfpassword = new CFString (password);
-
-			try {
-				CFStreamError error;
-
-				var ok = CFHTTPMessageApplyCredentials (
-					Handle, auth.Handle, cfusername.Handle, cfpassword.Handle,
-					out error);
-				if (!ok)
-					throw GetException ((ErrorHTTPAuthentication)error.code);
-			} finally {
-				cfusername.Dispose ();
-				cfpassword.Dispose ();
-			}
-		}
-#else
 		public void ApplyCredentials (CFHTTPAuthentication auth, NetworkCredential credential)
 		{
 			if (auth.RequiresAccountDomain) {
@@ -405,7 +357,6 @@ namespace MonoMac.CoreServices {
 				password.Dispose ();
 			}
 		}
-#endif
 
 		public enum AuthenticationScheme {
 			Default,
@@ -451,36 +402,6 @@ namespace MonoMac.CoreServices {
 		extern static bool CFHTTPMessageApplyCredentialDictionary (IntPtr request, IntPtr auth,
 		                                                           IntPtr dict, out CFStreamError error);
 
-#if COREFX
-		public void ApplyCredentialDictionary (CFHTTPAuthentication auth, string userName, string password, string domain = null)
-		{
-			var keys = new NSString [3];
-			var values = new CFString [3];
-			keys [0] = _AuthenticationUsername;
-			keys [1] = _AuthenticationPassword;
-			keys [2] = _AuthenticationAccountDomain;
-			values [0] = (CFString)userName;
-			values [1] = (CFString)password;
-			values [2] = domain != null ? (CFString)domain : null;
-
-			var dict = CFDictionary.FromObjectsAndKeys (values, keys);
-
-			try {
-				CFStreamError error;
-				var ok = CFHTTPMessageApplyCredentialDictionary (
-					Handle, auth.Handle, dict.Handle, out error);
-				if (ok)
-					return;
-				throw GetException ((ErrorHTTPAuthentication)error.code);
-			} finally {
-				dict.Dispose ();
-				values [0].Dispose ();
-				values [1].Dispose ();
-				if (values [2] != null)
-					values [2].Dispose ();
-			}
-		}
-#else
 		public void ApplyCredentialDictionary (CFHTTPAuthentication auth, NetworkCredential credential)
 		{
 			var keys = new NSString [3];
@@ -509,7 +430,6 @@ namespace MonoMac.CoreServices {
 					values [2].Dispose ();
 			}
 		}
-#endif
 
 		#endregion
 

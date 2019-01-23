@@ -40,8 +40,8 @@ using nfloat = System.Single;
 #endif
 
 namespace MonoMac.CoreGraphics {
-	[StructLayout(LayoutKind.Sequential, Pack = 1)]
-	public struct CGSize {
+    [StructLayout(LayoutKind.Sequential)]
+    public struct CGSize {
 	
 		public static readonly CGSize Empty;
 		
@@ -81,8 +81,8 @@ namespace MonoMac.CoreGraphics {
 			return string.Format(CultureInfo.CurrentCulture, "{{Width={0},Height={1}}}", Width, Height);
 		}
 
-#if !COREFX		
-		public CGSize(System.Drawing.SizeF size)
+#if SDCONVERT
+        public CGSize(System.Drawing.SizeF size)
 		{
 			Width = size.Width;
 			Height = size.Height;

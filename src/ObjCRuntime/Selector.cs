@@ -83,15 +83,9 @@ namespace MonoMac.ObjCRuntime {
 			get { return handle; }
 		}
 
-#if COREFX
-		public string Name {
-			get { return Messaging.StringFromNativeUtf8 (sel_getName (handle)); }
-		}
-#else
 		public string Name {
 			get { return Marshal.PtrToStringAuto (sel_getName (handle)); }
 		}
-#endif
 
 		public static Selector Register (IntPtr handle) {
 			return new Selector (handle);

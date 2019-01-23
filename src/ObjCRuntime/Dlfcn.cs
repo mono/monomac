@@ -164,7 +164,7 @@ namespace MonoMac.ObjCRuntime {
 			Marshal.WriteIntPtr (indirect, value);
 		}
 
-		#if !COREFX
+		#if SDCONVERT
 		public static System.Drawing.SizeF GetSizeF (IntPtr handle, string symbol)
 		{
 			var indirect = dlsym (handle, symbol);

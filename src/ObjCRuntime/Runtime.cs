@@ -60,11 +60,7 @@ namespace MonoMac.ObjCRuntime {
 				else {
 					// The executing assembly location may be null if loaded from
 					// memory so the final fallback is the current directory
-#if COREFX
-					throw new InvalidOperationException("Cannot get base path of current app domain");
-#else					
 					basePath = Path.Combine (Environment.CurrentDirectory, "..");
-#endif
 				}
 			}
 
@@ -115,16 +111,11 @@ namespace MonoMac.ObjCRuntime {
 
 				foreach (Assembly a in AppDomain.CurrentDomain.GetAssemblies ()){
 
-#if COREFX
-					if (a.GetName() != this_assembly)
-						assemblies.Add (a);
-#else
 					var refs = a.GetReferencedAssemblies ();
 					foreach (var aref in refs){
 						if (aref == this_assembly)
 							assemblies.Add (a);
 					}
-#endif
 				}
 			}
 

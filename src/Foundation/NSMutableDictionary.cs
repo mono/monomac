@@ -186,9 +186,7 @@ namespace MonoMac.Foundation {
 			return new ShimEnumerator (this);
 		}
 
-#if !COREFX
 		[Serializable]
-#endif
 		class ShimEnumerator : IDictionaryEnumerator, IEnumerator {
 			IEnumerator<KeyValuePair<NSObject, NSObject>> e;
 

@@ -5,8 +5,10 @@
     <TargetFramework>net461</TargetFramework>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <EnableDefaultItems>False</EnableDefaultItems>
-    <DefineConstants>GENERATOR;MONOMAC;MONOMAC_BOOTSTRAP</DefineConstants>
-    <GeneratedOutputDir>$(ArtifactsDir)generated\</GeneratedOutputDir>
+    <BaseNamespace Condition="$(BaseNamespace) == ''">MonoMac.ObjCRuntime</BaseNamespace>
+    <BaseDefines Condition="$(BaseDefines) == ''">MONOMAC;MAC64</BaseDefines>
+    <DefineConstants>$(BaseDefines);GENERATOR;MONOMAC_BOOTSTRAP</DefineConstants>
+    <GeneratedOutputDir Condition="$(GeneratedOutputDir) == ''">$(ArtifactsDir)generated\</GeneratedOutputDir>
   </PropertyGroup>
 
   <ItemGroup>
@@ -35,17 +37,20 @@
     <Compile Include="btouch.cs" />
   </ItemGroup>
   
-  <Target Name="GenerateSources" AfterTargets="AfterBuild" Inputs="@(Apis)" Outputs="@(CurrentOutputs)">
+  <Target Name="GenerateSources">
+    <ItemGroup>
+      <BaseDefineItems Include="$(BaseDefines)" />
+    </ItemGroup>
     
     <PropertyGroup>
       <GeneratorParameters>$(GeneratorParameters) --compiler=csc -a --core -v</GeneratorParameters> 
       <GeneratorParameters>$(GeneratorParameters) "--sourceonly=$(GeneratedOutputDir)generated_sources"</GeneratorParameters> 
-      <GeneratorParameters>$(GeneratorParameters) -outdir=$(GeneratedOutputDir)</GeneratorParameters> 
+      <GeneratorParameters>$(GeneratorParameters) "-outdir=$(GeneratedOutputDir)"</GeneratorParameters> 
       <GeneratorParameters>$(GeneratorParameters) "-tmpdir=$(IntermediateOutputPath)"</GeneratorParameters> 
       <GeneratorParameters>$(GeneratorParameters) @(Apis-&gt;'%(Identity)', ' ')</GeneratorParameters> 
-      <GeneratorParameters>$(GeneratorParameters) -d=MONOMAC -d=MAC64</GeneratorParameters> 
+      <GeneratorParameters>$(GeneratorParameters) @(BaseDefineItems-&gt;'-d=%(Identity)', ' ')</GeneratorParameters> 
       <GeneratorParameters>$(GeneratorParameters) "--baselib=$(TargetDir)core.dll"</GeneratorParameters>
-      <GeneratorParameters>$(GeneratorParameters) --ns=MonoMac.ObjCRuntime</GeneratorParameters>
+      <GeneratorParameters>$(GeneratorParameters) "--ns=$(BaseNamespace)"</GeneratorParameters>
       
     </PropertyGroup>
     <Exec Command="$(TargetPath) $(GeneratorParameters)" />

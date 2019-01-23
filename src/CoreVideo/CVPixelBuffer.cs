@@ -78,9 +78,9 @@ namespace MonoMac.CoreVideo {
 		[DllImport (Constants.CoreVideoLibrary)]
 		extern static CVReturn CVPixelBufferCreate (IntPtr allocator, IntPtr width, IntPtr height, CVPixelFormatType pixelFormatType, IntPtr pixelBufferAttributes, IntPtr pixelBufferOut);
 
-#if !COREFX
+#if SDCONVERT
 		public CVPixelBuffer (System.Drawing.Size size, CVPixelFormatType pixelFormat)
-			: this (size.Width, size.Height, pixelFormat, null)
+			: this (size.Width, size.Height, pixelFormat, (NSDictionary)null)
 		{
 		}
 
@@ -88,12 +88,16 @@ namespace MonoMac.CoreVideo {
 			: this (size.Width, size.Height, pixelFormatType, attributes == null ? null : attributes.Dictionary)
 		{
 		}
-#else
+#endif
+		public CVPixelBuffer (int width, int height, CVPixelFormatType pixelFormatType)
+			: this (width, height, pixelFormatType, (NSDictionary)null)
+		{
+		}
+		
 		public CVPixelBuffer (int width, int height, CVPixelFormatType pixelFormatType, CVPixelBufferAttributes attributes)
 			: this (width, height, pixelFormatType, attributes == null ? null : attributes.Dictionary)
 		{
 		}
-#endif
 
 		[Advice ("Use constructor with CVPixelBufferAttributes")]
 		public CVPixelBuffer (int width, int height, CVPixelFormatType pixelFormatType, NSDictionary pixelBufferAttributes)

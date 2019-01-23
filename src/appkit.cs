@@ -1881,19 +1881,19 @@ namespace MonoMac.AppKit {
 	[BaseType (typeof (NSImageRep))]
 	[DisableDefaultCtor] // An uncaught exception was raised: -[NSCachedImageRep init]: unrecognized selector sent to instance 0x14890e0
 	public interface NSCachedImageRep {
-		[Deprecated (10, 6)]
+		[Deprecated (PlatformName.MacOSX, 10, 6)]
 		[Export ("initWithIdentifier:")]
 	   	IntPtr Constructor (NSWindow win, CGRect rect);
 		
-		[Deprecated (10, 6)]
+		[Deprecated (PlatformName.MacOSX, 10, 6)]
 		[Export ("initWithSize:depth:separate:alpha:")]
 		IntPtr Constructor (CGSize size, NSWindowDepth depth, bool separate, bool alpha);
 
-		[Deprecated (10, 6)]
+		[Deprecated (PlatformName.MacOSX, 10, 6)]
 		[Export ("window")]
 		NSWindow Window { get; }
 
-		[Deprecated (10, 6)]
+		[Deprecated (PlatformName.MacOSX, 10, 6)]
 		[Export ("rect")]
 		CGRect Rectangle { get; }
 	}
@@ -2388,9 +2388,11 @@ namespace MonoMac.AppKit {
 		bool AcceptDrop (NSCollectionView collectionView, NSDraggingInfo draggingInfo, nint index, NSCollectionViewDropOperation dropOperation);
 	}
 	
+    [ThreadSafe]
 	[BaseType (typeof (NSObject))]
 	[DisableDefaultCtor] // -colorSpaceName not valid for the NSColor <NSColor: 0x1b94780>; need to first convert colorspace.
-	public partial interface NSColor {
+	public interface NSColor
+	{
 		[Static]
 		[Export ("colorWithCalibratedWhite:alpha:")]
 		NSColor FromCalibratedWhite (nfloat white, nfloat alpha);
@@ -2426,6 +2428,18 @@ namespace MonoMac.AppKit {
 		[Static]
 		[Export ("colorWithColorSpace:components:count:"), Internal]
 		NSColor _FromColorSpace (NSColorSpace space, IntPtr components, nint numberOfComponents);
+
+		[Mac (10,9)]
+		[Static, Export ("colorWithWhite:alpha:")]
+		NSColor FromWhite (nfloat white, nfloat alpha);
+
+		[Mac (10,9)]
+		[Static, Export ("colorWithRed:green:blue:alpha:")]
+		NSColor FromRgba (nfloat red, nfloat green, nfloat blue, nfloat alpha);
+
+		[Mac (10,9)]
+		[Static, Export ("colorWithHue:saturation:brightness:alpha:")]
+		NSColor FromHsba (nfloat hue, nfloat saturation, nfloat brightness, nfloat alpha);
 		
 		[Static]
 		[Export ("blackColor")]
@@ -2489,10 +2503,12 @@ namespace MonoMac.AppKit {
 
 		[Static]
 		[Export ("controlShadowColor")]
+		[Advice ("Use a context specific color, 'SeparatorColor'")]
 		NSColor ControlShadow { get; }
 
 		[Static]
 		[Export ("controlDarkShadowColor")]
+		[Advice ("Use a context specific color, 'SeparatorColor'")]
 		NSColor ControlDarkShadow { get; }
 
 		[Static]
@@ -2501,10 +2517,12 @@ namespace MonoMac.AppKit {
 
 		[Static]
 		[Export ("controlHighlightColor")]
+		[Advice ("Use a context specific color, 'SeparatorColor'")]
 		NSColor ControlHighlight { get; }
 
 		[Static]
 		[Export ("controlLightHighlightColor")]
+		[Advice ("Use a context specific color, 'SeparatorColor'")]
 		NSColor ControlLightHighlight { get; }
 
 		[Static]
@@ -2520,6 +2538,7 @@ namespace MonoMac.AppKit {
 		NSColor SelectedControl { get; }
 
 		[Static]
+		[Deprecated (PlatformName.MacOSX, message: "Use 'SelectedContentBackgroundColor' instead.")]
 		[Export ("secondarySelectedControlColor")]
 		NSColor SecondarySelectedControl { get; }
 
@@ -2561,18 +2580,22 @@ namespace MonoMac.AppKit {
 
 		[Static]
 		[Export ("scrollBarColor")]
+		[Advice ("Use 'NSScroller' instead")]
 		NSColor ScrollBar { get; }
 
 		[Static]
 		[Export ("knobColor")]
+		[Advice ("Use 'NSScroller' instead")]
 		NSColor Knob { get; }
 
 		[Static]
 		[Export ("selectedKnobColor")]
+		[Advice ("Use 'NSScroller' instead")]
 		NSColor SelectedKnob { get; }
 
 		[Static]
 		[Export ("windowFrameColor")]
+		[Advice ("Use 'NSVisualEffectMaterial.Title' instead")]
 		NSColor WindowFrame { get; }
 
 		[Static]
@@ -2581,6 +2604,7 @@ namespace MonoMac.AppKit {
 
 		[Static]
 		[Export ("selectedMenuItemColor")]
+		[Advice ("Use 'NSVisualEffectMaterial.Selection' instead")]
 		NSColor SelectedMenuItem { get; }
 
 		[Static]
@@ -2597,6 +2621,7 @@ namespace MonoMac.AppKit {
 
 		[Static]
 		[Export ("headerColor")]
+		[Advice ("Use 'NSVisualEffectMaterial.HeaderView' instead")]
 		NSColor Header { get; }
 
 		[Static]
@@ -2604,6 +2629,7 @@ namespace MonoMac.AppKit {
 		NSColor HeaderText { get; }
 
 		[Static]
+		[Deprecated (PlatformName.MacOSX, message : "Use 'SelectedContentBackgroundColor' instead.")]
 		[Export ("alternateSelectedControlColor")]
 		NSColor AlternateSelectedControl { get; }
 
@@ -2611,12 +2637,8 @@ namespace MonoMac.AppKit {
 		[Export ("alternateSelectedControlTextColor")]
 		NSColor AlternateSelectedControlText { get; }
 
-		[MountainLion]
 		[Static]
-		[Export ("underPageBackgroundColor")]
-		NSColor UnderPageBackground { get; }
-
-		[Static]
+		[Advice ("Use 'AlternatingContentBackgroundColors' instead.")]
 		[Export ("controlAlternatingRowBackgroundColors")]
 		NSColor [] ControlAlternatingRowBackgroundColors ();
 
@@ -2628,6 +2650,7 @@ namespace MonoMac.AppKit {
 
 		[Static]
 		[Export ("colorForControlTint:")]
+		[Advice ("Use 'NSColor.ControlAccentColor' instead.")]
 		NSColor FromControlTint (NSControlTint controlTint);
 
 		[Static]
@@ -2644,12 +2667,15 @@ namespace MonoMac.AppKit {
 		void SetStroke ();
 
 		[Export ("colorSpaceName")]
+		[Deprecated (PlatformName.MacOSX, 10, 14, message: "Use 'Type' and 'NSColorType' instead.")]
 		string ColorSpaceName { get; }
 
 		[Export ("colorUsingColorSpaceName:")]
+		[Deprecated (PlatformName.MacOSX, 10, 14, message: "Use 'GetColor' or 'UsingColorSpace' instead.")]
 		NSColor UsingColorSpace ([NullAllowed] string colorSpaceName);
 
 		[Export ("colorUsingColorSpaceName:device:")]
+		[Deprecated (PlatformName.MacOSX, 10, 14, message: "Use 'GetColor' or 'UsingColorSpace' instead.")]
 		NSColor UsingColorSpace ([NullAllowed] string colorSpaceName, [NullAllowed] NSDictionary deviceDescription);
 
 		[Export ("colorUsingColorSpace:")]
@@ -2661,15 +2687,19 @@ namespace MonoMac.AppKit {
 		[Export ("colorWithAlphaComponent:")]
 		NSColor ColorWithAlphaComponent (nfloat alpha);
 
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		[Export ("catalogNameComponent")]
 		string CatalogNameComponent { get; }
 
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		[Export ("colorNameComponent")]
 		string ColorNameComponent { get; }
 
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		[Export ("localizedCatalogNameComponent")]
 		string LocalizedCatalogNameComponent { get; }
 
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		[Export ("localizedColorNameComponent")]
 		string LocalizedColorNameComponent { get; }
 
@@ -2718,9 +2748,11 @@ namespace MonoMac.AppKit {
 		[Export ("getCyan:magenta:yellow:black:alpha:")]
 		void GetCmyka (out nfloat cyan, out nfloat magenta, out nfloat yellow, out nfloat black, out nfloat alpha);
 
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		[Export ("colorSpace")]
 		NSColorSpace ColorSpace { get; }
 
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		[Export ("numberOfComponents")]
 		nint ComponentCount { get; }
 
@@ -2741,12 +2773,12 @@ namespace MonoMac.AppKit {
 		[Export ("colorWithPatternImage:")]
 		NSColor FromPatternImage (NSImage image);
 
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		[Export ("patternImage")]
 		NSImage PatternImage { get; }
 
-		[MountainLion]
-		[Export ("CGColor")]
-		CGColor CGColor { get; }
+		[Export ("CGColor")]
+		CGColor CGColor { get; }
 
 		[Export ("drawSwatchInRect:")]
 		void DrawSwatchInRect (CGRect rect);
@@ -2759,10 +2791,155 @@ namespace MonoMac.AppKit {
 		[Export ("colorWithCIColor:")]
 		NSColor FromCIColor (CIColor color);
 
+		[Mac (10,10)]
+		[Static, Export ("labelColor")]
+		NSColor LabelColor { get; }
+
+		[Mac (10,10)]
+		[Static, Export ("secondaryLabelColor")]
+		NSColor SecondaryLabelColor { get; }
+
+		[Mac (10,10)]
+		[Static, Export ("tertiaryLabelColor")]
+		NSColor TertiaryLabelColor { get; } 
+
+		[Mac (10,10)]
+		[Static, Export ("quaternaryLabelColor")]
+		NSColor QuaternaryLabelColor { get; }
+
+		[Mac (10, 10)]
+		[Static, Export ("linkColor", ArgumentSemantic.Strong)]
+		NSColor LinkColor { get; }
+		
+		[Mac (10,12)]
 		[Static]
-		[Export ("colorWithCGColor:")]
-		[MountainLion]
-		NSColor FromCGColor (CGColor color);
+		[Export ("colorWithDisplayP3Red:green:blue:alpha:")]
+		NSColor FromDisplayP3 (nfloat red, nfloat green, nfloat blue, nfloat alpha);
+
+		[Mac (10,12)]
+		[Static]
+		[Export ("colorWithColorSpace:hue:saturation:brightness:alpha:")]
+		NSColor FromColor (NSColorSpace space, nfloat hue, nfloat saturation, nfloat brightness, nfloat alpha);
+
+		[Mac (10, 12, 2)]
+		[Static]
+		[Export ("scrubberTexturedBackgroundColor", ArgumentSemantic.Strong)]
+		NSColor ScrubberTexturedBackgroundColor { get; }
+
+		[Mac (10,13)]
+		[Static]
+		[Export ("colorNamed:bundle:")]
+		[return: NullAllowed]
+		NSColor FromName (string name, [NullAllowed] NSBundle bundle);
+
+		[Mac (10,13)]
+		[Static]
+		[Export ("colorNamed:")]
+		[return: NullAllowed]
+		NSColor FromName (string name);
+
+		[Mac (10, 13)]
+		[Export ("type")]
+		NSColorType Type { get; }
+
+		[Mac (10,13)]
+		[Export ("colorUsingType:")]
+		[return: NullAllowed]
+		NSColor GetColor (NSColorType type);
+
+		[Mac (10, 10)]
+		[Static]
+		[Export ("systemRedColor", ArgumentSemantic.Strong)]
+		NSColor SystemRedColor { get; }
+
+		[Mac (10, 10)]
+		[Static]
+		[Export ("systemGreenColor", ArgumentSemantic.Strong)]
+		NSColor SystemGreenColor { get; }
+
+		[Mac (10, 10)]
+		[Static]
+		[Export ("systemBlueColor", ArgumentSemantic.Strong)]
+		NSColor SystemBlueColor { get; }
+
+		[Mac (10, 10)]
+		[Static]
+		[Export ("systemOrangeColor", ArgumentSemantic.Strong)]
+		NSColor SystemOrangeColor { get; }
+
+		[Mac (10, 10)]
+		[Static]
+		[Export ("systemYellowColor", ArgumentSemantic.Strong)]
+		NSColor SystemYellowColor { get; }
+
+		[Mac (10, 10)]
+		[Static]
+		[Export ("systemBrownColor", ArgumentSemantic.Strong)]
+		NSColor SystemBrownColor { get; }
+
+		[Mac (10, 10)]
+		[Static]
+		[Export ("systemPinkColor", ArgumentSemantic.Strong)]
+		NSColor SystemPinkColor { get; }
+
+		[Mac (10, 10)]
+		[Static]
+		[Export ("systemPurpleColor", ArgumentSemantic.Strong)]
+		NSColor SystemPurpleColor { get; }
+
+		[Mac (10, 10)]
+		[Static]
+		[Export ("systemGrayColor", ArgumentSemantic.Strong)]
+		NSColor SystemGrayColor { get; }
+
+		[Mac (10, 14, onlyOn64: true)]
+		[Static]
+		[Export ("separatorColor", ArgumentSemantic.Strong)]
+		NSColor SeparatorColor { get; }
+
+		[Mac (10, 14, onlyOn64: true)]
+		[Static]
+		[Export ("selectedContentBackgroundColor", ArgumentSemantic.Strong)]
+		NSColor SelectedContentBackgroundColor { get; }
+
+		[Mac (10, 14, onlyOn64: true)]
+		[Static]
+		[Export ("unemphasizedSelectedContentBackgroundColor", ArgumentSemantic.Strong)]
+		NSColor UnemphasizedSelectedContentBackgroundColor { get; }
+
+		[Mac (10, 14, onlyOn64: true)]
+		[Static]
+		[Export ("alternatingContentBackgroundColors", ArgumentSemantic.Strong)]
+		NSColor[] AlternatingContentBackgroundColors { get; }
+
+		[Mac (10, 14, onlyOn64: true)]
+		[Static]
+		[Export ("unemphasizedSelectedTextBackgroundColor", ArgumentSemantic.Strong)]
+		NSColor UnemphasizedSelectedTextBackgroundColor { get; }
+
+		[Mac (10, 14, onlyOn64: true)]
+		[Static]
+		[Export ("unemphasizedSelectedTextColor", ArgumentSemantic.Strong)]
+		NSColor UnemphasizedSelectedTextColor { get; }
+
+		[Mac (10, 14, onlyOn64: true)]
+		[Static]
+		[Export ("controlAccentColor", ArgumentSemantic.Strong)]
+		NSColor ControlAccentColor { get; }
+
+		[Mac (10,14, onlyOn64: true)]
+		[Export ("colorWithSystemEffect:")]
+		NSColor FromSystemEffect (NSColorSystemEffect systemEffect);
+
+		[Mac (10, 13)]
+		[Static]
+		[Export ("findHighlightColor", ArgumentSemantic.Strong)]
+		NSColor FindHighlightColor { get; }
+
+		[Mac (10, 10)]
+		[Static]
+		[Export ("placeholderTextColor", ArgumentSemantic.Strong)]
+		NSColor PlaceholderTextColor { get; }
 	}
 
 	[BaseType (typeof (NSObject))]
@@ -4339,7 +4516,7 @@ namespace MonoMac.AppKit {
 		[Export ("ignoreModifierKeysWhileDragging"), DefaultValue (false)]
 		bool IgnoreModifierKeysWhileDragging { get; }
 
-		[Deprecated (10, 1, "use DraggedImageEndedAtOperation() instead")]
+		[Deprecated (PlatformName.MacOSX, 10, 1, message: "use DraggedImageEndedAtOperation() instead")]
 		[Export ("draggedImage:endedAt:deposited:")]
 		void DraggedImageEndedAtDeposited (NSImage image, CGPoint screenPoint, bool deposited);
 	}
@@ -6476,24 +6653,24 @@ namespace MonoMac.AppKit {
 		bool CanChooseFiles { get; set; }
 
 		// Deprecated methods, but needed to run on pre 10.6 systems
-		[Deprecated (10, 6, "use Uris")]
+		[Deprecated (PlatformName.MacOSX, 10, 6, message: "use Uris")]
 		[Export ("filenames")]
 		string [] Filenames { get; }
 
 		//runModalForWindows:Completeion
-		[Deprecated (10, 6, "use runModalForWindow:")]
+		[Deprecated (PlatformName.MacOSX, 10, 6, message: "use runModalForWindow:")]
 		[Export ("beginSheetForDirectory:file:types:modalForWindow:modalDelegate:didEndSelector:contextInfo:")]
 		void BeginSheet ([NullAllowed] string directory, [NullAllowed] string fileName, [NullAllowed] string [] fileTypes, [NullAllowed] NSWindow modalForWindow, [NullAllowed] NSObject modalDelegate, [NullAllowed] Selector didEndSelector, IntPtr contextInfo);
 
-		[Deprecated (10, 6, "use runWithCompletionHandler:")]
+		[Deprecated (PlatformName.MacOSX, 10, 6, message: "use runWithCompletionHandler:")]
 		[Export ("beginForDirectory:file:types:modelessDelegate:didEndSelector:contextInfo:")]
 		void Begin ([NullAllowed] string directory, [NullAllowed] string fileName, [NullAllowed] string [] fileTypes, [NullAllowed] NSObject modelessDelegate, [NullAllowed] Selector didEndSelector, IntPtr contextInfo);
 		
-		[Deprecated (10, 6, "use runModal:")]
+		[Deprecated (PlatformName.MacOSX, 10, 6, message: "use runModal:")]
 		[Export ("runModalForDirectory:file:types:")]
 		nint RunModal ([NullAllowed] string directory, [NullAllowed] string fileName, [NullAllowed] string [] types);
 
-		[Deprecated (10, 6, "use runModal:")]
+		[Deprecated (PlatformName.MacOSX, 10, 6, message: "use runModal:")]
 		[Export ("runModalForTypes:")]
 		nint RunModal (string [] types);
 	}
@@ -6523,19 +6700,19 @@ namespace MonoMac.AppKit {
 		[Export ("panelSelectionDidChange:"), EventArgs ("NSOpenSaveSelectionChanged")]
 		void SelectionDidChange (NSSavePanel panel);
 
-		[Deprecated (10, 6, "use ValidateUrlError")]
+		[Deprecated (PlatformName.MacOSX, 10, 6, message: "use ValidateUrlError")]
 		[Export ("panel:isValidFilename:"), DelegateName ("NSOpenSaveFilename"), DefaultValue (true)]
 		bool IsValidFilename (NSSavePanel panel, string fileName);
 
-		[Deprecated (10, 6, "Use DidChangeToDirectoryUrl instead")]
+		[Deprecated (PlatformName.MacOSX, 10, 6, message: "Use DidChangeToDirectoryUrl instead")]
 		[Export ("panel:directoryDidChange:"), EventArgs ("NSOpenSaveFilename")]
 		void DirectoryDidChange (NSSavePanel panel, string path);
 
-		[Deprecated (10, 6, "this method is obsolete and does not control sorting order")]
+		[Deprecated (PlatformName.MacOSX, 10, 6, message: "this method is obsolete and does not control sorting order")]
 		[Export ("panel:compareFilename:with:caseSensitive"), DelegateName ("NSOpenSaveCompare"), DefaultValue (NSComparisonResult.Same)]
 		NSComparisonResult CompareFilenames (NSSavePanel panel, string name1, string name2, bool caseSensitive);
 
-		[Deprecated (10, 6, "use ShouldEnableUrl")]
+		[Deprecated (PlatformName.MacOSX, 10, 6, message: "use ShouldEnableUrl")]
 		[Export ("panel:shouldShowFilename:"), DelegateName ("NSOpenSaveFilename"), DefaultValue (true)]
 		bool ShouldShowFilename (NSSavePanel panel, string filename);
 	}
@@ -6618,23 +6795,23 @@ namespace MonoMac.AppKit {
 		[Wrap ("WeakDataSource")]
 		NSOutlineViewDataSource DataSource  { get; set; }
 		
-		[Introduced (10,7)]
+		[Introduced (PlatformName.MacOSX, 10,7)]
 		[Export ("userInterfaceLayoutDirection")]
 		NSUserInterfaceLayoutDirection UserInterfaceLayoutDirection { get; set; }
 
-		[Introduced (10, 10)]
+		[Introduced (PlatformName.MacOSX, 10, 10)]
 		[Export ("numberOfChildrenOfItem:")]
 		nint NumberOfChildren ([NullAllowed] NSObject item);
 
-		[Introduced (10,10)]
+		[Introduced (PlatformName.MacOSX, 10,10)]
 		[Export ("child:ofItem:")]
 		NSObject GetChild (nint index, [NullAllowed] NSObject parentItem);
 
-		[Introduced (10,11)]
+		[Introduced (PlatformName.MacOSX, 10,11)]
 		[Export ("childIndexForItem:")]
 		nint GetChildIndex (NSObject item);
 
-		[Introduced (10, 12)]
+		[Introduced (PlatformName.MacOSX, 10, 12)]
 		[Export ("stronglyReferencesItems")]
 		bool StronglyReferencesItems { get; set; }		
 	}
@@ -6993,7 +7170,7 @@ namespace MonoMac.AppKit {
 		[Export ("drawInRect:fromRect:operation:fraction:")]
 		void DrawInRect (CGRect dstRect, CGRect srcRect, NSCompositingOperation operation, nfloat delta);
 		
-		[Deprecated (10, 6, "use DrawInRect with respectContextIsFlipped instead"), Export ("flipped")]
+		[Deprecated (PlatformName.MacOSX, 10, 6, message: "use DrawInRect with respectContextIsFlipped instead"), Export ("flipped")]
 		bool Flipped { [Bind ("isFlipped")] get; set; }
 
 		[Internal, Field ("NSImageNameQuickLookTemplate")]
@@ -8329,132 +8506,132 @@ namespace MonoMac.AppKit {
 		// Pasteboard data types for 10.5 (deprecated)
 
 		[Field ("NSStringPboardType")]
-		[Deprecated (10, 6)]
+		[Deprecated (PlatformName.MacOSX, 10, 6)]
 		NSString NSStringType{ get; }
 		
 		[Field ("NSFilenamesPboardType")]
-		[Deprecated (10, 6)]
+		[Deprecated (PlatformName.MacOSX, 10, 6)]
 		NSString NSFilenamesType{ get; }
 		
 		[Field ("NSPostScriptPboardType")]
-		[Deprecated (10, 6)]
+		[Deprecated (PlatformName.MacOSX, 10, 6)]
 		NSString NSPostScriptType{ get; }
         
 		[Field ("NSTIFFPboardType")]
-		[Deprecated (10, 6)]
+		[Deprecated (PlatformName.MacOSX, 10, 6)]
 		NSString NSTiffType{ get; }
 		
 		[Field ("NSRTFPboardType")]
-		[Deprecated (10, 6)]
+		[Deprecated (PlatformName.MacOSX, 10, 6)]
 		NSString NSRtfType{ get; }
 		
 		[Field ("NSTabularTextPboardType")]
-		[Deprecated (10, 6)]
+		[Deprecated (PlatformName.MacOSX, 10, 6)]
 		NSString NSTabularTextType{ get; }
 		
 		[Field ("NSFontPboardType")]
-		[Deprecated (10, 6)]
+		[Deprecated (PlatformName.MacOSX, 10, 6)]
 		NSString NSFontType{ get; }
 		
 		[Field ("NSRulerPboardType")]
-		[Deprecated (10, 6)]
+		[Deprecated (PlatformName.MacOSX, 10, 6)]
 		NSString NSRulerType{ get; }
 		
 		[Field ("NSFileContentsPboardType")]
-		[Deprecated (10, 6)]
+		[Deprecated (PlatformName.MacOSX, 10, 6)]
 		NSString NSFileContentsType{ get; }
 		
 		[Field ("NSColorPboardType")]
-		[Deprecated (10, 6)]
+		[Deprecated (PlatformName.MacOSX, 10, 6)]
 		NSString NSColorType{ get; }
 		
 		[Field ("NSRTFDPboardType")]
-		[Deprecated (10, 6)]
+		[Deprecated (PlatformName.MacOSX, 10, 6)]
 		NSString NSRtfdType{ get; }
 		
 		[Field ("NSHTMLPboardType")]
-		[Deprecated (10, 6)]
+		[Deprecated (PlatformName.MacOSX, 10, 6)]
 		NSString NSHtmlType{ get; }
 		
 		[Field ("NSPICTPboardType")]
-		[Deprecated (10, 6)]
+		[Deprecated (PlatformName.MacOSX, 10, 6)]
 		NSString NSPictType{ get; }
 		
 		[Field ("NSURLPboardType")]
-		[Deprecated (10, 6)]
+		[Deprecated (PlatformName.MacOSX, 10, 6)]
 		NSString NSUrlType{ get; }
 		
 		[Field ("NSPDFPboardType")]
-		[Deprecated (10, 6)]
+		[Deprecated (PlatformName.MacOSX, 10, 6)]
 		NSString NSPdfType{ get; }
 		
 		[Field ("NSVCardPboardType")]
-		[Deprecated (10, 6)]
+		[Deprecated (PlatformName.MacOSX, 10, 6)]
 		NSString NSVCardType{ get; }
 		
 		[Field ("NSFilesPromisePboardType")]
-		[Deprecated (10, 6)]
+		[Deprecated (PlatformName.MacOSX, 10, 6)]
 		NSString NSFilesPromiseType{ get; }
 		
 		[Field ("NSMultipleTextSelectionPboardType")]
-		[Deprecated (10, 6)]
+		[Deprecated (PlatformName.MacOSX, 10, 6)]
 		NSString NSMultipleTextSelectionType{ get; }
 
 		// Pasteboard data types 10.6+
 		[Field ("NSPasteboardTypeString")]
-		[Introduced (10, 6)]
+		[Introduced (PlatformName.MacOSX, 10, 6)]
 		NSString NSPasteboardTypeString { get; }
 		
 		[Field ("NSPasteboardTypePDF")]
-		[Introduced (10, 6)]
+		[Introduced (PlatformName.MacOSX, 10, 6)]
 		NSString NSPasteboardTypePDF { get; }
 		
 		[Field ("NSPasteboardTypeTIFF")]
-		[Introduced (10, 6)]
+		[Introduced (PlatformName.MacOSX, 10, 6)]
 		NSString NSPasteboardTypeTIFF { get; }
 		
 		[Field ("NSPasteboardTypePNG")]
-		[Introduced (10, 6)]
+		[Introduced (PlatformName.MacOSX, 10, 6)]
 		NSString NSPasteboardTypePNG { get; }
 		
 		[Field ("NSPasteboardTypeRTF")]
-		[Introduced (10, 6)]
+		[Introduced (PlatformName.MacOSX, 10, 6)]
 		NSString NSPasteboardTypeRTF { get; }
 		
 		[Field ("NSPasteboardTypeRTFD")]
-		[Introduced (10, 6)]
+		[Introduced (PlatformName.MacOSX, 10, 6)]
 		NSString NSPasteboardTypeRTFD { get; }
 
 		[Field ("NSPasteboardTypeHTML")]
-		[Introduced (10, 6)]
+		[Introduced (PlatformName.MacOSX, 10, 6)]
 		NSString NSPasteboardTypeHTML { get; }
 
 		[Field ("NSPasteboardTypeTabularText")]
-		[Introduced (10, 6)]
+		[Introduced (PlatformName.MacOSX, 10, 6)]
 		NSString NSPasteboardTypeTabularText { get; }
 
 		[Field ("NSPasteboardTypeFont")]
-		[Introduced (10, 6)]
+		[Introduced (PlatformName.MacOSX, 10, 6)]
 		NSString NSPasteboardTypeFont { get; }
 
 		[Field ("NSPasteboardTypeRuler")]
-		[Introduced (10, 6)]
+		[Introduced (PlatformName.MacOSX, 10, 6)]
 		NSString NSPasteboardTypeRuler { get; }
 
 		[Field ("NSPasteboardTypeColor")]
-		[Introduced (10, 6)]
+		[Introduced (PlatformName.MacOSX, 10, 6)]
 		NSString NSPasteboardTypeColor { get; }
 
 		[Field ("NSPasteboardTypeSound")]
-		[Introduced (10, 6)]
+		[Introduced (PlatformName.MacOSX, 10, 6)]
 		NSString NSPasteboardTypeSound { get; }
 
 		[Field ("NSPasteboardTypeMultipleTextSelection")]
-		[Introduced (10, 6)]
+		[Introduced (PlatformName.MacOSX, 10, 6)]
 		NSString NSPasteboardTypeMultipleTextSelection { get; }
 
 		[Field ("NSPasteboardTypeFindPanelSearchOptions")]
-		[Introduced (10, 6)]
+		[Introduced (PlatformName.MacOSX, 10, 6)]
 		NSString NSPasteboardTypeFindPanelSearchOptions { get; }
 		
 
@@ -9706,23 +9883,23 @@ namespace MonoMac.AppKit {
 		[Export ("showsHiddenFiles")]
 		bool ShowsHiddenFiles { get; set; }
 
-		[Deprecated (10, 6, "use Url instead")]
+		[Deprecated (PlatformName.MacOSX, 10, 6, message: "use Url instead")]
 		[Export ("filename")]
 		string Filename { get; }
 
-		[Deprecated (10, 6, "use DirectoryUrl instead")]
+		[Deprecated (PlatformName.MacOSX, 10, 6, message: "use DirectoryUrl instead")]
 		[Export ("directory")]
 		string Directory { get; set; }
 
-		[Deprecated (10, 6, "use AllowedFileTypes instead")]
+		[Deprecated (PlatformName.MacOSX, 10, 6, message: "use AllowedFileTypes instead")]
 		[Export ("requiredFileType")]
 		string RequiredFileType { get; set; }
 
-		[Deprecated (10, 6, "use Begin with the callback")]
+		[Deprecated (PlatformName.MacOSX, 10, 6, message: "use Begin with the callback")]
 		[Export ("beginSheetForDirectory:file:modalForWindow:modalDelegate:didEndSelector:contextInfo:")]
 		void Begin (string directory, string filename, NSWindow docWindow, NSObject modalDelegate, Selector selector, IntPtr context);
 
-		[Deprecated (10, 6, "use RunModal without parameters instead")]
+		[Deprecated (PlatformName.MacOSX, 10, 6, message: "use RunModal without parameters instead")]
 		[Export ("runModalForDirectory:file:")]
 		nint RunModal ([NullAllowed] string directory, [NullAllowed]  string filename);
 	}
@@ -10794,61 +10971,61 @@ namespace MonoMac.AppKit {
 		[Export ("length")]
 		nfloat Length { get; set; }
 
-		[Deprecated (10, 10, "Use Button instead")]
+		[Deprecated (PlatformName.MacOSX, 10, 10, message: "Use Button instead")]
 		[Export ("action"), NullAllowed]
 		Selector Action { get; set; }
 
-		[Deprecated (10, 10, "Use Button instead")]
+		[Deprecated (PlatformName.MacOSX, 10, 10, message: "Use Button instead")]
 		[Export ("sendActionOn:")]
 		nint SendActionOn (NSTouchPhase mask);
 
 		[Export ("popUpStatusItemMenu:")]
 		void PopUpStatusItemMenu (NSMenu menu);
 
-		[Deprecated (10, 10, "Use Button instead")]
+		[Deprecated (PlatformName.MacOSX, 10, 10, message: "Use Button instead")]
 		[Export ("drawStatusBarBackgroundInRect:withHighlight:")]
 		void DrawStatusBarBackground (CGRect rect, bool highlight);
 
 		//Detected properties
-		[Deprecated (10, 10, "Use Button instead")]
+		[Deprecated (PlatformName.MacOSX, 10, 10, message: "Use Button instead")]
 		[Export ("doubleAction")]
 		Selector DoubleAction { get; set; }
 
 		[Export ("target"), NullAllowed]
 		NSObject Target { get; set; }
 
-		[Deprecated (10, 10, "Use Button instead")]
+		[Deprecated (PlatformName.MacOSX, 10, 10, message: "Use Button instead")]
 		[Export ("title")]
 		string Title { get; set; }
 
-		[Deprecated (10, 10, "Use Button instead")]
+		[Deprecated (PlatformName.MacOSX, 10, 10, message: "Use Button instead")]
 		[Export ("attributedTitle")]
 		NSAttributedString AttributedTitle { get; set; }
 
-		[Deprecated (10, 10, "Use Button instead")]
+		[Deprecated (PlatformName.MacOSX, 10, 10, message: "Use Button instead")]
 		[Export ("image")]
 		NSImage Image { get; set; }
 
-		[Deprecated (10, 10, "Use Button instead")]
+		[Deprecated (PlatformName.MacOSX, 10, 10, message: "Use Button instead")]
 		[Export ("alternateImage")]
 		NSImage AlternateImage { get; set; }
 
 		[Export ("menu")]
 		NSMenu Menu { get; set; }
 
-		[Deprecated (10, 10, "Use Button instead")]
+		[Deprecated (PlatformName.MacOSX, 10, 10, message: "Use Button instead")]
 		[Export ("enabled")]
 		bool Enabled { [Bind ("isEnabled")]get; set; }
 
-		[Deprecated (10, 10, "Use Button instead")]
+		[Deprecated (PlatformName.MacOSX, 10, 10, message: "Use Button instead")]
 		[Export ("toolTip")]
 		string ToolTip { get; set; }
 
-		[Deprecated (10, 10, "Use Button instead")]
+		[Deprecated (PlatformName.MacOSX, 10, 10, message: "Use Button instead")]
 		[Export ("highlightMode")]
 		bool HighlightMode { get; set; }
 
-		[Deprecated (10, 10, "Use Button instead")]
+		[Deprecated (PlatformName.MacOSX, 10, 10, message: "Use Button instead")]
 		[Export ("view")]
 		NSView View { get; set; }
 
@@ -11574,7 +11751,7 @@ namespace MonoMac.AppKit {
 		[Lion, Export ("exerciseAmbiguityInLayout")]
 		void ExerciseAmbiguityInLayout ();
 
-		[Deprecated (10, 8)]
+		[Deprecated (PlatformName.MacOSX, 10, 8)]
 		[Export ("performMnemonic:")]
 		bool PerformMnemonic (string mnemonic);
 

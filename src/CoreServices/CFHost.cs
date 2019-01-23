@@ -67,7 +67,6 @@ namespace MonoMac.CoreServices {
 			}
 		}
 
-#if !COREFX
 		[DllImport (Constants.CFNetworkLibrary)]
 		extern static IntPtr CFHostCreateWithAddress (IntPtr allocator, IntPtr address);
 
@@ -76,7 +75,6 @@ namespace MonoMac.CoreServices {
 			using (var data = new CFSocketAddress (endpoint))
 				return new CFHost (CFHostCreateWithAddress (IntPtr.Zero, data.Handle));
 		}
-#endif
 
 		[DllImport (Constants.CFNetworkLibrary)]
 		extern static IntPtr CFHostCreateWithName (IntPtr allocator, IntPtr name);

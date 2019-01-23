@@ -85,11 +85,7 @@ namespace MonoMac.Security {
 			if (certificate == null)
 				throw new ArgumentNullException ("certificate");
 
-#if COREFX
-			var data = certificate.Export (X509ContentType.Cert);
-#else
 			var data = certificate.GetRawCertData ();
-#endif
 			using (NSData cert = NSData.FromArray (data)) {
 				Initialize (cert);
 			}

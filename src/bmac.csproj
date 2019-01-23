@@ -5,7 +5,8 @@
     <TargetFramework>net461</TargetFramework>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <EnableDefaultItems>False</EnableDefaultItems>
-    <DefineConstants>GENERATOR;MONOMAC;MONOMAC_BOOTSTRAP</DefineConstants>
+    <BaseDefines Condition="$(BaseDefines) == ''">MONOMAC;MAC64</BaseDefines>
+    <DefineConstants>$(BaseDefines);GENERATOR;MONOMAC_BOOTSTRAP</DefineConstants>
     <GeneratedOutputDir>$(ArtifactsDir)generated\</GeneratedOutputDir>
   </PropertyGroup>
 

@@ -99,7 +99,7 @@ namespace MonoMac.CoreGraphics {
 			return string.Format(CultureInfo.CurrentCulture, "{{X={0},Y={1},Width={2},Height={3}}}", X, Y, Width, Height);
 		}
 
-#if !COREFX
+#if SDCONVERT
 		public CGRect(System.Drawing.RectangleF rect)
 		{
 			Origin.X = rect.Left;
@@ -127,7 +127,7 @@ namespace MonoMac.CoreGraphics {
 		}
 #endif
 
-		public nfloat X { get { return Origin.X; } set { Origin.X=value; } }
+        public nfloat X { get { return Origin.X; } set { Origin.X=value; } }
 		public nfloat Y { get { return Origin.Y; } set { Origin.Y=value; } }
 		public nfloat Width { get { return Size.Width; } set { Size.Width = value; } }
 		public nfloat Height { get { return Size.Height; } set { Size.Height = value; } }

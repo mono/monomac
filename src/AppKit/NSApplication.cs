@@ -59,22 +59,18 @@ namespace MonoMac.AppKit {
 			var name = monomac.GetName ().ToString ();
 
 			foreach (var a in AppDomain.CurrentDomain.GetAssemblies ()) {
-			
-#if COREFX
-				// just register all assemblies for now
-				if (name != a.GetName().ToString())
-					Runtime.RegisterAssembly (a);
-#else
-				foreach (var r in a.GetReferencedAssemblies ()) {
-					//FIXME: Mono's ReferenceMatchesDefinition isn't implemented, so check string values instead
-					//if (AssemblyName.ReferenceMatchesDefinition (r, name)) {
-					if (name == r.ToString ()) {
-						Runtime.RegisterAssembly (a);
-						break;
-					}
-				}
-#endif
-			}
+
+                foreach (var r in a.GetReferencedAssemblies())
+                {
+                    //FIXME: Mono's ReferenceMatchesDefinition isn't implemented, so check string values instead
+                    //if (AssemblyName.ReferenceMatchesDefinition (r, name)) {
+                    if (name == r.ToString())
+                    {
+                        Runtime.RegisterAssembly(a);
+                        break;
+                    }
+                }
+            }
 
 			// Runtime hosts embedding MonoMac may use a different sync context 
 			// and call NSApplicationMain externally prior to this Init, so only

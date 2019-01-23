@@ -78,7 +78,6 @@ namespace MonoMac.Foundation {
 		}
 		
 		// FIXME: should we expose more complex/long ctor or point people to use a Cookie ?
-		#if !COREFX
 		public NSHttpCookie (Cookie cookie)
 		{
 			if (cookie == null)
@@ -90,7 +89,6 @@ namespace MonoMac.Foundation {
 				discard = true;
 			CreateCookie (cookie.Name, cookie.Value, cookie.Path, cookie.Domain, cookie.Comment, commentUrl, discard, cookie.Expires, null, cookie.Port, cookie.Secure, cookie.Version);
 		}
-		#endif
 		
 		void CreateCookie (string name, string value, string path, string domain, string comment, string commentUrl, bool? discard, DateTime? expires, int? maximumAge, string ports, bool? secure, int? version)
 		{

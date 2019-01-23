@@ -21,7 +21,7 @@ namespace MonoMac.AppKit {
 			return ret;
 		}
 		
-		#if !COREFX
+		#if SDCONVERT
 		unsafe public System.Drawing.Rectangle SwapRectangle {
 			get {
 				System.Drawing.Rectangle ret;

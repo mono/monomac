@@ -4,7 +4,8 @@
     <TargetFramework>net461</TargetFramework>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <PlatformTarget>x64</PlatformTarget>
-    <DefineConstants>GENERATOR;MONOMAC_BOOTSTRAP;COREBUILD;MONOMAC;MAC64</DefineConstants>
+    <BaseDefines Condition="$(BaseDefines) == ''">MONOMAC;MAC64</BaseDefines>
+    <DefineConstants>$(BaseDefines);GENERATOR;MONOMAC_BOOTSTRAP;COREBUILD</DefineConstants>
     <EnableDefaultItems>False</EnableDefaultItems>
   </PropertyGroup>
   <ItemGroup>

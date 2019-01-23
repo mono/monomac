@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>net45;netstandard2.0</TargetFrameworks>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <PlatformTarget>x64</PlatformTarget>
-    <DefineConstants>MONOMAC;MAC64;OBJECT_REF_TRACKING</DefineConstants>
+    <PlatformTarget Condition="$(PlatformTarget) == ''">x64</PlatformTarget>
+    <BaseDefines Condition="$(BaseDefines) == ''">MONOMAC;MAC64;SDCONVERT</BaseDefines>
+    <DefineConstants>$(BaseDefines)</DefineConstants>
     <Version>0.0.1</Version>
     <EnableDefaultItems>False</EnableDefaultItems>
     <NoWarn>3021,0219,0414,114,108</NoWarn>
   </PropertyGroup>
-  <ItemGroup>
+  <ItemGroup Condition="$(TargetFramework.StartsWith('netstandard')) == 'False'">
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+  <ItemGroup Condition="$(TargetFramework.StartsWith('netstandard')) == 'True'">
     <PackageReference Include="System.Reflection.Emit" Version="4.3.0" />
     <PackageReference Include="System.Reflection.Emit.Lightweight" Version="4.3.0" />
   </ItemGroup>
@@ -22,9 +26,18 @@
     <Compile Include="@(OpenGlSource)" />
     <Compile Include="@(CFNetworkSource)" />
   </ItemGroup>
+  <Target Name="CleanGeneratedSource" BeforeTargets="AfterClean">
+    <Message Importance="high" Text="Cleaning generated folder" />
+    <RemoveDir Directories="$(ArtifactsDir)generated" />
+  </Target>
   <Target Name="GenerateSource" BeforeTargets="BeforeBuild">
-    <MSBuild Projects="core.csproj" Targets="Build" />
-    <MSBuild Projects="generator.csproj" Targets="Build" />
+    <PropertyGroup>
+      <GeneratorBuildProperties>BaseDefines=$(BaseDefines.Replace(";", "%3b"))</GeneratorBuildProperties>
+      <GeneratorBuildProperties>$(GeneratorBuildProperties);BaseNamespace=MonoMac.ObjCRuntime</GeneratorBuildProperties>
+      <GenIgnoreProperties>TargetFramework;PlatformTarget</GenIgnoreProperties>
+    </PropertyGroup>
+    <MSBuild Projects="core.csproj" Targets="Build" Properties="$(GeneratorBuildProperties)" TargetAndPropertyListSeparators="%3b" RemoveProperties="$(GenIgnoreProperties)" />
+    <MSBuild Projects="generator.csproj" Targets="Build;GenerateSources" Properties="$(GeneratorBuildProperties)" TargetAndPropertyListSeparators="%3b" RemoveProperties="$(GenIgnoreProperties)" />
     <ItemGroup>
 	    <Compile Include="$(ArtifactsDir)generated\**\*.cs" Visible="False" />
     </ItemGroup>

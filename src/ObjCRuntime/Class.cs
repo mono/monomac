@@ -72,19 +72,6 @@ namespace MonoMac.ObjCRuntime {
 			get { return class_getSuperclass (handle); }
 		}
 
-#if COREFX
-		public string Name {
-			get {
-				IntPtr ptr = class_getName (this.handle);
-				return Messaging.StringFromNativeUtf8 (ptr);
-			}
-		}
-		
-		internal static string GetName (IntPtr @class)
-		{
-			return Messaging.StringFromNativeUtf8 (class_getName (@class));
-		}
-#else
 		public string Name {
 			get {
 				IntPtr ptr = class_getName (this.handle);
@@ -96,7 +83,6 @@ namespace MonoMac.ObjCRuntime {
 		{
 			return Marshal.PtrToStringAuto (class_getName (@class));
 		}
-#endif
 
 		public static IntPtr GetHandle (string name) {
 			return objc_getClass (name);

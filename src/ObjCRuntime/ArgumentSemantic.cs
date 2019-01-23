@@ -3,6 +3,7 @@ namespace MonoMac.ObjCRuntime {
 		None = -1,
 		Assign = 0,
 		Copy = 1,
-		Retain = 2
+		Retain = 2,
+        Strong = 3 // not implemented
 	}
 }

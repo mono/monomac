@@ -137,19 +137,11 @@ namespace MonoMac.Security {
 		
 		static void EncodeString (ref AuthorizationItem item, string key, string value)
 		{
-#if COREFX		
-			item.name = Messaging.NativeUtf8FromString (key);
-			if (value != null){
-				item.value = Messaging.NativeUtf8FromString (value);
-				item.valueLen = (IntPtr) value.Length;
-			}
-#else
 			item.name = Marshal.StringToHGlobalAuto (key);
 			if (value != null){
 				item.value = Marshal.StringToHGlobalAuto (value);
 				item.valueLen = (IntPtr) value.Length;
 			}
-#endif
 		}
 		
 		public static Authorization Create (AuthorizationParameters parameters, AuthorizationEnvironment environment, AuthorizationFlags flags)

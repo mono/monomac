@@ -176,11 +176,7 @@ namespace MonoMac.Foundation {
 				return null;
 
 #if MONOMAC
-#if COREFX
-			return Messaging.StringFromNativeUtf8 (Messaging.intptr_objc_msgSend (usrhandle, selUTF8StringHandle));
-#else
 			return Marshal.PtrToStringAuto (Messaging.intptr_objc_msgSend (usrhandle, selUTF8StringHandle));
-#endif
 #else
 			return Marshal.PtrToStringAuto (Messaging.intptr_objc_msgSend (usrhandle, Selector.GetHandle (selUTF8String)));
 #endif

@@ -1816,4 +1816,24 @@ namespace MonoMac.AppKit {
 		Always,
 		InFullScreen
 	}
+
+    [Mac(10, 13)]
+    //[Native]
+    public enum NSColorType : long
+    {
+        ComponentBased,
+        Pattern,
+        Catalog,
+    }
+
+    [Mac(10, 14, onlyOn64: true)]
+    //[Native]
+    public enum NSColorSystemEffect : long
+    {
+        None,
+        Pressed,
+        DeepPressed,
+        Disabled,
+        Rollover,
+    }
 }

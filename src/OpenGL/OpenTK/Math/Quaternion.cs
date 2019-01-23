@@ -25,18 +25,14 @@ SOFTWARE.
 using System;
 using System.Runtime.InteropServices;
 using System.ComponentModel;
-#if !COREFX
 using System.Xml.Serialization;
-#endif
 
 namespace MonoMac.OpenGL
 {
     /// <summary>
     /// Represents a Quaternion.
     /// </summary>
-#if !COREFX
     [Serializable]
-#endif
     [StructLayout(LayoutKind.Sequential)]
     public struct Quaternion : IEquatable<Quaternion>
     {
@@ -83,9 +79,7 @@ namespace MonoMac.OpenGL
         [Obsolete("Use Xyz property instead.")]
         [CLSCompliant(false)]
         //[EditorBrowsable(EditorBrowsableState.Never)]
-#if !COREFX        
         [XmlIgnore]
-#endif
         public Vector3 XYZ { get { return Xyz; } set { Xyz = value; } }
 
         /// <summary>
@@ -96,25 +90,19 @@ namespace MonoMac.OpenGL
         /// <summary>
         /// Gets or sets the X component of this instance.
         /// </summary>
-#if !COREFX        
         [XmlIgnore]
-#endif
         public float X { get { return xyz.X; } set { xyz.X = value; } }
 
         /// <summary>
         /// Gets or sets the Y component of this instance.
         /// </summary>
-#if !COREFX        
         [XmlIgnore]
-#endif
         public float Y { get { return xyz.Y; } set { xyz.Y = value; } }
 
         /// <summary>
         /// Gets or sets the Z component of this instance.
         /// </summary>
-#if !COREFX        
         [XmlIgnore]
-#endif
         public float Z { get { return xyz.Z; } set { xyz.Z = value; } }
 
         /// <summary>

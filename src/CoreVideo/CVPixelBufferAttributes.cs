@@ -47,15 +47,7 @@ namespace MonoMac.CoreVideo {
 		{
 		}
 
-#if COREFX
-		public CVPixelBufferAttributes (CVPixelFormatType pixelFormatType, int width, int height)
-			 : this ()
-		{
-			PixelFormatType = pixelFormatType;
-			Width = width;
-			Height = height;
-		}
-#else
+#if SDCONVERT
 		public CVPixelBufferAttributes (CVPixelFormatType pixelFormatType, System.Drawing.Size size)
 			 : this ()
 		{
@@ -64,6 +56,13 @@ namespace MonoMac.CoreVideo {
 			Height = size.Height;
 		}
 #endif
+		public CVPixelBufferAttributes (CVPixelFormatType pixelFormatType, int width, int height)
+			 : this ()
+		{
+			PixelFormatType = pixelFormatType;
+			Width = width;
+			Height = height;
+		}
 
 		public CVPixelFormatType? PixelFormatType {
 			set {

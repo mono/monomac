@@ -49,7 +49,7 @@ namespace MonoMac.ObjCRuntime
 
         static NativeImplementationBuilder()
         {
-#if COREFX || NETSTANDARD2_0
+#if NETSTANDARD
             builder = AssemblyBuilder.DefineDynamicAssembly(new AssemblyName { Name = "ObjCImplementations" }, AssemblyBuilderAccess.Run);
             module = builder.DefineDynamicModule("Implementations");
 #else
@@ -104,9 +104,7 @@ namespace MonoMac.ObjCRuntime
         protected Type CreateDelegateType(Type return_type, Type[] argument_types)
         {
             TypeBuilder type = module.DefineType(Guid.NewGuid().ToString(), TypeAttributes.Class | TypeAttributes.Public | TypeAttributes.Sealed | TypeAttributes.AnsiClass | TypeAttributes.AutoClass, typeof(MulticastDelegate));
-#if !COREFX
             type.SetCustomAttribute(new CustomAttributeBuilder(typeof(MarshalAsAttribute).GetConstructor(new Type[] { typeof(UnmanagedType) }), new object[] { UnmanagedType.FunctionPtr }));
-#endif
 
             ConstructorBuilder constructor = type.DefineConstructor(MethodAttributes.Public, CallingConventions.Standard, new Type[] { typeof(object), typeof(int) });
 
@@ -125,7 +123,7 @@ namespace MonoMac.ObjCRuntime
 
             method.SetImplementationFlags(MethodImplAttributes.Runtime | MethodImplAttributes.Managed);
 
-#if NETSTANDARD2_0
+#if NETSTANDARD
             return type.CreateTypeInfo().AsType();
 #else
             return type.CreateType ();
