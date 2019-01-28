@@ -128,8 +128,12 @@ namespace MonoMac.Foundation {
 		{
 			return !first.IsEqualToOrderedSet (second);
 		}
-		
-		public bool Contains (object obj)
+
+        public override bool Equals(object obj) => (obj is NSOrderedSet set) && set == this;
+
+        public override int GetHashCode() => base.GetHashCode(); // todo
+
+        public bool Contains (object obj)
 		{
 			return Contains (NSObject.FromObject (obj));
 		}

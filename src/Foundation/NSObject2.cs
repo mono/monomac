@@ -537,12 +537,12 @@ namespace MonoMac.Foundation {
 			static readonly List <NSObject> drainList2 = new List<NSObject> ();
 			static List <NSObject> handles = drainList1;
 			
-			static readonly IntPtr class_ptr = Class.GetHandle ("__NSObject_Disposer");
+			new static readonly IntPtr class_ptr = Class.GetHandle ("__NSObject_Disposer");
 #if MONOMAC
 			static readonly IntPtr drainHandle = Selector.GetHandle ("drain:");
 #endif
 			
-			static readonly object lock_obj = new object ();
+			new static readonly object lock_obj = new object ();
 			
 			private NSObject_Disposer ()
 			{

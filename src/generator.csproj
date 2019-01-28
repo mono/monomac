@@ -6,7 +6,6 @@
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <EnableDefaultItems>False</EnableDefaultItems>
     <BaseNamespace Condition="$(BaseNamespace) == ''">MonoMac.ObjCRuntime</BaseNamespace>
-    <DefineConstants>$(BaseDefines);GENERATOR;MONOMAC_BOOTSTRAP</DefineConstants>
     <GeneratedOutputDir Condition="$(GeneratedOutputDir) == ''">$(ArtifactsDir)generated\$(Platform)\</GeneratedOutputDir>
   </PropertyGroup>
   <PropertyGroup Condition="$(Platform) == 'x64'">
@@ -16,6 +15,10 @@
   <PropertyGroup Condition="$(Platform) == 'x86'">
     <PlatformTarget>x86</PlatformTarget>
     <BaseDefines Condition="$(BaseDefines) == ''">MONOMAC</BaseDefines>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+    <DefineConstants>$(BaseDefines);GENERATOR;MONOMAC_BOOTSTRAP</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>

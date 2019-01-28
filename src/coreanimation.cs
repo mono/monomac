@@ -935,7 +935,7 @@ namespace MonoMac.CoreAnimation {
 	
 	[BaseType (typeof (CAPropertyAnimation), Name="CAKeyframeAnimation")]
 	public interface CAKeyFrameAnimation {
-		[Static, New, Export ("animationWithKeyPath:")]
+		[Static, Export ("animationWithKeyPath:")]
 		CAKeyFrameAnimation GetFromKeyPath (string path);
 
 		[Export ("values", ArgumentSemantic.Copy)]

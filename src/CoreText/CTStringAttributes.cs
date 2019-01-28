@@ -40,6 +40,8 @@ using MonoMac.CoreGraphics;
 using MonoMac.UIKit;
 #endif
 
+#pragma warning disable 0649
+
 namespace MonoMac.CoreText {
 
 #region CFAttributedStringRef AttributeKey Prototypes
@@ -355,3 +357,4 @@ namespace MonoMac.CoreText {
 	}
 }
 
+#pragma warning restore 0649

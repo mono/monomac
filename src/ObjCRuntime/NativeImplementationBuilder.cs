@@ -53,7 +53,7 @@ namespace MonoMac.ObjCRuntime
             builder = AssemblyBuilder.DefineDynamicAssembly(new AssemblyName { Name = "ObjCImplementations" }, AssemblyBuilderAccess.Run);
             module = builder.DefineDynamicModule("Implementations");
 #else
-            builder = AppDomain.CurrentDomain.DefineDynamicAssembly (new AssemblyName {Name = "ObjCImplementations"}, AssemblyBuilderAccess.Run, null, null, null,  null, null, true);
+            builder = AppDomain.CurrentDomain.DefineDynamicAssembly (new AssemblyName {Name = "ObjCImplementations"}, AssemblyBuilderAccess.Run, null, true, null);
 			module = builder.DefineDynamicModule ("Implementations", false);
 #endif
         }

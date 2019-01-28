@@ -35,7 +35,6 @@ namespace MonoMac.CoreFoundation {
 	class CFDataBuffer : IDisposable {
 		byte[] buffer;
 		CFData data;
-		bool owns;
 
 		public CFDataBuffer (byte[] buffer)
 		{
@@ -48,14 +47,12 @@ namespace MonoMac.CoreFoundation {
 			var gch = GCHandle.Alloc (buffer, GCHandleType.Pinned);
 			data = CFData.FromData (gch.AddrOfPinnedObject (), buffer.Length);
 			gch.Free ();
-			owns = true;
 		}
 
 		public CFDataBuffer (IntPtr ptr)
 		{
 			data = new CFData (ptr, false);
 			buffer = data.GetBuffer ();
-			owns = false;
 		}
 
 		~CFDataBuffer ()

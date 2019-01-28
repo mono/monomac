@@ -59,7 +59,6 @@ namespace MonoMac.AppKit {
 	[AttributeUsage( AttributeTargets.All, AllowMultiple=true )]
 	sealed class VerifyAttribute : System.Attribute
 	{
-		readonly string m_description;
 		public VerifyAttribute(string description)
 		{
 			Description = description;
