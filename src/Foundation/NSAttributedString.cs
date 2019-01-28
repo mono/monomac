@@ -27,6 +27,7 @@
 
 using System;
 using MonoMac.CoreText;
+using MonoMac.ObjCRuntime;
 #if !MONOMAC
 using MonoMac.UIKit;
 #endif
@@ -54,13 +55,26 @@ namespace MonoMac.Foundation {
 		{
 		}
 
-		public CTStringAttributes GetCoreTextAttributes (nuint location, out NSRange effectiveRange)
+        public string Value
+        {
+            get
+            {
+                return NSString.FromHandle(LowLevelValue);
+            }
+        }
+
+        public NSDictionary GetAttributes(nint location, out NSRange effectiveRange)
+        {
+            return Runtime.GetNSObject<NSDictionary>(LowLevelGetAttributes(location, out effectiveRange));
+        }
+
+        public CTStringAttributes GetCoreTextAttributes (nint location, out NSRange effectiveRange)
 		{
 			var attr = GetAttributes (location, out effectiveRange);
 			return attr == null ? null : new CTStringAttributes (attr);
 		}
 
-		public CTStringAttributes GetCoreTextAttributes (nuint location, out NSRange longestEffectiveRange, NSRange rangeLimit)
+		public CTStringAttributes GetCoreTextAttributes (nint location, out NSRange longestEffectiveRange, NSRange rangeLimit)
 		{
 			var attr = GetAttributes (location, out longestEffectiveRange, rangeLimit);
 			return attr == null ? null : new CTStringAttributes (attr);			
@@ -70,6 +84,64 @@ namespace MonoMac.Foundation {
 		{
 			return Substring (new NSRange (start, len));
 		}
+
+#if MONOMAC
+        internal NSAttributedString(NSData data, NSAttributedStringDataType type, out NSDictionary resultDocumentAttributes)
+        {
+            switch (type)
+            {
+                case NSAttributedStringDataType.DocFormat:
+                    Handle = new NSAttributedString(data, out resultDocumentAttributes).Handle;
+                    break;
+                case NSAttributedStringDataType.HTML:
+                    Handle = InitWithHTML(data, out resultDocumentAttributes);
+                    break;
+                case NSAttributedStringDataType.RTF:
+                    Handle = InitWithRtf(data, out resultDocumentAttributes);
+                    break;
+                case NSAttributedStringDataType.RTFD:
+                    Handle = InitWithRtfd(data, out resultDocumentAttributes);
+                    break;
+                default:
+                    throw new ArgumentException("Error creating NSAttributedString.");
+            }
+
+            if (Handle == IntPtr.Zero)
+                throw new ArgumentException("Error creating NSAttributedString.");
+        }
+
+        public static NSAttributedString CreateWithRTF(NSData rtfData, out NSDictionary resultDocumentAttributes)
+        {
+            return new NSAttributedString(rtfData, NSAttributedStringDataType.RTF, out resultDocumentAttributes);
+        }
+
+        public static NSAttributedString CreateWithRTFD(NSData rtfdData, out NSDictionary resultDocumentAttributes)
+        {
+            return new NSAttributedString(rtfdData, NSAttributedStringDataType.RTFD, out resultDocumentAttributes);
+        }
+
+        public static NSAttributedString CreateWithHTML(NSData htmlData, out NSDictionary resultDocumentAttributes)
+        {
+            return new NSAttributedString(htmlData, NSAttributedStringDataType.HTML, out resultDocumentAttributes);
+        }
+
+        public static NSAttributedString CreateWithDocFormat(NSData wordDocFormat, out NSDictionary docAttributes)
+        {
+            return new NSAttributedString(wordDocFormat, NSAttributedStringDataType.DocFormat, out docAttributes);
+        }
+
+        //public NSStringAttributes GetAppKitAttributes(nint location, out NSRange effectiveRange)
+        //{
+        //    var attr = GetAttributes(location, out effectiveRange);
+        //    return attr == null ? null : new NSStringAttributes(attr);
+        //}
+
+        //public NSStringAttributes GetAppKitAttributes(nint location, out NSRange longestEffectiveRange, NSRange rangeLimit)
+        //{
+        //    var attr = GetAttributes(location, out longestEffectiveRange, rangeLimit);
+        //    return attr == null ? null : new NSStringAttributes(attr);
+        //}
+#endif
 
 #if !MONOMAC
 		public NSAttributedString (string str, UIStringAttributes attributes)
@@ -155,6 +227,6 @@ namespace MonoMac.Foundation {
 		: this (str, ToDictionary (font, foregroundColor, backgroundColor, strokeColor, paragraphStyle, ligatures, kerning, underlineStyle, shadow, strokeWidth, strikethroughStyle))
 		{
 		}
-#endif						      
-	}
+#endif
+    }
 }

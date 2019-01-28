@@ -120,7 +120,7 @@ namespace MonoMac.CoreText {
 		{
 			var glyphCount = GlyphCount;
 
-			if (buffer != null && range.Length != 0 && (nuint)buffer.Length < range.Length)
+			if (buffer != null && range.Length != 0 && buffer.Length < range.Length)
 				throw new ArgumentException ("buffer.Length must be >= range.Length.", "buffer");
 			if (buffer != null && range.Length == 0 && buffer.Length < glyphCount)
 				throw new ArgumentException ("buffer.Length must be >= GlyphCount.", "buffer");

@@ -196,6 +196,12 @@ public static class ReflectionExtensions {
 	}
 }
 
+// used to mark if the method parameter should have 'params'
+public class ParamsAttribute : Attribute
+{
+    public ParamsAttribute() {  }
+}
+
 // Used to mark if a type is not a wrapper type.
 public class SyntheticAttribute : Attribute {
 	public SyntheticAttribute () { }
@@ -1816,8 +1822,10 @@ public class Generator {
 						continue;
 					else if (attr is AsyncAttribute)
 						continue;
-					else 
-						throw new BindingException (1007, true, "Unknown attribute {0} on {1}", attr.GetType (), t);
+                    else if (attr is UnavailableAttribute)
+                        continue;
+                    else
+                        throw new BindingException (1007, true, "Unknown attribute {0} on {1}", attr.GetType (), t);
 
 					if (selector == null)
 						throw new BindingException (1009, true, "No selector specified for method `{0}.{1}'", mi.DeclaringType, mi.Name);
@@ -2286,7 +2294,11 @@ public class Generator {
 	{
 		StringBuilder sb = new StringBuilder ();
 		ctor = mi.Name == "Constructor";
-		string name =  ctor ? mi.DeclaringType.Name : is_async ? GetAsyncName (mi) : mi.Name;
+        string name;
+        if (ctor)
+            name = GetAttribute<BindAttribute>(mi.DeclaringType)?.Selector ?? mi.DeclaringType.Name;
+        else
+            name = is_async ? GetAsyncName(mi) : mi.Name;
 
 		if (mi.Name == "AutocapitalizationType"){
 		}
@@ -2316,8 +2328,11 @@ public class Generator {
 				string reftype = HasAttribute (pi, typeof (OutAttribute)) ? "out " : "ref ";
 				sb.Append (reftype);
 				parType = parType.GetElementType ();
-			}		
-			sb.Append (FormatType (mi.DeclaringType, parType));
+			}
+            if (parType.IsArray && HasAttribute(pi, typeof(ParamsAttribute))) {
+                sb.Append("params ");
+            }
+            sb.Append (FormatType (mi.DeclaringType, parType));
 			sb.Append (" ");
 			sb.Append (pi.Name);
 		}

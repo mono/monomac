@@ -112,6 +112,45 @@ namespace MonoMac.ObjCRuntime
         }
     }
 
+    public class iOSAttribute : IntroducedAttribute
+    {
+        public iOSAttribute(int majorVersion, int minorVersion, bool onlyOn64 = false, string message = null)
+            : base(PlatformName.iOS, majorVersion, minorVersion, onlyOn64 ? PlatformArchitecture.Arch64 : PlatformArchitecture.All, message)
+        {
+        }
+
+        public iOSAttribute(int majorVersion, int minorVersion, int subminorVersion, bool onlyOn64 = false, string message = null)
+            : base(PlatformName.iOS, majorVersion, minorVersion, subminorVersion, onlyOn64 ? PlatformArchitecture.Arch64 : PlatformArchitecture.All, message)
+        {
+        }
+    }
+
+    public class WatchAttribute : IntroducedAttribute
+    {
+        public WatchAttribute(int majorVersion, int minorVersion, bool onlyOn64 = false, string message = null)
+            : base(PlatformName.WatchOS, majorVersion, minorVersion, onlyOn64 ? PlatformArchitecture.Arch64 : PlatformArchitecture.All, message)
+        {
+        }
+
+        public WatchAttribute(int majorVersion, int minorVersion, int subminorVersion, bool onlyOn64 = false, string message = null)
+            : base(PlatformName.WatchOS, majorVersion, minorVersion, subminorVersion, onlyOn64 ? PlatformArchitecture.Arch64 : PlatformArchitecture.All, message)
+        {
+        }
+    }
+
+    public class TVAttribute : IntroducedAttribute
+    {
+        public TVAttribute(int majorVersion, int minorVersion, bool onlyOn64 = false, string message = null)
+            : base(PlatformName.TvOS, majorVersion, minorVersion, onlyOn64 ? PlatformArchitecture.Arch64 : PlatformArchitecture.All, message)
+        {
+        }
+
+        public TVAttribute(int majorVersion, int minorVersion, int subminorVersion, bool onlyOn64 = false, string message = null)
+            : base(PlatformName.TvOS, majorVersion, minorVersion, subminorVersion, onlyOn64 ? PlatformArchitecture.Arch64 : PlatformArchitecture.All, message)
+        {
+        }
+    }
+
     public enum PlatformName : byte
     {
         None,
@@ -129,4 +168,10 @@ namespace MonoMac.ObjCRuntime
         Arch64 = 0x02,
         All = 0xff
     }
+
+    public class UnavailableAttribute : Attribute { }
+
+    public class NoWatchAttribute : UnavailableAttribute { }
+    public class NoTVAttribute : UnavailableAttribute { }
+    public class NoiOSAttribute : UnavailableAttribute {  }
 }

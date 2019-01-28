@@ -215,7 +215,7 @@ namespace MonoMac.CoreText {
 		{
 			if (origins == null)
 				throw new ArgumentNullException ("origins");
-			if (range.Length != 0 && (nuint)origins.Length < range.Length)
+			if (range.Length != 0 && origins.Length < range.Length)
 				throw new ArgumentException ("origins must contain at least range.Length elements.", "origins");
 			else if (origins.Length < CFArray.GetCount (CTFrameGetLines (handle)))
 				throw new ArgumentException ("origins must contain at least GetLines().Length elements.", "origins");

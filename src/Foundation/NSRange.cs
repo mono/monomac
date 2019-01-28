@@ -40,23 +40,17 @@ using CGRect = System.Drawing.RectangleF;
 
 namespace MonoMac.Foundation {
 	public struct NSRange {
-		public nuint Location;
-		public nuint Length;
+		public nint Location;
+		public nint Length;
 
-		public const nuint NotFound = nuint.MaxValue;
+		public const nint NotFound = nint.MaxValue;
 		
-		public NSRange (nuint start, nuint len)
+		public NSRange (nint start, nint len)
 		{
 			Location = start;
 			Length = len;
 		}
 		
-		public NSRange (int start, int len)
-		{
-			Location = (nuint)start;
-			Length = (nuint)len;
-		}
-
 		public override string ToString ()
 		{
 			return String.Format ("[Location={0},Length={1}]", Location, Length);

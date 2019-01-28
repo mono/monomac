@@ -101,166 +101,307 @@ namespace MonoMac.Foundation
 		NSArray Filter (NSPredicate predicate);
 	}
 
-	[Since (3,2)]
-	[BaseType (typeof (NSObject))]
-	public partial interface NSAttributedString {
-		[Export ("string")]
-		string Value { get; }
+    [BaseType (typeof (NSObject))]
+    public partial interface NSAttributedString
+    {
+#if !WATCH
+        [Static, Export ("attributedStringWithAttachment:")]
+        NSAttributedString FromAttachment (NSTextAttachment attachment);
+#endif
 
-		[Export ("attributesAtIndex:effectiveRange:")]
-		NSDictionary GetAttributes (nuint location, out NSRange effectiveRange);
+        [Export ("string")]
+        IntPtr LowLevelValue { get; }
 
-		[Export ("length")]
-		nuint Length { get; }
+        [Export ("attributesAtIndex:effectiveRange:")]
+        IntPtr LowLevelGetAttributes (nint location, out NSRange effectiveRange);
 
-		// TODO: figure out the type, this deserves to be strongly typed if possble
-		[Export ("attribute:atIndex:effectiveRange:")]
-		NSObject GetAttribute (string attribute, nuint location, out NSRange effectiveRange);
+        [Export ("length")]
+        nint Length { get; }
 
-		[Export ("attributedSubstringFromRange:"), Internal]
-		NSAttributedString Substring (NSRange range);
+        // TODO: figure out the type, this deserves to be strongly typed if possble
+        [Export ("attribute:atIndex:effectiveRange:")]
+        NSObject GetAttribute (string attribute, nint location, out NSRange effectiveRange);
 
-		[Export ("attributesAtIndex:longestEffectiveRange:inRange:")]
-		NSDictionary GetAttributes (nuint location, out NSRange longestEffectiveRange, NSRange rangeLimit);
+        [Export ("attributedSubstringFromRange:"), Internal]
+        NSAttributedString Substring (NSRange range);
 
-		[Export ("attribute:atIndex:longestEffectiveRange:inRange:")]
-		NSObject GetAttribute (string attribute, nuint location, out NSRange longestEffectiveRange, NSRange rangeLimit);
+        [Export ("attributesAtIndex:longestEffectiveRange:inRange:")]
+        NSDictionary GetAttributes (nint location, out NSRange longestEffectiveRange, NSRange rangeLimit);
 
-		[Export ("isEqualToAttributedString:")]
-		bool IsEqual (NSAttributedString other);
+        [Export ("attribute:atIndex:longestEffectiveRange:inRange:")]
+        NSObject GetAttribute (string attribute, nint location, out NSRange longestEffectiveRange, NSRange rangeLimit);
 
-		[Export ("initWithString:")]
-		IntPtr Constructor (string str);
-		
-		[Export ("initWithString:attributes:")]
-		[EditorBrowsable (EditorBrowsableState.Advanced)]
-		IntPtr Constructor (string str, NSDictionary attributes);
+        [Export ("isEqualToAttributedString:")]
+        bool IsEqual (NSAttributedString other);
 
-		[Export ("initWithAttributedString:")]
-		IntPtr Constructor (NSAttributedString other);
+        [Export ("initWithString:")]
+        IntPtr Constructor (string str);
 
-		[Export ("enumerateAttributesInRange:options:usingBlock:")]
-		void EnumerateAttributes (NSRange range, NSAttributedStringEnumeration options, NSAttributedRangeCallback callback);
+        [Export ("initWithString:attributes:")]
+        [EditorBrowsable (EditorBrowsableState.Advanced)]
+        IntPtr Constructor (string str, [NullAllowed] NSDictionary attributes);
 
-		[Export ("enumerateAttribute:inRange:options:usingBlock:")]
-		void EnumerateAttribute (NSString attributeName, NSRange inRange, NSAttributedStringEnumeration options, NSAttributedStringCallback callback);
+        [Export ("initWithAttributedString:")]
+        IntPtr Constructor (NSAttributedString other);
+
+        [Export ("enumerateAttributesInRange:options:usingBlock:")]
+        void EnumerateAttributes (NSRange range, NSAttributedStringEnumeration options, NSAttributedRangeCallback callback);
+
+        [Export ("enumerateAttribute:inRange:options:usingBlock:")]
+        void EnumerateAttribute (NSString attributeName, NSRange inRange, NSAttributedStringEnumeration options, NSAttributedStringCallback callback);
+
+
+#if MONOMAC && !XAMCORE_2_0
+        [Field ("NSFontAttributeName", "AppKit")]
+        NSString FontAttributeName { get; }
+
+        [Field ("NSLinkAttributeName", "AppKit")]
+        NSString LinkAttributeName { get; }
+
+        [Field ("NSUnderlineStyleAttributeName", "AppKit")]
+        NSString UnderlineStyleAttributeName { get; }
+
+        [Field ("NSStrikethroughStyleAttributeName", "AppKit")]
+        NSString StrikethroughStyleAttributeName { get; }
+
+        [Field ("NSStrokeWidthAttributeName", "AppKit")]
+        NSString StrokeWidthAttributeName { get; }
+
+        [Field ("NSParagraphStyleAttributeName", "AppKit")]
+        NSString ParagraphStyleAttributeName { get; }
+
+        [Field ("NSForegroundColorAttributeName", "AppKit")]
+        NSString ForegroundColorAttributeName { get; }
+
+        [Field ("NSBackgroundColorAttributeName", "AppKit")]
+        NSString BackgroundColorAttributeName { get; }
+
+        [Field ("NSLigatureAttributeName", "AppKit")]
+        NSString LigatureAttributeName { get; } 
+
+        [Field ("NSObliquenessAttributeName", "AppKit")]
+        NSString ObliquenessAttributeName { get; }
+
+        [Field ("NSSuperscriptAttributeName", "AppKit")]
+        NSString SuperscriptAttributeName { get; }
+
+        [Field ("NSAttachmentAttributeName", "AppKit")]
+        NSString AttachmentAttributeName { get; }
+        
+        [Field ("NSBaselineOffsetAttributeName", "AppKit")]
+        NSString BaselineOffsetAttributeName { get; }
+        
+        [Field ("NSKernAttributeName", "AppKit")]
+        NSString KernAttributeName { get; }
+        
+        [Field ("NSStrokeColorAttributeName", "AppKit")]
+        NSString StrokeColorAttributeName { get; }
+        
+        [Field ("NSUnderlineColorAttributeName", "AppKit")]
+        NSString UnderlineColorAttributeName { get; }
+        
+        [Field ("NSStrikethroughColorAttributeName", "AppKit")]
+        NSString StrikethroughColorAttributeName { get; }
+        
+        [Field ("NSShadowAttributeName", "AppKit")]
+        NSString ShadowAttributeName { get; }
+        
+        [Field ("NSExpansionAttributeName", "AppKit")]
+        NSString ExpansionAttributeName { get; }
+        
+        [Field ("NSCursorAttributeName", "AppKit")]
+        NSString CursorAttributeName { get; }
+        
+        [Field ("NSToolTipAttributeName", "AppKit")]
+        NSString ToolTipAttributeName { get; }
+        
+        [Field ("NSMarkedClauseSegmentAttributeName", "AppKit")]
+        NSString MarkedClauseSegmentAttributeName { get; }
+        
+        [Field ("NSWritingDirectionAttributeName", "AppKit")]
+        NSString WritingDirectionAttributeName { get; }
+        
+        [Field ("NSVerticalGlyphFormAttributeName", "AppKit")]
+        NSString VerticalGlyphFormAttributeName { get; }
+#endif
 
 #if MONOMAC
-		[Export("size")]
-		CGSize Size { get; }
+        [Export("size")]
+        CGSize Size { get; }
 
-		[Field ("NSFontAttributeName", "AppKit")]
-		NSString FontAttributeName { get; }
+        [Export ("initWithData:options:documentAttributes:error:")]
+        IntPtr Constructor (NSData data, [NullAllowed] NSDictionary options, out NSDictionary docAttributes, out NSError error);
 
-		[Field ("NSLinkAttributeName", "AppKit")]
-		NSString LinkAttributeName { get; }
+        [Export ("initWithDocFormat:documentAttributes:")]
+        IntPtr Constructor(NSData wordDocFormat, out NSDictionary docAttributes);
 
-		[Field ("NSUnderlineStyleAttributeName", "AppKit")]
-		NSString UnderlineStyleAttributeName { get; }
+        [Export ("initWithHTML:baseURL:documentAttributes:")]
+        IntPtr Constructor (NSData htmlData, NSUrl baseUrl, out NSDictionary docAttributes);
+        
+        [Export ("drawAtPoint:")]
+        void DrawString (CGPoint point);
+        
+        [Export ("drawInRect:")]
+        void DrawString (CGRect rect);
+        
+        [Export ("drawWithRect:options:")]
+        void DrawString (CGRect rect, NSStringDrawingOptions options);  
 
-		[Field ("NSStrikethroughStyleAttributeName", "AppKit")]
-		NSString StrikethroughStyleAttributeName { get; }
+        [Export ("initWithURL:options:documentAttributes:error:")]
+        IntPtr Constructor (NSUrl url, [NullAllowed] NSDictionary options, out NSDictionary resultDocumentAttributes, out NSError error);
 
-		[Field ("NSStrokeWidthAttributeName", "AppKit")]
-		NSString StrokeWidthAttributeName { get; }
+        [Deprecated (PlatformName.MacOSX, 10, 11, message: "Use 'NSAttributedString (NSUrl, NSDictionary, out NSDictionary, ref NSError)' instead.")]
+        [Export ("initWithPath:documentAttributes:")]
+        IntPtr Constructor (string path, out NSDictionary resultDocumentAttributes);
 
-		[Field ("NSParagraphStyleAttributeName", "AppKit")]
-		NSString ParagraphStyleAttributeName { get; }
+        [Deprecated (PlatformName.MacOSX, 10, 11, message: "Use 'NSAttributedString (NSUrl, NSDictionary, out NSDictionary, ref NSError)' instead.")]
+        [Export ("initWithURL:documentAttributes:")]
+        IntPtr Constructor (NSUrl url, out NSDictionary resultDocumentAttributes);
 
-		[Field ("NSForegroundColorAttributeName", "AppKit")]
-		NSString ForegroundColorAttributeName { get; }
+        [Internal, Export ("initWithRTF:documentAttributes:")]
+        IntPtr InitWithRtf (NSData data, out NSDictionary resultDocumentAttributes);
 
-		[Field ("NSBackgroundColorAttributeName", "AppKit")]
-		NSString BackgroundColorAttributeName { get; }
+        [Internal, Export ("initWithRTFD:documentAttributes:")]
+        IntPtr InitWithRtfd (NSData data, out NSDictionary resultDocumentAttributes);
 
-		[Field ("NSLigatureAttributeName", "AppKit")]
-		NSString LigatureAttributeName { get; } 
+        [Internal, Export ("initWithHTML:documentAttributes:")]
+        IntPtr InitWithHTML (NSData data, out NSDictionary resultDocumentAttributes);
 
-		[Field ("NSObliquenessAttributeName", "AppKit")]
-		NSString ObliquenessAttributeName { get; }
+        [Export ("initWithHTML:options:documentAttributes:")]
+        IntPtr Constructor (NSData data, [NullAllowed]  NSDictionary options, out NSDictionary resultDocumentAttributes);
 
-		[Field ("NSSuperscriptAttributeName", "AppKit")]
-		NSString SuperscriptAttributeName { get; }
+        [Export ("initWithRTFDFileWrapper:documentAttributes:")]
+        IntPtr Constructor (NSFileWrapper wrapper, out NSDictionary resultDocumentAttributes);
 
-		[Field ("NSAttachmentAttributeName", "AppKit")]
-		NSString AttachmentAttributeName { get; }
-		
-		[Field ("NSBaselineOffsetAttributeName", "AppKit")]
-		NSString BaselineOffsetAttributeName { get; }
-		
-		[Field ("NSKernAttributeName", "AppKit")]
-		NSString KernAttributeName { get; }
-		
-		[Field ("NSStrokeColorAttributeName", "AppKit")]
-		NSString StrokeColorAttributeName { get; }
-		
-		[Field ("NSUnderlineColorAttributeName", "AppKit")]
-		NSString UnderlineColorAttributeName { get; }
-		
-		[Field ("NSStrikethroughColorAttributeName", "AppKit")]
-		NSString StrikethroughColorAttributeName { get; }
-		
-		[Field ("NSShadowAttributeName", "AppKit")]
-		NSString ShadowAttributeName { get; }
-		
-		[Field ("NSExpansionAttributeName", "AppKit")]
-		NSString ExpansionAttributeName { get; }
-		
-		[Field ("NSCursorAttributeName", "AppKit")]
-		NSString CursorAttributeName { get; }
-		
-		[Field ("NSToolTipAttributeName", "AppKit")]
-		NSString ToolTipAttributeName { get; }
-		
-		[Field ("NSMarkedClauseSegmentAttributeName", "AppKit")]
-		NSString MarkedClauseSegmentAttributeName { get; }
-		
-		[Field ("NSWritingDirectionAttributeName", "AppKit")]
-		NSString WritingDirectionAttributeName { get; }
-		
-		[Field ("NSVerticalGlyphFormAttributeName", "AppKit")]
-		NSString VerticalGlyphFormAttributeName { get; }
-		
-		[Export ("initWithData:options:documentAttributes:error:")]
-		IntPtr Constructor (NSData data, NSDictionary options, out NSDictionary docAttributes, out NSError error);
+        [Export ("containsAttachments")]
+        bool ContainsAttachments { get; }
 
-		[Export ("initWithDocFormat:documentAttributes:")]
-		IntPtr Constructor(NSData wordDocFormat, out NSDictionary docAttributes);
+        [Export ("fontAttributesInRange:")]
+        NSDictionary GetFontAttributes (NSRange range);
 
-		[Export ("initWithHTML:baseURL:documentAttributes:")]
-		IntPtr Constructor (NSData htmlData, NSUrl baseUrl, out NSDictionary docAttributes);
-		
-		[Export ("drawAtPoint:")]
-		void DrawString (CGPoint point);
-		
-		[Export ("drawInRect:")]
-		void DrawString (CGRect rect);
-		
-		[Export ("drawWithRect:options:")]
-		void DrawString (CGRect rect, NSStringDrawingOptions options);
-		
+        [Export ("rulerAttributesInRange:")]
+        NSDictionary GetRulerAttributes (NSRange range);
+
+        [Export ("lineBreakBeforeIndex:withinRange:")]
+        nuint GetLineBreak (nuint beforeIndex, NSRange aRange);
+
+        [Export ("lineBreakByHyphenatingBeforeIndex:withinRange:")]
+        nuint GetLineBreakByHyphenating (nuint beforeIndex, NSRange aRange);
+
+        [Export ("doubleClickAtIndex:")]
+        NSRange DoubleClick (nuint index);
+
+        [Export ("nextWordFromIndex:forward:")]
+        nuint GetNextWord (nuint fromIndex, bool isForward);
+
+        [Deprecated (PlatformName.MacOSX, 10, 11, message: "Use 'NSDataDetector' instead.")]
+        [Export ("URLAtIndex:effectiveRange:")]
+        NSUrl GetUrl (nuint index, out NSRange effectiveRange);
+
+        [Export ("rangeOfTextBlock:atIndex:")]
+        NSRange GetRange (NSTextBlock textBlock, nuint index);
+
+        [Export ("rangeOfTextTable:atIndex:")]
+        NSRange GetRange (NSTextTable textTable, nuint index);
+
+        [Export ("rangeOfTextList:atIndex:")]
+        NSRange GetRange (NSTextList textList, nuint index);
+
+        [Export ("itemNumberInTextList:atIndex:")]
+        nint GetItemNumber (NSTextList textList, nuint index);
+
+        [Export ("dataFromRange:documentAttributes:error:")]
+        NSData GetData (NSRange range, [NullAllowed] NSDictionary options, out NSError error);
+
+        [Export ("fileWrapperFromRange:documentAttributes:error:")]
+        NSFileWrapper GetFileWrapper (NSRange range, [NullAllowed] NSDictionary options, out NSError error);
+
+        [Export ("RTFFromRange:documentAttributes:")]
+        NSData GetRtf (NSRange range, [NullAllowed] NSDictionary options);
+
+        [Export ("RTFDFromRange:documentAttributes:")]
+        NSData GetRtfd (NSRange range, [NullAllowed] NSDictionary options);
+
+        [Export ("RTFDFileWrapperFromRange:documentAttributes:")]
+        NSFileWrapper GetRtfdFileWrapper (NSRange range, [NullAllowed] NSDictionary options);
+
+        [Export ("docFormatFromRange:documentAttributes:")]
+        NSData GetDocFormat (NSRange range, [NullAllowed] NSDictionary options);
+
 #else
-		[Since (6,0)]
-		[Export ("size")]
-		CGSize Size { get; }
+        [iOS (6,0)]
+        [Export ("size")]
+        CGSize Size { get; }
 
-		[Since (6,0)]
-		[Export ("drawAtPoint:")]
-		void DrawString (CGPoint point);
+        [iOS (6,0)]
+        [Export ("drawAtPoint:")]
+        void DrawString (CGPoint point);
 
-		[Since (6,0)]
-		[Export ("drawInRect:")]
-		void DrawString (CGRect rect);
+        [iOS (6,0)]
+        [Export ("drawInRect:")]
+        void DrawString (CGRect rect);
 
-		[Since (6,0)]
-		[Export ("drawWithRect:options:context:")]
-		void DrawString (CGRect rect, NSStringDrawingOptions options, [NullAllowed] NSStringDrawingContext context);
+        [iOS (6,0)]
+        [Export ("drawWithRect:options:context:")]
+        void DrawString (CGRect rect, NSStringDrawingOptions options, [NullAllowed] NSStringDrawingContext context);
 
-		[Since (6,0)]
-		[Export ("boundingRectWithSize:options:context:")]
-		CGRect GetBoundingRect (CGSize size, NSStringDrawingOptions options, [NullAllowed] NSStringDrawingContext context);
+        [iOS (6,0)]
+        [Export ("boundingRectWithSize:options:context:")]
+        CGRect GetBoundingRect (CGSize size, NSStringDrawingOptions options, [NullAllowed] NSStringDrawingContext context);
 #endif
-	}
+
+        // -(BOOL)containsAttachmentsInRange:(NSRange)range __attribute__((availability(macosx, introduced=10.11)));
+        [Mac (10,11)][iOS (9,0)]
+        [Export ("containsAttachmentsInRange:")]
+        bool ContainsAttachmentsInRange (NSRange range);
+
+
+#if MONOMAC
+        [Field ("NSTextLayoutSectionOrientation", "AppKit")]
+#else
+        [iOS (7,0)]
+        [Field ("NSTextLayoutSectionOrientation", "UIKit")]
+#endif
+        NSString TextLayoutSectionOrientation { get; }
+
+#if MONOMAC
+        [Field ("NSTextLayoutSectionRange", "AppKit")]
+#else
+        [iOS (7,0)]
+        [Field ("NSTextLayoutSectionRange", "UIKit")]
+#endif
+        NSString TextLayoutSectionRange { get; }
+
+#if MONOMAC
+        [Field ("NSTextLayoutSectionsAttribute", "AppKit")]
+#else
+        [iOS (7,0)]
+        [Field ("NSTextLayoutSectionsAttribute", "UIKit")]
+#endif
+        NSString TextLayoutSectionsAttribute { get; }
+
+        #if !XAMCORE_2_0 && MONOMAC
+        [Field ("NSCharacterShapeAttributeName", "AppKit")]
+        NSString CharacterShapeAttributeName { get; }
+
+        [Field ("NSGlyphInfoAttributeName", "AppKit")]
+        NSString GlyphInfoAttributeName { get; }
+
+        [Field ("NSSpellingStateAttributeName", "AppKit")]
+        NSString SpellingStateAttributeName { get; }
+
+        [Field ("NSTextAlternativesAttributeName", "AppKit")]
+        NSString TextAlternativesAttributeName { get; }
+        #endif
+
+        //[NoiOS, NoWatch, NoTV][Availability (Deprecated = Platform.Mac_10_11)]
+        [Deprecated (PlatformName.MacOSX, 10, 11)]
+        [Field ("NSUnderlineByWordMask", "AppKit")]
+        nint UnderlineByWordMaskAttributeName { get; }
+
+        [Export ("boundingRectWithSize:options:")]
+        CGRect BoundingRectWithSize (CGSize size, NSStringDrawingOptions options);
+    }
 
 	[BaseType (typeof (NSObject),
 		   Delegates=new string [] { "WeakDelegate" },
@@ -3754,144 +3895,293 @@ namespace MonoMac.Foundation
 
 	[BaseType (typeof (NSObject)), Bind ("NSString")]
 	public interface NSString2 {
+        [Export ("initWithData:encoding:")]
+        IntPtr Constructor (NSData data, NSStringEncoding encoding);
 #if MONOMAC
-		[Bind ("sizeWithAttributes:")]
-		CGSize StringSize ([NullAllowed] NSDictionary attributedStringAttributes);
-		
-		[Bind ("boundingRectWithSize:options:attributes:")]
-		CGRect BoundingRectWithSize (CGSize size, NSStringDrawingOptions options, NSDictionary attributes);
-		
-		[Bind ("drawAtPoint:withAttributes:")]
-		void DrawString (CGPoint point, NSDictionary attributes);
-		
-		[Bind ("drawInRect:withAttributes:")]
-		void DrawString (CGRect rect, NSDictionary attributes);
-		
-		[Bind ("drawWithRect:options:attributes:")]
-		void DrawString (CGRect rect, NSStringDrawingOptions options, NSDictionary attributes);
+        [Bind ("sizeWithAttributes:")]
+        CGSize StringSize ([NullAllowed] NSDictionary attributedStringAttributes);
+        
+        [Bind ("boundingRectWithSize:options:attributes:")]
+        CGRect BoundingRectWithSize (CGSize size, NSStringDrawingOptions options, NSDictionary attributes);
+        
+        [Bind ("drawAtPoint:withAttributes:")]
+        void DrawString (CGPoint point, NSDictionary attributes);
+        
+        [Bind ("drawInRect:withAttributes:")]
+        void DrawString (CGRect rect, NSDictionary attributes);
+        
+        [Bind ("drawWithRect:options:attributes:")]
+        void DrawString (CGRect rect, NSStringDrawingOptions options, NSDictionary attributes);
 #else
-		[Bind ("sizeWithFont:")]
-		CGSize StringSize (UIFont font);
-		
-		[Bind ("sizeWithFont:forWidth:lineBreakMode:")]
-		CGSize StringSize (UIFont font, float forWidth, UILineBreakMode breakMode);
-		
-		[Bind ("sizeWithFont:constrainedToSize:")]
-		CGSize StringSize (UIFont font, CGSize constrainedToSize);
-		
-		[Bind ("sizeWithFont:constrainedToSize:lineBreakMode:")]
-		CGSize StringSize (UIFont font, CGSize constrainedToSize, UILineBreakMode lineBreakMode);
+#if !XAMCORE_2_0
+        [Bind ("sizeWithFont:")]
+        //[Obsolete ("Deprecated in iOS7.   Use 'NSString.GetSizeUsingAttributes (UIStringAttributes)' instead.")]
+        CGSize StringSize (UIFont font);
+        
+        [Bind ("sizeWithFont:forWidth:lineBreakMode:")]
+        //[Obsolete ("Deprecated in iOS7.   Use 'NSString.GetBoundingRect (CGSize, NSStringDrawingOptions, UIStringAttributes,NSStringDrawingContext)' instead.")]
+        CGSize StringSize (UIFont font, nfloat forWidth, UILineBreakMode breakMode);
+        
+        [Bind ("sizeWithFont:constrainedToSize:")]
+        //[Obsolete ("Deprecated in iOS7.   Use 'NSString.GetBoundingRect (CGSize, NSStringDrawingOptions, UIStringAttributes,NSStringDrawingContext)' instead.")]
+        CGSize StringSize (UIFont font, CGSize constrainedToSize);
+        
+        [Bind ("sizeWithFont:constrainedToSize:lineBreakMode:")]
+        //[Obsolete ("Deprecated in iOS7.   Use 'NSString.GetBoundingRect (CGSize, NSStringDrawingOptions, UIStringAttributes,NSStringDrawingContext)' instead.")]
+        CGSize StringSize (UIFont font, CGSize constrainedToSize, UILineBreakMode lineBreakMode);
 
-		[Bind ("sizeWithFont:minFontSize:actualFontSize:forWidth:lineBreakMode:")]
-		CGSize StringSize (UIFont font, float minFontSize, ref float actualFontSize, float forWidth, UILineBreakMode lineBreakMode);
+        [Bind ("sizeWithFont:minFontSize:actualFontSize:forWidth:lineBreakMode:")]
+        // Wait for guidance here: https://devforums.apple.com/thread/203655
+        //[Obsolete ("Deprecated on iOS7.   No guidance.")]
+        CGSize StringSize (UIFont font, nfloat minFontSize, ref nfloat actualFontSize, nfloat forWidth, UILineBreakMode lineBreakMode);
 
-		[Bind ("drawAtPoint:withFont:")]
-		CGSize DrawString (CGPoint point, UIFont font);
+        [Bind ("drawAtPoint:withFont:")]
+        //[Obsolete ("Deprecated in iOS7.  Use 'NSString.DrawString(CGPoint, UIStringAttributes)' instead.")]
+        CGSize DrawString (CGPoint point, UIFont font);
 
-		[Bind ("drawAtPoint:forWidth:withFont:lineBreakMode:")]
-		CGSize DrawString (CGPoint point, float width, UIFont font, UILineBreakMode breakMode);
+        [Bind ("drawAtPoint:forWidth:withFont:lineBreakMode:")]
+        //[Obsolete ("Deprecated in iOS7.  Use 'NSString.DrawString(CGRect, UIStringAttributes)' instead.")]
+        CGSize DrawString (CGPoint point, nfloat width, UIFont font, UILineBreakMode breakMode);
 
-		[Bind ("drawAtPoint:forWidth:withFont:fontSize:lineBreakMode:baselineAdjustment:")]
-		CGSize DrawString (CGPoint point, float width, UIFont font, float fontSize, UILineBreakMode breakMode, UIBaselineAdjustment adjustment);
+        [Bind ("drawAtPoint:forWidth:withFont:fontSize:lineBreakMode:baselineAdjustment:")]
+        //[Obsolete ("Deprecated in iOS7.  Use 'NSString.DrawString(CGRect, UIStringAttributes)' instead.")]
+        CGSize DrawString (CGPoint point, nfloat width, UIFont font, nfloat fontSize, UILineBreakMode breakMode, UIBaselineAdjustment adjustment);
 
-		[Bind ("drawAtPoint:forWidth:withFont:minFontSize:actualFontSize:lineBreakMode:baselineAdjustment:")]
-		CGSize DrawString (CGPoint point, float width, UIFont font, float minFontSize, ref float actualFontSize, UILineBreakMode breakMode, UIBaselineAdjustment adjustment);
+        [Bind ("drawAtPoint:forWidth:withFont:minFontSize:actualFontSize:lineBreakMode:baselineAdjustment:")]
+        //[Obsolete ("Deprecated in iOS7.  Use 'NSString.DrawString(CGRect, UIStringAttributes)' instead.")]
+        CGSize DrawString (CGPoint point, nfloat width, UIFont font, nfloat minFontSize, ref nfloat actualFontSize, UILineBreakMode breakMode, UIBaselineAdjustment adjustment);
 
-		[Bind ("drawInRect:withFont:")]
-		CGSize DrawString (CGRect rect, UIFont font);
+        [Bind ("drawInRect:withFont:")]
+        //[Obsolete ("Deprecated in iOS7.  Use 'NSString.DrawString(CGRect, UIStringAttributes)' instead.")]
+        CGSize DrawString (CGRect rect, UIFont font);
 
-		[Bind ("drawInRect:withFont:lineBreakMode:")]
-		CGSize DrawString (CGRect rect, UIFont font, UILineBreakMode mode);
+        [Bind ("drawInRect:withFont:lineBreakMode:")]
+        //[Obsolete ("Deprecated in iOS7.  Use 'NSString.DrawString(CGRect, UIStringAttributes)' instead.")]
+        CGSize DrawString (CGRect rect, UIFont font, UILineBreakMode mode);
 
-		[Bind ("drawInRect:withFont:lineBreakMode:alignment:")]
-		CGSize DrawString (CGRect rect, UIFont font, UILineBreakMode mode, UITextAlignment alignment);
+        [Bind ("drawInRect:withFont:lineBreakMode:alignment:")]
+        //[Obsolete ("Deprecated in iOS7.  Use 'NSString.DrawString(CGRect, UIStringAttributes)' instead.")]
+        CGSize DrawString (CGRect rect, UIFont font, UILineBreakMode mode, UITextAlignment alignment);
 #endif
-		[Export ("characterAtIndex:")]
-		char _characterAtIndex (nuint index);
+#endif
 
-		[Export ("length")]
-		nuint Length {get;}
+#if XAMCORE_2_0
+        [Internal]
+#endif
+        [Export ("characterAtIndex:")]
+        char _characterAtIndex (nint index);
 
-		[Export ("hash"), Internal]
-		nuint Hash ();
+        [Export ("length")]
+        nint Length {get;}
 
-		[Export ("isEqualToString:"), Internal]
-		bool IsEqualTo (IntPtr handle);
-		
-		[Export ("compare:")]
-		NSComparisonResult Compare (NSString aString);
+        [Sealed]
+        [Export ("isEqualToString:")]
+        bool IsEqualTo (IntPtr handle);
+        
+        [Export ("compare:")]
+        NSComparisonResult Compare (NSString aString);
 
-		[Export ("compare:options:")]
-		NSComparisonResult Compare (NSString aString, NSStringCompareOptions mask);
+        [Export ("compare:options:")]
+        NSComparisonResult Compare (NSString aString, NSStringCompareOptions mask);
 
-		[Export ("compare:options:range:")]
-		NSComparisonResult Compare (NSString aString, NSStringCompareOptions mask, NSRange range);
+        [Export ("compare:options:range:")]
+        NSComparisonResult Compare (NSString aString, NSStringCompareOptions mask, NSRange range);
 
-		[Export ("compare:options:range:locale:")]
-		NSComparisonResult Compare (NSString aString, NSStringCompareOptions mask, NSRange range, [NullAllowed] NSLocale locale);
-		
-		[Export ("stringByReplacingCharactersInRange:withString:")]
-		NSString Replace (NSRange range, NSString replacement);
+        [Export ("compare:options:range:locale:")]
+        NSComparisonResult Compare (NSString aString, NSStringCompareOptions mask, NSRange range, [NullAllowed] NSLocale locale);
+        
+        [Export ("stringByReplacingCharactersInRange:withString:")]
+        NSString Replace (NSRange range, NSString replacement);
 
-		// start methods from NSStringPathExtensions category
+        [Export ("commonPrefixWithString:options:")]
+        NSString CommonPrefix (NSString aString, NSStringCompareOptions options);
+        
+        // start methods from NSStringPathExtensions category
 
-		[Static]
-		[Export("pathWithComponents:")]
-		string[] PathWithComponents( string[] components );
+        [Static]
+        [Export("pathWithComponents:")]
+        string[] PathWithComponents( string[] components );
 
-		[Export("pathComponents")]
-		string[] PathComponents { get; }
+        [Export("pathComponents")]
+        string[] PathComponents { get; }
 
-		[Export("isAbsolutePath")]
-		bool IsAbsolutePath { get; }
+        [Export("isAbsolutePath")]
+        bool IsAbsolutePath { get; }
 
-		[Export("lastPathComponent")]
-		NSString LastPathComponent { get; }
+        [Export("lastPathComponent")]
+        NSString LastPathComponent { get; }
 
-		[Export("stringByDeletingLastPathComponent")]
-		NSString DeleteLastPathComponent();
+        [Export("stringByDeletingLastPathComponent")]
+        NSString DeleteLastPathComponent();
  
- 		[Export("stringByAppendingPathComponent:")]
- 		NSString AppendPathComponent( NSString str );
+        [Export("stringByAppendingPathComponent:")]
+        NSString AppendPathComponent( NSString str );
 
- 		[Export("pathExtension")]
- 		NSString PathExtension { get; }
+        [Export("pathExtension")]
+        NSString PathExtension { get; }
 
- 		[Export("stringByDeletingPathExtension")]
- 		NSString DeletePathExtension();
+        [Export("stringByDeletingPathExtension")]
+        NSString DeletePathExtension();
 
- 		[Export("stringByAppendingPathExtension:")]
- 		NSString AppendPathExtension( NSString str );
+        [Export("stringByAppendingPathExtension:")]
+        NSString AppendPathExtension( NSString str );
  
- 		[Export("stringByAbbreviatingWithTildeInPath")]
- 		NSString AbbreviateTildeInPath();
+        [Export("stringByAbbreviatingWithTildeInPath")]
+        NSString AbbreviateTildeInPath();
 
- 		[Export("stringByExpandingTildeInPath")]
- 		NSString ExpandTildeInPath();
+        [Export("stringByExpandingTildeInPath")]
+        NSString ExpandTildeInPath();
  
- 		[Export("stringByStandardizingPath")]
- 		NSString StandarizePath();
+        [Export("stringByStandardizingPath")]
+        NSString StandarizePath();
 
- 		[Export("stringByResolvingSymlinksInPath")]
- 		NSString ResolveSymlinksInPath();
+        [Export("stringByResolvingSymlinksInPath")]
+        NSString ResolveSymlinksInPath();
 
-		[Export("stringsByAppendingPaths:")]
- 		string[] AppendPaths( string[] paths );
+        [Export("stringsByAppendingPaths:")]
+        string[] AppendPaths( string[] paths );
 
-		// end methods from NSStringPathExtensions category
+        // end methods from NSStringPathExtensions category
 
-		[Since (6,0)]
-		[Export ("capitalizedStringWithLocale:")]
-		string Capitalize (NSLocale locale);
-		
-		[Since (6,0)]
-		[Export ("lowercaseStringWithLocale:")]
-		string ToLower (NSLocale locale);
-		
-		[Since (6,0)]
-		[Export ("uppercaseStringWithLocale:")]
-		string ToUpper (NSLocale locale);
-	}
+        [iOS (6,0)]
+        [Export ("capitalizedStringWithLocale:")]
+        string Capitalize ([NullAllowed] NSLocale locale);
+        
+        [iOS (6,0)]
+        [Export ("lowercaseStringWithLocale:")]
+        string ToLower (NSLocale locale);
+        
+        [iOS (6,0)]
+        [Export ("uppercaseStringWithLocale:")]
+        string ToUpper (NSLocale locale);
+
+        [iOS (8,0)]
+        [Export ("containsString:")]
+        bool Contains (NSString str);
+
+        [iOS (8,0), Mac (10,10)]
+        [Export ("localizedCaseInsensitiveContainsString:")]
+        bool LocalizedCaseInsensitiveContains (NSString str);
+
+        [iOS (8,0), Mac (10,10)]
+        [EditorBrowsable (EditorBrowsableState.Advanced)]
+        [Static, Export ("stringEncodingForData:encodingOptions:convertedString:usedLossyConversion:")]
+        nuint DetectStringEncoding (NSData rawData, NSDictionary options, out string convertedString, out bool usedLossyConversion);
+
+        [iOS (8,0),Mac(10,10)]
+        [Internal, Field ("NSStringEncodingDetectionSuggestedEncodingsKey")]
+        NSString EncodingDetectionSuggestedEncodingsKey { get; }
+
+        [iOS (8,0),Mac(10,10)]
+        [Internal, Field ("NSStringEncodingDetectionDisallowedEncodingsKey")]
+        NSString EncodingDetectionDisallowedEncodingsKey { get; }
+        
+        [iOS (8,0),Mac(10,10)]
+        [Internal, Field ("NSStringEncodingDetectionUseOnlySuggestedEncodingsKey")]
+        NSString EncodingDetectionUseOnlySuggestedEncodingsKey { get; }
+        
+        [iOS (8,0),Mac(10,10)]
+        [Internal, Field ("NSStringEncodingDetectionAllowLossyKey")]
+        NSString EncodingDetectionAllowLossyKey { get; }
+
+        [iOS (8,0),Mac(10,10)]
+        [Internal, Field ("NSStringEncodingDetectionFromWindowsKey")]
+        NSString EncodingDetectionFromWindowsKey { get; }
+
+        [iOS (8,0),Mac(10,10)]
+        [Internal, Field ("NSStringEncodingDetectionLossySubstitutionKey")]
+        NSString EncodingDetectionLossySubstitutionKey { get; }
+
+        [iOS (8,0),Mac(10,10)]
+        [Internal, Field ("NSStringEncodingDetectionLikelyLanguageKey")]
+        NSString EncodingDetectionLikelyLanguageKey { get; }
+
+        [Export ("lineRangeForRange:")]
+        NSRange LineRangeForRange (NSRange range);
+
+        [Export ("getLineStart:end:contentsEnd:forRange:")]
+        void GetLineStart (out nuint startPtr, out nuint lineEndPtr, out nuint contentsEndPtr, NSRange range);
+
+        [iOS (9,0), Mac(10,11)]
+        [Export ("variantFittingPresentationWidth:")]
+        NSString GetVariantFittingPresentationWidth (nint width);
+
+        [iOS (9,0), Mac(10,11)]
+        [Export ("localizedStandardContainsString:")]
+        bool LocalizedStandardContainsString (NSString str);
+
+        [iOS (9,0), Mac(10,11)]
+        [Export ("localizedStandardRangeOfString:")]
+        NSRange LocalizedStandardRangeOfString (NSString str);
+
+        [iOS (9,0), Mac(10,11)]
+        [Export ("localizedUppercaseString")]
+        NSString LocalizedUppercaseString { get; }
+
+        [iOS (9,0), Mac(10,11)]
+        [Export ("localizedLowercaseString")]
+        NSString LocalizedLowercaseString { get; }
+
+        [iOS (9,0), Mac(10,11)]
+        [Export ("localizedCapitalizedString")]
+        NSString LocalizedCapitalizedString { get; }
+
+        [iOS (9,0), Mac(10,11)]
+        [Export ("stringByApplyingTransform:reverse:")]
+        [return: NullAllowed]
+        NSString TransliterateString (NSString transform, bool reverse);
+
+        [Export ("hasPrefix:")]
+        bool HasPrefix (NSString prefix);
+
+        [Export ("hasSuffix:")]
+        bool HasSuffix (NSString suffix);
+
+        // UNUserNotificationCenterSupport category
+        [iOS (10,0), Watch (3,0), NoTV, Mac (10,14, onlyOn64: true)]
+        [Static]
+        [Export ("localizedUserNotificationStringForKey:arguments:")]
+        NSString GetLocalizedUserNotificationString (NSString key, [Params] [NullAllowed] NSObject [] arguments);
+
+        [Export ("getParagraphStart:end:contentsEnd:forRange:")]
+        void GetParagraphPositions (out nuint paragraphStartPosition, out nuint paragraphEndPosition, out nuint contentsEndPosition, NSRange range);
+
+        [Export ("paragraphRangeForRange:")]
+        NSRange GetParagraphRange (NSRange range);
+
+        [Export ("componentsSeparatedByString:")]
+        NSString[] SeparateComponents (NSString separator);
+
+        [Export ("componentsSeparatedByCharactersInSet:")]
+        NSString[] SeparateComponents (NSCharacterSet separator);
+
+        // From the NSItemProviderReading protocol
+
+        [Watch (4,0), TV (11,0), Mac (10,13, onlyOn64: true), iOS (11,0)]
+        [Static]
+        [Export ("readableTypeIdentifiersForItemProvider", ArgumentSemantic.Copy)]
+#if XAMCORE_2_0 || !MONOMAC
+        new
+#endif
+        string[] ReadableTypeIdentifiers { get; }
+
+        [Watch (4,0), TV (11,0), Mac (10,13, onlyOn64: true), iOS (11,0)]
+        [Static]
+        [Export ("objectWithItemProviderData:typeIdentifier:error:")]
+        [return: NullAllowed]
+#if XAMCORE_2_0 || !MONOMAC
+        new
+#endif
+        NSString GetObject (NSData data, string typeIdentifier, [NullAllowed] out NSError outError);
+
+        // From the NSItemProviderWriting protocol
+        [Watch (4,0), TV (11,0), Mac (10,13, onlyOn64: true), iOS (11,0)]
+        [Static]
+        [Export ("writableTypeIdentifiersForItemProvider", ArgumentSemantic.Copy)]
+#if XAMCORE_2_0 || !MONOMAC
+        new
+#endif
+        string[] WritableTypeIdentifiers { get; }	}
 #if !MONOMAC
 	[Since (6,0)]
 	[BaseType (typeof (NSObject))]

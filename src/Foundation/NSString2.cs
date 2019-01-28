@@ -122,7 +122,7 @@ namespace MonoMac.Foundation {
 		
 		public char this [int idx] {
 			get {
-				return _characterAtIndex ((nuint)idx);
+				return _characterAtIndex ((nint)idx);
 			}
 		}
 	}

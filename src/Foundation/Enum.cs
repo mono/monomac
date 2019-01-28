@@ -652,5 +652,14 @@ namespace MonoMac.Foundation  {
 		Concurrent = 1 << 0,
 		Stable = 1 << 4
 	}
-	
+
+#if MONOMAC
+    internal enum NSAttributedStringDataType
+    {
+        RTF,
+        RTFD,
+        HTML,
+        DocFormat
+    }
+#endif
 }
