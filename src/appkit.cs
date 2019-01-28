@@ -2940,6 +2940,12 @@ namespace MonoMac.AppKit {
 		[Static]
 		[Export ("placeholderTextColor", ArgumentSemantic.Strong)]
 		NSColor PlaceholderTextColor { get; }
+
+        [Static, Export ("underPageBackgroundColor")]
+        NSColor UnderPageBackgroundColor { get; }
+
+        [Static, Export ("colorWithCGColor:")]
+        NSColor FromCGColor (CGColor cgColor);
 	}
 
 	[BaseType (typeof (NSObject))]
