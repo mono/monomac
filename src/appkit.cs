@@ -10234,7 +10234,7 @@ namespace MonoMac.AppKit {
 	
 	[BaseType (typeof (NSControl))]
 	public interface NSSegmentedControl {
-		[Export ("initWithFrame:")]
+	[Export ("initWithFrame:")]
 		IntPtr Constructor (CGRect frameRect);
 
 		[Export ("selectSegmentWithTag:")]
@@ -10247,7 +10247,7 @@ namespace MonoMac.AppKit {
 		nfloat GetWidth (nint segment);
 
 		[Export ("setImage:forSegment:")]
-		void SetImage (NSImage image, nint segment);
+		void SetImage ([NullAllowed] NSImage image, nint segment);
 
 		[Export ("imageForSegment:")]
 		NSImage GetImage (nint segment);
@@ -10265,7 +10265,7 @@ namespace MonoMac.AppKit {
 		string GetLabel (nint segment);
 
 		[Export ("setMenu:forSegment:")]
-		void SetMenu (NSMenu menu, nint segment);
+		void SetMenu ([NullAllowed] NSMenu menu, nint segment);
 
 		[Export ("menuForSegment:")]
 		NSMenu GetMenu (nint segment);
@@ -10292,8 +10292,70 @@ namespace MonoMac.AppKit {
 		[Export ("segmentStyle")]
 		NSSegmentStyle SegmentStyle { get; set; }
 
+		[Mac (10,10,3)]
+		[Export ("springLoaded")]
+		bool IsSpringLoaded { [Bind ("isSpringLoaded")] get; set; }
+
+		[Mac (10,10,3)]
 		[Export ("trackingMode")]
 		NSSegmentSwitchTracking TrackingMode { get; set; }
+
+		[Mac (10,10,3)]
+		[Export ("doubleValueForSelectedSegment")]
+		double GetValueForSelectedSegment (); // actually returns double
+
+		[Mac (10,12)]
+		[Static]
+		[Internal]
+		[Export ("segmentedControlWithLabels:trackingMode:target:action:")]
+		NSSegmentedControl _FromLabels (string[] labels, NSSegmentSwitchTracking trackingMode, [NullAllowed] NSObject target, [NullAllowed] Selector action);
+
+		[Mac (10,12)]
+		[Static]
+		[Internal]
+		[Export ("segmentedControlWithImages:trackingMode:target:action:")]
+		NSSegmentedControl _FromImages (NSImage[] images, NSSegmentSwitchTracking trackingMode, [NullAllowed] NSObject target, [NullAllowed] Selector action);
+
+		[Mac (10, 12, 2)]
+		[NullAllowed, Export ("selectedSegmentBezelColor", ArgumentSemantic.Copy)]
+		NSColor SelectedSegmentBezelColor { get; set; }
+
+		[Mac (10,13)]
+		[Export ("setToolTip:forSegment:")]
+		void SetToolTip ([NullAllowed] string toolTip, nint segment);
+
+		[Mac (10,13)]
+		[Export ("toolTipForSegment:")]
+		[return: NullAllowed]
+		string GetToolTip (nint forSegment);
+
+		[Mac (10,13)]
+		[Export ("setTag:forSegment:")]
+		void SetTag (nint tag, nint segment);
+
+		[Mac (10,13)]
+		[Export ("tagForSegment:")]
+		nint GetTag (nint segment);
+
+		[Mac (10,13)]
+		[Export ("setShowsMenuIndicator:forSegment:")]
+		void SetShowsMenuIndicator (bool showsMenuIndicator, nint segment);
+
+		[Mac (10,13)]
+		[Export ("showsMenuIndicatorForSegment:")]
+		bool ShowsMenuIndicator (nint segment);
+
+		[Mac (10,13)]
+		[Export ("setAlignment:forSegment:")]
+		void SetAlignment (NSTextAlignment alignment, nint segment);
+
+		[Mac (10,13)]
+		[Export ("alignmentForSegment:")]
+		NSTextAlignment GetAlignment (nint segment);
+
+		[Mac (10, 13)]
+		[Export ("segmentDistribution", ArgumentSemantic.Assign)]
+		NSSegmentDistribution SegmentDistribution { get; set; }
 	}
 	
 	[BaseType (typeof (NSActionCell))]

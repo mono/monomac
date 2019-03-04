@@ -1836,4 +1836,14 @@ namespace MonoMac.AppKit {
         Disabled,
         Rollover,
     }
+
+    [Mac(10, 13)]
+    //[Native]
+    public enum NSSegmentDistribution : long
+    {
+        Fit = 0,
+        Fill,
+        FillEqually,
+        FillProportionally,
+    }
 }
