@@ -12829,6 +12829,12 @@ namespace MonoMac.AppKit {
 		[Static]
 		[Export ("localizedNameForInputSource:")]
 		string LocalizedNameForInputSource (string inputSourceIdentifier);
+
+		[Export ("keyboardInputSources")]
+		NSArray /* NSString [] */ KeyboardInputSources { get; }
+
+		[Export ("selectedKeyboardInputSource")]
+		string SelectedKeyboardInputSource { get; set; }
 	}
 
 	[BaseType (typeof (NSObject))]
