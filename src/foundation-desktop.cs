@@ -555,6 +555,9 @@ namespace MonoMac.Foundation {
 		[Export ("actionButtonTitle", ArgumentSemantic.Copy)]
 		string ActionButtonTitle { get; set; }
 		
+		[Export ("contentImage", ArgumentSemantic.Copy)]
+		NSImage ContentImage { get; set; }
+		
 		[Export ("userInfo", ArgumentSemantic.Copy)]
 		NSDictionary UserInfo { get; set; }
 		
