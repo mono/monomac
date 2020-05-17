@@ -29,8 +29,19 @@ namespace MonoMac.ObjCRuntime {
 	public class NSObjectMarshaler<T> : ICustomMarshaler where T : NSObject {
 		static NSObjectMarshaler<T> marshaler;
 
-		public object MarshalNativeToManaged (IntPtr handle) {
-			return (T) Runtime.GetNSObject (handle);
+		public object MarshalNativeToManaged (IntPtr handle)
+		{
+			if (handle == IntPtr.Zero)
+				return null;
+
+			var obj = Runtime.GetNSObject (handle);
+			if (!(obj is T)) {
+				throw new MarshalDirectiveException (
+					string.Format ("NSObjectMarshaler<{0}>: Could not cast from type {1}", typeof(T), obj.GetType ()));
+			}
+			else {
+				return (T) obj;
+			}
 		}
 
 		public IntPtr MarshalManagedToNative (object obj) {
