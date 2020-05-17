@@ -6002,18 +6002,26 @@ namespace MonoMac.AppKit {
 
 	[BaseType (typeof (NSObject))]
 	public partial interface NSNib {
+		[Obsolete ("Deprecated in OSX 10.8")]
 		[Export ("initWithContentsOfURL:")]
 		IntPtr Constructor (NSUrl nibFileUrl);
 
 		[Export ("initWithNibNamed:bundle:")]
-		IntPtr Constructor (string nibName, NSBundle bundle);
+		IntPtr Constructor (string nibName, [NullAllowed] NSBundle bundle);
+	
+		[Export ("initWithNibData:bundle:"), MountainLion]
+		IntPtr Constructor (NSData data, [NullAllowed] NSBundle bundle);
 
+		[Export ("instantiateWithOwner:topLevelObjects:"), MountainLion]
+		bool Instantiate (NSObject owner, out NSArray topLevelObjects);
+
+		[Obsolete ("Deprecated in OSX 10.8")]
 		[Export ("instantiateNibWithExternalNameTable:")]
 		bool InstantiateNib (NSDictionary externalNameTable);
 
-		// This requires an "out NSArray"
-		//[Export ("instantiateNibWithOwner:topLevelObjects:")]
-		//bool InstantiateNib (NSObject owner, NSArray topLevelObjects);
+		[Obsolete ("Deprecated in OSX 10.8")]
+		[Export ("instantiateNibWithOwner:topLevelObjects:")]
+		bool InstantiateNib (NSObject owner, out NSArray topLevelObjects);
 	}	
 
 	[BaseType (typeof (NSController))]
@@ -14722,7 +14730,7 @@ namespace MonoMac.AppKit {
 	[BaseType (typeof (NSResponder))]
 	public interface NSWindowController {
 		[Export ("initWithWindow:")]
-		IntPtr Constructor (NSWindow  window);
+		IntPtr Constructor ([NullAllowed] NSWindow  window);
 	
 		[Export ("initWithWindowNibName:")]
 		IntPtr Constructor (string  windowNibName);
